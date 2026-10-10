@@ -1,0 +1,18 @@
+{
+  "name": "@wildbound/content",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Wildbound authored content: species, kits, items, stages, shops, quests, tuning. Data lives in data/ JSON; this package exposes the registry.",
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}
