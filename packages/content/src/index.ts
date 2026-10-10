@@ -18,6 +18,9 @@ export const CONTENT_DIRS = {
 
 export type ContentDir = (typeof CONTENT_DIRS)[keyof typeof CONTENT_DIRS];
 
+export * from './schemas';
+export type { KitJson, CombatSettingsJson } from './schemas';
+
 /** Bumped when the shape of any content directory changes. */
 export const CONTENT_SCHEMA_VERSION = 1;
 

@@ -1,0 +1,11 @@
+{
+  "name": "tidewarden vs twigleaf",
+  "seed": 1,
+  "mode": "pvp",
+  "attackers": [
+    { "kit": "tidewarden", "position": 4, "power": 100, "sheet": { "hp": 3000, "sAtk": 300, "spd": 100 } }
+  ],
+  "defenders": [
+    { "kit": "twigleaf", "position": 4, "power": 50, "sheet": { "hp": 2000, "pAtk": 220, "sAtk": 200, "spd": 90 } }
+  ]
+}

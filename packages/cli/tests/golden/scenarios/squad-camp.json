@@ -1,0 +1,14 @@
+{
+  "name": "guardian squad camp",
+  "seed": 7,
+  "mode": "pve",
+  "attackers": [
+    { "kit": "tidewarden", "name": "Warden1", "position": 1, "power": 80, "sheet": { "hp": 2800, "sAtk": 260, "spd": 95 } },
+    { "kit": "twigleaf", "name": "Sprout2", "position": 2, "power": 60, "sheet": { "hp": 2000, "sAtk": 180, "spd": 110 } },
+    { "kit": "twigleaf", "name": "Sprout3", "position": 3, "power": 50, "sheet": { "hp": 1800, "sAtk": 170, "spd": 105 } }
+  ],
+  "defenders": [
+    { "kit": "twigleaf", "name": "Opp1", "position": 1, "power": 45, "sheet": { "hp": 1800, "pAtk": 180, "spd": 110 } },
+    { "kit": "twigleaf", "name": "Opp2", "position": 2, "power": 45, "sheet": { "hp": 1800, "pAtk": 180, "spd": 92 } }
+  ]
+}

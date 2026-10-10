@@ -27,6 +27,29 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    `ipguard.ts`/`ipguard.test.ts` are exempt from the text scan, because the guard must list the terms
    to reject.
 
+## M1
+
+1. **Golden parity is a deterministic TS replay, not Python parity.** Same root cause as M0 #1
+   (`reference/sim/` absent). `pnpm golden-export` records the folded event log for every scenario in
+   `packages/cli/tests/golden/scenarios/`; `packages/cli/src/golden.test.ts` replays deterministic
+   battles and must match exactly. Replace/augment with true cross-language parity when the Python
+   files arrive.
+2. **Deterministic mode forces every roll to `0.999999`.** Chosen so replay is byte-stable and so
+   chance-based events are *off* by construction: no crit, no block, no chance control. Guaranteed
+   controls (`chance: null`) still land. Recorded as engine behaviour, not a content setting.
+3. **Buff duration has exactly one dimension.** `turns` ticks at the end of the holder's own turn
+   (`tickUnitBuffs`); `bigRounds` (DoT, confusion) ticks at big-round end (`tickBigRoundBuffs`). A
+   buff never carries both. Named setting: `buffTickTiming: "ownTurnEnd"`.
+4. **Rage on damage.** The defender gains proportional rage `floor(rageMax × unshieldedLoss ÷ maxHp)`
+   for any source including reflect/DoT (not hp-share); the flat `rageHitBase` only for direct hits.
+   Placement/`rageOnHit`/`rageCutChance` (cut = `rageMax/8`) are measured values, tunable in
+   `tuning/combat.json`.
+5. **Every uncertain combat number is a named setting** in `tuning/combat.json` (Appendix A) so the
+   Build Lab Rules panel can surface it later: floors (`gFloor`, `pFloor`, `pvpConst`), soul caps,
+   crit (`critFloor`, `critSlope`, `critBaseMult`), block (`blockPoints`, `blockKeep`, `blockIntScale`),
+   `basicReplace`, rage values, `counterShare`, `redirectChance`, and the booleans (`tpSymmetric`,
+   `defendersUseDef`, `healBasis`, `shieldCountsForRage`).
+
 ## Carried from the reference (to be resolved per system)
 
 - When a reference doc says `(inferred)` or `(open)`, the item becomes a named combat

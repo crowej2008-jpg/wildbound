@@ -1,0 +1,63 @@
+import type { Buff, CombatField, SpecInput, StatSheet } from './types';
+
+/**
+ * Build the ledger stats a combatant starts from: core stats plus fractional
+ * percent lines (1.0 == 100%), soul stats, and talent stat mods applied in
+ * order on their declared field. Buffs then layer on top at runtime.
+ */
+export function resolveSheet(spec: SpecInput): StatSheet {
+  const s = spec.sheet;
+  const pct = (v: number | undefined): number => (v === undefined ? 0 : v);
+  const sheet: StatSheet = {
+    hp: s.hp,
+    pAtk: s.pAtk,
+    sAtk: s.sAtk,
+    spd: s.spd,
+    pDef: pct(s.pDef),
+    sDef: pct(s.sDef),
+    dmgBoost: pct(s.dmgBoost),
+    dmgRdct: pct(s.dmgRdct),
+    pvpBoost: pct(s.pvpBoost),
+    pvpRdct: pct(s.pvpRdct),
+    ultBoost: pct(s.ultBoost),
+    ultRed: pct(s.ultRed),
+    skillBoost: pct(s.skillBoost),
+    skillRed: pct(s.skillRed),
+    crit: pct(s.crit),
+    critRes: pct(s.critRes),
+    critPower: pct(s.critPower),
+    block: pct(s.block),
+    blockPower: pct(s.blockPower),
+    guardBreak: pct(s.guardBreak),
+    controlBoost: pct(s.controlBoost),
+    controlRes: pct(s.controlRes),
+    healBoost: pct(s.healBoost),
+    receiveHealBoost: pct(s.receiveHealBoost),
+    counterBoost: pct(s.counterBoost),
+    spiritAtk: pct(s.spiritAtk),
+    spiritDef: pct(s.spiritDef),
+  };
+  for (const mod of spec.kit.talents?.statMods ?? []) {
+    applyStatMod(sheet, mod.field, mod.mult, mod.add);
+  }
+  return sheet;
+}
+
+export function applyStatMod(
+  sheet: StatSheet,
+  field: CombatField,
+  mult?: number,
+  add?: number,
+): void {
+  if (mult !== undefined) sheet[field] *= mult;
+  if (add !== undefined) sheet[field] += add;
+}
+
+/** Runtime effective stat: base value plus every applied stat buff (additive). */
+export function effective(base: StatSheet, buffs: Buff[], field: CombatField): number {
+  let v = base[field];
+  for (const b of buffs) {
+    if (b.kind === 'stat' && b.field === field && b.amount !== undefined) v += b.amount;
+  }
+  return v;
+}

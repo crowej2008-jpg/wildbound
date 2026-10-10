@@ -6,7 +6,7 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | System (PROMPT §7) | Screen(s) (§8) | Milestone | Status |
 |---|---|---|---|
 | Workspace, tooling, IP guard, hello-world client | App shell, Home, nav | M0 | built |
-| Combat engine, event log, DSL, CLI simulator, golden parity | — (headless) | M1 | pending |
+| Combat engine, event log, DSL, CLI simulator, golden parity | — (headless) | M1 | built |
 | Species, 36 Wilds, kits, stat formula, Power, growth tuning, creature generator gallery | Gallery | M2 | pending |
 | Account, roster, growth, squads, LocalServer, saves | HUD, Wilds (Upgrade/Evolve), Squad editor | M3 | pending |
 | Battle UI (replay from log) | Battle screen, Result panels | M4 | pending |

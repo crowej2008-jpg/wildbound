@@ -1,0 +1,104 @@
+{
+  "scenario": {
+    "name": "tidewarden vs twigleaf",
+    "seed": 1,
+    "mode": "pvp",
+    "attackers": [
+      {
+        "kit": "tidewarden",
+        "position": 4,
+        "power": 100,
+        "sheet": {
+          "hp": 3000,
+          "sAtk": 300,
+          "spd": 100
+        }
+      }
+    ],
+    "defenders": [
+      {
+        "kit": "twigleaf",
+        "position": 4,
+        "power": 50,
+        "sheet": {
+          "hp": 2000,
+          "pAtk": 220,
+          "sAtk": 200,
+          "spd": 90
+        }
+      }
+    ]
+  },
+  "seed": 1,
+  "deterministic": true,
+  "winner": "attackers",
+  "rounds": 5,
+  "fold": [
+    "rs:1",
+    "a:attackers:4:normal",
+    "h:attackers:4>defenders:4:375:-:1625",
+    "rg:defenders:4:312:812",
+    "ba:attackers:4:ripple:0.15",
+    "rg:attackers:4:250:750",
+    "ba:attackers:4:allyShelter:0.03:1",
+    "a:defenders:4:normal",
+    "h:defenders:4>attackers:4:180:-:3570",
+    "rg:attackers:4:250:1000",
+    "rg:defenders:4:188:1000",
+    "re:1",
+    "rs:2",
+    "a:attackers:4:ult",
+    "h:attackers:4>defenders:4:600:-:1025",
+    "rf:attackers:4>defenders:4:135:890",
+    "rg:attackers:4:-1000:0",
+    "ba:attackers:4:allyShelter:0.03:2",
+    "bx:attackers:4:ripple",
+    "a:defenders:4:ult",
+    "h:defenders:4>attackers:4:282:-:3288",
+    "rg:attackers:4:325:325",
+    "rg:defenders:4:-1000:0",
+    "re:2",
+    "rs:3",
+    "a:attackers:4:normal",
+    "h:attackers:4>defenders:4:375:-:515",
+    "rg:defenders:4:312:312",
+    "ba:attackers:4:ripple:0.15",
+    "rg:attackers:4:250:575",
+    "ba:attackers:4:allyShelter:0.03:3",
+    "a:defenders:4:normal",
+    "h:defenders:4>attackers:4:167:-:3121",
+    "rg:attackers:4:294:869",
+    "rg:defenders:4:250:562",
+    "re:3",
+    "rs:4",
+    "a:attackers:4:normal",
+    "h:attackers:4>defenders:4:375:-:140",
+    "rg:defenders:4:312:874",
+    "rg:attackers:4:131:1000",
+    "ba:attackers:4:allyShelter:0.03:4",
+    "bx:attackers:4:ripple",
+    "a:defenders:4:normal",
+    "h:defenders:4>attackers:4:193:-:2928",
+    "rg:defenders:4:126:1000",
+    "re:4",
+    "rs:5",
+    "a:attackers:4:ult",
+    "h:attackers:4>defenders:4:140:-:0",
+    "d:defenders:4",
+    "rg:attackers:4:-1000:0",
+    "re:5",
+    "res:attackers:5"
+  ],
+  "units": [
+    {
+      "key": "attackers:4",
+      "alive": true,
+      "hp": 2928
+    },
+    {
+      "key": "defenders:4",
+      "alive": false,
+      "hp": 0
+    }
+  ]
+}

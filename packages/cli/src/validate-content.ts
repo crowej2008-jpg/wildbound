@@ -1,6 +1,6 @@
 import { readFileSync, statSync } from 'node:fs';
 import { extname, join, resolve } from 'node:path';
-import { contentManifest } from '@wildbound/content';
+import { contentManifest, kitSchema, combatSettingsSchema } from '@wildbound/content';
 import { findFiles, GuardViolation, scanBinaryMedia, scanForbidden } from './ipguard';
 
 export interface ValidateReport {
@@ -44,6 +44,15 @@ export function validateContent(repoRoot: string): ValidateReport {
       }
       for (const violation of checkRecord(parsed)) {
         errors.push(`${file}: ${violation.detail}`);
+      }
+      if (dir === 'kits') {
+        const r = kitSchema.safeParse(parsed);
+        if (!r.success) errors.push(`${file}: kit schema — ${describeZod(r.error.issues)}`);
+        else checks.push(`${file}: kit "${r.data.id}" validated against kit schema`);
+      } else if (dir === 'tuning') {
+        const r = combatSettingsSchema.safeParse(parsed);
+        if (!r.success) errors.push(`${file}: combat tuning schema — ${describeZod(r.error.issues)}`);
+        else checks.push(`${file}: combat tuning validated against settings schema`);
       }
     }
     checks.push(`parsed ${jsonFiles.length} JSON file(s) in packages/content/${dir}`);
@@ -92,4 +101,8 @@ function checkRecord(value: unknown): GuardViolation[] {
 
 function describe(v: GuardViolation): string {
   return `${v.file}: ${v.detail}`;
+}
+
+function describeZod(issues: { path: (string | number)[]; message: string }[]): string {
+  return issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ');
 }

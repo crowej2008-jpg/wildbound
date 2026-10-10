@@ -17,7 +17,8 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@wildbound/content": "workspace:*"
+    "@wildbound/content": "workspace:*",
+    "@wildbound/engine": "workspace:*"
   },
   "devDependencies": {
     "tsx": "^4.19.0"

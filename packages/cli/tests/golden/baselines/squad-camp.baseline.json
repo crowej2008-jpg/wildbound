@@ -1,0 +1,191 @@
+{
+  "scenario": {
+    "name": "guardian squad camp",
+    "seed": 7,
+    "mode": "pve",
+    "attackers": [
+      {
+        "kit": "tidewarden",
+        "name": "Warden1",
+        "position": 1,
+        "power": 80,
+        "sheet": {
+          "hp": 2800,
+          "sAtk": 260,
+          "spd": 95
+        }
+      },
+      {
+        "kit": "twigleaf",
+        "name": "Sprout2",
+        "position": 2,
+        "power": 60,
+        "sheet": {
+          "hp": 2000,
+          "sAtk": 180,
+          "spd": 110
+        }
+      },
+      {
+        "kit": "twigleaf",
+        "name": "Sprout3",
+        "position": 3,
+        "power": 50,
+        "sheet": {
+          "hp": 1800,
+          "sAtk": 170,
+          "spd": 105
+        }
+      }
+    ],
+    "defenders": [
+      {
+        "kit": "twigleaf",
+        "name": "Opp1",
+        "position": 1,
+        "power": 45,
+        "sheet": {
+          "hp": 1800,
+          "pAtk": 180,
+          "spd": 110
+        }
+      },
+      {
+        "kit": "twigleaf",
+        "name": "Opp2",
+        "position": 2,
+        "power": 45,
+        "sheet": {
+          "hp": 1800,
+          "pAtk": 180,
+          "spd": 92
+        }
+      }
+    ]
+  },
+  "seed": 7,
+  "deterministic": true,
+  "winner": "attackers",
+  "rounds": 3,
+  "fold": [
+    "rs:1",
+    "a:attackers:2:normal",
+    "h:attackers:2>defenders:2:200:-:1600",
+    "rg:defenders:2:236:736",
+    "rg:attackers:2:250:750",
+    "a:defenders:1:normal",
+    "h:defenders:1>attackers:1:180:-:3320",
+    "rg:attackers:1:301:801",
+    "rg:defenders:1:250:750",
+    "a:attackers:3:normal",
+    "h:attackers:3>defenders:2:200:-:1400",
+    "rg:defenders:2:236:972",
+    "rg:attackers:3:250:750",
+    "a:attackers:1:normal",
+    "h:attackers:1>defenders:1:325:-:1475",
+    "rg:defenders:1:250:1000",
+    "ba:attackers:1:ripple:0.15",
+    "rg:attackers:1:199:1000",
+    "ba:attackers:1:allyShelter:0.03:1",
+    "ba:attackers:2:allyShelter:0.03:1",
+    "ba:attackers:3:allyShelter:0.03:1",
+    "a:defenders:2:normal",
+    "h:defenders:2>attackers:2:174:-:1826",
+    "rg:attackers:2:212:962",
+    "rg:defenders:2:28:1000",
+    "re:1",
+    "rs:2",
+    "a:attackers:2:normal",
+    "h:attackers:2>defenders:2:200:-:1200",
+    "rg:attackers:2:38:1000",
+    "a:defenders:1:ult",
+    "h:defenders:1>attackers:1:246:-:3074",
+    "h:defenders:1>attackers:2:291:-:1535",
+    "h:defenders:1>attackers:3:291:-:1509",
+    "rg:attackers:3:250:1000",
+    "rg:defenders:1:-1000:0",
+    "a:attackers:3:ult",
+    "h:attackers:3>defenders:1:255:-:1220",
+    "rg:defenders:1:266:266",
+    "h:attackers:3>defenders:2:255:-:945",
+    "rg:attackers:3:-1000:0",
+    "a:attackers:1:ult",
+    "h:attackers:1>defenders:1:520:-:700",
+    "rg:defenders:1:413:679",
+    "h:attackers:1>defenders:2:520:-:425",
+    "rf:attackers:1>defenders:1:135:565",
+    "rg:defenders:1:75:754",
+    "rf:attackers:1>defenders:2:135:290",
+    "rg:attackers:1:-1000:0",
+    "ba:attackers:1:allyShelter:0.03:2",
+    "ba:attackers:2:allyShelter:0.03:2",
+    "ba:attackers:3:allyShelter:0.03:2",
+    "bx:attackers:1:ripple",
+    "a:defenders:2:ult",
+    "h:defenders:2>attackers:1:282:-:2792",
+    "rg:attackers:1:330:330",
+    "h:defenders:2>attackers:2:282:-:1253",
+    "h:defenders:2>attackers:3:282:-:1227",
+    "rg:attackers:3:281:281",
+    "rg:defenders:2:-1000:0",
+    "re:2",
+    "rs:3",
+    "a:attackers:2:ult",
+    "h:attackers:2>defenders:1:270:-:295",
+    "rg:defenders:1:246:1000",
+    "h:attackers:2>defenders:2:270:-:20",
+    "rg:defenders:2:275:275",
+    "rg:attackers:2:-1000:0",
+    "a:defenders:1:ult",
+    "h:defenders:1>attackers:1:282:-:2510",
+    "rg:attackers:1:330:660",
+    "h:defenders:1>attackers:2:282:-:971",
+    "rg:attackers:2:266:266",
+    "h:defenders:1>attackers:3:282:-:945",
+    "rg:attackers:3:281:562",
+    "rg:defenders:1:-1000:0",
+    "a:attackers:3:normal",
+    "h:attackers:3>defenders:2:20:-:0",
+    "d:defenders:2",
+    "rg:defenders:2:136:411",
+    "rg:attackers:3:250:812",
+    "a:attackers:1:normal",
+    "h:attackers:1>defenders:1:295:-:0",
+    "d:defenders:1",
+    "rg:defenders:1:288:288",
+    "ba:attackers:1:ripple:0.15",
+    "rg:attackers:1:250:910",
+    "ba:attackers:1:allyShelter:0.03:3",
+    "ba:attackers:2:allyShelter:0.03:3",
+    "ba:attackers:3:allyShelter:0.03:3",
+    "re:3",
+    "res:attackers:3"
+  ],
+  "units": [
+    {
+      "key": "attackers:1",
+      "alive": true,
+      "hp": 2510
+    },
+    {
+      "key": "attackers:2",
+      "alive": true,
+      "hp": 971
+    },
+    {
+      "key": "attackers:3",
+      "alive": true,
+      "hp": 945
+    },
+    {
+      "key": "defenders:1",
+      "alive": false,
+      "hp": 0
+    },
+    {
+      "key": "defenders:2",
+      "alive": false,
+      "hp": 0
+    }
+  ]
+}
