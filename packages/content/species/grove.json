@@ -1,0 +1,132 @@
+[
+  {
+    "id": "twigleaf",
+    "name": "Twigleaf",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "common",
+    "description": "A tiny sprout-spirit that starts small and grows into a walking meadow.",
+    "paletteSeed": 1481,
+    "stages": [
+      "Sproutkin",
+      "Twigleaf",
+      "Verdant"
+    ],
+    "base": {
+      "hp": 720,
+      "pAtk": 66,
+      "sAtk": 110,
+      "spd": 95,
+      "pDef": 77,
+      "sDef": 83
+    }
+  },
+  {
+    "id": "barkhide",
+    "name": "Barkhide",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "legendary",
+    "description": "An old-growth guardian whose bark has weathered a thousand storms.",
+    "paletteSeed": 1518,
+    "stages": [
+      "Barkhide",
+      "Thornmaw",
+      "Elderbloom"
+    ],
+    "base": {
+      "hp": 1958,
+      "pAtk": 148,
+      "sAtk": 102,
+      "spd": 87,
+      "pDef": 185,
+      "sDef": 185
+    }
+  },
+  {
+    "id": "petalfall",
+    "name": "Petalfall",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "rare",
+    "description": "A blossom-keeper that scatters petals to close its friends wounds.",
+    "paletteSeed": 1555,
+    "stages": [
+      "Blossomite",
+      "Petalfall"
+    ],
+    "base": {
+      "hp": 855,
+      "pAtk": 78,
+      "sAtk": 130,
+      "spd": 100,
+      "pDef": 91,
+      "sDef": 98
+    }
+  },
+  {
+    "id": "bramblefang",
+    "name": "Bramblefang",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "epic",
+    "description": "A thorn-coated pouncer that sweeps whole rows of foes at once.",
+    "paletteSeed": 1592,
+    "stages": [
+      "Bramblefang",
+      "Thistlefang"
+    ],
+    "base": {
+      "hp": 1150,
+      "pAtk": 155,
+      "sAtk": 70,
+      "spd": 120,
+      "pDef": 78,
+      "sDef": 70
+    }
+  },
+  {
+    "id": "mossgill",
+    "name": "Mossgill",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "rare",
+    "description": "A mossy, patient creature that lets the forest do its fighting.",
+    "paletteSeed": 1629,
+    "stages": [
+      "Mossgill",
+      "Reedmaw",
+      "Fenwarden"
+    ],
+    "base": {
+      "hp": 1378,
+      "pAtk": 104,
+      "sAtk": 72,
+      "spd": 83,
+      "pDef": 130,
+      "sDef": 130
+    }
+  },
+  {
+    "id": "thornlord",
+    "name": "Thornlord",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "legendary",
+    "description": "A crowned sovereign of roots and briars, patient as the seasons.",
+    "paletteSeed": 1666,
+    "stages": [
+      "Seedlord",
+      "Thornlord",
+      "Sylvanarch"
+    ],
+    "base": {
+      "hp": 1350,
+      "pAtk": 185,
+      "sAtk": 83,
+      "spd": 126,
+      "pDef": 93,
+      "sDef": 83
+    }
+  }
+]

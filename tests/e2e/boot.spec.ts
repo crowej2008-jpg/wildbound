@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('boots to Home with the five-tab bottom nav', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Welcome to Wildbound' })).toBeVisible();
-  await expect(page.getByText('Milestone 0', { exact: false })).toBeVisible();
+  await expect(page.getByText('Milestone 2', { exact: false })).toBeVisible();
 
   const nav = page.getByRole('navigation', { name: 'Primary' });
   await expect(nav.getByRole('link', { name: 'Home' })).toBeVisible();
@@ -11,6 +11,16 @@ test('boots to Home with the five-tab bottom nav', async ({ page }) => {
   await expect(nav.getByRole('link', { name: 'Combat' })).toBeVisible();
   await expect(nav.getByRole('link', { name: 'Summon' })).toBeVisible();
   await expect(nav.getByRole('link', { name: 'More' })).toBeVisible();
+});
+
+test('gallery renders every Wild with a deterministic portrait', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Browse all 36 Wilds' }).click();
+  await expect(page.getByText('Wild Gallery')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Tidewarden' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Emberpaw' })).toBeVisible();
+  const portraits = page.locator('svg.wild-portrait');
+  expect(await portraits.count()).toBeGreaterThanOrEqual(36);
 });
 
 test('out-of-scope tabs show an honest coming-later state and keep the nav', async ({ page }) => {

@@ -1,0 +1,131 @@
+[
+  {
+    "id": "umbrashade",
+    "name": "Umbrashade",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "legendary",
+    "description": "A dusk-born moth that snuffs out a foe warmth in a single breath.",
+    "paletteSeed": 2147,
+    "stages": [
+      "Duskmoth",
+      "Umbrashade",
+      "Nihilarch"
+    ],
+    "base": {
+      "hp": 1215,
+      "pAtk": 111,
+      "sAtk": 185,
+      "spd": 110,
+      "pDef": 130,
+      "sDef": 139
+    }
+  },
+  {
+    "id": "voidfang",
+    "name": "Voidfang",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "epic",
+    "description": "A shadow that learned to bite, always finding the weakest mark.",
+    "paletteSeed": 2184,
+    "stages": [
+      "Shadowling",
+      "Voidfang",
+      "Necropaw"
+    ],
+    "base": {
+      "hp": 1150,
+      "pAtk": 155,
+      "sAtk": 70,
+      "spd": 131,
+      "pDef": 78,
+      "sDef": 70
+    }
+  },
+  {
+    "id": "wraithling",
+    "name": "Wraithling",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "rare",
+    "description": "A thin, drifting wisp that rattles a foe senses into stillness.",
+    "paletteSeed": 2221,
+    "stages": [
+      "Wraithling",
+      "Phantomaw"
+    ],
+    "base": {
+      "hp": 855,
+      "pAtk": 78,
+      "sAtk": 130,
+      "spd": 115,
+      "pDef": 91,
+      "sDef": 98
+    }
+  },
+  {
+    "id": "nightgazer",
+    "name": "Nightgazer",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "epic",
+    "description": "A quiet watcher that saps the strength of whatever it fixes its gaze on.",
+    "paletteSeed": 2258,
+    "stages": [
+      "Gloomlet",
+      "Nightgazer",
+      "Voidseer"
+    ],
+    "base": {
+      "hp": 1035,
+      "pAtk": 93,
+      "sAtk": 155,
+      "spd": 108,
+      "pDef": 109,
+      "sDef": 116
+    }
+  },
+  {
+    "id": "grieftalon",
+    "name": "Grieftalon",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "common",
+    "description": "A lone hunter of the dark that strikes fast and fades away.",
+    "paletteSeed": 2295,
+    "stages": [
+      "Grieftalon"
+    ],
+    "base": {
+      "hp": 800,
+      "pAtk": 110,
+      "sAtk": 50,
+      "spd": 113,
+      "pDef": 55,
+      "sDef": 50
+    }
+  },
+  {
+    "id": "duskwarden",
+    "name": "Duskwarden",
+    "faction": "shade",
+    "class": "guardian",
+    "tier": "supreme",
+    "description": "A stoic keeper of twilight, patient and hard to move.",
+    "paletteSeed": 2332,
+    "stages": [
+      "Duskpup",
+      "Duskwarden",
+      "Voidarch"
+    ],
+    "base": {
+      "hp": 2320,
+      "pAtk": 176,
+      "sAtk": 121,
+      "spd": 87,
+      "pDef": 220,
+      "sDef": 220
+    }
+  }
+]

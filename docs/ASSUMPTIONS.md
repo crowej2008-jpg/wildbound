@@ -50,6 +50,28 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    `basicReplace`, rage values, `counterShare`, `redirectChance`, and the booleans (`tpSymmetric`,
    `defendersUseDef`, `healBasis`, `shieldCountsForRage`).
 
+## M2
+
+1. **The stat formula is multiplicative, deviating from the reference.** The reference
+   `pokemon_data_cfg.json` model is linear (`basic_attr + level × growth_attr`, plus per-star flat
+   cards and `evolution_up_percent` 5–20%); PROMPT §7.1 asks for
+   `base × levelCurve × starMult × evolutionMult × qualityMult`. We implement the requested
+   multiplicative model with all factors as data in `tuning/growth.json`. Base stats were authored
+   from a tier table (HP/ATK by tier) × a per-class factor profile, plus a small deterministic jitter
+   from the species id — chosen so the 36 Wilds are balanced and reproducible, not copied.
+2. **Power weights are our own fit of the reference shape.** The reference exposes
+   `attr_power_weight` rows (a core `power_rate` and a percent `ext_rate`); we keep that shape
+   (`F/A/E`, `scale`) but supply our own weights (`tuning/power.json`). `scale` only shifts the
+   constant term and is not load-bearing.
+3. **Kits group by faction.** M1 shipped one kit per file; M2 groups six per faction file as arrays.
+   The loader accepts both shapes. The two M1 kits (`tidewarden`, `twigleaf`) are preserved
+   byte-identically except that `twigleaf` gains a `talents.rageCutChance` (the ≥1-talent quality
+   bar); that talent is inert in deterministic mode, so the M1 golden replay is unchanged.
+4. **`paletteSeed` is authored data.** Each species carries an explicit integer seed rather than
+   hashing its id at render time, so portrait colours stay stable even if an id ever changes.
+5. **Five content dirs remain empty** (`items`, `stages`, `shops`, `quests`) — they land in later
+   milestones and the validator emits a warning, not an error, for them.
+
 ## Carried from the reference (to be resolved per system)
 
 - When a reference doc says `(inferred)` or `(open)`, the item becomes a named combat

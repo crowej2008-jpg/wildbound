@@ -52,3 +52,32 @@ are recorded here with the difference (never edit `reference/`).
   the M1 "golden" lock is a deterministic TypeScript replay suite: `pnpm golden-export` writes event-
   log folds for the scenario fixtures and `golden.test.ts` replays them exactly. When the Python
   simulator arrives, add true cross-language parity scenarios without removing these.
+
+## M2 — Content core (2026-10-11)
+
+- **Schemas** (`@wildbound/content/src/schemas.ts`): `speciesSchema`, `growthSchema`, `powerSchema`,
+  `coreStatsSchema` (+ type exports).
+- **36 original Wilds** (6 per faction) in `packages/content/species/<faction>.json`: id, name,
+  faction, class, tier, description, `paletteSeed`, 1–3 evolution stages, six base stats. Authored
+  from a tier/class table with deterministic jitter — no reference rows copied.
+- **36 skill kits** in `packages/content/kits/<faction>.json` (arrays of six), covering every
+  required archetype: counter, guaranteed-freeze, stated-chance stun, healer, shield, lowest-HP,
+  row-sweep, %max-HP, and immunity. The M1 `tidewarden` kit is preserved byte-identically.
+- **Growth & Power tuning**: `packages/content/tuning/growth.json` (multiplicative stat formula
+  factors) and `tuning/power.json` (Power core/percent weights + scale).
+- **Engine growth module** (`@wildbound/engine/src/growth/`): `resolveCoreStats`, `levelCurve`,
+  `starMult`, `evolutionMult`, `levelCap`, `computePower`, `teamPower` — pure, tuning injected.
+- **Content loaders** (`@wildbound/content`): validated `WILDS`, `KITS`, `COMBAT_SETTINGS`,
+  `GROWTH`, `POWER` exports; the client imports these at build time.
+- **Validator** (`packages/cli/src/validate-content.ts`): per-dir schemas, per-filename tuning
+  schema, duplicate-id detection, species↔kit cross-reference, faction coverage (6 each), array-aware
+  empty-field scan. `kit-loader` now accepts single-object or array files.
+- **Procedural gallery** (client): `src/art/{palette,creature,WildPortrait}`, `pages/Gallery.tsx`
+  at `/gallery` (linked from Home); deterministic seeded SVG, no binary media. i18n label helpers for
+  factions/classes/tiers. e2e extended (gallery renders ≥36 portraits; HUD now "Milestone 2").
+- Tests — engine growth tests (stats + Power); 13 test files green. `pnpm check` green.
+
+### Deviation from the reference
+
+- **Multiplicative stat formula** (our design; the reference model is linear) — see docs/ASSUMPTIONS.md M2.
+- **Power weights are our own fit** of the reference `attr_power_weight` shape.

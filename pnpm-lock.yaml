@@ -218,6 +218,12 @@ importers:
 
   packages/client:
     dependencies:
+      '@wildbound/content':
+        specifier: workspace:*
+        version: link:../content
+      '@wildbound/engine':
+        specifier: workspace:*
+        version: link:../engine
       react:
         specifier: ^18.3.1
         version: 18.3.1

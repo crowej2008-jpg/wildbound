@@ -1,0 +1,307 @@
+[
+  {
+    "id": "twigleaf",
+    "name": "Twigleaf",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "common",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.15
+        ],
+        "rule": "row"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.5
+        ],
+        "rule": "all"
+      }
+    },
+    "talents": {
+      "rageCutChance": 0.3
+    }
+  },
+  {
+    "id": "barkhide",
+    "name": "Barkhide",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "legendary",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.9
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.1
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.12,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.4
+        ],
+        "rule": "row",
+        "shield": {
+          "target": "allies",
+          "share": 0.25
+        }
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125,
+      "turnHooks": [
+        "allyShelterStack"
+      ]
+    },
+    "hooksConfig": {
+      "allyShelterStack": {
+        "field": "dmgRdct",
+        "amount": 0.03,
+        "cap": 4
+      }
+    }
+  },
+  {
+    "id": "petalfall",
+    "name": "Petalfall",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "rare",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "heal": {
+          "target": "ally",
+          "rate": 0.35
+        }
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row",
+        "heal": {
+          "target": "allies",
+          "rate": 0.25
+        }
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "bramblefang",
+    "name": "Bramblefang",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "mossgill",
+    "name": "Mossgill",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "rare",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125,
+      "rageCutChance": 0.35
+    }
+  },
+  {
+    "id": "thornlord",
+    "name": "Thornlord",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "legendary",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          2.6
+        ],
+        "rule": "lowest_hp"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  }
+]

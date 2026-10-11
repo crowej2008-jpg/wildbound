@@ -190,3 +190,127 @@ body {
   color: var(--color-accent);
   font-weight: 700;
 }
+
+.gallery-link {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.gallery-link:hover {
+  text-decoration: underline;
+}
+
+.gallery-subtitle {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.gallery-faction {
+  margin-bottom: var(--space-5);
+}
+
+.faction-heading {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-lg);
+  border-left: 4px solid var(--color-border);
+  padding-left: var(--space-2);
+}
+
+.faction-heading.faction-ember { border-color: var(--color-faction-ember); }
+.faction-heading.faction-tide { border-color: var(--color-faction-tide); }
+.faction-heading.faction-grove { border-color: var(--color-faction-grove); }
+.faction-heading.faction-volt { border-color: var(--color-faction-volt); }
+.faction-heading.faction-frost { border-color: var(--color-faction-frost); }
+.faction-heading.faction-shade { border-color: var(--color-faction-shade); }
+
+.wild-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 480px) {
+  .wild-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.wild-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.wild-portraits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.wild-portrait-figure {
+  margin: 0;
+  text-align: center;
+}
+
+.wild-portrait-figure figcaption {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.wild-portrait {
+  display: block;
+}
+
+.wild-meta h3 {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-md);
+}
+
+.wild-description {
+  margin: var(--space-1) 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.stat-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-1) var(--space-3);
+  margin: var(--space-1) 0;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+}
+
+.stat dt {
+  color: var(--color-text-muted);
+}
+
+.stat dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.wild-power {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.chip.tier-common { border-color: var(--tier-common); color: var(--tier-common); }
+.chip.tier-rare { border-color: var(--tier-rare); color: var(--tier-rare); }
+.chip.tier-epic { border-color: var(--tier-epic); color: var(--tier-epic); }
+.chip.tier-legendary { border-color: var(--tier-legendary); color: var(--tier-legendary); }
+.chip.tier-supreme { border-color: var(--tier-supreme); color: var(--tier-supreme); }
+.chip.tier-mythic { border-color: var(--tier-mythic); color: var(--tier-mythic); }

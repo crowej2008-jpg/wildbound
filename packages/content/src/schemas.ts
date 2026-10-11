@@ -160,5 +160,84 @@ export const combatSettingsSchema = z
   })
   .strict();
 
+/** Six core stats as authored per species (M2). */
+export const coreStatsSchema = z
+  .object({
+    hp: z.number().positive(),
+    pAtk: z.number().positive(),
+    sAtk: z.number().positive(),
+    spd: z.number().positive(),
+    pDef: z.number().positive(),
+    sDef: z.number().positive(),
+  })
+  .strict();
+
+/**
+ * One Wild (PROMPT §9.1). `stages` are the display names of the 1-3 evolution
+ * forms (index = stage); `base` seeds the engine stat formula; `paletteSeed`
+ * seeds the procedural portrait.
+ */
+export const speciesSchema = z
+  .object({
+    id: z.string().min(1),
+    name: z.string().min(1),
+    faction: factionSchema,
+    class: classSchema,
+    tier: tierSchema,
+    description: z.string().min(1),
+    paletteSeed: z.number().int(),
+    stages: z.array(z.string().min(1)).min(1).max(3),
+    base: coreStatsSchema,
+  })
+  .strict();
+
+/** A single stat line's Power weighting (reference attr_power_weight rows). */
+const powerRowSchema = z
+  .object({ powerRate: z.number(), extRate: z.number() })
+  .strict();
+
+/** Power weights (M2, PROMPT §5): core rows + percent rows + percent scale. */
+export const powerSchema = z
+  .object({
+    core: z
+      .object({
+        hp: z.number(),
+        pAtk: z.number(),
+        sAtk: z.number(),
+        spd: z.number(),
+        pDef: z.number(),
+        sDef: z.number(),
+      })
+      .strict(),
+    percent: z.record(z.string(), powerRowSchema),
+    scale: z.number().positive(),
+  })
+  .strict();
+
+/** Growth tuning (M2, PROMPT §7.1): all four stat-formula factors as data. */
+export const growthSchema = z
+  .object({
+    maxLevelByStage: z.array(z.number().int().positive()).min(1),
+    maxStars: z.number().int().positive(),
+    levelGrowth: z.number().nonnegative(),
+    starStep: z.number().nonnegative(),
+    evolutionMult: z.array(z.number().positive()).min(1),
+    qualityMult: z
+      .object({
+        common: z.number().positive(),
+        rare: z.number().positive(),
+        epic: z.number().positive(),
+        legendary: z.number().positive(),
+        supreme: z.number().positive(),
+        mythic: z.number().positive(),
+      })
+      .strict(),
+  })
+  .strict();
+
 export type KitJson = z.infer<typeof kitSchema>;
 export type CombatSettingsJson = z.infer<typeof combatSettingsSchema>;
+export type SpeciesJson = z.infer<typeof speciesSchema>;
+export type GrowthJson = z.infer<typeof growthSchema>;
+export type PowerJson = z.infer<typeof powerSchema>;
+export type CoreStatsJson = z.infer<typeof coreStatsSchema>;

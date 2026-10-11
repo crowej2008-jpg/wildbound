@@ -1,0 +1,61 @@
+{
+  "core": {
+    "hp": 10,
+    "pAtk": 18,
+    "sAtk": 18,
+    "pDef": 20,
+    "sDef": 20,
+    "spd": 0
+  },
+  "percent": {
+    "crit": {
+      "powerRate": 35,
+      "extRate": 10
+    },
+    "critRes": {
+      "powerRate": 55,
+      "extRate": 22
+    },
+    "critPower": {
+      "powerRate": 125,
+      "extRate": 10
+    },
+    "block": {
+      "powerRate": 35,
+      "extRate": 15
+    },
+    "blockPower": {
+      "powerRate": 125,
+      "extRate": 8
+    },
+    "guardBreak": {
+      "powerRate": 55,
+      "extRate": 20
+    },
+    "controlBoost": {
+      "powerRate": 45,
+      "extRate": 12
+    },
+    "controlRes": {
+      "powerRate": 45,
+      "extRate": 12
+    },
+    "dmgBoost": {
+      "powerRate": 30,
+      "extRate": 12
+    },
+    "dmgRdct": {
+      "powerRate": 30,
+      "extRate": 12
+    },
+    "pvpBoost": {
+      "powerRate": 30,
+      "extRate": 8
+    },
+    "pvpRdct": {
+      "powerRate": 30,
+      "extRate": 8
+    }
+  },
+  "scale": 10000
+}

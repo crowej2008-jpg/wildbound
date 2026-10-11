@@ -1,0 +1,131 @@
+[
+  {
+    "id": "emberpaw",
+    "name": "Emberpaw",
+    "faction": "ember",
+    "class": "striker",
+    "tier": "rare",
+    "description": "A playful cinder-cub whose pawprints smoulder for hours after it passes.",
+    "paletteSeed": 1037,
+    "stages": [
+      "Cindercub",
+      "Emberpaw",
+      "Blazemane"
+    ],
+    "base": {
+      "hp": 950,
+      "pAtk": 130,
+      "sAtk": 59,
+      "spd": 113,
+      "pDef": 65,
+      "sDef": 59
+    }
+  },
+  {
+    "id": "smolderquill",
+    "name": "Smolderquill",
+    "faction": "ember",
+    "class": "adept",
+    "tier": "common",
+    "description": "Its wing feathers smoulder quietly, leaving a trail of warm ash.",
+    "paletteSeed": 1074,
+    "stages": [
+      "Ashling",
+      "Sootwing",
+      "Smolderquill"
+    ],
+    "base": {
+      "hp": 720,
+      "pAtk": 66,
+      "sAtk": 110,
+      "spd": 101,
+      "pDef": 77,
+      "sDef": 83
+    }
+  },
+  {
+    "id": "magmaw",
+    "name": "Magmaw",
+    "faction": "ember",
+    "class": "guardian",
+    "tier": "epic",
+    "description": "A slow, molten guardian that swallows heat and gives it back as armour.",
+    "paletteSeed": 1111,
+    "stages": [
+      "Magmite",
+      "Magmaw"
+    ],
+    "base": {
+      "hp": 1668,
+      "pAtk": 124,
+      "sAtk": 85,
+      "spd": 86,
+      "pDef": 155,
+      "sDef": 155
+    }
+  },
+  {
+    "id": "pyrofin",
+    "name": "Pyrofin",
+    "faction": "ember",
+    "class": "adept",
+    "tier": "legendary",
+    "description": "A fish of living flame that swims through heat haze, never water.",
+    "paletteSeed": 1148,
+    "stages": [
+      "Emberfin",
+      "Pyrofin",
+      "Solarfin"
+    ],
+    "base": {
+      "hp": 1215,
+      "pAtk": 111,
+      "sAtk": 185,
+      "spd": 103,
+      "pDef": 130,
+      "sDef": 139
+    }
+  },
+  {
+    "id": "cinderox",
+    "name": "Cinderox",
+    "faction": "ember",
+    "class": "guardian",
+    "tier": "rare",
+    "description": "A patient ox of packed embers whose breath melts stone to slag.",
+    "paletteSeed": 1185,
+    "stages": [
+      "Cinderox"
+    ],
+    "base": {
+      "hp": 1378,
+      "pAtk": 104,
+      "sAtk": 72,
+      "spd": 93,
+      "pDef": 130,
+      "sDef": 130
+    }
+  },
+  {
+    "id": "volcanix",
+    "name": "Volcanix",
+    "faction": "ember",
+    "class": "guardian",
+    "tier": "mythic",
+    "description": "An eruption given form, it wakes only when the mountains do.",
+    "paletteSeed": 1222,
+    "stages": [
+      "Fumeling",
+      "Volcanix",
+      "Infernyx"
+    ],
+    "base": {
+      "hp": 2755,
+      "pAtk": 208,
+      "sAtk": 143,
+      "spd": 78,
+      "pDef": 260,
+      "sDef": 260
+    }
+  }
+]

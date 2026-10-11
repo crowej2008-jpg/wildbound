@@ -1,0 +1,131 @@
+[
+  {
+    "id": "frostfang",
+    "name": "Frostfang",
+    "faction": "frost",
+    "class": "striker",
+    "tier": "epic",
+    "description": "A snow-pelt hunter whose breath freezes the ground it stalks.",
+    "paletteSeed": 1925,
+    "stages": [
+      "Snowpup",
+      "Frostfang",
+      "Hoarfang"
+    ],
+    "base": {
+      "hp": 1150,
+      "pAtk": 155,
+      "sAtk": 70,
+      "spd": 116,
+      "pDef": 78,
+      "sDef": 70
+    }
+  },
+  {
+    "id": "glaciarch",
+    "name": "Glaciarch",
+    "faction": "frost",
+    "class": "guardian",
+    "tier": "mythic",
+    "description": "A glacial titan that shelters its kin behind walls of living ice.",
+    "paletteSeed": 1962,
+    "stages": [
+      "Glacierite",
+      "Rimebeast",
+      "Glaciarch"
+    ],
+    "base": {
+      "hp": 2755,
+      "pAtk": 208,
+      "sAtk": 143,
+      "spd": 90,
+      "pDef": 260,
+      "sDef": 260
+    }
+  },
+  {
+    "id": "chillfin",
+    "name": "Chillfin",
+    "faction": "frost",
+    "class": "adept",
+    "tier": "common",
+    "description": "A small, brittle wisp of ice that drifts on the coldest wind.",
+    "paletteSeed": 1999,
+    "stages": [
+      "Chillfin"
+    ],
+    "base": {
+      "hp": 720,
+      "pAtk": 66,
+      "sAtk": 110,
+      "spd": 113,
+      "pDef": 77,
+      "sDef": 83
+    }
+  },
+  {
+    "id": "cryowing",
+    "name": "Cryowing",
+    "faction": "frost",
+    "class": "adept",
+    "tier": "legendary",
+    "description": "A frost-moth whose scales chill a foe to the bone.",
+    "paletteSeed": 2036,
+    "stages": [
+      "Frostmoth",
+      "Cryowing",
+      "Aurorwing"
+    ],
+    "base": {
+      "hp": 1215,
+      "pAtk": 111,
+      "sAtk": 185,
+      "spd": 98,
+      "pDef": 130,
+      "sDef": 139
+    }
+  },
+  {
+    "id": "rimehide",
+    "name": "Rimehide",
+    "faction": "frost",
+    "class": "guardian",
+    "tier": "rare",
+    "description": "A slow, rimed beast that has never once known warmth.",
+    "paletteSeed": 2073,
+    "stages": [
+      "Rimehide",
+      "Permafrost"
+    ],
+    "base": {
+      "hp": 1378,
+      "pAtk": 104,
+      "sAtk": 72,
+      "spd": 77,
+      "pDef": 130,
+      "sDef": 130
+    }
+  },
+  {
+    "id": "shardrake",
+    "name": "Shardrake",
+    "faction": "frost",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "A drake of jagged ice that shatters the air with each beat of its wings.",
+    "paletteSeed": 2110,
+    "stages": [
+      "Shardrake",
+      "Frostmaw",
+      "Blizzardrake"
+    ],
+    "base": {
+      "hp": 1600,
+      "pAtk": 220,
+      "sAtk": 99,
+      "spd": 120,
+      "pDef": 110,
+      "sDef": 99
+    }
+  }
+]

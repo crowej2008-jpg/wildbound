@@ -60,13 +60,15 @@ export function kitToEngine(j: KitJson): KitDef {
   };
 }
 
-/** Read + validate + convert every kit file under the given kits dir. */
+/** Read + validate + convert every kit under the given kits dir. A file may
+ * hold a single kit object (M1) or an array of kits (M2, one file per faction). */
 export function loadKits(kitsDir: string): KitDef[] {
   const out: KitDef[] = [];
   for (const file of readdirSync(kitsDir)) {
     if (!file.endsWith('.json')) continue;
-    const j = kitSchema.parse(JSON.parse(readFileSync(resolve(kitsDir, file), 'utf8')));
-    out.push(kitToEngine(j));
+    const parsed: unknown = JSON.parse(readFileSync(resolve(kitsDir, file), 'utf8'));
+    const raws = Array.isArray(parsed) ? parsed : [parsed];
+    for (const raw of raws) out.push(kitToEngine(kitSchema.parse(raw)));
   }
   return out;
 }

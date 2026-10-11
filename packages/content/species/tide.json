@@ -1,0 +1,130 @@
+[
+  {
+    "id": "tidewarden",
+    "name": "Tidewarden",
+    "faction": "tide",
+    "class": "guardian",
+    "tier": "mythic",
+    "description": "A calm sentinel of the deep that turns every blow back on the attacker.",
+    "paletteSeed": 1259,
+    "stages": [
+      "Ripplet",
+      "Tideling",
+      "Tidewarden"
+    ],
+    "base": {
+      "hp": 2755,
+      "pAtk": 208,
+      "sAtk": 143,
+      "spd": 79,
+      "pDef": 260,
+      "sDef": 260
+    }
+  },
+  {
+    "id": "reefmaw",
+    "name": "Reefmaw",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "A coral-jawed hunter that strikes from the reef in a single rush.",
+    "paletteSeed": 1296,
+    "stages": [
+      "Coralfin",
+      "Reefmaw",
+      "Trenchjaw"
+    ],
+    "base": {
+      "hp": 1600,
+      "pAtk": 220,
+      "sAtk": 99,
+      "spd": 114,
+      "pDef": 110,
+      "sDef": 99
+    }
+  },
+  {
+    "id": "squallfin",
+    "name": "Squallfin",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "common",
+    "description": "A restless dart of a fish that hunts the wounded across any current.",
+    "paletteSeed": 1333,
+    "stages": [
+      "Drizzle",
+      "Squallfin"
+    ],
+    "base": {
+      "hp": 800,
+      "pAtk": 110,
+      "sAtk": 50,
+      "spd": 127,
+      "pDef": 55,
+      "sDef": 50
+    }
+  },
+  {
+    "id": "nimbulon",
+    "name": "Nimbulon",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "legendary",
+    "description": "A drifting rain-spirit whose downpour mends its allies wounds.",
+    "paletteSeed": 1370,
+    "stages": [
+      "Mistdrop",
+      "Nimbulon",
+      "Stormweave"
+    ],
+    "base": {
+      "hp": 1215,
+      "pAtk": 111,
+      "sAtk": 185,
+      "spd": 109,
+      "pDef": 130,
+      "sDef": 139
+    }
+  },
+  {
+    "id": "bubblay",
+    "name": "Bubblay",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "rare",
+    "description": "A cheery bubble-mass that hums and settles the nerves of those nearby.",
+    "paletteSeed": 1407,
+    "stages": [
+      "Bubblay",
+      "Foamling"
+    ],
+    "base": {
+      "hp": 855,
+      "pAtk": 78,
+      "sAtk": 130,
+      "spd": 106,
+      "pDef": 91,
+      "sDef": 98
+    }
+  },
+  {
+    "id": "spinedrift",
+    "name": "Spinedrift",
+    "faction": "tide",
+    "class": "guardian",
+    "tier": "epic",
+    "description": "A drifting shell of spines that raises a wall of water around its kin.",
+    "paletteSeed": 1444,
+    "stages": [
+      "Spinedrift"
+    ],
+    "base": {
+      "hp": 1668,
+      "pAtk": 124,
+      "sAtk": 85,
+      "spd": 84,
+      "pDef": 155,
+      "sDef": 155
+    }
+  }
+]

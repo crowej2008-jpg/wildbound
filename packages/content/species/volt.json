@@ -1,0 +1,130 @@
+[
+  {
+    "id": "voltgale",
+    "name": "Voltgale",
+    "faction": "volt",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "A spark that learned to run, ending in a storm with legs.",
+    "paletteSeed": 1703,
+    "stages": [
+      "Sparkbit",
+      "Voltgale",
+      "Tempestrix"
+    ],
+    "base": {
+      "hp": 1900,
+      "pAtk": 260,
+      "sAtk": 117,
+      "spd": 112,
+      "pDef": 130,
+      "sDef": 117
+    }
+  },
+  {
+    "id": "dynamoth",
+    "name": "Dynamoth",
+    "faction": "volt",
+    "class": "adept",
+    "tier": "epic",
+    "description": "Its wingbeats overload the air and leave foes twitching and stunned.",
+    "paletteSeed": 1740,
+    "stages": [
+      "Staticmoth",
+      "Dynamoth",
+      "Arcbeast"
+    ],
+    "base": {
+      "hp": 1035,
+      "pAtk": 93,
+      "sAtk": 155,
+      "spd": 102,
+      "pDef": 109,
+      "sDef": 116
+    }
+  },
+  {
+    "id": "stormclaw",
+    "name": "Stormclaw",
+    "faction": "volt",
+    "class": "striker",
+    "tier": "legendary",
+    "description": "A charged hunter that calls a rolling gale wherever it strikes.",
+    "paletteSeed": 1777,
+    "stages": [
+      "Zapcub",
+      "Stormclaw",
+      "Thunderlope"
+    ],
+    "base": {
+      "hp": 1350,
+      "pAtk": 185,
+      "sAtk": 83,
+      "spd": 123,
+      "pDef": 93,
+      "sDef": 83
+    }
+  },
+  {
+    "id": "coilbug",
+    "name": "Coilbug",
+    "faction": "volt",
+    "class": "adept",
+    "tier": "common",
+    "description": "A coiled, humming grub that saps the speed from anything it touches.",
+    "paletteSeed": 1814,
+    "stages": [
+      "Coilbug",
+      "Coilmoth"
+    ],
+    "base": {
+      "hp": 720,
+      "pAtk": 66,
+      "sAtk": 110,
+      "spd": 100,
+      "pDef": 77,
+      "sDef": 83
+    }
+  },
+  {
+    "id": "voltshell",
+    "name": "Voltshell",
+    "faction": "volt",
+    "class": "guardian",
+    "tier": "rare",
+    "description": "A battery-backed crawler that shrugs off the first shocks of battle.",
+    "paletteSeed": 1851,
+    "stages": [
+      "Voltshell",
+      "Ironshock"
+    ],
+    "base": {
+      "hp": 1378,
+      "pAtk": 104,
+      "sAtk": 72,
+      "spd": 88,
+      "pDef": 130,
+      "sDef": 130
+    }
+  },
+  {
+    "id": "galeforge",
+    "name": "Galeforge",
+    "faction": "volt",
+    "class": "guardian",
+    "tier": "supreme",
+    "description": "A walking generator that dares its enemies to hit it.",
+    "paletteSeed": 1888,
+    "stages": [
+      "Galeforge"
+    ],
+    "base": {
+      "hp": 2320,
+      "pAtk": 176,
+      "sAtk": 121,
+      "spd": 81,
+      "pDef": 220,
+      "sDef": 220
+    }
+  }
+]

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { t } from '../i18n';
 
 const ROADMAP = [
@@ -21,6 +22,11 @@ export default function Home() {
           <h1>{t('home.welcome')}</h1>
           <p>{t('home.intro')}</p>
           <p>{t('home.scope.note')}</p>
+          <p>
+            <Link className="gallery-link" to="/gallery">
+              {t('home.galleryLink')}
+            </Link>
+          </p>
           <div className="chip-list">
             {ROADMAP.map((item) => (
               <span key={item.milestone} className="chip">
