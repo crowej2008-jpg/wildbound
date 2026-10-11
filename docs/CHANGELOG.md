@@ -81,3 +81,34 @@ are recorded here with the difference (never edit `reference/`).
 
 - **Multiplicative stat formula** (our design; the reference model is linear) — see docs/ASSUMPTIONS.md M2.
 - **Power weights are our own fit** of the reference `attr_power_weight` shape.
+
+## M3 — Account, roster, growth, squads (2026-10-11)
+
+- **Engine roster module** (`@wildbound/engine/src/roster/`): `types` (WildInstance/AccountState/
+  Squad/Currency/Strategy, front/back slots), `costs` (level/star/evolve cost + eligibility),
+  `actions` (leveledUp/starredUp/evolved/respawn), `squad` (`autoFormation`), all pure and tuning-
+  injected; unit tests for costs, actions and formation.
+- **Content tuning**: `growth.json` gains a `progress` block (`levelUp`/`starUp`/`evolve`/`respawn`)
+  and `tuning/account.json` (starting name, currencies, 6-Wild seed roster, debug grant amounts).
+  `tuningSchema`/`accountSchema` added; validator now checks `account.json` and resolves its starting
+  roster against the species set.
+- **Server** (`@wildbound/server`): `GameServer` gains the M3 action set; `save.ts` (versioned codec +
+  migrate + one-step backup), `storage.ts` (`SaveStore` + `MemoryStore` + `IndexedDbStore`),
+  `config.ts` (`buildConfig` from content), `local-server.ts` (`LocalServer` with autosave and derived
+  Power/team-Power snapshots). Server tests cover grant/level/evolve/squad/auto-formation/persistence/
+  corrupt-recovery/export-import/reset.
+- **Client**: `ServerProvider` context + global `Hud` (currencies with debug `+`, UTC clock, error
+  banner); `Wilds` roster (filters, sort, team Power), `WildDetail` (Upgrade/Evolve tabs), `Squad`
+  editor (modes, front/back, pick-and-assign, Auto Formation, strategy), `More` debug screen. Vite
+  `base` corrected to `/` so deep routes (e.g. `/wilds/:id`) load assets on refresh.
+- **e2e**: new `m3.spec.ts` (roster seeding, detail tabs, Auto Formation, debug grant persistence, level
+  persistence across reload); `boot.spec.ts` updated to Milestone 3.
+- Tests — 120 unit tests (17 files) + 12 Playwright tests green; `content:validate` PASS; `pnpm check`
+  green.
+
+### Deviation from the reference
+
+- **Simplified progression**: one 1..`maxStars` star axis (gates evolution, multiplies stats) instead
+  of the reference per-quality star cap; evolution ≤3 stages; generic `shard` star material instead of
+  species-copy fodder. See docs/ASSUMPTIONS.md M3 and docs/design/account.md.
+- **Simplified HUD**: no avatar/VIP/XP bar yet (arrives with the M5 loop).

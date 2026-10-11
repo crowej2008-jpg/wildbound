@@ -19,11 +19,11 @@ export const CONTENT_DIRS = {
 export type ContentDir = (typeof CONTENT_DIRS)[keyof typeof CONTENT_DIRS];
 
 export * from './schemas';
-export type { KitJson, CombatSettingsJson, SpeciesJson, GrowthJson, PowerJson, CoreStatsJson } from './schemas';
+export type { KitJson, CombatSettingsJson, SpeciesJson, GrowthJson, PowerJson, CoreStatsJson, AccountJson } from './schemas';
 
 export { WILDS, FACTIONS, wildById, wildsByFaction } from './species';
 export { KITS, kitById } from './kits';
-export { COMBAT_SETTINGS, GROWTH, POWER } from './tuning';
+export { COMBAT_SETTINGS, GROWTH, POWER, ACCOUNT } from './tuning';
 
 /** Bumped when the shape of any content directory changes. */
 export const CONTENT_SCHEMA_VERSION = 1;

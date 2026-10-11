@@ -4,7 +4,7 @@ import type { GameServer, ServerInfo } from './index';
 
 describe('GameServer boundary', () => {
   it('ping resolves ok with the server info protocol', async () => {
-    const server: GameServer = {
+    const server: Pick<GameServer, 'ping'> = {
       async ping() {
         const info: ServerInfo = { game: GAME, protocol: 1 };
         return ok(info);

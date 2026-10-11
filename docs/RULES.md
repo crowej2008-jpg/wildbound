@@ -41,3 +41,20 @@ The canonical combat settings table lives in `packages/content/tuning/combat.jso
 | Evolution and quality multipliers index by stage and tier | own | `evolutionMult`, `qualityMult` | M2 |
 | Power `= floor(F×(1+E)+A)` where `F = Σ coreRate/10 × stat`, `A = Σ powerRate/10 × value`, `E = Σ extRate/100000 × value` | fitted (shape) | `tuning/power.json` | M2 |
 | Team Power is the plain sum of the six members' Power | own | n/a | M2 |
+
+## Account, roster and squads (M3)
+
+All tuning lives in `tuning/growth.json` (progress block) and `tuning/account.json`. See
+docs/design/account.md for the full model and the simplifications vs. the reference.
+
+| Rule | Evidence | Setting | Milestone |
+|---|---|---|---|
+| Level cost `candy = round(candyBase × level^candyExponent)`, `gold = candy × goldPerCandy` | fitted (shape) | `levelUp` | M3 |
+| Level is clamped to the stage cap on every level-up | own | `maxLevelByStage` | M3 |
+| Star cost `shards = shardsPerStar × star`, `gold = goldPerStar × star`, clamped to `maxStars` | fitted (shape) | `starUp`, `maxStars` | M3 |
+| Evolution needs `minLevel`, `minStars`, and pays `candy`/`gold`/`stone` (row indexed by target stage) | fitted (shape) | `evolve` | M3 |
+| Respawn costs `gemCost`, refunds `refundRate` of invested candy+gold, resets level to 1 (keeps stars/stage); refused if locked or in a squad | seen | `respawn` | M3 |
+| A squad has six slots; 0–2 front row, 3–5 back; one Wild per species; strategies per mode | seen (PvP/GvG) + own | `SQUAD_SIZE`, `FRONT_ROW_SLOTS` | M3 |
+| Auto Formation: one per species, keep saved members, fill by Power desc, Guardians to the front row | own | n/a | M3 |
+| Starting account (name, currencies, 6-Wild seed roster, debug grants) | own (dev) | `account.json` | M3 |
+| Save is versioned with one-step backup; autosave after every mutation | own | `SAVE_VERSION` | M3 |

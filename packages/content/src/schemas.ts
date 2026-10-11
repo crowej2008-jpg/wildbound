@@ -232,6 +232,42 @@ export const growthSchema = z
         mythic: z.number().positive(),
       })
       .strict(),
+    /** Level-up cost curve (M3): candy(level) = round(base × level^exponent). */
+    levelUp: z
+      .object({
+        candyBase: z.number().positive(),
+        candyExponent: z.number().positive(),
+        goldPerCandy: z.number().nonnegative(),
+      })
+      .strict(),
+    /** Star-up cost (M3): linear in the current star. */
+    starUp: z
+      .object({ shardsPerStar: z.number().nonnegative(), goldPerStar: z.number().nonnegative() })
+      .strict(),
+    /** Evolution steps indexed by target stage (index 0 unused). */
+    evolve: z.array(
+      z
+        .object({
+          minLevel: z.number().int().positive(),
+          minStars: z.number().int().positive(),
+          candy: z.number().nonnegative(),
+          gold: z.number().nonnegative(),
+          stones: z.number().nonnegative(),
+        })
+        .strict(),
+    ),
+    /** Respawn (M3): gem cost + fraction of level investment refunded. */
+    respawn: z.object({ gemCost: z.number().nonnegative(), refundRate: z.number().min(0).max(1) }).strict(),
+  })
+  .strict();
+
+/** Starting account (M3): currencies, seed roster and trainer name. */
+export const accountSchema = z
+  .object({
+    playerName: z.string().min(1),
+    startingCurrencies: z.record(z.string(), z.number().nonnegative()),
+    startingRoster: z.array(z.string().min(1)),
+    debugGrantCurrency: z.record(z.string(), z.number().nonnegative()),
   })
   .strict();
 
@@ -241,3 +277,4 @@ export type SpeciesJson = z.infer<typeof speciesSchema>;
 export type GrowthJson = z.infer<typeof growthSchema>;
 export type PowerJson = z.infer<typeof powerSchema>;
 export type CoreStatsJson = z.infer<typeof coreStatsSchema>;
+export type AccountJson = z.infer<typeof accountSchema>;

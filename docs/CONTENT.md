@@ -31,8 +31,9 @@ See `packages/content/src/index.ts` for the data-dir registry, the `*.ts` loader
 | File | Schema | Holds |
 |---|---|---|
 | `tuning/combat.json` | `combatSettingsSchema` | every combat constant (Appendix A) |
-| `tuning/growth.json` | `growthSchema` | level caps, level/star steps, evolution/quality multipliers |
+| `tuning/growth.json` | `growthSchema` | level caps, level/star steps, evolution/quality multipliers, and the M3 progress-cost block (`levelUp`/`starUp`/`evolve`/`respawn`) |
 | `tuning/power.json` | `powerSchema` | Power core weights, percent rows, percent scale |
+| `tuning/account.json` | `accountSchema` | starting player name, currencies, seed roster, debug grant amounts (M3) |
 
 ## Quality bar (content)
 

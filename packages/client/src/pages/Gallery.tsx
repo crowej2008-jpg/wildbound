@@ -11,11 +11,8 @@ import { classLabel, factionLabel, t, tierLabel } from '../i18n';
 export default function Gallery() {
   return (
     <>
-      <header className="hud">
-        <span className="hud-title">{t('gallery.title')}</span>
-        <span className="hud-tagline">{t('appName')}</span>
-      </header>
       <main className="main">
+        <h1 className="page-title">{t('gallery.title')}</h1>
         <p className="gallery-subtitle">{t('gallery.subtitle')}</p>
         {FACTIONS.map((faction) => (
           <section key={faction} className="gallery-faction">

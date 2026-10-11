@@ -72,6 +72,29 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
 5. **Five content dirs remain empty** (`items`, `stages`, `shops`, `quests`) — they land in later
    milestones and the validator emits a warning, not an error, for them.
 
+## M3
+
+1. **Progression is a deliberate simplification of the reference.** We model stars as a single
+   1..`maxStars` axis that multiplies stats (`starStep`) and gates evolution, rather than the
+   reference's per-quality star caps; evolution has ≤3 stages (our species `stages.length`); and star
+   material is the generic `shard` currency rather than species-copy fodder. Cost curves
+   (`candyCost = round(base × level^exponent)`, `gold = candy × goldPerCandy`; `starUp` linear in
+   star) match the reference *shape* (Lv1→2 ≈ 48 candies + ~3× gold), not its exact tables. All values
+   live in `tuning/growth.json`.
+2. **Respawn refusal rules** follow the reference (`kb/pokemon-growth.md`): refused when the Wild is
+   locked or present in any squad; it resets level to 1 and refunds `refundRate` (0.8) of invested
+   candy+gold, keeping stars and evolution stage.
+3. **Starting account is authored data** (`tuning/account.json`): name, starting currencies, and a
+   6-Wild seed roster of commons. Starting candy/gold are sized so the M3 e2e can level a Wild to its
+   evolution requirement; this is a debug/dev convenience, not a balance decision.
+4. **Squad strategies are stored but inert.** `aggressive | balanced | defensive` persist per squad;
+   their combat effect (basic-skill rate / targeting) is deferred to M4 when battle setup reads squads.
+5. **HUD is intentionally partial in M3.** The player card shows name + level only; the reference's
+   avatar, VIP badge and trainer XP bar are deferred to the M5 loop (XP is tracked but not awarded).
+6. **`LocalServer` is single-account and client-authoritative-for-now.** One save key, autosaved after
+   every mutation, with a one-step backup. Account ids are `w<seq>`; `nextInstanceSeq` guarantees no
+   reuse. A real backend (`HttpServer`) arrives only if M12 is not deferred.
+
 ## Carried from the reference (to be resolved per system)
 
 - When a reference doc says `(inferred)` or `(open)`, the item becomes a named combat

@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('boots to Home with the five-tab bottom nav', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Welcome to Wildbound' })).toBeVisible();
-  await expect(page.getByText('Milestone 2', { exact: false })).toBeVisible();
+  await expect(page.getByText('Milestone 3', { exact: false })).toBeVisible();
 
   const nav = page.getByRole('navigation', { name: 'Primary' });
   await expect(nav.getByRole('link', { name: 'Home' })).toBeVisible();
@@ -29,6 +29,6 @@ test('out-of-scope tabs show an honest coming-later state and keep the nav', asy
   await expect(page.getByText(/built in M6/)).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Primary' })).toBeVisible();
 
-  await page.getByRole('link', { name: 'Wilds' }).click();
-  await expect(page.getByText(/built in M3/)).toBeVisible();
+  await page.getByRole('link', { name: 'Combat' }).click();
+  await expect(page.getByText(/built in M4/)).toBeVisible();
 });

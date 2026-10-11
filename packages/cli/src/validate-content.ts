@@ -1,6 +1,8 @@
 import { readFileSync, statSync } from 'node:fs';
 import { basename, extname, join, resolve } from 'node:path';
 import {
+  accountSchema,
+  ACCOUNT,
   combatSettingsSchema,
   contentManifest,
   growthSchema,
@@ -37,6 +39,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'combat.json': combatSettingsSchema,
   'growth.json': growthSchema,
   'power.json': powerSchema,
+  'account.json': accountSchema,
 };
 
 /**
@@ -102,6 +105,10 @@ export function validateContent(repoRoot: string): ValidateReport {
 
   crossReference(species, kits, errors, checks);
   checkSpeciesCoverage(species, errors, checks);
+  for (const id of ACCOUNT.startingRoster) {
+    if (!species.has(id)) errors.push(`account.json: startingRoster species "${id}" has no species file`);
+  }
+  checks.push(`account: ${ACCOUNT.startingRoster.length} starting Wild(s) resolved`);
 
   const contentViolations = scanForbidden(contentRoot, contentManifest.dataDirs);
   const mediaViolations = scanBinaryMedia(resolve(repoRoot, 'packages'), PACKAGE_DIRS);

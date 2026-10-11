@@ -11,3 +11,5 @@ Status:
 - M1: `combat.md` (engine combat model, event log, DSL, golden lock).
 - M2: `wilds.md` (species schema, stat formula, Power) and `art.md` (procedural portrait generator
   and gallery).
+- M3: `account.md` (account/roster/growth/squad domain, save codec, LocalServer boundary, client
+  screens).

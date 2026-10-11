@@ -1,41 +1,41 @@
 import { Link } from 'react-router-dom';
 import { t } from '../i18n';
 
+const LINKS = [
+  { to: '/wilds', label: 'Wilds' },
+  { to: '/squad', label: 'Squad editor' },
+  { to: '/gallery', label: t('home.galleryLink') },
+];
+
 const ROADMAP = [
-  { label: 'Summoning', milestone: 'M6' },
+  { label: 'Battle screen', milestone: 'M4' },
   { label: 'Campaign + idle', milestone: 'M5' },
-  { label: 'Squad editor', milestone: 'M3' },
+  { label: 'Summoning', milestone: 'M6' },
   { label: 'Build Lab', milestone: 'M10' },
 ];
 
 export default function Home() {
   return (
-    <>
-      <header className="hud">
-        <span className="hud-title">{t('appName')}</span>
-        <span className="hud-tagline">
-          {t('tagline')} · {t('hud.beta')}
-        </span>
-      </header>
-      <main className="main">
-        <section className="card">
-          <h1>{t('home.welcome')}</h1>
-          <p>{t('home.intro')}</p>
-          <p>{t('home.scope.note')}</p>
-          <p>
-            <Link className="gallery-link" to="/gallery">
-              {t('home.galleryLink')}
+    <main className="main">
+      <section className="card">
+        <h1>{t('home.welcome')}</h1>
+        <p>{t('home.intro')}</p>
+        <p>{t('home.scope.note')}</p>
+        <div className="home-links">
+          {LINKS.map((link) => (
+            <Link key={link.to} className="gallery-link" to={link.to}>
+              {link.label}
             </Link>
-          </p>
-          <div className="chip-list">
-            {ROADMAP.map((item) => (
-              <span key={item.milestone} className="chip">
-                {item.label} · {item.milestone}
-              </span>
-            ))}
-          </div>
-        </section>
-      </main>
-    </>
+          ))}
+        </div>
+        <div className="chip-list">
+          {ROADMAP.map((item) => (
+            <span key={item.milestone} className="chip">
+              {item.label} · {item.milestone}
+            </span>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

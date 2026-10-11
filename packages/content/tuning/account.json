@@ -1,0 +1,25 @@
+{
+  "playerName": "Keeper",
+  "startingCurrencies": {
+    "gold": 120000,
+    "gems": 500,
+    "candy": 40000,
+    "shard": 200,
+    "stone": 20
+  },
+  "startingRoster": [
+    "smolderquill",
+    "squallfin",
+    "twigleaf",
+    "coilbug",
+    "chillfin",
+    "grieftalon"
+  ],
+  "debugGrantCurrency": {
+    "gold": 50000,
+    "gems": 200,
+    "candy": 20000,
+    "shard": 100,
+    "stone": 10
+  }
+}

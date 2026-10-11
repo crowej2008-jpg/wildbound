@@ -8,7 +8,7 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Workspace, tooling, IP guard, hello-world client | App shell, Home, nav | M0 | built |
 | Combat engine, event log, DSL, CLI simulator, golden parity | — (headless) | M1 | built |
 | Species, 36 Wilds, kits, stat formula, Power, growth tuning, creature generator gallery | Gallery | M2 | built |
-| Account, roster, growth, squads, LocalServer, saves | HUD, Wilds (Upgrade/Evolve), Squad editor | M3 | pending |
+| Account, roster, growth, squads, LocalServer, saves | HUD, Wilds (Upgrade/Evolve), Squad editor, More/Debug | M3 | built |
 | Battle UI (replay from log) | Battle screen, Result panels | M4 | pending |
 | Campaign, idle income, quests, mail, clock, tutorial | Campaign, Daily loop, Mail, Quests, Tutorial | M5 | pending |
 | Summoning (gacha) and shops | Summon, Shop | M6 | pending |
