@@ -14,6 +14,7 @@ import {
 /** Everything the LocalServer needs, lifted from content and injectable in tests. */
 export interface SpeciesMeta {
   id: string;
+  name: string;
   faction: Faction;
   className: WildClass;
   tier: Tier;
@@ -40,6 +41,7 @@ export function buildConfig(): GameConfig {
   for (const wild of WILDS) {
     species.set(wild.id, {
       id: wild.id,
+      name: wild.name,
       faction: wild.faction,
       className: wild.class,
       tier: wild.tier,

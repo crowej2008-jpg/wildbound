@@ -3,6 +3,7 @@ import BottomNav from './components/BottomNav';
 import ComingLater from './components/ComingLater';
 import Hud from './components/Hud';
 import { t } from './i18n';
+import Combat from './pages/Combat';
 import Gallery from './pages/Gallery';
 import Home from './pages/Home';
 import More from './pages/More';
@@ -32,7 +33,7 @@ function AppRoutes() {
         <Route path="/wilds" element={<Wilds />} />
         <Route path="/wilds/:id" element={<WildDetail />} />
         <Route path="/squad" element={<Squad />} />
-        <Route path="/combat" element={<ComingLater title={t('nav.combat')} milestone="M4" />} />
+        <Route path="/combat" element={<Combat />} />
         <Route path="/summon" element={<ComingLater title={t('nav.summon')} milestone="M6" />} />
         <Route path="/more" element={<More />} />
         <Route path="*" element={<Navigate to="/" replace />} />

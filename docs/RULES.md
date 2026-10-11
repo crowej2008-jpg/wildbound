@@ -58,3 +58,14 @@ docs/design/account.md for the full model and the simplifications vs. the refere
 | Auto Formation: one per species, keep saved members, fill by Power desc, Guardians to the front row | own | n/a | M3 |
 | Starting account (name, currencies, 6-Wild seed roster, debug grants) | own (dev) | `account.json` | M3 |
 | Save is versioned with one-step backup; autosave after every mutation | own | `SAVE_VERSION` | M3 |
+
+## Battle UI, replay from the log (M4)
+
+The battle is decided by the engine and returned with its full `BattleEvent` log; the client only
+folds that log for playback. See docs/design/battle-ui.md.
+
+| Rule | Evidence | Setting | Milestone |
+|---|---|---|---|
+| A recorded battle replays identically: the UI folds the immutable `BattleEvent[]`, never re-simulates | own (PROMPT §6.1) | n/a | M4 |
+| Front slots 0–2 map to field positions 4–6; back slots 3–5 map to 1–3 | seen (PROMPT §6.1) | `FRONT_ROW_SLOTS` | M4 |
+| Playback speed/pause change only the clock, never the outcome | own | n/a | M4 |

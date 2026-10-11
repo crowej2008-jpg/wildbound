@@ -112,3 +112,38 @@ are recorded here with the difference (never edit `reference/`).
   of the reference per-quality star cap; evolution ≤3 stages; generic `shard` star material instead of
   species-copy fodder. See docs/ASSUMPTIONS.md M3 and docs/design/account.md.
 - **Simplified HUD**: no avatar/VIP/XP bar yet (arrives with the M5 loop).
+
+## M4 — Battle UI, replay from the event log (2026-10-11)
+
+- **Engine replay reducer** (`@wildbound/engine/src/combat/replay.ts`): `initReplay`/`stepReplay`/
+  `replayTo` fold the immutable `BattleEvent[]` a battle already produced into per-frame visual state
+  (HP/rage/shield/alive/round/winner/buff tags), plus `lastActor`/`lastTarget` highlights. Pure and
+  content-free; 9 unit tests (immutability, prefix determinism).
+- **Server battle setup** (`@wildbound/server/src/battle.ts`): `slotToPosition` (front slots 0–2 →
+  positions 4–6, back 3–5 → 1–3), squad → `SpecInput[]` (growth stats + kit conversion identical to
+  the CLI), and `startBattle(config, state, mode, seed?)` → `BattleView` (`{ seed, mode, winner,
+  rounds, events, units, teams }`). Enemy is a mirrored "echo" of the player's squad so a fresh
+  account can always fight; the seed is server-side randomness. `GameServer` gains `startBattle`;
+  `LocalServer` implements it without mutating the save. 5 server tests (incl. same-seed determinism
+  and fold-to-winner).
+- **Client Battle screen** (`/combat`, `pages/Combat.tsx` + `components/BattleField.tsx` +
+  `components/ResultPanel.tsx`): play/pause, 1×/2×/4× speed, single-step forward/back, restart,
+  skip-to-end; 6v6 field with HP + rage bars, shield badge, buff chips, actor/target highlight, and
+  floating damage/heal/crit/block/miss popups; round header; compact result panel (winner, rounds,
+  seed, per-unit dealt/taken/healed) and an expandable battle-log drawer. `ServerProvider` exposes
+  `startBattle`; the Combat tab is now live (was a "built in M4" placeholder); HUD reads "Milestone 4".
+- **e2e**: new `m4.spec.ts` (replay to a result, restart replays identically, step + speed cycle, log
+  availability); `boot.spec.ts` updated (Milestone 4; Summon is the remaining coming-later tab).
+- Tests — 134 unit tests (19 files) + 18 Playwright tests green; `content:validate` PASS; `pnpm check`
+  green.
+
+### Deviation from the reference
+
+- **The battle is generated once and replayed, never re-simulated per frame.** The client folds the
+  server's `BattleEvent[]`; there is no per-frame randomness, so a recorded fight always replays
+  identically (PROMPT §6.1).
+- **Shield bars are approximate**: `hit.hpAfter` already nets shields and the engine does not log
+  shield absorption, so the shield badge shows the last `shield` event's value (see ASSUMPTIONS M4).
+- **Minimal vertical slice**: one campaign battle vs a mirrored echo squad; other modes, a real
+  defender list, team preview and result-panel depth arrive with the campaign loop (M5) and later.
+- **Squad strategies remain inert** (carried from M3); battle setup does not yet read them.

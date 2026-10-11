@@ -13,3 +13,4 @@ Status:
   and gallery).
 - M3: `account.md` (account/roster/growth/squad domain, save codec, LocalServer boundary, client
   screens).
+- M4: `battle-ui.md` (event-log replay reducer, battle setup/seed, the `/combat` screen, playback).

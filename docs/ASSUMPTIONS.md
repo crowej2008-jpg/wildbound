@@ -95,6 +95,27 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    every mutation, with a one-step backup. Account ids are `w<seq>`; `nextInstanceSeq` guarantees no
    reuse. A real backend (`HttpServer`) arrives only if M12 is not deferred.
 
+## M4
+
+1. **Battle playback folds the log; it never re-simulates.** A battle is generated once (server-side
+   `runBattle`) and stored as `{ units, events, winner }`. The client's replay reducer (`initReplay`/
+   `stepReplay`/`replayTo`) derives every frame from the first *n* events, so a recorded fight replays
+   identically on every run (PROMPT §6.1). "Playback speed" only changes the clock, never the outcome.
+2. **Shield bars are approximate.** The engine logs a `shield` event's `shieldAfter` but not the
+   absorption of later hits (a `hit` event's `hpAfter` already nets any shield). The replay therefore
+   shows the shield badge from the last `shield` event and does not decrement it per hit. Will be
+   exact when the engine logs shield absorption explicitly.
+3. **The enemy is a mirrored echo squad.** Until the campaign supplies real defender lists (M5), the
+   M4 battle fields the player's own squad (reversed order) as a fair, deterministic opponent, so a
+   fresh account always has something to fight. The battle seed is server-side randomness
+   (`config.rng()`), injectable for tests and library replays.
+4. **Minimal vertical slice.** M4 ships the lowest complete level: one campaign replay with play/pause,
+   speed, step, restart, skip, HP/rage bars, popups, a compact result panel and a log drawer. Team
+   preview, weather/round banner art, buff tooltips and deeper result panels are deferred (see
+   docs/SCOPE.md, docs/design/battle-ui.md).
+5. **Squad strategies remain inert.** Carried from M3 #4: `aggressive | balanced | defensive` persist
+   but battle setup does not yet read them; their combat effect lands with a later milestone.
+
 ## Carried from the reference (to be resolved per system)
 
 - When a reference doc says `(inferred)` or `(open)`, the item becomes a named combat

@@ -28,10 +28,12 @@ import {
   GAME,
   ok,
   type AccountSnapshot,
+  type BattleView,
   type GameServer,
   type Result,
   type ServerInfo,
 } from './index';
+import { startBattle as runStartBattle } from './battle';
 import type { GameConfig } from './config';
 import { BACKUP_KEY, createInitialState, parseSave, SAVE_KEY, serializeSave } from './save';
 import type { SaveStore } from './storage';
@@ -284,6 +286,15 @@ export class LocalServer implements GameServer {
   async resetAccount(): Promise<Result<AccountSnapshot>> {
     await this.store.remove(BACKUP_KEY);
     return this.commit(createInitialState(this.config));
+  }
+
+  async startBattle(mode: SquadMode, seed?: number): Promise<Result<BattleView>> {
+    if (!SQUAD_MODES.includes(mode)) return fail('invalid_input', `unknown squad mode "${mode}"`);
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const view = runStartBattle(this.config, loaded.value, mode, seed);
+    if (!view) return fail('not_found', 'no Wilds available to fight');
+    return ok(view);
   }
 
   // --- internals -----------------------------------------------------------

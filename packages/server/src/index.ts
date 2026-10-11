@@ -1,4 +1,5 @@
 import type { AccountState, Squad, SquadMode, StrategyId } from '@wildbound/engine';
+import type { BattleView } from './battle';
 
 /**
  * The server boundary (PROMPT.md §10).
@@ -56,6 +57,8 @@ export interface GameServer {
   exportSave(): Promise<Result<string>>;
   importSave(json: string): Promise<Result<AccountSnapshot>>;
   resetAccount(): Promise<Result<AccountSnapshot>>;
+  /** Simulate a battle for a squad mode and return an immutable replay log (M4). */
+  startBattle(mode: SquadMode, seed?: number): Promise<Result<BattleView>>;
 }
 
 export function ok<T>(value: T): Result<T> {
@@ -69,4 +72,5 @@ export function fail<T>(error: ServerError, message: string): Result<T> {
 export * from './config';
 export * from './save';
 export * from './storage';
+export * from './battle';
 export * from './local-server';

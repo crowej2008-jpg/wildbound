@@ -17,6 +17,8 @@ export { applyHeal, applyShield, resolveHealAmount, applyLifesteal, applySkillSi
 export { applyCounterReflect } from './counter';
 export { takeTurn } from './skills';
 export { applyBuff, tickUnitBuffs, tickBigRoundBuffs, removeBuffTag, hasLiveBuff, countStacks, CONTROL_KINDS } from './buffs';
+export { initReplay, stepReplay, replayTo, lastActor, lastTarget } from './replay';
+export type { ReplayUnit, ReplayState } from './replay';
 export type {
   BattleConfig,
   BattleContext,

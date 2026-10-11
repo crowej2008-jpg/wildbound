@@ -1,9 +1,11 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import type { SquadMode } from '@wildbound/engine';
 import {
   buildConfig,
   IndexedDbStore,
   LocalServer,
   type AccountSnapshot,
+  type BattleView,
   type GameServer,
   type Result,
 } from '@wildbound/server';
@@ -17,6 +19,7 @@ interface ServerContextValue {
   error: string | null;
   busy: boolean;
   run: (action: (server: GameServer) => Promise<Result<AccountSnapshot>>) => Promise<boolean>;
+  startBattle: (mode: SquadMode, seed?: number) => Promise<Result<BattleView>>;
   exportSave: () => Promise<string | null>;
   importSave: (json: string) => Promise<boolean>;
   reset: () => Promise<void>;
@@ -70,13 +73,27 @@ export function ServerProvider({ children }: { children: ReactNode }) {
     [run],
   );
 
+  const startBattle = useCallback<ServerContextValue['startBattle']>(
+    async (mode, seed) => {
+      setBusy(true);
+      try {
+        const result = await server.startBattle(mode, seed);
+        setError(result.ok ? null : result.message);
+        return result;
+      } finally {
+        setBusy(false);
+      }
+    },
+    [server],
+  );
+
   const reset = useCallback(async () => {
     await run((s) => s.resetAccount());
   }, [run]);
 
   const value = useMemo<ServerContextValue>(
-    () => ({ snapshot, error, busy, run, exportSave, importSave, reset }),
-    [snapshot, error, busy, run, exportSave, importSave, reset],
+    () => ({ snapshot, error, busy, run, startBattle, exportSave, importSave, reset }),
+    [snapshot, error, busy, run, startBattle, exportSave, importSave, reset],
   );
 
   return <ServerContext.Provider value={value}>{children}</ServerContext.Provider>;
