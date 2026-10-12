@@ -271,6 +271,85 @@ export const accountSchema = z
   })
   .strict();
 
+/** A reward bundle: currencies plus trainer xp (M5). */
+export const rewardSchema = z
+  .object({
+    gold: z.number().nonnegative().optional(),
+    gems: z.number().nonnegative().optional(),
+    candy: z.number().nonnegative().optional(),
+    shard: z.number().nonnegative().optional(),
+    stone: z.number().nonnegative().optional(),
+    xp: z.number().nonnegative().optional(),
+  })
+  .strict();
+
+/** One campaign stage (M5, PROMPT §7.6). */
+export const stageSchema = z
+  .object({
+    id: z.string().min(1),
+    chapter: z.number().int().positive(),
+    index: z.number().int().positive(),
+    name: z.string().min(1),
+    enemies: z
+      .array(
+        z
+          .object({
+            speciesId: z.string().min(1),
+            level: z.number().int().positive(),
+            stars: z.number().int().positive(),
+            stage: z.number().int().nonnegative(),
+          })
+          .strict(),
+      )
+      .min(1)
+      .max(6),
+    firstClear: rewardSchema,
+    repeat: rewardSchema,
+    idlePerMinute: rewardSchema,
+    starRounds: z.tuple([z.number().int().positive(), z.number().int().positive()]),
+  })
+  .strict();
+
+export const questMetricSchema = z.enum([
+  'winBattle',
+  'sweepStage',
+  'levelUp',
+  'starUp',
+  'claimIdle',
+  'claimQuest',
+]);
+
+/** One daily quest (M5, PROMPT §7.9). */
+export const questSchema = z
+  .object({
+    id: z.string().min(1),
+    metric: questMetricSchema,
+    target: z.number().int().positive(),
+    activity: z.number().int().nonnegative(),
+    rewards: rewardSchema,
+  })
+  .strict();
+
+/** Economy tuning (M5, PROMPT §7.4): idle caps, xp curve, activity chests, mail TTL. */
+export const economySchema = z
+  .object({
+    idle: z
+      .object({
+        capHours: z.number().positive(),
+        quickCollectHours: z.number().positive(),
+        quickCollectGems: z.number().int().nonnegative(),
+        quickCollectDailyLimit: z.number().int().nonnegative(),
+      })
+      .strict(),
+    xp: z
+      .object({ base: z.number().positive(), exponent: z.number().positive(), maxLevel: z.number().int().positive() })
+      .strict(),
+    activityChests: z.array(z.object({ points: z.number().int().positive(), rewards: rewardSchema }).strict()),
+    mailTtlHours: z.number().positive(),
+    welcome: rewardSchema,
+  })
+  .strict();
+
 export type KitJson = z.infer<typeof kitSchema>;
 export type CombatSettingsJson = z.infer<typeof combatSettingsSchema>;
 export type SpeciesJson = z.infer<typeof speciesSchema>;
@@ -278,3 +357,7 @@ export type GrowthJson = z.infer<typeof growthSchema>;
 export type PowerJson = z.infer<typeof powerSchema>;
 export type CoreStatsJson = z.infer<typeof coreStatsSchema>;
 export type AccountJson = z.infer<typeof accountSchema>;
+export type StageJson = z.infer<typeof stageSchema>;
+export type QuestJson = z.infer<typeof questSchema>;
+export type EconomyJson = z.infer<typeof economySchema>;
+export type RewardJson = z.infer<typeof rewardSchema>;

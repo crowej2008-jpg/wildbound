@@ -6,8 +6,10 @@ import {
   LocalServer,
   type AccountSnapshot,
   type BattleView,
+  type ClaimResult,
   type GameServer,
   type Result,
+  type StageBattleResult,
 } from '@wildbound/server';
 
 /**
@@ -20,6 +22,8 @@ interface ServerContextValue {
   busy: boolean;
   run: (action: (server: GameServer) => Promise<Result<AccountSnapshot>>) => Promise<boolean>;
   startBattle: (mode: SquadMode, seed?: number) => Promise<Result<BattleView>>;
+  challengeStage: (stageId: string, seed?: number) => Promise<Result<StageBattleResult>>;
+  claim: (action: (server: GameServer) => Promise<Result<ClaimResult>>) => Promise<Result<ClaimResult>>;
   exportSave: () => Promise<string | null>;
   importSave: (json: string) => Promise<boolean>;
   reset: () => Promise<void>;
@@ -87,13 +91,51 @@ export function ServerProvider({ children }: { children: ReactNode }) {
     [server],
   );
 
+  const challengeStage = useCallback<ServerContextValue['challengeStage']>(
+    async (stageId, seed) => {
+      setBusy(true);
+      try {
+        const result = await server.challengeStage(stageId, seed);
+        if (result.ok) {
+          setSnapshot(result.value.snapshot);
+          setError(null);
+        } else {
+          setError(result.message);
+        }
+        return result;
+      } finally {
+        setBusy(false);
+      }
+    },
+    [server],
+  );
+
+  const claim = useCallback<ServerContextValue['claim']>(
+    async (action) => {
+      setBusy(true);
+      try {
+        const result = await action(server);
+        if (result.ok) {
+          setSnapshot(result.value.snapshot);
+          setError(null);
+        } else {
+          setError(result.message);
+        }
+        return result;
+      } finally {
+        setBusy(false);
+      }
+    },
+    [server],
+  );
+
   const reset = useCallback(async () => {
     await run((s) => s.resetAccount());
   }, [run]);
 
   const value = useMemo<ServerContextValue>(
-    () => ({ snapshot, error, busy, run, startBattle, exportSave, importSave, reset }),
-    [snapshot, error, busy, run, startBattle, exportSave, importSave, reset],
+    () => ({ snapshot, error, busy, run, startBattle, challengeStage, claim, exportSave, importSave, reset }),
+    [snapshot, error, busy, run, startBattle, challengeStage, claim, exportSave, importSave, reset],
   );
 
   return <ServerContext.Provider value={value}>{children}</ServerContext.Provider>;

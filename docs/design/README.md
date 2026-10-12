@@ -14,3 +14,5 @@ Status:
 - M3: `account.md` (account/roster/growth/squad domain, save codec, LocalServer boundary, client
   screens).
 - M4: `battle-ui.md` (event-log replay reducer, battle setup/seed, the `/combat` screen, playback).
+- M5: `pve.md` (campaign ladder, idle income, daily quests/mail, tutorial, debug clock) and
+  `balance.md` (the authored campaign difficulty curve and how the starter roster clears it).

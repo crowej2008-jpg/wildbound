@@ -1,4 +1,5 @@
-import { ACCOUNT, GROWTH, POWER, WILDS } from '@wildbound/content';
+import { ACCOUNT, ECONOMY, GROWTH, POWER, QUESTS, STAGES, WILDS } from '@wildbound/content';
+import type { EconomyJson } from '@wildbound/content';
 import {
   mulberry32,
   type CoreStats,
@@ -6,9 +7,12 @@ import {
   type GrowthTables,
   type PowerWeights,
   type ProgressTables,
+  type QuestDef,
   type Rng,
+  type StageDef,
   type Tier,
   type WildClass,
+  type XpCurve,
 } from '@wildbound/engine';
 
 /** Everything the LocalServer needs, lifted from content and injectable in tests. */
@@ -22,6 +26,13 @@ export interface SpeciesMeta {
   stages: string[];
 }
 
+export interface IdleConfig {
+  capMinutes: number;
+  quickCollectMinutes: number;
+  quickCollectGems: number;
+  quickCollectDailyLimit: number;
+}
+
 export interface GameConfig {
   playerName: string;
   startingCurrencies: Record<string, number>;
@@ -31,6 +42,12 @@ export interface GameConfig {
   growth: GrowthTables;
   power: PowerWeights;
   species: Map<string, SpeciesMeta>;
+  stages: StageDef[];
+  stageById: Map<string, StageDef>;
+  quests: QuestDef[];
+  economy: EconomyJson;
+  xpCurve: XpCurve;
+  idle: IdleConfig;
   now: () => number;
   rng: Rng;
 }
@@ -72,6 +89,17 @@ export function buildConfig(): GameConfig {
     },
     power: POWER,
     species,
+    stages: STAGES,
+    stageById: new Map(STAGES.map((stage) => [stage.id, stage])),
+    quests: QUESTS,
+    economy: ECONOMY,
+    xpCurve: { base: ECONOMY.xp.base, exponent: ECONOMY.xp.exponent, maxLevel: ECONOMY.xp.maxLevel },
+    idle: {
+      capMinutes: Math.round(ECONOMY.idle.capHours * 60),
+      quickCollectMinutes: Math.round(ECONOMY.idle.quickCollectHours * 60),
+      quickCollectGems: ECONOMY.idle.quickCollectGems,
+      quickCollectDailyLimit: ECONOMY.idle.quickCollectDailyLimit,
+    },
     now: () => Date.now(),
     rng: mulberry32(0x5eed),
   };

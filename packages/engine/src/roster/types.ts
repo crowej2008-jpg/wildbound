@@ -1,8 +1,13 @@
 /**
- * Account / roster / squad domain types (M3). Pure data — the engine owns the
- * rules (in sibling modules), the server owns persistence, the client owns UI.
- * See docs/design/account.md.
+ * Account / roster / squad domain types (M3) plus the M5 campaign/idle/daily
+ * slices. Pure data — the engine owns the rules (in sibling modules), the server
+ * owns persistence, the client owns UI. See docs/design/account.md, pve.md.
  */
+
+import type { CampaignProgress } from '../campaign/types';
+import type { IdleState } from '../economy/idle';
+import type { QuestState } from '../daily/quests';
+import type { MailItem } from '../daily/mail';
 
 export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss';
 
@@ -55,7 +60,27 @@ export interface AccountState {
   strategies: Record<SquadMode, StrategyId>;
   currencies: Record<CurrencyId, number>;
   nextInstanceSeq: number;
+  /** M5: campaign star record. */
+  campaign: CampaignProgress;
+  /** M5: idle income bookkeeping. */
+  idle: IdleState;
+  /** M5: daily quests (resets at 00:00 UTC). */
+  quests: QuestState;
+  /** M5: system mail. */
+  mail: MailItem[];
+  /** M5: first-session tutorial step index (0 = active). */
+  tutorial: TutorialState;
+  /** M5 debug: minutes of clock fast-forward added to the injected clock. */
+  debugClockOffset: number;
 }
+
+export interface TutorialState {
+  step: number;
+  done: boolean;
+}
+
+/** Steps in the first-session guide: level a Wild, set a squad, win stage 1-1. */
+export const TUTORIAL_STEPS = 3;
 
 export function emptySquad(): Squad {
   return Array.from({ length: SQUAD_SIZE }, () => null);

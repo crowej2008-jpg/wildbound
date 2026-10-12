@@ -1,4 +1,4 @@
-import type { AccountState, Squad, SquadMode, StrategyId } from '@wildbound/engine';
+import type { AccountState, Rewards, Squad, SquadMode, StrategyId } from '@wildbound/engine';
 import type { BattleView } from './battle';
 
 /**
@@ -25,7 +25,10 @@ export type ServerError =
   | 'corrupt_save'
   | 'not_found'
   | 'evolution_blocked'
-  | 'invalid_squad';
+  | 'invalid_squad'
+  | 'stage_locked'
+  | 'not_ready'
+  | 'daily_limit';
 
 export type Result<T> =
   | { ok: true; value: T }
@@ -38,6 +41,24 @@ export interface AccountSnapshot {
   power: Record<string, number>;
   /** Summed Power per squad mode. */
   teamPower: Record<SquadMode, number>;
+}
+
+/** Campaign battle outcome (M5). Carries the reward granted and the new snapshot. */
+export interface StageBattleResult {
+  battle: BattleView;
+  stageId: string;
+  win: boolean;
+  /** 0 on a loss, else 1–3. */
+  stars: number;
+  firstClear: boolean;
+  rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** Any claim that grants rewards and returns fresh state (M5). */
+export interface ClaimResult {
+  granted: Rewards;
+  snapshot: AccountSnapshot;
 }
 
 export interface GameServer {
@@ -59,6 +80,26 @@ export interface GameServer {
   resetAccount(): Promise<Result<AccountSnapshot>>;
   /** Simulate a battle for a squad mode and return an immutable replay log (M4). */
   startBattle(mode: SquadMode, seed?: number): Promise<Result<BattleView>>;
+  /** Fight a campaign stage with the campaign squad (M5). */
+  challengeStage(stageId: string, seed?: number): Promise<Result<StageBattleResult>>;
+  /** Re-grant a cleared stage's repeat reward without a battle (M5). */
+  sweepStage(stageId: string): Promise<Result<ClaimResult>>;
+  /** Collect accrued idle income; `quick` pays gems for a fixed slice (M5). */
+  claimIdle(quick?: boolean): Promise<Result<ClaimResult>>;
+  /** Claim a completed daily quest (M5). */
+  claimQuest(questId: string): Promise<Result<ClaimResult>>;
+  /** Claim an activity chest by its index in the economy table (M5). */
+  claimActivityChest(index: number): Promise<Result<ClaimResult>>;
+  /** Claim one mail letter's attachments (M5). */
+  claimMail(id: string): Promise<Result<ClaimResult>>;
+  /** Claim every unclaimed letter at once (M5). */
+  claimAllMail(): Promise<Result<ClaimResult>>;
+  /** Advance the first-session tutorial by one step (M5). */
+  advanceTutorial(): Promise<Result<AccountSnapshot>>;
+  /** Skip the tutorial entirely (M5). */
+  skipTutorial(): Promise<Result<AccountSnapshot>>;
+  /** Debug: fast-forward the game clock by minutes (M5). */
+  debugAdvanceClock(minutes: number): Promise<Result<AccountSnapshot>>;
 }
 
 export function ok<T>(value: T): Result<T> {
@@ -73,4 +114,5 @@ export * from './config';
 export * from './save';
 export * from './storage';
 export * from './battle';
+export * from './economy';
 export * from './local-server';

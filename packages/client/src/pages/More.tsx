@@ -77,6 +77,30 @@ export default function More() {
       </section>
 
       <section className="card">
+        <h2 className="section-title">{t('more.debug.clock')}</h2>
+        <p className="muted">{t('more.debug.clockNote')}</p>
+        <div className="filter-row">
+          {[60, 720, 1440].map((minutes) => (
+            <button
+              key={minutes}
+              type="button"
+              className="chip"
+              disabled={busy}
+              onClick={() => void run((s) => s.debugAdvanceClock(minutes))}
+            >
+              +{minutes / 60}h
+            </button>
+          ))}
+        </div>
+        {snapshot && (
+          <p className="muted">
+            {t('more.debug.clockOffset')}: {snapshot.state.debugClockOffset} {t('idle.minutes')} ·{' '}
+            {new Date(Date.now() + snapshot.state.debugClockOffset * 60_000).toISOString().slice(0, 10)}
+          </p>
+        )}
+      </section>
+
+      <section className="card">
         <h2 className="section-title">{t('more.debug.saves')}</h2>
         <div className="row-actions">
           <button type="button" className="btn" onClick={() => void onExport()}>

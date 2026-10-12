@@ -1,0 +1,44 @@
+[
+  {
+    "id": "q_win3",
+    "metric": "winBattle",
+    "target": 3,
+    "activity": 20,
+    "rewards": { "gold": 800, "candy": 120 }
+  },
+  {
+    "id": "q_sweep1",
+    "metric": "sweepStage",
+    "target": 1,
+    "activity": 10,
+    "rewards": { "gold": 400, "candy": 60 }
+  },
+  {
+    "id": "q_level3",
+    "metric": "levelUp",
+    "target": 3,
+    "activity": 15,
+    "rewards": { "gold": 600, "candy": 200 }
+  },
+  {
+    "id": "q_star1",
+    "metric": "starUp",
+    "target": 1,
+    "activity": 10,
+    "rewards": { "gold": 500, "shard": 10 }
+  },
+  {
+    "id": "q_idle1",
+    "metric": "claimIdle",
+    "target": 1,
+    "activity": 10,
+    "rewards": { "gold": 300, "candy": 50 }
+  },
+  {
+    "id": "q_quest3",
+    "metric": "claimQuest",
+    "target": 3,
+    "activity": 15,
+    "rewards": { "gems": 20, "gold": 500 }
+  }
+]

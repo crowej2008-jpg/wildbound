@@ -1,12 +1,30 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CURRENCY_IDS } from '@wildbound/engine';
+import { ECONOMY } from '@wildbound/content';
+import { CURRENCY_IDS, levelProgress } from '@wildbound/engine';
 import { currencyLabel, t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
 
 /** A UTC clock, so the header time matches the server's clock domain (PROMPT §5). */
 function formatUtc(date: Date): string {
   return `${date.toISOString().slice(11, 19)} UTC`;
+}
+
+/** Trainer XP progress bar (M5). */
+function XpBar({ xp }: { xp: number }) {
+  const { level, into, need } = levelProgress(xp, ECONOMY.xp);
+  const pct = need > 0 ? Math.min(100, (into / need) * 100) : 100;
+  return (
+    <span className="hud-xp" title={`${into} / ${need} ${t('reward.xp')}`}>
+      <span className="hud-xp-bar">
+        <span className="hud-xp-fill" style={{ width: `${pct}%` }} />
+      </span>
+      <span className="hud-xp-text">
+        {t('wild.level')}
+        {level}
+      </span>
+    </span>
+  );
 }
 
 /**
@@ -33,10 +51,8 @@ export default function Hud() {
       </div>
       {snapshot && (
         <div className="hud-player-row">
-          <span className="hud-player">
-            {snapshot.state.profile.name} · {t('wild.level')}
-            {snapshot.state.profile.level}
-          </span>
+          <span className="hud-player">{snapshot.state.profile.name}</span>
+          <XpBar xp={snapshot.state.profile.xp} />
           <div className="currency-bar">
             {CURRENCY_IDS.map((id) => (
               <span key={id} className={`currency-pill currency-${id}`}>

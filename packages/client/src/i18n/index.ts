@@ -12,7 +12,7 @@ export const en = {
     'A rebuild of a mobile monster-collector design: build a squad of six original Wilds and let seeded, automatic turn-based battles play out — replayable, deterministic, and testable in the Build Lab.',
   'home.scope.note': 'The screens below arrive milestone by milestone. Every milestone ends with passing checks and a commit.',
   'home.galleryLink': 'Browse all 36 Wilds',
-  'hud.beta': 'Milestone 4',
+  'hud.beta': 'Milestone 5',
   'hud.today': 'Today',
   'currency.gold': 'Gold',
   'currency.gems': 'Gems',
@@ -153,12 +153,88 @@ export const en = {
   'combat.controlled': 'is hit by',
   'combat.immune': 'resists',
   'combat.knockedOut': 'KO',
+  'reward.xp': 'XP',
+  'reward.none': 'No rewards.',
+  'campaign.title': 'Campaign',
+  'campaign.subtitle': 'Clear stages to unlock the next, earn stars and start idle income.',
+  'campaign.chapter': 'Chapter',
+  'campaign.enemies': 'Enemies',
+  'campaign.idle': 'Idle',
+  'campaign.challenge': 'Challenge',
+  'campaign.replay': 'Replay',
+  'campaign.sweep': 'Sweep',
+  'campaign.swept': 'Swept — rewards collected.',
+  'campaign.you': 'Your squad',
+  'campaign.enemy': 'Enemy squad',
+  'campaign.victory': 'Victory',
+  'campaign.defeat': 'Defeat',
+  'campaign.firstClear': 'First-clear bonus!',
+  'campaign.retry': 'Your squad fell. Level up your Wilds and try again.',
+  'campaign.back': 'Back to campaign',
+  'idle.title': 'Idle Income',
+  'idle.subtitle': 'Rewards accrue every minute from your best cleared stage, up to the cap.',
+  'idle.accruing': 'Accruing',
+  'idle.from': 'From',
+  'idle.minutes': 'min',
+  'idle.locked': 'Clear a campaign stage to start earning idle income.',
+  'idle.claim': 'Collect',
+  'idle.quick': 'Quick collect',
+  'idle.quickLeft': 'Quick collects left today',
+  'quests.title': 'Daily Quests',
+  'quests.subtitle': 'Complete quests for rewards and activity points. Resets daily at 00:00 UTC.',
+  'quests.activity': 'Activity points',
+  'quests.claim': 'Claim',
+  'quests.claimed': 'Claimed',
+  'quests.inProgress': 'In progress',
+  'quests.chests': 'Activity Chests',
+  'quests.points': 'pts',
+  'quests.locked': 'Locked',
+  'quest.metric.winBattle': 'Win battles',
+  'quest.metric.sweepStage': 'Sweep stages',
+  'quest.metric.levelUp': 'Level up Wilds',
+  'quest.metric.starUp': 'Gain stars',
+  'quest.metric.claimIdle': 'Collect idle income',
+  'quest.metric.claimQuest': 'Claim quests',
+  'mail.title': 'Mail',
+  'mail.claimAll': 'Claim all',
+  'mail.empty': 'No mail right now.',
+  'mail.claim': 'Claim',
+  'mail.claimed': 'Claimed',
+  'mail.expires': 'Expires',
+  'mail.welcome.subject': 'Welcome to Wildbound',
+  'mail.welcome.body': 'Thanks for joining! Here is a starter kit to help you grow your first squad.',
+  'mail.chapter.subject': 'Chapter cleared!',
+  'mail.chapter.body': 'You cleared a full chapter. Here is a bonus reward — keep going!',
+  'tutorial.title': 'Getting started',
+  'tutorial.skip': 'Skip',
+  'tutorial.go': 'Go',
+  'tutorial.next': 'Next',
+  'tutorial.step.level': 'Level up a Wild to make it stronger.',
+  'tutorial.step.squad': 'Set your campaign squad — arrange six Wilds.',
+  'tutorial.step.win': 'Win stage 1-1 to complete the guide.',
+  'home.link.campaign': 'Campaign',
+  'home.link.idle': 'Idle',
+  'home.link.quests': 'Quests',
+  'home.link.mail': 'Mail',
+  'home.link.wilds': 'Wilds',
+  'home.link.squad': 'Squad',
+  'home.link.gallery': 'Gallery',
+  'home.mailHint': 'You have unclaimed mail.',
+  'more.debug.clock': 'Debug clock',
+  'more.debug.clockNote':
+    'Fast-forward the game clock to test idle income and the daily reset. The header clock stays real UTC.',
+  'more.debug.clockOffset': 'Offset',
 } as const;
 
 export type StringKey = keyof typeof en;
 
 export function t(key: StringKey): string {
   return en[key];
+}
+
+/** Translate a dynamic (server-authored) key, falling back to the key itself. */
+export function tKey(key: string): string {
+  return (en as Record<string, string>)[key] ?? key;
 }
 
 export type FactionKey = 'ember' | 'tide' | 'grove' | 'volt' | 'frost' | 'shade';
@@ -215,4 +291,15 @@ export const strategyLabel: Record<StrategyKey, string> = {
   aggressive: en['squad.strategy.aggressive'],
   balanced: en['squad.strategy.balanced'],
   defensive: en['squad.strategy.defensive'],
+};
+
+export type QuestMetricKey = 'winBattle' | 'sweepStage' | 'levelUp' | 'starUp' | 'claimIdle' | 'claimQuest';
+
+export const questMetricLabel: Record<QuestMetricKey, string> = {
+  winBattle: en['quest.metric.winBattle'],
+  sweepStage: en['quest.metric.sweepStage'],
+  levelUp: en['quest.metric.levelUp'],
+  starUp: en['quest.metric.starUp'],
+  claimIdle: en['quest.metric.claimIdle'],
+  claimQuest: en['quest.metric.claimQuest'],
 };

@@ -14,6 +14,7 @@ import {
   type SkillSlot,
   type SpecInput,
   type SquadMode,
+  type StageEnemy,
   type WildClass,
   type WildInstance,
 } from '@wildbound/engine';
@@ -36,7 +37,7 @@ export interface BattleUnitSeed extends ReplayUnit {
 
 export interface BattleView {
   seed: number;
-  mode: SquadMode;
+  mode: SquadMode | 'campaignStage';
   winner: 'attackers' | 'defenders';
   rounds: number;
   events: BattleEvent[];
@@ -106,7 +107,7 @@ function powerOf(wild: WildInstance, config: GameConfig): number {
 }
 
 /** The Wilds a squad mode currently fields, auto-filling from the roster when empty. */
-function fielded(state: AccountState, mode: SquadMode): WildInstance[] {
+export function fielded(state: AccountState, mode: SquadMode): WildInstance[] {
   const byId = new Map(state.roster.map((w) => [w.id, w]));
   const picked: WildInstance[] = [];
   const seen = new Set<string>();
@@ -133,7 +134,8 @@ interface BuiltTeam {
   power: number;
 }
 
-function buildTeam(wilds: WildInstance[], side: 'attackers' | 'defenders', config: GameConfig): BuiltTeam {
+/** Build a team from owned Wild instances (the squad / echo path). */
+export function buildWildTeam(wilds: WildInstance[], side: 'attackers' | 'defenders', config: GameConfig): BuiltTeam {
   const specs: SpecInput[] = [];
   const meta = new Map<string, { name: string; speciesId: string; className: WildClass; stage: number; power: number }>();
   let power = 0;
@@ -162,30 +164,42 @@ function rageStart(className: WildClass): number {
   return className === 'striker' ? COMBAT_SETTINGS.rageStrikerStart : COMBAT_SETTINGS.rageStart;
 }
 
-/**
- * Simulate a battle for the given mode and return an immutable replay payload.
- * The seed is server-side randomness unless supplied (tests / library replays).
- */
-export function startBattle(config: GameConfig, state: AccountState, mode: SquadMode, seed?: number): BattleView | null {
-  const players = fielded(state, mode);
-  if (players.length === 0) return null;
-
-  const resolvedSeed = seed ?? Math.floor(config.rng() * 0xffffffff);
-  const attackers = buildTeam(players, 'attackers', config);
-  const enemies = [...players].reverse();
-  const defenders = buildTeam(enemies, 'defenders', config);
-  if (attackers.specs.length === 0 || defenders.specs.length === 0) return null;
-
-  const result = runBattle({
-    attackers: attackers.specs,
-    defenders: defenders.specs,
-    seed: resolvedSeed,
-    mode: 'pve',
-    settings: {},
-    battleId: `m4:${mode}:${resolvedSeed}`,
+/** Build a defender team from a campaign stage's authored enemy list. */
+export function buildEnemyTeam(enemies: StageEnemy[], config: GameConfig): BuiltTeam {
+  const specs: SpecInput[] = [];
+  const meta = new Map<string, { name: string; speciesId: string; className: WildClass; stage: number; power: number }>();
+  let power = 0;
+  enemies.slice(0, SQUAD_SIZE).forEach((enemy, slot) => {
+    const species = config.species.get(enemy.speciesId);
+    const kitJson = kitById(enemy.speciesId);
+    if (!species || !kitJson) return;
+    const core = resolveCoreStats(
+      { base: species.base, level: enemy.level, stars: enemy.stars, tier: species.tier, stage: enemy.stage },
+      config.growth,
+    );
+    const sheet: SheetInput = { hp: core.hp, pAtk: core.pAtk, sAtk: core.sAtk, spd: core.spd, pDef: core.pDef, sDef: core.sDef };
+    const unitPower = computePower(core, {}, config.power);
+    const position = slotToPosition(slot);
+    const id = `defenders-${slot}`;
+    specs.push({ id, name: species.name, position, side: 'defenders', kit: kitToEngine(kitJson), sheet, power: unitPower });
+    meta.set(`defenders:${position}`, {
+      name: species.name,
+      speciesId: enemy.speciesId,
+      className: species.className,
+      stage: enemy.stage,
+      power: unitPower,
+    });
+    power += unitPower;
   });
+  return { specs, meta, power };
+}
 
-  const units: BattleUnitSeed[] = result.units.map((u) => {
+function unitSeeds(
+  result: ReturnType<typeof runBattle>,
+  attackers: BuiltTeam,
+  defenders: BuiltTeam,
+): BattleUnitSeed[] {
+  return result.units.map((u) => {
     const info = (u.side === 'attackers' ? attackers : defenders).meta.get(u.key);
     const className: WildClass = info?.className ?? 'striker';
     return {
@@ -205,14 +219,64 @@ export function startBattle(config: GameConfig, state: AccountState, mode: Squad
       power: info?.power ?? 0,
     };
   });
+}
 
+function runView(
+  attackers: BuiltTeam,
+  defenders: BuiltTeam,
+  seed: number,
+  mode: BattleView['mode'],
+  battleId: string,
+): BattleView | null {
+  if (attackers.specs.length === 0 || defenders.specs.length === 0) return null;
+  const result = runBattle({
+    attackers: attackers.specs,
+    defenders: defenders.specs,
+    seed,
+    mode: 'pve',
+    settings: {},
+    battleId,
+  });
   return {
-    seed: resolvedSeed,
+    seed,
     mode,
     winner: result.winner,
     rounds: result.rounds,
     events: result.events,
-    units,
+    units: unitSeeds(result, attackers, defenders),
     teams: { attackers: { power: attackers.power }, defenders: { power: defenders.power } },
   };
+}
+
+/**
+ * Simulate a battle for the given mode against a mirrored echo squad and return
+ * an immutable replay payload (M4 demo). The seed is server-side randomness
+ * unless supplied (tests / library replays).
+ */
+export function startBattle(config: GameConfig, state: AccountState, mode: SquadMode, seed?: number): BattleView | null {
+  const players = fielded(state, mode);
+  if (players.length === 0) return null;
+  const resolvedSeed = seed ?? Math.floor(config.rng() * 0xffffffff);
+  const attackers = buildWildTeam(players, 'attackers', config);
+  const defenders = buildWildTeam([...players].reverse(), 'defenders', config);
+  return runView(attackers, defenders, resolvedSeed, mode, `m4:${mode}:${resolvedSeed}`);
+}
+
+/**
+ * Simulate a campaign stage: the player's campaign squad attacks the stage's
+ * authored enemy squad (M5). Purely reads state; the caller applies the result.
+ */
+export function stageBattle(
+  config: GameConfig,
+  state: AccountState,
+  enemies: StageEnemy[],
+  stageId: string,
+  seed?: number,
+): BattleView | null {
+  const players = fielded(state, 'campaign');
+  if (players.length === 0) return null;
+  const resolvedSeed = seed ?? Math.floor(config.rng() * 0xffffffff);
+  const attackers = buildWildTeam(players, 'attackers', config);
+  const defenders = buildEnemyTeam(enemies, config);
+  return runView(attackers, defenders, resolvedSeed, 'campaignStage', `m5:${stageId}:${resolvedSeed}`);
 }

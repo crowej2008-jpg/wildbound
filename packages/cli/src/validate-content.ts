@@ -5,12 +5,17 @@ import {
   ACCOUNT,
   combatSettingsSchema,
   contentManifest,
+  economySchema,
   growthSchema,
   kitSchema,
   powerSchema,
+  questSchema,
   speciesSchema,
+  stageSchema,
   type KitJson,
+  type QuestJson,
   type SpeciesJson,
+  type StageJson,
 } from '@wildbound/content';
 import { findFiles, GuardViolation, scanBinaryMedia, scanForbidden } from './ipguard';
 
@@ -40,6 +45,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'growth.json': growthSchema,
   'power.json': powerSchema,
   'account.json': accountSchema,
+  'economy.json': economySchema,
 };
 
 /**
@@ -61,6 +67,8 @@ export function validateContent(repoRoot: string): ValidateReport {
   const contentRoot = resolve(repoRoot, 'packages', 'content');
   const species = new Map<string, { file: string; data: SpeciesJson }>();
   const kits = new Map<string, { file: string; data: KitJson }>();
+  const stages = new Map<string, { file: string; data: StageJson }>();
+  const quests = new Map<string, { file: string; data: QuestJson }>();
 
   for (const dir of contentManifest.dataDirs) {
     const dirPath = join(contentRoot, dir);
@@ -89,6 +97,14 @@ export function validateContent(repoRoot: string): ValidateReport {
         validateList(file, parsed, speciesSchema, errors, checks, (data: SpeciesJson) => {
           registerUnique(species, file, data.id, data, errors);
         }, 'species');
+      } else if (dir === 'stages') {
+        validateList(file, parsed, stageSchema, errors, checks, (data: StageJson) => {
+          registerUnique(stages, file, data.id, data, errors);
+        }, 'stage');
+      } else if (dir === 'quests') {
+        validateList(file, parsed, questSchema, errors, checks, (data: QuestJson) => {
+          registerUnique(quests, file, data.id, data, errors);
+        }, 'quest');
       } else if (dir === 'tuning') {
         const schema = TUNING_SCHEMAS[basename(file)];
         if (!schema) {
@@ -105,6 +121,9 @@ export function validateContent(repoRoot: string): ValidateReport {
 
   crossReference(species, kits, errors, checks);
   checkSpeciesCoverage(species, errors, checks);
+  crossReferenceStages(species, stages, errors, checks);
+  if (stages.size > 0) checks.push(`campaign: ${stages.size} stage(s) validated`);
+  if (quests.size > 0) checks.push(`quests: ${quests.size} daily quest(s) validated`);
   for (const id of ACCOUNT.startingRoster) {
     if (!species.has(id)) errors.push(`account.json: startingRoster species "${id}" has no species file`);
   }
@@ -187,6 +206,25 @@ function crossReference(
     if (!species.has(id)) errors.push(`${kit.file}: kit "${id}" has no matching species`);
   }
   if (species.size > 0) checks.push(`cross-reference: ${species.size} species ↔ ${kits.size} kits`);
+}
+
+/** Every stage enemy must reference a real species; report chapters covered. */
+function crossReferenceStages(
+  species: Map<string, { file: string; data: SpeciesJson }>,
+  stages: Map<string, { file: string; data: StageJson }>,
+  errors: string[],
+  checks: string[],
+): void {
+  if (stages.size === 0) return;
+  for (const [id, entry] of stages) {
+    entry.data.enemies.forEach((enemy, i) => {
+      if (!species.has(enemy.speciesId)) {
+        errors.push(`${entry.file}: stage "${id}" enemy[${i}] species "${enemy.speciesId}" has no species file`);
+      }
+    });
+  }
+  const chapters = new Set([...stages.values()].map((s) => s.data.chapter));
+  checks.push(`campaign: stages reference ${species.size} species across ${chapters.size} chapter(s)`);
 }
 
 function checkSpeciesCoverage(

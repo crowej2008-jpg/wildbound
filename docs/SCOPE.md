@@ -10,7 +10,7 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Species, 36 Wilds, kits, stat formula, Power, growth tuning, creature generator gallery | Gallery | M2 | built |
 | Account, roster, growth, squads, LocalServer, saves | HUD, Wilds (Upgrade/Evolve), Squad editor, More/Debug | M3 | built |
 | Battle UI (replay from log) | Battle screen, Result panels | M4 | built |
-| Campaign, idle income, quests, mail, clock, tutorial | Campaign, Daily loop, Mail, Quests, Tutorial | M5 | pending |
+| Campaign, idle income, quests, mail, clock, tutorial | Campaign, Daily loop, Mail, Quests, Tutorial | M5 | built |
 | Summoning (gacha) and shops | Summon, Shop | M6 | pending |
 | Equipment layers: Relics, Runes, Charms, Spirit Cores, Talents | Wild screen Equip/Runes/Cores/Talents | M7 | pending |
 | Trials, Tower, World Boss, Link Crystal endgame | Trials, Tower, World Boss | M8 | pending |

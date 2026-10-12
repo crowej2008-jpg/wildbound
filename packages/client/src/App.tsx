@@ -3,10 +3,14 @@ import BottomNav from './components/BottomNav';
 import ComingLater from './components/ComingLater';
 import Hud from './components/Hud';
 import { t } from './i18n';
+import Campaign from './pages/Campaign';
 import Combat from './pages/Combat';
 import Gallery from './pages/Gallery';
 import Home from './pages/Home';
+import Idle from './pages/Idle';
+import Mail from './pages/Mail';
 import More from './pages/More';
+import Quests from './pages/Quests';
 import Squad from './pages/Squad';
 import WildDetail from './pages/WildDetail';
 import Wilds from './pages/Wilds';
@@ -29,6 +33,10 @@ function AppRoutes() {
       <ErrorBanner />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/campaign" element={<Campaign />} />
+        <Route path="/idle" element={<Idle />} />
+        <Route path="/quests" element={<Quests />} />
+        <Route path="/mail" element={<Mail />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/wilds" element={<Wilds />} />
         <Route path="/wilds/:id" element={<WildDetail />} />

@@ -116,6 +116,37 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
 5. **Squad strategies remain inert.** Carried from M3 #4: `aggressive | balanced | defensive` persist
    but battle setup does not yet read them; their combat effect lands with a later milestone.
 
+## M5
+
+1. **The campaign difficulty curve is authored for the M5 roster and was re-tuned here.** Before this
+   pass, chapters 2-3 fielded legendary/mythic/supreme enemies at 2-4 stars and stage 2-3 while the
+   starter roster is six *commons* and summoning is deferred to M6 — so a fresh account could not clear
+   chapter 1 beyond stage 2, failing the M5 done criterion ("play from first launch to chapter 3"). The
+   18 stages were re-authored to use only common/rare species with a gentle level/star curve: chapter 1
+   is clearable with the starting budget, chapter 2 after ~1-2 simulated days of idle + daily quests, and
+   chapter 3 as income accrues. `campaign-balance.test.ts` pins a grown squad (Lv26, 3 stars, stage 1)
+   clearing through the end of chapter 3; see docs/design/balance.md. *Why:* the milestone's done
+   criterion is explicit and M5 has no summoning. *What would change it:* M6+ adds stronger obtainable
+   Wilds, so later chapters can field higher tiers; the curve should be revisited then.
+2. **`debugClockOffset` is minutes, converted to milliseconds only at the clock boundary.**
+   `debugAdvanceClock(n)` stores `n` minutes; `LocalServer.now()` and the Idle screen compute
+   `clock + offset × 60_000`. This replaces an early units bug where the offset was added as
+   milliseconds (so fast-forwarding did nothing); `m5.test.ts` now fast-forwards 12h and claims a full
+   idle cap to lock it. *Why:* the debug buttons are labelled in hours and the save field is documented
+   in minutes. *What would change it:* nothing — this is the intended unit.
+3. **Daily reset rolls over on the UTC day key.** Quests, activity points and the quick-collect counter
+   reset when `dayKey(now)` changes (`@wildbound/engine/src/daily`). *Why:* PROMPT §5 fixes the game
+   clock to UTC; the header shows a UTC clock. *What would change it:* the reference's local-server
+   reset time, if it proves different.
+4. **Idle is capped and hand-claimed.** 12h cap, 3 quick collects/day for gems, per-minute rate from the
+   best cleared stage. *Why:* simplest loop that matches the reference's "offline income" shape without
+   its auto-collect. *What would change it:* an auto-collect or a different cap in the reference.
+5. **Starting account remains a dev convenience.** `tuning/account.json` seeds 40k candy / 120k gold /
+   20 stones / 200 shards so a session can level and evolve immediately; the M5 curve above is sized
+   against it. *Why:* carried from M3 #3. *What would change it:* a server-driven account with real
+   onboarding rewards (M12).
+
+
 ## Carried from the reference (to be resolved per system)
 
 - When a reference doc says `(inferred)` or `(open)`, the item becomes a named combat

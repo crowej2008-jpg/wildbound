@@ -147,3 +147,60 @@ are recorded here with the difference (never edit `reference/`).
 - **Minimal vertical slice**: one campaign battle vs a mirrored echo squad; other modes, a real
   defender list, team preview and result-panel depth arrive with the campaign loop (M5) and later.
 - **Squad strategies remain inert** (carried from M3); battle setup does not yet read them.
+
+## M5 — Campaign, idle and daily loop (2026-10-12)
+
+- **Engine time module** (`@wildbound/engine/src/time/`): `dayKey(ms)` (UTC day string) and helpers
+  for the daily reset boundary; pure and clock-free.
+- **Engine campaign module** (`@wildbound/engine/src/campaign/`): `orderStages`, `isUnlocked`
+  (stage ladder), `starsOf`/`recordStars`/`starsForRounds`, `isCleared`, and `bestIdleStage` — the
+  rules that turn cleared stages into unlocks, stars and the idle rate. Unit tests included.
+- **Engine economy module** (`@wildbound/engine/src/economy/`): `initialIdle`/`accruedMinutes`/
+  `pendingIdle`/`remainingIdle`/`quickCollect` (12h cap), `addRewards`/`applyRewards`/`scaleRewards`/
+  `isZeroRewards`, `addQuestProgress`/`questProgress`/`isQuestClaimable`/`emptyQuestState`,
+  `claimChest`/`claimableChests`/`activityPoints`, and mail (`createMail`/`pruneMail`/`unclaimedMail`).
+- **Engine daily module** (`@wildbound/engine/src/daily/`): the reset rollover for quests + quick
+  collects keyed by `dayKey`.
+- **Content**: `stages/chapter1..3.json` (18 stages: enemy squads, first-clear/repeat rewards,
+  per-minute idle, star round thresholds), `quests/daily.json` (6 daily quests + activity chests) and
+  `tuning/economy.json` (idle caps, trainer XP curve, activity chests, mail TTL, welcome grants).
+  Schemas + validator extended (stage/quest/tuning cross-checks; campaign now reports "18 stages across
+  3 chapters").
+- **Server**: `LocalServer` gains `challengeStage` (stage battle → rewards, stars, first-clear, chapter
+  mail), `sweepStage`, `claimIdle` (+ quick collect with daily limit), `claimQuest`, `claimActivityChest`,
+  `claimMail`/`claimAllMail`, `skipTutorial`/`advanceTutorial` and `debugAdvanceClock`. Trainer XP/level
+  derived from grants (`economy.ts`); the save gains M5 slices with a v1→v2 migration
+  (`campaign`, `idle`, `quests`, `mail`, `tutorial`, `debugClockOffset`). `m5.test.ts` (14 tests) and a
+  new `campaign-balance.test.ts` (reaches the end of chapter 3) prove the loop.
+- **Client**: Home becomes a town hub (Campaign / Idle / Quests / Mail / Wilds / Squad / Gallery tiles
+  with badges) plus the first-session `Tutorial`; new `Campaign` (chapters, stars, challenge/replay/
+  sweep), `Idle` (accrual bar, collect, quick collect), `Quests` (activity points, daily quests, chests),
+  `Mail` (claim / claim all), `RewardLine`, `BattleReplay` extracted from the M4 Combat screen so battles
+  can be replayed from the campaign; HUD gains the trainer XP bar and reads "Milestone 5".
+- **e2e**: new `m5.spec.ts` (tutorial skip, stage win → stars + next-stage unlock, idle accrual + collect
+  via the debug clock, welcome mail claim, idle-quest completion + claim); `boot.spec.ts` updated
+  (Milestone 5; the Home gallery link is now the "Gallery" town tile).
+- Tests — 36 server tests + all-package unit suite + 28 Playwright tests green; `content:validate`
+  PASS; `pnpm check` green.
+
+### Deviation from the reference
+
+- **The campaign difficulty curve is our own and was re-tuned in this milestone.** The authored
+  chapter 2-3 squads used legendary/mythic/supreme species at high star/evolution stages that the
+  starter (all-common) roster could never beat — and summoning (M6) does not exist yet, so a fresh
+  player could not progress past chapter 1 stage 2. Chapters 1-3 were re-authored to use only
+  common/rare species with a gentle level/star curve so the starter roster clears chapter 1 within the
+  starting budget and reaches chapter 3 as the idle/quest income accrues. See docs/design/balance.md and
+  docs/ASSUMPTIONS.md M5.
+- **Debug clock offset is minutes, applied as milliseconds at the boundary.** `debugAdvanceClock(n)`
+  stores `n` minutes; both the server game clock (`LocalServer.now`) and the Idle screen convert to ms
+  (`× 60_000`) before measuring accrual. A units bug (offset added as ms) was fixed here and locked by a
+  test that fast-forwards 12h and claims a full idle cap.
+- **Idle is capped and hand-claimed** (12h cap, 3 quick collects/day for gems) rather than the
+  reference's auto-collect flow; the loop stays fully client-side on `IndexedDB` for now.
+
+### Carried forward
+
+- Squad strategies remain inert; weather/round banners, team preview and richer result panels are still
+  deferred (M4/M9). Summoning arrives in M6.
+

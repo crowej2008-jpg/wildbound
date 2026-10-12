@@ -30,4 +30,4 @@ tests/            ip-guard, e2e
 reference/        read-only research (gitignored)
 ```
 
-Current milestone: **M0 — Foundations**.
+Current milestone: **M5 — Campaign, idle and daily loop**.
