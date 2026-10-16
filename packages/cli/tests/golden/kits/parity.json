@@ -1,0 +1,135 @@
+[
+  {
+    "id": "tidewarden",
+    "name": "Kyogre",
+    "faction": "tide",
+    "class": "guardian",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "ripple",
+            "field": "dmgRdct",
+            "amount": 0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.2
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "surge",
+            "field": "dmgRdct",
+            "amount": 0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row",
+        "counter": true
+      }
+    },
+    "counterShare": 0.75,
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.25
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.25
+        },
+        {
+          "field": "crit",
+          "add": 0.06
+        },
+        {
+          "field": "critRes",
+          "add": 0.38
+        },
+        {
+          "field": "critPower",
+          "add": 0.06
+        },
+        {
+          "field": "block",
+          "add": 0.09
+        },
+        {
+          "field": "blockPower",
+          "add": 0.09
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.08
+        }
+      ],
+      "rageOnHit": 125,
+      "rageCutChance": 0.5,
+      "safeguard": {
+        "active": 3,
+        "cycle": 6
+      },
+      "turnHooks": [
+        "allyShelterStack"
+      ]
+    },
+    "hooksConfig": {
+      "allyShelterStack": {
+        "field": "dmgRdct",
+        "amount": 0.03,
+        "cap": 4
+      }
+    }
+  },
+  {
+    "id": "twigleaf",
+    "name": "Sceptile",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "common",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.15
+        ],
+        "rule": "row"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.5
+        ],
+        "rule": "all"
+      }
+    },
+    "talents": {
+      "rageCutChance": 0.3
+    }
+  }
+]

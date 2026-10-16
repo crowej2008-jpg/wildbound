@@ -3,53 +3,6 @@
     "id": "shiny-charizard",
     "name": "Shiny Charizard",
     "faction": "ember",
-    "class": "striker",
-    "tier": "supreme",
-    "skills": {
-      "normal": {
-        "type": "P",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "P",
-        "rates": [
-          1.2
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "P",
-        "rates": [
-          1.7,
-          1.4
-        ],
-        "rule": "row"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "pAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "crit",
-          "add": 0.05
-        }
-      ]
-    }
-  },
-  {
-    "id": "shiny-gengar",
-    "name": "Shiny Gengar",
-    "faction": "ember",
     "class": "guardian",
     "tier": "supreme",
     "skills": {
@@ -102,8 +55,8 @@
     }
   },
   {
-    "id": "mimikyu",
-    "name": "Mimikyu",
+    "id": "shiny-gengar",
+    "name": "Shiny Gengar",
     "faction": "ember",
     "class": "adept",
     "tier": "supreme",
@@ -159,6 +112,53 @@
         {
           "field": "healBoost",
           "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "mimikyu",
+    "name": "Mimikyu",
+    "faction": "ember",
+    "class": "striker",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
         }
       ]
     }
@@ -167,108 +167,6 @@
     "id": "yveltal",
     "name": "Yveltal",
     "faction": "ember",
-    "class": "guardian",
-    "tier": "supreme",
-    "skills": {
-      "normal": {
-        "type": "S",
-        "rates": [
-          0.95
-        ],
-        "rule": "column",
-        "selfBuffs": [
-          {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.1,
-            "turns": 2
-          }
-        ]
-      },
-      "basic": {
-        "type": "S",
-        "rates": [
-          1.15
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "S",
-        "rates": [
-          1.6
-        ],
-        "rule": "row"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "hp",
-          "mult": 1.2
-        },
-        {
-          "field": "dmgRdct",
-          "add": 0.08
-        },
-        {
-          "field": "block",
-          "add": 0.05
-        }
-      ],
-      "rageOnHit": 125
-    }
-  },
-  {
-    "id": "giratina",
-    "name": "Giratina",
-    "faction": "ember",
-    "class": "striker",
-    "tier": "supreme",
-    "skills": {
-      "normal": {
-        "type": "P",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "P",
-        "rates": [
-          1.2
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "P",
-        "rates": [
-          1.7,
-          1.4
-        ],
-        "rule": "row"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "pAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "crit",
-          "add": 0.05
-        }
-      ]
-    }
-  },
-  {
-    "id": "victini",
-    "name": "Victini",
-    "faction": "ember",
     "class": "adept",
     "tier": "supreme",
     "skills": {
@@ -323,6 +221,108 @@
         {
           "field": "healBoost",
           "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "giratina",
+    "name": "Giratina",
+    "faction": "ember",
+    "class": "guardian",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "victini",
+    "name": "Victini",
+    "faction": "ember",
+    "class": "striker",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
         }
       ]
     }
@@ -331,61 +331,6 @@
     "id": "infernape",
     "name": "Infernape",
     "faction": "ember",
-    "class": "guardian",
-    "tier": "supreme",
-    "skills": {
-      "normal": {
-        "type": "S",
-        "rates": [
-          0.95
-        ],
-        "rule": "column",
-        "selfBuffs": [
-          {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.1,
-            "turns": 2
-          }
-        ]
-      },
-      "basic": {
-        "type": "S",
-        "rates": [
-          1.15
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "S",
-        "rates": [
-          1.6
-        ],
-        "rule": "row"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "hp",
-          "mult": 1.2
-        },
-        {
-          "field": "dmgRdct",
-          "add": 0.08
-        },
-        {
-          "field": "block",
-          "add": 0.05
-        }
-      ],
-      "rageOnHit": 125
-    }
-  },
-  {
-    "id": "ho-oh",
-    "name": "Ho-Oh",
-    "faction": "ember",
     "class": "adept",
     "tier": "supreme",
     "skills": {
@@ -445,8 +390,8 @@
     }
   },
   {
-    "id": "groudon",
-    "name": "Groudon",
+    "id": "ho-oh",
+    "name": "Ho-Oh",
     "faction": "ember",
     "class": "striker",
     "tier": "supreme",
@@ -492,105 +437,11 @@
     }
   },
   {
-    "id": "entei",
-    "name": "Entei",
-    "faction": "ember",
-    "class": "striker",
-    "tier": "legendary",
-    "skills": {
-      "normal": {
-        "type": "P",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "P",
-        "rates": [
-          1.2
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "P",
-        "rates": [
-          1.7,
-          1.4
-        ],
-        "rule": "row"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "pAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "crit",
-          "add": 0.05
-        }
-      ]
-    }
-  },
-  {
-    "id": "moltres",
-    "name": "Moltres",
-    "faction": "ember",
-    "class": "striker",
-    "tier": "legendary",
-    "skills": {
-      "normal": {
-        "type": "P",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "P",
-        "rates": [
-          1.2
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "P",
-        "rates": [
-          1.7,
-          1.4
-        ],
-        "rule": "row"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "pAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "crit",
-          "add": 0.05
-        }
-      ]
-    }
-  },
-  {
-    "id": "blaziken",
-    "name": "Blaziken",
+    "id": "groudon",
+    "name": "Groudon",
     "faction": "ember",
     "class": "guardian",
-    "tier": "epic",
+    "tier": "supreme",
     "skills": {
       "normal": {
         "type": "S",
@@ -641,31 +492,38 @@
     }
   },
   {
-    "id": "typhlosion",
-    "name": "Typhlosion",
+    "id": "entei",
+    "name": "Entei",
     "faction": "ember",
-    "class": "striker",
-    "tier": "epic",
+    "class": "guardian",
+    "tier": "legendary",
     "skills": {
       "normal": {
-        "type": "P",
+        "type": "S",
         "rates": [
-          1
+          0.95
         ],
-        "rule": "column"
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
       },
       "basic": {
-        "type": "P",
+        "type": "S",
         "rates": [
-          1.2
+          1.15
         ],
         "rule": "column"
       },
       "ult": {
-        "type": "P",
+        "type": "S",
         "rates": [
-          1.7,
-          1.4
+          1.6
         ],
         "rule": "row"
       }
@@ -673,16 +531,196 @@
     "talents": {
       "statMods": [
         {
-          "field": "pAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.2
         },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "moltres",
+    "name": "Moltres",
+    "faction": "ember",
+    "class": "guardian",
+    "tier": "legendary",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "blaziken",
+    "name": "Blaziken",
+    "faction": "ember",
+    "class": "adept",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
         {
           "field": "sAtk",
           "mult": 1.15
         },
         {
-          "field": "crit",
-          "add": 0.05
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "typhlosion",
+    "name": "Typhlosion",
+    "faction": "ember",
+    "class": "adept",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
         }
       ]
     }
@@ -711,25 +749,52 @@
       "ult": {
         "type": "P",
         "rates": [
-          1.7,
-          1.4
+          1.9
         ],
-        "rule": "row"
+        "rule": "row",
+        "selfBuffs": [
+          {
+            "tag": "dmgUp",
+            "field": "dmgBoost",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
       }
     },
     "talents": {
       "statMods": [
         {
-          "field": "pAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.25
         },
         {
-          "field": "sAtk",
-          "mult": 1.15
+          "field": "pAtk",
+          "mult": 1.25
         },
         {
           "field": "crit",
-          "add": 0.05
+          "add": 0.1
+        },
+        {
+          "field": "critRes",
+          "add": 0.08
+        },
+        {
+          "field": "critPower",
+          "add": 0.125
+        },
+        {
+          "field": "block",
+          "add": 0.06
+        },
+        {
+          "field": "blockPower",
+          "add": 0.06
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.425
         }
       ]
     }
@@ -753,32 +818,72 @@
         "rates": [
           1.2
         ],
-        "rule": "column"
+        "rule": "column",
+        "control": {
+          "kind": "stun",
+          "chance": null,
+          "turns": 1
+        }
       },
       "ult": {
         "type": "P",
         "rates": [
-          1.7,
-          1.4
+          1.35
         ],
-        "rule": "row"
+        "rule": "random",
+        "targets": 3,
+        "control": {
+          "kind": "stun",
+          "chance": 0.15,
+          "turns": 1
+        },
+        "targetDebuffs": [
+          {
+            "tag": "ctrlResDown",
+            "field": "controlRes",
+            "amount": -0.12,
+            "turns": 2
+          }
+        ]
       }
     },
     "talents": {
       "statMods": [
         {
-          "field": "pAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.25
         },
         {
-          "field": "sAtk",
-          "mult": 1.15
+          "field": "pAtk",
+          "mult": 1.25
         },
         {
           "field": "crit",
-          "add": 0.05
+          "add": 0.06
+        },
+        {
+          "field": "critRes",
+          "add": 0.425
+        },
+        {
+          "field": "critPower",
+          "add": 0.06
+        },
+        {
+          "field": "block",
+          "add": 0.09
+        },
+        {
+          "field": "blockPower",
+          "add": 0.1
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.08
         }
-      ]
+      ],
+      "rageOnHit": 125,
+      "rageCutChance": 0.5
     }
   },
   {
@@ -798,46 +903,60 @@
       "basic": {
         "type": "S",
         "rates": [
-          1.15
+          1.2
         ],
-        "rule": "row",
-        "targetDebuffs": [
-          {
-            "tag": "chill",
-            "field": "dmgRdct",
-            "amount": -0.15,
-            "turns": 2
-          }
-        ]
+        "rule": "column",
+        "control": {
+          "kind": "silence",
+          "chance": null,
+          "turns": 1
+        }
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.7
+          1.35
         ],
         "rule": "row",
-        "targetDebuffs": [
-          {
-            "tag": "daze",
-            "field": "spd",
-            "amount": -40,
-            "turns": 2
-          }
-        ]
+        "control": {
+          "kind": "silence",
+          "chance": null,
+          "turns": 1
+        }
       }
     },
     "talents": {
       "statMods": [
         {
+          "field": "hp",
+          "mult": 1.25
+        },
+        {
           "field": "sAtk",
-          "mult": 1.15
+          "mult": 1.25
         },
         {
-          "field": "controlBoost",
-          "add": 0.1
+          "field": "crit",
+          "add": 0.45
         },
         {
-          "field": "healBoost",
+          "field": "critRes",
+          "add": 0.08
+        },
+        {
+          "field": "critPower",
+          "add": 0.12
+        },
+        {
+          "field": "block",
+          "add": 0.06
+        },
+        {
+          "field": "blockPower",
+          "add": 0.06
+        },
+        {
+          "field": "guardBreak",
           "add": 0.1
         }
       ]
@@ -867,25 +986,44 @@
       "ult": {
         "type": "P",
         "rates": [
-          1.7,
-          1.4
+          1.35
         ],
-        "rule": "row"
+        "rule": "row",
+        "selfBuffs": [
+          {
+            "tag": "offerOfPower",
+            "field": "dmgBoost",
+            "amount": 0.5,
+            "turns": 1
+          }
+        ]
       }
     },
     "talents": {
       "statMods": [
         {
-          "field": "pAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.18
         },
         {
-          "field": "sAtk",
-          "mult": 1.15
+          "field": "pAtk",
+          "mult": 1.18
         },
         {
           "field": "crit",
-          "add": 0.05
+          "add": 0.4
+        },
+        {
+          "field": "critRes",
+          "add": 0.08
+        },
+        {
+          "field": "critPower",
+          "add": 0.1
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.1
         }
       ]
     }
@@ -894,55 +1032,60 @@
     "id": "ninetales",
     "name": "Ninetales",
     "faction": "ember",
-    "class": "guardian",
+    "class": "adept",
     "tier": "rare",
     "skills": {
       "normal": {
         "type": "S",
         "rates": [
-          0.95
+          1
         ],
-        "rule": "column",
-        "selfBuffs": [
-          {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.1,
-            "turns": 2
-          }
-        ]
+        "rule": "column"
       },
       "basic": {
         "type": "S",
         "rates": [
-          1.15
+          1.35
         ],
         "rule": "column"
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.6
+          1.35
         ],
-        "rule": "row"
+        "rule": "row",
+        "damageType": "dot",
+        "hpShare": 0.05
       }
     },
     "talents": {
       "statMods": [
         {
           "field": "hp",
-          "mult": 1.2
+          "mult": 1.18
         },
         {
-          "field": "dmgRdct",
+          "field": "sAtk",
+          "mult": 1.18
+        },
+        {
+          "field": "crit",
           "add": 0.08
         },
         {
+          "field": "critPower",
+          "add": 0.1
+        },
+        {
           "field": "block",
-          "add": 0.05
+          "add": 0.06
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.35
         }
-      ],
-      "rageOnHit": 125
+      ]
     }
   }
 ]

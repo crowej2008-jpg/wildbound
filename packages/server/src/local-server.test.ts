@@ -22,10 +22,10 @@ describe('LocalServer', () => {
   it('grants Wilds and currencies', async () => {
     const { srv } = server();
     await srv.loadAccount();
-    const granted = await srv.grantWild('tidewarden');
+    const granted = await srv.grantWild('kyogre');
     expect(granted.ok).toBe(true);
     if (!granted.ok) return;
-    expect(granted.value.state.roster.some((w) => w.speciesId === 'tidewarden')).toBe(true);
+    expect(granted.value.state.roster.some((w) => w.speciesId === 'kyogre')).toBe(true);
     const before = granted.value.state.currencies.gold;
     const rich = await srv.grantCurrency('gold');
     if (!rich.ok) return;
@@ -124,7 +124,7 @@ describe('LocalServer', () => {
   it('exports, imports and resets', async () => {
     const { srv } = server();
     await srv.loadAccount();
-    await srv.grantWild('tidewarden');
+    await srv.grantWild('kyogre');
     const exported = await srv.exportSave();
     expect(exported.ok).toBe(true);
     if (!exported.ok) return;
@@ -135,6 +135,6 @@ describe('LocalServer', () => {
     const imported = await srv.importSave(exported.value);
     expect(imported.ok).toBe(true);
     if (!imported.ok) return;
-    expect(imported.value.state.roster.some((w) => w.speciesId === 'tidewarden')).toBe(true);
+    expect(imported.value.state.roster.some((w) => w.speciesId === 'kyogre')).toBe(true);
   });
 });

@@ -44,105 +44,17 @@
     }
   },
   {
-    "id": "mew",
-    "name": "Mew",
-    "faction": "frost",
-    "class": "striker",
-    "tier": "mythic",
-    "description": "Mew, a mythic light Wild from the owner's collection.",
-    "paletteSeed": 8672,
-    "stages": [
-      "Mew",
-      "Mew Prime",
-      "Mew Zenith"
-    ],
-    "base": {
-      "hp": 3040,
-      "pAtk": 416,
-      "sAtk": 192,
-      "spd": 352,
-      "pDef": 208,
-      "sDef": 192
-    }
-  },
-  {
-    "id": "jirachi",
-    "name": "Jirachi",
-    "faction": "frost",
-    "class": "striker",
-    "tier": "mythic",
-    "description": "Jirachi, a mythic light Wild from the owner's collection.",
-    "paletteSeed": 1095,
-    "stages": [
-      "Jirachi",
-      "Jirachi Prime",
-      "Jirachi Zenith"
-    ],
-    "base": {
-      "hp": 3040,
-      "pAtk": 416,
-      "sAtk": 192,
-      "spd": 352,
-      "pDef": 208,
-      "sDef": 192
-    }
-  },
-  {
-    "id": "snorlax",
-    "name": "Snorlax",
-    "faction": "frost",
-    "class": "adept",
-    "tier": "mythic",
-    "description": "Snorlax, a mythic light Wild from the owner's collection.",
-    "paletteSeed": 4390,
-    "stages": [
-      "Snorlax",
-      "Snorlax Prime",
-      "Snorlax Zenith"
-    ],
-    "base": {
-      "hp": 3680,
-      "pAtk": 211,
-      "sAtk": 390,
-      "spd": 330,
-      "pDef": 320,
-      "sDef": 346
-    }
-  },
-  {
-    "id": "shiny-kyogre",
-    "name": "Shiny Kyogre",
-    "faction": "frost",
-    "class": "adept",
-    "tier": "mythic",
-    "description": "Shiny Kyogre, a shiny mythic light Wild from the owner's collection.",
-    "paletteSeed": 3360,
-    "stages": [
-      "Shiny Kyogre",
-      "Shiny Kyogre Prime",
-      "Shiny Kyogre Zenith"
-    ],
-    "base": {
-      "hp": 3680,
-      "pAtk": 211,
-      "sAtk": 390,
-      "spd": 330,
-      "pDef": 320,
-      "sDef": 346
-    }
-  },
-  {
-    "id": "shiny-cresselia",
-    "name": "Shiny Cresselia",
+    "id": "kyogre",
+    "name": "Kyogre",
     "faction": "frost",
     "class": "guardian",
     "tier": "mythic",
-    "description": "Shiny Cresselia, a shiny mythic light Wild from the owner's collection.",
-    "paletteSeed": 5840,
+    "description": "Kyogre, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 8630,
     "stages": [
-      "Shiny Cresselia",
-      "Shiny Cresselia Prime",
-      "Shiny Cresselia Zenith"
+      "Kyogre",
+      "Kyogre Prime",
+      "Kyogre Zenith"
     ],
     "base": {
       "hp": 4480,
@@ -151,6 +63,94 @@
       "spd": 294,
       "pDef": 416,
       "sDef": 416
+    }
+  },
+  {
+    "id": "cresselia",
+    "name": "Cresselia",
+    "faction": "frost",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Cresselia, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 5822,
+    "stages": [
+      "Cresselia",
+      "Cresselia Prime",
+      "Cresselia Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
+    }
+  },
+  {
+    "id": "solgaleo",
+    "name": "Solgaleo",
+    "faction": "frost",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Solgaleo, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 2973,
+    "stages": [
+      "Solgaleo",
+      "Solgaleo Prime",
+      "Solgaleo Zenith"
+    ],
+    "base": {
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
+    }
+  },
+  {
+    "id": "shiny-mew",
+    "name": "Shiny Mew",
+    "faction": "frost",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Shiny Mew, a shiny mythic light Wild from the owner's collection.",
+    "paletteSeed": 4558,
+    "stages": [
+      "Shiny Mew",
+      "Shiny Mew Prime",
+      "Shiny Mew Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
+    }
+  },
+  {
+    "id": "shiny-arceus",
+    "name": "Shiny Arceus",
+    "faction": "frost",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Shiny Arceus, a shiny mythic light Wild from the owner's collection.",
+    "paletteSeed": 9480,
+    "stages": [
+      "Shiny Arceus",
+      "Shiny Arceus Prime",
+      "Shiny Arceus Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
     }
   }
 ]

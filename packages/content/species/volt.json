@@ -3,7 +3,7 @@
     "id": "calyrex",
     "name": "Calyrex",
     "faction": "volt",
-    "class": "guardian",
+    "class": "striker",
     "tier": "mythic",
     "description": "Calyrex, a origin light Wild from the owner's collection.",
     "paletteSeed": 9869,
@@ -13,12 +13,12 @@
       "Calyrex Zenith"
     ],
     "base": {
-      "hp": 4480,
-      "pAtk": 336,
-      "sAtk": 234,
-      "spd": 294,
-      "pDef": 416,
-      "sDef": 416
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
     }
   },
   {
@@ -66,39 +66,17 @@
     }
   },
   {
-    "id": "cresselia",
-    "name": "Cresselia",
-    "faction": "volt",
-    "class": "adept",
-    "tier": "mythic",
-    "description": "Cresselia, a mythic light Wild from the owner's collection.",
-    "paletteSeed": 5822,
-    "stages": [
-      "Cresselia",
-      "Cresselia Prime",
-      "Cresselia Zenith"
-    ],
-    "base": {
-      "hp": 3680,
-      "pAtk": 211,
-      "sAtk": 390,
-      "spd": 330,
-      "pDef": 320,
-      "sDef": 346
-    }
-  },
-  {
-    "id": "solgaleo",
-    "name": "Solgaleo",
+    "id": "mew",
+    "name": "Mew",
     "faction": "volt",
     "class": "guardian",
     "tier": "mythic",
-    "description": "Solgaleo, a mythic light Wild from the owner's collection.",
-    "paletteSeed": 2973,
+    "description": "Mew, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 8672,
     "stages": [
-      "Solgaleo",
-      "Solgaleo Prime",
-      "Solgaleo Zenith"
+      "Mew",
+      "Mew Prime",
+      "Mew Zenith"
     ],
     "base": {
       "hp": 4480,
@@ -110,17 +88,17 @@
     }
   },
   {
-    "id": "shiny-mew",
-    "name": "Shiny Mew",
+    "id": "jirachi",
+    "name": "Jirachi",
     "faction": "volt",
     "class": "guardian",
     "tier": "mythic",
-    "description": "Shiny Mew, a shiny mythic light Wild from the owner's collection.",
-    "paletteSeed": 4558,
+    "description": "Jirachi, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 1095,
     "stages": [
-      "Shiny Mew",
-      "Shiny Mew Prime",
-      "Shiny Mew Zenith"
+      "Jirachi",
+      "Jirachi Prime",
+      "Jirachi Zenith"
     ],
     "base": {
       "hp": 4480,
@@ -132,17 +110,39 @@
     }
   },
   {
-    "id": "shiny-arceus",
-    "name": "Shiny Arceus",
+    "id": "snorlax",
+    "name": "Snorlax",
+    "faction": "volt",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Snorlax, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 4390,
+    "stages": [
+      "Snorlax",
+      "Snorlax Prime",
+      "Snorlax Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
+    }
+  },
+  {
+    "id": "shiny-kyogre",
+    "name": "Shiny Kyogre",
     "faction": "volt",
     "class": "guardian",
     "tier": "mythic",
-    "description": "Shiny Arceus, a shiny mythic light Wild from the owner's collection.",
-    "paletteSeed": 9480,
+    "description": "Shiny Kyogre, a shiny mythic light Wild from the owner's collection.",
+    "paletteSeed": 3360,
     "stages": [
-      "Shiny Arceus",
-      "Shiny Arceus Prime",
-      "Shiny Arceus Zenith"
+      "Shiny Kyogre",
+      "Shiny Kyogre Prime",
+      "Shiny Kyogre Zenith"
     ],
     "base": {
       "hp": 4480,
@@ -151,6 +151,28 @@
       "spd": 294,
       "pDef": 416,
       "sDef": 416
+    }
+  },
+  {
+    "id": "shiny-cresselia",
+    "name": "Shiny Cresselia",
+    "faction": "volt",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Shiny Cresselia, a shiny mythic light Wild from the owner's collection.",
+    "paletteSeed": 5840,
+    "stages": [
+      "Shiny Cresselia",
+      "Shiny Cresselia Prime",
+      "Shiny Cresselia Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
     }
   }
 ]

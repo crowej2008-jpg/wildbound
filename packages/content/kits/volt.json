@@ -3,55 +3,81 @@
     "id": "calyrex",
     "name": "Calyrex",
     "faction": "volt",
-    "class": "guardian",
+    "class": "striker",
     "tier": "mythic",
     "skills": {
       "normal": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          0.95
-        ],
-        "rule": "column",
-        "selfBuffs": [
-          {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.1,
-            "turns": 2
-          }
-        ]
-      },
-      "basic": {
-        "type": "S",
-        "rates": [
-          1.15
+          1.1
         ],
         "rule": "column"
       },
-      "ult": {
-        "type": "S",
+      "basic": {
+        "type": "P",
         "rates": [
-          1.6
+          1.2
         ],
-        "rule": "row"
+        "rule": "column",
+        "control": {
+          "kind": "freeze",
+          "chance": 0.4,
+          "turns": 1
+        }
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "all",
+        "targetDebuffs": [
+          {
+            "tag": "frost",
+            "field": "spd",
+            "amount": -25,
+            "turns": 1
+          }
+        ]
       }
     },
     "talents": {
       "statMods": [
         {
           "field": "hp",
-          "mult": 1.2
+          "mult": 1.4
         },
         {
-          "field": "dmgRdct",
-          "add": 0.08
+          "field": "pAtk",
+          "mult": 1.4
+        },
+        {
+          "field": "crit",
+          "add": 0.06
+        },
+        {
+          "field": "critRes",
+          "add": 0.22
+        },
+        {
+          "field": "critPower",
+          "add": 0.06
         },
         {
           "field": "block",
-          "add": 0.05
+          "add": 0.6
+        },
+        {
+          "field": "blockPower",
+          "add": 0.25
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.15
         }
       ],
-      "rageOnHit": 125
+      "rageOnHit": 125,
+      "rageCutChance": 0.5
     }
   },
   {
@@ -164,70 +190,165 @@
     }
   },
   {
-    "id": "cresselia",
-    "name": "Cresselia",
+    "id": "mew",
+    "name": "Mew",
     "faction": "volt",
-    "class": "adept",
+    "class": "guardian",
     "tier": "mythic",
     "skills": {
       "normal": {
         "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "jirachi",
+    "name": "Jirachi",
+    "faction": "volt",
+    "class": "guardian",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "snorlax",
+    "name": "Snorlax",
+    "faction": "volt",
+    "class": "striker",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "P",
         "rates": [
           1
         ],
         "rule": "column"
       },
       "basic": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          1.15
+          1.2
         ],
-        "rule": "row",
-        "targetDebuffs": [
-          {
-            "tag": "chill",
-            "field": "dmgRdct",
-            "amount": -0.15,
-            "turns": 2
-          }
-        ]
+        "rule": "column"
       },
       "ult": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          1.7
+          1.7,
+          1.4
         ],
-        "rule": "row",
-        "targetDebuffs": [
-          {
-            "tag": "daze",
-            "field": "spd",
-            "amount": -40,
-            "turns": 2
-          }
-        ]
+        "rule": "row"
       }
     },
     "talents": {
       "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
         {
           "field": "sAtk",
           "mult": 1.15
         },
         {
-          "field": "controlBoost",
-          "add": 0.1
-        },
-        {
-          "field": "healBoost",
-          "add": 0.1
+          "field": "crit",
+          "add": 0.05
         }
       ]
     }
   },
   {
-    "id": "solgaleo",
-    "name": "Solgaleo",
+    "id": "shiny-kyogre",
+    "name": "Shiny Kyogre",
     "faction": "volt",
     "class": "guardian",
     "tier": "mythic",
@@ -281,38 +402,31 @@
     }
   },
   {
-    "id": "shiny-mew",
-    "name": "Shiny Mew",
+    "id": "shiny-cresselia",
+    "name": "Shiny Cresselia",
     "faction": "volt",
-    "class": "guardian",
+    "class": "striker",
     "tier": "mythic",
     "skills": {
       "normal": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          0.95
+          1
         ],
-        "rule": "column",
-        "selfBuffs": [
-          {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.1,
-            "turns": 2
-          }
-        ]
+        "rule": "column"
       },
       "basic": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          1.15
+          1.2
         ],
         "rule": "column"
       },
       "ult": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          1.6
+          1.7,
+          1.4
         ],
         "rule": "row"
       }
@@ -320,74 +434,18 @@
     "talents": {
       "statMods": [
         {
-          "field": "hp",
-          "mult": 1.2
+          "field": "pAtk",
+          "mult": 1.15
         },
         {
-          "field": "dmgRdct",
-          "add": 0.08
+          "field": "sAtk",
+          "mult": 1.15
         },
         {
-          "field": "block",
+          "field": "crit",
           "add": 0.05
         }
-      ],
-      "rageOnHit": 125
-    }
-  },
-  {
-    "id": "shiny-arceus",
-    "name": "Shiny Arceus",
-    "faction": "volt",
-    "class": "guardian",
-    "tier": "mythic",
-    "skills": {
-      "normal": {
-        "type": "S",
-        "rates": [
-          0.95
-        ],
-        "rule": "column",
-        "selfBuffs": [
-          {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.1,
-            "turns": 2
-          }
-        ]
-      },
-      "basic": {
-        "type": "S",
-        "rates": [
-          1.15
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "S",
-        "rates": [
-          1.6
-        ],
-        "rule": "row"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "hp",
-          "mult": 1.2
-        },
-        {
-          "field": "dmgRdct",
-          "add": 0.08
-        },
-        {
-          "field": "block",
-          "add": 0.05
-        }
-      ],
-      "rageOnHit": 125
+      ]
     }
   }
 ]

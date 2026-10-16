@@ -50,7 +50,11 @@ function simulate(rest: string[]): void {
 }
 
 function goldenExport(): void {
-  const kits = loadKits(resolve(repoRoot, 'packages/content/kits'));
+  const kits = [
+    ...loadKits(resolve(repoRoot, 'packages/content/kits')),
+    // M1 parity fixtures — kept out of the shipped roster (see ASSUMPTIONS).
+    ...loadKits(resolve(repoRoot, 'packages/cli/tests/golden/kits')),
+  ];
   const kitMap = new Map(kits.map((k) => [k.id, k]));
   const scenariosDir = resolve(repoRoot, 'packages/cli/tests/golden/scenarios');
   const baselinesDir = resolve(repoRoot, 'packages/cli/tests/golden/baselines');

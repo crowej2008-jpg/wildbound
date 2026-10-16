@@ -1,31 +1,9 @@
 [
   {
-    "id": "tidewarden",
-    "name": "Kyogre",
-    "faction": "tide",
-    "class": "guardian",
-    "tier": "mythic",
-    "description": "Kyogre, a mythic tide Wild from the owner's collection.",
-    "paletteSeed": 9102,
-    "stages": [
-      "Kyogre",
-      "Kyogre Prime",
-      "Kyogre Zenith"
-    ],
-    "base": {
-      "hp": 2755,
-      "pAtk": 208,
-      "sAtk": 143,
-      "spd": 79,
-      "pDef": 260,
-      "sDef": 260
-    }
-  },
-  {
     "id": "psyduck",
     "name": "Psyduck",
     "faction": "tide",
-    "class": "striker",
+    "class": "guardian",
     "tier": "supreme",
     "description": "Psyduck, a supreme water Wild from the owner's collection.",
     "paletteSeed": 6454,
@@ -33,94 +11,6 @@
       "Psyduck",
       "Psyduck Prime",
       "Psyduck Zenith"
-    ],
-    "base": {
-      "hp": 2280,
-      "pAtk": 312,
-      "sAtk": 144,
-      "spd": 264,
-      "pDef": 156,
-      "sDef": 144
-    }
-  },
-  {
-    "id": "shiny-blastoise",
-    "name": "Shiny Blastoise",
-    "faction": "tide",
-    "class": "adept",
-    "tier": "supreme",
-    "description": "Shiny Blastoise, a supreme water Wild from the owner's collection.",
-    "paletteSeed": 8649,
-    "stages": [
-      "Shiny Blastoise",
-      "Shiny Blastoise Prime",
-      "Shiny Blastoise Zenith"
-    ],
-    "base": {
-      "hp": 2760,
-      "pAtk": 158,
-      "sAtk": 293,
-      "spd": 247,
-      "pDef": 240,
-      "sDef": 259
-    }
-  },
-  {
-    "id": "xerneas",
-    "name": "Xerneas",
-    "faction": "tide",
-    "class": "adept",
-    "tier": "supreme",
-    "description": "Xerneas, a supreme water Wild from the owner's collection.",
-    "paletteSeed": 9175,
-    "stages": [
-      "Xerneas",
-      "Xerneas Prime",
-      "Xerneas Zenith"
-    ],
-    "base": {
-      "hp": 2760,
-      "pAtk": 158,
-      "sAtk": 293,
-      "spd": 247,
-      "pDef": 240,
-      "sDef": 259
-    }
-  },
-  {
-    "id": "palkia",
-    "name": "Palkia",
-    "faction": "tide",
-    "class": "adept",
-    "tier": "supreme",
-    "description": "Palkia, a supreme water Wild from the owner's collection.",
-    "paletteSeed": 2925,
-    "stages": [
-      "Palkia",
-      "Palkia Prime",
-      "Palkia Zenith"
-    ],
-    "base": {
-      "hp": 2760,
-      "pAtk": 158,
-      "sAtk": 293,
-      "spd": 247,
-      "pDef": 240,
-      "sDef": 259
-    }
-  },
-  {
-    "id": "keldeo",
-    "name": "Keldeo",
-    "faction": "tide",
-    "class": "guardian",
-    "tier": "supreme",
-    "description": "Keldeo, a supreme water Wild from the owner's collection.",
-    "paletteSeed": 1125,
-    "stages": [
-      "Keldeo",
-      "Keldeo Prime",
-      "Keldeo Zenith"
     ],
     "base": {
       "hp": 3360,
@@ -132,39 +22,17 @@
     }
   },
   {
-    "id": "greninja",
-    "name": "Greninja",
-    "faction": "tide",
-    "class": "adept",
-    "tier": "supreme",
-    "description": "Greninja, a supreme water Wild from the owner's collection.",
-    "paletteSeed": 6137,
-    "stages": [
-      "Greninja",
-      "Greninja Prime",
-      "Greninja Zenith"
-    ],
-    "base": {
-      "hp": 2760,
-      "pAtk": 158,
-      "sAtk": 293,
-      "spd": 247,
-      "pDef": 240,
-      "sDef": 259
-    }
-  },
-  {
-    "id": "manaphy",
-    "name": "Manaphy",
+    "id": "shiny-blastoise",
+    "name": "Shiny Blastoise",
     "faction": "tide",
     "class": "striker",
     "tier": "supreme",
-    "description": "Manaphy, a supreme water Wild from the owner's collection.",
-    "paletteSeed": 4119,
+    "description": "Shiny Blastoise, a supreme water Wild from the owner's collection.",
+    "paletteSeed": 8649,
     "stages": [
-      "Manaphy",
-      "Manaphy Prime",
-      "Manaphy Zenith"
+      "Shiny Blastoise",
+      "Shiny Blastoise Prime",
+      "Shiny Blastoise Zenith"
     ],
     "base": {
       "hp": 2280,
@@ -176,17 +44,61 @@
     }
   },
   {
-    "id": "lugia",
-    "name": "Lugia",
+    "id": "xerneas",
+    "name": "Xerneas",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "Xerneas, a supreme water Wild from the owner's collection.",
+    "paletteSeed": 9175,
+    "stages": [
+      "Xerneas",
+      "Xerneas Prime",
+      "Xerneas Zenith"
+    ],
+    "base": {
+      "hp": 2280,
+      "pAtk": 312,
+      "sAtk": 144,
+      "spd": 264,
+      "pDef": 156,
+      "sDef": 144
+    }
+  },
+  {
+    "id": "palkia",
+    "name": "Palkia",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "Palkia, a supreme water Wild from the owner's collection.",
+    "paletteSeed": 2925,
+    "stages": [
+      "Palkia",
+      "Palkia Prime",
+      "Palkia Zenith"
+    ],
+    "base": {
+      "hp": 2280,
+      "pAtk": 312,
+      "sAtk": 144,
+      "spd": 264,
+      "pDef": 156,
+      "sDef": 144
+    }
+  },
+  {
+    "id": "keldeo",
+    "name": "Keldeo",
     "faction": "tide",
     "class": "adept",
     "tier": "supreme",
-    "description": "Lugia, a supreme water Wild from the owner's collection.",
-    "paletteSeed": 2855,
+    "description": "Keldeo, a supreme water Wild from the owner's collection.",
+    "paletteSeed": 1125,
     "stages": [
-      "Lugia",
-      "Lugia Prime",
-      "Lugia Zenith"
+      "Keldeo",
+      "Keldeo Prime",
+      "Keldeo Zenith"
     ],
     "base": {
       "hp": 2760,
@@ -198,10 +110,76 @@
     }
   },
   {
+    "id": "greninja",
+    "name": "Greninja",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "Greninja, a supreme water Wild from the owner's collection.",
+    "paletteSeed": 6137,
+    "stages": [
+      "Greninja",
+      "Greninja Prime",
+      "Greninja Zenith"
+    ],
+    "base": {
+      "hp": 2280,
+      "pAtk": 312,
+      "sAtk": 144,
+      "spd": 264,
+      "pDef": 156,
+      "sDef": 144
+    }
+  },
+  {
+    "id": "manaphy",
+    "name": "Manaphy",
+    "faction": "tide",
+    "class": "guardian",
+    "tier": "supreme",
+    "description": "Manaphy, a supreme water Wild from the owner's collection.",
+    "paletteSeed": 4119,
+    "stages": [
+      "Manaphy",
+      "Manaphy Prime",
+      "Manaphy Zenith"
+    ],
+    "base": {
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
+    }
+  },
+  {
+    "id": "lugia",
+    "name": "Lugia",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "Lugia, a supreme water Wild from the owner's collection.",
+    "paletteSeed": 2855,
+    "stages": [
+      "Lugia",
+      "Lugia Prime",
+      "Lugia Zenith"
+    ],
+    "base": {
+      "hp": 2280,
+      "pAtk": 312,
+      "sAtk": 144,
+      "spd": 264,
+      "pDef": 156,
+      "sDef": 144
+    }
+  },
+  {
     "id": "suicune",
     "name": "Suicune",
     "faction": "tide",
-    "class": "guardian",
+    "class": "adept",
     "tier": "legendary",
     "description": "Suicune, a legendary water Wild from the owner's collection.",
     "paletteSeed": 5269,
@@ -211,19 +189,19 @@
       "Suicune Zenith"
     ],
     "base": {
-      "hp": 2520,
-      "pAtk": 189,
-      "sAtk": 131,
-      "spd": 166,
-      "pDef": 234,
-      "sDef": 234
+      "hp": 2070,
+      "pAtk": 119,
+      "sAtk": 220,
+      "spd": 185,
+      "pDef": 180,
+      "sDef": 194
     }
   },
   {
     "id": "articuno",
     "name": "Articuno",
     "faction": "tide",
-    "class": "guardian",
+    "class": "adept",
     "tier": "legendary",
     "description": "Articuno, a legendary water Wild from the owner's collection.",
     "paletteSeed": 3090,
@@ -233,19 +211,19 @@
       "Articuno Zenith"
     ],
     "base": {
-      "hp": 2520,
-      "pAtk": 189,
-      "sAtk": 131,
-      "spd": 166,
-      "pDef": 234,
-      "sDef": 234
+      "hp": 2070,
+      "pAtk": 119,
+      "sAtk": 220,
+      "spd": 185,
+      "pDef": 180,
+      "sDef": 194
     }
   },
   {
     "id": "gyarados",
     "name": "Gyarados",
     "faction": "tide",
-    "class": "striker",
+    "class": "guardian",
     "tier": "epic",
     "description": "Gyarados, a epic water Wild from the owner's collection.",
     "paletteSeed": 3743,
@@ -253,50 +231,6 @@
       "Gyarados",
       "Gyarados Prime",
       "Gyarados Zenith"
-    ],
-    "base": {
-      "hp": 1283,
-      "pAtk": 176,
-      "sAtk": 81,
-      "spd": 149,
-      "pDef": 88,
-      "sDef": 81
-    }
-  },
-  {
-    "id": "swampert",
-    "name": "Swampert",
-    "faction": "tide",
-    "class": "adept",
-    "tier": "epic",
-    "description": "Swampert, a epic water Wild from the owner's collection.",
-    "paletteSeed": 5024,
-    "stages": [
-      "Swampert",
-      "Swampert Prime",
-      "Swampert Zenith"
-    ],
-    "base": {
-      "hp": 1553,
-      "pAtk": 89,
-      "sAtk": 165,
-      "spd": 139,
-      "pDef": 135,
-      "sDef": 146
-    }
-  },
-  {
-    "id": "feraligatr",
-    "name": "Feraligatr",
-    "faction": "tide",
-    "class": "guardian",
-    "tier": "epic",
-    "description": "Feraligatr, a epic water Wild from the owner's collection.",
-    "paletteSeed": 4896,
-    "stages": [
-      "Feraligatr",
-      "Feraligatr Prime",
-      "Feraligatr Zenith"
     ],
     "base": {
       "hp": 1890,
@@ -308,17 +242,17 @@
     }
   },
   {
-    "id": "dragonite",
-    "name": "Dragonite",
+    "id": "swampert",
+    "name": "Swampert",
     "faction": "tide",
     "class": "striker",
     "tier": "epic",
-    "description": "Dragonite, a epic water Wild from the owner's collection.",
-    "paletteSeed": 6366,
+    "description": "Swampert, a epic water Wild from the owner's collection.",
+    "paletteSeed": 5024,
     "stages": [
-      "Dragonite",
-      "Dragonite Prime",
-      "Dragonite Zenith"
+      "Swampert",
+      "Swampert Prime",
+      "Swampert Zenith"
     ],
     "base": {
       "hp": 1283,
@@ -330,10 +264,54 @@
     }
   },
   {
+    "id": "feraligatr",
+    "name": "Feraligatr",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "epic",
+    "description": "Feraligatr, a epic water Wild from the owner's collection.",
+    "paletteSeed": 4896,
+    "stages": [
+      "Feraligatr",
+      "Feraligatr Prime",
+      "Feraligatr Zenith"
+    ],
+    "base": {
+      "hp": 1283,
+      "pAtk": 176,
+      "sAtk": 81,
+      "spd": 149,
+      "pDef": 88,
+      "sDef": 81
+    }
+  },
+  {
+    "id": "dragonite",
+    "name": "Dragonite",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "epic",
+    "description": "Dragonite, a epic water Wild from the owner's collection.",
+    "paletteSeed": 6366,
+    "stages": [
+      "Dragonite",
+      "Dragonite Prime",
+      "Dragonite Zenith"
+    ],
+    "base": {
+      "hp": 1553,
+      "pAtk": 89,
+      "sAtk": 165,
+      "spd": 139,
+      "pDef": 135,
+      "sDef": 146
+    }
+  },
+  {
     "id": "garchomp",
     "name": "Garchomp",
     "faction": "tide",
-    "class": "adept",
+    "class": "striker",
     "tier": "epic",
     "description": "Garchomp, a epic water Wild from the owner's collection.",
     "paletteSeed": 6830,
@@ -343,19 +321,19 @@
       "Garchomp Zenith"
     ],
     "base": {
-      "hp": 1553,
-      "pAtk": 89,
-      "sAtk": 165,
-      "spd": 139,
-      "pDef": 135,
-      "sDef": 146
+      "hp": 1283,
+      "pAtk": 176,
+      "sAtk": 81,
+      "spd": 149,
+      "pDef": 88,
+      "sDef": 81
     }
   },
   {
     "id": "slaking",
     "name": "Slaking",
     "faction": "tide",
-    "class": "adept",
+    "class": "striker",
     "tier": "epic",
     "description": "Slaking, a epic water Wild from the owner's collection.",
     "paletteSeed": 4102,
@@ -365,19 +343,19 @@
       "Slaking Zenith"
     ],
     "base": {
-      "hp": 1553,
-      "pAtk": 89,
-      "sAtk": 165,
-      "spd": 139,
-      "pDef": 135,
-      "sDef": 146
+      "hp": 1283,
+      "pAtk": 176,
+      "sAtk": 81,
+      "spd": 149,
+      "pDef": 88,
+      "sDef": 81
     }
   },
   {
     "id": "starmie",
     "name": "Starmie",
     "faction": "tide",
-    "class": "adept",
+    "class": "striker",
     "tier": "rare",
     "description": "Starmie, a rare water Wild from the owner's collection.",
     "paletteSeed": 9942,
@@ -387,19 +365,19 @@
       "Starmie Zenith"
     ],
     "base": {
-      "hp": 1150,
-      "pAtk": 66,
-      "sAtk": 122,
-      "spd": 103,
-      "pDef": 100,
-      "sDef": 108
+      "hp": 950,
+      "pAtk": 130,
+      "sAtk": 60,
+      "spd": 110,
+      "pDef": 65,
+      "sDef": 60
     }
   },
   {
     "id": "blastoise",
     "name": "Blastoise",
     "faction": "tide",
-    "class": "striker",
+    "class": "guardian",
     "tier": "rare",
     "description": "Blastoise, a rare water Wild from the owner's collection.",
     "paletteSeed": 5865,
@@ -409,12 +387,12 @@
       "Blastoise Zenith"
     ],
     "base": {
-      "hp": 950,
-      "pAtk": 130,
-      "sAtk": 60,
-      "spd": 110,
-      "pDef": 65,
-      "sDef": 60
+      "hp": 1400,
+      "pAtk": 105,
+      "sAtk": 73,
+      "spd": 92,
+      "pDef": 130,
+      "sDef": 130
     }
   }
 ]

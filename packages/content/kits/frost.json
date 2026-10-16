@@ -117,226 +117,8 @@
     }
   },
   {
-    "id": "mew",
-    "name": "Mew",
-    "faction": "frost",
-    "class": "striker",
-    "tier": "mythic",
-    "skills": {
-      "normal": {
-        "type": "P",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "P",
-        "rates": [
-          1.2
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "P",
-        "rates": [
-          1.7,
-          1.4
-        ],
-        "rule": "row"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "pAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "crit",
-          "add": 0.05
-        }
-      ]
-    }
-  },
-  {
-    "id": "jirachi",
-    "name": "Jirachi",
-    "faction": "frost",
-    "class": "striker",
-    "tier": "mythic",
-    "skills": {
-      "normal": {
-        "type": "P",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "P",
-        "rates": [
-          1.2
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "P",
-        "rates": [
-          1.7,
-          1.4
-        ],
-        "rule": "row"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "pAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "crit",
-          "add": 0.05
-        }
-      ]
-    }
-  },
-  {
-    "id": "snorlax",
-    "name": "Snorlax",
-    "faction": "frost",
-    "class": "adept",
-    "tier": "mythic",
-    "skills": {
-      "normal": {
-        "type": "S",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "S",
-        "rates": [
-          1.15
-        ],
-        "rule": "row",
-        "targetDebuffs": [
-          {
-            "tag": "chill",
-            "field": "dmgRdct",
-            "amount": -0.15,
-            "turns": 2
-          }
-        ]
-      },
-      "ult": {
-        "type": "S",
-        "rates": [
-          1.7
-        ],
-        "rule": "row",
-        "targetDebuffs": [
-          {
-            "tag": "daze",
-            "field": "spd",
-            "amount": -40,
-            "turns": 2
-          }
-        ]
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "controlBoost",
-          "add": 0.1
-        },
-        {
-          "field": "healBoost",
-          "add": 0.1
-        }
-      ]
-    }
-  },
-  {
-    "id": "shiny-kyogre",
-    "name": "Shiny Kyogre",
-    "faction": "frost",
-    "class": "adept",
-    "tier": "mythic",
-    "skills": {
-      "normal": {
-        "type": "S",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "S",
-        "rates": [
-          1.15
-        ],
-        "rule": "row",
-        "targetDebuffs": [
-          {
-            "tag": "chill",
-            "field": "dmgRdct",
-            "amount": -0.15,
-            "turns": 2
-          }
-        ]
-      },
-      "ult": {
-        "type": "S",
-        "rates": [
-          1.7
-        ],
-        "rule": "row",
-        "targetDebuffs": [
-          {
-            "tag": "daze",
-            "field": "spd",
-            "amount": -40,
-            "turns": 2
-          }
-        ]
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "controlBoost",
-          "add": 0.1
-        },
-        {
-          "field": "healBoost",
-          "add": 0.1
-        }
-      ]
-    }
-  },
-  {
-    "id": "shiny-cresselia",
-    "name": "Shiny Cresselia",
+    "id": "kyogre",
+    "name": "Kyogre",
     "faction": "frost",
     "class": "guardian",
     "tier": "mythic",
@@ -387,6 +169,209 @@
         }
       ],
       "rageOnHit": 125
+    }
+  },
+  {
+    "id": "cresselia",
+    "name": "Cresselia",
+    "faction": "frost",
+    "class": "striker",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "solgaleo",
+    "name": "Solgaleo",
+    "faction": "frost",
+    "class": "adept",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "shiny-mew",
+    "name": "Shiny Mew",
+    "faction": "frost",
+    "class": "striker",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "shiny-arceus",
+    "name": "Shiny Arceus",
+    "faction": "frost",
+    "class": "striker",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
     }
   }
 ]

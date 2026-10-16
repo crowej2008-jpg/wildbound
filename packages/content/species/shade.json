@@ -91,7 +91,7 @@
     "id": "hoopa",
     "name": "Hoopa",
     "faction": "shade",
-    "class": "guardian",
+    "class": "adept",
     "tier": "mythic",
     "description": "Hoopa, a mythic dark Wild from the owner's collection.",
     "paletteSeed": 5582,
@@ -101,19 +101,19 @@
       "Hoopa Zenith"
     ],
     "base": {
-      "hp": 4480,
-      "pAtk": 336,
-      "sAtk": 234,
-      "spd": 294,
-      "pDef": 416,
-      "sDef": 416
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
     }
   },
   {
     "id": "mewtwo",
     "name": "Mewtwo",
     "faction": "shade",
-    "class": "adept",
+    "class": "striker",
     "tier": "mythic",
     "description": "Mewtwo, a mythic dark Wild from the owner's collection.",
     "paletteSeed": 8498,
@@ -123,19 +123,19 @@
       "Mewtwo Zenith"
     ],
     "base": {
-      "hp": 3680,
-      "pAtk": 211,
-      "sAtk": 390,
-      "spd": 330,
-      "pDef": 320,
-      "sDef": 346
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
     }
   },
   {
     "id": "darkrai",
     "name": "Darkrai",
     "faction": "shade",
-    "class": "guardian",
+    "class": "adept",
     "tier": "mythic",
     "description": "Darkrai, a mythic dark Wild from the owner's collection.",
     "paletteSeed": 3369,
@@ -145,19 +145,19 @@
       "Darkrai Zenith"
     ],
     "base": {
-      "hp": 4480,
-      "pAtk": 336,
-      "sAtk": 234,
-      "spd": 294,
-      "pDef": 416,
-      "sDef": 416
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
     }
   },
   {
     "id": "lunala",
     "name": "Lunala",
     "faction": "shade",
-    "class": "adept",
+    "class": "striker",
     "tier": "mythic",
     "description": "Lunala, a mythic dark Wild from the owner's collection.",
     "paletteSeed": 4352,
@@ -167,28 +167,6 @@
       "Lunala Zenith"
     ],
     "base": {
-      "hp": 3680,
-      "pAtk": 211,
-      "sAtk": 390,
-      "spd": 330,
-      "pDef": 320,
-      "sDef": 346
-    }
-  },
-  {
-    "id": "deoxys",
-    "name": "Deoxys",
-    "faction": "shade",
-    "class": "striker",
-    "tier": "mythic",
-    "description": "Deoxys, a mythic dark Wild from the owner's collection.",
-    "paletteSeed": 2917,
-    "stages": [
-      "Deoxys",
-      "Deoxys Prime",
-      "Deoxys Zenith"
-    ],
-    "base": {
       "hp": 3040,
       "pAtk": 416,
       "sAtk": 192,
@@ -198,17 +176,17 @@
     }
   },
   {
-    "id": "meloetta",
-    "name": "Meloetta",
+    "id": "deoxys",
+    "name": "Deoxys",
     "faction": "shade",
     "class": "guardian",
     "tier": "mythic",
-    "description": "Meloetta, a mythic dark Wild from the owner's collection.",
-    "paletteSeed": 4732,
+    "description": "Deoxys, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 2917,
     "stages": [
-      "Meloetta",
-      "Meloetta Prime",
-      "Meloetta Zenith"
+      "Deoxys",
+      "Deoxys Prime",
+      "Deoxys Zenith"
     ],
     "base": {
       "hp": 4480,
@@ -220,61 +198,17 @@
     }
   },
   {
-    "id": "shiny-mewtwo",
-    "name": "Shiny Mewtwo",
-    "faction": "shade",
-    "class": "striker",
-    "tier": "mythic",
-    "description": "Shiny Mewtwo, a shiny mythic dark Wild from the owner's collection.",
-    "paletteSeed": 9152,
-    "stages": [
-      "Shiny Mewtwo",
-      "Shiny Mewtwo Prime",
-      "Shiny Mewtwo Zenith"
-    ],
-    "base": {
-      "hp": 3040,
-      "pAtk": 416,
-      "sAtk": 192,
-      "spd": 352,
-      "pDef": 208,
-      "sDef": 192
-    }
-  },
-  {
-    "id": "shiny-darkrai",
-    "name": "Shiny Darkrai",
-    "faction": "shade",
-    "class": "striker",
-    "tier": "mythic",
-    "description": "Shiny Darkrai, a shiny mythic dark Wild from the owner's collection.",
-    "paletteSeed": 3071,
-    "stages": [
-      "Shiny Darkrai",
-      "Shiny Darkrai Prime",
-      "Shiny Darkrai Zenith"
-    ],
-    "base": {
-      "hp": 3040,
-      "pAtk": 416,
-      "sAtk": 192,
-      "spd": 352,
-      "pDef": 208,
-      "sDef": 192
-    }
-  },
-  {
-    "id": "shiny-kyurem",
-    "name": "Shiny Kyurem",
+    "id": "meloetta",
+    "name": "Meloetta",
     "faction": "shade",
     "class": "adept",
     "tier": "mythic",
-    "description": "Shiny Kyurem, a shiny mythic dark Wild from the owner's collection.",
-    "paletteSeed": 3510,
+    "description": "Meloetta, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 4732,
     "stages": [
-      "Shiny Kyurem",
-      "Shiny Kyurem Prime",
-      "Shiny Kyurem Zenith"
+      "Meloetta",
+      "Meloetta Prime",
+      "Meloetta Zenith"
     ],
     "base": {
       "hp": 3680,
@@ -286,10 +220,76 @@
     }
   },
   {
+    "id": "shiny-mewtwo",
+    "name": "Shiny Mewtwo",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Shiny Mewtwo, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 9152,
+    "stages": [
+      "Shiny Mewtwo",
+      "Shiny Mewtwo Prime",
+      "Shiny Mewtwo Zenith"
+    ],
+    "base": {
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
+    }
+  },
+  {
+    "id": "shiny-darkrai",
+    "name": "Shiny Darkrai",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Shiny Darkrai, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 3071,
+    "stages": [
+      "Shiny Darkrai",
+      "Shiny Darkrai Prime",
+      "Shiny Darkrai Zenith"
+    ],
+    "base": {
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
+    }
+  },
+  {
+    "id": "shiny-kyurem",
+    "name": "Shiny Kyurem",
+    "faction": "shade",
+    "class": "guardian",
+    "tier": "mythic",
+    "description": "Shiny Kyurem, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 3510,
+    "stages": [
+      "Shiny Kyurem",
+      "Shiny Kyurem Prime",
+      "Shiny Kyurem Zenith"
+    ],
+    "base": {
+      "hp": 4480,
+      "pAtk": 336,
+      "sAtk": 234,
+      "spd": 294,
+      "pDef": 416,
+      "sDef": 416
+    }
+  },
+  {
     "id": "shiny-hoopa",
     "name": "Shiny Hoopa",
     "faction": "shade",
-    "class": "striker",
+    "class": "adept",
     "tier": "mythic",
     "description": "Shiny Hoopa, a shiny mythic dark Wild from the owner's collection.",
     "paletteSeed": 4536,
@@ -299,12 +299,12 @@
       "Shiny Hoopa Zenith"
     ],
     "base": {
-      "hp": 3040,
-      "pAtk": 416,
-      "sAtk": 192,
-      "spd": 352,
-      "pDef": 208,
-      "sDef": 192
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
     }
   }
 ]

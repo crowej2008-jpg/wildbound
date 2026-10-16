@@ -18,7 +18,11 @@ const scenariosDir = resolve(repoRoot, 'packages/cli/tests/golden/scenarios');
 const baselinesDir = resolve(repoRoot, 'packages/cli/tests/golden/baselines');
 
 function loadKitsMap() {
-  const kits = loadKits(resolve(repoRoot, 'packages/content/kits'));
+  const kits = [
+    ...loadKits(resolve(repoRoot, 'packages/content/kits')),
+    // M1 parity fixtures — kept out of the shipped roster (see ASSUMPTIONS).
+    ...loadKits(resolve(repoRoot, 'packages/cli/tests/golden/kits')),
+  ];
   return new Map(kits.map((k) => [k.id, k]));
 }
 

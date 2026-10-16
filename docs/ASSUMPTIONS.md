@@ -242,9 +242,11 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    the remaining franchise terms (`nintendo`, `game freak`, `digimon`, `yokai`) and the binary-media
    scan. Its tests were updated to match — a deliberate, recorded weakening (AGENTS.md: "never
    weaken a threshold without recording why").
-3. **Two M1 parity kits are retained.** The golden regression lock
-   (`packages/cli/tests/golden/`) replays scenarios against the `tidewarden` and `twigleaf` kits from
-   `packages/content/kits`, so those two kits and their species survive the roster swap byte-for-byte.
+3. **The M1 parity kits live as test fixtures, not content.** The golden regression lock
+   (`packages/cli/tests/golden/`) replays scenarios against the `tidewarden` and `twigleaf` kits, so
+   those two kits were moved byte-identically to `packages/cli/tests/golden/kits/parity.json` and are
+   loaded *in addition to* the content kits by `golden.test.ts` / `pnpm golden-export`. No original
+   Wild remains in the shipped roster.
 4. **Attribute → faction map.** The sheet has five attributes (Light, Dark, Fire, Grass, Water) and
    we have six factions, so Fire→ember, Water→tide, Grass→grove, Dark→shade and Light alternates
    volt/frost. *What would change it:* a decision to re-theme the factions to the sheet's attributes.
@@ -259,3 +261,10 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
 7. **Chapters 1-3 were re-pointed at low-tier creatures.** The original stage enemies named
    `speciesId`s that no longer exist; they now use common/rare/epic creatures at `stage: 0` so the
    grown-starter balance test still holds. `docs/design/roster-import.md` lists the exact changes.
+8. **Only 17 of 84 creatures have captured skills.** The sheet's `Skills` tab covers 17; the other 67
+   use the three original class-archetype kits (honestly labelled, not invented move names). The 17
+   are a best-effort translation into the content DSL — ally-wide buffs, rage generation, cleanses,
+   on-hit passives, conditional talents and heal-over-time have no DSL home and were dropped; heal
+   amounts were converted from "% of ATK" to a fraction of max HP. The full mapping and the dropped
+   list are in `docs/design/roster-import.md`. *What would change it:* more captured skills, or new
+   DSL primitives for the dropped effects.

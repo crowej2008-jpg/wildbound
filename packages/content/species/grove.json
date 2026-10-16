@@ -1,31 +1,9 @@
 [
   {
-    "id": "twigleaf",
-    "name": "Sceptile",
-    "faction": "grove",
-    "class": "adept",
-    "tier": "common",
-    "description": "Sceptile, a common grove Wild from the owner's collection.",
-    "paletteSeed": 3842,
-    "stages": [
-      "Sceptile",
-      "Sceptile Prime",
-      "Sceptile Zenith"
-    ],
-    "base": {
-      "hp": 720,
-      "pAtk": 66,
-      "sAtk": 110,
-      "spd": 95,
-      "pDef": 77,
-      "sDef": 83
-    }
-  },
-  {
     "id": "shiny-venusaur",
     "name": "Shiny Venusaur",
     "faction": "grove",
-    "class": "guardian",
+    "class": "adept",
     "tier": "supreme",
     "description": "Shiny Venusaur, a supreme grass Wild from the owner's collection.",
     "paletteSeed": 5992,
@@ -33,28 +11,6 @@
       "Shiny Venusaur",
       "Shiny Venusaur Prime",
       "Shiny Venusaur Zenith"
-    ],
-    "base": {
-      "hp": 3360,
-      "pAtk": 252,
-      "sAtk": 175,
-      "spd": 221,
-      "pDef": 312,
-      "sDef": 312
-    }
-  },
-  {
-    "id": "shiny-raichu",
-    "name": "Shiny Raichu",
-    "faction": "grove",
-    "class": "adept",
-    "tier": "supreme",
-    "description": "Shiny Raichu, a supreme grass Wild from the owner's collection.",
-    "paletteSeed": 5051,
-    "stages": [
-      "Shiny Raichu",
-      "Shiny Raichu Prime",
-      "Shiny Raichu Zenith"
     ],
     "base": {
       "hp": 2760,
@@ -66,10 +22,32 @@
     }
   },
   {
+    "id": "shiny-raichu",
+    "name": "Shiny Raichu",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "Shiny Raichu, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 5051,
+    "stages": [
+      "Shiny Raichu",
+      "Shiny Raichu Prime",
+      "Shiny Raichu Zenith"
+    ],
+    "base": {
+      "hp": 2280,
+      "pAtk": 312,
+      "sAtk": 144,
+      "spd": 264,
+      "pDef": 156,
+      "sDef": 144
+    }
+  },
+  {
     "id": "shiny-god-ash-pikachu",
     "name": "Shiny God Ash-Pikachu",
     "faction": "grove",
-    "class": "striker",
+    "class": "guardian",
     "tier": "supreme",
     "description": "Shiny God Ash-Pikachu, a supreme grass Wild from the owner's collection.",
     "paletteSeed": 2872,
@@ -79,19 +57,19 @@
       "Shiny God Ash-Pikachu Zenith"
     ],
     "base": {
-      "hp": 2280,
-      "pAtk": 312,
-      "sAtk": 144,
-      "spd": 264,
-      "pDef": 156,
-      "sDef": 144
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
     }
   },
   {
     "id": "god-ash-pikachu",
     "name": "God Ash-Pikachu",
     "faction": "grove",
-    "class": "guardian",
+    "class": "adept",
     "tier": "supreme",
     "description": "God Ash-Pikachu, a supreme grass Wild from the owner's collection.",
     "paletteSeed": 4982,
@@ -101,19 +79,19 @@
       "God Ash-Pikachu Zenith"
     ],
     "base": {
-      "hp": 3360,
-      "pAtk": 252,
-      "sAtk": 175,
-      "spd": 221,
-      "pDef": 312,
-      "sDef": 312
+      "hp": 2760,
+      "pAtk": 158,
+      "sAtk": 293,
+      "spd": 247,
+      "pDef": 240,
+      "sDef": 259
     }
   },
   {
     "id": "wobbuffet",
     "name": "Wobbuffet",
     "faction": "grove",
-    "class": "striker",
+    "class": "guardian",
     "tier": "supreme",
     "description": "Wobbuffet, a supreme grass Wild from the owner's collection.",
     "paletteSeed": 8241,
@@ -123,19 +101,19 @@
       "Wobbuffet Zenith"
     ],
     "base": {
-      "hp": 2280,
-      "pAtk": 312,
-      "sAtk": 144,
-      "spd": 264,
-      "pDef": 156,
-      "sDef": 144
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
     }
   },
   {
     "id": "zygarde",
     "name": "Zygarde",
     "faction": "grove",
-    "class": "guardian",
+    "class": "adept",
     "tier": "supreme",
     "description": "Zygarde, a supreme grass Wild from the owner's collection.",
     "paletteSeed": 4033,
@@ -145,19 +123,19 @@
       "Zygarde Zenith"
     ],
     "base": {
-      "hp": 3360,
-      "pAtk": 252,
-      "sAtk": 175,
-      "spd": 221,
-      "pDef": 312,
-      "sDef": 312
+      "hp": 2760,
+      "pAtk": 158,
+      "sAtk": 293,
+      "spd": 247,
+      "pDef": 240,
+      "sDef": 259
     }
   },
   {
     "id": "dialga",
     "name": "Dialga",
     "faction": "grove",
-    "class": "striker",
+    "class": "guardian",
     "tier": "supreme",
     "description": "Dialga, a supreme grass Wild from the owner's collection.",
     "paletteSeed": 3511,
@@ -167,19 +145,19 @@
       "Dialga Zenith"
     ],
     "base": {
-      "hp": 2280,
-      "pAtk": 312,
-      "sAtk": 144,
-      "spd": 264,
-      "pDef": 156,
-      "sDef": 144
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
     }
   },
   {
     "id": "shaymin",
     "name": "Shaymin",
     "faction": "grove",
-    "class": "striker",
+    "class": "guardian",
     "tier": "supreme",
     "description": "Shaymin, a supreme grass Wild from the owner's collection.",
     "paletteSeed": 9696,
@@ -189,19 +167,19 @@
       "Shaymin Zenith"
     ],
     "base": {
-      "hp": 2280,
-      "pAtk": 312,
-      "sAtk": 144,
-      "spd": 264,
-      "pDef": 156,
-      "sDef": 144
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
     }
   },
   {
     "id": "celebi",
     "name": "Celebi",
     "faction": "grove",
-    "class": "guardian",
+    "class": "adept",
     "tier": "supreme",
     "description": "Celebi, a supreme grass Wild from the owner's collection.",
     "paletteSeed": 1309,
@@ -211,19 +189,19 @@
       "Celebi Zenith"
     ],
     "base": {
-      "hp": 3360,
-      "pAtk": 252,
-      "sAtk": 175,
-      "spd": 221,
-      "pDef": 312,
-      "sDef": 312
+      "hp": 2760,
+      "pAtk": 158,
+      "sAtk": 293,
+      "spd": 247,
+      "pDef": 240,
+      "sDef": 259
     }
   },
   {
     "id": "rayquaza",
     "name": "Rayquaza",
     "faction": "grove",
-    "class": "guardian",
+    "class": "adept",
     "tier": "supreme",
     "description": "Rayquaza, a supreme grass Wild from the owner's collection.",
     "paletteSeed": 8497,
@@ -233,19 +211,19 @@
       "Rayquaza Zenith"
     ],
     "base": {
-      "hp": 3360,
-      "pAtk": 252,
-      "sAtk": 175,
-      "spd": 221,
-      "pDef": 312,
-      "sDef": 312
+      "hp": 2760,
+      "pAtk": 158,
+      "sAtk": 293,
+      "spd": 247,
+      "pDef": 240,
+      "sDef": 259
     }
   },
   {
     "id": "raikou",
     "name": "Raikou",
     "faction": "grove",
-    "class": "adept",
+    "class": "striker",
     "tier": "legendary",
     "description": "Raikou, a legendary grass Wild from the owner's collection.",
     "paletteSeed": 5252,
@@ -255,19 +233,19 @@
       "Raikou Zenith"
     ],
     "base": {
-      "hp": 2070,
-      "pAtk": 119,
-      "sAtk": 220,
-      "spd": 185,
-      "pDef": 180,
-      "sDef": 194
+      "hp": 1710,
+      "pAtk": 234,
+      "sAtk": 108,
+      "spd": 198,
+      "pDef": 117,
+      "sDef": 108
     }
   },
   {
     "id": "zapdos",
     "name": "Zapdos",
     "faction": "grove",
-    "class": "adept",
+    "class": "striker",
     "tier": "legendary",
     "description": "Zapdos, a legendary grass Wild from the owner's collection.",
     "paletteSeed": 5010,
@@ -277,12 +255,34 @@
       "Zapdos Zenith"
     ],
     "base": {
-      "hp": 2070,
-      "pAtk": 119,
-      "sAtk": 220,
-      "spd": 185,
-      "pDef": 180,
-      "sDef": 194
+      "hp": 1710,
+      "pAtk": 234,
+      "sAtk": 108,
+      "spd": 198,
+      "pDef": 117,
+      "sDef": 108
+    }
+  },
+  {
+    "id": "sceptile",
+    "name": "Sceptile",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "epic",
+    "description": "Sceptile, a epic grass Wild from the owner's collection.",
+    "paletteSeed": 3278,
+    "stages": [
+      "Sceptile",
+      "Sceptile Prime",
+      "Sceptile Zenith"
+    ],
+    "base": {
+      "hp": 1890,
+      "pAtk": 142,
+      "sAtk": 99,
+      "spd": 124,
+      "pDef": 176,
+      "sDef": 176
     }
   },
   {
@@ -311,7 +311,7 @@
     "id": "metagross",
     "name": "Metagross",
     "faction": "grove",
-    "class": "guardian",
+    "class": "striker",
     "tier": "epic",
     "description": "Metagross, a epic grass Wild from the owner's collection.",
     "paletteSeed": 3492,
@@ -321,19 +321,19 @@
       "Metagross Zenith"
     ],
     "base": {
-      "hp": 1890,
-      "pAtk": 142,
-      "sAtk": 99,
-      "spd": 124,
-      "pDef": 176,
-      "sDef": 176
+      "hp": 1283,
+      "pAtk": 176,
+      "sAtk": 81,
+      "spd": 149,
+      "pDef": 88,
+      "sDef": 81
     }
   },
   {
     "id": "gardevoir",
     "name": "Gardevoir",
     "faction": "grove",
-    "class": "guardian",
+    "class": "adept",
     "tier": "epic",
     "description": "Gardevoir, a epic grass Wild from the owner's collection.",
     "paletteSeed": 5018,
@@ -343,19 +343,19 @@
       "Gardevoir Zenith"
     ],
     "base": {
-      "hp": 1890,
-      "pAtk": 142,
-      "sAtk": 99,
-      "spd": 124,
-      "pDef": 176,
-      "sDef": 176
+      "hp": 1553,
+      "pAtk": 89,
+      "sAtk": 165,
+      "spd": 139,
+      "pDef": 135,
+      "sDef": 146
     }
   },
   {
     "id": "salamence",
     "name": "Salamence",
     "faction": "grove",
-    "class": "guardian",
+    "class": "striker",
     "tier": "epic",
     "description": "Salamence, a epic grass Wild from the owner's collection.",
     "paletteSeed": 6054,
@@ -365,19 +365,19 @@
       "Salamence Zenith"
     ],
     "base": {
-      "hp": 1890,
-      "pAtk": 142,
-      "sAtk": 99,
-      "spd": 124,
-      "pDef": 176,
-      "sDef": 176
+      "hp": 1283,
+      "pAtk": 176,
+      "sAtk": 81,
+      "spd": 149,
+      "pDef": 88,
+      "sDef": 81
     }
   },
   {
     "id": "raichu",
     "name": "Raichu",
     "faction": "grove",
-    "class": "guardian",
+    "class": "adept",
     "tier": "rare",
     "description": "Raichu, a rare grass Wild from the owner's collection.",
     "paletteSeed": 5507,
@@ -387,12 +387,12 @@
       "Raichu Zenith"
     ],
     "base": {
-      "hp": 1400,
-      "pAtk": 105,
-      "sAtk": 73,
-      "spd": 92,
-      "pDef": 130,
-      "sDef": 130
+      "hp": 1150,
+      "pAtk": 66,
+      "sAtk": 122,
+      "spd": 103,
+      "pDef": 100,
+      "sDef": 108
     }
   },
   {
