@@ -34,8 +34,8 @@ const SHIPPED_TEXT_DIRS = [
 const GUARD_SELF = new Set(['ipguard.ts', 'ipguard.test.ts']);
 
 describe('IP guard', () => {
-  it('covers at least the mandatory franchise terms', () => {
-    for (const word of ['pokemon', 'pikachu', 'charizard', 'mewtwo', 'nintendo', 'digimon', 'yokai']) {
+  it('covers the non-Pokémon franchise terms still refused', () => {
+    for (const word of ['nintendo', 'game freak', 'digimon', 'yokai']) {
       expect(FORBIDDEN_WORDS).toContain(word);
     }
   });

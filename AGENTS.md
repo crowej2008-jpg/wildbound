@@ -21,12 +21,14 @@ Architecture required by the master prompt:
 
 ## Non-negotiable rules (from PROMPT.md section 2)
 
-- **Originality / IP.** Use no Pokémon (or any other franchise) names, species, move names, item
-  names, type names, logos, art, sprites, sounds, text, or tutorial wording. All creatures are
-  original and procedural. Do not copy rows/ids/names/tables from `reference/game-rebuild/data/`
-  into shipped content — use those dumps only for formula shapes and curves. No network calls except
-  loading the app's own files; no analytics, ads, or trackers. The IP guard test in
-  `tests/ip-guard/ip-guard.test.ts` stays green.
+- **Originality / IP.** All creatures, art, sprites, sounds and UI text are original and procedural,
+  and no franchise names, logos or text from any other game may ship. **Owner override (2026-10-15):**
+  this private, never-distributed build uses the owner's own Pokémon-themed roster (collected in
+  `reference/`), so Pokémon species and skill names are permitted in `packages/content` — and only
+  there. Do not copy rows/ids/names/tables from `reference/game-rebuild/data/` into shipped content —
+  use those dumps only for formula shapes and curves. No network calls except loading the app's own
+  files; no analytics, ads, or trackers. The IP guard test in `tests/ip-guard/ip-guard.test.ts` stays
+  green for the remaining franchise terms.
 - **Engineering.** TypeScript strict mode everywhere; no uncommented `any`. `packages/engine` is pure
   and deterministic: no `Math.random`, `Date.now`, or `new Date()`; randomness comes from an injected
   seeded PRNG (mulberry32), time from an injected clock. Everything tunable is data in

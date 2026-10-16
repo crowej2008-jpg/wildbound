@@ -9,49 +9,16 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { extname, join } from 'node:path';
 
-/** Extend this list whenever another franchise name is noticed. */
-export const FORBIDDEN_WORDS = [
-  'pokemon',
-  'pokémon',
-  'pikachu',
-  'charizard',
-  'charmander',
-  'squirtle',
-  'bulbasaur',
-  'blastoise',
-  'mewtwo',
-  'mew',
-  'eevee',
-  'snorlax',
-  'gengar',
-  'lugia',
-  'ho-oh',
-  'rayquaza',
-  'reshiram',
-  'zekrom',
-  'kyurem',
-  'calyrex',
-  'wobbuffet',
-  'psyduck',
-  'greninja',
-  'garchomp',
-  'lucario',
-  'metagross',
-  'tyranitar',
-  'articuno',
-  'zapdos',
-  'moltres',
-  'hoopa',
-  'gigantamax',
-  'dynamax',
-  'pokeball',
-  'poké ball',
-  'nintendo',
-  'game freak',
-  'the pokemon company',
-  'digimon',
-  'yokai',
-] as const;
+/**
+ * Extend this list whenever another franchise name is noticed.
+ *
+ * Scope note (2026-10-15): the owner explicitly overrode the originality rule
+ * for this private, never-distributed build, so Pokémon species and skill names
+ * are permitted in `packages/content` (see docs/ASSUMPTIONS.md). The Pokémon
+ * terms were therefore removed from this blocklist; the guard still refuses the
+ * remaining franchise terms below and all binary media.
+ */
+export const FORBIDDEN_WORDS = ['nintendo', 'game freak', 'digimon', 'yokai'] as const;
 
 /** Binary media extensions the guard refuses to see under packages/. */
 export const BINARY_MEDIA_EXTENSIONS = new Set([

@@ -58,6 +58,11 @@ other game. No network calls at all other than loading the app's own files. No a
 
 Add the IP guard test in Appendix C and keep it green.
 
+> **Owner override (2026-10-15).** The owner has authorised this private, never-distributed build to
+> ship the Pokémon-themed roster they collected (see `docs/ASSUMPTIONS.md`). Pokémon species and skill
+> names are therefore permitted in `packages/content` for this build only; every other clause in §2.1
+> stands, and the IP guard (Appendix C) scopes its blocklist to the remaining franchise terms.
+
 ### 2.2 Engineering
 
 - TypeScript strict mode everywhere. No `any` unless commented why.

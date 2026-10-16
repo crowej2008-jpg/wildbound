@@ -229,3 +229,22 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
 - When a reference doc says `(inferred)` or `(open)`, the item becomes a named combat
   setting (Appendix A) and is surfaced in the Build Lab Rules panel.
 - Conflicts between reference docs: prefer the later-dated or audited statement; record the conflict here.
+
+## Owner content override (2026-10-15)
+
+1. **Pokémon roster shipped in this private build.** The owner asked for the game's creatures to be
+   the Pokémon-themed roster they collected (`wiki-pokemon-skills.xlsx`, from their own wiki) and
+   stated the build is private and never distributed. On that basis the owner **explicitly overrode**
+   the §2.1 originality rule for this build (AGENTS.md / PROMPT.md amended). Consequence:
+   `packages/content` now carries Pokémon species and skill names. *What would change it:* the owner
+   distributing the build, or asking for the original roster again.
+2. **The IP guard is scoped, not removed.** `FORBIDDEN_WORDS` in `packages/cli/src/ipguard.ts` keeps
+   the remaining franchise terms (`nintendo`, `game freak`, `digimon`, `yokai`) and the binary-media
+   scan. Its tests were updated to match — a deliberate, recorded weakening (AGENTS.md: "never
+   weaken a threshold without recording why").
+3. **Two M1 parity kits are retained.** The golden regression lock
+   (`packages/cli/tests/golden/`) replays scenarios against the `tidewarden` and `twigleaf` kits from
+   `packages/content/kits`, so those two kits and their species survive the roster swap byte-for-byte.
+4. **Attribute → faction map.** The sheet has five attributes (Light, Dark, Fire, Grass, Water) and
+   we have six factions, so Fire→ember, Water→tide, Grass→grove, Dark→shade and Light alternates
+   volt/frost. *What would change it:* a decision to re-theme the factions to the sheet's attributes.

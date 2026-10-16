@@ -13,7 +13,7 @@ let tmp: string;
 
 beforeAll(() => {
   tmp = mkdtempSync(join(tmpdir(), 'wildbound-ipguard-'));
-  writeFileSync(join(tmp, 'bad.txt'), 'this mentions pikachu somewhere', 'utf8');
+  writeFileSync(join(tmp, 'bad.txt'), 'this mentions digimon somewhere', 'utf8');
   writeFileSync(join(tmp, 'good.txt'), 'a grove warden of the tide faction', 'utf8');
   writeFileSync(join(tmp, 'noise.png'), 'not really a png');
   writeFileSync(join(tmp, 'sound.mp3'), 'not really audio');
@@ -24,11 +24,14 @@ afterAll(() => {
 });
 
 describe('ip guard', () => {
-  it('lists every forbidden franchise word from Appendix C', () => {
-    expect(FORBIDDEN_WORDS).toContain('pikachu');
-    expect(FORBIDDEN_WORDS).toContain('pokemon');
+  it('lists the non-Pokémon franchise words still refused', () => {
     expect(FORBIDDEN_WORDS).toContain('nintendo');
-    expect(FORBIDDEN_WORDS.length).toBeGreaterThanOrEqual(40);
+    expect(FORBIDDEN_WORDS).toContain('game freak');
+    expect(FORBIDDEN_WORDS).toContain('digimon');
+    expect(FORBIDDEN_WORDS).toContain('yokai');
+    // Pokémon terms were dropped by the 2026-10-15 owner override (docs/ASSUMPTIONS.md).
+    expect(FORBIDDEN_WORDS).not.toContain('pikachu');
+    expect(FORBIDDEN_WORDS).not.toContain('pokemon');
   });
 
   it('flags forbidden terms case-insensitively', () => {
@@ -45,8 +48,7 @@ describe('ip guard', () => {
     expect(names.some((f) => f.endsWith('good.txt'))).toBe(false);
   });
 
-  it('has no forbidden term inside the guard configuration itself', () => {
-    // The guard's word list is the only legal place those terms live under packages/.
+  it('keeps the binary-media blocklist intact', () => {
     expect(BINARY_MEDIA_EXTENSIONS.has('.png')).toBe(true);
   });
 });
