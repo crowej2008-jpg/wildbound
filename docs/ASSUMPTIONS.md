@@ -268,3 +268,29 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    amounts were converted from "% of ATK" to a fraction of max HP. The full mapping and the dropped
    list are in `docs/design/roster-import.md`. *What would change it:* more captured skills, or new
    DSL primitives for the dropped effects.
+
+## M9 (design) — skill kits
+
+The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-ports every kit
+(`docs/design/skill-kits.md`). Decisions that affect combat:
+
+1. **DEF stays inert by default.** The measured model (1,278 fights) found P.DEF/S.DEF have no damage
+   effect, so `defendersUseDef` ships `false`; the new `pDef`/`sDef` buff fields are stored faithfully
+   and cut damage only if the switch is turned on (through the new `defK` setting). *Why:* prefer the
+   measured model (PROMPT §2). *What would change it:* the sheet clearly treats P.DEF/S.DEF as
+   meaningful, so a play-test decision to make them live is a setting flip + re-tune, not a data change.
+2. **Taunt becomes forced targeting, not a skip.** The sheet's taunt makes enemies attack the taunter;
+   the M1 engine treated taunt as a generic skip. M9 re-models it as a redirect toward the taunter.
+   *What would change it:* evidence the reference taunt truly skips a turn.
+3. **"[DEF] Pokémon" needs species traits the sheet does not carry.** Encoded as `targetTrait: 'def'`
+   against an initially empty trait set, so the bonus never fires until traits are authored.
+   *What would change it:* a traits column in the sheet, or traits derived from base stats.
+4. **"(lv.N)" ladders are stored, not interpolated blindly.** Explicit level steps become
+   `scalesWithLevel`; a single stated value is used flat. *What would change it:* per-level rows for
+   more talents in the sheet.
+5. **DoT basis is per-effect.** Burn/frost "% of S.ATK" DoTs scale from the caster's S.ATK; poison and
+   generic DoTs from the target's max HP — whichever the sheet states. *What would change it:* a
+   measured DoT formula.
+6. **Cleanse/dispel strip whole buffs, not stacks.** A cleanse removes negative buffs in `cleanseOrder`;
+   "cannot be dispelled" is a buff flag, not a separate mechanic. *What would change it:* a reference
+   statement about stack-level removal.

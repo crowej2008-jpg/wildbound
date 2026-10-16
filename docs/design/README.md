@@ -21,3 +21,5 @@ Status:
 - M8: `pve-modes.md` (Tower, Trials, World Boss, Daily Dungeons, the Link Crystal, `BattleRules`).
 - 2026-10-15 content override: `roster-import.md` (the owner-override roster import — attribute→faction,
   rarity→tier, generated stats, the 17 ported skill kits, parity-kit fixtures, relaxed coverage rule).
+- M9 (design): `skill-kits.md` (the combat-DSL expansion the imported kits need — targeting, damage,
+  effects/conditions, resources, triggers, cooldowns — and the plan to port all 84 creatures).

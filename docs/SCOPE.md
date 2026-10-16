@@ -14,7 +14,7 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Summoning (gacha) and shops | Summon, Shop | M6 | built |
 | Equipment layers: Relics, Runes, Charms, Spirit Cores, Talents | Wild screen Equip/Runes/Cores/Talents | M7 | built |
 | Trials, Tower, World Boss, Daily Dungeons, Link Crystal endgame | Challenges hub, Tower, Trials, World Boss, Dungeons, Link Crystal | M8 | built |
-| Combat DSL expansion + faithful 84-creature skill kits | — (headless; Wild screen unchanged) | M9 | pending |
+| Combat DSL expansion + faithful 84-creature skill kits | — (headless; Wild screen unchanged) | M9 | in progress (design note) |
 | Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings | M10 | pending |
 | Social + events (simulated), settings, help | Guild, Events, Settings, Help | M11 | pending |
 | Hardening + optional Fastify/SQLite backend | all | M12 | pending |
