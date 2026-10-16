@@ -6,8 +6,12 @@ import { levelCapOf, levelUpCost } from './costs';
  * and persistence. Levels/stars clamp to their caps here (never trust the caller).
  */
 
-export function leveledUp(instance: WildInstance, levels: number, tables: ProgressTables): WildInstance {
-  const cap = levelCapOf(instance, tables);
+export function leveledUp(
+  instance: WildInstance,
+  levels: number,
+  tables: ProgressTables,
+  cap: number = levelCapOf(instance, tables),
+): WildInstance {
   const level = Math.min(cap, Math.max(1, instance.level + Math.max(0, Math.floor(levels))));
   return { ...instance, level };
 }

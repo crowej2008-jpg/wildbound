@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ECONOMY } from '@wildbound/content';
-import { CURRENCY_IDS, levelProgress } from '@wildbound/engine';
+import { HUD_CURRENCY_IDS, levelProgress } from '@wildbound/engine';
 import { currencyLabel, t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
 
@@ -54,7 +54,7 @@ export default function Hud() {
           <span className="hud-player">{snapshot.state.profile.name}</span>
           <XpBar xp={snapshot.state.profile.xp} />
           <div className="currency-bar">
-            {CURRENCY_IDS.map((id) => (
+            {HUD_CURRENCY_IDS.map((id) => (
               <span key={id} className={`currency-pill currency-${id}`}>
                 <span className="currency-amount">{snapshot.state.currencies[id].toLocaleString()}</span>
                 <span className="currency-name">{currencyLabel[id]}</span>

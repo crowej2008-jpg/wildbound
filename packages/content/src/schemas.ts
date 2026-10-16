@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
 /**
- * Zod schemas for the skill-kit DSL (PROMPT §6.7) and combat settings
+ * Zod schemas for the skill-kit DSL (PROMPT §6.7), species/Power/growth tuning
+ * (M2), account/stage/quest/economy data (M3/M5) and combat settings
  * (Appendix A). The engine consumes plain JSON; the CLI validator parses every
  * file under packages/content against these before a milestone ships.
  */
@@ -271,7 +272,7 @@ export const accountSchema = z
   })
   .strict();
 
-/** A reward bundle: currencies plus trainer xp (M5). */
+/** A currency/xp payout (M5/M6). Mirrors the engine's `Rewards` shape. */
 export const rewardSchema = z
   .object({
     gold: z.number().nonnegative().optional(),
@@ -279,30 +280,36 @@ export const rewardSchema = z
     candy: z.number().nonnegative().optional(),
     shard: z.number().nonnegative().optional(),
     stone: z.number().nonnegative().optional(),
+    ticketCommon: z.number().nonnegative().optional(),
+    ticketPremium: z.number().nonnegative().optional(),
+    arenaToken: z.number().nonnegative().optional(),
+    guildCoin: z.number().nonnegative().optional(),
+    homeCoin: z.number().nonnegative().optional(),
+    forestCoin: z.number().nonnegative().optional(),
+    islandCoin: z.number().nonnegative().optional(),
+    wildCoin: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })
   .strict();
 
-/** One campaign stage (M5, PROMPT §7.6). */
+/** One enemy in a stage's defender squad, scaled by the stage's difficulty (M5). */
+export const stageEnemySchema = z
+  .object({
+    speciesId: z.string().min(1),
+    level: z.number().int().positive(),
+    stars: z.number().int().positive(),
+    stage: z.number().int().nonnegative(),
+  })
+  .strict();
+
+/** Campaign stage (M5, PROMPT §7.6). */
 export const stageSchema = z
   .object({
     id: z.string().min(1),
     chapter: z.number().int().positive(),
     index: z.number().int().positive(),
     name: z.string().min(1),
-    enemies: z
-      .array(
-        z
-          .object({
-            speciesId: z.string().min(1),
-            level: z.number().int().positive(),
-            stars: z.number().int().positive(),
-            stage: z.number().int().nonnegative(),
-          })
-          .strict(),
-      )
-      .min(1)
-      .max(6),
+    enemies: z.array(stageEnemySchema).min(1),
     firstClear: rewardSchema,
     repeat: rewardSchema,
     idlePerMinute: rewardSchema,
@@ -310,41 +317,38 @@ export const stageSchema = z
   })
   .strict();
 
-export const questMetricSchema = z.enum([
-  'winBattle',
-  'sweepStage',
-  'levelUp',
-  'starUp',
-  'claimIdle',
-  'claimQuest',
-]);
-
-/** One daily quest (M5, PROMPT §7.9). */
+/** A daily quest (M5, PROMPT §7.9). */
 export const questSchema = z
   .object({
     id: z.string().min(1),
-    metric: questMetricSchema,
+    metric: z.enum(['winBattle', 'sweepStage', 'levelUp', 'starUp', 'claimIdle', 'claimQuest']),
     target: z.number().int().positive(),
     activity: z.number().int().nonnegative(),
     rewards: rewardSchema,
   })
   .strict();
 
-/** Economy tuning (M5, PROMPT §7.4): idle caps, xp curve, activity chests, mail TTL. */
+/** Economy tuning (M5): idle, xp curve, activity chests, mail, welcome gift. */
 export const economySchema = z
   .object({
     idle: z
       .object({
         capHours: z.number().positive(),
         quickCollectHours: z.number().positive(),
-        quickCollectGems: z.number().int().nonnegative(),
+        quickCollectGems: z.number().nonnegative(),
         quickCollectDailyLimit: z.number().int().nonnegative(),
       })
       .strict(),
     xp: z
-      .object({ base: z.number().positive(), exponent: z.number().positive(), maxLevel: z.number().int().positive() })
+      .object({
+        base: z.number().positive(),
+        exponent: z.number().positive(),
+        maxLevel: z.number().int().positive(),
+      })
       .strict(),
-    activityChests: z.array(z.object({ points: z.number().int().positive(), rewards: rewardSchema }).strict()),
+    activityChests: z.array(
+      z.object({ points: z.number().int().positive(), rewards: rewardSchema }).strict(),
+    ),
     mailTtlHours: z.number().positive(),
     welcome: rewardSchema,
   })

@@ -3,6 +3,8 @@ import combat from '../tuning/combat.json';
 import economy from '../tuning/economy.json';
 import growth from '../tuning/growth.json';
 import power from '../tuning/power.json';
+import { GACHA } from './tuning-gacha';
+import { gachaSchema, type GachaJson } from './gacha-schema';
 import {
   accountSchema,
   combatSettingsSchema,
@@ -16,12 +18,10 @@ import {
   type PowerJson,
 } from './schemas';
 
-/**
- * Validated tuning tables (M2/M3/M5). Everything tunable is data; these exports
- * are the single source both the client and the CLI read.
- */
 export const COMBAT_SETTINGS: CombatSettingsJson = combatSettingsSchema.parse(combat);
 export const GROWTH: GrowthJson = growthSchema.parse(growth);
 export const POWER: PowerJson = powerSchema.parse(power);
 export const ACCOUNT: AccountJson = accountSchema.parse(account);
 export const ECONOMY: EconomyJson = economySchema.parse(economy);
+export const GACHA_TUNING: GachaJson = gachaSchema.parse(GACHA);
+export type { GachaJson } from './gacha-schema';

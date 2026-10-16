@@ -1,5 +1,18 @@
-import type { AccountState, Rewards, Squad, SquadMode, StrategyId } from '@wildbound/engine';
+import type {
+  AccountState,
+  DrawResult,
+  MachineId,
+  Rewards,
+  Squad,
+  SquadMode,
+  StrategyId,
+  SummonCost,
+} from '@wildbound/engine';
 import type { BattleView } from './battle';
+import type { GachaView } from './gacha';
+import type { ShopView } from './shops';
+import type { EquipmentView } from './equipment-view';
+import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 
 /**
  * The server boundary (PROMPT.md §10).
@@ -28,7 +41,8 @@ export type ServerError =
   | 'invalid_squad'
   | 'stage_locked'
   | 'not_ready'
-  | 'daily_limit';
+  | 'daily_limit'
+  | 'in_use';
 
 export type Result<T> =
   | { ok: true; value: T }
@@ -58,6 +72,58 @@ export interface StageBattleResult {
 /** Any claim that grants rewards and returns fresh state (M5). */
 export interface ClaimResult {
   granted: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** The outcome of a summon batch (M6): what was spent and what was drawn. */
+export interface SummonResult {
+  machine: MachineId;
+  count: number;
+  draws: DrawResult[];
+  cost: SummonCost;
+  snapshot: AccountSnapshot;
+}
+
+/** A tower climb (M8). */
+export interface TowerBattleResult {
+  battle: BattleView;
+  floor: number;
+  win: boolean;
+  rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** A trial clear (M8). */
+export interface TrialBattleResult {
+  battle: BattleView;
+  trialId: string;
+  win: boolean;
+  /** True when this clear paid out (the first clear of the UTC day). */
+  firstToday: boolean;
+  rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** A daily-dungeon clear (M8). */
+export interface DungeonBattleResult {
+  battle: BattleView;
+  dungeonId: string;
+  win: boolean;
+  firstToday: boolean;
+  rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** A world-boss fight (M8): damage scored, rank against the ghost ladder. */
+export interface WorldBossBattleResult {
+  battle: BattleView;
+  speciesId: string;
+  name: string;
+  damage: number;
+  bestDamage: number;
+  rank: number;
+  ghosts: number[];
+  attemptsLeft: number;
   snapshot: AccountSnapshot;
 }
 
@@ -100,6 +166,64 @@ export interface GameServer {
   skipTutorial(): Promise<Result<AccountSnapshot>>;
   /** Debug: fast-forward the game clock by minutes (M5). */
   debugAdvanceClock(minutes: number): Promise<Result<AccountSnapshot>>;
+  /** Draw `count` (1 or 10) from a machine; `seed` pins the outcome (M6). */
+  summon(machine: MachineId, count: number, seed?: number): Promise<Result<SummonResult>>;
+  /** Spend a machine's box credits and grant its box reward (M6). */
+  claimGachaBox(machine: MachineId): Promise<Result<ClaimResult>>;
+  /** Set or clear the Premium machine's featured target (M6). */
+  setWish(speciesId: string | null): Promise<Result<AccountSnapshot>>;
+  /** Display-ready summoning state: free draws, credits, pity, rates (M6). */
+  getGacha(): Promise<Result<GachaView>>;
+  /** Buy one item from a shop, restocking first if the window has rolled (M6). */
+  buyShopItem(shopId: string, itemId: string): Promise<Result<ClaimResult>>;
+  /** Pay a manual shop's refresh cost to reset its stock (M6). */
+  refreshShop(shopId: string): Promise<Result<ClaimResult>>;
+  /** Display-ready shop state: stock left, affordability, next restock (M6). */
+  getShops(): Promise<Result<ShopView[]>>;
+  /** Display-ready equipment view for one Wild: owned items, gates, deltas (M7). */
+  getEquipment(wildId: string): Promise<Result<EquipmentView>>;
+  /** Equip (or clear, with `null`) a relic; `force` moves one worn elsewhere (M7). */
+  equipRelic(wildId: string, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
+  equipRune(wildId: string, socket: number, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
+  equipCore(wildId: string, socket: number, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
+  equipCharm(wildId: string, charmId: string | null): Promise<Result<AccountSnapshot>>;
+  /** Spend copies to raise a charm's star level (M7). */
+  upgradeCharm(charmId: string): Promise<Result<AccountSnapshot>>;
+  /** Level or refine a relic (M7). */
+  levelRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
+  refineRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
+  /** Level a rune (M7). */
+  levelRune(instanceId: string): Promise<Result<AccountSnapshot>>;
+  /** Pick (or clear, with `null`) a talent path (M7). */
+  chooseTalentTree(wildId: string, treeId: string | null): Promise<Result<AccountSnapshot>>;
+  /** Allocate one talent option on a tier (M7). */
+  allocateTalent(wildId: string, tier: number, option: number): Promise<Result<AccountSnapshot>>;
+  /** Reset a Wild's talents for gems (gold is refunded) (M7). */
+  resetTalents(wildId: string): Promise<Result<AccountSnapshot>>;
+  /** Display-ready tower state: floor, weekly climbs, daily sweeps, milestones (M8). */
+  getTower(): Promise<Result<TowerView>>;
+  /** Climb the next tower floor with the tower squad (M8). */
+  challengeTower(seed?: number): Promise<Result<TowerBattleResult>>;
+  /** Re-play the highest cleared tower floor for its reward, up to the daily cap (M8). */
+  sweepTower(): Promise<Result<ClaimResult>>;
+  /** Display-ready trial cards: open/closed, cleared today, preview (M8). */
+  getTrials(): Promise<Result<TrialCardView[]>>;
+  /** Fight a trial with the campaign squad under its rule (M8). */
+  challengeTrial(trialId: string, seed?: number): Promise<Result<TrialBattleResult>>;
+  /** Display-ready world-boss state: today's boss, attempts, milestones, rank (M8). */
+  getWorldBoss(): Promise<Result<WorldBossView>>;
+  /** Fight today's world boss and score damage against the ghost ladder (M8). */
+  challengeWorldBoss(seed?: number): Promise<Result<WorldBossBattleResult>>;
+  /** Claim a reached, unclaimed world-boss damage milestone (M8). */
+  claimWorldBossMilestone(index: number): Promise<Result<ClaimResult>>;
+  /** Display-ready daily-dungeon cards, with today's open one (M8). */
+  getDungeons(): Promise<Result<DungeonCardView[]>>;
+  /** Fight today's daily dungeon with the campaign squad (M8). */
+  challengeDungeon(dungeonId: string, seed?: number): Promise<Result<DungeonBattleResult>>;
+  /** Display-ready Link Crystal state: level, cap, cost, eligibility (M8). */
+  getLinkCrystal(): Promise<Result<LinkCrystalView>>;
+  /** Spend candy/gold/stones to raise the Link Crystal one level (M8). */
+  upgradeLinkCrystal(): Promise<Result<AccountSnapshot>>;
 }
 
 export function ok<T>(value: T): Result<T> {
@@ -115,4 +239,11 @@ export * from './save';
 export * from './storage';
 export * from './battle';
 export * from './economy';
+export * from './outcome';
+export * from './gacha';
+export * from './shops';
+export * from './equipment';
+export * from './equipment-view';
+export * from './pve';
+export * from './pve-view';
 export * from './local-server';

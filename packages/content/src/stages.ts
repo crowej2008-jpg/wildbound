@@ -18,13 +18,13 @@ export function stageById(id: string): StageJson | undefined {
 
 /** Stage ids in campaign order (chapter, then index). */
 export function orderedStages(): StageJson[] {
-  return [...STAGES].sort((a, b) => a.chapter - b.chapter || a.index - b.index);
+  return [...STAGES].sort((a, b) => ((a.chapter ?? 0) - (b.chapter ?? 0)) || ((a.index ?? 0) - (b.index ?? 0)));
 }
 
 export function chapterNumbers(): number[] {
-  return [...new Set(STAGES.map((s) => s.chapter))].sort((a, b) => a - b);
+  return [...new Set(STAGES.map((s) => s.chapter ?? 0))].sort((a, b) => a - b);
 }
 
 export function stagesInChapter(chapter: number): StageJson[] {
-  return STAGES.filter((s) => s.chapter === chapter).sort((a, b) => a.index - b.index);
+  return STAGES.filter((s) => (s.chapter ?? 0) === chapter).sort((a, b) => ((a.index ?? 0) - (b.index ?? 0)));
 }

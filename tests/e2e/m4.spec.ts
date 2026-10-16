@@ -5,7 +5,7 @@ import { expect, test } from '@playwright/test';
  * starting roster seeds a campaign squad and the battle is built server-side.
  */
 test('replays a recorded battle to a result and restarts identically', async ({ page }) => {
-  await page.goto('/combat');
+  await page.goto('/combat/training');
   await expect(page.getByRole('heading', { name: 'Battle' })).toBeVisible();
   await expect(page.locator('.battle-unit')).toHaveCount(12);
 
@@ -23,7 +23,7 @@ test('replays a recorded battle to a result and restarts identically', async ({ 
 });
 
 test('steps through the log and cycles speed', async ({ page }) => {
-  await page.goto('/combat');
+  await page.goto('/combat/training');
   await expect(page.locator('.battle-unit')).toHaveCount(12);
 
   const speed = page.getByRole('button', { name: /Speed/ });
@@ -38,7 +38,7 @@ test('steps through the log and cycles speed', async ({ page }) => {
 });
 
 test('the log is available for the whole fight', async ({ page }) => {
-  await page.goto('/combat');
+  await page.goto('/combat/training');
   await expect(page.locator('.battle-unit')).toHaveCount(12);
   await page.locator('.battle-log summary').click();
   await expect(page.locator('.battle-log li')).not.toHaveCount(0);

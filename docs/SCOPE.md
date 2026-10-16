@@ -11,9 +11,9 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Account, roster, growth, squads, LocalServer, saves | HUD, Wilds (Upgrade/Evolve), Squad editor, More/Debug | M3 | built |
 | Battle UI (replay from log) | Battle screen, Result panels | M4 | built |
 | Campaign, idle income, quests, mail, clock, tutorial | Campaign, Daily loop, Mail, Quests, Tutorial | M5 | built |
-| Summoning (gacha) and shops | Summon, Shop | M6 | pending |
-| Equipment layers: Relics, Runes, Charms, Spirit Cores, Talents | Wild screen Equip/Runes/Cores/Talents | M7 | pending |
-| Trials, Tower, World Boss, Link Crystal endgame | Trials, Tower, World Boss | M8 | pending |
+| Summoning (gacha) and shops | Summon, Shop | M6 | built |
+| Equipment layers: Relics, Runes, Charms, Spirit Cores, Talents | Wild screen Equip/Runes/Cores/Talents | M7 | built |
+| Trials, Tower, World Boss, Daily Dungeons, Link Crystal endgame | Challenges hub, Tower, Trials, World Boss, Dungeons, Link Crystal | M8 | built |
 | Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings | M9 | pending |
 | Build Lab (owner's main goal) | Build Lab, Debug, Rules panel, Kit editor | M10 | pending |
 | Social + events (simulated), settings, help | Guild, Events, Settings, Help | M11 | pending |

@@ -1,11 +1,9 @@
-import type { Rewards } from '@wildbound/engine';
-import { currencyLabel, t, type CurrencyKey } from '../i18n';
+import { CURRENCY_REWARD_KEYS, type Rewards } from '@wildbound/engine';
+import { currencyLabel, t } from '../i18n';
 
-const ORDER: CurrencyKey[] = ['gold', 'gems', 'candy', 'shard', 'stone'];
-
-/** Render a reward bundle as compact chips (M5). */
+/** Render a reward bundle as compact chips (M5/M6). */
 export default function RewardLine({ rewards }: { rewards: Rewards }) {
-  const parts = ORDER.filter((k) => (rewards[k] ?? 0) > 0).map((k) => (
+  const parts = CURRENCY_REWARD_KEYS.filter((k) => (rewards[k] ?? 0) > 0).map((k) => (
     <span key={k} className="chip reward-chip">
       +{rewards[k]?.toLocaleString()} {currencyLabel[k]}
     </span>

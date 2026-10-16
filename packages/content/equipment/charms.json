@@ -1,0 +1,252 @@
+{
+  "charms": [
+    {
+      "id": "charm-sunpetal-berry",
+      "name": "Sunpetal Berry",
+      "tier": "common",
+      "maxStars": 0,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 300,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "charm-mistbud-berry",
+      "name": "Mistbud Berry",
+      "tier": "common",
+      "maxStars": 0,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 30,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "charm-ironpeel-berry",
+      "name": "Ironpeel Berry",
+      "tier": "common",
+      "maxStars": 0,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 30,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "charm-glimmerberry",
+      "name": "Glimmerberry",
+      "tier": "common",
+      "maxStars": 0,
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.05,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "charm-emberfruit",
+      "name": "Emberfruit",
+      "tier": "basic",
+      "maxStars": 2,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 400,
+          "perLevel": 250
+        }
+      ]
+    },
+    {
+      "id": "charm-tidefruit",
+      "name": "Tidefruit",
+      "tier": "basic",
+      "maxStars": 2,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 40,
+          "perLevel": 25
+        }
+      ]
+    },
+    {
+      "id": "charm-grovefruit",
+      "name": "Grovefruit",
+      "tier": "basic",
+      "maxStars": 2,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 40,
+          "perLevel": 25
+        }
+      ]
+    },
+    {
+      "id": "charm-voltfruit",
+      "name": "Voltfruit",
+      "tier": "basic",
+      "maxStars": 2,
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.04,
+          "perLevel": 0.02
+        }
+      ]
+    },
+    {
+      "id": "charm-frostplum",
+      "name": "Frostplum",
+      "tier": "intermediate",
+      "maxStars": 3,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 700,
+          "perLevel": 300
+        }
+      ]
+    },
+    {
+      "id": "charm-shadeplum",
+      "name": "Shadeplum",
+      "tier": "intermediate",
+      "maxStars": 3,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 70,
+          "perLevel": 30
+        }
+      ]
+    },
+    {
+      "id": "charm-amberplum",
+      "name": "Amberplum",
+      "tier": "intermediate",
+      "maxStars": 3,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 70,
+          "perLevel": 30
+        }
+      ]
+    },
+    {
+      "id": "charm-umbraplum",
+      "name": "Umbraplum",
+      "tier": "intermediate",
+      "maxStars": 3,
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.06,
+          "perLevel": 0.02
+        }
+      ]
+    },
+    {
+      "id": "charm-dawnspire-fruit",
+      "name": "Dawnspire Fruit",
+      "tier": "greater",
+      "maxStars": 5,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 1100,
+          "perLevel": 350
+        },
+        {
+          "kind": "percent",
+          "field": "receiveHealBoost",
+          "base": 0.05,
+          "perLevel": 0.02
+        }
+      ]
+    },
+    {
+      "id": "charm-duskbloom-fruit",
+      "name": "Duskbloom Fruit",
+      "tier": "greater",
+      "maxStars": 5,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 100,
+          "perLevel": 35
+        },
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.04,
+          "perLevel": 0.015
+        }
+      ]
+    },
+    {
+      "id": "charm-stormcore-fruit",
+      "name": "Stormcore Fruit",
+      "tier": "greater",
+      "maxStars": 5,
+      "lines": [
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 100,
+          "perLevel": 35
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.04,
+          "perLevel": 0.015
+        }
+      ]
+    },
+    {
+      "id": "charm-wyrdstar-fruit",
+      "name": "Wyrdstar Fruit",
+      "tier": "greater",
+      "maxStars": 5,
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "crit",
+          "base": 0.03,
+          "perLevel": 0.01
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.1,
+          "perLevel": 0.03
+        }
+      ]
+    }
+  ]
+}

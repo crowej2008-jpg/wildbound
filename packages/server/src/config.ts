@@ -1,14 +1,27 @@
-import { ACCOUNT, ECONOMY, GROWTH, POWER, QUESTS, STAGES, WILDS } from '@wildbound/content';
-import type { EconomyJson } from '@wildbound/content';
+import { ACCOUNT, ECONOMY, GROWTH, POWER, QUESTS, STAGES, WILDS, GACHA, SHOPS, PVE } from '@wildbound/content';
+import {
+  CHARMS,
+  CORE_SETS,
+  EQUIPMENT_TUNING,
+  RELICS,
+  RUNES,
+  RUNE_SETS,
+  TALENT_BLOCKS,
+  TALENT_TREES,
+} from '@wildbound/content';
+import type { EconomyJson, PveJson } from '@wildbound/content';
 import {
   mulberry32,
   type CoreStats,
+  type EquipmentTables,
   type Faction,
+  type GachaMachineDef,
   type GrowthTables,
   type PowerWeights,
   type ProgressTables,
   type QuestDef,
   type Rng,
+  type ShopDef,
   type StageDef,
   type Tier,
   type WildClass,
@@ -45,7 +58,13 @@ export interface GameConfig {
   stages: StageDef[];
   stageById: Map<string, StageDef>;
   quests: QuestDef[];
+  gacha: { machines: GachaMachineDef[] };
+  shops: ShopDef[];
   economy: EconomyJson;
+  /** M7 equipment catalogue + tuning. */
+  equipment: EquipmentTables;
+  /** M8 PvE mode tables (tower, trials, world boss, dungeons, link crystal). */
+  pve: PveJson;
   xpCurve: XpCurve;
   idle: IdleConfig;
   now: () => number;
@@ -92,7 +111,20 @@ export function buildConfig(): GameConfig {
     stages: STAGES,
     stageById: new Map(STAGES.map((stage) => [stage.id, stage])),
     quests: QUESTS,
+    gacha: { machines: GACHA.machines as unknown as GachaMachineDef[] },
+    shops: SHOPS as unknown as ShopDef[],
     economy: ECONOMY,
+    equipment: {
+      relics: RELICS,
+      runes: RUNES,
+      runeSets: RUNE_SETS,
+      charms: CHARMS,
+      coreSets: CORE_SETS,
+      talentBlocks: TALENT_BLOCKS,
+      talentTrees: TALENT_TREES,
+      tuning: EQUIPMENT_TUNING,
+    },
+    pve: PVE,
     xpCurve: { base: ECONOMY.xp.base, exponent: ECONOMY.xp.exponent, maxLevel: ECONOMY.xp.maxLevel },
     idle: {
       capMinutes: Math.round(ECONOMY.idle.capHours * 60),

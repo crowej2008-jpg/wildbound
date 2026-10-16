@@ -24,6 +24,7 @@ export type {
   BattleContext,
   BattleEvent,
   BattleResult,
+  BattleRules,
   Buff,
   BuffKind,
   BuffSpec,
@@ -39,5 +40,6 @@ export type {
   TalentDef,
   TargetRule,
   TurnHook,
+  RoundEffect,
 } from './types';
 export type { CombatSettings } from './settings';

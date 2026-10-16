@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   canEvolve,
+  effectiveLevelCap,
   evolveCheck,
   levelCapOf,
   levelUpCost,
@@ -25,7 +26,11 @@ export default function WildDetail() {
 
   const view = useMemo(() => {
     if (!wild || !meta) return null;
-    const cap = levelCapOf(wild, PROGRESS);
+    const stageCap = levelCapOf(wild, PROGRESS);
+    const crystal = snapshot?.state.pve.linkCrystal ?? { unlocked: false, level: 0 };
+    const topStage = Math.max(0, meta.stages.length - 1);
+    const atTopStage = wild.evolutionStage >= topStage && wild.level >= stageCap;
+    const cap = effectiveLevelCap({ stars: wild.stars, atTopStage }, stageCap, crystal);
     const nextCost = levelUpCost(wild.level, Math.min(cap, wild.level + 1), PROGRESS);
     const tenCost = levelUpCost(wild.level, Math.min(cap, wild.level + 10), PROGRESS);
     const star = starUpCost(wild.stars, PROGRESS);
@@ -38,7 +43,7 @@ export default function WildDetail() {
       info: 'reason' in evolve ? null : evolve,
       canEvolve: canEvolve(wild, meta.stages.length, PROGRESS),
     };
-  }, [wild, meta]);
+  }, [wild, meta, snapshot]);
 
   if (!snapshot) return <main className="main"><p className="muted">Loading account…</p></main>;
   if (!wild || !meta || !view) {

@@ -1,0 +1,966 @@
+{
+  "blocks": [
+    {
+      "id": "t-strong",
+      "text": "Trained for power",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 60,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-focus",
+      "text": "Focused casting",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 60,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-vigour",
+      "text": "Deep reserves",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 420,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-plate",
+      "text": "Reinforced hide",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "pDef",
+          "base": 50,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-keen",
+      "text": "Keen eye",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "crit",
+          "base": 0.03,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-brutal",
+      "text": "Brutal strikes",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.15,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-press",
+      "text": "Relentless",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.04,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-endure",
+      "text": "Enduring",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.03,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-mend",
+      "text": "Mending touch",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "healBoost",
+          "base": 0.06,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-wall",
+      "text": "Shield wall",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "block",
+          "base": 0.05,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-spirit",
+      "text": "Spirit surge",
+      "lines": [
+        {
+          "kind": "soul",
+          "field": "spiritAtk",
+          "base": 40,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-soulward",
+      "text": "Soul ward",
+      "lines": [
+        {
+          "kind": "soul",
+          "field": "spiritDef",
+          "base": 40,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-swift",
+      "text": "Swift",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "spd",
+          "base": 6,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-skill",
+      "text": "Sharpened skills",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.05,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "t-ult",
+      "text": "Focused ultimate",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "ultBoost",
+          "base": 0.05,
+          "perLevel": 0
+        }
+      ]
+    }
+  ],
+  "trees": [
+    {
+      "id": "tree-striker-1",
+      "name": "Ashpike Discipline",
+      "className": "striker",
+      "tiers": [
+        [
+          "t-strong",
+          "t-press",
+          "t-brutal"
+        ],
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ],
+        [
+          "t-brutal",
+          "t-ult",
+          "t-swift"
+        ],
+        [
+          "t-press",
+          "t-brutal",
+          "t-strong"
+        ],
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-ult",
+          "t-swift",
+          "t-brutal"
+        ],
+        [
+          "t-brutal",
+          "t-strong",
+          "t-press"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-swift",
+          "t-brutal",
+          "t-ult"
+        ]
+      ]
+    },
+    {
+      "id": "tree-striker-2",
+      "name": "Razorwing Discipline",
+      "className": "striker",
+      "tiers": [
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ],
+        [
+          "t-brutal",
+          "t-ult",
+          "t-swift"
+        ],
+        [
+          "t-press",
+          "t-brutal",
+          "t-strong"
+        ],
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-ult",
+          "t-swift",
+          "t-brutal"
+        ],
+        [
+          "t-brutal",
+          "t-strong",
+          "t-press"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-swift",
+          "t-brutal",
+          "t-ult"
+        ],
+        [
+          "t-strong",
+          "t-press",
+          "t-brutal"
+        ]
+      ]
+    },
+    {
+      "id": "tree-striker-3",
+      "name": "Bloodmoon Discipline",
+      "className": "striker",
+      "tiers": [
+        [
+          "t-brutal",
+          "t-ult",
+          "t-swift"
+        ],
+        [
+          "t-press",
+          "t-brutal",
+          "t-strong"
+        ],
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-ult",
+          "t-swift",
+          "t-brutal"
+        ],
+        [
+          "t-brutal",
+          "t-strong",
+          "t-press"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-swift",
+          "t-brutal",
+          "t-ult"
+        ],
+        [
+          "t-strong",
+          "t-press",
+          "t-brutal"
+        ],
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ]
+      ]
+    },
+    {
+      "id": "tree-striker-4",
+      "name": "Thunderstep Discipline",
+      "className": "striker",
+      "tiers": [
+        [
+          "t-press",
+          "t-brutal",
+          "t-strong"
+        ],
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-ult",
+          "t-swift",
+          "t-brutal"
+        ],
+        [
+          "t-brutal",
+          "t-strong",
+          "t-press"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-swift",
+          "t-brutal",
+          "t-ult"
+        ],
+        [
+          "t-strong",
+          "t-press",
+          "t-brutal"
+        ],
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ],
+        [
+          "t-brutal",
+          "t-ult",
+          "t-swift"
+        ]
+      ]
+    },
+    {
+      "id": "tree-striker-5",
+      "name": "Ravager Discipline",
+      "className": "striker",
+      "tiers": [
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-ult",
+          "t-swift",
+          "t-brutal"
+        ],
+        [
+          "t-brutal",
+          "t-strong",
+          "t-press"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-swift",
+          "t-brutal",
+          "t-ult"
+        ],
+        [
+          "t-strong",
+          "t-press",
+          "t-brutal"
+        ],
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ],
+        [
+          "t-brutal",
+          "t-ult",
+          "t-swift"
+        ],
+        [
+          "t-press",
+          "t-brutal",
+          "t-strong"
+        ]
+      ]
+    },
+    {
+      "id": "tree-guardian-1",
+      "name": "Bulwark Discipline",
+      "className": "guardian",
+      "tiers": [
+        [
+          "t-vigour",
+          "t-endure",
+          "t-wall"
+        ],
+        [
+          "t-plate",
+          "t-plate",
+          "t-soulward"
+        ],
+        [
+          "t-wall",
+          "t-mend",
+          "t-vigour"
+        ],
+        [
+          "t-endure",
+          "t-wall",
+          "t-vigour"
+        ],
+        [
+          "t-plate",
+          "t-soulward",
+          "t-plate"
+        ],
+        [
+          "t-mend",
+          "t-vigour",
+          "t-wall"
+        ],
+        [
+          "t-wall",
+          "t-vigour",
+          "t-endure"
+        ],
+        [
+          "t-soulward",
+          "t-plate",
+          "t-plate"
+        ],
+        [
+          "t-vigour",
+          "t-wall",
+          "t-mend"
+        ]
+      ]
+    },
+    {
+      "id": "tree-guardian-2",
+      "name": "Ironshell Discipline",
+      "className": "guardian",
+      "tiers": [
+        [
+          "t-plate",
+          "t-plate",
+          "t-soulward"
+        ],
+        [
+          "t-wall",
+          "t-mend",
+          "t-vigour"
+        ],
+        [
+          "t-endure",
+          "t-wall",
+          "t-vigour"
+        ],
+        [
+          "t-plate",
+          "t-soulward",
+          "t-plate"
+        ],
+        [
+          "t-mend",
+          "t-vigour",
+          "t-wall"
+        ],
+        [
+          "t-wall",
+          "t-vigour",
+          "t-endure"
+        ],
+        [
+          "t-soulward",
+          "t-plate",
+          "t-plate"
+        ],
+        [
+          "t-vigour",
+          "t-wall",
+          "t-mend"
+        ],
+        [
+          "t-vigour",
+          "t-endure",
+          "t-wall"
+        ]
+      ]
+    },
+    {
+      "id": "tree-guardian-3",
+      "name": "Bastion Discipline",
+      "className": "guardian",
+      "tiers": [
+        [
+          "t-wall",
+          "t-mend",
+          "t-vigour"
+        ],
+        [
+          "t-endure",
+          "t-wall",
+          "t-vigour"
+        ],
+        [
+          "t-plate",
+          "t-soulward",
+          "t-plate"
+        ],
+        [
+          "t-mend",
+          "t-vigour",
+          "t-wall"
+        ],
+        [
+          "t-wall",
+          "t-vigour",
+          "t-endure"
+        ],
+        [
+          "t-soulward",
+          "t-plate",
+          "t-plate"
+        ],
+        [
+          "t-vigour",
+          "t-wall",
+          "t-mend"
+        ],
+        [
+          "t-vigour",
+          "t-endure",
+          "t-wall"
+        ],
+        [
+          "t-plate",
+          "t-plate",
+          "t-soulward"
+        ]
+      ]
+    },
+    {
+      "id": "tree-guardian-4",
+      "name": "Stonewarden Discipline",
+      "className": "guardian",
+      "tiers": [
+        [
+          "t-endure",
+          "t-wall",
+          "t-vigour"
+        ],
+        [
+          "t-plate",
+          "t-soulward",
+          "t-plate"
+        ],
+        [
+          "t-mend",
+          "t-vigour",
+          "t-wall"
+        ],
+        [
+          "t-wall",
+          "t-vigour",
+          "t-endure"
+        ],
+        [
+          "t-soulward",
+          "t-plate",
+          "t-plate"
+        ],
+        [
+          "t-vigour",
+          "t-wall",
+          "t-mend"
+        ],
+        [
+          "t-vigour",
+          "t-endure",
+          "t-wall"
+        ],
+        [
+          "t-plate",
+          "t-plate",
+          "t-soulward"
+        ],
+        [
+          "t-wall",
+          "t-mend",
+          "t-vigour"
+        ]
+      ]
+    },
+    {
+      "id": "tree-guardian-5",
+      "name": "Aegis Discipline",
+      "className": "guardian",
+      "tiers": [
+        [
+          "t-plate",
+          "t-soulward",
+          "t-plate"
+        ],
+        [
+          "t-mend",
+          "t-vigour",
+          "t-wall"
+        ],
+        [
+          "t-wall",
+          "t-vigour",
+          "t-endure"
+        ],
+        [
+          "t-soulward",
+          "t-plate",
+          "t-plate"
+        ],
+        [
+          "t-vigour",
+          "t-wall",
+          "t-mend"
+        ],
+        [
+          "t-vigour",
+          "t-endure",
+          "t-wall"
+        ],
+        [
+          "t-plate",
+          "t-plate",
+          "t-soulward"
+        ],
+        [
+          "t-wall",
+          "t-mend",
+          "t-vigour"
+        ],
+        [
+          "t-endure",
+          "t-wall",
+          "t-vigour"
+        ]
+      ]
+    },
+    {
+      "id": "tree-adept-1",
+      "name": "Runeweaver Discipline",
+      "className": "adept",
+      "tiers": [
+        [
+          "t-focus",
+          "t-ult",
+          "t-skill"
+        ],
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ],
+        [
+          "t-skill",
+          "t-mend",
+          "t-soulward"
+        ],
+        [
+          "t-ult",
+          "t-skill",
+          "t-focus"
+        ],
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-mend",
+          "t-soulward",
+          "t-skill"
+        ],
+        [
+          "t-skill",
+          "t-focus",
+          "t-ult"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-soulward",
+          "t-skill",
+          "t-mend"
+        ]
+      ]
+    },
+    {
+      "id": "tree-adept-2",
+      "name": "Starcall Discipline",
+      "className": "adept",
+      "tiers": [
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ],
+        [
+          "t-skill",
+          "t-mend",
+          "t-soulward"
+        ],
+        [
+          "t-ult",
+          "t-skill",
+          "t-focus"
+        ],
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-mend",
+          "t-soulward",
+          "t-skill"
+        ],
+        [
+          "t-skill",
+          "t-focus",
+          "t-ult"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-soulward",
+          "t-skill",
+          "t-mend"
+        ],
+        [
+          "t-focus",
+          "t-ult",
+          "t-skill"
+        ]
+      ]
+    },
+    {
+      "id": "tree-adept-3",
+      "name": "Veilbrand Discipline",
+      "className": "adept",
+      "tiers": [
+        [
+          "t-skill",
+          "t-mend",
+          "t-soulward"
+        ],
+        [
+          "t-ult",
+          "t-skill",
+          "t-focus"
+        ],
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-mend",
+          "t-soulward",
+          "t-skill"
+        ],
+        [
+          "t-skill",
+          "t-focus",
+          "t-ult"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-soulward",
+          "t-skill",
+          "t-mend"
+        ],
+        [
+          "t-focus",
+          "t-ult",
+          "t-skill"
+        ],
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ]
+      ]
+    },
+    {
+      "id": "tree-adept-4",
+      "name": "Oracle Discipline",
+      "className": "adept",
+      "tiers": [
+        [
+          "t-ult",
+          "t-skill",
+          "t-focus"
+        ],
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-mend",
+          "t-soulward",
+          "t-skill"
+        ],
+        [
+          "t-skill",
+          "t-focus",
+          "t-ult"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-soulward",
+          "t-skill",
+          "t-mend"
+        ],
+        [
+          "t-focus",
+          "t-ult",
+          "t-skill"
+        ],
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ],
+        [
+          "t-skill",
+          "t-mend",
+          "t-soulward"
+        ]
+      ]
+    },
+    {
+      "id": "tree-adept-5",
+      "name": "Dreamroot Discipline",
+      "className": "adept",
+      "tiers": [
+        [
+          "t-keen",
+          "t-spirit",
+          "t-keen"
+        ],
+        [
+          "t-mend",
+          "t-soulward",
+          "t-skill"
+        ],
+        [
+          "t-skill",
+          "t-focus",
+          "t-ult"
+        ],
+        [
+          "t-spirit",
+          "t-keen",
+          "t-keen"
+        ],
+        [
+          "t-soulward",
+          "t-skill",
+          "t-mend"
+        ],
+        [
+          "t-focus",
+          "t-ult",
+          "t-skill"
+        ],
+        [
+          "t-keen",
+          "t-keen",
+          "t-spirit"
+        ],
+        [
+          "t-skill",
+          "t-mend",
+          "t-soulward"
+        ],
+        [
+          "t-ult",
+          "t-skill",
+          "t-focus"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "guild",
+  "name": "Guild Shop",
+  "currency": "guildCoin",
+  "restock": { "type": "interval", "days": 7, "hourUtc": 0 },
+  "items": [
+    { "id": "guild.stone", "name": "Stones ×1", "price": 800, "grants": { "stone": 1 }, "limit": 2 },
+    { "id": "guild.shard", "name": "Shards ×100", "price": 600, "grants": { "shard": 100 }, "limit": 2 }
+  ]
+}

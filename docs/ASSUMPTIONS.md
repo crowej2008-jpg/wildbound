@@ -147,6 +147,83 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    onboarding rewards (M12).
 
 
+## M6
+
+1. **A duplicate draw grants a fresh instance, not shards.** The reference converts duplicate
+   Wilds into fodder/shards; Wildbound has no duplicate-conversion sink yet (equipment layers are
+   M7), so every draw appends a new `WildInstance`. `isNew` is decided by whether the species was
+   already in the roster *before the batch*; the same species drawn twice in one batch is new once.
+   *What would change it:* an M7+ duplicate→shard rule, which would replace this in one place.
+2. **The wish is species-level, not faction-level.** `setWish` picks one species of the pool; inside
+   its tier that species' weight is `wishBoost ×` the others. The reference's wish shape is
+   broader. *What would change it:* a faction/quality wish if the Build Lab surfaces one.
+3. **`wishUnlockDraws = 0`.** The reference gates the wish behind ~200 lifetime draws; the tuning
+   field exists (and gates `applySummon`) but is authored to 0 so the feature is live in M6. *What
+   would change it:* balance tuning the field up; no code change.
+4. **Free draws are per-machine and go on a cooldown when spent.** Common: 5/day, 5-min cooldown;
+   Premium: 1/day, 1440-min cooldown. A free draw is only eligible for a *single* draw (a ten-draw
+   always spends tickets/gems). The counter refills when `dayKey(now)` rolls over. *Why:* PROMPT
+   §7.5 numbers, interpreted as "one free draw per cooldown window" rather than an instant refill.
+5. **Summon cost priority is free → ticket → gems.** For a single draw, a free draw is spent first,
+   then the machine's ticket, then gems (Premium only; Common has no gem price and simply fails).
+   A ten-draw spends 10 tickets, or the gem bundle (1,620 Premium). All pricing lives in
+   `tuning/gacha.json`.
+6. **Boxes are spend-down, not auto-granted.** Credits accrue at 1/draw (Common, box = 100 credits
+   ⇒ 100 draws) or 20/draw (Premium, box = 400 credits = 20 draws). Claiming subtracts exactly
+   `boxCreditsNeeded`, so credits can bank past one box.
+7. **Six shops match `docs/design/shops.md`.** Daily `[0,12,18] UTC` (gems), Forest/Island daily
+   (00:00 UTC), Guild every 7 days, PvP every 30 days, Wilds manual (`wildCoin` refresh cost, 3
+   refreshes/day). One-time lines stay bought forever; per-window `limit` lines reset on restock.
+   *What would change it:* a per-shop table if the reference's differs.
+8. **Currencies grow to 13; the HUD strip shows 7.** `ticketCommon`/`ticketPremium` are now
+   earnable/spendable; the eight mode/shop coins (`arenaToken`, `guildCoin`, `homeCoin`,
+   `forestCoin`, `islandCoin`, `wildCoin`) exist in the save and reward bundles but their main
+   sources land with their modes (M8/M9/M11). The M6 reward bundles can already pay any of them.
+9. **Save schema is v3 with a lenient M6 migration.** A v1/v2 save missing `gacha`/`shops` gets
+   defaults from the injected config; a state missing the *core* account fields (profile, roster,
+   squads, currencies, `nextInstanceSeq`) is rejected as `corrupt_save`. The migration never
+   invents a schema from nothing.
+10. **Deferred to M11 (social):** VIP tiers, daily/weekly gift crates, and the "Supreme Gift"
+    storefront. The M6 shop screens show only the six `docs/design/shops.md` stock tables.
+
+## M8
+
+1. **Tower climbs reset weekly, sweeps reset daily; floors are permanent.** PROMPT §7.6 says the
+   tower's *climbs* reset weekly; the reference's faction tower resets ~20 climbs *per day*. We
+   follow PROMPT: `climbsPerWeek = 20` (reset on the UTC ISO-week boundary via `weekKey`) and
+   `sweepsPerDay = 2` (reset on the UTC day). The highest floor cleared never resets. *What would
+   change it:* a reference statement that floors reset, or a per-milestone climb budget.
+2. **Every mode's enemy squad is generated from a difficulty curve, not authored floor tables.**
+   The reference ships hundreds of hand-authored tower floors, trial areas and dungeon stages; the
+   milestone's done criterion is "each mode is playable with rewards and weekly resets", so each
+   definition carries an enemy *pool* (faction/tier filter) + a level curve (`baseLevel × slope^n`,
+   stars and evolution stage rising every N indices) and the server generates `StageEnemy[]` from
+   it. *What would change it:* authoring real floor tables in `packages/content/pve/`.
+3. **World-boss ranking is against a local ghost ladder.** There is no backend, so a fight's damage
+   is ranked against the player's own stored best runs plus deterministic bots (`ghostCount`,
+   seeded in code as `0x5eed`). This mirrors how M9 Arena ghosts will work. Damage is the summed
+   per-unit `damageDealt` for the attacker side. Attempts and claimed milestones reset daily.
+4. **The Link Crystal's star gate ships as `starThreshold = 10`.** PROMPT §7.1 says
+   "340 + 8 per Wild at 12 stars", but our roster's `maxStars` is 10, so a 12★ gate is unreachable.
+   It is a named setting in `packages/content/tuning/pve.json`; the shipped value is the roster star
+   cap. The crystal unlocks when a Wild is in its **final evolution stage *and* at that stage's
+   level cap** (a finished Wild), not merely on evolving — otherwise a 1-stage species would unlock
+   it at level 1. *What would change it:* a roster whose star cap exceeds 12.
+5. **Trials cost no stamina/attempts.** The reference's god trials consume area attempts; PROMPT
+   does not mention a trial cost, so trials are always open (subject to their own rule). Only the
+   **first clear each UTC day** pays a trial's reward bundle; later clears are still valid fights
+   with no payout. `moonfall` is additionally gated to listed weekdays.
+6. **Mode payouts use the full `Rewards` type.** Tower/trial/boss/dungeon payouts can include any
+   currency (including the mode coins that lack a main source until their modes ship). The server
+   applies them through the same M5 reward plumbing (`applyGrant`).
+7. **Save schema is v5.** `pve` (tower/trials/worldBoss/dungeons/linkCrystal) is filled with
+   defaults on a v1–v4 save; the crystal's unlock is re-derived on load (`normalize`), so a migrated
+   save that qualifies unlocks automatically.
+8. **The Crystal raises the level cap; a Wild's leveling respects it.** `levelUp` computes
+   `effectiveLevelCap(wild, formCap, crystal)` and passes it into `leveledUp` (which otherwise
+   clamps to the form cap). The Wild screen shows the same cap and cost. *What would change it:* a
+   decision to make the crystal cosmetic, which would be a content change, not code.
+
 ## Carried from the reference (to be resolved per system)
 
 - When a reference doc says `(inferred)` or `(open)`, the item becomes a named combat

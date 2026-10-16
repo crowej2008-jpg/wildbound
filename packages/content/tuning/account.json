@@ -5,7 +5,15 @@
     "gems": 500,
     "candy": 40000,
     "shard": 200,
-    "stone": 20
+    "stone": 20,
+    "ticketCommon": 10,
+    "ticketPremium": 2,
+    "arenaToken": 0,
+    "guildCoin": 0,
+    "homeCoin": 0,
+    "forestCoin": 0,
+    "islandCoin": 0,
+    "wildCoin": 0
   },
   "startingRoster": [
     "smolderquill",
@@ -20,6 +28,14 @@
     "gems": 200,
     "candy": 20000,
     "shard": 100,
-    "stone": 10
+    "stone": 10,
+    "ticketCommon": 5,
+    "ticketPremium": 2,
+    "arenaToken": 1000,
+    "guildCoin": 1000,
+    "homeCoin": 1000,
+    "forestCoin": 1000,
+    "islandCoin": 1000,
+    "wildCoin": 1000
   }
 }

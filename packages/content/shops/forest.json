@@ -1,0 +1,10 @@
+{
+  "id": "forest",
+  "name": "Forest Shop",
+  "currency": "forestCoin",
+  "restock": { "type": "daily", "hoursUtc": [0] },
+  "items": [
+    { "id": "forest.shard", "name": "Shards ×20", "price": 200, "grants": { "shard": 20 } },
+    { "id": "forest.gold", "name": "Gold ×2000", "price": 100, "grants": { "gold": 2000 }, "limit": 3 }
+  ]
+}

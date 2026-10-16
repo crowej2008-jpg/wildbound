@@ -12,13 +12,21 @@ export const en = {
     'A rebuild of a mobile monster-collector design: build a squad of six original Wilds and let seeded, automatic turn-based battles play out — replayable, deterministic, and testable in the Build Lab.',
   'home.scope.note': 'The screens below arrive milestone by milestone. Every milestone ends with passing checks and a commit.',
   'home.galleryLink': 'Browse all 36 Wilds',
-  'hud.beta': 'Milestone 5',
+  'hud.beta': 'Milestone 8',
   'hud.today': 'Today',
   'currency.gold': 'Gold',
   'currency.gems': 'Gems',
   'currency.candy': 'Candy',
   'currency.shard': 'Shards',
   'currency.stone': 'Stones',
+  'currency.ticketCommon': 'Common Ticket',
+  'currency.ticketPremium': 'Premium Ticket',
+  'currency.arenaToken': 'Arena Tokens',
+  'currency.guildCoin': 'Guild Coins',
+  'currency.homeCoin': 'Home Coins',
+  'currency.forestCoin': 'Forest Coins',
+  'currency.islandCoin': 'Island Coins',
+  'currency.wildCoin': 'Wild Coins',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
   'wilds.empty': 'No Wilds yet. Grant one from More > Debug.',
@@ -39,6 +47,11 @@ export const en = {
   'wild.respawnConfirm': 'Respawn resets this Wild to level 1 and refunds most of its candy and gold. Continue?',
   'wild.tab.upgrade': 'Upgrade',
   'wild.tab.evolve': 'Evolve',
+  'wild.tab.relics': 'Relics',
+  'wild.tab.runes': 'Runes',
+  'wild.tab.charms': 'Charms',
+  'wild.tab.cores': 'Spirit Cores',
+  'wild.tab.talents': 'Talents',
   'wild.upgrade.candy': 'Candy',
   'wild.upgrade.gold': 'Gold',
   'wild.upgrade.star': 'Star up',
@@ -224,6 +237,138 @@ export const en = {
   'more.debug.clockNote':
     'Fast-forward the game clock to test idle income and the daily reset. The header clock stays real UTC.',
   'more.debug.clockOffset': 'Offset',
+  'summon.title': 'Summon',
+  'summon.subtitle': 'Draw Wilds from two machines. The rates are exact and pity is guaranteed.',
+  'summon.machine.common': 'Common Machine',
+  'summon.machine.premium': 'Premium Machine',
+  'summon.free': 'Free draws',
+  'summon.freeReady': 'Ready now',
+  'summon.freeCooldown': 'Next free',
+  'summon.draw1': 'Summon ×1',
+  'summon.draw10': 'Summon ×10',
+  'summon.ticket': 'Ticket',
+  'summon.gems': 'Gems',
+  'summon.box': 'Summon Box',
+  'summon.boxClaim': 'Claim box',
+  'summon.boxReady': 'Box ready!',
+  'summon.boxCredits': 'Box credits',
+  'summon.pity': 'Pity',
+  'summon.pityNote': 'At full, the next draw is guaranteed Legendary or better.',
+  'summon.rates': 'Rates',
+  'summon.wish': 'Featured Wild',
+  'summon.wishNone': 'No featured Wild',
+  'summon.wishSet': 'Set featured',
+  'summon.wishClear': 'Clear',
+  'summon.wishNote': 'A featured Wild has boosted odds inside its tier.',
+  'summon.results': 'Results',
+  'summon.history': 'Recent draws',
+  'summon.historyEmpty': 'No draws yet.',
+  'summon.new': 'NEW',
+  'summon.guaranteed': 'GUARANTEED',
+  'summon.noCost': 'Not enough tickets or gems for that draw.',
+  'summon.perDraw': 'per draw',
+  'shop.title': 'Shops',
+  'shop.subtitle': 'Spend your currencies; stock restocks on a schedule.',
+  'shop.restock': 'Restocks',
+  'shop.manual': 'Manual refresh',
+  'shop.refresh': 'Refresh',
+  'shop.refreshCost': 'Refresh cost',
+  'shop.refreshesLeft': 'Refreshes left today',
+  'shop.buy': 'Buy',
+  'shop.limit': 'Left',
+  'shop.unlimited': 'No limit',
+  'shop.owned': 'Owned',
+  'shop.limitReached': 'Limit reached',
+  'shop.soldOut': 'Sold out',
+  'shop.noCurrency': 'Not enough',
+  'shop.nextRestock': 'Next restock',
+  'shop.oneTime': 'One-time',
+  'home.link.summon': 'Summon',
+  'home.link.shop': 'Shops',
+  'home.link.combat': 'Challenges',
+  'pve.title': 'Challenges',
+  'pve.subtitle': 'PvE modes: the Tower, Trials, the World Boss, daily dungeons and the Link Crystal.',
+  'pve.tower': 'Tower',
+  'pve.tower.desc': 'Climb endless floors. Weekly climbers, daily sweeps, milestone chests.',
+  'pve.trials': 'Trials',
+  'pve.trials.desc': 'Five rule-bending challenges that rotate through the week.',
+  'pve.boss': 'World Boss',
+  'pve.boss.desc': 'One great boss each day. Score damage, climb the ladder, claim milestones.',
+  'pve.dungeons': 'Dungeons',
+  'pve.dungeons.desc': 'Seven daily dungeons, one per weekday, each paying a currency.',
+  'pve.crystal': 'Link Crystal',
+  'pve.crystal.desc': 'Shared endgame growth for your top-form Wilds.',
+  'pve.training': 'Training Battle',
+  'pve.training.desc': 'Replay your squad against an echo squad.',
+  'tower.floor': 'Floor',
+  'tower.next': 'Next floor',
+  'tower.enemyLevel': 'Enemy Lv',
+  'tower.climbsLeft': 'Climbs left this week',
+  'tower.sweepsLeft': 'Sweeps left today',
+  'tower.climb': 'Climb',
+  'tower.sweep': 'Sweep',
+  'tower.swept': 'Swept the current floor.',
+  'tower.milestones': 'Milestone chests',
+  'tower.milestone.claimed': 'Claimed',
+  'tower.milestone.reached': 'Reached',
+  'tower.milestone.locked': 'Locked',
+  'tower.weekReset': 'Week resets in',
+  'tower.dayReset': 'Daily reset in',
+  'tower.victory': 'Floor cleared!',
+  'tower.defeat': 'Your squad fell on this floor.',
+  'tower.back': 'Back to tower',
+  'trials.open': 'Open now',
+  'trials.closed': 'Closed',
+  'trials.cleared': 'Cleared today',
+  'trials.locked': 'Reach the unlock level',
+  'trials.fight': 'Fight',
+  'trials.victory': 'Trial cleared!',
+  'trials.defeat': 'Your squad fell. Try a stronger team.',
+  'trials.rewardNote': 'First clear each day pays rewards.',
+  'trials.back': 'Back to trials',
+  'boss.title': 'World Boss',
+  'boss.today': "Today's boss",
+  'boss.closed': 'No boss today.',
+  'boss.attempts': 'Attempts left',
+  'boss.damage': 'Best damage',
+  'boss.lastDamage': 'Last run',
+  'boss.rank': 'Rank',
+  'boss.ghosts': 'against the ghost ladder',
+  'boss.fight': 'Fight',
+  'boss.milestones': 'Damage milestones',
+  'boss.claim': 'Claim',
+  'boss.claimed': 'Claimed',
+  'boss.back': 'Back to world boss',
+  'boss.reset': 'Attempts reset in',
+  'dungeon.today': 'Open today',
+  'dungeon.cleared': 'Cleared today',
+  'dungeon.closed': 'Opens another day',
+  'dungeon.enter': 'Enter',
+  'dungeon.victory': 'Dungeon cleared!',
+  'dungeon.defeat': 'Your squad fell.',
+  'dungeon.rewardNote': 'The first clear each day pays rewards.',
+  'dungeon.back': 'Back to dungeons',
+  'crystal.title': 'Link Crystal',
+  'crystal.locked': 'Evolve a Wild to its final form to unlock the Link Crystal.',
+  'crystal.level': 'Crystal level',
+  'crystal.cap': 'Level cap',
+  'crystal.qualifying': 'Wilds at the star threshold',
+  'crystal.topStage': 'Wilds in final form',
+  'crystal.starThreshold': 'Star threshold',
+  'crystal.cost': 'Upgrade cost',
+  'crystal.upgrade': 'Raise crystal',
+  'crystal.maxed': 'Crystal is at its cap.',
+  'crystal.note':
+    'Every Wild in its final form shares this level instead of its form cap.',
+  'crystal.upgraded': 'Link Crystal raised!',
+  'reward.stone': 'Stones',
+  'weekday.0': 'Sunday',
+  'weekday.1': 'Monday',
+  'weekday.2': 'Tuesday',
+  'weekday.3': 'Wednesday',
+  'weekday.4': 'Thursday',
+  'weekday.5': 'Friday',
+  'weekday.6': 'Saturday',
 } as const;
 
 export type StringKey = keyof typeof en;
@@ -265,7 +410,20 @@ export const tierLabel: Record<TierKey, string> = {
   mythic: en['tier.mythic'],
 };
 
-export type CurrencyKey = 'gold' | 'gems' | 'candy' | 'shard' | 'stone';
+export type CurrencyKey =
+  | 'gold'
+  | 'gems'
+  | 'candy'
+  | 'shard'
+  | 'stone'
+  | 'ticketCommon'
+  | 'ticketPremium'
+  | 'arenaToken'
+  | 'guildCoin'
+  | 'homeCoin'
+  | 'forestCoin'
+  | 'islandCoin'
+  | 'wildCoin';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
   gold: en['currency.gold'],
@@ -273,6 +431,14 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   candy: en['currency.candy'],
   shard: en['currency.shard'],
   stone: en['currency.stone'],
+  ticketCommon: en['currency.ticketCommon'],
+  ticketPremium: en['currency.ticketPremium'],
+  arenaToken: en['currency.arenaToken'],
+  guildCoin: en['currency.guildCoin'],
+  homeCoin: en['currency.homeCoin'],
+  forestCoin: en['currency.forestCoin'],
+  islandCoin: en['currency.islandCoin'],
+  wildCoin: en['currency.wildCoin'],
 };
 
 export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss';
@@ -303,3 +469,25 @@ export const questMetricLabel: Record<QuestMetricKey, string> = {
   claimIdle: en['quest.metric.claimIdle'],
   claimQuest: en['quest.metric.claimQuest'],
 };
+
+/** Weekday labels, Sunday-first to match `weekdayUtc` (M8). */
+export const weekdayLabel: readonly string[] = [
+  en['weekday.0'],
+  en['weekday.1'],
+  en['weekday.2'],
+  en['weekday.3'],
+  en['weekday.4'],
+  en['weekday.5'],
+  en['weekday.6'],
+];
+
+/** Human "2d 3h" / "45m" countdown from a millisecond span (M8). */
+export function formatDuration(ms: number): string {
+  const total = Math.max(0, Math.floor(ms / 60_000));
+  const days = Math.floor(total / 1440);
+  const hours = Math.floor((total % 1440) / 60);
+  const minutes = total % 60;
+  if (days > 0) return `${days}d ${hours}h`;
+  if (hours > 0) return `${hours}h ${minutes}m`;
+  return `${minutes}m`;
+}

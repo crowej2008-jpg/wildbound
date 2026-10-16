@@ -12,11 +12,31 @@ import {
   questSchema,
   speciesSchema,
   stageSchema,
+  gachaSchema,
+  shopSchema,
+  pveSchema,
+  PVE,
+  relicsSchema,
+  runesSchema,
+  charmsSchema,
+  coresSchema,
+  talentsSchema,
+  equipmentTuningSchema,
+  RELICS,
+  RUNES,
+  RUNE_SETS,
+  CHARMS,
+  CORE_SETS,
+  TALENT_BLOCKS,
+  TALENT_TREES,
+  EQUIPMENT_TUNING,
   type KitJson,
   type QuestJson,
   type SpeciesJson,
   type StageJson,
+  type ShopJson,
 } from '@wildbound/content';
+import { CURRENCY_IDS } from '@wildbound/engine';
 import { findFiles, GuardViolation, scanBinaryMedia, scanForbidden } from './ipguard';
 
 /**
@@ -46,6 +66,18 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'power.json': powerSchema,
   'account.json': accountSchema,
   'economy.json': economySchema,
+  'gacha.json': gachaSchema as AnySchema,
+  'equipment.json': equipmentTuningSchema,
+  'pve.json': pveSchema as AnySchema,
+};
+
+/** M7 catalogue files are identified by filename; each maps to one schema. */
+const EQUIPMENT_SCHEMAS: Record<string, AnySchema> = {
+  'relics.json': relicsSchema,
+  'runes.json': runesSchema,
+  'charms.json': charmsSchema,
+  'cores.json': coresSchema,
+  'talents.json': talentsSchema,
 };
 
 /**
@@ -69,6 +101,7 @@ export function validateContent(repoRoot: string): ValidateReport {
   const kits = new Map<string, { file: string; data: KitJson }>();
   const stages = new Map<string, { file: string; data: StageJson }>();
   const quests = new Map<string, { file: string; data: QuestJson }>();
+  const shops = new Map<string, { file: string; data: ShopJson }>();
 
   for (const dir of contentManifest.dataDirs) {
     const dirPath = join(contentRoot, dir);
@@ -105,6 +138,19 @@ export function validateContent(repoRoot: string): ValidateReport {
         validateList(file, parsed, questSchema, errors, checks, (data: QuestJson) => {
           registerUnique(quests, file, data.id, data, errors);
         }, 'quest');
+      } else if (dir === 'shops') {
+        validateList(file, parsed, shopSchema, errors, checks, (data: ShopJson) => {
+          registerUnique(shops, file, data.id, data, errors);
+        }, 'shop');
+      } else if (dir === 'equipment') {
+        const schema = EQUIPMENT_SCHEMAS[basename(file)];
+        if (!schema) {
+          errors.push(`${file}: unknown equipment file (expected one of ${Object.keys(EQUIPMENT_SCHEMAS).join(', ')})`);
+          continue;
+        }
+        const r = schema.safeParse(parsed);
+        if (!r.success) errors.push(`${file}: equipment schema — ${describeZod(r.error.issues)}`);
+        else checks.push(`${file}: equipment validated against ${basename(file)} schema`);
       } else if (dir === 'tuning') {
         const schema = TUNING_SCHEMAS[basename(file)];
         if (!schema) {
@@ -124,10 +170,54 @@ export function validateContent(repoRoot: string): ValidateReport {
   crossReferenceStages(species, stages, errors, checks);
   if (stages.size > 0) checks.push(`campaign: ${stages.size} stage(s) validated`);
   if (quests.size > 0) checks.push(`quests: ${quests.size} daily quest(s) validated`);
+  if (shops.size > 0) {
+    checks.push(`shops: ${shops.size} shop(s) validated`);
+    for (const { file, data } of shops.values()) {
+      if (!CURRENCY_IDS.includes(data.currency as never)) {
+        errors.push(`${file}: shop "${data.id}" currency "${data.currency}" is not a known currency`);
+      }
+    }
+  }
   for (const id of ACCOUNT.startingRoster) {
     if (!species.has(id)) errors.push(`account.json: startingRoster species "${id}" has no species file`);
   }
   checks.push(`account: ${ACCOUNT.startingRoster.length} starting Wild(s) resolved`);
+
+  if (RELICS.length > 0) {
+    const relicIds = new Set(RELICS.map((r) => r.id));
+    const runeIds = new Set(RUNES.map((r) => r.id));
+    const runeSetIds = new Set(RUNE_SETS.map((s) => s.id));
+    const charmIds = new Set(CHARMS.map((c) => c.id));
+    const coreSetIds = new Set(CORE_SETS.map((s) => s.id));
+    const blockIds = new Set(TALENT_BLOCKS.map((b) => b.id));
+    for (const rune of RUNES) {
+      if (!runeSetIds.has(rune.setId)) errors.push(`equipment: rune "${rune.id}" references unknown set "${rune.setId}"`);
+    }
+    for (const tree of TALENT_TREES) {
+      for (const tier of tree.tiers) {
+        for (const blockId of tier) {
+          if (!blockIds.has(blockId)) errors.push(`equipment: tree "${tree.id}" references unknown block "${blockId}"`);
+        }
+      }
+    }
+    for (const r of EQUIPMENT_TUNING.starting.relics) {
+      if (!relicIds.has(r.defId)) errors.push(`equipment: starting relic "${r.defId}" has no design`);
+    }
+    for (const r of EQUIPMENT_TUNING.starting.runes) {
+      if (!runeIds.has(r.defId)) errors.push(`equipment: starting rune "${r.defId}" has no design`);
+    }
+    for (const c of EQUIPMENT_TUNING.starting.cores) {
+      if (!coreSetIds.has(c.setId)) errors.push(`equipment: starting core "${c.setId}" has no set`);
+    }
+    for (const c of EQUIPMENT_TUNING.starting.charms) {
+      if (!charmIds.has(c.defId)) errors.push(`equipment: starting charm "${c.defId}" has no design`);
+    }
+    checks.push(
+      `equipment: ${RELICS.length} relic(s), ${RUNES.length} rune(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s), ${TALENT_TREES.length} talent tree(s) validated`,
+    );
+  }
+
+  crossReferencePve(species, errors, checks);
 
   const contentViolations = scanForbidden(contentRoot, contentManifest.dataDirs);
   const mediaViolations = scanBinaryMedia(resolve(repoRoot, 'packages'), PACKAGE_DIRS);
@@ -225,6 +315,51 @@ function crossReferenceStages(
   }
   const chapters = new Set([...stages.values()].map((s) => s.data.chapter));
   checks.push(`campaign: stages reference ${species.size} species across ${chapters.size} chapter(s)`);
+}
+
+/**
+ * Every PvE mode's enemy pool must reference real factions; the World Boss
+ * rotation must reference real species; the daily dungeons must cover the seven
+ * weekdays without duplication. (M8.)
+ */
+function crossReferencePve(
+  species: Map<string, { file: string; data: SpeciesJson }>,
+  errors: string[],
+  checks: string[],
+): void {
+  const factions = new Set<string>([...species.values()].map((s) => s.data.faction));
+  const pools: { label: string; factions: string[] }[] = [
+    { label: 'tower', factions: PVE.tower.enemy.factions },
+    { label: 'worldBoss', factions: PVE.worldBoss.enemy.factions },
+    ...PVE.trials.map((t) => ({ label: `trial "${t.id}"`, factions: t.enemy.factions })),
+    ...PVE.dungeons.map((d) => ({ label: `dungeon "${d.id}"`, factions: d.enemy.factions })),
+  ];
+  for (const pool of pools) {
+    for (const faction of pool.factions) {
+      if (!factions.has(faction)) {
+        errors.push(`pve.json: ${pool.label} references unknown faction "${faction}"`);
+      }
+    }
+  }
+  for (const trial of PVE.trials) {
+    if (trial.rule === 'factionLocked' && trial.faction && !factions.has(trial.faction)) {
+      errors.push(`pve.json: trial "${trial.id}" locks an unknown faction "${trial.faction}"`);
+    }
+  }
+  for (const boss of PVE.worldBoss.rotation) {
+    if (!species.has(boss.speciesId)) {
+      errors.push(`pve.json: world boss "${boss.name}" species "${boss.speciesId}" has no species file`);
+    }
+  }
+  const seenWeekdays = new Map<number, string>();
+  for (const dungeon of PVE.dungeons) {
+    const prev = seenWeekdays.get(dungeon.weekday);
+    if (prev) errors.push(`pve.json: dungeons "${prev}" and "${dungeon.id}" share weekday ${dungeon.weekday}`);
+    seenWeekdays.set(dungeon.weekday, dungeon.id);
+  }
+  checks.push(
+    `pve: ${PVE.trials.length} trial(s), ${PVE.dungeons.length} dungeon(s), ${PVE.worldBoss.rotation.length} boss day(s) validated`,
+  );
 }
 
 function checkSpeciesCoverage(

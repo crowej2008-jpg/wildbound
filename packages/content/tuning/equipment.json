@@ -1,0 +1,133 @@
+{
+  "relic": {
+    "minTier": "supreme",
+    "maxLevel": 5,
+    "maxRefine": 5
+  },
+  "runes": {
+    "minStars": 3,
+    "sockets": 4,
+    "maxLevel": 6
+  },
+  "charms": {
+    "minStars": 4,
+    "slots": 1
+  },
+  "cores": {
+    "minStars": 10,
+    "sockets": 6,
+    "pieceMinStars": 2,
+    "pieceMaxStars": 5
+  },
+  "talents": {
+    "minTier": "legendary",
+    "tiers": 9,
+    "optionsPerTier": 3,
+    "resetGems": 50,
+    "allocateGold": 500
+  },
+  "relicLevelCost": {
+    "gold": 400,
+    "candy": 60,
+    "goldPerLevel": 300,
+    "candyPerLevel": 40
+  },
+  "relicRefineCost": {
+    "gold": 800,
+    "stone": 1,
+    "goldPerRefine": 400,
+    "stonePerRefine": 1
+  },
+  "runeLevelCost": {
+    "gold": 300,
+    "goldPerLevel": 200
+  },
+  "starting": {
+    "relics": [
+      {
+        "defId": "relic-ashpike-sigil",
+        "level": 1,
+        "refine": 0
+      },
+      {
+        "defId": "relic-bulwark-sigil",
+        "level": 1,
+        "refine": 0
+      },
+      {
+        "defId": "relic-runeweaver-sigil",
+        "level": 1,
+        "refine": 0
+      }
+    ],
+    "runes": [
+      {
+        "defId": "rune-verdant-spark",
+        "level": 1
+      },
+      {
+        "defId": "rune-verdant-glint",
+        "level": 1
+      },
+      {
+        "defId": "rune-verdant-ward",
+        "level": 1
+      },
+      {
+        "defId": "rune-azure-spark",
+        "level": 1
+      },
+      {
+        "defId": "rune-azure-glint",
+        "level": 1
+      },
+      {
+        "defId": "rune-azure-ward",
+        "level": 1
+      }
+    ],
+    "cores": [],
+    "charms": [
+      {
+        "defId": "charm-sunpetal-berry",
+        "stars": 1,
+        "count": 3
+      },
+      {
+        "defId": "charm-mistbud-berry",
+        "stars": 1,
+        "count": 3
+      },
+      {
+        "defId": "charm-ironpeel-berry",
+        "stars": 1,
+        "count": 3
+      },
+      {
+        "defId": "charm-glimmerberry",
+        "stars": 1,
+        "count": 3
+      },
+      {
+        "defId": "charm-emberfruit",
+        "stars": 2,
+        "count": 3
+      },
+      {
+        "defId": "charm-tidefruit",
+        "stars": 2,
+        "count": 3
+      },
+      {
+        "defId": "charm-grovefruit",
+        "stars": 2,
+        "count": 3
+      },
+      {
+        "defId": "charm-voltfruit",
+        "stars": 2,
+        "count": 3
+      }
+    ]
+  }
+}

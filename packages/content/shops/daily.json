@@ -1,0 +1,13 @@
+{
+  "id": "daily",
+  "name": "Daily Shop",
+  "currency": "gems",
+  "restock": { "type": "daily", "hoursUtc": [0, 12, 18] },
+  "items": [
+    { "id": "daily.ticketPrem", "name": "Premium Ticket ×1", "price": 180, "grants": { "ticketPremium": 1 }, "limit": 2 },
+    { "id": "daily.ticketPrem10", "name": "Premium Tickets ×10", "price": 1620, "grants": { "ticketPremium": 10 }, "limit": 1 },
+    { "id": "daily.shard", "name": "Shards ×50", "price": 150, "grants": { "shard": 50 }, "limit": 3 },
+    { "id": "daily.stone", "name": "Stones ×3", "price": 400, "grants": { "stone": 3 }, "limit": 2 },
+    { "id": "daily.gold", "name": "Gold ×5000", "price": 100, "grants": { "gold": 5000 }, "limit": 5 }
+  ]
+}

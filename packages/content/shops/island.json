@@ -1,0 +1,10 @@
+{
+  "id": "island",
+  "name": "Island Shop",
+  "currency": "islandCoin",
+  "restock": { "type": "daily", "hoursUtc": [0] },
+  "items": [
+    { "id": "island.shard", "name": "Shards ×20", "price": 200, "grants": { "shard": 20 } },
+    { "id": "island.ticketCommon", "name": "Common Ticket ×1", "price": 500, "grants": { "ticketCommon": 1 } }
+  ]
+}

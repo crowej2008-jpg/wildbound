@@ -7,7 +7,8 @@ original content.
 
 - Start here: [`PROMPT.md`](./PROMPT.md) (the master specification) and [`AGENTS.md`](./AGENTS.md)
   (working agreement + commands).
-- Progress and the milestone map: [`docs/SCOPE.md`](./docs/SCOPE.md).
+- Progress and the milestone map: [`docs/SCOPE.md`](./docs/SCOPE.md). Current milestone: M6
+  (summoning and shops).
 - Open questions: [`docs/ASSUMPTIONS.md`](./docs/ASSUMPTIONS.md).
 
 ## Quick start

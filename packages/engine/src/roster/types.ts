@@ -8,6 +8,16 @@ import type { CampaignProgress } from '../campaign/types';
 import type { IdleState } from '../economy/idle';
 import type { QuestState } from '../daily/quests';
 import type { MailItem } from '../daily/mail';
+import type { GachaState } from '../gacha/types';
+import type { ShopState } from '../shop/types';
+import type { TowerState } from '../pve/tower';
+import type { WorldBossState } from '../pve/worldBoss';
+import type { DungeonState } from '../pve/dungeons';
+import type { LinkCrystalState } from '../pve/linkCrystal';
+import { initialTowerState } from '../pve/tower';
+import { initialWorldBossState } from '../pve/worldBoss';
+import { initialDungeonState } from '../pve/dungeons';
+import { initialLinkCrystal } from '../pve/linkCrystal';
 
 export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss';
 
@@ -28,9 +38,52 @@ export type StrategyId = 'aggressive' | 'balanced' | 'defensive';
 
 export const STRATEGIES: readonly StrategyId[] = ['aggressive', 'balanced', 'defensive'];
 
-export type CurrencyId = 'gold' | 'gems' | 'candy' | 'shard' | 'stone';
+export type CurrencyId =
+  // M3 core currencies.
+  | 'gold'
+  | 'gems'
+  | 'candy'
+  | 'shard'
+  | 'stone'
+  // M6 summon tickets.
+  | 'ticketCommon'
+  | 'ticketPremium'
+  // M6 economy shape: per-mode and shop tokens (their sources land with their modes).
+  | 'arenaToken'
+  | 'guildCoin'
+  | 'homeCoin'
+  | 'forestCoin'
+  | 'islandCoin'
+  | 'wildCoin';
 
-export const CURRENCY_IDS: readonly CurrencyId[] = ['gold', 'gems', 'candy', 'shard', 'stone'];
+export const CURRENCY_IDS: readonly CurrencyId[] = [
+  'gold',
+  'gems',
+  'candy',
+  'shard',
+  'stone',
+  'ticketCommon',
+  'ticketPremium',
+  'arenaToken',
+  'guildCoin',
+  'homeCoin',
+  'forestCoin',
+  'islandCoin',
+  'wildCoin',
+];
+
+/** The currencies the persistent HUD strip shows; the rest live on their own screens. */
+export const HUD_CURRENCY_IDS: readonly CurrencyId[] = [
+  'gold',
+  'gems',
+  'candy',
+  'shard',
+  'stone',
+  'ticketCommon',
+  'ticketPremium',
+];
+
+import type { EquipmentState, Loadout } from '../equipment/types';
 
 /** One owned Wild (an *instance*, so duplicates of a species are separate). */
 export interface WildInstance {
@@ -70,8 +123,38 @@ export interface AccountState {
   mail: MailItem[];
   /** M5: first-session tutorial step index (0 = active). */
   tutorial: TutorialState;
+  /** M6: summoning machine state, wish and history. */
+  gacha: GachaState;
+  /** M6: per-shop restock / purchase bookkeeping. */
+  shops: ShopState;
+  /** M7 owned equipment (relics, runes, cores, charm counts). */
+  equipment: EquipmentState;
+  /** M7 per-Wild loadouts, keyed by WildInstance id. */
+  loadouts: Record<string, Loadout>;
+  /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
+  pve: PveState;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
+}
+
+/** M8 mode progress. Pure data; the engine owns every rule that reads it. */
+export interface PveState {
+  tower: TowerState;
+  /** Trial id → UTC day-key it was last cleared (first clear each day pays). */
+  trials: { lastCleared: Record<string, string> };
+  worldBoss: WorldBossState;
+  dungeons: DungeonState;
+  linkCrystal: LinkCrystalState;
+}
+
+export function initialPve(day: string, week: string): PveState {
+  return {
+    tower: initialTowerState(day, week),
+    trials: { lastCleared: {} },
+    worldBoss: initialWorldBossState(day),
+    dungeons: initialDungeonState(day),
+    linkCrystal: initialLinkCrystal(),
+  };
 }
 
 export interface TutorialState {

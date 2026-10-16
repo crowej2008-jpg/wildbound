@@ -1,0 +1,11 @@
+{
+  "id": "wilds",
+  "name": "Wilds Shop",
+  "currency": "wildCoin",
+  "restock": { "type": "manual", "refreshCost": { "wildCoin": 3000 }, "refreshDailyLimit": 3 },
+  "items": [
+    { "id": "wilds.candy", "name": "Candy ×2000", "price": 400, "grants": { "candy": 2000 }, "limit": 5 },
+    { "id": "wilds.shard", "name": "Shards ×30", "price": 600, "grants": { "shard": 30 }, "limit": 5 },
+    { "id": "wilds.once", "name": "One-time Gold Pack", "price": 1200, "grants": { "gold": 20000 }, "oneTime": true }
+  ]
+}

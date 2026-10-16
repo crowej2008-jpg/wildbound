@@ -13,6 +13,7 @@ export const CONTENT_DIRS = {
   stages: 'stages',
   shops: 'shops',
   quests: 'quests',
+  equipment: 'equipment',
   tuning: 'tuning',
 } as const;
 
@@ -32,12 +33,48 @@ export type {
   EconomyJson,
   RewardJson,
 } from './schemas';
+export { gachaSchema } from './gacha-schema';
+export type { GachaJson } from './gacha-schema';
+export { shopSchema } from './shop-schema';
+export type { ShopJson } from './shop-schema';
 
 export { WILDS, FACTIONS, wildById, wildsByFaction } from './species';
+export { PVE } from './pve';
+export { pveSchema, type PveJson, type EnemyPoolJson, type TrialDefJson, type DungeonDefJson } from './pve-schema';
 export { KITS, kitById } from './kits';
 export { STAGES, stageById, orderedStages, chapterNumbers, stagesInChapter } from './stages';
 export { QUESTS, questById } from './quests';
-export { COMBAT_SETTINGS, GROWTH, POWER, ACCOUNT, ECONOMY } from './tuning';
+export { COMBAT_SETTINGS, GROWTH, POWER, ACCOUNT, ECONOMY, GACHA_TUNING } from './tuning';
+export { GACHA } from './tuning-gacha';
+export { SHOPS } from './shops';
+export {
+  EQUIPMENT_TUNING,
+  RELICS,
+  RUNES,
+  RUNE_SETS,
+  CHARMS,
+  CORE_SETS,
+  TALENT_BLOCKS,
+  TALENT_TREES,
+  relicById,
+  charmById,
+  coreSetById,
+  talentTreeById,
+} from './equipment';
+export {
+  equipmentTuningSchema,
+  relicsSchema,
+  runesSchema,
+  charmsSchema,
+  coresSchema,
+  talentsSchema,
+  type RelicJson,
+  type RuneJson,
+  type CharmJson,
+  type CoreSetJson,
+  type TalentBlockJson,
+  type TalentTreeJson,
+} from './equipment-schema';
 
 /** Bumped when the shape of any content directory changes. */
 export const CONTENT_SCHEMA_VERSION = 1;

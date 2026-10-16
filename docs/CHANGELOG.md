@@ -204,3 +204,106 @@ are recorded here with the difference (never edit `reference/`).
 - Squad strategies remain inert; weather/round banners, team preview and richer result panels are still
   deferred (M4/M9). Summoning arrives in M6.
 
+## M6 — Summoning and shops (2026-10-14)
+
+- **Engine gacha module** (`@wildbound/engine/src/gacha/`): `GachaMachineDef`/`GachaPoolEntry`/
+  `DrawResult`, `drawBatch` (ten-draw guarantee one Rare-or-better, pity forces Legendary+ at 1,000
+  Premium credits), `pickSpecies` (wished species ×`wishBoost` inside its tier), `rollTier`,
+  `tiersAtLeast`, `probabilityTable` and `resolveSummonCost` (free → ticket → gems). Pure and seeded.
+- **Engine shop module** (`@wildbound/engine/src/shop/`): `nextRestockAt` (`daily` hours /
+  `interval` days / `manual`), `restockDue`, `applyRestock`, `buyLimit`/`boughtCount`/`buyBlock`,
+  `manualRefreshBlock`, `recordBuy`, `isOneTimeBought`, `refreshesLeft`, `initialShopState`.
+- **Economy shape**: `CurrencyId` grows from five to thirteen (tickets + six mode/shop coins);
+  `CURRENCY_IDS` and `HUD_CURRENCY_IDS` (the seven the header shows); `Rewards` gains every key.
+- **Content**: `tuning/gacha.json` (two machines), `shops/*.json` (six shops), the `gachaSchema`/
+  `shopSchema` + loaders, and `schemas.ts` rebuilt from the M3-era shape and extended with the
+  gacha/shop/economy schemas. Validator parses `gacha.json` and cross-checks every shop currency.
+- **Server** (`@wildbound/server`): new `gacha.ts`/`shops.ts` view + mutation builders (`applySummon`,
+  `applyClaimBox`, `applySetWish`, `applyBuy`, `applyRefresh`, `gachaView`, `shopsView`); `GameServer`
+  gains `summon` (single/ten, optional seed), `claimGachaBox`, `setWish`, `getGacha`, `buyShopItem`,
+  `refreshShop`, `getShops`; `LocalServer` implements them behind the `Result` boundary. Save schema
+  `3` with a lenient M6 migration (`withM6Defaults`) that still rejects core-less states.
+- **Client**: `/summon` (two machines, free draws + cooldown, box claim, pity bar, exact tier/species
+  rates, featured Wild, result grid and history) and `/shop` (six shops, restock countdowns, manual
+  refresh cost/limit, per-item remaining/affordability); Home town tiles; `ServerProvider` wrappers;
+  HUD shows the seven primary currencies; `RewardLine` renders all thirteen; M6 styles.
+- **Tests** — engine gacha (9) + shop (7); server `m6.test.ts` (15: cost fallback, ten-draw
+  guarantee, seeded reproducibility, exact pity threshold, box claim, wish set/clear, buy/limit/
+  restock/one-time/manual-refresh); `tests/e2e/m6.spec.ts` (5). `pnpm check` green.
+
+### Deviation from the reference
+
+- **Duplicates grant fresh Wilds (no shard conversion)** and **the wish is species-level**, per
+  docs/ASSUMPTIONS.md M6. The wish is unlocked (`wishUnlockDraws = 0`) so the M6 screen is live.
+- **The free-draw cooldown is per-machine** (5 min Common / 1440 min Premium), and only single draws
+  consume a free draw.
+- **`schemas.ts` was reconstructed** during this milestone: a stale transpiled copy in the tsx cache
+  had been mistaken for the M3 source, so the file was rebuilt from the intact M3-era copy under
+  `Documents/GitHub/wildbound` and then extended with the M6 schemas. The public schema/type surface
+  is unchanged from M3 for account/roster/rewards plus the new gacha/shop slices.
+
+### Carried forward
+
+- Squad strategies remain inert. VIP tiers, gift crates and the "Supreme Gift" storefront are
+  deferred to M11 (social); the mode coins' primary sources land with their modes (M8/M9/M11).
+- Equipment layers (Relics, Runes, Charms, Spirit Cores, Talents) and the duplicate→material sink
+  arrive in M7.
+
+## M7 — Equipment layers (2026-10-14)
+
+- **Engine equipment module** (`@wildbound/engine/src/equipment/`): `types`, `rules`, `contrib` —
+  relics, rune sockets + set bonuses, charms, spirit cores and talent trees, folded into a Wild's
+  stat sheet (`foldLoadout`/`mergeDelta`) and Power. Pure and content-free.
+- **Content**: `equipment/relics.json`, `runes.json`, `charms.json`, `cores.json`, `talents.json`
+  plus `tuning/equipment.json`; new equipment schemas + loaders and `content:validate` coverage.
+- **Server** (`@wildbound/server`): `equipment.ts` (equip/level/refine/upgrade/allocate/reset as pure
+  `Result<AccountState>` actions) and `equipment-view.ts` (gates, deltas, owned items). `GameServer`
+  gains `getEquipment`, `equipRelic/Rune/Core/Charm`, `upgradeCharm`, `levelRelic`, `refineRelic`,
+  `levelRune`, `chooseTalentTree`, `allocateTalent`, `resetTalents`. Save schema `4`.
+- **Client**: Wild screen Equip / Runes / Cores / Talents tabs; `ServerProvider` wrappers; M7 styles.
+- **Tests**: engine equipment suite + server glue. `pnpm check` green.
+
+### Deviation from the reference
+
+- Stat contributions are our own multiplicative/percentage model with all numbers in content, not a
+  copy of the reference's equipment tables (see docs/design/equipment.md).
+
+## M8 — Trials, Tower, World Boss, Daily Dungeons, Link Crystal (2026-10-15)
+
+- **Engine PvE module** (`@wildbound/engine/src/pve/`): `reset` (`weekdayUtc`, `weekKey` ISO weeks,
+  `isSameUtcWeek`, `nextWeekStart`), `curve` (`curveLevel`/`generateEnemies` from a pool + slope),
+  `tower` (floor/milestone reward curves, `nextTowerFloor`, `advanceTower`, `spendSweep`), `trials`
+  (`TrialRule`, `trialAvailable`, `trialBattleRules` → `BattleRules`), `worldBoss` (weekday rotation,
+  damage milestones, `ghostRecords`/`rankDamage`), `dungeons` (weekday lookup), and `linkCrystal`
+  (`crystalCap`, `effectiveLevelCap`, unlock/upgrade rules). Pure; every table is an argument.
+- **Combat**: `BattleConfig.rules` (`BattleRules`) enforces `noUltimate` (never pick the ultimate
+  when enraged) and `survivalRounds` (cap the loop and flip the time-out to the attackers).
+- **Content**: `tuning/pve.json` (tower, link-crystal, world-boss rotation + milestones, five trials,
+  seven weekday dungeons) with a new `pveSchema`, loader, and validator cross-checks (pools →
+  factions, boss rotation → species, dungeon weekdays unique).
+- **Server** (`@wildbound/server`): `pve.ts` (mode actions) + `pve-view.ts` (display views);
+  `modeBattle` in `battle.ts` (faction-lock, level-cap, battle rules); `GameServer` gains
+  `getTower/challengeTower/sweepTower`, `getTrials/challengeTrial`, `getWorldBoss/challengeWorldBoss/
+  claimWorldBossMilestone`, `getDungeons/challengeDungeon`, `getLinkCrystal/upgradeLinkCrystal`. Save
+  schema `5`; the crystal unlocks lazily in `normalize` and raises the level cap used by `levelUp`.
+- **Client**: the Combat tab becomes the **Challenges hub** (`/combat`) with routes `/tower`,
+  `/trials`, `/boss`, `/dungeons`, `/crystal` (the M4 demo moves to `/combat/training`). Rewards reuse
+  `RewardLine`; results reuse `BattleReplay`. `ServerProvider` gains a generic `call` helper.
+- **Tests**: engine `pve.test.ts` (25) + battle-rules tests; server `pve.test.ts` (12: pools,
+  tower/sweep/caps, trials (rule + first-clear + weekday lock), dungeons, world boss damage/attempts/
+  milestones, crystal lock/unlock + level-past-cap); `tests/e2e/m8.spec.ts` (6). `pnpm check` green.
+
+### Deviation from the reference
+
+- **Tower climbs reset weekly, sweeps daily; floors are permanent** (PROMPT §7.6) rather than the
+  reference's per-day climb reset. See docs/ASSUMPTIONS.md M8.
+- **Every mode's enemy squad is generated from a difficulty curve** rather than authored floor/area
+  tables. **World-boss ranking is a local ghost ladder** (own history + deterministic bots); there is
+  no backend. **The Link Crystal's star gate ships as 10★** because our `maxStars` is 10, and it
+  unlocks on a Wild that is final-form *and* at its form cap.
+
+### Carried forward
+
+- Arena/ranked/weather (M9) reuses the world-boss ghost-ladder shape; mode coins gain their main
+  sources as their modes ship. Squad strategies remain inert.
+

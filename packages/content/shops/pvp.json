@@ -1,0 +1,10 @@
+{
+  "id": "pvp",
+  "name": "PvP Shop",
+  "currency": "arenaToken",
+  "restock": { "type": "interval", "days": 30, "hourUtc": 0 },
+  "items": [
+    { "id": "pvp.gems", "name": "Gems ×50", "price": 2000, "grants": { "gems": 50 }, "limit": 1 },
+    { "id": "pvp.ticketPrem", "name": "Premium Ticket ×1", "price": 3000, "grants": { "ticketPremium": 1 }, "limit": 2 }
+  ]
+}

@@ -1,0 +1,1147 @@
+{
+  "sets": [
+    {
+      "id": "coreset-pyre-heart",
+      "name": "Pyre Heart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 14,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 12,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 18,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 16,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 16,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 14,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgBoost",
+              "base": 0.05,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.05,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 150,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-open",
+            "text": "Deals more damage from the first round",
+            "field": "dmgBoost",
+            "fromRound": 1,
+            "add": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-riptide-heart",
+      "name": "Riptide Heart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 16,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 14,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 20,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 18,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 18,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 16,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.044,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.055,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 170,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-atk",
+            "text": "Stronger attacks from round 3",
+            "field": "pAtk",
+            "mult": 1.1300000000000001,
+            "fromRound": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-bloom-heart",
+      "name": "Bloom Heart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 18,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 16,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 22,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 20,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 20,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 18,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "critPower",
+              "base": 0.1,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.060000000000000005,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 190,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-brace",
+            "text": "Braces hard in round 1",
+            "field": "dmgRdct",
+            "fromRound": 1,
+            "add": 0.2,
+            "bigRounds": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-stormheart",
+      "name": "Stormheart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 20,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 18,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 24,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 22,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 22,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 20,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgBoost",
+              "base": 0.065,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.065,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 210,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-scale",
+            "text": "Gains damage reduction as the fight goes on",
+            "field": "dmgRdct",
+            "fromRound": 3,
+            "add": 0.09
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-rimeheart",
+      "name": "Rimeheart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 22,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 20,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 26,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 24,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 24,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 22,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.056,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.07,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 230,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-open",
+            "text": "Deals more damage from the first round",
+            "field": "dmgBoost",
+            "fromRound": 1,
+            "add": 0.14
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-umbra-heart",
+      "name": "Umbra Heart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 24,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 22,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 28,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 26,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 26,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 24,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "critPower",
+              "base": 0.13,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.07500000000000001,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 250,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-atk",
+            "text": "Stronger attacks from round 3",
+            "field": "pAtk",
+            "mult": 1.1700000000000002,
+            "fromRound": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-dawnheart",
+      "name": "Dawnheart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 26,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 24,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 30,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 28,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 28,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 26,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgBoost",
+              "base": 0.08,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.05,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 270,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-brace",
+            "text": "Braces hard in round 1",
+            "field": "dmgRdct",
+            "fromRound": 1,
+            "add": 0.2,
+            "bigRounds": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-duskheart",
+      "name": "Duskheart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 28,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 26,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 32,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 30,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 30,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 28,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.068,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.055,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 290,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-scale",
+            "text": "Gains damage reduction as the fight goes on",
+            "field": "dmgRdct",
+            "fromRound": 3,
+            "add": 0.06999999999999999
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-wyrmheart",
+      "name": "Wyrmheart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 30,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 28,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 34,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 32,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 32,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 30,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "critPower",
+              "base": 0.16,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.060000000000000005,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 310,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-open",
+            "text": "Deals more damage from the first round",
+            "field": "dmgBoost",
+            "fromRound": 1,
+            "add": 0.12000000000000001
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-leviathan-heart",
+      "name": "Leviathan Heart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 32,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 30,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 36,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 34,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 34,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 32,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgBoost",
+              "base": 0.095,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.065,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 330,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-atk",
+            "text": "Stronger attacks from round 3",
+            "field": "pAtk",
+            "mult": 1.1500000000000001,
+            "fromRound": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-golem-heart",
+      "name": "Golem Heart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 34,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 32,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 38,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 36,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 36,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 34,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.08,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.07,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 350,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-brace",
+            "text": "Braces hard in round 1",
+            "field": "dmgRdct",
+            "fromRound": 1,
+            "add": 0.2,
+            "bigRounds": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-wyrdheart",
+      "name": "Wyrdheart",
+      "socketLines": [
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 36,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 34,
+            "perLevel": 8
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 40,
+            "perLevel": 10
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 38,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritAtk",
+            "base": 38,
+            "perLevel": 9
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 36,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "critPower",
+              "base": 0.19,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgRdct",
+              "base": 0.07500000000000001,
+              "perLevel": 0
+            },
+            {
+              "kind": "core",
+              "field": "hp",
+              "base": 370,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "effect": {
+            "tag": "core-scale",
+            "text": "Gains damage reduction as the fight goes on",
+            "field": "dmgRdct",
+            "fromRound": 3,
+            "add": 0.11
+          }
+        }
+      ]
+    }
+  ]
+}

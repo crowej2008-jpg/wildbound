@@ -69,3 +69,22 @@ folds that log for playback. See docs/design/battle-ui.md.
 | A recorded battle replays identically: the UI folds the immutable `BattleEvent[]`, never re-simulates | own (PROMPT §6.1) | n/a | M4 |
 | Front slots 0–2 map to field positions 4–6; back slots 3–5 map to 1–3 | seen (PROMPT §6.1) | `FRONT_ROW_SLOTS` | M4 |
 | Playback speed/pause change only the clock, never the outcome | own | n/a | M4 |
+
+(M5–M7 rules — campaign/idle/quests/mail, gacha/shops, equipment — are recorded in their design
+notes: `docs/design/pve.md`, `gacha.md`, `shops.md`, `equipment.md`.)
+
+## PvE modes and Link Crystal (M8)
+
+All numbers live in `tuning/pve.json`; the rules are pure in `packages/engine/src/pve/`. See
+docs/design/pve-modes.md.
+
+| Rule | Evidence | Setting | Milestone |
+|---|---|---|---|
+| `BattleRules.noUltimate` never picks the ultimate even when Rage is full | own (PROMPT §7.6) | `silentpeak` trial | M8 |
+| `BattleRules.survivalRounds` caps the loop and flips the time-out to the attackers (any survivor wins) | own (PROMPT §7.6) | `lastlight` trial | M8 |
+| Tower: floors are permanent; `climbsPerWeek` climb attempts reset on the UTC ISO week; `sweepsPerDay` reset daily; a milestone chest pays every `milestoneEvery` floors, once | own (PROMPT §7.6) | `tower` block | M8 |
+| Trials: five cards, one special rule each; always open (subject to the rule); only the **first clear each UTC day** pays; `moonfall` is weekday-gated | own (PROMPT §7.6) | `trials[]` | M8 |
+| World Boss: one boss per weekday; `attemptsPerDay` scored fights; damage = summed attacker `damageDealt`; milestones claimed once; ranked vs a ghost ladder | own (PROMPT §7.6) | `worldBoss` block | M8 |
+| Daily Dungeons: one per weekday; the first clear each UTC day pays | own (PROMPT §7.6) | `dungeons[]` | M8 |
+| Link Crystal: `crystalCap = baseCap + perStarWild × (# Wilds ≥ starThreshold stars)`; unlocks at a final-form Wild that is also at its form cap; each upgrade costs `candyBase × level^candyExponent` candy + `goldPerCandy`× gold + `stonesPerLevel` stones | own (PROMPT §7.1) | `linkCrystal` block | M8 |
+| A Crystal-qualified Wild's level cap is `max(formCap, crystal.level)`; `levelUp` and the Wild screen use it | own (PROMPT §7.1) | `linkCrystal` block | M8 |

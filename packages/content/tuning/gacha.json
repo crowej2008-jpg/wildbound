@@ -1,0 +1,52 @@
+{
+  "machines": [
+    {
+      "id": "common",
+      "ticket": "ticketCommon",
+      "gemPerDraw": null,
+      "gemPerTen": null,
+      "freePerDay": 5,
+      "freeCooldownMinutes": 5,
+      "creditPerDraw": 1,
+      "boxCreditsNeeded": 100,
+      "boxRewards": { "shard": 50 },
+      "pityThreshold": 0,
+      "wish": false,
+      "wishBoost": 3.5,
+      "wishUnlockDraws": 0,
+      "tenDrawGuarantee": "rare",
+      "rates": [
+        { "tier": "common", "weight": 55 },
+        { "tier": "rare", "weight": 30 },
+        { "tier": "epic", "weight": 12 },
+        { "tier": "legendary", "weight": 2.4 },
+        { "tier": "supreme", "weight": 0.5 },
+        { "tier": "mythic", "weight": 0.1 }
+      ]
+    },
+    {
+      "id": "premium",
+      "ticket": "ticketPremium",
+      "gemPerDraw": 180,
+      "gemPerTen": 1620,
+      "freePerDay": 1,
+      "freeCooldownMinutes": 1440,
+      "creditPerDraw": 20,
+      "boxCreditsNeeded": 400,
+      "boxRewards": { "shard": 200, "stone": 3 },
+      "pityThreshold": 1000,
+      "wish": true,
+      "wishBoost": 3.5,
+      "wishUnlockDraws": 0,
+      "tenDrawGuarantee": "rare",
+      "rates": [
+        { "tier": "common", "weight": 30 },
+        { "tier": "rare", "weight": 30 },
+        { "tier": "epic", "weight": 25 },
+        { "tier": "legendary", "weight": 10 },
+        { "tier": "supreme", "weight": 3.5 },
+        { "tier": "mythic", "weight": 1.5 }
+      ]
+    }
+  ]
+}

@@ -36,6 +36,20 @@ export type CombatField =
   | 'spiritAtk'
   | 'spiritDef';
 
+/**
+ * A conditional stat change owned by an equipment layer (M7). Applied once, at the
+ * start of the big round matching `fromRound`: `add`/`mult` fold into the unit's
+ * sheet (permanent) unless `bigRounds` is set, in which case it lands as a timed buff.
+ */
+export interface RoundEffect {
+  tag: string;
+  field: CombatField;
+  add?: number;
+  mult?: number;
+  fromRound: number;
+  bigRounds?: number;
+}
+
 export type BuffKind =
   | 'stat'
   | 'control'
@@ -156,6 +170,8 @@ export interface SpecInput {
   sheet: SheetInput;
   /** team Power contribution; powers are an input until the M2 Power formula. */
   power?: number;
+  /** M7: conditional equipment effects applied during the fight. */
+  roundEffects?: RoundEffect[];
 }
 
 /** A resolved, buffable stat sheet as the battle sees it (base values). */
@@ -220,6 +236,8 @@ export interface Combatant {
   buffs: Buff[];
   lostThisRound: number;
   lostLastRound: number;
+  /** M7: equipment round effects not yet applied. */
+  roundEffects?: RoundEffect[];
 }
 
 export interface BattleConfig {
@@ -233,6 +251,19 @@ export interface BattleConfig {
   deterministic?: boolean;
   /** faction set → damage multiplier (battle weather etc.) */
   weather?: { factions: Faction[]; dmg: number };
+  /** M8: per-mode battle rules (Trials). See docs/design/pve-modes.md. */
+  rules?: BattleRules;
+}
+
+/** Special rules a PvE mode (M8 Trials) imposes on a battle. */
+export interface BattleRules {
+  /** Ultimates never fire; the turn falls back to a normal/basic skill. */
+  noUltimate?: boolean;
+  /**
+   * The loop is capped at this many big rounds and the time-out flips: the
+   * attackers win if any of them is still alive when the rounds run out.
+   */
+  survivalRounds?: number;
 }
 
 /** Skips give an action slot with no skill (`skill: null`). */
@@ -289,6 +320,8 @@ export interface BattleContext {
   units: Combatant[];
   events: BattleEvent[];
   weather?: BattleConfig['weather'];
+  /** M8: per-mode battle rules (Trials); undefined = standard rules. */
+  rules?: BattleRules;
   /** deterministic replay: every roll returns ~0, so no crit/block and no
    * chance-based control ever lands (guaranteed ones still land). */
   deterministic: boolean;

@@ -511,7 +511,7 @@ button.chip:disabled { opacity: 0.5; cursor: default; }
 .candidate-name { flex: 1; font-weight: 600; }
 .candidate-power { font-size: var(--text-xs); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
 
-.select, .textarea {
+.select, .input, .textarea {
   font-family: inherit;
   font-size: var(--text-sm);
   padding: var(--space-2);
@@ -633,3 +633,66 @@ button.chip:disabled { opacity: 0.5; cursor: default; }
 .result-table tr[data-side='defenders'] td:first-child::before { content: '◆ '; color: var(--tier-supreme); }
 .result-table tr[data-side='attackers'] td:first-child::before { content: '● '; color: var(--color-accent); }
 .unit-dead-row { color: var(--color-text-muted); }
+
+/* --- M6: summoning and shops --------------------------------------------- */
+
+.progress {
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+.progress > .progress-fill { display: block; height: 100%; border-radius: 999px; transition: width 0.2s ease; }
+.box-bar > .progress-fill { background: var(--color-accent); }
+.pity-bar > .progress-fill { background: var(--tier-legendary); }
+
+/* Summon */
+.summon-free { font-size: var(--text-sm); }
+.summon-box,
+.summon-pity,
+.summon-rates { margin-top: var(--space-3); padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-m); background: var(--color-bg); }
+.summon-box-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); font-size: var(--text-sm); font-weight: 600; }
+.summon-box .progress,
+.summon-pity .progress { margin: var(--space-2) 0; }
+.summon-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.summon-rates > summary { cursor: pointer; font-weight: 600; }
+.rate-list { list-style: none; margin: var(--space-2) 0 0; padding: 0; font-size: var(--text-sm); }
+.rate-list li { display: flex; justify-content: space-between; padding: 2px 0; }
+.summon-wish-row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin-top: var(--space-2); }
+.summon-wish-row .select { flex: 1; min-width: 160px; }
+
+.draw-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-2); }
+.draw-card { display: flex; flex-direction: column; gap: 4px; padding: var(--space-2); border: 1px solid var(--color-border); border-left-width: 4px; border-radius: var(--radius-m); background: var(--color-bg); }
+.draw-card.tier-common { border-left-color: var(--tier-common); }
+.draw-card.tier-rare { border-left-color: var(--tier-rare); }
+.draw-card.tier-epic { border-left-color: var(--tier-epic); }
+.draw-card.tier-legendary { border-left-color: var(--tier-legendary); }
+.draw-card.tier-supreme { border-left-color: var(--tier-supreme); }
+.draw-card.tier-mythic { border-left-color: var(--tier-mythic); }
+.draw-name { font-weight: 700; font-size: var(--text-sm); }
+.chip-new { border-color: var(--color-accent); color: var(--color-accent); font-weight: 700; }
+
+.history-list { list-style: none; margin: 0; padding: 0; max-height: 260px; overflow: auto; }
+.history-row { display: flex; align-items: center; gap: var(--space-2); padding: 2px 0; font-size: var(--text-sm); }
+.history-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Shops */
+.shop-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); }
+.shop-refresh { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: var(--space-2) 0; }
+.shop-refresh-cost { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--text-sm); color: var(--color-text-muted); }
+.shop-list { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.shop-item { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-2); border: 1px solid var(--color-border); border-radius: var(--radius-m); background: var(--color-bg); }
+.shop-item-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.shop-item-name { font-weight: 600; font-size: var(--text-sm); }
+
+/* M8 PvE modes */
+.stat-row { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); margin: var(--space-2) 0; }
+.stat-row .stat { flex: 1 1 6rem; gap: var(--space-2); }
+.stage-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
+.chip-on { border-color: var(--color-accent); color: var(--color-accent); font-weight: 700; background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.plain-list { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.milestone-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); padding: var(--space-2); border: 1px solid var(--color-border); border-radius: var(--radius-m); background: var(--color-bg); }
+.milestone-rewards { flex: 1; min-width: 0; text-align: center; }
+.town-tile-wide { grid-column: 1 / -1; }
+.town-desc { display: block; font-size: var(--text-xs); }

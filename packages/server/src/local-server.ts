@@ -8,12 +8,12 @@ import {
   claimMail as runClaimMail,
   claimQuest as runClaimQuest,
   claimableChests,
-  computePower,
   createMail,
   CURRENCY_IDS,
   dayKey,
   emptyQuestState,
   emptyRewards,
+  effectiveLevelCap,
   evolveCheck,
   evolved,
   isCleared,
@@ -23,12 +23,13 @@ import {
   levelCapOf,
   leveledUp,
   levelUpCost,
+  maybeUnlockCrystal,
+  mulberry32,
   orderStages,
   pendingIdle,
   pruneMail,
   quickCollect,
   recordStars,
-  resolveCoreStats,
   respawnRefund,
   respawned,
   starsForRounds,
@@ -41,6 +42,7 @@ import {
   unclaimedMail,
   type AccountState,
   type CurrencyId,
+  type MachineId,
   type QuestMetric,
   type Rewards,
   type StageDef,
@@ -56,14 +58,58 @@ import {
   type AccountSnapshot,
   type BattleView,
   type ClaimResult,
+  type DungeonBattleResult,
+  type EquipmentView,
   type GameServer,
+  type GachaView,
   type Result,
   type ServerInfo,
+  type ShopView,
   type StageBattleResult,
+  type SummonResult,
+  type TowerBattleResult,
+  type TrialBattleResult,
+  type WorldBossBattleResult,
 } from './index';
-import { startBattle as runStartBattle, stageBattle as runStageBattle } from './battle';
+import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
+import { startBattle as runStartBattle, stageBattle as runStageBattle, fielded, powerOf } from './battle';
+import { emptyLoadout } from '@wildbound/engine';
 import type { GameConfig } from './config';
 import { applyGrant, bestIdleRate, bestIdleStageId, stageRewards } from './economy';
+import {
+  challengeDungeon as challengeDungeonAction,
+  challengeTower as challengeTowerAction,
+  challengeTrial as challengeTrialAction,
+  challengeWorldBoss as challengeWorldBossAction,
+  claimWorldBossMilestone as claimWorldBossMilestoneAction,
+  crystalWilds,
+  sweepTower as sweepTowerAction,
+  upgradeLinkCrystal as upgradeLinkCrystalAction,
+} from './pve';
+import {
+  buildDungeonsView,
+  buildLinkCrystalView,
+  buildTowerView,
+  buildTrialsView,
+  buildWorldBossView,
+} from './pve-view';
+import {
+  allocateTalentAction,
+  chooseTreeAction,
+  consumeCharms,
+  equipCharmAction,
+  equipCoreAction,
+  equipRelicAction,
+  equipRuneAction,
+  levelRelicAction,
+  levelRuneAction,
+  refineRelicAction,
+  resetTalentsAction,
+  upgradeCharmAction,
+} from './equipment';
+import { buildEquipmentView } from './equipment-view';
+import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
+import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
 import { BACKUP_KEY, createInitialState, parseSave, SAVE_KEY, serializeSave } from './save';
 import type { SaveStore } from './storage';
 
@@ -108,6 +154,7 @@ export class LocalServer implements GameServer {
       ...state,
       roster: [...state.roster, instance],
       nextInstanceSeq: state.nextInstanceSeq + 1,
+      loadouts: { ...state.loadouts, [instance.id]: emptyLoadout(this.config.equipment.tuning) },
     });
   }
 
@@ -140,13 +187,14 @@ export class LocalServer implements GameServer {
     const found = this.find(loaded.value, instanceId);
     if (!found) return fail('not_found', `no Wild "${instanceId}"`);
     const { state, instance } = found;
-    const target = Math.min(levelCapOf(instance, this.config.progress), instance.level + Math.max(0, Math.floor(levels)));
+    const cap = this.levelCapFor(instance, state);
+    const target = Math.min(cap, instance.level + Math.max(0, Math.floor(levels)));
     if (target <= instance.level) return fail('at_level_cap', 'already at this stage\'s level cap');
     const cost = levelUpCost(instance.level, target, this.config.progress);
     if (state.currencies.candy < cost.candy || state.currencies.gold < cost.gold) {
       return fail('insufficient_items', 'not enough candy or gold');
     }
-    const next = leveledUp(instance, target - instance.level, this.config.progress);
+    const next = leveledUp(instance, target - instance.level, this.config.progress, cap);
     const grown = this.withTutorialAction(
       {
         ...state,
@@ -291,7 +339,7 @@ export class LocalServer implements GameServer {
         id: w.id,
         speciesId: w.speciesId,
         className: meta?.className ?? 'striker',
-        power: this.instancePower(w),
+        power: this.instancePower(w, state),
         stars: w.stars,
         level: w.level,
       };
@@ -366,6 +414,7 @@ export class LocalServer implements GameServer {
       next = this.withChapterMail(next, stage);
     }
     next = { ...next, idle: { ...next.idle, bestStageId: bestIdleStageId(this.config, next) } };
+    next = consumeCharms(next, fielded(state, 'campaign').map((w) => w.id));
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -502,11 +551,301 @@ export class LocalServer implements GameServer {
     return this.commit({ ...loaded.value, debugClockOffset: loaded.value.debugClockOffset + delta });
   }
 
+  async summon(machine: MachineId, count: number, seed?: number): Promise<Result<SummonResult>> {
+    if (machine !== 'common' && machine !== 'premium') return fail('invalid_input', `unknown machine "${machine}"`);
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const rng = typeof seed === 'number' ? mulberry32(seed) : this.config.rng;
+    const applied = applySummon(this.config, state, machine, count, this.now(state), rng);
+    if (!applied.ok) return fail(applied.error, applied.message);
+    const committed = await this.commit(applied.value.state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      machine,
+      count,
+      draws: applied.value.draws,
+      cost: applied.value.cost,
+      snapshot: committed.value,
+    });
+  }
+
+  async claimGachaBox(machine: MachineId): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const applied = applyClaimBox(this.config, loaded.value, machine, this.now(loaded.value));
+    if (!applied.ok) return fail(applied.error, applied.message);
+    return this.commitClaim(applied.value.state, applied.value.granted);
+  }
+
+  async setWish(speciesId: string | null): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const applied = applySetWish(this.config, loaded.value, speciesId, this.now(loaded.value));
+    if (!applied.ok) return fail(applied.error, applied.message);
+    return this.commit(applied.value.state);
+  }
+
+  async getGacha(): Promise<Result<GachaView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildGachaView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async buyShopItem(shopId: string, itemId: string): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const applied = applyBuy(this.config, loaded.value, shopId, itemId, this.now(loaded.value));
+    if (!applied.ok) return fail(applied.error, applied.message);
+    return this.commitClaim(applied.value.state, applied.value.granted);
+  }
+
+  async refreshShop(shopId: string): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const applied = applyRefresh(this.config, loaded.value, shopId, this.now(loaded.value));
+    if (!applied.ok) return fail(applied.error, applied.message);
+    return this.commitClaim(applied.value.state, applied.value.granted);
+  }
+
+  async getShops(): Promise<Result<ShopView[]>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildShopsView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  // --- equipment (M7) -------------------------------------------------------
+
+  async getEquipment(wildId: string): Promise<Result<EquipmentView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const wild = loaded.value.roster.find((w) => w.id === wildId);
+    if (!wild) return fail('not_found', `no Wild ${wildId}`);
+    return ok(buildEquipmentView({ config: this.config, state: loaded.value, wild }));
+  }
+
+  async equipRelic(wildId: string, instanceId: string | null, force = false): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => equipRelicAction(this.config, state, wildId, instanceId, force));
+  }
+
+  async equipRune(wildId: string, socket: number, instanceId: string | null, force = false): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => equipRuneAction(this.config, state, wildId, socket, instanceId, force));
+  }
+
+  async equipCore(wildId: string, socket: number, instanceId: string | null, force = false): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => equipCoreAction(this.config, state, wildId, socket, instanceId, force));
+  }
+
+  async equipCharm(wildId: string, charmId: string | null): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => equipCharmAction(this.config, state, wildId, charmId));
+  }
+
+  async upgradeCharm(charmId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => upgradeCharmAction(this.config, state, charmId));
+  }
+
+  async levelRelic(instanceId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => levelRelicAction(this.config, state, instanceId));
+  }
+
+  async refineRelic(instanceId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => refineRelicAction(this.config, state, instanceId));
+  }
+
+  async levelRune(instanceId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => levelRuneAction(this.config, state, instanceId));
+  }
+
+  async chooseTalentTree(wildId: string, treeId: string | null): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => chooseTreeAction(this.config, state, wildId, treeId));
+  }
+
+  async allocateTalent(wildId: string, tier: number, option: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => allocateTalentAction(this.config, state, wildId, tier, option));
+  }
+
+  async resetTalents(wildId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => resetTalentsAction(this.config, state, wildId));
+  }
+
+  // --- M8 PvE modes --------------------------------------------------------
+
+  async getTower(): Promise<Result<TowerView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    return ok(buildTowerView(this.config, state, this.now(state)));
+  }
+
+  async challengeTower(seed?: number): Promise<Result<TowerBattleResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const outcome = challengeTowerAction(this.config, state, this.now(state), seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    let next = value.state;
+    if (value.win) next = this.withQuest(next, 'winBattle');
+    next = this.withTutorialAction(next, 'winStage');
+    next = consumeCharms(next, fielded(state, 'tower').map((w) => w.id));
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      battle: value.battle,
+      floor: value.extra.floor,
+      win: value.win,
+      rewards: value.rewards,
+      snapshot: committed.value,
+    });
+  }
+
+  async sweepTower(): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const outcome = sweepTowerAction(this.config, state, this.now(state));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const next = this.withQuest(outcome.value.state, 'sweepStage');
+    return this.commitClaim(next, outcome.value.granted);
+  }
+
+  async getTrials(): Promise<Result<TrialCardView[]>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    return ok(buildTrialsView(this.config, state, this.now(state)));
+  }
+
+  async challengeTrial(trialId: string, seed?: number): Promise<Result<TrialBattleResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const outcome = challengeTrialAction(this.config, state, trialId, this.now(state), seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    let next = value.state;
+    if (value.win) next = this.withQuest(next, 'winBattle');
+    next = consumeCharms(next, fielded(state, 'campaign').map((w) => w.id));
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      battle: value.battle,
+      trialId: value.extra.trialId,
+      win: value.win,
+      firstToday: value.extra.firstToday,
+      rewards: value.rewards,
+      snapshot: committed.value,
+    });
+  }
+
+  async getWorldBoss(): Promise<Result<WorldBossView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    return ok(buildWorldBossView(this.config, state, this.now(state)));
+  }
+
+  async challengeWorldBoss(seed?: number): Promise<Result<WorldBossBattleResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const outcome = challengeWorldBossAction(this.config, state, this.now(state), seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    let next = value.state;
+    next = this.withQuest(next, 'winBattle');
+    next = consumeCharms(next, fielded(state, 'worldBoss').map((w) => w.id));
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      battle: value.battle,
+      speciesId: value.extra.speciesId,
+      name: value.extra.name,
+      damage: value.extra.damage,
+      bestDamage: value.extra.bestDamage,
+      rank: value.extra.rank,
+      ghosts: value.extra.ghosts,
+      attemptsLeft: value.extra.attemptsLeft,
+      snapshot: committed.value,
+    });
+  }
+
+  async claimWorldBossMilestone(index: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimWorldBossMilestoneAction(this.config, loaded.value, index);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.granted);
+  }
+
+  async getDungeons(): Promise<Result<DungeonCardView[]>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    return ok(buildDungeonsView(this.config, state, this.now(state)));
+  }
+
+  async challengeDungeon(dungeonId: string, seed?: number): Promise<Result<DungeonBattleResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const outcome = challengeDungeonAction(this.config, state, dungeonId, this.now(state), seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    let next = value.state;
+    if (value.win) next = this.withQuest(next, 'winBattle');
+    next = consumeCharms(next, fielded(state, 'campaign').map((w) => w.id));
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      battle: value.battle,
+      dungeonId: value.extra.dungeonId,
+      win: value.win,
+      firstToday: value.extra.firstToday,
+      rewards: value.rewards,
+      snapshot: committed.value,
+    });
+  }
+
+  async getLinkCrystal(): Promise<Result<LinkCrystalView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildLinkCrystalView(this.config, loaded.value));
+  }
+
+  async upgradeLinkCrystal(): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = upgradeLinkCrystalAction(this.config, loaded.value);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value.state);
+  }
+
+  private async applyEquipment(run: (state: AccountState) => Result<AccountState>): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const applied = run(loaded.value);
+    if (!applied.ok) return fail(applied.error, applied.message);
+    return this.commit(applied.value);
+  }
+
   // --- internals -----------------------------------------------------------
 
   /** The effective game clock: the injected clock plus any debug fast-forward (minutes). */
   private now(state: AccountState): number {
     return this.config.now() + state.debugClockOffset * 60_000;
+  }
+
+  /**
+   * The level cap for a Wild: its evolution form's cap, raised to the Link
+   * Crystal's level when the Wild sits at its final form's cap (M8, PROMPT §7.1).
+   */
+  private levelCapFor(instance: WildInstance, state: AccountState): number {
+    const meta = this.config.species.get(instance.speciesId);
+    const topStage = Math.max(0, (meta?.stages.length ?? 1) - 1);
+    const stageCap = levelCapOf(instance, this.config.progress);
+    const atTopStage = instance.evolutionStage >= topStage && instance.level >= stageCap;
+    return effectiveLevelCap({ stars: instance.stars, atTopStage }, stageCap, state.pve.linkCrystal);
   }
 
   /** Bump a daily-quest counter (progress is keyed by metric, shared by quests). */
@@ -594,6 +933,11 @@ export class LocalServer implements GameServer {
       next = { ...next, mail: pruned };
       changed = true;
     }
+    const crystal = maybeUnlockCrystal(next.pve.linkCrystal, crystalWilds(this.config, next), this.config.pve.linkCrystal);
+    if (crystal !== next.pve.linkCrystal) {
+      next = { ...next, pve: { ...next.pve, linkCrystal: crystal } };
+      changed = true;
+    }
     return { state: next, changed };
   }
 
@@ -611,7 +955,7 @@ export class LocalServer implements GameServer {
 
   private snapshot(state: AccountState): AccountSnapshot {
     const power: Record<string, number> = {};
-    for (const wild of state.roster) power[wild.id] = this.instancePower(wild);
+    for (const wild of state.roster) power[wild.id] = this.instancePower(wild, state);
     const teamPower = {} as Record<SquadMode, number>;
     for (const mode of SQUAD_MODES) {
       teamPower[mode] = state.squads[mode].reduce((sum, id) => sum + (id ? power[id] ?? 0 : 0), 0);
@@ -619,14 +963,8 @@ export class LocalServer implements GameServer {
     return { state, power, teamPower };
   }
 
-  private instancePower(wild: WildInstance): number {
-    const meta = this.config.species.get(wild.speciesId);
-    if (!meta) return 0;
-    const core = resolveCoreStats(
-      { base: meta.base, level: wild.level, stars: wild.stars, tier: meta.tier, stage: wild.evolutionStage },
-      this.config.growth,
-    );
-    return computePower(core, {}, this.config.power);
+  private instancePower(wild: WildInstance, state: AccountState): number {
+    return powerOf(wild, this.config, state);
   }
 
   private find(state: AccountState, instanceId: string): { state: AccountState; instance: WildInstance } | null {

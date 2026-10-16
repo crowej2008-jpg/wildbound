@@ -67,4 +67,31 @@ describe('runBattle', () => {
     expect(r.rounds).toBeLessThan(15);
     expect(r.rounds).toBe(1);
   });
+
+  it('M8 noUltimate: a full-rage striker never casts its ultimate', () => {
+    const attackers = [spec({ id: 'a', side: 'attackers', position: 1, kit: strongKit(), sheet: sheet({ hp: 5000, pAtk: 500, spd: 300 }) })];
+    const defenders = [spec({ id: 'd', side: 'defenders', position: 4, kit: weakKit(), sheet: sheet({ hp: 4000 }) })];
+    const withU = runBattle({ attackers, defenders, seed: 3, deterministic: true });
+    const noU = runBattle({ attackers, defenders, seed: 3, deterministic: true, rules: { noUltimate: true } });
+    expect(withU.events.some((e) => e.type === 'action' && e.skill === 'ult')).toBe(true);
+    expect(noU.events.some((e) => e.type === 'action' && e.skill === 'ult')).toBe(false);
+  });
+
+  it('M8 survivalRounds: the attackers win a time-out if any survives', () => {
+    // A tanky, harmless attacker vs an immortal defender: the loop times out.
+    const attackers = [spec({ id: 'a', side: 'attackers', position: 1, kit: weakKit(), sheet: sheet({ hp: 5000, pAtk: 50, spd: 200 }) })];
+    const defenders = [spec({ id: 'd', side: 'defenders', position: 4, kit: weakKit(), sheet: sheet({ hp: 200000 }) })];
+    const normal = runBattle({ attackers, defenders, seed: 5, deterministic: true });
+    expect(normal.winner).toBe('defenders');
+    const survival = runBattle({ attackers, defenders, seed: 5, deterministic: true, rules: { survivalRounds: 5 } });
+    expect(survival.winner).toBe('attackers');
+    expect(survival.rounds).toBe(5);
+  });
+
+  it('M8 survivalRounds still loses when the attackers are wiped', () => {
+    const attackers = [spec({ id: 'a', side: 'attackers', position: 1, kit: weakKit(), sheet: sheet({ hp: 100, spd: 1 }) })];
+    const defenders = [spec({ id: 'd', side: 'defenders', position: 4, kit: strongKit(), sheet: sheet({ hp: 5000, pAtk: 900, spd: 300 }) })];
+    const survival = runBattle({ attackers, defenders, seed: 5, deterministic: true, rules: { survivalRounds: 5 } });
+    expect(survival.winner).toBe('defenders');
+  });
 });

@@ -1,0 +1,250 @@
+{
+  "runes": [
+    {
+      "id": "rune-verdant-spark",
+      "name": "Verdant Spark",
+      "setId": "runeset-verdant",
+      "tier": "common",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.03,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "rune-verdant-glint",
+      "name": "Verdant Glint",
+      "setId": "runeset-verdant",
+      "tier": "common",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "crit",
+          "base": 0.02,
+          "perLevel": 0.005
+        }
+      ]
+    },
+    {
+      "id": "rune-verdant-ward",
+      "name": "Verdant Ward",
+      "setId": "runeset-verdant",
+      "tier": "common",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.02,
+          "perLevel": 0.004
+        },
+        {
+          "kind": "soul",
+          "field": "spiritDef",
+          "base": 6,
+          "perLevel": 3
+        }
+      ]
+    },
+    {
+      "id": "rune-azure-spark",
+      "name": "Azure Spark",
+      "setId": "runeset-azure",
+      "tier": "rare",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.045,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "rune-azure-glint",
+      "name": "Azure Glint",
+      "setId": "runeset-azure",
+      "tier": "rare",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "crit",
+          "base": 0.03,
+          "perLevel": 0.005
+        }
+      ]
+    },
+    {
+      "id": "rune-azure-ward",
+      "name": "Azure Ward",
+      "setId": "runeset-azure",
+      "tier": "rare",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.03,
+          "perLevel": 0.004
+        },
+        {
+          "kind": "soul",
+          "field": "spiritDef",
+          "base": 10,
+          "perLevel": 3
+        }
+      ]
+    },
+    {
+      "id": "rune-amber-spark",
+      "name": "Amber Spark",
+      "setId": "runeset-amber",
+      "tier": "epic",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.06,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "rune-amber-glint",
+      "name": "Amber Glint",
+      "setId": "runeset-amber",
+      "tier": "epic",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "crit",
+          "base": 0.04,
+          "perLevel": 0.005
+        }
+      ]
+    },
+    {
+      "id": "rune-amber-ward",
+      "name": "Amber Ward",
+      "setId": "runeset-amber",
+      "tier": "epic",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.04,
+          "perLevel": 0.004
+        },
+        {
+          "kind": "soul",
+          "field": "spiritDef",
+          "base": 14,
+          "perLevel": 3
+        }
+      ]
+    },
+    {
+      "id": "rune-crimson-spark",
+      "name": "Crimson Spark",
+      "setId": "runeset-crimson",
+      "tier": "legendary",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.075,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "rune-crimson-glint",
+      "name": "Crimson Glint",
+      "setId": "runeset-crimson",
+      "tier": "legendary",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "crit",
+          "base": 0.05,
+          "perLevel": 0.005
+        }
+      ]
+    },
+    {
+      "id": "rune-crimson-ward",
+      "name": "Crimson Ward",
+      "setId": "runeset-crimson",
+      "tier": "legendary",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.05,
+          "perLevel": 0.004
+        },
+        {
+          "kind": "soul",
+          "field": "spiritDef",
+          "base": 18,
+          "perLevel": 3
+        }
+      ]
+    }
+  ],
+  "sets": [
+    {
+      "id": "runeset-verdant",
+      "name": "Verdant Loop",
+      "pieces": 3,
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "healBoost",
+          "base": 0.1,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "runeset-azure",
+      "name": "Azure Pact",
+      "pieces": 3,
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.08,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "runeset-amber",
+      "name": "Amber Coil",
+      "pieces": 3,
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.15,
+          "perLevel": 0
+        }
+      ]
+    },
+    {
+      "id": "runeset-crimson",
+      "name": "Crimson Crown",
+      "pieces": 3,
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "guardBreak",
+          "base": 0.1,
+          "perLevel": 0
+        }
+      ]
+    }
+  ]
+}

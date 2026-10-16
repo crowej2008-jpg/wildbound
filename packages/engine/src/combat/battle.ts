@@ -36,6 +36,7 @@ export function runBattle(config: BattleConfig): BattleResult {
     units,
     events,
     weather: config.weather,
+    rules: config.rules,
     deterministic,
     round: 0,
     alreadyAppliedHooks: new Set<string>(),
@@ -51,9 +52,14 @@ export function runBattle(config: BattleConfig): BattleResult {
 
   let winner: 'attackers' | 'defenders' | undefined;
 
-  for (let bigRound = 1; bigRound <= settings.maxRounds; bigRound += 1) {
+  const survival = config.rules?.survivalRounds;
+  const maxRounds =
+    survival !== undefined ? Math.min(settings.maxRounds, Math.max(1, Math.floor(survival))) : settings.maxRounds;
+
+  for (let bigRound = 1; bigRound <= maxRounds; bigRound += 1) {
     ctx.round = bigRound;
     refreshSafeguards(ctx, bigRound);
+    applyRoundEffects(ctx);
     events.push({ type: 'roundStart', bigRound });
 
     for (const u of turnOrder(ctx)) {
@@ -81,7 +87,9 @@ export function runBattle(config: BattleConfig): BattleResult {
     if (winner) break;
   }
 
-  const finalWinner: 'attackers' | 'defenders' = winner ?? 'defenders';
+  // Survival trials flip the time-out: the attackers win if any survives.
+  const finalWinner: 'attackers' | 'defenders' =
+    winner ?? (survival !== undefined && !sideDead(ctx, 'attackers') ? 'attackers' : 'defenders');
   events.push({ type: 'result', winner: finalWinner, rounds: countRounds(events) });
 
   return finalize(ctx, config, finalWinner);
@@ -106,10 +114,11 @@ function spawn(specs: SpecInput[], side: 'attackers' | 'defenders', settings: Co
       hp: sheet.hp,
       shieldHp: 0,
       rage,
-      alive: true,
+        alive: true,
       buffs: [],
       lostThisRound: 0,
       lostLastRound: 0,
+      roundEffects: spec.roundEffects ?? [],
     };
   });
 }
@@ -136,6 +145,34 @@ function refreshSafeguards(ctx: BattleContext, bigRound: number): void {
     const sg = u.kit.talents?.safeguard;
     if (!sg || ((bigRound - 1) % sg.cycle) >= sg.active) continue;
     u.buffs.push({ tag: 'safeguard', kind: 'immune', source: u.id });
+  }
+}
+
+/** M7: apply equipment round effects once, at the start of their big round. */
+function applyRoundEffects(ctx: BattleContext): void {
+  for (const u of ctx.units) {
+    if (!u.alive) continue;
+    for (const fx of u.roundEffects ?? []) {
+      if (fx.fromRound !== ctx.round) continue;
+      const key = `${u.key}#fx#${fx.tag}#${fx.fromRound}`;
+      if (ctx.alreadyAppliedHooks.has(key)) continue;
+      ctx.alreadyAppliedHooks.add(key);
+      if (fx.bigRounds !== undefined) {
+        u.buffs.push({
+          tag: fx.tag,
+          kind: 'stat',
+          source: u.id,
+          field: fx.field,
+          amount: fx.add ?? 0,
+          bigRounds: fx.bigRounds,
+        });
+        ctx.events.push({ type: 'buffApplied', unit: u.key, tag: fx.tag, amount: fx.add ?? 0 });
+        continue;
+      }
+      if (fx.mult !== undefined) u.sheet[fx.field] *= fx.mult;
+      if (fx.add !== undefined) u.sheet[fx.field] += fx.add;
+      ctx.events.push({ type: 'buffApplied', unit: u.key, tag: fx.tag, amount: fx.add ?? 0 });
+    }
   }
 }
 

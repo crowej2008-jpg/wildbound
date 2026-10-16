@@ -20,7 +20,7 @@ export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): 
   tickDots(ctx, u);
 
   const skip = u.buffs.some((b) => b.kind === 'control');
-  const ultReady = u.rage >= ctx.settings.ultRageCost;
+  const ultReady = ctx.rules?.noUltimate !== true && u.rage >= ctx.settings.ultRageCost;
   const paralysis = u.buffs.some((b) => b.kind === 'paralysis');
 
   if (skip || (paralysis && !ultReady)) {
