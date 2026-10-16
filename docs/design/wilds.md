@@ -25,7 +25,9 @@ Every species:
 | `paletteSeed` | integer; the procedural art generator's seed |
 | `base` | core stats seed: `hp, pAtk, sAtk, spd, pDef, sDef` |
 
-The roster is 6 species per faction, spanning all three classes and all six tiers.
+The roster is 6 species per faction spanning all three classes and all six tiers. **Update
+(2026-10-15):** the owner overrode the IP rule and the roster is now the imported creature list (no
+longer a balanced six per faction, and no `common`-tier species) — see `roster-import.md`.
 
 ## Kit identity (content, DSL from PROMPT §6.7)
 

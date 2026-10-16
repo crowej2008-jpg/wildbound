@@ -5,15 +5,50 @@
     "index": 1,
     "name": "Shadewood Fringe",
     "enemies": [
-      { "speciesId": "emberpaw", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "petalfall", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "mossgill", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "bubblay", "level": 10, "stars": 2, "stage": 0 }
+      {
+        "speciesId": "charizard",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "raichu",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "starmie",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 2600, "candy": 520, "shard": 20, "xp": 190 },
-    "repeat": { "gold": 500, "candy": 100, "xp": 35 },
-    "idlePerMinute": { "gold": 600, "candy": 60 },
-    "starRounds": [6, 12]
+    "firstClear": {
+      "gold": 2600,
+      "candy": 520,
+      "shard": 20,
+      "xp": 190
+    },
+    "repeat": {
+      "gold": 500,
+      "candy": 100,
+      "xp": 35
+    },
+    "idlePerMinute": {
+      "gold": 600,
+      "candy": 60
+    },
+    "starRounds": [
+      6,
+      12
+    ]
   },
   {
     "id": "c3-2",
@@ -21,15 +56,50 @@
     "index": 2,
     "name": "Hollow Mire",
     "enemies": [
-      { "speciesId": "cinderox", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "rimehide", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "emberpaw", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "bubblay", "level": 10, "stars": 2, "stage": 0 }
+      {
+        "speciesId": "blaziken",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "garchomp",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "charizard",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "starmie",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 2800, "candy": 560, "shard": 21, "xp": 200 },
-    "repeat": { "gold": 525, "candy": 105, "xp": 36 },
-    "idlePerMinute": { "gold": 630, "candy": 63 },
-    "starRounds": [6, 12]
+    "firstClear": {
+      "gold": 2800,
+      "candy": 560,
+      "shard": 21,
+      "xp": 200
+    },
+    "repeat": {
+      "gold": 525,
+      "candy": 105,
+      "xp": 36
+    },
+    "idlePerMinute": {
+      "gold": 630,
+      "candy": 63
+    },
+    "starRounds": [
+      6,
+      12
+    ]
   },
   {
     "id": "c3-3",
@@ -37,15 +107,50 @@
     "index": 3,
     "name": "Bonewind Pass",
     "enemies": [
-      { "speciesId": "mossgill", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "rimehide", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "wraithling", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "petalfall", "level": 10, "stars": 2, "stage": 0 }
+      {
+        "speciesId": "raichu",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "garchomp",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "metagross",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 3000, "candy": 600, "shard": 22, "xp": 210 },
-    "repeat": { "gold": 550, "candy": 110, "xp": 37 },
-    "idlePerMinute": { "gold": 660, "candy": 66 },
-    "starRounds": [7, 13]
+    "firstClear": {
+      "gold": 3000,
+      "candy": 600,
+      "shard": 22,
+      "xp": 210
+    },
+    "repeat": {
+      "gold": 550,
+      "candy": 110,
+      "xp": 37
+    },
+    "idlePerMinute": {
+      "gold": 660,
+      "candy": 66
+    },
+    "starRounds": [
+      7,
+      13
+    ]
   },
   {
     "id": "c3-4",
@@ -53,16 +158,56 @@
     "index": 4,
     "name": "The Pale Stair",
     "enemies": [
-      { "speciesId": "cinderox", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "mossgill", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "rimehide", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "emberpaw", "level": 10, "stars": 2, "stage": 0 },
-      { "speciesId": "petalfall", "level": 10, "stars": 2, "stage": 0 }
+      {
+        "speciesId": "blaziken",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "raichu",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "garchomp",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "charizard",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 10,
+        "stars": 2,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 3200, "candy": 640, "shard": 23, "xp": 220 },
-    "repeat": { "gold": 575, "candy": 115, "xp": 38 },
-    "idlePerMinute": { "gold": 690, "candy": 69 },
-    "starRounds": [7, 13]
+    "firstClear": {
+      "gold": 3200,
+      "candy": 640,
+      "shard": 23,
+      "xp": 220
+    },
+    "repeat": {
+      "gold": 575,
+      "candy": 115,
+      "xp": 38
+    },
+    "idlePerMinute": {
+      "gold": 690,
+      "candy": 69
+    },
+    "starRounds": [
+      7,
+      13
+    ]
   },
   {
     "id": "c3-5",
@@ -70,16 +215,56 @@
     "index": 5,
     "name": "Eclipse Terrace",
     "enemies": [
-      { "speciesId": "frostfang", "level": 11, "stars": 2, "stage": 1 },
-      { "speciesId": "emberpaw", "level": 11, "stars": 2, "stage": 1 },
-      { "speciesId": "petalfall", "level": 11, "stars": 2, "stage": 1 },
-      { "speciesId": "mossgill", "level": 11, "stars": 2, "stage": 1 },
-      { "speciesId": "rimehide", "level": 11, "stars": 2, "stage": 1 }
+      {
+        "speciesId": "slaking",
+        "level": 11,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "charizard",
+        "level": 11,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 11,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "raichu",
+        "level": 11,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "garchomp",
+        "level": 11,
+        "stars": 2,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 3400, "candy": 680, "shard": 24, "xp": 230 },
-    "repeat": { "gold": 600, "candy": 120, "xp": 39 },
-    "idlePerMinute": { "gold": 720, "candy": 72 },
-    "starRounds": [7, 14]
+    "firstClear": {
+      "gold": 3400,
+      "candy": 680,
+      "shard": 24,
+      "xp": 230
+    },
+    "repeat": {
+      "gold": 600,
+      "candy": 120,
+      "xp": 39
+    },
+    "idlePerMinute": {
+      "gold": 720,
+      "candy": 72
+    },
+    "starRounds": [
+      7,
+      14
+    ]
   },
   {
     "id": "c3-6",
@@ -87,15 +272,56 @@
     "index": 6,
     "name": "Heart of the Veil",
     "enemies": [
-      { "speciesId": "frostfang", "level": 12, "stars": 2, "stage": 1 },
-      { "speciesId": "cinderox", "level": 12, "stars": 2, "stage": 1 },
-      { "speciesId": "emberpaw", "level": 12, "stars": 2, "stage": 1 },
-      { "speciesId": "petalfall", "level": 12, "stars": 2, "stage": 1 },
-      { "speciesId": "mossgill", "level": 12, "stars": 2, "stage": 1 }
+      {
+        "speciesId": "slaking",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "blaziken",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "charizard",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "raichu",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 5000, "candy": 1000, "shard": 40, "gems": 50, "xp": 350 },
-    "repeat": { "gold": 750, "candy": 150, "xp": 45 },
-    "idlePerMinute": { "gold": 1000, "candy": 100 },
-    "starRounds": [8, 15]
+    "firstClear": {
+      "gold": 5000,
+      "candy": 1000,
+      "shard": 40,
+      "gems": 50,
+      "xp": 350
+    },
+    "repeat": {
+      "gold": 750,
+      "candy": 150,
+      "xp": 45
+    },
+    "idlePerMinute": {
+      "gold": 1000,
+      "candy": 100
+    },
+    "starRounds": [
+      8,
+      15
+    ]
   }
 ]

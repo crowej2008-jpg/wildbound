@@ -1,82 +1,32 @@
 [
   {
-    "id": "umbrashade",
-    "name": "Umbrashade",
+    "id": "origin-lugia",
+    "name": "Origin Lugia",
     "faction": "shade",
-    "class": "adept",
-    "tier": "legendary",
+    "class": "striker",
+    "tier": "mythic",
     "skills": {
       "normal": {
-        "type": "S",
+        "type": "P",
         "rates": [
           1
         ],
         "rule": "column"
       },
       "basic": {
-        "type": "S",
+        "type": "P",
         "rates": [
           1.2
         ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
         "rule": "row"
-      },
-      "ult": {
-        "type": "S",
-        "rates": [
-          1.8
-        ],
-        "rule": "all",
-        "control": {
-          "kind": "freeze",
-          "chance": null,
-          "turns": 1
-        }
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "controlBoost",
-          "add": 0.1
-        },
-        {
-          "field": "healBoost",
-          "add": 0.1
-        }
-      ]
-    }
-  },
-  {
-    "id": "voidfang",
-    "name": "Voidfang",
-    "faction": "shade",
-    "class": "striker",
-    "tier": "epic",
-    "skills": {
-      "normal": {
-        "type": "P",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "P",
-        "rates": [
-          1.15
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "P",
-        "rates": [
-          2.6
-        ],
-        "rule": "lowest_hp"
       }
     },
     "talents": {
@@ -97,62 +47,66 @@
     }
   },
   {
-    "id": "wraithling",
-    "name": "Wraithling",
+    "id": "origin-rayquaza",
+    "name": "Origin Rayquaza",
     "faction": "shade",
-    "class": "adept",
-    "tier": "rare",
+    "class": "guardian",
+    "tier": "mythic",
     "skills": {
       "normal": {
         "type": "S",
         "rates": [
-          1
+          0.95
         ],
-        "rule": "column"
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
       },
       "basic": {
         "type": "S",
         "rates": [
           1.15
         ],
-        "rule": "row"
+        "rule": "column"
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.9
+          1.6
         ],
-        "rule": "all",
-        "control": {
-          "kind": "stun",
-          "chance": 0.45,
-          "turns": 1
-        }
+        "rule": "row"
       }
     },
     "talents": {
       "statMods": [
         {
-          "field": "sAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.2
         },
         {
-          "field": "controlBoost",
-          "add": 0.1
+          "field": "dmgRdct",
+          "add": 0.08
         },
         {
-          "field": "healBoost",
-          "add": 0.1
+          "field": "block",
+          "add": 0.05
         }
-      ]
+      ],
+      "rageOnHit": 125
     }
   },
   {
-    "id": "nightgazer",
-    "name": "Nightgazer",
+    "id": "shadow-mewtwo",
+    "name": "Shadow Mewtwo",
     "faction": "shade",
     "class": "adept",
-    "tier": "epic",
+    "tier": "mythic",
     "skills": {
       "normal": {
         "type": "S",
@@ -210,11 +164,11 @@
     }
   },
   {
-    "id": "grieftalon",
-    "name": "Grieftalon",
+    "id": "black-kyurem",
+    "name": "Black Kyurem",
     "faction": "shade",
     "class": "striker",
-    "tier": "common",
+    "tier": "mythic",
     "skills": {
       "normal": {
         "type": "P",
@@ -226,16 +180,17 @@
       "basic": {
         "type": "P",
         "rates": [
-          1.25
+          1.2
         ],
         "rule": "column"
       },
       "ult": {
         "type": "P",
         "rates": [
-          2.4
+          1.7,
+          1.4
         ],
-        "rule": "column"
+        "rule": "row"
       }
     },
     "talents": {
@@ -256,30 +211,38 @@
     }
   },
   {
-    "id": "duskwarden",
-    "name": "Duskwarden",
+    "id": "hoopa",
+    "name": "Hoopa",
     "faction": "shade",
     "class": "guardian",
-    "tier": "supreme",
+    "tier": "mythic",
     "skills": {
       "normal": {
         "type": "S",
         "rates": [
           0.95
         ],
-        "rule": "column"
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
       },
       "basic": {
         "type": "S",
         "rates": [
           1.15
         ],
-        "rule": "row"
+        "rule": "column"
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.7
+          1.6
         ],
         "rule": "row"
       }
@@ -299,8 +262,491 @@
           "add": 0.05
         }
       ],
-      "rageOnHit": 125,
-      "rageCutChance": 0.35
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "mewtwo",
+    "name": "Mewtwo",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "darkrai",
+    "name": "Darkrai",
+    "faction": "shade",
+    "class": "guardian",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "lunala",
+    "name": "Lunala",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "deoxys",
+    "name": "Deoxys",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "meloetta",
+    "name": "Meloetta",
+    "faction": "shade",
+    "class": "guardian",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "shiny-mewtwo",
+    "name": "Shiny Mewtwo",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "shiny-darkrai",
+    "name": "Shiny Darkrai",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "shiny-kyurem",
+    "name": "Shiny Kyurem",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "shiny-hoopa",
+    "name": "Shiny Hoopa",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
     }
   }
 ]

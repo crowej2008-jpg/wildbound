@@ -99,7 +99,7 @@ trainer XP. A **Sweep** is only allowed on a cleared stage and grants the repeat
 ## Content (`packages/content`)
 
 - `content/stages/*.json` — one file per chapter, each an array of `StageDef`. Enemy `speciesId`s
-  reference the 36 Wilds; the validator cross-checks them. Levels scale by chapter (our difficulty
+  reference content species; the validator cross-checks them. Levels scale by chapter (our difficulty
   curve; author our own numbers).
 - `content/quests/daily.json` — the daily quest list (one array).
 - `content/tuning/economy.json` — idle caps/costs, activity chest tiers, trainer XP curve, star

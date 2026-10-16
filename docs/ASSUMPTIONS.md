@@ -248,3 +248,14 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
 4. **Attribute → faction map.** The sheet has five attributes (Light, Dark, Fire, Grass, Water) and
    we have six factions, so Fire→ember, Water→tide, Grass→grove, Dark→shade and Light alternates
    volt/frost. *What would change it:* a decision to re-theme the factions to the sheet's attributes.
+5. **The species-coverage rule is relaxed.** `content:validate` used to require exactly six species
+   per faction; it now requires *at least one* so the imported roster (18/19/19/7/7/14) validates
+   while every faction stays represented for the PvE pools. *What would change it:* a decision to cap
+   faction sizes, which is a content change, not code.
+6. **Evolution stages are generated.** The sheet lists final forms only, so each creature gets three
+   stages (`"<Name>"`, `"<Name> Prime"`, `"<Name> Zenith"`). Single-stage creatures broke two things:
+   `evolve` could never fire, and the Link Crystal's "at final stage" gate unlocked for a level-60
+   Wild immediately (see `local-server.test.ts`). *What would change it:* authored evolution lines.
+7. **Chapters 1-3 were re-pointed at low-tier creatures.** The original stage enemies named
+   `speciesId`s that no longer exist; they now use common/rare/epic creatures at `stage: 0` so the
+   grown-starter balance test still holds. `docs/design/roster-import.md` lists the exact changes.

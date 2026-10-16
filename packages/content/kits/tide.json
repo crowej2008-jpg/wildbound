@@ -1,7 +1,7 @@
 [
   {
     "id": "tidewarden",
-    "name": "Tidewarden",
+    "name": "Kyogre",
     "faction": "tide",
     "class": "guardian",
     "tier": "mythic",
@@ -100,8 +100,8 @@
     }
   },
   {
-    "id": "reefmaw",
-    "name": "Reefmaw",
+    "id": "psyduck",
+    "name": "Psyduck",
     "faction": "tide",
     "class": "striker",
     "tier": "supreme",
@@ -116,16 +116,17 @@
       "basic": {
         "type": "P",
         "rates": [
-          1.25
+          1.2
         ],
         "rule": "column"
       },
       "ult": {
         "type": "P",
         "rates": [
-          2.4
+          1.7,
+          1.4
         ],
-        "rule": "column"
+        "rule": "row"
       }
     },
     "talents": {
@@ -146,57 +147,11 @@
     }
   },
   {
-    "id": "squallfin",
-    "name": "Squallfin",
-    "faction": "tide",
-    "class": "striker",
-    "tier": "common",
-    "skills": {
-      "normal": {
-        "type": "P",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "P",
-        "rates": [
-          1.15
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "P",
-        "rates": [
-          2.6
-        ],
-        "rule": "lowest_hp"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "pAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "crit",
-          "add": 0.05
-        }
-      ]
-    }
-  },
-  {
-    "id": "nimbulon",
-    "name": "Nimbulon",
+    "id": "shiny-blastoise",
+    "name": "Shiny Blastoise",
     "faction": "tide",
     "class": "adept",
-    "tier": "legendary",
+    "tier": "supreme",
     "skills": {
       "normal": {
         "type": "S",
@@ -211,21 +166,29 @@
           1.15
         ],
         "rule": "row",
-        "heal": {
-          "target": "ally",
-          "rate": 0.35
-        }
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.6
+          1.7
         ],
         "rule": "row",
-        "heal": {
-          "target": "allies",
-          "rate": 0.25
-        }
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
       }
     },
     "talents": {
@@ -246,8 +209,803 @@
     }
   },
   {
-    "id": "bubblay",
-    "name": "Bubblay",
+    "id": "xerneas",
+    "name": "Xerneas",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "palkia",
+    "name": "Palkia",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "keldeo",
+    "name": "Keldeo",
+    "faction": "tide",
+    "class": "guardian",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "greninja",
+    "name": "Greninja",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "manaphy",
+    "name": "Manaphy",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "lugia",
+    "name": "Lugia",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "suicune",
+    "name": "Suicune",
+    "faction": "tide",
+    "class": "guardian",
+    "tier": "legendary",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "articuno",
+    "name": "Articuno",
+    "faction": "tide",
+    "class": "guardian",
+    "tier": "legendary",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "gyarados",
+    "name": "Gyarados",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "swampert",
+    "name": "Swampert",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "feraligatr",
+    "name": "Feraligatr",
+    "faction": "tide",
+    "class": "guardian",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "dragonite",
+    "name": "Dragonite",
+    "faction": "tide",
+    "class": "striker",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "garchomp",
+    "name": "Garchomp",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "slaking",
+    "name": "Slaking",
+    "faction": "tide",
+    "class": "adept",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "starmie",
+    "name": "Starmie",
     "faction": "tide",
     "class": "adept",
     "tier": "rare",
@@ -308,80 +1066,50 @@
     }
   },
   {
-    "id": "spinedrift",
-    "name": "Spinedrift",
+    "id": "blastoise",
+    "name": "Blastoise",
     "faction": "tide",
-    "class": "guardian",
-    "tier": "epic",
+    "class": "striker",
+    "tier": "rare",
     "skills": {
       "normal": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          0.9
+          1
         ],
-        "rule": "column",
-        "selfBuffs": [
-          {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.1,
-            "turns": 2
-          }
-        ]
+        "rule": "column"
       },
       "basic": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          1.1
+          1.2
         ],
-        "rule": "column",
-        "selfBuffs": [
-          {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.12,
-            "turns": 2
-          }
-        ]
+        "rule": "column"
       },
       "ult": {
-        "type": "S",
+        "type": "P",
         "rates": [
+          1.7,
           1.4
         ],
-        "rule": "row",
-        "shield": {
-          "target": "allies",
-          "share": 0.25
-        }
+        "rule": "row"
       }
     },
     "talents": {
       "statMods": [
         {
-          "field": "hp",
-          "mult": 1.2
+          "field": "pAtk",
+          "mult": 1.15
         },
         {
-          "field": "dmgRdct",
-          "add": 0.08
+          "field": "sAtk",
+          "mult": 1.15
         },
         {
-          "field": "block",
+          "field": "crit",
           "add": 0.05
         }
-      ],
-      "rageOnHit": 125,
-      "turnHooks": [
-        "allyShelterStack"
       ]
-    },
-    "hooksConfig": {
-      "allyShelterStack": {
-        "field": "dmgRdct",
-        "amount": 0.03,
-        "cap": 4
-      }
     }
   }
 ]

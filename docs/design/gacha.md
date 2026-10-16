@@ -47,7 +47,7 @@ Rates live in `packages/content/tuning/gacha.json` as per-**tier** weights. With
 of that tier is equally likely, except a wished Wild, whose weight is multiplied by `wishBoost`.
 
 Tier order (`common < rare < epic < legendary < supreme < mythic`) drives the guarantees. The pool is
-built from the 36 species and their tiers, so the real per-species probability is
+built from the content species and their tiers, so the real per-species probability is
 `tierWeight / totalWeight / tierCount`. The UI prints exactly that.
 
 ## Pool & duplicates

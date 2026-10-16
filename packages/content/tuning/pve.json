@@ -4,7 +4,12 @@
     "sweepsPerDay": 2,
     "milestoneEvery": 5,
     "milestoneCap": 100,
-    "milestoneRewards": { "gold": 20000, "gems": 120, "candy": 2500, "wildCoin": 60 },
+    "milestoneRewards": {
+      "gold": 20000,
+      "gems": 120,
+      "candy": 2500,
+      "wildCoin": 60
+    },
     "reward": {
       "goldBase": 3000,
       "goldPerFloor": 500,
@@ -41,14 +46,46 @@
     "ghostCount": 9,
     "historyCap": 12,
     "milestones": [
-      { "damage": 100000, "rewards": { "gold": 50000, "candy": 4000, "wildCoin": 80 } },
-      { "damage": 500000, "rewards": { "gold": 150000, "shard": 800, "wildCoin": 160 } },
-      { "damage": 1500000, "rewards": { "gems": 300, "stone": 12, "wildCoin": 320 } },
-      { "damage": 4000000, "rewards": { "gems": 800, "ticketPremium": 2, "wildCoin": 640 } }
+      {
+        "damage": 100000,
+        "rewards": {
+          "gold": 50000,
+          "candy": 4000,
+          "wildCoin": 80
+        }
+      },
+      {
+        "damage": 500000,
+        "rewards": {
+          "gold": 150000,
+          "shard": 800,
+          "wildCoin": 160
+        }
+      },
+      {
+        "damage": 1500000,
+        "rewards": {
+          "gems": 300,
+          "stone": 12,
+          "wildCoin": 320
+        }
+      },
+      {
+        "damage": 4000000,
+        "rewards": {
+          "gems": 800,
+          "ticketPremium": 2,
+          "wildCoin": 640
+        }
+      }
     ],
     "enemy": {
       "factions": [],
-      "tiers": ["legendary", "supreme", "mythic"],
+      "tiers": [
+        "legendary",
+        "supreme",
+        "mythic"
+      ],
       "count": 1,
       "baseLevel": 80,
       "levelSlope": 1,
@@ -58,13 +95,41 @@
       "maxStage": 3
     },
     "rotation": [
-      { "weekday": 0, "speciesId": "volcanix", "name": "Cinder Sovereign" },
-      { "weekday": 1, "speciesId": "glaciarch", "name": "Rimecrown" },
-      { "weekday": 2, "speciesId": "thornlord", "name": "Thornheart Colossus" },
-      { "weekday": 3, "speciesId": "duskwarden", "name": "Umbral Sentinel" },
-      { "weekday": 4, "speciesId": "reefmaw", "name": "Abyssal Maw" },
-      { "weekday": 5, "speciesId": "galeforge", "name": "Stormforge" },
-      { "weekday": 6, "speciesId": "voltgale", "name": "Skyrender" }
+      {
+        "weekday": 0,
+        "speciesId": "groudon",
+        "name": "Cinder Sovereign"
+      },
+      {
+        "weekday": 1,
+        "speciesId": "arceus",
+        "name": "Rimecrown"
+      },
+      {
+        "weekday": 2,
+        "speciesId": "rayquaza",
+        "name": "Thornheart Colossus"
+      },
+      {
+        "weekday": 3,
+        "speciesId": "shadow-mewtwo",
+        "name": "Umbral Sentinel"
+      },
+      {
+        "weekday": 4,
+        "speciesId": "lugia",
+        "name": "Abyssal Maw"
+      },
+      {
+        "weekday": 5,
+        "speciesId": "zacian",
+        "name": "Stormforge"
+      },
+      {
+        "weekday": 6,
+        "speciesId": "shiny-mew",
+        "name": "Skyrender"
+      }
     ]
   },
   "trials": [
@@ -75,10 +140,23 @@
       "rule": "factionLocked",
       "faction": "volt",
       "unlockLevel": 1,
-      "preview": { "gold": 40000, "candy": 3000, "shard": 400, "arenaToken": 60 },
-      "rewards": { "gold": 40000, "candy": 3000, "shard": 400, "arenaToken": 60, "xp": 400 },
+      "preview": {
+        "gold": 40000,
+        "candy": 3000,
+        "shard": 400,
+        "arenaToken": 60
+      },
+      "rewards": {
+        "gold": 40000,
+        "candy": 3000,
+        "shard": 400,
+        "arenaToken": 60,
+        "xp": 400
+      },
       "enemy": {
-        "factions": ["volt"],
+        "factions": [
+          "volt"
+        ],
         "tiers": [],
         "count": 6,
         "baseLevel": 18,
@@ -95,8 +173,19 @@
       "tagline": "No ultimates land here — win on basic kits alone.",
       "rule": "noUltimate",
       "unlockLevel": 1,
-      "preview": { "gold": 45000, "candy": 3200, "stone": 6, "guildCoin": 60 },
-      "rewards": { "gold": 45000, "candy": 3200, "stone": 6, "guildCoin": 60, "xp": 420 },
+      "preview": {
+        "gold": 45000,
+        "candy": 3200,
+        "stone": 6,
+        "guildCoin": 60
+      },
+      "rewards": {
+        "gold": 45000,
+        "candy": 3200,
+        "stone": 6,
+        "guildCoin": 60,
+        "xp": 420
+      },
       "enemy": {
         "factions": [],
         "tiers": [],
@@ -116,8 +205,19 @@
       "rule": "levelCapped",
       "maxLevel": 40,
       "unlockLevel": 1,
-      "preview": { "gold": 50000, "candy": 3500, "shard": 500, "islandCoin": 60 },
-      "rewards": { "gold": 50000, "candy": 3500, "shard": 500, "islandCoin": 60, "xp": 450 },
+      "preview": {
+        "gold": 50000,
+        "candy": 3500,
+        "shard": 500,
+        "islandCoin": 60
+      },
+      "rewards": {
+        "gold": 50000,
+        "candy": 3500,
+        "shard": 500,
+        "islandCoin": 60,
+        "xp": 450
+      },
       "enemy": {
         "factions": [],
         "tiers": [],
@@ -137,8 +237,19 @@
       "rule": "survival",
       "survivalRounds": 8,
       "unlockLevel": 1,
-      "preview": { "gold": 55000, "candy": 4000, "stone": 8, "forestCoin": 60 },
-      "rewards": { "gold": 55000, "candy": 4000, "stone": 8, "forestCoin": 60, "xp": 480 },
+      "preview": {
+        "gold": 55000,
+        "candy": 4000,
+        "stone": 8,
+        "forestCoin": 60
+      },
+      "rewards": {
+        "gold": 55000,
+        "candy": 4000,
+        "stone": 8,
+        "forestCoin": 60,
+        "xp": 480
+      },
       "enemy": {
         "factions": [],
         "tiers": [],
@@ -156,12 +267,29 @@
       "name": "Moonfall Crypt",
       "tagline": "Opens Tue, Thu and Sat only — Shade rises with the moon.",
       "rule": "weekdayBoss",
-      "weekdays": [2, 4, 6],
+      "weekdays": [
+        2,
+        4,
+        6
+      ],
       "unlockLevel": 1,
-      "preview": { "gold": 60000, "candy": 4500, "gems": 200, "homeCoin": 60 },
-      "rewards": { "gold": 60000, "candy": 4500, "gems": 200, "homeCoin": 60, "xp": 520 },
+      "preview": {
+        "gold": 60000,
+        "candy": 4500,
+        "gems": 200,
+        "homeCoin": 60
+      },
+      "rewards": {
+        "gold": 60000,
+        "candy": 4500,
+        "gems": 200,
+        "homeCoin": 60,
+        "xp": 520
+      },
       "enemy": {
-        "factions": ["shade"],
+        "factions": [
+          "shade"
+        ],
         "tiers": [],
         "count": 6,
         "baseLevel": 34,
@@ -179,56 +307,172 @@
       "name": "Sunforge Kiln",
       "weekday": 0,
       "desc": "Ember runs that bank candy for the week ahead.",
-      "rewards": { "gold": 20000, "candy": 5000, "xp": 300 },
-      "enemy": { "factions": ["ember"], "tiers": [], "count": 4, "baseLevel": 20, "levelSlope": 1.03, "starsEvery": 8, "maxStars": 8, "stageEvery": 16, "maxStage": 2 }
+      "rewards": {
+        "gold": 20000,
+        "candy": 5000,
+        "xp": 300
+      },
+      "enemy": {
+        "factions": [
+          "ember"
+        ],
+        "tiers": [],
+        "count": 4,
+        "baseLevel": 20,
+        "levelSlope": 1.03,
+        "starsEvery": 8,
+        "maxStars": 8,
+        "stageEvery": 16,
+        "maxStage": 2
+      }
     },
     {
       "id": "grovenursery",
       "name": "Grove Nursery",
       "weekday": 1,
       "desc": "Grove runs that yield candy and shards.",
-      "rewards": { "gold": 20000, "candy": 4000, "shard": 300, "xp": 300 },
-      "enemy": { "factions": ["grove"], "tiers": [], "count": 4, "baseLevel": 22, "levelSlope": 1.03, "starsEvery": 8, "maxStars": 8, "stageEvery": 16, "maxStage": 2 }
+      "rewards": {
+        "gold": 20000,
+        "candy": 4000,
+        "shard": 300,
+        "xp": 300
+      },
+      "enemy": {
+        "factions": [
+          "grove"
+        ],
+        "tiers": [],
+        "count": 4,
+        "baseLevel": 22,
+        "levelSlope": 1.03,
+        "starsEvery": 8,
+        "maxStars": 8,
+        "stageEvery": 16,
+        "maxStage": 2
+      }
     },
     {
       "id": "tidepool",
       "name": "Tidepool Hollow",
       "weekday": 2,
       "desc": "Tide runs that yield evo shards.",
-      "rewards": { "gold": 22000, "shard": 600, "xp": 320 },
-      "enemy": { "factions": ["tide"], "tiers": [], "count": 4, "baseLevel": 24, "levelSlope": 1.03, "starsEvery": 8, "maxStars": 8, "stageEvery": 16, "maxStage": 2 }
+      "rewards": {
+        "gold": 22000,
+        "shard": 600,
+        "xp": 320
+      },
+      "enemy": {
+        "factions": [
+          "tide"
+        ],
+        "tiers": [],
+        "count": 4,
+        "baseLevel": 24,
+        "levelSlope": 1.03,
+        "starsEvery": 8,
+        "maxStars": 8,
+        "stageEvery": 16,
+        "maxStage": 2
+      }
     },
     {
       "id": "voltfoundry",
       "name": "Volt Foundry",
       "weekday": 3,
       "desc": "Volt runs that yield ascension stones.",
-      "rewards": { "gold": 24000, "stone": 10, "xp": 340 },
-      "enemy": { "factions": ["volt"], "tiers": [], "count": 4, "baseLevel": 26, "levelSlope": 1.03, "starsEvery": 8, "maxStars": 8, "stageEvery": 16, "maxStage": 2 }
+      "rewards": {
+        "gold": 24000,
+        "stone": 10,
+        "xp": 340
+      },
+      "enemy": {
+        "factions": [
+          "volt"
+        ],
+        "tiers": [],
+        "count": 4,
+        "baseLevel": 26,
+        "levelSlope": 1.03,
+        "starsEvery": 8,
+        "maxStars": 8,
+        "stageEvery": 16,
+        "maxStage": 2
+      }
     },
     {
       "id": "frostreliquary",
       "name": "Frost Reliquary",
       "weekday": 4,
       "desc": "Frost runs that yield gems and stones.",
-      "rewards": { "gold": 26000, "gems": 120, "stone": 6, "xp": 360 },
-      "enemy": { "factions": ["frost"], "tiers": [], "count": 4, "baseLevel": 28, "levelSlope": 1.03, "starsEvery": 8, "maxStars": 8, "stageEvery": 16, "maxStage": 2 }
+      "rewards": {
+        "gold": 26000,
+        "gems": 120,
+        "stone": 6,
+        "xp": 360
+      },
+      "enemy": {
+        "factions": [
+          "frost"
+        ],
+        "tiers": [],
+        "count": 4,
+        "baseLevel": 28,
+        "levelSlope": 1.03,
+        "starsEvery": 8,
+        "maxStars": 8,
+        "stageEvery": 16,
+        "maxStage": 2
+      }
     },
     {
       "id": "shadebazaar",
       "name": "Shade Bazaar",
       "weekday": 5,
       "desc": "Shade runs that yield premium credit.",
-      "rewards": { "gold": 28000, "gems": 200, "xp": 380 },
-      "enemy": { "factions": ["shade"], "tiers": [], "count": 4, "baseLevel": 30, "levelSlope": 1.03, "starsEvery": 8, "maxStars": 8, "stageEvery": 16, "maxStage": 2 }
+      "rewards": {
+        "gold": 28000,
+        "gems": 200,
+        "xp": 380
+      },
+      "enemy": {
+        "factions": [
+          "shade"
+        ],
+        "tiers": [],
+        "count": 4,
+        "baseLevel": 30,
+        "levelSlope": 1.03,
+        "starsEvery": 8,
+        "maxStars": 8,
+        "stageEvery": 16,
+        "maxStage": 2
+      }
     },
     {
       "id": "emberworks",
       "name": "Emberworks Foundry",
       "weekday": 6,
       "desc": "A mixed run that pays the foraged coins.",
-      "rewards": { "gold": 30000, "forestCoin": 40, "islandCoin": 40, "xp": 400 },
-      "enemy": { "factions": ["ember", "tide"], "tiers": [], "count": 5, "baseLevel": 32, "levelSlope": 1.03, "starsEvery": 8, "maxStars": 8, "stageEvery": 16, "maxStage": 2 }
+      "rewards": {
+        "gold": 30000,
+        "forestCoin": 40,
+        "islandCoin": 40,
+        "xp": 400
+      },
+      "enemy": {
+        "factions": [
+          "ember",
+          "tide"
+        ],
+        "tiers": [],
+        "count": 5,
+        "baseLevel": 32,
+        "levelSlope": 1.03,
+        "starsEvery": 8,
+        "maxStars": 8,
+        "stageEvery": 16,
+        "maxStage": 2
+      }
     }
   ]
 }

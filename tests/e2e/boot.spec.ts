@@ -17,10 +17,10 @@ test('gallery renders every Wild with a deterministic portrait', async ({ page }
   await page.goto('/');
   await page.getByRole('link', { name: 'Gallery' }).click();
   await expect(page.getByText('Wild Gallery')).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Tidewarden' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Emberpaw' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Kyogre', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Ninetales', exact: true })).toBeVisible();
   const portraits = page.locator('svg.wild-portrait');
-  expect(await portraits.count()).toBeGreaterThanOrEqual(36);
+  expect(await portraits.count()).toBeGreaterThanOrEqual(84);
 });
 
 test('every tab resolves to a live screen and keeps the nav', async ({ page }) => {

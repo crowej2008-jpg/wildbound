@@ -19,3 +19,5 @@ Status:
 - M6: `gacha.md` (machines, pity, wish, boxes) and `shops.md` (restock schedules, limits).
 - M7: `equipment.md` (relics, rune sockets/sets, charms, spirit cores, talents, loadouts).
 - M8: `pve-modes.md` (Tower, Trials, World Boss, Daily Dungeons, the Link Crystal, `BattleRules`).
+- 2026-10-15 content override: `roster-import.md` (the owner-override roster import — attribute→faction,
+  rarity→tier, generated stats/kits, retained parity kits, relaxed coverage rule).

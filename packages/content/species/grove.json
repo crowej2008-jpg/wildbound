@@ -1,16 +1,16 @@
 [
   {
     "id": "twigleaf",
-    "name": "Twigleaf",
+    "name": "Sceptile",
     "faction": "grove",
     "class": "adept",
     "tier": "common",
-    "description": "A tiny sprout-spirit that starts small and grows into a walking meadow.",
-    "paletteSeed": 1481,
+    "description": "Sceptile, a common grove Wild from the owner's collection.",
+    "paletteSeed": 3842,
     "stages": [
-      "Sproutkin",
-      "Twigleaf",
-      "Verdant"
+      "Sceptile",
+      "Sceptile Prime",
+      "Sceptile Zenith"
     ],
     "base": {
       "hp": 720,
@@ -22,111 +22,399 @@
     }
   },
   {
-    "id": "barkhide",
-    "name": "Barkhide",
+    "id": "shiny-venusaur",
+    "name": "Shiny Venusaur",
     "faction": "grove",
     "class": "guardian",
-    "tier": "legendary",
-    "description": "An old-growth guardian whose bark has weathered a thousand storms.",
-    "paletteSeed": 1518,
+    "tier": "supreme",
+    "description": "Shiny Venusaur, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 5992,
     "stages": [
-      "Barkhide",
-      "Thornmaw",
-      "Elderbloom"
+      "Shiny Venusaur",
+      "Shiny Venusaur Prime",
+      "Shiny Venusaur Zenith"
     ],
     "base": {
-      "hp": 1958,
-      "pAtk": 148,
-      "sAtk": 102,
-      "spd": 87,
-      "pDef": 185,
-      "sDef": 185
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
     }
   },
   {
-    "id": "petalfall",
-    "name": "Petalfall",
+    "id": "shiny-raichu",
+    "name": "Shiny Raichu",
     "faction": "grove",
     "class": "adept",
-    "tier": "rare",
-    "description": "A blossom-keeper that scatters petals to close its friends wounds.",
-    "paletteSeed": 1555,
+    "tier": "supreme",
+    "description": "Shiny Raichu, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 5051,
     "stages": [
-      "Blossomite",
-      "Petalfall"
+      "Shiny Raichu",
+      "Shiny Raichu Prime",
+      "Shiny Raichu Zenith"
     ],
     "base": {
-      "hp": 855,
-      "pAtk": 78,
-      "sAtk": 130,
-      "spd": 100,
-      "pDef": 91,
-      "sDef": 98
+      "hp": 2760,
+      "pAtk": 158,
+      "sAtk": 293,
+      "spd": 247,
+      "pDef": 240,
+      "sDef": 259
     }
   },
   {
-    "id": "bramblefang",
-    "name": "Bramblefang",
+    "id": "shiny-god-ash-pikachu",
+    "name": "Shiny God Ash-Pikachu",
     "faction": "grove",
     "class": "striker",
-    "tier": "epic",
-    "description": "A thorn-coated pouncer that sweeps whole rows of foes at once.",
-    "paletteSeed": 1592,
+    "tier": "supreme",
+    "description": "Shiny God Ash-Pikachu, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 2872,
     "stages": [
-      "Bramblefang",
-      "Thistlefang"
+      "Shiny God Ash-Pikachu",
+      "Shiny God Ash-Pikachu Prime",
+      "Shiny God Ash-Pikachu Zenith"
     ],
     "base": {
-      "hp": 1150,
-      "pAtk": 155,
-      "sAtk": 70,
-      "spd": 120,
-      "pDef": 78,
-      "sDef": 70
+      "hp": 2280,
+      "pAtk": 312,
+      "sAtk": 144,
+      "spd": 264,
+      "pDef": 156,
+      "sDef": 144
     }
   },
   {
-    "id": "mossgill",
-    "name": "Mossgill",
+    "id": "god-ash-pikachu",
+    "name": "God Ash-Pikachu",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "supreme",
+    "description": "God Ash-Pikachu, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 4982,
+    "stages": [
+      "God Ash-Pikachu",
+      "God Ash-Pikachu Prime",
+      "God Ash-Pikachu Zenith"
+    ],
+    "base": {
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
+    }
+  },
+  {
+    "id": "wobbuffet",
+    "name": "Wobbuffet",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "Wobbuffet, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 8241,
+    "stages": [
+      "Wobbuffet",
+      "Wobbuffet Prime",
+      "Wobbuffet Zenith"
+    ],
+    "base": {
+      "hp": 2280,
+      "pAtk": 312,
+      "sAtk": 144,
+      "spd": 264,
+      "pDef": 156,
+      "sDef": 144
+    }
+  },
+  {
+    "id": "zygarde",
+    "name": "Zygarde",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "supreme",
+    "description": "Zygarde, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 4033,
+    "stages": [
+      "Zygarde",
+      "Zygarde Prime",
+      "Zygarde Zenith"
+    ],
+    "base": {
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
+    }
+  },
+  {
+    "id": "dialga",
+    "name": "Dialga",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "Dialga, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 3511,
+    "stages": [
+      "Dialga",
+      "Dialga Prime",
+      "Dialga Zenith"
+    ],
+    "base": {
+      "hp": 2280,
+      "pAtk": 312,
+      "sAtk": 144,
+      "spd": 264,
+      "pDef": 156,
+      "sDef": 144
+    }
+  },
+  {
+    "id": "shaymin",
+    "name": "Shaymin",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "supreme",
+    "description": "Shaymin, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 9696,
+    "stages": [
+      "Shaymin",
+      "Shaymin Prime",
+      "Shaymin Zenith"
+    ],
+    "base": {
+      "hp": 2280,
+      "pAtk": 312,
+      "sAtk": 144,
+      "spd": 264,
+      "pDef": 156,
+      "sDef": 144
+    }
+  },
+  {
+    "id": "celebi",
+    "name": "Celebi",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "supreme",
+    "description": "Celebi, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 1309,
+    "stages": [
+      "Celebi",
+      "Celebi Prime",
+      "Celebi Zenith"
+    ],
+    "base": {
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
+    }
+  },
+  {
+    "id": "rayquaza",
+    "name": "Rayquaza",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "supreme",
+    "description": "Rayquaza, a supreme grass Wild from the owner's collection.",
+    "paletteSeed": 8497,
+    "stages": [
+      "Rayquaza",
+      "Rayquaza Prime",
+      "Rayquaza Zenith"
+    ],
+    "base": {
+      "hp": 3360,
+      "pAtk": 252,
+      "sAtk": 175,
+      "spd": 221,
+      "pDef": 312,
+      "sDef": 312
+    }
+  },
+  {
+    "id": "raikou",
+    "name": "Raikou",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "legendary",
+    "description": "Raikou, a legendary grass Wild from the owner's collection.",
+    "paletteSeed": 5252,
+    "stages": [
+      "Raikou",
+      "Raikou Prime",
+      "Raikou Zenith"
+    ],
+    "base": {
+      "hp": 2070,
+      "pAtk": 119,
+      "sAtk": 220,
+      "spd": 185,
+      "pDef": 180,
+      "sDef": 194
+    }
+  },
+  {
+    "id": "zapdos",
+    "name": "Zapdos",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "legendary",
+    "description": "Zapdos, a legendary grass Wild from the owner's collection.",
+    "paletteSeed": 5010,
+    "stages": [
+      "Zapdos",
+      "Zapdos Prime",
+      "Zapdos Zenith"
+    ],
+    "base": {
+      "hp": 2070,
+      "pAtk": 119,
+      "sAtk": 220,
+      "spd": 185,
+      "pDef": 180,
+      "sDef": 194
+    }
+  },
+  {
+    "id": "meganium",
+    "name": "Meganium",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "epic",
+    "description": "Meganium, a epic grass Wild from the owner's collection.",
+    "paletteSeed": 7216,
+    "stages": [
+      "Meganium",
+      "Meganium Prime",
+      "Meganium Zenith"
+    ],
+    "base": {
+      "hp": 1553,
+      "pAtk": 89,
+      "sAtk": 165,
+      "spd": 139,
+      "pDef": 135,
+      "sDef": 146
+    }
+  },
+  {
+    "id": "metagross",
+    "name": "Metagross",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "epic",
+    "description": "Metagross, a epic grass Wild from the owner's collection.",
+    "paletteSeed": 3492,
+    "stages": [
+      "Metagross",
+      "Metagross Prime",
+      "Metagross Zenith"
+    ],
+    "base": {
+      "hp": 1890,
+      "pAtk": 142,
+      "sAtk": 99,
+      "spd": 124,
+      "pDef": 176,
+      "sDef": 176
+    }
+  },
+  {
+    "id": "gardevoir",
+    "name": "Gardevoir",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "epic",
+    "description": "Gardevoir, a epic grass Wild from the owner's collection.",
+    "paletteSeed": 5018,
+    "stages": [
+      "Gardevoir",
+      "Gardevoir Prime",
+      "Gardevoir Zenith"
+    ],
+    "base": {
+      "hp": 1890,
+      "pAtk": 142,
+      "sAtk": 99,
+      "spd": 124,
+      "pDef": 176,
+      "sDef": 176
+    }
+  },
+  {
+    "id": "salamence",
+    "name": "Salamence",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "epic",
+    "description": "Salamence, a epic grass Wild from the owner's collection.",
+    "paletteSeed": 6054,
+    "stages": [
+      "Salamence",
+      "Salamence Prime",
+      "Salamence Zenith"
+    ],
+    "base": {
+      "hp": 1890,
+      "pAtk": 142,
+      "sAtk": 99,
+      "spd": 124,
+      "pDef": 176,
+      "sDef": 176
+    }
+  },
+  {
+    "id": "raichu",
+    "name": "Raichu",
     "faction": "grove",
     "class": "guardian",
     "tier": "rare",
-    "description": "A mossy, patient creature that lets the forest do its fighting.",
-    "paletteSeed": 1629,
+    "description": "Raichu, a rare grass Wild from the owner's collection.",
+    "paletteSeed": 5507,
     "stages": [
-      "Mossgill",
-      "Reedmaw",
-      "Fenwarden"
+      "Raichu",
+      "Raichu Prime",
+      "Raichu Zenith"
     ],
     "base": {
-      "hp": 1378,
-      "pAtk": 104,
-      "sAtk": 72,
-      "spd": 83,
+      "hp": 1400,
+      "pAtk": 105,
+      "sAtk": 73,
+      "spd": 92,
       "pDef": 130,
       "sDef": 130
     }
   },
   {
-    "id": "thornlord",
-    "name": "Thornlord",
+    "id": "venusaur",
+    "name": "Venusaur",
     "faction": "grove",
-    "class": "striker",
-    "tier": "legendary",
-    "description": "A crowned sovereign of roots and briars, patient as the seasons.",
-    "paletteSeed": 1666,
+    "class": "adept",
+    "tier": "rare",
+    "description": "Venusaur, a rare grass Wild from the owner's collection.",
+    "paletteSeed": 5254,
     "stages": [
-      "Seedlord",
-      "Thornlord",
-      "Sylvanarch"
+      "Venusaur",
+      "Venusaur Prime",
+      "Venusaur Zenith"
     ],
     "base": {
-      "hp": 1350,
-      "pAtk": 185,
-      "sAtk": 83,
-      "spd": 126,
-      "pDef": 93,
-      "sDef": 83
+      "hp": 1150,
+      "pAtk": 66,
+      "sAtk": 122,
+      "spd": 103,
+      "pDef": 100,
+      "sDef": 108
     }
   }
 ]

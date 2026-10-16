@@ -1,131 +1,156 @@
 [
   {
-    "id": "frostfang",
-    "name": "Frostfang",
+    "id": "necrozma",
+    "name": "Necrozma",
     "faction": "frost",
-    "class": "striker",
-    "tier": "epic",
-    "description": "A snow-pelt hunter whose breath freezes the ground it stalks.",
-    "paletteSeed": 1925,
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Necrozma, a origin light Wild from the owner's collection.",
+    "paletteSeed": 4134,
     "stages": [
-      "Snowpup",
-      "Frostfang",
-      "Hoarfang"
+      "Necrozma",
+      "Necrozma Prime",
+      "Necrozma Zenith"
     ],
     "base": {
-      "hp": 1150,
-      "pAtk": 155,
-      "sAtk": 70,
-      "spd": 116,
-      "pDef": 78,
-      "sDef": 70
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
     }
   },
   {
-    "id": "glaciarch",
-    "name": "Glaciarch",
+    "id": "arceus",
+    "name": "Arceus",
     "faction": "frost",
     "class": "guardian",
     "tier": "mythic",
-    "description": "A glacial titan that shelters its kin behind walls of living ice.",
-    "paletteSeed": 1962,
+    "description": "Arceus, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 2262,
     "stages": [
-      "Glacierite",
-      "Rimebeast",
-      "Glaciarch"
+      "Arceus",
+      "Arceus Prime",
+      "Arceus Zenith"
     ],
     "base": {
-      "hp": 2755,
-      "pAtk": 208,
-      "sAtk": 143,
-      "spd": 90,
-      "pDef": 260,
-      "sDef": 260
+      "hp": 4480,
+      "pAtk": 336,
+      "sAtk": 234,
+      "spd": 294,
+      "pDef": 416,
+      "sDef": 416
     }
   },
   {
-    "id": "chillfin",
-    "name": "Chillfin",
-    "faction": "frost",
-    "class": "adept",
-    "tier": "common",
-    "description": "A small, brittle wisp of ice that drifts on the coldest wind.",
-    "paletteSeed": 1999,
-    "stages": [
-      "Chillfin"
-    ],
-    "base": {
-      "hp": 720,
-      "pAtk": 66,
-      "sAtk": 110,
-      "spd": 113,
-      "pDef": 77,
-      "sDef": 83
-    }
-  },
-  {
-    "id": "cryowing",
-    "name": "Cryowing",
-    "faction": "frost",
-    "class": "adept",
-    "tier": "legendary",
-    "description": "A frost-moth whose scales chill a foe to the bone.",
-    "paletteSeed": 2036,
-    "stages": [
-      "Frostmoth",
-      "Cryowing",
-      "Aurorwing"
-    ],
-    "base": {
-      "hp": 1215,
-      "pAtk": 111,
-      "sAtk": 185,
-      "spd": 98,
-      "pDef": 130,
-      "sDef": 139
-    }
-  },
-  {
-    "id": "rimehide",
-    "name": "Rimehide",
-    "faction": "frost",
-    "class": "guardian",
-    "tier": "rare",
-    "description": "A slow, rimed beast that has never once known warmth.",
-    "paletteSeed": 2073,
-    "stages": [
-      "Rimehide",
-      "Permafrost"
-    ],
-    "base": {
-      "hp": 1378,
-      "pAtk": 104,
-      "sAtk": 72,
-      "spd": 77,
-      "pDef": 130,
-      "sDef": 130
-    }
-  },
-  {
-    "id": "shardrake",
-    "name": "Shardrake",
+    "id": "mew",
+    "name": "Mew",
     "faction": "frost",
     "class": "striker",
-    "tier": "supreme",
-    "description": "A drake of jagged ice that shatters the air with each beat of its wings.",
-    "paletteSeed": 2110,
+    "tier": "mythic",
+    "description": "Mew, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 8672,
     "stages": [
-      "Shardrake",
-      "Frostmaw",
-      "Blizzardrake"
+      "Mew",
+      "Mew Prime",
+      "Mew Zenith"
     ],
     "base": {
-      "hp": 1600,
-      "pAtk": 220,
-      "sAtk": 99,
-      "spd": 120,
-      "pDef": 110,
-      "sDef": 99
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
+    }
+  },
+  {
+    "id": "jirachi",
+    "name": "Jirachi",
+    "faction": "frost",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Jirachi, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 1095,
+    "stages": [
+      "Jirachi",
+      "Jirachi Prime",
+      "Jirachi Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
+    }
+  },
+  {
+    "id": "snorlax",
+    "name": "Snorlax",
+    "faction": "frost",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Snorlax, a mythic light Wild from the owner's collection.",
+    "paletteSeed": 4390,
+    "stages": [
+      "Snorlax",
+      "Snorlax Prime",
+      "Snorlax Zenith"
+    ],
+    "base": {
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
+    }
+  },
+  {
+    "id": "shiny-kyogre",
+    "name": "Shiny Kyogre",
+    "faction": "frost",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Shiny Kyogre, a shiny mythic light Wild from the owner's collection.",
+    "paletteSeed": 3360,
+    "stages": [
+      "Shiny Kyogre",
+      "Shiny Kyogre Prime",
+      "Shiny Kyogre Zenith"
+    ],
+    "base": {
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
+    }
+  },
+  {
+    "id": "shiny-cresselia",
+    "name": "Shiny Cresselia",
+    "faction": "frost",
+    "class": "guardian",
+    "tier": "mythic",
+    "description": "Shiny Cresselia, a shiny mythic light Wild from the owner's collection.",
+    "paletteSeed": 5840,
+    "stages": [
+      "Shiny Cresselia",
+      "Shiny Cresselia Prime",
+      "Shiny Cresselia Zenith"
+    ],
+    "base": {
+      "hp": 4480,
+      "pAtk": 336,
+      "sAtk": 234,
+      "spd": 294,
+      "pDef": 416,
+      "sDef": 416
     }
   }
 ]

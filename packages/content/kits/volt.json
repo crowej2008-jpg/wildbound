@@ -1,107 +1,65 @@
 [
   {
-    "id": "voltgale",
-    "name": "Voltgale",
+    "id": "calyrex",
+    "name": "Calyrex",
     "faction": "volt",
-    "class": "striker",
+    "class": "guardian",
     "tier": "mythic",
-    "skills": {
-      "normal": {
-        "type": "P",
-        "rates": [
-          1
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "P",
-        "rates": [
-          1.25
-        ],
-        "rule": "column"
-      },
-      "ult": {
-        "type": "P",
-        "rates": [
-          2.4
-        ],
-        "rule": "column"
-      }
-    },
-    "talents": {
-      "statMods": [
-        {
-          "field": "pAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "sAtk",
-          "mult": 1.15
-        },
-        {
-          "field": "crit",
-          "add": 0.05
-        }
-      ]
-    }
-  },
-  {
-    "id": "dynamoth",
-    "name": "Dynamoth",
-    "faction": "volt",
-    "class": "adept",
-    "tier": "epic",
     "skills": {
       "normal": {
         "type": "S",
         "rates": [
-          1
+          0.95
         ],
-        "rule": "column"
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
       },
       "basic": {
         "type": "S",
         "rates": [
           1.15
         ],
-        "rule": "row"
+        "rule": "column"
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.9
+          1.6
         ],
-        "rule": "all",
-        "control": {
-          "kind": "stun",
-          "chance": 0.45,
-          "turns": 1
-        }
+        "rule": "row"
       }
     },
     "talents": {
       "statMods": [
         {
-          "field": "sAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.2
         },
         {
-          "field": "controlBoost",
-          "add": 0.1
+          "field": "dmgRdct",
+          "add": 0.08
         },
         {
-          "field": "healBoost",
-          "add": 0.1
+          "field": "block",
+          "add": 0.05
         }
-      ]
+      ],
+      "rageOnHit": 125
     }
   },
   {
-    "id": "stormclaw",
-    "name": "Stormclaw",
+    "id": "zacian",
+    "name": "Zacian",
     "faction": "volt",
     "class": "striker",
-    "tier": "legendary",
+    "tier": "mythic",
     "skills": {
       "normal": {
         "type": "P",
@@ -144,11 +102,11 @@
     }
   },
   {
-    "id": "coilbug",
-    "name": "Coilbug",
+    "id": "wind-god-pidgeot",
+    "name": "Wind-God Pidgeot",
     "faction": "volt",
     "class": "adept",
-    "tier": "common",
+    "tier": "mythic",
     "skills": {
       "normal": {
         "type": "S",
@@ -206,11 +164,73 @@
     }
   },
   {
-    "id": "voltshell",
-    "name": "Voltshell",
+    "id": "cresselia",
+    "name": "Cresselia",
+    "faction": "volt",
+    "class": "adept",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "solgaleo",
+    "name": "Solgaleo",
     "faction": "volt",
     "class": "guardian",
-    "tier": "rare",
+    "tier": "mythic",
     "skills": {
       "normal": {
         "type": "S",
@@ -257,53 +277,44 @@
           "add": 0.05
         }
       ],
-      "rageOnHit": 125,
-      "safeguard": {
-        "active": 3,
-        "cycle": 6
-      }
+      "rageOnHit": 125
     }
   },
   {
-    "id": "galeforge",
-    "name": "Galeforge",
+    "id": "shiny-mew",
+    "name": "Shiny Mew",
     "faction": "volt",
     "class": "guardian",
-    "tier": "supreme",
+    "tier": "mythic",
     "skills": {
       "normal": {
         "type": "S",
         "rates": [
-          0.9
-        ],
-        "rule": "column"
-      },
-      "basic": {
-        "type": "S",
-        "rates": [
-          1.1
+          0.95
         ],
         "rule": "column",
-        "control": {
-          "kind": "taunt",
-          "chance": null,
-          "turns": 1
-        }
-      },
-      "ult": {
-        "type": "S",
-        "rates": [
-          1.5
-        ],
-        "rule": "row",
         "selfBuffs": [
           {
             "tag": "bulwark",
             "field": "dmgRdct",
-            "amount": 0.2,
-            "turns": 3
+            "amount": 0.1,
+            "turns": 2
           }
         ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
       }
     },
     "talents": {
@@ -321,7 +332,62 @@
           "add": 0.05
         }
       ],
-      "rageOnHit": 150
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "shiny-arceus",
+    "name": "Shiny Arceus",
+    "faction": "volt",
+    "class": "guardian",
+    "tier": "mythic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
     }
   }
 ]

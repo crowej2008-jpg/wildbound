@@ -1,7 +1,7 @@
 [
   {
     "id": "twigleaf",
-    "name": "Twigleaf",
+    "name": "Sceptile",
     "faction": "grove",
     "class": "adept",
     "tier": "common",
@@ -33,16 +33,16 @@
     }
   },
   {
-    "id": "barkhide",
-    "name": "Barkhide",
+    "id": "shiny-venusaur",
+    "name": "Shiny Venusaur",
     "faction": "grove",
     "class": "guardian",
-    "tier": "legendary",
+    "tier": "supreme",
     "skills": {
       "normal": {
         "type": "S",
         "rates": [
-          0.9
+          0.95
         ],
         "rule": "column",
         "selfBuffs": [
@@ -57,28 +57,16 @@
       "basic": {
         "type": "S",
         "rates": [
-          1.1
+          1.15
         ],
-        "rule": "column",
-        "selfBuffs": [
-          {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.12,
-            "turns": 2
-          }
-        ]
+        "rule": "column"
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.4
+          1.6
         ],
-        "rule": "row",
-        "shield": {
-          "target": "allies",
-          "share": 0.25
-        }
+        "rule": "row"
       }
     },
     "talents": {
@@ -96,25 +84,15 @@
           "add": 0.05
         }
       ],
-      "rageOnHit": 125,
-      "turnHooks": [
-        "allyShelterStack"
-      ]
-    },
-    "hooksConfig": {
-      "allyShelterStack": {
-        "field": "dmgRdct",
-        "amount": 0.03,
-        "cap": 4
-      }
+      "rageOnHit": 125
     }
   },
   {
-    "id": "petalfall",
-    "name": "Petalfall",
+    "id": "shiny-raichu",
+    "name": "Shiny Raichu",
     "faction": "grove",
     "class": "adept",
-    "tier": "rare",
+    "tier": "supreme",
     "skills": {
       "normal": {
         "type": "S",
@@ -129,21 +107,29 @@
           1.15
         ],
         "rule": "row",
-        "heal": {
-          "target": "ally",
-          "rate": 0.35
-        }
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.6
+          1.7
         ],
         "rule": "row",
-        "heal": {
-          "target": "allies",
-          "rate": 0.25
-        }
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
       }
     },
     "talents": {
@@ -164,11 +150,11 @@
     }
   },
   {
-    "id": "bramblefang",
-    "name": "Bramblefang",
+    "id": "shiny-god-ash-pikachu",
+    "name": "Shiny God Ash-Pikachu",
     "faction": "grove",
     "class": "striker",
-    "tier": "epic",
+    "tier": "supreme",
     "skills": {
       "normal": {
         "type": "P",
@@ -211,30 +197,38 @@
     }
   },
   {
-    "id": "mossgill",
-    "name": "Mossgill",
+    "id": "god-ash-pikachu",
+    "name": "God Ash-Pikachu",
     "faction": "grove",
     "class": "guardian",
-    "tier": "rare",
+    "tier": "supreme",
     "skills": {
       "normal": {
         "type": "S",
         "rates": [
           0.95
         ],
-        "rule": "column"
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
       },
       "basic": {
         "type": "S",
         "rates": [
           1.15
         ],
-        "rule": "row"
+        "rule": "column"
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.7
+          1.6
         ],
         "rule": "row"
       }
@@ -254,16 +248,15 @@
           "add": 0.05
         }
       ],
-      "rageOnHit": 125,
-      "rageCutChance": 0.35
+      "rageOnHit": 125
     }
   },
   {
-    "id": "thornlord",
-    "name": "Thornlord",
+    "id": "wobbuffet",
+    "name": "Wobbuffet",
     "faction": "grove",
     "class": "striker",
-    "tier": "legendary",
+    "tier": "supreme",
     "skills": {
       "normal": {
         "type": "P",
@@ -275,16 +268,17 @@
       "basic": {
         "type": "P",
         "rates": [
-          1.15
+          1.2
         ],
         "rule": "column"
       },
       "ult": {
         "type": "P",
         "rates": [
-          2.6
+          1.7,
+          1.4
         ],
-        "rule": "lowest_hp"
+        "rule": "row"
       }
     },
     "talents": {
@@ -300,6 +294,733 @@
         {
           "field": "crit",
           "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "zygarde",
+    "name": "Zygarde",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "dialga",
+    "name": "Dialga",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "shaymin",
+    "name": "Shaymin",
+    "faction": "grove",
+    "class": "striker",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "P",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "P",
+        "rates": [
+          1.2
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "P",
+        "rates": [
+          1.7,
+          1.4
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "pAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "crit",
+          "add": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "celebi",
+    "name": "Celebi",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "rayquaza",
+    "name": "Rayquaza",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "supreme",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "raikou",
+    "name": "Raikou",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "legendary",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "zapdos",
+    "name": "Zapdos",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "legendary",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "meganium",
+    "name": "Meganium",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "metagross",
+    "name": "Metagross",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "gardevoir",
+    "name": "Gardevoir",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "salamence",
+    "name": "Salamence",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "epic",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "raichu",
+    "name": "Raichu",
+    "faction": "grove",
+    "class": "guardian",
+    "tier": "rare",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          0.95
+        ],
+        "rule": "column",
+        "selfBuffs": [
+          {
+            "tag": "bulwark",
+            "field": "dmgRdct",
+            "amount": 0.1,
+            "turns": 2
+          }
+        ]
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "column"
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.6
+        ],
+        "rule": "row"
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "hp",
+          "mult": 1.2
+        },
+        {
+          "field": "dmgRdct",
+          "add": 0.08
+        },
+        {
+          "field": "block",
+          "add": 0.05
+        }
+      ],
+      "rageOnHit": 125
+    }
+  },
+  {
+    "id": "venusaur",
+    "name": "Venusaur",
+    "faction": "grove",
+    "class": "adept",
+    "tier": "rare",
+    "skills": {
+      "normal": {
+        "type": "S",
+        "rates": [
+          1
+        ],
+        "rule": "column"
+      },
+      "basic": {
+        "type": "S",
+        "rates": [
+          1.15
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "chill",
+            "field": "dmgRdct",
+            "amount": -0.15,
+            "turns": 2
+          }
+        ]
+      },
+      "ult": {
+        "type": "S",
+        "rates": [
+          1.7
+        ],
+        "rule": "row",
+        "targetDebuffs": [
+          {
+            "tag": "daze",
+            "field": "spd",
+            "amount": -40,
+            "turns": 2
+          }
+        ]
+      }
+    },
+    "talents": {
+      "statMods": [
+        {
+          "field": "sAtk",
+          "mult": 1.15
+        },
+        {
+          "field": "controlBoost",
+          "add": 0.1
+        },
+        {
+          "field": "healBoost",
+          "add": 0.1
         }
       ]
     }

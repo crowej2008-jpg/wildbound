@@ -6,6 +6,7 @@ import {
   combatSettingsSchema,
   contentManifest,
   economySchema,
+  FACTIONS,
   growthSchema,
   kitSchema,
   powerSchema,
@@ -372,8 +373,10 @@ function checkSpeciesCoverage(
   for (const { data } of species.values()) {
     perFaction.set(data.faction, (perFaction.get(data.faction) ?? 0) + 1);
   }
-  for (const [faction, count] of perFaction) {
-    if (count !== 6) errors.push(`species: faction "${faction}" has ${count} species (expected 6)`);
+  // The owner's imported roster is no longer a balanced 6 per faction, so the
+  // rule is now "every faction is represented" rather than "exactly six".
+  for (const faction of FACTIONS) {
+    if (!perFaction.has(faction)) errors.push(`species: faction "${faction}" has no species`);
   }
   checks.push(`species coverage: ${perFaction.size} faction(s), ${species.size} total`);
 }

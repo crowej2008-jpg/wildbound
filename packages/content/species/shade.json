@@ -1,131 +1,310 @@
 [
   {
-    "id": "umbrashade",
-    "name": "Umbrashade",
-    "faction": "shade",
-    "class": "adept",
-    "tier": "legendary",
-    "description": "A dusk-born moth that snuffs out a foe warmth in a single breath.",
-    "paletteSeed": 2147,
-    "stages": [
-      "Duskmoth",
-      "Umbrashade",
-      "Nihilarch"
-    ],
-    "base": {
-      "hp": 1215,
-      "pAtk": 111,
-      "sAtk": 185,
-      "spd": 110,
-      "pDef": 130,
-      "sDef": 139
-    }
-  },
-  {
-    "id": "voidfang",
-    "name": "Voidfang",
+    "id": "origin-lugia",
+    "name": "Origin Lugia",
     "faction": "shade",
     "class": "striker",
-    "tier": "epic",
-    "description": "A shadow that learned to bite, always finding the weakest mark.",
-    "paletteSeed": 2184,
+    "tier": "mythic",
+    "description": "Origin Lugia, a origin dark Wild from the owner's collection.",
+    "paletteSeed": 1720,
     "stages": [
-      "Shadowling",
-      "Voidfang",
-      "Necropaw"
+      "Origin Lugia",
+      "Origin Lugia Prime",
+      "Origin Lugia Zenith"
     ],
     "base": {
-      "hp": 1150,
-      "pAtk": 155,
-      "sAtk": 70,
-      "spd": 131,
-      "pDef": 78,
-      "sDef": 70
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
     }
   },
   {
-    "id": "wraithling",
-    "name": "Wraithling",
-    "faction": "shade",
-    "class": "adept",
-    "tier": "rare",
-    "description": "A thin, drifting wisp that rattles a foe senses into stillness.",
-    "paletteSeed": 2221,
-    "stages": [
-      "Wraithling",
-      "Phantomaw"
-    ],
-    "base": {
-      "hp": 855,
-      "pAtk": 78,
-      "sAtk": 130,
-      "spd": 115,
-      "pDef": 91,
-      "sDef": 98
-    }
-  },
-  {
-    "id": "nightgazer",
-    "name": "Nightgazer",
-    "faction": "shade",
-    "class": "adept",
-    "tier": "epic",
-    "description": "A quiet watcher that saps the strength of whatever it fixes its gaze on.",
-    "paletteSeed": 2258,
-    "stages": [
-      "Gloomlet",
-      "Nightgazer",
-      "Voidseer"
-    ],
-    "base": {
-      "hp": 1035,
-      "pAtk": 93,
-      "sAtk": 155,
-      "spd": 108,
-      "pDef": 109,
-      "sDef": 116
-    }
-  },
-  {
-    "id": "grieftalon",
-    "name": "Grieftalon",
-    "faction": "shade",
-    "class": "striker",
-    "tier": "common",
-    "description": "A lone hunter of the dark that strikes fast and fades away.",
-    "paletteSeed": 2295,
-    "stages": [
-      "Grieftalon"
-    ],
-    "base": {
-      "hp": 800,
-      "pAtk": 110,
-      "sAtk": 50,
-      "spd": 113,
-      "pDef": 55,
-      "sDef": 50
-    }
-  },
-  {
-    "id": "duskwarden",
-    "name": "Duskwarden",
+    "id": "origin-rayquaza",
+    "name": "Origin Rayquaza",
     "faction": "shade",
     "class": "guardian",
-    "tier": "supreme",
-    "description": "A stoic keeper of twilight, patient and hard to move.",
-    "paletteSeed": 2332,
+    "tier": "mythic",
+    "description": "Origin Rayquaza, a origin dark Wild from the owner's collection.",
+    "paletteSeed": 6502,
     "stages": [
-      "Duskpup",
-      "Duskwarden",
-      "Voidarch"
+      "Origin Rayquaza",
+      "Origin Rayquaza Prime",
+      "Origin Rayquaza Zenith"
     ],
     "base": {
-      "hp": 2320,
-      "pAtk": 176,
-      "sAtk": 121,
-      "spd": 87,
-      "pDef": 220,
-      "sDef": 220
+      "hp": 4480,
+      "pAtk": 336,
+      "sAtk": 234,
+      "spd": 294,
+      "pDef": 416,
+      "sDef": 416
+    }
+  },
+  {
+    "id": "shadow-mewtwo",
+    "name": "Shadow Mewtwo",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Shadow Mewtwo, a origin dark Wild from the owner's collection.",
+    "paletteSeed": 2191,
+    "stages": [
+      "Shadow Mewtwo",
+      "Shadow Mewtwo Prime",
+      "Shadow Mewtwo Zenith"
+    ],
+    "base": {
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
+    }
+  },
+  {
+    "id": "black-kyurem",
+    "name": "Black Kyurem",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Black Kyurem, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 6694,
+    "stages": [
+      "Black Kyurem",
+      "Black Kyurem Prime",
+      "Black Kyurem Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
+    }
+  },
+  {
+    "id": "hoopa",
+    "name": "Hoopa",
+    "faction": "shade",
+    "class": "guardian",
+    "tier": "mythic",
+    "description": "Hoopa, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 5582,
+    "stages": [
+      "Hoopa",
+      "Hoopa Prime",
+      "Hoopa Zenith"
+    ],
+    "base": {
+      "hp": 4480,
+      "pAtk": 336,
+      "sAtk": 234,
+      "spd": 294,
+      "pDef": 416,
+      "sDef": 416
+    }
+  },
+  {
+    "id": "mewtwo",
+    "name": "Mewtwo",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Mewtwo, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 8498,
+    "stages": [
+      "Mewtwo",
+      "Mewtwo Prime",
+      "Mewtwo Zenith"
+    ],
+    "base": {
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
+    }
+  },
+  {
+    "id": "darkrai",
+    "name": "Darkrai",
+    "faction": "shade",
+    "class": "guardian",
+    "tier": "mythic",
+    "description": "Darkrai, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 3369,
+    "stages": [
+      "Darkrai",
+      "Darkrai Prime",
+      "Darkrai Zenith"
+    ],
+    "base": {
+      "hp": 4480,
+      "pAtk": 336,
+      "sAtk": 234,
+      "spd": 294,
+      "pDef": 416,
+      "sDef": 416
+    }
+  },
+  {
+    "id": "lunala",
+    "name": "Lunala",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Lunala, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 4352,
+    "stages": [
+      "Lunala",
+      "Lunala Prime",
+      "Lunala Zenith"
+    ],
+    "base": {
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
+    }
+  },
+  {
+    "id": "deoxys",
+    "name": "Deoxys",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Deoxys, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 2917,
+    "stages": [
+      "Deoxys",
+      "Deoxys Prime",
+      "Deoxys Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
+    }
+  },
+  {
+    "id": "meloetta",
+    "name": "Meloetta",
+    "faction": "shade",
+    "class": "guardian",
+    "tier": "mythic",
+    "description": "Meloetta, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 4732,
+    "stages": [
+      "Meloetta",
+      "Meloetta Prime",
+      "Meloetta Zenith"
+    ],
+    "base": {
+      "hp": 4480,
+      "pAtk": 336,
+      "sAtk": 234,
+      "spd": 294,
+      "pDef": 416,
+      "sDef": 416
+    }
+  },
+  {
+    "id": "shiny-mewtwo",
+    "name": "Shiny Mewtwo",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Shiny Mewtwo, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 9152,
+    "stages": [
+      "Shiny Mewtwo",
+      "Shiny Mewtwo Prime",
+      "Shiny Mewtwo Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
+    }
+  },
+  {
+    "id": "shiny-darkrai",
+    "name": "Shiny Darkrai",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Shiny Darkrai, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 3071,
+    "stages": [
+      "Shiny Darkrai",
+      "Shiny Darkrai Prime",
+      "Shiny Darkrai Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
+    }
+  },
+  {
+    "id": "shiny-kyurem",
+    "name": "Shiny Kyurem",
+    "faction": "shade",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Shiny Kyurem, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 3510,
+    "stages": [
+      "Shiny Kyurem",
+      "Shiny Kyurem Prime",
+      "Shiny Kyurem Zenith"
+    ],
+    "base": {
+      "hp": 3680,
+      "pAtk": 211,
+      "sAtk": 390,
+      "spd": 330,
+      "pDef": 320,
+      "sDef": 346
+    }
+  },
+  {
+    "id": "shiny-hoopa",
+    "name": "Shiny Hoopa",
+    "faction": "shade",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Shiny Hoopa, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 4536,
+    "stages": [
+      "Shiny Hoopa",
+      "Shiny Hoopa Prime",
+      "Shiny Hoopa Zenith"
+    ],
+    "base": {
+      "hp": 3040,
+      "pAtk": 416,
+      "sAtk": 192,
+      "spd": 352,
+      "pDef": 208,
+      "sDef": 192
     }
   }
 ]

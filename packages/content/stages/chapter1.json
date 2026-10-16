@@ -4,11 +4,33 @@
     "chapter": 1,
     "index": 1,
     "name": "Hatchling Trail",
-    "enemies": [{ "speciesId": "squallfin", "level": 2, "stars": 1, "stage": 0 }],
-    "firstClear": { "gold": 500, "candy": 100, "shard": 5, "xp": 50 },
-    "repeat": { "gold": 100, "candy": 20, "xp": 10 },
-    "idlePerMinute": { "gold": 60, "candy": 6 },
-    "starRounds": [3, 6]
+    "enemies": [
+      {
+        "speciesId": "blastoise",
+        "level": 2,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 500,
+      "candy": 100,
+      "shard": 5,
+      "xp": 50
+    },
+    "repeat": {
+      "gold": 100,
+      "candy": 20,
+      "xp": 10
+    },
+    "idlePerMinute": {
+      "gold": 60,
+      "candy": 6
+    },
+    "starRounds": [
+      3,
+      6
+    ]
   },
   {
     "id": "c1-2",
@@ -16,13 +38,38 @@
     "index": 2,
     "name": "Fern Crossing",
     "enemies": [
-      { "speciesId": "squallfin", "level": 2, "stars": 1, "stage": 0 },
-      { "speciesId": "twigleaf", "level": 2, "stars": 1, "stage": 0 }
+      {
+        "speciesId": "blastoise",
+        "level": 2,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "twigleaf",
+        "level": 2,
+        "stars": 1,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 600, "candy": 120, "shard": 5, "xp": 55 },
-    "repeat": { "gold": 110, "candy": 22, "xp": 11 },
-    "idlePerMinute": { "gold": 65, "candy": 6 },
-    "starRounds": [3, 6]
+    "firstClear": {
+      "gold": 600,
+      "candy": 120,
+      "shard": 5,
+      "xp": 55
+    },
+    "repeat": {
+      "gold": 110,
+      "candy": 22,
+      "xp": 11
+    },
+    "idlePerMinute": {
+      "gold": 65,
+      "candy": 6
+    },
+    "starRounds": [
+      3,
+      6
+    ]
   },
   {
     "id": "c1-3",
@@ -30,13 +77,38 @@
     "index": 3,
     "name": "Mossy Hollow",
     "enemies": [
-      { "speciesId": "smolderquill", "level": 3, "stars": 1, "stage": 0 },
-      { "speciesId": "coilbug", "level": 3, "stars": 1, "stage": 0 }
+      {
+        "speciesId": "ninetales",
+        "level": 3,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "tyranitar",
+        "level": 3,
+        "stars": 1,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 700, "candy": 140, "shard": 6, "xp": 60 },
-    "repeat": { "gold": 120, "candy": 24, "xp": 12 },
-    "idlePerMinute": { "gold": 70, "candy": 7 },
-    "starRounds": [4, 7]
+    "firstClear": {
+      "gold": 700,
+      "candy": 140,
+      "shard": 6,
+      "xp": 60
+    },
+    "repeat": {
+      "gold": 120,
+      "candy": 24,
+      "xp": 12
+    },
+    "idlePerMinute": {
+      "gold": 70,
+      "candy": 7
+    },
+    "starRounds": [
+      4,
+      7
+    ]
   },
   {
     "id": "c1-4",
@@ -44,14 +116,44 @@
     "index": 4,
     "name": "Ashwind Ridge",
     "enemies": [
-      { "speciesId": "emberpaw", "level": 3, "stars": 1, "stage": 0 },
-      { "speciesId": "squallfin", "level": 3, "stars": 1, "stage": 0 },
-      { "speciesId": "twigleaf", "level": 3, "stars": 1, "stage": 0 }
+      {
+        "speciesId": "charizard",
+        "level": 3,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "blastoise",
+        "level": 3,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "twigleaf",
+        "level": 3,
+        "stars": 1,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 800, "candy": 160, "shard": 6, "xp": 65 },
-    "repeat": { "gold": 130, "candy": 26, "xp": 13 },
-    "idlePerMinute": { "gold": 75, "candy": 7 },
-    "starRounds": [4, 8]
+    "firstClear": {
+      "gold": 800,
+      "candy": 160,
+      "shard": 6,
+      "xp": 65
+    },
+    "repeat": {
+      "gold": 130,
+      "candy": 26,
+      "xp": 13
+    },
+    "idlePerMinute": {
+      "gold": 75,
+      "candy": 7
+    },
+    "starRounds": [
+      4,
+      8
+    ]
   },
   {
     "id": "c1-5",
@@ -59,14 +161,44 @@
     "index": 5,
     "name": "Gale Basin",
     "enemies": [
-      { "speciesId": "squallfin", "level": 4, "stars": 1, "stage": 0 },
-      { "speciesId": "coilbug", "level": 4, "stars": 1, "stage": 0 },
-      { "speciesId": "chillfin", "level": 4, "stars": 1, "stage": 0 }
+      {
+        "speciesId": "blastoise",
+        "level": 4,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "tyranitar",
+        "level": 4,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "feraligatr",
+        "level": 4,
+        "stars": 1,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 900, "candy": 180, "shard": 7, "xp": 70 },
-    "repeat": { "gold": 140, "candy": 28, "xp": 14 },
-    "idlePerMinute": { "gold": 80, "candy": 8 },
-    "starRounds": [5, 9]
+    "firstClear": {
+      "gold": 900,
+      "candy": 180,
+      "shard": 7,
+      "xp": 70
+    },
+    "repeat": {
+      "gold": 140,
+      "candy": 28,
+      "xp": 14
+    },
+    "idlePerMinute": {
+      "gold": 80,
+      "candy": 8
+    },
+    "starRounds": [
+      5,
+      9
+    ]
   },
   {
     "id": "c1-6",
@@ -74,14 +206,50 @@
     "index": 6,
     "name": "Cinder Gate",
     "enemies": [
-      { "speciesId": "emberpaw", "level": 4, "stars": 1, "stage": 0 },
-      { "speciesId": "smolderquill", "level": 4, "stars": 1, "stage": 0 },
-      { "speciesId": "twigleaf", "level": 4, "stars": 1, "stage": 0 },
-      { "speciesId": "coilbug", "level": 4, "stars": 1, "stage": 0 }
+      {
+        "speciesId": "charizard",
+        "level": 4,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "ninetales",
+        "level": 4,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "twigleaf",
+        "level": 4,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "tyranitar",
+        "level": 4,
+        "stars": 1,
+        "stage": 0
+      }
     ],
-    "firstClear": { "gold": 1500, "candy": 300, "shard": 10, "gems": 20, "xp": 90 },
-    "repeat": { "gold": 200, "candy": 40, "xp": 18 },
-    "idlePerMinute": { "gold": 110, "candy": 11 },
-    "starRounds": [5, 10]
+    "firstClear": {
+      "gold": 1500,
+      "candy": 300,
+      "shard": 10,
+      "gems": 20,
+      "xp": 90
+    },
+    "repeat": {
+      "gold": 200,
+      "candy": 40,
+      "xp": 18
+    },
+    "idlePerMinute": {
+      "gold": 110,
+      "candy": 11
+    },
+    "starRounds": [
+      5,
+      10
+    ]
   }
 ]

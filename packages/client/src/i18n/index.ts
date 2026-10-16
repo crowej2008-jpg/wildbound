@@ -11,7 +11,7 @@ export const en = {
   'home.intro':
     'A rebuild of a mobile monster-collector design: build a squad of six original Wilds and let seeded, automatic turn-based battles play out — replayable, deterministic, and testable in the Build Lab.',
   'home.scope.note': 'The screens below arrive milestone by milestone. Every milestone ends with passing checks and a commit.',
-  'home.galleryLink': 'Browse all 36 Wilds',
+  'home.galleryLink': 'Browse every Wild',
   'hud.beta': 'Milestone 8',
   'hud.today': 'Today',
   'currency.gold': 'Gold',
