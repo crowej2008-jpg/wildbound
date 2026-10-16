@@ -40,7 +40,7 @@ bought. Limits are per restock window; one-time lines are permanent.
 
 The Daily shop pays in gems (available from M3), so it is the shop a new player can actually use; the
 token shops are wired end to end but their currencies only get real sources in later milestones
-(Arena M9, Guild M11), and the debug panel can grant them meanwhile.
+(Arena M10, Guild M11), and the debug panel can grant them meanwhile.
 
 ## Server methods
 

@@ -53,5 +53,5 @@ directly; the economy has its own tests). If the curve or growth tables change, 
 - **M6 (summoning)**: players can obtain higher-tier Wilds, so chapters beyond 3 may field
   rare/epic/legendary squads and the mid-curve can tighten.
 - **M7/M8 (equipment, trials)**: gear adds power the current curve does not assume.
-- **M10 (Build Lab)**: sweeps with confidence intervals should replace the fixed-profile check with a
+- **M13 (Build Lab)**: sweeps with confidence intervals should replace the fixed-profile check with a
   win-rate band per stage.

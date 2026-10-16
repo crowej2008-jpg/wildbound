@@ -75,10 +75,11 @@ pnpm check            full gate: lint + typecheck + test + content:validate + bu
 - **M6 Summoning and shops** — machines, pity, wish, history, shops with restock + currencies.
 - **M7 Equipment layers** — Relics, Runes, Charms, Spirit Cores, Talents, screens, battle impact.
 - **M8 Trials, Tower, World Boss, Link Crystal** — all PvE modes + endgame growth.
-- **M9 PvP** — Arena, ghosts/bots, weekly settlement via Mail, ranked ladder with weather.
-- **M10 Build Lab** — full tool, Rules panel, kit editor, sweeps with CIs, CLI parity.
+- **M9 Skill kits** — expand the combat DSL with the primitives the imported kits need, then port all 84 creatures' kits faithfully from the owner's skills sheet; re-tune balance.
+- **M10 PvP** — Arena, ghosts/bots, weekly settlement via Mail, ranked ladder with weather.
 - **M11 Social and events (simulated)** — guild, events, settings, help; no dead buttons.
 - **M12 Hardening and (optional) backend** — accessibility/perf/saves/docs, optional Fastify+SQLite HttpServer, deployment guide.
+- **M13 Build Lab** — full tool, Rules panel, kit editor, sweeps with CIs, CLI parity (last milestone).
 
 ## Reference material
 

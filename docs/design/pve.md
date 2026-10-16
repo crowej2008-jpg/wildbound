@@ -36,8 +36,8 @@ Built now:
 - **Debug fast-forward**: a debug control moves the game clock forward so the daily loop is testable.
 
 Deliberately **deferred** (see `docs/SCOPE.md`): Trials, Tower, World Boss and Daily Dungeons (M8);
-the full Explore-map hub and shop restock screens (M6/M9/M11); real defender lists from saved PvP
-ghosts (M9); energy/stamina (not in the reference model we ported); the tutorial's summon step
+the full Explore-map hub and shop restock screens (M6/M10/M11); real defender lists from saved PvP
+ghosts (M10); energy/stamina (not in the reference model we ported); the tutorial's summon step
 (summoning itself is M6 — the step is present but marked coming-later).
 
 ## Time (`packages/engine/src/time/`)

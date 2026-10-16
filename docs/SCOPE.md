@@ -14,10 +14,11 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Summoning (gacha) and shops | Summon, Shop | M6 | built |
 | Equipment layers: Relics, Runes, Charms, Spirit Cores, Talents | Wild screen Equip/Runes/Cores/Talents | M7 | built |
 | Trials, Tower, World Boss, Daily Dungeons, Link Crystal endgame | Challenges hub, Tower, Trials, World Boss, Dungeons, Link Crystal | M8 | built |
-| Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings | M9 | pending |
-| Build Lab (owner's main goal) | Build Lab, Debug, Rules panel, Kit editor | M10 | pending |
+| Combat DSL expansion + faithful 84-creature skill kits | — (headless; Wild screen unchanged) | M9 | pending |
+| Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings | M10 | pending |
 | Social + events (simulated), settings, help | Guild, Events, Settings, Help | M11 | pending |
 | Hardening + optional Fastify/SQLite backend | all | M12 | pending |
+| Build Lab (owner's main goal) | Build Lab, Debug, Rules panel, Kit editor | M13 | pending |
 
 ## Reference material
 

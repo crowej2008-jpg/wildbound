@@ -13,7 +13,7 @@ Reference read (shapes only; every number and name here is our own):
 - `faction-tower.md` (faction-locked tower, weekly rotation, 20 climbs/day, sweep)
 - `world-boss.md` (twice-daily windows, damage milestones, damage ranking)
 - `gods-trials.md` (seasonal trials, area/level structure, per-level drops)
-- `world-championship.md` (leagues, weather, ladder) — the weather idea is M9; not built here
+- `world-championship.md` (leagues, weather, ladder) — the weather idea is M10; not built here
 - `resonance.md` (the shared-level crystal, cap = 340 + 8 per 12★ Wild)
 - `clock-and-calendar.md` (UTC daily reset, weekday rotation)
 
@@ -83,7 +83,7 @@ A weekday-rotating boss (one per `weekdayUtc`). The player has `attempts` fights
 fight scores **damage dealt** (summed across the fielded squad). Reaching a damage milestone
 grants a claimable reward. The screen shows a **damage-ranking leaderboard** against stored
 **ghost records** (the player's own best runs plus deterministic bots), so the mode is locally
-playable exactly like Arena ghosts will be in M9. Attempts and claimed milestones reset daily.
+playable exactly like Arena ghosts will be in M10. Attempts and claimed milestones reset daily.
 
 ### Daily Dungeons
 
@@ -151,7 +151,7 @@ All rewards, randomness and resets live here (PROMPT §10).
 The Combat tab becomes the **Challenges hub** (`/combat`): pins for Tower, Trials, World Boss,
 Daily Dungeons, Link Crystal, plus the M4 training battle (`/combat/training`). New routes
 `/tower`, `/trials`, `/boss`, `/dungeons`, `/crystal`. Every screen has loading/empty/error states;
-out-of-scope features (M9 PvP, M11 social) stay in their own "coming later" states.
+out-of-scope features (M10 PvP, M11 social) stay in their own "coming later" states.
 
 ## Done criterion (M8)
 

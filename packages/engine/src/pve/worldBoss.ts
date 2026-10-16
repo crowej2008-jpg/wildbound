@@ -6,7 +6,7 @@ import type { WorldBossDef, WorldBossMilestone } from './types';
  * World Boss rules (M8, PROMPT §7.6). One boss per UTC weekday, a limited number
  * of scored fights per day, damage milestones, and a damage ranking against
  * stored ghost records (the player's own history plus deterministic bots — the
- * same local pattern M9 Arena uses). Pure. See docs/design/pve-modes.md.
+ * same local pattern M10 Arena uses). Pure. See docs/design/pve-modes.md.
  */
 
 export interface WorldBossState {

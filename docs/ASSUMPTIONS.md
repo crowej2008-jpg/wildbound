@@ -178,7 +178,7 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
 8. **Currencies grow to 13; the HUD strip shows 7.** `ticketCommon`/`ticketPremium` are now
    earnable/spendable; the eight mode/shop coins (`arenaToken`, `guildCoin`, `homeCoin`,
    `forestCoin`, `islandCoin`, `wildCoin`) exist in the save and reward bundles but their main
-   sources land with their modes (M8/M9/M11). The M6 reward bundles can already pay any of them.
+   sources land with their modes (M8/M10/M11). The M6 reward bundles can already pay any of them.
 9. **Save schema is v3 with a lenient M6 migration.** A v1/v2 save missing `gacha`/`shops` gets
    defaults from the injected config; a state missing the *core* account fields (profile, roster,
    squads, currencies, `nextInstanceSeq`) is rejected as `corrupt_save`. The migration never
@@ -201,7 +201,7 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    it. *What would change it:* authoring real floor tables in `packages/content/pve/`.
 3. **World-boss ranking is against a local ghost ladder.** There is no backend, so a fight's damage
    is ranked against the player's own stored best runs plus deterministic bots (`ghostCount`,
-   seeded in code as `0x5eed`). This mirrors how M9 Arena ghosts will work. Damage is the summed
+   seeded in code as `0x5eed`). This mirrors how M10 Arena ghosts will work. Damage is the summed
    per-unit `damageDealt` for the attacker side. Attempts and claimed milestones reset daily.
 4. **The Link Crystal's star gate ships as `starThreshold = 10`.** PROMPT §7.1 says
    "340 + 8 per Wild at 12 stars", but our roster's `maxStars` is 10, so a 12★ gate is unreachable.

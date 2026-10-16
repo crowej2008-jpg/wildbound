@@ -202,7 +202,7 @@ are recorded here with the difference (never edit `reference/`).
 ### Carried forward
 
 - Squad strategies remain inert; weather/round banners, team preview and richer result panels are still
-  deferred (M4/M9). Summoning arrives in M6.
+  deferred (M4/M10). Summoning arrives in M6.
 
 ## M6 — Summoning and shops (2026-10-14)
 
@@ -245,7 +245,7 @@ are recorded here with the difference (never edit `reference/`).
 ### Carried forward
 
 - Squad strategies remain inert. VIP tiers, gift crates and the "Supreme Gift" storefront are
-  deferred to M11 (social); the mode coins' primary sources land with their modes (M8/M9/M11).
+  deferred to M11 (social); the mode coins' primary sources land with their modes (M8/M10/M11).
 - Equipment layers (Relics, Runes, Charms, Spirit Cores, Talents) and the duplicate→material sink
   arrive in M7.
 
@@ -304,7 +304,7 @@ are recorded here with the difference (never edit `reference/`).
 
 ### Carried forward
 
-- Arena/ranked/weather (M9) reuses the world-boss ghost-ladder shape; mode coins gain their main
+- Arena/ranked/weather (M10) reuses the world-boss ghost-ladder shape; mode coins gain their main
   sources as their modes ship. Squad strategies remain inert.
 
 ## Content override — Pokémon roster (2026-10-15)
@@ -326,4 +326,15 @@ are recorded here with the difference (never edit `reference/`).
   fixtures at `packages/cli/tests/golden/kits/parity.json`, so **no original Wild remains**; client
   and e2e text updated.
 - **Green.** `pnpm check`: lint + typecheck + 253 unit tests + `content:validate` (84 ↔ 84) + 50 e2e.
+
+## Plan change — milestone renumbering (2026-10-16)
+
+- **The skill-kit work becomes a milestone.** The engine/DSL expansion + faithful 84-creature kit port
+  (previously unnumbered) is now **M9 — Skill kits**.
+- **Renumbered forward milestones.** M9 PvP is now **M10 PvP**; M11 Social and M12 Hardening keep their
+  numbers; **Build Lab moves from M10 to last — M13**.
+- Authoritative lists updated in `PROMPT.md` §13, `AGENTS.md`, and `docs/SCOPE.md`; forward-looking
+  milestone references throughout the docs and code were updated to match (before this note the
+  numbering was: M9 = PvP, M10 = Build Lab).
+- Status: plan-only; no game code changed.
 

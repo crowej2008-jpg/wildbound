@@ -588,18 +588,24 @@ A later `HttpServer` must be a drop-in replacement; write the OpenAPI-style spec
   UI shows the stat deltas ("preview power").
 - **M8 — Trials, Tower, World Boss, Link Crystal.** All PvE modes with their special rules and the
   endgame growth system. Done when: each mode is playable with rewards and weekly resets.
-- **M9 — PvP.** Arena with ghosts and bots, three-opponent matchmaking, daily attempts, weekly
+- **M9 — Skill kits.** Expand the combat DSL with the primitives the imported kits need
+  (ally-targeted buffs, ATK/DEF debuffs and ignore-DEF, %-HP and true damage, the full control suite,
+  cleanse/dispel/immunity, rage generation/steal, stacking and cooldowns, reactive triggers,
+  per-creature resource counters), then port all 84 creatures' kits faithfully from the owner's
+  skills sheet and re-tune balance. Done when: every creature's kit validates against the extended
+  schema, the port is complete, and `pnpm check` is green.
+- **M10 — PvP.** Arena with ghosts and bots, three-opponent matchmaking, daily attempts, weekly
   settlement via Mail, the ranked ladder with weather, rankings and rewards. Done when: a simulated
   week of play produces a correct settlement.
-- **M10 — Build Lab.** The full tool from 7.10, the Rules panel, the kit editor, sweeps with
-  confidence intervals, CLI parity. Done when: the owner can create a draft Wild, set a loadout, run
-  a 1,000-battle sweep and export the result.
 - **M11 — Social and events (simulated).** Guild, events calendar, rankings polish, settings, help.
   Every simulated feature is labelled. Done when: nothing in the app is a dead button.
 - **M12 — Hardening and (optional) backend.** Accessibility audit, performance pass, save migrations,
   error reporting to console only, docs, the Fastify + SQLite `HttpServer` for Arena ghosts and
   rankings, a deployment guide. Done when: `pnpm check` is green, Lighthouse mobile scores are 90+
   for performance and accessibility, and the backend passes the same e2e suite.
+- **M13 — Build Lab (last).** The full tool from 7.10, the Rules panel, the kit editor, sweeps with
+  confidence intervals, CLI parity. Done when: the owner can create a draft Wild, set a loadout, run
+  a 1,000-battle sweep and export the result.
 
 ## 14. Working agreement for OpenCode
 
@@ -624,7 +630,8 @@ Never delete tests to get green. Never weaken a threshold without recording why.
 
 ## 15. Definition of done (whole project)
 
-- All milestones M0 to M11 complete; M12 complete or explicitly deferred in `docs/SCOPE.md`.
+- All milestones M0 to M13 complete (the optional M12 backend may be explicitly deferred in
+  `docs/SCOPE.md`).
 - `pnpm check` is green on a clean clone, and `pnpm build` produces a static site that runs from any
   static host.
 - A new player can complete the tutorial, build a squad, win campaign stages, summon, equip, climb
