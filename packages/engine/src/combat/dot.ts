@@ -40,6 +40,7 @@ export function applyDotSpec(
     basis,
     power,
     undispellable: dot.undispellable,
+    trueDamage: dot.trueDamage,
     bigRounds: dot.turns ?? 2,
   });
   ctx.events.push({ type: 'buffApplied', unit: t.key, tag: 'dot', amount: dot.share });
@@ -59,6 +60,7 @@ export function applyDotTag(ctx: BattleContext, src: Combatant, t: Combatant, ta
     basis: dot.basis ?? 'targetMaxHp',
     power,
     undispellable: dot.undispellable,
+    trueDamage: dot.trueDamage,
     bigRounds: dot.turns ?? 2,
   };
   if (idx >= 0) t.buffs[idx] = buff;
@@ -79,7 +81,7 @@ export function tickDots(ctx: BattleContext, u: Combatant): void {
   for (const d of dots) {
     const src = ctx.units.find((x) => x.key === d.source);
     const dmg = dotDamage(d, u);
-    if (dmg > 0) channelHit(ctx, src ?? u, u, dmg, { kind: 'dot' });
+    if (dmg > 0) channelHit(ctx, src ?? u, u, dmg, { kind: 'dot', trueDmg: d.trueDamage === true });
   }
   // duration (bigRounds) is ticked at big-round end by tickBigRoundBuffs
 }

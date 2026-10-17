@@ -40,6 +40,11 @@ export function selectFor(ctx: BattleContext, self: Combatant, sel: TargetSel): 
 
   const side = sel.side ?? 'enemy';
   const friendly = side === 'ally';
+  // M9.6: a taunt forces enemy-side targeting onto the taunter.
+  if (!friendly) {
+    const taunter = taunterFor(ctx, self);
+    if (taunter) return [taunter];
+  }
   let pool = ctx.units.filter((u) => u.alive && (friendly ? u.side === self.side : u.side !== self.side));
   if (!friendly) pool = pool.filter((u) => !isUntargetable(u));
   if (sel.rowFilter) pool = pool.filter((u) => u.row === sel.rowFilter);
@@ -48,6 +53,13 @@ export function selectFor(ctx: BattleContext, self: Combatant, sel: TargetSel): 
     if (narrowed.length > 0) pool = narrowed; // an empty narrowing never blanks the skill
   }
   return applyRule(ctx, self, sel.rule ?? 'column', sel.n, pool);
+}
+
+/** The living enemy a `taunt` buff on `self` points at (by id or key). */
+export function taunterFor(ctx: BattleContext, self: Combatant): Combatant | undefined {
+  const b = self.buffs.find((x) => x.kind === 'taunt');
+  if (!b) return undefined;
+  return ctx.units.find((u) => u.alive && u.side !== self.side && (u.id === b.source || u.key === b.source));
 }
 
 function applyRule(

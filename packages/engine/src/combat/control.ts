@@ -56,6 +56,7 @@ export function buffKindFor(kind: string): Buff['kind'] {
   if (kind === 'silence') return 'silence';
   if (kind === 'confusion') return 'confusion';
   if (kind === 'paralysis') return 'paralysis';
+  if (kind === 'taunt') return 'taunt';
   return 'control';
 }
 

@@ -37,7 +37,7 @@ export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): 
   }
 
   const silence = u.buffs.some((b) => b.kind === 'silence');
-  const slot: SkillSlot = ultReady && !silence ? 'ult' : rollSkillSlot(ctx);
+  const slot: SkillSlot = ultReady && !silence ? 'ult' : rollSkillSlot(ctx, u);
   const skill = u.kit.skills[slot];
   ctx.events.push({ type: 'action', unit: u.key, skill: slot });
 
@@ -117,8 +117,9 @@ function resolveCast(
   return hitDamages;
 }
 
-function rollSkillSlot(ctx: BattleContext): SkillSlot {
-  return ctx.rng() < ctx.settings.basicReplace ? 'basic' : 'normal';
+function rollSkillSlot(ctx: BattleContext, u: Combatant): SkillSlot {
+  const rate = u.kit.talents?.basicRate ?? ctx.settings.basicReplace;
+  return ctx.rng() < rate ? 'basic' : 'normal';
 }
 
 function confusionChance(ctx: BattleContext, u: Combatant): number {

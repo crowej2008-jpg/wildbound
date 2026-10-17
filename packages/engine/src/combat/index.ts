@@ -11,7 +11,7 @@ export {
 } from './damage';
 export { DEFAULT_COMBAT_SETTINGS, resolveSettings, piecewise } from './settings';
 export { resolveSheet, effective, applyStatMod } from './stats';
-export { selectTargets, selectFor, orderedByColumn } from './targeting';
+export { selectTargets, selectFor, orderedByColumn, taunterFor } from './targeting';
 export { evalCondition, isControlled, hasDot, stackCount } from './conditions';
 export { applyHeal, applyShield, applyShieldAmount, resolveHealAmount, resolveHealWithBasis, applyLifesteal, applySkillSideEffects } from './sustain';
 export { applyCounterReflect } from './counter';

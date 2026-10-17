@@ -61,7 +61,9 @@ export type BuffKind =
   | 'immune'
   | 'dot'
   | 'regen'
-  | 'stack';
+  | 'stack'
+  /** M9.6: forced targeting — the holder's enemy-side skills are aimed at the taunter. */
+  | 'taunt';
 
 export interface BuffSpec {
   tag: string;
@@ -135,6 +137,8 @@ export interface DotSpec {
   turns?: number;
   maxStacks?: number;
   undispellable?: boolean;
+  /** M9.6: bypasses shields ("deals true damage"). */
+  trueDamage?: boolean;
 }
 
 export interface ControlSpec {
@@ -214,7 +218,19 @@ export type Effect =
     }
   | { op: 'revive'; target: TargetSel; hpPct: number; once?: boolean; condition?: Condition; chance?: number }
   | { op: 'resource'; target: TargetSel; tag: string; delta?: number; max?: number; consume?: number; condition?: Condition; chance?: number }
-  | { op: 'damage'; target: TargetSel; rate: number; type?: DamageType; trueDamage?: boolean; condition?: Condition; chance?: number };
+  | {
+      op: 'damage';
+      target: TargetSel;
+      /** attack ratio (P/S.ATK × rate) */
+      rate?: number;
+      type?: DamageType;
+      /** or a share of an HP basis */
+      basis?: 'targetMaxHp' | 'targetCurrentHp' | 'targetMissingHp';
+      share?: number;
+      trueDamage?: boolean;
+      condition?: Condition;
+      chance?: number;
+    };
 
 /** A target selection for an effect (M9): side + rule + narrowing. */
 export interface TargetSel {
@@ -279,6 +295,8 @@ export interface TalentDef {
   turnHooks?: TurnHook[];
   /** M9.4: start-of-battle Rage override (default: class-based). */
   rageStart?: number;
+  /** M9.6: per-unit basic-skill trigger rate (overrides `combat.basicReplace`). */
+  basicRate?: number;
   /** M9.4: event triggers. */
   triggers?: TriggerDef[];
 }
@@ -390,6 +408,8 @@ export interface Buff {
   power?: number;
   /** M9: cannot be removed by cleanse/dispel. */
   undispellable?: boolean;
+  /** M9.6: a DoT that bypasses shields. */
+  trueDamage?: boolean;
 }
 
 export interface Combatant {

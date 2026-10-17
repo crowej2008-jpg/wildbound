@@ -19,7 +19,7 @@ import type { KitJson } from './schemas';
 
 interface ContentBuffSpec {
   tag: string;
-  kind?: 'stat' | 'immune' | 'regen' | 'stack';
+  kind?: 'stat' | 'immune' | 'regen' | 'stack' | 'taunt';
   field?: CombatField;
   amount?: number;
   turns?: number;

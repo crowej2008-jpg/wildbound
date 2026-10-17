@@ -112,8 +112,7 @@ function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect,
       return;
     }
     case 'damage': {
-      const atk = (e.type ?? skillType) === 'P' ? effective(caster.base, caster.buffs, 'pAtk') : effective(caster.base, caster.buffs, 'sAtk');
-      const dmg = Math.max(1, Math.floor(atk * e.rate));
+      const dmg = e.basis ? hpBasisDamage(e, t) : attackBasisDamage(e, caster, skillType);
       channelHit(ctx, caster, t, dmg, { trueDmg: e.trueDamage === true, kind: 'hit' });
       return;
     }
@@ -122,6 +121,26 @@ function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect,
 
 function deadAllies(ctx: BattleContext, caster: Combatant): Combatant[] {
   return ctx.units.filter((u) => u.side === caster.side && !u.alive);
+}
+
+/** A secondary hit scaled from the caster's attack. */
+function attackBasisDamage(
+  e: Extract<Effect, { op: 'damage' }>,
+  caster: Combatant,
+  skillType: DamageType,
+): number {
+  const atk =
+    (e.type ?? skillType) === 'P'
+      ? effective(caster.base, caster.buffs, 'pAtk')
+      : effective(caster.base, caster.buffs, 'sAtk');
+  return Math.max(1, Math.floor(atk * (e.rate ?? 1)));
+}
+
+/** A secondary hit scaled from the target's HP (max / current / missing). */
+function hpBasisDamage(e: Extract<Effect, { op: 'damage' }>, t: Combatant): number {
+  const base =
+    e.basis === 'targetCurrentHp' ? t.hp : e.basis === 'targetMissingHp' ? Math.max(0, t.maxHp - t.hp) : t.maxHp;
+  return Math.max(1, Math.floor((e.share ?? 0) * base));
 }
 
 /** Chance success: deterministic mode never succeeds (mirrors the control roll). */

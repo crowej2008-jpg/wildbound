@@ -56,6 +56,7 @@ const dotSpecSchema = z
     turns: z.number().int().positive().optional(),
     maxStacks: z.number().int().positive().optional(),
     undispellable: z.boolean().optional(),
+    trueDamage: z.boolean().optional(),
   })
   .strict();
 
@@ -103,7 +104,7 @@ const combatFieldSchema = z.enum([
 const buffSpecSchema = z
   .object({
     tag: z.string().min(1),
-    kind: z.enum(['stat', 'immune', 'regen', 'stack']).optional(),
+    kind: z.enum(['stat', 'immune', 'regen', 'stack', 'taunt']).optional(),
     field: combatFieldSchema.optional(),
     amount: z.number().optional(),
     turns: z.number().int().positive().optional(),
@@ -204,8 +205,10 @@ const effectSchema = z.discriminatedUnion('op', [
     .object({
       op: z.literal('damage'),
       target: targetSelSchema,
-      rate: z.number().min(0),
+      rate: z.number().min(0).optional(),
       type: z.enum(['P', 'S']).optional(),
+      basis: z.enum(['targetMaxHp', 'targetCurrentHp', 'targetMissingHp']).optional(),
+      share: z.number().min(0).optional(),
       trueDamage: z.boolean().optional(),
       condition: conditionSchema.optional(),
       chance: z.number().min(0).max(1).optional(),
@@ -293,6 +296,7 @@ const talentSchema = z
     rageOnHit: z.number().int().optional(),
     rageCutChance: z.number().min(0).max(1).optional(),
     rageStart: z.number().int().nonnegative().optional(),
+    basicRate: z.number().min(0).max(1).optional(),
     safeguard: z
       .object({ active: z.number().int().positive(), cycle: z.number().int().positive() })
       .strict()
