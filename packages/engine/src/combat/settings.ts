@@ -63,6 +63,8 @@ export interface CombatSettings {
   shieldCountsForRage: boolean;
   /** confusion: share of the controlled unit's normal attacks aimed at its own side. */
   redirectChance: number;
+  /** M9: which negative buffs a cleanse strips first. */
+  cleanseOrder: 'oldestFirst' | 'newestFirst';
 }
 
 export const DEFAULT_COMBAT_SETTINGS: CombatSettings = readDefaults();
@@ -105,6 +107,7 @@ function readDefaults(): CombatSettings {
     healBasis: 'targetMaxHp',
     shieldCountsForRage: false,
     redirectChance: 0.7,
+    cleanseOrder: 'oldestFirst',
   };
 }
 

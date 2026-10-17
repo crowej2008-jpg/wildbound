@@ -30,5 +30,6 @@
   "defendersUseDef": false,
   "healBasis": "targetMaxHp",
   "shieldCountsForRage": false,
-  "redirectChance": 0.7
+  "redirectChance": 0.7,
+  "cleanseOrder": "oldestFirst"
 }

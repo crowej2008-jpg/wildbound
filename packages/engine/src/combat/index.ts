@@ -14,10 +14,24 @@ export { DEFAULT_COMBAT_SETTINGS, resolveSettings, piecewise } from './settings'
 export { resolveSheet, effective, applyStatMod } from './stats';
 export { selectTargets, selectFor, orderedByColumn } from './targeting';
 export { evalCondition, isControlled, hasDot, stackCount } from './conditions';
-export { applyHeal, applyShield, resolveHealAmount, applyLifesteal, applySkillSideEffects } from './sustain';
+export { applyHeal, applyShield, applyShieldAmount, resolveHealAmount, resolveHealWithBasis, applyLifesteal, applySkillSideEffects } from './sustain';
 export { applyCounterReflect } from './counter';
 export { takeTurn } from './skills';
-export { applyBuff, tickUnitBuffs, tickBigRoundBuffs, removeBuffTag, hasLiveBuff, countStacks, CONTROL_KINDS } from './buffs';
+export { applyControl, landControl } from './control';
+export { applyDot, applyDotSpec, applyDotTag, applyRegen, tickDots, tickRegen } from './dot';
+export { applyEffects } from './effects';
+export {
+  applyBuff,
+  tickUnitBuffs,
+  tickBigRoundBuffs,
+  removeBuffTag,
+  stripBuffs,
+  isNegativeBuff,
+  isPositiveBuff,
+  hasLiveBuff,
+  countStacks,
+  CONTROL_KINDS,
+} from './buffs';
 export { initReplay, stepReplay, replayTo, lastActor, lastTarget } from './replay';
 export type { ReplayUnit, ReplayState } from './replay';
 export type {

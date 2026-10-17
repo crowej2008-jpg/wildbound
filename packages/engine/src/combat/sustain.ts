@@ -30,10 +30,27 @@ export function applyHeal(ctx: BattleContext, target: Combatant, amount: number)
 }
 
 export function applyShield(ctx: BattleContext, target: Combatant, share: number, caster: Combatant): void {
-  const amount = Math.floor(share * caster.base.hp);
+  applyShieldAmount(ctx, target, Math.floor(share * caster.base.hp));
+}
+
+/** M9: add a flat shield amount (already resolved). */
+export function applyShieldAmount(ctx: BattleContext, target: Combatant, amount: number): void {
   if (amount <= 0) return;
   target.shieldHp += amount;
   ctx.events.push({ type: 'shield', tgt: target.key, amount, shieldAfter: target.shieldHp });
+}
+
+/** M9: heal amount with an explicit basis (effect riders, regen). */
+export function resolveHealWithBasis(
+  ctx: BattleContext,
+  caster: Combatant,
+  target: Combatant,
+  rate: number,
+  basis?: 'targetMaxHp' | 'casterAtk',
+): number {
+  const b = basis ?? ctx.settings.healBasis;
+  const base = b === 'casterAtk' ? eff(caster, 'pAtk') : target.base.hp;
+  return Math.floor(rate * base * (1 + eff(caster, 'healBoost')) * (1 + eff(target, 'receiveHealBoost')));
 }
 
 export function applyLifesteal(ctx: BattleContext, caster: Combatant, damaged: number, rate: number): void {

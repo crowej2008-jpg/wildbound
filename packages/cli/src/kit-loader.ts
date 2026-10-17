@@ -11,6 +11,7 @@ import type { BuffSpec, CombatField, Effect, KitDef, SkillDef, SkillSlot } from 
 
 interface ContentBuffSpec {
   tag: string;
+  kind?: 'stat' | 'immune' | 'regen' | 'stack';
   field?: CombatField;
   amount?: number;
   turns?: number;
@@ -19,9 +20,9 @@ interface ContentBuffSpec {
   undispellable?: boolean;
 }
 
-/** Content buff specs ('field' => a stat buff) get their kind from the field. */
+/** Content buff specs default to a stat buff when no kind is given. */
 function withKind(b: ContentBuffSpec): BuffSpec {
-  return { ...b, kind: 'stat' };
+  return { ...b, kind: b.kind ?? 'stat' };
 }
 
 type ContentEffect = NonNullable<KitJson['skills']['normal']['effects']>[number];

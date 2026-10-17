@@ -57,7 +57,9 @@ export type BuffKind =
   | 'confusion'
   | 'paralysis'
   | 'immune'
-  | 'dot';
+  | 'dot'
+  | 'regen'
+  | 'stack';
 
 export interface BuffSpec {
   tag: string;
@@ -183,7 +185,7 @@ export interface SkillDef {
 /** One rider resolved after a skill's damage (M9). */
 export type Effect =
   | { op: 'buff'; target: TargetSel; buff: BuffSpec; condition?: Condition; chance?: number }
-  | { op: 'dot'; target: TargetSel; dot: DotSpec; condition?: Condition; chance?: number }
+  | { op: 'dot'; target: TargetSel; dot: DotSpec; tag?: string; condition?: Condition; chance?: number }
   | { op: 'control'; target: TargetSel; control: ControlSpec; condition?: Condition; chance?: number }
   | {
       op: 'heal';

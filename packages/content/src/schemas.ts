@@ -101,6 +101,7 @@ const combatFieldSchema = z.enum([
 const buffSpecSchema = z
   .object({
     tag: z.string().min(1),
+    kind: z.enum(['stat', 'immune', 'regen', 'stack']).optional(),
     field: combatFieldSchema.optional(),
     amount: z.number().optional(),
     turns: z.number().int().positive().optional(),
@@ -307,6 +308,7 @@ export const combatSettingsSchema = z
     healBasis: z.enum(['targetMaxHp', 'casterAtk']),
     shieldCountsForRage: z.boolean(),
     redirectChance: z.number().min(0).max(1),
+    cleanseOrder: z.enum(['oldestFirst', 'newestFirst']),
   })
   .strict();
 
