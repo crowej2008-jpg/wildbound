@@ -1,4 +1,5 @@
 ﻿import { effective } from './stats';
+import { evalCondition } from './conditions';
 import { piecewise } from './settings';
 import type { BattleContext, Combatant, CombatField, SkillDef } from './types';
 
@@ -28,6 +29,16 @@ export interface HitOutcome {
   dmg: number;
   crit: boolean;
   blocked: boolean;
+  /** M9: true damage (bypasses every factor, both rolls and shields). */
+  trueDmg?: boolean;
+}
+
+/** The HP a `%`-share skill reads, per `hpShareBasis` (default `max`, the M1 form). */
+function hpShareValue(skill: SkillDef, defender: Combatant): number {
+  const basis = skill.hpShareBasis ?? 'max';
+  if (basis === 'current') return defender.hp;
+  if (basis === 'missing') return Math.max(0, defender.maxHp - defender.hp);
+  return eff(defender, 'hp');
 }
 
 export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
@@ -35,10 +46,19 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   const S = ctx.settings;
 
   if (skill.damageType === 'hpShare') {
-    return { dmg: Math.floor(skill.hpShare! * eff(defender, 'hp')), crit: false, blocked: false };
+    return {
+      dmg: Math.floor(skill.hpShare! * hpShareValue(skill, defender)),
+      crit: false,
+      blocked: false,
+      trueDmg: skill.trueDamage === true,
+    };
   }
 
   const raw = (skill.type === 'P' ? eff(attacker, 'pAtk') : eff(attacker, 'sAtk')) * (skill.rates[hitIndex] ?? skill.rates[0]!);
+
+  if (skill.trueDamage) {
+    return { dmg: Math.max(1, Math.floor(raw)), crit: false, blocked: false, trueDmg: true };
+  }
 
   const G = Math.max(S.gFloor, 1 + eff(attacker, 'dmgBoost') - eff(defender, 'dmgRdct'));
   const P =
@@ -64,6 +84,10 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   const weatherMult = ctx.weather?.factions.includes(attacker.kit.faction) ? 1 + ctx.weather.dmg : 1;
 
   let dmg = raw * G * P * K * soul * teamFactor * classMult * weatherMult;
+
+  if (skill.bonusVs && evalCondition(skill.bonusVs.condition, ctx, attacker, defender)) {
+    dmg *= skill.bonusVs.mult;
+  }
 
   const critRes = eff(defender, 'critRes');
   const crit = !ctx.deterministic && ctx.rng() < critRateAt(attacker, defender, critRes, S.critSlope, S.critFloor);
@@ -99,6 +123,10 @@ export interface HitFlags {
   crit?: boolean;
   blocked?: boolean;
   hpShare?: boolean;
+  /** M9: true damage — bypasses shields. */
+  trueDmg?: boolean;
+  /** M9: skill-level shield bypass. */
+  ignoreShield?: boolean;
 }
 
 /**
@@ -114,7 +142,8 @@ export function channelHit(
   flags: HitFlags = {},
 ): number {
   const kind = flags.kind ?? 'hit';
-  const shielded = Math.min(defender.shieldHp, dmg);
+  const bypassShield = flags.trueDmg === true || flags.ignoreShield === true;
+  const shielded = bypassShield ? 0 : Math.min(defender.shieldHp, dmg);
   if (shielded > 0) {
     defender.shieldHp -= shielded;
     ctx.events.push({ type: 'shield', tgt: defender.key, amount: shielded, shieldAfter: defender.shieldHp });

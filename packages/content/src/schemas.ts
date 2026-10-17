@@ -11,7 +11,64 @@ export const factionSchema = z.enum(['ember', 'tide', 'grove', 'volt', 'frost', 
 export const classSchema = z.enum(['striker', 'guardian', 'adept']);
 export const tierSchema = z.enum(['common', 'rare', 'epic', 'legendary', 'supreme', 'mythic']);
 export const skillSlotSchema = z.enum(['normal', 'basic', 'ult']);
-export const targetRuleSchema = z.enum(['column', 'row', 'all', 'lowest_hp', 'random', 'self']);
+export const targetRuleSchema = z.enum([
+  'column',
+  'row',
+  'all',
+  'lowest_hp',
+  'highest_hp',
+  'highest_atk',
+  'highest_spd',
+  'random',
+  'frontline',
+  'backline',
+  'same_position',
+  'adjacent',
+  'self',
+]);
+export const targetSideSchema = z.enum(['enemy', 'ally']);
+export const targetRowSchema = z.enum(['front', 'back']);
+export const targetFilterSchema = z.enum(['dot', 'controlled', 'debuffed']);
+
+const conditionSchema = z
+  .object({
+    selfHpBelow: z.number().min(0).max(1).optional(),
+    selfHpAbove: z.number().min(0).max(1).optional(),
+    targetHpBelow: z.number().min(0).max(1).optional(),
+    targetHpAbove: z.number().min(0).max(1).optional(),
+    selfHasTag: z.string().min(1).optional(),
+    targetHasTag: z.string().min(1).optional(),
+    selfStackAtLeast: z.object({ tag: z.string().min(1), n: z.number().int().positive() }).strict().optional(),
+    targetStackAtLeast: z.object({ tag: z.string().min(1), n: z.number().int().positive() }).strict().optional(),
+    targetControlled: z.boolean().optional(),
+    targetHasDot: z.boolean().optional(),
+    allyUnderControl: z.boolean().optional(),
+    targetRow: targetRowSchema.optional(),
+    targetTrait: z.string().min(1).optional(),
+  })
+  .strict();
+
+const dotSpecSchema = z
+  .object({
+    share: z.number().min(0),
+    basis: z.enum(['targetMaxHp', 'casterAtk', 'targetCurrentHp']).optional(),
+    type: z.enum(['P', 'S']).optional(),
+    turns: z.number().int().positive().optional(),
+    maxStacks: z.number().int().positive().optional(),
+    undispellable: z.boolean().optional(),
+  })
+  .strict();
+
+const targetSelSchema = z
+  .object({
+    side: targetSideSchema.optional(),
+    rule: targetRuleSchema.optional(),
+    n: z.number().int().positive().optional(),
+    rowFilter: targetRowSchema.optional(),
+    filters: z.array(targetFilterSchema).optional(),
+    condition: conditionSchema.optional(),
+  })
+  .strict();
 
 const combatFieldSchema = z.enum([
   'hp',
@@ -49,6 +106,7 @@ const buffSpecSchema = z
     turns: z.number().int().positive().optional(),
     bigRounds: z.number().int().positive().optional(),
     maxStacks: z.number().int().positive().optional(),
+    undispellable: z.boolean().optional(),
   })
   .strict();
 
@@ -60,6 +118,84 @@ const controlSchema = z
     turns: z.number().int().positive().optional(),
   })
   .strict();
+
+const effectSchema = z.discriminatedUnion('op', [
+  z
+    .object({ op: z.literal('buff'), target: targetSelSchema, buff: buffSpecSchema, condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
+    .strict(),
+  z
+    .object({ op: z.literal('dot'), target: targetSelSchema, dot: dotSpecSchema, condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
+    .strict(),
+  z
+    .object({ op: z.literal('control'), target: targetSelSchema, control: controlSchema, condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
+    .strict(),
+  z
+    .object({
+      op: z.literal('heal'),
+      target: targetSelSchema,
+      rate: z.number().min(0),
+      basis: z.enum(['targetMaxHp', 'casterAtk']).optional(),
+      over: z.number().int().positive().optional(),
+      condition: conditionSchema.optional(),
+      chance: z.number().min(0).max(1).optional(),
+    })
+    .strict(),
+  z
+    .object({
+      op: z.literal('shield'),
+      target: targetSelSchema,
+      share: z.number().min(0),
+      basis: z.enum(['casterHp', 'casterAtk']).optional(),
+      condition: conditionSchema.optional(),
+      chance: z.number().min(0).max(1).optional(),
+    })
+    .strict(),
+  z
+    .object({
+      op: z.literal('cleanse'),
+      target: targetSelSchema,
+      count: z.number().int().positive().optional(),
+      kinds: z.array(z.string().min(1)).optional(),
+      condition: conditionSchema.optional(),
+      chance: z.number().min(0).max(1).optional(),
+    })
+    .strict(),
+  z
+    .object({
+      op: z.literal('dispel'),
+      target: targetSelSchema,
+      count: z.number().int().positive().optional(),
+      kinds: z.array(z.string().min(1)).optional(),
+      condition: conditionSchema.optional(),
+      chance: z.number().min(0).max(1).optional(),
+    })
+    .strict(),
+  z
+    .object({
+      op: z.literal('rage'),
+      target: targetSelSchema,
+      delta: z.number().optional(),
+      pct: z.number().optional(),
+      steal: z.boolean().optional(),
+      condition: conditionSchema.optional(),
+      chance: z.number().min(0).max(1).optional(),
+    })
+    .strict(),
+  z
+    .object({ op: z.literal('revive'), target: targetSelSchema, hpPct: z.number().min(0).max(1), once: z.boolean().optional(), condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
+    .strict(),
+  z
+    .object({
+      op: z.literal('damage'),
+      target: targetSelSchema,
+      rate: z.number().min(0),
+      type: z.enum(['P', 'S']).optional(),
+      trueDamage: z.boolean().optional(),
+      condition: conditionSchema.optional(),
+      chance: z.number().min(0).max(1).optional(),
+    })
+    .strict(),
+]);
 
 const skillSchema = z
   .object({
@@ -82,6 +218,18 @@ const skillSchema = z
       .strict()
       .optional(),
     lifesteal: z.number().min(0).max(1).optional(),
+    side: targetSideSchema.optional(),
+    rowFilter: targetRowSchema.optional(),
+    filters: z.array(targetFilterSchema).optional(),
+    hpShareBasis: z.enum(['max', 'current', 'missing']).optional(),
+    trueDamage: z.boolean().optional(),
+    ignoreShield: z.boolean().optional(),
+    ignoreDefense: z.number().min(0).max(1).optional(),
+    dot: dotSpecSchema.optional(),
+    bonusVs: z.object({ condition: conditionSchema, mult: z.number() }).strict().optional(),
+    recastOnKill: z.object({ max: z.number().int().positive() }).strict().optional(),
+    condition: conditionSchema.optional(),
+    effects: z.array(effectSchema).optional(),
   })
   .strict()
   .refine((s) => s.damageType !== 'hpShare' || s.hpShare !== undefined, {
@@ -113,6 +261,7 @@ export const kitSchema = z
     faction: factionSchema,
     class: classSchema,
     tier: tierSchema,
+    traits: z.array(z.string().min(1)).optional(),
     skills: z.object({
       normal: skillSchema,
       basic: skillSchema,

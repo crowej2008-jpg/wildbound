@@ -12,7 +12,8 @@ export {
 } from './damage';
 export { DEFAULT_COMBAT_SETTINGS, resolveSettings, piecewise } from './settings';
 export { resolveSheet, effective, applyStatMod } from './stats';
-export { selectTargets, orderedByColumn } from './targeting';
+export { selectTargets, selectFor, orderedByColumn } from './targeting';
+export { evalCondition, isControlled, hasDot, stackCount } from './conditions';
 export { applyHeal, applyShield, resolveHealAmount, applyLifesteal, applySkillSideEffects } from './sustain';
 export { applyCounterReflect } from './counter';
 export { takeTurn } from './skills';
@@ -30,7 +31,10 @@ export type {
   BuffSpec,
   Combatant,
   CombatField,
+  Condition,
   ControlSpec,
+  DotSpec,
+  Effect,
   KitDef,
   SheetInput,
   SkillDef,
@@ -38,7 +42,11 @@ export type {
   SpecInput,
   StatSheet,
   TalentDef,
+  TargetFilter,
+  TargetRow,
   TargetRule,
+  TargetSel,
+  TargetSide,
   TurnHook,
   RoundEffect,
 } from './types';

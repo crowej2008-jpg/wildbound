@@ -71,11 +71,65 @@ export interface BuffSpec {
   chance?: number;
   /** confusion: share of normal attacks aimed at the holder's own side */
   redirectChance?: number;
+  /** M9: cannot be removed by cleanse/dispel. */
+  undispellable?: boolean;
 }
 
 export type SkillSlot = 'normal' | 'basic' | 'ult';
 export type DamageType = 'P' | 'S';
-export type TargetRule = 'column' | 'row' | 'all' | 'lowest_hp' | 'random' | 'self';
+export type TargetRule =
+  | 'column'
+  | 'row'
+  | 'all'
+  | 'lowest_hp'
+  | 'highest_hp'
+  | 'highest_atk'
+  | 'highest_spd'
+  | 'random'
+  | 'frontline'
+  | 'backline'
+  | 'same_position'
+  | 'adjacent'
+  | 'self';
+
+/** Which team a skill's targets are drawn from (M9; default `enemy` = the M1 behaviour). */
+export type TargetSide = 'enemy' | 'ally';
+/** Row restriction applied before the target rule (M9). */
+export type TargetRow = 'front' | 'back';
+/** Predicate a candidate must satisfy to stay targetable (M9). */
+export type TargetFilter = 'dot' | 'controlled' | 'debuffed';
+
+/**
+ * A predicate over the caster/target/battle (M9). Every present clause must hold
+ * (logical AND); an absent clause is ignored. An empty condition is always true.
+ */
+export interface Condition {
+  selfHpBelow?: number;
+  selfHpAbove?: number;
+  targetHpBelow?: number;
+  targetHpAbove?: number;
+  selfHasTag?: string;
+  targetHasTag?: string;
+  selfStackAtLeast?: { tag: string; n: number };
+  targetStackAtLeast?: { tag: string; n: number };
+  targetControlled?: boolean;
+  targetHasDot?: boolean;
+  allyUnderControl?: boolean;
+  targetRow?: TargetRow;
+  targetTrait?: string;
+}
+
+/** A damage-over-time instance (M9). `damageType: 'dot'` + `hpShare` is the M1 form. */
+export interface DotSpec {
+  /** fraction of the basis, applied per tick */
+  share: number;
+  basis?: 'targetMaxHp' | 'casterAtk' | 'targetCurrentHp';
+  type?: DamageType;
+  /** big-round duration (default 2, the M1 value) */
+  turns?: number;
+  maxStacks?: number;
+  undispellable?: boolean;
+}
 
 export interface ControlSpec {
   kind: string;
@@ -100,6 +154,69 @@ export interface SkillDef {
   heal?: { target: 'ally' | 'self' | 'allies'; rate: number };
   shield?: { target: 'ally' | 'self' | 'allies'; share: number };
   lifesteal?: number;
+  /** M9: which team the skill targets (default `enemy`). */
+  side?: TargetSide;
+  /** M9: restrict the candidate pool to a row before the rule runs. */
+  rowFilter?: TargetRow;
+  /** M9: candidate predicates; if the narrowed pool is empty the pool is not narrowed. */
+  filters?: TargetFilter[];
+  /** M9: hpShare basis (default `max`, the measured M1 behaviour). */
+  hpShareBasis?: 'max' | 'current' | 'missing';
+  /** M9: bypasses every damage factor, both rolls and (by default) shields. */
+  trueDamage?: boolean;
+  /** M9: bypass shields for this skill's direct hits. */
+  ignoreShield?: boolean;
+  /** M9: fraction of the target's DEF ignored (live only when `defendersUseDef`). */
+  ignoreDefense?: number;
+  /** M9: a structured damage-over-time application (rider). */
+  dot?: DotSpec;
+  /** M9: extra multiplier when the condition holds. */
+  bonusVs?: { condition: Condition; mult: number };
+  /** M9: re-run the skill when a target dies, up to `max` extra casts. */
+  recastOnKill?: { max: number };
+  /** M9: when present and false, the skill falls back to plain column targeting. */
+  condition?: Condition;
+  /** M9: ordered side effects resolved after the damage step. */
+  effects?: Effect[];
+}
+
+/** One rider resolved after a skill's damage (M9). */
+export type Effect =
+  | { op: 'buff'; target: TargetSel; buff: BuffSpec; condition?: Condition; chance?: number }
+  | { op: 'dot'; target: TargetSel; dot: DotSpec; condition?: Condition; chance?: number }
+  | { op: 'control'; target: TargetSel; control: ControlSpec; condition?: Condition; chance?: number }
+  | {
+      op: 'heal';
+      target: TargetSel;
+      rate: number;
+      basis?: 'targetMaxHp' | 'casterAtk';
+      over?: number;
+      condition?: Condition;
+      chance?: number;
+    }
+  | { op: 'shield'; target: TargetSel; share: number; basis?: 'casterHp' | 'casterAtk'; condition?: Condition; chance?: number }
+  | { op: 'cleanse'; target: TargetSel; count?: number; kinds?: string[]; condition?: Condition; chance?: number }
+  | { op: 'dispel'; target: TargetSel; count?: number; kinds?: string[]; condition?: Condition; chance?: number }
+  | {
+      op: 'rage';
+      target: TargetSel;
+      delta?: number;
+      pct?: number;
+      steal?: boolean;
+      condition?: Condition;
+      chance?: number;
+    }
+  | { op: 'revive'; target: TargetSel; hpPct: number; once?: boolean; condition?: Condition; chance?: number }
+  | { op: 'damage'; target: TargetSel; rate: number; type?: DamageType; trueDamage?: boolean; condition?: Condition; chance?: number };
+
+/** A target selection for an effect (M9): side + rule + narrowing. */
+export interface TargetSel {
+  side?: TargetSide;
+  rule?: TargetRule;
+  n?: number;
+  rowFilter?: TargetRow;
+  filters?: TargetFilter[];
+  condition?: Condition;
 }
 
 export interface StatMod {
@@ -127,6 +244,8 @@ export interface KitDef {
   skills: Record<SkillSlot, SkillDef>;
   counterShare?: number;
   talents?: TalentDef;
+  /** M9: tags a `Condition.targetTrait` can match (e.g. "def"). */
+  traits?: string[];
   hooksConfig?: Record<string, Record<string, string | number>>;
 }
 
@@ -215,6 +334,12 @@ export interface Buff {
   bigRounds?: number;
   chance?: number;
   redirectChance?: number;
+  /** M9: DoT basis (`targetMaxHp` | `casterAtk` | `targetCurrentHp`). */
+  basis?: string;
+  /** M9: the caster's attack captured when a `casterAtk` DoT was applied. */
+  power?: number;
+  /** M9: cannot be removed by cleanse/dispel. */
+  undispellable?: boolean;
 }
 
 export interface Combatant {
@@ -238,6 +363,8 @@ export interface Combatant {
   lostLastRound: number;
   /** M7: equipment round effects not yet applied. */
   roundEffects?: RoundEffect[];
+  /** M9: per-creature stack counters ("Frost", "sanction", …). */
+  resources?: Record<string, number>;
 }
 
 export interface BattleConfig {

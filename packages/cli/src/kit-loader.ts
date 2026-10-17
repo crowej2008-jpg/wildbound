@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { kitSchema, type KitJson } from '@wildbound/content';
-import type { BuffSpec, CombatField, KitDef, SkillDef, SkillSlot } from '@wildbound/engine';
+import type { BuffSpec, CombatField, Effect, KitDef, SkillDef, SkillSlot } from '@wildbound/engine';
 
 /**
  * Loads every skill-kit in packages/content/kits and converts the content
@@ -16,11 +16,19 @@ interface ContentBuffSpec {
   turns?: number;
   bigRounds?: number;
   maxStacks?: number;
+  undispellable?: boolean;
 }
 
 /** Content buff specs ('field' => a stat buff) get their kind from the field. */
 function withKind(b: ContentBuffSpec): BuffSpec {
   return { ...b, kind: 'stat' };
+}
+
+type ContentEffect = NonNullable<KitJson['skills']['normal']['effects']>[number];
+
+function toEngineEffect(e: ContentEffect): Effect {
+  if (e.op === 'buff') return { ...e, buff: withKind(e.buff) };
+  return e;
 }
 
 function toEngineSkill(slot: SkillSlot, s: KitJson['skills'][SkillSlot]): SkillDef {
@@ -39,6 +47,18 @@ function toEngineSkill(slot: SkillSlot, s: KitJson['skills'][SkillSlot]): SkillD
     heal: s.heal,
     shield: s.shield,
     lifesteal: s.lifesteal,
+    side: s.side,
+    rowFilter: s.rowFilter,
+    filters: s.filters,
+    hpShareBasis: s.hpShareBasis,
+    trueDamage: s.trueDamage,
+    ignoreShield: s.ignoreShield,
+    ignoreDefense: s.ignoreDefense,
+    dot: s.dot,
+    bonusVs: s.bonusVs,
+    recastOnKill: s.recastOnKill,
+    condition: s.condition,
+    effects: s.effects?.map(toEngineEffect),
   };
 }
 
@@ -49,6 +69,7 @@ export function kitToEngine(j: KitJson): KitDef {
     faction: j.faction,
     class: j.class,
     tier: j.tier,
+    traits: j.traits,
     skills: {
       normal: toEngineSkill('normal', j.skills.normal),
       basic: toEngineSkill('basic', j.skills.basic),
