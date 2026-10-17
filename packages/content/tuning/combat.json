@@ -28,6 +28,7 @@
   "tieBreak": "attackersFirst",
   "buffTickTiming": "ownTurnEnd",
   "defendersUseDef": false,
+  "defK": 1000,
   "healBasis": "targetMaxHp",
   "shieldCountsForRage": false,
   "redirectChance": 0.7,

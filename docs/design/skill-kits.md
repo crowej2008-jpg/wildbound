@@ -76,7 +76,8 @@ the unique mechanic; most carry **(lv.N) ladders**.
 - `condition?: Condition` gates whether the skill resolves.
 
 ### Damage
-- `hpShareBasis?: 'current' | 'max' | 'missing'` (default `current` — today's behaviour).
+- `hpShareBasis?: 'current' | 'max' | 'missing'` (default `max` — the M1 measured behaviour; see
+  ASSUMPTIONS 7).
 - `trueDamage?: boolean` — skips G/P/K/Soul/Team/classMult/weather, the crit/block rolls and shields.
 - `ignoreShield?: boolean`; `ignoreDefense?: number` (a fraction, inert while `defendersUseDef` is false).
 - `dot?: { share, basis: 'targetMaxHp' | 'casterAtk' | 'targetCurrentHp', type: 'P' | 'S', turns,
@@ -101,19 +102,17 @@ Each effect carries `target: TargetSel` (side + rule + n + filters + condition) 
 "talents": {
   "statMods": [],                                  // existing
   "rageOnHit": 0, "rageCutChance": 0, "safeguard": {},   // existing
-  "rageStart": { "pct": 0.5 },                     // "gain half/full rage when engaged"
-  "rageOnAction": { "normal": 0, "basic": 0, "ult": 0 },
-  "passive": { "effects": [], "triggers": [] },    // the Passive slot (6 creatures)
+  "rageStart": 1000,                               // "gain half/full rage when engaged"
   "triggers": [
-    { "on": "beingHit", "chance": 0.4, "condition": {}, "effects": [],
-      "cooldown": 0, "perTurn": 1, "once": false }
+    { "on": "onHit", "chance": 0.4, "condition": {}, "effects": [],
+      "cooldown": 0, "perTurn": 1, "buff": {}, "rage": 0 }
   ]
 }
 ```
-`Trigger.on` ∈ `battleStart · turnStart · endOfTurn · roundStart · beingHit · afterAction · onKill ·
-allyDeath · enemyDeath · anyDeath · hpBelow · underControl · buffExpired`. All names are registered in
-engine code; an unknown name is a validator error. `beingHit` fires from `channelHit` (it has the
-attacker), death events from the death path, `turnStart`/`endOfTurn` from the round loop.
+`Trigger.on` ∈ `battleStart · roundStart · roundEnd · turnStart · turnEnd · onHit · onKill · onDeath ·
+onAllyDeath · hpBelow` (the implemented names — see ASSUMPTIONS 9). `onHit` fires from `channelHit` (it
+has the attacker), the death triggers from the death path, and the round/turn triggers from the loop.
+Nesting is bounded by `triggerDepthCap`.
 
 ### Stacks / resources
 New `Combatant.resources: Record<string, number>` with a `stack` buff kind (`clamp 0..max`,
@@ -121,7 +120,7 @@ New `Combatant.resources: Record<string, number>` with a `stack` buff kind (`cla
 home for Frost stacks, light energy, [offer of power], [sanction], [flame], [feather dance], [zen control].
 
 ### Cooldowns & caps
-`cooldown?: { turns?: number; rounds?: number }` and `perTurn?` on effects and triggers.
+`cooldown?: number` (big rounds) and `perTurn?: number` on triggers (live since M9.4).
 
 ### New stat fields
 `CombatField` gains `pDef` / `sDef` (already on `StatSheet`, just exposed to buffs), so "reduce P.DEF" is
@@ -136,11 +135,12 @@ or a buff amount; absent = the flat base value.
 | Setting | Shipped | Meaning |
 |---|---|---|
 | `defendersUseDef` | `false` (unchanged) | when true, `pDef`/`sDef` cut incoming damage on the `defK` curve |
-| `defK` | tunable | half-point of the DEF curve |
+| `defK` | `1000` | half-point of the DEF curve (`def / (def + defK)`) |
 | `dotTickTiming` | `ownTurnStart` (today) | when DoTs tick |
 | `trueDamageIgnoresShield` | `true` | true damage bypasses shields |
 | `cleanseOrder` | `oldestFirst` | which negative buffs a cleanse removes |
 | `defaultResourceCap` | `99` | cap for a resource with no explicit `max` |
+| `triggerDepthCap` | `4` | nested trigger activations allowed before they stop |
 
 ## Port pipeline
 

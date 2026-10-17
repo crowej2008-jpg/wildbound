@@ -87,7 +87,17 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   const classMult = S.classMult[`${attacker.kit.class}>${defender.kit.class}`] ?? 1;
   const weatherMult = ctx.weather?.factions.includes(attacker.kit.faction) ? 1 + ctx.weather.dmg : 1;
 
-  let dmg = raw * G * P * K * soul * teamFactor * classMult * weatherMult;
+  // M9.5: DEF is inert by default (the measured model shows it has no effect).
+  // When `defendersUseDef` is on, P.DEF/S.DEF cut incoming damage on a
+  // def/(def+defK) curve (half damage at DEF == defK).
+  let defMult = 1;
+  if (S.defendersUseDef) {
+    const rawDef = skill.type === 'P' ? eff(defender, 'pDef') : eff(defender, 'sDef');
+    const def = Math.max(0, rawDef * (1 - (skill.ignoreDefense ?? 0)));
+    defMult = 1 - def / (def + S.defK);
+  }
+
+  let dmg = raw * G * P * K * soul * teamFactor * classMult * weatherMult * defMult;
 
   if (skill.bonusVs && evalCondition(skill.bonusVs.condition, ctx, attacker, defender)) {
     dmg *= skill.bonusVs.mult;

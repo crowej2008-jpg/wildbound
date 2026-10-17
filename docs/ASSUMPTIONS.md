@@ -294,3 +294,25 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 6. **Cleanse/dispel strip whole buffs, not stacks.** A cleanse removes negative buffs in `cleanseOrder`;
    "cannot be dispelled" is a buff flag, not a separate mechanic. *What would change it:* a reference
    statement about stack-level removal.
+
+### M9.1–M9.5 implementation notes (additive DSL v2)
+
+7. **`hpShareBasis` defaults to `max`, not `current`.** The M1 `hpShare` skill reads the defender's
+   *maximum* HP (`eff(defender,'hp')`), and that measured behaviour is locked by the golden/parity
+   tests, so the default keeps `max`; `current` and `missing` are opt-in per skill.
+   *What would change it:* a re-measurement showing the shipped `%` skills read current HP.
+8. **The `defK` DEF curve is `reduction = def / (def + defK)`** (half damage at DEF == `defK`), used only
+   when `defendersUseDef` is switched on; `defK` ships `1000`. No reference measurement exists for the
+   shape — it is the standard saturating curve. *What would change it:* a measured DEF→damage table.
+9. **Trigger names are the implemented set:** `battleStart`, `roundStart`, `roundEnd`, `turnStart`,
+   `turnEnd`, `onHit`, `onKill`, `onDeath`, `onAllyDeath`, `hpBelow`. The design note's first draft used
+   `beingHit`/`afterAction`/`endOfTurn`; the code names above are canonical.
+   *What would change it:* a cleaner taxonomy agreed with the owner during the M9.6 port.
+10. **Trigger nesting is capped** by `triggerDepthCap` (default 4) so two on-hit retaliations cannot
+    recurse forever; on-death triggers may resolve effects after their owner has died.
+    *What would change it:* a reference rule for chained retaliation.
+11. **A secondary `damage` rider defaults to the P type** when it declares no `type` (triggers have no
+    carrying skill). *What would change it:* evidence that riders inherit the passive's own type.
+12. **`perTurn`/`cooldown` live on triggers,** not on individual effects: the sheet's "works up to N
+    times per turn" and "cooldown N turns" clauses attach to a whole named mechanic.
+    *What would change it:* a sheet clause that caps a single effect of a multi-effect skill.

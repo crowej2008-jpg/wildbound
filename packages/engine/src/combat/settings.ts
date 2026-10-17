@@ -57,6 +57,8 @@ export interface CombatSettings {
   buffTickTiming: 'ownTurnEnd';
   /** P.DEF / S.DEF have no effect on damage (seen; keep the switch for a different design). */
   defendersUseDef: boolean;
+  /** M9.5: half-point of the DEF curve — `reduction = def / (def + defK)`. */
+  defK: number;
   /** heal basis: target max HP (open — healer attack is the alternative). */
   healBasis: 'targetMaxHp' | 'casterAtk';
   /** whether a shield-absorbed hit counts toward the Rage hpLost term (seen: does not). */
@@ -108,6 +110,7 @@ function readDefaults(): CombatSettings {
     tieBreak: 'attackersFirst',
     buffTickTiming: 'ownTurnEnd',
     defendersUseDef: false,
+    defK: 1000,
     healBasis: 'targetMaxHp',
     shieldCountsForRage: false,
     redirectChance: 0.7,

@@ -14,6 +14,8 @@ export type CombatField =
   | 'pAtk'
   | 'sAtk'
   | 'spd'
+  | 'pDef'
+  | 'sDef'
   | 'dmgBoost'
   | 'dmgRdct'
   | 'pvpBoost'
