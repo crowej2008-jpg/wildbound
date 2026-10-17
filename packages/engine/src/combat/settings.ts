@@ -65,6 +65,8 @@ export interface CombatSettings {
   redirectChance: number;
   /** M9: which negative buffs a cleanse strips first. */
   cleanseOrder: 'oldestFirst' | 'newestFirst';
+  /** M9: cap for a resource counter with no explicit max. */
+  defaultResourceCap: number;
 }
 
 export const DEFAULT_COMBAT_SETTINGS: CombatSettings = readDefaults();
@@ -108,6 +110,7 @@ function readDefaults(): CombatSettings {
     shieldCountsForRage: false,
     redirectChance: 0.7,
     cleanseOrder: 'oldestFirst',
+    defaultResourceCap: 99,
   };
 }
 

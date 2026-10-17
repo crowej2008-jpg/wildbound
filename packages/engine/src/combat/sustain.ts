@@ -1,4 +1,5 @@
 ﻿import { effective } from './stats';
+import { scaleBuff } from './scaling';
 import { applyBuff } from './buffs';
 import type { BattleContext, Combatant, SkillDef } from './types';
 
@@ -66,7 +67,7 @@ export function applySkillSideEffects(
   targets: Combatant[],
   hitDamages: number[],
 ): void {
-  for (const b of skill.selfBuffs ?? []) applyBuff(attacker, b, ctx, attacker.id);
+  for (const b of skill.selfBuffs ?? []) applyBuff(attacker, scaleBuff(b, attacker.level ?? 1), ctx, attacker.id);
   if (skill.lifesteal) {
     applyLifesteal(ctx, attacker, hitDamages.reduce((a, b) => a + b, 0), skill.lifesteal);
   }

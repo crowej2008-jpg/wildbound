@@ -31,5 +31,6 @@
   "healBasis": "targetMaxHp",
   "shieldCountsForRage": false,
   "redirectChance": 0.7,
-  "cleanseOrder": "oldestFirst"
+  "cleanseOrder": "oldestFirst",
+  "defaultResourceCap": 99
 }

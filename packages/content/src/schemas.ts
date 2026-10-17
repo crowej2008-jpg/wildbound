@@ -108,6 +108,7 @@ const buffSpecSchema = z
     bigRounds: z.number().int().positive().optional(),
     maxStacks: z.number().int().positive().optional(),
     undispellable: z.boolean().optional(),
+    scalesWithLevel: z.array(z.tuple([z.number().int().positive(), z.number()])).optional(),
   })
   .strict();
 
@@ -187,6 +188,18 @@ const effectSchema = z.discriminatedUnion('op', [
     .strict(),
   z
     .object({
+      op: z.literal('resource'),
+      target: targetSelSchema,
+      tag: z.string().min(1),
+      delta: z.number().optional(),
+      max: z.number().int().positive().optional(),
+      consume: z.number().int().nonnegative().optional(),
+      condition: conditionSchema.optional(),
+      chance: z.number().min(0).max(1).optional(),
+    })
+    .strict(),
+  z
+    .object({
       op: z.literal('damage'),
       target: targetSelSchema,
       rate: z.number().min(0),
@@ -238,7 +251,12 @@ const skillSchema = z
   });
 
 const statModSchema = z
-  .object({ field: combatFieldSchema, mult: z.number().optional(), add: z.number().optional() })
+  .object({
+    field: combatFieldSchema,
+    mult: z.number().optional(),
+    add: z.number().optional(),
+    scalesWithLevel: z.array(z.tuple([z.number().int().positive(), z.number()])).optional(),
+  })
   .strict()
   .refine((m) => m.mult !== undefined || m.add !== undefined, { message: 'statMod needs mult and/or add' });
 
@@ -309,6 +327,7 @@ export const combatSettingsSchema = z
     shieldCountsForRage: z.boolean(),
     redirectChance: z.number().min(0).max(1),
     cleanseOrder: z.enum(['oldestFirst', 'newestFirst']),
+    defaultResourceCap: z.number().int().positive(),
   })
   .strict();
 

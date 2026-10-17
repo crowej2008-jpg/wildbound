@@ -75,6 +75,8 @@ export interface BuffSpec {
   redirectChance?: number;
   /** M9: cannot be removed by cleanse/dispel. */
   undispellable?: boolean;
+  /** M9: `[level, value][]` ladder replacing `amount` at the caster's level. */
+  scalesWithLevel?: [number, number][];
 }
 
 export type SkillSlot = 'normal' | 'basic' | 'ult';
@@ -209,6 +211,7 @@ export type Effect =
       chance?: number;
     }
   | { op: 'revive'; target: TargetSel; hpPct: number; once?: boolean; condition?: Condition; chance?: number }
+  | { op: 'resource'; target: TargetSel; tag: string; delta?: number; max?: number; consume?: number; condition?: Condition; chance?: number }
   | { op: 'damage'; target: TargetSel; rate: number; type?: DamageType; trueDamage?: boolean; condition?: Condition; chance?: number };
 
 /** A target selection for an effect (M9): side + rule + narrowing. */
@@ -225,6 +228,8 @@ export interface StatMod {
   field: CombatField;
   mult?: number;
   add?: number;
+  /** M9: `[level, value][]` ladder replacing the flat value at the holder's level. */
+  scalesWithLevel?: [number, number][];
 }
 
 export type TurnHook = 'allyShelterStack';
@@ -293,6 +298,8 @@ export interface SpecInput {
   power?: number;
   /** M7: conditional equipment effects applied during the fight. */
   roundEffects?: RoundEffect[];
+  /** M9: the creature's level, for `scalesWithLevel` ladders (default 1). */
+  level?: number;
 }
 
 /** A resolved, buffable stat sheet as the battle sees it (base values). */
@@ -367,6 +374,8 @@ export interface Combatant {
   roundEffects?: RoundEffect[];
   /** M9: per-creature stack counters ("Frost", "sanction", …). */
   resources?: Record<string, number>;
+  /** M9: the creature's level (for `scalesWithLevel` ladders; default 1). */
+  level?: number;
 }
 
 export interface BattleConfig {

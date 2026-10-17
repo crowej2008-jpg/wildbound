@@ -196,6 +196,7 @@ export function buildWildTeam(
       kit: kitToEngine(kitJson),
       sheet: equipped.sheet,
       power: unitPower,
+      level: wild.level,
       ...(equipped.effects.length > 0 ? { roundEffects: equipped.effects } : {}),
     });
     meta.set(`${side}:${position}`, {
@@ -231,7 +232,7 @@ export function buildEnemyTeam(enemies: StageEnemy[], config: GameConfig): Built
     const unitPower = computePower(core, {}, config.power);
     const position = slotToPosition(slot);
     const id = `defenders-${slot}`;
-    specs.push({ id, name: species.name, position, side: 'defenders', kit: kitToEngine(kitJson), sheet, power: unitPower });
+    specs.push({ id, name: species.name, position, side: 'defenders', kit: kitToEngine(kitJson), sheet, power: unitPower, level: enemy.level });
     meta.set(`defenders:${position}`, {
       name: species.name,
       speciesId: enemy.speciesId,

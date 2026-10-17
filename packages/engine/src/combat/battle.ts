@@ -119,6 +119,8 @@ function spawn(specs: SpecInput[], side: 'attackers' | 'defenders', settings: Co
       lostThisRound: 0,
       lostLastRound: 0,
       roundEffects: spec.roundEffects ?? [],
+      resources: {},
+      level: spec.level ?? 1,
     };
   });
 }

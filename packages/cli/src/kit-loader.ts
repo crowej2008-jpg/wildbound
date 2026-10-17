@@ -18,6 +18,7 @@ interface ContentBuffSpec {
   bigRounds?: number;
   maxStacks?: number;
   undispellable?: boolean;
+  scalesWithLevel?: [number, number][];
 }
 
 /** Content buff specs default to a stat buff when no kind is given. */

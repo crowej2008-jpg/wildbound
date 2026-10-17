@@ -1,4 +1,5 @@
 import type { Buff, CombatField, SpecInput, StatSheet } from './types';
+import { levelScale } from './scaling';
 
 /**
  * Build the ledger stats a combatant starts from: core stats plus fractional
@@ -38,7 +39,10 @@ export function resolveSheet(spec: SpecInput): StatSheet {
     spiritDef: pct(s.spiritDef),
   };
   for (const mod of spec.kit.talents?.statMods ?? []) {
-    applyStatMod(sheet, mod.field, mod.mult, mod.add);
+    const level = spec.level ?? 1;
+    const mult = mod.mult === undefined ? undefined : levelScale(mod.mult, mod.scalesWithLevel, level);
+    const add = mod.add === undefined ? undefined : levelScale(mod.add, mod.scalesWithLevel, level);
+    applyStatMod(sheet, mod.field, mult, add);
   }
   return sheet;
 }

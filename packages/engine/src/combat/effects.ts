@@ -6,6 +6,7 @@ import { applyDotTag, applyRegen } from './dot';
 import { applyHeal, applyShieldAmount, resolveHealWithBasis } from './sustain';
 import { selectFor } from './targeting';
 import { effective } from './stats';
+import { scaleBuff } from './scaling';
 import type { BattleContext, Combatant, Effect, SkillDef } from './types';
 
 /**
@@ -40,7 +41,7 @@ function targetsFor(ctx: BattleContext, caster: Combatant, e: Effect, fallback: 
 function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect, skill: SkillDef): void {
   switch (e.op) {
     case 'buff':
-      applyBuff(t, e.buff, ctx, caster.id);
+      applyBuff(t, scaleBuff(e.buff, caster.level ?? 1), ctx, caster.id);
       return;
     case 'dot': {
       const tag = e.tag ?? `${caster.id}#dot`;
@@ -86,6 +87,15 @@ function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect,
       t.alive = true;
       t.hp = Math.max(1, Math.floor(e.hpPct * t.maxHp));
       ctx.events.push({ type: 'heal', tgt: t.key, amount: t.hp, hpAfter: t.hp });
+      return;
+    }
+    case 'resource': {
+      const cur = t.resources?.[e.tag] ?? 0;
+      const cap = e.max ?? ctx.settings.defaultResourceCap;
+      const next = Math.max(0, Math.min(cap, cur + (e.delta ?? 0) - (e.consume ?? 0)));
+      if (!t.resources) t.resources = {};
+      t.resources[e.tag] = next;
+      ctx.events.push({ type: 'buffApplied', unit: t.key, tag: e.tag, amount: next, stacks: next });
       return;
     }
     case 'damage': {

@@ -6,6 +6,7 @@ import { applyDot, applyDotSpec, tickDots, tickRegen } from './dot';
 import { applyEffects } from './effects';
 import { selectTargets } from './targeting';
 import { applySkillSideEffects } from './sustain';
+import { scaleBuff } from './scaling';
 import type { BattleContext, Combatant, SkillDef, SkillSlot } from './types';
 
 /**
@@ -100,7 +101,7 @@ function resolveCast(
     applyControl(ctx, u, targets, skill.control);
   }
   for (const b of skill.targetDebuffs ?? []) {
-    for (const t of targets) if (t.alive) applyBuff(t, b, ctx, u.id);
+    for (const t of targets) if (t.alive) applyBuff(t, scaleBuff(b, u.level ?? 1), ctx, u.id);
   }
   if (skill.damageType === 'dot') {
     for (const t of targets) {

@@ -20,6 +20,7 @@ export { takeTurn } from './skills';
 export { applyControl, landControl } from './control';
 export { applyDot, applyDotSpec, applyDotTag, applyRegen, tickDots, tickRegen } from './dot';
 export { applyEffects } from './effects';
+export { levelScale, scaleBuff } from './scaling';
 export {
   applyBuff,
   tickUnitBuffs,
