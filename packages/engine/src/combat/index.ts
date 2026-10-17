@@ -2,7 +2,6 @@ export { runBattle } from './battle';
 export {
   computeDamage,
   channelHit,
-  addRage,
   critRateAt,
   blockChanceAt,
   type HitOutcome,
@@ -19,7 +18,9 @@ export { applyCounterReflect } from './counter';
 export { takeTurn } from './skills';
 export { applyControl, landControl } from './control';
 export { applyDot, applyDotSpec, applyDotTag, applyRegen, tickDots, tickRegen } from './dot';
-export { applyEffects } from './effects';
+export { applyEffects, applyEffectList } from './effects';
+export { fireTriggers } from './triggers';
+export { addRage } from './rage';
 export { levelScale, scaleBuff } from './scaling';
 export {
   applyBuff,
@@ -62,6 +63,8 @@ export type {
   TargetRule,
   TargetSel,
   TargetSide,
+  TriggerDef,
+  TriggerOn,
   TurnHook,
   RoundEffect,
 } from './types';

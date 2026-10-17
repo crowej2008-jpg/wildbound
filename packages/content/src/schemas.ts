@@ -260,16 +260,43 @@ const statModSchema = z
   .strict()
   .refine((m) => m.mult !== undefined || m.add !== undefined, { message: 'statMod needs mult and/or add' });
 
+const triggerSchema = z
+  .object({
+    on: z.enum([
+      'battleStart',
+      'roundStart',
+      'roundEnd',
+      'turnStart',
+      'turnEnd',
+      'onHit',
+      'onKill',
+      'onDeath',
+      'onAllyDeath',
+      'hpBelow',
+    ]),
+    hpBelow: z.number().min(0).max(1).optional(),
+    chance: z.number().min(0).max(1).optional(),
+    perTurn: z.number().int().positive().optional(),
+    cooldown: z.number().int().positive().optional(),
+    condition: conditionSchema.optional(),
+    effects: z.array(effectSchema).optional(),
+    rage: z.number().optional(),
+    buff: buffSpecSchema.optional(),
+  })
+  .strict();
+
 const talentSchema = z
   .object({
     statMods: z.array(statModSchema).optional(),
     rageOnHit: z.number().int().optional(),
     rageCutChance: z.number().min(0).max(1).optional(),
+    rageStart: z.number().int().nonnegative().optional(),
     safeguard: z
       .object({ active: z.number().int().positive(), cycle: z.number().int().positive() })
       .strict()
       .optional(),
     turnHooks: z.array(z.enum(['allyShelterStack'])).optional(),
+    triggers: z.array(triggerSchema).optional(),
   })
   .strict();
 
@@ -328,6 +355,7 @@ export const combatSettingsSchema = z
     redirectChance: z.number().min(0).max(1),
     cleanseOrder: z.enum(['oldestFirst', 'newestFirst']),
     defaultResourceCap: z.number().int().positive(),
+    triggerDepthCap: z.number().int().positive(),
   })
   .strict();
 

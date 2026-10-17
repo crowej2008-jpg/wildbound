@@ -67,6 +67,8 @@ export interface CombatSettings {
   cleanseOrder: 'oldestFirst' | 'newestFirst';
   /** M9: cap for a resource counter with no explicit max. */
   defaultResourceCap: number;
+  /** M9: how many nested trigger activations may chain before they stop. */
+  triggerDepthCap: number;
 }
 
 export const DEFAULT_COMBAT_SETTINGS: CombatSettings = readDefaults();
@@ -111,6 +113,7 @@ function readDefaults(): CombatSettings {
     redirectChance: 0.7,
     cleanseOrder: 'oldestFirst',
     defaultResourceCap: 99,
+    triggerDepthCap: 4,
   };
 }
 

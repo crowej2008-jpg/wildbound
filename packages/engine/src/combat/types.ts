@@ -234,12 +234,51 @@ export interface StatMod {
 
 export type TurnHook = 'allyShelterStack';
 
+/** When a talent trigger fires (M9.4). */
+export type TriggerOn =
+  | 'battleStart'
+  | 'roundStart'
+  | 'roundEnd'
+  | 'turnStart'
+  | 'turnEnd'
+  | 'onHit'
+  | 'onKill'
+  | 'onDeath'
+  | 'onAllyDeath'
+  | 'hpBelow';
+
+/**
+ * A talent trigger (M9.4): an event on the owner (`on`), optional gates
+ * (`condition`, `hpBelow`, `chance`, `perTurn`, `cooldown`) and a payload
+ * (`effects`, or the `rage` / `buff` shorthands). Fired by `fireTriggers`.
+ */
+export interface TriggerDef {
+  on: TriggerOn;
+  /** HP fraction threshold for an `hpBelow` trigger (re-arms when HP rises above it). */
+  hpBelow?: number;
+  chance?: number;
+  /** max activations per big round */
+  perTurn?: number;
+  /** big rounds to wait after activating */
+  cooldown?: number;
+  condition?: Condition;
+  effects?: Effect[];
+  /** shorthand: Rage delta applied to the owner */
+  rage?: number;
+  /** shorthand: a buff applied to the owner */
+  buff?: BuffSpec;
+}
+
 export interface TalentDef {
   statMods?: StatMod[];
   rageOnHit?: number;
   rageCutChance?: number;
   safeguard?: { active: number; cycle: number };
   turnHooks?: TurnHook[];
+  /** M9.4: start-of-battle Rage override (default: class-based). */
+  rageStart?: number;
+  /** M9.4: event triggers. */
+  triggers?: TriggerDef[];
 }
 
 export interface KitDef {
@@ -465,6 +504,10 @@ export interface BattleContext {
   deterministic: boolean;
   /** current big round number (1-based), for per-round turn hooks. */
   round: number;
+  /** M9.4: current trigger nesting depth (bounded by `settings.triggerDepthCap`). */
+  triggerDepth?: number;
+  /** M9: scratch counters for trigger caps/cooldowns (not part of the result). */
+  counters?: Map<string, number>;
   alreadyAppliedHooks: Set<string>;
   damageDealt: Record<string, number>;
   damageTaken: Record<string, number>;

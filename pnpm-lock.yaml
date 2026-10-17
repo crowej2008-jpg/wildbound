@@ -243,6 +243,9 @@ importers:
 
   packages/content:
     dependencies:
+      '@wildbound/engine':
+        specifier: workspace:*
+        version: link:../engine
       zod:
         specifier: ^3.23.8
         version: 3.25.76

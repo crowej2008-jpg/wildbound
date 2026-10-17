@@ -1,4 +1,4 @@
-import { COMBAT_SETTINGS, kitById, type KitJson } from '@wildbound/content';
+import { COMBAT_SETTINGS, kitById, kitToEngine } from '@wildbound/content';
 import {
   computePower,
   foldLoadout,
@@ -8,16 +8,12 @@ import {
   SQUAD_SIZE,
   type AccountState,
   type BattleRules,
-  type BuffSpec,
   type BattleEvent,
   type Faction,
-  type KitDef,
   type PercentLines,
   type ReplayUnit,
   type RoundEffect,
   type SheetInput,
-  type SkillDef,
-  type SkillSlot,
   type SpecInput,
   type SquadMode,
   type StageEnemy,
@@ -67,44 +63,7 @@ export function slotToPosition(slot: number): number {
   return slot <= 2 ? slot + 4 : slot - 2;
 }
 
-/** Content kit DSL → engine `KitDef` (mirrors the CLI's kit-loader). */
-function toEngineSkill(slot: SkillSlot, s: KitJson['skills'][SkillSlot]): SkillDef {
-  const buff = (b: NonNullable<KitJson['skills'][SkillSlot]['selfBuffs']>[number]): BuffSpec => ({ ...b, kind: 'stat' });
-  return {
-    slot,
-    type: s.type,
-    rates: s.rates,
-    rule: s.rule,
-    targets: s.targets,
-    damageType: s.damageType,
-    hpShare: s.hpShare,
-    control: s.control,
-    selfBuffs: s.selfBuffs?.map(buff),
-    targetDebuffs: s.targetDebuffs?.map(buff),
-    counter: s.counter,
-    heal: s.heal,
-    shield: s.shield,
-    lifesteal: s.lifesteal,
-  };
-}
-
-function kitToEngine(j: KitJson): KitDef {
-  return {
-    id: j.id,
-    name: j.name,
-    faction: j.faction,
-    class: j.class,
-    tier: j.tier,
-    skills: {
-      normal: toEngineSkill('normal', j.skills.normal),
-      basic: toEngineSkill('basic', j.skills.basic),
-      ult: toEngineSkill('ult', j.skills.ult),
-    },
-    counterShare: j.counterShare,
-    talents: j.talents,
-    hooksConfig: j.hooksConfig,
-  };
-}
+/** Content kit DSL → engine `KitDef`: `kitToEngine` comes from `@wildbound/content`. */
 
 function sheetOf(wild: WildInstance, config: GameConfig): SheetInput | null {
   const meta = config.species.get(wild.speciesId);

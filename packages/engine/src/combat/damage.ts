@@ -1,7 +1,11 @@
 ﻿import { effective } from './stats';
 import { evalCondition } from './conditions';
 import { piecewise } from './settings';
+import { addRage } from './rage';
+import { fireTriggers } from './triggers';
 import type { BattleContext, Combatant, CombatField, SkillDef } from './types';
+
+export { addRage };
 
 /**
  * The measured damage pipeline (PROMPT Â§6.4, stats-and-combat.md):
@@ -142,6 +146,7 @@ export function channelHit(
   flags: HitFlags = {},
 ): number {
   const kind = flags.kind ?? 'hit';
+  const wasAlive = defender.alive;
   const bypassShield = flags.trueDmg === true || flags.ignoreShield === true;
   const shielded = bypassShield ? 0 : Math.min(defender.shieldHp, dmg);
   if (shielded > 0) {
@@ -188,14 +193,23 @@ export function channelHit(
   if (hitLanded && kind === 'hit' && rageCut && !flags.hpShare && !ctx.deterministic && ctx.rng() < rageCut) {
     addRage(ctx, attacker, -(ctx.settings.rageMax / 8));
   }
-  return hpLost;
-}
 
-export function addRage(ctx: BattleContext, u: Combatant, delta: number): void {
-  const before = u.rage;
-  u.rage = Math.max(0, Math.min(ctx.settings.rageMax, u.rage + delta));
-  const applied = u.rage - before;
-  if (applied !== 0) ctx.events.push({ type: 'rageChange', unit: u.key, delta: applied, rage: u.rage });
+  // M9.4 talent triggers. `onHit` fires for the defender on a direct hit;
+  // `hpBelow` follows any HP loss; `onKill`/`onDeath` fire on a kill. Each call
+  // runs one level deep and `fireTriggers` bounds the nesting.
+  if (hitLanded) {
+    if (kind === 'hit') fireTriggers(ctx, defender, 'onHit', { target: attacker });
+    fireTriggers(ctx, defender, 'hpBelow', { target: attacker });
+  }
+  if (!defender.alive && wasAlive) {
+    fireTriggers(ctx, defender, 'onDeath', { target: attacker });
+    if (attacker.alive) fireTriggers(ctx, attacker, 'onKill', { target: defender });
+    for (const ally of ctx.units) {
+      if (ally.side !== defender.side || ally === defender || !ally.alive) continue;
+      fireTriggers(ctx, ally, 'onAllyDeath', { target: defender });
+    }
+  }
+  return hpLost;
 }
 
 function eff(u: Combatant, field: CombatField): number {

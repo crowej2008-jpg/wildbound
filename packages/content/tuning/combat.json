@@ -32,5 +32,6 @@
   "shieldCountsForRage": false,
   "redirectChance": 0.7,
   "cleanseOrder": "oldestFirst",
-  "defaultResourceCap": 99
+  "defaultResourceCap": 99,
+  "triggerDepthCap": 4
 }

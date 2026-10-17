@@ -3,6 +3,7 @@ import { resolveSheet } from './stats';
 import { resolveSettings, type CombatSettings } from './settings';
 import { takeTurn } from './skills';
 import { tickBigRoundBuffs, tickUnitBuffs } from './buffs';
+import { fireTriggers } from './triggers';
 import type {
   BattleConfig,
   BattleContext,
@@ -52,6 +53,9 @@ export function runBattle(config: BattleConfig): BattleResult {
 
   let winner: 'attackers' | 'defenders' | undefined;
 
+  // M9.4: battle-start triggers fire once, before round 1.
+  for (const u of units) fireTriggers(ctx, u, 'battleStart');
+
   const survival = config.rules?.survivalRounds;
   const maxRounds =
     survival !== undefined ? Math.min(settings.maxRounds, Math.max(1, Math.floor(survival))) : settings.maxRounds;
@@ -61,10 +65,13 @@ export function runBattle(config: BattleConfig): BattleResult {
     refreshSafeguards(ctx, bigRound);
     applyRoundEffects(ctx);
     events.push({ type: 'roundStart', bigRound });
+    for (const u of units) if (u.alive) fireTriggers(ctx, u, 'roundStart');
 
     for (const u of turnOrder(ctx)) {
       if (!u.alive) continue;
+      fireTriggers(ctx, u, 'turnStart');
       takeTurn(ctx, u, { bigRound, team });
+      fireTriggers(ctx, u, 'turnEnd');
       tickUnitBuffs(u, ctx);
       if (sideDead(ctx, 'attackers')) {
         winner = 'defenders';
@@ -78,6 +85,7 @@ export function runBattle(config: BattleConfig): BattleResult {
 
     // advance the lost-HP ledger for counters, tick big-round-wide buffs
     for (const u of units) {
+      if (u.alive) fireTriggers(ctx, u, 'roundEnd');
       u.lostLastRound = u.lostThisRound;
       u.lostThisRound = 0;
       tickBigRoundBuffs(u, ctx);
@@ -98,7 +106,7 @@ export function runBattle(config: BattleConfig): BattleResult {
 function spawn(specs: SpecInput[], side: 'attackers' | 'defenders', settings: CombatSettings): Combatant[] {
   return specs.map((spec) => {
     const sheet = resolveSheet(spec);
-    const rage = spec.kit.class === 'striker' ? settings.rageStrikerStart : settings.rageStart;
+    const rage = spec.kit.talents?.rageStart ?? (spec.kit.class === 'striker' ? settings.rageStrikerStart : settings.rageStart);
     return {
       key: `${side}:${spec.position}`,
       id: spec.id,

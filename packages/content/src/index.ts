@@ -42,6 +42,7 @@ export { WILDS, FACTIONS, wildById, wildsByFaction } from './species';
 export { PVE } from './pve';
 export { pveSchema, type PveJson, type EnemyPoolJson, type TrialDefJson, type DungeonDefJson } from './pve-schema';
 export { KITS, kitById } from './kits';
+export { kitToEngine } from './kit-to-engine';
 export { STAGES, stageById, orderedStages, chapterNumbers, stagesInChapter } from './stages';
 export { QUESTS, questById } from './quests';
 export { COMBAT_SETTINGS, GROWTH, POWER, ACCOUNT, ECONOMY, GACHA_TUNING } from './tuning';

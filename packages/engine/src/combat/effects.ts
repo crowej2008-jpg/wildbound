@@ -1,13 +1,14 @@
 import { applyBuff, stripBuffs } from './buffs';
 import { evalCondition } from './conditions';
 import { applyControl } from './control';
-import { addRage, channelHit } from './damage';
+import { channelHit } from './damage';
+import { addRage } from './rage';
 import { applyDotTag, applyRegen } from './dot';
 import { applyHeal, applyShieldAmount, resolveHealWithBasis } from './sustain';
 import { selectFor } from './targeting';
 import { effective } from './stats';
 import { scaleBuff } from './scaling';
-import type { BattleContext, Combatant, Effect, SkillDef } from './types';
+import type { BattleContext, Combatant, DamageType, Effect, SkillDef } from './types';
 
 /**
  * Effect riders (M9.2). Run after a skill's damage step, in declaration order.
@@ -21,13 +22,25 @@ export function applyEffects(
   skill: SkillDef,
   fallbackTargets: Combatant[],
 ): void {
-  for (const e of skill.effects ?? []) {
+  applyEffectList(ctx, caster, skill.effects, skill.type, fallbackTargets);
+}
+
+/** Run an ordered effect list (used by skills and by talent triggers). */
+export function applyEffectList(
+  ctx: BattleContext,
+  caster: Combatant,
+  effects: Effect[] | undefined,
+  skillType: DamageType,
+  fallbackTargets: Combatant[],
+  opts: { allowDeadCaster?: boolean } = {},
+): void {
+  for (const e of effects ?? []) {
     for (const t of targetsFor(ctx, caster, e, fallbackTargets)) {
-      if (!caster.alive) return;
+      if (!caster.alive && opts.allowDeadCaster !== true) return;
       if (e.op !== 'revive' && !t.alive) continue;
       if (e.condition && !evalCondition(e.condition, ctx, caster, t)) continue;
       if (e.chance !== undefined && !rolls(ctx, e.chance)) continue;
-      resolve(ctx, caster, t, e, skill);
+      resolve(ctx, caster, t, e, skillType);
     }
   }
 }
@@ -38,14 +51,14 @@ function targetsFor(ctx: BattleContext, caster: Combatant, e: Effect, fallback: 
   return selectFor(ctx, caster, e.target);
 }
 
-function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect, skill: SkillDef): void {
+function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect, skillType: DamageType): void {
   switch (e.op) {
     case 'buff':
       applyBuff(t, scaleBuff(e.buff, caster.level ?? 1), ctx, caster.id);
       return;
     case 'dot': {
       const tag = e.tag ?? `${caster.id}#dot`;
-      applyDotTag(ctx, caster, t, tag, e.dot, skill.type);
+      applyDotTag(ctx, caster, t, tag, e.dot, skillType);
       return;
     }
     case 'control':
@@ -99,7 +112,7 @@ function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect,
       return;
     }
     case 'damage': {
-      const atk = (e.type ?? skill.type) === 'P' ? effective(caster.base, caster.buffs, 'pAtk') : effective(caster.base, caster.buffs, 'sAtk');
+      const atk = (e.type ?? skillType) === 'P' ? effective(caster.base, caster.buffs, 'pAtk') : effective(caster.base, caster.buffs, 'sAtk');
       const dmg = Math.max(1, Math.floor(atk * e.rate));
       channelHit(ctx, caster, t, dmg, { trueDmg: e.trueDamage === true, kind: 'hit' });
       return;
