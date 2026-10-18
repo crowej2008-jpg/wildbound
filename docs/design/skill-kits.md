@@ -148,8 +148,8 @@ or a buff amount; absent = the flat base value.
 
 1. **Parse** each row with a rule library covering the sheet's recurring templates.
 2. **Emit** `packages/content/kits/<faction>.json` with `effects` / `triggers` / DoTs / resources.
-3. **Report** every clause no rule matched to `docs/design/skill-port-report.md` for hand-authoring.
-   M9 is done when that residual list is empty (or each leftover is explicitly recorded in ASSUMPTIONS).
+3. **Report** every clause no rule matched to `docs/PORT-REPORT.md` (modelled tallies + the residual
+   long tail). M9 is done when the leftover categories are each explicitly recorded in ASSUMPTIONS.
 4. `scripts/import-roster.mjs` keeps owning species / base stats (unchanged).
 
 Sheet → DSL slot map (extends `roster-import.md`): Basic Attack → `normal`, Basic Skill → `basic`,
@@ -159,15 +159,16 @@ Ult → `ult`, Passive → `talents.passive`, Talent 1–2 → `talents.statMods
 ## Sub-steps (each its own commit; `pnpm check` green before the next)
 
 1. **M9.1 Targeting + damage primitives** — new `rule`s, `side`, `rowFilter`, `filters`, `hpShareBasis`,
-   `trueDamage`, `ignoreShield`, structured `dot`, `bonusVs`, `recastOnKill`.
+   `trueDamage`, `ignoreShield`, structured `dot`, `bonusVs`, `recastOnKill`. *(done)*
 2. **M9.2 Effects list + conditions + cleanse/dispel/immunity** — `effects[]`, `Condition`, `cleanse`,
-   `dispel`, immunity wiring, `undispellable`.
+   `dispel`, immunity wiring, `undispellable`. *(done)*
 3. **M9.3 Resources + scaling + cooldowns** — `resources`, `stack` kind, `scalesWithLevel`, `cooldown`,
-   `perTurn`.
-4. **M9.4 Talents** — `triggers[]`, `passive`, `rageStart`, `rageOnAction`.
-5. **M9.5 DEF switch** — `CombatField` `pDef`/`sDef`, the `defK` curve behind `defendersUseDef`.
-6. **M9.6 The port** — `scripts/port-skills.mjs`, parse 579 rows, close the report.
-7. **M9.7 Re-tune** — campaign curve + `combat.json` deltas; re-run the statistical suite.
+   `perTurn`. *(done)*
+4. **M9.4 Talents** — `triggers[]`, `passive`, `rageStart`, `rageOnAction`. *(done)*
+5. **M9.5 DEF switch** — `CombatField` `pDef`/`sDef`, the `defK` curve behind `defendersUseDef`. *(done)*
+4. **M9.6 The port** — `scripts/port-skills.mjs`, parse 579 rows, close the report. *(done: 84 kits,
+   0 unmatched/unported/fallbacks; residual categories in `docs/PORT-REPORT.md` + ASSUMPTIONS #13–#19)*
+5. **M9.7 Re-tune** — campaign curve + `combat.json` deltas; re-run the statistical suite. *(pending)*
 
 ## Tests
 

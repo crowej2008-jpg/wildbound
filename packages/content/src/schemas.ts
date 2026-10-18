@@ -129,7 +129,7 @@ const effectSchema = z.discriminatedUnion('op', [
     .object({ op: z.literal('buff'), target: targetSelSchema, buff: buffSpecSchema, condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
     .strict(),
   z
-    .object({ op: z.literal('dot'), target: targetSelSchema, dot: dotSpecSchema, condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
+    .object({ op: z.literal('dot'), target: targetSelSchema, dot: dotSpecSchema, tag: z.string().min(1).optional(), condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
     .strict(),
   z
     .object({ op: z.literal('control'), target: targetSelSchema, control: controlSchema, condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })

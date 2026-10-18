@@ -316,3 +316,61 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 12. **`perTurn`/`cooldown` live on triggers,** not on individual effects: the sheet's "works up to N
     times per turn" and "cooldown N turns" clauses attach to a whole named mechanic.
     *What would change it:* a sheet clause that caps a single effect of a multi-effect skill.
+
+### M9.6 the port (faithful, never approximated)
+
+13. **The sheet's LV.2 / LV.3 notes are recorded as upgrade text, not modelled.** Each slot's captured
+    description carries the base (LV.1) clause plus "LV.2:/LV.3:" upgrade notes. Wildbound skills have no
+    per-skill level track, so the port treats the **base description as authoritative** and counts every
+    note-bearing slot in `docs/PORT-REPORT.md` under "sheet LV.2+ upgrade text" instead of guessing which
+    level a battle is at. *Why:* inventing a per-skill level track (or silently taking the LV.3 numbers)
+    would approximate, and the owner asked for faithful, not approximated. *What would change it:* a
+    per-skill level system, at which point the notes become `scalesWithLevel` steps.
+
+14. **Port methodology: the port only replaces `skills` + `talents`, and writes a residual ledger.**
+    `scripts/port-skills.mjs` (dev script, not shipped) reads `scripts/data/pokemon-skills.json` (the
+    committed scrape: 84 creatures × Basic Attack / Basic Skill / Ult / Passive / Talent 1–4 = 579 rows)
+    and rewrites only each kit's `skills`/`talents`, preserving every `id`/`name`/`faction`/`class`/`tier`
+    that `scripts/import-roster.mjs` owns — so the port is re-runnable and idempotent. A clause the rule
+    library cannot express is **counted, never invented**: `docs/PORT-REPORT.md` lists the modelled
+    tallies and the "not modelled" categories, and every distinct unparsed pattern with an example.
+    *Why:* AGENTS.md/§2 — the port may expand the engine, but a clause with no faithful home is recorded.
+    *What would change it:* new DSL primitives (each would shrink one residual category).
+
+15. **Default durations when the sheet states none.** A DoT with no stated duration ticks **2** turns
+    (the `dot.turns` default); an untimed control lasts the engine's **1** turn; an untimed stat/debuff
+    buff is left with no duration (it persists until dispelled or the fight ends) — the port never invents
+    a duration. A **talent** stat bundle with no duration is an **engage-time** buff (Talent 1–2 are
+    battle-long, so they are modelled as `battleStart` buffs with `turns: 99`, i.e. the whole fight, since
+    `maxRounds` is 15). *Why:* the sheet omits a duration on many short clauses; these are the engine's own
+    defaults and "for the fight" is the faithful reading of a persistent talent. *What would change it:* a
+    sheet column or reference statement giving explicit durations.
+
+16. **A bare "damage" clause with no P.ATK/S.ATK word infers its type from the creature's own rows.**
+    The port scans all of that creature's sheet rows for a P.ATK/S.ATK hint; if any row states one, the
+    bare clause uses it; otherwise the class default applies (striker → P, otherwise S). *Why:* the sheet
+    omits the type on some multi-hit riders; using the creature's own other lines is the closest faithful
+    signal. *What would change it:* an explicit type on the clause, or a measured per-class rule.
+
+17. **"Start with half / full rage" maps to the shipped rage settings.** `rageStart` (half) = the
+    `rageStart` setting (500) and full = `rageStrikerStart` (1000); the sheet's wording is kept in the kit
+    as `talents.rageStart`. *What would change it:* per-creature measured starting rage in the reference.
+
+18. **A staged mark becomes one-tick DoTs.** Rayquaza's passive states its staged mark deals "at end of
+    turn 1 … 90%" and "at end of turn 2 … 115%", so it is ported as two one-tick `dot`s (turns 1 each,
+    the second carrying the larger figure) rather than a single ramping DoT. *What would change it:* a
+    DSL primitive for a per-turn ramp.
+
+19. **Conditional damage riders are recorded, not approximated.** Clauses like "increasing the damage
+    against backline enemies by 25%" or "plus damage equal to 40% of the HP it has lost" have no faithful
+    DSL home yet, so they appear in the `docs/PORT-REPORT.md` residual tail rather than being folded into
+    a flat damage number (which would silently over- or under-state the skill). The full scored list of
+    residual patterns is the to-do set for the Build Lab / a later DSL pass. *What would change it:* a
+    `bonusVs`-style condition that can express each clause, or explicit authoring by the owner.
+
+20. **Sheet clauses with no engine primitive are recorded, not stubbed.** "Cooldown N turns" /
+    "CD: N turns" in a skill slot (Wildbound skills have no cooldown), "Fatal damage instead brings you to
+    1 HP" (no cheat-death primitive), "Splash: … ignoring defense", "shields do not block it", per-layer
+    scaling clauses and "Occurs N times per battle" are counted in the report's residual tail. None is
+    approximated. *What would change it:* an engine primitive for each (cheat-death, splash, per-battle
+    uses, skill cooldown), added in a later milestone.

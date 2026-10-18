@@ -1,0 +1,4148 @@
+[
+ {
+  "name": "Calyrex",
+  "rarity": "Origin",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/calyrex",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Ice gun",
+    "desc": "Deals 110% physical damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Radical Mania Ice",
+    "desc": "Deals 100% P.ATK DMG to all enemies, and grants \"Frost\" to the target for 1 turn.Freeze yourself for one turn after releasing Ultimate when holding Frost",
+    "notes": "(LV.2) ult also reduces the target's ATK by 20% for 1 round | (LV.3) Grants \"Frost\" to the target for 2 turns."
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Snow Spear Impact",
+    "desc": "Deals 120% P.ATK to single enemy, 40% chance of freezing target for 1 turn",
+    "notes": "(LV.2) Provides a resistance shield for the teammate with the lowest life for 1 turn after releasing the basic skill, offsetting 1 direct attack with a maximum cap of 1 layer. | (LV.3) The probability of basic skills triggering is increased to 100% within two turns Upon entering battle, and 10% of the target's maximum life is restored at the end of the turn after the resistance shield disappears"
+   },
+   {
+    "slot": "Passive",
+    "name": "Chilling Neigh",
+    "desc": "When the self is under attack, 25% chance to freeze the attacker for 1 turn",
+    "notes": "(LV.2) At the end of each turn, for every enemy unit on the field that is frozen, Calyrex returns 5% of HP. Works up to 3 times per turn | (LV.3) At the end of each turn, for every enemy unit on the field that is frozen, Calyrex returns 125 points of rage. Works up to 3 times per turn"
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Power V",
+    "desc": "HP increases by 40%, P.ATK increases by 40%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Block-Force Field VI",
+    "desc": "Increase 6% Crit, 22% Crit Res, 6% Crit strength, 60% block, 25% Block strength, 15% Break. applies 1 layer of gain buff to all teammates every turn, each layer of buff provides 5% damage reduction, up to a maximum of 4 stacking layers. Cannot be dispelled",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "King of Abundance",
+    "desc": "When in the field at the beginning of each turn, improve all teammates 5% Crit Res, 4 turns to reach the maximum, the effect disappears after the death of the King of Leycrest",
+    "notes": "(LV.2) When in the field at the beginning of each turn, improve all teammates 5% Block, 4 turns to reach the maximum, the effect disappears after the death of the King of Leycrest | (LV.3) The effect is increased to 8% Crit Res and 8% Block per turn"
+   }
+  ]
+ },
+ {
+  "name": "Necrozma",
+  "rarity": "Origin",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/necrozma",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Psycho Cut",
+    "desc": "Deals 130% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Light That Burns the Sky",
+    "desc": "Deals 110% S.ATK to all enemy units, and boosts the power of the move by 30% for each layer of light energy possessed. All light energy is consumed after using the move.",
+    "notes": "(LV.2) Ultimate comes with 30% ignore defense | (LV.3) Using the Ultimate no longer consumes light energy."
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Photon sharp edge",
+    "desc": "Deals 130% S.ATK to a single enemy player, and selects a friendly player who is under control to remove the control status from them.",
+    "notes": "(LV.2) Basic skill attack range changed to enemy horizontal row | (LV.3) Cleanse all negative status of ally after removing their control status"
+   },
+   {
+    "slot": "Passive",
+    "name": "Ultra Burst",
+    "desc": "Must gain 2 levels of light energy after each release of basic skills and basic attacks.",
+    "notes": "(LV.2) The effect of light energy is increased to 45% more damage per level of the Ultimate. | (LV.3) At the beginning of each turn, if there is a ally under control on the field, gain 2 levels of light energy for self, triggered only once a turn"
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge V",
+    "desc": "Increases HP by 40% and S.ATK by 40%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawkeye-Fanaticism VI",
+    "desc": "Increase 60% Crit, 30% Crit Res, 20% Crit strength, 6% Block, 6% Block strength, 21% Break, increase your damage by 2.5% per round, up to 10%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Radiant Greatness",
+    "desc": "Spend 1 level of light energy to remove control status if in control status at the beginning of own turn.",
+    "notes": "(LV.2) After successfully removing the control status, it gain 50% HP absorption for 1 turn. | (LV.3) Removing its own control status no longer consumes light energy."
+   }
+  ]
+ },
+ {
+  "name": "Origin Lugia",
+  "rarity": "Origin",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/origin-lugia",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Shadow Blade",
+    "desc": "Deals 110% P.ATK damage to a single enemy, prioritizing targets of [Darkness Confinement]",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Sea burial",
+    "desc": "Deals 130% P.ATK DMG to all enemies and applies a cleansable [Darkness Confinement] to 1 random enemy in the back row; not applied while only 1 enemy is left. [Darkness Confinement]: cannot act and takes damage only from Origin Lugia; lasts until the confined unit's next action.",
+    "notes": "(LV.2) When the enemy's [Dark Prison] status is removed, reduces ATK by 20% for 2 turns | (LV.3) When [Darkness Confinement] ends, the target loses another 250 Rage."
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Darkness Rush",
+    "desc": "Deals 110% P.ATK damage to a single enemy, prioritizing imprisoned targets. When the basic skill hits an imprisoned target, it also reduces the target's Rage by 125 and ATK by 10% for 2 turns.",
+    "notes": "(LV.2) Increases basic skill trigger probability by 20% after each basic skill release, stacks up to 3 times. | (LV.3) Rage reduction increased to 200 Rage points"
+   },
+   {
+    "slot": "Passive",
+    "name": "Feather Dance",
+    "desc": "Each turn gains P.ATK damage reduction based on its remaining HP: the lower its HP, the higher the bonus, up to 15%. All backline allies gain the same effect at 70% strength. The first time it takes lethal damage, it imprisons itself for 1 turn and gains 150 Rage when released. Triggers once per battle.",
+    "notes": "(LV.2) After the opponent uses the Ultimate, own gain 1 level of [Feather Dance], each level boosts your own P.ATK Reduction by 10%, up to a maximum of 2 levels. At the end of the round, consume 1 layer of Feather Dance to restore 60% P.ATK HP for all allies based on the origin Lugia. | (LV.3) The healing from consuming [Feather Dance] rises to 75% of P.ATK."
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Power V",
+    "desc": "HP increases by 40%, P.ATK increases by 40%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Block-Force Field VI",
+    "desc": "Increase 6% Crit, 22% Crit Res, 6% Crit strength, 60% block, 25% Block strength, 15% Break. applies 1 layer of gain buff to all teammates every turn, each layer of buff provides 5% damage reduction, up to a maximum of 4 stacking layers. Cannot be dispelled",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Diablo Guard",
+    "desc": "While it is on the field, the first ally (not itself) to take lethal damage stays at 1 HP and is imprisoned; this imprisonment cannot be dispelled and lasts until that ally's next action. While an imprisoned enemy is on the field, Origin Lugia's SPD rises by 20.",
+    "notes": "(LV.2) The quantity is increased to the first 2 allies who receive fatal damage | (LV.3) Restore 10% of a allies's max HP when their [Confinement] ends"
+   }
+  ]
+ },
+ {
+  "name": "Origin Rayquaza",
+  "rarity": "Origin",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/origin-rayquaza",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Shockwave",
+    "desc": "Deals 120% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Dragon Ascent",
+    "desc": "Ultimate deals 130% S.ATK to all enemies, and after releasing Ultimate, the next direct damage you take is reduced by 10%, while providing 2 layers of [Delta Airflow] to linked friends automatically select the closest (priority to choose below itself) of a friendly unit after entering the battle to attach [Delta Link], the original target will be automatically replaced after death, you will not be the target of the link Delta Airflow: The direct damage taken is reduced by 30%. Effect does not stack, the maximum limit is 2 layers, reduced by one layer after taking direct damage",
+    "notes": "(LV.2) [Delta Stream] damage reduction ratio increased to 50% | (LV.3) [Delta Stream] limit increased to 3 levels"
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Destroy Deadlight",
+    "desc": "Deals 120% S.ATK damage to the enemies in a row",
+    "notes": "(LV.2) Adds damage equal to 30% of the enemy's lost HP. | (LV.3) After Thunderstorm triggers 3 times, the basic skill's damage ratio rises; changing the linked target does not reset the count."
+   },
+   {
+    "slot": "Passive",
+    "name": "Delta Return",
+    "desc": "Grants the linked target 1 level of Delta Stream at the opening. does not drop below 1 HP on its first turn, and restores 25% of its lost HP starting on its second turn.",
+    "notes": "(LV.2) Increases linked target crit by 5% each turn, stacking up to 3 levels. Increase linked target's crit intensity by an extra 10% after 3 times | (LV.3) Thunderstorm triggered, permanently increase triggering rate of the basic skills by 20% and can by layered 3 times."
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge V",
+    "desc": "Increases HP by 40% and S.ATK by 40%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Zeal VI",
+    "desc": "Increases 15% Crit, 32% Crit Res, 15% Crit strength, 6% Block, 6% Block strength, 51% Break, increases own damage by 2.5% per round, up to 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Thunderstorm",
+    "desc": "When the linked ally lands a critical hit, adds damage equal to 30% of Rayquaza's own S.ATK to the target.",
+    "notes": "(LV.2) Increase damage to 50% | (LV.3) Additional 30% S.ATK/ATK to the damage of the linked target. Compare the link target S.ATK with ATK, and take the highest one."
+   }
+  ]
+ },
+ {
+  "name": "Shadow Mewtwo",
+  "rarity": "Origin",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shadow-mewtwo",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Shadow Fist",
+    "desc": "Deals 120% S.ATK to a single enemy, prioritizes attacking the opposite front row",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Darkness End",
+    "desc": "Deals 120% S.ATK damage to all enemies, plus damage equal to 12% of max HP to DEF-class targets, and reduces the healing all enemy front-row units receive by 30% for 2 turns. After the Ultimate, the next basic skill's base damage is doubled.",
+    "notes": "(LV.2) From its second Ultimate on, the healing reduction rises to 50%. | (LV.3) The base healing reduction now lasts 3 turns. After each Ultimate, 50% chance to block healing on a random front-row enemy for 1 turn."
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Shadow Combo",
+    "desc": "Deals 150% S.ATK damage to a single enemy, priority attack on the opposite front row,additional ban on healing for two turns",
+    "notes": "(LV.2) When basic skills are not blocked, 8% damage to the target's maximum HP is added, but not more than 80% S.ATK When hitting a DEF-class target, an additional 12% damage to the target's maximum HP is added | (LV.3) The effect is increased to:When basic skills are not blocked, 10% damage to the target's maximum HP is added, but not more than 100% S.ATK When hitting a DEF-class target, an additional 15% damage to the target's maximum HP is added"
+   },
+   {
+    "slot": "Passive",
+    "name": "Pokémonual Beyond",
+    "desc": "After each basic skill, deals 10% splash to the units next to the main target. Splash: the units next to the main target (front, back, left and right) take that percentage of the damage dealt to the main target, ignoring defense; shields do not block it.",
+    "notes": "(LV.2) Permanently increases Guard Break by 10% after each release of the Ultimate, max 3 levels | (LV.3) The splash factor caused by the basic skill is increased to 20%."
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Shadow)",
+    "desc": "Gain full Rage when engaged in combat; the basic skill's triggering rate rises to 100%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge V",
+    "desc": "Increases HP by 40% and S.ATK by 40%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision VI",
+    "desc": "Increases 15% Crit, 32% Crit Res, 15% Crit strength, 6% Block, 6% Block strength, 51% Break",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Shadow Resonation",
+    "desc": "After each basic skill attack, the primary target suffers a 10% DMG deepening for 2 turns, stacks up to 1 time. Sputter targets are not affected.",
+    "notes": "(LV.2) Primary target suffers an additional 10% block reduction and 10% block strength reduction for 2 turns, maximum 1 level | (LV.3) The effect is increased to 20% DMG multiplier, 20% block reduction and 20% blocking intensity reduction."
+   }
+  ]
+ },
+ {
+  "name": "Zacian",
+  "rarity": "Origin",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/zacian",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Decapitation",
+    "desc": "Deals 120% S.ATK to a single enemy symmetrical to the center of the battlefield",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Beast Beheading",
+    "desc": "Deals 150% physical damage to a horizontal row of enemies symmetrical to the center of the battlefield, plus damage equal to 40% of the HP it has lost during the battle (HP healed back still counts).",
+    "notes": "(LV.2) The Ultimate has a 70% chance to reduce the target's Rage by 250. | (LV.3) Base damage rises to 170%; the Rage-reduction chance rises to 100%."
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Close Battle",
+    "desc": "Deals 140% physical damage to a single enemy symmetrical to the center of the battlefield and applies a layer of shattered armor. Each layer of Shattered Armor reduces the target's defense by 10% for 3 turns, up to 3 layers.",
+    "notes": "(LV.2) Armor Crunch effect increased to reduce the target's defense by 20% | (LV.3) Base factor increased to 160%, ATK ignores Dodge when HP is below 50%"
+   },
+   {
+    "slot": "Passive",
+    "name": "King of Swords",
+    "desc": "When attacking an enemy with reduced armor, you will receive a 20% ATK for 2 turns.",
+    "notes": "(LV.2) When any unit on the field (regardless of enemy or mine) is killed by a direct attack, Zacian restores 10% life and receives a 20% permanent attack boost | (LV.3) The amount of recovery when the unit dies is increased to 20% of life, and the effect of attack power increase becomes 30%"
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Power V",
+    "desc": "HP increases by 40%, P.ATK increases by 40%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision VI",
+    "desc": "Increases 15% Crit, 32% Crit Res, 15% Crit strength, 6% Block, 6% Block strength, 51% Break",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Hero of Many Battles",
+    "desc": "Gain DMG reduction based on current Self HP, 1% reduction for each 2% of HP lost, up to 30%",
+    "notes": "(LV.2) Gain lifesteal based on current self HP,1% lifesteal for each 1% of HP lost, up to 100% | (LV.3) DMG Reduction is increased to: 1.5% reduction for every 2% Hp loss up to 42%"
+   }
+  ]
+ },
+ {
+  "name": "Arceus",
+  "rarity": "Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/arceus",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Grace of nature",
+    "desc": "Deals 100% S.ATK DMG to a single enemy, increase self [sanction] marks total number, each layer adds 5% S.ATK and 2% Crit INT",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Punish bright",
+    "desc": "Deals 100% S.ATK DMG to all enemies, increases self [sanction] marks total number, each mark increases 5% S.ATK and 2% Crit INT. [sanction] Marks can't be removed and stack up to 20 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Hyper Beam",
+    "desc": "Deals 120% S.ATK DMG to horizontal-line enemies, increases self [sanction] marks total number, each mark increases 5% S.ATK and 2% Crit INT.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye-Zeal III",
+    "desc": "Increases Critical by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6% ,Block INT by 6%, Guard Break by 10%, own DMG Boost by 1.5% per turn, up to 6%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "punish",
+    "desc": "When attacked, 50% chance to gain 1 [sanction] mark and increase S.ATK by 20% for 2 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Wind-God Pidgeot",
+  "rarity": "Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/wind-god-pidgeot",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Tornado",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Windy Shadow",
+    "desc": "Deals 200% P.ATK DMG to a single enemy, prioritizing the back row.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Golden Wind",
+    "desc": "Deals 120% P.ATK DMG to enemy's horizontal row",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Wind God)",
+    "desc": "Upon entering battle, start with half of the rage bar filled. Each basic attack/minor skill grants an additional 1/2 of the rage bar. Using the ultimate skill grants 1/4 of the rage bar. The chance to trigger a minor skill is increased by 20% (default is 20%).",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Zeal III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38% and each turn increases DMG Boost by 1.5%,capping at 6%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Tear Wounds",
+    "desc": "Each time an enemy unit is inflicted with a control status, add an additional 2% permanent DMG Deepening, triggered up to 4 times per major round, with a maximum cap of 26%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Black Kyurem",
+  "rarity": "Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/black-kyurem",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Ice Hockey",
+    "desc": "Deals 100% S.ATK DMG to a single backline target and inflicts a stack of [Frost] that lasts 3 turns.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Glaciate",
+    "desc": "Deals 250% S.ATK DMG to a single backline target, with 30% chance to Freeze them for 1 turns and apply 1 stacks of [Frost], for 3 turns. When active, reduces Control Res by 15% and takes Frost damage at the end of each turn equal to 30% of Kyurem's S.ATK DMG. Stacks up to 2 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Frozen Beam",
+    "desc": "Deals 120% S.ATK DMG to a single backline target, Freezes them for 1 turns, and inflicts a stack of [Frost] that lasts 3 turns.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye-Ward III",
+    "desc": "Increases Critical by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6% ,Block INT by 6% ,Guard Break by 10%,Gain 12% damage reduction upon entering combat for 2 rounds",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Absolute Zero",
+    "desc": "When attacked, grant the opponent one stack of [Frost] for 3 turns, with 25% chance to Freeze them for 1 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Kyogre",
+  "rarity": "Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/kyogre",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Impact",
+    "desc": "Deals 100% S.ATK DMG to a single enemy and reduces target's ATK by 8% for 1 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Origin Pulse",
+    "desc": "All allies gain a shield for up to 135% of Kyogre's S.ATK DMG and heal for 30% of Kyogre's S.ATK per turn. Lasts 2 turns. The healing effect cannot be stacked.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Collide",
+    "desc": "Deals 120% S.ATK DMG to a single enemy and reduces target's ATK by 8% for 1 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter-Shield III",
+    "desc": "Increases Critical by 6%, Crit Res by 38%, Crit Intensity by 6%, Block by 9%, Block INT by 9%, Guard Break by 8% After the start, adding a shield of 32% of its own blood to the back row of friendly units, with an additional 50% boost to the effect on the back row in the same column, the effect only triggers once in the same battle and cannot be stacked.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Aqua Ring",
+    "desc": "Gain 55% DMG Reduction every 1 turns since turn 3. Lasts 1 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Hoopa",
+  "rarity": "Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/hoopa",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Psychokinesis",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Hyperspace hole",
+    "desc": "Deals 80% S.ATK damage to all enemies, inflicts [Burning] and dispels 1 buff [Burning]: Deals true damage by 30% self S.ATK for 3 turns. Stacks up to 3 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Mental shock",
+    "desc": "Deals 120% S.ATK damage to a single enemy; when the target has [Burning], [Flame] or [Sacred Fire], the damage is increased by a further 20%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "ignite",
+    "desc": "Increase the DMG of [burning],[flaming],[sacred fire] applied by Hoopa by 30%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Mewtwo",
+  "rarity": "Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/mewtwo",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Mew Blast",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Endless Black Hole",
+    "desc": "Deals 80% S.ATK DMG to all targets, ignoring target's 20% S.DEF",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Flash Attack",
+    "desc": "Deals 150% S.ATK DMG to a single enemy, Steals 10% S.ATK and S.DEF of the target for 3 turns. Stacks up to 1 time",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Dimensional Force",
+    "desc": "When a battle begins, increases self S.ATK by 20%, Crit by 25%, and Crit INT by 10% for 1 turn",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Mew",
+  "rarity": "Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/mew",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Halo",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Dream Halo",
+    "desc": "Deals 150% P.ATK DMG to backline enemies, Has a 50% chance to [Silence] the target, rendering it impossible to use Ultimate for 1 turn. Stacks up to 1 time.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Energy Halo",
+    "desc": "Deals 120% P.ATK DMG to a single enemy and inflicts [Silence] on the target for 1 turn",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Siphon Energy",
+    "desc": "Every 1 fallen enemies restore 25% Rage for you.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Darkrai",
+  "rarity": "Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/darkrai",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Flash Assault",
+    "desc": "Deals 100% P.ATK DMG to a single enemy. Converts 20% of damage into healing.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Dark Pulse",
+    "desc": "Deals 160% P.ATK DMG to horizontal-line enemies.Converts 40% of damage into healing ,and gains 1 stack of [Nightmare] permanently; For each stack of [Nightmare], the Ultimate deals 15% additional damage and ignores 12% of DEF.Stacks up to 2 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Faint Assault",
+    "desc": "Deals 135% P.ATK DMG to a single enemy. Converts 20% of damage into healing.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye-Zeal III",
+    "desc": "Increases Critical by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6% ,Block INT by 6%, Guard Break by 10%, own DMG Boost by 1.5% per turn, up to 6%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Black Mist",
+    "desc": "At your turn start, if you are controlled, remove the control-impairing effects, gain a shield equal to 325% P.ATK and control immunity for 2 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Cresselia",
+  "rarity": "Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/cresselia",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Moonlight",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Crescent Dance",
+    "desc": "Deals 210% S.ATK damage to the opponent with highest ATK and puts them to [Sleep] for 1 turn. Puts a random opponent to [Shallow Sleep] and 1 random opponent to [Nap] for 1 turn; Increases their damage taken by 30% for 2 turns. [Sleep]: Unable to act [Shallow Sleep]: Unable to cast Ultimate [Nap]: Unable to release Basic Skill",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Aurora Beam",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, Generates shields to an ally with the lowest HP and self, absorbing damage equal to 150% of self S.ATK for 1 turn",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Psycho Shift",
+    "desc": "When attacked, reduces the opponent's ATK by 12% for 2 turns. Stacks up to 1 times.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Jirachi",
+  "rarity": "Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/jirachi",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Swift Nova",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Doom Desire",
+    "desc": "Deals enemy horizontal target 145% S.ATK DMG and [Doom Desire] effect(can't be dispelled,at the end of this turn,Deals 25% DMG of lost HP)",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Universal Power",
+    "desc": "Deals 145% S.ATK DMG to a single enemy and inflicts [Universal Power] for 4 turns [Universal Power]: Increases the damage of [Doom Desire] by 30%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Collection",
+    "desc": "For every 1 enemy target killed, boost your own S.ATK by 20% for 5 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Solgaleo",
+  "rarity": "Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/solgaleo",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Zen Headbutt",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Sunsteel Strike",
+    "desc": "Deals 150% P.ATK DMG to backline enemies, Increases Ultimate damage by 25% for each target removed",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Flash Cannon",
+    "desc": "Deals 140% P.ATK damage to an enemy row, plus extra damage equal to 3% of the target's max HP",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Radiant Sun Phase",
+    "desc": "Receive max rage every 3 turns starting from turn 2. Rage unobtainable from other sources (Rage reduction only). All attacks trigger a Basic skill after Ultimate is released, and deals 20% more damage,which lasts 3 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Lunala",
+  "rarity": "Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/lunala",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Moon Blade",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Moongeist Beam",
+    "desc": "Deals 120% S.ATK DMG to the enemy front row, with a 50% chance to apply [Moongeist hit] to the target [Moongeist hit]: SPD -10; can still use the basic skill and normal attack but cannot cast the Ultimate; lasts 1 round",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Moonlight Blade",
+    "desc": "Attack the fastest enemy with full rage, dealing 150% S.ATK damage; if there is no Pokémon with full rage, attack the fastest enemy and have 70% chance applying a non-dispellable [Ghost seal] [Ghost seal]:unable to move, rage unrecoverable, lasting 1 round",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Moongeist Control",
+    "desc": "The probability of triggering basic skill in first round +100%, rest of the rounds +40% probability(Default trigger probability is 20%)",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Deoxys",
+  "rarity": "Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/deoxys",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Lap",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Psycho Burst",
+    "desc": "Deals 190% S.ATK DMG to enemies in a row and taunt them for 1 turns. The taunted enemies are forced to basic attack you.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Corkscrew Crash",
+    "desc": "Deals 120% S.ATK DMG to a single enemy and increases your DMG Reduction by 15% for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Block-Force Field III",
+    "desc": "Increases Critical by 6%, Crit Res by 8%,Crit INT by 6%,Block by 45%,Block INT by 12.5%,Guard Break by 8%. Per turn inflicts 1 buff for all allies,each buff provides DMG RDCT by 3%.Stacks up to 4 times and can't be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Night Shade",
+    "desc": "When a battle begins, mark the opponent with the lowest HP for 2 turns, during which 110% of the damage you take will be transferred to this opponent; Starting from turn 3, at the start of every 4 turns use the Rage Move.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Meloetta",
+  "rarity": "Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/meloetta",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Sing",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Song of the Past",
+    "desc": "Deals 140% S.ATK DMG to backline targets and grants all allies 20% Lifesteal for 2 turns.Gain 30 speed before releasing Ultimate for the first time.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Echo",
+    "desc": "Deals 120% S.ATK DMG to enemies in a row, with 60% chance to instantly break their shields.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Serene Grace",
+    "desc": "Deals 30% more damage when attacking a controlled target.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Snorlax",
+  "rarity": "Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/snorlax",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Collide",
+    "desc": "Deals 100% P.ATK damage to a single target and reduces rage by 300",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Giga Impact",
+    "desc": "Deals 135% P.ATK DMG to 3 random enemies and reduces the target's rage by 500. The lower self HP, the higher the damage. The bonus damage is capped at 60%.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Heavy Slam",
+    "desc": "Deals 120% P.ATK DMG to a single enemy and reduces target's rage by 500. If self HP drops below the opponent's, deals 30% additional damage",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter-Shield III",
+    "desc": "Increases Critical by 6%, Crit Res by 38%, Crit Intensity by 6%, Block by 9%, Block INT by 9%, Guard Break by 8% After the start, adding a shield of 32% of its own blood to the back row of friendly units, with an additional 50% boost to the effect on the back row in the same column, the effect only triggers once in the same battle and cannot be stacked.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Roadblock",
+    "desc": "At the start, gains 10 SPD and 30% Control Res. Upon taking attack, has a 50% chance to restore 5% max HP",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Psyduck",
+  "rarity": "Supreme",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/psyduck",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Round",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Psychokinesis",
+    "desc": "Deals 165% S.ATK damage to the enemy's front-line, damage to the contronlled unit increased by 50%, after the attack attached [Zen Control] status, lasting 2 rounds, up to 1 layer [Zen Control]:50% probability of using normal attack to attack a random ally control effects include: dazed, sleep, silence, flinch, petrify, taunt, confusion, paralysis, shadow invasion and zen control",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Disable",
+    "desc": "Deals 100% S.ATK damage to the enemy's front-line, and adds [Zen Control] status, lasting 2 rounds, up to 1 layer [Zen Control]: 50% probability of using normal attack to attack a random ally",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Psychic",
+    "desc": "For every 1 controlled enemy, increase your own basic skill trigger rate by 10% and S.ATK by 6%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Venusaur",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-venusaur",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Vine Whip",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Tendril Twine",
+    "desc": "Deals 90% S.ATK DMG to 4 random enemies. Guaranteed to apply 1 stack of [Poison], with a 50% chance to stack 1 more time, each stack dealing true damage equal to 2% of target's max HP for 10 turns. Stacks up to 25 times (Total damage is capped at 2500% of self S.ATK).",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Heavy flogging",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, Guaranteed to inflict a stack of [Poisoned]",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Zeal IV",
+    "desc": "Increases Critical by 10%, Crit Res by 8%,Crit INT by 12.5%,Block by 6%,Block INT by 6%,Guard Break by 42.5% and each turn increases DMG Boost by 2%,capping at 8%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Toxic Physique",
+    "desc": "Apply 4 stacks of poison to all enemies when HP is lower than 50%.Occurs once every battle.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Blastoise",
+  "rarity": "Supreme",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-blastoise",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Droplet",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Chain Polo",
+    "desc": "Deals 135% P.ATK DMG to backline enemies, Improves self P.ATK DMG Reduction by 30% for 3 turns. Stacks up to 1 time.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Water Ball",
+    "desc": "Deals 120% P.ATK DMG to a single enemy, boost own 20% P.ATK DMG reduction for 2 turns, up to 1 time",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Block-Shield IV",
+    "desc": "Increases Critical by 6%, Crit Res by 10%,Crit INT by 6%,Block by 50%,Block INT by 16%,Guard Break by 10%. From the start,increase the shield for self 36% HP for backline allies,additionally increases effect by 50% for allies in the same backline.Effect occurs once every battle and can't be stacked.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Whirlpool",
+    "desc": "At the start of each turn, reduces DMG taken by 23% for allies at the same line, lasting for 1 turn.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Charizard",
+  "rarity": "Supreme",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-charizard",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Spark",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Fireball",
+    "desc": "Deals 100% P.ATK damage to all enemies, and increases backline allies' Crit by 15% for 2 turns. Stacks up to 1 time. Gains [Offer of Power] after Ultimate is cast. Deducts 20% current HP, regenerates 100% Rage, and increases Ultimate damage by 50% for 1 turn. Stacks up to 1 time. CD: 4 turns. Can't be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Dabitha",
+    "desc": "Deals 120% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye IV",
+    "desc": "Increases Crit by 50%, Crit Res by 10%, Crit Intensity by 13.5%, Block by 6%, Block Intensity by 6%, and Guard Break by 13.5%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Dragon Claw",
+    "desc": "In 4 turns from the start, increases Lifesteal by 24%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Gengar",
+  "rarity": "Supreme",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-gengar",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Grudge",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Nightmare",
+    "desc": "Deals 150% S.ATK DMG to backline enemies, Guaranteed to [Flinch] targets for 1 round; Gains 200 Rage if there are already controlled targets. [Flinch]: Unable to use Basic Skill",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Fear",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, and causes the target to [Flinch] for a turn",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye-Ward III",
+    "desc": "Increases Critical by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6% ,Block INT by 6% ,Guard Break by 10%,Gain 12% damage reduction upon entering combat for 2 rounds",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Netherworld Shield",
+    "desc": "Upon taking attack from [ATK] Pokémon, generates a [Shield] which absorbs DMG equal to 80% of self S.ATK, stackable with other [Shields]",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Raichu",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-raichu",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Electric Shock",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Thunderbolt",
+    "desc": "Deals 160% S.ATK DMG to 3 random enemies, with a 30% chance to [Paralyze] them, rendering them unable to use normal attacks and basic skills for 1 turn. Stacks up to 1 time",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Thunderfall",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, with an 25% chance to [paralyze] the target",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye IV",
+    "desc": "Increases Crit by 50%, Crit Res by 10%, Crit Intensity by 13.5%, Block by 6%, Block Intensity by 6%, and Guard Break by 13.5%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Discharge",
+    "desc": "When battle starts, apply non-dispellable [Short Circuit] to the enemy at the same position in its team for 3 turns [Short Circuit]: Unable to regenerate rage",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny God Ash-Pikachu",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-god-ash-pikachu",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Speedy Move",
+    "desc": "Deals 100% S.ATK DMG to a single enemy and increases the triggering rate of basic skills by 40% for 10 turns. Stacks up to 2 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Discharge",
+    "desc": "Deals 210% S.ATK DMG to the opponent with lowest HP and reduces the target's incoming healing by 50% for 2 turns; After attack, increases self basic skill's triggering rate by 40% for 10 turns. Stacks up to 2 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Electro Light",
+    "desc": "Deals 125% S.ATK DMG to a single enemy and deals damage equal to 20% of target's missing HP; If the target has the lowest HP, killing it triggers an additional normal attack, capping at 1 time.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Elecmag Wave",
+    "desc": "For the first 2 turns, cause the target in the opposite position to take 18% more damage from direct hits within 2 turns",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "God Ash-Pikachu",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/god-ash-pikachu",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Speedy Move",
+    "desc": "Deals 100% S.ATK DMG to a single enemy and increases the triggering rate of basic skills by 10% for 10 turns. Stacks up to 2 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Discharge",
+    "desc": "Deals 185% S.ATK DMG to the opponent with lowest HP and reduces the amount of healing target receives by 50% for 2 turns; After attack, increases your basic skill's triggering rate by 10% for 10 turns. Stacks up to 2 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Electro Light",
+    "desc": "Deals 125% S.ATK DMG to a single enemy, plus damage equal to 6% of target's current HP; If the target has the lowest HP, killing it rewards you for an additional basic attack, capping at 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Elecmag Wave",
+    "desc": "For the first 2 turns, cause the target in the opposite position to take 18% more damage from direct hits within 2 turns",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Mimikyu",
+  "rarity": "Supreme",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/mimikyu",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Wood Hammer",
+    "desc": "Attack single enemy and deals 100% P.ATK damage",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Let's Snuggle Forever",
+    "desc": "Attacks all enemies, dealing 100% P.ATK DMG, with a 15% chance to Stun the enemies for 1 round. After the Ult, increases the small skill trigger probability for yourself and all allies by 10% for 2 rounds.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Shadow Claw",
+    "desc": "Attacks all enemies, dealing 80% P.ATK DMG.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Shadow Sneak",
+    "desc": "After casting a Minor Skill, there is a 100% chance of an additional Minor Skill or Basic attack. Extra attacks do not gain Rage.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Wobbuffet",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/wobbuffet",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Splash",
+    "desc": "Inflicts 100% S.ATK damage on a single enemy, and increases your own damage reduction by 15% for 2 turns.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Counter",
+    "desc": "Deals enemies'row 160% S.ATK damage, add additional 50% of the cumulative damage taken in the previous round",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Charm",
+    "desc": "Attacks a single enemy, causing 120% S.ATK DMG, increasing self DMG reduction by 15%, lasting for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter-Force Field III",
+    "desc": "Increases Critical by 6%, Crit Res by 38%,Crit INT by 6%,Block by 9%,Block INT by 9%,Guard Break by 8%. Per turn inflicts 1 buff for all allies,each buff provides DMG RDCT by 3%.Stacks up to 4 times and can't be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Mysterious guard",
+    "desc": "Obtain Safeguard at the beginning of the round, immunity all negative status, lasting 3 rounds, cooldown 6 rounds",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Yveltal",
+  "rarity": "Supreme",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/yveltal",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Focus Blast",
+    "desc": "Deals 100% S.ATK damage to a single enemy,and add 1 layer of burning,last 3 turns,stacks up to 3 times",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Hyper Beam",
+    "desc": "Deals 100% S.ATK damage to all enemies and increases the [Burning], [Blaze] and [Sacred Fire] damage they take by 80% for 3 turns; 15% chance to cause [Petrification] for 1 round, unable to perform any action during [Petrification]",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Dark Pulse",
+    "desc": "Deals 120% S.ATK damage to a single enemy,and add 1 layer of burning,last 3 turns,stacks up to 3 times",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Psychic",
+    "desc": "Immune to Petrify; increases allies' Control Boost by 20%, and allied [SKILL] Pokémon's by a further 20%.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Xerneas",
+  "rarity": "Supreme",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/xerneas",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Impact",
+    "desc": "Deals 100% S.ATK damage to a single enemy and, on a crit, purifies 1 of its own debuffs",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Geomancy",
+    "desc": "Deals 165% S.ATK damage to an enemy row; this attack's Crit Intensity is increased by 25% (1 turn).",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Smash",
+    "desc": "Deals 120% S.ATK damage to a single enemy and, on a crit, purifies 3 of its own debuffs",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye-Ward III",
+    "desc": "Increases Critical by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6% ,Block INT by 6% ,Guard Break by 10%,Gain 12% damage reduction upon entering combat for 2 rounds",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Recovery",
+    "desc": "Once its HP falls to half, restores HP equal to 120% of its S.ATK to all teammates and purifies all allies' negative effects.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Giratina",
+  "rarity": "Supreme",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/giratina",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Dragon breath",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Shadow sneak",
+    "desc": "Inflict 250% S.ATK DMG to the lowest HP enemy,release again if the target is killed,up to 1 time.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Shadow Claw",
+    "desc": "Deals 135% S.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Share the pain",
+    "desc": "Increase S.ATK by 7% when allies dead, up to 21%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Zygarde",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/zygarde",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Thousand waves",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Land's wrath",
+    "desc": "Deals 100% P.ATK damage to all enemies,when HP is higher than 50%,it will consume 8% of its current HP and deal an equal amount of damage to all targets",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Core punisher",
+    "desc": "Deals 120% P.ATK damage to single enemy,damage is increased by 20% when your HP is higher than target",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Block-Shield III",
+    "desc": "Increases Critical by 6%, Crit Res by 8%, Crit Intensity by 6%, Block by 45% ,Block INT by 12.5%, Guard Break by 8% After the start, adding a shield of 32% of its own blood to the back row of friendly units, with an additional 50% boost to the effect on the back row in the same column, the effect only triggers once in the same battle and cannot be stacked.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Mysterious guard",
+    "desc": "At the start of each round, increases backline allies' DMG Reduction by 4%, which is up to 16%.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Palkia",
+  "rarity": "Supreme",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/palkia",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Split",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Area destroy",
+    "desc": "Deal 150% P.ATK damage to the front row of the enemy, and open the [Warp Domain], taunting the front row enemy for 1 round; during the [Warp Domain], every time you receive an attack from the taunted enemy, your allies will increase by 10 % crit chance and 5% crit power, up to 6 stacks, lasting 3 rounds",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Flow tail",
+    "desc": "Causes single enemy 120% physical DMG,and reduce target 150 rage",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter-Force Field III",
+    "desc": "Increases Critical by 6%, Crit Res by 38%,Crit INT by 6%,Block by 9%,Block INT by 9%,Guard Break by 8%. Per turn inflicts 1 buff for all allies,each buff provides DMG RDCT by 3%.Stacks up to 4 times and can't be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Subspace",
+    "desc": "While in the [Subspace area], restore 10% of the max HP after being attacked. Effect has a 2-turn cooldown.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Dialga",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/dialga",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Metal Claw",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Time roar",
+    "desc": "Deals 160% P.ATK DMG to enemies in a row and lower 200 rage. Grant backline allies 200 rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Dragon Claw",
+    "desc": "Deals 135% P.ATK to a single enemy, and gains 300 rage points. Small skill attack must act again after hitting",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Ghost Mask",
+    "desc": "While attacking, increase DMG according to your own rage, up to 30%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Keldeo",
+  "rarity": "Supreme",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/keldeo",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Water Column",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Secret Sword",
+    "desc": "Deals 185% S.ATK DMG to a row of enemies. If the target is shielded, increases the damage by 30%",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Water Cannon",
+    "desc": "Deals 140% S.ATK DMG to a single enemy and increases your S.ATK by 10% for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Consciousness",
+    "desc": "When a friendly dies, restore 250 rage and 15% HP per turn, stacking up to 3 levels.Gain 45% damage boost when reaching 3 levels",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Victini",
+  "rarity": "Supreme",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/victini",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Firebomb",
+    "desc": "Deals 100% P.ATK damage to a single enemy and inflict a stack of [Magma Armor] for 3 turns. Stacks up to 6 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Inferno",
+    "desc": "Deals 135% P.ATK damage to the front row,and inflict 3 stacks of [Magma Armor] for 3 turns,each layer of [Magma Armor] reduces the opponent's P.DEF and S.DEF by 10% and deals 20% P.ATK damage per round,up to 6 layers",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Incinerate",
+    "desc": "Deals 120% P.ATK damage to a single enemy and inflict a stack of [Magma Armor] for 3 turns. Stacks up to 6 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter-Force Field III",
+    "desc": "Increases Critical by 6%, Crit Res by 38%,Crit INT by 6%,Block by 9%,Block INT by 9%,Guard Break by 8%. Per turn inflicts 1 buff for all allies,each buff provides DMG RDCT by 3%.Stacks up to 4 times and can't be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Focus Energy",
+    "desc": "At the beginning of the battle, it provides 150% P.ATK shield to the back row of friendly troops for 2 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shaymin",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shaymin",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Collide",
+    "desc": "Deals 100% S.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Parasitic Seed",
+    "desc": "Deals 100% S.ATK DMG to 4 random targets and inflicts upon them 2 stacks of [Leech Seed] for 6 turns, each stack dealing true damage equal to 1.5% of max HP. Stacks up to 16 times (The damage is capped at 1600% of your S.ATK). [Leech Seed] is ineffective against world boss and guild boss.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Spinning Blast",
+    "desc": "Deals 120% S.ATK DMG to a single target and inflicts 1 stack of [Leech Seed]",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Zeal III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38% and each turn increases DMG Boost by 1.5%,capping at 6%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Seed Flash",
+    "desc": "When attacking a target with [Leech Seed], inflicts 1 extra stack of Poison.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Infernape",
+  "rarity": "Supreme",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/infernape",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Spark",
+    "desc": "Deals 100% S.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Fire Whirl",
+    "desc": "Deals 60% S.ATK DMG to all enemies and inflicts 2 stacks of [Flame], each stack dealing 45% S.ATK DMG per turn for 2 turns. Stacks up to 3 times. There is a 75% chance to inflict upon them [Crit Seal], rendering them unable to Crit in the next turn.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Fire Wheel",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, with 80% chance to inflict a stack of [Flame] that lasts 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Zeal III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38% and each turn increases DMG Boost by 1.5%,capping at 6%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Blaze 2",
+    "desc": "Be immune to Burning and Blaze; When dealing damage, the opponent takes more [Flame] damage for 2 turns, rising with Infernape's missing HP, capping at 40%. Expires when Infernape dies.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Greninja",
+  "rarity": "Supreme",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/greninja",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Claw Strike",
+    "desc": "Deals 100% P.ATK DMG to a single enemy and increases the triggering rate of your basic skills by 20% for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Water Shuriken",
+    "desc": "Deals 135% P.ATK damage to the frontline and adds the [Shuriken] mark, lowering the opponent's crit resistance by 25% for 3 turns, up to a max of 1 tier; when the opponent holding the [Shuriken] mark is attacked by a Crit Attack, take an additional 80% P.ATK damage; boosts own speed by 10 points after attacking, lasting 2 turns. Gain 20 speed before first action after entering battle.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Water Blade",
+    "desc": "Deals 135% P.ATK DMG to a single enemy and increases the triggering rate of your basic skills by 20% for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Substitute",
+    "desc": "When dealing 2 crits in a single turn,it returns 75% of its own P.ATK HP and permanently increases 5% crit and 5% crit intensity",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Manaphy",
+  "rarity": "Supreme",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/manaphy",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Water Sport",
+    "desc": "Deals 100% S.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Water Pulse",
+    "desc": "Deals DMG by 135% S.ATK to enemy backline. Removes 2 buffs from targets and dispels 2 debuffs on allies",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Whirlpool",
+    "desc": "Deals 120% S.ATK DMG to a single enemy and clears the opponent's 2 buffs",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Ultrasonic Wave",
+    "desc": "Immunize all debuffs for 2 round; When attacking, reduces the opponent's Crit Res by 6% for 2 rounds",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Celebi",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/celebi",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Magical Leaf",
+    "desc": "Deals 100% S.ATK DMG to a single enemy and heals the ally with lowest HP for 40% S.ATK for 2 turns. Stacks up to 1 times. (Cannot be stacked)",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Healing Wish",
+    "desc": "Heal all allies for 200% of S.ATK. Increases the healing amount by 25% for the allies with less than 30% HP",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Leaf Storm",
+    "desc": "Deals 120% S.ATK DMG to a single enemy and heals the ally with lowest HP for 40% S.ATK for 2 turns. Stacks up to 1 times. (Cannot be stacked)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Self Rebirth",
+    "desc": "When attacked, there's 70% chance to heal for 40% of damage taken",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Ho-Oh",
+  "rarity": "Supreme",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/ho-oh",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Spark",
+    "desc": "Deals 100% S.ATK DMG to a single target, with 60% chance to reduce target's Rage by 200",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Holy Fire",
+    "desc": "Deals 145% S.ATK DMG to enemies in a row, reduces their Rage by 150 and gives them a stack of [Sacred Fire], which ignites after one turn, dealing 125% S.ATK DMG; While Sacred Fire is active, reduces the amount of healing the opponent receives by 50%. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Firebomb",
+    "desc": "Deals 100% damage to the opponents in the same row, reducing one opponent's Rage by 200",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Sacred Burning",
+    "desc": "Upon death, grant all opponents a stack of [Infinite Fire]. The [Infinite Fire] is detonated after one turn, dealing 200% of S.ATK.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Groudon",
+  "rarity": "Supreme",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/groudon",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Hammer Arm",
+    "desc": "Deals 110% damage to the opponent with lowest HP",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Crag Blades",
+    "desc": "Deals 210% damage to the opponent with the highest ATK; the more Rage the opponent has, the more damage this deals, up to 35% extra, and the opponent cannot be healed for 2 turns.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Claw Strike",
+    "desc": "Deals 145% damage to the opponent with lowest HP",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Fitness",
+    "desc": "Gain a shield when battles begin, absorbing damage up to 175% P.ATK and gaining 10% DMG Multiplier for 2 turns; When killing an enemy, gain a shield too. This effect is stackable.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Rayquaza",
+  "rarity": "Supreme",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/rayquaza",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Aura Sphere",
+    "desc": "Deals 100% S.ATK DMG to a single enemy. Converts 30% of damage into healing.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Outrage",
+    "desc": "Damages all enemies for 60% S.ATK DMG and marks them for 2 turns. The mark can't be dispelled. While the mark is active, Rayquaza can't uses its Ultimate; At the end of turn 1, the mark deals 90% of self S.ATK DMG, increasing the damage against backline enemies by 25%. 10% of the total damage will be converted into self healing; At the end of turn 2, the mark deals 115% of self S.ATK DMG, increasing the damage against backline enemies by 25%. 60% of the total damage will be converted into self healing",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Dragon Pulse",
+    "desc": "Deals 120% S.ATK DMG to a single enemy. Converts 30% of damage into healing.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Zeal III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38% and each turn increases DMG Boost by 1.5%,capping at 6%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Dragon Dance",
+    "desc": "At the start of each turn, increase S.ATK based on your remaining HP. The higher the HP, the more S.ATK you gain, capping at 30%.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Lugia",
+  "rarity": "Supreme",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/lugia",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Weather Ball",
+    "desc": "Deals 100% P.ATK to a single enemy, increasing its own basic skill triggering rate by 5%",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "LB Peck",
+    "desc": "Deals 125% P.ATK DMG to all enemies. Converts 8% of total damage into healing.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Water Cannon",
+    "desc": "Deals 100% P.ATK DMG to enemy frontline, converting 8% of total damage into healing; Basic attacks increase its own basic skill triggering rate by 5%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Zeal III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38% and each turn increases DMG Boost by 1.5%,capping at 6%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Mysterious guard",
+    "desc": "Fatal damage instead brings you to 1 HP. You are immune to all damage until the end of the turn. Occurs 1 times per battle. Cannot be dispelled. At the start of each turn, increases your DMG Boost based on your missing HP, capping at 100%. Cannot be dispelled.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Entei",
+  "rarity": "Legendary",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/entei",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Blooming Spark",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Fire Fall",
+    "desc": "Deals 80% P.ATK DMG to all enemies, plus true damage to the opponent with highest HP equal to 8% of their current HP. If it Crits, damages 1 random enemies for 10% of their current HP.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Inferno Blaze",
+    "desc": "Deals 120% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Fireblast",
+    "desc": "When a battle begins, causes the enemies on the opposite to take 12% increased damage for 2 turns. Cannot be cleansed. After death, increases backline allies' Crit Chance by 15% for 2 turn(s). Cannot be dispelled.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Suicune",
+  "rarity": "Legendary",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/suicune",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Condensed Droplet",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Spring Call",
+    "desc": "Deals 250% S.ATK DMG to a single enemy, Steals from the target 10% S.DEF for 2 turns. Stacks up to 1 time; Gains [Taunt] that forces all enemies to attack self within their attack range for 1 turn. Stacks up to 1 time; In addition, gains [Thorn] status, dealing true damage to all attackers equal to 60% of Suicune's S.ATK for 2 turns. Stacks up to 1 time.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Condensed Water Ball",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, with a 30% chance to gain [Thorn]",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III-Aurora Beam",
+    "desc": "Increases HP by 25%, S.ATK by 25%; When a battle begins, reduces all opponents' ATK by 13% for 2 turn(s)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Block-Force Field III",
+    "desc": "Increases Critical by 6%, Crit Res by 8%,Crit INT by 6%,Block by 45%,Block INT by 12.5%,Guard Break by 8%. Per turn inflicts 1 buff for all allies,each buff provides DMG RDCT by 3%.Stacks up to 4 times and can't be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Hippocrene",
+    "desc": "When attacked, reduces the attacker's Guard Break Chance by 5% for 2 turns. Stacks up to 1 times; The fourth incoming attack within one turn heals you for 12% of max HP.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Raikou",
+  "rarity": "Legendary",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/raikou",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Lightning Bomb",
+    "desc": "Deals 100% S.ATK DMG to a single enemy, Deals an additional 30% damage to [DEF] Pokémon, and inflicts [Short Circuit] on the target for 1 turn [Short Circuit]: Unable to regenerate rage",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Thunderstrike",
+    "desc": "Deals 210% S.ATK DMG to a single enemy, Directly executes enemies with less than 20% HP. When the target is slayed, deals damage by 150% S.ATK to all other opponents. Gains [Offer of Power] after Ultimate is cast. Deducts 20% current HP, regenerates 100% Rage, and increases Ultimate damage by 50% for 1 turn. Stacks up to 1 time. CD: 4 turns. Can't be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Thunderclap",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, Deals an additional 30% damage to [DEF] Pokémon, and inflicts [Short Circuit] on the target for 1 turn [Short Circuit]: Unable to regenerate rage",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye-Zeal III",
+    "desc": "Increases Critical by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6% ,Block INT by 6%, Guard Break by 10%, own DMG Boost by 1.5% per turn, up to 6%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Wrath",
+    "desc": "When battle starts,add [channeling]to the target of the enemy and attack it preferentially,resume normal target selection after it death;When attacking [channeling] marked unit,trigger the effect that can only be triggered on [DEF] Pokémons when attacking",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Moltres",
+  "rarity": "Legendary",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/moltres",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Blooming Spark",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Flame Storm",
+    "desc": "Deals 135% P.ATK DMG to backline enemies, Guaranteed to inflict 1 stack of [Burning], each stack dealing true damage equal to 30% of self P.ATK. Stacks up to 2 times. Lasts 3 turns; Increases damage by 35% against targets with at least 2 stacks of [Burning].",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Blazeball",
+    "desc": "Deals 120% P.ATK DMG to a single enemy, with an 80% chance to [Burning] the target",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Fire Mastery",
+    "desc": "Be immune to Burning and Blaze; Before the first attack, inflict a stack of [Burning] upon all enemies; When attacked, there is 30% chance to grant the attacker a stack of [Burning].",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Articuno",
+  "rarity": "Legendary",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/articuno",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Ice Gravel",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Absolute Zero",
+    "desc": "Deals 135% S.ATK DMG to 3 random enemies, with 18% chance to [Freeze] them, rendering them unable to move for 1 turns. Stacks up to 1 times; Increases your DMG Reduction and Crit Res by 10% for 3 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Ice Crystal",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, and [Freeze] the target for 1 turn",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III-Ward",
+    "desc": "Increases HP by 25% and S.ATK by 25%; When attacked by an Ultimate buffed by [Offer of Power], reduces the damage taken by 40%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter-Force Field III",
+    "desc": "Increases Critical by 6%, Crit Res by 38%,Crit INT by 6%,Block by 9%,Block INT by 9%,Guard Break by 8%. Per turn inflicts 1 buff for all allies,each buff provides DMG RDCT by 3%.Stacks up to 4 times and can't be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Ice Mastery",
+    "desc": "Immune to Freeze. Upon death, Freezes the attacker and 2 random enemies for 2 turns; Upon taking attack, improve all allies' Control Boost by 8% for 3 turns. Stacks up to 2 times; Further increases self Control Boost by 12% for 3 turns. Stacks up to 3 times.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Zapdos",
+  "rarity": "Legendary",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/zapdos",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Bolt",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Blitz Beat",
+    "desc": "Deal 120% P.ATK damage to enemy front row, 20% chance [paralyze] the target, making it unable to use normal attacks and minor skills for 1 round, up to 1 level; and increases backline allies' Crit by 10% for 2 rounds",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Rumble",
+    "desc": "Deals 120% P.ATK DMG to a single enemy, with an 80% chance to [paralyze] the target",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Lightning Mastery",
+    "desc": "Immune to Paralysis; When battle begins, gain 20 SPD and 30% control boost for 2 turns. When attacked, there is 35% chance to [Paralyze] the attacker for 1 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Gyarados",
+  "rarity": "Epic",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/gyarados",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Impact",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Polo Dartle",
+    "desc": "Deals 190% P.ATK DMG to horizontal-line enemies, plus true damage equal to 10% of self missing HP. Gains 10% DMG Multiplier for 2 turns. Stacks up to 1 time.After using the Ultimate, gain [Offer of Power] that deducts 20% of current HP, regenerates 100% Rage, and increase Ultimate damage by 50% for 1 turns. Stacks up to 1 times. Cooldown 4 turns. Cannot be dispelled.When [Offer of Power] is active, if the target of the Ultimate dies, it automatically recasts. Casts up to 1 times per turn.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Batter",
+    "desc": "Deals 120% P.ATK DMG to a single enemy, with 50% chance to steal 12.5% Rage from target",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Battle Fury",
+    "desc": "Increases ATK by the percentage of your missing HP. Every 1% HP you lose increase your ATK by 0.6%, capping at 50%.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Blaziken",
+  "rarity": "Epic",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/blaziken",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Flame Peck",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Flame Blast",
+    "desc": "Deals 210% S.ATK DMG to a single enemy, plus true damage equal to 8% of target's missing HP. After using Ultimates, gain [Offer of Power] that deducts 20% of current HP, regenerates 100% Rage, and increases Ultimate damage by 50% for 1 turns. Stacks up to 1 times. Cooldown 4 turns. Cannot be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Flame Pecking",
+    "desc": "Deals 120% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Victory Rush",
+    "desc": "When [Offer of Power] is active, if the target of the Ultimate dies, it automatically recasts. Casts up to 1 times per turn.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Swampert",
+  "rarity": "Epic",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/swampert",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Water Pistol",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Foresight",
+    "desc": "Deals 135% S.ATK DMG to backline enemies and inflict on them [Foresight]. After using Ultimates, the target takes true damage equal to 80% of Mudkip's S.ATK for 2 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Water Cannon",
+    "desc": "Deals 120% S.ATK DMG to a single target, inflicting it with [Foresight].",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision IV",
+    "desc": "Increases Crit by 10%, Crit Res by 8%, Crit Intensity by 12.5%, Block by 6%, Block Intensity by 6%, and Guard Break by 42.5%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Sceptile",
+  "rarity": "Epic",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/sceptile",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Kick",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Leaf Slash",
+    "desc": "Deals 190% S.ATK DMG to enemies in a row. Guaranteed to inflict 1 stack(s) of [Bleed], each stack dealing true damage equal to 20% of your S.ATK. Stacks up to 4 times. Lasts 4 turns; Tears apart the [Malignant Wounds], causing the target to take 18% increased damage from DoT for 2 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Low Kick",
+    "desc": "Deals 120% S.ATK DMG to a single enemy and tear apart the [Malignant Wounds] for 1 turn(s).",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision IV",
+    "desc": "Increases Crit by 10%, Crit Res by 8%, Crit Intensity by 12.5%, Block by 6%, Block Intensity by 6%, and Guard Break by 42.5%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Typhlosion",
+  "rarity": "Epic",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/typhlosion",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Spark",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Fire Wheel",
+    "desc": "Deals 135% S.ATK DMG to enemy frontline and reduces target's Crit Res and Block by 15% for 4 turn(s). Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Dabitha",
+    "desc": "Deals 120% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision IV",
+    "desc": "Increases Crit by 10%, Crit Res by 8%, Crit Intensity by 12.5%, Block by 6%, Block Intensity by 6%, and Guard Break by 42.5%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Feraligatr",
+  "rarity": "Epic",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/feraligatr",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Gnaw",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Spout",
+    "desc": "Deals 135% P.ATK DMG to the enemies in a row and [Protects] the ally above you, sharing 25% of the damage they take for 2 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Crunch",
+    "desc": "Deals 120% P.ATK DMG to a single enemy and gain a [shield] for 1 turns. The shield absorbs damage equal to 5% of max HP and stacks with other [shields].",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III-Pledge of Water",
+    "desc": "Increases HP by 25%, P.ATK by 25%; When a battle begins, if there are at least two allied Skill Pokémons, grants backline targets a shield for 20% of max HP. Lasts 2 turn(s)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Block IV",
+    "desc": "Increases Crit by 6%, Crit Res by 10%, Crit Intensity by 6%, Block by 50%, Block Intensity by 16%, and Guard Break by 10%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Meganium",
+  "rarity": "Epic",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/meganium",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Impact",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Magical Leaf",
+    "desc": "Deals 120% S.ATK DMG damage to a single enemy and heals the 2 allies with the lowest HP for 140% of S.ATK; Attacking the enemies affected by [DoT] increases the amount of healing by 25%.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Batter",
+    "desc": "Deals 120% S.ATK DMG to a single enemy and heals the ally with the lowest HP for 25% of S.ATK.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision IV",
+    "desc": "Increases Crit by 10%, Crit Res by 8%, Crit Intensity by 12.5%, Block by 6%, Block Intensity by 6%, and Guard Break by 42.5%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Dragonite",
+  "rarity": "Epic",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/dragonite",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Droplet",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Waterfall",
+    "desc": "Deals 135% S.ATK DMG to enemy backline. Guaranteed to remove 1 buffs from target.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Water Ball",
+    "desc": "Deals 120% S.ATK DMG to a single target and dispels 1 buffs from the target.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye IV",
+    "desc": "Increases Crit by 50%, Crit Res by 10%, Crit Intensity by 13.5%, Block by 6%, Block Intensity by 6%, and Guard Break by 13.5%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Metagross",
+  "rarity": "Epic",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/metagross",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Impact",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Earthquake",
+    "desc": "Deals 210% P.ATK DMG to a single backline enemy, with 30% chance to [Confuse] them, forcing them to basic attack a random ally for 1 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Batter",
+    "desc": "Deals 120% P.ATK damage to a single enemy and renders them [Confused] for 1 turn(s).",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III-Siege",
+    "desc": "Increases HP by 25%, P.ATK by 25%; When a battle begins, boost DMG Reduction for backline by 16% for 2 turn(s)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter IV",
+    "desc": "Increases Crit by 6%, Crit Res by 42.5%, Crit Intensity by 6%, Block by 9%, Block Intensity by 10%, and Guard Break by 8%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Garchomp",
+  "rarity": "Epic",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/garchomp",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Swing",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Fountain",
+    "desc": "Deals 135% P.ATK DMG to enemy frontline, with 80% chance to reduce their P.DEF and S.DEF by 35% for 2 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Knock Down",
+    "desc": "Deals 120% P.ATK DMG to a single enemy and inflict on target [Vulnerability], increasing the damage they take by 10% for 2 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III-Ward",
+    "desc": "Increases HP by 25% and P.ATK by 25%; When attacked by an Ultimate buffed by [Offer of Power], reduces the damage taken by 40%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter IV",
+    "desc": "Increases Crit by 6%, Crit Res by 42.5%, Crit Intensity by 6%, Block by 9%, Block Intensity by 10%, and Guard Break by 8%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Hydreigon",
+  "rarity": "Epic",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/hydreigon",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Gnaw",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Hyper Voice",
+    "desc": "Deals 190% P.ATK DMG to the enemies in a row and gain 10% DMG Multiplier for 2 turns. Stacks up to 1 times; Increases damage to the enemies affected by DoT by 20%.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Crunch",
+    "desc": "Deals 120% P.ATK DMG to a single enemy. Deals 18% additional damage to the enemies affected by DoT.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision IV",
+    "desc": "Increases Crit by 10%, Crit Res by 8%, Crit Intensity by 12.5%, Block by 6%, Block Intensity by 6%, and Guard Break by 42.5%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Ruse",
+    "desc": "When a battle begins, increases backline allies' Crit Chance by 18% and Crit INT by 9%. Lasts 2 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Gardevoir",
+  "rarity": "Epic",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/gardevoir",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Shadow Ball",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Lunar Power",
+    "desc": "Deals 135% S.ATK DMG to frontline enemies. The damage ignores target's 10%S.DEF; Increases all allies' ATK by 10% for 10 turns. Stacks up to 3 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Shadow Wave",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, ignoring target's 10% S.DEF",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Blessing of the Moon",
+    "desc": "Take 25% less S.ATK DMG and 10% P.ATK damage. Cannot be dispelled.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Slaking",
+  "rarity": "Epic",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/slaking",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Smack",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Throw Brick",
+    "desc": "Deals 190% P.ATK DMG to 2 random enemies and gain [Regrowth], healing self for 3% of max HP per turn over 3 turns. Stacks up to 1 times; Attacking the enemies affected by DoT applies [Regrowth] to the allies with lowest HP.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Smash",
+    "desc": "Deals 120% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Block III",
+    "desc": "Increases Crit by 6%, Crit Res by 8%, Crit Intensity by 6%, Block by 45%, Block Intensity by 12.5%, and Guard Break by 8%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Dauntless",
+    "desc": "Fatal damage instead brings you to 1 HP. You are immune to all damage until the end of the turn. Occurs 1 times per battle. Cannot be dispelled. When Dauntless expires, heal self for 20% of max HP.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Tyranitar",
+  "rarity": "Epic",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/tyranitar",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Rock Thrust",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Smoke Bomb",
+    "desc": "Deals 135% P.ATK DMG to 3 random enemies, with 15% chance to [Stun] them, rendering them unable to move for 1 turns. Stacks up to 1 times; Reduces target's Control Res by 12% for 2 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Rock Charge",
+    "desc": "Deals 120% P.ATK damage to a single enemy and stuns them for 1 turn",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III-Ward",
+    "desc": "Increases HP by 25% and P.ATK by 25%; When attacked by an Ultimate buffed by [Offer of Power], reduces the damage taken by 40%.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter IV",
+    "desc": "Increases Crit by 6%, Crit Res by 42.5%, Crit Intensity by 6%, Block by 9%, Block Intensity by 10%, and Guard Break by 8%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Salamence",
+  "rarity": "Epic",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/salamence",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Impact",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Ki Bomb",
+    "desc": "Deals 210% P.ATK DMG to a single enemy. Converts 30% of damage into healing.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Batter",
+    "desc": "Deals 120% P.ATK DMG to a single enemy. Converts 10% of damage into healing.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Power of Lonewolf",
+    "desc": "When all other allied Pokémons have fallen, increase P.ATK by 24%. Lasts until the end of battle. Cannot be dispelled.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Gengar",
+  "rarity": "Epic",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/gengar",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Grudge",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Nightmare",
+    "desc": "Deals 135% S.ATK DMG damage to enemy backline and is guaranteed to [Flinch] targets, rendering them unable to use basic skills for 1 turns. Stacks up to 1 times; Gain 12.5% Rage if there are already controlled targets.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Fear",
+    "desc": "Deals 120% S.ATK DMG to a single enemy and causes the target to [Flinch] for 1 turn(s).",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Netherworld Shield",
+    "desc": "When attacked by [ATK] Pokémons, gain a [shield] for 45% S.ATK DMG. Stacks with other [shields].",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Charizard",
+  "rarity": "Rare",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/charizard",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Spark",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Fireball",
+    "desc": "Deals 135% P.ATK DMG to enemy frontline and increases backline allies' Crit Chance by 10% for 2 turns. Stacks up to 1 times. After using Ultimates, gain [Offer of Power] that deducts 20% of current HP, regenerates 100% Rage, and increase Ultimate damage by 50% for 1 turns. Stacks up to 1 times. Cooldown 4 turns. Cannot be dispelled.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Dabitha",
+    "desc": "Deals 120% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage II (ATK)",
+    "desc": "Gain full Rage when engaged in combat",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength II",
+    "desc": "Increases HP by 18% and P.ATK by 18%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye II",
+    "desc": "Increases Crit by 40%, Crit Res by 8%, Crit Intensity by 10%, Guard Break by 10%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Raichu",
+  "rarity": "Rare",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/raichu",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Electric Shock",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Thunderbolt",
+    "desc": "Deals 145% S.ATK DMG to 3 random enemies, with 15% chance to [Paralyze] them, rendering them unable to use basic attacks and basic skills for 1 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Thunderfall",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, with 25% chance to [Paralyze] the target.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage II (ATK)",
+    "desc": "Gain full Rage when engaged in combat",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge II",
+    "desc": "Increases HP by 18% and S.ATK by 18%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye II",
+    "desc": "Increases Crit by 40%, Crit Res by 8%, Crit Intensity by 10%, Guard Break by 10%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Starmie",
+  "rarity": "Rare",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/starmie",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Water Pistol",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Swift Nova",
+    "desc": "Deals 135% P.ATK damage to 3 random enemies and has a 50% chance to make an additional attack (additional actions do not stack)",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Water Cannon",
+    "desc": "Deals 135% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage II (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/4 additional Rage whenever you use basic attacks/basic skills",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength II",
+    "desc": "Increases HP by 18% and P.ATK by 18%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision II",
+    "desc": "Increases Crit by 8%, Crit Intensity by 10%, Block by 6%, and Guard Break by 35%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Blastoise",
+  "rarity": "Rare",
+  "attribute": "Water",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/blastoise",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Droplet",
+    "desc": "Deals 100% P.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Chain Polo",
+    "desc": "Deals 135% P.ATK DMG to enemy backline and increases P.ATK DMG Reduction by 18% for 3 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Water Ball",
+    "desc": "Deals 120% P.ATK DMG to a single enemy and increases P.ATK DMG Reduction by 10% for 2 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage II (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength II",
+    "desc": "Increases HP by 18% and P.ATK by 18%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Block II",
+    "desc": "Increases Crit Res by 8%, Block by 40%, Block Intensity by 11.5%, Guard Break by 8%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Ninetales",
+  "rarity": "Rare",
+  "attribute": "Fire",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/ninetales",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Spark",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Fire Rain",
+    "desc": "Deals 135% S.ATK DMG to backline enemies and inflict on them [Burning], dealing true damage equal to 60% S.ATK for 4 turns. Stacks up to 1 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Dabitha",
+    "desc": "Deals 135% S.ATK DMG to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage II (ATK)",
+    "desc": "Gain full Rage when engaged in combat",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge II",
+    "desc": "Increases HP by 18% and S.ATK by 18%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision II",
+    "desc": "Increases Crit by 8%, Crit Intensity by 10%, Block by 6%, and Guard Break by 35%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Venusaur",
+  "rarity": "Rare",
+  "attribute": "Grass",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/venusaur",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Vine Whip",
+    "desc": "Deals 100% S.ATK DMG to a single enemy.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Tendril Twine",
+    "desc": "Deals 90% S.ATK DMG to 4 random enemies. Guaranteed to apply 1 stacks of [Poison], with 50% chance to stack 1 more times, each stack dealing true damage equal to 1% of target's max HP for 10 turns. Stacks up to 25 times (Total damage is capped at 1250% of your S.ATK).",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Heavy flogging",
+    "desc": "Deals 120% S.ATK DMG to a single target, guaranteed to gain 1 stack(s) of [Poison].",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage II (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/4 additional Rage whenever you use basic attacks/basic skills",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge II",
+    "desc": "Increases HP by 18% and S.ATK by 18%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision II",
+    "desc": "Increases Crit by 8%, Crit Intensity by 10%, Block by 6%, and Guard Break by 35%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Mewtwo",
+  "rarity": "Shiny Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-mewtwo",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Mew Blast",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Endless Black Hole",
+    "desc": "Deals 100% S.ATK DMG to all targets, damage ignores target's 20% S.DEF",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Flash Attack",
+    "desc": "Deals 150% S.ATK DMG to a single enemy, Steals 10% S.ATK and S.DEF of the target for 3 turns. Stacks up to 1 time",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye III",
+    "desc": "Increases Crit by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6%, Block Intensity by 6%, and Guard Break by 10%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Dimensional Force",
+    "desc": "When a battle begins, increases self S.ATK by 20%, Crit by 25%, and Crit INT by 30% for 1 turn",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Mew",
+  "rarity": "Shiny Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-mew",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Halo",
+    "desc": "Deals 100% P.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Dream Halo",
+    "desc": "Deals 100% P.ATK to the entire enemy team and has a 25% chance to [Silence] the target, making them unable to use their Ultimate for 1 round, up to 1 level",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Energy Halo",
+    "desc": "Deals 120% P.ATK DMG to a single enemy and inflicts [Silence] on the target for 1 turn",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Siphon Energy",
+    "desc": "Restores 500 Rage from each fallen target",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Kyogre",
+  "rarity": "Shiny Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-kyogre",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Impact",
+    "desc": "Deals 100% S.ATK DMG to a single enemy and reduces target's ATK by 8% for 1 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Origin Pulse",
+    "desc": "All allies gain a shield for up to 135% of Kyogre's S.ATK DMG and heal for 30% of Kyogre's S.ATK per turn. Lasts 2 turns. The healing effect can be stacked.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Collide",
+    "desc": "Deals 120% S.ATK DMG to a single enemy and reduces target's ATK by 8% for 1 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (DEF)",
+    "desc": "Gain half Rage when engaged in combat; Gain 1/8 additional Rage whenever you get hit, with 50% chance to reduce the attacker's Rage by 1/8",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Shelter-Shield III",
+    "desc": "Increases Critical by 6%, Crit Res by 38%, Crit Intensity by 6%, Block by 9%, Block INT by 9%, Guard Break by 8% After the start, adding a shield of 32% of its own blood to the back row of friendly units, with an additional 50% boost to the effect on the back row in the same column, the effect only triggers once in the same battle and cannot be stacked.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Aqua Ring",
+    "desc": "Gain 55% DMG Reduction every 1 turns since turn 3. Lasts 1 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Darkrai",
+  "rarity": "Shiny Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-darkrai",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Flash Assault",
+    "desc": "Deals 100% P.ATK DMG to a single enemy. Converts 20% of damage into healing.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Dark Pulse",
+    "desc": "Deals 175% DMG to opponents in the horizontal row, converts 40% of DMG into healing, and gain 1 stack of [Nightmare], which lasts permanently; For every 1 stack of [Nightmare], the Ultimate deals an additional 15% DMG and 12% Ignore DEF, up to a maximum of two layers",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Faint Assault",
+    "desc": "Deals 135% P.ATK DMG to a single enemy. Converts 20% of damage into healing.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Strength III",
+    "desc": "Increases HP by 25% and P.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye-Zeal III",
+    "desc": "Increases Critical by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6% ,Block INT by 6%, Guard Break by 10%, own DMG Boost by 1.5% per turn, up to 6%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Black Mist",
+    "desc": "At your turn start, if you are controlled, remove the control-impairing effects, gain a shield equal to 325% P.ATK and control immunity for 2 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Arceus",
+  "rarity": "Shiny Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-arceus",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Grace of nature",
+    "desc": "Deals 100% S.ATK DMG to a single enemy, increase self [sanction] marks total number, each layer adds 7.5% S.ATK and 5% Crit INT",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Punish bright",
+    "desc": "Inflict 100% S.ATK DMG to all enemies, increase self [sanction] marks total number, each layer adds 7.5% S.ATK and 5% Crit INT, and the [sanction] marks will not be removed and has no cap.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Hyper Beam",
+    "desc": "Inflict 120% S.ATK DMG to the enemy's horizontal row, increase self [sanction] marks total number, each layer adds 7.5% S.ATK and 5% Crit INT.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye-Zeal III",
+    "desc": "Increases Critical by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6% ,Block INT by 6%, Guard Break by 10%, own DMG Boost by 1.5% per turn, up to 6%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "punish",
+    "desc": "When attacked, 50% chance to gain 1 [sanction] mark and increase S.ATK by 20% for 2 turns.",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Kyurem",
+  "rarity": "Shiny Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-kyurem",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Ice Hockey",
+    "desc": "Deals 100% S.ATK DMG to a single backline target and inflicts a stack of [Frost] that lasts 3 turns.",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Glaciate",
+    "desc": "Deals 280% S.ATK DMG to a single backline target, with 30% chance to Freeze them for 1 turn and apply 1 stack of [Frost] for 3 turns. When active, reduces Control Res by 15% and takes Frost damage at the end of each turn equal to 30% of Kyurem's S.ATK. Stacks up to 2 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Frozen Beam",
+    "desc": "Deals 120% S.ATK DMG to a single backline target, Freezes them for 1 turns, and inflicts a stack of [Frost] that lasts 3 turns.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Hawk Eye-Ward III",
+    "desc": "Increases Critical by 45%, Crit Res by 8%, Crit Intensity by 12%, Block by 6% ,Block INT by 6% ,Guard Break by 10%,Gain 12% damage reduction upon entering combat for 2 rounds",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Absolute Zero",
+    "desc": "When attacked, grant the attacker one stack of [Frost].It lasts for 3 turns, has a 25% chance to freeze for 1 turn, and increase the chance of launching your own small skills by 20%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Hoopa",
+  "rarity": "Shiny Mythic",
+  "attribute": "Dark",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-hoopa",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Psychokinesis",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Hyperspace hole",
+    "desc": "Deals 100% S.ATK damage to all enemies, inflicts [Burning] and dispels 1 buff [Burning]: Deals true damage by 30% self S.ATK for 3 turns. Stacks up to 3 times.",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Mental shock",
+    "desc": "Deals 150% S.ATK DMG to a single enemy, When the target is inflicted with [Burning], [Flame] or [Sacred Fire], the damage is increased by a further 20%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (ATK)",
+    "desc": "Gain full Rage when engaged in combat. Basic skill's triggering rate +60% (20% by default)",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision III",
+    "desc": "Increases Crit by 8%, Crit Res by 8%, Crit Intensity by 11%, Block by 6%, Block Intensity by 6%, and Guard Break by 38%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "ignite",
+    "desc": "Increase the DMG of [burning],[flaming],[sacred fire] applied by Hoopa by 30%",
+    "notes": ""
+   }
+  ]
+ },
+ {
+  "name": "Shiny Cresselia",
+  "rarity": "Shiny Mythic",
+  "attribute": "Light",
+  "url": "https://pokemon-wiki-sandy.vercel.app/pokemon/shiny-cresselia",
+  "slots": [
+   {
+    "slot": "Basic Attack",
+    "name": "Moonlight",
+    "desc": "Deals 100% S.ATK damage to a single enemy",
+    "notes": ""
+   },
+   {
+    "slot": "Ult",
+    "name": "Crescent Dance",
+    "desc": "Deals 230% S.ATK damage to the opponent with highest ATK and puts them to [Sleep] for 1 turn. Puts a random opponent to [Shallow Sleep] and 1 random opponent to [Nap] for 1 turn; Increases their damage taken by 30% for 2 turns. [Sleep]: Unable to act [Shallow Sleep]: Unable to cast Ultimate [Nap]: Unable to release Basic Skill",
+    "notes": ""
+   },
+   {
+    "slot": "Basic Skill",
+    "name": "Aurora Beam",
+    "desc": "Deals 120% S.ATK DMG to a single enemy, Generates shields to an ally with the lowest HP and self, absorbing damage equal to 180% of self S.ATK for 1 turn",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 1",
+    "name": "Rage III (Skill)",
+    "desc": "Gain half Rage when engaged in combat; Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage.",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 2",
+    "name": "Knowledge III",
+    "desc": "Increases HP by 25% and S.ATK by 25%",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 3",
+    "name": "Precision-Ward III",
+    "desc": "Increases Critical by 8%, Crit Res by 8%,Crit INT by 11%,Block by 6%,Block INT by 6%,Guard Break by 38%.Gains 12% DMG Reduction upon entering combat for 2 turns",
+    "notes": ""
+   },
+   {
+    "slot": "Talent 4",
+    "name": "Psycho Shift",
+    "desc": "When attacked, reduces the opponent's ATK by 12% for 2 turns. Stacks up to 1 times.",
+    "notes": ""
+   }
+  ]
+ }
+]

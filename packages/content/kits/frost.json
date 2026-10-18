@@ -9,56 +9,78 @@
       "normal": {
         "type": "S",
         "rates": [
-          1
+          1.3
         ],
         "rule": "column"
       },
       "basic": {
         "type": "S",
         "rates": [
-          1.15
+          1.3
         ],
-        "rule": "row",
-        "targetDebuffs": [
+        "rule": "column",
+        "effects": [
           {
-            "tag": "chill",
-            "field": "dmgRdct",
-            "amount": -0.15,
-            "turns": 2
+            "op": "cleanse",
+            "target": {
+              "rule": "column"
+            }
           }
         ]
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.7
+          1.1
         ],
-        "rule": "row",
-        "targetDebuffs": [
-          {
-            "tag": "daze",
-            "field": "spd",
-            "amount": -40,
-            "turns": 2
-          }
-        ]
+        "rule": "all"
       }
     },
     "talents": {
       "statMods": [
         {
+          "field": "hp",
+          "mult": 1.4
+        },
+        {
           "field": "sAtk",
-          "mult": 1.15
+          "mult": 1.4
         },
         {
-          "field": "controlBoost",
-          "add": 0.1
+          "field": "crit",
+          "add": 0.6
         },
         {
-          "field": "healBoost",
-          "add": 0.1
+          "field": "critRes",
+          "add": 0.3
+        },
+        {
+          "field": "crit",
+          "add": 0.2
+        },
+        {
+          "field": "block",
+          "add": 0.06
+        },
+        {
+          "field": "blockPower",
+          "add": 0.06
         }
-      ]
+      ],
+      "triggers": [
+        {
+          "on": "battleStart",
+          "effects": [
+            {
+              "op": "cleanse",
+              "target": {
+                "rule": "self"
+              }
+            }
+          ]
+        }
+      ],
+      "rageStart": 500
     }
   },
   {
@@ -71,49 +93,323 @@
       "normal": {
         "type": "S",
         "rates": [
-          0.95
+          1
         ],
         "rule": "column",
-        "selfBuffs": [
+        "effects": [
           {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.1,
-            "turns": 2
+            "op": "resource",
+            "target": {
+              "rule": "self"
+            },
+            "tag": "sanction",
+            "delta": 1
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-sAtk",
+              "kind": "stat",
+              "field": "sAtk",
+              "amount": 0.05,
+              "turns": 99
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-critPower",
+              "kind": "stat",
+              "field": "critPower",
+              "amount": 0.02,
+              "turns": 99
+            }
           }
         ]
       },
       "basic": {
         "type": "S",
         "rates": [
-          1.15
+          1.2
         ],
-        "rule": "column"
+        "rule": "row",
+        "effects": [
+          {
+            "op": "resource",
+            "target": {
+              "rule": "self"
+            },
+            "tag": "sanction",
+            "delta": 1
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-sAtk",
+              "kind": "stat",
+              "field": "sAtk",
+              "amount": 0.05,
+              "turns": 99
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-critPower",
+              "kind": "stat",
+              "field": "critPower",
+              "amount": 0.02,
+              "turns": 99
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "self-sAtk",
+              "kind": "stat",
+              "field": "sAtk",
+              "amount": 0.05,
+              "turns": 2
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "self-critPower",
+              "kind": "stat",
+              "field": "critPower",
+              "amount": 0.02,
+              "turns": 2
+            }
+          }
+        ]
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.6
+          1
         ],
-        "rule": "row"
+        "rule": "all",
+        "effects": [
+          {
+            "op": "resource",
+            "target": {
+              "rule": "self"
+            },
+            "tag": "sanction",
+            "delta": 1,
+            "max": 20
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-sAtk",
+              "kind": "stat",
+              "field": "sAtk",
+              "amount": 0.05,
+              "turns": 99
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-critPower",
+              "kind": "stat",
+              "field": "critPower",
+              "amount": 0.02,
+              "turns": 99
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "self-sAtk",
+              "kind": "stat",
+              "field": "sAtk",
+              "amount": 0.05,
+              "turns": 2
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "self-critPower",
+              "kind": "stat",
+              "field": "critPower",
+              "amount": 0.02,
+              "turns": 2
+            }
+          }
+        ]
       }
     },
     "talents": {
       "statMods": [
         {
           "field": "hp",
-          "mult": 1.2
+          "mult": 1.25
         },
         {
-          "field": "dmgRdct",
-          "add": 0.08
-        },
-        {
-          "field": "block",
-          "add": 0.05
+          "field": "sAtk",
+          "mult": 1.25
         }
       ],
-      "rageOnHit": 125
+      "triggers": [
+        {
+          "on": "turnStart",
+          "effects": [
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-crit",
+                "kind": "stat",
+                "field": "crit",
+                "amount": 0.45,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-critRes",
+                "kind": "stat",
+                "field": "critRes",
+                "amount": 0.08,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-critPower",
+                "kind": "stat",
+                "field": "critPower",
+                "amount": 0.12,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-block",
+                "kind": "stat",
+                "field": "block",
+                "amount": 0.06,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-blockPower",
+                "kind": "stat",
+                "field": "blockPower",
+                "amount": 0.06,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-guardBreak",
+                "kind": "stat",
+                "field": "guardBreak",
+                "amount": 0.1,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-dmgBoost",
+                "kind": "stat",
+                "field": "dmgBoost",
+                "amount": 0.015,
+                "turns": 99
+              }
+            }
+          ]
+        },
+        {
+          "on": "onHit",
+          "effects": [
+            {
+              "op": "resource",
+              "target": {
+                "rule": "self"
+              },
+              "tag": "sanction",
+              "delta": 1
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "boon-sAtk",
+                "kind": "stat",
+                "field": "sAtk",
+                "amount": 0.2,
+                "turns": 2
+              }
+            }
+          ],
+          "chance": 0.5
+        }
+      ],
+      "rageStart": 500
     }
   },
   {
@@ -126,49 +422,96 @@
       "normal": {
         "type": "S",
         "rates": [
-          0.95
+          1
         ],
         "rule": "column",
-        "selfBuffs": [
+        "effects": [
           {
-            "tag": "bulwark",
-            "field": "dmgRdct",
-            "amount": 0.1,
-            "turns": 2
+            "op": "buff",
+            "target": {
+              "rule": "column"
+            },
+            "buff": {
+              "tag": "shred-pAtk",
+              "kind": "stat",
+              "field": "pAtk",
+              "amount": -0.08,
+              "turns": 1
+            }
           }
         ]
       },
       "basic": {
         "type": "S",
         "rates": [
-          1.15
+          1.2
         ],
-        "rule": "column"
+        "rule": "column",
+        "effects": [
+          {
+            "op": "buff",
+            "target": {
+              "rule": "column"
+            },
+            "buff": {
+              "tag": "shred-pAtk",
+              "kind": "stat",
+              "field": "pAtk",
+              "amount": -0.08,
+              "turns": 1
+            }
+          }
+        ]
       },
       "ult": {
         "type": "S",
         "rates": [
-          1.6
+          0
         ],
-        "rule": "row"
+        "rule": "column",
+        "effects": [
+          {
+            "op": "dot",
+            "target": {
+              "side": "ally",
+              "rule": "all"
+            },
+            "tag": "dot",
+            "dot": {
+              "share": 1.35,
+              "basis": "casterAtk",
+              "type": "S"
+            }
+          },
+          {
+            "op": "shield",
+            "target": {
+              "side": "ally",
+              "rule": "all"
+            },
+            "share": 1.35,
+            "basis": "casterAtk"
+          }
+        ]
       }
     },
     "talents": {
       "statMods": [
         {
           "field": "hp",
-          "mult": 1.2
+          "mult": 1.25
+        },
+        {
+          "field": "sAtk",
+          "mult": 1.25
         },
         {
           "field": "dmgRdct",
-          "add": 0.08
-        },
-        {
-          "field": "block",
-          "add": 0.05
+          "add": 0.55
         }
       ],
-      "rageOnHit": 125
+      "rageStart": 500,
+      "rageOnHit": 1
     }
   },
   {
@@ -179,43 +522,192 @@
     "tier": "mythic",
     "skills": {
       "normal": {
-        "type": "P",
+        "type": "S",
         "rates": [
           1
         ],
         "rule": "column"
       },
       "basic": {
-        "type": "P",
+        "type": "S",
         "rates": [
           1.2
         ],
-        "rule": "column"
+        "rule": "column",
+        "effects": [
+          {
+            "op": "shield",
+            "target": {
+              "rule": "column"
+            },
+            "share": 1.5,
+            "basis": "casterAtk"
+          }
+        ]
       },
       "ult": {
-        "type": "P",
+        "type": "S",
         "rates": [
-          1.7,
-          1.4
+          2.1
         ],
-        "rule": "row"
+        "rule": "highest_atk",
+        "effects": [
+          {
+            "op": "control",
+            "target": {
+              "rule": "highest_atk"
+            },
+            "control": {
+              "kind": "sleep",
+              "chance": null,
+              "turns": 1
+            }
+          },
+          {
+            "op": "resource",
+            "target": {
+              "rule": "highest_atk"
+            },
+            "tag": "sleep",
+            "delta": 1
+          },
+          {
+            "op": "control",
+            "target": {
+              "rule": "highest_atk"
+            },
+            "control": {
+              "kind": "sleep",
+              "chance": null,
+              "turns": 1
+            }
+          },
+          {
+            "op": "resource",
+            "target": {
+              "rule": "highest_atk"
+            },
+            "tag": "shallow-sleep",
+            "delta": 1
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "highest_atk"
+            },
+            "buff": {
+              "tag": "shred-dmgRdct",
+              "kind": "stat",
+              "field": "dmgRdct",
+              "amount": -0.3,
+              "turns": 2
+            }
+          },
+          {
+            "op": "control",
+            "target": {
+              "rule": "highest_atk"
+            },
+            "control": {
+              "kind": "sleep",
+              "chance": null
+            }
+          },
+          {
+            "op": "control",
+            "target": {
+              "rule": "highest_atk"
+            },
+            "control": {
+              "kind": "control",
+              "chance": null
+            }
+          },
+          {
+            "op": "resource",
+            "target": {
+              "rule": "highest_atk"
+            },
+            "tag": "sleep",
+            "delta": 1
+          }
+        ]
       }
     },
     "talents": {
       "statMods": [
         {
-          "field": "pAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.25
         },
         {
           "field": "sAtk",
-          "mult": 1.15
+          "mult": 1.25
         },
         {
           "field": "crit",
-          "add": 0.05
+          "add": 0.08
+        },
+        {
+          "field": "critRes",
+          "add": 0.08
+        },
+        {
+          "field": "critPower",
+          "add": 0.11
+        },
+        {
+          "field": "block",
+          "add": 0.06
+        },
+        {
+          "field": "blockPower",
+          "add": 0.06
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.38
         }
-      ]
+      ],
+      "triggers": [
+        {
+          "on": "battleStart",
+          "effects": [
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "engage-dmgRdct",
+                "kind": "stat",
+                "field": "dmgRdct",
+                "amount": 0.12,
+                "turns": 2
+              }
+            }
+          ]
+        },
+        {
+          "on": "onHit",
+          "effects": [
+            {
+              "op": "buff",
+              "target": {
+                "rule": "column"
+              },
+              "buff": {
+                "tag": "shred-pAtk",
+                "kind": "stat",
+                "field": "pAtk",
+                "amount": -0.12,
+                "turns": 2
+              }
+            }
+          ]
+        }
+      ],
+      "rageStart": 500
     }
   },
   {
@@ -226,39 +718,48 @@
     "tier": "mythic",
     "skills": {
       "normal": {
-        "type": "S",
+        "type": "P",
         "rates": [
           1
         ],
         "rule": "column"
       },
       "basic": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          1.15
+          1.4
         ],
         "rule": "row",
-        "targetDebuffs": [
+        "effects": [
           {
-            "tag": "chill",
-            "field": "dmgRdct",
-            "amount": -0.15,
-            "turns": 2
+            "op": "damage",
+            "target": {
+              "rule": "row"
+            },
+            "basis": "targetMaxHp",
+            "share": 0.03
           }
         ]
       },
       "ult": {
-        "type": "S",
+        "type": "P",
         "rates": [
-          1.7
+          1.5
         ],
-        "rule": "row",
-        "targetDebuffs": [
+        "rule": "backline",
+        "effects": [
           {
-            "tag": "daze",
-            "field": "spd",
-            "amount": -40,
-            "turns": 2
+            "op": "buff",
+            "target": {
+              "rule": "backline"
+            },
+            "buff": {
+              "tag": "mark-ultBoost",
+              "kind": "stat",
+              "field": "ultBoost",
+              "amount": 0.25,
+              "turns": 2
+            }
           }
         ]
       }
@@ -266,18 +767,40 @@
     "talents": {
       "statMods": [
         {
-          "field": "sAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.25
         },
         {
-          "field": "controlBoost",
-          "add": 0.1
+          "field": "pAtk",
+          "mult": 1.25
         },
         {
-          "field": "healBoost",
+          "field": "crit",
+          "add": 0.45
+        },
+        {
+          "field": "critRes",
+          "add": 0.08
+        },
+        {
+          "field": "critPower",
+          "add": 0.12
+        },
+        {
+          "field": "block",
+          "add": 0.06
+        },
+        {
+          "field": "blockPower",
+          "add": 0.06
+        },
+        {
+          "field": "guardBreak",
           "add": 0.1
         }
-      ]
+      ],
+      "rageStart": 1000,
+      "basicRate": 0.6
     }
   },
   {
@@ -299,32 +822,126 @@
         "rates": [
           1.2
         ],
-        "rule": "column"
+        "rule": "column",
+        "effects": [
+          {
+            "op": "control",
+            "target": {
+              "rule": "column"
+            },
+            "control": {
+              "kind": "silence",
+              "chance": null,
+              "turns": 1
+            }
+          },
+          {
+            "op": "resource",
+            "target": {
+              "rule": "column"
+            },
+            "tag": "silence",
+            "delta": 1
+          }
+        ]
       },
       "ult": {
         "type": "P",
         "rates": [
-          1.7,
-          1.4
+          1
         ],
-        "rule": "row"
+        "rule": "all",
+        "effects": [
+          {
+            "op": "control",
+            "target": {
+              "rule": "all"
+            },
+            "control": {
+              "kind": "silence",
+              "chance": 0.25
+            }
+          },
+          {
+            "op": "resource",
+            "target": {
+              "rule": "all"
+            },
+            "tag": "silence",
+            "delta": 1,
+            "max": 1
+          }
+        ]
       }
     },
     "talents": {
       "statMods": [
         {
-          "field": "pAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.25
         },
         {
-          "field": "sAtk",
-          "mult": 1.15
+          "field": "pAtk",
+          "mult": 1.25
         },
         {
           "field": "crit",
-          "add": 0.05
+          "add": 0.08
+        },
+        {
+          "field": "critRes",
+          "add": 0.08
+        },
+        {
+          "field": "critPower",
+          "add": 0.11
+        },
+        {
+          "field": "block",
+          "add": 0.06
+        },
+        {
+          "field": "blockPower",
+          "add": 0.06
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.38
         }
-      ]
+      ],
+      "triggers": [
+        {
+          "on": "battleStart",
+          "effects": [
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "engage-dmgRdct",
+                "kind": "stat",
+                "field": "dmgRdct",
+                "amount": 0.12,
+                "turns": 2
+              }
+            }
+          ]
+        },
+        {
+          "on": "battleStart",
+          "effects": [
+            {
+              "op": "rage",
+              "target": {
+                "rule": "self"
+              },
+              "delta": 500
+            }
+          ]
+        }
+      ],
+      "rageStart": 500
     }
   },
   {
@@ -335,43 +952,272 @@
     "tier": "mythic",
     "skills": {
       "normal": {
-        "type": "P",
+        "type": "S",
         "rates": [
           1
         ],
-        "rule": "column"
+        "rule": "column",
+        "effects": [
+          {
+            "op": "resource",
+            "target": {
+              "rule": "self"
+            },
+            "tag": "sanction",
+            "delta": 1
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-sAtk",
+              "kind": "stat",
+              "field": "sAtk",
+              "amount": 0.075,
+              "turns": 99
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-critPower",
+              "kind": "stat",
+              "field": "critPower",
+              "amount": 0.05,
+              "turns": 99
+            }
+          }
+        ]
       },
       "basic": {
-        "type": "P",
+        "type": "S",
         "rates": [
           1.2
         ],
-        "rule": "column"
+        "rule": "row",
+        "effects": [
+          {
+            "op": "resource",
+            "target": {
+              "rule": "self"
+            },
+            "tag": "sanction",
+            "delta": 1
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-sAtk",
+              "kind": "stat",
+              "field": "sAtk",
+              "amount": 0.075,
+              "turns": 99
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-critPower",
+              "kind": "stat",
+              "field": "critPower",
+              "amount": 0.05,
+              "turns": 99
+            }
+          }
+        ]
       },
       "ult": {
-        "type": "P",
+        "type": "S",
         "rates": [
-          1.7,
-          1.4
+          1
         ],
-        "rule": "row"
+        "rule": "all",
+        "effects": [
+          {
+            "op": "resource",
+            "target": {
+              "rule": "self"
+            },
+            "tag": "sanction",
+            "delta": 1
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-sAtk",
+              "kind": "stat",
+              "field": "sAtk",
+              "amount": 0.075,
+              "turns": 99
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "mark-critPower",
+              "kind": "stat",
+              "field": "critPower",
+              "amount": 0.05,
+              "turns": 99
+            }
+          }
+        ]
       }
     },
     "talents": {
       "statMods": [
         {
-          "field": "pAtk",
-          "mult": 1.15
+          "field": "hp",
+          "mult": 1.25
         },
         {
           "field": "sAtk",
-          "mult": 1.15
+          "mult": 1.25
+        }
+      ],
+      "triggers": [
+        {
+          "on": "turnStart",
+          "effects": [
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-crit",
+                "kind": "stat",
+                "field": "crit",
+                "amount": 0.45,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-critRes",
+                "kind": "stat",
+                "field": "critRes",
+                "amount": 0.08,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-critPower",
+                "kind": "stat",
+                "field": "critPower",
+                "amount": 0.12,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-block",
+                "kind": "stat",
+                "field": "block",
+                "amount": 0.06,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-blockPower",
+                "kind": "stat",
+                "field": "blockPower",
+                "amount": 0.06,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-guardBreak",
+                "kind": "stat",
+                "field": "guardBreak",
+                "amount": 0.1,
+                "turns": 99
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "tick-dmgBoost",
+                "kind": "stat",
+                "field": "dmgBoost",
+                "amount": 0.015,
+                "turns": 99
+              }
+            }
+          ]
         },
         {
-          "field": "crit",
-          "add": 0.05
+          "on": "onHit",
+          "effects": [
+            {
+              "op": "resource",
+              "target": {
+                "rule": "self"
+              },
+              "tag": "sanction",
+              "delta": 1
+            },
+            {
+              "op": "buff",
+              "target": {
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "boon-sAtk",
+                "kind": "stat",
+                "field": "sAtk",
+                "amount": 0.2,
+                "turns": 2
+              }
+            }
+          ],
+          "chance": 0.5
         }
-      ]
+      ],
+      "rageStart": 500
     }
   }
 ]

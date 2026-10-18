@@ -338,3 +338,56 @@ are recorded here with the difference (never edit `reference/`).
   numbering was: M9 = PvP, M10 = Build Lab).
 - Status: plan-only; no game code changed.
 
+## M9 — Skill kits (combat DSL expansion + faithful 84-creature port)
+
+Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is the last step.
+
+- **Additive DSL v2** (`packages/content/src/schemas.ts`, `packages/engine/src/combat/*`): every new
+  field is optional and an absent field keeps the M1 behaviour, so the golden/parity/statistical suites
+  stay green.
+  - **M9.1 targeting + damage:** new target `rule`s (`frontline`, `backline`, `highest_hp`, `highest_atk`,
+    `highest_spd`, `same_position`, `adjacent`), `side: enemy | ally`, `rowFilter`, `filters`, `condition`;
+    `hpShareBasis` (`current` / `max` / `missing`), `trueDamage`, `ignoreShield`, `ignoreDefense`, a
+    structured `dot` spec (share/basis/type/turns/maxStacks/undispellable), `bonusVs`, `recastOnKill`.
+  - **M9.2 effects + conditions:** an ordered `SkillDef.effects[]` (buff, dot, control, heal with `over`
+    → regen, shield, cleanse, dispel, rage, resource, revive, secondary damage) plus the `Condition`
+    set (`selfHpBelow`/`targetHpBelow`, `selfHasTag`/`targetHasTag`, `*StackAtLeast`, `targetControlled`,
+    `targetHasDot`, `allyUnderControl`, `targetRow`, `targetTrait`), `undispellable` and immunity wiring.
+  - **M9.3 resources + scaling + cooldowns:** `Combatant.resources` with a `stack` buff kind, read by
+    scaling and conditions; `scalesWithLevel` ladders; `cooldown`/`perTurn`.
+  - **M9.4 talents + triggers:** `talents.triggers[]` over `battleStart · roundStart · roundEnd ·
+    turnStart · turnEnd · onHit · onKill · onDeath · onAllyDeath · hpBelow` (bounded by
+    `triggerDepthCap`), `talents.passive`, `rageStart`, `rageOnAction`.
+  - **M9.5 DEF switch:** `CombatField` gains `pDef`/`sDef` and a `defK` saturating curve
+    (`def / (def + defK)`) behind `defendersUseDef` (still **false**, per ASSUMPTIONS M9 #1).
+  - **M9.6 port primitives:** taunt becomes forced targeting, HP-basis damage (current/missing HP),
+    true-damage DoTs and a per-action `basicRate`.
+- **The faithful port (`scripts/port-skills.mjs`).** The captured sheet (`scripts/data/pokemon-skills.json`
+  — 84 creatures × Basic Attack / Basic Skill / Ult / Passive / Talent 1–4 = **579 rows**) is parsed into
+  the shipped kits: **84 kits written, 0 unmatched, 0 unported, 0 damage-line fallbacks**. The script is a
+  dev tool (run after `scripts/import-roster.mjs`); it preserves each kit's id/name/faction/class/tier and
+  replaces only `skills`+`talents`, so it is re-runnable. Clauses the rule library cannot express are
+  **counted, never approximated**, in `docs/PORT-REPORT.md` (111 distinct residual patterns, e.g. LV.2+
+  upgrade text 24, skill phase markers 21, talent modifiers 36, per-action rage generation 68).
+- **Content.** All 84 `packages/content/kits/<faction>.json` regenerated; `dot` effect gains a `tag`.
+- **Tests.** `packages/engine/src/combat/porting.test.ts` (5) + `dsl.test.ts` / `effects.test.ts` /
+  `scaling.test.ts` / `triggers.test.ts` / `defense.test.ts`; new `packages/cli/src/port.test.ts` (10
+  faithfulness assertions over the shipped kits). Suite: **38 files / 316 unit tests** + 50 e2e;
+  `content:validate` PASS; `pnpm check` green.
+
+### Deviation from the reference
+
+- **The sheet's LV.2/LV.3 notes are recorded as upgrade text, not modelled** (the engine has no per-skill
+  level track) — ASSUMPTIONS M9 #13. Named statuses applied without an inline damage figure become
+  `resource` marks (no invented DoT); a bare "damage" clause infers P/S from the creature's own rows;
+  conditional damage riders ("… vs backline by 25%") and clauses with no primitive (skill cooldown,
+  cheat-death, splash, per-battle uses) are recorded in `docs/PORT-REPORT.md`, never approximated
+  (ASSUMPTIONS M9 #15–#19).
+- **`defendersUseDef` still ships `false`** (the measured model): the new P.DEF/S.DEF fields are stored
+  faithfully and only cut damage if the switch is turned on.
+
+### Carried forward
+
+- **M9.7 re-tune** (campaign curve + `combat.json` deltas; re-run the statistical suite). Arena/ranked
+  (M10) reuses the M8 world-boss ghost-ladder shape.
+
