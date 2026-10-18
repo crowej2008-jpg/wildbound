@@ -416,4 +416,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   +35/-20 with the threshold stop and promotion matches, faction weather, best-of-3), deterministic
   ghost squads, and live squad strategies. Implementation proceeds in sub-steps M10.1–M10.6, one
   passing commit each.
+- **Naming (owner decision, 2026-10-17).** The Ranked ladder ships the franchise's own region and tier
+  names (Kanto → Galar; Vanguard I–III / Elite I–III / Commander I–III / Legend / Overlord / King) in
+  `packages/content` only — display strings, no code branches on them. Recorded in `docs/ASSUMPTIONS.md`
+  › Owner content override, item 10.
 

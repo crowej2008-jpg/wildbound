@@ -7,7 +7,8 @@ Covers PROMPT §7.7 (PvP), §8 (screens) and §13 (M10: "Arena, ghosts/bots, wee
 Mail, ranked ladder with weather"). M8's World Boss already built the *ghost-ladder* shape this
 milestone reuses; M9 made the roster's kits faithful, so a PvP fight is a real 6v6 battle.
 
-Reference read (shapes and rules only — every number, name and region here is our own):
+Reference read (shapes and rules only; the Ranked **region and tier names** are the franchise's,
+shipped in `packages/content` under the owner override — see `docs/ASSUMPTIONS.md`):
 
 - `reference/game-rebuild/kb/pvp-arena.md` (5 free challenges/day + bought, 3 matched opponents,
   win/deduct PvP Credits, credits decide ranking, weekly Monday settlement by rank then a credit
@@ -37,7 +38,7 @@ injected clock and all randomness from the injected seeded PRNG.
 | **PvP Credits** | the Arena score; decides the Arena rank and is reset to the band floor at settlement |
 | **Arena band** | one row of the rank table (a place range + its settlement reward + reset value) |
 | **Ghost** | a deterministic, power-scaled opponent squad generated locally (no real player) |
-| **Ranked phase** | one region (8 total), each with 12 tiers and a team-size format |
+| **Ranked phase** | one region (Kanto → Galar), each with 12 tiers and a team-size format |
 | **Tier / dan** | a Ranked rung: `dan = phase × 1000 + group × 100 + tier` |
 | **Weather** | a season-wide `+30%` damage bonus for one faction, passed into `BattleRules.weather` |
 | **Promotion match** | the fight at the tier threshold: win to promote, lose to drop points |
@@ -75,9 +76,9 @@ Pure, content-free rules; the tables are arguments (mirrors `pve/`).
 
 ### Ranked
 
-- **Tiers.** Each phase has 12 tiers with ascending thresholds (Vanguard 1–3, Elite 1–3,
-  Commander 1–3, Legend, Overlord, King — our own names live in the table). `rankedTier(dan)` /
-  `nextTier(dan, phase)`.
+- **Tiers.** Each phase has 12 tiers with ascending thresholds — **Vanguard I–III, Elite I–III,
+  Commander I–III, Legend, Overlord, King** (the reference's names, kept per the owner override).
+  `rankedTier(dan)` / `nextTier(dan, phase)`.
 - **Scoring.** `scoreAfter(score, dan, phase, win, tuning)`:
   - below the next tier's threshold a win adds `winScore` and a loss adds `lossScore` (losses climb
     too), **clamped to the next threshold** (the "points stop");
@@ -128,13 +129,19 @@ engine can fight. Seeds are pure functions of `(mode, day, credits/power, index)
     "bestOf": 3,
     "unlockChapter": 5,
     "weatherDmg": 0.3,
-    "phases": [ { "id": "phase-1", "name": "…", "teamSize": 4, "teams": 2,
+    "phases": [ { "id": "kanto", "name": "Kanto", "teamSize": 4, "teams": 2,
                   "weather": ["grove", "tide", "ember"],
-                  "tiers": [ { "name": "Vanguard I", "score": 0, "coins": 145 }, ... 12 rows ],
-                  "gifts": [ { "matches": 5, "reward": {...} }, ... ] }, ... 8 phases ]
+                  "tiers": [ { "name": "Vanguard I", "score": 0, "coins": 145 },
+                             { "name": "Vanguard II", "score": 100, "coins": 145 }, "... 12 rows" ],
+                  "gifts": [ { "matches": 5, "reward": {...} }, "... 7 rows" ] }, "... 8 phases" ]
+    // phases: Kanto -> Johto -> Hoenn -> Sinnoh -> Unova -> Kalos -> Alola -> Galar
   }
 }
 ```
+
+Region and tier names are the reference's own (Kanto…Galar; Vanguard…King), kept per the owner
+content override. They are **display strings only** and live **only** in this table — never in code,
+the engine, or the client source (see `docs/ASSUMPTIONS.md` › Owner content override, item 10).
 
 ## Combat change
 
@@ -219,6 +226,9 @@ tier reward and a challenge gift, and see the current/next weather and countdown
 - Ranked weather rotates on our **six factions** (not Grass/Water/Fire); the `+30%` is a setting.
 - Settlement is applied **lazily on load** (no scheduler), so a save left a week settles the next time
   it loads.
+- The Ranked **region and tier names are the reference's own** (Kanto…Galar; Vanguard…King), shipped in
+  `packages/content` under the owner content override (item 10). They are display strings only; no code
+  branches on them.
 - Arena **worship** (top-10 only) and **lucky ranks** need a population, so they are out of scope
   (honest "coming later" on the Arena ranking screen); best-rank achievements and participation chests
   are in scope.

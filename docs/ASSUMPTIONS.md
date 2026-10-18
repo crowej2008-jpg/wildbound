@@ -276,6 +276,13 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    shared-service route for a handful of players and wants the visual-identity pass to land before
    the backend. *What would change it:* public distribution, or a decision to return to
    single-player-only.
+10. **M10 uses the franchise's Ranked region and tier names (owner decision, 2026-10-17).** The
+    Ranked ladder's eight regions ship as the franchise's (**Kanto, Johto, Hoenn, Sinnoh, Unova,
+    Kalos, Alola, Galar**) and its twelve tiers as the reference's own (**Vanguard I–III, Elite I–III,
+    Commander I–III, Legend, Overlord, King**). Like the roster (item 1), these are permitted **only**
+    in `packages/content` (the `tuning/pvp.json` table) and are display strings — no code branches on
+    them. This is the same private, small-group scope as item 9. *What would change it:* a decision to
+    re-theme the ladder to original region/rank names, which is a content edit only.
 
 ## M9 (design) — skill kits
 
