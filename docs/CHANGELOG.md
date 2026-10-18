@@ -403,3 +403,17 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   fallback) and wants the visual-identity pass — original 2D sprites, a source-accurate UI palette, and
   full battle effects — to land after M10 PvP and before the shared backend (M12).
 
+## Plan — M10 begins; shared service required (2026-10-17)
+
+- **Order set: M10 PvP → visual-identity pass → M12 backend → M11 social → M13 Build Lab.** The owner
+  confirmed M10 first; the visual pass (2D sprites, a source-accurate UI palette, and battle effects)
+  lands before the shared backend, so the group sees the intended look from the start.
+- **The M12 backend is now required, not optional** (owner decision; recorded in `docs/SCOPE.md` and
+  `docs/ASSUMPTIONS.md` › Owner content override, item 9). Distribution stays private and invite-only
+  for a small trusted group — no public release.
+- **M10 design written: `docs/design/pvp.md`** — Arena (credits, three matched ghost opponents, daily
+  participation chests, weekly settlement by rank via Mail), the Ranked ladder (8 regions × 12 tiers,
+  +35/-20 with the threshold stop and promotion matches, faction weather, best-of-3), deterministic
+  ghost squads, and live squad strategies. Implementation proceeds in sub-steps M10.1–M10.6, one
+  passing commit each.
+

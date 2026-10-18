@@ -15,9 +15,10 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Equipment layers: Relics, Runes, Charms, Spirit Cores, Talents | Wild screen Equip/Runes/Cores/Talents | M7 | built |
 | Trials, Tower, World Boss, Daily Dungeons, Link Crystal endgame | Challenges hub, Tower, Trials, World Boss, Dungeons, Link Crystal | M8 | built |
 | Combat DSL expansion + faithful 84-creature skill kits | — (headless; Wild screen unchanged) | M9 | built |
-| Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings | M10 | pending |
+| Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings | M10 | in progress (design: `docs/design/pvp.md`) |
+| Visual-identity pass: 2D sprites, source-accurate UI palette, battle effects | Gallery, HUD, all screens | between M10 and M12 | planned |
 | Social + events (simulated), settings, help | Guild, Events, Settings, Help | M11 | pending |
-| Hardening + optional Fastify/SQLite backend | all | M12 | pending |
+| Hardening + Fastify/SQLite backend (shared service) | all | M12 | pending (required) |
 | Build Lab (owner's main goal) | Build Lab, Debug, Rules panel, Kit editor | M13 | pending |
 
 ## Reference material
@@ -35,7 +36,9 @@ Everything not yet built shows an honest "coming later" state in the client and 
 
 ## Deliberately deferred (explicit)
 
-- M12 backend (Fastify + SQLite `HttpServer`) is optional; local-only play remains the product if
-  deferred.
+- The M12 backend (Fastify + SQLite `HttpServer`) is **required** for the owner's plan to run a shared
+  online service for a small trusted group (owner decision 2026-10-17; see `docs/ASSUMPTIONS.md`
+  › Owner content override, item 9). Local-only play remains possible, but the shared service is the
+  target. Distribution stays private and invite-only — no public release.
 - Real money / payments: never. A fake gem-purchase prototype may appear later behind a clear
   "not real money" label, or be omitted.

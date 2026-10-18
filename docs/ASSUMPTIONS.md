@@ -268,6 +268,14 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    amounts were converted from "% of ATK" to a fraction of max HP. The full mapping and the dropped
    list are in `docs/design/roster-import.md`. *What would change it:* more captured skills, or new
    DSL primitives for the dropped effects.
+9. **Distribution scope: a small, trusted group — not the public (owner decision, 2026-10-17).** The
+   owner plans to let a few trusted people play through a **shared online service**, so the M12
+   backend is **required**, not optional. This **amends item 1**: "never distributed" becomes "not
+   publicly distributed — shared with a small private group only". No public release, store listing,
+   open sign-up or marketing; the build stays private and invite-only. *Why:* the owner chose the
+   shared-service route for a handful of players and wants the visual-identity pass to land before
+   the backend. *What would change it:* public distribution, or a decision to return to
+   single-player-only.
 
 ## M9 (design) — skill kits
 
