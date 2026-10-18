@@ -17,6 +17,8 @@ import {
   shopSchema,
   pveSchema,
   PVE,
+  pvpSchema,
+  PVP,
   relicsSchema,
   runesSchema,
   charmsSchema,
@@ -70,6 +72,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'gacha.json': gachaSchema as AnySchema,
   'equipment.json': equipmentTuningSchema,
   'pve.json': pveSchema as AnySchema,
+  'pvp.json': pvpSchema as AnySchema,
 };
 
 /** M7 catalogue files are identified by filename; each maps to one schema. */
@@ -219,6 +222,7 @@ export function validateContent(repoRoot: string): ValidateReport {
   }
 
   crossReferencePve(species, errors, checks);
+  crossReferencePvp(species, stages, errors, checks);
 
   const contentViolations = scanForbidden(contentRoot, contentManifest.dataDirs);
   const mediaViolations = scanBinaryMedia(resolve(repoRoot, 'packages'), PACKAGE_DIRS);
@@ -360,6 +364,54 @@ function crossReferencePve(
   }
   checks.push(
     `pve: ${PVE.trials.length} trial(s), ${PVE.dungeons.length} dungeon(s), ${PVE.worldBoss.rotation.length} boss day(s) validated`,
+  );
+}
+
+/**
+ * PvP tuning (M10): every Arena and Ranked weather faction must exist; the ranked
+ * phases together must be able to roll all six factions as weather; the Arena
+ * bands must be strictly ascending; and the chapter gates must be real chapters.
+ */
+function crossReferencePvp(
+  species: Map<string, { file: string; data: SpeciesJson }>,
+  stages: Map<string, { file: string; data: StageJson }>,
+  errors: string[],
+  checks: string[],
+): void {
+  const factions = new Set<string>([...species.values()].map((s) => s.data.faction));
+  const pools: { label: string; factions: string[] }[] = [
+    { label: 'arena opponent', factions: PVP.arena.opponent.factions },
+    ...PVP.ranked.phases.map((p) => ({ label: `ranked phase "${p.id}"`, factions: p.weather })),
+  ];
+  for (const pool of pools) {
+    for (const faction of pool.factions) {
+      if (!factions.has(faction)) {
+        errors.push(`pvp.json: ${pool.label} references unknown faction "${faction}"`);
+      }
+    }
+  }
+  const weatherSeen = new Set<string>();
+  for (const phase of PVP.ranked.phases) for (const faction of phase.weather) weatherSeen.add(faction);
+  for (const faction of FACTIONS) {
+    if (!weatherSeen.has(faction)) errors.push(`pvp.json: no ranked phase can roll weather faction "${faction}"`);
+  }
+  let prev = -1;
+  for (const band of PVP.arena.bands) {
+    if (band.minCredits <= prev) errors.push('pvp.json: arena bands must be strictly ascending by minCredits');
+    prev = band.minCredits;
+  }
+  const chapters = new Set([...stages.values()].map((s) => s.data.chapter));
+  const gates: [string, number][] = [
+    ['arenaChapter', PVP.arenaChapter],
+    ['rankedChapter', PVP.rankedChapter],
+  ];
+  for (const [label, chapter] of gates) {
+    if (chapters.size > 0 && !chapters.has(chapter)) {
+      errors.push(`pvp.json: ${label} ${chapter} has no campaign chapter`);
+    }
+  }
+  checks.push(
+    `pvp: ${PVP.arena.bands.length} arena band(s), ${PVP.arena.chestTiers.length} chest tier(s), ${PVP.ranked.phases.length} ranked phase(s) validated`,
   );
 }
 

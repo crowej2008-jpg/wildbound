@@ -1,4 +1,4 @@
-import { ACCOUNT, ECONOMY, GROWTH, POWER, QUESTS, STAGES, WILDS, GACHA, SHOPS, PVE } from '@wildbound/content';
+import { ACCOUNT, ECONOMY, GROWTH, POWER, QUESTS, STAGES, WILDS, GACHA, SHOPS, PVE, PVP } from '@wildbound/content';
 import {
   CHARMS,
   CORE_SETS,
@@ -9,7 +9,7 @@ import {
   TALENT_BLOCKS,
   TALENT_TREES,
 } from '@wildbound/content';
-import type { EconomyJson, PveJson } from '@wildbound/content';
+import type { EconomyJson, PveJson, PvpJson } from '@wildbound/content';
 import {
   mulberry32,
   type CoreStats,
@@ -65,6 +65,7 @@ export interface GameConfig {
   equipment: EquipmentTables;
   /** M8 PvE mode tables (tower, trials, world boss, dungeons, link crystal). */
   pve: PveJson;
+  pvp: PvpJson;
   xpCurve: XpCurve;
   idle: IdleConfig;
   now: () => number;
@@ -125,6 +126,7 @@ export function buildConfig(): GameConfig {
       tuning: EQUIPMENT_TUNING,
     },
     pve: PVE,
+    pvp: PVP,
     xpCurve: { base: ECONOMY.xp.base, exponent: ECONOMY.xp.exponent, maxLevel: ECONOMY.xp.maxLevel },
     idle: {
       capMinutes: Math.round(ECONOMY.idle.capHours * 60),

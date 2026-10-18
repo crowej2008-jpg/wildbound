@@ -41,6 +41,21 @@ export type { ShopJson } from './shop-schema';
 export { WILDS, FACTIONS, wildById, wildsByFaction } from './species';
 export { PVE } from './pve';
 export { pveSchema, type PveJson, type EnemyPoolJson, type TrialDefJson, type DungeonDefJson } from './pve-schema';
+export { PVP } from './pvp';
+export {
+  pvpSchema,
+  arenaSchema,
+  arenaBandSchema,
+  rankedSchema,
+  rankedPhaseSchema,
+  rankedTierSchema,
+  type PvpJson,
+  type ArenaJson,
+  type ArenaBandJson,
+  type RankedJson,
+  type RankedPhaseJson,
+  type RankedTierJson,
+} from './pvp-schema';
 export { KITS, kitById } from './kits';
 export { kitToEngine } from './kit-to-engine';
 export { STAGES, stageById, orderedStages, chapterNumbers, stagesInChapter } from './stages';
