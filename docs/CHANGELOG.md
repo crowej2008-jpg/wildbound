@@ -438,3 +438,25 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   it stood then); the new numbers apply from here on.
 - **Next: finish M10** — M10.1 (content table + engine core) through M10.6, then begin M11.
 
+## M10.1 — PvP content table and engine core (2026-10-18)
+
+- **Content.** `packages/content/tuning/pvp.json` with `src/pvp-schema.ts` + `src/pvp.ts`, exported
+  from the registry and wired into `GameConfig.pvp`. The 12 Ranked tiers and the challenge-gift track
+  are shared by every phase; each phase carries its format, weather rotation and per-tier coin values.
+  The CLI validator maps `pvp.json` to its schema and cross-checks faction references, the six-faction
+  weather coverage, ascending Arena bands and the campaign gates.
+- **Engine `packages/engine/src/pvp`.** `types.ts` (vocabulary), `arena.ts` (credits, bands, ranks,
+  the day roll, chests, best-rank achievements, the weekly settlement), `ranked.ts` (dan
+  encode/decode, the scoring model with the threshold stop and the promotion match, the Mon 03:00 →
+  Sun 22:00 season window, the 03:00 daily boundary, attempts, tier/gift claims), `weather.ts`
+  (season-keyed faction pick → `BattleRules.weather`) and `ghosts.ts` (deterministic opponent seeds
+  and squads via the M8 curve generator). `generateEnemies` gained an optional seed (the default keeps
+  M8/M9 calls byte-identical).
+- **Tests.** +30 engine tests (arena, ranked, weather, ghosts), including the reference-parity fact
+  that **42 straight wins reach 1,310** (Overlord's threshold), not 1,510. 349 unit tests / 40 files;
+  `pnpm check` green (50 e2e).
+- **Docs.** `docs/design/pvp.md`'s content-table section updated to the shipped shape; the M10
+  assumptions added to `docs/ASSUMPTIONS.md`.
+- **Next:** M10.2 — Arena on the server (state, actions, view, ghosts) + `/arena` and
+  `/arena/rankings`.
+

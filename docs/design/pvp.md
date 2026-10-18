@@ -108,36 +108,43 @@ engine can fight. Seeds are pure functions of `(mode, day, credits/power, index)
 ## Content table
 
 `packages/content/tuning/pvp.json` (schema `packages/content/src/pvp-schema.ts`, loader
-`packages/content/src/pvp.ts`, wired into `GameConfig.pvp`):
+`packages/content/src/pvp.ts`, wired into `GameConfig.pvp`). The 12 tier thresholds and the
+challenge-gift track are **shared by every phase**; each phase carries only its format, its weather
+rotation and its per-tier coin values:
 
 ```jsonc
 {
+  "arenaChapter": 2,            // campaign chapter that opens the Arena
+  "rankedChapter": 3,           // campaign chapter that opens Ranked
   "arena": {
     "freeAttemptsPerDay": 5,
     "attemptPrices": [10, 20, 20, 20, 30, 30, 40],   // by the day's purchase number; last repeats
     "opponentCount": 3,
-    "creditsPerWin": 30, "creditsPerLoss": 15,
-    "bands": [ { "min": 0, "top": 1000, "startPlace": 5000, "reward": {...}, "resetCredits": 0 }, ... ],
-    "bestRankTiers": [ { "place": 10, "reward": {...} }, ... ],   // one-time, by best place
-    "chestTiers": [ { "battles": 1, "reward": {...} }, ... ],
+    "creditsPerWin": 30, "creditsPerLoss": 15, "creditCap": 3200,
+    "bands": [ { "minCredits": 0, "startPlace": 10000, "resetCredits": 0, "reward": {...} }, ... ],  // 8, ascending
+    "chestTiers": [ { "battles": 1, "reward": {...} }, ... ],        // 10, the first N battles today
+    "bestRankTiers": [ { "place": 10, "reward": {...} }, ... ],      // one-time, by best place
     "opponent": { "factions": [], "tiers": [], "count": 6, "baseLevel": 60, "levelSlope": 1, ... }
   },
   "ranked": {
     "freeAttemptsPerDay": 6,
-    "attemptPrices": [10, 10, 20, ...],
-    "winScore": 35, "lossScore": 20,
-    "bestOf": 3,
-    "unlockChapter": 5,
-    "weatherDmg": 0.3,
-    "phases": [ { "id": "kanto", "name": "Kanto", "teamSize": 4, "teams": 2,
+    "attemptPrices": [10, 10, ... 50, 60],   // 31 rows (10×10, 20×5, 30×5, 40×5, 50×5, 60)
+    "winScore": 35, "lossScore": 20, "bestOf": 3, "weatherDmg": 0.3,
+    "tiers": [ { "name": "Vanguard I", "score": 0 }, ... "12 rows" ],   // shared by every phase
+    "giftTrack": [ { "matches": 5, "reward": {...} }, ... "7 rows (5/10/15/20/25/30/40)" ],
+    "phases": [ { "id": "kanto", "name": "Kanto", "teams": 2, "teamSize": 4,
                   "weather": ["grove", "tide", "ember"],
-                  "tiers": [ { "name": "Vanguard I", "score": 0, "coins": 145 },
-                             { "name": "Vanguard II", "score": 100, "coins": 145 }, "... 12 rows" ],
-                  "gifts": [ { "matches": 5, "reward": {...} }, "... 7 rows" ] }, "... 8 phases" ]
+                  "coins": [145, 145, 290, 290, 870, 870, 870, 1740, 1740, 1740, 2900, 2900] }, ... "8 phases" ]
     // phases: Kanto -> Johto -> Hoenn -> Sinnoh -> Unova -> Kalos -> Alola -> Galar
+    // formats: 2×4, 2×5, 2×6, 2×6, 3×4, 3×4, 3×5, 3×6 (the reference's lineup types)
   }
 }
 ```
+
+The loader cross-checks what the JSON cannot see (in `packages/cli/src/validate-content.ts`): every
+weather/enemy faction exists, the six factions are all reachable as weather, the Arena bands ascend,
+and both chapter gates are real chapters. The schema itself enforces that each phase's `coins` has
+exactly one row per tier.
 
 Region and tier names are the reference's own (Kanto…Galar; Vanguard…King), kept per the owner
 content override. They are **display strings only** and live **only** in this table — never in code,

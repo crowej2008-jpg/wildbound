@@ -407,3 +407,49 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
    what the build will *allow*; it is not a legal shield. If actual franchise sprite files are dropped
    into `packages/client/public/art/`, that is the same small-group exposure already accepted for the
    roster names (2026-10-15, above), now extended to images. Original 2D sprites remain the default.
+
+## M10 (PvP — Arena and Ranked)
+
+1. **Arena and Ranked opponents are deterministic ghosts, not real players.** The game is
+   local-first, so "matchmaking" is a pure function of `(day, credits, reroll, slot)` — the same
+   save + day + rank always meets the same trio, and Ranked seeds off the season/phase/tier. Ranked
+   stores the seed only, so a reload cannot reroll an opponent. *What would change it:* the M19
+   backend serving real defence snapshots (PROMPT §7.7 already allows saved local squads).
+2. **The absolute PvP numbers are ours; the shape is the reference's.** Credits per win/loss, the
+   band cut-offs, band places and reset values are not published, so `tuning/pvp.json` ships own
+   tunables with the reference's shape: a win adds, a loss deducts, credits decide the place, and
+   the weekly settlement pays the band then resets credits to that band's floor. *What would change
+   it:* published numbers.
+3. **Ranked scoring matches the 2026-10-04 audit exactly.** Below a tier's threshold a win adds 35
+   and a **loss also adds 20** (losses count up); the points **stop** at the next threshold; at the
+   stop the next match is the **promotion match** — a win promotes and still adds 35, a loss costs
+   20. A unit test encodes the audit's parity fact: **42 straight wins reach 1,310** (Overlord's
+   threshold), not 1,510. *What would change it:* new packet/journal evidence.
+4. **There is no demotion.** A threshold loss deducts points but never drops a tier (the reference's
+   banner only warns "your credit will be deducted"). *What would change it:* evidence of demotion.
+5. **The season is weekly and resets the tier track.** Mon 03:00 → Sun 22:00 UTC; the daily data
+   update is 03:00–05:00, which pauses matching and restores the day's attempts. The ladder's day
+   boundary is **03:00 UTC, not 00:00** (`rankedDayKey`), matching "buy_count 4 → 0 across the
+   update". Tier claims and the challenge-gift track reset each season. *What would change it:* the
+   open question of whether gifts carry across a mid-season region change.
+6. **"3 teams for 6V6" is one lineup plus a best-of-3.** The engine fights one squad per game; the
+   phase's `teams`/`teamSize` set the lineup size and `bestOf` the series length. Recorded against
+   the reference's team-format line (2×4 … 3×6). *What would change it:* a real multi-squad format.
+7. **Weather is a season-wide +30% for one of our six factions.** The reference's Grass/Water/Fire
+   rotation becomes the phase's faction list, chosen deterministically from the season key so the
+   screen and the battle agree; the `+30%` ships as `ranked.weatherDmg` (kept equal to
+   `combat.json`'s `weatherDefault`). *What would change it:* the reference's faction set mattering
+   for our roster.
+8. **Settlement is lazy (no scheduler).** A save left a week settles the next time it loads — the
+   week key is compared in `normalize` and an **Arena Rewards** Mail letter is written on a
+   rollover. *What would change it:* a server-side cron once the backend lands (M19).
+9. **Arena worship (top-10 only) and lucky ranks are out of scope.** They need a population; they
+   show as honest "coming later" on the Arena ranking screen. Best-rank achievements and the
+   participation chests are in scope. *What would change it:* the backend providing a population.
+10. **The chapter gates are our reachable equivalents.** The reference opens Arena at Main Story 5-2
+    and Ranked after the 6th gym; our campaign currently has three chapters (more arrive with the
+    M14 Victory Road work), so the gates are `arenaChapter: 2` and `rankedChapter: 3`. *What would
+    change it:* the campaign growing past three chapters.
+11. **Squad strategies go live in M10.5, opt-in.** `BattleConfig.strategies` defaults to `balanced`
+    (today's behaviour) so every M9 test is unchanged; `aggressive`/`defensive` are applied where a
+    fight passes them. *What would change it:* a decision to make them mandatory.

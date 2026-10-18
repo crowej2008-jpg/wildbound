@@ -19,9 +19,10 @@ function stepCount(every: number, index: number): number {
 /**
  * Build a deterministic enemy squad for a mode step (`index` is the 0-based
  * floor/level). Species are drawn without replacement from the curve's pool; a
- * pool smaller than `count` repeats its entries.
+ * pool smaller than `count` repeats its entries. `seed` mixes extra entropy (the
+ * M10 ghosts pass a per-opponent seed); the default keeps M8/M9 calls unchanged.
  */
-export function generateEnemies(curve: ResolvedCurve, index: number): GeneratedEnemy[] {
+export function generateEnemies(curve: ResolvedCurve, index: number, seed = 0): GeneratedEnemy[] {
   const pool = curve.pool;
   if (pool.length === 0) return [];
   const count = Math.max(1, Math.floor(curve.count));
@@ -29,7 +30,7 @@ export function generateEnemies(curve: ResolvedCurve, index: number): GeneratedE
   const stars = Math.min(curve.maxStars, 1 + stepCount(curve.starsEvery, index));
   const stage = Math.min(curve.maxStage, stepCount(curve.stageEvery, index));
 
-  const rng = mulberry32(0x9e37 ^ (Math.floor(index) * 2654435761));
+  const rng = mulberry32((0x9e37 ^ (Math.floor(index) * 2654435761) ^ (seed >>> 0)) >>> 0);
   const available = [...pool];
   const enemies: GeneratedEnemy[] = [];
   for (let i = 0; i < count; i += 1) {
