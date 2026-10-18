@@ -388,6 +388,6 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 ### Carried forward
 
-- **M9.7 re-tune** (campaign curve + `combat.json` deltas; re-run the statistical suite). Arena/ranked
+- **M9.7 re-tune** — campaign balance regression re-verified with the ported kits; no curve or `combat.json` deltas required (100% clear through chapters 1–3 at the target profiles); statistical suite green. Arena/ranked
   (M10) reuses the M8 world-boss ghost-ladder shape.
 
