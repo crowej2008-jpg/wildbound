@@ -718,4 +718,5 @@ gigantamax, dynamax, pokeball, poké ball, nintendo, game freak, the pokemon com
 ```
 
 Extend the list whenever you notice another franchise name. The test also fails if any file under
-`packages/` has a binary image, audio or font file, to enforce that all art and audio are procedural.
+`packages/` has a binary image, audio or font file, to enforce that all art and audio are procedural —
+except sprite files under `packages/client/public/art/` (owner decision 2026-10-17).

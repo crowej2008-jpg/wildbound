@@ -28,7 +28,10 @@ Architecture required by the master prompt:
   there. Do not copy rows/ids/names/tables from `reference/game-rebuild/data/` into shipped content —
   use those dumps only for formula shapes and curves. No network calls except loading the app's own
   files; no analytics, ads, or trackers. The IP guard test in `tests/ip-guard/ip-guard.test.ts` stays
-  green for the remaining franchise terms.
+  green for the remaining franchise terms. **Art allowance (2026-10-17):** the guard's binary-media
+  check exempts `packages/client/public/art/` only — 2D sprite image files may live there; every other
+  image/audio/font file under `packages/` is still refused and all other art/audio stays procedural
+  (docs/ASSUMPTIONS.md).
 - **Engineering.** TypeScript strict mode everywhere; no uncommented `any`. `packages/engine` is pure
   and deterministic: no `Math.random`, `Date.now`, or `new Date()`; randomness comes from an injected
   seeded PRNG (mulberry32), time from an injected clock. Everything tunable is data in

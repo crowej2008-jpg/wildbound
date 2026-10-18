@@ -391,3 +391,15 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - **M9.7 re-tune** — campaign balance regression re-verified with the ported kits; no curve or `combat.json` deltas required (100% clear through chapters 1–3 at the target profiles); statistical suite green. Arena/ranked
   (M10) reuses the M8 world-boss ghost-ladder shape.
 
+## Decision — art media allowance (2026-10-17)
+
+- **The IP guard's media check is amended (option B), not removed.** `scanBinaryMedia` now exempts
+  `packages/client/public/art/` (new `ART_MEDIA_ALLOWLIST` + a pure, unit-tested `isAllowedMediaPath()`),
+  so 2D sprite image files may live there; every other image/audio/font file under `packages/` is still
+  refused and all other art/audio stays procedural. The franchise-term scan (`FORBIDDEN_WORDS`) is
+  unchanged, and both guard suites gained allowlist tests. Recorded in `docs/ASSUMPTIONS.md`
+  ("Art media allowance") and reflected in `AGENTS.md` / `PROMPT.md` Appendix C.
+- **Context.** The owner chose the hybrid art path (image sprites where supplied, procedural SVG as the
+  fallback) and wants the visual-identity pass — original 2D sprites, a source-accurate UI palette, and
+  full battle effects — to land after M10 PvP and before the shared backend (M12).
+

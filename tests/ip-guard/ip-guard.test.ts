@@ -5,7 +5,8 @@
  *  1. Scans packages/content, packages/client/src and the other shipped packages
  *     for every forbidden franchise term, case-insensitively.
  *  2. Fails if any file under packages/ is binary image/audio/font media — all
- *     art and audio must be procedural.
+ *     art and audio must be procedural, except sprite files under
+ *     packages/client/public/art/ (owner decision 2026-10-17, docs/ASSUMPTIONS.md).
  *
  * The only legal locations for the forbidden terms themselves are the guard
  * implementation and its own tests (packages/cli/src/ipguard.ts and
@@ -17,6 +18,7 @@ import { describe, expect, it } from 'vitest';
 import {
   BINARY_MEDIA_EXTENSIONS,
   FORBIDDEN_WORDS,
+  isAllowedMediaPath,
   scanBinaryMedia,
   scanForbidden,
 } from '../../packages/cli/src/ipguard';
@@ -50,6 +52,13 @@ describe('IP guard', () => {
   it('no binary image/audio/font files exist under packages/', () => {
     const media = scanBinaryMedia(repoRoot, ['packages']);
     expect(media).toEqual([]);
+  });
+
+  it('exempts raster art under packages/client/public/art/ only', () => {
+    expect(isAllowedMediaPath('packages/client/public/art/charizard-0.webp')).toBe(true);
+    expect(isAllowedMediaPath('packages/client/public/art/../src/charizard.webp')).toBe(false);
+    expect(isAllowedMediaPath('packages/client/src/charizard-0.webp')).toBe(false);
+    expect(isAllowedMediaPath('packages/content/kits/ember.json')).toBe(false);
   });
 
   it('binary media extensions include the common formats', () => {

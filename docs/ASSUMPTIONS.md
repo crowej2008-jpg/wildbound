@@ -374,3 +374,19 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     scaling clauses and "Occurs N times per battle" are counted in the report's residual tail. None is
     approximated. *What would change it:* an engine primitive for each (cheat-death, splash, per-battle
     uses, skill cooldown), added in a later milestone.
+
+## Art media allowance (2026-10-17)
+
+1. **Raster sprite art is permitted under `packages/client/public/art/` — and nowhere else.** The owner
+   chose the hybrid art path (image sprites where supplied, the procedural SVG portrait as the fallback),
+   so the IP guard's binary-media check exempts that one directory. Every other image/audio/font file
+   under `packages/` is still refused, so all other art and audio stay procedural; the franchise-term
+   scan (`FORBIDDEN_WORDS`) is unchanged. Implemented as `ART_MEDIA_ALLOWLIST` + a pure
+   `isAllowedMediaPath()` in `packages/cli/src/ipguard.ts`, with tests in both guard suites.
+   *Why:* the owner asked to relax the media check (option B) while keeping the term scan, rather than
+   removing the guard. *What would change it:* the owner removing the allowance, or extending it to
+   another directory.
+2. **Franchise art is the owner's risk and is separate from this allowance.** The guard only decides
+   what the build will *allow*; it is not a legal shield. If actual franchise sprite files are dropped
+   into `packages/client/public/art/`, that is the same small-group exposure already accepted for the
+   roster names (2026-10-15, above), now extended to images. Original 2D sprites remain the default.

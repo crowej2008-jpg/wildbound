@@ -43,6 +43,15 @@ at each stage plus the stage's name and the stats/Power computed with the engine
 that stage's level cap. That is the M2 done criterion: every Wild at every stage, and art is a pure
 function of the seed.
 
+## Image sprites (hybrid, planned)
+
+The IP guard exempts `packages/client/public/art/` from its binary-media ban (owner decision
+2026-10-17, `docs/ASSUMPTIONS.md`), so 2D sprite image files may be added there — and nowhere else under
+`packages/`. The planned pipeline (built in the visual-identity pass, after M10) is: a data manifest
+mapping `speciesId` + stage to an art file, a `spriteFor(id, stage)` resolver, and a `WildPortrait` that
+renders the image when one exists and otherwise falls back to the procedural SVG above. No image ships
+until a file is added, and the SVG path is never removed.
+
 ## Accessibility
 
 Each portrait is `role="img"` with an `aria-label` of the Wild and stage name; the gallery is
