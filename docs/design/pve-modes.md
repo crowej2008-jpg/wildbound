@@ -151,7 +151,7 @@ All rewards, randomness and resets live here (PROMPT §10).
 The Combat tab becomes the **Challenges hub** (`/combat`): pins for Tower, Trials, World Boss,
 Daily Dungeons, Link Crystal, plus the M4 training battle (`/combat/training`). New routes
 `/tower`, `/trials`, `/boss`, `/dungeons`, `/crystal`. Every screen has loading/empty/error states;
-out-of-scope features (M10 PvP, M11 social) stay in their own "coming later" states.
+out-of-scope features (the remaining modes, M11–M17) stay in their own "coming later" states.
 
 ## Done criterion (M8)
 

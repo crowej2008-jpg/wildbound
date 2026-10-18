@@ -47,7 +47,7 @@ function of the seed.
 
 The IP guard exempts `packages/client/public/art/` from its binary-media ban (owner decision
 2026-10-17, `docs/ASSUMPTIONS.md`), so 2D sprite image files may be added there — and nowhere else under
-`packages/`. The planned pipeline (built in the visual-identity pass, after M10) is: a data manifest
+`packages/`. The planned pipeline (built in the visual-identity pass, M18) is: a data manifest
 mapping `speciesId` + stage to an art file, a `spriteFor(id, stage)` resolver, and a `WildPortrait` that
 renders the image when one exists and otherwise falls back to the procedural SVG above. No image ships
 until a file is added, and the SVG path is never removed.

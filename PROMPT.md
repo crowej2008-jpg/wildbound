@@ -597,13 +597,39 @@ A later `HttpServer` must be a drop-in replacement; write the OpenAPI-style spec
 - **M10 — PvP.** Arena with ghosts and bots, three-opponent matchmaking, daily attempts, weekly
   settlement via Mail, the ranked ladder with weather, rankings and rewards. Done when: a simulated
   week of play produces a correct settlement.
-- **M11 — Social and events (simulated).** Guild, events calendar, rankings polish, settings, help.
+- **M11 — Growth and collection layers II.** The held/collection systems beside the M7 equipment:
+  Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP/privileges and
+  titles. Done when: each layer has tests proving its lines change outcomes, its screen exists, and
+  every unbuilt hook shows an honest "coming later" state.
+- **M12 — Ancient Artifacts and Suppression.** The artifact collection (Mythic/Supreme pairs), Relic
+  Tablets and the other upgrade materials, the Suppression stat that ties artifact power to mode
+  strength, and Ruins Adventure (the artifact material run). Done when: artifacts activate and level,
+  and Suppression is applied where the reference applies it.
+- **M13 — Explore modes.** Hoopa's Vault (route runs and the exit guardian), Rift Arena (barriers,
+  arena, recruit, merchant), Gods Trials, Sky Pillar, Faction Tower, Misty Woods (runes), Pet Home,
+  Island Challenge, Ultra Wormhole. Done when: each is playable with rewards and resets.
+- **M14 — Combat and co-op modes.** Victory Road (the eight gym regions) with King's Trial, Collection
+  and Hall of Fame; Paradise (season, explore, dex, shop); Joint Team with Dynamax and the Wild Area;
+  Clash of Isles; Shovel Carnival. Done when: each is playable end to end.
+- **M15 — Guild, merge and events (simulated).** Guild (create/join against bots, donation, shop,
+  boss, packet, auction), the merge event, the rotating event calendar (Sign-In, Weekend Bash, Golden
+  Egg, Flower Event, Miracle Roulette, Adventure Event), and the PvP/daily shop restock schedules.
   Every simulated feature is labelled. Done when: nothing in the app is a dead button.
-- **M12 — Hardening and (optional) backend.** Accessibility audit, performance pass, save migrations,
-  error reporting to console only, docs, the Fastify + SQLite `HttpServer` for Arena ghosts and
-  rankings, a deployment guide. Done when: `pnpm check` is green, Lighthouse mobile scores are 90+
-  for performance and accessibility, and the backend passes the same e2e suite.
-- **M13 — Build Lab (last).** The full tool from 7.10, the Rules panel, the kit editor, sweeps with
+- **M16 — Guild war and Relic Battlefield.** The guild stronghold war: the tiled map, capture and node
+  scoring, stamina, guard teams with carried-over HP, shields, seasons, season quests and the seasonal
+  artifact. Depends on M12 (artifacts/Suppression) and M15 (guild/merge). Done when: a season can be
+  played against bot guilds and settled.
+- **M17 — Cross-server PvP.** Cross-Server Clash, Championship / World Championship and SPT Temple,
+  bot-driven until the backend lands. Done when: each is playable and its rewards settle.
+- **M18 — Visual-identity pass.** Original 2D sprites (image where supplied, procedural SVG fallback)
+  under `packages/client/public/art/`, a UI restyle to the measured source palette, and the full
+  battle-effects layer. Done when: the game matches the reference's look and feel.
+- **M19 — Hardening and backend (the shared service, now required).** Accessibility audit, performance
+  pass, save migrations, error reporting to console only, docs, and the Fastify + SQLite `HttpServer`
+  (accounts, real matchmaking/ghosts, rankings, settlement jobs) with a deployment guide. Done when:
+  `pnpm check` is green, Lighthouse mobile scores are 90+ for performance and accessibility, and the
+  backend passes the same e2e suite for a small private group.
+- **M20 — Build Lab (last).** The full tool from 7.10, the Rules panel, the kit editor, sweeps with
   confidence intervals, CLI parity. Done when: the owner can create a draft Wild, set a loadout, run
   a 1,000-battle sweep and export the result.
 
@@ -630,8 +656,7 @@ Never delete tests to get green. Never weaken a threshold without recording why.
 
 ## 15. Definition of done (whole project)
 
-- All milestones M0 to M13 complete (the optional M12 backend may be explicitly deferred in
-  `docs/SCOPE.md`).
+- All milestones M0 to M20 complete (the M19 backend is required — see `docs/SCOPE.md`).
 - `pnpm check` is green on a clean clone, and `pnpm build` produces a static site that runs from any
   static host.
 - A new player can complete the tutorial, build a squad, win campaign stages, summon, equip, climb

@@ -421,3 +421,20 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   `packages/content` only — display strings, no code branches on them. Recorded in `docs/ASSUMPTIONS.md`
   › Owner content override, item 10.
 
+## Plan — full mode roadmap and milestone renumber (2026-10-17)
+
+- **New order: M10 → all remaining modes and systems → visual pass → backend → Build Lab.** The owner
+  asked to build the rest of the reference's modes and systems before the art pass and the server.
+- **Milestones M11–M20 rewritten** (PROMPT §13, AGENTS.md, `docs/SCOPE.md` and `docs/ASSUMPTIONS.md`
+  updated): **M11** growth/collection II (Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items,
+  Resonance, Berries, VIP) · **M12** Ancient Artifacts + Suppression + Ruins Adventure · **M13** Explore
+  modes (Hoopa's Vault, Rift Arena, Gods Trials, Sky Pillar, Faction Tower, Misty Woods, Pet Home,
+  Island Challenge, Ultra Wormhole) · **M14** Combat/co-op modes (Victory Road + King's Trial, Paradise,
+  Joint Team + Dynamax, Clash of Isles, Shovel Carnival) · **M15** Guild + merge + events · **M16**
+  Guild war + Relic Battlefield · **M17** Cross-server PvP · **M18** Visual-identity pass · **M19**
+  backend (required) · **M20** Build Lab.
+- **Renumber map:** the old M12 backend is now **M19**; the old M13 Build Lab is now **M20**; the old
+  M11 social is folded into **M15**. Entries above keep their original numbers (they record the plan as
+  it stood then); the new numbers apply from here on.
+- **Next: finish M10** — M10.1 (content table + engine core) through M10.6, then begin M11.
+

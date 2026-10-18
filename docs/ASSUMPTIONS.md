@@ -87,13 +87,15 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
 3. **Starting account is authored data** (`tuning/account.json`): name, starting currencies, and a
    6-Wild seed roster of commons. Starting candy/gold are sized so the M3 e2e can level a Wild to its
    evolution requirement; this is a debug/dev convenience, not a balance decision.
-4. **Squad strategies are stored but inert.** `aggressive | balanced | defensive` persist per squad;
-   their combat effect (basic-skill rate / targeting) is deferred to M4 when battle setup reads squads.
+4. **Squad strategies are stored but were inert.** `aggressive | balanced | defensive` persist per
+   squad; their combat effect (skill preference / targeting) goes live in **M10** (opt-in via
+   `BattleConfig.strategies`, default `balanced` = old behaviour) — see `docs/design/pvp.md`.
 5. **HUD is intentionally partial in M3.** The player card shows name + level only; the reference's
    avatar, VIP badge and trainer XP bar are deferred to the M5 loop (XP is tracked but not awarded).
 6. **`LocalServer` is single-account and client-authoritative-for-now.** One save key, autosaved after
    every mutation, with a one-step backup. Account ids are `w<seq>`; `nextInstanceSeq` guarantees no
-   reuse. A real backend (`HttpServer`) arrives only if M12 is not deferred.
+   reuse. A real backend (`HttpServer`) arrives with **M19** (now required — see item 9 of the owner
+   content override and `docs/SCOPE.md`).
 
 ## M4
 
@@ -144,7 +146,7 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
 5. **Starting account remains a dev convenience.** `tuning/account.json` seeds 40k candy / 120k gold /
    20 stones / 200 shards so a session can level and evolve immediately; the M5 curve above is sized
    against it. *Why:* carried from M3 #3. *What would change it:* a server-driven account with real
-   onboarding rewards (M12).
+   onboarding rewards (M19).
 
 
 ## M6
@@ -178,12 +180,12 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
 8. **Currencies grow to 13; the HUD strip shows 7.** `ticketCommon`/`ticketPremium` are now
    earnable/spendable; the eight mode/shop coins (`arenaToken`, `guildCoin`, `homeCoin`,
    `forestCoin`, `islandCoin`, `wildCoin`) exist in the save and reward bundles but their main
-   sources land with their modes (M8/M10/M11). The M6 reward bundles can already pay any of them.
+   sources land with their modes (M8/M10/M15). The M6 reward bundles can already pay any of them.
 9. **Save schema is v3 with a lenient M6 migration.** A v1/v2 save missing `gacha`/`shops` gets
    defaults from the injected config; a state missing the *core* account fields (profile, roster,
    squads, currencies, `nextInstanceSeq`) is rejected as `corrupt_save`. The migration never
    invents a schema from nothing.
-10. **Deferred to M11 (social):** VIP tiers, daily/weekly gift crates, and the "Supreme Gift"
+10. **Deferred to M15 (social):** VIP tiers, daily/weekly gift crates, and the "Supreme Gift"
     storefront. The M6 shop screens show only the six `docs/design/shops.md` stock tables.
 
 ## M8
@@ -269,7 +271,7 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
    list are in `docs/design/roster-import.md`. *What would change it:* more captured skills, or new
    DSL primitives for the dropped effects.
 9. **Distribution scope: a small, trusted group — not the public (owner decision, 2026-10-17).** The
-   owner plans to let a few trusted people play through a **shared online service**, so the M12
+   owner plans to let a few trusted people play through a **shared online service**, so the M19
    backend is **required**, not optional. This **amends item 1**: "never distributed" becomes "not
    publicly distributed — shared with a small private group only". No public release, store listing,
    open sign-up or marketing; the build stays private and invite-only. *Why:* the owner chose the

@@ -80,9 +80,22 @@ pnpm check            full gate: lint + typecheck + test + content:validate + bu
 - **M8 Trials, Tower, World Boss, Link Crystal** — all PvE modes + endgame growth.
 - **M9 Skill kits** — expand the combat DSL with the primitives the imported kits need, then port all 84 creatures' kits faithfully from the owner's skills sheet; re-tune balance.
 - **M10 PvP** — Arena, ghosts/bots, weekly settlement via Mail, ranked ladder with weather.
-- **M11 Social and events (simulated)** — guild, events, settings, help; no dead buttons.
-- **M12 Hardening and (optional) backend** — accessibility/perf/saves/docs, optional Fastify+SQLite HttpServer, deployment guide.
-- **M13 Build Lab** — full tool, Rules panel, kit editor, sweeps with CIs, CLI parity (last milestone).
+- **M11 Growth and collection layers II** — Potential, Orbs, Soul-hearts, Plates, Trinkets, Held
+  Items, Resonance, Berries, VIP/privileges, titles.
+- **M12 Ancient Artifacts and Suppression** — the artifact collection, Relic Tablets/materials,
+  Suppression, Ruins Adventure.
+- **M13 Explore modes** — Hoopa's Vault, Rift Arena, Gods Trials, Sky Pillar, Faction Tower, Misty
+  Woods, Pet Home, Island Challenge, Ultra Wormhole.
+- **M14 Combat and co-op modes** — Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild
+  Area, Clash of Isles, Shovel Carnival.
+- **M15 Guild, merge and events (simulated)** — guild, merge, the event calendar, shop restocks; no
+  dead buttons.
+- **M16 Guild war and Relic Battlefield** — the guild stronghold war and its seasons.
+- **M17 Cross-server PvP** — Cross-Server Clash, Championship, SPT Temple (bot-driven).
+- **M18 Visual-identity pass** — 2D sprites, source-accurate UI palette, battle effects.
+- **M19 Hardening and backend (the shared service — required)** — a11y/perf/saves/docs, Fastify +
+  SQLite `HttpServer`, deployment guide.
+- **M20 Build Lab** — full tool, Rules panel, kit editor, sweeps with CIs, CLI parity (last milestone).
 
 ## Reference material
 
