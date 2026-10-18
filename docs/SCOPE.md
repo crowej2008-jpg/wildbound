@@ -25,6 +25,9 @@ Everything not yet built shows an honest "coming later" state in the client and 
 - `reference/game-rebuild/` — read-only copy of the research wiki/repo (kb/, atlas/, spec/,
   data/, live/ text). Media-heavy wiki-sources/ and screenshot folders are not mirrored to keep the
   repo lean and OneDrive-friendly.
+- `reference/visual/` — local-only visual reference restored from the owner's workspace (full-screen
+  `screens/` captures and the bot's `templates/` UI crops), used to match the source game's look. Ships
+  with the rest of `reference/` (gitignored, never committed); see `reference/visual/README.md`.
 - `reference/sim/` — reserved for the Python battle simulator (`battle_sim.py`, `kits.py`, and the
   two test files). **Not present on this machine as of M0.** M1 parity tests will be written against
   the formulas in `kb/stats-and-combat.md` and `spec/combat-hypotheses-2026-10-05.md` until the
