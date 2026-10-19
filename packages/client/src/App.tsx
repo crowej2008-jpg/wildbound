@@ -16,6 +16,7 @@ import More from './pages/More';
 import PveTower from './pages/PveTower';
 import PveTrials from './pages/PveTrials';
 import Quests from './pages/Quests';
+import Ranked from './pages/Ranked';
 import Shop from './pages/Shop';
 import Squad from './pages/Squad';
 import Summon from './pages/Summon';
@@ -58,6 +59,7 @@ function AppRoutes() {
         <Route path="/crystal" element={<LinkCrystal />} />
         <Route path="/arena" element={<Arena />} />
         <Route path="/arena/rankings" element={<ArenaRankings />} />
+        <Route path="/ranked" element={<Ranked />} />
         <Route path="/summon" element={<Summon />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/more" element={<More />} />

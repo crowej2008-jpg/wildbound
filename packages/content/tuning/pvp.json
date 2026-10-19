@@ -192,6 +192,17 @@
         "weather": ["frost", "shade", "volt"],
         "coins": [250, 250, 500, 500, 1500, 1500, 1500, 3000, 3000, 3000, 5000, 5000]
       }
-    ]
+    ],
+    "opponent": {
+      "factions": [],
+      "tiers": [],
+      "count": 6,
+      "baseLevel": 62,
+      "levelSlope": 1.05,
+      "starsEvery": 2,
+      "maxStars": 10,
+      "stageEvery": 4,
+      "maxStage": 3
+    }
   }
 }

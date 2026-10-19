@@ -87,6 +87,8 @@ export const rankedSchema = z
     /** Challenge-count gift track (matches → reward). */
     giftTrack: z.array(rankedGiftSchema).min(1),
     phases: z.array(rankedPhaseSchema).min(1),
+    /** The ghost rival curve; `count` is trimmed to the phase's `teamSize`. */
+    opponent: enemyPoolSchema,
   })
   .strict();
 

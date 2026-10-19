@@ -174,12 +174,17 @@ export function rollRankedDay(state: RankedState, day: string): RankedState {
   return { ...state, day, attempts: 0, bought: 0, dayWins: 0, dayBattles: 0 };
 }
 
-/** Reset the tier track and the season counters when the season turns. */
-export function rollRankedSeason(state: RankedState, season: string): RankedState {
+/**
+ * Reset the tier track and the season counters when the season turns. With a
+ * `phaseCount` the region also advances (cycling), so the eight regions all get
+ * played over time — our rule; the reference does not publish one.
+ */
+export function rollRankedSeason(state: RankedState, season: string, phaseCount?: number): RankedState {
   if (state.season === season) return state;
   return {
     ...state,
     season,
+    ...(phaseCount !== undefined && phaseCount > 0 ? { phase: (state.phase + 1) % phaseCount } : {}),
     tier: 0,
     score: 0,
     matches: 0,

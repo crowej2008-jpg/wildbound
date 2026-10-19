@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { arenaOpponentSeed, arenaOpponentSeeds, ghostSeed, ghostSquad } from './ghosts';
+import { arenaOpponentSeed, arenaOpponentSeeds, ghostSeed, ghostSquad, rankedMatchSeed } from './ghosts';
 import type { ResolvedCurve } from '../pve/types';
 
 const CURVE: ResolvedCurve = {
@@ -50,5 +50,16 @@ describe('ghost opponents', () => {
 
   it('returns an empty squad for an empty pool', () => {
     expect(ghostSquad({ ...CURVE, pool: [] }, 'arena', 1, 0)).toEqual([]);
+  });
+
+  it('seeds a Ranked match from the season, region and tier', () => {
+    const seed = rankedMatchSeed('2026-W02', 0, 3);
+    expect(rankedMatchSeed('2026-W02', 0, 3)).toBe(seed);
+    // A different season, region or rung meets different rivals.
+    expect(rankedMatchSeed('2026-W03', 0, 3)).not.toBe(seed);
+    expect(rankedMatchSeed('2026-W02', 1, 3)).not.toBe(seed);
+    expect(rankedMatchSeed('2026-W02', 0, 4)).not.toBe(seed);
+    // The same rung always fields the same squad across repeated matches.
+    expect(ghostSquad(CURVE, 'ranked', seed, 0, 3)).toEqual(ghostSquad(CURVE, 'ranked', seed, 0, 3));
   });
 });

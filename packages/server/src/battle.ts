@@ -17,6 +17,7 @@ import {
   type SpecInput,
   type SquadMode,
   type StageEnemy,
+  type WeatherRule,
   type WildClass,
   type WildInstance,
 } from '@wildbound/engine';
@@ -37,7 +38,7 @@ export interface BattleUnitSeed extends ReplayUnit {
   power: number;
 }
 
-/** A battle-mode label: the M4/M5 labels plus the M8 PvE modes. */
+/** A battle-mode label: the M4/M5 labels plus the M8 PvE modes and M10 PvP. */
 export type BattleModeLabel =
   | SquadMode
   | 'campaignStage'
@@ -45,7 +46,8 @@ export type BattleModeLabel =
   | 'trial'
   | 'worldBossFight'
   | 'dungeon'
-  | 'arenaFight';
+  | 'arenaFight'
+  | 'rankedMatch';
 
 export interface BattleView {
   seed: number;
@@ -239,6 +241,7 @@ function runView(
   mode: BattleModeLabel,
   battleId: string,
   rules?: BattleRules,
+  weather?: WeatherRule,
 ): BattleView | null {
   if (attackers.specs.length === 0 || defenders.specs.length === 0) return null;
   const result = runBattle({
@@ -249,6 +252,7 @@ function runView(
     settings: {},
     battleId,
     ...(rules ? { rules } : {}),
+    ...(weather ? { weather } : {}),
   });
   return {
     seed,
@@ -342,6 +346,10 @@ export interface ModeBattleOptions {
   battleId: string;
   seed?: number;
   rules?: BattleRules;
+  /** Faction weather (M10 Ranked): a damage bonus for that faction. */
+  weather?: WeatherRule;
+  /** Field at most this many Wilds (M10 Ranked's phase team size). */
+  sizeCap?: number;
   /** Restrict fielded Wilds to one faction (faction-locked trial). */
   faction?: Faction;
   /** Treat fielded Wilds at this level or below (level-capped trial). */
@@ -350,14 +358,17 @@ export interface ModeBattleOptions {
 
 /**
  * Build and run a PvE-mode battle (M8): attackers from a squad (optionally
- * faction-locked and/or level-capped), defenders from a generated enemy squad,
- * with the mode's special `rules`. Purely reads state.
+ * faction-locked, level-capped and/or size-capped), defenders from a generated
+ * enemy squad, with the mode's special `rules` and weather. Purely reads state.
  */
 export function modeBattle(config: GameConfig, state: AccountState, opts: ModeBattleOptions): BattleView | null {
-  const players = cappedWilds(eligibleWilds(state, config, opts.squadMode, opts.faction), opts.levelCap);
+  const players = cappedWilds(eligibleWilds(state, config, opts.squadMode, opts.faction), opts.levelCap).slice(
+    0,
+    opts.sizeCap ?? SQUAD_SIZE,
+  );
   if (players.length === 0) return null;
   const resolvedSeed = opts.seed ?? Math.floor(config.rng() * 0xffffffff);
   const attackers = buildWildTeam(players, 'attackers', config, state);
   const defenders = buildEnemyTeam(opts.enemies, config);
-  return runView(attackers, defenders, resolvedSeed, opts.label, opts.battleId, opts.rules);
+  return runView(attackers, defenders, resolvedSeed, opts.label, opts.battleId, opts.rules, opts.weather);
 }

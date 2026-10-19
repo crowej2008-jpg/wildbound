@@ -5,3 +5,4 @@
  */
 export * from './shared';
 export * from './arena';
+export * from './ranked';

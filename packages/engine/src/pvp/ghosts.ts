@@ -46,6 +46,15 @@ export function ghostSeed(mode: GhostMode, seed: number, slot: number): number {
 }
 
 /**
+ * The seed a Ranked match's games share for a season + region + tier. The same
+ * save + season + rung always meets the same rivals (a loss never rerolls them),
+ * matching the ghost model the Arena and the World Boss use.
+ */
+export function rankedMatchSeed(season: string, phase: number, tier: number): number {
+  return hashString(`${season}|${phase}|${tier}`);
+}
+
+/**
  * One deterministic ghost squad. `slot` picks the seed (so two opponents in the
  * same trio differ); `index` scales the curve (level/stars/stage) and defaults to
  * the slot, so a later slot is a touch stronger.

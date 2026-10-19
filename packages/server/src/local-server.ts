@@ -66,6 +66,8 @@ import {
   type EquipmentView,
   type GameServer,
   type GachaView,
+  type RankedBuyResult,
+  type RankedMatchResult,
   type Result,
   type ServerInfo,
   type ShopView,
@@ -99,13 +101,19 @@ import {
 } from './pve-view';
 import {
   buyArenaAttempts as buyArenaAttemptsAction,
+  buyRankedAttempts as buyRankedAttemptsAction,
   challengeArena as challengeArenaAction,
   claimArenaAchievement as claimArenaAchievementAction,
   claimArenaChest as claimArenaChestAction,
+  claimRankedGift as claimRankedGiftAction,
+  claimRankedTier as claimRankedTierAction,
   refreshArena as refreshArenaAction,
+  startRankedMatch as startRankedMatchAction,
   arenaTuning,
+  rankedTuning,
 } from './pvp';
 import { buildArenaRankingsView, buildArenaView } from './pvp-view';
+import { buildRankedView, type RankedView } from './pvp-ranked-view';
 import {
   allocateTalentAction,
   chooseTreeAction,
@@ -915,6 +923,77 @@ export class LocalServer implements GameServer {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     return ok(buildArenaRankingsView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  // --- M10.3 PvP: Ranked ---------------------------------------------------
+
+  async getRanked(): Promise<Result<RankedView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildRankedView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async startRankedMatch(seed?: number): Promise<Result<RankedMatchResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const outcome = startRankedMatchAction(this.config, state, this.now(state), seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    let next = value.state;
+    if (value.won) next = this.withQuest(next, 'winBattle');
+    // A charm charge is spent per game actually played, like every other mode.
+    const ids = fielded(state, 'arenaAttack').map((w) => w.id);
+    for (let game = 0; game < value.battles.length; game += 1) next = consumeCharms(next, ids);
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      battles: value.battles,
+      win: value.won,
+      wins: value.wins,
+      losses: value.losses,
+      scoreBefore: value.scoreBefore,
+      scoreAfter: value.scoreAfter,
+      tierBefore: value.tierBefore,
+      tierAfter: value.tierAfter,
+      promoted: value.promoted,
+      attemptsLeft: value.attemptsLeft,
+      matches: value.matches,
+      snapshot: committed.value,
+    });
+  }
+
+  async buyRankedAttempts(count: number): Promise<Result<RankedBuyResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = buyRankedAttemptsAction(this.config, loaded.value, this.now(loaded.value), count);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const committed = await this.commit(outcome.value.state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    const tuning = rankedTuning(this.config);
+    const ranked = outcome.value.state.pvp.ranked;
+    return ok({
+      bought: outcome.value.bought,
+      spent: outcome.value.spent,
+      attemptsLeft: Math.max(0, tuning.freeAttemptsPerDay + ranked.bought - ranked.attempts),
+      snapshot: committed.value,
+    });
+  }
+
+  async claimRankedTier(index: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimRankedTierAction(this.config, loaded.value, this.now(loaded.value), index);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.granted);
+  }
+
+  async claimRankedGift(index: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimRankedGiftAction(this.config, loaded.value, this.now(loaded.value), index);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.granted);
   }
 
   private async applyEquipment(run: (state: AccountState) => Result<AccountState>): Promise<Result<AccountSnapshot>> {

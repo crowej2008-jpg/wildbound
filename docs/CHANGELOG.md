@@ -494,3 +494,38 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - **Next:** M10.3 — Ranked on the server (tier ladder, promotion match, best-of-3, weather) +
   `/ranked`.
 
+## M10.3 — Ranked on the server (2026-10-18)
+
+- **Content.** `pvp.json`'s `ranked` gains the `opponent` ghost curve for the region's rivals
+  (`baseLevel: 62`, `levelSlope: 1.05`, stars/stage every 2/4 rungs). The schema now requires it and
+  `content:validate` cross-checks the ranked pool's factions alongside the Arena's.
+- **Engine.** `rankedMatchSeed(season, phase, tier)` joins `arenaOpponentSeed` in `pvp/ghosts.ts` (a
+  rung always meets the same rivals, so a reload cannot reroll them), and
+  `rollRankedSeason(state, season, phaseCount?)` now advances the region cyclically when the season
+  turns — our rule, since the reference publishes none — so all eight regions get played.
+- **Combat plumbing.** `modeBattle` gains `weather` (the M10 `BattleRules.weather` value) and
+  `sizeCap` (field at most N Wilds: the region's `teamSize`), plus a new `rankedMatch` battle label.
+- **Server actions `packages/server/src/pvp/ranked.ts`.** `startRankedMatch` plays a real
+  best-of-`bestOf` series (one ghost lineup per game, sized to the region, with the season's weather),
+  ends as soon as either side has a majority, records one match (one attempt, one gift-track step)
+  and reports the ladder move (`promoted` on a threshold win); `buyRankedAttempts` charges the day's
+  prices atomically; `claimRankedTier` pays the region's coins and `claimRankedGift` the gift bundle.
+  All pure `AccountState` transitions; a charm charge is spent per game actually played.
+- **View + boundary.** `pvp-ranked-view.ts` `buildRankedView` (region + format, dan id, the points
+  floor / next rank / promotion flag, current + next weather, attempts + price, the season countdown,
+  the season record, the 12 tier rows with their coin values and the 7 gift steps, and the trimmed
+  lineup); `GameServer` gains `getRanked`, `startRankedMatch(seed?)`, `buyRankedAttempts(n)`,
+  `claimRankedTier(index)` and `claimRankedGift(index)`, all implemented on `LocalServer`.
+- **Client.** `/ranked` (the region/format/tier/points readout, the points bar with "Next Rank", the
+  promotion banner, the weather line, attempts + buy + Start matching + a lineup deep-link, the season
+  record, the claimable tier list and the challenge-gift track) plus a Home town tile; the series
+  result reuses the M4 replay with a per-game strip so any game can be rewatched.
+- **Tests.** +10 server tests in `ranked.test.ts` (the gate, the view shape, region-sized rival
+  lineups, a real series + ladder move, the promotion match, the daily cap, the atomic attempt
+  purchase, tier/gift claims, the seasonal region advance, and a LocalServer pass over the boundary)
+  and +2 engine tests; **374 unit tests / 42 files**. `tests/e2e/m10.spec.ts` gains the locked-ladder
+  check and a full series (Start matching → replay → result card → claim tier 0); **58 e2e total**.
+- **Scope note.** Ranked's own tier/gift claims and attempt purchases ship with M10.3 (the screen needs
+  them), so M10.5 is now the PvP hub + live squad strategies.
+- **Next:** M10.4 — Arena weekly settlement via Mail + daily/season resets in `normalize`.
+

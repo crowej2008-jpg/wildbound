@@ -86,10 +86,15 @@ Pure, content-free rules; the tables are arguments (mirrors `pve/`).
     subtracts `lossScore` (the deduction the promotion banner warns about).
 - **Season.** `seasonKey(ms)` (ISO week, reuse `pve/reset.ts`), `seasonOpenAt(ms)` /
   `seasonClosedAt(ms)` = Mon 03:00 / Sun 22:00 UTC, `inDailyPause(ms)` = 03:00–05:00.
-  `rollRankedDay(state, dayKey)` restores the day's attempts (not at 00:00 UTC).
-- **Attempts.** `freeAttempts` per day, `attemptPrice(buyCount, ladder)`.
-- **Claims.** `claimableTiers(state, phase)` (reached, current phase, not yet claimed) and
-  `claimablePhaseGifts(state, phase)` (challenge-count tracks at 5/10/15/20/25/30/40 matches).
+  `rollRankedDay(state, dayKey)` restores the day's attempts (not at 00:00 UTC);
+  `rollRankedSeason(state, season, phaseCount?)` resets the tier track, the claims and the season
+  record and **advances the region** cyclically (our rule — see `docs/ASSUMPTIONS.md` item 17).
+- **Attempts.** `freeAttemptsPerDay` per day, `rankedAttemptPrice(bought, ladder)` for the next one,
+  `buyRankedAttempt(state)` for one purchase.
+- **Claims.** `claimableTiers(state)` (reached in this phase, not yet claimed) and
+  `claimableGifts(state, tuning)` (challenge-count tracks at 5/10/15/20/25/30/40 matches).
+- **Rivals.** `rankedMatchSeed(season, phase, tier)` (in `ghosts.ts`) seeds the region's lineups —
+  one per game of the series, trimmed to `teamSize` and scaled by the tier.
 
 ### Weather
 
@@ -134,9 +139,11 @@ rotation and its per-tier coin values:
     "giftTrack": [ { "matches": 5, "reward": {...} }, ... "7 rows (5/10/15/20/25/30/40)" ],
     "phases": [ { "id": "kanto", "name": "Kanto", "teams": 2, "teamSize": 4,
                   "weather": ["grove", "tide", "ember"],
-                  "coins": [145, 145, 290, 290, 870, 870, 870, 1740, 1740, 1740, 2900, 2900] }, ... "8 phases" ]
+                  "coins": [145, 145, 290, 290, 870, 870, 870, 1740, 1740, 1740, 2900, 2900] }, ... "8 phases" ],
+    "opponent": { "factions": [], "tiers": [], "count": 6, "baseLevel": 62, "levelSlope": 1.05, ... }
     // phases: Kanto -> Johto -> Hoenn -> Sinnoh -> Unova -> Kalos -> Alola -> Galar
     // formats: 2×4, 2×5, 2×6, 2×6, 3×4, 3×4, 3×5, 3×6 (the reference's lineup types)
+    // `count` is trimmed to the phase's `teamSize`; the generator's index is the tier
   }
 }
 ```
@@ -166,8 +173,9 @@ the engine, or the client source (see `docs/ASSUMPTIONS.md` › Owner content ov
 
 `AccountState` grows `pvp: { arena: ArenaState; ranked: RankedState }`; `SAVE_VERSION` → 6
 (migrated, defaulting from `day`/`weekKey`). Actions live in `packages/server/src/pvp/`
-(`shared`, `arena`, `ranked`, `settlement`); views in `pvp-view.ts`; matches go through the existing
-`modeBattle` in `battle.ts` (now passing weather + strategy). New `GameServer` methods (all `Result`):
+(`shared`, `arena`, `ranked`, `settlement`); views in `pvp-view.ts` (Arena) and
+`pvp-ranked-view.ts` (Ranked); matches go through the existing `modeBattle` in `battle.ts` (now
+passing `weather`, `sizeCap` and strategy). New `GameServer` methods (all `Result`):
 
 | Method | Effect |
 |---|---|
@@ -180,9 +188,14 @@ the engine, or the client source (see `docs/ASSUMPTIONS.md` › Owner content ov
 | `setArenaDefence(squad, strategy)` | save the DEF lineup (a stored copy, like the reference) |
 | `getArenaRankings()` | the ranking board vs ghost places |
 | `getRanked()` | region, tier, credit bar, weather now/next, attempts, gift track, win stats |
-| `startRankedMatch(seed?)` | best-of-`bestOf` 6v6 vs a ghost; score ±, promotion, streak |
+| `startRankedMatch(seed?)` | best-of-`bestOf` series vs the region's ghosts; score ±, promotion, streak |
 | `buyRankedAttempts(n)` | spend gems for attempts |
-| `claimRankedTier(dan)` / `claimRankedGift(matches)` | claim tier / challenge-gift rewards |
+| `claimRankedTier(index)` / `claimRankedGift(index)` | claim a reached tier's region coins / a challenge-gift step |
+
+**Region and weather.** The region follows `ranked.phase`; `rollRankedSeason` advances it each season
+and `weatherFor(phase.weather, season)` picks the +`weatherDmg` faction. `rankedOpponentSquads` seeds
+one lineup per game from `rankedMatchSeed(season, phase, tier)` and trims it to `phase.teamSize`;
+`startRankedMatch` fields the `arenaAttack` lineup through the same `sizeCap`.
 
 **Settlement** runs lazily in `normalize` (no cron): when the UTC week key changes, the server builds
 an **Arena Rewards** Mail letter per the player's band and resets credits to `resetCredits`; Ranked

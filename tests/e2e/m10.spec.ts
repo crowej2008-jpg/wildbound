@@ -12,10 +12,11 @@ const ROSTER = ['ninetales', 'charizard', 'starmie', 'blastoise', 'venusaur', 'r
 
 /**
  * A minimal save: `migrateSave` fills every other slice (idle, quests, mail,
- * pve, pvp …) from defaults, so this only declares what the Arena flow reads.
- * `campaign.stars['c2-6']` clears chapter 2, opening the Arena gate.
+ * pve, pvp …) from defaults, so this only declares what the PvP flows read.
+ * `stars` clears campaign stages (`c2-6` opens the Arena, `c3-6` the Ranked
+ * ladder).
  */
-function grownSave(): string {
+function grownSave(stars: Record<string, number> = { 'c2-6': 3 }): string {
   const roster = ROSTER.map((speciesId, index) => ({
     id: `w${index + 1}`,
     speciesId,
@@ -54,15 +55,15 @@ function grownSave(): string {
         wildCoin: 0,
       },
       nextInstanceSeq: ROSTER.length + 1,
-      campaign: { stars: { 'c2-6': 3 } },
+      campaign: { stars },
       tutorial: { step: 0, done: true },
     },
   });
 }
 
-async function importGrown(page: Page): Promise<void> {
+async function importGrown(page: Page, stars?: Record<string, number>): Promise<void> {
   await page.goto('/more');
-  await page.locator('#import-save').fill(grownSave());
+  await page.locator('#import-save').fill(grownSave(stars));
   await page.getByRole('button', { name: 'Import save' }).click();
   await expect(page.getByText(`Wilds: ${ROSTER.length}`)).toBeVisible();
 }
@@ -112,4 +113,44 @@ test('fights a matched ghost, claims the chest and buys an attempt', async ({ pa
   // Buying an attempt raises the day's total from 5 to 6.
   await page.getByRole('button', { name: /Buy attempt/ }).click();
   await expect(attempts).toContainText('/6');
+});
+
+test('a fresh account sees the locked Ranked ladder', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Ranked' }).click();
+  await expect(page.getByRole('heading', { name: 'Ranked' })).toBeVisible();
+  await expect(page.getByText('Clear this campaign chapter to unlock the Ranked ladder: 3')).toBeVisible();
+});
+
+test('plays a Ranked series, moves the ladder and claims a tier', async ({ page }) => {
+  await importGrown(page, { 'c2-6': 3, 'c3-6': 3 });
+  await page.goto('/ranked');
+  await expect(page.getByRole('heading', { name: 'Ranked' })).toBeVisible();
+
+  // The bottom region opens with the season's weather and six daily attempts.
+  await expect(page.locator('.stat', { hasText: 'Region' })).toContainText('Kanto');
+  await expect(page.locator('.stat', { hasText: 'Attempts' })).toContainText('6/6');
+  await expect(page.getByText('Weather:')).toBeVisible();
+  await expect(page.locator('.ranked-bar')).toBeVisible();
+
+  // A series replays each game; the result card reports the ladder move.
+  await page.getByRole('button', { name: 'Start matching' }).click();
+  await expect(page.locator('.battle-unit').first()).toBeVisible();
+  await page.getByRole('button', { name: 'Skip to end' }).click();
+  const series = page.locator('.ranked-series');
+  await expect(series).toContainText('Series');
+  await expect(series).toContainText('Points');
+  await page.getByRole('button', { name: 'Back to Ranked' }).click();
+
+  await expect(page.getByRole('heading', { name: 'Ranked' })).toBeVisible();
+  await expect(page.locator('.stat', { hasText: 'Attempts' })).toContainText('5/6');
+
+  // The bottom tier is reached on day one, so its region coins are claimable once.
+  const tier = page.locator('.milestone-row', { hasText: 'Vanguard I' }).first();
+  await tier.getByRole('button', { name: 'Claim' }).click();
+  await expect(tier.getByRole('button', { name: 'Claimed' })).toBeDisabled();
+
+  // The first challenge gift needs five matches, so it stays locked today.
+  const gift = page.locator('.milestone-row', { hasText: /^5 Matches/ }).first();
+  await expect(gift.getByRole('button', { name: 'Not reached' })).toBeDisabled();
 });

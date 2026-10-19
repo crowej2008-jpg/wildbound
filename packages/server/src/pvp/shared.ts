@@ -4,12 +4,19 @@ import {
   ghostSquad,
   isCleared,
   orderStages,
+  rankedMatchSeed,
+  weatherFor,
+  weatherRule,
   type AccountState,
   type ArenaState,
   type ArenaTuning,
   type EnemyPoolSpec,
+  type RankedPhase,
+  type RankedState,
   type RankedTuning,
   type StageEnemy,
+  type WeatherPick,
+  type WeatherRule,
 } from '@wildbound/engine';
 import type { GameConfig } from '../config';
 import { resolveCurve } from '../pve/shared';
@@ -81,4 +88,43 @@ export function arenaOpponentAt(config: GameConfig, arena: ArenaState, index: nu
 export function arenaGhostName(place: number): string {
   const seed = (place * 2654435761) % 9000;
   return `Trainer ${String(1000 + seed).padStart(4, '0')}`;
+}
+
+// --- Ranked ----------------------------------------------------------------
+
+/** The region a Ranked player is currently in (falls back to the first phase). */
+export function rankedPhase(config: GameConfig, ranked: RankedState): RankedPhase {
+  const phases = config.pvp.ranked.phases;
+  return phases[ranked.phase] ?? phases[0]!;
+}
+
+/** The season's weather faction for the player's current region. */
+export function rankedWeather(config: GameConfig, ranked: RankedState): WeatherPick {
+  return weatherFor(rankedPhase(config, ranked).weather, ranked.season);
+}
+
+/** The current region's weather as the battle rule the engine reads. */
+export function rankedWeatherRule(config: GameConfig, ranked: RankedState): WeatherRule {
+  return weatherRule(rankedWeather(config, ranked), config.pvp.ranked.weatherDmg);
+}
+
+/**
+ * The region's best-of-`bestOf` rival squads: one ghost lineup per game, each
+ * `teamSize` wide, seeded by `(season, region, tier)` and scaled by the tier so
+ * the same rung always meets the same rivals.
+ */
+export function rankedOpponentSquads(config: GameConfig, ranked: RankedState): StageEnemy[][] {
+  const tuning = rankedTuning(config);
+  const phase = rankedPhase(config, ranked);
+  const base = resolveCurve(config, config.pvp.ranked.opponent as EnemyPoolSpec);
+  const curve = { ...base, count: phase.teamSize };
+  const seed = rankedMatchSeed(ranked.season, ranked.phase, ranked.tier);
+  return Array.from({ length: tuning.bestOf }, (_, game) => ghostSquad(curve, 'ranked', seed, game, ranked.tier));
+}
+
+/** The rival squad for one game of the series (or `null` past the series). */
+export function rankedOpponentAt(config: GameConfig, ranked: RankedState, game: number): StageEnemy[] | null {
+  const squads = rankedOpponentSquads(config, ranked);
+  if (!Number.isInteger(game) || game < 0 || game >= squads.length) return null;
+  return squads[game] ?? null;
 }

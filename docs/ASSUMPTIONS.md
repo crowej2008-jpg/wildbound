@@ -454,10 +454,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     (today's behaviour) so every M9 test is unchanged; `aggressive`/`defensive` are applied where a
     fight passes them. *What would change it:* a decision to make them mandatory.
 12. **Arena ghost strength tracks the caller's band, and the trio is low/mid/high.** The day's three
-    squads share the `pvp.json` `arena.opponent` curve and differ by the generator's `index = band
-    index + slot`, so opponents grow a little as credits climb and the third is the toughest. The
-    absolute levels are ours (`baseLevel: 60`, `levelSlope: 1`) and get a balance pass in M10.6.
-    *What would change it:* the reference publishing per-rank opponent levels.
+    squads share the `pvp.json` `arena.opponent` curve and differ by the generator's
+    `index = band index + slot`, which steps the generator's **stars** (`starsEvery`) — the level
+    stays flat at `baseLevel` because `levelSlope: 1` makes `curveLevel` constant. So a rank-0 player
+    meets six level-60 rivals at 1★ and a high-band player the same level at 2★. The absolute numbers
+    are ours and get a balance pass in M10.6. *What would change it:* the reference publishing
+    per-rank opponent levels.
 13. **The Arena Refresh is free and unbounded.** The reference shows a Refresh control but publishes no
     cost or daily cap, so ours re-rolls the day's three seeds at no charge (stable until the next
     refresh, because the seeds are a pure function of the day + credits + reroll count). *What would
@@ -469,3 +471,27 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 15. **Bought attempts charge the day's prices in order and fail atomically.** `buyArenaAttempts(n)`
     sums `attemptPrices[min(bought + i, last)]` for `i = 0…n-1` and refuses the whole purchase when
     gems are short, so a partial charge never happens. *What would change it:* a different price shape.
+16. **A Ranked rung's rivals are one seeded lineup per game, sized to the region.** `ranked.opponent`
+    sets the curve and the generator's `index = tier`, so each rung is stronger; the curve's `count`
+    is trimmed to the phase's `teamSize`, and the seed is `rankedMatchSeed(season, phase, tier)` mixed
+    with the game number — the same save + season + rung always meets the same rivals, so a loss never
+    rerolls them. The absolute numbers (`baseLevel: 62`, `levelSlope: 1.05`) are ours and get their
+    balance pass in M10.6; at that slope the top rung is ~1.7× the first (a deliberate ramp, not the
+    reference's). *What would change it:* published per-rank opponent curves.
+17. **The season advances the region.** The reference publishes no region-advance rule, so
+    `rollRankedSeason(state, season, phaseCount)` steps to the next region cyclically when the season
+    turns (Kanto → Johto → … → Galar → Kanto) and resets the tier track, the claimed tiers/gifts and
+    the season record. Without it seven of the eight shipped regions would be unreachable. *What would
+    change it:* a published rule (e.g. promoting past King crossing into the next region).
+18. **The 03:00–05:00 UTC daily update is shown, not enforced.** `inDailyPause` drives a note on
+    `/ranked` and nothing else: a local-first, single-player build has no live matching to pause, and
+    blocking a save's own matches on the wall clock would only add a dead hour (and make e2e depend on
+    the runner's time of day). *What would change it:* the M19 backend, where matching really is shared.
+19. **Ranked tier coins are paid in the shared PvP token.** The reference's "Ladder Coins" are not a
+    currency we model, so `claimRankedTier` pays `coins[i]` as `arenaToken` — whose HUD label is now
+    **"PvP Tokens"** (renamed from "Arena Tokens" once both modes paid it). The id is unchanged, so no
+    save migration is needed. *What would change it:* a separate ladder currency in the engine's
+    `CURRENCY_IDS`.
+20. **Ranked fields the Arena attack lineup.** There is no seventh squad mode; `/ranked` offers a
+    deep-link to the `arenaAttack` lineup ("Lineup") and the server trims it to the region's
+    `teamSize`. *What would change it:* a dedicated `ranked` squad mode in the engine's `SQUAD_MODES`.

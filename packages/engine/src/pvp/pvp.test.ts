@@ -271,6 +271,18 @@ describe('ranked ladder', () => {
     expect(rollRankedSeason(season, 'w2')).toBe(season);
   });
 
+  it('advances the region each season when the phase count is known', () => {
+    const state = { ...initialRankedState(2, 'd', 'w1'), score: 400, tier: 4 };
+    const next = rollRankedSeason(state, 'w2', 8);
+    expect(next.phase).toBe(3);
+    expect(next.tier).toBe(0);
+    // The regions cycle rather than running off the end of the table.
+    const wrapped = rollRankedSeason({ ...state, phase: 7 }, 'w2', 8);
+    expect(wrapped.phase).toBe(0);
+    // Without a phase count the region is left alone (the engine stays content-free).
+    expect(rollRankedSeason(state, 'w2').phase).toBe(2);
+  });
+
   it('names the season window (Mon 03:00 -> Sun 22:00 UTC)', () => {
     const wed = Date.UTC(2026, 0, 7, 12, 0, 0); // Wed 7 Jan 2026
     expect(new Date(seasonOpenAt(wed)).toISOString()).toBe('2026-01-05T03:00:00.000Z');

@@ -14,6 +14,7 @@ import type { ShopView } from './shops';
 import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
+import type { RankedView } from './pvp-ranked-view';
 
 /**
  * The server boundary (PROMPT.md §10).
@@ -148,6 +149,31 @@ export interface ArenaBuyResult {
   snapshot: AccountSnapshot;
 }
 
+/** A Ranked series (M10.3): the games played, the ladder move and the promotion. */
+export interface RankedMatchResult {
+  /** The games of the series, in order; the client replays one at a time. */
+  battles: BattleView[];
+  win: boolean;
+  wins: number;
+  losses: number;
+  scoreBefore: number;
+  scoreAfter: number;
+  tierBefore: number;
+  tierAfter: number;
+  promoted: boolean;
+  attemptsLeft: number;
+  matches: number;
+  snapshot: AccountSnapshot;
+}
+
+/** Bought Ranked attempts (M10.3): what the day's prices cost in gems. */
+export interface RankedBuyResult {
+  bought: number;
+  spent: number;
+  attemptsLeft: number;
+  snapshot: AccountSnapshot;
+}
+
 export interface GameServer {
   ping(): Promise<Result<ServerInfo>>;
   loadAccount(): Promise<Result<AccountSnapshot>>;
@@ -261,6 +287,16 @@ export interface GameServer {
   setArenaDefence(slots: Squad, strategy: StrategyId): Promise<Result<AccountSnapshot>>;
   /** Display-ready Arena ranking board: the player's place vs ghost places (M10). */
   getArenaRankings(): Promise<Result<ArenaRankingsView>>;
+  /** Display-ready Ranked ladder: region, tier, weather, attempts, gifts (M10.3). */
+  getRanked(): Promise<Result<RankedView>>;
+  /** Play a Ranked series against the region's rivals (M10.3). */
+  startRankedMatch(seed?: number): Promise<Result<RankedMatchResult>>;
+  /** Spend gems for extra Ranked attempts at the day's prices (M10.3). */
+  buyRankedAttempts(count: number): Promise<Result<RankedBuyResult>>;
+  /** Claim a reached, unclaimed Ranked tier's region coins (M10.3). */
+  claimRankedTier(index: number): Promise<Result<ClaimResult>>;
+  /** Claim a reached, unclaimed Ranked challenge-gift step (M10.3). */
+  claimRankedGift(index: number): Promise<Result<ClaimResult>>;
 }
 
 export function ok<T>(value: T): Result<T> {
@@ -285,4 +321,5 @@ export * from './pve';
 export * from './pve-view';
 export * from './pvp';
 export * from './pvp-view';
+export * from './pvp-ranked-view';
 export * from './local-server';

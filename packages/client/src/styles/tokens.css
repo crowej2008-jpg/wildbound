@@ -698,3 +698,8 @@ a.btn { display: inline-flex; align-items: center; text-decoration: none; }
 .milestone-rewards { flex: 1; min-width: 0; text-align: center; }
 .town-tile-wide { grid-column: 1 / -1; }
 .town-desc { display: block; font-size: var(--text-xs); }
+
+/* M10 PvP */
+.ranked-bar { margin: var(--space-2) 0; }
+.ranked-bar > .progress-fill { background: var(--color-accent); }
+.arena-result .section-title { margin-bottom: var(--space-1); }

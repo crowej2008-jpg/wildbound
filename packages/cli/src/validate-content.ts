@@ -381,6 +381,7 @@ function crossReferencePvp(
   const factions = new Set<string>([...species.values()].map((s) => s.data.faction));
   const pools: { label: string; factions: string[] }[] = [
     { label: 'arena opponent', factions: PVP.arena.opponent.factions },
+    { label: 'ranked opponent', factions: PVP.ranked.opponent.factions },
     ...PVP.ranked.phases.map((p) => ({ label: `ranked phase "${p.id}"`, factions: p.weather })),
   ];
   for (const pool of pools) {
