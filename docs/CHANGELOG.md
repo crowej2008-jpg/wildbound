@@ -460,3 +460,37 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - **Next:** M10.2 — Arena on the server (state, actions, view, ghosts) + `/arena` and
   `/arena/rankings`.
 
+## M10.2 — Arena on the server (2026-10-18)
+
+- **State + save.** `AccountState` grows `pvp: { arena; ranked }` with `initialPvp(day, week)`;
+  `SAVE_VERSION` → **6** and `withDefaults` fills the slice for older saves (a new migration test
+  pins the fill).
+- **Server actions `packages/server/src/pvp/`.** `shared.ts` projects `pvp.json` into the engine's
+  `ArenaTuning`/`RankedTuning`, resolves the three ghost squads (curve + `band + slot` difficulty)
+  and holds the chapter-gate helpers; `arena.ts` implements `challengeArena` (a real 6v6 via the
+  existing `modeBattle`, with the new `arenaFight` battle label), `buyArenaAttempts`,
+  `refreshArena`, `claimArenaChest` and `claimArenaAchievement` as pure `AccountState` transitions.
+- **View `pvp-view.ts`.** `buildArenaView` (credits, place + best place, band, attempts, the three
+  opponents with level/power/names, chests, achievements, the defence readout, day/week countdowns)
+  and `buildArenaRankingsView` (the player's place against deterministic ghost places, plus the band
+  table and the honest "worship comes later" note).
+- **`GameServer`.** `getArena`, `refreshArena`, `challengeArena(opponentIndex, seed?)`,
+  `buyArenaAttempts(n)`, `claimArenaChest(index)`, `claimArenaAchievement(index)`,
+  `setArenaDefence(slots, strategy)` (delegates to the squad save) and `getArenaRankings()`, all
+  implemented on `LocalServer`.
+- **Client.** `/arena` (stats, attempts + buy, Refresh, DEF Lineup, three opponents on a list with
+  Challenge, participation chests, best-rank achievements, the M4 replay with an Arena result card)
+  and `/arena/rankings` (band table + the place board). The Squad editor now honours `?mode=` so
+  "Edit defence" deep-links to the Arena defence lineup; a Home town tile routes into the Arena (the
+  `/pvp` hub itself is M10.5).
+- **Tests.** +12 server tests (view shape, the chapter gate, a real battle's credit/place move, the
+  daily cap, buying at rising prices, refresh, chest + achievement claims, the ranking board, the
+  save fill, and a LocalServer pass over the boundary) and +1 engine test for `initialPvp`; 362 unit
+  tests / 41 files. New `tests/e2e/m10.spec.ts` (fresh account sees the locked Arena + the ranking
+  board; a grown save imported through the More debug tools fights a ghost, claims a chest, buys an
+  attempt). 54 e2e total.
+- **Scope note.** The Arena's own chest/achievement claims and attempt purchases ship with M10.2
+  (the screen needs them), so M10.5 becomes the PvP hub + Ranked claims + live squad strategies.
+- **Next:** M10.3 — Ranked on the server (tier ladder, promotion match, best-of-3, weather) +
+  `/ranked`.
+

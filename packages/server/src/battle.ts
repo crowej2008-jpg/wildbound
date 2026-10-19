@@ -44,7 +44,8 @@ export type BattleModeLabel =
   | 'towerFloor'
   | 'trial'
   | 'worldBossFight'
-  | 'dungeon';
+  | 'dungeon'
+  | 'arenaFight';
 
 export interface BattleView {
   seed: number;

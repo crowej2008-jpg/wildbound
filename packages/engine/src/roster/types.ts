@@ -18,6 +18,9 @@ import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
 import { initialLinkCrystal } from '../pve/linkCrystal';
+import type { ArenaState, RankedState } from '../pvp/types';
+import { initialArenaState } from '../pvp/arena';
+import { initialRankedState } from '../pvp/ranked';
 
 export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss';
 
@@ -133,6 +136,8 @@ export interface AccountState {
   loadouts: Record<string, Loadout>;
   /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
   pve: PveState;
+  /** M10: PvP progress (Arena credits/rank, Ranked ladder). */
+  pvp: PvpState;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }
@@ -154,6 +159,24 @@ export function initialPve(day: string, week: string): PveState {
     worldBoss: initialWorldBossState(day),
     dungeons: initialDungeonState(day),
     linkCrystal: initialLinkCrystal(),
+  };
+}
+
+/** M10 PvP progress. Pure data; the engine owns every rule that reads it. */
+export interface PvpState {
+  arena: ArenaState;
+  ranked: RankedState;
+}
+
+/**
+ * A fresh PvP slice: Arena credits/attempts keyed to the UTC day + ISO week, and
+ * a Ranked ladder starting at the first phase's bottom tier. The server calls
+ * this on a new save and fills it in for older ones (see `docs/design/pvp.md`).
+ */
+export function initialPvp(day: string, week: string): PvpState {
+  return {
+    arena: initialArenaState(day, week),
+    ranked: initialRankedState(0, day, week),
   };
 }
 

@@ -1,6 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import BottomNav from './components/BottomNav';
 import Hud from './components/Hud';
+import Arena from './pages/Arena';
+import ArenaRankings from './pages/ArenaRankings';
 import Campaign from './pages/Campaign';
 import Challenges from './pages/Challenges';
 import Combat from './pages/Combat';
@@ -54,6 +56,8 @@ function AppRoutes() {
         <Route path="/boss" element={<WorldBoss />} />
         <Route path="/dungeons" element={<Dungeons />} />
         <Route path="/crystal" element={<LinkCrystal />} />
+        <Route path="/arena" element={<Arena />} />
+        <Route path="/arena/rankings" element={<ArenaRankings />} />
         <Route path="/summon" element={<Summon />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/more" element={<More />} />

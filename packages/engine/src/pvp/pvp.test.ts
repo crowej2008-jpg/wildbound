@@ -43,6 +43,7 @@ import {
   tierProgress,
 } from './ranked';
 import { weatherFor, weatherRule } from './weather';
+import { initialPvp } from '../roster/types';
 import type { ArenaTuning, RankedTuning } from './types';
 
 const BANDS = [
@@ -315,6 +316,19 @@ describe('ranked ladder', () => {
     const state = { ...initialRankedState(0, 'd', 'w1'), tier: 0 };
     expect(tierProgress(state, RANKED)).toEqual({ floor: 0, nextIndex: 1, nextScore: 100 });
     expect(tierProgress({ ...state, tier: 11 }, RANKED)).toEqual({ floor: 1510, nextIndex: null, nextScore: null });
+  });
+});
+
+describe('pvp state slice', () => {
+  it('builds a fresh PvP slice for the Arena and the Ranked ladder', () => {
+    const pvp = initialPvp('2026-10-18', '2026-W42');
+    expect(pvp.arena.credits).toBe(0);
+    expect(pvp.arena.weekKey).toBe('2026-W42');
+    expect(pvp.arena.day).toBe('2026-10-18');
+    expect(pvp.ranked.phase).toBe(0);
+    expect(pvp.ranked.tier).toBe(0);
+    expect(pvp.ranked.score).toBe(0);
+    expect(pvp.ranked.season).toBe('2026-W42');
   });
 });
 

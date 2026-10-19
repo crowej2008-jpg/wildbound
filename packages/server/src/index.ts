@@ -13,6 +13,7 @@ import type { GachaView } from './gacha';
 import type { ShopView } from './shops';
 import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
+import type { ArenaRankingsView, ArenaView } from './pvp-view';
 
 /**
  * The server boundary (PROMPT.md §10).
@@ -127,6 +128,26 @@ export interface WorldBossBattleResult {
   snapshot: AccountSnapshot;
 }
 
+/** An Arena fight (M10): credits move, the place updates, chests progress. */
+export interface ArenaBattleResult {
+  battle: BattleView;
+  opponentIndex: number;
+  win: boolean;
+  creditsBefore: number;
+  creditsAfter: number;
+  place: number;
+  attemptsLeft: number;
+  snapshot: AccountSnapshot;
+}
+
+/** Bought Arena attempts (M10): what the day's prices cost in gems. */
+export interface ArenaBuyResult {
+  bought: number;
+  spent: number;
+  attemptsLeft: number;
+  snapshot: AccountSnapshot;
+}
+
 export interface GameServer {
   ping(): Promise<Result<ServerInfo>>;
   loadAccount(): Promise<Result<AccountSnapshot>>;
@@ -224,6 +245,22 @@ export interface GameServer {
   getLinkCrystal(): Promise<Result<LinkCrystalView>>;
   /** Spend candy/gold/stones to raise the Link Crystal one level (M8). */
   upgradeLinkCrystal(): Promise<Result<AccountSnapshot>>;
+  /** Display-ready Arena state: credits, rank, attempts, chests, opponents (M10). */
+  getArena(): Promise<Result<ArenaView>>;
+  /** Re-roll the day's three matched Arena opponents (M10). */
+  refreshArena(): Promise<Result<AccountSnapshot>>;
+  /** Fight one of the day's three matched Arena opponents (M10). */
+  challengeArena(opponentIndex: number, seed?: number): Promise<Result<ArenaBattleResult>>;
+  /** Spend gems for extra Arena attempts at the day's prices (M10). */
+  buyArenaAttempts(count: number): Promise<Result<ArenaBuyResult>>;
+  /** Claim a reached, unclaimed Arena participation chest (M10). */
+  claimArenaChest(index: number): Promise<Result<ClaimResult>>;
+  /** Claim a reached, unclaimed Arena best-rank achievement (M10). */
+  claimArenaAchievement(index: number): Promise<Result<ClaimResult>>;
+  /** Save the Arena defence lineup + strategy (M10). */
+  setArenaDefence(slots: Squad, strategy: StrategyId): Promise<Result<AccountSnapshot>>;
+  /** Display-ready Arena ranking board: the player's place vs ghost places (M10). */
+  getArenaRankings(): Promise<Result<ArenaRankingsView>>;
 }
 
 export function ok<T>(value: T): Result<T> {
@@ -246,4 +283,6 @@ export * from './equipment';
 export * from './equipment-view';
 export * from './pve';
 export * from './pve-view';
+export * from './pvp';
+export * from './pvp-view';
 export * from './local-server';

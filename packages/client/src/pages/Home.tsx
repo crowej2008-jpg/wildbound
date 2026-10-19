@@ -25,6 +25,7 @@ const TOWN = [
   { to: '/summon', key: 'home.link.summon' as const, icon: '🎴' },
   { to: '/shop', key: 'home.link.shop' as const, icon: '🛒' },
   { to: '/combat', key: 'home.link.combat' as const, icon: '⚔' },
+  { to: '/arena', key: 'home.link.arena' as const, icon: '🏟' },
   { to: '/gallery', key: 'home.link.gallery' as const, icon: '✦' },
 ];
 

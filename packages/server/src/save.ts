@@ -11,6 +11,7 @@ import {
   initialIdle,
   initialGacha,
   initialPve,
+  initialPvp,
   initialShopState,
   type AccountState,
   type CurrencyId,
@@ -21,7 +22,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 5;
+export const SAVE_VERSION = 6;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -48,6 +49,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     equipment: s.equipment ?? initialEquipment(config?.equipment?.tuning?.starting ?? emptyStartingEquipment()),
     loadouts: s.loadouts ?? {},
     pve: s.pve ?? initialPve(day, weekKey(now)),
+    pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     debugClockOffset: s.debugClockOffset ?? 0,
   };
 }
@@ -98,6 +100,7 @@ export function createInitialState(config: GameConfig): AccountState {
     equipment: initialEquipment(config.equipment.tuning.starting),
     loadouts: {},
     pve: initialPve(day, weekKey(now)),
+    pvp: initialPvp(day, weekKey(now)),
     debugClockOffset: 0,
   };
 }

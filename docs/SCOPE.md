@@ -15,7 +15,7 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Equipment layers: Relics, Runes, Charms, Spirit Cores, Talents | Wild screen Equip/Runes/Cores/Talents | M7 | built |
 | Trials, Tower, World Boss, Daily Dungeons, Link Crystal endgame | Challenges hub, Tower, Trials, World Boss, Dungeons, Link Crystal | M8 | built |
 | Combat DSL expansion + faithful 84-creature skill kits | — (headless; Wild screen unchanged) | M9 | built |
-| Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings | M10 | in progress (design: `docs/design/pvp.md`) |
+| Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings | M10 | in progress (Arena built; Ranked + settlement pending — `docs/design/pvp.md`) |
 | Growth/collection II: Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP | Wild screen, Trainer, VIP | M11 | pending |
 | Ancient Artifacts, Suppression, Ruins Adventure | Artifacts, Ruins Adventure | M12 | pending |
 | Explore modes: Hoopa's Vault, Rift Arena, Gods Trials, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Island Challenge, Ultra Wormhole | Explore hub + each mode | M13 | pending |

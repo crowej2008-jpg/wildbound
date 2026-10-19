@@ -56,6 +56,10 @@ import {
   GAME,
   ok,
   type AccountSnapshot,
+  type ArenaBattleResult,
+  type ArenaBuyResult,
+  type ArenaRankingsView,
+  type ArenaView,
   type BattleView,
   type ClaimResult,
   type DungeonBattleResult,
@@ -93,6 +97,15 @@ import {
   buildTrialsView,
   buildWorldBossView,
 } from './pve-view';
+import {
+  buyArenaAttempts as buyArenaAttemptsAction,
+  challengeArena as challengeArenaAction,
+  claimArenaAchievement as claimArenaAchievementAction,
+  claimArenaChest as claimArenaChestAction,
+  refreshArena as refreshArenaAction,
+  arenaTuning,
+} from './pvp';
+import { buildArenaRankingsView, buildArenaView } from './pvp-view';
 import {
   allocateTalentAction,
   chooseTreeAction,
@@ -819,6 +832,89 @@ export class LocalServer implements GameServer {
     const outcome = upgradeLinkCrystalAction(this.config, loaded.value);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commit(outcome.value.state);
+  }
+
+  // --- M10 PvP: Arena ------------------------------------------------------
+
+  async getArena(): Promise<Result<ArenaView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildArenaView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async refreshArena(): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = refreshArenaAction(this.config, loaded.value, this.now(loaded.value));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async challengeArena(opponentIndex: number, seed?: number): Promise<Result<ArenaBattleResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const outcome = challengeArenaAction(this.config, state, this.now(state), opponentIndex, seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    let next = value.state;
+    if (value.win) next = this.withQuest(next, 'winBattle');
+    next = consumeCharms(next, fielded(state, 'arenaAttack').map((w) => w.id));
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      battle: value.battle,
+      opponentIndex: value.extra.opponentIndex,
+      win: value.win,
+      creditsBefore: value.extra.creditsBefore,
+      creditsAfter: value.extra.creditsAfter,
+      place: value.extra.place,
+      attemptsLeft: value.extra.attemptsLeft,
+      snapshot: committed.value,
+    });
+  }
+
+  async buyArenaAttempts(count: number): Promise<Result<ArenaBuyResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = buyArenaAttemptsAction(this.config, loaded.value, this.now(loaded.value), count);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const committed = await this.commit(outcome.value.state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    const tuning = arenaTuning(this.config);
+    const arena = outcome.value.state.pvp.arena;
+    return ok({
+      bought: outcome.value.bought,
+      spent: outcome.value.spent,
+      attemptsLeft: Math.max(0, tuning.freeAttemptsPerDay + arena.bought - arena.attempts),
+      snapshot: committed.value,
+    });
+  }
+
+  async claimArenaChest(index: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimArenaChestAction(this.config, loaded.value, this.now(loaded.value), index);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.granted);
+  }
+
+  async claimArenaAchievement(index: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimArenaAchievementAction(this.config, loaded.value, this.now(loaded.value), index);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.granted);
+  }
+
+  async setArenaDefence(slots: Squad, strategy: StrategyId): Promise<Result<AccountSnapshot>> {
+    return this.saveSquad('arenaDefence', slots, strategy);
+  }
+
+  async getArenaRankings(): Promise<Result<ArenaRankingsView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildArenaRankingsView(this.config, loaded.value, this.now(loaded.value)));
   }
 
   private async applyEquipment(run: (state: AccountState) => Result<AccountState>): Promise<Result<AccountSnapshot>> {

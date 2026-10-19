@@ -453,3 +453,19 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 11. **Squad strategies go live in M10.5, opt-in.** `BattleConfig.strategies` defaults to `balanced`
     (today's behaviour) so every M9 test is unchanged; `aggressive`/`defensive` are applied where a
     fight passes them. *What would change it:* a decision to make them mandatory.
+12. **Arena ghost strength tracks the caller's band, and the trio is low/mid/high.** The day's three
+    squads share the `pvp.json` `arena.opponent` curve and differ by the generator's `index = band
+    index + slot`, so opponents grow a little as credits climb and the third is the toughest. The
+    absolute levels are ours (`baseLevel: 60`, `levelSlope: 1`) and get a balance pass in M10.6.
+    *What would change it:* the reference publishing per-rank opponent levels.
+13. **The Arena Refresh is free and unbounded.** The reference shows a Refresh control but publishes no
+    cost or daily cap, so ours re-rolls the day's three seeds at no charge (stable until the next
+    refresh, because the seeds are a pure function of the day + credits + reroll count). *What would
+    change it:* a published price/cap, or an owner decision to bound it.
+14. **The Arena defence is the saved `arenaDefence` lineup, not a frozen stat copy.** The reference
+    stores a defence snapshot; ours stores the lineup + strategy (`setArenaDefence` reuses the squad
+    save) and reads live stats. The "stored copy" semantics arrive with the M19 backend's defence
+    snapshots. *What would change it:* the backend.
+15. **Bought attempts charge the day's prices in order and fail atomically.** `buyArenaAttempts(n)`
+    sums `attemptPrices[min(bought + i, last)]` for `i = 0…n-1` and refuses the whole purchase when
+    gems are short, so a partial charge never happens. *What would change it:* a different price shape.

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import {
   emptySquad,
   FRONT_ROW_SLOTS,
@@ -15,7 +15,11 @@ import { species } from '../wilds';
 
 export default function Squad() {
   const { snapshot, run, busy } = useServer();
-  const [mode, setMode] = useState<SquadMode>('campaign');
+  const [params] = useSearchParams();
+  const requested = params.get('mode');
+  const initialMode: SquadMode =
+    requested && (SQUAD_MODES as readonly string[]).includes(requested) ? (requested as SquadMode) : 'campaign';
+  const [mode, setMode] = useState<SquadMode>(initialMode);
   const [selected, setSelected] = useState<number>(0);
 
   if (!snapshot) return <main className="main"><p className="muted">Loading account…</p></main>;

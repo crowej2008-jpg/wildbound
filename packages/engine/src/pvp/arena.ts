@@ -73,7 +73,7 @@ export function buyArenaAttempt(state: ArenaState): ArenaState {
   return { ...state, bought: state.bought + 1 };
 }
 
-/** Reroll the day's three opponents (the caller bounds how often). */
+/** Reroll the day's three opponents (the caller decides whether to bound it). */
 export function refreshArena(state: ArenaState): ArenaState {
   return { ...state, opponentSeed: state.opponentSeed + 1 };
 }
