@@ -529,3 +529,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     whole catalogue, so the supreme/mythic tiers are reserved for the later cross-server modes (M17)
     where the player arrives with an endgame roster. *What would change it:* the shared service
     (M19), or an owner decision to field the top tiers in Ranked.
+22. **The bottom nav is the source's six tabs in the making; PvP borrows the Explore slot (M10.6,
+    owner decision).** The source bar is *Home · Explore · Pokémon · Combat · Trainer · Bag* — six round
+    icons with labels, a claimable dot and the selected tab raised (`atlas/02-hud-and-navigation.md`;
+    photo `reference/visual/screens/0001_postlogin.png`) — and it reaches **PvP from the Explore map's
+    PvP pin**, not from the bar. Screens we have not built yet cannot be a tab, so ours ships six slots
+    with PvP in the Explore position; M13 replaces it with the world map (PvP becomes a pin) and the
+    M18 visual pass gives the bar the source's icon/label/raised-selected treatment. Our labels stay
+    original — the roster tab is **"Wilds"**, never the franchise's roster name (content override, item
+    10). *What would change it:* M13, which is where this converges.

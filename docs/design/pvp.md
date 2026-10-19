@@ -250,7 +250,13 @@ Mail" requirement.
 ## Client (`packages/client`)
 
 The bottom-nav **PvP** tab opens `/pvp` — the card hub (Arena, Ranked live; Cross-Server Clash,
-Championship, SPT Temple as honest "coming later" states listed in `docs/SCOPE.md`). New routes:
+Championship, SPT Temple as honest "coming later" states listed in `docs/SCOPE.md`). **Nav note
+(M10.6):** the source ships six bottom tabs — *Home · Explore · Pokémon · Combat · Trainer · Bag*
+(`atlas/02-hud-and-navigation.md`, `reference/visual/screens/0001_postlogin.png`) — and reaches PvP
+from the **Explore** map's PvP pin, not the bar. Our PvP tab is the interim occupant of that Explore
+slot until M13 builds the world map, at which point PvP becomes a pin there and the sixth tab becomes
+Explore. Our labels stay original (the roster tab is "Wilds", never the franchise's roster name) per
+the content-override rule. New routes:
 
 - `/arena` — the three opponents on pedestals with power/rank chips, credits + "My Ranking", attempts
   `N/5 (+)`, the chest row, Refresh, DEF Lineup, and a **Challenge** button that opens the M4 replay.
@@ -300,5 +306,5 @@ tier reward and a challenge gift, and see the current/next weather and countdown
 
 ## Out of scope (declared "coming later", listed in docs/SCOPE.md)
 
-Cross-Server Clash, World Championship / Championship, SPT Temple, King's Trial (PvE ladder under
+Cross-Server Clash, Championship, SPT Temple, King's Trial (PvE ladder under
 Victory Road), trainer "set skills", worship, lucky ranks, and cross-server group play.

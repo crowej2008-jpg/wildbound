@@ -627,9 +627,14 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   fields a supreme/mythic rival (and that the Arena's field stays varied), plus the win-rate bands above
   as regression anchors — a re-flattened ladder or a re-admitted high tier fails loudly. **406 unit
   tests / 46 files**; 58 e2e green.
-- **Docs.** `docs/ASSUMPTIONS.md` items 12/16 rewritten with the measured numbers and a new item 21 for
-  the static-curve ceiling (a grown squad outgrows the top rung; the fix is the M19 backend's live
-  matchmaking). `docs/design/pvp.md` gains a "Balance (M10.6)" section.
+- **Docs.** `docs/ASSUMPTIONS.md` items 12/16 rewritten with the measured numbers and new items 21/22
+  for the static-curve ceiling (a grown squad outgrows the top rung; the fix is the M19 backend's live
+  matchmaking) and the bottom-nav plan. `docs/design/pvp.md` gains a "Balance (M10.6)" section.
+- **Taste decisions taken (owner, same day).** The Arena trio stays an easy/mid/hard draw, the shipped
+  tier bands stay, and the hub's pending card is named **Championship** (the reference's own name, not
+  the earlier "World Championship"). On the nav the owner asked to match the source, so the bar is
+  checked against the source photo: it ships **six** tabs and reaches PvP from the Explore map pin, so
+  our sixth tab (PvP) is the interim occupant of that slot until M13 (item 22).
 - **Next:** M11 — growth and collection layers II.
 
 

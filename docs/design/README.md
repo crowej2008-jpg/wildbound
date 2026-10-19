@@ -24,4 +24,5 @@ Status:
 - M9 (design): `skill-kits.md` (the combat-DSL expansion the imported kits need — targeting, damage,
   effects/conditions, resources, triggers, cooldowns — and the plan to port all 84 creatures).
 - M10 (design): `pvp.md` (Arena credits, ghosts and weekly settlement via Mail; the Ranked ladder with
-  promotion matches, faction weather and best-of-3; live squad strategies).
+  promotion matches, faction weather and best-of-3; live squad strategies; and the M10.6 measured
+  balance pass with its tier-banded ghost pools).

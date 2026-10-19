@@ -460,7 +460,7 @@ export const en = {
   'pvp.status.soon': 'Coming later',
   'pvp.clash': 'Cross-Server Clash',
   'pvp.clash.desc': 'Server-versus-server battles for the whole roster.',
-  'pvp.championship': 'World Championship',
+  'pvp.championship': 'Championship',
   'pvp.championship.desc': 'The season-ending bracket for the strongest trainers.',
   'pvp.temple': 'SPT Temple',
   'pvp.temple.desc': 'A tower of ranked challengers with temple rewards.',
