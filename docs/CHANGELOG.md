@@ -529,3 +529,18 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   them), so M10.5 is now the PvP hub + live squad strategies.
 - **Next:** M10.4 — Arena weekly settlement via Mail + daily/season resets in `normalize`.
 
+### Carried forward
+
+- **The rank-0 Ranked rivals are too strong for a merely grown squad (M10.6).** A fixture at
+  Lv140 / 10★ / stage 2 (the same one the Arena e2e wins with) loses 0/10 series to the Kanto rung's
+  `baseLevel: 62` rivals, while Lv200 wins 10/10 — the pool is the whole roster, so it draws
+  mythic-tier species whose *kits* outrun the starter kits even at equal Power. The M10.6 balance pass
+  should either raise the player's floor (level/stars) or narrow the rival pool per region (e.g.
+  exclude the top tier) rather than only re-tuning `baseLevel`. The unit fixture pins Lv200 so the
+  tests stay deterministic.
+- **The Arena e2e's 'Victory' is seed-deterministic, not strength-deterministic.** It passes because
+  `config.rng` is `mulberry32(0x5eed)` and nothing consumes it before `challengeArena`, so the ghost
+  trio and the battle seeds are fixed. If a future change draws from `config.rng` earlier, that test
+  will flip. M10.6 should make it outcome-agnostic (assert the credits *move*, not the winner) or
+  pin an explicit `seed`.
+
