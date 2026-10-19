@@ -34,5 +34,6 @@
   "redirectChance": 0.7,
   "cleanseOrder": "oldestFirst",
   "defaultResourceCap": 99,
-  "triggerDepthCap": 4
+  "triggerDepthCap": 4,
+  "strategyUltHoldHp": 0.75
 }

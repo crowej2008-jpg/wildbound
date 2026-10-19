@@ -5,10 +5,13 @@ import {
   mergeDelta,
   resolveCoreStats,
   runBattle,
+  sideStrategy,
   SQUAD_SIZE,
   type AccountState,
   type BattleRules,
   type BattleEvent,
+  type BattleStrategies,
+  type BattleStrategy,
   type Faction,
   type PercentLines,
   type ReplayUnit,
@@ -57,6 +60,8 @@ export interface BattleView {
   events: BattleEvent[];
   units: BattleUnitSeed[];
   teams: { attackers: { power: number }; defenders: { power: number } };
+  /** M10.5: the squad strategy each side actually fought with. */
+  strategies: { attackers: BattleStrategy; defenders: BattleStrategy };
   /** Per-unit damage ledger, keyed `${side}:${position}` (M8 world-boss scoring). */
   damageDealt: Record<string, number>;
 }
@@ -234,16 +239,19 @@ function unitSeeds(
   });
 }
 
-function runView(
-  attackers: BuiltTeam,
-  defenders: BuiltTeam,
-  seed: number,
-  mode: BattleModeLabel,
-  battleId: string,
-  rules?: BattleRules,
-  weather?: WeatherRule,
-): BattleView | null {
+interface RunViewOptions {
+  seed: number;
+  mode: BattleModeLabel;
+  battleId: string;
+  rules?: BattleRules;
+  weather?: WeatherRule;
+  /** M10.5: per-side squad strategy (omitted sides fight `balanced`). */
+  strategies?: BattleStrategies;
+}
+
+function runView(attackers: BuiltTeam, defenders: BuiltTeam, opts: RunViewOptions): BattleView | null {
   if (attackers.specs.length === 0 || defenders.specs.length === 0) return null;
+  const { seed, mode, battleId, rules, weather, strategies } = opts;
   const result = runBattle({
     attackers: attackers.specs,
     defenders: defenders.specs,
@@ -253,6 +261,7 @@ function runView(
     battleId,
     ...(rules ? { rules } : {}),
     ...(weather ? { weather } : {}),
+    ...(strategies ? { strategies } : {}),
   });
   return {
     seed,
@@ -262,6 +271,10 @@ function runView(
     events: result.events,
     units: unitSeeds(result, attackers, defenders),
     teams: { attackers: { power: attackers.power }, defenders: { power: defenders.power } },
+    strategies: {
+      attackers: sideStrategy(strategies, 'attackers'),
+      defenders: sideStrategy(strategies, 'defenders'),
+    },
     damageDealt: result.damageDealt,
   };
 }
@@ -269,7 +282,8 @@ function runView(
 /**
  * Simulate a battle for the given mode against a mirrored echo squad and return
  * an immutable replay payload (M4 demo). The seed is server-side randomness
- * unless supplied (tests / library replays).
+ * unless supplied (tests / library replays). The echo is your own squad, so it
+ * fights with the mode's strategy too.
  */
 export function startBattle(config: GameConfig, state: AccountState, mode: SquadMode, seed?: number): BattleView | null {
   const players = fielded(state, mode);
@@ -277,7 +291,12 @@ export function startBattle(config: GameConfig, state: AccountState, mode: Squad
   const resolvedSeed = seed ?? Math.floor(config.rng() * 0xffffffff);
   const attackers = buildWildTeam(players, 'attackers', config, state);
   const defenders = buildWildTeam([...players].reverse(), 'defenders', config, state);
-  return runView(attackers, defenders, resolvedSeed, mode, `m4:${mode}:${resolvedSeed}`);
+  return runView(attackers, defenders, {
+    seed: resolvedSeed,
+    mode,
+    battleId: `m4:${mode}:${resolvedSeed}`,
+    strategies: { attackers: state.strategies[mode], defenders: state.strategies[mode] },
+  });
 }
 
 /**
@@ -296,7 +315,12 @@ export function stageBattle(
   const resolvedSeed = seed ?? Math.floor(config.rng() * 0xffffffff);
   const attackers = buildWildTeam(players, 'attackers', config, state);
   const defenders = buildEnemyTeam(enemies, config);
-  return runView(attackers, defenders, resolvedSeed, 'campaignStage', `m5:${stageId}:${resolvedSeed}`);
+  return runView(attackers, defenders, {
+    seed: resolvedSeed,
+    mode: 'campaignStage',
+    battleId: `m5:${stageId}:${resolvedSeed}`,
+    strategies: { attackers: state.strategies.campaign },
+  });
 }
 
 /**
@@ -354,12 +378,16 @@ export interface ModeBattleOptions {
   faction?: Faction;
   /** Treat fielded Wilds at this level or below (level-capped trial). */
   levelCap?: number;
+  /** M10.5: the defender side's strategy (real-defender modes; ghosts stay `balanced`). */
+  defenderStrategy?: BattleStrategy;
 }
 
 /**
  * Build and run a PvE-mode battle (M8): attackers from a squad (optionally
  * faction-locked, level-capped and/or size-capped), defenders from a generated
- * enemy squad, with the mode's special `rules` and weather. Purely reads state.
+ * enemy squad, with the mode's special `rules`, weather and squad strategy
+ * (M10.5 — the attackers always fight with the squad mode's own strategy).
+ * Purely reads state.
  */
 export function modeBattle(config: GameConfig, state: AccountState, opts: ModeBattleOptions): BattleView | null {
   const players = cappedWilds(eligibleWilds(state, config, opts.squadMode, opts.faction), opts.levelCap).slice(
@@ -370,5 +398,15 @@ export function modeBattle(config: GameConfig, state: AccountState, opts: ModeBa
   const resolvedSeed = opts.seed ?? Math.floor(config.rng() * 0xffffffff);
   const attackers = buildWildTeam(players, 'attackers', config, state);
   const defenders = buildEnemyTeam(opts.enemies, config);
-  return runView(attackers, defenders, resolvedSeed, opts.label, opts.battleId, opts.rules, opts.weather);
+  return runView(attackers, defenders, {
+    seed: resolvedSeed,
+    mode: opts.label,
+    battleId: opts.battleId,
+    ...(opts.rules ? { rules: opts.rules } : {}),
+    ...(opts.weather ? { weather: opts.weather } : {}),
+    strategies: {
+      attackers: state.strategies[opts.squadMode],
+      ...(opts.defenderStrategy ? { defenders: opts.defenderStrategy } : {}),
+    },
+  });
 }

@@ -38,6 +38,7 @@ export function runBattle(config: BattleConfig): BattleResult {
     events,
     weather: config.weather,
     rules: config.rules,
+    strategies: config.strategies,
     deterministic,
     round: 0,
     alreadyAppliedHooks: new Set<string>(),

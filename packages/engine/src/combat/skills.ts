@@ -7,6 +7,7 @@ import { applyEffects } from './effects';
 import { selectTargets } from './targeting';
 import { applySkillSideEffects } from './sustain';
 import { scaleBuff } from './scaling';
+import { chooseSlot, holdsUltimate, sideStrategy } from './strategy';
 import type { BattleContext, Combatant, SkillDef, SkillSlot } from './types';
 
 /**
@@ -28,7 +29,9 @@ export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): 
   tickRegen(ctx, u);
 
   const skip = u.buffs.some((b) => b.kind === 'control');
-  const ultReady = ctx.rules?.noUltimate !== true && u.rage >= ctx.settings.ultRageCost;
+  const strategy = sideStrategy(ctx.strategies, u.side);
+  const ultReady =
+    ctx.rules?.noUltimate !== true && u.rage >= ctx.settings.ultRageCost && !holdsUltimate(ctx, u, strategy);
   const paralysis = u.buffs.some((b) => b.kind === 'paralysis');
 
   if (skip || (paralysis && !ultReady)) {
@@ -37,7 +40,12 @@ export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): 
   }
 
   const silence = u.buffs.some((b) => b.kind === 'silence');
-  const slot: SkillSlot = ultReady && !silence ? 'ult' : rollSkillSlot(ctx, u);
+  const slot: SkillSlot = chooseSlot(
+    strategy,
+    u.kit,
+    ultReady && !silence,
+    ultReady && !silence ? 'ult' : rollSkillSlot(ctx, u),
+  );
   const skill = u.kit.skills[slot];
   ctx.events.push({ type: 'action', unit: u.key, skill: slot });
 

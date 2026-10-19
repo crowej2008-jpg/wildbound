@@ -452,6 +452,23 @@ export interface BattleConfig {
   weather?: { factions: Faction[]; dmg: number };
   /** M8: per-mode battle rules (Trials). See docs/design/pve-modes.md. */
   rules?: BattleRules;
+  /** M10.5: per-side squad strategy; omitted sides fight `balanced`. */
+  strategies?: BattleStrategies;
+}
+
+/**
+ * Squad strategy (M10.5). `balanced` is the measured M1 model and the default;
+ * `aggressive` and `defensive` are the Squad screen's opt-in policies. See
+ * `strategy.ts` for what each one changes.
+ */
+export type BattleStrategy = 'aggressive' | 'balanced' | 'defensive';
+
+export const BATTLE_STRATEGIES: readonly BattleStrategy[] = ['aggressive', 'balanced', 'defensive'];
+
+/** One strategy per side; a missing side keeps the measured `balanced` model. */
+export interface BattleStrategies {
+  attackers?: BattleStrategy;
+  defenders?: BattleStrategy;
 }
 
 /** Special rules a PvE mode (M8 Trials) imposes on a battle. */
@@ -521,6 +538,8 @@ export interface BattleContext {
   weather?: BattleConfig['weather'];
   /** M8: per-mode battle rules (Trials); undefined = standard rules. */
   rules?: BattleRules;
+  /** M10.5: per-side squad strategy; omitted sides fight `balanced`. */
+  strategies?: BattleStrategies;
   /** deterministic replay: every roll returns ~0, so no crit/block and no
    * chance-based control ever lands (guaranteed ones still land). */
   deterministic: boolean;

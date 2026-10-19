@@ -1,14 +1,15 @@
 import { expect, test } from '@playwright/test';
 
-test('boots to Home with the five-tab bottom nav', async ({ page }) => {
+test('boots to Home with the six-tab bottom nav', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { name: 'Welcome to Wildbound' })).toBeVisible();
-  await expect(page.getByText('Milestone 8', { exact: false })).toBeVisible();
+  await expect(page.getByText('Milestone 10', { exact: false })).toBeVisible();
 
   const nav = page.getByRole('navigation', { name: 'Primary' });
   await expect(nav.getByRole('link', { name: 'Home' })).toBeVisible();
   await expect(nav.getByRole('link', { name: 'Wilds' })).toBeVisible();
   await expect(nav.getByRole('link', { name: 'Combat' })).toBeVisible();
+  await expect(nav.getByRole('link', { name: 'PvP' })).toBeVisible();
   await expect(nav.getByRole('link', { name: 'Summon' })).toBeVisible();
   await expect(nav.getByRole('link', { name: 'More' })).toBeVisible();
 });

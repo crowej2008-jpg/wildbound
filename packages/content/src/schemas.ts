@@ -363,6 +363,7 @@ export const combatSettingsSchema = z
     cleanseOrder: z.enum(['oldestFirst', 'newestFirst']),
     defaultResourceCap: z.number().int().positive(),
     triggerDepthCap: z.number().int().positive(),
+    strategyUltHoldHp: z.number().min(0).max(1),
   })
   .strict();
 

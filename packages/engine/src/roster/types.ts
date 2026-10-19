@@ -21,6 +21,8 @@ import { initialLinkCrystal } from '../pve/linkCrystal';
 import type { ArenaState, RankedState } from '../pvp/types';
 import { initialArenaState } from '../pvp/arena';
 import { initialRankedState } from '../pvp/ranked';
+import type { BattleStrategy } from '../combat/types';
+import { BATTLE_STRATEGIES } from '../combat/types';
 
 export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss';
 
@@ -37,9 +39,9 @@ export const SQUAD_SIZE = 6;
 /** Slots 0-2 are the front row (absorb multi-target hits first); 3-5 the back. */
 export const FRONT_ROW_SLOTS: readonly number[] = [0, 1, 2];
 
-export type StrategyId = 'aggressive' | 'balanced' | 'defensive';
+export type StrategyId = BattleStrategy;
 
-export const STRATEGIES: readonly StrategyId[] = ['aggressive', 'balanced', 'defensive'];
+export { BATTLE_STRATEGIES as STRATEGIES };
 
 export type CurrencyId =
   // M3 core currencies.

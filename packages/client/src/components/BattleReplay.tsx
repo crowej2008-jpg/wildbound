@@ -5,7 +5,7 @@ import type { BattleView } from '@wildbound/server';
 import BattleField, { type BattlePopup } from './BattleField';
 import ResultPanel from './ResultPanel';
 import { describeEvent } from '../combat/events';
-import { t } from '../i18n';
+import { t, strategyLabel } from '../i18n';
 
 const SPEEDS = [1, 2, 4] as const;
 const BASE_DELAY = 550;
@@ -105,14 +105,18 @@ export default function BattleReplay({
       </div>
 
       <div className="battle-teams">
-        <span className="muted">{defenderLabel ?? t('combat.team.defenders')}</span>
+        <span className="muted">
+          {defenderLabel ?? t('combat.team.defenders')} · {strategyLabel[view.strategies.defenders]}
+        </span>
         <span className="muted">
           {t('combat.teamPower')} {view.teams.defenders.power.toLocaleString()}
         </span>
       </div>
       <BattleField state={state} seeds={seeds} actorKey={actorKey} targetKey={targetKey} popup={popup} popupIndex={index} />
       <div className="battle-teams">
-        <span className="muted">{attackerLabel ?? t('combat.team.attackers')}</span>
+        <span className="muted">
+          {attackerLabel ?? t('combat.team.attackers')} · {strategyLabel[view.strategies.attackers]}
+        </span>
         <span className="muted">
           {t('combat.teamPower')} {view.teams.attackers.power.toLocaleString()}
         </span>

@@ -2,6 +2,7 @@ import { mulberry32 } from '../rng';
 import { DEFAULT_COMBAT_SETTINGS, type CombatSettings } from './settings';
 import type {
   BattleContext,
+  BattleStrategies,
   Combatant,
   KitDef,
   SheetInput,
@@ -149,6 +150,8 @@ export function makeCtx(options: {
   settings?: Partial<CombatSettings>;
   seed?: number;
   deterministic?: boolean;
+  /** M10.5: per-side squad strategy (omitted sides fight `balanced`). */
+  strategies?: BattleStrategies;
 }): BattleContext {
   const settings = { ...DEFAULT_COMBAT_SETTINGS, ...options.settings };
   return {
@@ -156,6 +159,7 @@ export function makeCtx(options: {
     rng: options.deterministic ? () => 0.999999 : mulberry32(options.seed ?? 1),
     units: options.units,
     events: [],
+    strategies: options.strategies,
     deterministic: options.deterministic === true,
     round: 1,
     alreadyAppliedHooks: new Set<string>(),

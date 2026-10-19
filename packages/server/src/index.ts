@@ -15,6 +15,7 @@ import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
+import type { PvpHubView } from './pvp-hub-view';
 
 /**
  * The server boundary (PROMPT.md §10).
@@ -273,6 +274,8 @@ export interface GameServer {
   upgradeLinkCrystal(): Promise<Result<AccountSnapshot>>;
   /** Display-ready Arena state: credits, rank, attempts, chests, opponents (M10). */
   getArena(): Promise<Result<ArenaView>>;
+  /** Display-ready PvP hub: one card per entry point with its live status (M10.5). */
+  getPvpHub(): Promise<Result<PvpHubView>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -322,4 +325,5 @@ export * from './pve-view';
 export * from './pvp';
 export * from './pvp-view';
 export * from './pvp-ranked-view';
+export * from './pvp-hub-view';
 export * from './local-server';

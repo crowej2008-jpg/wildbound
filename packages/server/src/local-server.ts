@@ -115,6 +115,7 @@ import {
 } from './pvp';
 import { buildArenaRankingsView, buildArenaView } from './pvp-view';
 import { buildRankedView, type RankedView } from './pvp-ranked-view';
+import { buildPvpHubView, type PvpHubView } from './pvp-hub-view';
 import {
   allocateTalentAction,
   chooseTreeAction,
@@ -849,6 +850,12 @@ export class LocalServer implements GameServer {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     return ok(buildArenaView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async getPvpHub(): Promise<Result<PvpHubView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildPvpHubView(this.config, loaded.value, this.now(loaded.value)));
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

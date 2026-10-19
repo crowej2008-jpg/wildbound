@@ -71,6 +71,11 @@ export interface CombatSettings {
   defaultResourceCap: number;
   /** M9: how many nested trigger activations may chain before they stop. */
   triggerDepthCap: number;
+  /**
+   * M10.5: a `defensive` squad holds its ultimate while every living ally is above
+   * this share of max HP (our rule — the reference publishes no AI detail).
+   */
+  strategyUltHoldHp: number;
 }
 
 export const DEFAULT_COMBAT_SETTINGS: CombatSettings = readDefaults();
@@ -117,6 +122,7 @@ function readDefaults(): CombatSettings {
     cleanseOrder: 'oldestFirst',
     defaultResourceCap: 99,
     triggerDepthCap: 4,
+    strategyUltHoldHp: 0.75,
   };
 }
 

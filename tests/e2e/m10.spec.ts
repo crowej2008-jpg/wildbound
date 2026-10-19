@@ -68,9 +68,17 @@ async function importGrown(page: Page, stars?: Record<string, number>): Promise<
   await expect(page.getByText(`Wilds: ${ROSTER.length}`)).toBeVisible();
 }
 
-test('a fresh account sees the locked Arena and can open the ranking board', async ({ page }) => {
+test('a fresh account opens the PvP hub and sees the locked Arena and ranking board', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('link', { name: 'Arena' }).click();
+  await page.getByRole('main').getByRole('link', { name: 'PvP' }).click();
+  await expect(page.getByRole('heading', { name: 'PvP' })).toBeVisible();
+
+  // Six entry points; the three modes that need the shared service say so.
+  await expect(page.locator('.town-tile')).toHaveCount(6);
+  await expect(page.getByText('Coming later')).toHaveCount(3);
+  await expect(page.getByText('Locked — clear campaign chapter 2')).toBeVisible();
+
+  await page.getByRole('main').getByRole('link', { name: /^Arena/ }).click();
   await expect(page.getByRole('heading', { name: 'Arena' })).toBeVisible();
   await expect(page.getByText('Clear this campaign chapter to unlock the Arena: 2')).toBeVisible();
 
@@ -116,8 +124,8 @@ test('fights a matched ghost, claims the chest and buys an attempt', async ({ pa
 });
 
 test('a fresh account sees the locked Ranked ladder', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('link', { name: 'Ranked' }).click();
+  await page.goto('/pvp');
+  await page.getByRole('main').getByRole('link', { name: /^Ranked/ }).click();
   await expect(page.getByRole('heading', { name: 'Ranked' })).toBeVisible();
   await expect(page.getByText('Clear this campaign chapter to unlock the Ranked ladder: 3')).toBeVisible();
 });

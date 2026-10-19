@@ -1,4 +1,5 @@
 export { runBattle } from './battle';
+export { BATTLE_STRATEGIES } from './types';
 export {
   computeDamage,
   channelHit,
@@ -23,6 +24,14 @@ export { fireTriggers } from './triggers';
 export { addRage } from './rage';
 export { levelScale, scaleBuff } from './scaling';
 export {
+  chooseSlot,
+  holdsUltimate,
+  sideStrategy,
+  skillRole,
+  squadHealthy,
+  type SkillRole,
+} from './strategy';
+export {
   applyBuff,
   tickUnitBuffs,
   tickBigRoundBuffs,
@@ -42,6 +51,8 @@ export type {
   BattleEvent,
   BattleResult,
   BattleRules,
+  BattleStrategies,
+  BattleStrategy,
   Buff,
   BuffKind,
   BuffSpec,

@@ -15,6 +15,7 @@ import Mail from './pages/Mail';
 import More from './pages/More';
 import PveTower from './pages/PveTower';
 import PveTrials from './pages/PveTrials';
+import Pvp from './pages/Pvp';
 import Quests from './pages/Quests';
 import Ranked from './pages/Ranked';
 import Shop from './pages/Shop';
@@ -60,6 +61,7 @@ function AppRoutes() {
         <Route path="/arena" element={<Arena />} />
         <Route path="/arena/rankings" element={<ArenaRankings />} />
         <Route path="/ranked" element={<Ranked />} />
+        <Route path="/pvp" element={<Pvp />} />
         <Route path="/summon" element={<Summon />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/more" element={<More />} />
