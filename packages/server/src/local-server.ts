@@ -109,6 +109,7 @@ import {
   claimRankedTier as claimRankedTierAction,
   refreshArena as refreshArenaAction,
   startRankedMatch as startRankedMatchAction,
+  rollPvp,
   arenaTuning,
   rankedTuning,
 } from './pvp';
@@ -1101,6 +1102,11 @@ export class LocalServer implements GameServer {
         quests: emptyQuestState(day),
         idle: { ...next.idle, quickClaimDay: day, quickClaims: 0 },
       };
+      changed = true;
+    }
+    const pvp = rollPvp(this.config, next, this.now(next));
+    if (pvp.state !== next) {
+      next = pvp.state;
       changed = true;
     }
     const pruned = pruneMail(next.mail, this.now(next));

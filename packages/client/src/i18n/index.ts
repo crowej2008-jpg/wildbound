@@ -218,6 +218,8 @@ export const en = {
   'mail.welcome.body': 'Thanks for joining! Here is a starter kit to help you grow your first squad.',
   'mail.chapter.subject': 'Chapter cleared!',
   'mail.chapter.body': 'You cleared a full chapter. Here is a bonus reward — keep going!',
+  'mail.arena.subject': 'Arena Rewards',
+  'mail.arena.body': 'The weekly Arena settlement has paid out your rank band. Credits reset for the new week.',
   'tutorial.title': 'Getting started',
   'tutorial.skip': 'Skip',
   'tutorial.go': 'Go',

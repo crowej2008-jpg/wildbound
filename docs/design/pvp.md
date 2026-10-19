@@ -161,13 +161,17 @@ the engine, or the client source (see `docs/ASSUMPTIONS.md` › Owner content ov
 
 - **Weather** already exists (`BattleRules.weather = { factions, dmg }`, `damage.ts` applies it).
   Ranked passes the current weather; Arena passes none. No combat work.
-- **Squad strategies become live.** `StrategyId` (`aggressive | balanced | defensive`) is currently
-  inert. This milestone gives it meaning, **opt-in so existing behaviour is unchanged**:
+- **Squad strategies go live (M10.5, opt-in).** `StrategyId` (`aggressive | balanced | defensive`) is
+  currently inert. This milestone gives it meaning, **opt-in so existing behaviour is unchanged**:
   `BattleConfig` gains `strategies?: { attackers?: StrategyId; defenders?: StrategyId }`, defaulting
-  to today's behaviour (`balanced`). `aggressive` prefers damage/ultimate skills and targets the
-  lowest-HP enemy; `defensive` prefers heal/shield/control skills and covers the lowest-HP ally.
-  The server passes each side's `squads.strategies[mode]`. A test asserts the three strategies
-  produce observably different logs on one fixture. Recorded in `docs/ASSUMPTIONS.md`.
+  to today's behaviour (`balanced`). A unit's *slot* is still the ult-when-ready / basic-replace roll
+  (`rollSkillSlot` is always called, so the RNG stream is identical for every strategy — only the
+  choice differs); the strategy then overrides the choice: `aggressive` wants a **damaging** skill (so
+  it never takes the filler roll and drops to its damaging `basic` when its `normal` is support), and
+  `defensive` wants a **support** skill (heal / shield / ally-side) when the kit has one, otherwise it
+  keeps the measured roll. `balanced` is untouched. The server passes each side's
+  `state.strategies[squadMode]`. A test asserts the three strategies produce observably different logs
+  on one fixture. Recorded in `docs/ASSUMPTIONS.md`.
 
 ## Server (`packages/server`)
 
@@ -197,10 +201,15 @@ and `weatherFor(phase.weather, season)` picks the +`weatherDmg` faction. `ranked
 one lineup per game from `rankedMatchSeed(season, phase, tier)` and trims it to `phase.teamSize`;
 `startRankedMatch` fields the `arenaAttack` lineup through the same `sizeCap`.
 
-**Settlement** runs lazily in `normalize` (no cron): when the UTC week key changes, the server builds
-an **Arena Rewards** Mail letter per the player's band and resets credits to `resetCredits`; Ranked
-tier claims and the gift track reset per season, and the weather rotation advances. This is the M10
-"weekly settlement via Mail" requirement.
+**Settlement** runs lazily in `normalize` (no cron) through `pvp/settlement.ts`'s
+`rollPvp(config, state, now)`: when the UTC week key changes, `applyWeeklySettlement` pays the band,
+drops credits to the band's `resetCredits` and clears the week's chest progress, and the server writes
+one **Arena Rewards** Mail letter (`mail_arena_<ended week>`) whose id guarantees a single payment even
+across a multi-week gap; Ranked's season roll (`rollRankedSeason`) advances the region, resets the tier
+track/gift track/record/attempts, which also advances the weather rotation; the day rolls restore the
+Arena and Ranked attempts. `normalize` runs on every `load()`, so the rollover lands inside a live
+session too. Best-ever readouts and claimed achievements survive. This is the M10 "weekly settlement via
+Mail" requirement.
 
 ## Client (`packages/client`)
 

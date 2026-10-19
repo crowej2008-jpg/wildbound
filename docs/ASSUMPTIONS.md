@@ -440,9 +440,15 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
    screen and the battle agree; the `+30%` ships as `ranked.weatherDmg` (kept equal to
    `combat.json`'s `weatherDefault`). *What would change it:* the reference's faction set mattering
    for our roster.
-8. **Settlement is lazy (no scheduler).** A save left a week settles the next time it loads — the
-   week key is compared in `normalize` and an **Arena Rewards** Mail letter is written on a
-   rollover. *What would change it:* a server-side cron once the backend lands (M19).
+8. **Settlement is lazy (no scheduler).** `pvp/settlement.ts`'s `rollPvp` compares the Arena's ISO
+   week key (and Ranked's season key) in `normalize`, which every `load()` runs — so a save left a week
+   settles on its next server call, whether that is a cold load or any action inside a live session.
+   On a rollover the band is paid as one **Arena Rewards** Mail letter whose id embeds the week that
+   ended (`mail_arena_<week>`), which makes re-payment impossible and pays a multi-week gap once.
+   Best-ever readouts (`bestCredits`, `bestPlace`) and claimed achievements survive the reset — they
+   are the reference's permanent records. Mail carries no parameters, so the letter's body is generic
+   and the reward rides as the attachment. *What would change it:* a server-side cron once the backend
+   lands (M19).
 9. **Arena worship (top-10 only) and lucky ranks are out of scope.** They need a population; they
    show as honest "coming later" on the Arena ranking screen. Best-rank achievements and the
    participation chests are in scope. *What would change it:* the backend providing a population.

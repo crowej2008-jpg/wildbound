@@ -6,3 +6,4 @@
 export * from './shared';
 export * from './arena';
 export * from './ranked';
+export * from './settlement';

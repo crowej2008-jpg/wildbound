@@ -544,3 +544,32 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   will flip. M10.6 should make it outcome-agnostic (assert the credits *move*, not the winner) or
   pin an explicit `seed`.
 
+## M10.4 — Arena weekly settlement and lazy PvP clocks (2026-10-18)
+
+- **Server `packages/server/src/pvp/settlement.ts`.** `rollPvp(config, state, now)` rolls every PvP
+  clock to `now`: the Arena's UTC day (`rollArenaDay`) and ISO week (`applyWeeklySettlement` — pay the
+  band, drop the credits to its `resetCredits`, clear the week's chest progress) and Ranked's 03:00 day
+  (`rollRankedDay`) and season (`rollRankedSeason` — advance the region, reset the tier track, the
+  claims, the record and the attempts). It returns the input object unchanged when nothing turned, so
+  callers can treat identity as "no write needed".
+- **Settlement by Mail.** On a week turn the server writes one **Arena Rewards** letter holding the
+  band's reward (`mail.arena.subject` / `mail.arena.body`, `economy.mailTtlHours` TTL) whose id embeds
+  the week that ended — `mail_arena_<week>` — so a reload in the new week can never pay twice and a
+  save that skipped several weeks is paid once for the last one. The player claims it from the M5 Mail
+  screen like any other letter, and the rewards land in `currencies`.
+- **Lazy, not cron.** `LocalServer.normalize` calls `rollPvp` on every `load()` (which every action
+  already goes through), so the rollover happens on the first server call after the boundary — inside a
+  live session as well as on a cold load — and the settled save is persisted by the existing
+  `accept`/`persist` path. Best-ever readouts (`bestCredits`, `bestPlace`) and claimed achievements are
+  deliberately *not* reset: they are the reference's permanent records.
+- **Client.** Two new Mail strings (`mail.arena.subject` / `mail.arena.body`) — the letter needs no new
+  screen.
+- **Tests.** +6 server tests in `pvp-settlement.test.ts`: the week turn pays the band's exact reward
+  and resets the credits/counters while keeping the best-ever readouts; a day-only turn clears the day
+  counters with no mail; a second roll in the same week is a no-op on the same object and does not
+  duplicate the letter; a season turn advances the region and flattens the ladder; an unchanged state is
+  returned by identity; and a LocalServer pass loads a stale save, finds the persisted letter, claims it
+  and is refused a second claim. **380 unit tests / 43 files.**
+- **Next:** M10.5 — the PvP hub at `/pvp` and live squad strategies.
+
+
