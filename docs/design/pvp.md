@@ -110,6 +110,39 @@ from the season key so both the screen and the battle agree. `weatherRule(pick, 
 engine can fight. Seeds are pure functions of `(mode, day, credits/power, index)` — same save + day
 → same opponents.
 
+### Balance (M10.6)
+
+Both curves were authored in M10.1 from the reference's *shape* and were never measured against our
+own progression; M10.6 measured them and replaced the numbers. The measurements are pinned by
+`packages/server/src/pvp-balance.test.ts` (fixed ghost/seed list, so it is deterministic) and the
+probe that produced them is described here.
+
+What the probe established:
+
+- **Species tier dominates level.** Average stat total by tier: rare 1 605, epic 2 090, legendary
+  2 972, supreme 3 963, mythic 5 192. A whole-catalogue pool therefore hands out 2.5–3.2× cliffs, and
+  a 6-of-84 draw is a lottery: the entry squad lost **0%** of its band-0 fights against it at every
+  level up to Lv48, while the same squad at Lv140 won 85% on the *same* band.
+- **The game's own scale is small.** `campaign-balance.test.ts` clears chapter 3 (the last chapter)
+  with the six starting **rare** Wilds at Lv26/3★/stage 1, against Lv10–12/2★ enemies. The Arena opens
+  a chapter earlier, so its first rival must be beatable by ~Lv20/2★ starters.
+
+The shipped curves, and what each rung measured (win rate, 5 draws × 3 slots × 6 seeds):
+
+| Rung | Arena (`rare`+`epic`, base 6, slope 1.24) | Ranked (`rare`+`legendary`+`epic`, base 12, slope 1.18) |
+|---|---|---|
+| entry (Lv20/2★ · Lv30/3★) | **53%** | **67%** |
+| +2 rungs (Lv26/3★ b2) | 53% | — |
+| +4 rungs (Lv40/5★ b4 · Lv60/6★ t5) | 86% | 100% |
+| +6 rungs (Lv20/2★ b6) | **0%** — the fourth rung is the ceiling for that squad | — |
+| top rung, strong squad (Lv140/10★) | 100% | **22%** |
+| top rung, maxed squad (Lv200/10★) | 100% | **94%** |
+
+So the entry is a fair fight, growth opens the ladder, and the apex (King tier) needs a maxed roster.
+Two limits are recorded in `docs/ASSUMPTIONS.md` items 12/16/21: the trio is an *easy/mid/hard* draw
+(same curve, band `n`/`n+1`/`n+2`), and a squad grown past the static curve clears every rung — the
+fix for that is live matchmaking (M19), not a bigger curve.
+
 ## Content table
 
 `packages/content/tuning/pvp.json` (schema `packages/content/src/pvp-schema.ts`, loader
@@ -129,7 +162,8 @@ rotation and its per-tier coin values:
     "bands": [ { "minCredits": 0, "startPlace": 10000, "resetCredits": 0, "reward": {...} }, ... ],  // 8, ascending
     "chestTiers": [ { "battles": 1, "reward": {...} }, ... ],        // 10, the first N battles today
     "bestRankTiers": [ { "place": 10, "reward": {...} }, ... ],      // one-time, by best place
-    "opponent": { "factions": [], "tiers": [], "count": 6, "baseLevel": 60, "levelSlope": 1, ... }
+    "opponent": { "factions": [], "tiers": ["rare", "epic"], "count": 6, "baseLevel": 6,
+                  "levelSlope": 1.24, "starsEvery": 2, "maxStars": 10, "stageEvery": 5, "maxStage": 3 }
   },
   "ranked": {
     "freeAttemptsPerDay": 6,
@@ -140,7 +174,9 @@ rotation and its per-tier coin values:
     "phases": [ { "id": "kanto", "name": "Kanto", "teams": 2, "teamSize": 4,
                   "weather": ["grove", "tide", "ember"],
                   "coins": [145, 145, 290, 290, 870, 870, 870, 1740, 1740, 1740, 2900, 2900] }, ... "8 phases" ],
-    "opponent": { "factions": [], "tiers": [], "count": 6, "baseLevel": 62, "levelSlope": 1.05, ... }
+    "opponent": { "factions": [], "tiers": ["rare", "legendary", "epic"], "count": 6,
+                  "baseLevel": 12, "levelSlope": 1.18, "starsEvery": 2, "maxStars": 10,
+                  "stageEvery": 5, "maxStage": 3 }
     // phases: Kanto -> Johto -> Hoenn -> Sinnoh -> Unova -> Kalos -> Alola -> Galar
     // formats: 2×4, 2×5, 2×6, 2×6, 3×4, 3×4, 3×5, 3×6 (the reference's lineup types)
     // `count` is trimmed to the phase's `teamSize`; the generator's index is the tier

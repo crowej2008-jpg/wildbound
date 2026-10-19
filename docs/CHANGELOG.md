@@ -572,4 +572,64 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   and is refused a second claim. **380 unit tests / 43 files.**
 - **Next:** M10.5 — the PvP hub at `/pvp` and live squad strategies.
 
+## M10.5 — Live squad strategies and the PvP hub (2026-10-18)
+
+- **Engine `packages/engine/src/combat/strategy.ts` (new).** `StrategyId` stops being inert. A unit's
+  action slot is still the ult-when-ready / basic-replace roll, and **`rollSkillSlot` is always
+  consumed**, so the RNG stream is byte-identical across strategies and only the *choice* differs:
+  `balanced` keeps the measured roll untouched; `aggressive` never takes the filler roll (candidate
+  slate `ult/normal/basic`, pick the damaging one); `defensive` prefers a `support` skill
+  (heal/shield/ally-side) when the kit has one and otherwise keeps the measured roll, **plus holds its
+  ultimate while every living ally is above `strategyUltHoldHp`** (`combat.json`, 0.75). `BattleConfig`
+  gains `strategies?: { attackers?; defenders? }`, defaulting to `balanced`.
+- **Dormant lever, documented.** The kit-role preference never fires on the shipped roster — a probe of
+  all 84 kits found `basic`/`normal` damage-only and `ult` damage on 80 with a neutral rider on 4, i.e.
+  **zero support skills** — so today the `defensive` ult-hold is what makes it observably different.
+  Noted in `docs/ASSUMPTIONS.md` item 11 and `docs/design/pvp.md`; it wakes up when a support kit ships.
+- **Server.** `battle.ts` refactors its three call sites onto one `RunViewOptions` path and returns
+  `BattleView.strategies` (the strategy each side actually fought with). The M4 echo battle gives both
+  sides the mode's own strategy (the echo is your squad); `stageBattle` uses `campaign`; `modeBattle`
+  uses `state.strategies[squadMode]` and takes an optional `defenderStrategy` for real-defender modes
+  (Arena defence lineups are stored by `setArenaDefence` and exercised locally in M10.6 tests; the M19
+  backend serves the snapshot).
+- **PvP hub.** `packages/server/src/pvp-hub-view.ts` (new) builds `PvpHubView` — one card per entry
+  point (Arena, Ranked, PvP Shop, plus Clash / Championship / SPT Temple as honest pending states) with
+  a structured status payload (never prose: the client formats `credits/place/attempts`, the region
+  name, the token balance, or the chapter gate). `GameServer.getPvpHub()` + the `/pvp` page + a **sixth
+  bottom-nav tab**; the Home Arena/Ranked tiles become one PvP tile, and the e2e now goes
+  Home → PvP → Arena/Ranked. `BattleReplay` shows each side's strategy next to its team label.
+- **Tests.** +15 engine strategy tests (the ult-hold timing, `aggressive` never taking the filler roll,
+  and `balanced` byte-identical to pre-M10.5) and +8 server hub tests (statuses for a fresh vs grown
+  save, migration fill, strategy plumbing through the echo and a `defenderStrategy`). **403 unit tests /
+  45 files**; 58 e2e green.
+- **Next:** M10.6 — the PvP balance pass.
+
+## M10.6 — PvP balance pass (2026-10-18)
+
+- **The bug.** The M10.1 ghost curves were authored from the reference's *shape* and never measured
+  against our own progression: `arena.opponent` was `baseLevel 60, levelSlope 1, starsEvery 6` over the
+  **whole** catalogue, and `ranked.opponent` `baseLevel 62, levelSlope 1.05` likewise. With a
+  per-tier average stat total of rare 1 605 / epic 2 090 / legendary 2 972 / supreme 3 963 / mythic
+  5 192, a whole-catalogue draw is a 2.5–3.2× cliff and a lottery: a chapter-2 graduate (the six
+  starting rare Wilds at ~Lv20/2★ — the campaign's own chapter-3 endgame is Lv12/2★ enemies) lost
+  **0%** of entry-band fights at every level up to Lv48, while a Lv140 squad won 85% on the same band.
+- **The fix.** Pools are now **tier-banded** and the curves anchored to the mode's unlock scale:
+  Arena `tiers: ["rare", "epic"]`, `baseLevel 6`, `levelSlope 1.24`, `starsEvery 2`, `stageEvery 5`;
+  Ranked `tiers: ["rare", "legendary", "epic"]` (one band up — it opens a chapter later), `baseLevel
+  12`, `levelSlope 1.18`, `starsEvery 2`, `stageEvery 5`. Supreme/mythic rivals are reserved for the
+  later cross-server modes (M17). The three Arena opponents stay the same curve at bands `n`/`n+1`/`n+2`
+  — an easy/mid/hard draw.
+- **Measured result** (fixed ghost/seed list; full table in `docs/design/pvp.md`): Arena entry **53%**
+  for Lv20/2★ against 0% before, 0% for that squad at band 6, 86% at Lv40/5★, 100% for a maxed squad;
+  Ranked entry **67%** for Lv30/3★, 100% at tier 5, King tier 22% for Lv140/10★ but 94% for a maxed
+  Lv200/10★ squad.
+- **Tests.** New `packages/server/src/pvp-balance.test.ts`: a structural check that neither mode ever
+  fields a supreme/mythic rival (and that the Arena's field stays varied), plus the win-rate bands above
+  as regression anchors — a re-flattened ladder or a re-admitted high tier fails loudly. **406 unit
+  tests / 46 files**; 58 e2e green.
+- **Docs.** `docs/ASSUMPTIONS.md` items 12/16 rewritten with the measured numbers and a new item 21 for
+  the static-curve ceiling (a grown squad outgrows the top rung; the fix is the M19 backend's live
+  matchmaking). `docs/design/pvp.md` gains a "Balance (M10.6)" section.
+- **Next:** M11 — growth and collection layers II.
+
 

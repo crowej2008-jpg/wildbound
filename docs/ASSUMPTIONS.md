@@ -461,11 +461,22 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     fight passes them. *What would change it:* a decision to make them mandatory.
 12. **Arena ghost strength tracks the caller's band, and the trio is low/mid/high.** The day's three
     squads share the `pvp.json` `arena.opponent` curve and differ by the generator's
-    `index = band index + slot`, which steps the generator's **stars** (`starsEvery`) — the level
-    stays flat at `baseLevel` because `levelSlope: 1` makes `curveLevel` constant. So a rank-0 player
-    meets six level-60 rivals at 1★ and a high-band player the same level at 2★. The absolute numbers
-    are ours and get a balance pass in M10.6. *What would change it:* the reference publishing
-    per-rank opponent levels.
+    `index = band index + slot`, which steps the generator's **level** (`levelSlope`), **stars**
+    (`starsEvery`) and **evolution stage** (`stageEvery`) together. *M10.6 measured and replaced the
+    authored numbers* — they were `baseLevel: 60, levelSlope: 1, starsEvery: 6, stageEvery: 14` over
+    the **whole** catalogue, which made the mode a wall: the Arena opens at chapter 2, where the
+    player's squad is the six starting **rare** Wilds at ~Lv20/2★ and the campaign's own chapter-3
+    endgame is Lv12/2★ enemies, so level-60 rivals drawn from a pool that is 2/3 supreme+mythic (a
+    2.5–3.2× stat-total cliff over a rare) lost 0% of entry-rung fights at every squad level up to
+    Lv48, while a Lv140 squad met the same wall elsewhere. The shipped curve is now anchored to the
+    campaign's scale and **restricted to the campaign's own tier band** — `tiers: ["rare", "epic"]`,
+    `baseLevel: 6`, `levelSlope: 1.24`, `starsEvery: 2`, `stageEvery: 5` — measured at **53%** for a
+    chapter-2 graduate (Lv20/2★/stage 1) on the entry band, 0% for the same squad at band 6, 86% at
+    Lv40/5★ and 100% for a maxed squad. The trio is the same curve at bands `n`, `n+1`, `n+2`, so it
+    is an easy/mid/hard draw, not a low/mid/high one. Absolute numbers are ours; the *shape* ("3
+    opponents of similar strength for your current rank") is the reference's.
+    `packages/server/src/pvp-balance.test.ts` pins the measured rates. *What would change it:* the
+    reference publishing per-rank opponent levels.
 13. **The Arena Refresh is free and unbounded.** The reference shows a Refresh control but publishes no
     cost or daily cap, so ours re-rolls the day's three seeds at no charge (stable until the next
     refresh, because the seeds are a pure function of the day + credits + reroll count). *What would
@@ -481,9 +492,15 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     sets the curve and the generator's `index = tier`, so each rung is stronger; the curve's `count`
     is trimmed to the phase's `teamSize`, and the seed is `rankedMatchSeed(season, phase, tier)` mixed
     with the game number — the same save + season + rung always meets the same rivals, so a loss never
-    rerolls them. The absolute numbers (`baseLevel: 62`, `levelSlope: 1.05`) are ours and get their
-    balance pass in M10.6; at that slope the top rung is ~1.7× the first (a deliberate ramp, not the
-    reference's). *What would change it:* published per-rank opponent curves.
+    rerolls them. *M10.6 measured and replaced the authored numbers* (`baseLevel: 62, levelSlope: 1.05`
+    over the whole catalogue, which was as unreachable at Ranked's chapter-3 gate as the Arena's was at
+    chapter 2). Shipped: `tiers: ["rare", "legendary", "epic"]` — one tier band above the Arena, since
+    Ranked opens a chapter later and is the serious ladder, but still excluding supreme/mythic — with
+    `baseLevel: 12`, `levelSlope: 1.18`, `starsEvery: 2`, `stageEvery: 5`. Measured with the season's
+    weather and the region's 4-slot format: **67%** for a chapter-3 graduate (Lv30/3★) at tier 0, 100%
+    at tier 5 for Lv60/6★, and King tier reserved — 22% for Lv140/10★ but 94% for a maxed Lv200/10★
+    squad. The top rung is ~7× the first (the reference's ramp shape, our numbers).
+    *What would change it:* published per-rank opponent curves.
 17. **The season advances the region.** The reference publishes no region-advance rule, so
     `rollRankedSeason(state, season, phaseCount)` steps to the next region cyclically when the season
     turns (Kanto → Johto → … → Galar → Kanto) and resets the tier track, the claimed tiers/gifts and
@@ -501,3 +518,14 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 20. **Ranked fields the Arena attack lineup.** There is no seventh squad mode; `/ranked` offers a
     deep-link to the `arenaAttack` lineup ("Lineup") and the server trims it to the region's
     `teamSize`. *What would change it:* a dedicated `ranked` squad mode in the engine's `SQUAD_MODES`.
+21. **PvP ghost curves are static, so a maxed squad outgrows the top rung (M10.6).** The reference
+    matches you against *other players'* snapshots, whose strength tracks the rank's live population;
+    with no backend our rivals are one authored `EnemyPoolSpec` per mode, scaled by the rung index. That
+    curve is anchored at the mode's unlock (chapter 2 / chapter 3) and tuned so its top rung needs a
+    near-maxed squad — but a squad grown past the curve clears every rung, so the Arena becomes a daily
+    chore and King tier becomes routine for a Lv200/10★ roster (measured: 100% and 94%). That is the
+    honest local ceiling, not a bug: the fix is live matchmaking, i.e. the M19 backend. The pools are
+    also deliberately **tier-banded** (Arena: rare+epic; Ranked: rare+legendary+epic) rather than the
+    whole catalogue, so the supreme/mythic tiers are reserved for the later cross-server modes (M17)
+    where the player arrives with an endgame roster. *What would change it:* the shared service
+    (M19), or an owner decision to field the top tiers in Ranked.

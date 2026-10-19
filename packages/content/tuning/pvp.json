@@ -80,13 +80,13 @@
     ],
     "opponent": {
       "factions": [],
-      "tiers": [],
+      "tiers": ["rare", "epic"],
       "count": 6,
-      "baseLevel": 60,
-      "levelSlope": 1.0,
-      "starsEvery": 6,
+      "baseLevel": 6,
+      "levelSlope": 1.24,
+      "starsEvery": 2,
       "maxStars": 10,
-      "stageEvery": 14,
+      "stageEvery": 5,
       "maxStage": 3
     }
   },
@@ -195,13 +195,13 @@
     ],
     "opponent": {
       "factions": [],
-      "tiers": [],
+      "tiers": ["rare", "legendary", "epic"],
       "count": 6,
-      "baseLevel": 62,
-      "levelSlope": 1.05,
+      "baseLevel": 12,
+      "levelSlope": 1.18,
       "starsEvery": 2,
       "maxStars": 10,
-      "stageEvery": 4,
+      "stageEvery": 5,
       "maxStage": 3
     }
   }
