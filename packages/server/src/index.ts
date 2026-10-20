@@ -241,7 +241,7 @@ export interface GameServer {
   levelRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
   refineRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
   /** Level a rune (M7). */
-  levelRune(instanceId: string): Promise<Result<AccountSnapshot>>;
+  levelRune(instanceId: string, useEssence?: boolean): Promise<Result<AccountSnapshot>>;
   /** Pick (or clear, with `null`) a talent path (M7). */
   chooseTalentTree(wildId: string, treeId: string | null): Promise<Result<AccountSnapshot>>;
   /** Allocate one talent option on a tier (M7). */

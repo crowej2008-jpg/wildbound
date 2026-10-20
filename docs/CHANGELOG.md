@@ -703,4 +703,24 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   raises Power). **413 unit tests / 47 files**; 64 e2e green.
 - **Next:** M11.3 — Orbs (levels, duplicate copies, Orb Essence, 2/4 set bonuses).
 
+## M11.3 — Orbs, 2/4 sets and duplicate levels (2026-10-20)
+
+- **Set schema changed.** `RuneSetDef` now carries `bonuses[]` at 2 and 4 pieces instead of one
+  `pieces`/`lines` threshold. `foldLoadout` pays every reached bonus, so a four-piece set also keeps
+  its two-piece lines; the old 3-piece placeholder behaviour is gone.
+- **Catalogue re-authored.** Four sets × four orbs = **16 orbs** (four qualities, levels 1–6). The
+  new fourth pieces are Verdant Heart, Azure Heart, Amber Heart and Crimson Heart; Verdant Heart is
+  in the starting inventory so a fresh account can reach a 4-piece Verdant loop.
+- **Level-up costs materials.** An orb level-up needs two same-kind, same-level, unsocketed copies
+  plus the existing gold cost, or the fallback `essenceBase + (level−1) × essencePerLevel` Orb
+  Essence. Copies are picked deterministically by instance id; socketed copies are protected.
+  Costs live in `content/tuning/collection.json` (`orbs`) and `equipment.json` (gold).
+- **Screen.** The Orbs tab shows the Orb Essence balance, copies needed, each orb's duplicate count,
+  its gold/essence cost, separate "Level with copies" and "Use Orb Essence" buttons, and 2pc/4pc
+  set-progress chips.
+- **Tests.** +2 server orb tests (essence level raises an equipped orb's Power contribution; two
+  duplicates are consumed), the engine fold test now proves both 2- and 4-piece bonuses. **415 unit
+  tests / 47 files**; 66 e2e green.
+- **Next:** M11.4 — Soul-hearts (the owner's nine sets, star-up, combat effects).
+
 

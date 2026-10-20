@@ -568,10 +568,13 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     Turn/round cadences are named settings in `content/tuning/combat.json`. **Flying 6 starts on turn 3**
     (owner, 2026-10-20): Control Immunity at the start of turn 3 and every third turn after, for that
     turn only. *What would change it:* owner clarification of a different pulse length.
-27. **Orbs keep four sockets and move to 2/4 set bonuses.** The reference has more sockets; four is the
-    M7 shape and keeps the screen readable on a phone. The current content has 3-piece placeholder
-    sets; M11.3 re-authors them at 2/4 with Orb Essence and duplicate-orb levels. *What would change
-    it:* owner asks for the reference's larger socket count.
+27. **Orbs keep four sockets and use 2/4 set bonuses.** The reference has more sockets; four is the
+    M7 shape and keeps the screen readable on a phone. **M11.3 re-authored all four sets at 16 orbs
+    (four per set)** with 2- and 4-piece bonuses, keeping the four qualities and levels 1–6. A
+    level-up consumes two same-kind, same-level, unsocketed copies plus gold, or the authored Orb
+    Essence fallback; both costs live in `content/tuning/collection.json` / `equipment.json`.
+    *What would change it:* owner asks for the reference's larger socket count or different
+    copy/essence costs.
 28. **M11 caps Held Items at level 60, gives Berries two slots, and defers two source hooks.** The
     reference's Held Item cap is 200; 60 is the M11 ceiling until the economy is measured. Berries go
     from one slot to the source's two in M11.5. Plate stage 6 skill-swap and shiny Trinket variants are

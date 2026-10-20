@@ -155,7 +155,7 @@ The 15-stage event ladder is schema-supported but has no live source until event
 | M11.0 | Retrofit the five M7 screens (new labels, stat sheet, layer deltas, server tests, e2e equip→Power) |
 | M11.1 | Currencies, save v7, Trainer tab replacing More, materials row |
 | M11.2 | Potential: fodder, shards, 9 tiers, reset — **built** |
-| M11.3 | Orbs: levels, duplicates, Orb Essence, 2/4 sets |
+| M11.3 | Orbs: levels, duplicates, Orb Essence, 2/4 sets — **built** |
 | M11.4 | Soul-hearts: nine sets, effects, star-up |
 | M11.5 | Berries: two slots, stars, dismantle |
 | M11.6 | Held Items: levels 1–60, refine |

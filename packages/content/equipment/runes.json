@@ -191,58 +191,210 @@
           "perLevel": 3
         }
       ]
+    },
+    {
+      "id": "rune-verdant-heart",
+      "name": "Verdant Heart",
+      "setId": "runeset-verdant",
+      "tier": "common",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "healBoost",
+          "base": 0.03,
+          "perLevel": 0.005
+        },
+        {
+          "kind": "percent",
+          "field": "receiveHealBoost",
+          "base": 0.02,
+          "perLevel": 0.003
+        },
+        {
+          "kind": "soul",
+          "field": "spiritDef",
+          "base": 5,
+          "perLevel": 2
+        }
+      ]
+    },
+    {
+      "id": "rune-azure-heart",
+      "name": "Azure Heart",
+      "setId": "runeset-azure",
+      "tier": "rare",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.035,
+          "perLevel": 0.006
+        },
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.02,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "rune-amber-heart",
+      "name": "Amber Heart",
+      "setId": "runeset-amber",
+      "tier": "epic",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "critRes",
+          "base": 0.025,
+          "perLevel": 0.005
+        },
+        {
+          "kind": "percent",
+          "field": "block",
+          "base": 0.02,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "rune-crimson-heart",
+      "name": "Crimson Heart",
+      "setId": "runeset-crimson",
+      "tier": "legendary",
+      "lines": [
+        {
+          "kind": "percent",
+          "field": "ultBoost",
+          "base": 0.04,
+          "perLevel": 0.007
+        },
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.025,
+          "perLevel": 0.005
+        }
+      ]
     }
   ],
   "sets": [
     {
       "id": "runeset-verdant",
       "name": "Verdant Loop",
-      "pieces": 3,
-      "lines": [
+      "bonuses": [
         {
-          "kind": "percent",
-          "field": "healBoost",
-          "base": 0.1,
-          "perLevel": 0
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "healBoost",
+              "base": 0.08,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "healBoost",
+              "base": 0.12,
+              "perLevel": 0
+            },
+            {
+              "kind": "percent",
+              "field": "receiveHealBoost",
+              "base": 0.08,
+              "perLevel": 0
+            }
+          ]
         }
       ]
     },
     {
       "id": "runeset-azure",
       "name": "Azure Pact",
-      "pieces": 3,
-      "lines": [
+      "bonuses": [
         {
-          "kind": "percent",
-          "field": "dmgBoost",
-          "base": 0.08,
-          "perLevel": 0
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "dmgBoost",
+              "base": 0.06,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "skillBoost",
+              "base": 0.1,
+              "perLevel": 0
+            }
+          ]
         }
       ]
     },
     {
       "id": "runeset-amber",
       "name": "Amber Coil",
-      "pieces": 3,
-      "lines": [
+      "bonuses": [
         {
-          "kind": "percent",
-          "field": "critPower",
-          "base": 0.15,
-          "perLevel": 0
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "crit",
+              "base": 0.03,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "critPower",
+              "base": 0.12,
+              "perLevel": 0
+            }
+          ]
         }
       ]
     },
     {
       "id": "runeset-crimson",
       "name": "Crimson Crown",
-      "pieces": 3,
-      "lines": [
+      "bonuses": [
         {
-          "kind": "percent",
-          "field": "guardBreak",
-          "base": 0.1,
-          "perLevel": 0
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "guardBreak",
+              "base": 0.06,
+              "perLevel": 0
+            }
+          ]
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "ultBoost",
+              "base": 0.1,
+              "perLevel": 0
+            }
+          ]
         }
       ]
     }

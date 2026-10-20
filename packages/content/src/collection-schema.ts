@@ -19,6 +19,14 @@ export const collectionTuningSchema = z
       /** Gems charged by a full reset. */
       resetGems: z.number().int().min(0),
     }),
+    orbs: z.object({
+      /** Same kind/level duplicates consumed per level. */
+      copiesPerLevel: z.number().int().min(0),
+      /** Orb Essence for level 1 → 2. */
+      essenceBase: z.number().int().min(0),
+      /** Extra Orb Essence per level after the first. */
+      essencePerLevel: z.number().int().min(0),
+    }),
   })
   .strict();
 

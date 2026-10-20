@@ -113,8 +113,14 @@ export const runesSchema = z.object({
     z.object({
       id: z.string().min(1),
       name: z.string().min(1),
-      pieces: z.number().int().min(1),
-      lines: z.array(statLineSchema).min(1),
+      bonuses: z
+        .array(
+          z.object({
+            pieces: z.number().int().min(1),
+            lines: z.array(statLineSchema).min(1),
+          }),
+        )
+        .min(1),
     }),
   ),
 });

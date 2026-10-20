@@ -128,7 +128,10 @@ export function foldLoadout(
     setCounts.set(def.setId, (setCounts.get(def.setId) ?? 0) + 1);
   }
   for (const set of tables.runeSets) {
-    if ((setCounts.get(set.id) ?? 0) >= set.pieces) addLines(layers.runes, set.lines, 1);
+    const count = setCounts.get(set.id) ?? 0;
+    for (const bonus of set.bonuses) {
+      if (count >= bonus.pieces) addLines(layers.runes, bonus.lines, 1);
+    }
   }
 
   // --- Charms: an equipped, owned charm; starred tiers scale their lines ---

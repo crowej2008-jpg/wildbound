@@ -107,6 +107,25 @@ test('Wild screen shows the stat sheet and equipping a held item raises Power', 
     .toBeGreaterThan(before);
 });
 
+test('Orbs equip and level with Orb Essence', async ({ page }) => {
+  await importSave(page, { currencies: { orbEssence: 1_000 } });
+  await page.goto('/wilds');
+  await page.locator('.roster-item').first().click();
+  const power = () =>
+    page.locator('.wild-power-lg strong').first().innerText().then((text) => Number(text.replace(/,/g, '')));
+  const before = await power();
+
+  await page.getByRole('button', { name: 'Orbs', exact: true }).click();
+  const first = page.locator('.gear-row').filter({ hasText: 'Verdant Spark' }).first();
+  await first.getByRole('button', { name: 'Equip', exact: true }).click();
+  await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(before);
+
+  const equipped = await power();
+  await first.getByRole('button', { name: /Use Orb Essence/ }).click();
+  await expect(first).toContainText('Lv2/6');
+  await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(equipped);
+});
+
 test('Potential eats a duplicate copy and raises Power', async ({ page }) => {
   await importSave(page, {
     roster: ['mimikyu', ...ROSTER],

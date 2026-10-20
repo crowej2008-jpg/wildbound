@@ -23,6 +23,7 @@ import {
   CHARM_UPGRADE_COPIES,
   equippedOn,
   loadoutOf,
+  orbEssenceCost,
   potentialFodder,
   talentResetRefund,
   talentShardCost,
@@ -77,6 +78,15 @@ function refundPotential(
       potentialShard: (state.currencies.potentialShard ?? 0) + refund,
     },
   };
+}
+
+/** Every rune instance currently socketed on any Wild. */
+function wornRuneIds(state: AccountState): Set<string> {
+  const ids = new Set<string>();
+  for (const loadout of Object.values(state.loadouts)) {
+    for (const id of loadout.runes) if (id) ids.add(id);
+  }
+  return ids;
 }
 
 /** Remove consumed duplicates from the roster and drop their stale loadouts. */
@@ -255,14 +265,41 @@ export function refineRelicAction(config: SpeciesLookup, state: AccountState, in
   return ok({ ...paid, equipment: { ...paid.equipment, relics } });
 }
 
-export function levelRuneAction(config: SpeciesLookup, state: AccountState, instanceId: string): Result<AccountState> {
+export function levelRuneAction(
+  config: SpeciesLookup,
+  state: AccountState,
+  instanceId: string,
+  useEssence = false,
+): Result<AccountState> {
   const rune = state.equipment.runes.find((r) => r.id === instanceId);
   if (!rune) return fail('not_found', `no rune ${instanceId}`);
   const { tuning } = config.equipment;
   if (rune.level >= tuning.runes.maxLevel) return fail('at_level_cap', 'max rune level');
-  const paid = pay(state, runeLevelCost(rune.level, tuning));
-  if (!paid) return fail('insufficient_items', 'not enough gold');
-  const runes = paid.equipment.runes.map((r) => (r.id === instanceId ? { ...r, level: r.level + 1 } : r));
+  const gold = runeLevelCost(rune.level, tuning).gold;
+  const needed = config.collection.orbs.copiesPerLevel;
+
+  let paid: AccountState | null;
+  let removed = new Set<string>();
+  if (useEssence) {
+    paid = pay(state, { gold, orbEssence: orbEssenceCost(rune.level, config.collection) });
+    if (!paid) return fail('insufficient_items', 'not enough gold or Orb Essence');
+  } else {
+    const worn = wornRuneIds(state);
+    const copies = state.equipment.runes
+      .filter((copy) => copy.id !== rune.id && copy.defId === rune.defId && copy.level === rune.level && !worn.has(copy.id))
+      .sort((a, b) => a.id.localeCompare(b.id))
+      .slice(0, needed);
+    if (copies.length < needed) {
+      return fail('insufficient_items', `need ${needed} more ${rune.defId} at Lv${rune.level}, or use Orb Essence`);
+    }
+    paid = pay(state, { gold });
+    if (!paid) return fail('insufficient_items', 'not enough gold');
+    removed = new Set(copies.map((copy) => copy.id));
+  }
+
+  const runes = paid.equipment.runes
+    .filter((r) => !removed.has(r.id))
+    .map((r) => (r.id === instanceId ? { ...r, level: r.level + 1 } : r));
   return ok({ ...paid, equipment: { ...paid.equipment, runes } });
 }
 

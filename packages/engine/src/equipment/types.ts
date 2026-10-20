@@ -50,11 +50,16 @@ export interface RuneDef {
   lines: StatLine[];
 }
 
+export interface RuneSetBonus {
+  pieces: number;
+  lines: StatLine[];
+}
+
 export interface RuneSetDef {
   id: string;
   name: string;
-  pieces: number;
-  lines: StatLine[];
+  /** 2-piece and 4-piece bonuses; M11 replaces the old single threshold. */
+  bonuses: RuneSetBonus[];
 }
 
 export type CharmTier = 'common' | 'basic' | 'intermediate' | 'greater';

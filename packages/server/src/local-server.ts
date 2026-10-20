@@ -675,8 +675,8 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) => refineRelicAction(this.config, state, instanceId));
   }
 
-  async levelRune(instanceId: string): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => levelRuneAction(this.config, state, instanceId));
+  async levelRune(instanceId: string, useEssence = false): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => levelRuneAction(this.config, state, instanceId, useEssence));
   }
 
   async chooseTalentTree(wildId: string, treeId: string | null): Promise<Result<AccountSnapshot>> {

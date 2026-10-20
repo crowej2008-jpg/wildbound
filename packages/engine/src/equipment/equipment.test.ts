@@ -49,8 +49,18 @@ const TABLES: EquipmentTables = {
     { id: 'rune1', name: 'Rune 1', setId: 'setA', tier: 'common', lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.03, perLevel: 0.01 }] },
     { id: 'rune2', name: 'Rune 2', setId: 'setA', tier: 'rare', lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.03, perLevel: 0.01 }] },
     { id: 'rune3', name: 'Rune 3', setId: 'setA', tier: 'epic', lines: [{ kind: 'core', field: 'hp', base: 100, perLevel: 20 }] },
+    { id: 'rune4', name: 'Rune 4', setId: 'setA', tier: 'legendary', lines: [{ kind: 'percent', field: 'crit', base: 0.02, perLevel: 0.01 }] },
   ],
-  runeSets: [{ id: 'setA', name: 'Set A', pieces: 3, lines: [{ kind: 'percent', field: 'critPower', base: 0.1, perLevel: 0 }] }],
+  runeSets: [
+    {
+      id: 'setA',
+      name: 'Set A',
+      bonuses: [
+        { pieces: 2, lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.05, perLevel: 0 }] },
+        { pieces: 4, lines: [{ kind: 'percent', field: 'critPower', base: 0.1, perLevel: 0 }] },
+      ],
+    },
+  ],
   charms: [
     { id: 'charm1', name: 'Charm 1', tier: 'greater', maxStars: 3, lines: [{ kind: 'core', field: 'hp', base: 200, perLevel: 100 }] },
     { id: 'charm0', name: 'Charm 0', tier: 'common', maxStars: 0, lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.05, perLevel: 0 }] },
@@ -117,6 +127,7 @@ describe('layer contributions', () => {
         { id: 'ru1', defId: 'rune1', level: 6 },
         { id: 'ru2', defId: 'rune2', level: 2 },
         { id: 'ru3', defId: 'rune3', level: 1 },
+        { id: 'ru4', defId: 'rune4', level: 1 },
       ],
       cores: [
         { id: 'c1', setId: 'setC', socket: 0, stars: 5 },
@@ -129,7 +140,7 @@ describe('layer contributions', () => {
     const loadout = {
       ...emptyLoadout(TUNING),
       relic: 're1',
-      runes: ['ru1', 'ru2', 'ru3', null],
+      runes: ['ru1', 'ru2', 'ru3', 'ru4'],
       charm: 'charm1',
       cores: ['c1', 'c2', null, null, null, null],
       treeId: 'forged',
@@ -139,7 +150,8 @@ describe('layer contributions', () => {
     // relic level 3: pAtk 80, crit 0.07
     expect(folded.layers.relic.core.pAtk).toBeCloseTo(80);
     expect(folded.layers.relic.percent.crit).toBeCloseTo(0.07);
-    // rune set (3 pieces) adds critPower
+    // per-rune lines (.08 + .04) plus the 2-piece dmgBoost (.05); 4 pieces add critPower (.1)
+    expect(folded.layers.runes.percent.dmgBoost).toBeCloseTo(0.17);
     expect(folded.layers.runes.percent.critPower).toBeCloseTo(0.1);
     // charms at 2 stars: hp 300
     expect(folded.layers.charms.core.hp).toBeCloseTo(300);

@@ -5,5 +5,10 @@
     "shardPerTier": 10,
     "respecShardFee": 5,
     "resetGems": 50
+  },
+  "orbs": {
+    "copiesPerLevel": 2,
+    "essenceBase": 20,
+    "essencePerLevel": 10
   }
 }

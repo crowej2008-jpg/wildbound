@@ -21,6 +21,10 @@ export default function OrbsPanel({ wildId, view, busy, run, reload }: GearPanel
 
   return (
     <section className="card">
+      <p className="muted">
+        {t('gear.orbs.balance')}: {view.orbEssence.toLocaleString()} · {t('gear.orbs.copies')}:{' '}
+        {view.costs.runeCopiesPerLevel}
+      </p>
       <p className="muted">{t('gear.socket')}</p>
       <div className="chip-list">
         {view.loadout.runes.map((id, index) => {
@@ -53,7 +57,12 @@ export default function OrbsPanel({ wildId, view, busy, run, reload }: GearPanel
       <div className="chip-list">
         {view.runeSets.map((set) => (
           <span key={set.id} className="chip">
-            {set.name} {set.equipped}/{set.pieces}
+            {set.name} {set.equipped}
+            {set.bonuses.map((bonus) => (
+              <span key={bonus.pieces} className={bonus.active ? 'chip chip-on' : 'chip'}>
+                {bonus.pieces}pc
+              </span>
+            ))}
           </span>
         ))}
       </div>
@@ -77,7 +86,11 @@ export default function OrbsPanel({ wildId, view, busy, run, reload }: GearPanel
                   {wornHere && <span className="chip chip-on">{t('gear.equip')}</span>}
                   {elsewhere && <span className="chip">{t('gear.inUse')}</span>}
                 </div>
-                <p className="muted">{rune.setName}</p>
+                <p className="muted">
+                  {rune.setName} · {t('gear.orbs.copies')} {rune.duplicates}/{view.costs.runeCopiesPerLevel}
+                  {rune.levelCost &&
+                    ` · ${rune.levelCost.gold} ${t('currency.gold')} + ${view.costs.runeCopiesPerLevel} ${t('gear.orbs.copies')} / ${rune.levelCost.essence} ${t('currency.orbEssence')}`}
+                </p>
                 <div className="row-actions">
                   <button
                     type="button"
@@ -94,15 +107,26 @@ export default function OrbsPanel({ wildId, view, busy, run, reload }: GearPanel
                   >
                     {wornHere ? t('gear.unequip') : t('gear.equip')}
                   </button>
-                  {rune.level < rune.maxLevel && (
-                    <button
-                      type="button"
-                      className="btn"
-                      disabled={busy}
-                      onClick={() => void act((server) => server.levelRune(rune.instanceId))}
-                    >
-                      {t('gear.level')}
-                    </button>
+                  {rune.levelCost && (
+                    <>
+                      <button
+                        type="button"
+                        className="btn"
+                        disabled={busy || rune.duplicates < view.costs.runeCopiesPerLevel}
+                        onClick={() => void act((server) => server.levelRune(rune.instanceId))}
+                      >
+                        {t('gear.level')} · {rune.duplicates}/{view.costs.runeCopiesPerLevel}{' '}
+                        {t('gear.orbs.copies')}
+                      </button>
+                      <button
+                        type="button"
+                        className="btn"
+                        disabled={busy || view.orbEssence < rune.levelCost.essence}
+                        onClick={() => void act((server) => server.levelRune(rune.instanceId, true))}
+                      >
+                        {t('gear.orbs.essence')} · {rune.levelCost.essence}
+                      </button>
+                    </>
                   )}
                 </div>
               </li>

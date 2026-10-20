@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { buildConfig } from './config';
+import { levelRuneAction } from './equipment';
 import { LocalServer } from './local-server';
+import { createInitialState } from './save';
 import { MemoryStore } from './storage';
 
 /**
@@ -115,6 +117,58 @@ describe('M11.0 equipment view and actions', () => {
     if (!after.ok) throw new Error(after.message);
     expect(after.value.loadout.charm).toBe(charm.defId);
     expect(after.value.power.layers.charms).toBeGreaterThan(0);
+  });
+
+  it('levels an equipped orb with Orb Essence and raises its Power contribution', async () => {
+    const { srv, wildId } = await supremeStriker();
+    for (let i = 0; i < 3; i++) {
+      const up = await srv.starUp(wildId, 1);
+      if (!up.ok) throw new Error(up.message);
+    }
+    await srv.grantCurrency('orbEssence', 1_000);
+    const view = await srv.getEquipment(wildId);
+    if (!view.ok) throw new Error(view.message);
+    const rune = view.value.runes.find((r) => r.levelCost !== null);
+    if (!rune || !rune.levelCost) throw new Error('no levellable orb');
+    await srv.equipRune(wildId, 0, rune.instanceId);
+    const before = await srv.getEquipment(wildId);
+    if (!before.ok) throw new Error(before.message);
+    const essenceBefore = before.value.orbEssence;
+
+    const levelled = await srv.levelRune(rune.instanceId, true);
+    expect(levelled.ok).toBe(true);
+    if (!levelled.ok) return;
+    expect(levelled.value.state.equipment.runes.find((r) => r.id === rune.instanceId)?.level).toBe(rune.level + 1);
+    expect(levelled.value.state.currencies.orbEssence).toBe(essenceBefore - rune.levelCost.essence);
+
+    const after = await srv.getEquipment(wildId);
+    if (!after.ok) throw new Error(after.message);
+    expect(after.value.power.layers.runes).toBeGreaterThan(before.value.power.layers.runes);
+  });
+
+  it('levels an orb by consuming two same-level duplicates', () => {
+    const config = buildConfig();
+    const base = createInitialState(config);
+    const target = base.equipment.runes.find((r) => r.defId === 'rune-verdant-spark');
+    if (!target) throw new Error('no target rune');
+    const state = {
+      ...base,
+      currencies: { ...base.currencies, gold: 1_000_000 },
+      equipment: {
+        ...base.equipment,
+        runes: [
+          ...base.equipment.runes,
+          { id: 'dup-a', defId: target.defId, level: target.level },
+          { id: 'dup-b', defId: target.defId, level: target.level },
+        ],
+      },
+    };
+
+    const result = levelRuneAction(config, state, target.id);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.equipment.runes.find((r) => r.id === target.id)?.level).toBe(target.level + 1);
+    expect(result.value.equipment.runes.some((r) => r.id === 'dup-a' || r.id === 'dup-b')).toBe(false);
   });
 
   it('unlocks Potential, eats a duplicate, and refunds the shard ladder on reset', async () => {

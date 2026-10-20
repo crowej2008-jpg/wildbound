@@ -39,7 +39,9 @@ list; an account owns *instances* of relics/runes/cores and *counts* of charms.
   stones. Moving a worn relic between Wilds asks for confirmation in the UI.
 - **Runes** (orbs). Unlock: `runes.minStars`. `rune.sockets` sockets per Wild; a Wild may
   swap runes for free. Four colour qualities are the *design* tier; every rune levels 1–6.
-  Each rune belongs to a set; holding 3 of a set grants the set's 3-piece lines.
+  Each rune belongs to a set; **M11.3 re-authored every set at 2/4 pieces** (the old single
+  3-piece threshold is gone). Level-up consumes two same-kind, same-level unsocketed copies plus
+  gold, or the Orb Essence fallback.
 - **Charms** (berries). Unlock: `charms.minStars`. Consumables, four tiers
   (Common/Basic/Intermediate/Greater). Commons are fixed (no stars); higher tiers scale with
   stars. A charm is equipped in one slot and **consumed once per real battle**
@@ -49,8 +51,8 @@ list; an account owns *instances* of relics/runes/cores and *counts* of charms.
   bonus lines and its battle skill (a `RoundEffect`). Their stats feed the soul factor.
 - **Talents** (potential). Unlock: `talents.minTier` (Legendary+). A Wild picks one of
   three options on each of nine tiers of a shared 15-tree catalogue; options are static
-  battle stat lines (never shown on the growth sheet). Resetting costs gems and clears the
-  picks.
+  battle stat lines (never shown on the growth sheet). New tiers cost duplicate Wilds +
+  Potential Shards (M11.2); resetting costs gems and refunds the shard ladder, not the fodder.
 
 ## How a line reaches battle
 
