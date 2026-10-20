@@ -12,11 +12,11 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Battle UI (replay from log) | Battle screen, Result panels | M4 | built |
 | Campaign, idle income, quests, mail, clock, tutorial | Campaign, Daily loop, Mail, Quests, Tutorial | M5 | built |
 | Summoning (gacha) and shops | Summon, Shop | M6 | built |
-| Equipment layers: Relics, Runes, Charms, Spirit Cores, Talents | Wild screen Equip/Runes/Cores/Talents | M7 | built |
+| Equipment layers: Relics, Runes, Charms, Spirit Cores, Talents | Wild screen gear tabs | M7 | engine + server built; screens shipped in M11.0 |
 | Trials, Tower, World Boss, Daily Dungeons, Link Crystal endgame | Challenges hub, Tower, Trials, World Boss, Dungeons, Link Crystal | M8 | built |
 | Combat DSL expansion + faithful 84-creature skill kits | — (headless; Wild screen unchanged) | M9 | built |
 | Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings, Ranked | M10 | built (Arena + Ranked + hub + weekly settlement + balance pass - `docs/design/pvp.md`) |
-| Growth/collection II: Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP | Wild screen, Trainer, VIP | M11 | pending |
+| Growth/collection II: Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP | Wild screen, Trainer, VIP | M11 | in progress - M11.0 ships the Wild-screen gear tabs, stat sheet and layer deltas |
 | Ancient Artifacts, Suppression, Ruins Adventure | Artifacts, Ruins Adventure | M12 | pending |
 | Explore modes: Hoopa's Vault, Rift Arena, Gods Trials, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Island Challenge, Ultra Wormhole | Explore hub + each mode | M13 | pending |
 | Combat/co-op modes: Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles, Shovel Carnival | Combat hub + each mode | M14 | pending |

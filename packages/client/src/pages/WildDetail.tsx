@@ -13,13 +13,31 @@ import { classLabel, t, tierLabel } from '../i18n';
 import { PROGRESS } from '../progress';
 import { useServer } from '../server/ServerProvider';
 import { species } from '../wilds';
+import BerryPanel from './wild/BerryPanel';
+import HeldItemPanel from './wild/HeldItemPanel';
+import OrbsPanel from './wild/OrbsPanel';
+import PotentialPanel from './wild/PotentialPanel';
+import SoulHeartPanel from './wild/SoulHeartPanel';
+import StatSheet from './wild/StatSheet';
+import { useEquipment } from './wild/useEquipment';
 
-type Tab = 'upgrade' | 'evolve';
+type Tab = 'upgrade' | 'evolve' | 'potential' | 'orbs' | 'soulHearts' | 'berries' | 'heldItems';
+
+const TABS: { id: Tab; key: 'wild.tab.upgrade' | 'wild.tab.evolve' | 'wild.tab.potential' | 'wild.tab.orbs' | 'wild.tab.soulHearts' | 'wild.tab.berries' | 'wild.tab.heldItems' }[] = [
+  { id: 'upgrade', key: 'wild.tab.upgrade' },
+  { id: 'evolve', key: 'wild.tab.evolve' },
+  { id: 'potential', key: 'wild.tab.potential' },
+  { id: 'orbs', key: 'wild.tab.orbs' },
+  { id: 'soulHearts', key: 'wild.tab.soulHearts' },
+  { id: 'berries', key: 'wild.tab.berries' },
+  { id: 'heldItems', key: 'wild.tab.heldItems' },
+];
 
 export default function WildDetail() {
   const { id = '' } = useParams();
   const { snapshot, run, busy } = useServer();
   const [tab, setTab] = useState<Tab>('upgrade');
+  const gear = useEquipment(id);
 
   const wild = snapshot?.state.roster.find((w) => w.id === id);
   const meta = wild ? species(wild.speciesId) : undefined;
@@ -107,14 +125,47 @@ export default function WildDetail() {
         </button>
       </div>
 
-      <div className="tabs">
-        <button type="button" className={tab === 'upgrade' ? 'tab tab-active' : 'tab'} onClick={() => setTab('upgrade')}>
-          {t('wild.tab.upgrade')}
-        </button>
-        <button type="button" className={tab === 'evolve' ? 'tab tab-active' : 'tab'} onClick={() => setTab('evolve')}>
-          {t('wild.tab.evolve')}
-        </button>
+      {gear.view && <StatSheet view={gear.view} />}
+      {gear.error && <p className="muted">{gear.error}</p>}
+
+      <div className="tabs tabs-scroll">
+        {TABS.map((entry) => (
+          <button
+            key={entry.id}
+            type="button"
+            className={tab === entry.id ? 'tab tab-active' : 'tab'}
+            onClick={() => setTab(entry.id)}
+          >
+            {t(entry.key)}
+          </button>
+        ))}
       </div>
+
+      {tab !== 'upgrade' && tab !== 'evolve' && (
+        !gear.view ? (
+          <section className="card">
+            <p className="muted">Loading gear…</p>
+          </section>
+        ) : (
+          <>
+            {tab === 'potential' && (
+              <PotentialPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />
+            )}
+            {tab === 'orbs' && (
+              <OrbsPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />
+            )}
+            {tab === 'soulHearts' && (
+              <SoulHeartPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />
+            )}
+            {tab === 'berries' && (
+              <BerryPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />
+            )}
+            {tab === 'heldItems' && (
+              <HeldItemPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />
+            )}
+          </>
+        )
+      )}
 
       {tab === 'upgrade' ? (
         <section className="card">
@@ -157,7 +208,7 @@ export default function WildDetail() {
             {t('wild.upgrade.candy')} {currencies.candy.toLocaleString()} · {t('wild.upgrade.gold')} {currencies.gold.toLocaleString()} · {t('wild.upgrade.starCost')} {currencies.shard.toLocaleString()}
           </p>
         </section>
-      ) : (
+      ) : tab === 'evolve' ? (
         <section className="card">
           {view.info === null ? (
             <p className="muted">{t('wild.evolve.maxed')}</p>
@@ -194,7 +245,7 @@ export default function WildDetail() {
             ))}
           </div>
         </section>
-      )}
+      ) : null}
     </main>
   );
 }

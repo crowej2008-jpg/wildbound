@@ -73,7 +73,7 @@ export function slotToPosition(slot: number): number {
 
 /** Content kit DSL → engine `KitDef`: `kitToEngine` comes from `@wildbound/content`. */
 
-function sheetOf(wild: WildInstance, config: GameConfig): SheetInput | null {
+export function sheetOf(wild: WildInstance, config: GameConfig): SheetInput | null {
   const meta = config.species.get(wild.speciesId);
   if (!meta) return null;
   const core = resolveCoreStats(
@@ -83,14 +83,18 @@ function sheetOf(wild: WildInstance, config: GameConfig): SheetInput | null {
   return { hp: core.hp, pAtk: core.pAtk, sAtk: core.sAtk, spd: core.spd, pDef: core.pDef, sDef: core.sDef };
 }
 
-interface EquippedSheet {
+export interface EquippedSheet {
   sheet: SheetInput;
   percent: Partial<PercentLines>;
   effects: RoundEffect[];
 }
 
 /** Resolve a Wild's sheet and fold in its equipped equipment (M7). */
-function equippedSheet(wild: WildInstance, config: GameConfig, state: AccountState | undefined): EquippedSheet | null {
+export function equippedSheet(
+  wild: WildInstance,
+  config: GameConfig,
+  state: AccountState | undefined,
+): EquippedSheet | null {
   const sheet = sheetOf(wild, config);
   if (!sheet) return null;
   const loadout = state?.loadouts[wild.id];

@@ -1,5 +1,10 @@
 # Equipment layers (M7)
 
+> **M11 update (2026-10-20):** the player-facing labels changed to **Potential, Orbs,
+> Soul-hearts, Berries and Held Items**; code ids and save fields are unchanged. The M7
+> screens described here were not actually wired until **M11.0**. See
+> `docs/design/collection.md` for the M11 deepening and new layers.
+
 Five layers sit on a Wild, each its own tab on the Wild screen, and all five funnel the
 same thing into battle: **stat lines** (flat core values, fractional percent lines, soul
 stats) plus, for some layers, one **conditional round effect** that fires part-way into a

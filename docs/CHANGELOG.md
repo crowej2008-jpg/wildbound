@@ -260,8 +260,9 @@ are recorded here with the difference (never edit `reference/`).
   `Result<AccountState>` actions) and `equipment-view.ts` (gates, deltas, owned items). `GameServer`
   gains `getEquipment`, `equipRelic/Rune/Core/Charm`, `upgradeCharm`, `levelRelic`, `refineRelic`,
   `levelRune`, `chooseTalentTree`, `allocateTalent`, `resetTalents`. Save schema `4`.
-- **Client**: Wild screen Equip / Runes / Cores / Talents tabs; `ServerProvider` wrappers; M7 styles.
-- **Tests**: engine equipment suite + server glue. `pnpm check` green.
+- **Client**: M7 landed the i18n keys and `ServerProvider` wrappers, but the Wild-screen gear tabs
+  were **not wired**; `WildDetail` still showed only Upgrade/Evolve. Corrected in M11.0.
+- **Tests**: engine equipment suite. No server-action tests existed until M11.0. `pnpm check` green.
 
 ### Deviation from the reference
 
@@ -636,5 +637,30 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   checked against the source photo: it ships **six** tabs and reaches PvP from the Explore map pin, so
   our sixth tab (PvP) is the interim occupant of that slot until M13 (item 22).
 - **Next:** M11 — growth and collection layers II.
+
+## M11.0 — Wild-screen gear retrofit (2026-10-20)
+
+- **The missing M7 UI is now real.** `WildDetail` grew from two tabs to seven — Upgrade, Evolve,
+  Potential, Orbs, Soul-hearts, Berries, Held Items — and the five gear tabs call the existing server
+  actions. The M7 labels are renamed to the owner's vocabulary (Talents → Potential, Runes → Orbs,
+  Spirit Cores → Soul-hearts, Charms → Berries, Relics → Held Items); the code/save ids are unchanged.
+- **Stat sheet.** `EquipmentView` now carries the base and equipped combat sheets, the equipped
+  percent/soul lines, current Power, and each layer's solo Power delta. The Wild screen renders HP /
+  P.ATK / S.ATK / P.DEF / S.DEF / SPD, non-zero percent lines, and the five layer contributions; the
+  header keeps the snapshot Power so the value updates immediately after an action.
+- **Panels.** `pages/wild/` holds one panel per layer (each under 150 lines), a shared `useEquipment`
+  hook that refetches after a successful action, and `StatSheet`. Locked layers show their star/tier
+  requirement; Soul-heart star-up and Berry dismantling say "coming later" until M11.4/M11.5.
+- **Bug fix.** `LocalServer.importSave`, the normal save load and backup recovery now pass the content
+  config to `migrateSave`. A save that omits the equipment slice therefore gets the authored starting
+  items instead of an empty inventory (this is why the e2e import path can exercise gear).
+- **Tests.** +5 server tests in `equipment.test.ts` (view Power before/after equipping, held-item
+  level cost, star gates for orbs and berries, Potential allocation); +2 e2e in `m11.spec.ts` proving
+  the tabs/stat sheet exist and equipping a held item raises the displayed Power. **411 unit tests /
+  47 files**; 60 e2e green.
+- **Docs.** `docs/design/collection.md` captures the M11 scope, the nine soul-heart sets, the
+  source-named resources, the sub-step order and the open assumptions. `docs/SCOPE.md` and the M7
+  changelog entry are corrected to say the M7 client screens were not wired until now.
+- **Next:** M11.1 — currencies, save v7, Trainer tab and the materials row.
 
 

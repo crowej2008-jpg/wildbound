@@ -389,7 +389,7 @@ export class LocalServer implements GameServer {
   }
 
   async importSave(json: string): Promise<Result<AccountSnapshot>> {
-    const parsed = parseSave(json);
+    const parsed = parseSave(json, this.config.now(), this.config);
     if (!parsed.ok) return parsed;
     return this.commit(parsed.value);
   }
@@ -1080,11 +1080,11 @@ export class LocalServer implements GameServer {
       this.state = fresh;
       return ok(fresh);
     }
-    const parsed = parseSave(raw, this.config.now());
+    const parsed = parseSave(raw, this.config.now(), this.config);
     if (parsed.ok) return this.accept(parsed.value);
     const backup = await this.store.read(BACKUP_KEY);
     if (backup !== null) {
-      const recovered = parseSave(backup, this.config.now());
+      const recovered = parseSave(backup, this.config.now(), this.config);
       if (recovered.ok) return this.accept(recovered.value);
     }
     return fail('corrupt_save', parsed.message);

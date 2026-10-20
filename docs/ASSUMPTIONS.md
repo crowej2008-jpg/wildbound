@@ -538,3 +538,54 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     M18 visual pass gives the bar the source's icon/label/raised-selected treatment. Our labels stay
     original — the roster tab is **"Wilds"**, never the franchise's roster name (content override, item
     10). *What would change it:* M13, which is where this converges.
+
+## M11 (growth and collection II)
+
+23. **M11 renames the five M7 layers in the UI and deepens them in place (owner decision, 2026-10-20).**
+    Talents → **Potential**, Runes → **Orbs**, Spirit Cores → **Soul-hearts**, Charms → **Berries**,
+    Relics → **Held Items**; code ids and save fields stay as they were. The M7 client screens were
+    never actually wired (the old SCOPE/CHANGELOG claim was wrong); **M11.0** ships the Wild-screen
+    tabs, stat sheet and layer Power deltas before any new layer lands. *What would change it:* the
+    owner asking for a code-level rename instead of a label-only rename.
+24. **Potential keeps the 15 class trees, not 84 per-species trees.** The reference gives each species
+    its own tree; authoring one tree per Wild is too much content for M11, so a Wild picks the tree
+    for its class. M11.2 adds the nine-tier ladder, duplicate-copy fodder and Potential Shards; the
+    exact fodder/shard costs are data in `content/tuning/collection.json` and can be re-tuned without
+    engine changes. *What would change it:* owner-authored per-species trees.
+25. **M11 resources use the source's names and become `CurrencyId`s.** Potential Shards, Orb Essence,
+    Soul-heart EXP, Berry Essence, Held Item Shards, Plate Bottles, Plate Fragments, Star Shards,
+    Resonation Shards and Title Tickets join the existing currencies. `shard` (Wild star-up) and
+    `stone` (Link Crystal) keep their meaning. Adding ids is a save-version bump; M11.1 owns the v6 → v7
+    migration and the Trainer materials row. *What would change it:* owner veto of source names, or a
+    decision to model materials outside `Rewards`.
+26. **Soul-heart set effects use the owner's nine sets, with same-stat ladders taking the highest tier.**
+    Bug 6-piece = 25% lifesteal (not 5+12+25), Flying 6 = 25% control resist, Superpower 6 = +30% Sp.Atk,
+    Rock 6 = 15% damage reduction, Fire 6 = +30% versus shields; distinct 2/4/6 effects all apply.
+    Turn/round cadences are named settings in `content/tuning/combat.json`. **Flying 6 starts on turn 3**
+    (owner, 2026-10-20): Control Immunity at the start of turn 3 and every third turn after, for that
+    turn only. *What would change it:* owner clarification of a different pulse length.
+27. **Orbs keep four sockets and move to 2/4 set bonuses.** The reference has more sockets; four is the
+    M7 shape and keeps the screen readable on a phone. The current content has 3-piece placeholder
+    sets; M11.3 re-authors them at 2/4 with Orb Essence and duplicate-orb levels. *What would change
+    it:* owner asks for the reference's larger socket count.
+28. **M11 caps Held Items at level 60, gives Berries two slots, and defers two source hooks.** The
+    reference's Held Item cap is 200; 60 is the M11 ceiling until the economy is measured. Berries go
+    from one slot to the source's two in M11.5. Plate stage 6 skill-swap and shiny Trinket variants are
+    shown as "coming later" and are not claimed as built. *What would change it:* a later milestone
+    extending the cap, or the owner prioritising skill-swap.
+29. **Resonance grants a stat share of the Link Crystal, not an instant level.** The reference shares
+    the crystal's level with slotted Wilds; our per-Wild level economy would be trivialised by an
+    instant high level. M11.9 uses a tunable percentage of the crystal's level as bonus stats, with
+    extra slots bought by Resonation Shards. *What would change it:* a redesign of Wild level costs.
+30. **Titles have three slots and expire lazily.** Common / Premium / Rare slots; permanent and timed
+    (7/14-day) titles; timed titles are recycled on load/open rather than by a scheduler. M11.11 ships
+    permanent collection/trainer titles plus Arena/Ranked titles; guild-war and event titles remain
+    locked "coming later" rows until M15/M16. *What would change it:* the event calendar in M15.
+31. **VIP is activity-driven and never real money.** Tiers come from lifetime account activity, not a
+    purchase flow, and grant only data-driven conveniences (idle cap, shop discount, free draws). The
+    private build has no payments by policy. *What would change it:* owner decision to remove VIP
+    entirely; real money remains out of scope.
+32. **Imported saves now receive the authored starting equipment (M11.0 bug fix).** `LocalServer` passes
+    the content config into `migrateSave` on import, normal load and backup recovery, so a save that
+    omits the `equipment` slice gets the starting relics/runes/berries instead of an empty inventory.
+    *What would change it:* a deliberate decision to treat a missing slice as an empty inventory.

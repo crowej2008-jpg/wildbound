@@ -1,21 +1,28 @@
 import {
   charmsUnlocked,
+  computePower,
   coresUnlocked,
   emptyLoadout,
   foldLoadout,
+  mergeDelta,
   relicLevelCost,
   relicRefineCost,
   relicUnlocked,
   runesUnlocked,
   talentsUnlocked,
   type EquipmentTables,
+  type LayerDelta,
   type Loadout,
+  type PercentLines,
+  type SheetInput,
+  type SoulStats,
   type StatDelta,
   type Tier,
   type WildClass,
 } from '@wildbound/engine';
 import type { AccountState, WildInstance } from '@wildbound/engine';
 import type { GameConfig } from './config';
+import { sheetOf } from './battle';
 
 /**
  * Display-ready equipment view (M7). Built server-side so the client never has to
@@ -83,8 +90,26 @@ export interface TalentTreeOption {
   className: WildClass;
 }
 
+export interface EquipmentPowerView {
+  /** Power with no equipment equipped. */
+  base: number;
+  /** Power with the current loadout. */
+  equipped: number;
+  /** Power gained by each layer alone (equipped minus base, per layer). */
+  layers: Record<keyof LayerDelta, number>;
+}
+
 export interface EquipmentView {
   wildId: string;
+  /** Base combat sheet before equipment (the stat-sheet header). */
+  sheet: SheetInput;
+  /** Combat sheet with the current loadout folded in. */
+  sheetEquipped: SheetInput;
+  /** Equipped percent lines, for the stat sheet. */
+  percent: Partial<PercentLines>;
+  /** Equipped soul stats, for the stat sheet. */
+  soul: Partial<SoulStats>;
+  power: EquipmentPowerView;
   unlocks: { relic: boolean; runes: boolean; charms: boolean; cores: boolean; talents: boolean };
   requirements: { relic: Tier; runes: number; charms: number; cores: number; talents: Tier };
   loadout: Loadout;
@@ -131,12 +156,33 @@ function effectTextMap(tables: EquipmentTables): Map<string, string> {
   return map;
 }
 
+function powerOfSheet(sheet: SheetInput, percent: Partial<PercentLines>, weights: GameConfig['power']): number {
+  const core = {
+    hp: sheet.hp,
+    pAtk: sheet.pAtk,
+    sAtk: sheet.sAtk,
+    spd: sheet.spd,
+    pDef: sheet.pDef ?? 0,
+    sDef: sheet.sDef ?? 0,
+  };
+  return computePower(core, percent, weights);
+}
+
 export function buildEquipmentView({ config, state, wild }: EquipmentDeps): EquipmentView {
   const tables = config.equipment;
   const { tuning } = tables;
   const loadout = loadoutOf(state, wild.id, tables);
   const meta = config.species.get(wild.speciesId);
   const folded = foldLoadout(loadout, state.equipment, tables);
+  const baseSheet = sheetOf(wild, config) ?? { hp: 0, pAtk: 0, sAtk: 0, spd: 0, pDef: 0, sDef: 0 };
+  const basePower = powerOfSheet(baseSheet, {}, config.power);
+  const layerKeys: (keyof LayerDelta)[] = ['relic', 'runes', 'charms', 'cores', 'talents'];
+  const layerPower = {} as Record<keyof LayerDelta, number>;
+  for (const key of layerKeys) {
+    const delta = folded.layers[key];
+    const merged = mergeDelta(baseSheet, delta);
+    layerPower[key] = powerOfSheet(merged, delta.percent, config.power) - basePower;
+  }
 
   const relicOn = new Map<string, string>();
   const runeOn = new Map<string, string>();
@@ -235,6 +281,15 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
 
   return {
     wildId: wild.id,
+    sheet: baseSheet,
+    sheetEquipped: mergeDelta(baseSheet, folded.delta),
+    percent: folded.delta.percent,
+    soul: folded.delta.soul,
+    power: {
+      base: basePower,
+      equipped: powerOfSheet(mergeDelta(baseSheet, folded.delta), folded.delta.percent, config.power),
+      layers: layerPower,
+    },
     unlocks: {
       relic: meta ? relicUnlocked(meta.tier, tuning) : false,
       runes: runesUnlocked(wild.stars, tuning),
