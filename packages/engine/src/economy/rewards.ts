@@ -18,6 +18,16 @@ export interface Rewards {
   forestCoin?: number;
   islandCoin?: number;
   wildCoin?: number;
+  potentialShard?: number;
+  orbEssence?: number;
+  soulHeartExp?: number;
+  berryEssence?: number;
+  heldItemShard?: number;
+  plateBottle?: number;
+  plateFragment?: number;
+  starShard?: number;
+  resonationShard?: number;
+  titleTicket?: number;
   xp?: number;
 }
 
@@ -36,6 +46,16 @@ export const CURRENCY_REWARD_KEYS = [
   'forestCoin',
   'islandCoin',
   'wildCoin',
+  'potentialShard',
+  'orbEssence',
+  'soulHeartExp',
+  'berryEssence',
+  'heldItemShard',
+  'plateBottle',
+  'plateFragment',
+  'starShard',
+  'resonationShard',
+  'titleTicket',
 ] as const;
 
 /** Every key of a bundle, currencies then `xp`. */

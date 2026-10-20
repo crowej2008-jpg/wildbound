@@ -22,7 +22,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 6;
+export const SAVE_VERSION = 7;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -39,6 +39,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
   return {
     ...state,
     schemaVersion: SAVE_VERSION,
+    currencies: currenciesFrom(s.currencies ?? {}),
     campaign: s.campaign ?? { stars: {} },
     idle: s.idle ?? initialIdle(now, day),
     quests: s.quests ?? emptyQuestState(day),

@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { CURRENCY_IDS, MATERIAL_CURRENCY_IDS } from '@wildbound/engine';
 import { buildConfig } from './config';
 import { createInitialState, migrateSave, parseSave, serializeSave, SAVE_VERSION } from './save';
 
@@ -20,6 +21,24 @@ describe('save codec', () => {
     if (!result.ok) return;
     expect(result.value.roster).toEqual(state.roster);
     expect(result.value.currencies).toEqual(state.currencies);
+  });
+
+  it('fills every M11 material when migrating a v6 save', () => {
+    const state = createInitialState(config);
+    const oldCurrencies: Record<string, number> = { ...state.currencies };
+    for (const id of MATERIAL_CURRENCY_IDS) delete oldCurrencies[id];
+    const result = migrateSave(
+      { version: 6, state: { ...state, schemaVersion: 6, currencies: oldCurrencies } },
+      Date.now(),
+      config,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.schemaVersion).toBe(7);
+    for (const id of CURRENCY_IDS) {
+      expect(result.value.currencies[id]).toBeTypeOf('number');
+    }
+    for (const id of MATERIAL_CURRENCY_IDS) expect(result.value.currencies[id]).toBe(0);
   });
 
   it('rejects malformed JSON and missing fields', () => {

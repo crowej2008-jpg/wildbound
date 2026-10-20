@@ -7,7 +7,7 @@ const TABS = [
   { to: '/combat', key: 'nav.combat' as const },
   { to: '/pvp', key: 'nav.pvp' as const },
   { to: '/summon', key: 'nav.summon' as const },
-  { to: '/more', key: 'nav.more' as const },
+  { to: '/trainer', key: 'nav.trainer' as const },
 ];
 
 export default function BottomNav() {

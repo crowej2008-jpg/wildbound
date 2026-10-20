@@ -7,13 +7,14 @@ export const en = {
   'nav.summon': 'Summon',
   'nav.pvp': 'PvP',
   'nav.more': 'More',
+  'nav.trainer': 'Trainer',
   'comingLater.badge': 'Coming later',
   'home.welcome': 'Welcome to Wildbound',
   'home.intro':
     'A rebuild of a mobile monster-collector design: build a squad of six original Wilds and let seeded, automatic turn-based battles play out — replayable, deterministic, and testable in the Build Lab.',
   'home.scope.note': 'The screens below arrive milestone by milestone. Every milestone ends with passing checks and a commit.',
   'home.galleryLink': 'Browse every Wild',
-  'hud.beta': 'Milestone 10',
+  'hud.beta': 'Milestone 11',
   'hud.today': 'Today',
   'currency.gold': 'Gold',
   'currency.gems': 'Gems',
@@ -28,6 +29,16 @@ export const en = {
   'currency.forestCoin': 'Forest Coins',
   'currency.islandCoin': 'Island Coins',
   'currency.wildCoin': 'Wild Coins',
+  'currency.potentialShard': 'Potential Shards',
+  'currency.orbEssence': 'Orb Essence',
+  'currency.soulHeartExp': 'Soul-heart EXP',
+  'currency.berryEssence': 'Berry Essence',
+  'currency.heldItemShard': 'Held Item Shards',
+  'currency.plateBottle': 'Plate Bottles',
+  'currency.plateFragment': 'Plate Fragments',
+  'currency.starShard': 'Star Shards',
+  'currency.resonationShard': 'Resonation Shards',
+  'currency.titleTicket': 'Title Tickets',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
   'wilds.empty': 'No Wilds yet. Grant one from More > Debug.',
@@ -140,6 +151,24 @@ export const en = {
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
+  'trainer.title': 'Trainer',
+  'trainer.subtitle': 'Your trainer card, collection materials and travel links.',
+  'trainer.profile': 'Trainer card',
+  'trainer.name': 'Name',
+  'trainer.roster': 'Wilds',
+  'trainer.campaignStars': 'Campaign stars',
+  'trainer.materials': 'Collection materials',
+  'trainer.materialsNote': 'Spent on Potential, Orbs, Soul-hearts, Berries, Held Items, Plates, Trinkets, Resonance and Titles.',
+  'trainer.travel': 'Travel',
+  'trainer.squad': 'Squads',
+  'trainer.mail': 'Mail',
+  'trainer.quests': 'Quests',
+  'trainer.gallery': 'Gallery',
+  'trainer.more': 'Debug & saves',
+  'trainer.vip': 'VIP privileges',
+  'trainer.vipLater': 'VIP privileges are coming later.',
+  'trainer.titles': 'Titles',
+  'trainer.titlesLater': 'Titles are coming later.',
   'more.title': 'More',
   'more.subtitle': 'Debug tools for the current milestone.',
   'more.debug': 'Debug tools',
@@ -583,7 +612,17 @@ export type CurrencyKey =
   | 'homeCoin'
   | 'forestCoin'
   | 'islandCoin'
-  | 'wildCoin';
+  | 'wildCoin'
+  | 'potentialShard'
+  | 'orbEssence'
+  | 'soulHeartExp'
+  | 'berryEssence'
+  | 'heldItemShard'
+  | 'plateBottle'
+  | 'plateFragment'
+  | 'starShard'
+  | 'resonationShard'
+  | 'titleTicket';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
   gold: en['currency.gold'],
@@ -599,6 +638,16 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   forestCoin: en['currency.forestCoin'],
   islandCoin: en['currency.islandCoin'],
   wildCoin: en['currency.wildCoin'],
+  potentialShard: en['currency.potentialShard'],
+  orbEssence: en['currency.orbEssence'],
+  soulHeartExp: en['currency.soulHeartExp'],
+  berryEssence: en['currency.berryEssence'],
+  heldItemShard: en['currency.heldItemShard'],
+  plateBottle: en['currency.plateBottle'],
+  plateFragment: en['currency.plateFragment'],
+  starShard: en['currency.starShard'],
+  resonationShard: en['currency.resonationShard'],
+  titleTicket: en['currency.titleTicket'],
 };
 
 export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss';

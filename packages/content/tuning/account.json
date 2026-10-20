@@ -13,7 +13,17 @@
     "homeCoin": 0,
     "forestCoin": 0,
     "islandCoin": 0,
-    "wildCoin": 0
+    "wildCoin": 0,
+    "potentialShard": 0,
+    "orbEssence": 0,
+    "soulHeartExp": 0,
+    "berryEssence": 0,
+    "heldItemShard": 0,
+    "plateBottle": 0,
+    "plateFragment": 0,
+    "starShard": 0,
+    "resonationShard": 0,
+    "titleTicket": 0
   },
   "startingRoster": [
     "ninetales",
@@ -36,6 +46,16 @@
     "homeCoin": 1000,
     "forestCoin": 1000,
     "islandCoin": 1000,
-    "wildCoin": 1000
+    "wildCoin": 1000,
+    "potentialShard": 1000,
+    "orbEssence": 1000,
+    "soulHeartExp": 1000,
+    "berryEssence": 1000,
+    "heldItemShard": 1000,
+    "plateBottle": 1000,
+    "plateFragment": 1000,
+    "starShard": 1000,
+    "resonationShard": 1000,
+    "titleTicket": 1000
   }
 }

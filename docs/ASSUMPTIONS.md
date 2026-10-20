@@ -556,8 +556,9 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     Soul-heart EXP, Berry Essence, Held Item Shards, Plate Bottles, Plate Fragments, Star Shards,
     Resonation Shards and Title Tickets join the existing currencies. `shard` (Wild star-up) and
     `stone` (Link Crystal) keep their meaning. Adding ids is a save-version bump; M11.1 owns the v6 → v7
-    migration and the Trainer materials row. *What would change it:* owner veto of source names, or a
-    decision to model materials outside `Rewards`.
+    migration and the Trainer materials row; **M11.1 implements this** (save v7 normalises the
+    currency record so every material exists at 0). *What would change it:* owner veto of source
+    names, or a decision to model materials outside `Rewards`.
 26. **Soul-heart set effects use the owner's nine sets, with same-stat ladders taking the highest tier.**
     Bug 6-piece = 25% lifesteal (not 5+12+25), Flying 6 = 25% control resist, Superpower 6 = +30% Sp.Atk,
     Rock 6 = 15% damage reduction, Fire 6 = +30% versus shields; distinct 2/4/6 effects all apply.

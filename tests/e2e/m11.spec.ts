@@ -58,6 +58,19 @@ async function importSave(page: Page): Promise<void> {
   await expect(page.getByText(`Wilds: ${ROSTER.length}`)).toBeVisible();
 }
 
+test('the Trainer tab lists the M11 materials and keeps More reachable', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Primary' });
+  await nav.getByRole('link', { name: 'Trainer' }).click();
+  await expect(page.getByRole('heading', { name: 'Trainer', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Collection materials', exact: true })).toBeVisible();
+  await expect(page.getByText('Potential Shards')).toBeVisible();
+  await expect(page.getByText('Title Tickets')).toBeVisible();
+  await expect(page.getByText('VIP privileges are coming later.')).toBeVisible();
+  await page.getByRole('link', { name: 'Debug & saves' }).click();
+  await expect(page.getByRole('heading', { name: 'More' })).toBeVisible();
+});
+
 test('Wild screen shows the stat sheet and equipping a held item raises Power', async ({ page }) => {
   await importSave(page);
   await page.goto('/wilds');

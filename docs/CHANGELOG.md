@@ -663,4 +663,23 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   changelog entry are corrected to say the M7 client screens were not wired until now.
 - **Next:** M11.1 — currencies, save v7, Trainer tab and the materials row.
 
+## M11.1 — Materials, save v7 and the Trainer tab (2026-10-20)
+
+- **Ten M11 materials are currencies.** `potentialShard`, `orbEssence`, `soulHeartExp`,
+  `berryEssence`, `heldItemShard`, `plateBottle`, `plateFragment`, `starShard`, `resonationShard`
+  and `titleTicket` join `CurrencyId`/`CURRENCY_IDS` (so they work in `Rewards`) and have content
+  labels. They start at 0; `tuning/account.json` grants 1,000 of each through the debug button so
+  every later layer can be exercised. The seven HUD currencies are unchanged.
+- **Save v7.** `SAVE_VERSION` is 7. Migration now normalises the whole currency record through
+  `currenciesFrom` instead of leaving unknown keys untouched, so a v6 save gets every new material
+  at 0 (and no longer carries `undefined` holes). One new `save.test.ts` case pins the v6 → v7 fill.
+- **Trainer replaces More in the bottom nav.** The sixth tab is `/trainer`, a player-facing card
+  with the trainer name/level, roster/campaign-star counts, the ten-material grid, travel links, and
+  honest VIP/Titles "coming later" cards. **More stays reachable at `/more`** from the Travel card so
+  the import/debug e2e paths keep working; `More` is no longer a nav tab.
+- **Tests.** +1 server save test and +2 e2e (Trainer materials + More link; the existing gear e2e
+  remains). `boot.spec` now expects the Trainer tab and the Milestone 11 HUD label. **412 unit tests
+  / 47 files**; 62 e2e green.
+- **Next:** M11.2 — Potential (duplicate fodder, Potential Shards, nine tiers, reset).
+
 

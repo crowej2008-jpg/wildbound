@@ -59,7 +59,18 @@ export type CurrencyId =
   | 'homeCoin'
   | 'forestCoin'
   | 'islandCoin'
-  | 'wildCoin';
+  | 'wildCoin'
+  // M11 collection materials.
+  | 'potentialShard'
+  | 'orbEssence'
+  | 'soulHeartExp'
+  | 'berryEssence'
+  | 'heldItemShard'
+  | 'plateBottle'
+  | 'plateFragment'
+  | 'starShard'
+  | 'resonationShard'
+  | 'titleTicket';
 
 export const CURRENCY_IDS: readonly CurrencyId[] = [
   'gold',
@@ -75,6 +86,30 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'forestCoin',
   'islandCoin',
   'wildCoin',
+  'potentialShard',
+  'orbEssence',
+  'soulHeartExp',
+  'berryEssence',
+  'heldItemShard',
+  'plateBottle',
+  'plateFragment',
+  'starShard',
+  'resonationShard',
+  'titleTicket',
+];
+
+/** M11 materials shown on the Trainer screen and spent by the collection layers. */
+export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
+  'potentialShard',
+  'orbEssence',
+  'soulHeartExp',
+  'berryEssence',
+  'heldItemShard',
+  'plateBottle',
+  'plateFragment',
+  'starShard',
+  'resonationShard',
+  'titleTicket',
 ];
 
 /** The currencies the persistent HUD strip shows; the rest live on their own screens. */

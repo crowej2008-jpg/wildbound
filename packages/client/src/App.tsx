@@ -21,6 +21,7 @@ import Ranked from './pages/Ranked';
 import Shop from './pages/Shop';
 import Squad from './pages/Squad';
 import Summon from './pages/Summon';
+import Trainer from './pages/Trainer';
 import WildDetail from './pages/WildDetail';
 import Wilds from './pages/Wilds';
 import WorldBoss from './pages/WorldBoss';
@@ -64,6 +65,7 @@ function AppRoutes() {
         <Route path="/pvp" element={<Pvp />} />
         <Route path="/summon" element={<Summon />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/trainer" element={<Trainer />} />
         <Route path="/more" element={<More />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
