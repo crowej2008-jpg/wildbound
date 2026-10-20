@@ -19,7 +19,14 @@ import {
 } from '@wildbound/engine';
 import type { AccountState, EquipmentTables, Loadout, WildClass, Tier } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
-import { CHARM_UPGRADE_COPIES, equippedOn, loadoutOf } from './equipment-view';
+import {
+  CHARM_UPGRADE_COPIES,
+  equippedOn,
+  loadoutOf,
+  potentialFodder,
+  talentResetRefund,
+  talentShardCost,
+} from './equipment-view';
 import type { GameConfig, SpeciesMeta } from './config';
 
 /**
@@ -29,8 +36,9 @@ import type { GameConfig, SpeciesMeta } from './config';
  */
 
 interface SpeciesLookup {
-  species: Map<string, { className: WildClass; tier: Tier }>;
+  species: Map<string, { className: WildClass; tier: Tier; name: string }>;
   equipment: EquipmentTables;
+  collection: GameConfig['collection'];
 }
 
 function context(config: SpeciesLookup, state: AccountState, wildId: string) {
@@ -52,6 +60,32 @@ function pay(state: AccountState, cost: Partial<Record<CurrencyId, number>>): Ac
     currencies[id as CurrencyId] = (currencies[id as CurrencyId] ?? 0) - (amount ?? 0);
   }
   return { ...state, currencies };
+}
+
+/** Return the shards a full Potential reset would refund, without touching gems. */
+function refundPotential(
+  state: AccountState,
+  loadout: Loadout,
+  collection: GameConfig['collection'],
+): AccountState {
+  const refund = talentResetRefund(loadout, collection);
+  if (refund <= 0) return state;
+  return {
+    ...state,
+    currencies: {
+      ...state.currencies,
+      potentialShard: (state.currencies.potentialShard ?? 0) + refund,
+    },
+  };
+}
+
+/** Remove consumed duplicates from the roster and drop their stale loadouts. */
+function consumeFodder(state: AccountState, ids: string[]): AccountState {
+  if (ids.length === 0) return state;
+  const removed = new Set(ids);
+  const loadouts = { ...state.loadouts };
+  for (const id of ids) delete loadouts[id];
+  return { ...state, roster: state.roster.filter((wild) => !removed.has(wild.id)), loadouts };
 }
 
 // --- relics -----------------------------------------------------------------
@@ -245,11 +279,16 @@ export function chooseTreeAction(
   const { tuning } = config.equipment;
   if (!talentsUnlocked(meta.tier, tuning)) return fail('resource_locked', `Talents unlock at ${tuning.talents.minTier}`);
   const loadout = loadoutOf(state, wild.id, config.equipment);
-  if (treeId === null) return ok(withLoadout(state, wild.id, chooseTree(loadout, null, tuning)));
+  if (treeId === loadout.treeId) return ok(state);
+  if (treeId === null) {
+    const refunded = refundPotential(state, loadout, config.collection);
+    return ok(withLoadout(refunded, wild.id, chooseTree(loadout, null, tuning)));
+  }
   const tree = config.equipment.talentTrees.find((t) => t.id === treeId);
   if (!tree) return fail('not_found', `unknown tree ${treeId}`);
   if (tree.className !== meta.className) return fail('invalid_input', `${tree.name} is a ${tree.className} path`);
-  return ok(withLoadout(state, wild.id, chooseTree(loadout, treeId, tuning)));
+  const refunded = refundPotential(state, loadout, config.collection);
+  return ok(withLoadout(refunded, wild.id, chooseTree(loadout, treeId, tuning)));
 }
 
 export function allocateTalentAction(
@@ -267,9 +306,20 @@ export function allocateTalentAction(
   const tree = loadout.treeId ? config.equipment.talentTrees.find((t) => t.id === loadout.treeId) : undefined;
   if (!tree) return fail('invalid_input', 'choose a talent path first');
   if (!canAllocateTalent(loadout, tree, tier, option, tuning)) return fail('resource_locked', 'that tier is not available yet');
-  const paid = pay(state, { gold: tuning.talents.allocateGold });
-  if (!paid) return fail('insufficient_items', 'not enough gold');
-  return ok(withLoadout(paid, wild.id, allocateTalent(loadoutOf(paid, wild.id, config.equipment), tier, option, tuning)));
+
+  const picked = loadout.talents[tier] ?? -1;
+  if (picked === option) return ok(state);
+  const isNewTier = picked < 0;
+  const { fodderPerTier } = config.collection.potential;
+  const fodder = isNewTier ? potentialFodder(state, wild).slice(0, fodderPerTier) : [];
+  if (isNewTier && fodder.length < fodderPerTier) {
+    return fail('insufficient_items', `Potential tier ${tier + 1} needs ${fodderPerTier} duplicate ${config.species.get(wild.speciesId)?.name ?? wild.speciesId}`);
+  }
+
+  const paid = pay(state, { potentialShard: talentShardCost(tier, config.collection, !isNewTier) });
+  if (!paid) return fail('insufficient_items', 'not enough Potential Shards');
+  const next = consumeFodder(paid, fodder.map((copy) => copy.id));
+  return ok(withLoadout(next, wild.id, allocateTalent(loadoutOf(next, wild.id, config.equipment), tier, option, tuning)));
 }
 
 export function resetTalentsAction(config: SpeciesLookup, state: AccountState, wildId: string): Result<AccountState> {
@@ -279,11 +329,10 @@ export function resetTalentsAction(config: SpeciesLookup, state: AccountState, w
   if (!talentsUnlocked(meta.tier, tuning)) return fail('resource_locked', `Talents unlock at ${tuning.talents.minTier}`);
   const loadout = loadoutOf(state, wild.id, config.equipment);
   if (!loadout.treeId) return fail('invalid_input', 'no talent path to reset');
-  const paid = pay(state, { gems: tuning.talents.resetGems });
+  const paid = pay(state, { gems: config.collection.potential.resetGems });
   if (!paid) return fail('insufficient_items', 'not enough gems');
-  const spent = loadout.talents.filter((t) => t >= 0).length;
-  const currencies = { ...paid.currencies, gold: (paid.currencies.gold ?? 0) + spent * tuning.talents.allocateGold };
-  return ok({ ...paid, currencies, loadouts: { ...paid.loadouts, [wildId]: chooseTree(loadout, null, tuning) } });
+  const refunded = refundPotential(paid, loadout, config.collection);
+  return ok({ ...refunded, loadouts: { ...refunded.loadouts, [wildId]: chooseTree(loadout, null, tuning) } });
 }
 
 /** Re-export so callers can type against `GameConfig` without a second import. */

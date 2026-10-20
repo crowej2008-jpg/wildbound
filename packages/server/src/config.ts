@@ -1,4 +1,17 @@
-import { ACCOUNT, ECONOMY, GROWTH, POWER, QUESTS, STAGES, WILDS, GACHA, SHOPS, PVE, PVP } from '@wildbound/content';
+import {
+  ACCOUNT,
+  COLLECTION_TUNING,
+  ECONOMY,
+  GROWTH,
+  POWER,
+  QUESTS,
+  STAGES,
+  WILDS,
+  GACHA,
+  SHOPS,
+  PVE,
+  PVP,
+} from '@wildbound/content';
 import {
   CHARMS,
   CORE_SETS,
@@ -9,7 +22,7 @@ import {
   TALENT_BLOCKS,
   TALENT_TREES,
 } from '@wildbound/content';
-import type { EconomyJson, PveJson, PvpJson } from '@wildbound/content';
+import type { CollectionJson, EconomyJson, PveJson, PvpJson } from '@wildbound/content';
 import {
   mulberry32,
   type CoreStats,
@@ -63,6 +76,8 @@ export interface GameConfig {
   economy: EconomyJson;
   /** M7 equipment catalogue + tuning. */
   equipment: EquipmentTables;
+  /** M11 collection costs (Potential now; later layers add their own blocks). */
+  collection: CollectionJson;
   /** M8 PvE mode tables (tower, trials, world boss, dungeons, link crystal). */
   pve: PveJson;
   pvp: PvpJson;
@@ -115,6 +130,7 @@ export function buildConfig(): GameConfig {
     gacha: { machines: GACHA.machines as unknown as GachaMachineDef[] },
     shops: SHOPS as unknown as ShopDef[],
     economy: ECONOMY,
+    collection: COLLECTION_TUNING,
     equipment: {
       relics: RELICS,
       runes: RUNES,

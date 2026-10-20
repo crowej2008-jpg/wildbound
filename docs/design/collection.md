@@ -67,9 +67,10 @@ screen's materials row.
 Nine tiers, three options per tier, one pick per tier. The existing 15 class trees remain the
 catalogue (per-species trees are too much authored content for M11; recorded as an
 assumption). Unlocking a tier costs **duplicate copies of the same species** (fodder) plus
-**Potential Shards**; each level step costs shards. Fodder must be an unstarred duplicate, not
-the Wild itself, not locked, and not in a squad. Reset refunds all shards and returns fodder as
-generic copies; it costs gems.
+**Potential Shards**; re-picking an unlocked tier costs a flat respec fee. Fodder must not be
+the Wild itself, locked, or in a squad; the lowest-level duplicate is consumed first. Reset costs
+gems, refunds the shard ladder, and does **not** return the consumed fodder. Costs live in
+`content/tuning/collection.json`.
 
 ### Orbs
 
@@ -153,7 +154,7 @@ The 15-stage event ladder is schema-supported but has no live source until event
 |---|---|
 | M11.0 | Retrofit the five M7 screens (new labels, stat sheet, layer deltas, server tests, e2e equip→Power) |
 | M11.1 | Currencies, save v7, Trainer tab replacing More, materials row |
-| M11.2 | Potential: fodder, shards, 9 tiers, reset |
+| M11.2 | Potential: fodder, shards, 9 tiers, reset — **built** |
 | M11.3 | Orbs: levels, duplicates, Orb Essence, 2/4 sets |
 | M11.4 | Soul-hearts: nine sets, effects, star-up |
 | M11.5 | Berries: two slots, stars, dismantle |

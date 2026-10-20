@@ -549,9 +549,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     owner asking for a code-level rename instead of a label-only rename.
 24. **Potential keeps the 15 class trees, not 84 per-species trees.** The reference gives each species
     its own tree; authoring one tree per Wild is too much content for M11, so a Wild picks the tree
-    for its class. M11.2 adds the nine-tier ladder, duplicate-copy fodder and Potential Shards; the
-    exact fodder/shard costs are data in `content/tuning/collection.json` and can be re-tuned without
-    engine changes. *What would change it:* owner-authored per-species trees.
+    for its class. **M11.2 implements this**: the nine-tier ladder consumes one duplicate copy plus
+    Potential Shards for a new tier, charges a flat respec fee to re-pick, and refunds the shard
+    ladder (not the fodder) on reset. Duplicates may be any level/stars as long as they are not the
+    target, locked, or in a squad; the lowest-level copy is picked first. Costs live in
+    `content/tuning/collection.json` and re-tune without engine changes. *What would change it:*
+    owner-authored per-species trees, or a rule that fodder must be unstarred/returned on reset.
 25. **M11 resources use the source's names and become `CurrencyId`s.** Potential Shards, Orb Essence,
     Soul-heart EXP, Berry Essence, Held Item Shards, Plate Bottles, Plate Fragments, Star Shards,
     Resonation Shards and Title Tickets join the existing currencies. `shard` (Wild star-up) and

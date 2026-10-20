@@ -7,12 +7,17 @@ import { expect, test, type Page } from '@playwright/test';
 
 const ROSTER = ['mimikyu', 'ninetales', 'charizard', 'starmie', 'blastoise', 'venusaur'];
 
-function grownSave(): string {
+interface SaveOptions {
+  roster?: string[];
+  currencies?: Record<string, number>;
+}
+
+function grownSave({ roster = ROSTER, currencies = {} }: SaveOptions = {}): string {
   return JSON.stringify({
     version: 6,
     state: {
       profile: { name: 'Gear Tester', level: 1, xp: 0 },
-      roster: ROSTER.map((speciesId, index) => ({
+      roster: roster.map((speciesId, index) => ({
         id: `w${index + 1}`,
         speciesId,
         level: 40,
@@ -43,19 +48,20 @@ function grownSave(): string {
         forestCoin: 0,
         islandCoin: 0,
         wildCoin: 0,
+        ...currencies,
       },
-      nextInstanceSeq: ROSTER.length + 1,
+      nextInstanceSeq: roster.length + 1,
       campaign: { stars: { 'c2-6': 3, 'c3-6': 3 } },
       tutorial: { step: 0, done: true },
     },
   });
 }
 
-async function importSave(page: Page): Promise<void> {
+async function importSave(page: Page, options: SaveOptions = {}): Promise<void> {
   await page.goto('/more');
-  await page.locator('#import-save').fill(grownSave());
+  await page.locator('#import-save').fill(grownSave(options));
   await page.getByRole('button', { name: 'Import save' }).click();
-  await expect(page.getByText(`Wilds: ${ROSTER.length}`)).toBeVisible();
+  await expect(page.getByText(`Wilds: ${(options.roster ?? ROSTER).length}`)).toBeVisible();
 }
 
 test('the Trainer tab lists the M11 materials and keeps More reachable', async ({ page }) => {
@@ -99,4 +105,28 @@ test('Wild screen shows the stat sheet and equipping a held item raises Power', 
       { timeout: 15_000 },
     )
     .toBeGreaterThan(before);
+});
+
+test('Potential eats a duplicate copy and raises Power', async ({ page }) => {
+  await importSave(page, {
+    roster: ['mimikyu', ...ROSTER],
+    currencies: { potentialShard: 1_000 },
+  });
+  await page.goto('/wilds');
+  await page.locator('.roster-item').first().click();
+  const power = () =>
+    page.locator('.wild-power-lg strong').first().innerText().then((text) => Number(text.replace(/,/g, '')));
+  const before = await power();
+
+  await page.getByRole('button', { name: 'Potential', exact: true }).click();
+  await expect(page.getByText(/Duplicates: 1/)).toBeVisible();
+  await page.getByRole('button', { name: 'Ashpike Discipline', exact: true }).click();
+
+  const firstTier = page.locator('.gear-row').first();
+  await expect(firstTier).toContainText('Cost 20 Potential Shards');
+  await firstTier.getByRole('button', { name: 'Trained for power', exact: true }).click();
+
+  await expect(page.getByText(/Duplicates: 0/)).toBeVisible();
+  await expect(firstTier).toContainText('Re-pick 5 Potential Shards');
+  await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(before);
 });

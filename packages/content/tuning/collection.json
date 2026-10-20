@@ -1,0 +1,9 @@
+{
+  "potential": {
+    "fodderPerTier": 1,
+    "shardBase": 20,
+    "shardPerTier": 10,
+    "respecShardFee": 5,
+    "resetGems": 50
+  }
+}

@@ -120,7 +120,19 @@ export interface EquipmentView {
   charms: CharmView[];
   trees: TalentTreeOption[];
   talentTiers: TalentTierView[];
-  costs: { talentAllocateGold: number; talentResetGems: number; charmUpgradeCopies: number };
+  /** Duplicate copies of this species available as Potential fodder. */
+  fodderCount: number;
+  potentialShards: number;
+  /** Shards refunded by a full Potential reset (fodder is not refunded). */
+  talentResetRefund: number;
+  costs: {
+    talentShardBase: number;
+    talentShardPerTier: number;
+    talentRespecShards: number;
+    talentFodderPerTier: number;
+    talentResetGems: number;
+    charmUpgradeCopies: number;
+  };
   delta: StatDelta;
   layerDelta: { relic: StatDelta; runes: StatDelta; charms: StatDelta; cores: StatDelta; talents: StatDelta };
   effects: { tag: string; text: string; fromRound: number; bigRounds?: number }[];
@@ -129,6 +141,46 @@ export interface EquipmentView {
 /** The loadout for a Wild, synthesising an empty one when none is stored. */
 export function loadoutOf(state: AccountState, wildId: string, tables: EquipmentTables): Loadout {
   return state.loadouts[wildId] ?? emptyLoadout(tables.tuning);
+}
+
+/**
+ * Duplicate copies that may be fed to Potential. The target, locked Wilds and
+ * every squad member are protected; the cheapest (lowest level, then stars) copy
+ * is listed first so the server's automatic pick is predictable.
+ */
+export function potentialFodder(state: AccountState, wild: WildInstance): WildInstance[] {
+  const inSquad = new Set<string>();
+  for (const squad of Object.values(state.squads)) {
+    for (const id of squad) if (id) inSquad.add(id);
+  }
+  return state.roster
+    .filter(
+      (copy) =>
+        copy.id !== wild.id &&
+        copy.speciesId === wild.speciesId &&
+        !copy.locked &&
+        !inSquad.has(copy.id),
+    )
+    .sort((a, b) => a.level - b.level || a.stars - b.stars || a.id.localeCompare(b.id));
+}
+
+/** Potential Shards charged for a tier; re-picks use the flat respec fee. */
+export function talentShardCost(
+  tier: number,
+  collection: GameConfig['collection'],
+  respec: boolean,
+): number {
+  return respec ? collection.potential.respecShardFee : collection.potential.shardBase + tier * collection.potential.shardPerTier;
+}
+
+/** Shards returned by a full reset: every sequential tier that was bought. */
+export function talentResetRefund(loadout: Loadout, collection: GameConfig['collection']): number {
+  const spent = loadout.talents.filter((value) => value >= 0).length;
+  let refund = 0;
+  for (let tier = 0; tier < spent; tier += 1) {
+    refund += collection.potential.shardBase + tier * collection.potential.shardPerTier;
+  }
+  return refund;
 }
 
 /** Which Wild (if any) currently wears an instance — scan every stored loadout. */
@@ -312,9 +364,15 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     charms,
     trees,
     talentTiers,
+    fodderCount: potentialFodder(state, wild).length,
+    potentialShards: state.currencies.potentialShard ?? 0,
+    talentResetRefund: talentResetRefund(loadout, config.collection),
     costs: {
-      talentAllocateGold: tuning.talents.allocateGold,
-      talentResetGems: tuning.talents.resetGems,
+      talentShardBase: config.collection.potential.shardBase,
+      talentShardPerTier: config.collection.potential.shardPerTier,
+      talentRespecShards: config.collection.potential.respecShardFee,
+      talentFodderPerTier: config.collection.potential.fodderPerTier,
+      talentResetGems: config.collection.potential.resetGems,
       charmUpgradeCopies: CHARM_UPGRADE_COPIES,
     },
     delta: folded.delta,

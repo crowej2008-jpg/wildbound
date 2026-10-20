@@ -60,7 +60,9 @@ export { KITS, kitById } from './kits';
 export { kitToEngine } from './kit-to-engine';
 export { STAGES, stageById, orderedStages, chapterNumbers, stagesInChapter } from './stages';
 export { QUESTS, questById } from './quests';
-export { COMBAT_SETTINGS, GROWTH, POWER, ACCOUNT, ECONOMY, GACHA_TUNING } from './tuning';
+export { COMBAT_SETTINGS, GROWTH, POWER, ACCOUNT, ECONOMY, GACHA_TUNING, COLLECTION_TUNING } from './tuning';
+export type { CollectionJson } from './tuning';
+export { collectionTuningSchema } from './collection-schema';
 export { GACHA } from './tuning-gacha';
 export { SHOPS } from './shops';
 export {

@@ -24,6 +24,9 @@ export default function PotentialPanel({ wildId, view, className, busy, run, rel
       <p className="muted">
         {t('gear.potential.path')}: {current ? trees.find((tree) => tree.id === current)?.name ?? current : t('gear.potential.choose')}
       </p>
+      <p className="muted">
+        {t('gear.potential.duplicates')}: {view.fodderCount} · {t('gear.potential.shards')}: {view.potentialShards.toLocaleString()}
+      </p>
       <div className="chip-list">
         {trees.map((tree) => (
           <button
@@ -33,7 +36,7 @@ export default function PotentialPanel({ wildId, view, className, busy, run, rel
             disabled={busy}
             onClick={() => {
               if (current === tree.id) return;
-              if (current && !window.confirm(t('gear.potential.reset'))) return;
+              if (current && !window.confirm(t('gear.potential.switch'))) return;
               void act((server) => server.chooseTalentTree(wildId, tree.id));
             }}
           >
@@ -47,45 +50,59 @@ export default function PotentialPanel({ wildId, view, className, busy, run, rel
             disabled={busy}
             onClick={() => void act((server) => server.resetTalents(wildId))}
           >
-            {t('gear.potential.reset')} · {view.costs.talentResetGems} {t('currency.gems')}
+            {t('gear.potential.reset')} · {view.costs.talentResetGems} {t('currency.gems')} · +
+            {view.talentResetRefund} {t('currency.potentialShard')}
           </button>
         )}
       </div>
 
       {current && (
-        <>
-          <p className="muted">
-            {t('gear.potential.allocate')}: {view.costs.talentAllocateGold.toLocaleString()} {t('currency.gold')}
-          </p>
-          <ul className="gear-list">
-            {view.talentTiers.map((tier) => {
-              const pickable = firstOpen === -1 || tier.tier <= firstOpen;
-              return (
-                <li key={tier.tier} className="gear-row">
-                  <div className="gear-head">
-                    <strong>
-                      {t('gear.potential.tier')} {tier.tier + 1}
-                    </strong>
-                    {!pickable && <span className="chip">{t('gear.potential.locked')}</span>}
-                  </div>
-                  <div className="row-actions">
-                    {tier.options.map((option, index) => (
-                      <button
-                        key={option.blockId}
-                        type="button"
-                        className={option.chosen ? 'chip chip-active' : 'chip'}
-                        disabled={busy || !pickable}
-                        onClick={() => void act((server) => server.allocateTalent(wildId, tier.tier, index))}
-                      >
-                        {option.text}
-                      </button>
-                    ))}
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </>
+        <ul className="gear-list">
+          {view.talentTiers.map((tier) => {
+            const pickable = firstOpen === -1 || tier.tier <= firstOpen;
+            const alreadyPicked = tier.options.some((option) => option.chosen);
+            const cost = alreadyPicked
+              ? view.costs.talentRespecShards
+              : view.costs.talentShardBase + tier.tier * view.costs.talentShardPerTier;
+            const shortOnShards = view.potentialShards < cost;
+            const shortOnFodder = !alreadyPicked && view.fodderCount < view.costs.talentFodderPerTier;
+            return (
+              <li key={tier.tier} className="gear-row">
+                <div className="gear-head">
+                  <strong>
+                    {t('gear.potential.tier')} {tier.tier + 1}
+                  </strong>
+                  <span className="chip">
+                    {alreadyPicked ? t('gear.potential.respec') : t('gear.potential.cost')} {cost.toLocaleString()}{' '}
+                    {t('currency.potentialShard')}
+                  </span>
+                  {!alreadyPicked && (
+                    <span className="chip">
+                      {t('gear.potential.fodder')} {view.costs.talentFodderPerTier}
+                    </span>
+                  )}
+                  {!pickable && <span className="chip">{t('gear.potential.locked')}</span>}
+                  {pickable && (shortOnShards || shortOnFodder) && (
+                    <span className="chip">{t('gear.potential.short')}</span>
+                  )}
+                </div>
+                <div className="row-actions">
+                  {tier.options.map((option, index) => (
+                    <button
+                      key={option.blockId}
+                      type="button"
+                      className={option.chosen ? 'chip chip-active' : 'chip'}
+                      disabled={busy || !pickable || (!option.chosen && (shortOnShards || shortOnFodder))}
+                      onClick={() => void act((server) => server.allocateTalent(wildId, tier.tier, index))}
+                    >
+                      {option.text}
+                    </button>
+                  ))}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       )}
     </section>
   );

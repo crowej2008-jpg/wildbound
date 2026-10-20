@@ -682,4 +682,25 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   / 47 files**; 62 e2e green.
 - **Next:** M11.2 — Potential (duplicate fodder, Potential Shards, nine tiers, reset).
 
+## M11.2 — Potential ladder (2026-10-20)
+
+- **New tuning file.** `content/tuning/collection.json` is the single home for M11 costs; the first
+  block is `potential` (`shardBase` 20, `shardPerTier` 10, `respecShardFee` 5, `fodderPerTier` 1,
+  `resetGems` 50). It is wired through `COLLECTION_TUNING`, `GameConfig.collection`, the content
+  validator and the server view, so later layers add blocks without new plumbing.
+- **Potential now costs materials.** Unlocking a tier consumes the authored number of duplicate
+  copies of the same species plus `shardBase + tier × shardPerTier` Potential Shards. Re-picking an
+  unlocked tier charges the flat respec fee. Reset costs gems, refunds the shard ladder and **does
+  not** return fodder. Changing path refunds the ladder instead of silently deleting it.
+- **Fodder rules.** The target, locked Wilds and any squad member are protected; duplicates of any
+  level/stars are eligible and the lowest-level (then lowest-star, then id) copy is consumed first.
+  Consuming a copy removes its stored loadout, so its gear returns to the inventory.
+- **Screen.** The Potential tab shows the duplicate count, the shard balance, each tier's cost and
+  fodder need, a "not enough materials" chip, and the reset refund. Chosen options stay visible for
+  re-picks.
+- **Tests.** +1 server test (locked duplicate is refused; reset refunds the ladder and keeps the
+  fodder consumed) alongside the expanded allocation test; +2 e2e (Potential eats a duplicate and
+  raises Power). **413 unit tests / 47 files**; 64 e2e green.
+- **Next:** M11.3 — Orbs (levels, duplicate copies, Orb Essence, 2/4 set bonuses).
+
 
