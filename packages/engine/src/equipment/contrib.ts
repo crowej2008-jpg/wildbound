@@ -1,6 +1,7 @@
 import type { RoundEffect, SoulheartHooks } from '../combat/types';
 import type { SheetInput } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats } from '../model';
+import type { Faction } from '../model';
 import {
   emptyDelta,
   type CoreInstance,
@@ -83,10 +84,17 @@ function findCore(state: EquipmentState, id: string | null): CoreInstance | unde
 
 export interface LayerDelta {
   relic: StatDelta;
+  plates: StatDelta;
   runes: StatDelta;
   charms: StatDelta;
   cores: StatDelta;
   talents: StatDelta;
+}
+
+/** The element-keyed plate a Wild brings to a fold (stage 0 is empty). */
+export interface PlateFold {
+  faction: Faction;
+  stage: number;
 }
 
 export interface FoldedLoadout {
@@ -137,7 +145,14 @@ function mergeHook(out: SoulheartHooks, src: SoulheartHooks): void {
 }
 
 function emptyLayers(): LayerDelta {
-  return { relic: emptyDelta(), runes: emptyDelta(), charms: emptyDelta(), cores: emptyDelta(), talents: emptyDelta() };
+  return {
+    relic: emptyDelta(),
+    plates: emptyDelta(),
+    runes: emptyDelta(),
+    charms: emptyDelta(),
+    cores: emptyDelta(),
+    talents: emptyDelta(),
+  };
 }
 
 /** Fold a Wild's loadout into one delta, per-layer deltas and conditional effects. */
@@ -145,6 +160,7 @@ export function foldLoadout(
   loadout: Loadout,
   state: EquipmentState,
   tables: EquipmentTables,
+  plate?: PlateFold,
 ): FoldedLoadout {
   const layers = emptyLayers();
   const effects: RoundEffect[] = [];
@@ -157,6 +173,12 @@ export function foldLoadout(
   if (relic && relicDef) {
     addLines(layers.relic, relicDef.lines, relic.level);
     effects.push(refineEffect(relicDef.effect, relic.refine));
+  }
+
+  // --- Plates: the faction's plate, scaled by its stage (0 adds nothing) ---
+  if (plate && plate.stage > 0) {
+    const plateDef = tables.plates.find((d) => d.faction === plate.faction);
+    if (plateDef) addLines(layers.plates, plateDef.lines, plate.stage);
   }
 
   // --- Runes: per-socket lines + a set bonus once enough pieces are worn ---
@@ -237,6 +259,7 @@ export function foldLoadout(
 
   const delta = emptyDelta();
   addDelta(delta, layers.relic);
+  addDelta(delta, layers.plates);
   addDelta(delta, layers.runes);
   addDelta(delta, layers.charms);
   addDelta(delta, layers.cores);

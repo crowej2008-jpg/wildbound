@@ -7,6 +7,7 @@ import { z } from 'zod';
 
 export const TIERS = ['common', 'rare', 'epic', 'legendary', 'supreme', 'mythic'] as const;
 export const CLASSES = ['striker', 'guardian', 'adept'] as const;
+export const FACTIONS = ['ember', 'tide', 'grove', 'volt', 'frost', 'shade'] as const;
 
 export const CORE_FIELDS = ['hp', 'pAtk', 'sAtk', 'spd', 'pDef', 'sDef'] as const;
 export const SOUL_FIELDS = ['spiritAtk', 'spiritDef'] as const;
@@ -95,6 +96,17 @@ export const relicsSchema = z.object({
       tier: z.enum(TIERS),
       lines: z.array(statLineSchema).min(1),
       effect: effectSchema,
+    }),
+  ),
+});
+
+export const platesSchema = z.object({
+  plates: z.array(
+    z.object({
+      id: z.string().min(1),
+      name: z.string().min(1),
+      faction: z.enum(FACTIONS),
+      lines: z.array(statLineSchema).min(1),
     }),
   ),
 });
@@ -229,6 +241,7 @@ export const equipmentTuningSchema = z.object({
 });
 
 export type RelicJson = z.infer<typeof relicsSchema>['relics'][number];
+export type PlateJson = z.infer<typeof platesSchema>['plates'][number];
 export type RuneJson = z.infer<typeof runesSchema>['runes'][number];
 export type RuneSetJson = z.infer<typeof runesSchema>['sets'][number];
 export type CharmJson = z.infer<typeof charmsSchema>['charms'][number];

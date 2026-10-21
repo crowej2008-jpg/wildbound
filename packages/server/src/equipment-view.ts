@@ -23,6 +23,8 @@ import {
 } from '@wildbound/engine';
 import type { AccountState, WildInstance } from '@wildbound/engine';
 import type { GameConfig } from './config';
+import type { PlateView } from './plates';
+import { buildPlateView } from './plates';
 import { sheetOf } from './battle';
 
 /**
@@ -123,8 +125,7 @@ export interface EquipmentView {
   /** Base combat sheet before equipment (the stat-sheet header). */
   sheet: SheetInput;
   /** Combat sheet with the current loadout folded in. */
-  sheetEquipped: SheetInput;
-  /** Equipped percent lines, for the stat sheet. */
+  sheetEquipped: SheetInput;  /** Equipped percent lines, for the stat sheet. */
   percent: Partial<PercentLines>;
   /** Equipped soul stats, for the stat sheet. */
   soul: Partial<SoulStats>;
@@ -141,6 +142,8 @@ export interface EquipmentView {
   soulHeartExp: number;
   berryEssence: number;
   heldItemShards: number;
+  plateBottles: number;
+  plateFragments: number;
   charmSlots: number;
   charms: CharmView[];
   trees: TalentTreeOption[];
@@ -160,8 +163,10 @@ export interface EquipmentView {
     charmUpgradeCopies: number;
   };
   delta: StatDelta;
-  layerDelta: { relic: StatDelta; runes: StatDelta; charms: StatDelta; cores: StatDelta; talents: StatDelta };
+  layerDelta: Record<keyof LayerDelta, StatDelta>;
   effects: { tag: string; text: string; fromRound: number; bigRounds?: number }[];
+  /** M11.7 element-keyed plate card. */
+  plate: PlateView;
 }
 
 /** The loadout for a Wild, synthesising an empty one when none is stored. */
@@ -261,10 +266,15 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
   const { tuning } = tables;
   const loadout = loadoutOf(state, wild.id, tables);
   const meta = config.species.get(wild.speciesId);
-  const folded = foldLoadout(loadout, state.equipment, tables);
+  const folded = foldLoadout(
+    loadout,
+    state.equipment,
+    tables,
+    meta ? { faction: meta.faction, stage: state.plates[wild.id] ?? 0 } : undefined,
+  );
   const baseSheet = sheetOf(wild, config) ?? { hp: 0, pAtk: 0, sAtk: 0, spd: 0, pDef: 0, sDef: 0 };
   const basePower = powerOfSheet(baseSheet, {}, config.power);
-  const layerKeys: (keyof LayerDelta)[] = ['relic', 'runes', 'charms', 'cores', 'talents'];
+  const layerKeys: (keyof LayerDelta)[] = ['relic', 'plates', 'runes', 'charms', 'cores', 'talents'];
   const layerPower = {} as Record<keyof LayerDelta, number>;
   for (const key of layerKeys) {
     const delta = folded.layers[key];
@@ -444,6 +454,8 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     soulHeartExp: state.currencies.soulHeartExp ?? 0,
     berryEssence: state.currencies.berryEssence ?? 0,
     heldItemShards: state.currencies.heldItemShard ?? 0,
+    plateBottles: state.currencies.plateBottle ?? 0,
+    plateFragments: state.currencies.plateFragment ?? 0,
     charmSlots: tuning.charms.slots,
     charms,
     trees,
@@ -466,5 +478,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
       const base = { tag: e.tag, text: textMap.get(e.tag) ?? e.tag, fromRound: e.fromRound };
       return e.bigRounds ? { ...base, bigRounds: e.bigRounds } : base;
     }),
+    plate: buildPlateView(config, state, wild),
   };
 }

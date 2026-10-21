@@ -53,7 +53,7 @@ function withLoadout(state: AccountState, wildId: string, loadout: Loadout): Acc
   return { ...state, loadouts: { ...state.loadouts, [wildId]: loadout } };
 }
 
-function pay(state: AccountState, cost: Partial<Record<CurrencyId, number>>): AccountState | null {
+export function pay(state: AccountState, cost: Partial<Record<CurrencyId, number>>): AccountState | null {
   for (const [id, amount] of Object.entries(cost)) {
     if ((state.currencies[id as CurrencyId] ?? 0) < (amount ?? 0)) return null;
   }
@@ -104,8 +104,12 @@ function consumeFodder(state: AccountState, ids: string[]): AccountState {
   if (ids.length === 0) return state;
   const removed = new Set(ids);
   const loadouts = { ...state.loadouts };
-  for (const id of ids) delete loadouts[id];
-  return { ...state, roster: state.roster.filter((wild) => !removed.has(wild.id)), loadouts };
+  const plates = { ...state.plates };
+  for (const id of ids) {
+    delete loadouts[id];
+    delete plates[id];
+  }
+  return { ...state, roster: state.roster.filter((wild) => !removed.has(wild.id)), loadouts, plates };
 }
 
 // --- relics -----------------------------------------------------------------

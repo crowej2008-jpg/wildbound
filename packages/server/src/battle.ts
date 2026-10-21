@@ -1,6 +1,7 @@
 import { COMBAT_SETTINGS, kitById, kitToEngine } from '@wildbound/content';
 import {
   computePower,
+  emptyLoadout,
   foldLoadout,
   mergeDelta,
   resolveCoreStats,
@@ -100,9 +101,15 @@ export function equippedSheet(
 ): EquippedSheet | null {
   const sheet = sheetOf(wild, config);
   if (!sheet) return null;
-  const loadout = state?.loadouts[wild.id];
-  if (!state || !loadout) return { sheet, percent: {}, effects: [], soulheart: {}, soulheartText: [] };
-  const folded = foldLoadout(loadout, state.equipment, config.equipment);
+  if (!state) return { sheet, percent: {}, effects: [], soulheart: {}, soulheartText: [] };
+  const loadout = state.loadouts[wild.id] ?? emptyLoadout(config.equipment.tuning);
+  const meta = config.species.get(wild.speciesId);
+  const folded = foldLoadout(
+    loadout,
+    state.equipment,
+    config.equipment,
+    meta ? { faction: meta.faction, stage: state.plates?.[wild.id] ?? 0 } : undefined,
+  );
   return {
     sheet: mergeDelta(sheet, folded.delta),
     percent: folded.delta.percent,

@@ -1,5 +1,6 @@
 import charms from '../equipment/charms.json';
 import cores from '../equipment/cores.json';
+import plates from '../equipment/plates.json';
 import relics from '../equipment/relics.json';
 import runes from '../equipment/runes.json';
 import talents from '../equipment/talents.json';
@@ -8,6 +9,7 @@ import {
   charmsSchema,
   coresSchema,
   equipmentTuningSchema,
+  platesSchema,
   relicsSchema,
   runesSchema,
   talentsSchema,
@@ -19,6 +21,7 @@ import {
  */
 export const EQUIPMENT_TUNING = equipmentTuningSchema.parse(equipmentTuning);
 export const RELICS = relicsSchema.parse(relics).relics;
+export const PLATES = platesSchema.parse(plates).plates;
 
 const RUNE_CATALOGUE = runesSchema.parse(runes);
 export const RUNES = RUNE_CATALOGUE.runes;
@@ -33,6 +36,9 @@ export const TALENT_TREES = TALENT_CATALOGUE.trees;
 
 export function relicById(id: string) {
   return RELICS.find((r) => r.id === id);
+}
+export function plateByFaction(faction: string) {
+  return PLATES.find((p) => p.faction === faction);
 }
 export function charmById(id: string) {
   return CHARMS.find((c) => c.id === id);

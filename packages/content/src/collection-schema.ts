@@ -48,6 +48,18 @@ export const collectionTuningSchema = z
         greater: z.number().int().min(0),
       }),
     }),
+    plates: z.object({
+      /** Stages 0–20; stage 0 is the default. */
+      maxStage: z.number().int().min(1),
+      /** Plate Bottles for stage 0 → 1. */
+      bottleBase: z.number().int().min(0),
+      /** Extra Bottles per current stage. */
+      bottlePerStage: z.number().int().min(0),
+      /** Plate Fragments paid by the 5 → 6 step. */
+      fragmentCost: z.number().int().min(0),
+      /** The stage whose socket unlock is deferred. */
+      skillSwapStage: z.number().int().min(1),
+    }),
   })
   .strict();
 

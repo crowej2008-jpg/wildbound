@@ -132,6 +132,27 @@ test('Held Items level to 60 and refine with Held Item Shards', async ({ page })
   await expect(page.getByText('Held Item Shards: 985')).toBeVisible();
 });
 
+test('Plates rise from stage 0 to 6 with Bottles then Fragments', async ({ page }) => {
+  await importSave(page, { currencies: { plateBottle: 1_000, plateFragment: 1_000 } });
+  await page.goto('/wilds');
+  await page.locator('.roster-item').first().click();
+  await page.getByRole('button', { name: 'Held Items', exact: true }).click();
+  await page.getByRole('button', { name: 'Plates', exact: true }).click();
+
+  await expect(page.getByText('Stage 0/20')).toBeVisible();
+  await expect(page.getByText('Plates +0')).toBeVisible();
+  for (let stage = 1; stage <= 5; stage += 1) {
+    await page.getByRole('button', { name: /Raise stage/ }).click();
+    await expect(page.getByText(`Stage ${stage}/20`)).toBeVisible();
+  }
+  await expect(page.getByText('Plates +0')).toBeHidden();
+  await expect(page.getByRole('button', { name: /Raise stage .*375 Plate Fragments/ })).toBeVisible();
+  await page.getByRole('button', { name: /Raise stage .*375 Plate Fragments/ }).click();
+  await expect(page.getByText('Stage 6/20')).toBeVisible();
+  await expect(page.getByText('Plate Fragments 625')).toBeVisible();
+  await expect(page.getByText('Stage 6 skill swap: coming later.')).toBeVisible();
+});
+
 test('Orbs equip and level with Orb Essence', async ({ page }) => {
   await importSave(page, { currencies: { orbEssence: 1_000 } });
   await page.goto('/wilds');

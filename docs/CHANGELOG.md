@@ -786,3 +786,19 @@ Ships in seven commits (M9.1â€“M9.7). M9.1â€“M9.6 are landed; M9.7 (re-tune) is 
   Shards, refine spends gold + Shards, level cap) and +1 e2e (equip, level, refine). **431 unit
   tests / 48 files**; 72 e2e green.
 - **Next:** M11.7 - Plates (element-keyed stages 0-20).
+
+## M11.7 - Plates (2026-10-20)
+
+- **Content.** Six element-keyed plates (one per faction) with two authored lines each in
+  content/equipment/plates.json; the schema and validator require exactly one plate per faction.
+- **Rules.** A plate has stages 0–20. Stage 0 adds nothing; stages cost 10 + 5 x stage Plate
+  Bottles, except 5 ? 6 which costs 375 Plate Fragments. The plate folds into a new plates stat
+  layer and applies to Power and real battles even when the Wild has no stored loadout. The stage-6
+  skill swap stays "coming later".
+- **Save.** SAVE_VERSION ? **9** with per-Wild plates state; migration defaults it to {}.
+- **Screen.** Held Items is now a sub-tab host: Held Items / Plates / Trinkets. The Held Items gate
+  no longer hides Plates, and Trinkets shows an honest coming-later state. The plate card shows
+  stage, next/final lines, Bottle + Fragment balances, the next cost and the deferred skill swap.
+- **Tests.** +1 engine fold/battle test, +3 server tests (Bottle step + Power, 5 ? 6 Fragments,
+  stage cap) and +1 e2e (stage 0 ? 6). **435 unit tests / 49 files**; 74 e2e green.
+- **Next:** M11.8 - Trinkets (species signature, levels 0–40, Star Shards).

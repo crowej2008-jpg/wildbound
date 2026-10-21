@@ -1,5 +1,5 @@
 import type { CombatField, RoundEffect, SoulheartHooks } from '../combat/types';
-import type { CoreStats, PercentLines, SoulStats, Tier, WildClass } from '../model';
+import type { CoreStats, PercentLines, SoulStats, Tier, WildClass, Faction } from '../model';
 
 /**
  * Equipment layers (M7, PROMPT §7.3). Types + rule inputs only: the engine stays
@@ -45,6 +45,14 @@ export interface RelicDef {
   tier: Tier;
   lines: StatLine[];
   effect: EffectDef;
+}
+
+/** One element-keyed plate per faction; stage 0 is empty. */
+export interface PlateDef {
+  id: string;
+  name: string;
+  faction: Faction;
+  lines: StatLine[];
 }
 
 export interface RuneDef {
@@ -180,6 +188,7 @@ export interface EquipmentState {
 /** Everything the engine needs to apply the five layers. */
 export interface EquipmentTables {
   relics: RelicDef[];
+  plates: PlateDef[];
   runes: RuneDef[];
   runeSets: RuneSetDef[];
   charms: CharmDef[];

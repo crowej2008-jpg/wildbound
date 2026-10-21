@@ -606,3 +606,9 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     the content config into `migrateSave` on import, normal load and backup recovery, so a save that
     omits the `equipment` slice gets the starting relics/runes/berries instead of an empty inventory.
     *What would change it:* a deliberate decision to treat a missing slice as an empty inventory.
+33. **Plates are element-keyed and use one ladder per faction (M11.7).** The reference has one plate
+    per element with stages 0–20. Our six species factions map one-to-one to six plates, each with two
+    authored lines. A stage costs `10 + 5 × stage` Bottles except the 5→6 step at 375 Fragments; there
+    is no unlock gate because every Wild has an element. The stage-6 skill swap is deferred and the
+    card says so. Save v9 adds `plates: Record<wildId, stage>`; migration defaults it to `{}`.
+    *What would change it:* owner wants per-species plates, a stage gate, or a different Fragment step.

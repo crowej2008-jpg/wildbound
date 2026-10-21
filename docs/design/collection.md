@@ -47,8 +47,10 @@ screen's materials row.
 
 ## Shared rules
 
-- **Save v7.** New state: `plates`, `trinkets`, `resonance`, `titles`, `vip`, and the extra
-  Berry slot. The migration fills defaults and re-derives derived gates on load.
+- **Save v9.** M11.1 added the materials (save v7), M11.5 replaced the single Berry slot with
+  two (save v8), and M11.7 added `plates` (save v9). Later sub-steps add `trinkets`,
+  `resonance`, `titles` and `vip`; every migration fills defaults and re-derives derived gates
+  on load.
 - **One Wild screen, seven tabs:** Upgrade, Evolve, Potential, Orbs, Soul-hearts, Berries,
   Held Items. Plates and Trinkets sit under the Held Items tab's sub-tabs (they are per-Wild
   gear) so the tab strip stays usable on a phone.
@@ -138,6 +140,14 @@ existing move confirmation. Both caps return an `at_level_cap` error.
 One plate per Wild, keyed to the species' element. Stages 0–20. Stages 0–5 and 7–20 pay Plate
 Bottles; 5→6 pays Plate Fragments. Stats are flat/percent lines. The source's stage-6 skill
 swap is out of scope for M11 and shown as "coming later" on the plate card.
+
+**M11.7 built.** `content/equipment/plates.json` has six plates (one per faction), each with two
+authored lines. The Wild's species faction selects the plate; stage 0 adds nothing. A level costs
+`10 + 5 × stage` Plate Bottles, except the 5→6 step which costs 375 Plate Fragments. `plates` is
+per-Wild save state (v9) and survives migration. The plate card sits under the Held Items tab's
+Plates sub-tab and shows stage, next/final lines, both balances, the next cost, and the deferred
+stage-6 skill swap. The plate folds into Power and real battles even when the Wild has no stored
+loadout.
 
 ### Trinkets
 

@@ -133,6 +133,7 @@ import {
   upgradeCharmAction,
 } from './equipment';
 import { buildEquipmentView } from './equipment-view';
+import { upgradePlateAction } from './plates';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
 import { BACKUP_KEY, createInitialState, parseSave, SAVE_KEY, serializeSave } from './save';
@@ -683,6 +684,10 @@ export class LocalServer implements GameServer {
 
   async refineRelic(instanceId: string): Promise<Result<AccountSnapshot>> {
     return this.applyEquipment((state) => refineRelicAction(this.config, state, instanceId));
+  }
+
+  async upgradePlate(wildId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => upgradePlateAction(this.config, state, wildId));
   }
 
   async levelRune(instanceId: string, useEssence = false): Promise<Result<AccountSnapshot>> {

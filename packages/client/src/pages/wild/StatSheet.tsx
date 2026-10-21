@@ -34,6 +34,7 @@ const PERCENT_LABELS: Record<string, string> = {
 
 const LAYER_ROWS = [
   ['relic', 'wild.tab.heldItems'],
+  ['plates', 'wild.gear.plates'],
   ['runes', 'wild.tab.orbs'],
   ['charms', 'wild.tab.berries'],
   ['cores', 'wild.tab.soulHearts'],

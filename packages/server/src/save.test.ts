@@ -11,6 +11,7 @@ describe('save codec', () => {
     expect(state.roster).toHaveLength(config.startingRoster.length);
     expect(state.currencies.gold).toBeGreaterThan(0);
     expect(state.schemaVersion).toBe(SAVE_VERSION);
+    expect(state.plates).toEqual({});
     expect(new Set(state.roster.map((w) => w.id)).size).toBe(state.roster.length);
   });
 
@@ -56,6 +57,7 @@ describe('save codec', () => {
     if (!result.ok) return;
     expect(result.value.loadouts[wildId]?.charms).toEqual(['charm-sunpetal-berry', null]);
     expect('charm' in (result.value.loadouts[wildId] ?? {})).toBe(false);
+    expect(result.value.plates).toEqual({});
   });
 
   it('rejects malformed JSON and missing fields', () => {

@@ -16,6 +16,7 @@ import {
   CHARMS,
   CORE_SETS,
   EQUIPMENT_TUNING,
+  PLATES,
   RELICS,
   RUNES,
   RUNE_SETS,
@@ -133,6 +134,7 @@ export function buildConfig(): GameConfig {
     collection: COLLECTION_TUNING,
     equipment: {
       relics: RELICS,
+      plates: PLATES,
       runes: RUNES,
       runeSets: RUNE_SETS,
       charms: CHARMS,

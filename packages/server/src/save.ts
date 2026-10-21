@@ -22,7 +22,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 8;
+export const SAVE_VERSION = 9;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -64,6 +64,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     shops: s.shops ?? initialShopState(config?.shops ?? [], now, day),
     equipment: s.equipment ?? initialEquipment(config?.equipment?.tuning?.starting ?? emptyStartingEquipment()),
     loadouts: normalizeLoadouts(s.loadouts, charmSlots),
+    plates: s.plates ?? {},
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     debugClockOffset: s.debugClockOffset ?? 0,
@@ -115,6 +116,7 @@ export function createInitialState(config: GameConfig): AccountState {
     shops: initialShopState(config.shops, now, day),
     equipment: initialEquipment(config.equipment.tuning.starting),
     loadouts: {},
+    plates: {},
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     debugClockOffset: 0,

@@ -20,6 +20,7 @@ import {
   pvpSchema,
   PVP,
   relicsSchema,
+  platesSchema,
   runesSchema,
   charmsSchema,
   coresSchema,
@@ -27,6 +28,7 @@ import {
   equipmentTuningSchema,
   collectionTuningSchema,
   RELICS,
+  PLATES,
   RUNES,
   RUNE_SETS,
   CHARMS,
@@ -80,6 +82,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
 /** M7 catalogue files are identified by filename; each maps to one schema. */
 const EQUIPMENT_SCHEMAS: Record<string, AnySchema> = {
   'relics.json': relicsSchema,
+  'plates.json': platesSchema,
   'runes.json': runesSchema,
   'charms.json': charmsSchema,
   'cores.json': coresSchema,
@@ -208,6 +211,10 @@ export function validateContent(repoRoot: string): ValidateReport {
     }
     for (const r of EQUIPMENT_TUNING.starting.relics) {
       if (!relicIds.has(r.defId)) errors.push(`equipment: starting relic "${r.defId}" has no design`);
+    }
+    for (const faction of ['ember', 'tide', 'grove', 'volt', 'frost', 'shade']) {
+      const count = PLATES.filter((p) => p.faction === faction).length;
+      if (count !== 1) errors.push(`equipment: faction "${faction}" has ${count} plates (want 1)`);
     }
     for (const r of EQUIPMENT_TUNING.starting.runes) {
       if (!runeIds.has(r.defId)) errors.push(`equipment: starting rune "${r.defId}" has no design`);
