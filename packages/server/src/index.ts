@@ -17,6 +17,7 @@ import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
 import type { ResonanceView } from './resonance';
+import type { VipView } from './vip';
 
 /**
  * The server boundary (PROMPT.md §10).
@@ -61,6 +62,8 @@ export interface AccountSnapshot {
   teamPower: Record<SquadMode, number>;
   /** Display-ready account resonance board (M11.9). */
   resonance: ResonanceView;
+  /** Display-ready VIP tier, perks and daily claim state (M11.10). */
+  vip: VipView;
 }
 
 /** Campaign battle outcome (M5). Carries the reward granted and the new snapshot. */
@@ -254,6 +257,8 @@ export interface GameServer {
   unlockResonanceSlot(): Promise<Result<AccountSnapshot>>;
   /** Put a Wild in an open resonance slot, or clear it with `null` (M11.9). */
   setResonanceSlot(slot: number, wildId: string | null): Promise<Result<AccountSnapshot>>;
+  /** Claim today's VIP Common Ticket supply (M11.10). */
+  claimVipDaily(): Promise<Result<ClaimResult>>;
   /** Level a rune (M7). */
   levelRune(instanceId: string, useEssence?: boolean): Promise<Result<AccountSnapshot>>;
   /** Pick (or clear, with `null`) a talent path (M7). */
@@ -342,4 +347,5 @@ export * from './pvp-ranked-view';
 export * from './pvp-hub-view';
 export * from './plates';
 export * from './trinkets';
+export * from './vip';
 export * from './local-server';

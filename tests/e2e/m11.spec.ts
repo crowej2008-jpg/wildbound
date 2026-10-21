@@ -10,13 +10,14 @@ const ROSTER = ['mimikyu', 'ninetales', 'charizard', 'starmie', 'blastoise', 've
 interface SaveOptions {
   roster?: string[];
   currencies?: Record<string, number>;
+  profile?: { name?: string; level?: number; xp?: number };
 }
 
-function grownSave({ roster = ROSTER, currencies = {} }: SaveOptions = {}): string {
+function grownSave({ roster = ROSTER, currencies = {}, profile = {} }: SaveOptions = {}): string {
   return JSON.stringify({
     version: 6,
     state: {
-      profile: { name: 'Gear Tester', level: 1, xp: 0 },
+      profile: { name: 'Gear Tester', level: 1, xp: 0, ...profile },
       roster: roster.map((speciesId, index) => ({
         id: `w${index + 1}`,
         speciesId,
@@ -72,7 +73,8 @@ test('the Trainer tab lists the M11 materials and keeps More reachable', async (
   await expect(page.getByRole('heading', { name: 'Collection materials', exact: true })).toBeVisible();
   await expect(page.getByText('Potential Shards')).toBeVisible();
   await expect(page.getByText('Title Tickets')).toBeVisible();
-  await expect(page.getByText('VIP privileges are coming later.')).toBeVisible();
+  await expect(page.getByText('VIP 0 · Visitor')).toBeVisible();
+  await expect(page.getByText('Reach VIP 1 for a daily supply.')).toBeVisible();
   await page.getByRole('link', { name: 'Debug & saves' }).click();
   await expect(page.getByRole('heading', { name: 'More' })).toBeVisible();
 });
@@ -193,6 +195,22 @@ test('Resonance opens slots and assigns a Wild', async ({ page }) => {
   await expect(page.getByLabel('Slot 1')).toHaveValue('w1');
   await expect(page.getByText('Link Crystal locked')).toBeVisible();
   await expect(page.getByText('No bonus until the Link Crystal is unlocked.')).toBeVisible();
+});
+
+test('VIP derives its tier from lifetime XP and claims the daily supply', async ({ page }) => {
+  await importSave(page, { profile: { xp: 5_000 } });
+  await page.goto('/trainer');
+
+  await expect(page.getByRole('heading', { name: 'VIP privileges' })).toBeVisible();
+  await expect(page.getByText('VIP 2 · Silver')).toBeVisible();
+  await expect(page.getByText('Next: Gold · 10,000 XP')).toBeVisible();
+  await expect(page.getByText('+2h')).toBeVisible();
+  await expect(page.getByText('4%')).toBeVisible();
+  await expect(page.getByText('1 Common Tickets/day', { exact: true })).toBeVisible();
+  await expect(page.getByText('There are no purchases.')).toBeVisible();
+
+  await page.getByRole('button', { name: /Claim daily supply .*1 Common Tickets\/day/ }).click();
+  await expect(page.getByText('Claimed today.')).toBeVisible();
 });
 
 test('Orbs equip and level with Orb Essence', async ({ page }) => {

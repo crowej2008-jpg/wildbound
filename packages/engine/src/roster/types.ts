@@ -177,6 +177,8 @@ export interface AccountState {
   trinkets: Record<string, number>;
   /** M11.9 account-wide resonance slots sharing the Link Crystal level. */
   resonance: ResonanceState;
+  /** M11.10 daily VIP supply bookkeeping; the tier itself is derived from XP. */
+  vip: VipState;
   /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
   pve: PveState;
   /** M10: PvP progress (Arena credits/rank, Ranked ladder). */
@@ -234,6 +236,15 @@ export function initialResonance(slots: number, openSlots: number): ResonanceSta
   const count = Math.max(1, Math.floor(slots));
   const open = Math.min(count, Math.max(0, Math.floor(openSlots)));
   return { unlocked: open, slots: Array.from({ length: count }, () => null) };
+}
+
+/** M11.10: the UTC day-key of the last claimed VIP supply. */
+export interface VipState {
+  lastClaimDay: string | null;
+}
+
+export function initialVip(): VipState {
+  return { lastClaimDay: null };
 }
 
 export interface TutorialState {

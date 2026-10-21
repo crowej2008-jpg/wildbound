@@ -3,6 +3,7 @@ import { MATERIAL_CURRENCY_IDS } from '@wildbound/engine';
 import { currencyLabel, t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
 import ResonancePanel from './ResonancePanel';
+import VipPanel from './VipPanel';
 
 /**
  * Trainer tab (M11.1). Replaces the More tab as the player-facing home for the
@@ -69,10 +70,7 @@ export default function Trainer() {
 
       <ResonancePanel />
 
-      <section className="card">
-        <h2 className="section-title">{t('trainer.vip')}</h2>
-        <p className="muted">{t('trainer.vipLater')}</p>
-      </section>
+      <VipPanel />
 
       <section className="card">
         <h2 className="section-title">{t('trainer.titles')}</h2>

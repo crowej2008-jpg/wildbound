@@ -14,6 +14,7 @@ import {
   initialPvp,
   initialResonance,
   initialShopState,
+  initialVip,
   type AccountState,
   type CurrencyId,
   type MailItem,
@@ -24,7 +25,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 11;
+export const SAVE_VERSION = 12;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -68,7 +69,7 @@ function normalizeResonance(
   };
 }
 
-/** Fill any missing slices on an older save (v1–v10 → current). */
+/** Fill any missing slices on an older save (v1–v11 → current). */
 function withDefaults(state: AccountState, now: number, config: GameConfig): AccountState {
   const s = state as Partial<AccountState>;
   const day = dayKey(now);
@@ -89,6 +90,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     plates: s.plates ?? {},
     trinkets: s.trinkets ?? {},
     resonance: normalizeResonance(s.resonance, config),
+    vip: { lastClaimDay: s.vip?.lastClaimDay ?? null },
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     debugClockOffset: s.debugClockOffset ?? 0,
@@ -146,6 +148,7 @@ export function createInitialState(config: GameConfig): AccountState {
       config.collection.resonance.slots,
       config.collection.resonance.openSlots,
     ),
+    vip: initialVip(),
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     debugClockOffset: 0,

@@ -28,6 +28,7 @@ import {
   talentsSchema,
   equipmentTuningSchema,
   collectionTuningSchema,
+  COLLECTION_TUNING,
   RELICS,
   PLATES,
   TRINKETS,
@@ -231,6 +232,16 @@ export function validateContent(repoRoot: string): ValidateReport {
     }
     for (const speciesId of species.keys()) {
       if (!trinketSpecies.has(speciesId)) errors.push(`equipment: species "${speciesId}" has no trinket`);
+    }
+    const vipTiers = COLLECTION_TUNING.vip.tiers;
+    if (vipTiers[0]?.xp !== 0 || vipTiers[0]?.tier !== 0) {
+      errors.push('collection: VIP tiers must start at tier 0 with 0 XP');
+    }
+    for (let index = 1; index < vipTiers.length; index += 1) {
+      const previous = vipTiers[index - 1]!;
+      const tier = vipTiers[index]!;
+      if (tier.tier !== previous.tier + 1) errors.push(`collection: VIP tier ${tier.tier} is out of order`);
+      if (tier.xp <= previous.xp) errors.push(`collection: VIP tier ${tier.tier} XP must increase`);
     }
     for (const r of EQUIPMENT_TUNING.starting.runes) {
       if (!runeIds.has(r.defId)) errors.push(`equipment: starting rune "${r.defId}" has no design`);

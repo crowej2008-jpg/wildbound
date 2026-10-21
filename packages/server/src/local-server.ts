@@ -140,6 +140,7 @@ import {
   setResonanceSlotAction,
   unlockResonanceSlotAction,
 } from './resonance';
+import { buildVipView, claimVipDailyAction, vipIdleCapMinutes } from './vip';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
 import { BACKUP_KEY, createInitialState, parseSave, SAVE_KEY, serializeSave } from './save';
@@ -481,6 +482,7 @@ export class LocalServer implements GameServer {
     if (isZeroRewards(rate)) return fail('not_found', 'clear a stage to begin earning idle income');
     const now = this.now(state);
     const { capMinutes, quickCollectMinutes, quickCollectGems, quickCollectDailyLimit } = this.config.idle;
+    const cap = vipIdleCapMinutes(this.config, state, capMinutes);
     let next = state;
     let granted: Rewards;
     if (quick) {
@@ -488,14 +490,14 @@ export class LocalServer implements GameServer {
       const claimsToday = state.idle.quickClaimDay === day ? state.idle.quickClaims : 0;
       if (claimsToday >= quickCollectDailyLimit) return fail('daily_limit', 'no quick-collects left today');
       if (state.currencies.gems < quickCollectGems) return fail('insufficient_items', 'not enough gems');
-      granted = quickCollect(rate, state.idle.lastClaimAt, now, capMinutes, quickCollectMinutes);
+      granted = quickCollect(rate, state.idle.lastClaimAt, now, cap, quickCollectMinutes);
       next = {
         ...next,
         currencies: { ...next.currencies, gems: next.currencies.gems - quickCollectGems },
         idle: { ...next.idle, lastClaimAt: now, quickClaimDay: day, quickClaims: claimsToday + 1 },
       };
     } else {
-      granted = pendingIdle(rate, state.idle.lastClaimAt, now, capMinutes);
+      granted = pendingIdle(rate, state.idle.lastClaimAt, now, cap);
       if (isZeroRewards(granted)) return fail('not_ready', 'nothing to collect yet');
       next = { ...next, idle: { ...next.idle, lastClaimAt: now } };
     }
@@ -708,6 +710,15 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) =>
       setResonanceSlotAction(this.config, state, slot, wildId),
     );
+  }
+
+  async claimVipDaily(): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const claimed = claimVipDailyAction(this.config, state, this.now(state));
+    if (!claimed.ok) return claimed;
+    return this.commitClaim(claimed.value.state, claimed.value.granted);
   }
 
   async levelRune(instanceId: string, useEssence = false): Promise<Result<AccountSnapshot>> {
@@ -1183,7 +1194,13 @@ export class LocalServer implements GameServer {
     for (const mode of SQUAD_MODES) {
       teamPower[mode] = state.squads[mode].reduce((sum, id) => sum + (id ? power[id] ?? 0 : 0), 0);
     }
-    return { state, power, teamPower, resonance: buildResonanceView(this.config, state) };
+    return {
+      state,
+      power,
+      teamPower,
+      resonance: buildResonanceView(this.config, state),
+      vip: buildVipView(this.config, state, this.now(state)),
+    };
   }
 
   private instancePower(wild: WildInstance, state: AccountState): number {

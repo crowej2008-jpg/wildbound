@@ -839,3 +839,18 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   locked slot), +1 save migration test and +1 e2e (unlock slot 3, assign a Wild). **443 unit tests /
   51 files**; 78 e2e green.
 - **Next:** M11.10 - VIP privileges (activity tiers, data-driven conveniences).
+
+## M11.10 - VIP, activity tiers (2026-10-20)
+
+- **Content.** `collection.json` `vip` holds seven tiers (Visitor to Crown, 0-250,000 lifetime XP) with
+  idle-cap hours, shop discount and daily Common Ticket supply per tier.
+- **Rules.** The tier is derived from lifetime `profile.xp`; nothing is bought. The discount is applied
+  to shop item prices (rounded down, minimum 1), the idle cap gains the tier's hours, and the daily
+  supply can be claimed once per UTC day. A fresh Visitor tier has no supply.
+- **Save.** `SAVE_VERSION` → **12** with `vip.lastClaimDay`; migration defaults it to null.
+- **Screen.** The Trainer VIP card replaces the placeholder with the badge, lifetime XP, next-tier
+  progress, all three perks, the claim button/claimed state, and an honest VIP 1 gate message.
+- **Tests.** +3 VIP tests (tier/perks/shop/idle, daily claim and next-day reset, fresh-account gate),
+  +1 save migration test and +1 e2e (XP 5,000 → VIP 2 → claim). **447 unit tests / 52 files**; 80 e2e
+  green.
+- **Next:** M11.11 - Titles (three slots, timed expiry, Continuation).

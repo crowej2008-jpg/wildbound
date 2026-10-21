@@ -600,10 +600,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     (7/14-day) titles; timed titles are recycled on load/open rather than by a scheduler. M11.11 ships
     permanent collection/trainer titles plus Arena/Ranked titles; guild-war and event titles remain
     locked "coming later" rows until M15/M16. *What would change it:* the event calendar in M15.
-31. **VIP is activity-driven and never real money.** Tiers come from lifetime account activity, not a
-    purchase flow, and grant only data-driven conveniences (idle cap, shop discount, free draws). The
-    private build has no payments by policy. *What would change it:* owner decision to remove VIP
-    entirely; real money remains out of scope.
+31. **VIP is activity-driven and never real money.** Seven tiers (0–6, `Visitor` to `Crown`) derive
+    from lifetime `profile.xp` (0 to 250,000), not a purchase flow. They grant data-driven
+    conveniences only: +0–6 idle-cap hours, 0–12% off shop item prices, and 0–3 Common Tickets in a
+    once-per-UTC-day supply. The private build has no payments by policy. *What would change it:*
+    owner decision to remove VIP entirely; real money remains out of scope.
 32. **Imported saves now receive the authored starting equipment (M11.0 bug fix).** `LocalServer` passes
     the content config into `migrateSave` on import, normal load and backup recovery, so a save that
     omits the `equipment` slice gets the starting relics/runes/berries instead of an empty inventory.

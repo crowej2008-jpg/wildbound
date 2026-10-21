@@ -47,10 +47,10 @@ screen's materials row.
 
 ## Shared rules
 
-- **Save v11.** M11.1 added the materials (save v7), M11.5 replaced the single Berry slot with
-  two (save v8), M11.7 added `plates` (save v9), M11.8 added `trinkets` (save v10), and M11.9
-  added `resonance` (save v11). Later sub-steps add `titles` and `vip`; every migration fills
-  defaults and re-derives derived gates on load.
+- **Save v12.** M11.1 added the materials (save v7), M11.5 replaced the single Berry slot with
+  two (save v8), M11.7 added `plates` (save v9), M11.8 added `trinkets` (save v10), M11.9 added
+  `resonance` (save v11), and M11.10 added `vip` (save v12). M11.11 adds `titles`; every migration
+  fills defaults and re-derives derived gates on load.
 - **One Wild screen, seven tabs:** Upgrade, Evolve, Potential, Orbs, Soul-hearts, Berries,
   Held Items. Plates and Trinkets sit under the Held Items tab's sub-tabs (gear owned by the
   Wild screen) so the tab strip stays usable on a phone.
@@ -184,6 +184,13 @@ clears its slot.
 Account level track fed by lifetime XP/spend-equivalent activity. Each tier grants a badge and
 small, data-driven perks (idle cap, shop discount, free-draw count). No real money ever.
 
+**M11.10 built.** Seven tiers (`Visitor` 0 XP through `Crown` 250,000 XP) are data in
+`collection.json` `vip`. The tier is derived from lifetime `profile.xp`, never stored separately.
+Perks: +0–6 idle-cap hours, 0–12% off shop item prices (rounded down, minimum 1), and 0–3 Common
+Tickets in a once-per-UTC-day VIP supply. All numbers are data. `vip.lastClaimDay` is save state
+(v12). The Trainer card shows the badge, lifetime XP, next tier and remaining XP, the three perks,
+the claim button, the claimed-today state, and an honest "reach VIP 1" state for fresh accounts.
+
 ### Titles
 
 Three slots: Common, Premium, Rare. A title is permanent or timed; timed titles last 7 or 14
@@ -207,10 +214,10 @@ The 15-stage event ladder is schema-supported but has no live source until event
 | M11.4 | Soul-hearts: nine sets, effects, star-up — **built** |
 | M11.5 | Berries: two slots, stars, dismantle — **built** |
 | M11.6 | Held Items: levels 1–60, refine — **built** |
-| M11.7 | Plates |
-| M11.8 | Trinkets |
-| M11.9 | Resonance |
-| M11.10 | VIP |
+| M11.7 | Plates — **built** |
+| M11.8 | Trinkets — **built** |
+| M11.9 | Resonance — **built** |
+| M11.10 | VIP — **built** |
 | M11.11 | Titles |
 | M11.12 | Docs, balance pass, full e2e, `pnpm check` |
 

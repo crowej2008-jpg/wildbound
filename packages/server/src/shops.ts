@@ -20,6 +20,7 @@ import {
 import { applyGrant } from './economy';
 import type { GameConfig } from './config';
 import type { Outcome } from './outcome';
+import { vipShopPrice } from './vip';
 
 /**
  * Server-side shop glue (M6, PROMPT §7.9). The engine owns the restock/buy rules;
@@ -59,7 +60,9 @@ export function applyBuy(
   if (!item) return { ok: false, error: 'not_found', message: `unknown shop item "${itemId}"` };
 
   const progress = shopProgress(config, state, shopId, now) ?? initialShopProgress(now, dayKey(now));
-  const block = buyBlock(shop, item, progress, state.currencies);
+  const price = vipShopPrice(config, state, item.price);
+  const priced = { ...item, price };
+  const block = buyBlock(shop, priced, progress, state.currencies);
   if (block) {
     const message =
       block === 'owned' ? 'already bought' : block === 'limit' ? 'restock limit reached' : 'not enough currency';
@@ -69,7 +72,7 @@ export function applyBuy(
   const currency = shop.currency as CurrencyId;
   const paid: AccountState = {
     ...state,
-    currencies: { ...state.currencies, [currency]: Math.max(0, (state.currencies[currency] ?? 0) - item.price) },
+    currencies: { ...state.currencies, [currency]: Math.max(0, (state.currencies[currency] ?? 0) - price) },
     shops: { ...state.shops, [shopId]: recordBuy(progress, item) },
   };
   return { ok: true, value: { state: applyGrant(config, paid, item.grants), granted: item.grants } };
@@ -151,18 +154,20 @@ export function shopsView(config: GameConfig, state: AccountState, now: number):
     const items = shop.items.map((item): ShopItemView => {
       const bought = boughtCount(progress, item.id);
       const cap = item.oneTime ? 1 : (item.limit ?? Number.POSITIVE_INFINITY);
+      const price = vipShopPrice(config, state, item.price);
+      const priced = { ...item, price };
       return {
         id: item.id,
         name: item.name,
-        price: item.price,
+        price,
         grants: item.grants,
         limit: Number.isFinite(cap) ? cap : null,
         oneTime: Boolean(item.oneTime),
         bought,
         remaining: Number.isFinite(cap) ? Math.max(0, cap - bought) : null,
         owned: item.oneTime ? isOneTimeBought(progress, item.id) : false,
-        affordable: (state.currencies[shop.currency as CurrencyId] ?? 0) >= item.price,
-        blocked: buyBlock(shop, item, progress, state.currencies),
+        affordable: (state.currencies[shop.currency as CurrencyId] ?? 0) >= price,
+        blocked: buyBlock(shop, priced, progress, state.currencies),
       };
     });
     return {
