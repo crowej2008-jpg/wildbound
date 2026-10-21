@@ -25,6 +25,8 @@ import type { AccountState, WildInstance } from '@wildbound/engine';
 import type { GameConfig } from './config';
 import type { PlateView } from './plates';
 import { buildPlateView } from './plates';
+import type { TrinketView } from './trinkets';
+import { buildTrinketView } from './trinkets';
 import { sheetOf } from './battle';
 
 /**
@@ -144,6 +146,7 @@ export interface EquipmentView {
   heldItemShards: number;
   plateBottles: number;
   plateFragments: number;
+  starShards: number;
   charmSlots: number;
   charms: CharmView[];
   trees: TalentTreeOption[];
@@ -167,6 +170,8 @@ export interface EquipmentView {
   effects: { tag: string; text: string; fromRound: number; bigRounds?: number }[];
   /** M11.7 element-keyed plate card. */
   plate: PlateView;
+  /** M11.8 species-signature trinket card. */
+  trinket: TrinketView;
 }
 
 /** The loadout for a Wild, synthesising an empty one when none is stored. */
@@ -271,10 +276,11 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     state.equipment,
     tables,
     meta ? { faction: meta.faction, stage: state.plates[wild.id] ?? 0 } : undefined,
+    { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
   );
   const baseSheet = sheetOf(wild, config) ?? { hp: 0, pAtk: 0, sAtk: 0, spd: 0, pDef: 0, sDef: 0 };
   const basePower = powerOfSheet(baseSheet, {}, config.power);
-  const layerKeys: (keyof LayerDelta)[] = ['relic', 'plates', 'runes', 'charms', 'cores', 'talents'];
+  const layerKeys: (keyof LayerDelta)[] = ['relic', 'plates', 'trinkets', 'runes', 'charms', 'cores', 'talents'];
   const layerPower = {} as Record<keyof LayerDelta, number>;
   for (const key of layerKeys) {
     const delta = folded.layers[key];
@@ -456,6 +462,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     heldItemShards: state.currencies.heldItemShard ?? 0,
     plateBottles: state.currencies.plateBottle ?? 0,
     plateFragments: state.currencies.plateFragment ?? 0,
+    starShards: state.currencies.starShard ?? 0,
     charmSlots: tuning.charms.slots,
     charms,
     trees,
@@ -479,5 +486,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
       return e.bigRounds ? { ...base, bigRounds: e.bigRounds } : base;
     }),
     plate: buildPlateView(config, state, wild),
+    trinket: buildTrinketView(config, state, wild),
   };
 }

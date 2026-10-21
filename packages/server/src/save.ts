@@ -22,7 +22,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 9;
+export const SAVE_VERSION = 10;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -46,7 +46,7 @@ function normalizeLoadouts(
   return out;
 }
 
-/** Fill any missing slices on an older save (v1–v7 → current). */
+/** Fill any missing slices on an older save (v1–v9 → current). */
 function withDefaults(state: AccountState, now: number, config: GameConfig): AccountState {
   const s = state as Partial<AccountState>;
   const day = dayKey(now);
@@ -65,6 +65,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     equipment: s.equipment ?? initialEquipment(config?.equipment?.tuning?.starting ?? emptyStartingEquipment()),
     loadouts: normalizeLoadouts(s.loadouts, charmSlots),
     plates: s.plates ?? {},
+    trinkets: s.trinkets ?? {},
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     debugClockOffset: s.debugClockOffset ?? 0,
@@ -117,6 +118,7 @@ export function createInitialState(config: GameConfig): AccountState {
     equipment: initialEquipment(config.equipment.tuning.starting),
     loadouts: {},
     plates: {},
+    trinkets: {},
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     debugClockOffset: 0,

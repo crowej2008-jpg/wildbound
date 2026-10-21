@@ -1,0 +1,2608 @@
+{
+  "trinkets": [
+    {
+      "id": "trinket-shiny-charizard",
+      "name": "Shiny Charizard Keepsake",
+      "speciesId": "shiny-charizard",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-gengar",
+      "name": "Shiny Gengar Keepsake",
+      "speciesId": "shiny-gengar",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-mimikyu",
+      "name": "Mimikyu Keepsake",
+      "speciesId": "mimikyu",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-yveltal",
+      "name": "Yveltal Keepsake",
+      "speciesId": "yveltal",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-giratina",
+      "name": "Giratina Keepsake",
+      "speciesId": "giratina",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-victini",
+      "name": "Victini Keepsake",
+      "speciesId": "victini",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-infernape",
+      "name": "Infernape Keepsake",
+      "speciesId": "infernape",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-ho-oh",
+      "name": "Ho-Oh Keepsake",
+      "speciesId": "ho-oh",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-groudon",
+      "name": "Groudon Keepsake",
+      "speciesId": "groudon",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-entei",
+      "name": "Entei Keepsake",
+      "speciesId": "entei",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-moltres",
+      "name": "Moltres Keepsake",
+      "speciesId": "moltres",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-blaziken",
+      "name": "Blaziken Keepsake",
+      "speciesId": "blaziken",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-typhlosion",
+      "name": "Typhlosion Keepsake",
+      "speciesId": "typhlosion",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-hydreigon",
+      "name": "Hydreigon Keepsake",
+      "speciesId": "hydreigon",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-tyranitar",
+      "name": "Tyranitar Keepsake",
+      "speciesId": "tyranitar",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-gengar",
+      "name": "Gengar Keepsake",
+      "speciesId": "gengar",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-charizard",
+      "name": "Charizard Keepsake",
+      "speciesId": "charizard",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-ninetales",
+      "name": "Ninetales Keepsake",
+      "speciesId": "ninetales",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-necrozma",
+      "name": "Necrozma Keepsake",
+      "speciesId": "necrozma",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-arceus",
+      "name": "Arceus Keepsake",
+      "speciesId": "arceus",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-kyogre",
+      "name": "Kyogre Keepsake",
+      "speciesId": "kyogre",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-cresselia",
+      "name": "Cresselia Keepsake",
+      "speciesId": "cresselia",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-solgaleo",
+      "name": "Solgaleo Keepsake",
+      "speciesId": "solgaleo",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-mew",
+      "name": "Shiny Mew Keepsake",
+      "speciesId": "shiny-mew",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-arceus",
+      "name": "Shiny Arceus Keepsake",
+      "speciesId": "shiny-arceus",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-venusaur",
+      "name": "Shiny Venusaur Keepsake",
+      "speciesId": "shiny-venusaur",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-raichu",
+      "name": "Shiny Raichu Keepsake",
+      "speciesId": "shiny-raichu",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-god-ash-pikachu",
+      "name": "Shiny God Ash-Pikachu Keepsake",
+      "speciesId": "shiny-god-ash-pikachu",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-god-ash-pikachu",
+      "name": "God Ash-Pikachu Keepsake",
+      "speciesId": "god-ash-pikachu",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-wobbuffet",
+      "name": "Wobbuffet Keepsake",
+      "speciesId": "wobbuffet",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-zygarde",
+      "name": "Zygarde Keepsake",
+      "speciesId": "zygarde",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-dialga",
+      "name": "Dialga Keepsake",
+      "speciesId": "dialga",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-shaymin",
+      "name": "Shaymin Keepsake",
+      "speciesId": "shaymin",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-celebi",
+      "name": "Celebi Keepsake",
+      "speciesId": "celebi",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-rayquaza",
+      "name": "Rayquaza Keepsake",
+      "speciesId": "rayquaza",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-raikou",
+      "name": "Raikou Keepsake",
+      "speciesId": "raikou",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-zapdos",
+      "name": "Zapdos Keepsake",
+      "speciesId": "zapdos",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-sceptile",
+      "name": "Sceptile Keepsake",
+      "speciesId": "sceptile",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-meganium",
+      "name": "Meganium Keepsake",
+      "speciesId": "meganium",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-metagross",
+      "name": "Metagross Keepsake",
+      "speciesId": "metagross",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-gardevoir",
+      "name": "Gardevoir Keepsake",
+      "speciesId": "gardevoir",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-salamence",
+      "name": "Salamence Keepsake",
+      "speciesId": "salamence",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-raichu",
+      "name": "Raichu Keepsake",
+      "speciesId": "raichu",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-venusaur",
+      "name": "Venusaur Keepsake",
+      "speciesId": "venusaur",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-origin-lugia",
+      "name": "Origin Lugia Keepsake",
+      "speciesId": "origin-lugia",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-origin-rayquaza",
+      "name": "Origin Rayquaza Keepsake",
+      "speciesId": "origin-rayquaza",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-shadow-mewtwo",
+      "name": "Shadow Mewtwo Keepsake",
+      "speciesId": "shadow-mewtwo",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-black-kyurem",
+      "name": "Black Kyurem Keepsake",
+      "speciesId": "black-kyurem",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-hoopa",
+      "name": "Hoopa Keepsake",
+      "speciesId": "hoopa",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-mewtwo",
+      "name": "Mewtwo Keepsake",
+      "speciesId": "mewtwo",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-darkrai",
+      "name": "Darkrai Keepsake",
+      "speciesId": "darkrai",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-lunala",
+      "name": "Lunala Keepsake",
+      "speciesId": "lunala",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-deoxys",
+      "name": "Deoxys Keepsake",
+      "speciesId": "deoxys",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-meloetta",
+      "name": "Meloetta Keepsake",
+      "speciesId": "meloetta",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-mewtwo",
+      "name": "Shiny Mewtwo Keepsake",
+      "speciesId": "shiny-mewtwo",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-darkrai",
+      "name": "Shiny Darkrai Keepsake",
+      "speciesId": "shiny-darkrai",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-kyurem",
+      "name": "Shiny Kyurem Keepsake",
+      "speciesId": "shiny-kyurem",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-hoopa",
+      "name": "Shiny Hoopa Keepsake",
+      "speciesId": "shiny-hoopa",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-psyduck",
+      "name": "Psyduck Keepsake",
+      "speciesId": "psyduck",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-blastoise",
+      "name": "Shiny Blastoise Keepsake",
+      "speciesId": "shiny-blastoise",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-xerneas",
+      "name": "Xerneas Keepsake",
+      "speciesId": "xerneas",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-palkia",
+      "name": "Palkia Keepsake",
+      "speciesId": "palkia",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-keldeo",
+      "name": "Keldeo Keepsake",
+      "speciesId": "keldeo",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-greninja",
+      "name": "Greninja Keepsake",
+      "speciesId": "greninja",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-manaphy",
+      "name": "Manaphy Keepsake",
+      "speciesId": "manaphy",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-lugia",
+      "name": "Lugia Keepsake",
+      "speciesId": "lugia",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-suicune",
+      "name": "Suicune Keepsake",
+      "speciesId": "suicune",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-articuno",
+      "name": "Articuno Keepsake",
+      "speciesId": "articuno",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-gyarados",
+      "name": "Gyarados Keepsake",
+      "speciesId": "gyarados",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-swampert",
+      "name": "Swampert Keepsake",
+      "speciesId": "swampert",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-feraligatr",
+      "name": "Feraligatr Keepsake",
+      "speciesId": "feraligatr",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-dragonite",
+      "name": "Dragonite Keepsake",
+      "speciesId": "dragonite",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-garchomp",
+      "name": "Garchomp Keepsake",
+      "speciesId": "garchomp",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-slaking",
+      "name": "Slaking Keepsake",
+      "speciesId": "slaking",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-starmie",
+      "name": "Starmie Keepsake",
+      "speciesId": "starmie",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-blastoise",
+      "name": "Blastoise Keepsake",
+      "speciesId": "blastoise",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-calyrex",
+      "name": "Calyrex Keepsake",
+      "speciesId": "calyrex",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-zacian",
+      "name": "Zacian Keepsake",
+      "speciesId": "zacian",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-wind-god-pidgeot",
+      "name": "Wind-God Pidgeot Keepsake",
+      "speciesId": "wind-god-pidgeot",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "skillBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
+      ]
+    },
+    {
+      "id": "trinket-mew",
+      "name": "Mew Keepsake",
+      "speciesId": "mew",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-jirachi",
+      "name": "Jirachi Keepsake",
+      "speciesId": "jirachi",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-snorlax",
+      "name": "Snorlax Keepsake",
+      "speciesId": "snorlax",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-kyogre",
+      "name": "Shiny Kyogre Keepsake",
+      "speciesId": "shiny-kyogre",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "dmgRdct",
+          "base": 0.003,
+          "perLevel": 0.003
+        }
+      ]
+    },
+    {
+      "id": "trinket-shiny-cresselia",
+      "name": "Shiny Cresselia Keepsake",
+      "speciesId": "shiny-cresselia",
+      "lines": [
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 30,
+          "perLevel": 30
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 4,
+          "perLevel": 4
+        },
+        {
+          "kind": "percent",
+          "field": "critPower",
+          "base": 0.006,
+          "perLevel": 0.006
+        }
+      ]
+    }
+  ]
+}

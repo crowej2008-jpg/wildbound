@@ -21,6 +21,7 @@ import {
   PVP,
   relicsSchema,
   platesSchema,
+  trinketsSchema,
   runesSchema,
   charmsSchema,
   coresSchema,
@@ -29,6 +30,7 @@ import {
   collectionTuningSchema,
   RELICS,
   PLATES,
+  TRINKETS,
   RUNES,
   RUNE_SETS,
   CHARMS,
@@ -83,6 +85,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
 const EQUIPMENT_SCHEMAS: Record<string, AnySchema> = {
   'relics.json': relicsSchema,
   'plates.json': platesSchema,
+  'trinkets.json': trinketsSchema,
   'runes.json': runesSchema,
   'charms.json': charmsSchema,
   'cores.json': coresSchema,
@@ -216,6 +219,19 @@ export function validateContent(repoRoot: string): ValidateReport {
       const count = PLATES.filter((p) => p.faction === faction).length;
       if (count !== 1) errors.push(`equipment: faction "${faction}" has ${count} plates (want 1)`);
     }
+    const trinketSpecies = new Set<string>();
+    for (const trinket of TRINKETS) {
+      if (!species.has(trinket.speciesId)) {
+        errors.push(`equipment: trinket "${trinket.id}" references unknown species "${trinket.speciesId}"`);
+      }
+      if (trinketSpecies.has(trinket.speciesId)) {
+        errors.push(`equipment: species "${trinket.speciesId}" has more than one trinket`);
+      }
+      trinketSpecies.add(trinket.speciesId);
+    }
+    for (const speciesId of species.keys()) {
+      if (!trinketSpecies.has(speciesId)) errors.push(`equipment: species "${speciesId}" has no trinket`);
+    }
     for (const r of EQUIPMENT_TUNING.starting.runes) {
       if (!runeIds.has(r.defId)) errors.push(`equipment: starting rune "${r.defId}" has no design`);
     }
@@ -241,7 +257,7 @@ export function validateContent(repoRoot: string): ValidateReport {
       if (c.tier !== 'common' && c.maxStars <= 0) errors.push(`equipment: Berry "${c.id}" needs a star cap`);
     }
     checks.push(
-      `equipment: ${RELICS.length} relic(s), ${RUNES.length} rune(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s), ${TALENT_TREES.length} talent tree(s) validated`,
+      `equipment: ${RELICS.length} relic(s), ${PLATES.length} plate(s), ${TRINKETS.length} trinket(s), ${RUNES.length} rune(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s), ${TALENT_TREES.length} talent tree(s) validated`,
     );
   }
 

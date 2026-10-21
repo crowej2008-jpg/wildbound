@@ -55,6 +55,14 @@ export interface PlateDef {
   lines: StatLine[];
 }
 
+/** One signature trinket per species; level 0 is empty. */
+export interface TrinketDef {
+  id: string;
+  name: string;
+  speciesId: string;
+  lines: StatLine[];
+}
+
 export interface RuneDef {
   id: string;
   name: string;
@@ -189,6 +197,7 @@ export interface EquipmentState {
 export interface EquipmentTables {
   relics: RelicDef[];
   plates: PlateDef[];
+  trinkets: TrinketDef[];
   runes: RuneDef[];
   runeSets: RuneSetDef[];
   charms: CharmDef[];

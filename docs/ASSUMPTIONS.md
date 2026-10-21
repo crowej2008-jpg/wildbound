@@ -612,3 +612,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     is no unlock gate because every Wild has an element. The stage-6 skill swap is deferred and the
     card says so. Save v9 adds `plates: Record<wildId, stage>`; migration defaults it to `{}`.
     *What would change it:* owner wants per-species plates, a stage gate, or a different Fragment step.
+34. **Trinkets are species-keyed and shared by every copy (M11.8).** The reference has one signature
+    trinket per species. We store `trinkets: Record<speciesId, level>` so levelling a keepsake once
+    benefits every copy of that species; levels run 0–40 and cost `10 + 5 × level` Star Shards. Each
+    keepsake has flat HP/P.ATK/S.ATK plus one authored percent line chosen by class (Crit Intensity,
+    DMG Reduction, or Skill Boost). Shiny variants remain deferred. Save v10 adds `trinkets`; migration
+    defaults it to `{}`. *What would change it:* owner wants per-Wild trinkets or unique per-species
+    percent effects.

@@ -85,6 +85,7 @@ function findCore(state: EquipmentState, id: string | null): CoreInstance | unde
 export interface LayerDelta {
   relic: StatDelta;
   plates: StatDelta;
+  trinkets: StatDelta;
   runes: StatDelta;
   charms: StatDelta;
   cores: StatDelta;
@@ -95,6 +96,12 @@ export interface LayerDelta {
 export interface PlateFold {
   faction: Faction;
   stage: number;
+}
+
+/** The species-signature trinket a Wild brings to a fold (level 0 is empty). */
+export interface TrinketFold {
+  speciesId: string;
+  level: number;
 }
 
 export interface FoldedLoadout {
@@ -148,6 +155,7 @@ function emptyLayers(): LayerDelta {
   return {
     relic: emptyDelta(),
     plates: emptyDelta(),
+    trinkets: emptyDelta(),
     runes: emptyDelta(),
     charms: emptyDelta(),
     cores: emptyDelta(),
@@ -161,6 +169,7 @@ export function foldLoadout(
   state: EquipmentState,
   tables: EquipmentTables,
   plate?: PlateFold,
+  trinket?: TrinketFold,
 ): FoldedLoadout {
   const layers = emptyLayers();
   const effects: RoundEffect[] = [];
@@ -179,6 +188,12 @@ export function foldLoadout(
   if (plate && plate.stage > 0) {
     const plateDef = tables.plates.find((d) => d.faction === plate.faction);
     if (plateDef) addLines(layers.plates, plateDef.lines, plate.stage);
+  }
+
+  // --- Trinkets: one signature line set per species, scaled by level ---
+  if (trinket && trinket.level > 0) {
+    const trinketDef = tables.trinkets.find((d) => d.speciesId === trinket.speciesId);
+    if (trinketDef) addLines(layers.trinkets, trinketDef.lines, trinket.level);
   }
 
   // --- Runes: per-socket lines + a set bonus once enough pieces are worn ---
@@ -260,6 +275,7 @@ export function foldLoadout(
   const delta = emptyDelta();
   addDelta(delta, layers.relic);
   addDelta(delta, layers.plates);
+  addDelta(delta, layers.trinkets);
   addDelta(delta, layers.runes);
   addDelta(delta, layers.charms);
   addDelta(delta, layers.cores);

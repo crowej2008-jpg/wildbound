@@ -19,6 +19,7 @@ import {
   PLATES,
   RELICS,
   RUNES,
+  TRINKETS,
   RUNE_SETS,
   TALENT_BLOCKS,
   TALENT_TREES,
@@ -135,6 +136,7 @@ export function buildConfig(): GameConfig {
     equipment: {
       relics: RELICS,
       plates: PLATES,
+      trinkets: TRINKETS,
       runes: RUNES,
       runeSets: RUNE_SETS,
       charms: CHARMS,

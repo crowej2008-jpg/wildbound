@@ -57,6 +57,17 @@ const TABLES: EquipmentTables = {
       ],
     },
   ],
+  trinkets: [
+    {
+      id: 'trinketA',
+      name: 'Trinket A',
+      speciesId: 'sp1',
+      lines: [
+        { kind: 'core', field: 'pAtk', base: 12, perLevel: 12 },
+        { kind: 'percent', field: 'dmgBoost', base: 0.01, perLevel: 0.01 },
+      ],
+    },
+  ],
   runes: [
     { id: 'rune1', name: 'Rune 1', setId: 'setA', tier: 'common', lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.03, perLevel: 0.01 }] },
     { id: 'rune2', name: 'Rune 2', setId: 'setA', tier: 'rare', lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.03, perLevel: 0.01 }] },
@@ -193,13 +204,22 @@ describe('layer contributions', () => {
       treeId: 'forged',
       talents: Array.from({ length: 9 }, () => -1),
     };
-    const folded = foldLoadout(loadout, state, TABLES, { faction: 'ember', stage: 5 });
+    const folded = foldLoadout(
+      loadout,
+      state,
+      TABLES,
+      { faction: 'ember', stage: 5 },
+      { speciesId: 'sp1', level: 5 },
+    );
     // relic level 3: pAtk 80, crit 0.07
     expect(folded.layers.relic.core.pAtk).toBeCloseTo(80);
     expect(folded.layers.relic.percent.crit).toBeCloseTo(0.07);
     // plate stage 5: pAtk 50, dmgBoost 0.05
     expect(folded.layers.plates.core.pAtk).toBeCloseTo(50);
     expect(folded.layers.plates.percent.dmgBoost).toBeCloseTo(0.05);
+    // trinket level 5: pAtk 60, dmgBoost 0.05
+    expect(folded.layers.trinkets.core.pAtk).toBeCloseTo(60);
+    expect(folded.layers.trinkets.percent.dmgBoost).toBeCloseTo(0.05);
     // per-rune lines (.08 + .04) plus the 2-piece dmgBoost (.05); 4 pieces add critPower (.1)
     expect(folded.layers.runes.percent.dmgBoost).toBeCloseTo(0.17);
     expect(folded.layers.runes.percent.critPower).toBeCloseTo(0.1);
@@ -346,14 +366,15 @@ describe('equipment changes battle outcomes', () => {
   });
 });
 
-// Each of the five layers must change a battle outcome in its intended direction.
+// Every gear layer must change a battle outcome in its intended direction.
 function battleWith(
   baseSheet: SheetInput,
   state: EquipmentState,
   loadout: Loadout,
   plate?: { faction: 'ember'; stage: number },
+  trinket?: { speciesId: string; level: number },
 ) {
-  const folded = foldLoadout(loadout, state, TABLES, plate);
+  const folded = foldLoadout(loadout, state, TABLES, plate, trinket);
   return runBattle({
     attackers: [{ ...attacker(mergeDelta(baseSheet, folded.delta), folded.effects), soulheart: folded.soulheart }],
     defenders: [defender(120000)],
@@ -374,6 +395,17 @@ describe('every layer moves a battle in the intended direction', () => {
 
   it('a plate stage raises damage', () => {
     const up = battleWith(base, stateWith({}), emptyLoadout(TUNING), { faction: 'ember', stage: 10 });
+    expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
+  });
+
+  it('a species trinket level raises damage', () => {
+    const up = battleWith(
+      base,
+      stateWith({}),
+      emptyLoadout(TUNING),
+      undefined,
+      { speciesId: 'sp1', level: 10 },
+    );
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });
 

@@ -111,6 +111,17 @@ export const platesSchema = z.object({
   ),
 });
 
+export const trinketsSchema = z.object({
+  trinkets: z.array(
+    z.object({
+      id: z.string().min(1),
+      name: z.string().min(1),
+      speciesId: z.string().min(1),
+      lines: z.array(statLineSchema).min(1),
+    }),
+  ),
+});
+
 export const runesSchema = z.object({
   runes: z.array(
     z.object({
@@ -242,6 +253,7 @@ export const equipmentTuningSchema = z.object({
 
 export type RelicJson = z.infer<typeof relicsSchema>['relics'][number];
 export type PlateJson = z.infer<typeof platesSchema>['plates'][number];
+export type TrinketJson = z.infer<typeof trinketsSchema>['trinkets'][number];
 export type RuneJson = z.infer<typeof runesSchema>['runes'][number];
 export type RuneSetJson = z.infer<typeof runesSchema>['sets'][number];
 export type CharmJson = z.infer<typeof charmsSchema>['charms'][number];

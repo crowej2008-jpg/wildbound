@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { t, tierLabel } from '../../i18n';
 import PlatePanel from './PlatePanel';
+import TrinketPanel from './TrinketPanel';
 import type { GearPanelProps } from './types';
 
 type SubTab = 'held' | 'plates' | 'trinkets';
@@ -111,7 +112,7 @@ export default function HeldItemPanel(props: GearPanelProps) {
         ))}
 
       {sub === 'plates' && <PlatePanel {...props} />}
-      {sub === 'trinkets' && <p className="muted">{t('gear.plate.comingLater')}</p>}
+      {sub === 'trinkets' && <TrinketPanel {...props} />}
     </section>
   );
 }

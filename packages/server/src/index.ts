@@ -245,6 +245,8 @@ export interface GameServer {
   refineRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
   /** Raise a Wild's element-keyed plate by one stage (M11.7). */
   upgradePlate(wildId: string): Promise<Result<AccountSnapshot>>;
+  /** Raise the Wild's species-signature trinket by one level (M11.8). */
+  upgradeTrinket(wildId: string): Promise<Result<AccountSnapshot>>;
   /** Level a rune (M7). */
   levelRune(instanceId: string, useEssence?: boolean): Promise<Result<AccountSnapshot>>;
   /** Pick (or clear, with `null`) a talent path (M7). */
@@ -332,4 +334,5 @@ export * from './pvp-view';
 export * from './pvp-ranked-view';
 export * from './pvp-hub-view';
 export * from './plates';
+export * from './trinkets';
 export * from './local-server';

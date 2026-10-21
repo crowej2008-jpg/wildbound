@@ -173,6 +173,8 @@ export interface AccountState {
   loadouts: Record<string, Loadout>;
   /** M11.7 plate stage per Wild (element-keyed); absent means stage 0. */
   plates: Record<string, number>;
+  /** M11.8 signature trinket level per species id; absent means level 0. */
+  trinkets: Record<string, number>;
   /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
   pve: PveState;
   /** M10: PvP progress (Arena credits/rank, Ranked ladder). */

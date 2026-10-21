@@ -1,7 +1,7 @@
-import { lineValue, type StatLine } from '@wildbound/engine';
 import type { AccountState, CurrencyId, Faction } from '@wildbound/engine';
 import type { GameConfig } from './config';
 import { pay } from './equipment';
+import { statLineText } from './gear-text';
 import { fail, ok, type Result } from './index';
 
 /**
@@ -43,37 +43,6 @@ export function plateCost(stage: number, collection: GameConfig['collection']): 
   return { currency: 'plateBottle', amount: bottleBase + Math.max(0, stage) * bottlePerStage };
 }
 
-const LINE_LABELS: Record<string, string> = {
-  hp: 'HP',
-  pAtk: 'P.ATK',
-  sAtk: 'S.ATK',
-  pDef: 'P.DEF',
-  sDef: 'S.DEF',
-  spd: 'SPD',
-  spiritAtk: 'Soul ATK',
-  spiritDef: 'Soul DEF',
-  dmgBoost: 'DMG Boost',
-  dmgRdct: 'DMG Reduction',
-  crit: 'Crit Chance',
-  critRes: 'Crit Resist',
-  critPower: 'Crit Intensity',
-  block: 'Block',
-  blockPower: 'Block Intensity',
-  guardBreak: 'Guard Break',
-  controlBoost: 'Control Boost',
-  controlRes: 'Control Resist',
-  healBoost: 'Healing Done',
-  receiveHealBoost: 'Healing Received',
-  counterBoost: 'Counter Boost',
-};
-
-function lineText(line: StatLine, stage: number): string {
-  const value = lineValue(line, stage);
-  const label = LINE_LABELS[line.field] ?? line.field;
-  if (line.kind === 'percent') return `${label} +${(value * 100).toFixed(1)}%`;
-  return `${label} +${Math.round(value).toLocaleString()}`;
-}
-
 export function buildPlateView(config: GameConfig, state: AccountState, wild: { id: string; speciesId: string }): PlateView {
   const meta = config.species.get(wild.speciesId);
   const faction: Faction = meta?.faction ?? 'ember';
@@ -88,7 +57,7 @@ export function buildPlateView(config: GameConfig, state: AccountState, wild: { 
     stage,
     maxStage,
     shownStage,
-    linesText: (def?.lines ?? []).map((line) => lineText(line, shownStage)),
+    linesText: (def?.lines ?? []).map((line) => statLineText(line, shownStage)),
     linesAreNext: !atMax,
     cost: atMax ? null : plateCost(stage, config.collection),
     skillSwapStage: config.collection.plates.skillSwapStage,

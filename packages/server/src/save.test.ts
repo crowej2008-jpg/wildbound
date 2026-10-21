@@ -12,6 +12,7 @@ describe('save codec', () => {
     expect(state.currencies.gold).toBeGreaterThan(0);
     expect(state.schemaVersion).toBe(SAVE_VERSION);
     expect(state.plates).toEqual({});
+    expect(state.trinkets).toEqual({});
     expect(new Set(state.roster.map((w) => w.id)).size).toBe(state.roster.length);
   });
 
@@ -58,6 +59,22 @@ describe('save codec', () => {
     expect(result.value.loadouts[wildId]?.charms).toEqual(['charm-sunpetal-berry', null]);
     expect('charm' in (result.value.loadouts[wildId] ?? {})).toBe(false);
     expect(result.value.plates).toEqual({});
+    expect(result.value.trinkets).toEqual({});
+  });
+
+  it('migrates a v9 save with no trinket slice', () => {
+    const state = createInitialState(config);
+    const raw = state as unknown as Record<string, unknown>;
+    delete raw.trinkets;
+    const result = migrateSave(
+      { version: 9, state: { ...raw, schemaVersion: 9 } },
+      Date.now(),
+      config,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.schemaVersion).toBe(SAVE_VERSION);
+    expect(result.value.trinkets).toEqual({});
   });
 
   it('rejects malformed JSON and missing fields', () => {

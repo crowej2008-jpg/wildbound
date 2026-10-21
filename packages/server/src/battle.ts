@@ -109,6 +109,7 @@ export function equippedSheet(
     state.equipment,
     config.equipment,
     meta ? { faction: meta.faction, stage: state.plates?.[wild.id] ?? 0 } : undefined,
+    { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
   );
   return {
     sheet: mergeDelta(sheet, folded.delta),

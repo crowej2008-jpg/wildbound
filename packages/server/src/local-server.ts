@@ -134,6 +134,7 @@ import {
 } from './equipment';
 import { buildEquipmentView } from './equipment-view';
 import { upgradePlateAction } from './plates';
+import { upgradeTrinketAction } from './trinkets';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
 import { BACKUP_KEY, createInitialState, parseSave, SAVE_KEY, serializeSave } from './save';
@@ -688,6 +689,10 @@ export class LocalServer implements GameServer {
 
   async upgradePlate(wildId: string): Promise<Result<AccountSnapshot>> {
     return this.applyEquipment((state) => upgradePlateAction(this.config, state, wildId));
+  }
+
+  async upgradeTrinket(wildId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => upgradeTrinketAction(this.config, state, wildId));
   }
 
   async levelRune(instanceId: string, useEssence = false): Promise<Result<AccountSnapshot>> {

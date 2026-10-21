@@ -153,6 +153,27 @@ test('Plates rise from stage 0 to 6 with Bottles then Fragments', async ({ page 
   await expect(page.getByText('Stage 6 skill swap: coming later.')).toBeVisible();
 });
 
+test('Trinkets level with Star Shards and show the shared species state', async ({ page }) => {
+  await importSave(page, { currencies: { starShard: 1_000 } });
+  await page.goto('/wilds');
+  await page.locator('.roster-item').first().click();
+  await page.getByRole('button', { name: 'Held Items', exact: true }).click();
+  await page.getByRole('button', { name: 'Trinkets', exact: true }).click();
+
+  await expect(page.getByText('Mimikyu Keepsake')).toBeVisible();
+  await expect(page.getByText('Level 0/40')).toBeVisible();
+  await expect(page.getByText('Trinkets +0')).toBeVisible();
+  await expect(page.getByText('Star Shards: 1,000')).toBeVisible();
+  await expect(page.getByText('Shared by every copy of this species.')).toBeVisible();
+  await expect(page.getByText('Shiny variant: coming later.')).toBeVisible();
+
+  await page.getByRole('button', { name: /Level up .*10 Star Shards/ }).click();
+  await expect(page.getByText('Level 1/40')).toBeVisible();
+  await expect(page.getByText('Star Shards: 990')).toBeVisible();
+  await expect(page.getByText('Trinkets +0')).toBeHidden();
+  await expect(page.getByRole('button', { name: /Level up .*15 Star Shards/ })).toBeVisible();
+});
+
 test('Orbs equip and level with Orb Essence', async ({ page }) => {
   await importSave(page, { currencies: { orbEssence: 1_000 } });
   await page.goto('/wilds');

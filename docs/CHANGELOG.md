@@ -791,14 +791,34 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - **Content.** Six element-keyed plates (one per faction) with two authored lines each in
   content/equipment/plates.json; the schema and validator require exactly one plate per faction.
-- **Rules.** A plate has stages 0�20. Stage 0 adds nothing; stages cost 10 + 5 x stage Plate
-  Bottles, except 5 ? 6 which costs 375 Plate Fragments. The plate folds into a new plates stat
+- **Rules.** A plate has stages 0–20. Stage 0 adds nothing; stages cost 10 + 5 x stage Plate
+  Bottles, except 5 → 6 which costs 375 Plate Fragments. The plate folds into a new plates stat
   layer and applies to Power and real battles even when the Wild has no stored loadout. The stage-6
   skill swap stays "coming later".
-- **Save.** SAVE_VERSION ? **9** with per-Wild plates state; migration defaults it to {}.
+- **Save.** SAVE_VERSION → **9** with per-Wild plates state; migration defaults it to {}.
 - **Screen.** Held Items is now a sub-tab host: Held Items / Plates / Trinkets. The Held Items gate
   no longer hides Plates, and Trinkets shows an honest coming-later state. The plate card shows
   stage, next/final lines, Bottle + Fragment balances, the next cost and the deferred skill swap.
-- **Tests.** +1 engine fold/battle test, +3 server tests (Bottle step + Power, 5 ? 6 Fragments,
-  stage cap) and +1 e2e (stage 0 ? 6). **435 unit tests / 49 files**; 74 e2e green.
-- **Next:** M11.8 - Trinkets (species signature, levels 0�40, Star Shards).
+- **Tests.** +1 engine fold/battle test, +3 server tests (Bottle step + Power, 5 → 6 Fragments,
+  stage cap) and +1 e2e (stage 0 → 6). **435 unit tests / 49 files**; 74 e2e green.
+- **Next:** M11.8 - Trinkets (species signature, levels 0–40, Star Shards).
+
+## M11.8 - Trinkets, one per species (2026-10-20)
+
+- **Content.** `content/equipment/trinkets.json` has one keepsake for each of the 84 species. Each
+  has flat HP/P.ATK/S.ATK plus one authored percent line: Strikers get Crit Intensity, Guardians get
+  DMG Reduction, and Adepts get Skill Boost. The validator requires exactly one trinket per species
+  and rejects unknown species ids.
+- **Rules.** Levels run 0–40; level 0 adds nothing. A level costs `10 + 5 × level` Star Shards. The
+  level is keyed by species id so levelling one keepsake benefits every copy of that species. The
+  trinket folds into a new `trinkets` stat layer and applies to Power and real battles even when the
+  Wild has no stored loadout. Shiny variants stay "coming later".
+- **Save.** `SAVE_VERSION` → **10** with `trinkets: Record<speciesId, level>`; migration defaults it
+  to `{}`.
+- **Screen.** The Trinkets sub-tab replaces its coming-later placeholder with the keepsake card:
+  level, next/final lines, Star Shard balance, exact next cost, the shared-copy rule and the deferred
+  shiny variant. The stat sheet gains a Trinkets layer row.
+- **Tests.** +1 engine fold/battle test, +2 server tests (Star Shard level + Power + shared copy,
+  level cap), +1 save migration test and +1 e2e (level 0 → 1). **439 unit tests / 50 files**; 76 e2e
+  green.
+- **Next:** M11.9 - Resonance (six slots, Link Crystal share).

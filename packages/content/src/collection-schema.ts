@@ -60,6 +60,14 @@ export const collectionTuningSchema = z
       /** The stage whose socket unlock is deferred. */
       skillSwapStage: z.number().int().min(1),
     }),
+    trinkets: z.object({
+      /** Levels 0–40; 0 is the default. */
+      maxLevel: z.number().int().min(1),
+      /** Star Shards for level 0 → 1. */
+      shardBase: z.number().int().min(0),
+      /** Extra Star Shards per current level. */
+      shardPerLevel: z.number().int().min(0),
+    }),
   })
   .strict();
 

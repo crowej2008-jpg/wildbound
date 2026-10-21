@@ -47,13 +47,13 @@ screen's materials row.
 
 ## Shared rules
 
-- **Save v9.** M11.1 added the materials (save v7), M11.5 replaced the single Berry slot with
-  two (save v8), and M11.7 added `plates` (save v9). Later sub-steps add `trinkets`,
-  `resonance`, `titles` and `vip`; every migration fills defaults and re-derives derived gates
-  on load.
+- **Save v10.** M11.1 added the materials (save v7), M11.5 replaced the single Berry slot with
+  two (save v8), M11.7 added `plates` (save v9), and M11.8 added `trinkets` (save v10). Later
+  sub-steps add `resonance`, `titles` and `vip`; every migration fills defaults and re-derives
+  derived gates on load.
 - **One Wild screen, seven tabs:** Upgrade, Evolve, Potential, Orbs, Soul-hearts, Berries,
-  Held Items. Plates and Trinkets sit under the Held Items tab's sub-tabs (they are per-Wild
-  gear) so the tab strip stays usable on a phone.
+  Held Items. Plates and Trinkets sit under the Held Items tab's sub-tabs (gear owned by the
+  Wild screen) so the tab strip stays usable on a phone.
 - **Stat sheet.** The Wild header shows Power plus HP / P.ATK / S.ATK / P.DEF / S.DEF / SPD and
   the percent lines that matter. Each gear tab shows the layer's contribution and the Power
   delta from removing it.
@@ -153,6 +153,14 @@ loadout.
 
 One signature trinket per species, levels 0–40, paid with Star Shards. Flat HP/P.ATK/S.ATK
 lines with a small species-flavoured percent line. Shiny variants are cosmetic and deferred.
+
+**M11.8 built.** `content/equipment/trinkets.json` has one keepsake per species (84), each with
+flat HP / P.ATK / S.ATK lines and one authored percent line (Strikers: Crit Intensity, Guardians:
+DMG Reduction, Adepts: Skill Boost). Level 0 adds nothing; a level costs `10 + 5 × level` Star
+Shards. The level is keyed by species id, so every copy of that species shares it. The trinket
+folds into Power and real battles even when the Wild has no stored loadout. The Trinkets sub-tab
+shows the level, next/final lines, Star Shard balance, next cost, the shared-copy rule, and the
+deferred shiny variant. `trinkets` is save state (v10) with a `{}` migration default.
 
 ### Resonance
 
