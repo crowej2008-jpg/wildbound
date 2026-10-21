@@ -86,6 +86,7 @@ export interface LayerDelta {
   relic: StatDelta;
   plates: StatDelta;
   trinkets: StatDelta;
+  resonance: StatDelta;
   runes: StatDelta;
   charms: StatDelta;
   cores: StatDelta;
@@ -102,6 +103,12 @@ export interface PlateFold {
 export interface TrinketFold {
   speciesId: string;
   level: number;
+}
+
+/** A slotted Wild's share of the Link Crystal level, scaled per level. */
+export interface ResonanceFold {
+  level: number;
+  perLevel: Partial<CoreStats>;
 }
 
 export interface FoldedLoadout {
@@ -156,6 +163,7 @@ function emptyLayers(): LayerDelta {
     relic: emptyDelta(),
     plates: emptyDelta(),
     trinkets: emptyDelta(),
+    resonance: emptyDelta(),
     runes: emptyDelta(),
     charms: emptyDelta(),
     cores: emptyDelta(),
@@ -170,6 +178,7 @@ export function foldLoadout(
   tables: EquipmentTables,
   plate?: PlateFold,
   trinket?: TrinketFold,
+  resonance?: ResonanceFold,
 ): FoldedLoadout {
   const layers = emptyLayers();
   const effects: RoundEffect[] = [];
@@ -194,6 +203,15 @@ export function foldLoadout(
   if (trinket && trinket.level > 0) {
     const trinketDef = tables.trinkets.find((d) => d.speciesId === trinket.speciesId);
     if (trinketDef) addLines(layers.trinkets, trinketDef.lines, trinket.level);
+  }
+
+  // --- Resonance: a slotted Wild's share of the Link Crystal level ---
+  if (resonance && resonance.level > 0) {
+    for (const [key, perLevel] of Object.entries(resonance.perLevel)) {
+      if (typeof perLevel !== 'number') continue;
+      const field = key as keyof CoreStats;
+      layers.resonance.core[field] = (layers.resonance.core[field] ?? 0) + resonance.level * perLevel;
+    }
   }
 
   // --- Runes: per-socket lines + a set bonus once enough pieces are worn ---
@@ -276,6 +294,7 @@ export function foldLoadout(
   addDelta(delta, layers.relic);
   addDelta(delta, layers.plates);
   addDelta(delta, layers.trinkets);
+  addDelta(delta, layers.resonance);
   addDelta(delta, layers.runes);
   addDelta(delta, layers.charms);
   addDelta(delta, layers.cores);

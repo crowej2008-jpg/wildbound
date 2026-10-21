@@ -16,6 +16,7 @@ import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldB
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
+import type { ResonanceView } from './resonance';
 
 /**
  * The server boundary (PROMPT.md §10).
@@ -58,6 +59,8 @@ export interface AccountSnapshot {
   power: Record<string, number>;
   /** Summed Power per squad mode. */
   teamPower: Record<SquadMode, number>;
+  /** Display-ready account resonance board (M11.9). */
+  resonance: ResonanceView;
 }
 
 /** Campaign battle outcome (M5). Carries the reward granted and the new snapshot. */
@@ -247,6 +250,10 @@ export interface GameServer {
   upgradePlate(wildId: string): Promise<Result<AccountSnapshot>>;
   /** Raise the Wild's species-signature trinket by one level (M11.8). */
   upgradeTrinket(wildId: string): Promise<Result<AccountSnapshot>>;
+  /** Open the next resonance slot with Resonation Shards (M11.9). */
+  unlockResonanceSlot(): Promise<Result<AccountSnapshot>>;
+  /** Put a Wild in an open resonance slot, or clear it with `null` (M11.9). */
+  setResonanceSlot(slot: number, wildId: string | null): Promise<Result<AccountSnapshot>>;
   /** Level a rune (M7). */
   levelRune(instanceId: string, useEssence?: boolean): Promise<Result<AccountSnapshot>>;
   /** Pick (or clear, with `null`) a talent path (M7). */

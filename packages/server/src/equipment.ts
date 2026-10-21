@@ -109,7 +109,14 @@ function consumeFodder(state: AccountState, ids: string[]): AccountState {
     delete loadouts[id];
     delete plates[id];
   }
-  return { ...state, roster: state.roster.filter((wild) => !removed.has(wild.id)), loadouts, plates };
+  const slots = state.resonance.slots.map((id) => (id !== null && removed.has(id) ? null : id));
+  return {
+    ...state,
+    roster: state.roster.filter((wild) => !removed.has(wild.id)),
+    loadouts,
+    plates,
+    resonance: { ...state.resonance, slots },
+  };
 }
 
 // --- relics -----------------------------------------------------------------

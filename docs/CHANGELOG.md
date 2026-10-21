@@ -822,3 +822,20 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   level cap), +1 save migration test and +1 e2e (level 0 → 1). **439 unit tests / 50 files**; 76 e2e
   green.
 - **Next:** M11.9 - Resonance (six slots, Link Crystal share).
+
+## M11.9 - Resonance, Link Crystal share (2026-10-20)
+
+- **Content.** `collection.json` `resonance` holds six slots, two open, the 50 + 50 x slot unlock
+  ladder and the per-crystal-level shares: 4 HP, 1 P.ATK, 1 S.ATK, 0.5 P.DEF, 0.5 S.DEF, 0.05 SPD.
+- **Rules.** A slotted Wild gains the shares multiplied by the Link Crystal level. One Wild can hold
+  one slot; assigning it elsewhere moves it. Feeding a slotted Wild to Potential clears its slot.
+  The bonus folds into a new `resonance` stat layer, so it affects Power and real battles.
+- **Save.** `SAVE_VERSION` → **11** with `resonance: { unlocked, slots }`; migration opens two slots
+  with null entries and normalises the slot array length.
+- **Screen.** The Trainer screen gains the account resonance board: six slot cards, Wild pickers for
+  open slots, the current Link Crystal status, the Resonation Shard balance, the next unlock price,
+  the chosen Wild's bonus lines, and an honest no-bonus state while the crystal is locked.
+- **Tests.** +1 engine battle test, +2 server tests (unlock ladder + cap, crystal share + move +
+  locked slot), +1 save migration test and +1 e2e (unlock slot 3, assign a Wild). **443 unit tests /
+  51 files**; 78 e2e green.
+- **Next:** M11.10 - VIP privileges (activity tiers, data-driven conveniences).

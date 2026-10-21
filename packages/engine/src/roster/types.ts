@@ -175,6 +175,8 @@ export interface AccountState {
   plates: Record<string, number>;
   /** M11.8 signature trinket level per species id; absent means level 0. */
   trinkets: Record<string, number>;
+  /** M11.9 account-wide resonance slots sharing the Link Crystal level. */
+  resonance: ResonanceState;
   /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
   pve: PveState;
   /** M10: PvP progress (Arena credits/rank, Ranked ladder). */
@@ -219,6 +221,19 @@ export function initialPvp(day: string, week: string): PvpState {
     arena: initialArenaState(day, week),
     ranked: initialRankedState(0, day, week),
   };
+}
+
+/** M11.9 resonance board: slots hold Wild ids and share the crystal level. */
+export interface ResonanceState {
+  /** How many slots are open; always between `openSlots` and `slots`. */
+  unlocked: number;
+  slots: (string | null)[];
+}
+
+export function initialResonance(slots: number, openSlots: number): ResonanceState {
+  const count = Math.max(1, Math.floor(slots));
+  const open = Math.min(count, Math.max(0, Math.floor(openSlots)));
+  return { unlocked: open, slots: Array.from({ length: count }, () => null) };
 }
 
 export interface TutorialState {

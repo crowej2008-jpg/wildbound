@@ -293,6 +293,8 @@ describe('M11.0 equipment view and actions', () => {
     if (!before.ok) throw new Error('reload failed');
     const shardsBefore = before.value.state.currencies.potentialShard;
     const rosterBefore = before.value.state.roster.length;
+    const slotted = await srv.setResonanceSlot(0, duplicateId);
+    expect(slotted.ok).toBe(true);
 
     const allocated = await srv.allocateTalent(wildId, 0, 0);
     expect(allocated.ok).toBe(true);
@@ -300,6 +302,7 @@ describe('M11.0 equipment view and actions', () => {
     expect(allocated.value.state.currencies.potentialShard).toBe(shardsBefore - view.value.costs.talentShardBase);
     expect(allocated.value.state.roster).toHaveLength(rosterBefore - 1);
     expect(allocated.value.state.roster.some((w) => w.id === duplicateId)).toBe(false);
+    expect(allocated.value.state.resonance.slots[0]).toBeNull();
 
     const after = await srv.getEquipment(wildId);
     if (!after.ok) throw new Error(after.message);

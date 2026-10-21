@@ -47,10 +47,10 @@ screen's materials row.
 
 ## Shared rules
 
-- **Save v10.** M11.1 added the materials (save v7), M11.5 replaced the single Berry slot with
-  two (save v8), M11.7 added `plates` (save v9), and M11.8 added `trinkets` (save v10). Later
-  sub-steps add `resonance`, `titles` and `vip`; every migration fills defaults and re-derives
-  derived gates on load.
+- **Save v11.** M11.1 added the materials (save v7), M11.5 replaced the single Berry slot with
+  two (save v8), M11.7 added `plates` (save v9), M11.8 added `trinkets` (save v10), and M11.9
+  added `resonance` (save v11). Later sub-steps add `titles` and `vip`; every migration fills
+  defaults and re-derives derived gates on load.
 - **One Wild screen, seven tabs:** Upgrade, Evolve, Potential, Orbs, Soul-hearts, Berries,
   Held Items. Plates and Trinkets sit under the Held Items tab's sub-tabs (gear owned by the
   Wild screen) so the tab strip stays usable on a phone.
@@ -169,6 +169,15 @@ Crystal's level as a stat bonus (the reference shares the crystal's level direct
 per-Wild level economy cannot absorb an instant max level, so the share is an explicit,
 tunable percentage — recorded as an assumption). The crystal itself keeps its M8 candy/gold
 upgrade.
+
+**M11.9 built.** The Trainer screen hosts an account-wide board of six slots. Slots 1–2 are open;
+each further slot costs `50 + 50 × (open slots − 2)` Resonation Shards (50, 100, 150, 200). A
+slotted Wild gains flat stats per Link Crystal level: `hp 4`, `pAtk 1`, `sAtk 1`, `pDef 0.5`,
+`sDef 0.5`, `spd 0.05` (all in `collection.json` `resonance`). A Wild can occupy only one slot;
+choosing it elsewhere moves it. The bonus folds into the `resonance` stat layer, Power and real
+battles. With the crystal locked at level 0 the card says no bonus is active. `resonance` is save
+state (v11); migration opens two slots with null entries, and feeding a slotted Wild to Potential
+clears its slot.
 
 ### VIP
 

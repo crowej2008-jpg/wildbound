@@ -590,10 +590,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     and shiny Trinket variants are shown as "coming later" and are not claimed as built. *What
     would change it:* a later milestone extending the cap, an owner decision to gate the effect
     behind refine 1, or prioritising skill-swap.
-29. **Resonance grants a stat share of the Link Crystal, not an instant level.** The reference shares
+29. **Resonance grants flat stats per Link Crystal level, not an instant level.** The reference shares
     the crystal's level with slotted Wilds; our per-Wild level economy would be trivialised by an
-    instant high level. M11.9 uses a tunable percentage of the crystal's level as bonus stats, with
-    extra slots bought by Resonation Shards. *What would change it:* a redesign of Wild level costs.
+    instant high level. M11.9 gives a slotted Wild `4 HP / 1 P.ATK / 1 S.ATK / 0.5 P.DEF / 0.5 S.DEF /
+    0.05 SPD` per crystal level (all data in `collection.json` `resonance`). Six slots, two open; the
+    rest cost `50 + 50 × (unlocked − 2)` Resonation Shards, and one Wild can hold only one slot.
+    *What would change it:* a redesign of Wild level costs or owner-tuned resonance shares.
 30. **Titles have three slots and expire lazily.** Common / Premium / Rare slots; permanent and timed
     (7/14-day) titles; timed titles are recycled on load/open rather than by a scheduler. M11.11 ships
     permanent collection/trainer titles plus Arena/Ranked titles; guild-war and event titles remain

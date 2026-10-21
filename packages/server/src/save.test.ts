@@ -13,6 +13,9 @@ describe('save codec', () => {
     expect(state.schemaVersion).toBe(SAVE_VERSION);
     expect(state.plates).toEqual({});
     expect(state.trinkets).toEqual({});
+    expect(state.resonance.unlocked).toBe(2);
+    expect(state.resonance.slots).toHaveLength(6);
+    expect(state.resonance.slots.every((id) => id === null)).toBe(true);
     expect(new Set(state.roster.map((w) => w.id)).size).toBe(state.roster.length);
   });
 
@@ -75,6 +78,22 @@ describe('save codec', () => {
     if (!result.ok) return;
     expect(result.value.schemaVersion).toBe(SAVE_VERSION);
     expect(result.value.trinkets).toEqual({});
+  });
+
+  it('migrates a v10 save with no resonance board', () => {
+    const state = createInitialState(config);
+    const raw = state as unknown as Record<string, unknown>;
+    delete raw.resonance;
+    const result = migrateSave(
+      { version: 10, state: { ...raw, schemaVersion: 10 } },
+      Date.now(),
+      config,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.schemaVersion).toBe(SAVE_VERSION);
+    expect(result.value.resonance.unlocked).toBe(2);
+    expect(result.value.resonance.slots).toEqual([null, null, null, null, null, null]);
   });
 
   it('rejects malformed JSON and missing fields', () => {

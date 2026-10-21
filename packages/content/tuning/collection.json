@@ -37,5 +37,19 @@
     "maxLevel": 40,
     "shardBase": 10,
     "shardPerLevel": 5
+  },
+  "resonance": {
+    "slots": 6,
+    "openSlots": 2,
+    "unlockBase": 50,
+    "unlockPerSlot": 50,
+    "perLevel": {
+      "hp": 4,
+      "pAtk": 1,
+      "sAtk": 1,
+      "pDef": 0.5,
+      "sDef": 0.5,
+      "spd": 0.05
+    }
   }
 }

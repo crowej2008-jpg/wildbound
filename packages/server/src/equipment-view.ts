@@ -27,6 +27,7 @@ import type { PlateView } from './plates';
 import { buildPlateView } from './plates';
 import type { TrinketView } from './trinkets';
 import { buildTrinketView } from './trinkets';
+import { resonanceFoldFor } from './resonance';
 import { sheetOf } from './battle';
 
 /**
@@ -277,10 +278,20 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     tables,
     meta ? { faction: meta.faction, stage: state.plates[wild.id] ?? 0 } : undefined,
     { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
+    resonanceFoldFor(config, state, wild.id),
   );
   const baseSheet = sheetOf(wild, config) ?? { hp: 0, pAtk: 0, sAtk: 0, spd: 0, pDef: 0, sDef: 0 };
   const basePower = powerOfSheet(baseSheet, {}, config.power);
-  const layerKeys: (keyof LayerDelta)[] = ['relic', 'plates', 'trinkets', 'runes', 'charms', 'cores', 'talents'];
+  const layerKeys: (keyof LayerDelta)[] = [
+    'relic',
+    'plates',
+    'trinkets',
+    'resonance',
+    'runes',
+    'charms',
+    'cores',
+    'talents',
+  ];
   const layerPower = {} as Record<keyof LayerDelta, number>;
   for (const key of layerKeys) {
     const delta = folded.layers[key];

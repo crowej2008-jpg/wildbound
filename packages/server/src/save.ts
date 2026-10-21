@@ -12,17 +12,19 @@ import {
   initialGacha,
   initialPve,
   initialPvp,
+  initialResonance,
   initialShopState,
   type AccountState,
   type CurrencyId,
   type MailItem,
+  type ResonanceState,
   type WildInstance,
 } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 10;
+export const SAVE_VERSION = 11;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -46,7 +48,27 @@ function normalizeLoadouts(
   return out;
 }
 
-/** Fill any missing slices on an older save (v1–v9 → current). */
+/** Fill the resonance board and keep its slot array the tuned length. */
+function normalizeResonance(
+  source: Partial<ResonanceState> | undefined,
+  config: GameConfig,
+): ResonanceState {
+  const tuning = config?.collection?.resonance;
+  const slots = tuning?.slots ?? 6;
+  const openSlots = tuning?.openSlots ?? 2;
+  const base = initialResonance(slots, openSlots);
+  const unlocked = Math.max(
+    base.unlocked,
+    Math.min(base.slots.length, Math.floor(source?.unlocked ?? base.unlocked)),
+  );
+  const stored = source?.slots ?? [];
+  return {
+    unlocked,
+    slots: base.slots.map((_, index) => (typeof stored[index] === 'string' ? stored[index] : null)),
+  };
+}
+
+/** Fill any missing slices on an older save (v1–v10 → current). */
 function withDefaults(state: AccountState, now: number, config: GameConfig): AccountState {
   const s = state as Partial<AccountState>;
   const day = dayKey(now);
@@ -66,6 +88,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     loadouts: normalizeLoadouts(s.loadouts, charmSlots),
     plates: s.plates ?? {},
     trinkets: s.trinkets ?? {},
+    resonance: normalizeResonance(s.resonance, config),
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     debugClockOffset: s.debugClockOffset ?? 0,
@@ -119,6 +142,10 @@ export function createInitialState(config: GameConfig): AccountState {
     loadouts: {},
     plates: {},
     trinkets: {},
+    resonance: initialResonance(
+      config.collection.resonance.slots,
+      config.collection.resonance.openSlots,
+    ),
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     debugClockOffset: 0,

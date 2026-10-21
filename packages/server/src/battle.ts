@@ -27,6 +27,7 @@ import {
   type WildInstance,
 } from '@wildbound/engine';
 import type { GameConfig } from './config';
+import { resonanceFoldFor } from './resonance';
 
 /**
  * Battle setup + replay payload (M4). Builds two `SpecInput` teams from account
@@ -110,6 +111,7 @@ export function equippedSheet(
     config.equipment,
     meta ? { faction: meta.faction, stage: state.plates?.[wild.id] ?? 0 } : undefined,
     { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
+    resonanceFoldFor(config, state, wild.id),
   );
   return {
     sheet: mergeDelta(sheet, folded.delta),

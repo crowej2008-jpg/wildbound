@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { runBattle } from '../combat/battle';
 import type { KitDef, RoundEffect, SheetInput, SpecInput } from '../combat/types';
+import type { CoreStats } from '../model';
 import { foldLoadout, lineValue, mergeDelta } from './contrib';
 import {
   allocateTalent,
@@ -210,6 +211,7 @@ describe('layer contributions', () => {
       TABLES,
       { faction: 'ember', stage: 5 },
       { speciesId: 'sp1', level: 5 },
+      { level: 5, perLevel: { pAtk: 10, spd: 0.1 } },
     );
     // relic level 3: pAtk 80, crit 0.07
     expect(folded.layers.relic.core.pAtk).toBeCloseTo(80);
@@ -220,6 +222,9 @@ describe('layer contributions', () => {
     // trinket level 5: pAtk 60, dmgBoost 0.05
     expect(folded.layers.trinkets.core.pAtk).toBeCloseTo(60);
     expect(folded.layers.trinkets.percent.dmgBoost).toBeCloseTo(0.05);
+    // resonance level 5 at +10 pAtk / +0.1 spd per level
+    expect(folded.layers.resonance.core.pAtk).toBeCloseTo(50);
+    expect(folded.layers.resonance.core.spd).toBeCloseTo(0.5);
     // per-rune lines (.08 + .04) plus the 2-piece dmgBoost (.05); 4 pieces add critPower (.1)
     expect(folded.layers.runes.percent.dmgBoost).toBeCloseTo(0.17);
     expect(folded.layers.runes.percent.critPower).toBeCloseTo(0.1);
@@ -373,8 +378,9 @@ function battleWith(
   loadout: Loadout,
   plate?: { faction: 'ember'; stage: number },
   trinket?: { speciesId: string; level: number },
+  resonance?: { level: number; perLevel: Partial<CoreStats> },
 ) {
-  const folded = foldLoadout(loadout, state, TABLES, plate, trinket);
+  const folded = foldLoadout(loadout, state, TABLES, plate, trinket, resonance);
   return runBattle({
     attackers: [{ ...attacker(mergeDelta(baseSheet, folded.delta), folded.effects), soulheart: folded.soulheart }],
     defenders: [defender(120000)],
@@ -406,6 +412,14 @@ describe('every layer moves a battle in the intended direction', () => {
       undefined,
       { speciesId: 'sp1', level: 10 },
     );
+    expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
+  });
+
+  it('a resonance share raises damage', () => {
+    const up = battleWith(base, stateWith({}), emptyLoadout(TUNING), undefined, undefined, {
+      level: 40,
+      perLevel: { pAtk: 10, hp: 20 },
+    });
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });
 

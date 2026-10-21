@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { MATERIAL_CURRENCY_IDS } from '@wildbound/engine';
 import { currencyLabel, t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
+import ResonancePanel from './ResonancePanel';
 
 /**
  * Trainer tab (M11.1). Replaces the More tab as the player-facing home for the
@@ -65,6 +66,8 @@ export default function Trainer() {
           <Link className="btn" to="/more">{t('trainer.more')}</Link>
         </div>
       </section>
+
+      <ResonancePanel />
 
       <section className="card">
         <h2 className="section-title">{t('trainer.vip')}</h2>

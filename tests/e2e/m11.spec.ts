@@ -174,6 +174,27 @@ test('Trinkets level with Star Shards and show the shared species state', async 
   await expect(page.getByRole('button', { name: /Level up .*15 Star Shards/ })).toBeVisible();
 });
 
+test('Resonance opens slots and assigns a Wild', async ({ page }) => {
+  await importSave(page, { currencies: { resonationShard: 200 } });
+  await page.goto('/trainer');
+
+  await expect(page.getByRole('heading', { name: 'Resonance' })).toBeVisible();
+  await expect(page.getByText('Resonation Shards: 200')).toBeVisible();
+  await expect(page.getByLabel('Slot 1')).toBeVisible();
+  await expect(page.getByLabel('Slot 2')).toBeVisible();
+  await expect(page.getByRole('button', { name: /Open slot 3 .*50 Resonation Shards/ })).toBeVisible();
+
+  await page.getByRole('button', { name: /Open slot 3 .*50 Resonation Shards/ }).click();
+  await expect(page.getByText('Resonation Shards: 150')).toBeVisible();
+  await expect(page.getByLabel('Slot 3')).toBeVisible();
+  await expect(page.getByRole('button', { name: /Open slot 4 .*100 Resonation Shards/ })).toBeVisible();
+
+  await page.getByLabel('Slot 1').selectOption('w1');
+  await expect(page.getByLabel('Slot 1')).toHaveValue('w1');
+  await expect(page.getByText('Link Crystal locked')).toBeVisible();
+  await expect(page.getByText('No bonus until the Link Crystal is unlocked.')).toBeVisible();
+});
+
 test('Orbs equip and level with Orb Essence', async ({ page }) => {
   await importSave(page, { currencies: { orbEssence: 1_000 } });
   await page.goto('/wilds');

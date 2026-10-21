@@ -135,6 +135,11 @@ import {
 import { buildEquipmentView } from './equipment-view';
 import { upgradePlateAction } from './plates';
 import { upgradeTrinketAction } from './trinkets';
+import {
+  buildResonanceView,
+  setResonanceSlotAction,
+  unlockResonanceSlotAction,
+} from './resonance';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
 import { BACKUP_KEY, createInitialState, parseSave, SAVE_KEY, serializeSave } from './save';
@@ -695,6 +700,16 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) => upgradeTrinketAction(this.config, state, wildId));
   }
 
+  async unlockResonanceSlot(): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => unlockResonanceSlotAction(this.config, state));
+  }
+
+  async setResonanceSlot(slot: number, wildId: string | null): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) =>
+      setResonanceSlotAction(this.config, state, slot, wildId),
+    );
+  }
+
   async levelRune(instanceId: string, useEssence = false): Promise<Result<AccountSnapshot>> {
     return this.applyEquipment((state) => levelRuneAction(this.config, state, instanceId, useEssence));
   }
@@ -1168,7 +1183,7 @@ export class LocalServer implements GameServer {
     for (const mode of SQUAD_MODES) {
       teamPower[mode] = state.squads[mode].reduce((sum, id) => sum + (id ? power[id] ?? 0 : 0), 0);
     }
-    return { state, power, teamPower };
+    return { state, power, teamPower, resonance: buildResonanceView(this.config, state) };
   }
 
   private instancePower(wild: WildInstance, state: AccountState): number {
