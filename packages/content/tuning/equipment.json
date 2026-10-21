@@ -11,7 +11,7 @@
   },
   "charms": {
     "minStars": 4,
-    "slots": 1
+    "slots": 2
   },
   "cores": {
     "minStars": 10,
@@ -130,7 +130,7 @@
       },
       {
         "defId": "charm-emberfruit",
-        "stars": 2,
+        "stars": 1,
         "count": 3
       },
       {

@@ -110,8 +110,16 @@ pieces are in the starting inventory so a fresh account can see the 2-piece bonu
 ### Berries
 
 Two slots (source has two). Berries are equipped consumables; a real battle consumes one copy
-per equipped berry, preview battles do not. Four tiers; Commons are fixed, the rest star up
-with duplicate copies + Berry Essence. Dismantling pays Berry Essence.
+per occupied slot, preview battles do not. Four tiers with four designs each; Commons are fixed,
+the rest star up with duplicate copies + Berry Essence. Dismantling pays Berry Essence, and
+equipped copies are protected. Costs live in `content/tuning/collection.json` (`berries`).
+
+**M11.5 built.** `Loadout.charms` is now a two-entry array (save v8 migrates the old single
+`charm` into slot 1). `equipCharm` targets a slot and refuses to equip more copies than the
+account owns. Star-up consumes `upgradeCopies` spare copies plus
+`upgradeEssenceBase + (stars − 1) × upgradeEssencePerStar` Berry Essence. Dismantle pays the
+tier's `dismantleEssence` for one spare copy. The starting inventory seeds the four Commons and
+four Basics; Emberfruit starts at 1★ so the star path is playable immediately.
 
 ### Held Items
 
@@ -164,7 +172,7 @@ The 15-stage event ladder is schema-supported but has no live source until event
 | M11.2 | Potential: fodder, shards, 9 tiers, reset — **built** |
 | M11.3 | Orbs: levels, duplicates, Orb Essence, 2/4 sets — **built** |
 | M11.4 | Soul-hearts: nine sets, effects, star-up — **built** |
-| M11.5 | Berries: two slots, stars, dismantle |
+| M11.5 | Berries: two slots, stars, dismantle — **built** |
 | M11.6 | Held Items: levels 1–60, refine |
 | M11.7 | Plates |
 | M11.8 | Trinkets |

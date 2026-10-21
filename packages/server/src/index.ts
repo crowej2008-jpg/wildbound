@@ -235,9 +235,11 @@ export interface GameServer {
   equipRune(wildId: string, socket: number, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
   equipCore(wildId: string, socket: number, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
   starUpCore(instanceId: string): Promise<Result<AccountSnapshot>>;
-  equipCharm(wildId: string, charmId: string | null): Promise<Result<AccountSnapshot>>;
-  /** Spend copies to raise a charm's star level (M7). */
+  equipCharm(wildId: string, slot: number, charmId: string | null): Promise<Result<AccountSnapshot>>;
+  /** Spend duplicate copies + Berry Essence to raise a Berry's star level (M11.5). */
   upgradeCharm(charmId: string): Promise<Result<AccountSnapshot>>;
+  /** Break one spare Berry copy into Berry Essence (M11.5). */
+  dismantleCharm(charmId: string): Promise<Result<AccountSnapshot>>;
   /** Level or refine a relic (M7). */
   levelRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
   refineRelic(instanceId: string): Promise<Result<AccountSnapshot>>;

@@ -120,6 +120,7 @@ import {
   allocateTalentAction,
   chooseTreeAction,
   consumeCharms,
+  dismantleCharmAction,
   equipCharmAction,
   equipCoreAction,
   equipRelicAction,
@@ -664,12 +665,16 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) => starUpCoreAction(this.config, state, instanceId));
   }
 
-  async equipCharm(wildId: string, charmId: string | null): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => equipCharmAction(this.config, state, wildId, charmId));
+  async equipCharm(wildId: string, slot: number, charmId: string | null): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => equipCharmAction(this.config, state, wildId, slot, charmId));
   }
 
   async upgradeCharm(charmId: string): Promise<Result<AccountSnapshot>> {
     return this.applyEquipment((state) => upgradeCharmAction(this.config, state, charmId));
+  }
+
+  async dismantleCharm(charmId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => dismantleCharmAction(this.config, state, charmId));
   }
 
   async levelRelic(instanceId: string): Promise<Result<AccountSnapshot>> {

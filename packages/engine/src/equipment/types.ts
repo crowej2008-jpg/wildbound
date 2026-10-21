@@ -137,7 +137,7 @@ export interface CoreInstance {
 export interface Loadout {
   relic: string | null;
   runes: (string | null)[];
-  charm: string | null;
+  charms: (string | null)[];
   cores: (string | null)[];
   treeId: string | null;
   talents: number[];
@@ -193,7 +193,7 @@ export function emptyLoadout(tuning: EquipmentTuning): Loadout {
   return {
     relic: null,
     runes: Array.from({ length: tuning.runes.sockets }, () => null),
-    charm: null,
+    charms: Array.from({ length: tuning.charms.slots }, () => null),
     cores: Array.from({ length: tuning.cores.sockets }, () => null),
     treeId: null,
     talents: Array.from({ length: tuning.talents.tiers }, () => -1),

@@ -749,3 +749,25 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   two pieces, see the 2-piece bonus, star one up). +1 e2e (equip a 2-piece set and star up with
   EXP). **426 unit tests / 48 files**; 68 e2e green.
 - **Next:** M11.5 - Berries (two slots, stars, dismantle).
+
+## M11.5 - Berries, two slots and dismantling (2026-10-20)
+
+- **Two Berry slots.** Loadout.charm became Loadout.charms: (string|null)[], sized by
+  equipment.json (charms.slots = 2). Save v8 migrates a v7 save's single charm into slot 1
+  and fills the second slot with null. Equipping targets a slot and refuses to use more copies
+  than the account owns; the same Berry can occupy both slots when two copies exist.
+- **Star-up and dismantle cost materials.** collection.json gains a erries block:
+  upgradeCopies (2), upgradeEssenceBase 20, upgradeEssencePerStar 20, and per-tier
+  dismantleEssence (5/10/20/40). Star-up needs spare copies + Berry Essence; dismantle pays
+  Essence for one spare copy and protects equipped copies. The content validator now pins four
+  designs per tier and fixed Commons.
+- **Screen.** The Berries tab shows the Berry Essence balance, two slot rows with unequip,
+  per-slot equip buttons, spare-copy counts, the star-up cost and a dismantle button. The
+  starting inventory keeps four Commons + four Basics and starts Emberfruit at 1 star so the
+  star path is visible immediately.
+- **Combat.** Both occupied slots fold their Berry lines; the fold never applies more copies than
+  the account owns. Real battles spend one copy per occupied slot, preview battles spend none.
+- **Tests.** +1 engine fold test (two slots, ownership cap), +1 server action test (two slots,
+  star-up cost, protected equipped copy, dismantle refund) and +1 save migration test.
+  **429 unit tests / 48 files**; 70 e2e green.
+- **Next:** M11.6 - Held Items (levels 1-60, refine).

@@ -112,6 +112,8 @@ export const en = {
   'gear.berry.upgrade': 'Star up',
   'gear.berry.copies': 'copies',
   'gear.berry.dismantle': 'Dismantle',
+  'gear.berry.slots': 'Berry slots',
+  'gear.berry.spare': 'spare',
   'gear.starUp': 'Star-up',
   'gear.soul.sets': 'Set bonuses',
   'gear.soul.max': 'Max stars',

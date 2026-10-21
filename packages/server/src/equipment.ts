@@ -20,7 +20,7 @@ import {
 import type { AccountState, EquipmentTables, Loadout, WildClass, Tier } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
 import {
-  CHARM_UPGRADE_COPIES,
+  charmUpgradeEssence,
   equippedOn,
   loadoutOf,
   orbEssenceCost,
@@ -88,6 +88,15 @@ function wornRuneIds(state: AccountState): Set<string> {
     for (const id of loadout.runes) if (id) ids.add(id);
   }
   return ids;
+}
+
+/** How many copies of a Berry are currently equipped anywhere. */
+function charmUseCount(loadouts: AccountState['loadouts'], charmId: string): number {
+  let used = 0;
+  for (const loadout of Object.values(loadouts)) {
+    for (const id of loadout.charms) if (id === charmId) used += 1;
+  }
+  return used;
 }
 
 /** Remove consumed duplicates from the roster and drop their stale loadouts. */
@@ -209,17 +218,26 @@ export function equipCharmAction(
   config: SpeciesLookup,
   state: AccountState,
   wildId: string,
+  slot: number,
   charmId: string | null,
 ): Result<AccountState> {
   const { wild } = context(config, state, wildId);
   if (!wild) return fail('not_found', `no Wild ${wildId}`);
   const { tuning } = config.equipment;
   if (!charmsUnlocked(wild.stars, tuning)) return fail('resource_locked', `Charms unlock at ${tuning.charms.minStars}★`);
+  if (!Number.isInteger(slot) || slot < 0 || slot >= tuning.charms.slots) {
+    return fail('invalid_input', `no Berry slot ${slot}`);
+  }
   const loadout = loadoutOf(state, wild.id, config.equipment);
-  if (charmId === null) return ok(withLoadout(state, wild.id, equipCharm(loadout, null)));
-  if (!config.equipment.charms.some((c) => c.id === charmId)) return fail('not_found', `unknown charm ${charmId}`);
-  if ((state.equipment.charms[charmId] ?? 0) <= 0) return fail('insufficient_items', 'no copies of that charm');
-  return ok(withLoadout(state, wild.id, equipCharm(loadout, charmId)));
+  const next = equipCharm(loadout, slot, charmId);
+  if (charmId !== null) {
+    if (!config.equipment.charms.some((c) => c.id === charmId)) return fail('not_found', `unknown charm ${charmId}`);
+    const loadouts = { ...state.loadouts, [wild.id]: next };
+    if (charmUseCount(loadouts, charmId) > (state.equipment.charms[charmId] ?? 0)) {
+      return fail('insufficient_items', 'not enough copies of that Berry');
+    }
+  }
+  return ok(withLoadout(state, wild.id, next));
 }
 
 export function upgradeCharmAction(config: SpeciesLookup, state: AccountState, charmId: string): Result<AccountState> {
@@ -229,26 +247,53 @@ export function upgradeCharmAction(config: SpeciesLookup, state: AccountState, c
   const stars = state.equipment.charmStars[charmId] ?? 1;
   if (stars >= def.maxStars) return fail('at_level_cap', `${def.name} is already ${def.maxStars}★`);
   const owned = state.equipment.charms[charmId] ?? 0;
-  if (owned < CHARM_UPGRADE_COPIES) return fail('insufficient_items', `need ${CHARM_UPGRADE_COPIES} copies of ${def.name}`);
+  const copies = config.collection.berries.upgradeCopies;
+  if (owned - copies < charmUseCount(state.loadouts, charmId)) {
+    return fail('insufficient_items', `need ${copies} spare copies of ${def.name}`);
+  }
+  const essence = charmUpgradeEssence(stars, config.collection);
+  const paid = pay(state, { berryEssence: essence });
+  if (!paid) return fail('insufficient_items', `need ${essence} Berry Essence`);
   return ok({
-    ...state,
+    ...paid,
     equipment: {
-      ...state.equipment,
-      charms: { ...state.equipment.charms, [charmId]: owned - CHARM_UPGRADE_COPIES },
-      charmStars: { ...state.equipment.charmStars, [charmId]: stars + 1 },
+      ...paid.equipment,
+      charms: { ...paid.equipment.charms, [charmId]: owned - copies },
+      charmStars: { ...paid.equipment.charmStars, [charmId]: stars + 1 },
     },
   });
 }
 
-/** Consume one copy of each equipped charm (skipped for preview battles). */
+/** Dismantle one spare copy: equipped copies are protected. */
+export function dismantleCharmAction(
+  config: SpeciesLookup,
+  state: AccountState,
+  charmId: string,
+): Result<AccountState> {
+  const def = config.equipment.charms.find((c) => c.id === charmId);
+  if (!def) return fail('not_found', `unknown charm ${charmId}`);
+  const owned = state.equipment.charms[charmId] ?? 0;
+  if (owned <= charmUseCount(state.loadouts, charmId)) {
+    return fail('insufficient_items', 'that Berry copy is equipped');
+  }
+  const essence = config.collection.berries.dismantleEssence[def.tier];
+  return ok({
+    ...state,
+    currencies: { ...state.currencies, berryEssence: (state.currencies.berryEssence ?? 0) + essence },
+    equipment: { ...state.equipment, charms: { ...state.equipment.charms, [charmId]: owned - 1 } },
+  });
+}
+
+/** Consume one copy of each equipped Berry (skipped for preview battles). */
 export function consumeCharms(state: AccountState, wildIds: string[]): AccountState {
   const charms = { ...state.equipment.charms };
   let changed = false;
   for (const wildId of wildIds) {
-    const charm = state.loadouts[wildId]?.charm;
-    if (charm && (charms[charm] ?? 0) > 0) {
-      charms[charm] = (charms[charm] ?? 0) - 1;
-      changed = true;
+    for (const charm of state.loadouts[wildId]?.charms ?? []) {
+      if (charm && (charms[charm] ?? 0) > 0) {
+        charms[charm] = (charms[charm] ?? 0) - 1;
+        changed = true;
+      }
     }
   }
   return changed ? { ...state, equipment: { ...state.equipment, charms } } : state;

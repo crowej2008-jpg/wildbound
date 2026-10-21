@@ -225,6 +225,14 @@ export function validateContent(repoRoot: string): ValidateReport {
     for (const c of EQUIPMENT_TUNING.starting.charms) {
       if (!charmIds.has(c.defId)) errors.push(`equipment: starting charm "${c.defId}" has no design`);
     }
+    for (const tier of ['common', 'basic', 'intermediate', 'greater']) {
+      const count = CHARMS.filter((c) => c.tier === tier).length;
+      if (count !== 4) errors.push(`equipment: Berry tier "${tier}" has ${count} designs (want 4)`);
+    }
+    for (const c of CHARMS) {
+      if (c.tier === 'common' && c.maxStars !== 0) errors.push(`equipment: common Berry "${c.id}" must be fixed`);
+      if (c.tier !== 'common' && c.maxStars <= 0) errors.push(`equipment: Berry "${c.id}" needs a star cap`);
+    }
     checks.push(
       `equipment: ${RELICS.length} relic(s), ${RUNES.length} rune(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s), ${TALENT_TREES.length} talent tree(s) validated`,
     );

@@ -30,8 +30,11 @@ import { sheetOf } from './battle';
  * re-derive rules; the client only renders and calls actions.
  */
 
-/** Copy cost to raise a charm one star (M7 assumption, see docs/ASSUMPTIONS.md). */
-export const CHARM_UPGRADE_COPIES = 2;
+/** Berry Essence to raise a Berry one star. */
+export function charmUpgradeEssence(stars: number, collection: GameConfig['collection']): number {
+  const { upgradeEssenceBase, upgradeEssencePerStar } = collection.berries;
+  return upgradeEssenceBase + Math.max(0, stars - 1) * upgradeEssencePerStar;
+}
 
 export interface RelicView {
   instanceId: string;
@@ -89,7 +92,10 @@ export interface CharmView {
   stars: number;
   maxStars: number;
   count: number;
-  equippedOn: string | null;
+  equippedOn: string[];
+  upgradeCopies: number;
+  upgradeEssence: number | null;
+  dismantleEssence: number;
 }
 
 export interface TalentTierView {
@@ -133,6 +139,8 @@ export interface EquipmentView {
   coreSets: CoreSetView[];
   orbEssence: number;
   soulHeartExp: number;
+  berryEssence: number;
+  charmSlots: number;
   charms: CharmView[];
   trees: TalentTreeOption[];
   talentTiers: TalentTierView[];
@@ -266,10 +274,13 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
   const relicOn = new Map<string, string>();
   const runeOn = new Map<string, string>();
   const coreOn = new Map<string, string>();
-  const charmOn = new Map<string, string>();
+  const charmOn = new Map<string, string[]>();
   for (const [wildId, l] of Object.entries(state.loadouts)) {
     if (l.relic) relicOn.set(l.relic, wildId);
-    if (l.charm) charmOn.set(l.charm, wildId);
+    for (const id of l.charms) {
+      if (!id) continue;
+      charmOn.set(id, [...(charmOn.get(id) ?? []), wildId]);
+    }
     for (const id of l.runes) if (id) runeOn.set(id, wildId);
     for (const id of l.cores) if (id) coreOn.set(id, wildId);
   }
@@ -366,15 +377,21 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
 
   const charms: CharmView[] = tables.charms
     .filter((c) => (state.equipment.charms[c.id] ?? 0) > 0 || charmOn.has(c.id))
-    .map((c) => ({
-      defId: c.id,
-      name: c.name,
-      tier: c.tier,
-      stars: state.equipment.charmStars[c.id] ?? 1,
-      maxStars: c.maxStars,
-      count: state.equipment.charms[c.id] ?? 0,
-      equippedOn: charmOn.get(c.id) ?? null,
-    }));
+    .map((c) => {
+      const stars = state.equipment.charmStars[c.id] ?? 1;
+      return {
+        defId: c.id,
+        name: c.name,
+        tier: c.tier,
+        stars,
+        maxStars: c.maxStars,
+        count: state.equipment.charms[c.id] ?? 0,
+        equippedOn: charmOn.get(c.id) ?? [],
+        upgradeCopies: config.collection.berries.upgradeCopies,
+        upgradeEssence: c.maxStars > 0 && stars < c.maxStars ? charmUpgradeEssence(stars, config.collection) : null,
+        dismantleEssence: config.collection.berries.dismantleEssence[c.tier],
+      };
+    });
 
   const trees: TalentTreeOption[] = tables.talentTrees.map((t) => ({ id: t.id, name: t.name, className: t.className }));
   const tree = loadout.treeId ? tables.talentTrees.find((t) => t.id === loadout.treeId) : undefined;
@@ -424,6 +441,8 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     coreSets,
     orbEssence: state.currencies.orbEssence ?? 0,
     soulHeartExp: state.currencies.soulHeartExp ?? 0,
+    berryEssence: state.currencies.berryEssence ?? 0,
+    charmSlots: tuning.charms.slots,
     charms,
     trees,
     talentTiers,
@@ -437,7 +456,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
       talentFodderPerTier: config.collection.potential.fodderPerTier,
       talentResetGems: config.collection.potential.resetGems,
       runeCopiesPerLevel: config.collection.orbs.copiesPerLevel,
-      charmUpgradeCopies: CHARM_UPGRADE_COPIES,
+      charmUpgradeCopies: config.collection.berries.upgradeCopies,
     },
     delta: folded.delta,
     layerDelta: folded.layers,

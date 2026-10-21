@@ -175,9 +175,14 @@ export function foldLoadout(
     }
   }
 
-  // --- Charms: an equipped, owned charm; starred tiers scale their lines ---
-  if (loadout.charm !== null && (state.charms[loadout.charm] ?? 0) > 0) {
-    const def = tables.charms.find((c) => c.id === loadout.charm);
+  // --- Charms: each owned, equipped Berry; starred tiers scale their lines ---
+  const charmUses = new Map<string, number>();
+  for (const id of loadout.charms) {
+    if (id === null) continue;
+    const used = (charmUses.get(id) ?? 0) + 1;
+    if (used > (state.charms[id] ?? 0)) continue;
+    charmUses.set(id, used);
+    const def = tables.charms.find((c) => c.id === id);
     if (def) {
       const stars = def.maxStars > 0 ? Math.min(def.maxStars, Math.max(1, state.charmStars[def.id] ?? 1)) : 1;
       addLines(layers.charms, def.lines, stars);

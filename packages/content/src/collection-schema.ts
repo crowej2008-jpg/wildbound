@@ -33,6 +33,21 @@ export const collectionTuningSchema = z
       /** Extra EXP per current star. */
       expPerStar: z.number().int().min(0),
     }),
+    berries: z.object({
+      /** Duplicate copies consumed by each star-up. */
+      upgradeCopies: z.number().int().min(1),
+      /** Berry Essence for the first star-up. */
+      upgradeEssenceBase: z.number().int().min(0),
+      /** Extra Berry Essence per current star. */
+      upgradeEssencePerStar: z.number().int().min(0),
+      /** Essence paid by dismantling one spare copy, by tier. */
+      dismantleEssence: z.object({
+        common: z.number().int().min(0),
+        basic: z.number().int().min(0),
+        intermediate: z.number().int().min(0),
+        greater: z.number().int().min(0),
+      }),
+    }),
   })
   .strict();
 

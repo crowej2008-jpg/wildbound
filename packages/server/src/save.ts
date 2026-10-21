@@ -22,7 +22,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 7;
+export const SAVE_VERSION = 8;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -32,10 +32,25 @@ function currenciesFrom(source: Record<string, number>): Record<CurrencyId, numb
   return out;
 }
 
-/** Fill any missing slices on an older save (v1–v4 → current). */
+/** v7 stored one `charm`; v8 stores an array of Berry slots. */
+function normalizeLoadouts(
+  source: AccountState['loadouts'] | undefined,
+  slots: number,
+): AccountState['loadouts'] {
+  const out: AccountState['loadouts'] = {};
+  for (const [wildId, raw] of Object.entries(source ?? {})) {
+    const { charm: legacy, ...rest } = raw as typeof raw & { charm?: string | null };
+    const stored = Array.isArray(rest.charms) ? rest.charms : [legacy ?? null];
+    out[wildId] = { ...rest, charms: Array.from({ length: slots }, (_, i) => stored[i] ?? null) };
+  }
+  return out;
+}
+
+/** Fill any missing slices on an older save (v1–v7 → current). */
 function withDefaults(state: AccountState, now: number, config: GameConfig): AccountState {
   const s = state as Partial<AccountState>;
   const day = dayKey(now);
+  const charmSlots = config?.equipment?.tuning?.charms?.slots ?? 2;
   return {
     ...state,
     schemaVersion: SAVE_VERSION,
@@ -48,7 +63,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     gacha: s.gacha ?? initialGacha(config?.gacha?.machines ?? [], day),
     shops: s.shops ?? initialShopState(config?.shops ?? [], now, day),
     equipment: s.equipment ?? initialEquipment(config?.equipment?.tuning?.starting ?? emptyStartingEquipment()),
-    loadouts: s.loadouts ?? {},
+    loadouts: normalizeLoadouts(s.loadouts, charmSlots),
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     debugClockOffset: s.debugClockOffset ?? 0,

@@ -126,6 +126,32 @@ test('Orbs equip and level with Orb Essence', async ({ page }) => {
   await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(equipped);
 });
 
+test('Berries fill two slots, star up with copies + Essence, and dismantle spares', async ({ page }) => {
+  await importSave(page, { currencies: { berryEssence: 1_000 } });
+  await page.goto('/wilds');
+  await page.locator('.roster-item').first().click();
+  await page.getByRole('button', { name: 'Berries', exact: true }).click();
+
+  await expect(page.getByText('Berry Essence: 1,000')).toBeVisible();
+  await expect(page.getByText('Berry slots')).toBeVisible();
+  const sun = page.locator('.gear-row').filter({ hasText: 'Sunpetal Berry' });
+  const mist = page.locator('.gear-row').filter({ hasText: 'Mistbud Berry' });
+  await sun.getByRole('button', { name: 'Equip 1', exact: true }).click();
+  await mist.getByRole('button', { name: 'Equip 2', exact: true }).click();
+  await expect(page.getByText(/1\. Sunpetal Berry/)).toBeVisible();
+  await expect(page.getByText(/2\. Mistbud Berry/)).toBeVisible();
+
+  const ember = page.locator('.gear-row').filter({ hasText: 'Emberfruit' });
+  await ember.getByRole('button', { name: /Star up.*2 copies.*20 Berry Essence/ }).click();
+  await expect(ember).toContainText('2/2★');
+  await expect(page.getByText('Berry Essence: 980')).toBeVisible();
+
+  const glimmer = page.locator('.gear-row').filter({ hasText: 'Glimmerberry' });
+  await glimmer.getByRole('button', { name: /Dismantle.*\+5/ }).click();
+  await expect(glimmer).toContainText('x2');
+  await expect(page.getByText('Berry Essence: 985')).toBeVisible();
+});
+
 test('Soul-hearts activate a 2-piece set and star up with EXP', async ({ page }) => {
   await importSave(page, { currencies: { soulHeartExp: 1_000 } });
   await page.goto('/wilds');

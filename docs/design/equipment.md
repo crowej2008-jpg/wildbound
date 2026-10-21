@@ -43,9 +43,11 @@ list; an account owns *instances* of relics/runes/cores and *counts* of charms.
   3-piece threshold is gone). Level-up consumes two same-kind, same-level unsocketed copies plus
   gold, or the Orb Essence fallback.
 - **Charms** (berries). Unlock: `charms.minStars`. Consumables, four tiers
-  (Common/Basic/Intermediate/Greater). Commons are fixed (no stars); higher tiers scale with
-  stars. A charm is equipped in one slot and **consumed once per real battle**
-  (`challengeStage`); preview battles (`startBattle`) do not consume.
+  (Common/Basic/Intermediate/Greater) with four designs each. Commons are fixed (no stars);
+  higher tiers scale with stars. M11.5 gives each Wild **two Berry slots**; a real battle
+  consumes one copy per occupied slot (`challengeStage`), while preview battles (`startBattle`)
+  do not consume. Star-up spends duplicate copies + Berry Essence; dismantling a spare copy
+  pays Berry Essence.
 - **Spirit Cores** (soul-hearts). Unlock: `cores.minStars` (reference: 10). Six
   socket-specific pieces; qualities 2–5 stars. The M11 catalogue is the owner's nine sets
   (Common, Flying, Fire, Superpower, Water, Bug, Thunder, Rock, Grass). A 2/4/6-piece count

@@ -86,8 +86,10 @@ export function equipCore(loadout: Loadout, socket: number, instanceId: string |
   return { ...loadout, cores };
 }
 
-export function equipCharm(loadout: Loadout, charmId: string | null): Loadout {
-  return { ...loadout, charm: charmId };
+export function equipCharm(loadout: Loadout, slot: number, charmId: string | null): Loadout {
+  const charms = [...loadout.charms];
+  if (slot >= 0 && slot < charms.length) charms[slot] = charmId;
+  return { ...loadout, charms };
 }
 
 export function chooseTree(loadout: Loadout, treeId: string | null, tuning: EquipmentTuning): Loadout {

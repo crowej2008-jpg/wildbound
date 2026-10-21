@@ -14,5 +14,16 @@
   "soulhearts": {
     "expBase": 40,
     "expPerStar": 40
+  },
+  "berries": {
+    "upgradeCopies": 2,
+    "upgradeEssenceBase": 20,
+    "upgradeEssencePerStar": 20,
+    "dismantleEssence": {
+      "common": 5,
+      "basic": 10,
+      "intermediate": 20,
+      "greater": 40
+    }
   }
 }

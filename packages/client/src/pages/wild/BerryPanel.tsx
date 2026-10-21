@@ -6,7 +6,7 @@ export default function BerryPanel({ wildId, view, busy, run, reload }: GearPane
     return (
       <section className="card">
         <p className="muted">
-          {t('gear.locked')} {view.requirements.charms}★
+          {t('gear.locked')} {view.requirements.charms}★.
         </p>
       </section>
     );
@@ -15,23 +15,34 @@ export default function BerryPanel({ wildId, view, busy, run, reload }: GearPane
   const act = async (action: Parameters<GearPanelProps['run']>[0]) => {
     if (await run(action)) await reload();
   };
-  const equipped = view.charms.find((berry) => berry.defId === view.loadout.charm);
+  const slots = Array.from({ length: view.charmSlots }, (_, index) => view.loadout.charms[index] ?? null);
 
   return (
     <section className="card">
       <p className="muted">
-        {t('gear.equip')}: {equipped?.name ?? t('gear.empty')}
+        {t('currency.berryEssence')}: {view.berryEssence.toLocaleString()}
       </p>
-      {view.loadout.charm && (
-        <button
-          type="button"
-          className="btn"
-          disabled={busy}
-          onClick={() => void act((server) => server.equipCharm(wildId, null))}
-        >
-          {t('gear.unequip')}
-        </button>
-      )}
+      <p className="muted">{t('gear.berry.slots')}</p>
+      <div className="chip-list">
+        {slots.map((id, slot) => {
+          const berry = view.charms.find((item) => item.defId === id);
+          return (
+            <span key={slot} className="chip">
+              {slot + 1}. {berry?.name ?? t('gear.empty')}
+              {id && (
+                <button
+                  type="button"
+                  className="btn"
+                  disabled={busy}
+                  onClick={() => void act((server) => server.equipCharm(wildId, slot, null))}
+                >
+                  {t('gear.unequip')}
+                </button>
+              )}
+            </span>
+          );
+        })}
+      </div>
 
       <hr className="divider" />
       {view.charms.length === 0 ? (
@@ -39,33 +50,41 @@ export default function BerryPanel({ wildId, view, busy, run, reload }: GearPane
       ) : (
         <ul className="gear-list">
           {view.charms.map((berry) => {
-            const wornHere = view.loadout.charm === berry.defId;
-            const elsewhere = berry.equippedOn !== null && berry.equippedOn !== wildId;
-            const canUpgrade = berry.maxStars > 0 && berry.stars < berry.maxStars && berry.count >= view.costs.charmUpgradeCopies;
+            const spare = berry.count - berry.equippedOn.length;
+            const canUpgrade = berry.upgradeEssence !== null && spare >= berry.upgradeCopies;
             return (
               <li key={berry.defId} className="gear-row">
                 <div className="gear-head">
                   <strong>{berry.name}</strong>
                   <span className="chip">
-                    {berry.stars}★{berry.maxStars > 0 ? `/${berry.maxStars}★` : ''}
+                    {berry.stars}
+                    {berry.maxStars > 0 ? `/${berry.maxStars}` : ''}★
                   </span>
                   <span className="muted">
-                    x{berry.count} · {t('gear.stars')}
+                    x{berry.count} · {spare} {t('gear.berry.spare')}
                   </span>
-                  {wornHere && <span className="chip chip-on">{t('gear.equip')}</span>}
-                  {elsewhere && <span className="chip">{t('gear.inUse')}</span>}
+                  {berry.equippedOn.includes(wildId) && <span className="chip chip-on">{t('gear.equip')}</span>}
+                  {berry.equippedOn.some((id) => id !== wildId) && <span className="chip">{t('gear.inUse')}</span>}
                 </div>
                 <div className="row-actions">
-                  <button
-                    type="button"
-                    className={wornHere ? 'btn' : 'btn btn-primary'}
-                    disabled={busy || elsewhere}
-                    onClick={() =>
-                      void act((server) => server.equipCharm(wildId, wornHere ? null : berry.defId))
-                    }
-                  >
-                    {wornHere ? t('gear.unequip') : t('gear.equip')}
-                  </button>
+                  {slots.map((id, slot) => {
+                    const wornHere = id === berry.defId;
+                    return (
+                      <button
+                        key={slot}
+                        type="button"
+                        className={wornHere ? 'btn' : 'btn btn-primary'}
+                        disabled={busy}
+                        onClick={() =>
+                          void act((server) =>
+                            server.equipCharm(wildId, slot, wornHere ? null : berry.defId),
+                          )
+                        }
+                      >
+                        {wornHere ? t('gear.unequip') : t('gear.equip')} {slot + 1}
+                      </button>
+                    );
+                  })}
                   {canUpgrade && (
                     <button
                       type="button"
@@ -73,7 +92,18 @@ export default function BerryPanel({ wildId, view, busy, run, reload }: GearPane
                       disabled={busy}
                       onClick={() => void act((server) => server.upgradeCharm(berry.defId))}
                     >
-                      {t('gear.berry.upgrade')} · {view.costs.charmUpgradeCopies} {t('gear.berry.copies')}
+                      {t('gear.berry.upgrade')} · {berry.upgradeCopies} {t('gear.berry.copies')} +{' '}
+                      {berry.upgradeEssence} {t('currency.berryEssence')}
+                    </button>
+                  )}
+                  {spare > 0 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      disabled={busy}
+                      onClick={() => void act((server) => server.dismantleCharm(berry.defId))}
+                    >
+                      {t('gear.berry.dismantle')} · +{berry.dismantleEssence}
                     </button>
                   )}
                 </div>
@@ -82,9 +112,6 @@ export default function BerryPanel({ wildId, view, busy, run, reload }: GearPane
           })}
         </ul>
       )}
-      <p className="muted">
-        {t('gear.berry.dismantle')}: {t('comingLater.badge')}
-      </p>
     </section>
   );
 }

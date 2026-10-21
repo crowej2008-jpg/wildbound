@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CURRENCY_IDS, MATERIAL_CURRENCY_IDS } from '@wildbound/engine';
+import { CURRENCY_IDS, MATERIAL_CURRENCY_IDS, emptyLoadout } from '@wildbound/engine';
 import { buildConfig } from './config';
 import { createInitialState, migrateSave, parseSave, serializeSave, SAVE_VERSION } from './save';
 
@@ -34,11 +34,28 @@ describe('save codec', () => {
     );
     expect(result.ok).toBe(true);
     if (!result.ok) return;
-    expect(result.value.schemaVersion).toBe(7);
+    expect(result.value.schemaVersion).toBe(SAVE_VERSION);
     for (const id of CURRENCY_IDS) {
       expect(result.value.currencies[id]).toBeTypeOf('number');
     }
     for (const id of MATERIAL_CURRENCY_IDS) expect(result.value.currencies[id]).toBe(0);
+  });
+
+  it('migrates the single v7 Berry slot into two slots', () => {
+    const state = createInitialState(config);
+    const wildId = state.roster[0]!.id;
+    const loadout = emptyLoadout(config.equipment.tuning) as unknown as Record<string, unknown>;
+    delete loadout.charms;
+    loadout.charm = 'charm-sunpetal-berry';
+    const result = migrateSave(
+      { version: 7, state: { ...state, schemaVersion: 7, loadouts: { [wildId]: loadout } } },
+      Date.now(),
+      config,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.loadouts[wildId]?.charms).toEqual(['charm-sunpetal-berry', null]);
+    expect('charm' in (result.value.loadouts[wildId] ?? {})).toBe(false);
   });
 
   it('rejects malformed JSON and missing fields', () => {

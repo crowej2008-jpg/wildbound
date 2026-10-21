@@ -560,8 +560,9 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     Resonation Shards and Title Tickets join the existing currencies. `shard` (Wild star-up) and
     `stone` (Link Crystal) keep their meaning. Adding ids is a save-version bump; M11.1 owns the v6 → v7
     migration and the Trainer materials row; **M11.1 implements this** (save v7 normalises the
-    currency record so every material exists at 0). *What would change it:* owner veto of source
-    names, or a decision to model materials outside `Rewards`.
+    currency record so every material exists at 0). **M11.5 bumps to save v8** to replace the single
+    Berry slot with two slots. *What would change it:* owner veto of source names, or a decision to
+    model materials outside `Rewards`.
 26. **Soul-heart set effects use the owner's nine sets, with same-stat ladders taking the highest tier.**
     Bug 6-piece = 25% lifesteal (not 5+12+25), Flying 6 = 25% control resist, Superpower 6 = +30% Sp.Atk,
     Rock 6 = 15% damage reduction, Fire 6 = +30% versus shields; distinct 2/4/6 effects all apply.
@@ -579,10 +580,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     *What would change it:* owner asks for the reference's larger socket count or different
     copy/essence costs.
 28. **M11 caps Held Items at level 60, gives Berries two slots, and defers two source hooks.** The
-    reference's Held Item cap is 200; 60 is the M11 ceiling until the economy is measured. Berries go
-    from one slot to the source's two in M11.5. Plate stage 6 skill-swap and shiny Trinket variants are
-    shown as "coming later" and are not claimed as built. *What would change it:* a later milestone
-    extending the cap, or the owner prioritising skill-swap.
+    reference's Held Item cap is 200; 60 is the M11 ceiling until the economy is measured. **M11.5
+    implements the two Berry slots**: save v8 migrates the old `charm` into slot 1, a real battle
+    consumes one copy per occupied slot, and star-up uses duplicate copies + Berry Essence. Equipped
+    copies cannot be dismantled. Plate stage 6 skill-swap and shiny Trinket variants are shown as
+    "coming later" and are not claimed as built. *What would change it:* a later milestone extending
+    the cap, or the owner prioritising skill-swap.
 29. **Resonance grants a stat share of the Link Crystal, not an instant level.** The reference shares
     the crystal's level with slotted Wilds; our per-Wild level economy would be trivialised by an
     instant high level. M11.9 uses a tunable percentage of the crystal's level as bonus stats, with

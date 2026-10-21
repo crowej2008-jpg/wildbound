@@ -22,7 +22,7 @@ import {
 const TUNING: EquipmentTuning = {
   relic: { minTier: 'supreme', maxLevel: 5, maxRefine: 5 },
   runes: { minStars: 3, sockets: 4, maxLevel: 6 },
-  charms: { minStars: 4, slots: 1 },
+  charms: { minStars: 4, slots: 2 },
   cores: { minStars: 10, sockets: 6, pieceMinStars: 2, pieceMaxStars: 5 },
   talents: { minTier: 'legendary', tiers: 9, optionsPerTier: 3, resetGems: 50, allocateGold: 50 },
   relicLevelCost: { gold: 100, candy: 10, goldPerLevel: 50, candyPerLevel: 5 },
@@ -176,7 +176,7 @@ describe('layer contributions', () => {
       ...emptyLoadout(TUNING),
       relic: 're1',
       runes: ['ru1', 'ru2', 'ru3', 'ru4'],
-      charm: 'charm1',
+      charms: ['charm1', null],
       cores: ['c1', 'c2', null, null, null, null],
       treeId: 'forged',
       talents: Array.from({ length: 9 }, () => -1),
@@ -199,9 +199,17 @@ describe('layer contributions', () => {
 
   it('ignores an equipped charm the account does not own', () => {
     const state: EquipmentState = { relics: [], runes: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 };
-    const loadout = { ...emptyLoadout(TUNING), charm: 'charm0' };
+    const loadout = { ...emptyLoadout(TUNING), charms: ['charm0', null] };
     const folded = foldLoadout(loadout, state, { ...TABLES, tuning: TUNING });
     expect(folded.layers.charms.percent.dmgBoost).toBeUndefined();
+  });
+
+  it('folds both Berry slots and never applies more copies than are owned', () => {
+    const loadout = { ...emptyLoadout(TUNING), charms: ['charm1', 'charm1'] };
+    const one = foldLoadout(loadout, stateWith({ charms: { charm1: 1 }, charmStars: { charm1: 1 } }), TABLES);
+    const two = foldLoadout(loadout, stateWith({ charms: { charm1: 2 }, charmStars: { charm1: 1 } }), TABLES);
+    expect(one.layers.charms.core.hp).toBeCloseTo(200);
+    expect(two.layers.charms.core.hp).toBeCloseTo(400);
   });
 
   it('scales a relic effect with its refine level', () => {
@@ -356,11 +364,11 @@ describe('every layer moves a battle in the intended direction', () => {
 
   it('a charm damage line raises damage while its hp line raises max HP', () => {
     const dmgState = stateWith({ charms: { charm0: 1 }, charmStars: { charm0: 1 } });
-    const dmgUp = battleWith(base, dmgState, { ...emptyLoadout(TUNING), charm: 'charm0' });
+    const dmgUp = battleWith(base, dmgState, { ...emptyLoadout(TUNING), charms: ['charm0', null] });
     expect(dmgUp.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
 
     const hpState = stateWith({ charms: { charm1: 1 }, charmStars: { charm1: 1 } });
-    const hpUp = battleWith(base, hpState, { ...emptyLoadout(TUNING), charm: 'charm1' });
+    const hpUp = battleWith(base, hpState, { ...emptyLoadout(TUNING), charms: ['charm1', null] });
     const plainHp =
       runBattle({ attackers: [attacker(base)], defenders: [defender(120000)], seed: 11 }).units.find(
         (u) => u.side === 'attackers',
