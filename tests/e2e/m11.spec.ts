@@ -107,6 +107,31 @@ test('Wild screen shows the stat sheet and equipping a held item raises Power', 
     .toBeGreaterThan(before);
 });
 
+test('Held Items level to 60 and refine with Held Item Shards', async ({ page }) => {
+  await importSave(page, { currencies: { heldItemShard: 1_000 } });
+  await page.goto('/wilds');
+  await page.locator('.roster-item').first().click();
+  await page.getByRole('button', { name: 'Held Items', exact: true }).click();
+
+  await expect(page.getByText('Held Item Shards: 1,000')).toBeVisible();
+  const row = page.locator('.gear-row').first();
+  await expect(row).toContainText('Lv1/60');
+  await row.getByRole('button', { name: 'Equip', exact: true }).click();
+  await expect(row.getByRole('button', { name: 'Unequip', exact: true })).toBeVisible();
+  const power = () =>
+    page.locator('.wild-power-lg strong').first().innerText().then((text) => Number(text.replace(/,/g, '')));
+  const before = await power();
+
+  await row.getByRole('button', { name: /Level up .*5 Held Item Shards/ }).click();
+  await expect(row).toContainText('Lv2/60');
+  await expect(page.getByText('Held Item Shards: 995')).toBeVisible();
+  await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(before);
+
+  await row.getByRole('button', { name: /Refine .*800 Gold .*10 Held Item Shards/ }).click();
+  await expect(row).toContainText('Refine 1/5');
+  await expect(page.getByText('Held Item Shards: 985')).toBeVisible();
+});
+
 test('Orbs equip and level with Orb Essence', async ({ page }) => {
   await importSave(page, { currencies: { orbEssence: 1_000 } });
   await page.goto('/wilds');

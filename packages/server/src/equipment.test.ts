@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { emptyLoadout } from '@wildbound/engine';
 import { buildConfig } from './config';
-import { consumeCharms, levelRuneAction } from './equipment';
+import { consumeCharms, levelRelicAction, levelRuneAction } from './equipment';
 import { LocalServer } from './local-server';
 import { createInitialState } from './save';
 import { MemoryStore } from './storage';
@@ -29,6 +29,7 @@ async function supremeStriker() {
   await srv.grantCurrency('shard', 50_000);
   await srv.grantCurrency('stone', 100);
   await srv.grantCurrency('potentialShard', 10_000);
+  await srv.grantCurrency('heldItemShard', 5_000);
   const granted = await srv.grantWild('mimikyu');
   if (!granted.ok) throw new Error(`grant failed: ${granted.error}`);
   const fodder = await srv.grantWild('mimikyu');
@@ -61,23 +62,53 @@ describe('M11.0 equipment view and actions', () => {
     expect(after.value.power.layers.relic).toBeGreaterThan(0);
   });
 
-  it('levels an equipped held item and charges the authored cost', async () => {
+  it('levels an equipped held item to 60 and charges Held Item Shards', async () => {
     const { srv, wildId } = await supremeStriker();
     const view = await srv.getEquipment(wildId);
     if (!view.ok) throw new Error(view.message);
     const relic = view.value.relics.find((r) => r.className === 'striker');
     if (!relic) throw new Error('no striker relic');
+    expect(relic.maxLevel).toBe(60);
     await srv.equipRelic(wildId, relic.instanceId);
 
     const load = await srv.loadAccount();
     if (!load.ok) throw new Error('reload failed');
-    const goldBefore = load.value.state.currencies.gold;
+    const shardsBefore = load.value.state.currencies.heldItemShard;
     const levelled = await srv.levelRelic(relic.instanceId);
     expect(levelled.ok).toBe(true);
     if (!levelled.ok) return;
     const now = levelled.value.state.equipment.relics.find((r) => r.id === relic.instanceId);
     expect(now?.level).toBe(relic.level + 1);
-    expect(levelled.value.state.currencies.gold).toBeLessThan(goldBefore);
+    expect(levelled.value.state.currencies.heldItemShard).toBe(shardsBefore - 5);
+  });
+
+  it('refines a held item with gold + Held Item Shards', async () => {
+    const { srv, wildId } = await supremeStriker();
+    const view = await srv.getEquipment(wildId);
+    if (!view.ok) throw new Error(view.message);
+    const relic = view.value.relics.find((r) => r.className === 'striker');
+    if (!relic) throw new Error('no striker relic');
+    const load = await srv.loadAccount();
+    if (!load.ok) throw new Error('reload failed');
+    const goldBefore = load.value.state.currencies.gold;
+    const shardsBefore = load.value.state.currencies.heldItemShard;
+
+    const refined = await srv.refineRelic(relic.instanceId);
+    expect(refined.ok).toBe(true);
+    if (!refined.ok) return;
+    const now = refined.value.state.equipment.relics.find((r) => r.id === relic.instanceId);
+    expect(now?.refine).toBe(relic.refine + 1);
+    expect(refined.value.state.currencies.gold).toBe(goldBefore - 800);
+    expect(refined.value.state.currencies.heldItemShard).toBe(shardsBefore - 10);
+  });
+
+  it('stops a Held Item at its level cap', () => {
+    const config = buildConfig();
+    const state = createInitialState(config);
+    const relic = state.equipment.relics[0]!;
+    relic.level = 60;
+    const result = levelRelicAction(config, state, relic.id);
+    expect(result.ok).toBe(false);
   });
 
   it('unlocks orbs at the star gate and folds their lines into Power', async () => {

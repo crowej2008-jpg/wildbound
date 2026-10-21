@@ -1,7 +1,7 @@
 {
   "relic": {
     "minTier": "supreme",
-    "maxLevel": 5,
+    "maxLevel": 60,
     "maxRefine": 5
   },
   "runes": {
@@ -27,16 +27,14 @@
     "allocateGold": 500
   },
   "relicLevelCost": {
-    "gold": 400,
-    "candy": 60,
-    "goldPerLevel": 300,
-    "candyPerLevel": 40
+    "shards": 5,
+    "shardsPerLevel": 2
   },
   "relicRefineCost": {
     "gold": 800,
-    "stone": 1,
+    "shards": 10,
     "goldPerRefine": 400,
-    "stonePerRefine": 1
+    "shardsPerRefine": 10
   },
   "runeLevelCost": {
     "gold": 300,

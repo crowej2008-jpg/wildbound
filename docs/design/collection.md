@@ -124,8 +124,14 @@ four Basics; Emberfruit starts at 1★ so the star path is playable immediately.
 ### Held Items
 
 Class-locked, three lines, one conditional effect. Levels 1–60 in M11 (the reference's 200 is a
-later extension). Levelling pays Held Item Shards; refining unlocks/upgrades the effect with
+later extension). Levelling pays Held Item Shards; refining upgrades the effect with
 Held Item Shards + gold. Moving a worn item between Wilds asks for confirmation.
+
+**M11.6 built.** `equipment.json` raises the cap to 60. A level-up costs
+`5 + 2 × (level − 1)` Held Item Shards; a refine costs `800 + 400 × refine` gold and
+`10 + 10 × refine` Held Item Shards. The effect is active at base strength and scales +20% per
+refine. The screen shows the shard balance, `Lv n/60`, the next level/refine costs and keeps the
+existing move confirmation. Both caps return an `at_level_cap` error.
 
 ### Plates
 
@@ -173,7 +179,7 @@ The 15-stage event ladder is schema-supported but has no live source until event
 | M11.3 | Orbs: levels, duplicates, Orb Essence, 2/4 sets — **built** |
 | M11.4 | Soul-hearts: nine sets, effects, star-up — **built** |
 | M11.5 | Berries: two slots, stars, dismantle — **built** |
-| M11.6 | Held Items: levels 1–60, refine |
+| M11.6 | Held Items: levels 1–60, refine — **built** |
 | M11.7 | Plates |
 | M11.8 | Trinkets |
 | M11.9 | Resonance |

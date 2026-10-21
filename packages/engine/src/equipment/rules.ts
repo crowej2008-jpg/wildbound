@@ -49,19 +49,16 @@ export function canEquipRelic(def: RelicDef, wildClass: WildClass, wildTier: Tie
   return def.className === wildClass && relicUnlocked(wildTier, tuning);
 }
 
-export function relicLevelCost(level: number, tuning: EquipmentTuning): { gold: number; candy: number } {
-  const { gold, candy, goldPerLevel, candyPerLevel } = tuning.relicLevelCost;
-  return {
-    gold: Math.round(gold + goldPerLevel * Math.max(0, level - 1)),
-    candy: Math.round(candy + candyPerLevel * Math.max(0, level - 1)),
-  };
+export function relicLevelCost(level: number, tuning: EquipmentTuning): { shards: number } {
+  const { shards, shardsPerLevel } = tuning.relicLevelCost;
+  return { shards: Math.round(shards + shardsPerLevel * Math.max(0, level - 1)) };
 }
 
-export function relicRefineCost(refine: number, tuning: EquipmentTuning): { gold: number; stone: number } {
-  const { gold, stone, goldPerRefine, stonePerRefine } = tuning.relicRefineCost;
+export function relicRefineCost(refine: number, tuning: EquipmentTuning): { gold: number; shards: number } {
+  const { gold, shards, goldPerRefine, shardsPerRefine } = tuning.relicRefineCost;
   return {
     gold: Math.round(gold + goldPerRefine * Math.max(0, refine)),
-    stone: Math.round(stone + stonePerRefine * Math.max(0, refine)),
+    shards: Math.round(shards + shardsPerRefine * Math.max(0, refine)),
   };
 }
 

@@ -34,9 +34,11 @@ list; an account owns *instances* of relics/runes/cores and *counts* of charms.
 
 - **Relics** (held items). Unlock: the Wild is **Supreme** or **Mythic** (`relic.minTier`).
   A relic design is class-locked and only designs of the Wild's class show in the picker.
-  Each design carries stat lines (scaled by its level 1–5) and one conditional effect
-  (`RoundEffect`), enabled by refining. Level up costs gold + candy; refine costs gold +
-  stones. Moving a worn relic between Wilds asks for confirmation in the UI.
+  Each design carries stat lines (scaled by its level 1–60) and one conditional effect
+  (`RoundEffect`) that is active at base strength and scales +20% per refine. Level-up costs
+  Held Item Shards (`5 + 2 × (level − 1)`); refine costs gold + Held Item Shards
+  (`800 + 400 × refine` / `10 + 10 × refine`). Moving a worn relic between Wilds asks for
+  confirmation in the UI.
 - **Runes** (orbs). Unlock: `runes.minStars`. `rune.sockets` sockets per Wild; a Wild may
   swap runes for free. Four colour qualities are the *design* tier; every rune levels 1–6.
   Each rune belongs to a set; **M11.3 re-authored every set at 2/4 pieces** (the old single

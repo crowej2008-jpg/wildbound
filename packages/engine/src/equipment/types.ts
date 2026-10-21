@@ -151,8 +151,8 @@ export interface EquipmentTuning {
   charms: { minStars: number; slots: number };
   cores: { minStars: number; sockets: number; pieceMinStars: number; pieceMaxStars: number };
   talents: { minTier: Tier; tiers: number; optionsPerTier: number; resetGems: number; allocateGold: number };
-  relicLevelCost: { gold: number; candy: number; goldPerLevel: number; candyPerLevel: number };
-  relicRefineCost: { gold: number; stone: number; goldPerRefine: number; stonePerRefine: number };
+  relicLevelCost: { shards: number; shardsPerLevel: number };
+  relicRefineCost: { gold: number; shards: number; goldPerRefine: number; shardsPerRefine: number };
   runeLevelCost: { gold: number; goldPerLevel: number };
   starting: StartingEquipment;
 }

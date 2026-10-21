@@ -47,8 +47,8 @@ export interface RelicView {
   maxLevel: number;
   maxRefine: number;
   effectText: string;
-  levelCost: { gold: number; candy: number } | null;
-  refineCost: { gold: number; stone: number } | null;
+  levelCost: { shards: number } | null;
+  refineCost: { gold: number; shards: number } | null;
   equippedOn: string | null;
 }
 
@@ -140,6 +140,7 @@ export interface EquipmentView {
   orbEssence: number;
   soulHeartExp: number;
   berryEssence: number;
+  heldItemShards: number;
   charmSlots: number;
   charms: CharmView[];
   trees: TalentTreeOption[];
@@ -442,6 +443,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     orbEssence: state.currencies.orbEssence ?? 0,
     soulHeartExp: state.currencies.soulHeartExp ?? 0,
     berryEssence: state.currencies.berryEssence ?? 0,
+    heldItemShards: state.currencies.heldItemShard ?? 0,
     charmSlots: tuning.charms.slots,
     charms,
     trees,

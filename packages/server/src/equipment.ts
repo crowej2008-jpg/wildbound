@@ -306,8 +306,9 @@ export function levelRelicAction(config: SpeciesLookup, state: AccountState, ins
   if (!relic) return fail('not_found', `no relic ${instanceId}`);
   const { tuning } = config.equipment;
   if (relic.level >= tuning.relic.maxLevel) return fail('at_level_cap', 'max relic level');
-  const paid = pay(state, relicLevelCost(relic.level, tuning));
-  if (!paid) return fail('insufficient_items', 'not enough gold or candy');
+  const cost = relicLevelCost(relic.level, tuning);
+  const paid = pay(state, { heldItemShard: cost.shards });
+  if (!paid) return fail('insufficient_items', 'not enough Held Item Shards');
   const relics = paid.equipment.relics.map((r) => (r.id === instanceId ? { ...r, level: r.level + 1 } : r));
   return ok({ ...paid, equipment: { ...paid.equipment, relics } });
 }
@@ -317,8 +318,9 @@ export function refineRelicAction(config: SpeciesLookup, state: AccountState, in
   if (!relic) return fail('not_found', `no relic ${instanceId}`);
   const { tuning } = config.equipment;
   if (relic.refine >= tuning.relic.maxRefine) return fail('at_level_cap', 'max relic refine');
-  const paid = pay(state, relicRefineCost(relic.refine, tuning));
-  if (!paid) return fail('insufficient_items', 'not enough gold or stone');
+  const cost = relicRefineCost(relic.refine, tuning);
+  const paid = pay(state, { gold: cost.gold, heldItemShard: cost.shards });
+  if (!paid) return fail('insufficient_items', 'not enough gold or Held Item Shards');
   const relics = paid.equipment.relics.map((r) => (r.id === instanceId ? { ...r, refine: r.refine + 1 } : r));
   return ok({ ...paid, equipment: { ...paid.equipment, relics } });
 }

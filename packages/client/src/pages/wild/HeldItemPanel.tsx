@@ -19,6 +19,9 @@ export default function HeldItemPanel({ wildId, view, className, busy, run, relo
 
   return (
     <section className="card">
+      <p className="muted">
+        {t('currency.heldItemShard')}: {view.heldItemShards.toLocaleString()}
+      </p>
       {items.length === 0 ? (
         <p className="muted">{t('gear.noItems')}</p>
       ) : (
@@ -61,8 +64,7 @@ export default function HeldItemPanel({ wildId, view, className, busy, run, relo
                       disabled={busy}
                       onClick={() => void act((server) => server.levelRelic(item.instanceId))}
                     >
-                      {t('gear.level')} · {item.levelCost.gold.toLocaleString()} {t('currency.gold')} ·{' '}
-                      {item.levelCost.candy.toLocaleString()} {t('currency.candy')}
+                      {t('gear.level')} · {item.levelCost.shards.toLocaleString()} {t('currency.heldItemShard')}
                     </button>
                   )}
                   {item.refineCost && (
@@ -73,7 +75,7 @@ export default function HeldItemPanel({ wildId, view, className, busy, run, relo
                       onClick={() => void act((server) => server.refineRelic(item.instanceId))}
                     >
                       {t('gear.refine')} · {item.refineCost.gold.toLocaleString()} {t('currency.gold')} ·{' '}
-                      {item.refineCost.stone.toLocaleString()} {t('currency.stone')}
+                      {item.refineCost.shards.toLocaleString()} {t('currency.heldItemShard')}
                     </button>
                   )}
                 </div>

@@ -8,6 +8,7 @@ import {
   canEquipRelic,
   equipRune,
   relicLevelCost,
+  relicRefineCost,
   relicUnlocked,
   talentsUnlocked,
 } from './rules';
@@ -20,13 +21,13 @@ import {
 } from './types';
 
 const TUNING: EquipmentTuning = {
-  relic: { minTier: 'supreme', maxLevel: 5, maxRefine: 5 },
+  relic: { minTier: 'supreme', maxLevel: 60, maxRefine: 5 },
   runes: { minStars: 3, sockets: 4, maxLevel: 6 },
   charms: { minStars: 4, slots: 2 },
   cores: { minStars: 10, sockets: 6, pieceMinStars: 2, pieceMaxStars: 5 },
   talents: { minTier: 'legendary', tiers: 9, optionsPerTier: 3, resetGems: 50, allocateGold: 50 },
-  relicLevelCost: { gold: 100, candy: 10, goldPerLevel: 50, candyPerLevel: 5 },
-  relicRefineCost: { gold: 200, stone: 1, goldPerRefine: 100, stonePerRefine: 1 },
+  relicLevelCost: { shards: 5, shardsPerLevel: 2 },
+  relicRefineCost: { gold: 800, shards: 10, goldPerRefine: 400, shardsPerRefine: 10 },
   runeLevelCost: { gold: 100, goldPerLevel: 50 },
   starting: { relics: [], runes: [], cores: [], charms: [] },
 };
@@ -240,9 +241,11 @@ describe('rules', () => {
     expect(talentsUnlocked('epic', TUNING)).toBe(false);
   });
 
-  it('prices relic level-ups and refines by current level', () => {
-    expect(relicLevelCost(1, TUNING)).toEqual({ gold: 100, candy: 10 });
-    expect(relicLevelCost(3, TUNING)).toEqual({ gold: 200, candy: 20 });
+  it('prices level-ups and refines in Held Item Shards up to level 60', () => {
+    expect(relicLevelCost(1, TUNING)).toEqual({ shards: 5 });
+    expect(relicLevelCost(60, TUNING)).toEqual({ shards: 123 });
+    expect(relicRefineCost(0, TUNING)).toEqual({ gold: 800, shards: 10 });
+    expect(relicRefineCost(4, TUNING)).toEqual({ gold: 2400, shards: 50 });
   });
 
   it('sockets a rune into a chosen slot only', () => {

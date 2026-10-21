@@ -580,12 +580,16 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     *What would change it:* owner asks for the reference's larger socket count or different
     copy/essence costs.
 28. **M11 caps Held Items at level 60, gives Berries two slots, and defers two source hooks.** The
-    reference's Held Item cap is 200; 60 is the M11 ceiling until the economy is measured. **M11.5
-    implements the two Berry slots**: save v8 migrates the old `charm` into slot 1, a real battle
-    consumes one copy per occupied slot, and star-up uses duplicate copies + Berry Essence. Equipped
-    copies cannot be dismantled. Plate stage 6 skill-swap and shiny Trinket variants are shown as
-    "coming later" and are not claimed as built. *What would change it:* a later milestone extending
-    the cap, or the owner prioritising skill-swap.
+    reference's Held Item cap is 200; 60 is the M11 ceiling until the economy is measured. **M11.6
+    implements levels 1–60**: level-ups spend Held Item Shards (`5 + 2 × (level − 1)`), refines
+    spend gold + Shards (`800 + 400 × refine` / `10 + 10 × refine`) and strengthen the effect by
+    20% per refine. The base effect stays active at refine 0 (the M7 behaviour), so refining is an
+    upgrade rather than an unlock. **M11.5 implements the two Berry slots**: save v8 migrates the
+    old `charm` into slot 1, a real battle consumes one copy per occupied slot, and star-up uses
+    duplicate copies + Berry Essence. Equipped copies cannot be dismantled. Plate stage 6 skill-swap
+    and shiny Trinket variants are shown as "coming later" and are not claimed as built. *What
+    would change it:* a later milestone extending the cap, an owner decision to gate the effect
+    behind refine 1, or prioritising skill-swap.
 29. **Resonance grants a stat share of the Link Crystal, not an instant level.** The reference shares
     the crystal's level with slotted Wilds; our per-Wild level economy would be trivialised by an
     instant high level. M11.9 uses a tunable percentage of the crystal's level as bonus stats, with

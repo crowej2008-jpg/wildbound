@@ -217,8 +217,8 @@ export const equipmentTuningSchema = z.object({
     resetGems: z.number().int().min(0),
     allocateGold: z.number().int().min(0),
   }),
-  relicLevelCost: z.object({ gold: z.number(), candy: z.number(), goldPerLevel: z.number(), candyPerLevel: z.number() }),
-  relicRefineCost: z.object({ gold: z.number(), stone: z.number(), goldPerRefine: z.number(), stonePerRefine: z.number() }),
+  relicLevelCost: z.object({ shards: z.number(), shardsPerLevel: z.number() }),
+  relicRefineCost: z.object({ gold: z.number(), shards: z.number(), goldPerRefine: z.number(), shardsPerRefine: z.number() }),
   runeLevelCost: z.object({ gold: z.number(), goldPerLevel: z.number() }),
   starting: z.object({
     relics: z.array(z.object({ defId: z.string(), level: z.number().int().min(1), refine: z.number().int().min(0) })),

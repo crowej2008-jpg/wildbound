@@ -771,3 +771,18 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   star-up cost, protected equipped copy, dismantle refund) and +1 save migration test.
   **429 unit tests / 48 files**; 70 e2e green.
 - **Next:** M11.6 - Held Items (levels 1-60, refine).
+
+## M11.6 - Held Items to level 60, refine in Shards (2026-10-20)
+
+- **Level cap.** equipment.json raises Held Items from level 5 to 60. The strip still shows
+  Lv n/60, and the action returns t_level_cap at 60.
+- **Materials.** Levelling now spends Held Item Shards (5 + 2 x (level - 1)); refine spends
+  800 + 400 x refine gold and 10 + 10 x refine Held Item Shards. The old candy/stone fields
+  are gone from the tuning type, schema and view. The effect remains active at refine 0 and gains
+  20% per refine.
+- **Screen.** The Held Items tab shows the shard balance and the exact next level/refine costs;
+  worn items still ask for confirmation before moving to another Wild.
+- **Tests.** Extended the engine cost test (level 60 / refine ladder), +2 server tests (level spends
+  Shards, refine spends gold + Shards, level cap) and +1 e2e (equip, level, refine). **431 unit
+  tests / 48 files**; 72 e2e green.
+- **Next:** M11.7 - Plates (element-keyed stages 0-20).
