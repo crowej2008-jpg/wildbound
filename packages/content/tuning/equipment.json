@@ -90,7 +90,23 @@
         "level": 1
       }
     ],
-    "cores": [],
+    "cores": [
+      {
+        "setId": "coreset-common",
+        "socket": 0,
+        "stars": 2
+      },
+      {
+        "setId": "coreset-common",
+        "socket": 1,
+        "stars": 2
+      },
+      {
+        "setId": "coreset-common",
+        "socket": 2,
+        "stars": 2
+      }
+    ],
     "charms": [
       {
         "defId": "charm-sunpetal-berry",

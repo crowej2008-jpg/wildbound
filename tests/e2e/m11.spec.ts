@@ -126,6 +126,25 @@ test('Orbs equip and level with Orb Essence', async ({ page }) => {
   await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(equipped);
 });
 
+test('Soul-hearts activate a 2-piece set and star up with EXP', async ({ page }) => {
+  await importSave(page, { currencies: { soulHeartExp: 1_000 } });
+  await page.goto('/wilds');
+  await page.locator('.roster-item').first().click();
+
+  await page.getByRole('button', { name: 'Soul-hearts', exact: true }).click();
+  await expect(page.getByText('Soul-heart EXP: 1,000')).toBeVisible();
+  const rows = page.locator('.gear-row');
+  await expect(rows.first()).toContainText('2★');
+
+  await rows.nth(0).getByRole('button', { name: 'Equip', exact: true }).click();
+  await rows.nth(1).getByRole('button', { name: 'Equip', exact: true }).click();
+  await expect(page.locator('.chip-on', { hasText: '2pc' }).first()).toBeVisible();
+
+  await rows.nth(0).getByRole('button', { name: /Star-up .* 80/ }).click();
+  await expect(rows.first()).toContainText('3★');
+  await expect(page.getByText('Soul-heart EXP: 920')).toBeVisible();
+});
+
 test('Potential eats a duplicate copy and raises Power', async ({ page }) => {
   await importSave(page, {
     roster: ['mimikyu', ...ROSTER],

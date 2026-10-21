@@ -81,8 +81,8 @@ bonuses pay at 2 and 4 equipped pieces. Sockets are per-Wild and free to swap.
 ### Soul-hearts
 
 Six sockets, one piece per socket, qualities 2–5 stars. A piece's lines scale with its stars;
-star-up consumes Soul-heart EXP. Set bonuses pay at 2/4/6 pieces. The M11 catalogue is the
-owner's nine sets:
+star-up consumes `expBase + (stars − 1) × expPerStar` Soul-heart EXP (2★→3★ = 80 by default).
+Set bonuses pay at 2/4/6 pieces. The M11 catalogue is the owner's nine sets:
 
 | Set | 2 pieces | 4 pieces | 6 pieces |
 |---|---|---|---|
@@ -99,6 +99,13 @@ owner's nine sets:
 **Same-stat ladders take the highest tier, not the sum** (owner decision): Bug at 6 = 25%
 lifesteal, Flying = 25% control res, Superpower = +30% Sp.Atk, Rock = 15%, Fire = +30% vs
 shields. Distinct effects at 2/4/6 all apply.
+
+**M11.4 built.** `SoulheartHooks` carries the effects a stat line cannot express, so the engine
+does not fake them: shield damage bonuses, puncture/immunity cadence, round/turn/on-hit heals,
+paralysis, starting and overheal shields, first-round guards, and battle-start stat multipliers.
+`foldLoadout` returns one folded `soulheart` payload plus display text. The 2/4/6 lines are
+`bonuses[]` on each `CoreSetDef`; every set has six socket-specific pieces. Three 2★ Common
+pieces are in the starting inventory so a fresh account can see the 2-piece bonus.
 
 ### Berries
 
@@ -156,7 +163,7 @@ The 15-stage event ladder is schema-supported but has no live source until event
 | M11.1 | Currencies, save v7, Trainer tab replacing More, materials row |
 | M11.2 | Potential: fodder, shards, 9 tiers, reset — **built** |
 | M11.3 | Orbs: levels, duplicates, Orb Essence, 2/4 sets — **built** |
-| M11.4 | Soul-hearts: nine sets, effects, star-up |
+| M11.4 | Soul-hearts: nine sets, effects, star-up — **built** |
 | M11.5 | Berries: two slots, stars, dismantle |
 | M11.6 | Held Items: levels 1–60, refine |
 | M11.7 | Plates |

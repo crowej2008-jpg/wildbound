@@ -13,6 +13,7 @@ import {
   type BattleStrategies,
   type BattleStrategy,
   type Faction,
+  type FoldedLoadout,
   type PercentLines,
   type ReplayUnit,
   type RoundEffect,
@@ -87,6 +88,8 @@ export interface EquippedSheet {
   sheet: SheetInput;
   percent: Partial<PercentLines>;
   effects: RoundEffect[];
+  soulheart: FoldedLoadout['soulheart'];
+  soulheartText: string[];
 }
 
 /** Resolve a Wild's sheet and fold in its equipped equipment (M7). */
@@ -98,9 +101,15 @@ export function equippedSheet(
   const sheet = sheetOf(wild, config);
   if (!sheet) return null;
   const loadout = state?.loadouts[wild.id];
-  if (!state || !loadout) return { sheet, percent: {}, effects: [] };
+  if (!state || !loadout) return { sheet, percent: {}, effects: [], soulheart: {}, soulheartText: [] };
   const folded = foldLoadout(loadout, state.equipment, config.equipment);
-  return { sheet: mergeDelta(sheet, folded.delta), percent: folded.delta.percent, effects: folded.effects };
+  return {
+    sheet: mergeDelta(sheet, folded.delta),
+    percent: folded.delta.percent,
+    effects: folded.effects,
+    soulheart: folded.soulheart,
+    soulheartText: folded.soulheartText,
+  };
 }
 
 function powerOf(wild: WildInstance, config: GameConfig, state?: AccountState): number {
@@ -169,6 +178,7 @@ export function buildWildTeam(
       power: unitPower,
       level: wild.level,
       ...(equipped.effects.length > 0 ? { roundEffects: equipped.effects } : {}),
+      ...(Object.keys(equipped.soulheart).length > 0 ? { soulheart: equipped.soulheart } : {}),
     });
     meta.set(`${side}:${position}`, {
       name: species.name,

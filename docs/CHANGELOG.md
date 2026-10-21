@@ -724,3 +724,28 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - **Next:** M11.4 — Soul-hearts (the owner's nine sets, star-up, combat effects).
 
 
+
+## M11.4 - Soul-hearts, nine sets and star-up (2026-10-20)
+
+- **Nine-set catalogue.** cores.json now carries the owner's nine sets (Common, Flying, Fire,
+  Superpower, Water, Bug, Thunder, Rock, Grass) with six socket-specific pieces and 2/4/6-piece
+  bonuses. Common, Flying and Rock use soul/core lines; the rest use SoulheartHooks for effects
+  that are not stat lines. Three 2-star Common pieces join the starting equipment.
+- **Schema and folding.** CoreSetDef.bonuses[] gains optional 	ext and soulheart blocks.
+  oldLoadout() returns a folded soulheart payload plus display text and keeps the highest
+  reached tier for same-stat ladders; distinct effects at 2/4/6 all apply. The server forwards the
+  payload through EquippedSheet and uildWildTeam.
+- **Combat hooks.** New SoulheartHooks cover lifesteal, damage versus shields, puncture and
+  control-immunity cadence, round/turn/on-hit heals, paralysis, starting and overheal shields,
+  first-round guards, and battle-start stat multipliers. combat/soulheart.ts applies them at
+  battle start and on the matching round/turn/damage events; puncture is a new buff kind.
+  Cadences are named settings in combat.json.
+- **Star-up.** starUpCore charges expBase + (stars - 1) x expPerStar Soul-heart EXP from
+  collection.json (2->3 stars = 80), caps at pieceMaxStars, and persists the new star count.
+  The Soul-hearts tab shows the EXP balance, set progress, per-piece cost/button and a max-star state.
+- **Tests.** +11 engine Soul-heart tests (battle-start guards/multipliers/shield, puncture and
+  immunity cadence, round/turn heals, overheal shields, shield damage, on-hit heal and paralysis,
+  puncture versus a start shield, lifesteal and highest-ladder folding) and +1 server test (equip
+  two pieces, see the 2-piece bonus, star one up). +1 e2e (equip a 2-piece set and star up with
+  EXP). **426 unit tests / 48 files**; 68 e2e green.
+- **Next:** M11.5 - Berries (two slots, stars, dismantle).

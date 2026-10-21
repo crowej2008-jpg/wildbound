@@ -1,47 +1,47 @@
 {
   "sets": [
     {
-      "id": "coreset-pyre-heart",
-      "name": "Pyre Heart",
+      "id": "coreset-common",
+      "name": "Common",
       "socketLines": [
         [
           {
             "kind": "soul",
-            "field": "spiritAtk",
-            "base": 14,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
             "field": "spiritDef",
-            "base": 12,
-            "perLevel": 8
+            "base": 10,
+            "perLevel": 6
           }
         ],
         [
           {
             "kind": "soul",
             "field": "spiritAtk",
-            "base": 18,
-            "perLevel": 10
+            "base": 10,
+            "perLevel": 6
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 16,
-            "perLevel": 9
+            "kind": "core",
+            "field": "hp",
+            "base": 120,
+            "perLevel": 60
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 16,
-            "perLevel": 9
+            "kind": "core",
+            "field": "pDef",
+            "base": 8,
+            "perLevel": 4
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "sDef",
+            "base": 8,
+            "perLevel": 4
           }
         ],
         [
@@ -56,95 +56,83 @@
       "bonuses": [
         {
           "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgBoost",
-              "base": 0.05,
-              "perLevel": 0
-            }
-          ]
+          "lines": [],
+          "text": "Soul DEF +10%",
+          "soulheart": {
+            "text": "Soul DEF +10%",
+            "spiritDefMult": 1.1
+          }
         },
         {
           "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.05,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 150,
-              "perLevel": 0
-            }
-          ]
+          "lines": [],
+          "text": "Soul ATK +10%",
+          "soulheart": {
+            "text": "Soul ATK +10%",
+            "spiritAtkMult": 1.1
+          }
         },
         {
           "pieces": 6,
           "lines": [],
-          "effect": {
-            "tag": "core-open",
-            "text": "Deals more damage from the first round",
-            "field": "dmgBoost",
-            "fromRound": 1,
-            "add": 0.1
+          "text": "DMG reduction +10% from battle start",
+          "soulheart": {
+            "text": "DMG reduction +10% from battle start",
+            "startDmgRdct": 0.1
           }
         }
       ]
     },
     {
-      "id": "coreset-riptide-heart",
-      "name": "Riptide Heart",
+      "id": "coreset-flying",
+      "name": "Flying",
       "socketLines": [
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 16,
-            "perLevel": 9
+            "kind": "core",
+            "field": "spd",
+            "base": 4,
+            "perLevel": 2
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 14,
-            "perLevel": 8
+            "kind": "percent",
+            "field": "controlRes",
+            "base": 0.015,
+            "perLevel": 0.005
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 20,
-            "perLevel": 10
+            "kind": "core",
+            "field": "hp",
+            "base": 110,
+            "perLevel": 55
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 18,
-            "perLevel": 9
+            "kind": "core",
+            "field": "spd",
+            "base": 3,
+            "perLevel": 2
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 18,
-            "perLevel": 9
+            "kind": "percent",
+            "field": "controlRes",
+            "base": 0.02,
+            "perLevel": 0.006
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 16,
-            "perLevel": 8
+            "kind": "core",
+            "field": "hp",
+            "base": 100,
+            "perLevel": 50
           }
         ]
       ],
@@ -154,964 +142,533 @@
           "lines": [
             {
               "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.044,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.055,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 170,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 6,
-          "lines": [],
-          "effect": {
-            "tag": "core-atk",
-            "text": "Stronger attacks from round 3",
-            "field": "pAtk",
-            "mult": 1.1300000000000001,
-            "fromRound": 3
-          }
-        }
-      ]
-    },
-    {
-      "id": "coreset-bloom-heart",
-      "name": "Bloom Heart",
-      "socketLines": [
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 18,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 16,
-            "perLevel": 8
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 22,
-            "perLevel": 10
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 20,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 20,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 18,
-            "perLevel": 8
-          }
-        ]
-      ],
-      "bonuses": [
-        {
-          "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "critPower",
+              "field": "controlRes",
               "base": 0.1,
               "perLevel": 0
             }
-          ]
+          ],
+          "text": "Control resist +10%"
         },
         {
           "pieces": 4,
           "lines": [
             {
               "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.060000000000000005,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 190,
+              "field": "controlRes",
+              "base": 0.25,
               "perLevel": 0
             }
-          ]
+          ],
+          "text": "Control resist +25%"
         },
         {
           "pieces": 6,
           "lines": [],
-          "effect": {
-            "tag": "core-brace",
-            "text": "Braces hard in round 1",
-            "field": "dmgRdct",
-            "fromRound": 1,
-            "add": 0.2,
-            "bigRounds": 1
+          "text": "Control immunity on turns 3, 6, 9…",
+          "soulheart": {
+            "text": "Control immunity on turns 3, 6, 9…",
+            "controlImmunityEvery": 3
           }
         }
       ]
     },
     {
-      "id": "coreset-stormheart",
-      "name": "Stormheart",
+      "id": "coreset-fire",
+      "name": "Fire",
       "socketLines": [
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 20,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 18,
-            "perLevel": 8
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 24,
-            "perLevel": 10
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 22,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 22,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 20,
-            "perLevel": 8
-          }
-        ]
-      ],
-      "bonuses": [
-        {
-          "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgBoost",
-              "base": 0.065,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.065,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 210,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 6,
-          "lines": [],
-          "effect": {
-            "tag": "core-scale",
-            "text": "Gains damage reduction as the fight goes on",
-            "field": "dmgRdct",
-            "fromRound": 3,
-            "add": 0.09
-          }
-        }
-      ]
-    },
-    {
-      "id": "coreset-rimeheart",
-      "name": "Rimeheart",
-      "socketLines": [
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 22,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 20,
-            "perLevel": 8
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 26,
-            "perLevel": 10
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 24,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 24,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 22,
-            "perLevel": 8
-          }
-        ]
-      ],
-      "bonuses": [
-        {
-          "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.056,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.07,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 230,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 6,
-          "lines": [],
-          "effect": {
-            "tag": "core-open",
-            "text": "Deals more damage from the first round",
-            "field": "dmgBoost",
-            "fromRound": 1,
-            "add": 0.14
-          }
-        }
-      ]
-    },
-    {
-      "id": "coreset-umbra-heart",
-      "name": "Umbra Heart",
-      "socketLines": [
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 24,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 22,
-            "perLevel": 8
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 28,
-            "perLevel": 10
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 26,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 26,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 24,
-            "perLevel": 8
-          }
-        ]
-      ],
-      "bonuses": [
-        {
-          "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "critPower",
-              "base": 0.13,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.07500000000000001,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 250,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 6,
-          "lines": [],
-          "effect": {
-            "tag": "core-atk",
-            "text": "Stronger attacks from round 3",
+            "kind": "core",
             "field": "pAtk",
-            "mult": 1.1700000000000002,
-            "fromRound": 3
-          }
-        }
-      ]
-    },
-    {
-      "id": "coreset-dawnheart",
-      "name": "Dawnheart",
-      "socketLines": [
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 26,
-            "perLevel": 9
+            "base": 12,
+            "perLevel": 6
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 24,
-            "perLevel": 8
+            "kind": "core",
+            "field": "sAtk",
+            "base": 12,
+            "perLevel": 6
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 30,
-            "perLevel": 10
+            "kind": "percent",
+            "field": "crit",
+            "base": 0.01,
+            "perLevel": 0.005
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 28,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 28,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 26,
-            "perLevel": 8
-          }
-        ]
-      ],
-      "bonuses": [
-        {
-          "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgBoost",
-              "base": 0.08,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.05,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 270,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 6,
-          "lines": [],
-          "effect": {
-            "tag": "core-brace",
-            "text": "Braces hard in round 1",
-            "field": "dmgRdct",
-            "fromRound": 1,
-            "add": 0.2,
-            "bigRounds": 1
-          }
-        }
-      ]
-    },
-    {
-      "id": "coreset-duskheart",
-      "name": "Duskheart",
-      "socketLines": [
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 28,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 26,
-            "perLevel": 8
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 32,
-            "perLevel": 10
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 30,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 30,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 28,
-            "perLevel": 8
-          }
-        ]
-      ],
-      "bonuses": [
-        {
-          "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.068,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.055,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 290,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 6,
-          "lines": [],
-          "effect": {
-            "tag": "core-scale",
-            "text": "Gains damage reduction as the fight goes on",
-            "field": "dmgRdct",
-            "fromRound": 3,
-            "add": 0.06999999999999999
-          }
-        }
-      ]
-    },
-    {
-      "id": "coreset-wyrmheart",
-      "name": "Wyrmheart",
-      "socketLines": [
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 30,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 28,
-            "perLevel": 8
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 34,
-            "perLevel": 10
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 32,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 32,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 30,
-            "perLevel": 8
-          }
-        ]
-      ],
-      "bonuses": [
-        {
-          "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "critPower",
-              "base": 0.16,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.060000000000000005,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 310,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 6,
-          "lines": [],
-          "effect": {
-            "tag": "core-open",
-            "text": "Deals more damage from the first round",
-            "field": "dmgBoost",
-            "fromRound": 1,
-            "add": 0.12000000000000001
-          }
-        }
-      ]
-    },
-    {
-      "id": "coreset-leviathan-heart",
-      "name": "Leviathan Heart",
-      "socketLines": [
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 32,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 30,
-            "perLevel": 8
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 36,
-            "perLevel": 10
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 34,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 34,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 32,
-            "perLevel": 8
-          }
-        ]
-      ],
-      "bonuses": [
-        {
-          "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgBoost",
-              "base": 0.095,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.065,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 330,
-              "perLevel": 0
-            }
-          ]
-        },
-        {
-          "pieces": 6,
-          "lines": [],
-          "effect": {
-            "tag": "core-atk",
-            "text": "Stronger attacks from round 3",
+            "kind": "core",
             "field": "pAtk",
-            "mult": 1.1500000000000001,
-            "fromRound": 3
-          }
-        }
-      ]
-    },
-    {
-      "id": "coreset-golem-heart",
-      "name": "Golem Heart",
-      "socketLines": [
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 34,
-            "perLevel": 9
+            "base": 10,
+            "perLevel": 5
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 32,
-            "perLevel": 8
+            "kind": "percent",
+            "field": "critPower",
+            "base": 0.03,
+            "perLevel": 0.01
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 38,
-            "perLevel": 10
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 36,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 36,
-            "perLevel": 9
-          }
-        ],
-        [
-          {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 34,
-            "perLevel": 8
+            "kind": "core",
+            "field": "sAtk",
+            "base": 10,
+            "perLevel": 5
           }
         ]
       ],
       "bonuses": [
         {
           "pieces": 2,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.08,
-              "perLevel": 0
-            }
-          ]
+          "lines": [],
+          "text": "+10% damage vs shielded enemies",
+          "soulheart": {
+            "text": "+10% damage vs shielded enemies",
+            "shieldDmgBonus": 0.1
+          }
         },
         {
           "pieces": 4,
-          "lines": [
-            {
-              "kind": "percent",
-              "field": "dmgRdct",
-              "base": 0.07,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 350,
-              "perLevel": 0
-            }
-          ]
+          "lines": [],
+          "text": "+30% damage vs shielded enemies",
+          "soulheart": {
+            "text": "+30% damage vs shielded enemies",
+            "shieldDmgBonus": 0.3
+          }
         },
         {
           "pieces": 6,
           "lines": [],
-          "effect": {
-            "tag": "core-brace",
-            "text": "Braces hard in round 1",
-            "field": "dmgRdct",
-            "fromRound": 1,
-            "add": 0.2,
-            "bigRounds": 1
+          "text": "Puncture on turns 3, 6, 9…: attacks ignore shields",
+          "soulheart": {
+            "text": "Puncture on turns 3, 6, 9…: attacks ignore shields",
+            "punctureEvery": 3
           }
         }
       ]
     },
     {
-      "id": "coreset-wyrdheart",
-      "name": "Wyrdheart",
+      "id": "coreset-superpower",
+      "name": "Superpower",
       "socketLines": [
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 36,
-            "perLevel": 9
+            "kind": "core",
+            "field": "sAtk",
+            "base": 14,
+            "perLevel": 7
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 34,
-            "perLevel": 8
+            "kind": "core",
+            "field": "sAtk",
+            "base": 10,
+            "perLevel": 5
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 40,
-            "perLevel": 10
+            "kind": "percent",
+            "field": "critPower",
+            "base": 0.03,
+            "perLevel": 0.01
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 38,
-            "perLevel": 9
+            "kind": "core",
+            "field": "sAtk",
+            "base": 12,
+            "perLevel": 6
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritAtk",
-            "base": 38,
-            "perLevel": 9
+            "kind": "core",
+            "field": "hp",
+            "base": 100,
+            "perLevel": 50
           }
         ],
         [
           {
-            "kind": "soul",
-            "field": "spiritDef",
-            "base": 36,
-            "perLevel": 8
+            "kind": "percent",
+            "field": "critPower",
+            "base": 0.02,
+            "perLevel": 0.008
           }
         ]
       ],
       "bonuses": [
         {
           "pieces": 2,
+          "lines": [],
+          "text": "Sp.Atk +10%",
+          "soulheart": {
+            "text": "Sp.Atk +10%",
+            "sAtkMult": 1.1
+          }
+        },
+        {
+          "pieces": 4,
           "lines": [
             {
               "kind": "percent",
               "field": "critPower",
-              "base": 0.19,
+              "base": 0.2,
               "perLevel": 0
             }
-          ]
+          ],
+          "text": "Crit intensity +20%"
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "text": "Sp.Atk +30%",
+          "soulheart": {
+            "text": "Sp.Atk +30%",
+            "sAtkMult": 1.3
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-water",
+      "name": "Water",
+      "socketLines": [
+        [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 130,
+            "perLevel": 65
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 10,
+            "perLevel": 6
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "sDef",
+            "base": 9,
+            "perLevel": 4
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 110,
+            "perLevel": 55
+          }
+        ],
+        [
+          {
+            "kind": "percent",
+            "field": "healBoost",
+            "base": 0.015,
+            "perLevel": 0.005
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 14,
+            "perLevel": 8
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [],
+          "text": "Round 1 only: Soul DEF +50%, DMG reduction +25%",
+          "soulheart": {
+            "text": "Round 1 only: Soul DEF +50%, DMG reduction +25%",
+            "firstRoundSpiritDefMult": 1.5,
+            "firstRoundDmgRdct": 0.25
+          }
+        },
+        {
+          "pieces": 4,
+          "lines": [],
+          "text": "Restore 25% HP at the end of rounds 4, 8 and 12",
+          "soulheart": {
+            "text": "Restore 25% HP at the end of rounds 4, 8 and 12",
+            "roundHeal": {
+              "rounds": [
+                4,
+                8,
+                12
+              ],
+              "rate": 0.25
+            }
+          }
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "text": "50% chance to heal 10% max HP when attacked",
+          "soulheart": {
+            "text": "50% chance to heal 10% max HP when attacked",
+            "onHitHeal": {
+              "chance": 0.5,
+              "rate": 0.1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-bug",
+      "name": "Bug",
+      "socketLines": [
+        [
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 12,
+            "perLevel": 6
+          }
+        ],
+        [
+          {
+            "kind": "percent",
+            "field": "crit",
+            "base": 0.01,
+            "perLevel": 0.005
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 110,
+            "perLevel": 55
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 10,
+            "perLevel": 5
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "spd",
+            "base": 3,
+            "perLevel": 1
+          }
+        ],
+        [
+          {
+            "kind": "percent",
+            "field": "crit",
+            "base": 0.015,
+            "perLevel": 0.005
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [],
+          "text": "Lifesteal 5%",
+          "soulheart": {
+            "text": "Lifesteal 5%",
+            "lifesteal": 0.05
+          }
+        },
+        {
+          "pieces": 4,
+          "lines": [],
+          "text": "Lifesteal 12%",
+          "soulheart": {
+            "text": "Lifesteal 12%",
+            "lifesteal": 0.12
+          }
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "text": "Lifesteal 25%",
+          "soulheart": {
+            "text": "Lifesteal 25%",
+            "lifesteal": 0.25
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-thunder",
+      "name": "Thunder",
+      "socketLines": [
+        [
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 12,
+            "perLevel": 6
+          }
+        ],
+        [
+          {
+            "kind": "percent",
+            "field": "guardBreak",
+            "base": 0.015,
+            "perLevel": 0.005
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "spd",
+            "base": 4,
+            "perLevel": 2
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 10,
+            "perLevel": 5
+          }
+        ],
+        [
+          {
+            "kind": "percent",
+            "field": "guardBreak",
+            "base": 0.02,
+            "perLevel": 0.006
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 100,
+            "perLevel": 50
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "guardBreak",
+              "base": 0.1,
+              "perLevel": 0
+            }
+          ],
+          "text": "Guard break +10%"
+        },
+        {
+          "pieces": 4,
+          "lines": [
+            {
+              "kind": "percent",
+              "field": "guardBreak",
+              "base": 0.25,
+              "perLevel": 0
+            }
+          ],
+          "text": "Guard break +25%"
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "text": "Attacks have a 10% chance to inflict paralysis",
+          "soulheart": {
+            "text": "Attacks have a 10% chance to inflict paralysis",
+            "paralysisChance": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-rock",
+      "name": "Rock",
+      "socketLines": [
+        [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 140,
+            "perLevel": 70
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "pDef",
+            "base": 10,
+            "perLevel": 5
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "sDef",
+            "base": 10,
+            "perLevel": 5
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 10,
+            "perLevel": 6
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 110,
+            "perLevel": 55
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "pDef",
+            "base": 8,
+            "perLevel": 4
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [],
+          "text": "Soul DEF +15%",
+          "soulheart": {
+            "text": "Soul DEF +15%",
+            "spiritDefMult": 1.15
+          }
         },
         {
           "pieces": 4,
@@ -1119,26 +676,102 @@
             {
               "kind": "percent",
               "field": "dmgRdct",
-              "base": 0.07500000000000001,
-              "perLevel": 0
-            },
-            {
-              "kind": "core",
-              "field": "hp",
-              "base": 370,
+              "base": 0.15,
               "perLevel": 0
             }
-          ]
+          ],
+          "text": "DMG reduction +15%"
         },
         {
           "pieces": 6,
           "lines": [],
-          "effect": {
-            "tag": "core-scale",
-            "text": "Gains damage reduction as the fight goes on",
-            "field": "dmgRdct",
-            "fromRound": 3,
-            "add": 0.11
+          "text": "Restore 10% HP at turn start",
+          "soulheart": {
+            "text": "Restore 10% HP at turn start",
+            "turnHeal": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "coreset-grass",
+      "name": "Grass",
+      "socketLines": [
+        [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 130,
+            "perLevel": 65
+          }
+        ],
+        [
+          {
+            "kind": "percent",
+            "field": "healBoost",
+            "base": 0.015,
+            "perLevel": 0.005
+          }
+        ],
+        [
+          {
+            "kind": "soul",
+            "field": "spiritDef",
+            "base": 10,
+            "perLevel": 6
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 110,
+            "perLevel": 55
+          }
+        ],
+        [
+          {
+            "kind": "percent",
+            "field": "receiveHealBoost",
+            "base": 0.01,
+            "perLevel": 0.004
+          }
+        ],
+        [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 100,
+            "perLevel": 50
+          }
+        ]
+      ],
+      "bonuses": [
+        {
+          "pieces": 2,
+          "lines": [],
+          "text": "Shield 20% max HP at battle start",
+          "soulheart": {
+            "text": "Shield 20% max HP at battle start",
+            "startShield": 0.2
+          }
+        },
+        {
+          "pieces": 4,
+          "lines": [],
+          "text": "50% of excess healing becomes shield",
+          "soulheart": {
+            "text": "50% of excess healing becomes shield",
+            "overhealShield": 0.5
+          }
+        },
+        {
+          "pieces": 6,
+          "lines": [],
+          "text": "+20% damage while carrying a shield",
+          "soulheart": {
+            "text": "+20% damage while carrying a shield",
+            "shieldedDmgBonus": 0.2
           }
         }
       ]

@@ -28,6 +28,11 @@ export function applyHeal(ctx: BattleContext, target: Combatant, amount: number)
     ctx.events.push({ type: 'heal', tgt: target.key, amount: delta, hpAfter: target.hp });
     ctx.healingDone[target.key] = (ctx.healingDone[target.key] ?? 0) + delta;
   }
+  // Grass 4-piece: part of the healing that would overflow becomes a shield.
+  const excess = Math.max(0, amount - delta);
+  if (excess > 0 && target.soulheart?.overhealShield) {
+    applyShieldAmount(ctx, target, Math.floor(excess * target.soulheart.overhealShield));
+  }
 }
 
 export function applyShield(ctx: BattleContext, target: Combatant, share: number, caster: Combatant): void {
@@ -68,8 +73,9 @@ export function applySkillSideEffects(
   hitDamages: number[],
 ): void {
   for (const b of skill.selfBuffs ?? []) applyBuff(attacker, scaleBuff(b, attacker.level ?? 1), ctx, attacker.id);
-  if (skill.lifesteal) {
-    applyLifesteal(ctx, attacker, hitDamages.reduce((a, b) => a + b, 0), skill.lifesteal);
+  const lifesteal = (skill.lifesteal ?? 0) + (attacker.soulheart?.lifesteal ?? 0);
+  if (lifesteal > 0) {
+    applyLifesteal(ctx, attacker, hitDamages.reduce((a, b) => a + b, 0), lifesteal);
   }
   if (skill.heal) {
     const pool = resolvePool(ctx, attacker, skill.heal.target, targets);

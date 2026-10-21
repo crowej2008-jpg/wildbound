@@ -234,6 +234,7 @@ export interface GameServer {
   equipRelic(wildId: string, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
   equipRune(wildId: string, socket: number, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
   equipCore(wildId: string, socket: number, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
+  starUpCore(instanceId: string): Promise<Result<AccountSnapshot>>;
   equipCharm(wildId: string, charmId: string | null): Promise<Result<AccountSnapshot>>;
   /** Spend copies to raise a charm's star level (M7). */
   upgradeCharm(charmId: string): Promise<Result<AccountSnapshot>>;

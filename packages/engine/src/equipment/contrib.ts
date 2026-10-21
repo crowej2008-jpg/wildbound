@@ -1,4 +1,4 @@
-import type { RoundEffect } from '../combat/types';
+import type { RoundEffect, SoulheartHooks } from '../combat/types';
 import type { SheetInput } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats } from '../model';
 import {
@@ -95,6 +95,45 @@ export interface FoldedLoadout {
   /** Per-layer, for the Wild screen's stat-delta display. */
   layers: LayerDelta;
   effects: RoundEffect[];
+  /** M11.4 merged Soul-heart hooks (same-stat ladders keep the highest). */
+  soulheart: SoulheartHooks;
+  /** Authored set-bonus sentences for the gear screen. */
+  soulheartText: string[];
+}
+
+const HOOK_NUMBERS = [
+  'lifesteal',
+  'shieldDmgBonus',
+  'shieldedDmgBonus',
+  'turnHeal',
+  'paralysisChance',
+  'startShield',
+  'overhealShield',
+  'startDmgRdct',
+  'firstRoundSpiritDefMult',
+  'firstRoundDmgRdct',
+  'spiritAtkMult',
+  'spiritDefMult',
+  'sAtkMult',
+] as const;
+
+function mergeHook(out: SoulheartHooks, src: SoulheartHooks): void {
+  for (const key of HOOK_NUMBERS) {
+    const value = src[key];
+    if (value === undefined) continue;
+    out[key] = Math.max(out[key] ?? 0, value);
+  }
+  if (src.punctureEvery !== undefined) {
+    out.punctureEvery = out.punctureEvery === undefined ? src.punctureEvery : Math.min(out.punctureEvery, src.punctureEvery);
+  }
+  if (src.controlImmunityEvery !== undefined) {
+    out.controlImmunityEvery =
+      out.controlImmunityEvery === undefined
+        ? src.controlImmunityEvery
+        : Math.min(out.controlImmunityEvery, src.controlImmunityEvery);
+  }
+  if (src.roundHeal && (!out.roundHeal || src.roundHeal.rate > out.roundHeal.rate)) out.roundHeal = src.roundHeal;
+  if (src.onHitHeal && (!out.onHitHeal || src.onHitHeal.rate > out.onHitHeal.rate)) out.onHitHeal = src.onHitHeal;
 }
 
 function emptyLayers(): LayerDelta {
@@ -109,6 +148,8 @@ export function foldLoadout(
 ): FoldedLoadout {
   const layers = emptyLayers();
   const effects: RoundEffect[] = [];
+  const soulheart: SoulheartHooks = {};
+  const soulheartText: string[] = [];
 
   // --- Relics: lines scale with level; the design's effect scales with refine ---
   const relic = findRelic(state, loadout.relic);
@@ -155,10 +196,23 @@ export function foldLoadout(
   }
   for (const set of tables.coreSets) {
     const count = coreSetCounts.get(set.id) ?? 0;
-    for (const bonus of set.bonuses) {
-      if (count < bonus.pieces) continue;
-      addLines(layers.cores, bonus.lines, 1);
+    const reached = set.bonuses.filter((bonus) => count >= bonus.pieces);
+    // Same-stat ladders keep the highest reached line rather than summing 2/4/6.
+    const bestLine = new Map<string, StatLine>();
+    for (const bonus of reached) {
+      for (const line of bonus.lines) {
+        const prev = bestLine.get(line.field);
+        if (!prev || Math.abs(line.base) > Math.abs(prev.base)) bestLine.set(line.field, line);
+      }
+    }
+    for (const line of bestLine.values()) addLine(layers.cores, line, 1);
+    for (const bonus of reached) {
       if (bonus.effect) effects.push(bonus.effect);
+      if (bonus.soulheart) {
+        mergeHook(soulheart, bonus.soulheart);
+        soulheartText.push(bonus.soulheart.text);
+      }
+      if (bonus.text) soulheartText.push(bonus.text);
     }
   }
 
@@ -182,7 +236,7 @@ export function foldLoadout(
   addDelta(delta, layers.charms);
   addDelta(delta, layers.cores);
   addDelta(delta, layers.talents);
-  return { delta, layers, effects };
+  return { delta, layers, effects, soulheart, soulheartText };
 }
 
 /**

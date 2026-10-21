@@ -25,6 +25,7 @@ import {
   loadoutOf,
   orbEssenceCost,
   potentialFodder,
+  soulHeartCost,
   talentResetRefund,
   talentShardCost,
 } from './equipment-view';
@@ -188,6 +189,18 @@ export function equipCoreAction(
     next = withLoadout(next, wornBy, equipCore(prev, prev.cores.findIndex((id) => id === instanceId), null));
   }
   return ok(withLoadout(next, wild.id, equipCore(loadoutOf(next, wild.id, config.equipment), socket, instanceId)));
+}
+
+export function starUpCoreAction(config: SpeciesLookup, state: AccountState, instanceId: string): Result<AccountState> {
+  const core = state.equipment.cores.find((c) => c.id === instanceId);
+  if (!core) return fail('not_found', `no core ${instanceId}`);
+  const { tuning } = config.equipment;
+  if (core.stars >= tuning.cores.pieceMaxStars) return fail('at_level_cap', 'max soul-heart stars');
+  const cost = soulHeartCost(core.stars, config.collection);
+  const paid = pay(state, { soulHeartExp: cost });
+  if (!paid) return fail('insufficient_items', 'not enough Soul-heart EXP');
+  const cores = paid.equipment.cores.map((c) => (c.id === instanceId ? { ...c, stars: c.stars + 1 } : c));
+  return ok({ ...paid, equipment: { ...paid.equipment, cores } });
 }
 
 // --- charms -----------------------------------------------------------------

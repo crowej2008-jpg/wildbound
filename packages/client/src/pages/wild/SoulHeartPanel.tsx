@@ -18,6 +18,23 @@ export default function SoulHeartPanel({ wildId, view, busy, run, reload }: Gear
 
   return (
     <section className="card">
+      <p className="muted">
+        {t('currency.soulHeartExp')}: {view.soulHeartExp.toLocaleString()}
+      </p>
+      <p className="muted">{t('gear.soul.sets')}</p>
+      <div className="chip-list">
+        {view.coreSets.map((set) => (
+          <span key={set.id} className="chip" title={set.bonuses.map((b) => `${b.pieces}: ${b.text}`).join(' · ')}>
+            {set.name} {set.equipped}
+            {set.bonuses.map((bonus) => (
+              <span key={bonus.pieces} className={bonus.active ? 'chip chip-on' : 'chip'}>
+                {bonus.pieces}pc
+              </span>
+            ))}
+          </span>
+        ))}
+      </div>
+
       <div className="chip-list">
         {view.loadout.cores.map((id, index) => {
           const core = view.cores.find((item) => item.instanceId === id);
@@ -45,6 +62,12 @@ export default function SoulHeartPanel({ wildId, view, busy, run, reload }: Gear
                     {t('gear.socket')} {core.socket + 1}
                   </span>
                   <span className="chip">{core.stars}★</span>
+                  {core.starCost !== null && (
+                    <span className="chip">
+                      {t('gear.starUp')} {core.starCost} {t('currency.soulHeartExp')}
+                    </span>
+                  )}
+                  {core.starCost === null && <span className="chip">{t('gear.soul.max')}</span>}
                   {wornHere && <span className="chip chip-on">{t('gear.equip')}</span>}
                   {elsewhere && <span className="chip">{t('gear.inUse')}</span>}
                 </div>
@@ -64,15 +87,22 @@ export default function SoulHeartPanel({ wildId, view, busy, run, reload }: Gear
                   >
                     {wornHere ? t('gear.unequip') : t('gear.equip')}
                   </button>
+                  {core.starCost !== null && (
+                    <button
+                      type="button"
+                      className="btn"
+                      disabled={busy || view.soulHeartExp < core.starCost}
+                      onClick={() => void act((server) => server.starUpCore(core.instanceId))}
+                    >
+                      {t('gear.starUp')} · {core.starCost}
+                    </button>
+                  )}
                 </div>
               </li>
             );
           })}
         </ul>
       )}
-      <p className="muted">
-        {t('gear.starUp')}: {t('comingLater.badge')}
-      </p>
     </section>
   );
 }

@@ -10,5 +10,9 @@
     "copiesPerLevel": 2,
     "essenceBase": 20,
     "essencePerLevel": 10
+  },
+  "soulhearts": {
+    "expBase": 40,
+    "expPerStar": 40
   }
 }

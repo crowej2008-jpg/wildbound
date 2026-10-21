@@ -171,6 +171,39 @@ describe('M11.0 equipment view and actions', () => {
     expect(result.value.equipment.runes.some((r) => r.id === 'dup-a' || r.id === 'dup-b')).toBe(false);
   });
 
+  it('equips two Soul-heart pieces, shows the 2-piece bonus, and stars one up', async () => {
+    const { srv, wildId } = await supremeStriker();
+    for (let i = 0; i < 9; i++) {
+      const up = await srv.starUp(wildId, 1);
+      if (!up.ok) throw new Error(up.message);
+    }
+    await srv.grantCurrency('soulHeartExp', 1_000);
+    const view = await srv.getEquipment(wildId);
+    if (!view.ok) throw new Error(view.message);
+    const [first, second] = view.value.cores;
+    if (!first || !second) throw new Error('no starting cores');
+    await srv.equipCore(wildId, first.socket, first.instanceId);
+    await srv.equipCore(wildId, second.socket, second.instanceId);
+    const before = await srv.getEquipment(wildId);
+    if (!before.ok) throw new Error(before.message);
+    const common = before.value.coreSets.find((set) => set.id === 'coreset-common');
+    expect(common?.equipped).toBe(2);
+    expect(common?.bonuses.find((bonus) => bonus.pieces === 2)?.active).toBe(true);
+    const expBefore = before.value.soulHeartExp;
+    const cost = first.starCost;
+    if (cost === null) throw new Error('first core is already max');
+
+    const starred = await srv.starUpCore(first.instanceId);
+    expect(starred.ok).toBe(true);
+    if (!starred.ok) return;
+    expect(starred.value.state.equipment.cores.find((c) => c.id === first.instanceId)?.stars).toBe(first.stars + 1);
+    expect(starred.value.state.currencies.soulHeartExp).toBe(expBefore - cost);
+
+    const after = await srv.getEquipment(wildId);
+    if (!after.ok) throw new Error(after.message);
+    expect(after.value.sheetEquipped.spiritDef ?? 0).toBeGreaterThan(before.value.sheetEquipped.spiritDef ?? 0);
+  });
+
   it('unlocks Potential, eats a duplicate, and refunds the shard ladder on reset', async () => {
     const { srv, wildId, duplicateId } = await supremeStriker();
     const view = await srv.getEquipment(wildId);

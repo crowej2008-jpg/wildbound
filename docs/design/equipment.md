@@ -47,8 +47,10 @@ list; an account owns *instances* of relics/runes/cores and *counts* of charms.
   stars. A charm is equipped in one slot and **consumed once per real battle**
   (`challengeStage`); preview battles (`startBattle`) do not consume.
 - **Spirit Cores** (soul-hearts). Unlock: `cores.minStars` (reference: 10). Six
-  socket-specific pieces; four qualities (2–5 stars). A 2/4/6-piece count grants the set's
-  bonus lines and its battle skill (a `RoundEffect`). Their stats feed the soul factor.
+  socket-specific pieces; qualities 2–5 stars. The M11 catalogue is the owner's nine sets
+  (Common, Flying, Fire, Superpower, Water, Bug, Thunder, Rock, Grass). A 2/4/6-piece count
+  grants the set's stat lines and its `SoulheartHooks` effects. Star-up consumes Soul-heart
+  EXP (`expBase + (stars − 1) × expPerStar`). Their stats feed the soul factor.
 - **Talents** (potential). Unlock: `talents.minTier` (Legendary+). A Wild picks one of
   three options on each of nine tiers of a shared 15-tree catalogue; options are static
   battle stat lines (never shown on the growth sheet). New tiers cost duplicate Wilds +
@@ -56,14 +58,16 @@ list; an account owns *instances* of relics/runes/cores and *counts* of charms.
 
 ## How a line reaches battle
 
-`loadoutDelta()` folds every equipped item into one `StatDelta`; `loadoutEffects()` returns
-the `RoundEffect[]`. `packages/server/src/battle.ts` merges the delta into the `SheetInput`
-built by `sheetOf()` (core stats add, percent lines add, soul stats add) and passes the
-effects as `SpecInput.roundEffects`. At the start of each big round the engine applies any
-effect whose `fromRound` matches, as an additive/multiplicative stat change (permanent) or a
-timed buff (`bigRounds`). The conditional effects are therefore the *only* new combat
-surface, and every layer is covered by a test that runs a battle and asserts the outcome
-changes in the intended direction.
+`foldLoadout()` folds every equipped item into one `StatDelta`, a `RoundEffect[]` and a
+folded `SoulheartHooks` payload with display text. Same-stat soul-heart ladders keep only the
+highest reached tier; distinct 2/4/6 effects all apply. `packages/server/src/battle.ts`
+merges the delta into the `SheetInput` built by `sheetOf()` (core stats add, percent lines
+add, soul stats add), passes the round effects as `SpecInput.roundEffects` and the soul
+hooks as `SpecInput.soulheart`. At the start of each big round the engine applies any
+`RoundEffect` whose `fromRound` matches; `combat/soulheart.ts` handles the dynamic hooks
+(shield damage, puncture/immunity cadence, heals, paralysis, starting/overheal shields and
+battle-start multipliers). Every layer is covered by a test that runs a battle and asserts
+the outcome changes in the intended direction.
 
 ## Unlock gates and costs
 
@@ -74,6 +78,7 @@ Wildscreen hides a tab whose gate is unmet and shows the requirement instead of 
 
 - Rune/charms star gates and all costs are not stated by the reference; chosen to match the
   M3 growth curve and recorded in `docs/ASSUMPTIONS.md`.
-- The reference's 19 berries, 12 orb kinds and 18 soul-heart sets are narrowed to 16, 12 and
-  12 to fit the shipped content size; the shape is unchanged.
-- Spirit-core pieces are derived from 12 set definitions rather than authored one-by-one.
+- The reference's 19 berries and 12 orb kinds are narrowed to 16 and 16 to fit the shipped
+  content size; the shape is unchanged. The owner supplied all nine soul-heart sets used in M11.4.
+- Spirit-core pieces are generated from the nine authored set definitions (six pieces each)
+  rather than stored one-by-one.

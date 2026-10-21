@@ -52,6 +52,45 @@ export interface RoundEffect {
   bigRounds?: number;
 }
 
+/**
+ * M11.4 Soul-heart hooks. Static set lines live on the sheet; these are the
+ * dynamic effects that need a battle event (shields, lifesteal, cadence heals,
+ * control immunity and on-hit rolls). Rates are fractions and are authored data.
+ */
+export interface SoulheartHooks {
+  lifesteal?: number;
+  /** Bonus damage against a target that still has a shield. */
+  shieldDmgBonus?: number;
+  /** Bonus damage while the attacker itself carries a shield. */
+  shieldedDmgBonus?: number;
+  /** Every N big rounds, gain a one-turn puncture buff. */
+  punctureEvery?: number;
+  /** Every N big rounds, gain a one-turn control immunity buff. */
+  controlImmunityEvery?: number;
+  /** Heal this share of max HP at the end of the listed big rounds. */
+  roundHeal?: { rounds: number[]; rate: number };
+  /** When hit, chance to heal this share of max HP. */
+  onHitHeal?: { chance: number; rate: number };
+  /** Heal this share of max HP at the start of the holder's turn. */
+  turnHeal?: number;
+  /** Chance for a direct hit to inflict paralysis. */
+  paralysisChance?: number;
+  /** Shield this share of max HP at battle start. */
+  startShield?: number;
+  /** Share of excess healing that becomes a shield. */
+  overhealShield?: number;
+  /** Permanent damage reduction applied at battle start. */
+  startDmgRdct?: number;
+  /** First-round-only Soul DEF multiplier (1.5 = +50%). */
+  firstRoundSpiritDefMult?: number;
+  /** First-round-only damage reduction. */
+  firstRoundDmgRdct?: number;
+  /** Permanent battle-start multipliers (same-stat ladders keep the highest). */
+  spiritAtkMult?: number;
+  spiritDefMult?: number;
+  sAtkMult?: number;
+}
+
 export type BuffKind =
   | 'stat'
   | 'control'
@@ -62,6 +101,8 @@ export type BuffKind =
   | 'dot'
   | 'regen'
   | 'stack'
+  /** M11.4: attacks ignore shields while this buff is live. */
+  | 'puncture'
   /** M9.6: forced targeting — the holder's enemy-side skills are aimed at the taunter. */
   | 'taunt';
 
@@ -357,6 +398,8 @@ export interface SpecInput {
   power?: number;
   /** M7: conditional equipment effects applied during the fight. */
   roundEffects?: RoundEffect[];
+  /** M11.4: dynamic Soul-heart set hooks. */
+  soulheart?: SoulheartHooks;
   /** M9: the creature's level, for `scalesWithLevel` ladders (default 1). */
   level?: number;
 }
@@ -433,6 +476,8 @@ export interface Combatant {
   lostLastRound: number;
   /** M7: equipment round effects not yet applied. */
   roundEffects?: RoundEffect[];
+  /** M11.4: dynamic Soul-heart set hooks folded from the equipped pieces. */
+  soulheart?: SoulheartHooks;
   /** M9: per-creature stack counters ("Frost", "sanction", …). */
   resources?: Record<string, number>;
   /** M9: the creature's level (for `scalesWithLevel` ladders; default 1). */

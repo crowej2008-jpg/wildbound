@@ -215,6 +215,13 @@ export function validateContent(repoRoot: string): ValidateReport {
     for (const c of EQUIPMENT_TUNING.starting.cores) {
       if (!coreSetIds.has(c.setId)) errors.push(`equipment: starting core "${c.setId}" has no set`);
     }
+    for (const set of CORE_SETS) {
+      for (const pieces of [2, 4, 6]) {
+        if (!set.bonuses.some((bonus) => bonus.pieces === pieces)) {
+          errors.push(`equipment: soul-heart set "${set.id}" has no ${pieces}-piece bonus`);
+        }
+      }
+    }
     for (const c of EQUIPMENT_TUNING.starting.charms) {
       if (!charmIds.has(c.defId)) errors.push(`equipment: starting charm "${c.defId}" has no design`);
     }

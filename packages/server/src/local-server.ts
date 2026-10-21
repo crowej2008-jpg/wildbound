@@ -128,6 +128,7 @@ import {
   levelRuneAction,
   refineRelicAction,
   resetTalentsAction,
+  starUpCoreAction,
   upgradeCharmAction,
 } from './equipment';
 import { buildEquipmentView } from './equipment-view';
@@ -657,6 +658,10 @@ export class LocalServer implements GameServer {
 
   async equipCore(wildId: string, socket: number, instanceId: string | null, force = false): Promise<Result<AccountSnapshot>> {
     return this.applyEquipment((state) => equipCoreAction(this.config, state, wildId, socket, instanceId, force));
+  }
+
+  async starUpCore(instanceId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => starUpCoreAction(this.config, state, instanceId));
   }
 
   async equipCharm(wildId: string, charmId: string | null): Promise<Result<AccountSnapshot>> {

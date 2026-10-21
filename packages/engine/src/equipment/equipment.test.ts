@@ -83,6 +83,41 @@ const TABLES: EquipmentTables = {
         { pieces: 6, lines: [], effect: { tag: 'core6', text: '+atk later', field: 'pAtk', mult: 1.15, fromRound: 3 } },
       ],
     },
+    {
+      id: 'setL',
+      name: 'Lifesteal Set',
+      socketLines: [
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+      ],
+      bonuses: [{ pieces: 2, lines: [], text: 'lifesteal only', soulheart: { text: 'lifesteal only', lifesteal: 0.5 } }],
+    },
+    {
+      id: 'setS',
+      name: 'Soul Set',
+      socketLines: [
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+        [{ kind: 'core', field: 'hp', base: 100, perLevel: 50 }],
+      ],
+      bonuses: [
+        { pieces: 2, lines: [], text: 'shield', soulheart: { text: 'shield', startShield: 0.2 } },
+        {
+          pieces: 4,
+          lines: [],
+          text: 'lifesteal',
+          soulheart: { text: 'lifesteal', startShield: 0.3, lifesteal: 0.5 },
+        },
+        { pieces: 6, lines: [], text: 'pierce', soulheart: { text: 'pierce', shieldDmgBonus: 0.5 } },
+      ],
+    },
   ],
   talentBlocks: [
     { id: 'b1', text: 'flat atk', lines: [{ kind: 'core', field: 'pAtk', base: 50, perLevel: 0 }] },
@@ -290,7 +325,7 @@ describe('equipment changes battle outcomes', () => {
 function battleWith(baseSheet: SheetInput, state: EquipmentState, loadout: Loadout) {
   const folded = foldLoadout(loadout, state, TABLES);
   return runBattle({
-    attackers: [attacker(mergeDelta(baseSheet, folded.delta), folded.effects)],
+    attackers: [{ ...attacker(mergeDelta(baseSheet, folded.delta), folded.effects), soulheart: folded.soulheart }],
     defenders: [defender(120000)],
     seed: 11,
   });
@@ -350,5 +385,65 @@ describe('every layer moves a battle in the intended direction', () => {
     const loadout = { ...emptyLoadout(TUNING), treeId: 'treeA', talents: [1, -1, -1, -1, -1, -1, -1, -1, -1] };
     const up = battleWith(base, state, loadout);
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
+  });
+
+  it('a Soul-heart start shield absorbs damage and a lifesteal set heals the holder', () => {
+    const shieldState = stateWith({
+      cores: [
+        { id: 's1', setId: 'setS', socket: 0, stars: 2 },
+        { id: 's2', setId: 'setS', socket: 1, stars: 2 },
+      ],
+    });
+    const shielded = battleWith(base, shieldState, {
+      ...emptyLoadout(TUNING),
+      cores: ['s1', 's2', null, null, null, null],
+    });
+    expect(shielded.events.some((e) => e.type === 'shield' && e.tgt === 'attackers:4' && e.amount > 0)).toBe(true);
+
+    const leechState = stateWith({
+      cores: [
+        { id: 'l1', setId: 'setL', socket: 0, stars: 2 },
+        { id: 'l2', setId: 'setL', socket: 1, stars: 2 },
+      ],
+    });
+    const leeched = battleWith(base, leechState, {
+      ...emptyLoadout(TUNING),
+      cores: ['l1', 'l2', null, null, null, null],
+    });
+    const healed = leeched.units.find((u) => u.key === 'attackers:4')?.healingDone ?? 0;
+    expect(healed).toBeGreaterThan(0);
+  });
+
+  it('a shield-damage Soul-heart hook raises damage against a shielded foe', () => {
+    const baseSheet: SheetInput = { hp: 5000, pAtk: 400, sAtk: 1, spd: 30 };
+    const shieldedFoe: SpecInput = {
+      ...defender(120000),
+      soulheart: { startShield: 0.5 },
+    };
+    const plain = runBattle({ attackers: [attacker(baseSheet)], defenders: [shieldedFoe], seed: 11 });
+    const hooked = runBattle({
+      attackers: [{ ...attacker(baseSheet), soulheart: { shieldDmgBonus: 0.5 } }],
+      defenders: [shieldedFoe],
+      seed: 11,
+    });
+    expect(hooked.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plain.damageDealt['attackers:4'] ?? 0);
+  });
+
+  it('same-stat Soul-heart ladders keep the highest reached value', () => {
+    const cores = [
+      { id: 's1', setId: 'setS', socket: 0, stars: 2 },
+      { id: 's2', setId: 'setS', socket: 1, stars: 2 },
+      { id: 's3', setId: 'setS', socket: 2, stars: 2 },
+      { id: 's4', setId: 'setS', socket: 3, stars: 2 },
+    ];
+    const folded = foldLoadout(
+      { ...emptyLoadout(TUNING), cores: ['s1', 's2', 's3', 's4', null, null] },
+      stateWith({ cores }),
+      TABLES,
+    );
+    expect(folded.soulheart.startShield).toBeCloseTo(0.3);
+    expect(folded.soulheart.lifesteal).toBeCloseTo(0.5);
+    expect(folded.soulheartText).toContain('shield');
+    expect(folded.soulheartText).toContain('lifesteal');
   });
 });

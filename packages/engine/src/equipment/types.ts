@@ -1,4 +1,4 @@
-import type { CombatField, RoundEffect } from '../combat/types';
+import type { CombatField, RoundEffect, SoulheartHooks } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats, Tier, WildClass } from '../model';
 
 /**
@@ -30,6 +30,11 @@ export interface StatDelta {
 
 /** A conditional in-battle effect plus the text the UI shows for it. */
 export interface EffectDef extends RoundEffect {
+  text: string;
+}
+
+/** A Soul-heart set hook plus the sentence the gear screen shows. */
+export interface SoulheartEffectDef extends SoulheartHooks {
   text: string;
 }
 
@@ -77,6 +82,10 @@ export interface CoreSetBonus {
   pieces: number;
   lines: StatLine[];
   effect?: EffectDef;
+  /** Human-readable set-bonus sentence (authored data, shown by the screen). */
+  text?: string;
+  /** M11.4 dynamic effect; same-stat ladders take the highest reached value. */
+  soulheart?: SoulheartEffectDef;
 }
 
 export interface CoreSetDef {

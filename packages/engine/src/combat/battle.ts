@@ -4,6 +4,7 @@ import { resolveSettings, type CombatSettings } from './settings';
 import { takeTurn } from './skills';
 import { tickBigRoundBuffs, tickUnitBuffs } from './buffs';
 import { fireTriggers } from './triggers';
+import { soulheartBattleStart, soulheartRoundEnd, soulheartRoundStart } from './soulheart';
 import type {
   BattleConfig,
   BattleContext,
@@ -54,7 +55,8 @@ export function runBattle(config: BattleConfig): BattleResult {
 
   let winner: 'attackers' | 'defenders' | undefined;
 
-  // M9.4: battle-start triggers fire once, before round 1.
+  // M11.4: Soul-heart battle-start shields/guards, then M9.4 triggers.
+  soulheartBattleStart(ctx);
   for (const u of units) fireTriggers(ctx, u, 'battleStart');
 
   const survival = config.rules?.survivalRounds;
@@ -64,6 +66,7 @@ export function runBattle(config: BattleConfig): BattleResult {
   for (let bigRound = 1; bigRound <= maxRounds; bigRound += 1) {
     ctx.round = bigRound;
     refreshSafeguards(ctx, bigRound);
+    soulheartRoundStart(ctx);
     applyRoundEffects(ctx);
     events.push({ type: 'roundStart', bigRound });
     for (const u of units) if (u.alive) fireTriggers(ctx, u, 'roundStart');
@@ -91,6 +94,7 @@ export function runBattle(config: BattleConfig): BattleResult {
       u.lostThisRound = 0;
       tickBigRoundBuffs(u, ctx);
     }
+    soulheartRoundEnd(ctx, bigRound);
 
     events.push({ type: 'roundEnd', bigRound });
     if (winner) break;
@@ -128,6 +132,7 @@ function spawn(specs: SpecInput[], side: 'attackers' | 'defenders', settings: Co
       lostThisRound: 0,
       lostLastRound: 0,
       roundEffects: spec.roundEffects ?? [],
+      soulheart: spec.soulheart,
       resources: {},
       level: spec.level ?? 1,
     };

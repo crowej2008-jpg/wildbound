@@ -3,6 +3,8 @@ import { evalCondition } from './conditions';
 import { piecewise } from './settings';
 import { addRage } from './rage';
 import { fireTriggers } from './triggers';
+import { applyControl } from './control';
+import { applyHeal } from './sustain';
 import type { BattleContext, Combatant, CombatField, SkillDef } from './types';
 
 export { addRage };
@@ -101,6 +103,13 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
 
   if (skill.bonusVs && evalCondition(skill.bonusVs.condition, ctx, attacker, defender)) {
     dmg *= skill.bonusVs.mult;
+  }
+  // M11.4 Fire (vs shielded) and Grass (while shielded) set multipliers.
+  if (defender.shieldHp > 0 && attacker.soulheart?.shieldDmgBonus) {
+    dmg *= 1 + attacker.soulheart.shieldDmgBonus;
+  }
+  if (attacker.shieldHp > 0 && attacker.soulheart?.shieldedDmgBonus) {
+    dmg *= 1 + attacker.soulheart.shieldedDmgBonus;
   }
 
   const critRes = eff(defender, 'critRes');
@@ -202,6 +211,18 @@ export function channelHit(
   const rageCut = defender.kit.talents?.rageCutChance;
   if (hitLanded && kind === 'hit' && rageCut && !flags.hpShare && !ctx.deterministic && ctx.rng() < rageCut) {
     addRage(ctx, attacker, -(ctx.settings.rageMax / 8));
+  }
+
+  // M11.4 Water 6 (heal when attacked) and Thunder 6 (paralysis on hit).
+  if (hitLanded && kind === 'hit' && !flags.hpShare) {
+    const onHit = defender.soulheart?.onHitHeal;
+    if (onHit && defender.alive && !ctx.deterministic && ctx.rng() < onHit.chance) {
+      applyHeal(ctx, defender, Math.floor(onHit.rate * defender.base.hp));
+    }
+    const paralysis = attacker.soulheart?.paralysisChance;
+    if (paralysis && defender.alive) {
+      applyControl(ctx, attacker, [defender], { kind: 'paralysis', chance: paralysis });
+    }
   }
 
   // M9.4 talent triggers. `onHit` fires for the defender on a direct hit;

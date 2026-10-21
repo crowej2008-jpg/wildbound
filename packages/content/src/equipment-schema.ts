@@ -137,6 +137,31 @@ export const charmsSchema = z.object({
   ),
 });
 
+const soulheartSchema = z
+  .object({
+    text: z.string().min(1),
+    lifesteal: z.number().min(0).max(1).optional(),
+    shieldDmgBonus: z.number().min(0).optional(),
+    shieldedDmgBonus: z.number().min(0).optional(),
+    punctureEvery: z.number().int().min(1).optional(),
+    controlImmunityEvery: z.number().int().min(1).optional(),
+    roundHeal: z
+      .object({ rounds: z.array(z.number().int().min(1)).min(1), rate: z.number().min(0).max(1) })
+      .optional(),
+    onHitHeal: z.object({ chance: z.number().min(0).max(1), rate: z.number().min(0).max(1) }).optional(),
+    turnHeal: z.number().min(0).max(1).optional(),
+    paralysisChance: z.number().min(0).max(1).optional(),
+    startShield: z.number().min(0).max(1).optional(),
+    overhealShield: z.number().min(0).max(1).optional(),
+    startDmgRdct: z.number().min(0).max(1).optional(),
+    firstRoundSpiritDefMult: z.number().min(1).optional(),
+    firstRoundDmgRdct: z.number().min(0).max(1).optional(),
+    spiritAtkMult: z.number().min(1).optional(),
+    spiritDefMult: z.number().min(1).optional(),
+    sAtkMult: z.number().min(1).optional(),
+  })
+  .strict();
+
 export const coresSchema = z.object({
   sets: z.array(
     z.object({
@@ -148,6 +173,8 @@ export const coresSchema = z.object({
           pieces: z.number().int().min(1).max(6),
           lines: z.array(statLineSchema),
           effect: effectSchema.optional(),
+          text: z.string().min(1).optional(),
+          soulheart: soulheartSchema.optional(),
         }),
       ),
     }),

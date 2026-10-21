@@ -70,7 +70,16 @@ export interface CoreView {
   name: string;
   socket: number;
   stars: number;
+  maxStars: number;
+  starCost: number | null;
   equippedOn: string | null;
+}
+
+export interface CoreSetView {
+  id: string;
+  name: string;
+  equipped: number;
+  bonuses: { pieces: number; active: boolean; text: string }[];
 }
 
 export interface CharmView {
@@ -121,7 +130,9 @@ export interface EquipmentView {
   runes: RuneView[];
   runeSets: { id: string; name: string; equipped: number; bonuses: { pieces: number; active: boolean }[] }[];
   cores: CoreView[];
+  coreSets: CoreSetView[];
   orbEssence: number;
+  soulHeartExp: number;
   charms: CharmView[];
   trees: TalentTreeOption[];
   talentTiers: TalentTierView[];
@@ -192,6 +203,11 @@ export function talentResetRefund(loadout: Loadout, collection: GameConfig['coll
 /** Orb Essence that replaces the duplicate copies for a level-up. */
 export function orbEssenceCost(level: number, collection: GameConfig['collection']): number {
   return collection.orbs.essenceBase + Math.max(0, level - 1) * collection.orbs.essencePerLevel;
+}
+
+/** Soul-heart EXP for the next star: base + (stars − 1) × perStar. */
+export function soulHeartCost(stars: number, collection: GameConfig['collection']): number {
+  return collection.soulhearts.expBase + Math.max(0, stars - 1) * collection.soulhearts.expPerStar;
 }
 
 /** Which Wild (if any) currently wears an instance — scan every stored loadout. */
@@ -324,8 +340,29 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     name: tables.coreSets.find((s) => s.id === c.setId)?.name ?? c.setId,
     socket: c.socket,
     stars: c.stars,
+    maxStars: tuning.cores.pieceMaxStars,
+    starCost: c.stars >= tuning.cores.pieceMaxStars ? null : soulHeartCost(c.stars, config.collection),
     equippedOn: coreOn.get(c.id) ?? null,
   }));
+
+  const coreSetCounts = new Map<string, number>();
+  for (const id of loadout.cores) {
+    const core = id ? state.equipment.cores.find((c) => c.id === id) : undefined;
+    if (core) coreSetCounts.set(core.setId, (coreSetCounts.get(core.setId) ?? 0) + 1);
+  }
+  const coreSets: CoreSetView[] = tables.coreSets.map((set) => {
+    const equipped = coreSetCounts.get(set.id) ?? 0;
+    return {
+      id: set.id,
+      name: set.name,
+      equipped,
+      bonuses: set.bonuses.map((bonus) => ({
+        pieces: bonus.pieces,
+        active: equipped >= bonus.pieces,
+        text: bonus.text ?? bonus.soulheart?.text ?? bonus.effect?.text ?? `${bonus.pieces}-piece bonus`,
+      })),
+    };
+  });
 
   const charms: CharmView[] = tables.charms
     .filter((c) => (state.equipment.charms[c.id] ?? 0) > 0 || charmOn.has(c.id))
@@ -384,7 +421,9 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     runes,
     runeSets,
     cores,
+    coreSets,
     orbEssence: state.currencies.orbEssence ?? 0,
+    soulHeartExp: state.currencies.soulHeartExp ?? 0,
     charms,
     trees,
     talentTiers,

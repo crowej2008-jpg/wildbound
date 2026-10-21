@@ -6,6 +6,7 @@ import { applyDot, applyDotSpec, tickDots, tickRegen } from './dot';
 import { applyEffects } from './effects';
 import { selectTargets } from './targeting';
 import { applySkillSideEffects } from './sustain';
+import { soulheartTurnStart } from './soulheart';
 import { scaleBuff } from './scaling';
 import { chooseSlot, holdsUltimate, sideStrategy } from './strategy';
 import type { BattleContext, Combatant, SkillDef, SkillSlot } from './types';
@@ -27,6 +28,7 @@ export interface ActionInput {
 export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): void {
   tickDots(ctx, u);
   tickRegen(ctx, u);
+  soulheartTurnStart(ctx, u);
 
   const skip = u.buffs.some((b) => b.kind === 'control');
   const strategy = sideStrategy(ctx.strategies, u.side);
@@ -97,7 +99,7 @@ function resolveCast(
         blocked: outcome.blocked,
         hpShare: skill.damageType === 'hpShare',
         trueDmg: outcome.trueDmg,
-        ignoreShield: skill.ignoreShield,
+        ignoreShield: skill.ignoreShield || u.buffs.some((b) => b.kind === 'puncture'),
       });
       hitDamages.push(dealt);
       ctx.damageDealt[u.key] = (ctx.damageDealt[u.key] ?? 0) + outcome.dmg;

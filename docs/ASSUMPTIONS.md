@@ -567,7 +567,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     Rock 6 = 15% damage reduction, Fire 6 = +30% versus shields; distinct 2/4/6 effects all apply.
     Turn/round cadences are named settings in `content/tuning/combat.json`. **Flying 6 starts on turn 3**
     (owner, 2026-10-20): Control Immunity at the start of turn 3 and every third turn after, for that
-    turn only. *What would change it:* owner clarification of a different pulse length.
+    turn only. **M11.4 implements this** with a folded `SoulheartHooks` payload rather than fake stat
+    lines. Star-up costs `expBase + (stars − 1) × expPerStar` Soul-heart EXP (`collection.json`);
+    the starting inventory includes three 2★ Common pieces. *What would change it:* owner
+    clarification of a different pulse length, ladder rule, or star-up cost.
 27. **Orbs keep four sockets and use 2/4 set bonuses.** The reference has more sockets; four is the
     M7 shape and keeps the screen readable on a phone. **M11.3 re-authored all four sets at 16 orbs
     (four per set)** with 2- and 4-piece bonuses, keeping the four qualities and levels 1–6. A

@@ -113,6 +113,8 @@ export const en = {
   'gear.berry.copies': 'copies',
   'gear.berry.dismantle': 'Dismantle',
   'gear.starUp': 'Star-up',
+  'gear.soul.sets': 'Set bonuses',
+  'gear.soul.max': 'Max stars',
   'stat.dmgBoost': 'DMG Boost',
   'stat.dmgRdct': 'DMG Reduction',
   'stat.pvpBoost': 'PvP Boost',
