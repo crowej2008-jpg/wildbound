@@ -215,6 +215,18 @@ HP/P.ATK/S.ATK, fold into the `titles` layer, and apply to every Wild. Guild and
 visible but locked with honest "coming later" copy. Save v13 stores `titles.owned` and
 `titles.equipped`; migration drops expired entries and clears their slots.
 
+### Balance snapshot (M11.12)
+
+Reviewed against the authored curves; no cost changes were needed. Potential costs `20 + 10 x tier`
+Shards (respec 5, reset 50 gems). Orbs consume two same-kind copies then `20 + 10 x level` Essence.
+Soul-hearts cost `40 + 40 x (stars - 1)` EXP; Berries consume two copies plus `20 + 20 x star`
+Essence. Held Items cost `5 + 2 x (level - 1)` Shards and refine for `800 + 400 x refine` gold plus
+`10 + 10 x refine` Shards. Plates cost `10 + 5 x stage` Bottles, with 375 Fragments for the 5->6 step.
+Trinkets cost `10 + 5 x level` Star Shards. Resonance slots cost `50 + 50 x (unlocked - 2)` Shards.
+Title Tickets cost 1-7 for Common, 5-16 for Premium and 25-120 for Rare; the two 14-day Arena/Ranked
+titles sit at the top of that range. M11 does not add material faucets; they arrive with later modes,
+so a new account sees the honest "sources arrive with later milestones" state.
+
 ## Sub-steps
 
 | Step | Deliverable |
@@ -231,7 +243,7 @@ visible but locked with honest "coming later" copy. Save v13 stores `titles.owne
 | M11.9 | Resonance — **built** |
 | M11.10 | VIP — **built** |
 | M11.11 | Titles — **built** |
-| M11.12 | Docs, balance pass, full e2e, `pnpm check` |
+| M11.12 | Docs, balance pass, full e2e, `pnpm check` - **built** |
 
 Each step ends green and commits. Acceptance for every layer: unit tests prove its lines change
 a battle outcome, its screen exists, and every unbuilt hook shows an honest "coming later".

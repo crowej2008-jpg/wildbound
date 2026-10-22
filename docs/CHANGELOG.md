@@ -875,3 +875,16 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   +1 e2e (activate a title, auto-equip, check requirements and locked rows). **454 unit tests / 53
   files**; 82 e2e green.
 - **Next:** M11.12 - Docs, balance pass, full e2e and `pnpm check`.
+
+## M11.12 - M11 closed: docs, balance pass and full gate (2026-10-21)
+
+- **Balance.** Reviewed the M11 Potential, Orb, Soul-heart, Berry, Held Item, Plate, Trinket,
+  Resonance, VIP and Title costs against their authored curves; no numbers changed. The snapshot is
+  recorded in `docs/design/collection.md`. Title Tickets now show an honest "sources arrive with
+  later milestones" note on a zero balance instead of leaving a disabled catalogue unexplained.
+- **Docs.** `docs/SCOPE.md` marks M11 built and `docs/design/collection.md` records M11.12 plus the
+  final cost snapshot. ASSUMPTIONS carries the titles/VIP decisions and save v13.
+- **Gate.** Full `pnpm check`: lint, typecheck, **454 unit tests / 53 files**, content validation,
+  client build and **82 e2e** all green.
+- **Next:** M12 - Ancient Artifacts and Suppression (artifact collection, Relic Tablets, Suppression,
+  Ruins Adventure).

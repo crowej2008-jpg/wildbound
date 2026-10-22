@@ -18,6 +18,7 @@ export default function TitlesPanel() {
       <p className="muted">
         {t('titles.tickets')}: {view.tickets.toLocaleString()} · {t('titles.owned')}: {view.ownedCount}
       </p>
+      {view.tickets === 0 && <p className="muted">{t('titles.noTickets')}</p>}
 
       <div className="gear-list">
         {view.slots.map((slot) => (

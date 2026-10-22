@@ -16,7 +16,7 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Trials, Tower, World Boss, Daily Dungeons, Link Crystal endgame | Challenges hub, Tower, Trials, World Boss, Dungeons, Link Crystal | M8 | built |
 | Combat DSL expansion + faithful 84-creature skill kits | — (headless; Wild screen unchanged) | M9 | built |
 | Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings, Ranked | M10 | built (Arena + Ranked + hub + weekly settlement + balance pass - `docs/design/pvp.md`) |
-| Growth/collection II: Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP, Titles | Wild screen, Trainer, VIP, Titles | M11 | in progress - M11.0 gear tabs/stat sheet; M11.1 Trainer/materials/save v7; M11.2 Potential; M11.3 Orbs; M11.4 Soul-hearts; M11.5 Berries; M11.6 Held Items; M11.7 Plates; M11.8 Trinkets; M11.9 Resonance; M11.10 VIP; M11.11 Titles |
+| Growth/collection II: Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP, Titles | Wild screen, Trainer, VIP, Titles | M11 | built - gear tabs/stat sheet, Potential, Orbs, Soul-hearts, Berries, Held Items, Plates, Trinkets, Resonance, VIP and Titles (save v13; `docs/design/collection.md`) |
 | Ancient Artifacts, Suppression, Ruins Adventure | Artifacts, Ruins Adventure | M12 | pending |
 | Explore modes: Hoopa's Vault, Rift Arena, Gods Trials, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Island Challenge, Ultra Wormhole | Explore hub + each mode | M13 | pending |
 | Combat/co-op modes: Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles, Shovel Carnival | Combat hub + each mode | M14 | pending |

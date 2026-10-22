@@ -217,6 +217,7 @@ export const en = {
   'trainer.titles': 'Titles',
   'titles.note': 'Three slots, one title each. Title stats apply to every Wild.',
   'titles.tickets': 'Title Tickets',
+  'titles.noTickets': 'Title Ticket sources arrive with later milestones.',
   'titles.owned': 'Owned',
   'titles.empty': 'Empty slot',
   'titles.expires': 'Expires',
