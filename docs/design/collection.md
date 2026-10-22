@@ -47,10 +47,10 @@ screen's materials row.
 
 ## Shared rules
 
-- **Save v12.** M11.1 added the materials (save v7), M11.5 replaced the single Berry slot with
+- **Save v13.** M11.1 added the materials (save v7), M11.5 replaced the single Berry slot with
   two (save v8), M11.7 added `plates` (save v9), M11.8 added `trinkets` (save v10), M11.9 added
-  `resonance` (save v11), and M11.10 added `vip` (save v12). M11.11 adds `titles`; every migration
-  fills defaults and re-derives derived gates on load.
+  `resonance` (save v11), M11.10 added `vip` (save v12), and M11.11 added `titles` (save v13).
+  Every migration fills defaults and re-derives derived gates on load.
 - **One Wild screen, seven tabs:** Upgrade, Evolve, Potential, Orbs, Soul-hearts, Berries,
   Held Items. Plates and Trinkets sit under the Held Items tab's sub-tabs (gear owned by the
   Wild screen) so the tab strip stays usable on a phone.
@@ -195,13 +195,25 @@ the claim button, the claimed-today state, and an honest "reach VIP 1" state for
 
 Three slots: Common, Premium, Rare. A title is permanent or timed; timed titles last 7 or 14
 days and expire lazily on load/open. At max stage, a timed title offers **Continuation**, which
-pays a Title Ticket to extend from `max(now, expiresAt)`. Stats are flat HP/P.ATK/S.ATK or
+pays Title Tickets to extend from `max(now, expiresAt)`. Stats are flat HP/P.ATK/S.ATK or
 percent Total lines. M11 ships:
 - permanent trainer-star and collection titles from existing milestones;
-- **King of Arena** (7d) and **Alliance Champion** (14d) from the existing Arena/Ranked modes;
+- **King of Arena** (14d) and **Alliance Champion** (14d) from the existing Arena/Ranked modes;
 - guild-war and event titles in the catalogue as locked "coming later" rows (M15/M16).
 
 The 15-stage event ladder is schema-supported but has no live source until events.
+
+**M11.11 built.** `titles/titles.json` holds 102 original titles: 30 Common trainer ranks, 55
+Premium (35 trainer ranks, 10 collection ranks, 5 Arena banners, 5 Ranked banners), and 17 Rare
+(6 trainer ranks, 2 guild, 2 event, 5 Arena sovereigns, King of Arena, Alliance Champion). Exactly
+85 are permanent, 15 last 7 days, and 2 last 14 days. Costs are paid in Title Tickets per stage;
+one stage per normal title, 15 stages per locked event title. A title occupies its fixed slot
+(Common/Premium/Rare); activation auto-equips it only when that slot is empty. Timed titles store
+`expiresAt`, are pruned lazily on load/open, and at max stage **Continuation** pays the top stage
+cost to extend from `max(now, expiresAt)`. Stats are flat HP/P.ATK/S.ATK or percent Total
+HP/P.ATK/S.ATK, fold into the `titles` layer, and apply to every Wild. Guild and event rows stay
+visible but locked with honest "coming later" copy. Save v13 stores `titles.owned` and
+`titles.equipped`; migration drops expired entries and clears their slots.
 
 ## Sub-steps
 
@@ -218,7 +230,7 @@ The 15-stage event ladder is schema-supported but has no live source until event
 | M11.8 | Trinkets — **built** |
 | M11.9 | Resonance — **built** |
 | M11.10 | VIP — **built** |
-| M11.11 | Titles |
+| M11.11 | Titles — **built** |
 | M11.12 | Docs, balance pass, full e2e, `pnpm check` |
 
 Each step ends green and commits. Acceptance for every layer: unit tests prove its lines change

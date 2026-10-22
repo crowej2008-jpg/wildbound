@@ -22,6 +22,10 @@ export interface CoreStats {
 /** Fractional percent lines (1.0 == 100%). PvP/Ult/Skill lines are additive
  * boost-vs-reduction pairs; Crit/Block/etc. pair with the target's resistance. */
 export interface PercentLines {
+  /** Percent of the sheet's HP / P.ATK / S.ATK (0.02 = +2%). */
+  hpPct?: number;
+  pAtkPct?: number;
+  sAtkPct?: number;
   dmgBoost: number;
   dmgRdct: number;
   pvpBoost: number;

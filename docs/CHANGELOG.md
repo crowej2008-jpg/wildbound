@@ -854,3 +854,24 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   +1 save migration test and +1 e2e (XP 5,000 → VIP 2 → claim). **447 unit tests / 52 files**; 80 e2e
   green.
 - **Next:** M11.11 - Titles (three slots, timed expiry, Continuation).
+
+## M11.11 - Titles, three slots and lazy expiry (2026-10-21)
+
+- **Content.** `titles/titles.json` has 102 original titles: 85 permanent, 15 seven-day and 2
+  fourteen-day. They span 30 Common trainer ranks, 55 Premium rows (trainer, collection, Arena and
+  Ranked banners) and 17 Rare rows (trainer crowns, guild/event rows, Arena sovereigns, King of Arena
+  and Alliance Champion). Event titles carry the source-shaped 15-stage ladder.
+- **Rules.** One title per Common/Premium/Rare slot. Activation, upgrades and max-stage Continuation
+  cost Title Tickets. Timed titles store an expiry and are pruned lazily on load/open; Continuation
+  extends from `max(now, expiresAt)`. Flat HP/P.ATK/S.ATK and percent Total HP/P.ATK/S.ATK lines fold
+  into a new `titles` layer and apply to every Wild. Guild and event rows remain visible but locked.
+- **Save.** `SAVE_VERSION` → **13** with `titles.owned` and `titles.equipped`; migration drops expired
+  entries and clears their slots.
+- **Screen.** The Trainer Titles card replaces its placeholder with the three slot pickers, ticket
+  balance/owned count, Common/Premium/Rare catalogue tabs, stage and expiry lines, activate/upgrade/
+  continue/equip controls, requirement text, and honest guild/event coming-later rows.
+- **Tests.** +1 engine title battle test, +5 title server tests (counts, activation/auto-equip,
+  requirement/locked rows, continuation from expiry, percent-total stats), +1 save migration test and
+  +1 e2e (activate a title, auto-equip, check requirements and locked rows). **454 unit tests / 53
+  files**; 82 e2e green.
+- **Next:** M11.12 - Docs, balance pass, full e2e and `pnpm check`.

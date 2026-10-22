@@ -179,6 +179,8 @@ export interface AccountState {
   resonance: ResonanceState;
   /** M11.10 daily VIP supply bookkeeping; the tier itself is derived from XP. */
   vip: VipState;
+  /** M11.11 owned/equipped titles. */
+  titles: TitlesState;
   /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
   pve: PveState;
   /** M10: PvP progress (Arena credits/rank, Ranked ladder). */
@@ -245,6 +247,48 @@ export interface VipState {
 
 export function initialVip(): VipState {
   return { lastClaimDay: null };
+}
+
+/** M11.11: three account-wide title slots. */
+export const TITLE_SLOTS = ['common', 'premium', 'rare'] as const;
+export type TitleSlot = (typeof TITLE_SLOTS)[number];
+
+export interface TitleOwnership {
+  /** 1-based stage in the title's authored ladder. */
+  stage: number;
+  /** Epoch ms for timed titles; null for permanent titles. */
+  expiresAt: number | null;
+}
+
+export interface TitlesState {
+  owned: Record<string, TitleOwnership>;
+  equipped: Record<TitleSlot, string | null>;
+}
+
+export function initialTitles(): TitlesState {
+  return { owned: {}, equipped: { common: null, premium: null, rare: null } };
+}
+
+/** Drop expired titles and clear any slot that pointed at one (lazy expiry). */
+export function expireTitles(titles: TitlesState, now: number): TitlesState {
+  let changed = false;
+  const owned: Record<string, TitleOwnership> = {};
+  for (const [id, ownedTitle] of Object.entries(titles.owned)) {
+    if (ownedTitle.expiresAt !== null && ownedTitle.expiresAt <= now) {
+      changed = true;
+      continue;
+    }
+    owned[id] = ownedTitle;
+  }
+  const equipped = { ...titles.equipped };
+  for (const slot of TITLE_SLOTS) {
+    const id = equipped[slot];
+    if (id !== null && !owned[id]) {
+      equipped[slot] = null;
+      changed = true;
+    }
+  }
+  return changed ? { owned, equipped } : titles;
 }
 
 export interface TutorialState {

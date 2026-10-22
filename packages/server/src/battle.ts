@@ -28,6 +28,7 @@ import {
 } from '@wildbound/engine';
 import type { GameConfig } from './config';
 import { resonanceFoldFor } from './resonance';
+import { titleFoldFor } from './titles';
 
 /**
  * Battle setup + replay payload (M4). Builds two `SpecInput` teams from account
@@ -94,6 +95,23 @@ export interface EquippedSheet {
   soulheartText: string[];
 }
 
+/** Apply title-style percent-of-total lines after flat equipment has merged. */
+export function applySheetPercents(
+  sheet: SheetInput,
+  percent: Partial<PercentLines>,
+): SheetInput {
+  const hpPct = percent.hpPct ?? 0;
+  const pAtkPct = percent.pAtkPct ?? 0;
+  const sAtkPct = percent.sAtkPct ?? 0;
+  if (hpPct === 0 && pAtkPct === 0 && sAtkPct === 0) return sheet;
+  return {
+    ...sheet,
+    hp: Math.round(sheet.hp * (1 + hpPct)),
+    pAtk: Math.round(sheet.pAtk * (1 + pAtkPct)),
+    sAtk: Math.round(sheet.sAtk * (1 + sAtkPct)),
+  };
+}
+
 /** Resolve a Wild's sheet and fold in its equipped equipment (M7). */
 export function equippedSheet(
   wild: WildInstance,
@@ -112,9 +130,10 @@ export function equippedSheet(
     meta ? { faction: meta.faction, stage: state.plates?.[wild.id] ?? 0 } : undefined,
     { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
     resonanceFoldFor(config, state, wild.id),
+    titleFoldFor(config, state),
   );
   return {
-    sheet: mergeDelta(sheet, folded.delta),
+    sheet: applySheetPercents(mergeDelta(sheet, folded.delta), folded.delta.percent),
     percent: folded.delta.percent,
     effects: folded.effects,
     soulheart: folded.soulheart,

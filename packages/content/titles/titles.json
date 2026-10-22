@@ -1,0 +1,4318 @@
+[
+  {
+    "id": "trail-01",
+    "name": "Trail Rank 1",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 1
+    },
+    "stages": [
+      {
+        "cost": 1,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 60,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 5,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 5,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-02",
+    "name": "Trail Rank 2",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 2
+    },
+    "stages": [
+      {
+        "cost": 1,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 80,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 6,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 6,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-03",
+    "name": "Trail Rank 3",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 3
+    },
+    "stages": [
+      {
+        "cost": 1,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 100,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 7,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 7,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-04",
+    "name": "Trail Rank 4",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 4
+    },
+    "stages": [
+      {
+        "cost": 1,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 120,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 8,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 8,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-05",
+    "name": "Trail Rank 5",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 5
+    },
+    "stages": [
+      {
+        "cost": 2,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 140,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 9,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 9,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-06",
+    "name": "Trail Rank 6",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 6
+    },
+    "stages": [
+      {
+        "cost": 2,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 160,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 10,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 10,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-07",
+    "name": "Trail Rank 7",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 7
+    },
+    "stages": [
+      {
+        "cost": 2,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 180,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 11,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 11,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-08",
+    "name": "Trail Rank 8",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 8
+    },
+    "stages": [
+      {
+        "cost": 2,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 200,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 12,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 12,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-09",
+    "name": "Trail Rank 9",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 9
+    },
+    "stages": [
+      {
+        "cost": 2,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 220,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 13,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 13,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-10",
+    "name": "Trail Rank 10",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 10
+    },
+    "stages": [
+      {
+        "cost": 3,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 240,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 14,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 14,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-11",
+    "name": "Trail Rank 11",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 11
+    },
+    "stages": [
+      {
+        "cost": 3,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 260,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 15,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 15,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-12",
+    "name": "Trail Rank 12",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 12
+    },
+    "stages": [
+      {
+        "cost": 3,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 280,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 16,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 16,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-13",
+    "name": "Trail Rank 13",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 13
+    },
+    "stages": [
+      {
+        "cost": 3,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 300,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 17,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 17,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-14",
+    "name": "Trail Rank 14",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 14
+    },
+    "stages": [
+      {
+        "cost": 3,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 320,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 18,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 18,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-15",
+    "name": "Trail Rank 15",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 15
+    },
+    "stages": [
+      {
+        "cost": 4,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 340,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 19,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 19,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-16",
+    "name": "Trail Rank 16",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 16
+    },
+    "stages": [
+      {
+        "cost": 4,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 360,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 20,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 20,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-17",
+    "name": "Trail Rank 17",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 17
+    },
+    "stages": [
+      {
+        "cost": 4,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 380,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 21,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 21,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-18",
+    "name": "Trail Rank 18",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 18
+    },
+    "stages": [
+      {
+        "cost": 4,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 400,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 22,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 22,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-19",
+    "name": "Trail Rank 19",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 19
+    },
+    "stages": [
+      {
+        "cost": 4,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 420,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 23,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 23,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-20",
+    "name": "Trail Rank 20",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 20
+    },
+    "stages": [
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 440,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 24,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 24,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-21",
+    "name": "Trail Rank 21",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 21
+    },
+    "stages": [
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 460,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 25,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 25,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-22",
+    "name": "Trail Rank 22",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 22
+    },
+    "stages": [
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 480,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 26,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 26,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-23",
+    "name": "Trail Rank 23",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 23
+    },
+    "stages": [
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 500,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 27,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 27,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-24",
+    "name": "Trail Rank 24",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 24
+    },
+    "stages": [
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 520,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 28,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 28,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-25",
+    "name": "Trail Rank 25",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 25
+    },
+    "stages": [
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 540,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 29,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 29,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-26",
+    "name": "Trail Rank 26",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 26
+    },
+    "stages": [
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 560,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 30,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 30,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-27",
+    "name": "Trail Rank 27",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 27
+    },
+    "stages": [
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 580,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 31,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 31,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-28",
+    "name": "Trail Rank 28",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 28
+    },
+    "stages": [
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 600,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 32,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 32,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-29",
+    "name": "Trail Rank 29",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 29
+    },
+    "stages": [
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 620,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 33,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 33,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trail-30",
+    "name": "Trail Rank 30",
+    "slot": "common",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 30
+    },
+    "stages": [
+      {
+        "cost": 7,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 640,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 34,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 34,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-01",
+    "name": "Sky Rank 1",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 11
+    },
+    "stages": [
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 175,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 10,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 10,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-02",
+    "name": "Sky Rank 2",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 12
+    },
+    "stages": [
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 200,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 12,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 12,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-03",
+    "name": "Sky Rank 3",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 13
+    },
+    "stages": [
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 225,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 14,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 14,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-04",
+    "name": "Sky Rank 4",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 14
+    },
+    "stages": [
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 250,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 16,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 16,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-05",
+    "name": "Sky Rank 5",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 15
+    },
+    "stages": [
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 275,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 18,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 18,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-06",
+    "name": "Sky Rank 6",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 16
+    },
+    "stages": [
+      {
+        "cost": 7,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 300,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 20,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 20,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-07",
+    "name": "Sky Rank 7",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 17
+    },
+    "stages": [
+      {
+        "cost": 7,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 325,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 22,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 22,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-08",
+    "name": "Sky Rank 8",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 18
+    },
+    "stages": [
+      {
+        "cost": 7,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 350,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 24,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 24,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-09",
+    "name": "Sky Rank 9",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 19
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 375,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 26,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 26,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-10",
+    "name": "Sky Rank 10",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 20
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 400,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 28,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 28,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-11",
+    "name": "Sky Rank 11",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 21
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 425,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 30,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 30,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-12",
+    "name": "Sky Rank 12",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 22
+    },
+    "stages": [
+      {
+        "cost": 9,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 450,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 32,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 32,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-13",
+    "name": "Sky Rank 13",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 23
+    },
+    "stages": [
+      {
+        "cost": 9,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 475,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 34,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 34,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-14",
+    "name": "Sky Rank 14",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 24
+    },
+    "stages": [
+      {
+        "cost": 9,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 500,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 36,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 36,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-15",
+    "name": "Sky Rank 15",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 25
+    },
+    "stages": [
+      {
+        "cost": 10,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 525,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 38,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 38,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-16",
+    "name": "Sky Rank 16",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 26
+    },
+    "stages": [
+      {
+        "cost": 10,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 550,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 40,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 40,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-17",
+    "name": "Sky Rank 17",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 27
+    },
+    "stages": [
+      {
+        "cost": 10,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 575,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 42,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 42,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-18",
+    "name": "Sky Rank 18",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 28
+    },
+    "stages": [
+      {
+        "cost": 11,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 600,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 44,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 44,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-19",
+    "name": "Sky Rank 19",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 29
+    },
+    "stages": [
+      {
+        "cost": 11,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 625,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 46,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 46,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-20",
+    "name": "Sky Rank 20",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 30
+    },
+    "stages": [
+      {
+        "cost": 11,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 650,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 48,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 48,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-21",
+    "name": "Sky Rank 21",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 31
+    },
+    "stages": [
+      {
+        "cost": 12,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 675,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 50,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 50,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-22",
+    "name": "Sky Rank 22",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 32
+    },
+    "stages": [
+      {
+        "cost": 12,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 700,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 52,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 52,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-23",
+    "name": "Sky Rank 23",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 33
+    },
+    "stages": [
+      {
+        "cost": 12,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 725,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 54,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 54,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-24",
+    "name": "Sky Rank 24",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 34
+    },
+    "stages": [
+      {
+        "cost": 13,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 750,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 56,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 56,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-25",
+    "name": "Sky Rank 25",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 35
+    },
+    "stages": [
+      {
+        "cost": 13,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 775,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 58,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 58,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-26",
+    "name": "Sky Rank 26",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 36
+    },
+    "stages": [
+      {
+        "cost": 13,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 800,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 60,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 60,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-27",
+    "name": "Sky Rank 27",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 37
+    },
+    "stages": [
+      {
+        "cost": 14,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 825,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 62,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 62,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-28",
+    "name": "Sky Rank 28",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 38
+    },
+    "stages": [
+      {
+        "cost": 14,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 850,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 64,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 64,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-29",
+    "name": "Sky Rank 29",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 39
+    },
+    "stages": [
+      {
+        "cost": 14,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 875,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 66,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 66,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-30",
+    "name": "Sky Rank 30",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 40
+    },
+    "stages": [
+      {
+        "cost": 15,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 900,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 68,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 68,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-31",
+    "name": "Sky Rank 31",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 41
+    },
+    "stages": [
+      {
+        "cost": 15,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 925,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 70,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 70,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-32",
+    "name": "Sky Rank 32",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 42
+    },
+    "stages": [
+      {
+        "cost": 15,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 950,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 72,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 72,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-33",
+    "name": "Sky Rank 33",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 43
+    },
+    "stages": [
+      {
+        "cost": 16,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 975,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 74,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 74,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-34",
+    "name": "Sky Rank 34",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 44
+    },
+    "stages": [
+      {
+        "cost": 16,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1000,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 76,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 76,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sky-35",
+    "name": "Sky Rank 35",
+    "slot": "premium",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 45
+    },
+    "stages": [
+      {
+        "cost": 16,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1025,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 78,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 78,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-01",
+    "name": "Collector I",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 4
+    },
+    "stages": [
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.005,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.002,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.002,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-02",
+    "name": "Collector II",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 8
+    },
+    "stages": [
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.01,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.004,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.004,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-03",
+    "name": "Collector III",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 12
+    },
+    "stages": [
+      {
+        "cost": 7,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.015,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.006,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.006,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-04",
+    "name": "Collector IV",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 16
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.02,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.008,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.008,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-05",
+    "name": "Collector V",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 20
+    },
+    "stages": [
+      {
+        "cost": 9,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.025,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.01,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.01,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-06",
+    "name": "Collector VI",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 24
+    },
+    "stages": [
+      {
+        "cost": 10,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.03,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.012,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.012,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-07",
+    "name": "Collector VII",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 28
+    },
+    "stages": [
+      {
+        "cost": 11,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.035,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.014,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.014,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-08",
+    "name": "Collector VIII",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 32
+    },
+    "stages": [
+      {
+        "cost": 12,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.04,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.016,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.016,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-09",
+    "name": "Collector IX",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 36
+    },
+    "stages": [
+      {
+        "cost": 13,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.045,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.018000000000000002,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.018000000000000002,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collector-10",
+    "name": "Collector X",
+    "slot": "premium",
+    "source": "collection",
+    "durationDays": null,
+    "requirement": {
+      "kind": "uniqueSpecies",
+      "value": 40
+    },
+    "stages": [
+      {
+        "cost": 14,
+        "stats": [
+          {
+            "kind": "percent",
+            "field": "hpPct",
+            "base": 0.05,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "pAtkPct",
+            "base": 0.02,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "sAtkPct",
+            "base": 0.02,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-banner-01",
+    "name": "Arena Banner I",
+    "slot": "premium",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 250
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 550,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 30,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 30,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-banner-02",
+    "name": "Arena Banner II",
+    "slot": "premium",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 500
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 700,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 35,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 35,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-banner-03",
+    "name": "Arena Banner III",
+    "slot": "premium",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 750
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 850,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 40,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 40,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-banner-04",
+    "name": "Arena Banner IV",
+    "slot": "premium",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 1000
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1000,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 45,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 45,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-banner-05",
+    "name": "Arena Banner V",
+    "slot": "premium",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 1250
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1150,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 50,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 50,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ladder-banner-01",
+    "name": "Ladder Banner I",
+    "slot": "premium",
+    "source": "ranked",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "rankedWins",
+      "value": 5
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 470,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 24,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 24,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ladder-banner-02",
+    "name": "Ladder Banner II",
+    "slot": "premium",
+    "source": "ranked",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "rankedWins",
+      "value": 10
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 590,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 28,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 28,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ladder-banner-03",
+    "name": "Ladder Banner III",
+    "slot": "premium",
+    "source": "ranked",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "rankedWins",
+      "value": 15
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 710,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 32,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 32,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ladder-banner-04",
+    "name": "Ladder Banner IV",
+    "slot": "premium",
+    "source": "ranked",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "rankedWins",
+      "value": 20
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 830,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 36,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 36,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ladder-banner-05",
+    "name": "Ladder Banner V",
+    "slot": "premium",
+    "source": "ranked",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "rankedWins",
+      "value": 25
+    },
+    "stages": [
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 950,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 40,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 40,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crown-01",
+    "name": "Crown Rank I",
+    "slot": "rare",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 50
+    },
+    "stages": [
+      {
+        "cost": 25,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1050,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 50,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 50,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crown-02",
+    "name": "Crown Rank II",
+    "slot": "rare",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 55
+    },
+    "stages": [
+      {
+        "cost": 30,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1300,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 60,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 60,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crown-03",
+    "name": "Crown Rank III",
+    "slot": "rare",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 60
+    },
+    "stages": [
+      {
+        "cost": 35,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1550,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 70,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 70,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crown-04",
+    "name": "Crown Rank IV",
+    "slot": "rare",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 65
+    },
+    "stages": [
+      {
+        "cost": 40,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1800,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 80,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 80,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crown-05",
+    "name": "Crown Rank V",
+    "slot": "rare",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 70
+    },
+    "stages": [
+      {
+        "cost": 45,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 2050,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 90,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 90,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crown-06",
+    "name": "Crown Rank VI",
+    "slot": "rare",
+    "source": "trainer",
+    "durationDays": null,
+    "requirement": {
+      "kind": "trainerLevel",
+      "value": 75
+    },
+    "stages": [
+      {
+        "cost": 50,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 2300,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 100,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 100,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "guild-vanguard",
+    "name": "Guild Vanguard",
+    "slot": "rare",
+    "source": "guild",
+    "durationDays": null,
+    "requirement": null,
+    "stages": [
+      {
+        "cost": 40,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 2500,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 100,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 100,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "guild-stronghold",
+    "name": "Stronghold Keeper",
+    "slot": "rare",
+    "source": "guild",
+    "durationDays": null,
+    "requirement": null,
+    "stages": [
+      {
+        "cost": 45,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 3000,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 110,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 110,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "event-festival",
+    "name": "Festival Star",
+    "slot": "rare",
+    "source": "event",
+    "durationDays": null,
+    "requirement": null,
+    "stages": [
+      {
+        "cost": 2,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 400,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 14,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 14,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 3,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 500,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 18,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 18,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 4,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 600,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 22,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 22,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 700,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 26,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 26,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 800,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 30,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 30,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 7,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 900,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 34,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 34,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1000,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 38,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 38,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 9,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1100,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 42,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 42,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 10,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1200,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 46,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 46,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 11,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1300,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 50,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 50,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 12,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1400,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 54,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 54,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 13,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1500,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 58,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 58,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 14,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1600,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 62,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 62,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 15,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1700,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 66,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 66,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 16,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1800,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 70,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 70,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "event-midsummer",
+    "name": "Midsummer Legend",
+    "slot": "rare",
+    "source": "event",
+    "durationDays": null,
+    "requirement": null,
+    "stages": [
+      {
+        "cost": 2,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 400,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 14,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 14,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 3,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 500,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 18,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 18,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 4,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 600,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 22,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 22,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 5,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 700,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 26,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 26,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 6,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 800,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 30,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 30,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 7,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 900,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 34,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 34,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 8,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1000,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 38,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 38,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 9,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1100,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 42,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 42,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 10,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1200,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 46,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 46,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 11,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1300,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 50,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 50,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 12,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1400,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 54,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 54,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 13,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1500,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 58,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 58,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 14,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1600,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 62,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 62,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 15,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1700,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 66,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 66,
+            "perLevel": 0
+          }
+        ]
+      },
+      {
+        "cost": 16,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1800,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 70,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 70,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-sovereign-01",
+    "name": "Arena Sovereign I",
+    "slot": "rare",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 2000
+    },
+    "stages": [
+      {
+        "cost": 40,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 1900,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 82,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 82,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-sovereign-02",
+    "name": "Arena Sovereign II",
+    "slot": "rare",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 4000
+    },
+    "stages": [
+      {
+        "cost": 50,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 2300,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 94,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 94,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-sovereign-03",
+    "name": "Arena Sovereign III",
+    "slot": "rare",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 6000
+    },
+    "stages": [
+      {
+        "cost": 60,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 2700,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 106,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 106,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-sovereign-04",
+    "name": "Arena Sovereign IV",
+    "slot": "rare",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 8000
+    },
+    "stages": [
+      {
+        "cost": 70,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 3100,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 118,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 118,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arena-sovereign-05",
+    "name": "Arena Sovereign V",
+    "slot": "rare",
+    "source": "arena",
+    "durationDays": 7,
+    "requirement": {
+      "kind": "arenaCredits",
+      "value": 10000
+    },
+    "stages": [
+      {
+        "cost": 80,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 3500,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 130,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 130,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "king-arena",
+    "name": "King of Arena",
+    "slot": "rare",
+    "source": "arena",
+    "durationDays": 14,
+    "requirement": {
+      "kind": "arenaBestPlace",
+      "value": 1
+    },
+    "stages": [
+      {
+        "cost": 120,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 4000,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 180,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 180,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "dmgBoost",
+            "base": 0.05,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "alliance-champion",
+    "name": "Alliance Champion",
+    "slot": "rare",
+    "source": "ranked",
+    "durationDays": 14,
+    "requirement": {
+      "kind": "rankedWins",
+      "value": 100
+    },
+    "stages": [
+      {
+        "cost": 120,
+        "stats": [
+          {
+            "kind": "core",
+            "field": "hp",
+            "base": 3500,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "pAtk",
+            "base": 150,
+            "perLevel": 0
+          },
+          {
+            "kind": "core",
+            "field": "sAtk",
+            "base": 150,
+            "perLevel": 0
+          },
+          {
+            "kind": "percent",
+            "field": "dmgRdct",
+            "base": 0.05,
+            "perLevel": 0
+          }
+        ]
+      }
+    ]
+  }
+]

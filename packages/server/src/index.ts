@@ -7,6 +7,7 @@ import type {
   SquadMode,
   StrategyId,
   SummonCost,
+  TitleSlot,
 } from '@wildbound/engine';
 import type { BattleView } from './battle';
 import type { GachaView } from './gacha';
@@ -18,6 +19,7 @@ import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
 import type { ResonanceView } from './resonance';
 import type { VipView } from './vip';
+import type { TitlesView } from './titles';
 
 /**
  * The server boundary (PROMPT.md §10).
@@ -64,6 +66,8 @@ export interface AccountSnapshot {
   resonance: ResonanceView;
   /** Display-ready VIP tier, perks and daily claim state (M11.10). */
   vip: VipView;
+  /** Display-ready title slots, catalogue and ticket balance (M11.11). */
+  titles: TitlesView;
 }
 
 /** Campaign battle outcome (M5). Carries the reward granted and the new snapshot. */
@@ -259,6 +263,10 @@ export interface GameServer {
   setResonanceSlot(slot: number, wildId: string | null): Promise<Result<AccountSnapshot>>;
   /** Claim today's VIP Common Ticket supply (M11.10). */
   claimVipDaily(): Promise<Result<ClaimResult>>;
+  /** Activate, upgrade or continue a title with Title Tickets (M11.11). */
+  activateTitle(titleId: string): Promise<Result<AccountSnapshot>>;
+  /** Equip an owned title in its slot, or clear it with `null` (M11.11). */
+  setTitleSlot(slot: TitleSlot, titleId: string | null): Promise<Result<AccountSnapshot>>;
   /** Level a rune (M7). */
   levelRune(instanceId: string, useEssence?: boolean): Promise<Result<AccountSnapshot>>;
   /** Pick (or clear, with `null`) a talent path (M7). */
@@ -348,4 +356,5 @@ export * from './pvp-hub-view';
 export * from './plates';
 export * from './trinkets';
 export * from './vip';
+export * from './titles';
 export * from './local-server';

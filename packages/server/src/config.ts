@@ -11,6 +11,7 @@ import {
   SHOPS,
   PVE,
   PVP,
+  TITLES,
 } from '@wildbound/content';
 import {
   CHARMS,
@@ -24,7 +25,7 @@ import {
   TALENT_BLOCKS,
   TALENT_TREES,
 } from '@wildbound/content';
-import type { CollectionJson, EconomyJson, PveJson, PvpJson } from '@wildbound/content';
+import type { CollectionJson, EconomyJson, PveJson, PvpJson, TitlesJson, TitleJson } from '@wildbound/content';
 import {
   mulberry32,
   type CoreStats,
@@ -83,6 +84,9 @@ export interface GameConfig {
   /** M8 PvE mode tables (tower, trials, world boss, dungeons, link crystal). */
   pve: PveJson;
   pvp: PvpJson;
+  /** M11.11 title catalogue. */
+  titles: TitlesJson;
+  titleById: Map<string, TitleJson>;
   xpCurve: XpCurve;
   idle: IdleConfig;
   now: () => number;
@@ -147,6 +151,8 @@ export function buildConfig(): GameConfig {
     },
     pve: PVE,
     pvp: PVP,
+    titles: TITLES,
+    titleById: new Map(TITLES.map((title) => [title.id, title])),
     xpCurve: { base: ECONOMY.xp.base, exponent: ECONOMY.xp.exponent, maxLevel: ECONOMY.xp.maxLevel },
     idle: {
       capMinutes: Math.round(ECONOMY.idle.capHours * 60),

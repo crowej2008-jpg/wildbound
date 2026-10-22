@@ -28,7 +28,8 @@ import { buildPlateView } from './plates';
 import type { TrinketView } from './trinkets';
 import { buildTrinketView } from './trinkets';
 import { resonanceFoldFor } from './resonance';
-import { sheetOf } from './battle';
+import { titleFoldFor } from './titles';
+import { applySheetPercents, sheetOf } from './battle';
 
 /**
  * Display-ready equipment view (M7). Built server-side so the client never has to
@@ -279,6 +280,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     meta ? { faction: meta.faction, stage: state.plates[wild.id] ?? 0 } : undefined,
     { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
     resonanceFoldFor(config, state, wild.id),
+    titleFoldFor(config, state),
   );
   const baseSheet = sheetOf(wild, config) ?? { hp: 0, pAtk: 0, sAtk: 0, spd: 0, pDef: 0, sDef: 0 };
   const basePower = powerOfSheet(baseSheet, {}, config.power);
@@ -287,6 +289,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     'plates',
     'trinkets',
     'resonance',
+    'titles',
     'runes',
     'charms',
     'cores',
@@ -295,7 +298,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
   const layerPower = {} as Record<keyof LayerDelta, number>;
   for (const key of layerKeys) {
     const delta = folded.layers[key];
-    const merged = mergeDelta(baseSheet, delta);
+    const merged = applySheetPercents(mergeDelta(baseSheet, delta), delta.percent);
     layerPower[key] = powerOfSheet(merged, delta.percent, config.power) - basePower;
   }
 
@@ -439,12 +442,16 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
   return {
     wildId: wild.id,
     sheet: baseSheet,
-    sheetEquipped: mergeDelta(baseSheet, folded.delta),
+    sheetEquipped: applySheetPercents(mergeDelta(baseSheet, folded.delta), folded.delta.percent),
     percent: folded.delta.percent,
     soul: folded.delta.soul,
     power: {
       base: basePower,
-      equipped: powerOfSheet(mergeDelta(baseSheet, folded.delta), folded.delta.percent, config.power),
+      equipped: powerOfSheet(
+        applySheetPercents(mergeDelta(baseSheet, folded.delta), folded.delta.percent),
+        folded.delta.percent,
+        config.power,
+      ),
       layers: layerPower,
     },
     unlocks: {

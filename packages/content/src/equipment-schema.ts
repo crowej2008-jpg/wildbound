@@ -12,6 +12,9 @@ export const FACTIONS = ['ember', 'tide', 'grove', 'volt', 'frost', 'shade'] as 
 export const CORE_FIELDS = ['hp', 'pAtk', 'sAtk', 'spd', 'pDef', 'sDef'] as const;
 export const SOUL_FIELDS = ['spiritAtk', 'spiritDef'] as const;
 export const PERCENT_FIELDS = [
+  'hpPct',
+  'pAtkPct',
+  'sAtkPct',
   'dmgBoost',
   'dmgRdct',
   'pvpBoost',

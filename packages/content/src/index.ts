@@ -14,6 +14,7 @@ export const CONTENT_DIRS = {
   shops: 'shops',
   quests: 'quests',
   equipment: 'equipment',
+  titles: 'titles',
   tuning: 'tuning',
 } as const;
 
@@ -39,6 +40,20 @@ export { shopSchema } from './shop-schema';
 export type { ShopJson } from './shop-schema';
 
 export { WILDS, FACTIONS, wildById, wildsByFaction } from './species';
+export { TITLES, titleById } from './titles';
+export {
+  titlesSchema,
+  titleSchema,
+  titleStageSchema,
+  titleRequirementSchema,
+  TITLE_SLOTS,
+  TITLE_SOURCES,
+  type TitlesJson,
+  type TitleJson,
+  type TitleStageJson,
+  type TitleSlotJson,
+  type TitleSourceJson,
+} from './titles-schema';
 export { PVE } from './pve';
 export { pveSchema, type PveJson, type EnemyPoolJson, type TrialDefJson, type DungeonDefJson } from './pve-schema';
 export { PVP } from './pvp';

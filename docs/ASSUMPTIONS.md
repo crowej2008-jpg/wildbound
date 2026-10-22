@@ -596,10 +596,15 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     0.05 SPD` per crystal level (all data in `collection.json` `resonance`). Six slots, two open; the
     rest cost `50 + 50 × (unlocked − 2)` Resonation Shards, and one Wild can hold only one slot.
     *What would change it:* a redesign of Wild level costs or owner-tuned resonance shares.
-30. **Titles have three slots and expire lazily.** Common / Premium / Rare slots; permanent and timed
-    (7/14-day) titles; timed titles are recycled on load/open rather than by a scheduler. M11.11 ships
-    permanent collection/trainer titles plus Arena/Ranked titles; guild-war and event titles remain
-    locked "coming later" rows until M15/M16. *What would change it:* the event calendar in M15.
+30. **Titles have three slots, Title Tickets and lazy expiry.** Common / Premium / Rare slots, one
+    title per slot. The original catalogue mirrors the source shape at 102 titles: 85 permanent,
+    15 seven-day and 2 fourteen-day. Costs are Title Tickets per stage (not per-title activation
+    cards); normal titles have one stage, event titles keep a 15-stage ladder. Percent "Total"
+    HP/P.ATK/S.ATK lines resolve after flat gear. Timed titles are removed and their slots cleared
+    on load/open, not by a scheduler; max-stage Continuation pays the top stage cost to extend from
+    `max(now, expiresAt)`. Guild-war and event titles are catalogue rows with honest locked
+    "coming later" states until M16/M15. Save v13 adds `titles`. *What would change it:* the event
+    calendar in M15, guild war in M16, or an owner decision to use per-title activation cards.
 31. **VIP is activity-driven and never real money.** Seven tiers (0–6, `Visitor` to `Crown`) derive
     from lifetime `profile.xp` (0 to 250,000), not a purchase flow. They grant data-driven
     conveniences only: +0–6 idle-cap hours, 0–12% off shop item prices, and 0–3 Common Tickets in a

@@ -4,6 +4,7 @@ import { currencyLabel, t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
 import ResonancePanel from './ResonancePanel';
 import VipPanel from './VipPanel';
+import TitlesPanel from './TitlesPanel';
 
 /**
  * Trainer tab (M11.1). Replaces the More tab as the player-facing home for the
@@ -72,10 +73,7 @@ export default function Trainer() {
 
       <VipPanel />
 
-      <section className="card">
-        <h2 className="section-title">{t('trainer.titles')}</h2>
-        <p className="muted">{t('trainer.titlesLater')}</p>
-      </section>
+      <TitlesPanel />
     </main>
   );
 }

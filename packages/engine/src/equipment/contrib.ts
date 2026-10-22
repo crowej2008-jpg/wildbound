@@ -87,6 +87,7 @@ export interface LayerDelta {
   plates: StatDelta;
   trinkets: StatDelta;
   resonance: StatDelta;
+  titles: StatDelta;
   runes: StatDelta;
   charms: StatDelta;
   cores: StatDelta;
@@ -109,6 +110,11 @@ export interface TrinketFold {
 export interface ResonanceFold {
   level: number;
   perLevel: Partial<CoreStats>;
+}
+
+/** Account-wide title lines at their current stages (flat or percent totals). */
+export interface TitleFold {
+  lines: StatLine[];
 }
 
 export interface FoldedLoadout {
@@ -164,6 +170,7 @@ function emptyLayers(): LayerDelta {
     plates: emptyDelta(),
     trinkets: emptyDelta(),
     resonance: emptyDelta(),
+    titles: emptyDelta(),
     runes: emptyDelta(),
     charms: emptyDelta(),
     cores: emptyDelta(),
@@ -179,6 +186,7 @@ export function foldLoadout(
   plate?: PlateFold,
   trinket?: TrinketFold,
   resonance?: ResonanceFold,
+  title?: TitleFold,
 ): FoldedLoadout {
   const layers = emptyLayers();
   const effects: RoundEffect[] = [];
@@ -213,6 +221,9 @@ export function foldLoadout(
       layers.resonance.core[field] = (layers.resonance.core[field] ?? 0) + resonance.level * perLevel;
     }
   }
+
+  // --- Titles: account-wide lines from the three equipped slots ---
+  if (title) addLines(layers.titles, title.lines, 1);
 
   // --- Runes: per-socket lines + a set bonus once enough pieces are worn ---
   const setCounts = new Map<string, number>();
@@ -295,6 +306,7 @@ export function foldLoadout(
   addDelta(delta, layers.plates);
   addDelta(delta, layers.trinkets);
   addDelta(delta, layers.resonance);
+  addDelta(delta, layers.titles);
   addDelta(delta, layers.runes);
   addDelta(delta, layers.charms);
   addDelta(delta, layers.cores);

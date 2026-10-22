@@ -72,7 +72,7 @@ test('the Trainer tab lists the M11 materials and keeps More reachable', async (
   await expect(page.getByRole('heading', { name: 'Trainer', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Collection materials', exact: true })).toBeVisible();
   await expect(page.getByText('Potential Shards')).toBeVisible();
-  await expect(page.getByText('Title Tickets')).toBeVisible();
+  await expect(page.getByText('Title Tickets', { exact: true })).toBeVisible();
   await expect(page.getByText('VIP 0 · Visitor')).toBeVisible();
   await expect(page.getByText('Reach VIP 1 for a daily supply.')).toBeVisible();
   await page.getByRole('link', { name: 'Debug & saves' }).click();
@@ -211,6 +211,30 @@ test('VIP derives its tier from lifetime XP and claims the daily supply', async 
 
   await page.getByRole('button', { name: /Claim daily supply .*1 Common Tickets\/day/ }).click();
   await expect(page.getByText('Claimed today.')).toBeVisible();
+});
+
+test('Titles activate, equip a slot and keep locked rows honest', async ({ page }) => {
+  await importSave(page, { currencies: { titleTicket: 20 } });
+  await page.goto('/trainer');
+
+  await expect(page.getByRole('heading', { name: 'Titles' })).toBeVisible();
+  await expect(page.getByText('Title Tickets: 20 · Owned: 0')).toBeVisible();
+  await expect(page.getByLabel('Common Title')).toBeVisible();
+
+  const first = page.locator('[data-title-id="trail-01"]');
+  await expect(first.getByRole('button', { name: /Activate .*1 Title Tickets/ })).toBeVisible();
+  await first.getByRole('button', { name: /Activate .*1 Title Tickets/ }).click();
+
+  await expect(page.getByLabel('Common Title')).toHaveValue('trail-01');
+  await expect(first.getByText('Stage 1/1')).toBeVisible();
+  await expect(page.getByText('Title Tickets: 19 · Owned: 1')).toBeVisible();
+
+  await expect(page.locator('[data-title-id="trail-02"]').getByText('Requires: Trainer level 2')).toBeVisible();
+
+  await page.getByRole('tab', { name: 'Rare' }).click();
+  await expect(page.getByText('Guild Vanguard')).toBeVisible();
+  await expect(page.getByText('Coming later: guild war (M16).').first()).toBeVisible();
+  await expect(page.getByText('Coming later: events (M15).').first()).toBeVisible();
 });
 
 test('Orbs equip and level with Orb Essence', async ({ page }) => {

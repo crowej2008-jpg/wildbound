@@ -22,6 +22,8 @@ import {
   relicsSchema,
   platesSchema,
   trinketsSchema,
+  TITLES,
+  TITLE_SLOTS,
   runesSchema,
   charmsSchema,
   coresSchema,
@@ -242,6 +244,27 @@ export function validateContent(repoRoot: string): ValidateReport {
       const tier = vipTiers[index]!;
       if (tier.tier !== previous.tier + 1) errors.push(`collection: VIP tier ${tier.tier} is out of order`);
       if (tier.xp <= previous.xp) errors.push(`collection: VIP tier ${tier.tier} XP must increase`);
+    }
+    const titleIds = new Set<string>();
+    const titleSlots = new Set<string>(TITLE_SLOTS);
+    for (const title of TITLES) {
+      if (titleIds.has(title.id)) errors.push(`titles: duplicate id "${title.id}"`);
+      titleIds.add(title.id);
+      if (!titleSlots.has(title.slot)) errors.push(`titles: "${title.id}" has unknown slot "${title.slot}"`);
+      if (title.source === 'event' && title.stages.length !== 15) {
+        errors.push(`titles: event title "${title.id}" must have 15 stages`);
+      }
+      if (title.stages.some((stage) => stage.cost < 0)) {
+        errors.push(`titles: "${title.id}" has a negative stage cost`);
+      }
+    }
+    const permanentTitles = TITLES.filter((title) => title.durationDays === null).length;
+    const weekTitles = TITLES.filter((title) => title.durationDays === 7).length;
+    const fortnightTitles = TITLES.filter((title) => title.durationDays === 14).length;
+    if (TITLES.length !== 102 || permanentTitles !== 85 || weekTitles !== 15 || fortnightTitles !== 2) {
+      errors.push(
+        `titles: catalogue is ${TITLES.length} (${permanentTitles} permanent / ${weekTitles} 7-day / ${fortnightTitles} 14-day), want 102 (85 / 15 / 2)`,
+      );
     }
     for (const r of EQUIPMENT_TUNING.starting.runes) {
       if (!runeIds.has(r.defId)) errors.push(`equipment: starting rune "${r.defId}" has no design`);

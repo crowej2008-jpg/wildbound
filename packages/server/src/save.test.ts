@@ -17,6 +17,8 @@ describe('save codec', () => {
     expect(state.resonance.slots).toHaveLength(6);
     expect(state.resonance.slots.every((id) => id === null)).toBe(true);
     expect(state.vip.lastClaimDay).toBeNull();
+    expect(state.titles.owned).toEqual({});
+    expect(state.titles.equipped).toEqual({ common: null, premium: null, rare: null });
     expect(new Set(state.roster.map((w) => w.id)).size).toBe(state.roster.length);
   });
 
@@ -110,6 +112,36 @@ describe('save codec', () => {
     if (!result.ok) return;
     expect(result.value.schemaVersion).toBe(SAVE_VERSION);
     expect(result.value.vip).toEqual({ lastClaimDay: null });
+  });
+
+  it('migrates a v12 save, drops expired titles and clears their slots', () => {
+    const now = Date.parse('2026-01-01T00:00:00Z');
+    const state = createInitialState(config);
+    const raw = state as unknown as Record<string, unknown>;
+    const result = migrateSave(
+      {
+        version: 12,
+        state: {
+          ...raw,
+          schemaVersion: 12,
+          titles: {
+            owned: {
+              'trail-01': { stage: 1, expiresAt: now - 1 },
+              'trail-02': { stage: 1, expiresAt: null },
+            },
+            equipped: { common: 'trail-01', premium: 'trail-02', rare: null },
+          },
+        },
+      },
+      now,
+      config,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.schemaVersion).toBe(SAVE_VERSION);
+    expect(result.value.titles.owned['trail-01']).toBeUndefined();
+    expect(result.value.titles.owned['trail-02']).toEqual({ stage: 1, expiresAt: null });
+    expect(result.value.titles.equipped).toEqual({ common: null, premium: 'trail-02', rare: null });
   });
 
   it('rejects malformed JSON and missing fields', () => {

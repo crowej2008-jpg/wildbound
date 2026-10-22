@@ -11,6 +11,9 @@ const CORE_ROWS = [
 ] as const;
 
 const PERCENT_LABELS: Record<string, string> = {
+  hpPct: 'stat.hpPct',
+  pAtkPct: 'stat.pAtkPct',
+  sAtkPct: 'stat.sAtkPct',
   dmgBoost: 'stat.dmgBoost',
   dmgRdct: 'stat.dmgRdct',
   pvpBoost: 'stat.pvpBoost',
@@ -37,6 +40,7 @@ const LAYER_ROWS = [
   ['plates', 'wild.gear.plates'],
   ['trinkets', 'wild.gear.trinkets'],
   ['resonance', 'trainer.resonance'],
+  ['titles', 'trainer.titles'],
   ['runes', 'wild.tab.orbs'],
   ['charms', 'wild.tab.berries'],
   ['cores', 'wild.tab.soulHearts'],

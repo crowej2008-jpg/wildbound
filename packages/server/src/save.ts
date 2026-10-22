@@ -14,18 +14,22 @@ import {
   initialPvp,
   initialResonance,
   initialShopState,
+  initialTitles,
   initialVip,
+  TITLE_SLOTS,
   type AccountState,
   type CurrencyId,
   type MailItem,
   type ResonanceState,
+  type TitleOwnership,
+  type TitlesState,
   type WildInstance,
 } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 12;
+export const SAVE_VERSION = 13;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -69,7 +73,29 @@ function normalizeResonance(
   };
 }
 
-/** Fill any missing slices on an older save (v1–v11 → current). */
+/** Fill the title board and drop timed titles that already expired. */
+function normalizeTitles(
+  source: Partial<TitlesState> | undefined,
+  now: number,
+): TitlesState {
+  const base = initialTitles();
+  const owned: Record<string, TitleOwnership> = {};
+  for (const [id, value] of Object.entries(source?.owned ?? {})) {
+    if (!value || typeof value.stage !== 'number' || !Number.isFinite(value.stage)) continue;
+    const expiresAt =
+      typeof value.expiresAt === 'number' && Number.isFinite(value.expiresAt) ? value.expiresAt : null;
+    if (expiresAt !== null && expiresAt <= now) continue;
+    owned[id] = { stage: Math.max(1, Math.floor(value.stage)), expiresAt };
+  }
+  const equipped = { ...base.equipped };
+  for (const slot of TITLE_SLOTS) {
+    const id = source?.equipped?.[slot];
+    if (typeof id === 'string' && owned[id]) equipped[slot] = id;
+  }
+  return { owned, equipped };
+}
+
+/** Fill any missing slices on an older save (v1–v12 → current). */
 function withDefaults(state: AccountState, now: number, config: GameConfig): AccountState {
   const s = state as Partial<AccountState>;
   const day = dayKey(now);
@@ -91,6 +117,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     trinkets: s.trinkets ?? {},
     resonance: normalizeResonance(s.resonance, config),
     vip: { lastClaimDay: s.vip?.lastClaimDay ?? null },
+    titles: normalizeTitles(s.titles, now),
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     debugClockOffset: s.debugClockOffset ?? 0,
@@ -149,6 +176,7 @@ export function createInitialState(config: GameConfig): AccountState {
       config.collection.resonance.openSlots,
     ),
     vip: initialVip(),
+    titles: initialTitles(),
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     debugClockOffset: 0,

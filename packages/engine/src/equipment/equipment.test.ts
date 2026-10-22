@@ -212,6 +212,7 @@ describe('layer contributions', () => {
       { faction: 'ember', stage: 5 },
       { speciesId: 'sp1', level: 5 },
       { level: 5, perLevel: { pAtk: 10, spd: 0.1 } },
+      { lines: [{ kind: 'core', field: 'hp', base: 100, perLevel: 0 }] },
     );
     // relic level 3: pAtk 80, crit 0.07
     expect(folded.layers.relic.core.pAtk).toBeCloseTo(80);
@@ -225,6 +226,8 @@ describe('layer contributions', () => {
     // resonance level 5 at +10 pAtk / +0.1 spd per level
     expect(folded.layers.resonance.core.pAtk).toBeCloseTo(50);
     expect(folded.layers.resonance.core.spd).toBeCloseTo(0.5);
+    // title lines are account-wide and independent of the loadout
+    expect(folded.layers.titles.core.hp).toBeCloseTo(100);
     // per-rune lines (.08 + .04) plus the 2-piece dmgBoost (.05); 4 pieces add critPower (.1)
     expect(folded.layers.runes.percent.dmgBoost).toBeCloseTo(0.17);
     expect(folded.layers.runes.percent.critPower).toBeCloseTo(0.1);
@@ -379,8 +382,9 @@ function battleWith(
   plate?: { faction: 'ember'; stage: number },
   trinket?: { speciesId: string; level: number },
   resonance?: { level: number; perLevel: Partial<CoreStats> },
+  title?: { lines: { kind: 'core'; field: 'pAtk'; base: number; perLevel: number }[] },
 ) {
-  const folded = foldLoadout(loadout, state, TABLES, plate, trinket, resonance);
+  const folded = foldLoadout(loadout, state, TABLES, plate, trinket, resonance, title);
   return runBattle({
     attackers: [{ ...attacker(mergeDelta(baseSheet, folded.delta), folded.effects), soulheart: folded.soulheart }],
     defenders: [defender(120000)],
@@ -419,6 +423,13 @@ describe('every layer moves a battle in the intended direction', () => {
     const up = battleWith(base, stateWith({}), emptyLoadout(TUNING), undefined, undefined, {
       level: 40,
       perLevel: { pAtk: 10, hp: 20 },
+    });
+    expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
+  });
+
+  it('an equipped title raises damage', () => {
+    const up = battleWith(base, stateWith({}), emptyLoadout(TUNING), undefined, undefined, undefined, {
+      lines: [{ kind: 'core', field: 'pAtk', base: 250, perLevel: 0 }],
     });
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });

@@ -16,6 +16,7 @@ import {
   effectiveLevelCap,
   evolveCheck,
   evolved,
+  expireTitles,
   isCleared,
   isQuestClaimable,
   isUnlocked,
@@ -49,6 +50,7 @@ import {
   type Squad,
   type SquadMode,
   type StrategyId,
+  type TitleSlot,
   type WildInstance,
 } from '@wildbound/engine';
 import {
@@ -141,6 +143,7 @@ import {
   unlockResonanceSlotAction,
 } from './resonance';
 import { buildVipView, claimVipDailyAction, vipIdleCapMinutes } from './vip';
+import { activateTitleAction, buildTitlesView, setTitleSlotAction } from './titles';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
 import { BACKUP_KEY, createInitialState, parseSave, SAVE_KEY, serializeSave } from './save';
@@ -721,6 +724,18 @@ export class LocalServer implements GameServer {
     return this.commitClaim(claimed.value.state, claimed.value.granted);
   }
 
+  async activateTitle(titleId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) =>
+      activateTitleAction(this.config, state, titleId, this.now(state)),
+    );
+  }
+
+  async setTitleSlot(slot: TitleSlot, titleId: string | null): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) =>
+      setTitleSlotAction(this.config, state, slot, titleId, this.now(state)),
+    );
+  }
+
   async levelRune(instanceId: string, useEssence = false): Promise<Result<AccountSnapshot>> {
     return this.applyEquipment((state) => levelRuneAction(this.config, state, instanceId, useEssence));
   }
@@ -1172,6 +1187,11 @@ export class LocalServer implements GameServer {
       next = { ...next, pve: { ...next.pve, linkCrystal: crystal } };
       changed = true;
     }
+    const titles = expireTitles(next.titles, this.now(next));
+    if (titles !== next.titles) {
+      next = { ...next, titles };
+      changed = true;
+    }
     return { state: next, changed };
   }
 
@@ -1200,6 +1220,7 @@ export class LocalServer implements GameServer {
       teamPower,
       resonance: buildResonanceView(this.config, state),
       vip: buildVipView(this.config, state, this.now(state)),
+      titles: buildTitlesView(this.config, state, this.now(state)),
     };
   }
 
