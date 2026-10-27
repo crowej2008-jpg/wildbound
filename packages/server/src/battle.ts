@@ -49,6 +49,7 @@ export interface BattleUnitSeed extends ReplayUnit {
 export type BattleModeLabel =
   | SquadMode
   | 'campaignStage'
+  | 'gymGate'
   | 'towerFloor'
   | 'trial'
   | 'worldBossFight'

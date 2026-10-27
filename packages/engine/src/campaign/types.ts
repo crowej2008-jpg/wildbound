@@ -22,6 +22,11 @@ export interface StageReward {
   xp?: number;
 }
 
+/** A story gate (M13.0a): the gym that must fall before the stage opens. */
+export interface StageGate {
+  gymId: string;
+}
+
 export interface StageDef {
   id: string;
   /** 1-based chapter number (also the grouping key). */
@@ -38,6 +43,8 @@ export interface StageDef {
   idlePerMinute: StageReward;
   /** Rounds at or under for 3 stars, then for 2 stars (else 1). */
   starRounds: [number, number];
+  /** M13.0a: when present, the stage also requires this gym to be cleared. */
+  gate?: StageGate;
 }
 
 export interface ChapterDef {
@@ -50,4 +57,6 @@ export interface ChapterDef {
 /** A stage absent from `stars` is uncleared; a value is 1–3. */
 export interface CampaignProgress {
   stars: Record<string, number>;
+  /** M13.0a: gym ids already defeated (first clear paid). */
+  gyms?: Record<string, boolean>;
 }

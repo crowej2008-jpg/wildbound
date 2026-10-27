@@ -1,0 +1,4699 @@
+{
+  "chapterChestGems": 200,
+  "chapters": [
+    {
+      "number": 1,
+      "name": "Hatchling Trail",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 2,
+      "name": "Frostline Approach",
+      "region": "Frostmere",
+      "faction": "tide"
+    },
+    {
+      "number": 3,
+      "name": "Shadewood Fringe",
+      "region": "Shadeveil",
+      "faction": "grove"
+    },
+    {
+      "number": 4,
+      "name": "Emberfall Hollow",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 5,
+      "name": "Emberfall Ridge",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 6,
+      "name": "Emberfall Basin",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 7,
+      "name": "Emberfall Gate",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 8,
+      "name": "Emberfall Spire",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 9,
+      "name": "Emberfall Mire",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 10,
+      "name": "Emberfall Terrace",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 11,
+      "name": "Emberfall Veil",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 12,
+      "name": "Emberfall Heart",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 13,
+      "name": "Emberfall Crown",
+      "region": "Emberfall",
+      "faction": "ember"
+    },
+    {
+      "number": 14,
+      "name": "Tidewake Foothills",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 15,
+      "name": "Tidewake Trail",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 16,
+      "name": "Tidewake Crossing",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 17,
+      "name": "Tidewake Hollow",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 18,
+      "name": "Tidewake Ridge",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 19,
+      "name": "Tidewake Basin",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 20,
+      "name": "Tidewake Gate",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 21,
+      "name": "Tidewake Spire",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 22,
+      "name": "Tidewake Mire",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 23,
+      "name": "Tidewake Terrace",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 24,
+      "name": "Tidewake Veil",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 25,
+      "name": "Tidewake Heart",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 26,
+      "name": "Tidewake Crown",
+      "region": "Tidewake",
+      "faction": "tide"
+    },
+    {
+      "number": 27,
+      "name": "Groveheart Foothills",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 28,
+      "name": "Groveheart Trail",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 29,
+      "name": "Groveheart Crossing",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 30,
+      "name": "Groveheart Hollow",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 31,
+      "name": "Groveheart Ridge",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 32,
+      "name": "Groveheart Basin",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 33,
+      "name": "Groveheart Gate",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 34,
+      "name": "Groveheart Spire",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 35,
+      "name": "Groveheart Mire",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 36,
+      "name": "Groveheart Terrace",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 37,
+      "name": "Groveheart Veil",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 38,
+      "name": "Groveheart Heart",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 39,
+      "name": "Groveheart Crown",
+      "region": "Groveheart",
+      "faction": "grove"
+    },
+    {
+      "number": 40,
+      "name": "Cinder Reach Foothills",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 41,
+      "name": "Cinder Reach Trail",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 42,
+      "name": "Cinder Reach Crossing",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 43,
+      "name": "Cinder Reach Hollow",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 44,
+      "name": "Cinder Reach Ridge",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 45,
+      "name": "Cinder Reach Basin",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 46,
+      "name": "Cinder Reach Gate",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 47,
+      "name": "Cinder Reach Spire",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 48,
+      "name": "Cinder Reach Mire",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 49,
+      "name": "Cinder Reach Terrace",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 50,
+      "name": "Cinder Reach Veil",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 51,
+      "name": "Cinder Reach Heart",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 52,
+      "name": "Cinder Reach Crown",
+      "region": "Cinder Reach",
+      "faction": "ember"
+    },
+    {
+      "number": 53,
+      "name": "Glass Tide Foothills",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 54,
+      "name": "Glass Tide Trail",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 55,
+      "name": "Glass Tide Crossing",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 56,
+      "name": "Glass Tide Hollow",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 57,
+      "name": "Glass Tide Ridge",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 58,
+      "name": "Glass Tide Basin",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 59,
+      "name": "Glass Tide Gate",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 60,
+      "name": "Glass Tide Spire",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 61,
+      "name": "Glass Tide Mire",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 62,
+      "name": "Glass Tide Terrace",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 63,
+      "name": "Glass Tide Veil",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 64,
+      "name": "Glass Tide Heart",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 65,
+      "name": "Glass Tide Crown",
+      "region": "Glass Tide",
+      "faction": "tide"
+    },
+    {
+      "number": 66,
+      "name": "Deeproot Foothills",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 67,
+      "name": "Deeproot Trail",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 68,
+      "name": "Deeproot Crossing",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 69,
+      "name": "Deeproot Hollow",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 70,
+      "name": "Deeproot Ridge",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 71,
+      "name": "Deeproot Basin",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 72,
+      "name": "Deeproot Gate",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 73,
+      "name": "Deeproot Spire",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 74,
+      "name": "Deeproot Mire",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 75,
+      "name": "Deeproot Terrace",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 76,
+      "name": "Deeproot Veil",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 77,
+      "name": "Deeproot Heart",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 78,
+      "name": "Deeproot Crown",
+      "region": "Deeproot",
+      "faction": "grove"
+    },
+    {
+      "number": 79,
+      "name": "Voltspire Foothills",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 80,
+      "name": "Voltspire Trail",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 81,
+      "name": "Voltspire Crossing",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 82,
+      "name": "Voltspire Hollow",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 83,
+      "name": "Voltspire Ridge",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 84,
+      "name": "Voltspire Basin",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 85,
+      "name": "Voltspire Gate",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 86,
+      "name": "Voltspire Spire",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 87,
+      "name": "Voltspire Mire",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 88,
+      "name": "Voltspire Terrace",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 89,
+      "name": "Voltspire Veil",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 90,
+      "name": "Voltspire Heart",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 91,
+      "name": "Voltspire Crown",
+      "region": "Voltspire",
+      "faction": "volt"
+    },
+    {
+      "number": 92,
+      "name": "Frostmere Foothills",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 93,
+      "name": "Frostmere Trail",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 94,
+      "name": "Frostmere Crossing",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 95,
+      "name": "Frostmere Hollow",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 96,
+      "name": "Frostmere Ridge",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 97,
+      "name": "Frostmere Basin",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 98,
+      "name": "Frostmere Gate",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 99,
+      "name": "Frostmere Spire",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 100,
+      "name": "Frostmere Mire",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 101,
+      "name": "Frostmere Terrace",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 102,
+      "name": "Frostmere Veil",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 103,
+      "name": "Frostmere Heart",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 104,
+      "name": "Frostmere Crown",
+      "region": "Frostmere",
+      "faction": "frost"
+    },
+    {
+      "number": 105,
+      "name": "Shadeveil Foothills",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 106,
+      "name": "Shadeveil Trail",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 107,
+      "name": "Shadeveil Crossing",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 108,
+      "name": "Shadeveil Hollow",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 109,
+      "name": "Shadeveil Ridge",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 110,
+      "name": "Shadeveil Basin",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 111,
+      "name": "Shadeveil Gate",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 112,
+      "name": "Shadeveil Spire",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 113,
+      "name": "Shadeveil Mire",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 114,
+      "name": "Shadeveil Terrace",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 115,
+      "name": "Shadeveil Veil",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 116,
+      "name": "Shadeveil Heart",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 117,
+      "name": "Shadeveil Crown",
+      "region": "Shadeveil",
+      "faction": "shade"
+    },
+    {
+      "number": 118,
+      "name": "Sunken Chorus Foothills",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 119,
+      "name": "Sunken Chorus Trail",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 120,
+      "name": "Sunken Chorus Crossing",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 121,
+      "name": "Sunken Chorus Hollow",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 122,
+      "name": "Sunken Chorus Ridge",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 123,
+      "name": "Sunken Chorus Basin",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 124,
+      "name": "Sunken Chorus Gate",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 125,
+      "name": "Sunken Chorus Spire",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 126,
+      "name": "Sunken Chorus Mire",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 127,
+      "name": "Sunken Chorus Terrace",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 128,
+      "name": "Sunken Chorus Veil",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 129,
+      "name": "Sunken Chorus Heart",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 130,
+      "name": "Sunken Chorus Crown",
+      "region": "Sunken Chorus",
+      "faction": "tide"
+    },
+    {
+      "number": 131,
+      "name": "Ashen Crown Foothills",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 132,
+      "name": "Ashen Crown Trail",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 133,
+      "name": "Ashen Crown Crossing",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 134,
+      "name": "Ashen Crown Hollow",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 135,
+      "name": "Ashen Crown Ridge",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 136,
+      "name": "Ashen Crown Basin",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 137,
+      "name": "Ashen Crown Gate",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 138,
+      "name": "Ashen Crown Spire",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 139,
+      "name": "Ashen Crown Mire",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 140,
+      "name": "Ashen Crown Terrace",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 141,
+      "name": "Ashen Crown Veil",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 142,
+      "name": "Ashen Crown Heart",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 143,
+      "name": "Ashen Crown Crown",
+      "region": "Ashen Crown",
+      "faction": "ember"
+    },
+    {
+      "number": 144,
+      "name": "Stormcoast Foothills",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 145,
+      "name": "Stormcoast Trail",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 146,
+      "name": "Stormcoast Crossing",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 147,
+      "name": "Stormcoast Hollow",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 148,
+      "name": "Stormcoast Ridge",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 149,
+      "name": "Stormcoast Basin",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 150,
+      "name": "Stormcoast Gate",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 151,
+      "name": "Stormcoast Spire",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 152,
+      "name": "Stormcoast Mire",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 153,
+      "name": "Stormcoast Terrace",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 154,
+      "name": "Stormcoast Veil",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 155,
+      "name": "Stormcoast Heart",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 156,
+      "name": "Stormcoast Crown",
+      "region": "Stormcoast",
+      "faction": "volt"
+    },
+    {
+      "number": 157,
+      "name": "Pale Aurora Foothills",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 158,
+      "name": "Pale Aurora Trail",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 159,
+      "name": "Pale Aurora Crossing",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 160,
+      "name": "Pale Aurora Hollow",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 161,
+      "name": "Pale Aurora Ridge",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 162,
+      "name": "Pale Aurora Basin",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 163,
+      "name": "Pale Aurora Gate",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 164,
+      "name": "Pale Aurora Spire",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 165,
+      "name": "Pale Aurora Mire",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 166,
+      "name": "Pale Aurora Terrace",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 167,
+      "name": "Pale Aurora Veil",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 168,
+      "name": "Pale Aurora Heart",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 169,
+      "name": "Pale Aurora Crown",
+      "region": "Pale Aurora",
+      "faction": "frost"
+    },
+    {
+      "number": 170,
+      "name": "Hollow Star Foothills",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 171,
+      "name": "Hollow Star Trail",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 172,
+      "name": "Hollow Star Crossing",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 173,
+      "name": "Hollow Star Hollow",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 174,
+      "name": "Hollow Star Ridge",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 175,
+      "name": "Hollow Star Basin",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 176,
+      "name": "Hollow Star Gate",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 177,
+      "name": "Hollow Star Spire",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 178,
+      "name": "Hollow Star Mire",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 179,
+      "name": "Hollow Star Terrace",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 180,
+      "name": "Hollow Star Veil",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 181,
+      "name": "Hollow Star Heart",
+      "region": "Hollow Star",
+      "faction": "shade"
+    },
+    {
+      "number": 182,
+      "name": "Hollow Star Crown",
+      "region": "Hollow Star",
+      "faction": "shade"
+    }
+  ],
+  "gyms": [
+    {
+      "id": "gym-1",
+      "index": 1,
+      "chapter": 3,
+      "name": "Cinderwatch Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "gengar",
+          "level": 13,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "typhlosion",
+          "level": 13,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "hydreigon",
+          "level": 13,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 14,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "typhlosion",
+          "level": 14,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "ninetales",
+          "level": 14,
+          "stars": 2,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 6500,
+        "gems": 106,
+        "candy": 2300,
+        "shard": 21,
+        "xp": 230
+      },
+      "repeat": {
+        "gold": 1300
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-2",
+      "index": 2,
+      "chapter": 6,
+      "name": "Ashbell Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "hydreigon",
+          "level": 17,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 17,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "hydreigon",
+          "level": 17,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "blaziken",
+          "level": 18,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "gengar",
+          "level": 18,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "gengar",
+          "level": 18,
+          "stars": 2,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 8000,
+        "gems": 112,
+        "candy": 2600,
+        "shard": 23,
+        "xp": 260
+      },
+      "repeat": {
+        "gold": 1600
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-3",
+      "index": 3,
+      "chapter": 9,
+      "name": "Emberford Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "typhlosion",
+          "level": 19,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "typhlosion",
+          "level": 19,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "hydreigon",
+          "level": 19,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 20,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 20,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "gengar",
+          "level": 20,
+          "stars": 2,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 9500,
+        "gems": 118,
+        "candy": 2900,
+        "shard": 24,
+        "xp": 290
+      },
+      "repeat": {
+        "gold": 1900
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-4",
+      "index": 4,
+      "chapter": 12,
+      "name": "Coalcrest Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "hydreigon",
+          "level": 21,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 21,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "tyranitar",
+          "level": 21,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 22,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "hydreigon",
+          "level": 22,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "tyranitar",
+          "level": 22,
+          "stars": 2,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 11000,
+        "gems": 124,
+        "candy": 3200,
+        "shard": 26,
+        "xp": 320
+      },
+      "repeat": {
+        "gold": 2200
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-5",
+      "index": 5,
+      "chapter": 15,
+      "name": "Sootspire Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "gengar",
+          "level": 23,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "ninetales",
+          "level": 23,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 23,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "gengar",
+          "level": 24,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "ninetales",
+          "level": 24,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 24,
+          "stars": 2,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 12500,
+        "gems": 130,
+        "candy": 3500,
+        "shard": 27,
+        "xp": 350
+      },
+      "repeat": {
+        "gold": 2500
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-6",
+      "index": 6,
+      "chapter": 18,
+      "name": "Flamewell Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "hydreigon",
+          "level": 25,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 25,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "ninetales",
+          "level": 25,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "charizard",
+          "level": 26,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "typhlosion",
+          "level": 26,
+          "stars": 2,
+          "stage": 0
+        },
+        {
+          "speciesId": "hydreigon",
+          "level": 26,
+          "stars": 2,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 14000,
+        "gems": 136,
+        "candy": 3800,
+        "shard": 29,
+        "xp": 380
+      },
+      "repeat": {
+        "gold": 2800
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-7",
+      "index": 7,
+      "chapter": 21,
+      "name": "Scorchgate Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "entei",
+          "level": 27,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "gengar",
+          "level": 27,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "entei",
+          "level": 27,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "blaziken",
+          "level": 28,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "hydreigon",
+          "level": 28,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "moltres",
+          "level": 28,
+          "stars": 3,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 15500,
+        "gems": 142,
+        "candy": 4100,
+        "shard": 30,
+        "xp": 410
+      },
+      "repeat": {
+        "gold": 3100
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-8",
+      "index": 8,
+      "chapter": 24,
+      "name": "Magmaward Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "moltres",
+          "level": 29,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "entei",
+          "level": 29,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "typhlosion",
+          "level": 29,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "tyranitar",
+          "level": 30,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "typhlosion",
+          "level": 30,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "typhlosion",
+          "level": 30,
+          "stars": 3,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 17000,
+        "gems": 148,
+        "candy": 4400,
+        "shard": 32,
+        "xp": 440
+      },
+      "repeat": {
+        "gold": 3400
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-9",
+      "index": 9,
+      "chapter": 27,
+      "name": "Cinderhall Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "entei",
+          "level": 31,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "moltres",
+          "level": 31,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "entei",
+          "level": 31,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "tyranitar",
+          "level": 32,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "entei",
+          "level": 32,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "blaziken",
+          "level": 32,
+          "stars": 3,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 18500,
+        "gems": 154,
+        "candy": 4700,
+        "shard": 33,
+        "xp": 470
+      },
+      "repeat": {
+        "gold": 3700
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-10",
+      "index": 10,
+      "chapter": 30,
+      "name": "Pyrelight Gym",
+      "region": "Emberfall",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "entei",
+          "level": 33,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "gengar",
+          "level": 33,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "blaziken",
+          "level": 33,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "tyranitar",
+          "level": 34,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "entei",
+          "level": 34,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "hydreigon",
+          "level": 34,
+          "stars": 3,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 20000,
+        "gems": 160,
+        "candy": 5000,
+        "shard": 35,
+        "xp": 500
+      },
+      "repeat": {
+        "gold": 4000
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-11",
+      "index": 11,
+      "chapter": 33,
+      "name": "Saltglass Gym",
+      "region": "Tidewake",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "suicune",
+          "level": 35,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "gyarados",
+          "level": 35,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "dragonite",
+          "level": 35,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "gyarados",
+          "level": 36,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "swampert",
+          "level": 36,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "suicune",
+          "level": 36,
+          "stars": 3,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 21500,
+        "gems": 166,
+        "candy": 5300,
+        "shard": 36,
+        "xp": 530
+      },
+      "repeat": {
+        "gold": 4300
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-12",
+      "index": 12,
+      "chapter": 36,
+      "name": "Wavecrest Gym",
+      "region": "Tidewake",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "suicune",
+          "level": 37,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "garchomp",
+          "level": 37,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "slaking",
+          "level": 37,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "garchomp",
+          "level": 38,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "articuno",
+          "level": 38,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "feraligatr",
+          "level": 38,
+          "stars": 3,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 23000,
+        "gems": 172,
+        "candy": 5600,
+        "shard": 38,
+        "xp": 560
+      },
+      "repeat": {
+        "gold": 4600
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-13",
+      "index": 13,
+      "chapter": 39,
+      "name": "Coralstep Gym",
+      "region": "Tidewake",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "articuno",
+          "level": 39,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "feraligatr",
+          "level": 39,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "slaking",
+          "level": 39,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "articuno",
+          "level": 40,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "articuno",
+          "level": 40,
+          "stars": 3,
+          "stage": 0
+        },
+        {
+          "speciesId": "slaking",
+          "level": 40,
+          "stars": 3,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 24500,
+        "gems": 178,
+        "candy": 5900,
+        "shard": 39,
+        "xp": 590
+      },
+      "repeat": {
+        "gold": 4900
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-14",
+      "index": 14,
+      "chapter": 42,
+      "name": "Tidebell Gym",
+      "region": "Tidewake",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "articuno",
+          "level": 41,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "articuno",
+          "level": 41,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "feraligatr",
+          "level": 41,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "suicune",
+          "level": 42,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "suicune",
+          "level": 42,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "swampert",
+          "level": 42,
+          "stars": 4,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 26000,
+        "gems": 184,
+        "candy": 6200,
+        "shard": 41,
+        "xp": 620
+      },
+      "repeat": {
+        "gold": 5200
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-15",
+      "index": 15,
+      "chapter": 45,
+      "name": "Mossring Gym",
+      "region": "Groveheart",
+      "faction": "grove",
+      "enemies": [
+        {
+          "speciesId": "raikou",
+          "level": 43,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "gardevoir",
+          "level": 43,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "metagross",
+          "level": 43,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "zapdos",
+          "level": 44,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "zapdos",
+          "level": 44,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "gardevoir",
+          "level": 44,
+          "stars": 4,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 27500,
+        "gems": 190,
+        "candy": 6500,
+        "shard": 42,
+        "xp": 650
+      },
+      "repeat": {
+        "gold": 5500
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-16",
+      "index": 16,
+      "chapter": 48,
+      "name": "Thornvale Gym",
+      "region": "Groveheart",
+      "faction": "grove",
+      "enemies": [
+        {
+          "speciesId": "shiny-raichu",
+          "level": 45,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "shiny-god-ash-pikachu",
+          "level": 45,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "shiny-raichu",
+          "level": 45,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "shiny-raichu",
+          "level": 46,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "celebi",
+          "level": 46,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "zapdos",
+          "level": 46,
+          "stars": 4,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 29000,
+        "gems": 196,
+        "candy": 6800,
+        "shard": 44,
+        "xp": 680
+      },
+      "repeat": {
+        "gold": 5800
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-17",
+      "index": 17,
+      "chapter": 51,
+      "name": "Fernwatch Gym",
+      "region": "Groveheart",
+      "faction": "grove",
+      "enemies": [
+        {
+          "speciesId": "zygarde",
+          "level": 47,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "rayquaza",
+          "level": 47,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "shiny-raichu",
+          "level": 47,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "raikou",
+          "level": 48,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "celebi",
+          "level": 48,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "wobbuffet",
+          "level": 48,
+          "stars": 4,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 30500,
+        "gems": 202,
+        "candy": 7100,
+        "shard": 45,
+        "xp": 710
+      },
+      "repeat": {
+        "gold": 6100
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-18",
+      "index": 18,
+      "chapter": 54,
+      "name": "Bloomstead Gym",
+      "region": "Groveheart",
+      "faction": "grove",
+      "enemies": [
+        {
+          "speciesId": "wobbuffet",
+          "level": 49,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "god-ash-pikachu",
+          "level": 49,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "god-ash-pikachu",
+          "level": 49,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "shaymin",
+          "level": 50,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "god-ash-pikachu",
+          "level": 50,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "god-ash-pikachu",
+          "level": 50,
+          "stars": 4,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 32000,
+        "gems": 208,
+        "candy": 7400,
+        "shard": 47,
+        "xp": 740
+      },
+      "repeat": {
+        "gold": 6400
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-19",
+      "index": 19,
+      "chapter": 57,
+      "name": "Rootgarden Gym",
+      "region": "Groveheart",
+      "faction": "grove",
+      "enemies": [
+        {
+          "speciesId": "rayquaza",
+          "level": 50,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "dialga",
+          "level": 50,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "shaymin",
+          "level": 50,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "shaymin",
+          "level": 51,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "shiny-venusaur",
+          "level": 51,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "shiny-venusaur",
+          "level": 51,
+          "stars": 4,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 33500,
+        "gems": 214,
+        "candy": 7700,
+        "shard": 48,
+        "xp": 770
+      },
+      "repeat": {
+        "gold": 6700
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-20",
+      "index": 20,
+      "chapter": 60,
+      "name": "Canopyhall Gym",
+      "region": "Groveheart",
+      "faction": "grove",
+      "enemies": [
+        {
+          "speciesId": "shiny-god-ash-pikachu",
+          "level": 52,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "rayquaza",
+          "level": 52,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "raikou",
+          "level": 52,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "wobbuffet",
+          "level": 53,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "celebi",
+          "level": 53,
+          "stars": 4,
+          "stage": 0
+        },
+        {
+          "speciesId": "raikou",
+          "level": 53,
+          "stars": 4,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 35000,
+        "gems": 220,
+        "candy": 8000,
+        "shard": 50,
+        "xp": 800
+      },
+      "repeat": {
+        "gold": 7000
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-21",
+      "index": 21,
+      "chapter": 63,
+      "name": "Sparkpoint Gym",
+      "region": "Voltspire",
+      "faction": "volt",
+      "enemies": [
+        {
+          "speciesId": "zacian",
+          "level": 54,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "snorlax",
+          "level": 54,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "zacian",
+          "level": 54,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "mew",
+          "level": 55,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "mew",
+          "level": 55,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "shiny-kyogre",
+          "level": 55,
+          "stars": 5,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 36500,
+        "gems": 226,
+        "candy": 8300,
+        "shard": 51,
+        "xp": 830
+      },
+      "repeat": {
+        "gold": 7300
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-22",
+      "index": 22,
+      "chapter": 66,
+      "name": "Stormloom Gym",
+      "region": "Voltspire",
+      "faction": "volt",
+      "enemies": [
+        {
+          "speciesId": "zacian",
+          "level": 56,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "wind-god-pidgeot",
+          "level": 56,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "jirachi",
+          "level": 56,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "zacian",
+          "level": 57,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "mew",
+          "level": 57,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "jirachi",
+          "level": 57,
+          "stars": 5,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 38000,
+        "gems": 232,
+        "candy": 8600,
+        "shard": 53,
+        "xp": 860
+      },
+      "repeat": {
+        "gold": 7600
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-23",
+      "index": 23,
+      "chapter": 69,
+      "name": "Arcway Gym",
+      "region": "Voltspire",
+      "faction": "volt",
+      "enemies": [
+        {
+          "speciesId": "mew",
+          "level": 58,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "zacian",
+          "level": 58,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "zacian",
+          "level": 58,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "shiny-cresselia",
+          "level": 59,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "zacian",
+          "level": 59,
+          "stars": 5,
+          "stage": 0
+        },
+        {
+          "speciesId": "shiny-cresselia",
+          "level": 59,
+          "stars": 5,
+          "stage": 0
+        }
+      ],
+      "firstClear": {
+        "gold": 39500,
+        "gems": 238,
+        "candy": 8900,
+        "shard": 54,
+        "xp": 890
+      },
+      "repeat": {
+        "gold": 7900
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-24",
+      "index": 24,
+      "chapter": 72,
+      "name": "Thunderrest Gym",
+      "region": "Voltspire",
+      "faction": "volt",
+      "enemies": [
+        {
+          "speciesId": "shiny-cresselia",
+          "level": 60,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-cresselia",
+          "level": 60,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-kyogre",
+          "level": 60,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "wind-god-pidgeot",
+          "level": 61,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-kyogre",
+          "level": 61,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "wind-god-pidgeot",
+          "level": 61,
+          "stars": 5,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 41000,
+        "gems": 244,
+        "candy": 9200,
+        "shard": 56,
+        "xp": 920
+      },
+      "repeat": {
+        "gold": 8200
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-25",
+      "index": 25,
+      "chapter": 75,
+      "name": "Coilspire Gym",
+      "region": "Voltspire",
+      "faction": "volt",
+      "enemies": [
+        {
+          "speciesId": "wind-god-pidgeot",
+          "level": 62,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "zacian",
+          "level": 62,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "snorlax",
+          "level": 62,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "jirachi",
+          "level": 63,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "jirachi",
+          "level": 63,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "zacian",
+          "level": 63,
+          "stars": 5,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 42500,
+        "gems": 250,
+        "candy": 9500,
+        "shard": 57,
+        "xp": 950
+      },
+      "repeat": {
+        "gold": 8500
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-26",
+      "index": 26,
+      "chapter": 78,
+      "name": "Voltgard Gym",
+      "region": "Voltspire",
+      "faction": "volt",
+      "enemies": [
+        {
+          "speciesId": "jirachi",
+          "level": 64,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "calyrex",
+          "level": 64,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "snorlax",
+          "level": 64,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "zacian",
+          "level": 65,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "mew",
+          "level": 65,
+          "stars": 5,
+          "stage": 1
+        },
+        {
+          "speciesId": "jirachi",
+          "level": 65,
+          "stars": 5,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 44000,
+        "gems": 256,
+        "candy": 9800,
+        "shard": 59,
+        "xp": 980
+      },
+      "repeat": {
+        "gold": 8800
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-27",
+      "index": 27,
+      "chapter": 81,
+      "name": "Snowveil Gym",
+      "region": "Frostmere",
+      "faction": "frost",
+      "enemies": [
+        {
+          "speciesId": "arceus",
+          "level": 66,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "cresselia",
+          "level": 66,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "cresselia",
+          "level": 66,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "solgaleo",
+          "level": 67,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "necrozma",
+          "level": 67,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-arceus",
+          "level": 67,
+          "stars": 6,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 45500,
+        "gems": 262,
+        "candy": 10100,
+        "shard": 60,
+        "xp": 1010
+      },
+      "repeat": {
+        "gold": 9100
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-28",
+      "index": 28,
+      "chapter": 84,
+      "name": "Rimegate Gym",
+      "region": "Frostmere",
+      "faction": "frost",
+      "enemies": [
+        {
+          "speciesId": "arceus",
+          "level": 68,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "solgaleo",
+          "level": 68,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "kyogre",
+          "level": 68,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "solgaleo",
+          "level": 69,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "cresselia",
+          "level": 69,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-arceus",
+          "level": 69,
+          "stars": 6,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 47000,
+        "gems": 268,
+        "candy": 10400,
+        "shard": 62,
+        "xp": 1040
+      },
+      "repeat": {
+        "gold": 9400
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-29",
+      "index": 29,
+      "chapter": 87,
+      "name": "Glacierhold Gym",
+      "region": "Frostmere",
+      "faction": "frost",
+      "enemies": [
+        {
+          "speciesId": "solgaleo",
+          "level": 70,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "solgaleo",
+          "level": 70,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mew",
+          "level": 70,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-arceus",
+          "level": 71,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "necrozma",
+          "level": 71,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "necrozma",
+          "level": 71,
+          "stars": 6,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 48500,
+        "gems": 274,
+        "candy": 10700,
+        "shard": 63,
+        "xp": 1070
+      },
+      "repeat": {
+        "gold": 9700
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-30",
+      "index": 30,
+      "chapter": 90,
+      "name": "Hailwatch Gym",
+      "region": "Frostmere",
+      "faction": "frost",
+      "enemies": [
+        {
+          "speciesId": "shiny-arceus",
+          "level": 72,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "cresselia",
+          "level": 72,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-arceus",
+          "level": 72,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "solgaleo",
+          "level": 73,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "necrozma",
+          "level": 73,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "kyogre",
+          "level": 73,
+          "stars": 6,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 50000,
+        "gems": 280,
+        "candy": 11000,
+        "shard": 65,
+        "xp": 1100
+      },
+      "repeat": {
+        "gold": 10000
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-31",
+      "index": 31,
+      "chapter": 93,
+      "name": "Frostbell Gym",
+      "region": "Frostmere",
+      "faction": "frost",
+      "enemies": [
+        {
+          "speciesId": "arceus",
+          "level": 74,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "necrozma",
+          "level": 74,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mew",
+          "level": 74,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mew",
+          "level": 75,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "arceus",
+          "level": 75,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "kyogre",
+          "level": 75,
+          "stars": 6,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 51500,
+        "gems": 286,
+        "candy": 11300,
+        "shard": 66,
+        "xp": 1130
+      },
+      "repeat": {
+        "gold": 10300
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-32",
+      "index": 32,
+      "chapter": 96,
+      "name": "Iceward Gym",
+      "region": "Frostmere",
+      "faction": "frost",
+      "enemies": [
+        {
+          "speciesId": "solgaleo",
+          "level": 76,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "cresselia",
+          "level": 76,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "kyogre",
+          "level": 76,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "cresselia",
+          "level": 77,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "kyogre",
+          "level": 77,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "necrozma",
+          "level": 77,
+          "stars": 6,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 53000,
+        "gems": 292,
+        "candy": 11600,
+        "shard": 68,
+        "xp": 1160
+      },
+      "repeat": {
+        "gold": 10600
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-33",
+      "index": 33,
+      "chapter": 99,
+      "name": "Duskwatch Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "origin-rayquaza",
+          "level": 78,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "black-kyurem",
+          "level": 78,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "black-kyurem",
+          "level": 78,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "lunala",
+          "level": 79,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "hoopa",
+          "level": 79,
+          "stars": 6,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mewtwo",
+          "level": 79,
+          "stars": 6,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 54500,
+        "gems": 298,
+        "candy": 11900,
+        "shard": 69,
+        "xp": 1190
+      },
+      "repeat": {
+        "gold": 10900
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-34",
+      "index": 34,
+      "chapter": 102,
+      "name": "Nightglass Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "origin-rayquaza",
+          "level": 80,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-lugia",
+          "level": 80,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mewtwo",
+          "level": 80,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "black-kyurem",
+          "level": 81,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-darkrai",
+          "level": 81,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "lunala",
+          "level": 81,
+          "stars": 7,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 56000,
+        "gems": 304,
+        "candy": 12200,
+        "shard": 71,
+        "xp": 1220
+      },
+      "repeat": {
+        "gold": 11200
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-35",
+      "index": 35,
+      "chapter": 105,
+      "name": "Umbrafall Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "shiny-kyurem",
+          "level": 82,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "hoopa",
+          "level": 82,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shadow-mewtwo",
+          "level": 82,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-kyurem",
+          "level": 83,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shadow-mewtwo",
+          "level": 83,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mewtwo",
+          "level": 83,
+          "stars": 7,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 57500,
+        "gems": 310,
+        "candy": 12500,
+        "shard": 72,
+        "xp": 1250
+      },
+      "repeat": {
+        "gold": 11500
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-36",
+      "index": 36,
+      "chapter": 108,
+      "name": "Veilspire Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "origin-rayquaza",
+          "level": 84,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "black-kyurem",
+          "level": 84,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-hoopa",
+          "level": 84,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-rayquaza",
+          "level": 85,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mewtwo",
+          "level": 85,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "lunala",
+          "level": 85,
+          "stars": 7,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 59000,
+        "gems": 316,
+        "candy": 12800,
+        "shard": 74,
+        "xp": 1280
+      },
+      "repeat": {
+        "gold": 11800
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-37",
+      "index": 37,
+      "chapter": 111,
+      "name": "Hollowcrown Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "origin-lugia",
+          "level": 86,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-kyurem",
+          "level": 86,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "black-kyurem",
+          "level": 86,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "deoxys",
+          "level": 87,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "hoopa",
+          "level": 87,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "darkrai",
+          "level": 87,
+          "stars": 7,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 60500,
+        "gems": 322,
+        "candy": 13100,
+        "shard": 75,
+        "xp": 1310
+      },
+      "repeat": {
+        "gold": 12100
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-38",
+      "index": 38,
+      "chapter": 114,
+      "name": "Shadowfen Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "meloetta",
+          "level": 88,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-lugia",
+          "level": 88,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mewtwo",
+          "level": 88,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shadow-mewtwo",
+          "level": 89,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "darkrai",
+          "level": 89,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "hoopa",
+          "level": 89,
+          "stars": 7,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 62000,
+        "gems": 328,
+        "candy": 13400,
+        "shard": 77,
+        "xp": 1340
+      },
+      "repeat": {
+        "gold": 12400
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-39",
+      "index": 39,
+      "chapter": 117,
+      "name": "Gloomgate Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "shiny-hoopa",
+          "level": 89,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-hoopa",
+          "level": 89,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mewtwo",
+          "level": 89,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "darkrai",
+          "level": 90,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mewtwo",
+          "level": 90,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "deoxys",
+          "level": 90,
+          "stars": 7,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 63500,
+        "gems": 334,
+        "candy": 13700,
+        "shard": 78,
+        "xp": 1370
+      },
+      "repeat": {
+        "gold": 12700
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-40",
+      "index": 40,
+      "chapter": 120,
+      "name": "Starless Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "shiny-hoopa",
+          "level": 91,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "deoxys",
+          "level": 91,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "mewtwo",
+          "level": 91,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-mewtwo",
+          "level": 92,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-rayquaza",
+          "level": 92,
+          "stars": 7,
+          "stage": 1
+        },
+        {
+          "speciesId": "black-kyurem",
+          "level": 92,
+          "stars": 7,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 65000,
+        "gems": 340,
+        "candy": 14000,
+        "shard": 80,
+        "xp": 1400
+      },
+      "repeat": {
+        "gold": 13000
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-41",
+      "index": 41,
+      "chapter": 123,
+      "name": "Murkhold Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "shiny-hoopa",
+          "level": 93,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "hoopa",
+          "level": 93,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "darkrai",
+          "level": 93,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-rayquaza",
+          "level": 94,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-lugia",
+          "level": 94,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "deoxys",
+          "level": 94,
+          "stars": 8,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 66500,
+        "gems": 346,
+        "candy": 14300,
+        "shard": 81,
+        "xp": 1430
+      },
+      "repeat": {
+        "gold": 13300
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-42",
+      "index": 42,
+      "chapter": 126,
+      "name": "Blackthorn Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "mewtwo",
+          "level": 95,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "hoopa",
+          "level": 95,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-kyurem",
+          "level": 95,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-hoopa",
+          "level": 96,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shadow-mewtwo",
+          "level": 96,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "hoopa",
+          "level": 96,
+          "stars": 8,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 68000,
+        "gems": 352,
+        "candy": 14600,
+        "shard": 83,
+        "xp": 1460
+      },
+      "repeat": {
+        "gold": 13600
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-43",
+      "index": 43,
+      "chapter": 129,
+      "name": "Eclipsestead Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "origin-lugia",
+          "level": 97,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "meloetta",
+          "level": 97,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "mewtwo",
+          "level": 97,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-hoopa",
+          "level": 98,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shadow-mewtwo",
+          "level": 98,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-lugia",
+          "level": 98,
+          "stars": 8,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 69500,
+        "gems": 358,
+        "candy": 14900,
+        "shard": 84,
+        "xp": 1490
+      },
+      "repeat": {
+        "gold": 13900
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-44",
+      "index": 44,
+      "chapter": 132,
+      "name": "Silent Court Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "shiny-hoopa",
+          "level": 99,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "deoxys",
+          "level": 99,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-kyurem",
+          "level": 99,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-lugia",
+          "level": 100,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-kyurem",
+          "level": 100,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-hoopa",
+          "level": 100,
+          "stars": 8,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 71000,
+        "gems": 364,
+        "candy": 15200,
+        "shard": 86,
+        "xp": 1520
+      },
+      "repeat": {
+        "gold": 14200
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-45",
+      "index": 45,
+      "chapter": 135,
+      "name": "Last Lantern Gym",
+      "region": "Shadeveil",
+      "faction": "shade",
+      "enemies": [
+        {
+          "speciesId": "hoopa",
+          "level": 101,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "black-kyurem",
+          "level": 101,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-rayquaza",
+          "level": 101,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "origin-lugia",
+          "level": 102,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "lunala",
+          "level": 102,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "lunala",
+          "level": 102,
+          "stars": 8,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 72500,
+        "gems": 370,
+        "candy": 15500,
+        "shard": 87,
+        "xp": 1550
+      },
+      "repeat": {
+        "gold": 14500
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-46",
+      "index": 46,
+      "chapter": 138,
+      "name": "Brinehall Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "psyduck",
+          "level": 103,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "greninja",
+          "level": 103,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-blastoise",
+          "level": 103,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "keldeo",
+          "level": 104,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "shiny-blastoise",
+          "level": 104,
+          "stars": 8,
+          "stage": 1
+        },
+        {
+          "speciesId": "palkia",
+          "level": 104,
+          "stars": 8,
+          "stage": 1
+        }
+      ],
+      "firstClear": {
+        "gold": 74000,
+        "gems": 376,
+        "candy": 15800,
+        "shard": 89,
+        "xp": 1580
+      },
+      "repeat": {
+        "gold": 14800
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-47",
+      "index": 47,
+      "chapter": 141,
+      "name": "Choraldeep Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "keldeo",
+          "level": 105,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "keldeo",
+          "level": 105,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "lugia",
+          "level": 105,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-blastoise",
+          "level": 106,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "lugia",
+          "level": 106,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "manaphy",
+          "level": 106,
+          "stars": 9,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 75500,
+        "gems": 382,
+        "candy": 16100,
+        "shard": 90,
+        "xp": 1610
+      },
+      "repeat": {
+        "gold": 15100
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-48",
+      "index": 48,
+      "chapter": 144,
+      "name": "Kelpward Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "psyduck",
+          "level": 107,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "keldeo",
+          "level": 107,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 107,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "greninja",
+          "level": 108,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "lugia",
+          "level": 108,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-blastoise",
+          "level": 108,
+          "stars": 9,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 77000,
+        "gems": 388,
+        "candy": 16400,
+        "shard": 92,
+        "xp": 1640
+      },
+      "repeat": {
+        "gold": 15400
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-49",
+      "index": 49,
+      "chapter": 147,
+      "name": "Pearlrest Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "psyduck",
+          "level": 109,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "xerneas",
+          "level": 109,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "psyduck",
+          "level": 109,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "greninja",
+          "level": 110,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "manaphy",
+          "level": 110,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "keldeo",
+          "level": 110,
+          "stars": 9,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 78500,
+        "gems": 394,
+        "candy": 16700,
+        "shard": 93,
+        "xp": 1670
+      },
+      "repeat": {
+        "gold": 15700
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-50",
+      "index": 50,
+      "chapter": 150,
+      "name": "Drowned Bell Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "keldeo",
+          "level": 111,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "manaphy",
+          "level": 111,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "keldeo",
+          "level": 111,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "xerneas",
+          "level": 112,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "manaphy",
+          "level": 112,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 112,
+          "stars": 9,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 80000,
+        "gems": 400,
+        "candy": 17000,
+        "shard": 95,
+        "xp": 1700
+      },
+      "repeat": {
+        "gold": 16000
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-51",
+      "index": 51,
+      "chapter": 153,
+      "name": "Reefsong Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "palkia",
+          "level": 113,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "lugia",
+          "level": 113,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "lugia",
+          "level": 113,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 114,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-blastoise",
+          "level": 114,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "manaphy",
+          "level": 114,
+          "stars": 9,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 81500,
+        "gems": 406,
+        "candy": 17300,
+        "shard": 96,
+        "xp": 1730
+      },
+      "repeat": {
+        "gold": 16300
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-52",
+      "index": 52,
+      "chapter": 156,
+      "name": "Abyssal Step Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "shiny-blastoise",
+          "level": 115,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-blastoise",
+          "level": 115,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "greninja",
+          "level": 115,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "greninja",
+          "level": 116,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 116,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "lugia",
+          "level": 116,
+          "stars": 9,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 83000,
+        "gems": 412,
+        "candy": 17600,
+        "shard": 98,
+        "xp": 1760
+      },
+      "repeat": {
+        "gold": 16600
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-53",
+      "index": 53,
+      "chapter": 159,
+      "name": "Tidecrypt Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "keldeo",
+          "level": 117,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "greninja",
+          "level": 117,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 117,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 118,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "keldeo",
+          "level": 118,
+          "stars": 9,
+          "stage": 2
+        },
+        {
+          "speciesId": "psyduck",
+          "level": 118,
+          "stars": 9,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 84500,
+        "gems": 418,
+        "candy": 17900,
+        "shard": 99,
+        "xp": 1790
+      },
+      "repeat": {
+        "gold": 16900
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-54",
+      "index": 54,
+      "chapter": 162,
+      "name": "Coral Choir Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "keldeo",
+          "level": 119,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 119,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "xerneas",
+          "level": 119,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "psyduck",
+          "level": 120,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 120,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "psyduck",
+          "level": 120,
+          "stars": 10,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 86000,
+        "gems": 424,
+        "candy": 18200,
+        "shard": 101,
+        "xp": 1820
+      },
+      "repeat": {
+        "gold": 17200
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-55",
+      "index": 55,
+      "chapter": 165,
+      "name": "Deepcurrent Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "palkia",
+          "level": 121,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "manaphy",
+          "level": 121,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "keldeo",
+          "level": 121,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "greninja",
+          "level": 122,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-blastoise",
+          "level": 122,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "manaphy",
+          "level": 122,
+          "stars": 10,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 87500,
+        "gems": 430,
+        "candy": 18500,
+        "shard": 102,
+        "xp": 1850
+      },
+      "repeat": {
+        "gold": 17500
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-56",
+      "index": 56,
+      "chapter": 168,
+      "name": "Salt Cathedral Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "psyduck",
+          "level": 123,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "xerneas",
+          "level": 123,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "manaphy",
+          "level": 123,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "xerneas",
+          "level": 124,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "lugia",
+          "level": 124,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 124,
+          "stars": 10,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 89000,
+        "gems": 436,
+        "candy": 18800,
+        "shard": 104,
+        "xp": 1880
+      },
+      "repeat": {
+        "gold": 17800
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-57",
+      "index": 57,
+      "chapter": 171,
+      "name": "Sunken Crown Gym",
+      "region": "Sunken Chorus",
+      "faction": "tide",
+      "enemies": [
+        {
+          "speciesId": "greninja",
+          "level": 125,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "greninja",
+          "level": 125,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "palkia",
+          "level": 125,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-blastoise",
+          "level": 126,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "xerneas",
+          "level": 126,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "manaphy",
+          "level": 126,
+          "stars": 10,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 90500,
+        "gems": 442,
+        "candy": 19100,
+        "shard": 105,
+        "xp": 1910
+      },
+      "repeat": {
+        "gold": 18100
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-58",
+      "index": 58,
+      "chapter": 174,
+      "name": "Ashcrown Gym",
+      "region": "Ashen Crown",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "giratina",
+          "level": 127,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-charizard",
+          "level": 127,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "groudon",
+          "level": 127,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "giratina",
+          "level": 128,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-charizard",
+          "level": 128,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "groudon",
+          "level": 128,
+          "stars": 10,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 92000,
+        "gems": 448,
+        "candy": 19400,
+        "shard": 107,
+        "xp": 1940
+      },
+      "repeat": {
+        "gold": 18400
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-59",
+      "index": 59,
+      "chapter": 177,
+      "name": "Emberthrone Gym",
+      "region": "Ashen Crown",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "victini",
+          "level": 128,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "infernape",
+          "level": 128,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "giratina",
+          "level": 128,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "victini",
+          "level": 129,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "ho-oh",
+          "level": 129,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-gengar",
+          "level": 129,
+          "stars": 10,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 93500,
+        "gems": 454,
+        "candy": 19700,
+        "shard": 108,
+        "xp": 1970
+      },
+      "repeat": {
+        "gold": 18700
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "gym-60",
+      "index": 60,
+      "chapter": 180,
+      "name": "Final Pyre Gym",
+      "region": "Ashen Crown",
+      "faction": "ember",
+      "enemies": [
+        {
+          "speciesId": "victini",
+          "level": 130,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "groudon",
+          "level": 130,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "yveltal",
+          "level": 130,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "yveltal",
+          "level": 131,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "yveltal",
+          "level": 131,
+          "stars": 10,
+          "stage": 2
+        },
+        {
+          "speciesId": "shiny-charizard",
+          "level": 131,
+          "stars": 10,
+          "stage": 2
+        }
+      ],
+      "firstClear": {
+        "gold": 95000,
+        "gems": 460,
+        "candy": 20000,
+        "shard": 110,
+        "xp": 2000
+      },
+      "repeat": {
+        "gold": 19000
+      },
+      "starRounds": [
+        4,
+        8
+      ]
+    }
+  ]
+}

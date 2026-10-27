@@ -29,7 +29,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 13;
+export const SAVE_VERSION = 14;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -104,7 +104,10 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     ...state,
     schemaVersion: SAVE_VERSION,
     currencies: currenciesFrom(s.currencies ?? {}),
-    campaign: s.campaign ?? { stars: {} },
+    campaign: {
+      stars: s.campaign?.stars ?? {},
+      gyms: s.campaign?.gyms ?? {},
+    },
     idle: s.idle ?? initialIdle(now, day),
     quests: s.quests ?? emptyQuestState(day),
     mail: s.mail ?? [],
@@ -160,7 +163,7 @@ export function createInitialState(config: GameConfig): AccountState {
     strategies: defaultStrategies(),
     currencies: currenciesFrom(config.startingCurrencies),
     nextInstanceSeq: seq,
-    campaign: { stars: {} },
+    campaign: { stars: {}, gyms: {} },
     idle: initialIdle(now, day),
     quests: emptyQuestState(day),
     mail: [welcomeMail(config, now)],

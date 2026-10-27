@@ -48,7 +48,10 @@
     "starRounds": [
       6,
       12
-    ]
+    ],
+    "gate": {
+      "gymId": "gym-1"
+    }
   },
   {
     "id": "c3-2",
@@ -322,6 +325,239 @@
     "starRounds": [
       8,
       15
+    ]
+  },
+  {
+    "id": "c3-7",
+    "chapter": 3,
+    "index": 7,
+    "name": "Shadewood Fringe Rise",
+    "enemies": [
+      {
+        "speciesId": "sceptile",
+        "level": 13,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "sceptile",
+        "level": 13,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "gardevoir",
+        "level": 13,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "metagross",
+        "level": 13,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 1226,
+      "candy": 156,
+      "shard": 5,
+      "xp": 43
+    },
+    "repeat": {
+      "gold": 221,
+      "candy": 28,
+      "xp": 11
+    },
+    "idlePerMinute": {
+      "gold": 69,
+      "candy": 9,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": "c3-8",
+    "chapter": 3,
+    "index": 8,
+    "name": "Shadewood Fringe Deep",
+    "enemies": [
+      {
+        "speciesId": "gardevoir",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "gardevoir",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "metagross",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "meganium",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 1334,
+      "candy": 164,
+      "shard": 5,
+      "xp": 45
+    },
+    "repeat": {
+      "gold": 240,
+      "candy": 30,
+      "xp": 11
+    },
+    "idlePerMinute": {
+      "gold": 69,
+      "candy": 9,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": "c3-9",
+    "chapter": 3,
+    "index": 9,
+    "name": "Shadewood Fringe Crown",
+    "enemies": [
+      {
+        "speciesId": "venusaur",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "salamence",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "meganium",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 14,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 1441,
+      "candy": 172,
+      "shard": 5,
+      "xp": 47
+    },
+    "repeat": {
+      "gold": 259,
+      "candy": 31,
+      "xp": 12
+    },
+    "idlePerMinute": {
+      "gold": 69,
+      "candy": 10,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": "c3-10",
+    "chapter": 3,
+    "index": 10,
+    "name": "Shadewood Fringe Summit",
+    "enemies": [
+      {
+        "speciesId": "gardevoir",
+        "level": 15,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "metagross",
+        "level": 15,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 15,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "venusaur",
+        "level": 15,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "meganium",
+        "level": 15,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "gardevoir",
+        "level": 15,
+        "stars": 2,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 1549,
+      "gems": 21,
+      "candy": 180,
+      "shard": 10,
+      "xp": 49
+    },
+    "repeat": {
+      "gold": 279,
+      "candy": 32,
+      "xp": 12
+    },
+    "idlePerMinute": {
+      "gold": 69,
+      "candy": 10,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
     ]
   }
 ]

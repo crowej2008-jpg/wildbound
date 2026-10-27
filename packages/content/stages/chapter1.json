@@ -251,5 +251,238 @@
       5,
       10
     ]
+  },
+  {
+    "id": "c1-7",
+    "chapter": 1,
+    "index": 7,
+    "name": "Hatchling Trail Rise",
+    "enemies": [
+      {
+        "speciesId": "blaziken",
+        "level": 5,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "hydreigon",
+        "level": 5,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "typhlosion",
+        "level": 5,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "hydreigon",
+        "level": 5,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 400,
+      "candy": 86,
+      "shard": 5,
+      "xp": 37
+    },
+    "repeat": {
+      "gold": 72,
+      "candy": 15,
+      "xp": 9
+    },
+    "idlePerMinute": {
+      "gold": 61,
+      "candy": 7,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": "c1-8",
+    "chapter": 1,
+    "index": 8,
+    "name": "Hatchling Trail Deep",
+    "enemies": [
+      {
+        "speciesId": "hydreigon",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "typhlosion",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "charizard",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "typhlosion",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "blaziken",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 440,
+      "candy": 94,
+      "shard": 5,
+      "xp": 39
+    },
+    "repeat": {
+      "gold": 79,
+      "candy": 17,
+      "xp": 10
+    },
+    "idlePerMinute": {
+      "gold": 62,
+      "candy": 7,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": "c1-9",
+    "chapter": 1,
+    "index": 9,
+    "name": "Hatchling Trail Crown",
+    "enemies": [
+      {
+        "speciesId": "ninetales",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "ninetales",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "charizard",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "charizard",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "blaziken",
+        "level": 6,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 480,
+      "candy": 102,
+      "shard": 5,
+      "xp": 41
+    },
+    "repeat": {
+      "gold": 86,
+      "candy": 18,
+      "xp": 10
+    },
+    "idlePerMinute": {
+      "gold": 62,
+      "candy": 7,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": "c1-10",
+    "chapter": 1,
+    "index": 10,
+    "name": "Hatchling Trail Summit",
+    "enemies": [
+      {
+        "speciesId": "typhlosion",
+        "level": 7,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "typhlosion",
+        "level": 7,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "hydreigon",
+        "level": 7,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "blaziken",
+        "level": 7,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "typhlosion",
+        "level": 7,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "typhlosion",
+        "level": 7,
+        "stars": 2,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 520,
+      "gems": 20,
+      "candy": 110,
+      "shard": 10,
+      "xp": 43
+    },
+    "repeat": {
+      "gold": 94,
+      "candy": 20,
+      "xp": 11
+    },
+    "idlePerMinute": {
+      "gold": 62,
+      "candy": 7,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
   }
 ]

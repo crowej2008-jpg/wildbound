@@ -1,14 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import {
   bestIdleStage,
+  gateOf,
   isCleared,
+  isGymAvailable,
+  isGymCleared,
   isUnlocked,
   maxStars,
   nextStageId,
   orderStages,
+  recordGymClear,
   recordStars,
   starsForRounds,
   totalStars,
+  unmetGate,
   type CampaignProgress,
   type StageDef,
 } from './index';
@@ -31,6 +36,7 @@ const STAGES: StageDef[] = [
   stage('c1-1', 1, 1, 1),
   stage('c1-2', 1, 2, 2),
   stage('c2-1', 2, 1, 5),
+  { ...stage('c3-1', 3, 1, 6), gate: { gymId: 'gym-1' } },
 ];
 const ORDERED = orderStages(STAGES);
 const empty: CampaignProgress = { stars: {} };
@@ -60,7 +66,34 @@ describe('campaign', () => {
     p = recordStars(p, 'c1-1', 2);
     expect(p.stars['c1-1']).toBe(3);
     expect(totalStars(p)).toBe(3);
-    expect(maxStars(ORDERED)).toBe(9);
+    expect(maxStars(ORDERED)).toBe(12);
+  });
+
+  it('keeps a gated stage locked until its gym falls', () => {
+    const cleared: CampaignProgress = { stars: { 'c1-1': 3, 'c1-2': 3, 'c2-1': 3 } };
+    expect(gateOf(ORDERED[3]!)).toBe('gym-1');
+    expect(unmetGate(cleared, ORDERED, 'c3-1')).toBe('gym-1');
+    expect(isUnlocked(cleared, ORDERED, 'c3-1')).toBe(false);
+
+    const gymCleared = recordGymClear(cleared, 'gym-1');
+    expect(isGymCleared(gymCleared, 'gym-1')).toBe(true);
+    expect(unmetGate(gymCleared, ORDERED, 'c3-1')).toBeNull();
+    expect(isUnlocked(gymCleared, ORDERED, 'c3-1')).toBe(true);
+  });
+
+  it('opens a gym only after the stage before its gate is cleared', () => {
+    expect(isGymAvailable(empty, ORDERED, 'gym-1')).toBe(false);
+    const beforeGate: CampaignProgress = { stars: { 'c1-1': 3, 'c1-2': 3 } };
+    expect(isGymAvailable(beforeGate, ORDERED, 'gym-1')).toBe(false);
+    const ready: CampaignProgress = { stars: { ...beforeGate.stars, 'c2-1': 3 } };
+    expect(isGymAvailable(ready, ORDERED, 'gym-1')).toBe(true);
+    expect(isGymAvailable(recordGymClear(empty, 'gym-1'), ORDERED, 'gym-1')).toBe(true);
+  });
+
+  it('recording stars preserves gym clears', () => {
+    const p = recordGymClear({ stars: {} }, 'gym-1');
+    const next = recordStars(p, 'c3-1', 3);
+    expect(next.gyms?.['gym-1']).toBe(true);
   });
 
   it('picks the cleared stage with the best idle rate', () => {

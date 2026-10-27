@@ -52,7 +52,7 @@ function grownSave({ roster = ROSTER, currencies = {}, profile = {} }: SaveOptio
         ...currencies,
       },
       nextInstanceSeq: roster.length + 1,
-      campaign: { stars: { 'c2-6': 3, 'c3-6': 3 } },
+      campaign: { stars: { 'c2-10': 3, 'c3-10': 3 } },
       tutorial: { step: 0, done: true },
     },
   });

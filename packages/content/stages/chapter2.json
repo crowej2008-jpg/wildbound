@@ -293,5 +293,238 @@
       7,
       13
     ]
+  },
+  {
+    "id": "c2-7",
+    "chapter": 2,
+    "index": 7,
+    "name": "Frostline Approach Rise",
+    "enemies": [
+      {
+        "speciesId": "blastoise",
+        "level": 10,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "gyarados",
+        "level": 10,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "slaking",
+        "level": 10,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "blastoise",
+        "level": 10,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 808,
+      "candy": 120,
+      "shard": 5,
+      "xp": 40
+    },
+    "repeat": {
+      "gold": 145,
+      "candy": 22,
+      "xp": 10
+    },
+    "idlePerMinute": {
+      "gold": 65,
+      "candy": 8,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": "c2-8",
+    "chapter": 2,
+    "index": 8,
+    "name": "Frostline Approach Deep",
+    "enemies": [
+      {
+        "speciesId": "slaking",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "blastoise",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "dragonite",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "feraligatr",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "garchomp",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 883,
+      "candy": 128,
+      "shard": 5,
+      "xp": 42
+    },
+    "repeat": {
+      "gold": 159,
+      "candy": 23,
+      "xp": 11
+    },
+    "idlePerMinute": {
+      "gold": 65,
+      "candy": 8,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": "c2-9",
+    "chapter": 2,
+    "index": 9,
+    "name": "Frostline Approach Crown",
+    "enemies": [
+      {
+        "speciesId": "dragonite",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "slaking",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "starmie",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "blastoise",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      },
+      {
+        "speciesId": "swampert",
+        "level": 11,
+        "stars": 1,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 957,
+      "candy": 136,
+      "shard": 5,
+      "xp": 44
+    },
+    "repeat": {
+      "gold": 172,
+      "candy": 24,
+      "xp": 11
+    },
+    "idlePerMinute": {
+      "gold": 65,
+      "candy": 8,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
+  },
+  {
+    "id": "c2-10",
+    "chapter": 2,
+    "index": 10,
+    "name": "Frostline Approach Summit",
+    "enemies": [
+      {
+        "speciesId": "dragonite",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "dragonite",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "dragonite",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "blastoise",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "starmie",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      },
+      {
+        "speciesId": "dragonite",
+        "level": 12,
+        "stars": 2,
+        "stage": 0
+      }
+    ],
+    "firstClear": {
+      "gold": 1032,
+      "gems": 21,
+      "candy": 144,
+      "shard": 10,
+      "xp": 46
+    },
+    "repeat": {
+      "gold": 186,
+      "candy": 26,
+      "xp": 12
+    },
+    "idlePerMinute": {
+      "gold": 66,
+      "candy": 8,
+      "xp": 2
+    },
+    "starRounds": [
+      3,
+      6
+    ]
   }
 ]

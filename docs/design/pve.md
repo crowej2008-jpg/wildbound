@@ -19,10 +19,11 @@ clock resets the day. All time and randomness are server-side (PROMPT §10).
 
 Built now:
 
-- **Campaign**: 3 chapters × 6 stages authored in `content/stages/*.json`; each stage has an enemy
+- **Campaign**: M13.0a expands the M5 slice to 182 chapters × 10 stages; each stage has an enemy
   squad, first-clear rewards, a repeatable reward, an idle rate, and star thresholds. Stages unlock
   in order; a stage is 3-starred by beating it in few rounds. Challenge (real battle) and Sweep
-  (instant replay of a cleared stage) both work.
+  (instant replay of a cleared stage) both work. Every third chapter's first stage is a Victory Road
+  gym gate; see `docs/design/campaign-expansion.md`.
 - **Battle reuse**: the M4 replay screen is reused. A campaign battle is decided server-side and its
   log returned; the client replays it exactly (PROMPT §6.1). The M4 echo-battle stays for the
   `/combat` demo.
@@ -59,12 +60,14 @@ every claim, so a save left overnight resets correctly.
 Pure, content-free logic over the state slice; the stage data itself lives in content.
 
 - Types: `StageEnemy { speciesId, level, stars, stage }`, `StageReward`, `StageDef`
-  (`{ id, chapter, index, name, enemies, firstClear, repeat, idlePerMinute, starRounds: [t3, t2] }`),
-  `ChapterDef { id, name, stages }`.
-- `CampaignProgress = { stars: Record<stageId, 1|2|3> }` (a stage absent from `stars` is uncleared).
+  (`{ id, chapter, index, name, enemies, firstClear, repeat, idlePerMinute, starRounds: [t3, t2],
+  gate?: { gymId } }`), `ChapterDef { id, name, stages }`, `StageGate`.
+- `CampaignProgress = { stars: Record<stageId, 1|2|3>, gyms?: Record<gymId, boolean> }` (a stage
+  absent from `stars` is uncleared).
 - `starsForRounds(rounds, [t3, t2])` → 3 if `rounds ≤ t3`, else 2 if `≤ t2`, else 1.
 - `isCleared(progress, id)`, `isUnlocked(progress, orderedStages, id)` — the first stage is always
-  open; a stage opens when the previous stage in the flat order is cleared.
+  open; a stage opens when the previous stage in the flat order is cleared and, on a gated stage,
+  when its gym is cleared. `isGymAvailable` opens a gym after the stage before its gate.
 - `nextStageId(progress, orderedStages)` — first uncleared stage (the campaign's "go here" target).
 - `bestIdleStage(progress, orderedStages)` — the cleared stage with the highest `idlePerMinute`.
 - `campaignStars(progress)` — total stars (for display / future star-gated rewards).
@@ -98,9 +101,11 @@ trainer XP. A **Sweep** is only allowed on a cleared stage and grants the repeat
 
 ## Content (`packages/content`)
 
-- `content/stages/*.json` — one file per chapter, each an array of `StageDef`. Enemy `speciesId`s
-  reference content species; the validator cross-checks them. Levels scale by chapter (our difficulty
-  curve; author our own numbers).
+- `content/stages/*.json` — arrays of `StageDef`; chapters 1-3 are split per chapter and chapters
+  4-182 live in `campaign.json`. Enemy `speciesId`s reference content species; the validator
+  cross-checks them. Levels scale by chapter (our difficulty curve; author our own numbers).
+- `content/tuning/campaign.json` — 182 chapter rows, 60 gym gates and the chapter-chest payout
+  (M13.0a).
 - `content/quests/daily.json` — the daily quest list (one array).
 - `content/tuning/economy.json` — idle caps/costs, activity chest tiers, trainer XP curve, star
   thresholds default, mail TTL, and the first-session welcome grant.
@@ -135,9 +140,10 @@ live here (PROMPT §10) — never in React.
 
 - **Home** becomes a small town: hotspot cards (Campaign, Idle Camp, Quests, Mail) plus the gallery
   link, an AFK pill, and the **tutorial card** when the guide is unfinished.
-- **Campaign** (`/campaign`): chapter sections, stage rows with stars, enemy preview, idle rate and
-  rewards, Challenge / Sweep, and locked stages greyed with the unlock hint. Challenge navigates to
-  the battle screen.
+- **Campaign** (`/campaign`): 182-chapter picker (select + prev/next), chapter name/region, gate card
+  with gym Challenge/Replay, stage rows with stars, enemy preview, idle rate and rewards,
+  Challenge / Sweep, and locked stages greyed with the unlock/gate hint. Challenge navigates to the
+  shared battle replay.
 - **Battle** (`/battle/:stageId`): calls `challengeStage`, replays the returned log through the shared
   `BattleReplay` component, then shows the stage result (stars, rewards, Continue → next stage).
 - **Quests** (`/quests`): daily list with progress bars and Go / Claim, and the Activity chest bar.

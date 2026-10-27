@@ -23,12 +23,12 @@ const START = Date.parse('2026-01-01T00:00:00Z');
 function makeServer() {
   const config = buildConfig();
   config.now = () => START;
-  return new LocalServer(new MemoryStore(), config);
+  return { config, server: new LocalServer(new MemoryStore(), config) };
 }
 
 describe('M5 campaign balance', () => {
   it('a grown starter squad clears through the end of chapter 3', async () => {
-    const srv = makeServer();
+    const { config, server: srv } = makeServer();
     const load = await srv.loadAccount();
     if (!load.ok) throw new Error('load failed');
 
@@ -47,8 +47,18 @@ describe('M5 campaign balance', () => {
       for (let stage = wild.evolutionStage; stage < 1; stage++) await srv.evolve(wild.id);
     }
 
-    const ordered = orderStages(buildConfig().stages);
+    const ordered = orderStages(config.stages).filter((stage) => stage.chapter <= 3);
     for (const stage of ordered) {
+      const gymId = stage.gate?.gymId;
+      if (gymId) {
+        let gymWon = false;
+        for (let seed = 1; seed <= 40 && !gymWon; seed++) {
+          const result = await srv.challengeGym(gymId, seed);
+          if (!result.ok) throw new Error(`challengeGym(${gymId}) failed: ${result.error}`);
+          gymWon = result.value.win;
+        }
+        expect(gymWon, `expected to clear ${gymId} within 40 seeds`).toBe(true);
+      }
       let won = false;
       // A stage is retryable in play (a fresh battle seed each attempt); a
       // handful of seeds models a player retrying a close fight.
@@ -62,6 +72,6 @@ describe('M5 campaign balance', () => {
 
     const final = await srv.loadAccount();
     if (!final.ok) throw new Error('final load failed');
-    expect(isCleared(final.value.state.campaign, 'c3-6')).toBe(true);
+    expect(isCleared(final.value.state.campaign, 'c3-10')).toBe(true);
   });
 });

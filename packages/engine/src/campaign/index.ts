@@ -1,6 +1,6 @@
 import type { CampaignProgress, StageDef } from './types';
 
-export type { ChapterDef, CampaignProgress, StageDef, StageEnemy, StageReward } from './types';
+export type { ChapterDef, CampaignProgress, StageDef, StageEnemy, StageGate, StageReward } from './types';
 
 /**
  * Campaign rules (M5, PROMPT §7.6). Pure and content-free: every function takes
@@ -28,11 +28,58 @@ export function orderStages(stages: readonly StageDef[]): StageDef[] {
   return [...stages].sort((a, b) => a.chapter - b.chapter || a.index - b.index);
 }
 
-/** The first stage is always open; every other stage needs its predecessor cleared. */
+export function isGymCleared(progress: CampaignProgress, gymId: string): boolean {
+  return progress.gyms?.[gymId] === true;
+}
+
+/** Record a gym first clear; safe to call repeatedly. */
+export function recordGymClear(progress: CampaignProgress, gymId: string): CampaignProgress {
+  return { ...progress, gyms: { ...progress.gyms, [gymId]: true } };
+}
+
+/** The gym gate on a stage, or null when the stage is open. */
+export function gateOf(stage: StageDef): string | null {
+  return stage.gate?.gymId ?? null;
+}
+
+/** The gym blocking this stage, or null when the stage is unlocked. */
+export function unmetGate(
+  progress: CampaignProgress,
+  ordered: readonly StageDef[],
+  stageId: string,
+): string | null {
+  const stage = ordered.find((s) => s.id === stageId);
+  const gymId = stage ? gateOf(stage) : null;
+  return gymId && !isGymCleared(progress, gymId) ? gymId : null;
+}
+
+/**
+ * The first stage is always open; every other stage needs its predecessor
+ * cleared. A gated stage additionally needs its gym defeated (M13.0a).
+ */
 export function isUnlocked(progress: CampaignProgress, ordered: readonly StageDef[], stageId: string): boolean {
   const i = ordered.findIndex((s) => s.id === stageId);
-  if (i <= 0) return i === 0;
+  if (i < 0) return false;
+  const gate = gateOf(ordered[i]!);
+  if (gate && !isGymCleared(progress, gate)) return false;
+  if (i === 0) return true;
   return isCleared(progress, ordered[i - 1]!.id);
+}
+
+/**
+ * A gym is available once the stage immediately before its story gate is
+ * cleared. A gym that is already cleared stays available for practice.
+ */
+export function isGymAvailable(
+  progress: CampaignProgress,
+  ordered: readonly StageDef[],
+  gymId: string,
+): boolean {
+  if (isGymCleared(progress, gymId)) return true;
+  const gateIndex = ordered.findIndex((s) => gateOf(s) === gymId);
+  if (gateIndex < 0) return false;
+  if (gateIndex === 0) return true;
+  return isCleared(progress, ordered[gateIndex - 1]!.id);
 }
 
 /** The campaign's "go here" target: the first stage that is not yet cleared. */
@@ -59,10 +106,10 @@ export function totalStars(progress: CampaignProgress): number {
   return Object.values(progress.stars).reduce((sum, n) => sum + n, 0);
 }
 
-/** Record a clear, never lowering a stage's best star count. */
+/** Record a clear, never lowering a stage's best star count or dropping gym clears. */
 export function recordStars(progress: CampaignProgress, stageId: string, stars: number): CampaignProgress {
   const best = Math.max(progress.stars[stageId] ?? 0, Math.min(3, Math.max(1, stars)));
-  return { stars: { ...progress.stars, [stageId]: best } };
+  return { ...progress, stars: { ...progress.stars, [stageId]: best } };
 }
 
 /** How many stars are still available across the whole campaign. */

@@ -1,8 +1,11 @@
 import {
   ACCOUNT,
+  CAMPAIGN,
+  CHAPTERS,
   COLLECTION_TUNING,
   ECONOMY,
   GROWTH,
+  GYMS,
   POWER,
   QUESTS,
   STAGES,
@@ -25,7 +28,17 @@ import {
   TALENT_BLOCKS,
   TALENT_TREES,
 } from '@wildbound/content';
-import type { CollectionJson, EconomyJson, PveJson, PvpJson, TitlesJson, TitleJson } from '@wildbound/content';
+import type {
+  CampaignJson,
+  ChapterMetaJson,
+  CollectionJson,
+  EconomyJson,
+  GymJson,
+  PveJson,
+  PvpJson,
+  TitlesJson,
+  TitleJson,
+} from '@wildbound/content';
 import {
   mulberry32,
   type CoreStats,
@@ -73,6 +86,12 @@ export interface GameConfig {
   species: Map<string, SpeciesMeta>;
   stages: StageDef[];
   stageById: Map<string, StageDef>;
+  /** M13.0a: chapter index, gym gates and chapter chest tuning. */
+  campaign: CampaignJson;
+  chapters: ChapterMetaJson[];
+  chapterByNumber: Map<number, ChapterMetaJson>;
+  gyms: GymJson[];
+  gymById: Map<string, GymJson>;
   quests: QuestDef[];
   gacha: { machines: GachaMachineDef[] };
   shops: ShopDef[];
@@ -132,6 +151,11 @@ export function buildConfig(): GameConfig {
     species,
     stages: STAGES,
     stageById: new Map(STAGES.map((stage) => [stage.id, stage])),
+    campaign: CAMPAIGN,
+    chapters: CHAPTERS,
+    chapterByNumber: new Map(CHAPTERS.map((chapter) => [chapter.number, chapter])),
+    gyms: GYMS,
+    gymById: new Map(GYMS.map((gym) => [gym.id, gym])),
     quests: QUESTS,
     gacha: { machines: GACHA.machines as unknown as GachaMachineDef[] },
     shops: SHOPS as unknown as ShopDef[],

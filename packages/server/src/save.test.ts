@@ -19,6 +19,7 @@ describe('save codec', () => {
     expect(state.vip.lastClaimDay).toBeNull();
     expect(state.titles.owned).toEqual({});
     expect(state.titles.equipped).toEqual({ common: null, premium: null, rare: null });
+    expect(state.campaign.gyms).toEqual({});
     expect(new Set(state.roster.map((w) => w.id)).size).toBe(state.roster.length);
   });
 
@@ -142,6 +143,22 @@ describe('save codec', () => {
     expect(result.value.titles.owned['trail-01']).toBeUndefined();
     expect(result.value.titles.owned['trail-02']).toEqual({ stage: 1, expiresAt: null });
     expect(result.value.titles.equipped).toEqual({ common: null, premium: 'trail-02', rare: null });
+  });
+
+  it('migrates a v13 save with no gym clears', () => {
+    const state = createInitialState(config);
+    const raw = state as unknown as Record<string, unknown>;
+    const campaign = { stars: { 'c1-1': 3 } };
+    const result = migrateSave(
+      { version: 13, state: { ...raw, schemaVersion: 13, campaign } },
+      Date.now(),
+      config,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.schemaVersion).toBe(SAVE_VERSION);
+    expect(result.value.campaign.stars).toEqual({ 'c1-1': 3 });
+    expect(result.value.campaign.gyms).toEqual({});
   });
 
   it('rejects malformed JSON and missing fields', () => {

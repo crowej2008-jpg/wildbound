@@ -627,3 +627,47 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     DMG Reduction, or Skill Boost). Shiny variants remain deferred. Save v10 adds `trinkets`; migration
     defaults it to `{}`. *What would change it:* owner wants per-Wild trinkets or unique per-species
     percent effects.
+
+## M13
+
+35. **Campaign expands to the source shape, not its rows (2026-10-23).** The source is 182 chapters × 10
+    stages with 60 gym gates at 3-1, 6-1 … 180-1. We keep those counts and the ten-stage chapter
+    shape, but chapter names, gym names, species picks, levels, rewards, idle rates and descriptions
+    are ours. Chapters 1-3 keep the M5 authored stages 1-6 and append 7-10; chapters 4-182 are
+    generated once by `scripts/generate-campaign.mjs` and committed as
+    `packages/content/stages/campaign.json`. The runtime never generates content. *What would change
+    it:* owner-authored chapter/gym names, a different level curve, or a shorter campaign.
+36. **Gym gates are Option A: the 60 fights now, the full Victory Road layer in M14.** Each third
+    chapter's first stage requires its gym. The gym opens once the stage immediately before the gate
+    is cleared; only the first win pays its reward, and replays are practice. Tasks, badges,
+    commission, Hall of Fame and the source's 250 chests remain M14. *What would change it:* pulling
+    Victory Road into M13 or deferring the gate fights to M14.
+37. **M12 is skipped; Gods Trials is parked (owner decision 2026-10-23).** No Ancient Artifacts,
+    artifact Suppression, Ruins Adventure or Relic Battlefield in M13. Gods Trials is removed from
+    the M13 mode list and deferred until after M13 and other milestones; its local Suppression
+    Treasures are not M12 artifact Suppression. *What would change it:* the owner reinstating either
+    system.
+38. **M13 has eight modes and two gate classes (owner decision 2026-10-23).** Modes: Hoopa's Vault,
+    Rift Arena, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Island Challenge, Ultra Wormhole.
+    A gates: Pet Home 1-10; Sky Pillar 7-1; Misty Woods 3-10; Rift Arena 10-10 + Lv10; Faction Tower
+    28-10; Island Challenge 3-10 + Lv10; Ultra Wormhole 10-10 + Lv50. B gates (future): Hoopa server
+    day 15; Gods day 29 + Lv45; Joint day 60 + Lv45; Relic first merge + Lv45. "Server day" counts
+    from the stored server epoch (default account creation) with the debug fast-forward. *What would
+    change it:* owner retunes a gate or removes one.
+39. **Island Challenge is the full simulated alliance contest; Rift Arena is split.** Island
+    Challenge includes bot alliances and settlement, not a placeholder ladder. Rift Arena ships its
+    Barriers/Merchant step first and its Ring Battle/Quiz step second. *What would change it:* owner
+    accepts a simpler bot ladder or a one-step Rift.
+40. **Free-to-play only: no paid tracks, Vault passes, Pet Home assistant or real-money SKUs.** Gems
+    remain earnable. The 13.0a chapter-complete mail pays a flat 200 gems (`campaign.json`), replacing
+    the old `100 + 50 × chapter` formula that would have paid 9,200 at chapter 182. *What would change
+    it:* owner asks for a different chapter chest or an earn-only gem source.
+41. **Resetter Shards and Held Item Shards are separate currencies.** Refining spends Resetter Shards
+    to make Held Item Resetters (20 Resetter Shards → 1 Held Item Resetter); Held Item Shards remain
+    the user's own leveling currency. The retrofit is planned for 13.3 with Hoopa's Vault, costs
+    1,1,2,3,4,5,6,8,10,12,14,16,18,20. *What would change it:* owner moves the retrofit earlier or
+    keeps the M11 Held Item Shard refine.
+42. **Save v14 adds `campaign.gyms` (2026-10-23).** Gym clears are stored as
+    `Record<gymId, boolean>`; v13 and older saves migrate with `{}` and keep their stars. 13.0b can
+    build the Explore foundation on v14. *What would change it:* moving gym clears into a separate
+    Victory Road slice before M14.

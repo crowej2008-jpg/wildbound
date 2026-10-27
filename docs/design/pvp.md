@@ -123,7 +123,7 @@ What the probe established:
   2 972, supreme 3 963, mythic 5 192. A whole-catalogue pool therefore hands out 2.5–3.2× cliffs, and
   a 6-of-84 draw is a lottery: the entry squad lost **0%** of its band-0 fights against it at every
   level up to Lv48, while the same squad at Lv140 won 85% on the *same* band.
-- **The game's own scale is small.** `campaign-balance.test.ts` clears chapter 3 (the last chapter)
+- **The game's own scale is small.** `campaign-balance.test.ts` clears the first three chapters
   with the six starting **rare** Wilds at Lv26/3★/stage 1, against Lv10–12/2★ enemies. The Arena opens
   a chapter earlier, so its first rival must be beatable by ~Lv20/2★ starters.
 

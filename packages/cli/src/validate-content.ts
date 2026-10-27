@@ -3,7 +3,10 @@ import { basename, extname, join, resolve } from 'node:path';
 import {
   accountSchema,
   ACCOUNT,
+  CAMPAIGN,
+  campaignSchema,
   combatSettingsSchema,
+  GYMS,
   contentManifest,
   economySchema,
   FACTIONS,
@@ -76,6 +79,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'growth.json': growthSchema,
   'power.json': powerSchema,
   'account.json': accountSchema,
+  'campaign.json': campaignSchema,
   'economy.json': economySchema,
   'gacha.json': gachaSchema as AnySchema,
   'equipment.json': equipmentTuningSchema,
@@ -183,6 +187,7 @@ export function validateContent(repoRoot: string): ValidateReport {
   crossReference(species, kits, errors, checks);
   checkSpeciesCoverage(species, errors, checks);
   crossReferenceStages(species, stages, errors, checks);
+  crossReferenceCampaign(species, stages, errors, checks);
   if (stages.size > 0) checks.push(`campaign: ${stages.size} stage(s) validated`);
   if (quests.size > 0) checks.push(`quests: ${quests.size} daily quest(s) validated`);
   if (shops.size > 0) {
@@ -394,6 +399,53 @@ function crossReferenceStages(
   }
   const chapters = new Set([...stages.values()].map((s) => s.data.chapter));
   checks.push(`campaign: stages reference ${species.size} species across ${chapters.size} chapter(s)`);
+}
+
+/**
+ * M13.0a: 182 sequential chapters, 60 gyms on every third chapter, one gate per
+ * gym, and every gym enemy resolves to a species.
+ */
+function crossReferenceCampaign(
+  species: Map<string, { file: string; data: SpeciesJson }>,
+  stages: Map<string, { file: string; data: StageJson }>,
+  errors: string[],
+  checks: string[],
+): void {
+  const chapterNumbers = new Set(CAMPAIGN.chapters.map((chapter) => chapter.number));
+  if (chapterNumbers.size !== 182) errors.push('campaign.json: chapter numbers must be unique (expected 182)');
+  for (let number = 1; number <= 182; number += 1) {
+    if (!chapterNumbers.has(number)) errors.push(`campaign.json: chapter ${number} is missing`);
+  }
+
+  const gymIds = new Set<string>();
+  for (const gym of GYMS) {
+    if (gymIds.has(gym.id)) errors.push(`campaign.json: duplicate gym id "${gym.id}"`);
+    gymIds.add(gym.id);
+    if (gym.index < 1 || gym.index > 60) errors.push(`campaign.json: gym "${gym.id}" index out of range`);
+    if (gym.chapter !== gym.index * 3) errors.push(`campaign.json: gym "${gym.id}" chapter is not index x 3`);
+    if (!chapterNumbers.has(gym.chapter)) errors.push(`campaign.json: gym "${gym.id}" chapter ${gym.chapter} is missing`);
+    gym.enemies.forEach((enemy, i) => {
+      if (!species.has(enemy.speciesId)) {
+        errors.push(`campaign.json: gym "${gym.id}" enemy[${i}] species "${enemy.speciesId}" has no species file`);
+      }
+    });
+    const gateStage = stages.get(`c${gym.chapter}-1`);
+    if (!gateStage) errors.push(`campaign.json: gym "${gym.id}" has no chapter gate c${gym.chapter}-1`);
+    else if (gateStage.data.gate?.gymId !== gym.id) {
+      errors.push(`campaign.json: stage c${gym.chapter}-1 must gate on "${gym.id}"`);
+    }
+  }
+
+  let gates = 0;
+  for (const [id, entry] of stages) {
+    if (!entry.data.gate) continue;
+    gates += 1;
+    if (!gymIds.has(entry.data.gate.gymId)) {
+      errors.push(`${entry.file}: stage "${id}" gates on unknown gym "${entry.data.gate.gymId}"`);
+    }
+  }
+  if (gates !== 60) errors.push(`campaign: expected 60 story gates, found ${gates}`);
+  checks.push(`campaign: ${chapterNumbers.size} chapters, ${GYMS.length} gyms and ${gates} gate(s) validated`);
 }
 
 /**

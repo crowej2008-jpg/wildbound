@@ -1,3 +1,4 @@
+import campaign from '../stages/campaign.json';
 import chapter1 from '../stages/chapter1.json';
 import chapter2 from '../stages/chapter2.json';
 import chapter3 from '../stages/chapter3.json';
@@ -8,7 +9,7 @@ import { stageSchema, type StageJson } from './schemas';
  * content package never reads the filesystem; both the client and the CLI import
  * the same JSON at build time.
  */
-const RAW: unknown[] = [...chapter1, ...chapter2, ...chapter3];
+const RAW: unknown[] = [...chapter1, ...chapter2, ...chapter3, ...campaign];
 
 export const STAGES: StageJson[] = RAW.map((stage) => stageSchema.parse(stage));
 

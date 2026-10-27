@@ -13,10 +13,10 @@ const ROSTER = ['ninetales', 'charizard', 'starmie', 'blastoise', 'venusaur', 'r
 /**
  * A minimal save: `migrateSave` fills every other slice (idle, quests, mail,
  * pve, pvp …) from defaults, so this only declares what the PvP flows read.
- * `stars` clears campaign stages (`c2-6` opens the Arena, `c3-6` the Ranked
+ * `stars` clears campaign stages (`c2-10` opens the Arena, `c3-10` the Ranked
  * ladder).
  */
-function grownSave(stars: Record<string, number> = { 'c2-6': 3 }): string {
+function grownSave(stars: Record<string, number> = { 'c2-10': 3 }): string {
   const roster = ROSTER.map((speciesId, index) => ({
     id: `w${index + 1}`,
     speciesId,
@@ -131,7 +131,7 @@ test('a fresh account sees the locked Ranked ladder', async ({ page }) => {
 });
 
 test('plays a Ranked series, moves the ladder and claims a tier', async ({ page }) => {
-  await importGrown(page, { 'c2-6': 3, 'c3-6': 3 });
+  await importGrown(page, { 'c2-10': 3, 'c3-10': 3 });
   await page.goto('/ranked');
   await expect(page.getByRole('heading', { name: 'Ranked' })).toBeVisible();
 

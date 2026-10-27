@@ -888,3 +888,23 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   client build and **82 e2e** all green.
 - **Next:** M12 - Ancient Artifacts and Suppression (artifact collection, Relic Tablets, Suppression,
   Ruins Adventure).
+
+## M13.0a - Campaign 182×10 and the 60 gym gates (2026-10-23)
+
+- **Scope.** M12 is skipped by owner decision. M13 starts with the campaign foundation: 182 chapters ×
+  10 stages, the 60 source-shaped gym gates at 3-1 … 180-1, and `campaign.gyms` in save v14. Full
+  Victory Road tasks/badges/commission remain M14; Gods Trials is parked.
+- **Data.** `packages/content/tuning/campaign.json` holds 182 chapter rows and 60 gyms with own names,
+  regions, factions, six-enemy teams and rewards. `packages/content/stages/campaign.json` holds the
+  1,790 generated stages for chapters 4-182; chapters 1-3 keep their M5 authored 1-6 and gain 7-10.
+  `scripts/generate-campaign.mjs` is the one-time dev generator (the runtime never generates).
+- **Rules.** A gated stage needs its predecessor cleared **and** its gym defeated. A gym opens after
+  the stage immediately before its gate. First clear pays once; replays are practice. Chapter mail now
+  pays a flat 200 gems instead of `100 + 50 × chapter`.
+- **Screen.** Campaign has a 182-chapter picker (select + prev/next), chapter name/region, a gate card
+  with gym challenge/replay, and a per-stage gate hint. The gym reuses the battle replay and result
+  panels.
+- **Save/tests.** Save v14 migration adds `campaign.gyms = {}` and preserves stars. +4 content tests,
+  +3 engine gate tests, +3 server gym-flow tests, +1 save migration test, +1 e2e gate test.
+- **Docs.** `docs/design/campaign-expansion.md`, SCOPE's locked M13 plan, and ASSUMPTIONS 35-42.
+- **Next:** 13.0b - Explore foundation and the eight mode shells.

@@ -40,6 +40,7 @@ export { shopSchema } from './shop-schema';
 export type { ShopJson } from './shop-schema';
 
 export { WILDS, FACTIONS, wildById, wildsByFaction } from './species';
+export { CHAPTERS, GYMS, chapterByNumber, gymById, gymByChapter } from './campaign';
 export { TITLES, titleById } from './titles';
 export {
   titlesSchema,
@@ -75,8 +76,17 @@ export { KITS, kitById } from './kits';
 export { kitToEngine } from './kit-to-engine';
 export { STAGES, stageById, orderedStages, chapterNumbers, stagesInChapter } from './stages';
 export { QUESTS, questById } from './quests';
-export { COMBAT_SETTINGS, GROWTH, POWER, ACCOUNT, ECONOMY, GACHA_TUNING, COLLECTION_TUNING } from './tuning';
-export type { CollectionJson } from './tuning';
+export {
+  COMBAT_SETTINGS,
+  GROWTH,
+  POWER,
+  ACCOUNT,
+  ECONOMY,
+  CAMPAIGN,
+  GACHA_TUNING,
+  COLLECTION_TUNING,
+} from './tuning';
+export type { CollectionJson, CampaignJson } from './tuning';
 export { collectionTuningSchema } from './collection-schema';
 export { GACHA } from './tuning-gacha';
 export { SHOPS } from './shops';
@@ -118,7 +128,7 @@ export {
 } from './equipment-schema';
 
 /** Bumped when the shape of any content directory changes. */
-export const CONTENT_SCHEMA_VERSION = 1;
+export const CONTENT_SCHEMA_VERSION = 2;
 
 export const contentManifest = {
   game: 'wildbound',

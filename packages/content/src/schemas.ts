@@ -508,6 +508,13 @@ export const stageEnemySchema = z
   })
   .strict();
 
+/** A gym gate on a story stage (M13.0a): clear this gym first. */
+export const stageGateSchema = z
+  .object({
+    gymId: z.string().min(1),
+  })
+  .strict();
+
 /** Campaign stage (M5, PROMPT §7.6). */
 export const stageSchema = z
   .object({
@@ -520,6 +527,43 @@ export const stageSchema = z
     repeat: rewardSchema,
     idlePerMinute: rewardSchema,
     starRounds: z.tuple([z.number().int().positive(), z.number().int().positive()]),
+    /** M13.0a: the story gate's gym, if this stage is gated. */
+    gate: stageGateSchema.optional(),
+  })
+  .strict();
+
+/** Chapter metadata (M13.0a) — display name, region and the chapter's enemy faction. */
+export const chapterMetaSchema = z
+  .object({
+    number: z.number().int().positive(),
+    name: z.string().min(1),
+    region: z.string().min(1),
+    faction: factionSchema,
+  })
+  .strict();
+
+/** A Victory Road gym gate (M13.0a); the full task/badge layer is M14. */
+export const gymSchema = z
+  .object({
+    id: z.string().min(1),
+    index: z.number().int().positive(),
+    chapter: z.number().int().positive(),
+    name: z.string().min(1),
+    region: z.string().min(1),
+    faction: factionSchema,
+    enemies: z.array(stageEnemySchema).min(1).max(6),
+    firstClear: rewardSchema,
+    repeat: rewardSchema,
+    starRounds: z.tuple([z.number().int().positive(), z.number().int().positive()]),
+  })
+  .strict();
+
+/** Campaign metadata (M13.0a): chapter index, gym gates and the chapter chest payout. */
+export const campaignSchema = z
+  .object({
+    chapterChestGems: z.number().int().nonnegative(),
+    chapters: z.array(chapterMetaSchema).length(182),
+    gyms: z.array(gymSchema).length(60),
   })
   .strict();
 
@@ -568,6 +612,10 @@ export type PowerJson = z.infer<typeof powerSchema>;
 export type CoreStatsJson = z.infer<typeof coreStatsSchema>;
 export type AccountJson = z.infer<typeof accountSchema>;
 export type StageJson = z.infer<typeof stageSchema>;
+export type StageGateJson = z.infer<typeof stageGateSchema>;
+export type ChapterMetaJson = z.infer<typeof chapterMetaSchema>;
+export type GymJson = z.infer<typeof gymSchema>;
+export type CampaignJson = z.infer<typeof campaignSchema>;
 export type QuestJson = z.infer<typeof questSchema>;
 export type EconomyJson = z.infer<typeof economySchema>;
 export type RewardJson = z.infer<typeof rewardSchema>;

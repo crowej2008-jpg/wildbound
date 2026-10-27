@@ -9,6 +9,7 @@ import {
   type ClaimResult,
   type GameServer,
   type GachaView,
+  type GymBattleResult,
   type Result,
   type ShopView,
   type StageBattleResult,
@@ -35,6 +36,7 @@ interface ServerContextValue {
   ) => Promise<Result<T>>;
   startBattle: (mode: SquadMode, seed?: number) => Promise<Result<BattleView>>;
   challengeStage: (stageId: string, seed?: number) => Promise<Result<StageBattleResult>>;
+  challengeGym: (gymId: string, seed?: number) => Promise<Result<GymBattleResult>>;
   claim: (action: (server: GameServer) => Promise<Result<ClaimResult>>) => Promise<Result<ClaimResult>>;
   summon: (machine: MachineId, count: number, seed?: number) => Promise<Result<SummonResult>>;
   getGacha: () => Promise<Result<GachaView>>;
@@ -144,6 +146,25 @@ export function ServerProvider({ children }: { children: ReactNode }) {
     [server],
   );
 
+  const challengeGym = useCallback<ServerContextValue['challengeGym']>(
+    async (gymId, seed) => {
+      setBusy(true);
+      try {
+        const result = await server.challengeGym(gymId, seed);
+        if (result.ok) {
+          setSnapshot(result.value.snapshot);
+          setError(null);
+        } else {
+          setError(result.message);
+        }
+        return result;
+      } finally {
+        setBusy(false);
+      }
+    },
+    [server],
+  );
+
   const claim = useCallback<ServerContextValue['claim']>(
     async (action) => {
       setBusy(true);
@@ -198,6 +219,7 @@ export function ServerProvider({ children }: { children: ReactNode }) {
       call,
       startBattle,
       challengeStage,
+      challengeGym,
       claim,
       summon,
       getGacha,
@@ -214,6 +236,7 @@ export function ServerProvider({ children }: { children: ReactNode }) {
       call,
       startBattle,
       challengeStage,
+      challengeGym,
       claim,
       summon,
       getGacha,

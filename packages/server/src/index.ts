@@ -82,6 +82,17 @@ export interface StageBattleResult {
   snapshot: AccountSnapshot;
 }
 
+/** Victory Road gym gate outcome (M13.0a). */
+export interface GymBattleResult {
+  battle: BattleView;
+  gymId: string;
+  win: boolean;
+  /** True the first time the gym falls (the only time `rewards` is paid). */
+  firstClear: boolean;
+  rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
 /** Any claim that grants rewards and returns fresh state (M5). */
 export interface ClaimResult {
   granted: Rewards;
@@ -206,6 +217,8 @@ export interface GameServer {
   startBattle(mode: SquadMode, seed?: number): Promise<Result<BattleView>>;
   /** Fight a campaign stage with the campaign squad (M5). */
   challengeStage(stageId: string, seed?: number): Promise<Result<StageBattleResult>>;
+  /** Fight a Victory Road gym gate with the campaign squad (M13.0a). */
+  challengeGym(gymId: string, seed?: number): Promise<Result<GymBattleResult>>;
   /** Re-grant a cleared stage's repeat reward without a battle (M5). */
   sweepStage(stageId: string): Promise<Result<ClaimResult>>;
   /** Collect accrued idle income; `quick` pays gems for a fixed slice (M5). */

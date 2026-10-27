@@ -18,6 +18,8 @@ import {
   evolved,
   expireTitles,
   isCleared,
+  isGymAvailable,
+  isGymCleared,
   isQuestClaimable,
   isUnlocked,
   isZeroRewards,
@@ -30,6 +32,7 @@ import {
   pendingIdle,
   pruneMail,
   quickCollect,
+  recordGymClear,
   recordStars,
   respawnRefund,
   respawned,
@@ -41,6 +44,7 @@ import {
   STRATEGIES,
   TUTORIAL_STEPS,
   unclaimedMail,
+  unmetGate,
   type AccountState,
   type CurrencyId,
   type MachineId,
@@ -68,6 +72,7 @@ import {
   type EquipmentView,
   type GameServer,
   type GachaView,
+  type GymBattleResult,
   type RankedBuyResult,
   type RankedMatchResult,
   type Result,
@@ -80,7 +85,13 @@ import {
   type WorldBossBattleResult,
 } from './index';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
-import { startBattle as runStartBattle, stageBattle as runStageBattle, fielded, powerOf } from './battle';
+import {
+  startBattle as runStartBattle,
+  stageBattle as runStageBattle,
+  modeBattle as runModeBattle,
+  fielded,
+  powerOf,
+} from './battle';
 import { emptyLoadout } from '@wildbound/engine';
 import type { GameConfig } from './config';
 import { applyGrant, bestIdleRate, bestIdleStageId, stageRewards } from './economy';
@@ -429,7 +440,12 @@ export class LocalServer implements GameServer {
     if (!stage) return fail('not_found', `unknown stage "${stageId}"`);
     const ordered = orderStages(this.config.stages);
     if (!isUnlocked(state.campaign, ordered, stageId)) {
-      return fail('stage_locked', 'clear the previous stage first');
+      const blockingGymId = unmetGate(state.campaign, ordered, stageId);
+      const blockingGym = blockingGymId ? this.config.gymById.get(blockingGymId) : undefined;
+      return fail(
+        'stage_locked',
+        blockingGym ? `defeat ${blockingGym.name} to open this stage` : 'clear the previous stage first',
+      );
     }
     const view = runStageBattle(this.config, state, stage.enemies, stageId, seed);
     if (!view) return fail('not_found', 'no Wilds available to fight');
@@ -458,6 +474,51 @@ export class LocalServer implements GameServer {
       stageId,
       win,
       stars,
+      firstClear,
+      rewards,
+      snapshot: committed.value,
+    });
+  }
+
+  async challengeGym(gymId: string, seed?: number): Promise<Result<GymBattleResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const gym = this.config.gymById.get(gymId);
+    if (!gym) return fail('not_found', `unknown gym "${gymId}"`);
+    const ordered = orderStages(this.config.stages);
+    if (!isGymAvailable(state.campaign, ordered, gymId)) {
+      return fail('stage_locked', 'clear the previous chapter before challenging this gym');
+    }
+    const view = runModeBattle(this.config, state, {
+      squadMode: 'campaign',
+      label: 'gymGate',
+      enemies: gym.enemies,
+      battleId: `gym:${gymId}`,
+      seed,
+    });
+    if (!view) return fail('not_found', 'no Wilds available to fight');
+
+    const win = view.winner === 'attackers';
+    let next = state;
+    let firstClear = false;
+    let rewards: Rewards = {};
+    if (win) {
+      firstClear = !isGymCleared(state.campaign, gymId);
+      if (firstClear) {
+        next = { ...next, campaign: recordGymClear(next.campaign, gymId) };
+        rewards = gym.firstClear;
+        next = applyGrant(this.config, next, rewards);
+      }
+      next = this.withQuest(next, 'winBattle');
+    }
+    next = consumeCharms(next, fielded(state, 'campaign').map((w) => w.id));
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      battle: view,
+      gymId,
+      win,
       firstClear,
       rewards,
       snapshot: committed.value,
@@ -1119,7 +1180,7 @@ export class LocalServer implements GameServer {
       id,
       subjectKey: 'mail.chapter.subject',
       bodyKey: 'mail.chapter.body',
-      grants: { gems: 100 + stage.chapter * 50 },
+      grants: { gems: this.config.campaign.chapterChestGems },
       createdAt: now,
       ttlMs: Math.round(this.config.economy.mailTtlHours * 3_600_000),
     });

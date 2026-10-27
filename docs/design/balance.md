@@ -44,9 +44,11 @@ per chapter.
 ## How it is locked
 
 `packages/server/src/campaign-balance.test.ts` funds a squad to the chapter-3 target profile
-(Lv26, 3★, stage 1) and clears **every** stage in order, retrying each with fresh battle seeds,
-asserting `c3-6` is cleared. It isolates the combat curve from the economy (resources are granted
-directly; the economy has its own tests). If the curve or growth tables change, this test fails.
+(Lv26, 3★, stage 1) and clears **every stage through chapter 3** in order, including the first gym
+gate, retrying each with fresh battle seeds, and asserts `c3-10` is cleared. It isolates the combat
+curve from the economy (resources are granted directly; the economy has its own tests). If the curve
+or growth tables change, this test fails. Chapters 4-182 are generated shape, not a pinned early-game
+balance target; M14/M20 replace this fixed profile with sweeps.
 
 ## Revisit when
 
