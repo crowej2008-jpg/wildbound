@@ -85,6 +85,8 @@ import {
   type WorldBossBattleResult,
 } from './index';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
+import { buildExploreView } from './explore-view';
+import type { ExploreView } from './explore-view';
 import {
   startBattle as runStartBattle,
   stageBattle as runStageBattle,
@@ -978,6 +980,12 @@ export class LocalServer implements GameServer {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     return ok(buildPvpHubView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async getExplore(): Promise<Result<ExploreView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildExploreView(this.config, loaded.value, this.now(loaded.value)));
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

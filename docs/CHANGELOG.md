@@ -908,3 +908,25 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   +3 engine gate tests, +3 server gym-flow tests, +1 save migration test, +1 e2e gate test.
 - **Docs.** `docs/design/campaign-expansion.md`, SCOPE's locked M13 plan, and ASSUMPTIONS 35-42.
 - **Next:** 13.0b - Explore foundation and the eight mode shells.
+
+## M13.0b - Explore hub and eight mode shells (2026-10-27)
+
+- **Scope.** Added the Explore hub and the eight M13 mode shells: Hoopa's Vault, Rift Arena, Sky
+  Pillar, Faction Tower, Misty Woods, Pet Home, Island Challenge and Ultra Wormhole. The shells show
+  scale, gates, reset cadence and an honest "arrives in" state; mode play, attempts and reward
+  claims stay in 13.1-13.9.
+- **Data.** `packages/content/tuning/explore.json` holds the eight cards, their A/B gates, reset
+  cadence, scale and feature bullets. `exploreSchema` requires exactly eight modes, and
+  `content:validate` checks every campaign gate against a real stage.
+- **Rules.** `packages/engine/src/explore/` evaluates campaign-stage, level and server-day gates,
+  plus daily/weekly/permanent reset countdowns. A mode opens only when every gate is met.
+- **Server day.** Save **v15** stores `serverEpoch`; day 1 is the creation day. Older saves derive
+  it from the welcome mail's creation time, falling back to migration time. The debug fast-forward
+  moves the clock, so server-day gates can be tested without editing the epoch.
+- **Screen.** `/explore` is a seven-tab nav destination with eight cards. `/explore/:id` shows the
+  full gate checklist and feature bullets. Planned modes have no play button; locked cards link to
+  the same honest detail page.
+- **Tests.** +3 content tests, +3 engine gate/reset tests, +3 server view tests, +2 save migration
+  assertions, +1 e2e Explore test; boot spec updated to the seven-tab nav.
+- **Docs.** `docs/design/explore.md`, SCOPE's M13 plan and ASSUMPTIONS 42-43.
+- **Next:** 13.1 - Pet Home (21 tiles, harvests, decoration).

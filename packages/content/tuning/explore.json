@@ -1,0 +1,118 @@
+{
+  "serverDayNote": "Server day counts from this account's creation (the stored server epoch); the debug clock can fast-forward it.",
+  "modes": [
+    {
+      "id": "hoopa-vault",
+      "name": "Hoopa's Vault",
+      "sigil": "HV",
+      "tagline": "Outrun the shadow and choose your route.",
+      "description": "An escape-chase run through a shifting vault. Pick routes, bank escape progress and face the exit guardian for held items and Resetter Shards.",
+      "scale": "300 floors",
+      "status": "planned",
+      "arrivesIn": "13.3",
+      "reset": "daily",
+      "gates": [{ "kind": "serverDay", "day": 15 }],
+      "features": ["300 difficulty floors", "Route choices, buffs and an exit guardian", "Held items, Resetter Shards and free daily keys"]
+    },
+    {
+      "id": "rift-arena",
+      "name": "Rift Arena",
+      "sigil": "RA",
+      "tagline": "Break the barrier, then read the ring.",
+      "description": "A two-part rift: clear barriers and trade with the Mystic Merchant, then survive ring battles and answer the quiz rounds.",
+      "scale": "250 floors",
+      "status": "planned",
+      "arrivesIn": "13.4-13.5",
+      "reset": "daily",
+      "gates": [
+        { "kind": "campaign", "chapter": 10, "stage": 10 },
+        { "kind": "level", "level": 10 }
+      ],
+      "features": ["Barriers and the Mystic Merchant", "Ring battles and quiz rounds", "250 floors with daily attempts"]
+    },
+    {
+      "id": "sky-pillar",
+      "name": "Sky Pillar",
+      "sigil": "SP",
+      "tagline": "Climb until the clouds give way.",
+      "description": "A long vertical climb of staged fights. Each cleared floor improves the daily haul, and the pillar resets its attempts every day.",
+      "scale": "1,800 stages",
+      "status": "planned",
+      "arrivesIn": "13.2",
+      "reset": "daily",
+      "gates": [{ "kind": "campaign", "chapter": 7, "stage": 1 }],
+      "features": ["1,800 stages across six wings", "Daily attempt resets", "Milestone chests and ascension rewards"]
+    },
+    {
+      "id": "faction-tower",
+      "name": "Faction Tower",
+      "sigil": "FT",
+      "tagline": "One faction, three thousand floors.",
+      "description": "A faction-locked tower with its own floor ladder and weekly reset. Each faction answers a different enemy pool and boss cadence.",
+      "scale": "3,000 floors",
+      "status": "planned",
+      "arrivesIn": "13.7",
+      "reset": "weekly",
+      "gates": [{ "kind": "campaign", "chapter": 28, "stage": 10 }],
+      "features": ["3,000 floors", "Faction-locked formations", "Weekly reset and floor chests"]
+    },
+    {
+      "id": "misty-woods",
+      "name": "Misty Woods",
+      "sigil": "MW",
+      "tagline": "Follow the rune-light through the fog.",
+      "description": "A fogbound rune hunt with a revival crystal, a redeem shop and a 244-node rune map. Each node asks for a different squad answer.",
+      "scale": "244 runes",
+      "status": "planned",
+      "arrivesIn": "13.6",
+      "reset": "daily",
+      "gates": [{ "kind": "campaign", "chapter": 3, "stage": 10 }],
+      "features": ["244 rune nodes", "Revival Crystal and Redeem Shop", "Daily fog resets"]
+    },
+    {
+      "id": "pet-home",
+      "name": "Pet Home",
+      "sigil": "PH",
+      "tagline": "Give your Wilds a place to come home to.",
+      "description": "A small plot of 21 habitat tiles. Place Wilds, harvest Home Coins and decorate the rooms they live in.",
+      "scale": "21 tiles",
+      "status": "planned",
+      "arrivesIn": "13.1",
+      "reset": "daily",
+      "gates": [{ "kind": "campaign", "chapter": 1, "stage": 10 }],
+      "features": ["21 habitat tiles", "Daily harvests and decoration", "Home Coins from resident Wilds"]
+    },
+    {
+      "id": "island-challenge",
+      "name": "Island Challenge",
+      "sigil": "IC",
+      "tagline": "Ninety levels, then the alliance contest.",
+      "description": "A 90-level island circuit that ends in a full simulated 5v5 alliance contest with bot alliances, orders, support and settlement.",
+      "scale": "90 levels",
+      "status": "planned",
+      "arrivesIn": "13.8",
+      "reset": "weekly",
+      "gates": [
+        { "kind": "campaign", "chapter": 3, "stage": 10 },
+        { "kind": "level", "level": 10 }
+      ],
+      "features": ["90 challenge levels", "Full 5v5 alliance contest", "Bot alliances, support and settlement"]
+    },
+    {
+      "id": "ultra-wormhole",
+      "name": "Ultra Wormhole",
+      "sigil": "UW",
+      "tagline": "Hire across the breach before the window closes.",
+      "description": "A weekly wormhole window with 135 hires, score thresholds, a hero bag and an album. Hire the right answers before the wormhole seals.",
+      "scale": "135 hires",
+      "status": "planned",
+      "arrivesIn": "13.9",
+      "reset": "weekly",
+      "gates": [
+        { "kind": "campaign", "chapter": 10, "stage": 10 },
+        { "kind": "level", "level": 50 }
+      ],
+      "features": ["135 hire slots", "Weekly score rewards", "Hero bag and album"]
+    }
+  ]
+}

@@ -567,6 +567,38 @@ export const campaignSchema = z
   })
   .strict();
 
+/** One unlock requirement for an Explore mode (M13.0b). */
+export const exploreGateSchema = z.discriminatedUnion('kind', [
+  z.object({ kind: z.literal('campaign'), chapter: z.number().int().positive(), stage: z.number().int().positive() }).strict(),
+  z.object({ kind: z.literal('level'), level: z.number().int().positive() }).strict(),
+  z.object({ kind: z.literal('serverDay'), day: z.number().int().positive() }).strict(),
+]);
+
+/** One Explore mode card/shell (M13.0b). */
+export const exploreModeSchema = z
+  .object({
+    id: z.string().min(1),
+    name: z.string().min(1),
+    sigil: z.string().min(1).max(3),
+    tagline: z.string().min(1),
+    description: z.string().min(1),
+    scale: z.string().min(1),
+    status: z.enum(['planned', 'live']),
+    arrivesIn: z.string().min(1),
+    reset: z.enum(['daily', 'weekly', 'permanent']),
+    gates: z.array(exploreGateSchema).min(1),
+    features: z.array(z.string().min(1)).min(1),
+  })
+  .strict();
+
+/** Explore hub tuning (M13.0b): exactly the eight planned modes. */
+export const exploreSchema = z
+  .object({
+    serverDayNote: z.string().min(1),
+    modes: z.array(exploreModeSchema).length(8),
+  })
+  .strict();
+
 /** A daily quest (M5, PROMPT §7.9). */
 export const questSchema = z
   .object({
@@ -616,6 +648,9 @@ export type StageGateJson = z.infer<typeof stageGateSchema>;
 export type ChapterMetaJson = z.infer<typeof chapterMetaSchema>;
 export type GymJson = z.infer<typeof gymSchema>;
 export type CampaignJson = z.infer<typeof campaignSchema>;
+export type ExploreGateJson = z.infer<typeof exploreGateSchema>;
+export type ExploreModeJson = z.infer<typeof exploreModeSchema>;
+export type ExploreJson = z.infer<typeof exploreSchema>;
 export type QuestJson = z.infer<typeof questSchema>;
 export type EconomyJson = z.infer<typeof economySchema>;
 export type RewardJson = z.infer<typeof rewardSchema>;

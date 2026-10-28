@@ -147,6 +147,8 @@ export type Squad = (string | null)[];
 
 export interface AccountState {
   schemaVersion: number;
+  /** Account creation epoch (ms). Server-day gates count from here (M13.0b). */
+  serverEpoch: number;
   profile: PlayerProfile;
   roster: WildInstance[];
   squads: Record<SquadMode, Squad>;

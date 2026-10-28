@@ -4,6 +4,7 @@ import {
   CHAPTERS,
   COLLECTION_TUNING,
   ECONOMY,
+  EXPLORE,
   GROWTH,
   GYMS,
   POWER,
@@ -33,6 +34,7 @@ import type {
   ChapterMetaJson,
   CollectionJson,
   EconomyJson,
+  ExploreJson,
   GymJson,
   PveJson,
   PvpJson,
@@ -92,6 +94,8 @@ export interface GameConfig {
   chapterByNumber: Map<number, ChapterMetaJson>;
   gyms: GymJson[];
   gymById: Map<string, GymJson>;
+  /** M13.0b: Explore hub modes and their gates. */
+  explore: ExploreJson;
   quests: QuestDef[];
   gacha: { machines: GachaMachineDef[] };
   shops: ShopDef[];
@@ -156,6 +160,7 @@ export function buildConfig(): GameConfig {
     chapterByNumber: new Map(CHAPTERS.map((chapter) => [chapter.number, chapter])),
     gyms: GYMS,
     gymById: new Map(GYMS.map((gym) => [gym.id, gym])),
+    explore: EXPLORE,
     quests: QUESTS,
     gacha: { machines: GACHA.machines as unknown as GachaMachineDef[] },
     shops: SHOPS as unknown as ShopDef[],

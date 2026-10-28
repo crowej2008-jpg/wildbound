@@ -11,6 +11,8 @@ describe('save codec', () => {
     expect(state.roster).toHaveLength(config.startingRoster.length);
     expect(state.currencies.gold).toBeGreaterThan(0);
     expect(state.schemaVersion).toBe(SAVE_VERSION);
+    expect(typeof state.serverEpoch).toBe('number');
+    expect(state.serverEpoch).toBeGreaterThan(0);
     expect(state.plates).toEqual({});
     expect(state.trinkets).toEqual({});
     expect(state.resonance.unlocked).toBe(2);
@@ -148,6 +150,7 @@ describe('save codec', () => {
   it('migrates a v13 save with no gym clears', () => {
     const state = createInitialState(config);
     const raw = state as unknown as Record<string, unknown>;
+    delete raw.serverEpoch;
     const campaign = { stars: { 'c1-1': 3 } };
     const result = migrateSave(
       { version: 13, state: { ...raw, schemaVersion: 13, campaign } },
@@ -159,6 +162,22 @@ describe('save codec', () => {
     expect(result.value.schemaVersion).toBe(SAVE_VERSION);
     expect(result.value.campaign.stars).toEqual({ 'c1-1': 3 });
     expect(result.value.campaign.gyms).toEqual({});
+    expect(result.value.serverEpoch).toBe(state.mail[0]?.createdAt);
+  });
+
+  it('migrates a v14 save with no server epoch from its welcome mail', () => {
+    const state = createInitialState(config);
+    const raw = state as unknown as Record<string, unknown>;
+    delete raw.serverEpoch;
+    const result = migrateSave(
+      { version: 14, state: { ...raw, schemaVersion: 14 } },
+      Date.now(),
+      config,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.schemaVersion).toBe(SAVE_VERSION);
+    expect(result.value.serverEpoch).toBe(state.mail[0]?.createdAt);
   });
 
   it('rejects malformed JSON and missing fields', () => {

@@ -83,10 +83,17 @@ export {
   ACCOUNT,
   ECONOMY,
   CAMPAIGN,
+  EXPLORE,
   GACHA_TUNING,
   COLLECTION_TUNING,
 } from './tuning';
-export type { CollectionJson, CampaignJson } from './tuning';
+export type {
+  CollectionJson,
+  CampaignJson,
+  ExploreJson,
+  ExploreModeJson,
+  ExploreGateJson,
+} from './tuning';
 export { collectionTuningSchema } from './collection-schema';
 export { GACHA } from './tuning-gacha';
 export { SHOPS } from './shops';

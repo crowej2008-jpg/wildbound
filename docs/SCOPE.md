@@ -16,9 +16,9 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Trials, Tower, World Boss, Daily Dungeons, Link Crystal endgame | Challenges hub, Tower, Trials, World Boss, Dungeons, Link Crystal | M8 | built |
 | Combat DSL expansion + faithful 84-creature skill kits | — (headless; Wild screen unchanged) | M9 | built |
 | Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings, Ranked | M10 | built (Arena + Ranked + hub + weekly settlement + balance pass - `docs/design/pvp.md`) |
-| Growth/collection II: Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP, Titles | Wild screen, Trainer, VIP, Titles | M11 | built - gear tabs/stat sheet, Potential, Orbs, Soul-hearts, Berries, Held Items, Plates, Trinkets, Resonance, VIP and Titles (save v13 at M11; v14 migration in 13.0a; `docs/design/collection.md`) |
+| Growth/collection II: Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP, Titles | Wild screen, Trainer, VIP, Titles | M11 | built - gear tabs/stat sheet, Potential, Orbs, Soul-hearts, Berries, Held Items, Plates, Trinkets, Resonance, VIP and Titles (save v13 at M11; v14 in 13.0a; v15 in 13.0b; `docs/design/collection.md`) |
 | Ancient Artifacts, Suppression, Ruins Adventure | Artifacts, Ruins Adventure | M12 | deferred by owner (2026-10-23) - not part of M13 |
-| Explore modes: Hoopa's Vault, Rift Arena, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Island Challenge, Ultra Wormhole | Explore hub + each mode | M13 | in progress - 13.0a campaign foundation built; Gods Trials deferred |
+| Explore modes: Hoopa's Vault, Rift Arena, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Island Challenge, Ultra Wormhole | Explore hub + each mode | M13 | in progress - 13.0a campaign foundation and 13.0b Explore hub/shells built; Gods Trials deferred |
 | Combat/co-op modes: Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles, Shovel Carnival | Combat hub + each mode | M14 | pending - full Victory Road tasks/badges/commission; 13.0a already ships the 60 gym gate fights |
 | Guild, merge and events (simulated) | Guild, Events, Settings, Help | M15 | pending |
 | Guild war and Relic Battlefield | Relic Battlefield, Guild War | M16 | pending |
@@ -35,7 +35,8 @@ Pet Home assistant, and real-money SKUs. Gems remain earnable.
 
 - **13.0a — campaign foundation:** 182×10 stages, 60 gym gate fights, gate checks, save v14,
   chapter index/chests (`docs/design/campaign-expansion.md`). **Built.**
-- **13.0b — Explore foundation:** hub, eight mode shells, shared reset/attempt/reward plumbing.
+- **13.0b - Explore foundation:** hub, eight mode shells, gate evaluation and reset countdowns
+  (`docs/design/explore.md`). **Built.** Attempt/reward state lands with each playable mode.
 - **13.1 — Pet Home** (A gate 1-10): 21 tiles, harvests, decoration.
 - **13.2 — Sky Pillar** (A gate 7-1): 1,800 stages, daily resets.
 - **13.3 — Hoopa's Vault** (B gate: server day 15): 300 floors; retrofit Resetter Shards → Held Item

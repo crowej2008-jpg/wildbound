@@ -6,6 +6,8 @@ import {
   CAMPAIGN,
   campaignSchema,
   combatSettingsSchema,
+  EXPLORE,
+  exploreSchema,
   GYMS,
   contentManifest,
   economySchema,
@@ -80,6 +82,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'power.json': powerSchema,
   'account.json': accountSchema,
   'campaign.json': campaignSchema,
+  'explore.json': exploreSchema,
   'economy.json': economySchema,
   'gacha.json': gachaSchema as AnySchema,
   'equipment.json': equipmentTuningSchema,
@@ -188,6 +191,7 @@ export function validateContent(repoRoot: string): ValidateReport {
   checkSpeciesCoverage(species, errors, checks);
   crossReferenceStages(species, stages, errors, checks);
   crossReferenceCampaign(species, stages, errors, checks);
+  crossReferenceExplore(stages, errors, checks);
   if (stages.size > 0) checks.push(`campaign: ${stages.size} stage(s) validated`);
   if (quests.size > 0) checks.push(`quests: ${quests.size} daily quest(s) validated`);
   if (shops.size > 0) {
@@ -453,6 +457,30 @@ function crossReferenceCampaign(
  * rotation must reference real species; the daily dungeons must cover the seven
  * weekdays without duplication. (M8.)
  */
+/**
+ * M13.0b: the Explore hub has eight unique modes and every campaign gate names
+ * a real stage. The engine evaluates the gates at runtime.
+ */
+function crossReferenceExplore(
+  stages: Map<string, { file: string; data: StageJson }>,
+  errors: string[],
+  checks: string[],
+): void {
+  const ids = new Set<string>();
+  for (const mode of EXPLORE.modes) {
+    if (ids.has(mode.id)) errors.push(`explore.json: duplicate mode id "${mode.id}"`);
+    ids.add(mode.id);
+    for (const gate of mode.gates) {
+      if (gate.kind === 'campaign' && !stages.has(`c${gate.chapter}-${gate.stage}`)) {
+        errors.push(
+          `explore.json: mode "${mode.id}" gates on missing stage c${gate.chapter}-${gate.stage}`,
+        );
+      }
+    }
+  }
+  checks.push(`explore: ${EXPLORE.modes.length} mode shells and their gates validated`);
+}
+
 function crossReferencePve(
   species: Map<string, { file: string; data: SpeciesJson }>,
   errors: string[],

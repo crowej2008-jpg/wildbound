@@ -14,6 +14,7 @@ import type { GachaView } from './gacha';
 import type { ShopView } from './shops';
 import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
+import type { ExploreView } from './explore-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -316,6 +317,8 @@ export interface GameServer {
   getArena(): Promise<Result<ArenaView>>;
   /** Display-ready PvP hub: one card per entry point with its live status (M10.5). */
   getPvpHub(): Promise<Result<PvpHubView>>;
+  /** Display-ready Explore hub: eight mode shells, gates and resets (M13.0b). */
+  getExplore(): Promise<Result<ExploreView>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -366,6 +369,7 @@ export * from './pvp';
 export * from './pvp-view';
 export * from './pvp-ranked-view';
 export * from './pvp-hub-view';
+export * from './explore-view';
 export * from './plates';
 export * from './trinkets';
 export * from './vip';

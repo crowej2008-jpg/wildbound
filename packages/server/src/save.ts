@@ -29,7 +29,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 14;
+export const SAVE_VERSION = 15;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -100,9 +100,15 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
   const s = state as Partial<AccountState>;
   const day = dayKey(now);
   const charmSlots = config?.equipment?.tuning?.charms?.slots ?? 2;
+  const welcomeCreatedAt = (s.mail ?? []).find((m) => m.subjectKey === 'mail.welcome.subject')?.createdAt;
+  const serverEpoch =
+    typeof s.serverEpoch === 'number' && Number.isFinite(s.serverEpoch)
+      ? s.serverEpoch
+      : welcomeCreatedAt ?? now;
   return {
     ...state,
     schemaVersion: SAVE_VERSION,
+    serverEpoch,
     currencies: currenciesFrom(s.currencies ?? {}),
     campaign: {
       stars: s.campaign?.stars ?? {},
@@ -141,6 +147,7 @@ function welcomeMail(config: GameConfig, now: number): MailItem {
 
 /** A fresh account seeded from content (starting currencies + roster). */
 export function createInitialState(config: GameConfig): AccountState {
+  const now = config.now();
   let seq = 1;
   const roster: WildInstance[] = config.startingRoster
     .filter((id) => config.species.has(id))
@@ -151,12 +158,12 @@ export function createInitialState(config: GameConfig): AccountState {
       stars: 1,
       evolutionStage: 0,
       locked: false,
-      acquiredAt: config.now(),
+      acquiredAt: now,
     }));
-  const now = config.now();
   const day = dayKey(now);
   return {
     schemaVersion: SAVE_VERSION,
+    serverEpoch: now,
     profile: { name: config.playerName, level: 1, xp: 0 },
     roster,
     squads: emptySquads(),
@@ -225,6 +232,7 @@ function isAccountState(value: unknown): value is AccountState {
   if (value === null || typeof value !== 'object') return false;
   const s = value as Partial<AccountState>;
   if (typeof s.schemaVersion !== 'number') return false;
+  if (typeof s.serverEpoch !== 'number' || !Number.isFinite(s.serverEpoch)) return false;
   if (!s.profile || typeof s.profile.name !== 'string' || typeof s.profile.level !== 'number') return false;
   if (!Array.isArray(s.roster)) return false;
   if (!s.roster.every(isInstance)) return false;

@@ -668,6 +668,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     1,1,2,3,4,5,6,8,10,12,14,16,18,20. *What would change it:* owner moves the retrofit earlier or
     keeps the M11 Held Item Shard refine.
 42. **Save v14 adds `campaign.gyms` (2026-10-23).** Gym clears are stored as
-    `Record<gymId, boolean>`; v13 and older saves migrate with `{}` and keep their stars. 13.0b can
-    build the Explore foundation on v14. *What would change it:* moving gym clears into a separate
-    Victory Road slice before M14.
+    `Record<gymId, boolean>`; v13 and older saves migrate with `{}` and keep their stars. 13.0b bumps
+    the save to v15 for `serverEpoch` and builds the Explore foundation. *What would change it:*
+    moving gym clears into a separate Victory Road slice before M14.
+43. **Explore ships as eight honest shells first (2026-10-27).** 13.0b adds the Explore hub,
+    data-driven mode cards, gate evaluation and reset countdowns; no mode has a play button or a
+    fake reward claim until its sub-milestone. The eight cards show scale, gates and "arrives in"
+    labels. Save v15 stores `serverEpoch`; older saves derive it from the welcome mail's creation
+    time, falling back to migration time. *What would change it:* the owner wants a mode playable
+    before its sub-milestone or a different account-age basis for server-day gates.

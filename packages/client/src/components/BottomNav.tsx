@@ -3,6 +3,7 @@ import { t } from '../i18n';
 
 const TABS = [
   { to: '/', key: 'nav.home' as const },
+  { to: '/explore', key: 'nav.explore' as const },
   { to: '/wilds', key: 'nav.wilds' as const },
   { to: '/combat', key: 'nav.combat' as const },
   { to: '/pvp', key: 'nav.pvp' as const },

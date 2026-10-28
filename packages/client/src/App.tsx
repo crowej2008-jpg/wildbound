@@ -7,6 +7,8 @@ import Campaign from './pages/Campaign';
 import Challenges from './pages/Challenges';
 import Combat from './pages/Combat';
 import Dungeons from './pages/Dungeons';
+import Explore from './pages/Explore';
+import ExploreMode from './pages/ExploreMode';
 import Gallery from './pages/Gallery';
 import Home from './pages/Home';
 import Idle from './pages/Idle';
@@ -44,6 +46,8 @@ function AppRoutes() {
       <ErrorBanner />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/explore/:id" element={<ExploreMode />} />
         <Route path="/campaign" element={<Campaign />} />
         <Route path="/idle" element={<Idle />} />
         <Route path="/quests" element={<Quests />} />
