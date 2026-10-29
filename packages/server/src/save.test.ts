@@ -180,10 +180,34 @@ describe('save codec', () => {
     expect(result.value.serverEpoch).toBe(state.mail[0]?.createdAt);
   });
 
+  it('migrates a v15 save with no Pet Home slice', () => {
+    const now = Date.parse('2026-10-28T12:00:00Z');
+    const state = createInitialState(config);
+    const raw = state as unknown as Record<string, unknown>;
+    delete raw.petHome;
+    const result = migrateSave(
+      { version: 15, state: { ...raw, schemaVersion: 15 } },
+      now,
+      config,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.schemaVersion).toBe(SAVE_VERSION);
+    expect(result.value.petHome.pets).toEqual([]);
+    expect(result.value.petHome.nextPetSeq).toBe(1);
+    expect(result.value.petHome.lastSettledAt).toBe(now);
+    expect(typeof result.value.petHome.summonDay).toBe('string');
+  });
+
   it('rejects malformed JSON and missing fields', () => {
     expect(parseSave('{ not json').ok).toBe(false);
     expect(parseSave('{}').ok).toBe(false);
     expect(parseSave(JSON.stringify({ version: 1, state: { schemaVersion: 1 } })).ok).toBe(false);
+    const state = createInitialState(config);
+    const raw = state as unknown as Record<string, unknown>;
+    const petHome = { ...(raw.petHome as Record<string, unknown>) };
+    delete petHome.nextPetSeq;
+    expect(migrateSave({ version: SAVE_VERSION, state: { ...raw, petHome } }).ok).toBe(false);
   });
 
   it('rejects a save from a newer schema version', () => {

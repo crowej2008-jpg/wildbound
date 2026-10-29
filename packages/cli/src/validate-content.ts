@@ -8,6 +8,8 @@ import {
   combatSettingsSchema,
   EXPLORE,
   exploreSchema,
+  PET_HOME,
+  petHomeSchema,
   GYMS,
   contentManifest,
   economySchema,
@@ -83,6 +85,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'account.json': accountSchema,
   'campaign.json': campaignSchema,
   'explore.json': exploreSchema,
+  'pet-home.json': petHomeSchema,
   'economy.json': economySchema,
   'gacha.json': gachaSchema as AnySchema,
   'equipment.json': equipmentTuningSchema,
@@ -192,6 +195,7 @@ export function validateContent(repoRoot: string): ValidateReport {
   crossReferenceStages(species, stages, errors, checks);
   crossReferenceCampaign(species, stages, errors, checks);
   crossReferenceExplore(stages, errors, checks);
+  crossReferencePetHome(errors, checks);
   if (stages.size > 0) checks.push(`campaign: ${stages.size} stage(s) validated`);
   if (quests.size > 0) checks.push(`quests: ${quests.size} daily quest(s) validated`);
   if (shops.size > 0) {
@@ -479,6 +483,63 @@ function crossReferenceExplore(
     }
   }
   checks.push(`explore: ${EXPLORE.modes.length} mode shells and their gates validated`);
+}
+
+/**
+ * M13.1: Pet Home has one rule per Home level, a 5x5 position set, one income
+ * row per merge level, and 84 + 48 original shop rows in the source's shape.
+ */
+function crossReferencePetHome(errors: string[], checks: string[]): void {
+  const levels = PET_HOME.levels;
+  const tiles = PET_HOME.tiles;
+  const positions = new Set<string>();
+  const tileIds = new Set<number>();
+  for (const tile of tiles) {
+    const key = `${tile.row}:${tile.col}`;
+    if (positions.has(key)) errors.push(`pet-home.json: duplicate tile position ${key}`);
+    positions.add(key);
+    if (tileIds.has(tile.id)) errors.push(`pet-home.json: duplicate tile id ${tile.id}`);
+    tileIds.add(tile.id);
+    if (tile.row < 0 || tile.row > 4 || tile.col < 0 || tile.col > 4) {
+      errors.push(`pet-home.json: tile ${tile.id} is outside the 5x5 board`);
+    }
+  }
+  for (let level = 0; level < levels.length; level += 1) {
+    const row = levels[level]!;
+    if (row.level !== level) errors.push(`pet-home.json: level row ${level} has level ${row.level}`);
+    const revealed = tiles.filter((tile) => tile.unlockLevel <= row.level).length;
+    if (revealed !== row.tiles) {
+      errors.push(`pet-home.json: level ${row.level} says ${row.tiles} tiles, layout reveals ${revealed}`);
+    }
+    if (level > 0 && row.xp <= levels[level - 1]!.xp) {
+      errors.push(`pet-home.json: level ${row.level} XP must increase`);
+    }
+    if (row.mergeCap < 1 || row.mergeCap > 16) {
+      errors.push(`pet-home.json: level ${row.level} merge cap is out of range`);
+    }
+  }
+  for (let level = 1; level <= 16; level += 1) {
+    if (!PET_HOME.income.some((row) => row.level === level)) {
+      errors.push(`pet-home.json: income is missing merge level ${level}`);
+    }
+  }
+  const shops = [PET_HOME.shops.home, PET_HOME.shops.deluxe];
+  for (const shop of shops) {
+    const offers = shop.bands.flatMap((band) => band.offers);
+    const ids = new Set(offers.map((offer) => offer.id));
+    if (ids.size !== offers.length) errors.push(`pet-home.json: ${shop.id} shop has duplicate offer ids`);
+    if (shop.offersPerPage < 1) errors.push(`pet-home.json: ${shop.id} shop has no offers per page`);
+    for (const offer of offers) {
+      if (offer.price <= 0) errors.push(`pet-home.json: ${shop.id} offer "${offer.id}" has no price`);
+    }
+  }
+  const homeRows = PET_HOME.shops.home.bands.reduce((sum, band) => sum + band.offers.length, 0);
+  const deluxeRows = PET_HOME.shops.deluxe.bands.reduce((sum, band) => sum + band.offers.length, 0);
+  if (homeRows !== 84) errors.push(`pet-home.json: Home Exchange has ${homeRows} rows (want 84)`);
+  if (deluxeRows !== 48) errors.push(`pet-home.json: Orb Atelier has ${deluxeRows} rows (want 48)`);
+  checks.push(
+    `pet-home: ${levels.length} Home levels, ${tiles.length} tiles, ${homeRows}+${deluxeRows} shop rows validated`,
+  );
 }
 
 function crossReferencePve(

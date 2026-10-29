@@ -16,6 +16,7 @@ import {
   PVE,
   PVP,
   TITLES,
+  PET_HOME,
 } from '@wildbound/content';
 import {
   CHARMS,
@@ -36,6 +37,7 @@ import type {
   EconomyJson,
   ExploreJson,
   GymJson,
+  PetHomeJson,
   PveJson,
   PvpJson,
   TitlesJson,
@@ -96,6 +98,8 @@ export interface GameConfig {
   gymById: Map<string, GymJson>;
   /** M13.0b: Explore hub modes and their gates. */
   explore: ExploreJson;
+  /** M13.1: Pet Home merge-board levels, tiles, income and shops. */
+  petHome: PetHomeJson;
   quests: QuestDef[];
   gacha: { machines: GachaMachineDef[] };
   shops: ShopDef[];
@@ -161,6 +165,7 @@ export function buildConfig(): GameConfig {
     gyms: GYMS,
     gymById: new Map(GYMS.map((gym) => [gym.id, gym])),
     explore: EXPLORE,
+    petHome: PET_HOME,
     quests: QUESTS,
     gacha: { machines: GACHA.machines as unknown as GachaMachineDef[] },
     shops: SHOPS as unknown as ShopDef[],

@@ -1,0 +1,1679 @@
+{
+  "albumNote": "Every Wild you open is recorded here. The album is a record, not a power source.",
+  "home": {
+    "offlineHours": 8,
+    "tickSeconds": 300,
+    "freeSummonsPerDay": 50,
+    "summonCosts": [
+      {
+        "afterPaid": 0,
+        "gems": 10
+      },
+      {
+        "afterPaid": 50,
+        "gems": 30
+      },
+      {
+        "afterPaid": 100,
+        "gems": 80
+      },
+      {
+        "afterPaid": 200,
+        "gems": 250
+      },
+      {
+        "afterPaid": 400,
+        "gems": 600
+      }
+    ]
+  },
+  "levels": [
+    {
+      "level": 0,
+      "xp": 0,
+      "tiles": 6,
+      "mergeCap": 8,
+      "unlockGems": 20,
+      "reward": {}
+    },
+    {
+      "level": 1,
+      "xp": 200,
+      "tiles": 6,
+      "mergeCap": 8,
+      "unlockGems": 20,
+      "reward": {
+        "gems": 20
+      }
+    },
+    {
+      "level": 2,
+      "xp": 550,
+      "tiles": 7,
+      "mergeCap": 8,
+      "unlockGems": 20,
+      "reward": {
+        "gems": 20
+      }
+    },
+    {
+      "level": 3,
+      "xp": 1000,
+      "tiles": 8,
+      "mergeCap": 8,
+      "unlockGems": 20,
+      "reward": {
+        "orbEssence": 50
+      }
+    },
+    {
+      "level": 4,
+      "xp": 2500,
+      "tiles": 10,
+      "mergeCap": 9,
+      "unlockGems": 20,
+      "reward": {
+        "orbEssence": 50
+      }
+    },
+    {
+      "level": 5,
+      "xp": 6000,
+      "tiles": 11,
+      "mergeCap": 9,
+      "unlockGems": 60,
+      "reward": {
+        "orbEssence": 100
+      }
+    },
+    {
+      "level": 6,
+      "xp": 10000,
+      "tiles": 11,
+      "mergeCap": 9,
+      "unlockGems": 60,
+      "reward": {
+        "orbEssence": 100
+      }
+    },
+    {
+      "level": 7,
+      "xp": 15000,
+      "tiles": 11,
+      "mergeCap": 10,
+      "unlockGems": 90,
+      "reward": {
+        "orbEssence": 150
+      }
+    },
+    {
+      "level": 8,
+      "xp": 22000,
+      "tiles": 12,
+      "mergeCap": 10,
+      "unlockGems": 90,
+      "reward": {
+        "orbEssence": 150
+      }
+    },
+    {
+      "level": 9,
+      "xp": 32000,
+      "tiles": 13,
+      "mergeCap": 10,
+      "unlockGems": 90,
+      "reward": {
+        "orbEssence": 200
+      }
+    },
+    {
+      "level": 10,
+      "xp": 45000,
+      "tiles": 14,
+      "mergeCap": 11,
+      "unlockGems": 120,
+      "reward": {
+        "orbEssence": 250
+      }
+    },
+    {
+      "level": 11,
+      "xp": 60000,
+      "tiles": 15,
+      "mergeCap": 11,
+      "unlockGems": 120,
+      "reward": {
+        "orbEssence": 250
+      }
+    },
+    {
+      "level": 12,
+      "xp": 80000,
+      "tiles": 16,
+      "mergeCap": 12,
+      "unlockGems": 120,
+      "reward": {
+        "orbEssence": 300
+      }
+    },
+    {
+      "level": 13,
+      "xp": 105000,
+      "tiles": 17,
+      "mergeCap": 13,
+      "unlockGems": 120,
+      "reward": {
+        "orbEssence": 300
+      }
+    },
+    {
+      "level": 14,
+      "xp": 135000,
+      "tiles": 19,
+      "mergeCap": 14,
+      "unlockGems": 120,
+      "reward": {
+        "orbEssence": 400
+      }
+    },
+    {
+      "level": 15,
+      "xp": 170000,
+      "tiles": 20,
+      "mergeCap": 15,
+      "unlockGems": 120,
+      "reward": {
+        "orbEssence": 400
+      }
+    },
+    {
+      "level": 16,
+      "xp": 220000,
+      "tiles": 21,
+      "mergeCap": 16,
+      "unlockGems": 120,
+      "reward": {
+        "orbEssence": 500
+      }
+    }
+  ],
+  "tiles": [
+    {
+      "id": 0,
+      "row": 2,
+      "col": 2,
+      "unlockLevel": 0,
+      "locked": false
+    },
+    {
+      "id": 1,
+      "row": 1,
+      "col": 2,
+      "unlockLevel": 0,
+      "locked": false
+    },
+    {
+      "id": 2,
+      "row": 2,
+      "col": 3,
+      "unlockLevel": 0,
+      "locked": false
+    },
+    {
+      "id": 3,
+      "row": 1,
+      "col": 3,
+      "unlockLevel": 0,
+      "locked": false
+    },
+    {
+      "id": 4,
+      "row": 2,
+      "col": 1,
+      "unlockLevel": 0,
+      "locked": false
+    },
+    {
+      "id": 5,
+      "row": 1,
+      "col": 1,
+      "unlockLevel": 0,
+      "locked": false
+    },
+    {
+      "id": 6,
+      "row": 1,
+      "col": 0,
+      "unlockLevel": 2,
+      "locked": true
+    },
+    {
+      "id": 7,
+      "row": 2,
+      "col": 0,
+      "unlockLevel": 3,
+      "locked": true
+    },
+    {
+      "id": 8,
+      "row": 0,
+      "col": 1,
+      "unlockLevel": 4,
+      "locked": false
+    },
+    {
+      "id": 9,
+      "row": 0,
+      "col": 2,
+      "unlockLevel": 4,
+      "locked": false
+    },
+    {
+      "id": 10,
+      "row": 0,
+      "col": 3,
+      "unlockLevel": 5,
+      "locked": true
+    },
+    {
+      "id": 11,
+      "row": 1,
+      "col": 4,
+      "unlockLevel": 8,
+      "locked": true
+    },
+    {
+      "id": 12,
+      "row": 2,
+      "col": 4,
+      "unlockLevel": 9,
+      "locked": true
+    },
+    {
+      "id": 13,
+      "row": 3,
+      "col": 4,
+      "unlockLevel": 10,
+      "locked": true
+    },
+    {
+      "id": 14,
+      "row": 4,
+      "col": 3,
+      "unlockLevel": 11,
+      "locked": true
+    },
+    {
+      "id": 15,
+      "row": 4,
+      "col": 2,
+      "unlockLevel": 12,
+      "locked": true
+    },
+    {
+      "id": 16,
+      "row": 4,
+      "col": 1,
+      "unlockLevel": 13,
+      "locked": true
+    },
+    {
+      "id": 17,
+      "row": 3,
+      "col": 0,
+      "unlockLevel": 14,
+      "locked": true
+    },
+    {
+      "id": 18,
+      "row": 3,
+      "col": 3,
+      "unlockLevel": 14,
+      "locked": true
+    },
+    {
+      "id": 19,
+      "row": 3,
+      "col": 1,
+      "unlockLevel": 15,
+      "locked": true
+    },
+    {
+      "id": 20,
+      "row": 3,
+      "col": 2,
+      "unlockLevel": 16,
+      "locked": true
+    }
+  ],
+  "income": [
+    {
+      "level": 1,
+      "coinsPerFiveSeconds": 3
+    },
+    {
+      "level": 2,
+      "coinsPerFiveSeconds": 6
+    },
+    {
+      "level": 3,
+      "coinsPerFiveSeconds": 12
+    },
+    {
+      "level": 4,
+      "coinsPerFiveSeconds": 24
+    },
+    {
+      "level": 5,
+      "coinsPerFiveSeconds": 48
+    },
+    {
+      "level": 6,
+      "coinsPerFiveSeconds": 96
+    },
+    {
+      "level": 7,
+      "coinsPerFiveSeconds": 192
+    },
+    {
+      "level": 8,
+      "coinsPerFiveSeconds": 384
+    },
+    {
+      "level": 9,
+      "coinsPerFiveSeconds": 768
+    },
+    {
+      "level": 10,
+      "coinsPerFiveSeconds": 1536
+    },
+    {
+      "level": 11,
+      "coinsPerFiveSeconds": 3072
+    },
+    {
+      "level": 12,
+      "coinsPerFiveSeconds": 6144
+    },
+    {
+      "level": 13,
+      "coinsPerFiveSeconds": 12288
+    },
+    {
+      "level": 14,
+      "coinsPerFiveSeconds": 24576
+    },
+    {
+      "level": 15,
+      "coinsPerFiveSeconds": 49152
+    },
+    {
+      "level": 16,
+      "coinsPerFiveSeconds": 98304
+    }
+  ],
+  "shops": {
+    "home": {
+      "id": "home",
+      "name": "Home Exchange",
+      "currency": "homeCoin",
+      "unlockLevel": 0,
+      "offersPerPage": 9,
+      "refresh": {
+        "maxPerDay": 30,
+        "costs": [
+          {
+            "afterRefreshes": 0,
+            "gems": 40
+          },
+          {
+            "afterRefreshes": 10,
+            "gems": 80
+          }
+        ]
+      },
+      "bands": [
+        {
+          "minLevel": 0,
+          "offers": [
+            {
+              "id": "home-0-orbEssence-0",
+              "name": "Orb Essence Satchel",
+              "description": "A satchel of orb essence for the Home.",
+              "price": 8000,
+              "grants": {
+                "orbEssence": 10
+              }
+            },
+            {
+              "id": "home-0-starShard-0",
+              "name": "Star Shard Satchel",
+              "description": "A satchel of star shard for the Home.",
+              "price": 8000,
+              "grants": {
+                "starShard": 3
+              }
+            },
+            {
+              "id": "home-0-potentialShard-0",
+              "name": "Potential Shard Satchel",
+              "description": "A satchel of potential shard for the Home.",
+              "price": 8000,
+              "grants": {
+                "potentialShard": 3
+              }
+            },
+            {
+              "id": "home-0-heldItemShard-0",
+              "name": "Held Item Shard Satchel",
+              "description": "A satchel of held item shard for the Home.",
+              "price": 8000,
+              "grants": {
+                "heldItemShard": 3
+              }
+            },
+            {
+              "id": "home-0-berryEssence-0",
+              "name": "Berry Essence Satchel",
+              "description": "A satchel of berry essence for the Home.",
+              "price": 8000,
+              "grants": {
+                "berryEssence": 5
+              }
+            },
+            {
+              "id": "home-0-soulHeartExp-0",
+              "name": "Soul-heart EXP Satchel",
+              "description": "A satchel of soul-heart exp for the Home.",
+              "price": 8000,
+              "grants": {
+                "soulHeartExp": 10
+              }
+            },
+            {
+              "id": "home-0-resonationShard-0",
+              "name": "Resonation Shard Satchel",
+              "description": "A satchel of resonation shard for the Home.",
+              "price": 8000,
+              "grants": {
+                "resonationShard": 2
+              }
+            },
+            {
+              "id": "home-0-plateBottle-0",
+              "name": "Plate Bottle Satchel",
+              "description": "A satchel of plate bottle for the Home.",
+              "price": 8000,
+              "grants": {
+                "plateBottle": 1
+              }
+            },
+            {
+              "id": "home-0-plateFragment-0",
+              "name": "Plate Fragment Satchel",
+              "description": "A satchel of plate fragment for the Home.",
+              "price": 8000,
+              "grants": {
+                "plateFragment": 5
+              }
+            },
+            {
+              "id": "home-0-titleTicket-0",
+              "name": "Title Ticket Satchel",
+              "description": "A satchel of title ticket for the Home.",
+              "price": 8000,
+              "grants": {
+                "titleTicket": 1
+              }
+            },
+            {
+              "id": "home-0-candy-0",
+              "name": "Candy Satchel",
+              "description": "A satchel of candy for the Home.",
+              "price": 8000,
+              "grants": {
+                "candy": 300
+              }
+            },
+            {
+              "id": "home-0-gold-0",
+              "name": "Gold Satchel",
+              "description": "A satchel of gold for the Home.",
+              "price": 8000,
+              "grants": {
+                "gold": 1000
+              }
+            }
+          ]
+        },
+        {
+          "minLevel": 4,
+          "offers": [
+            {
+              "id": "home-4-orbEssence-1",
+              "name": "Orb Essence Crate",
+              "description": "A crate of orb essence for the Home.",
+              "price": 45000,
+              "grants": {
+                "orbEssence": 20
+              }
+            },
+            {
+              "id": "home-4-starShard-1",
+              "name": "Star Shard Crate",
+              "description": "A crate of star shard for the Home.",
+              "price": 45000,
+              "grants": {
+                "starShard": 6
+              }
+            },
+            {
+              "id": "home-4-potentialShard-1",
+              "name": "Potential Shard Crate",
+              "description": "A crate of potential shard for the Home.",
+              "price": 45000,
+              "grants": {
+                "potentialShard": 6
+              }
+            },
+            {
+              "id": "home-4-heldItemShard-1",
+              "name": "Held Item Shard Crate",
+              "description": "A crate of held item shard for the Home.",
+              "price": 45000,
+              "grants": {
+                "heldItemShard": 6
+              }
+            },
+            {
+              "id": "home-4-berryEssence-1",
+              "name": "Berry Essence Crate",
+              "description": "A crate of berry essence for the Home.",
+              "price": 45000,
+              "grants": {
+                "berryEssence": 10
+              }
+            },
+            {
+              "id": "home-4-soulHeartExp-1",
+              "name": "Soul-heart EXP Crate",
+              "description": "A crate of soul-heart exp for the Home.",
+              "price": 45000,
+              "grants": {
+                "soulHeartExp": 20
+              }
+            },
+            {
+              "id": "home-4-resonationShard-1",
+              "name": "Resonation Shard Crate",
+              "description": "A crate of resonation shard for the Home.",
+              "price": 45000,
+              "grants": {
+                "resonationShard": 4
+              }
+            },
+            {
+              "id": "home-4-plateBottle-1",
+              "name": "Plate Bottle Crate",
+              "description": "A crate of plate bottle for the Home.",
+              "price": 45000,
+              "grants": {
+                "plateBottle": 1
+              }
+            },
+            {
+              "id": "home-4-plateFragment-1",
+              "name": "Plate Fragment Crate",
+              "description": "A crate of plate fragment for the Home.",
+              "price": 45000,
+              "grants": {
+                "plateFragment": 10
+              }
+            },
+            {
+              "id": "home-4-titleTicket-1",
+              "name": "Title Ticket Crate",
+              "description": "A crate of title ticket for the Home.",
+              "price": 45000,
+              "grants": {
+                "titleTicket": 1
+              }
+            },
+            {
+              "id": "home-4-candy-1",
+              "name": "Candy Crate",
+              "description": "A crate of candy for the Home.",
+              "price": 45000,
+              "grants": {
+                "candy": 600
+              }
+            },
+            {
+              "id": "home-4-gold-1",
+              "name": "Gold Crate",
+              "description": "A crate of gold for the Home.",
+              "price": 45000,
+              "grants": {
+                "gold": 2000
+              }
+            }
+          ]
+        },
+        {
+          "minLevel": 6,
+          "offers": [
+            {
+              "id": "home-6-orbEssence-2",
+              "name": "Orb Essence Chest",
+              "description": "A chest of orb essence for the Home.",
+              "price": 180000,
+              "grants": {
+                "orbEssence": 40
+              }
+            },
+            {
+              "id": "home-6-starShard-2",
+              "name": "Star Shard Chest",
+              "description": "A chest of star shard for the Home.",
+              "price": 180000,
+              "grants": {
+                "starShard": 12
+              }
+            },
+            {
+              "id": "home-6-potentialShard-2",
+              "name": "Potential Shard Chest",
+              "description": "A chest of potential shard for the Home.",
+              "price": 180000,
+              "grants": {
+                "potentialShard": 12
+              }
+            },
+            {
+              "id": "home-6-heldItemShard-2",
+              "name": "Held Item Shard Chest",
+              "description": "A chest of held item shard for the Home.",
+              "price": 180000,
+              "grants": {
+                "heldItemShard": 12
+              }
+            },
+            {
+              "id": "home-6-berryEssence-2",
+              "name": "Berry Essence Chest",
+              "description": "A chest of berry essence for the Home.",
+              "price": 180000,
+              "grants": {
+                "berryEssence": 20
+              }
+            },
+            {
+              "id": "home-6-soulHeartExp-2",
+              "name": "Soul-heart EXP Chest",
+              "description": "A chest of soul-heart exp for the Home.",
+              "price": 180000,
+              "grants": {
+                "soulHeartExp": 40
+              }
+            },
+            {
+              "id": "home-6-resonationShard-2",
+              "name": "Resonation Shard Chest",
+              "description": "A chest of resonation shard for the Home.",
+              "price": 180000,
+              "grants": {
+                "resonationShard": 8
+              }
+            },
+            {
+              "id": "home-6-plateBottle-2",
+              "name": "Plate Bottle Chest",
+              "description": "A chest of plate bottle for the Home.",
+              "price": 180000,
+              "grants": {
+                "plateBottle": 2
+              }
+            },
+            {
+              "id": "home-6-plateFragment-2",
+              "name": "Plate Fragment Chest",
+              "description": "A chest of plate fragment for the Home.",
+              "price": 180000,
+              "grants": {
+                "plateFragment": 20
+              }
+            },
+            {
+              "id": "home-6-titleTicket-2",
+              "name": "Title Ticket Chest",
+              "description": "A chest of title ticket for the Home.",
+              "price": 180000,
+              "grants": {
+                "titleTicket": 1
+              }
+            },
+            {
+              "id": "home-6-candy-2",
+              "name": "Candy Chest",
+              "description": "A chest of candy for the Home.",
+              "price": 180000,
+              "grants": {
+                "candy": 1200
+              }
+            },
+            {
+              "id": "home-6-gold-2",
+              "name": "Gold Chest",
+              "description": "A chest of gold for the Home.",
+              "price": 180000,
+              "grants": {
+                "gold": 4000
+              }
+            }
+          ]
+        },
+        {
+          "minLevel": 7,
+          "offers": [
+            {
+              "id": "home-7-orbEssence-2",
+              "name": "Orb Essence Chest",
+              "description": "A chest of orb essence for the Home.",
+              "price": 180000,
+              "grants": {
+                "orbEssence": 40
+              }
+            },
+            {
+              "id": "home-7-starShard-2",
+              "name": "Star Shard Chest",
+              "description": "A chest of star shard for the Home.",
+              "price": 180000,
+              "grants": {
+                "starShard": 12
+              }
+            },
+            {
+              "id": "home-7-potentialShard-2",
+              "name": "Potential Shard Chest",
+              "description": "A chest of potential shard for the Home.",
+              "price": 180000,
+              "grants": {
+                "potentialShard": 12
+              }
+            },
+            {
+              "id": "home-7-heldItemShard-2",
+              "name": "Held Item Shard Chest",
+              "description": "A chest of held item shard for the Home.",
+              "price": 180000,
+              "grants": {
+                "heldItemShard": 12
+              }
+            },
+            {
+              "id": "home-7-berryEssence-2",
+              "name": "Berry Essence Chest",
+              "description": "A chest of berry essence for the Home.",
+              "price": 180000,
+              "grants": {
+                "berryEssence": 20
+              }
+            },
+            {
+              "id": "home-7-soulHeartExp-2",
+              "name": "Soul-heart EXP Chest",
+              "description": "A chest of soul-heart exp for the Home.",
+              "price": 180000,
+              "grants": {
+                "soulHeartExp": 40
+              }
+            },
+            {
+              "id": "home-7-resonationShard-2",
+              "name": "Resonation Shard Chest",
+              "description": "A chest of resonation shard for the Home.",
+              "price": 180000,
+              "grants": {
+                "resonationShard": 8
+              }
+            },
+            {
+              "id": "home-7-plateBottle-2",
+              "name": "Plate Bottle Chest",
+              "description": "A chest of plate bottle for the Home.",
+              "price": 180000,
+              "grants": {
+                "plateBottle": 2
+              }
+            },
+            {
+              "id": "home-7-plateFragment-2",
+              "name": "Plate Fragment Chest",
+              "description": "A chest of plate fragment for the Home.",
+              "price": 180000,
+              "grants": {
+                "plateFragment": 20
+              }
+            },
+            {
+              "id": "home-7-titleTicket-2",
+              "name": "Title Ticket Chest",
+              "description": "A chest of title ticket for the Home.",
+              "price": 180000,
+              "grants": {
+                "titleTicket": 1
+              }
+            },
+            {
+              "id": "home-7-candy-2",
+              "name": "Candy Chest",
+              "description": "A chest of candy for the Home.",
+              "price": 180000,
+              "grants": {
+                "candy": 1200
+              }
+            },
+            {
+              "id": "home-7-gold-2",
+              "name": "Gold Chest",
+              "description": "A chest of gold for the Home.",
+              "price": 180000,
+              "grants": {
+                "gold": 4000
+              }
+            },
+            {
+              "id": "home-7-orbEssence-3",
+              "name": "Orb Essence Cache",
+              "description": "A cache of orb essence for the Home.",
+              "price": 600000,
+              "grants": {
+                "orbEssence": 80
+              }
+            },
+            {
+              "id": "home-7-starShard-3",
+              "name": "Star Shard Cache",
+              "description": "A cache of star shard for the Home.",
+              "price": 600000,
+              "grants": {
+                "starShard": 24
+              }
+            },
+            {
+              "id": "home-7-potentialShard-3",
+              "name": "Potential Shard Cache",
+              "description": "A cache of potential shard for the Home.",
+              "price": 600000,
+              "grants": {
+                "potentialShard": 24
+              }
+            },
+            {
+              "id": "home-7-heldItemShard-3",
+              "name": "Held Item Shard Cache",
+              "description": "A cache of held item shard for the Home.",
+              "price": 600000,
+              "grants": {
+                "heldItemShard": 24
+              }
+            },
+            {
+              "id": "home-7-berryEssence-3",
+              "name": "Berry Essence Cache",
+              "description": "A cache of berry essence for the Home.",
+              "price": 600000,
+              "grants": {
+                "berryEssence": 40
+              }
+            },
+            {
+              "id": "home-7-soulHeartExp-3",
+              "name": "Soul-heart EXP Cache",
+              "description": "A cache of soul-heart exp for the Home.",
+              "price": 600000,
+              "grants": {
+                "soulHeartExp": 80
+              }
+            },
+            {
+              "id": "home-7-resonationShard-3",
+              "name": "Resonation Shard Cache",
+              "description": "A cache of resonation shard for the Home.",
+              "price": 600000,
+              "grants": {
+                "resonationShard": 16
+              }
+            },
+            {
+              "id": "home-7-plateBottle-3",
+              "name": "Plate Bottle Cache",
+              "description": "A cache of plate bottle for the Home.",
+              "price": 600000,
+              "grants": {
+                "plateBottle": 2
+              }
+            },
+            {
+              "id": "home-7-plateFragment-3",
+              "name": "Plate Fragment Cache",
+              "description": "A cache of plate fragment for the Home.",
+              "price": 600000,
+              "grants": {
+                "plateFragment": 40
+              }
+            },
+            {
+              "id": "home-7-titleTicket-3",
+              "name": "Title Ticket Cache",
+              "description": "A cache of title ticket for the Home.",
+              "price": 600000,
+              "grants": {
+                "titleTicket": 2
+              }
+            },
+            {
+              "id": "home-7-candy-3",
+              "name": "Candy Cache",
+              "description": "A cache of candy for the Home.",
+              "price": 600000,
+              "grants": {
+                "candy": 2400
+              }
+            },
+            {
+              "id": "home-7-gold-3",
+              "name": "Gold Cache",
+              "description": "A cache of gold for the Home.",
+              "price": 600000,
+              "grants": {
+                "gold": 8000
+              }
+            },
+            {
+              "id": "home-7-orbEssence-4",
+              "name": "Orb Essence Hoard",
+              "description": "A hoard of orb essence for the Home.",
+              "price": 1200000,
+              "grants": {
+                "orbEssence": 160
+              }
+            },
+            {
+              "id": "home-7-starShard-4",
+              "name": "Star Shard Hoard",
+              "description": "A hoard of star shard for the Home.",
+              "price": 1200000,
+              "grants": {
+                "starShard": 48
+              }
+            },
+            {
+              "id": "home-7-potentialShard-4",
+              "name": "Potential Shard Hoard",
+              "description": "A hoard of potential shard for the Home.",
+              "price": 1200000,
+              "grants": {
+                "potentialShard": 48
+              }
+            },
+            {
+              "id": "home-7-heldItemShard-4",
+              "name": "Held Item Shard Hoard",
+              "description": "A hoard of held item shard for the Home.",
+              "price": 1200000,
+              "grants": {
+                "heldItemShard": 48
+              }
+            },
+            {
+              "id": "home-7-berryEssence-4",
+              "name": "Berry Essence Hoard",
+              "description": "A hoard of berry essence for the Home.",
+              "price": 1200000,
+              "grants": {
+                "berryEssence": 80
+              }
+            },
+            {
+              "id": "home-7-soulHeartExp-4",
+              "name": "Soul-heart EXP Hoard",
+              "description": "A hoard of soul-heart exp for the Home.",
+              "price": 1200000,
+              "grants": {
+                "soulHeartExp": 160
+              }
+            },
+            {
+              "id": "home-7-resonationShard-4",
+              "name": "Resonation Shard Hoard",
+              "description": "A hoard of resonation shard for the Home.",
+              "price": 1200000,
+              "grants": {
+                "resonationShard": 32
+              }
+            },
+            {
+              "id": "home-7-plateBottle-4",
+              "name": "Plate Bottle Hoard",
+              "description": "A hoard of plate bottle for the Home.",
+              "price": 1200000,
+              "grants": {
+                "plateBottle": 3
+              }
+            },
+            {
+              "id": "home-7-plateFragment-4",
+              "name": "Plate Fragment Hoard",
+              "description": "A hoard of plate fragment for the Home.",
+              "price": 1200000,
+              "grants": {
+                "plateFragment": 80
+              }
+            },
+            {
+              "id": "home-7-titleTicket-4",
+              "name": "Title Ticket Hoard",
+              "description": "A hoard of title ticket for the Home.",
+              "price": 1200000,
+              "grants": {
+                "titleTicket": 2
+              }
+            },
+            {
+              "id": "home-7-candy-4",
+              "name": "Candy Hoard",
+              "description": "A hoard of candy for the Home.",
+              "price": 1200000,
+              "grants": {
+                "candy": 4800
+              }
+            },
+            {
+              "id": "home-7-gold-4",
+              "name": "Gold Hoard",
+              "description": "A hoard of gold for the Home.",
+              "price": 1200000,
+              "grants": {
+                "gold": 16000
+              }
+            }
+          ]
+        },
+        {
+          "minLevel": 8,
+          "offers": [
+            {
+              "id": "home-8-orbEssence-4",
+              "name": "Orb Essence Hoard",
+              "description": "A hoard of orb essence for the Home.",
+              "price": 1200000,
+              "grants": {
+                "orbEssence": 160
+              }
+            },
+            {
+              "id": "home-8-starShard-4",
+              "name": "Star Shard Hoard",
+              "description": "A hoard of star shard for the Home.",
+              "price": 1200000,
+              "grants": {
+                "starShard": 48
+              }
+            },
+            {
+              "id": "home-8-potentialShard-4",
+              "name": "Potential Shard Hoard",
+              "description": "A hoard of potential shard for the Home.",
+              "price": 1200000,
+              "grants": {
+                "potentialShard": 48
+              }
+            },
+            {
+              "id": "home-8-heldItemShard-4",
+              "name": "Held Item Shard Hoard",
+              "description": "A hoard of held item shard for the Home.",
+              "price": 1200000,
+              "grants": {
+                "heldItemShard": 48
+              }
+            },
+            {
+              "id": "home-8-berryEssence-4",
+              "name": "Berry Essence Hoard",
+              "description": "A hoard of berry essence for the Home.",
+              "price": 1200000,
+              "grants": {
+                "berryEssence": 80
+              }
+            },
+            {
+              "id": "home-8-soulHeartExp-4",
+              "name": "Soul-heart EXP Hoard",
+              "description": "A hoard of soul-heart exp for the Home.",
+              "price": 1200000,
+              "grants": {
+                "soulHeartExp": 160
+              }
+            },
+            {
+              "id": "home-8-resonationShard-4",
+              "name": "Resonation Shard Hoard",
+              "description": "A hoard of resonation shard for the Home.",
+              "price": 1200000,
+              "grants": {
+                "resonationShard": 32
+              }
+            },
+            {
+              "id": "home-8-plateBottle-4",
+              "name": "Plate Bottle Hoard",
+              "description": "A hoard of plate bottle for the Home.",
+              "price": 1200000,
+              "grants": {
+                "plateBottle": 3
+              }
+            },
+            {
+              "id": "home-8-plateFragment-4",
+              "name": "Plate Fragment Hoard",
+              "description": "A hoard of plate fragment for the Home.",
+              "price": 1200000,
+              "grants": {
+                "plateFragment": 80
+              }
+            },
+            {
+              "id": "home-8-titleTicket-4",
+              "name": "Title Ticket Hoard",
+              "description": "A hoard of title ticket for the Home.",
+              "price": 1200000,
+              "grants": {
+                "titleTicket": 2
+              }
+            },
+            {
+              "id": "home-8-candy-4",
+              "name": "Candy Hoard",
+              "description": "A hoard of candy for the Home.",
+              "price": 1200000,
+              "grants": {
+                "candy": 4800
+              }
+            },
+            {
+              "id": "home-8-gold-4",
+              "name": "Gold Hoard",
+              "description": "A hoard of gold for the Home.",
+              "price": 1200000,
+              "grants": {
+                "gold": 16000
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "deluxe": {
+      "id": "deluxe",
+      "name": "Orb Atelier",
+      "currency": "orbEssence",
+      "unlockLevel": 10,
+      "offersPerPage": 9,
+      "refresh": {
+        "maxPerDay": 30,
+        "costs": [
+          {
+            "afterRefreshes": 0,
+            "gems": 40
+          },
+          {
+            "afterRefreshes": 10,
+            "gems": 80
+          }
+        ]
+      },
+      "bands": [
+        {
+          "minLevel": 10,
+          "offers": [
+            {
+              "id": "deluxe-10-orbEssence-3",
+              "name": "Orb Essence Cache",
+              "description": "A cache of orb essence for the Home.",
+              "price": 300,
+              "grants": {
+                "orbEssence": 80
+              }
+            },
+            {
+              "id": "deluxe-10-starShard-3",
+              "name": "Star Shard Cache",
+              "description": "A cache of star shard for the Home.",
+              "price": 300,
+              "grants": {
+                "starShard": 24
+              }
+            },
+            {
+              "id": "deluxe-10-potentialShard-3",
+              "name": "Potential Shard Cache",
+              "description": "A cache of potential shard for the Home.",
+              "price": 300,
+              "grants": {
+                "potentialShard": 24
+              }
+            },
+            {
+              "id": "deluxe-10-heldItemShard-3",
+              "name": "Held Item Shard Cache",
+              "description": "A cache of held item shard for the Home.",
+              "price": 300,
+              "grants": {
+                "heldItemShard": 24
+              }
+            },
+            {
+              "id": "deluxe-10-berryEssence-3",
+              "name": "Berry Essence Cache",
+              "description": "A cache of berry essence for the Home.",
+              "price": 300,
+              "grants": {
+                "berryEssence": 40
+              }
+            },
+            {
+              "id": "deluxe-10-soulHeartExp-3",
+              "name": "Soul-heart EXP Cache",
+              "description": "A cache of soul-heart exp for the Home.",
+              "price": 300,
+              "grants": {
+                "soulHeartExp": 80
+              }
+            },
+            {
+              "id": "deluxe-10-resonationShard-3",
+              "name": "Resonation Shard Cache",
+              "description": "A cache of resonation shard for the Home.",
+              "price": 300,
+              "grants": {
+                "resonationShard": 16
+              }
+            },
+            {
+              "id": "deluxe-10-plateBottle-3",
+              "name": "Plate Bottle Cache",
+              "description": "A cache of plate bottle for the Home.",
+              "price": 300,
+              "grants": {
+                "plateBottle": 2
+              }
+            },
+            {
+              "id": "deluxe-10-plateFragment-3",
+              "name": "Plate Fragment Cache",
+              "description": "A cache of plate fragment for the Home.",
+              "price": 300,
+              "grants": {
+                "plateFragment": 40
+              }
+            },
+            {
+              "id": "deluxe-10-titleTicket-3",
+              "name": "Title Ticket Cache",
+              "description": "A cache of title ticket for the Home.",
+              "price": 300,
+              "grants": {
+                "titleTicket": 2
+              }
+            },
+            {
+              "id": "deluxe-10-candy-3",
+              "name": "Candy Cache",
+              "description": "A cache of candy for the Home.",
+              "price": 300,
+              "grants": {
+                "candy": 2400
+              }
+            },
+            {
+              "id": "deluxe-10-gold-3",
+              "name": "Gold Cache",
+              "description": "A cache of gold for the Home.",
+              "price": 300,
+              "grants": {
+                "gold": 8000
+              }
+            },
+            {
+              "id": "deluxe-10-orbEssence-4",
+              "name": "Orb Essence Hoard",
+              "description": "A hoard of orb essence for the Home.",
+              "price": 900,
+              "grants": {
+                "orbEssence": 160
+              }
+            },
+            {
+              "id": "deluxe-10-starShard-4",
+              "name": "Star Shard Hoard",
+              "description": "A hoard of star shard for the Home.",
+              "price": 900,
+              "grants": {
+                "starShard": 48
+              }
+            },
+            {
+              "id": "deluxe-10-potentialShard-4",
+              "name": "Potential Shard Hoard",
+              "description": "A hoard of potential shard for the Home.",
+              "price": 900,
+              "grants": {
+                "potentialShard": 48
+              }
+            },
+            {
+              "id": "deluxe-10-heldItemShard-4",
+              "name": "Held Item Shard Hoard",
+              "description": "A hoard of held item shard for the Home.",
+              "price": 900,
+              "grants": {
+                "heldItemShard": 48
+              }
+            },
+            {
+              "id": "deluxe-10-berryEssence-4",
+              "name": "Berry Essence Hoard",
+              "description": "A hoard of berry essence for the Home.",
+              "price": 900,
+              "grants": {
+                "berryEssence": 80
+              }
+            },
+            {
+              "id": "deluxe-10-soulHeartExp-4",
+              "name": "Soul-heart EXP Hoard",
+              "description": "A hoard of soul-heart exp for the Home.",
+              "price": 900,
+              "grants": {
+                "soulHeartExp": 160
+              }
+            },
+            {
+              "id": "deluxe-10-resonationShard-4",
+              "name": "Resonation Shard Hoard",
+              "description": "A hoard of resonation shard for the Home.",
+              "price": 900,
+              "grants": {
+                "resonationShard": 32
+              }
+            },
+            {
+              "id": "deluxe-10-plateBottle-4",
+              "name": "Plate Bottle Hoard",
+              "description": "A hoard of plate bottle for the Home.",
+              "price": 900,
+              "grants": {
+                "plateBottle": 3
+              }
+            },
+            {
+              "id": "deluxe-10-plateFragment-4",
+              "name": "Plate Fragment Hoard",
+              "description": "A hoard of plate fragment for the Home.",
+              "price": 900,
+              "grants": {
+                "plateFragment": 80
+              }
+            },
+            {
+              "id": "deluxe-10-titleTicket-4",
+              "name": "Title Ticket Hoard",
+              "description": "A hoard of title ticket for the Home.",
+              "price": 900,
+              "grants": {
+                "titleTicket": 2
+              }
+            },
+            {
+              "id": "deluxe-10-candy-4",
+              "name": "Candy Hoard",
+              "description": "A hoard of candy for the Home.",
+              "price": 900,
+              "grants": {
+                "candy": 4800
+              }
+            },
+            {
+              "id": "deluxe-10-gold-4",
+              "name": "Gold Hoard",
+              "description": "A hoard of gold for the Home.",
+              "price": 900,
+              "grants": {
+                "gold": 16000
+              }
+            },
+            {
+              "id": "deluxe-10-orbEssence-5",
+              "name": "Orb Essence Vault",
+              "description": "A vault of orb essence for the Home.",
+              "price": 2700,
+              "grants": {
+                "orbEssence": 320
+              }
+            },
+            {
+              "id": "deluxe-10-starShard-5",
+              "name": "Star Shard Vault",
+              "description": "A vault of star shard for the Home.",
+              "price": 2700,
+              "grants": {
+                "starShard": 96
+              }
+            },
+            {
+              "id": "deluxe-10-potentialShard-5",
+              "name": "Potential Shard Vault",
+              "description": "A vault of potential shard for the Home.",
+              "price": 2700,
+              "grants": {
+                "potentialShard": 96
+              }
+            },
+            {
+              "id": "deluxe-10-heldItemShard-5",
+              "name": "Held Item Shard Vault",
+              "description": "A vault of held item shard for the Home.",
+              "price": 2700,
+              "grants": {
+                "heldItemShard": 96
+              }
+            },
+            {
+              "id": "deluxe-10-berryEssence-5",
+              "name": "Berry Essence Vault",
+              "description": "A vault of berry essence for the Home.",
+              "price": 2700,
+              "grants": {
+                "berryEssence": 160
+              }
+            },
+            {
+              "id": "deluxe-10-soulHeartExp-5",
+              "name": "Soul-heart EXP Vault",
+              "description": "A vault of soul-heart exp for the Home.",
+              "price": 2700,
+              "grants": {
+                "soulHeartExp": 320
+              }
+            },
+            {
+              "id": "deluxe-10-resonationShard-5",
+              "name": "Resonation Shard Vault",
+              "description": "A vault of resonation shard for the Home.",
+              "price": 2700,
+              "grants": {
+                "resonationShard": 64
+              }
+            },
+            {
+              "id": "deluxe-10-plateBottle-5",
+              "name": "Plate Bottle Vault",
+              "description": "A vault of plate bottle for the Home.",
+              "price": 2700,
+              "grants": {
+                "plateBottle": 4
+              }
+            },
+            {
+              "id": "deluxe-10-plateFragment-5",
+              "name": "Plate Fragment Vault",
+              "description": "A vault of plate fragment for the Home.",
+              "price": 2700,
+              "grants": {
+                "plateFragment": 160
+              }
+            },
+            {
+              "id": "deluxe-10-titleTicket-5",
+              "name": "Title Ticket Vault",
+              "description": "A vault of title ticket for the Home.",
+              "price": 2700,
+              "grants": {
+                "titleTicket": 3
+              }
+            },
+            {
+              "id": "deluxe-10-candy-5",
+              "name": "Candy Vault",
+              "description": "A vault of candy for the Home.",
+              "price": 2700,
+              "grants": {
+                "candy": 9600
+              }
+            },
+            {
+              "id": "deluxe-10-gold-5",
+              "name": "Gold Vault",
+              "description": "A vault of gold for the Home.",
+              "price": 2700,
+              "grants": {
+                "gold": 32000
+              }
+            },
+            {
+              "id": "deluxe-10-orbEssence-6",
+              "name": "Orb Essence Trove",
+              "description": "A trove of orb essence for the Home.",
+              "price": 8100,
+              "grants": {
+                "orbEssence": 640
+              }
+            },
+            {
+              "id": "deluxe-10-starShard-6",
+              "name": "Star Shard Trove",
+              "description": "A trove of star shard for the Home.",
+              "price": 8100,
+              "grants": {
+                "starShard": 192
+              }
+            },
+            {
+              "id": "deluxe-10-potentialShard-6",
+              "name": "Potential Shard Trove",
+              "description": "A trove of potential shard for the Home.",
+              "price": 8100,
+              "grants": {
+                "potentialShard": 192
+              }
+            },
+            {
+              "id": "deluxe-10-heldItemShard-6",
+              "name": "Held Item Shard Trove",
+              "description": "A trove of held item shard for the Home.",
+              "price": 8100,
+              "grants": {
+                "heldItemShard": 192
+              }
+            },
+            {
+              "id": "deluxe-10-berryEssence-6",
+              "name": "Berry Essence Trove",
+              "description": "A trove of berry essence for the Home.",
+              "price": 8100,
+              "grants": {
+                "berryEssence": 320
+              }
+            },
+            {
+              "id": "deluxe-10-soulHeartExp-6",
+              "name": "Soul-heart EXP Trove",
+              "description": "A trove of soul-heart exp for the Home.",
+              "price": 8100,
+              "grants": {
+                "soulHeartExp": 640
+              }
+            },
+            {
+              "id": "deluxe-10-resonationShard-6",
+              "name": "Resonation Shard Trove",
+              "description": "A trove of resonation shard for the Home.",
+              "price": 8100,
+              "grants": {
+                "resonationShard": 128
+              }
+            },
+            {
+              "id": "deluxe-10-plateBottle-6",
+              "name": "Plate Bottle Trove",
+              "description": "A trove of plate bottle for the Home.",
+              "price": 8100,
+              "grants": {
+                "plateBottle": 5
+              }
+            },
+            {
+              "id": "deluxe-10-plateFragment-6",
+              "name": "Plate Fragment Trove",
+              "description": "A trove of plate fragment for the Home.",
+              "price": 8100,
+              "grants": {
+                "plateFragment": 320
+              }
+            },
+            {
+              "id": "deluxe-10-titleTicket-6",
+              "name": "Title Ticket Trove",
+              "description": "A trove of title ticket for the Home.",
+              "price": 8100,
+              "grants": {
+                "titleTicket": 4
+              }
+            },
+            {
+              "id": "deluxe-10-candy-6",
+              "name": "Candy Trove",
+              "description": "A trove of candy for the Home.",
+              "price": 8100,
+              "grants": {
+                "candy": 19200
+              }
+            },
+            {
+              "id": "deluxe-10-gold-6",
+              "name": "Gold Trove",
+              "description": "A trove of gold for the Home.",
+              "price": 8100,
+              "grants": {
+                "gold": 64000
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

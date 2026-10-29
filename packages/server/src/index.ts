@@ -15,6 +15,7 @@ import type { ShopView } from './shops';
 import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import type { ExploreView } from './explore-view';
+import type { PetHomeView } from './pet-home-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -319,6 +320,24 @@ export interface GameServer {
   getPvpHub(): Promise<Result<PvpHubView>>;
   /** Display-ready Explore hub: eight mode shells, gates and resets (M13.0b). */
   getExplore(): Promise<Result<ExploreView>>;
+  /** Display-ready Pet Home board, levels, album and shops (M13.1). */
+  getPetHome(): Promise<Result<PetHomeView>>;
+  /** Summon an unopened ball onto an active tile. */
+  summonPet(tileId?: number, seed?: number): Promise<Result<AccountSnapshot>>;
+  /** Open one unopened ball, revealing its Wild and granting Home XP. */
+  openPet(petId: string): Promise<Result<AccountSnapshot>>;
+  /** Merge two opened Wilds of the same level into one level-up. */
+  mergePets(sourceId: string, targetId: string): Promise<Result<AccountSnapshot>>;
+  /** Release a ball or opened Wild from the board. */
+  releasePet(petId: string): Promise<Result<AccountSnapshot>>;
+  /** Spend gems to open a revealed, padlocked tile. */
+  unlockPetTile(tileId: number): Promise<Result<AccountSnapshot>>;
+  /** Claim a reached Home level's one-time reward. */
+  claimPetHomeLevel(level: number): Promise<Result<ClaimResult>>;
+  /** Buy one offer from the Home Exchange or Orb Atelier. */
+  buyPetHomeShopOffer(shopId: 'home' | 'deluxe', offerId: string): Promise<Result<ClaimResult>>;
+  /** Spend gems for a fresh nine-offer shop page. */
+  refreshPetHomeShop(shopId: 'home' | 'deluxe'): Promise<Result<AccountSnapshot>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -370,6 +389,8 @@ export * from './pvp-view';
 export * from './pvp-ranked-view';
 export * from './pvp-hub-view';
 export * from './explore-view';
+export * from './pet-home';
+export * from './pet-home-view';
 export * from './plates';
 export * from './trinkets';
 export * from './vip';

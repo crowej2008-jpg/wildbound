@@ -14,5 +14,6 @@ export * from './gacha';
 export * from './shop';
 export * from './pve';
 export * from './explore';
+export * from './pet-home';
 export * from './pvp';
 export type { CoreStats, Faction, PercentLines, SoulStats, Tier, WildClass } from './model';

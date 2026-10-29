@@ -2,13 +2,14 @@
 
 M13.0b adds the Explore hub and the eight mode shells. It is deliberately a foundation: the
 cards, gates, scale, reset cadence and honest "arrives in" states ship now; each mode's actual
-run, attempts and reward claims ship in its own sub-milestone (13.1-13.9).
+run, attempts and reward claims ship in its own sub-milestone (13.1-13.9). 13.1 replaces the
+Pet Home shell with its live merge board; the other shells stay honest until their milestone.
 
 ## Modes and gates
 
 | Mode | A/B gate | Scale | Reset | Arrives |
 | --- | --- | --- | --- | --- |
-| Pet Home | campaign 1-10 | 21 tiles | daily | 13.1 |
+| Pet Home | campaign 1-10 | 21 tiles | daily | 13.1 (live) |
 | Sky Pillar | campaign 7-1 | 1,800 stages | daily | 13.2 |
 | Hoopa's Vault | server day 15 | 300 floors | daily | 13.3 |
 | Rift Arena | campaign 10-10 + Lv10 | 250 floors | daily | 13.4-13.5 |
@@ -48,13 +49,15 @@ mode-specific and are added with each playable mode; no fake attempt or claim bu
 - `/explore/:id`: the mode's full gate checklist, feature bullets, scale, reset countdown and an
   honest "this mode is a shell in this milestone" note. There is no play button until the mode is
   playable.
+- `/explore/pet-home`: the live M13.1 merge board (`docs/design/pet-home.md`). A locked account
+  sees the same gate checklist and a Campaign link instead of board controls.
 
 Labels are client-owned English. Content owns names, taglines, descriptions, scales, gates,
 features and planned milestone strings; content contains no franchise terms or copied source rows.
 
 ## Deliberate gaps
 
-- Mode play, attempts, reward claims and per-mode progress slices: 13.1-13.9.
+- Mode play, attempts, reward claims and per-mode progress slices: 13.2-13.9 (Pet Home is live).
 - Full Victory Road tasks/badges/commission: M14.
 - Gods Trials and all B gates beyond Hoopa: parked.
 - Paid tracks, Vault passes, Pet Home assistant and real-money SKUs: removed permanently.

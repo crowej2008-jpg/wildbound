@@ -87,6 +87,18 @@ import {
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import { buildExploreView } from './explore-view';
 import type { ExploreView } from './explore-view';
+import { buildPetHomeView, type PetHomeView } from './pet-home-view';
+import {
+  buyShopOfferAction,
+  claimLevelAction,
+  mergePetsAction,
+  openPetAction,
+  preparePetHome,
+  refreshShopAction,
+  releasePetAction,
+  summonPetAction,
+  unlockTileAction,
+} from './pet-home';
 import {
   startBattle as runStartBattle,
   stageBattle as runStageBattle,
@@ -986,6 +998,83 @@ export class LocalServer implements GameServer {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     return ok(buildExploreView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async getPetHome(): Promise<Result<PetHomeView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const now = this.now(loaded.value);
+    const prepared = preparePetHome(this.config, loaded.value, now);
+    if (prepared.changed) {
+      const committed = await this.commit(prepared.state);
+      if (!committed.ok) return committed;
+      return ok(buildPetHomeView(this.config, prepared.state, now));
+    }
+    return ok(buildPetHomeView(this.config, loaded.value, now));
+  }
+
+  async summonPet(tileId?: number, seed?: number): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = summonPetAction(this.config, loaded.value, this.now(loaded.value), tileId, seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value.state);
+  }
+
+  async openPet(petId: string): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = openPetAction(this.config, loaded.value, this.now(loaded.value), petId);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async mergePets(sourceId: string, targetId: string): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = mergePetsAction(this.config, loaded.value, this.now(loaded.value), sourceId, targetId);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async releasePet(petId: string): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = releasePetAction(this.config, loaded.value, this.now(loaded.value), petId);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async unlockPetTile(tileId: number): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = unlockTileAction(this.config, loaded.value, this.now(loaded.value), tileId);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value.state);
+  }
+
+  async claimPetHomeLevel(level: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimLevelAction(this.config, loaded.value, this.now(loaded.value), level);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.reward);
+  }
+
+  async buyPetHomeShopOffer(shopId: 'home' | 'deluxe', offerId: string): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = buyShopOfferAction(this.config, loaded.value, this.now(loaded.value), shopId, offerId);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.granted);
+  }
+
+  async refreshPetHomeShop(shopId: 'home' | 'deluxe'): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = refreshShopAction(this.config, loaded.value, this.now(loaded.value), shopId);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

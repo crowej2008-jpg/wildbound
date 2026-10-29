@@ -929,4 +929,35 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - **Tests.** +3 content tests, +3 engine gate/reset tests, +3 server view tests, +2 save migration
   assertions, +1 e2e Explore test; boot spec updated to the seven-tab nav.
 - **Docs.** `docs/design/explore.md`, SCOPE's M13 plan and ASSUMPTIONS 42-43.
-- **Next:** 13.1 - Pet Home (21 tiles, harvests, decoration).
+- **Next:** 13.1 - Pet Home.
+
+## M13.1 - Pet Home merge board (2026-10-28)
+
+- **Scope.** Replaced the shell with a live 5×5 merge board: 21 playable tiles and four inert
+  corners, 17 Home levels, merge cap 8→16, summons, open/merge/release, padlock purchases,
+  one-time level rewards, lazy Home-Coin income and two shops. The earlier habitat/decoration plan
+  was removed; this is the source's merge game, not resident placement.
+- **Data.** `packages/content/tuning/pet-home.json` holds 17 levels, 21 tiles, 16 income rows and
+  132 shop rows (84 Home Exchange + 48 Orb Atelier) in the source's band/page shape. Counts and
+  shapes follow the source; names, XP thresholds, income values, tile layout and every row are
+  original. `petHomeSchema` and `content:validate` check the board, level/tile counts, bands, offer
+  ids and shop totals.
+- **Rules.** Opening and merging each grant +10 Home XP. Income is the authored 5-second rate and
+  doubles by merge level, so a merge preserves the board's income. It is settled in whole
+  5-minute ticks, capped at 8 hours offline with partial ticks preserved. The
+  first 50 summons each UTC day are free; paid summons use the authored 10/30/80/250/600 brackets.
+  Padlocks charge the current Home level's price. Deluxe (Orb Atelier) opens at Home Lv 10. Shop
+  pages are deterministic from day + refresh count; refreshes cost 40 gems for 1–10 and 80 for
+  11–30, with 30 per day.
+- **Server/save.** `pet-home.ts` owns gate checks, currency spending, summon counters, daily reset
+  and settlement; `pet-home-view.ts` is a pure display view. Save **v16** adds `petHome`; v15 and
+  older saves migrate to a fresh slice. Every write rejects a locked 1-10 gate.
+- **Screen.** `/explore/pet-home` shows the board, Home level/XP/merge cap/income, free-tile count,
+  summon, unlock/open/release/merge actions, level rewards, both shops with refresh and purchase
+  states, and the 84-entry album. The Explore card is live; the locked screen still shows the gate
+  checklist and a Campaign link.
+- **Tests.** +4 content tests, +6 engine tests, +8 server tests, +1 save migration test and +1 e2e
+  board flow. **494 unit tests / 61 files**; **88 e2e** green.
+- **Docs.** `docs/design/pet-home.md`, `docs/design/explore.md`, SCOPE's M13 plan and ASSUMPTIONS
+  44-45.
+- **Next:** 13.2 - Sky Pillar (1,800 stages, daily resets).

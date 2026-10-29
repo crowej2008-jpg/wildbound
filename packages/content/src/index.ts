@@ -84,6 +84,7 @@ export {
   ECONOMY,
   CAMPAIGN,
   EXPLORE,
+  PET_HOME,
   GACHA_TUNING,
   COLLECTION_TUNING,
 } from './tuning';
@@ -93,8 +94,18 @@ export type {
   ExploreJson,
   ExploreModeJson,
   ExploreGateJson,
+  PetHomeJson,
 } from './tuning';
 export { collectionTuningSchema } from './collection-schema';
+export { petHomeSchema } from './pet-home-schema';
+export type {
+  PetHomeLevelJson,
+  PetHomeTileJson,
+  PetHomeIncomeJson,
+  PetHomeShopOfferJson,
+  PetHomeShopBandJson,
+  PetHomeShopJson,
+} from './pet-home-schema';
 export { GACHA } from './tuning-gacha';
 export { SHOPS } from './shops';
 export {

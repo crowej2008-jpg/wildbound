@@ -73,14 +73,14 @@
       "id": "pet-home",
       "name": "Pet Home",
       "sigil": "PH",
-      "tagline": "Give your Wilds a place to come home to.",
-      "description": "A small plot of 21 habitat tiles. Place Wilds, harvest Home Coins and decorate the rooms they live in.",
+      "tagline": "Summon, open and merge your Wilds at home.",
+      "description": "A growing 5x5 merge board. Summon balls, open them into Wilds, merge equal levels, and let the Home earn coins for its two shops.",
       "scale": "21 tiles",
-      "status": "planned",
+      "status": "live",
       "arrivesIn": "13.1",
       "reset": "daily",
       "gates": [{ "kind": "campaign", "chapter": 1, "stage": 10 }],
-      "features": ["21 habitat tiles", "Daily harvests and decoration", "Home Coins from resident Wilds"]
+      "features": ["17 Home levels and a 6-to-21 tile board", "Summon, open, merge and release Wilds", "Home Coins, level rewards and two shops"]
     },
     {
       "id": "island-challenge",

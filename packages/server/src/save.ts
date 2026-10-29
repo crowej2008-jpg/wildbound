@@ -10,6 +10,7 @@ import {
   initialEquipment,
   initialIdle,
   initialGacha,
+  initialPetHome,
   initialPve,
   initialPvp,
   initialResonance,
@@ -29,7 +30,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 15;
+export const SAVE_VERSION = 16;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -129,6 +130,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     titles: normalizeTitles(s.titles, now),
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
+    petHome: s.petHome ?? initialPetHome(now, day),
     debugClockOffset: s.debugClockOffset ?? 0,
   };
 }
@@ -189,6 +191,7 @@ export function createInitialState(config: GameConfig): AccountState {
     titles: initialTitles(),
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
+    petHome: initialPetHome(now, day),
     debugClockOffset: 0,
   };
 }
@@ -238,8 +241,44 @@ function isAccountState(value: unknown): value is AccountState {
   if (!s.roster.every(isInstance)) return false;
   if (!s.squads || typeof s.squads !== 'object') return false;
   if (!s.currencies || typeof s.currencies !== 'object') return false;
+  if (!isPetHome(s.petHome)) return false;
   if (typeof s.nextInstanceSeq !== 'number') return false;
   return true;
+}
+
+function isPetHome(value: unknown): value is AccountState['petHome'] {
+  if (value === null || typeof value !== 'object') return false;
+  const home = value as Partial<AccountState['petHome']>;
+  if (typeof home.xp !== 'number' || !Number.isFinite(home.xp)) return false;
+  if (!Array.isArray(home.unlockedTiles) || !home.unlockedTiles.every((id) => typeof id === 'number')) {
+    return false;
+  }
+  if (!Array.isArray(home.pets) || !home.pets.every(isPetHomePet)) return false;
+  if (typeof home.nextPetSeq !== 'number' || !Number.isFinite(home.nextPetSeq)) return false;
+  if (typeof home.lastSettledAt !== 'number' || !Number.isFinite(home.lastSettledAt)) return false;
+  if (typeof home.summonDay !== 'string' || typeof home.shopDay !== 'string') return false;
+  if (typeof home.freeSummonsUsed !== 'number' || typeof home.paidSummonsUsed !== 'number') return false;
+  if (!Array.isArray(home.levelClaims) || !home.levelClaims.every((level) => typeof level === 'number')) {
+    return false;
+  }
+  if (!Array.isArray(home.album) || !home.album.every((id) => typeof id === 'string')) return false;
+  if (typeof home.shopRefreshes !== 'number') return false;
+  if (!Array.isArray(home.shopBought) || !home.shopBought.every((id) => typeof id === 'string')) {
+    return false;
+  }
+  return true;
+}
+
+function isPetHomePet(value: unknown): boolean {
+  if (value === null || typeof value !== 'object') return false;
+  const pet = value as Record<string, unknown>;
+  return (
+    typeof pet.id === 'string' &&
+    typeof pet.speciesId === 'string' &&
+    typeof pet.level === 'number' &&
+    typeof pet.tileId === 'number' &&
+    typeof pet.opened === 'boolean'
+  );
 }
 
 function isInstance(value: unknown): value is WildInstance {

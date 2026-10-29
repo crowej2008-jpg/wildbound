@@ -14,6 +14,7 @@ import type { TowerState } from '../pve/tower';
 import type { WorldBossState } from '../pve/worldBoss';
 import type { DungeonState } from '../pve/dungeons';
 import type { LinkCrystalState } from '../pve/linkCrystal';
+import type { PetHomeState } from '../pet-home/types';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -187,6 +188,8 @@ export interface AccountState {
   pve: PveState;
   /** M10: PvP progress (Arena credits/rank, Ranked ladder). */
   pvp: PvpState;
+  /** M13.1: the Pet Home merge board, album and shop bookkeeping. */
+  petHome: PetHomeState;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }

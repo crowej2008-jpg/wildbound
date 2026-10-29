@@ -494,6 +494,16 @@ export const rewardSchema = z
     forestCoin: z.number().nonnegative().optional(),
     islandCoin: z.number().nonnegative().optional(),
     wildCoin: z.number().nonnegative().optional(),
+    potentialShard: z.number().nonnegative().optional(),
+    orbEssence: z.number().nonnegative().optional(),
+    soulHeartExp: z.number().nonnegative().optional(),
+    berryEssence: z.number().nonnegative().optional(),
+    heldItemShard: z.number().nonnegative().optional(),
+    plateBottle: z.number().nonnegative().optional(),
+    plateFragment: z.number().nonnegative().optional(),
+    starShard: z.number().nonnegative().optional(),
+    resonationShard: z.number().nonnegative().optional(),
+    titleTicket: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })
   .strict();

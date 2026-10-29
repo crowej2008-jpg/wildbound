@@ -677,3 +677,17 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     labels. Save v15 stores `serverEpoch`; older saves derive it from the welcome mail's creation
     time, falling back to migration time. *What would change it:* the owner wants a mode playable
     before its sub-milestone or a different account-age basis for server-day gates.
+44. **Pet Home is a merge board, not resident placement (2026-10-28).** The source audit replaced
+    the earlier habitat/decoration plan: 5×5 board with 21 playable tiles (four inert corners), 17
+    Home levels, merge cap 8→16, +10 Home XP for opening and merging, 50 free summons/day, and lazy
+    Home-Coin settlement every 5 minutes with an 8-hour offline cap. Counts and shapes follow the
+    source; names, XP thresholds, income values, tile layout and shop rows are ours. The paid
+    assistant and real-money products are removed. Save **v16** adds `petHome`; older saves migrate
+    with a fresh slice. *What would change it:* the owner restores resident placement/decoration or
+    asks for source-exact numbers.
+45. **Pet Home's two shops share one daily refresh counter (2026-10-28).** Each shop has its own
+    deterministic nine-offer page and its own bought-offer list; a refresh clears only that shop's
+    bought rows, while the 30-per-day counter (40 gems for 1–10, 80 for 11–30) is shared. Deluxe
+    (Orb Atelier) opens at Home Lv 10 and pays in Orb Essence; Home Exchange pays in Home Coins.
+    *What would change it:* the source evidence shows separate per-shop counters, or the owner asks
+    for one shared page instead.
