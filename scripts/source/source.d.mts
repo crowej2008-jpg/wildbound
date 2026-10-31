@@ -11,3 +11,4 @@ export function loadCatalog(root?: string): Map<string, CatalogEntry>;
 export function loadTable(name: string, root?: string): unknown;
 export function tableRows(name: string, root?: string): unknown[];
 export function describeTable(data: unknown): { rows: number; fields: string[] };
+export function loadTextMap(root?: string): Record<string, string>;

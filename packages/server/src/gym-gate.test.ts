@@ -27,8 +27,6 @@ async function grownSave(): Promise<{ srv: LocalServer; json: string }> {
   if (!loaded.ok) throw new Error('load failed');
   for (const wild of loaded.value.state.roster) {
     await srv.levelUp(wild.id, 26 - wild.level);
-    for (let stars = wild.stars; stars < 3; stars++) await srv.starUp(wild.id, 1);
-    for (let stage = wild.evolutionStage; stage < 1; stage++) await srv.evolve(wild.id);
   }
   const exported = await srv.exportSave();
   if (!exported.ok) throw new Error('export failed');

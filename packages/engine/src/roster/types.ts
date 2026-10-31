@@ -133,9 +133,8 @@ export interface WildInstance {
   id: string;
   speciesId: string;
   level: number;
+  /** The source's star (R1): picks the species' star card — form, level cap and stats. */
   stars: number;
-  /** 0-based evolution stage; bounded by the species' `stages.length`. */
-  evolutionStage: number;
   locked: boolean;
   acquiredAt: number;
 }
@@ -334,21 +333,12 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
   };
 }
 
-/** Tuning for growth actions, mirroring `tuning/growth.json`'s progress block. */
-export interface EvolveStep {
-  minLevel: number;
-  minStars: number;
-  candy: number;
-  gold: number;
-  stones: number;
-}
-
+/**
+ * Tuning for growth actions (`tuning/growth.json`). Star caps, level caps and evolution fodder come
+ * from each species' star cards (R1); the level-up price is a stand-in until the source's table is
+ * captured (ASSUMPTIONS #51).
+ */
 export interface ProgressTables {
   levelUp: { candyBase: number; candyExponent: number; goldPerCandy: number };
-  starUp: { shardsPerStar: number; goldPerStar: number };
-  /** Indexed by target stage (index 0 is unused — a Wild cannot evolve to stage 0). */
-  evolve: EvolveStep[];
   respawn: { gemCost: number; refundRate: number };
-  maxLevelByStage: number[];
-  maxStars: number;
 }

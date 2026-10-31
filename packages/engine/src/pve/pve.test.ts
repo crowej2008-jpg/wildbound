@@ -124,11 +124,11 @@ const trialBase: Omit<TrialDef, 'rule'> = {
 
 describe('trials', () => {
   it('enforces a faction lock', () => {
-    const t: TrialDef = { ...trialBase, rule: 'factionLocked', faction: 'ember' };
-    expect(isTrialEligible(t, 'ember')).toBe(true);
-    expect(isTrialEligible(t, 'tide')).toBe(false);
+    const t: TrialDef = { ...trialBase, rule: 'factionLocked', faction: 'fire' };
+    expect(isTrialEligible(t, 'fire')).toBe(true);
+    expect(isTrialEligible(t, 'water')).toBe(false);
     const other: TrialDef = { ...trialBase, rule: 'noUltimate' };
-    expect(isTrialEligible(other, 'tide')).toBe(true);
+    expect(isTrialEligible(other, 'water')).toBe(true);
   });
 
   it('exposes the level cap and survival rounds per rule', () => {
@@ -152,7 +152,7 @@ describe('trials', () => {
   it('derives combat rules', () => {
     expect(trialBattleRules({ ...trialBase, rule: 'noUltimate' })).toEqual({ noUltimate: true });
     expect(trialBattleRules({ ...trialBase, rule: 'survival', survivalRounds: 6 })).toEqual({ survivalRounds: 6 });
-    expect(trialBattleRules({ ...trialBase, rule: 'factionLocked', faction: 'grove' })).toEqual({});
+    expect(trialBattleRules({ ...trialBase, rule: 'factionLocked', faction: 'grass' })).toEqual({});
   });
 });
 

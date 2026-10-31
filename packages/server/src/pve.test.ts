@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { dayKey, levelCapOf, weekdayUtc, weekKey, type AccountState } from '@wildbound/engine';
+import { dayKey, weekdayUtc, weekKey, type AccountState } from '@wildbound/engine';
 import { buildConfig } from './config';
 import { LocalServer } from './local-server';
 import { MemoryStore } from './storage';
@@ -28,7 +28,7 @@ function config() {
 /** A fixture account whose six Wilds are fully grown, so modes are winnable. */
 function strongState(cfg: ReturnType<typeof config>): AccountState {
   const base = createInitialState(cfg);
-  const roster = base.roster.map((w) => ({ ...w, level: 140, stars: 10, evolutionStage: 3 }));
+  const roster = base.roster.map((w) => ({ ...w, level: 140, stars: 10 }));
   return {
     ...base,
     roster,
@@ -39,9 +39,9 @@ function strongState(cfg: ReturnType<typeof config>): AccountState {
 describe('PvE modes (server glue)', () => {
   it('resolves enemy pools by faction and tier', () => {
     const cfg = config();
-    const volt = resolvePool(cfg, { factions: ['volt'], tiers: [], count: 6, baseLevel: 1, levelSlope: 1, starsEvery: 1, maxStars: 1, stageEvery: 1, maxStage: 1 });
+    const volt = resolvePool(cfg, { factions: ['light'], tiers: [], count: 6, baseLevel: 1, levelSlope: 1, starsEvery: 1, maxStars: 1, stageEvery: 1, maxStage: 1 });
     expect(volt.length).toBeGreaterThan(0);
-    expect(volt.every((id) => cfg.species.get(id)?.faction === 'volt')).toBe(true);
+    expect(volt.every((id) => cfg.species.get(id)?.faction === 'light')).toBe(true);
     const top = resolvePool(cfg, { factions: [], tiers: ['mythic'], count: 1, baseLevel: 1, levelSlope: 1, starsEvery: 1, maxStars: 1, stageEvery: 1, maxStage: 1 });
     expect(top.every((id) => cfg.species.get(id)?.tier === 'mythic')).toBe(true);
   });
@@ -188,11 +188,11 @@ describe('PvE modes (server glue)', () => {
 
     const w = fresh.roster[0]!;
     const meta = cfg.species.get(w.speciesId)!;
-    const topStage = meta.stages.length - 1;
-    const stageCap = levelCapOf({ ...w, evolutionStage: topStage }, cfg.progress);
+    const top = meta.stars[meta.stars.length - 1]!;
+    const stageCap = top.maxLevel;
     const finished: AccountState = {
       ...fresh,
-      roster: fresh.roster.map((x, i) => (i === 0 ? { ...x, evolutionStage: topStage, level: stageCap, stars: 10 } : x)),
+      roster: fresh.roster.map((x, i) => (i === 0 ? { ...x, level: stageCap, stars: top.star } : x)),
     };
     expect(buildLinkCrystalView(cfg, finished).unlocked).toBe(true);
   });
@@ -202,11 +202,11 @@ describe('PvE modes (server glue)', () => {
     const base = createInitialState(cfg);
     const w = base.roster[0]!;
     const meta = cfg.species.get(w.speciesId)!;
-    const topStage = meta.stages.length - 1;
-    const stageCap = levelCapOf({ ...w, evolutionStage: topStage }, cfg.progress);
+    const top = meta.stars[meta.stars.length - 1]!;
+    const stageCap = top.maxLevel;
     const crafted: AccountState = {
       ...base,
-      roster: base.roster.map((x, i) => (i === 0 ? { ...x, evolutionStage: topStage, level: stageCap, stars: 10 } : x)),
+      roster: base.roster.map((x, i) => (i === 0 ? { ...x, level: stageCap, stars: top.star } : x)),
       currencies: { ...base.currencies, candy: 100_000_000, gold: 100_000_000, stone: 1000 },
       pve: { ...base.pve, linkCrystal: { unlocked: true, level: stageCap + 30 } },
     };

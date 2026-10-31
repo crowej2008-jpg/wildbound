@@ -11,7 +11,6 @@ function skySave(): string {
     speciesId,
     level: 100,
     stars: 6,
-    evolutionStage: 2,
     locked: false,
     acquiredAt: 0,
   }));

@@ -45,7 +45,7 @@ export function plateCost(stage: number, collection: GameConfig['collection']): 
 
 export function buildPlateView(config: GameConfig, state: AccountState, wild: { id: string; speciesId: string }): PlateView {
   const meta = config.species.get(wild.speciesId);
-  const faction: Faction = meta?.faction ?? 'ember';
+  const faction: Faction = meta?.faction ?? 'fire';
   const def = config.equipment.plates.find((p) => p.faction === faction);
   const stage = plateStage(state, wild.id);
   const maxStage = config.collection.plates.maxStage;

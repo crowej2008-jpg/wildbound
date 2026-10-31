@@ -1,12 +1,12 @@
-import { FACTIONS, GROWTH, POWER, WILDS, type SpeciesJson } from '@wildbound/content';
-import { computePower, levelCap, resolveCoreStats } from '@wildbound/engine';
+import { FACTIONS, POWER, WILDS, type SpeciesJson } from '@wildbound/content';
+import { computePower, formNames, resolveCoreStats } from '@wildbound/engine';
 import WildPortrait from '../art/WildPortrait';
 import { classLabel, factionLabel, t, tierLabel } from '../i18n';
 
 /**
- * Procedural creature gallery (M2, PROMPT §9.4): every Wild at every evolution
- * stage, plus the stats the engine resolves at that stage's level cap. Reads
- * the same validated content the CLI does; portraits are deterministic SVG.
+ * Procedural creature gallery (M2, PROMPT §9.4): every species' forms along its star ladder, plus the
+ * stats the engine resolves for its top star at that star's level cap (R1: the source's star cards).
+ * Portraits are deterministic SVG.
  */
 export default function Gallery() {
   return (
@@ -30,18 +30,16 @@ export default function Gallery() {
 }
 
 function WildCard({ species }: { species: SpeciesJson }) {
-  const finalStage = species.stages.length - 1;
-  const level = levelCap(finalStage, GROWTH);
-  const core = resolveCoreStats(
-    { base: species.base, level, stars: 1, stage: finalStage, tier: species.tier },
-    GROWTH,
-  );
+  const top = species.stars[species.stars.length - 1]!;
+  const level = top.maxLevel;
+  const core = resolveCoreStats(top, level);
   const power = computePower(core, {}, POWER);
+  const forms = formNames(species.stars);
 
   return (
     <article className="wild-card">
       <div className="wild-portraits">
-        {species.stages.map((stageName, stage) => (
+        {forms.map((stageName, stage) => (
           <figure key={stage} className="wild-portrait-figure">
             <WildPortrait species={species} stage={stage} size={84} label={`${species.name}, ${stageName}`} />
             <figcaption>{stageName}</figcaption>
@@ -62,7 +60,7 @@ function WildCard({ species }: { species: SpeciesJson }) {
           <Stat label={t('gallery.stat.spd')} value={core.spd} />
         </dl>
         <p className="wild-power">
-          {t('gallery.power')} {power.toLocaleString()} · {t('gallery.maxLevel')} {level}
+          {t('gallery.power')} {power.toLocaleString()} · {top.star}★ · {t('gallery.maxLevel')} {level}
         </p>
       </div>
     </article>

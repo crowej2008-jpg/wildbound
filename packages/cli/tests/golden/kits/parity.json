@@ -2,7 +2,7 @@
   {
     "id": "tidewarden",
     "name": "Kyogre",
-    "faction": "tide",
+    "faction": "water",
     "class": "guardian",
     "tier": "mythic",
     "skills": {
@@ -102,7 +102,7 @@
   {
     "id": "twigleaf",
     "name": "Sceptile",
-    "faction": "grove",
+    "faction": "grass",
     "class": "adept",
     "tier": "common",
     "skills": {

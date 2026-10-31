@@ -43,8 +43,6 @@ describe('M5 campaign balance', () => {
     if (!after.ok) throw new Error('reload failed');
     for (const wild of after.value.state.roster) {
       await srv.levelUp(wild.id, 26 - wild.level);
-      for (let stars = wild.stars; stars < 3; stars++) await srv.starUp(wild.id, 1);
-      for (let stage = wild.evolutionStage; stage < 1; stage++) await srv.evolve(wild.id);
     }
 
     const ordered = orderStages(config.stages).filter((stage) => stage.chapter <= 3);

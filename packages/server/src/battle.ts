@@ -2,6 +2,7 @@ import { COMBAT_SETTINGS, kitById, kitToEngine } from '@wildbound/content';
 import {
   computePower,
   emptyLoadout,
+  formIndex,
   foldLoadout,
   mergeDelta,
   resolveCoreStats,
@@ -26,7 +27,7 @@ import {
   type WildClass,
   type WildInstance,
 } from '@wildbound/engine';
-import type { GameConfig } from './config';
+import { cardOf, type GameConfig } from './config';
 import { resonanceFoldFor } from './resonance';
 import { titleFoldFor } from './titles';
 
@@ -82,10 +83,7 @@ export function slotToPosition(slot: number): number {
 export function sheetOf(wild: WildInstance, config: GameConfig): SheetInput | null {
   const meta = config.species.get(wild.speciesId);
   if (!meta) return null;
-  const core = resolveCoreStats(
-    { base: meta.base, level: wild.level, stars: wild.stars, tier: meta.tier, stage: wild.evolutionStage },
-    config.growth,
-  );
+  const core = resolveCoreStats(cardOf(meta, wild.stars), wild.level);
   return { hp: core.hp, pAtk: core.pAtk, sAtk: core.sAtk, spd: core.spd, pDef: core.pDef, sDef: core.sDef };
 }
 
@@ -198,6 +196,7 @@ export function buildWildTeam(
     if (!species || !kitJson || !equipped) return;
     const position = slotToPosition(slot);
     const unitPower = powerOf(wild, config, state);
+    const card = cardOf(species, wild.stars);
     const id = `${side}-${slot}`;
     specs.push({
       id,
@@ -208,6 +207,7 @@ export function buildWildTeam(
       sheet: equipped.sheet,
       power: unitPower,
       level: wild.level,
+      ...(card.factionBoost ? { factionBoost: card.factionBoost } : {}),
       ...(equipped.effects.length > 0 ? { roundEffects: equipped.effects } : {}),
       ...(Object.keys(equipped.soulheart).length > 0 ? { soulheart: equipped.soulheart } : {}),
     });
@@ -215,7 +215,7 @@ export function buildWildTeam(
       name: species.name,
       speciesId: wild.speciesId,
       className: species.className,
-      stage: wild.evolutionStage,
+      stage: formIndex(species.stars, wild.stars),
       power: unitPower,
     });
     power += unitPower;
@@ -236,20 +236,30 @@ export function buildEnemyTeam(enemies: StageEnemy[], config: GameConfig): Built
     const species = config.species.get(enemy.speciesId);
     const kitJson = kitById(enemy.speciesId);
     if (!species || !kitJson) return;
-    const core = resolveCoreStats(
-      { base: species.base, level: enemy.level, stars: enemy.stars, tier: species.tier, stage: enemy.stage },
-      config.growth,
-    );
+    // R1: an enemy's `stars` picks its star card (clamped into the species' ladder); its old
+    // `stage` no longer matters. Enemy rows are re-copied from the source in R9.
+    const card = cardOf(species, enemy.stars);
+    const core = resolveCoreStats(card, enemy.level);
     const sheet: SheetInput = { hp: core.hp, pAtk: core.pAtk, sAtk: core.sAtk, spd: core.spd, pDef: core.pDef, sDef: core.sDef };
     const unitPower = computePower(core, {}, config.power);
     const position = slotToPosition(slot);
     const id = `defenders-${slot}`;
-    specs.push({ id, name: species.name, position, side: 'defenders', kit: kitToEngine(kitJson), sheet, power: unitPower, level: enemy.level });
+    specs.push({
+      id,
+      name: species.name,
+      position,
+      side: 'defenders',
+      kit: kitToEngine(kitJson),
+      sheet,
+      power: unitPower,
+      level: enemy.level,
+      ...(card.factionBoost ? { factionBoost: card.factionBoost } : {}),
+    });
     meta.set(`defenders:${position}`, {
       name: species.name,
       speciesId: enemy.speciesId,
       className: species.className,
-      stage: enemy.stage,
+      stage: formIndex(species.stars, enemy.stars),
       power: unitPower,
     });
     power += unitPower;

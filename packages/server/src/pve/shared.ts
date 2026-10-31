@@ -2,7 +2,7 @@ import {
   countQualifying,
   crystalCap,
   generateEnemies,
-  levelCapOf,
+  starRange,
   type AccountState,
   type CrystalWildInfo,
   type DungeonDef,
@@ -16,7 +16,7 @@ import {
   type WorldBossDef,
 } from '@wildbound/engine';
 import type { BattleView } from '../battle';
-import type { GameConfig } from '../config';
+import { cardOf, type GameConfig } from '../config';
 
 /**
  * Shared PvE helpers (M8, PROMPT §7.6): resolve content definitions, generate
@@ -82,10 +82,11 @@ export function worldBossDefs(config: GameConfig): WorldBossDef[] {
 export function crystalWilds(config: GameConfig, state: AccountState): CrystalWildInfo[] {
   return state.roster.map((w) => {
     const meta = config.species.get(w.speciesId);
-    const topStage = Math.max(0, (meta?.stages.length ?? 1) - 1);
-    // Eligible only at the final evolution stage *and* already at its level cap,
+    // Eligible only at the species' last star *and* already at its level cap,
     // so a crystal can extend a finished Wild rather than unlock at birth.
-    const atTopStage = w.evolutionStage >= topStage && w.level >= levelCapOf(w, config.progress);
+    const atTopStage = meta
+      ? w.stars >= starRange(meta.stars).max && w.level >= cardOf(meta, w.stars).maxLevel
+      : false;
     return { stars: w.stars, atTopStage };
   });
 }

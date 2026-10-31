@@ -11,7 +11,6 @@ function homeSave(): string {
     speciesId,
     level: 100,
     stars: 5,
-    evolutionStage: 2,
     locked: false,
     acquiredAt: 0,
   }));

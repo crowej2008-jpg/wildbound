@@ -66,7 +66,11 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
     return { dmg: Math.max(1, Math.floor(raw)), crit: false, blocked: false, trueDmg: true };
   }
 
-  const G = Math.max(S.gFloor, 1 + eff(attacker, 'dmgBoost') - eff(defender, 'dmgRdct'));
+  // R1: the star card's "DMG BST to [faction]" joins the additive DMG Boost pair against that faction
+  // (how the source combines it is open — ASSUMPTIONS #52).
+  const factionBoost =
+    attacker.factionBoost && attacker.factionBoost.faction === defender.kit.faction ? attacker.factionBoost.value : 0;
+  const G = Math.max(S.gFloor, 1 + eff(attacker, 'dmgBoost') + factionBoost - eff(defender, 'dmgRdct'));
   const P =
     S.mode === 'pvp' ? Math.max(S.pFloor, 1 + eff(attacker, 'pvpBoost') - eff(defender, 'pvpRdct') - S.pvpConst) : 1;
 

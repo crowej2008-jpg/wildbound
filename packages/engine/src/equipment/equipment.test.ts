@@ -51,7 +51,7 @@ const TABLES: EquipmentTables = {
     {
       id: 'plateA',
       name: 'Plate A',
-      faction: 'ember',
+      faction: 'fire',
       lines: [
         { kind: 'core', field: 'pAtk', base: 10, perLevel: 10 },
         { kind: 'percent', field: 'dmgBoost', base: 0.01, perLevel: 0.01 },
@@ -209,7 +209,7 @@ describe('layer contributions', () => {
       loadout,
       state,
       TABLES,
-      { faction: 'ember', stage: 5 },
+      { faction: 'fire', stage: 5 },
       { speciesId: 'sp1', level: 5 },
       { level: 5, perLevel: { pAtk: 10, spd: 0.1 } },
       { lines: [{ kind: 'core', field: 'hp', base: 100, perLevel: 0 }] },
@@ -315,7 +315,7 @@ describe('rules', () => {
 const KIT = {
   id: 'kit',
   name: 'Kit',
-  faction: 'ember' as const,
+  faction: 'fire' as const,
   class: 'striker' as const,
   tier: 'common' as const,
   skills: {
@@ -379,7 +379,7 @@ function battleWith(
   baseSheet: SheetInput,
   state: EquipmentState,
   loadout: Loadout,
-  plate?: { faction: 'ember'; stage: number },
+  plate?: { faction: 'fire'; stage: number },
   trinket?: { speciesId: string; level: number },
   resonance?: { level: number; perLevel: Partial<CoreStats> },
   title?: { lines: { kind: 'core'; field: 'pAtk'; base: number; perLevel: number }[] },
@@ -404,7 +404,7 @@ describe('every layer moves a battle in the intended direction', () => {
   });
 
   it('a plate stage raises damage', () => {
-    const up = battleWith(base, stateWith({}), emptyLoadout(TUNING), { faction: 'ember', stage: 10 });
+    const up = battleWith(base, stateWith({}), emptyLoadout(TUNING), { faction: 'fire', stage: 10 });
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });
 

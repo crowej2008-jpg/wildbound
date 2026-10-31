@@ -169,6 +169,11 @@ export const en = {
   'wild.evolve.maxed': 'Final form reached',
   'wild.evolve.levelReq': 'Lv',
   'wild.evolve.starReq': 'stars',
+  'wild.evolve.levelCap': 'level cap',
+  'wild.evolve.awakening': 'comes from Awakening, which arrives in a later milestone.',
+  'wild.evolve.anyOf': 'Pokémon',
+  'wild.evolve.any': 'Pokémon of any faction',
+  'wild.evolve.fodderNote': 'Fodder is picked automatically: lowest level first, never locked or squad Pokémon.',
   'squad.title': 'Squads',
   'squad.subtitle': 'Arrange six Wilds. Slots 1-3 form the front row.',
   'squad.auto': 'Auto Formation',
@@ -269,7 +274,7 @@ export const en = {
   'common.cancel': 'Cancel',
   'common.confirm': 'Confirm',
   'gallery.title': 'Wild Gallery',
-  'gallery.subtitle': 'Every original Wild, rendered from its seed at each evolution stage.',
+  'gallery.subtitle': 'Every Pokémon, rendered from its seed at each form along its star ladder.',
   'gallery.stage': 'Stage',
   'gallery.power': 'Power',
   'gallery.stat.hp': 'HP',
@@ -277,21 +282,21 @@ export const en = {
   'gallery.stat.sAtk': 'S.ATK',
   'gallery.stat.spd': 'SPD',
   'gallery.maxLevel': 'max lv',
-  'faction.ember': 'Ember',
-  'faction.tide': 'Tide',
-  'faction.grove': 'Grove',
-  'faction.volt': 'Volt',
-  'faction.frost': 'Frost',
-  'faction.shade': 'Shade',
-  'class.striker': 'Striker',
-  'class.guardian': 'Guardian',
-  'class.adept': 'Adept',
+  'faction.water': 'Water',
+  'faction.fire': 'Fire',
+  'faction.grass': 'Grass',
+  'faction.light': 'Light',
+  'faction.dark': 'Dark',
+  'class.striker': 'ATK',
+  'class.guardian': 'DEF',
+  'class.adept': 'SKILL',
   'tier.common': 'Common',
   'tier.rare': 'Rare',
   'tier.epic': 'Epic',
   'tier.legendary': 'Legendary',
   'tier.supreme': 'Supreme',
   'tier.mythic': 'Mythic',
+  'tier.origin': 'Origin',
   'combat.title': 'Battle',
   'combat.subtitle': 'Your saved squad fights an echo squad. The recorded log replays exactly, every time.',
   'combat.loading': 'Preparing battle…',
@@ -812,17 +817,16 @@ export function tKey(key: string): string {
   return (en as Record<string, string>)[key] ?? key;
 }
 
-export type FactionKey = 'ember' | 'tide' | 'grove' | 'volt' | 'frost' | 'shade';
+export type FactionKey = 'water' | 'fire' | 'grass' | 'light' | 'dark';
 export type ClassKey = 'striker' | 'guardian' | 'adept';
-export type TierKey = 'common' | 'rare' | 'epic' | 'legendary' | 'supreme' | 'mythic';
+export type TierKey = 'common' | 'rare' | 'epic' | 'legendary' | 'supreme' | 'mythic' | 'origin';
 
 export const factionLabel: Record<FactionKey, string> = {
-  ember: en['faction.ember'],
-  tide: en['faction.tide'],
-  grove: en['faction.grove'],
-  volt: en['faction.volt'],
-  frost: en['faction.frost'],
-  shade: en['faction.shade'],
+  water: en['faction.water'],
+  fire: en['faction.fire'],
+  grass: en['faction.grass'],
+  light: en['faction.light'],
+  dark: en['faction.dark'],
 };
 
 export const classLabel: Record<ClassKey, string> = {
@@ -838,6 +842,7 @@ export const tierLabel: Record<TierKey, string> = {
   legendary: en['tier.legendary'],
   supreme: en['tier.supreme'],
   mythic: en['tier.mythic'],
+  origin: en['tier.origin'],
 };
 
 export type CurrencyKey =

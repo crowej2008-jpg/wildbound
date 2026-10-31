@@ -11,12 +11,11 @@ export interface Palette {
 }
 
 const FACTION_HUE: Record<Faction, number> = {
-  ember: 12,
-  tide: 195,
-  grove: 140,
-  volt: 45,
-  frost: 210,
-  shade: 265,
+  water: 200,
+  fire: 12,
+  grass: 135,
+  light: 48,
+  dark: 270,
 };
 
 function hsl(h: number, s: number, l: number): string {

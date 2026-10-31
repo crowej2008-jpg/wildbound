@@ -2,11 +2,15 @@
  * Core domain vocabulary (types only — see the domain model in PROMPT.md §5).
  * Faction and class names are generic mechanic names, written for Wildbound.
  */
-export type Faction = 'ember' | 'tide' | 'grove' | 'volt' | 'frost' | 'shade';
+/** The source's five factions (R1: race 1–5). */
+export type Faction = 'water' | 'fire' | 'grass' | 'light' | 'dark';
+
+export const FACTIONS: readonly Faction[] = ['water', 'fire', 'grass', 'light', 'dark'];
 
 export type WildClass = 'striker' | 'guardian' | 'adept';
 
-export type Tier = 'common' | 'rare' | 'epic' | 'legendary' | 'supreme' | 'mythic';
+/** Quality, from the source's potential number (13 Rare … 17 Mythic, 18 Origin). */
+export type Tier = 'common' | 'rare' | 'epic' | 'legendary' | 'supreme' | 'mythic' | 'origin';
 
 /** The six core stats. P.ATK / S.ATK drive the two damage pipelines; P.DEF /
  * S.DEF feed Power and are otherwise inert under `defendersUseDef=false`. */

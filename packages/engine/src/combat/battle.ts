@@ -138,6 +138,7 @@ function spawn(specs: SpecInput[], side: 'attackers' | 'defenders', settings: Co
       soulheart: spec.soulheart,
       resources: {},
       level: spec.level ?? 1,
+      ...(spec.factionBoost ? { factionBoost: spec.factionBoost } : {}),
     };
   });
 }

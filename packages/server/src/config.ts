@@ -47,17 +47,18 @@ import type {
 } from '@wildbound/content';
 import {
   mulberry32,
-  type CoreStats,
+  starCardFor,
+  starRange,
   type EquipmentTables,
   type Faction,
   type GachaMachineDef,
-  type GrowthTables,
   type PowerWeights,
   type ProgressTables,
   type QuestDef,
   type Rng,
   type ShopDef,
   type StageDef,
+  type StarCard,
   type Tier,
   type WildClass,
   type XpCurve,
@@ -70,8 +71,22 @@ export interface SpeciesMeta {
   faction: Faction;
   className: WildClass;
   tier: Tier;
-  base: CoreStats;
-  stages: string[];
+  /** The source's hero id. */
+  sourceId: number;
+  /** Shards that make one copy. */
+  shards: number;
+  /** The star ladder (R1): consecutive cards from the species' first star to its last. */
+  stars: StarCard[];
+}
+
+/** The species' card for `star` (clamped into its ladder). */
+export function cardOf(meta: SpeciesMeta, star: number): StarCard {
+  return starCardFor(meta.stars, star);
+}
+
+/** The species' first star — where a new copy starts. */
+export function firstStar(meta: SpeciesMeta): number {
+  return starRange(meta.stars).min;
 }
 
 export interface IdleConfig {
@@ -87,7 +102,6 @@ export interface GameConfig {
   startingRoster: string[];
   debugGrant: Record<string, number>;
   progress: ProgressTables;
-  growth: GrowthTables;
   power: PowerWeights;
   species: Map<string, SpeciesMeta>;
   stages: StageDef[];
@@ -134,8 +148,9 @@ export function buildConfig(): GameConfig {
       faction: wild.faction,
       className: wild.class,
       tier: wild.tier,
-      base: wild.base,
-      stages: wild.stages,
+      sourceId: wild.sourceId,
+      shards: wild.shards,
+      stars: wild.stars as StarCard[],
     });
   }
   return {
@@ -145,19 +160,7 @@ export function buildConfig(): GameConfig {
     debugGrant: ACCOUNT.debugGrantCurrency,
     progress: {
       levelUp: GROWTH.levelUp,
-      starUp: GROWTH.starUp,
-      evolve: GROWTH.evolve,
       respawn: GROWTH.respawn,
-      maxLevelByStage: GROWTH.maxLevelByStage,
-      maxStars: GROWTH.maxStars,
-    },
-    growth: {
-      maxLevelByStage: GROWTH.maxLevelByStage,
-      maxStars: GROWTH.maxStars,
-      levelGrowth: GROWTH.levelGrowth,
-      starStep: GROWTH.starStep,
-      evolutionMult: GROWTH.evolutionMult,
-      qualityMult: GROWTH.qualityMult,
     },
     power: POWER,
     species,

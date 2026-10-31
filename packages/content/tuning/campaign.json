@@ -5,1093 +5,1093 @@
       "number": 1,
       "name": "Hatchling Trail",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 2,
       "name": "Frostline Approach",
       "region": "Frostmere",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 3,
       "name": "Shadewood Fringe",
       "region": "Shadeveil",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 4,
       "name": "Emberfall Hollow",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 5,
       "name": "Emberfall Ridge",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 6,
       "name": "Emberfall Basin",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 7,
       "name": "Emberfall Gate",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 8,
       "name": "Emberfall Spire",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 9,
       "name": "Emberfall Mire",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 10,
       "name": "Emberfall Terrace",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 11,
       "name": "Emberfall Veil",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 12,
       "name": "Emberfall Heart",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 13,
       "name": "Emberfall Crown",
       "region": "Emberfall",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 14,
       "name": "Tidewake Foothills",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 15,
       "name": "Tidewake Trail",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 16,
       "name": "Tidewake Crossing",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 17,
       "name": "Tidewake Hollow",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 18,
       "name": "Tidewake Ridge",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 19,
       "name": "Tidewake Basin",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 20,
       "name": "Tidewake Gate",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 21,
       "name": "Tidewake Spire",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 22,
       "name": "Tidewake Mire",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 23,
       "name": "Tidewake Terrace",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 24,
       "name": "Tidewake Veil",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 25,
       "name": "Tidewake Heart",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 26,
       "name": "Tidewake Crown",
       "region": "Tidewake",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 27,
       "name": "Groveheart Foothills",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 28,
       "name": "Groveheart Trail",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 29,
       "name": "Groveheart Crossing",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 30,
       "name": "Groveheart Hollow",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 31,
       "name": "Groveheart Ridge",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 32,
       "name": "Groveheart Basin",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 33,
       "name": "Groveheart Gate",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 34,
       "name": "Groveheart Spire",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 35,
       "name": "Groveheart Mire",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 36,
       "name": "Groveheart Terrace",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 37,
       "name": "Groveheart Veil",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 38,
       "name": "Groveheart Heart",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 39,
       "name": "Groveheart Crown",
       "region": "Groveheart",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 40,
       "name": "Cinder Reach Foothills",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 41,
       "name": "Cinder Reach Trail",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 42,
       "name": "Cinder Reach Crossing",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 43,
       "name": "Cinder Reach Hollow",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 44,
       "name": "Cinder Reach Ridge",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 45,
       "name": "Cinder Reach Basin",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 46,
       "name": "Cinder Reach Gate",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 47,
       "name": "Cinder Reach Spire",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 48,
       "name": "Cinder Reach Mire",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 49,
       "name": "Cinder Reach Terrace",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 50,
       "name": "Cinder Reach Veil",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 51,
       "name": "Cinder Reach Heart",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 52,
       "name": "Cinder Reach Crown",
       "region": "Cinder Reach",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 53,
       "name": "Glass Tide Foothills",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 54,
       "name": "Glass Tide Trail",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 55,
       "name": "Glass Tide Crossing",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 56,
       "name": "Glass Tide Hollow",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 57,
       "name": "Glass Tide Ridge",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 58,
       "name": "Glass Tide Basin",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 59,
       "name": "Glass Tide Gate",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 60,
       "name": "Glass Tide Spire",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 61,
       "name": "Glass Tide Mire",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 62,
       "name": "Glass Tide Terrace",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 63,
       "name": "Glass Tide Veil",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 64,
       "name": "Glass Tide Heart",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 65,
       "name": "Glass Tide Crown",
       "region": "Glass Tide",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 66,
       "name": "Deeproot Foothills",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 67,
       "name": "Deeproot Trail",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 68,
       "name": "Deeproot Crossing",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 69,
       "name": "Deeproot Hollow",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 70,
       "name": "Deeproot Ridge",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 71,
       "name": "Deeproot Basin",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 72,
       "name": "Deeproot Gate",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 73,
       "name": "Deeproot Spire",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 74,
       "name": "Deeproot Mire",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 75,
       "name": "Deeproot Terrace",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 76,
       "name": "Deeproot Veil",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 77,
       "name": "Deeproot Heart",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 78,
       "name": "Deeproot Crown",
       "region": "Deeproot",
-      "faction": "grove"
+      "faction": "grass"
     },
     {
       "number": 79,
       "name": "Voltspire Foothills",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 80,
       "name": "Voltspire Trail",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 81,
       "name": "Voltspire Crossing",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 82,
       "name": "Voltspire Hollow",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 83,
       "name": "Voltspire Ridge",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 84,
       "name": "Voltspire Basin",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 85,
       "name": "Voltspire Gate",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 86,
       "name": "Voltspire Spire",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 87,
       "name": "Voltspire Mire",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 88,
       "name": "Voltspire Terrace",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 89,
       "name": "Voltspire Veil",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 90,
       "name": "Voltspire Heart",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 91,
       "name": "Voltspire Crown",
       "region": "Voltspire",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 92,
       "name": "Frostmere Foothills",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 93,
       "name": "Frostmere Trail",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 94,
       "name": "Frostmere Crossing",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 95,
       "name": "Frostmere Hollow",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 96,
       "name": "Frostmere Ridge",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 97,
       "name": "Frostmere Basin",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 98,
       "name": "Frostmere Gate",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 99,
       "name": "Frostmere Spire",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 100,
       "name": "Frostmere Mire",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 101,
       "name": "Frostmere Terrace",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 102,
       "name": "Frostmere Veil",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 103,
       "name": "Frostmere Heart",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 104,
       "name": "Frostmere Crown",
       "region": "Frostmere",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 105,
       "name": "Shadeveil Foothills",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 106,
       "name": "Shadeveil Trail",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 107,
       "name": "Shadeveil Crossing",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 108,
       "name": "Shadeveil Hollow",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 109,
       "name": "Shadeveil Ridge",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 110,
       "name": "Shadeveil Basin",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 111,
       "name": "Shadeveil Gate",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 112,
       "name": "Shadeveil Spire",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 113,
       "name": "Shadeveil Mire",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 114,
       "name": "Shadeveil Terrace",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 115,
       "name": "Shadeveil Veil",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 116,
       "name": "Shadeveil Heart",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 117,
       "name": "Shadeveil Crown",
       "region": "Shadeveil",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 118,
       "name": "Sunken Chorus Foothills",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 119,
       "name": "Sunken Chorus Trail",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 120,
       "name": "Sunken Chorus Crossing",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 121,
       "name": "Sunken Chorus Hollow",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 122,
       "name": "Sunken Chorus Ridge",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 123,
       "name": "Sunken Chorus Basin",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 124,
       "name": "Sunken Chorus Gate",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 125,
       "name": "Sunken Chorus Spire",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 126,
       "name": "Sunken Chorus Mire",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 127,
       "name": "Sunken Chorus Terrace",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 128,
       "name": "Sunken Chorus Veil",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 129,
       "name": "Sunken Chorus Heart",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 130,
       "name": "Sunken Chorus Crown",
       "region": "Sunken Chorus",
-      "faction": "tide"
+      "faction": "water"
     },
     {
       "number": 131,
       "name": "Ashen Crown Foothills",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 132,
       "name": "Ashen Crown Trail",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 133,
       "name": "Ashen Crown Crossing",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 134,
       "name": "Ashen Crown Hollow",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 135,
       "name": "Ashen Crown Ridge",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 136,
       "name": "Ashen Crown Basin",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 137,
       "name": "Ashen Crown Gate",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 138,
       "name": "Ashen Crown Spire",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 139,
       "name": "Ashen Crown Mire",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 140,
       "name": "Ashen Crown Terrace",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 141,
       "name": "Ashen Crown Veil",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 142,
       "name": "Ashen Crown Heart",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 143,
       "name": "Ashen Crown Crown",
       "region": "Ashen Crown",
-      "faction": "ember"
+      "faction": "fire"
     },
     {
       "number": 144,
       "name": "Stormcoast Foothills",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 145,
       "name": "Stormcoast Trail",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 146,
       "name": "Stormcoast Crossing",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 147,
       "name": "Stormcoast Hollow",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 148,
       "name": "Stormcoast Ridge",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 149,
       "name": "Stormcoast Basin",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 150,
       "name": "Stormcoast Gate",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 151,
       "name": "Stormcoast Spire",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 152,
       "name": "Stormcoast Mire",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 153,
       "name": "Stormcoast Terrace",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 154,
       "name": "Stormcoast Veil",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 155,
       "name": "Stormcoast Heart",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 156,
       "name": "Stormcoast Crown",
       "region": "Stormcoast",
-      "faction": "volt"
+      "faction": "light"
     },
     {
       "number": 157,
       "name": "Pale Aurora Foothills",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 158,
       "name": "Pale Aurora Trail",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 159,
       "name": "Pale Aurora Crossing",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 160,
       "name": "Pale Aurora Hollow",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 161,
       "name": "Pale Aurora Ridge",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 162,
       "name": "Pale Aurora Basin",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 163,
       "name": "Pale Aurora Gate",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 164,
       "name": "Pale Aurora Spire",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 165,
       "name": "Pale Aurora Mire",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 166,
       "name": "Pale Aurora Terrace",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 167,
       "name": "Pale Aurora Veil",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 168,
       "name": "Pale Aurora Heart",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 169,
       "name": "Pale Aurora Crown",
       "region": "Pale Aurora",
-      "faction": "frost"
+      "faction": "light"
     },
     {
       "number": 170,
       "name": "Hollow Star Foothills",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 171,
       "name": "Hollow Star Trail",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 172,
       "name": "Hollow Star Crossing",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 173,
       "name": "Hollow Star Hollow",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 174,
       "name": "Hollow Star Ridge",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 175,
       "name": "Hollow Star Basin",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 176,
       "name": "Hollow Star Gate",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 177,
       "name": "Hollow Star Spire",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 178,
       "name": "Hollow Star Mire",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 179,
       "name": "Hollow Star Terrace",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 180,
       "name": "Hollow Star Veil",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 181,
       "name": "Hollow Star Heart",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     },
     {
       "number": 182,
       "name": "Hollow Star Crown",
       "region": "Hollow Star",
-      "faction": "shade"
+      "faction": "dark"
     }
   ],
   "gyms": [
@@ -1101,7 +1101,7 @@
       "chapter": 3,
       "name": "Cinderwatch Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "gengar",
@@ -1161,7 +1161,7 @@
       "chapter": 6,
       "name": "Ashbell Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "hydreigon",
@@ -1221,7 +1221,7 @@
       "chapter": 9,
       "name": "Emberford Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "typhlosion",
@@ -1281,7 +1281,7 @@
       "chapter": 12,
       "name": "Coalcrest Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "hydreigon",
@@ -1341,7 +1341,7 @@
       "chapter": 15,
       "name": "Sootspire Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "gengar",
@@ -1401,7 +1401,7 @@
       "chapter": 18,
       "name": "Flamewell Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "hydreigon",
@@ -1461,7 +1461,7 @@
       "chapter": 21,
       "name": "Scorchgate Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "entei",
@@ -1521,7 +1521,7 @@
       "chapter": 24,
       "name": "Magmaward Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "moltres",
@@ -1581,7 +1581,7 @@
       "chapter": 27,
       "name": "Cinderhall Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "entei",
@@ -1641,7 +1641,7 @@
       "chapter": 30,
       "name": "Pyrelight Gym",
       "region": "Emberfall",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "entei",
@@ -1701,7 +1701,7 @@
       "chapter": 33,
       "name": "Saltglass Gym",
       "region": "Tidewake",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "suicune",
@@ -1761,7 +1761,7 @@
       "chapter": 36,
       "name": "Wavecrest Gym",
       "region": "Tidewake",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "suicune",
@@ -1821,7 +1821,7 @@
       "chapter": 39,
       "name": "Coralstep Gym",
       "region": "Tidewake",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "articuno",
@@ -1881,7 +1881,7 @@
       "chapter": 42,
       "name": "Tidebell Gym",
       "region": "Tidewake",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "articuno",
@@ -1941,7 +1941,7 @@
       "chapter": 45,
       "name": "Mossring Gym",
       "region": "Groveheart",
-      "faction": "grove",
+      "faction": "grass",
       "enemies": [
         {
           "speciesId": "raikou",
@@ -2001,7 +2001,7 @@
       "chapter": 48,
       "name": "Thornvale Gym",
       "region": "Groveheart",
-      "faction": "grove",
+      "faction": "grass",
       "enemies": [
         {
           "speciesId": "shiny-raichu",
@@ -2061,7 +2061,7 @@
       "chapter": 51,
       "name": "Fernwatch Gym",
       "region": "Groveheart",
-      "faction": "grove",
+      "faction": "grass",
       "enemies": [
         {
           "speciesId": "zygarde",
@@ -2121,7 +2121,7 @@
       "chapter": 54,
       "name": "Bloomstead Gym",
       "region": "Groveheart",
-      "faction": "grove",
+      "faction": "grass",
       "enemies": [
         {
           "speciesId": "wobbuffet",
@@ -2181,7 +2181,7 @@
       "chapter": 57,
       "name": "Rootgarden Gym",
       "region": "Groveheart",
-      "faction": "grove",
+      "faction": "grass",
       "enemies": [
         {
           "speciesId": "rayquaza",
@@ -2241,7 +2241,7 @@
       "chapter": 60,
       "name": "Canopyhall Gym",
       "region": "Groveheart",
-      "faction": "grove",
+      "faction": "grass",
       "enemies": [
         {
           "speciesId": "shiny-god-ash-pikachu",
@@ -2301,7 +2301,7 @@
       "chapter": 63,
       "name": "Sparkpoint Gym",
       "region": "Voltspire",
-      "faction": "volt",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "zacian",
@@ -2361,7 +2361,7 @@
       "chapter": 66,
       "name": "Stormloom Gym",
       "region": "Voltspire",
-      "faction": "volt",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "zacian",
@@ -2421,7 +2421,7 @@
       "chapter": 69,
       "name": "Arcway Gym",
       "region": "Voltspire",
-      "faction": "volt",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "mew",
@@ -2481,7 +2481,7 @@
       "chapter": 72,
       "name": "Thunderrest Gym",
       "region": "Voltspire",
-      "faction": "volt",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "shiny-cresselia",
@@ -2541,7 +2541,7 @@
       "chapter": 75,
       "name": "Coilspire Gym",
       "region": "Voltspire",
-      "faction": "volt",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "wind-god-pidgeot",
@@ -2601,7 +2601,7 @@
       "chapter": 78,
       "name": "Voltgard Gym",
       "region": "Voltspire",
-      "faction": "volt",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "jirachi",
@@ -2661,7 +2661,7 @@
       "chapter": 81,
       "name": "Snowveil Gym",
       "region": "Frostmere",
-      "faction": "frost",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "arceus",
@@ -2721,7 +2721,7 @@
       "chapter": 84,
       "name": "Rimegate Gym",
       "region": "Frostmere",
-      "faction": "frost",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "arceus",
@@ -2781,7 +2781,7 @@
       "chapter": 87,
       "name": "Glacierhold Gym",
       "region": "Frostmere",
-      "faction": "frost",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "solgaleo",
@@ -2841,7 +2841,7 @@
       "chapter": 90,
       "name": "Hailwatch Gym",
       "region": "Frostmere",
-      "faction": "frost",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "shiny-arceus",
@@ -2901,7 +2901,7 @@
       "chapter": 93,
       "name": "Frostbell Gym",
       "region": "Frostmere",
-      "faction": "frost",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "arceus",
@@ -2961,7 +2961,7 @@
       "chapter": 96,
       "name": "Iceward Gym",
       "region": "Frostmere",
-      "faction": "frost",
+      "faction": "light",
       "enemies": [
         {
           "speciesId": "solgaleo",
@@ -3021,7 +3021,7 @@
       "chapter": 99,
       "name": "Duskwatch Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "origin-rayquaza",
@@ -3081,7 +3081,7 @@
       "chapter": 102,
       "name": "Nightglass Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "origin-rayquaza",
@@ -3141,7 +3141,7 @@
       "chapter": 105,
       "name": "Umbrafall Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "shiny-kyurem",
@@ -3201,7 +3201,7 @@
       "chapter": 108,
       "name": "Veilspire Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "origin-rayquaza",
@@ -3261,7 +3261,7 @@
       "chapter": 111,
       "name": "Hollowcrown Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "origin-lugia",
@@ -3321,7 +3321,7 @@
       "chapter": 114,
       "name": "Shadowfen Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "meloetta",
@@ -3381,7 +3381,7 @@
       "chapter": 117,
       "name": "Gloomgate Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "shiny-hoopa",
@@ -3441,7 +3441,7 @@
       "chapter": 120,
       "name": "Starless Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "shiny-hoopa",
@@ -3501,7 +3501,7 @@
       "chapter": 123,
       "name": "Murkhold Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "shiny-hoopa",
@@ -3561,7 +3561,7 @@
       "chapter": 126,
       "name": "Blackthorn Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "mewtwo",
@@ -3621,7 +3621,7 @@
       "chapter": 129,
       "name": "Eclipsestead Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "origin-lugia",
@@ -3681,7 +3681,7 @@
       "chapter": 132,
       "name": "Silent Court Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "shiny-hoopa",
@@ -3741,7 +3741,7 @@
       "chapter": 135,
       "name": "Last Lantern Gym",
       "region": "Shadeveil",
-      "faction": "shade",
+      "faction": "dark",
       "enemies": [
         {
           "speciesId": "hoopa",
@@ -3801,7 +3801,7 @@
       "chapter": 138,
       "name": "Brinehall Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "psyduck",
@@ -3861,7 +3861,7 @@
       "chapter": 141,
       "name": "Choraldeep Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "keldeo",
@@ -3921,7 +3921,7 @@
       "chapter": 144,
       "name": "Kelpward Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "psyduck",
@@ -3981,7 +3981,7 @@
       "chapter": 147,
       "name": "Pearlrest Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "psyduck",
@@ -4041,7 +4041,7 @@
       "chapter": 150,
       "name": "Drowned Bell Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "keldeo",
@@ -4101,7 +4101,7 @@
       "chapter": 153,
       "name": "Reefsong Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "palkia",
@@ -4161,7 +4161,7 @@
       "chapter": 156,
       "name": "Abyssal Step Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "shiny-blastoise",
@@ -4221,7 +4221,7 @@
       "chapter": 159,
       "name": "Tidecrypt Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "keldeo",
@@ -4281,7 +4281,7 @@
       "chapter": 162,
       "name": "Coral Choir Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "keldeo",
@@ -4341,7 +4341,7 @@
       "chapter": 165,
       "name": "Deepcurrent Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "palkia",
@@ -4401,7 +4401,7 @@
       "chapter": 168,
       "name": "Salt Cathedral Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "psyduck",
@@ -4461,7 +4461,7 @@
       "chapter": 171,
       "name": "Sunken Crown Gym",
       "region": "Sunken Chorus",
-      "faction": "tide",
+      "faction": "water",
       "enemies": [
         {
           "speciesId": "greninja",
@@ -4521,7 +4521,7 @@
       "chapter": 174,
       "name": "Ashcrown Gym",
       "region": "Ashen Crown",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "giratina",
@@ -4581,7 +4581,7 @@
       "chapter": 177,
       "name": "Emberthrone Gym",
       "region": "Ashen Crown",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "victini",
@@ -4641,7 +4641,7 @@
       "chapter": 180,
       "name": "Final Pyre Gym",
       "region": "Ashen Crown",
-      "faction": "ember",
+      "faction": "fire",
       "enemies": [
         {
           "speciesId": "victini",

@@ -1,26 +1,33 @@
 import { describe, expect, it } from 'vitest';
-import { candyCost, canEvolve, evolveCheck, levelCapOf, levelUpCost, starUpCost } from './costs';
+import type { StarCard } from '../growth/types';
+import { candyCost, levelUpCost, planFodder, type FodderCandidate } from './costs';
 import type { ProgressTables, WildInstance } from './types';
 
 const tables: ProgressTables = {
   levelUp: { candyBase: 48, candyExponent: 1.2, goldPerCandy: 3 },
-  starUp: { shardsPerStar: 10, goldPerStar: 200 },
-  evolve: [
-    { minLevel: 1, minStars: 1, candy: 0, gold: 0, stones: 0 },
-    { minLevel: 20, minStars: 1, candy: 300, gold: 900, stones: 1 },
-    { minLevel: 40, minStars: 3, candy: 900, gold: 2700, stones: 3 },
-  ],
   respawn: { gemCost: 20, refundRate: 0.8 },
-  maxLevelByStage: [60, 80, 100, 140],
-  maxStars: 10,
 };
 
-function instance(over: Partial<WildInstance> = {}): WildInstance {
-  return { id: 'w1', speciesId: 'twigleaf', level: 1, stars: 1, evolutionStage: 0, locked: false, acquiredAt: 0, ...over };
+function wild(id: string, over: Partial<WildInstance> = {}): WildInstance {
+  return { id, speciesId: 'metagross', level: 1, stars: 5, locked: false, acquiredAt: 0, ...over };
 }
 
+/** Beldum 7★ → 8★ (source): one own 5★, four grass 5★, two grass 6★. */
+const card: StarCard = {
+  star: 7,
+  name: 'Metang',
+  maxLevel: 180,
+  basic: { hp: 1, atk: 1, spd: 1 },
+  growth: { hp: 1, atk: 1, pDef: 1, sDef: 1 },
+  fodder: [
+    { own: true, star: 5, count: 1 },
+    { own: false, star: 5, faction: 'grass', count: 4 },
+    { own: false, star: 6, faction: 'grass', count: 2 },
+  ],
+};
+
 describe('costs', () => {
-  it('candyCost rises with level and is 48 at level 1', () => {
+  it('candyCost rises with level and is 48 at level 1 (the one known source point)', () => {
     expect(candyCost(1, tables)).toBe(48);
     expect(candyCost(10, tables)).toBeGreaterThan(candyCost(9, tables));
   });
@@ -30,31 +37,49 @@ describe('costs', () => {
     expect(cost.candy).toBe(candyCost(1, tables) + candyCost(2, tables));
     expect(cost.gold).toBe(cost.candy * 3);
   });
+});
 
-  it('levelCapOf follows the evolution stage', () => {
-    expect(levelCapOf(instance({ evolutionStage: 0 }), tables)).toBe(60);
-    expect(levelCapOf(instance({ evolutionStage: 2 }), tables)).toBe(100);
+describe('planFodder (source evolution)', () => {
+  const target = wild('t', { stars: 7 });
+  const grass = (id: string, stars: number, over: Partial<WildInstance> = {}): FodderCandidate => ({
+    instance: wild(id, { speciesId: `other-${id}`, stars, ...over }),
+    faction: 'grass',
   });
 
-  it('starUpCost scales with the current star', () => {
-    expect(starUpCost(1, tables)).toEqual({ shards: 10, gold: 200 });
-    expect(starUpCost(3, tables)).toEqual({ shards: 30, gold: 600 });
+  it('fills every line with the lowest-level eligible Wilds', () => {
+    const candidates: FodderCandidate[] = [
+      { instance: target, faction: 'grass' },
+      { instance: wild('own5', { stars: 5 }), faction: 'grass' },
+      grass('g1', 5, { level: 9 }),
+      grass('g2', 5, { level: 1 }),
+      grass('g3', 5),
+      grass('g4', 5),
+      grass('g5', 5, { level: 50 }),
+      grass('s1', 6),
+      grass('s2', 6),
+    ];
+    const plan = planFodder(target, card, candidates, new Set());
+    expect(plan.missing).toEqual([]);
+    expect(plan.consume[0]).toBe('own5');
+    expect(plan.consume).toHaveLength(7);
+    expect(plan.consume).not.toContain('g5');
+    expect(plan.consume).not.toContain('t');
   });
 
-  it('evolveCheck reports the next step and blocks at the last stage', () => {
-    const check = evolveCheck(instance(), 3, tables);
-    expect('reason' in check).toBe(false);
-    if ('reason' in check) throw new Error('expected step');
-    expect(check.targetStage).toBe(1);
-    expect(check.minLevel).toBe(20);
-    expect(evolveCheck(instance({ evolutionStage: 2 }), 3, tables)).toEqual({ reason: 'max_stage' });
-  });
-
-  it('canEvolve requires min level and stars', () => {
-    expect(canEvolve(instance({ level: 19, stars: 1 }), 3, tables)).toBe(false);
-    expect(canEvolve(instance({ level: 20, stars: 1 }), 3, tables)).toBe(true);
-    // stage 2 needs 3 stars
-    expect(canEvolve(instance({ evolutionStage: 1, level: 40, stars: 2 }), 3, tables)).toBe(false);
-    expect(canEvolve(instance({ evolutionStage: 1, level: 40, stars: 3 }), 3, tables)).toBe(true);
+  it('never takes protected, locked, wrong-star or wrong-faction Wilds and reports what is missing', () => {
+    const candidates: FodderCandidate[] = [
+      { instance: target, faction: 'grass' },
+      { instance: wild('own5', { stars: 5 }), faction: 'grass' },
+      grass('g1', 5, { locked: true }),
+      grass('g2', 5),
+      { instance: wild('fire5', { speciesId: 'x', stars: 5 }), faction: 'fire' },
+      grass('g6', 6),
+    ];
+    const plan = planFodder(target, card, candidates, new Set(['g2']));
+    expect(plan.consume).toEqual(['own5', 'g6']);
+    expect(plan.missing).toEqual([
+      { own: false, star: 5, faction: 'grass', count: 4 },
+      { own: false, star: 6, faction: 'grass', count: 1 },
+    ]);
   });
 });

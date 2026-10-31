@@ -32,17 +32,17 @@ import {
   type WildInstance,
 } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
-import type { GameConfig } from './config';
+import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 18;
+export const SAVE_VERSION = 19;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 18;
+export const MIN_SAVE_VERSION = 19;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -200,8 +200,7 @@ export function createInitialState(config: GameConfig): AccountState {
       id: `w${seq++}`,
       speciesId,
       level: 1,
-      stars: 1,
-      evolutionStage: 0,
+      stars: firstStar(config.species.get(speciesId)!),
       locked: false,
       acquiredAt: now,
     }));
@@ -353,7 +352,6 @@ function isInstance(value: unknown): value is WildInstance {
     typeof w.speciesId === 'string' &&
     typeof w.level === 'number' &&
     typeof w.stars === 'number' &&
-    typeof w.evolutionStage === 'number' &&
     typeof w.locked === 'boolean' &&
     typeof w.acquiredAt === 'number'
   );

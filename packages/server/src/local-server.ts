@@ -2,7 +2,6 @@ import {
   addQuestProgress,
   addRewards,
   autoFormation as runAutoFormation,
-  canEvolve,
   claimAllMail as runClaimAllMail,
   claimChest,
   claimMail as runClaimMail,
@@ -14,8 +13,6 @@ import {
   emptyQuestState,
   emptyRewards,
   effectiveLevelCap,
-  evolveCheck,
-  evolved,
   expireTitles,
   isCleared,
   isGymAvailable,
@@ -23,7 +20,6 @@ import {
   isQuestClaimable,
   isUnlocked,
   isZeroRewards,
-  levelCapOf,
   leveledUp,
   levelUpCost,
   maybeUnlockCrystal,
@@ -39,8 +35,8 @@ import {
   starsForRounds,
   SQUAD_MODES,
   SQUAD_SIZE,
-  starUpCost,
   starredUp,
+  starRange,
   STRATEGIES,
   TUTORIAL_STEPS,
   unclaimedMail,
@@ -116,7 +112,8 @@ import {
   powerOf,
 } from './battle';
 import { emptyLoadout } from '@wildbound/engine';
-import type { GameConfig } from './config';
+import { cardOf, firstStar, type GameConfig } from './config';
+import { evolutionView } from './growth';
 import { applyGrant, bestIdleRate, bestIdleStageId, stageRewards } from './economy';
 import {
   challengeDungeon as challengeDungeonAction,
@@ -167,6 +164,7 @@ import {
   resetTalentsAction,
   starUpCoreAction,
   upgradeCharmAction,
+  consumeFodder,
 } from './equipment';
 import { buildEquipmentView } from './equipment-view';
 import { upgradePlateAction } from './plates';
@@ -223,8 +221,7 @@ export class LocalServer implements GameServer {
       id: `w${state.nextInstanceSeq}`,
       speciesId,
       level: 1,
-      stars: 1,
-      evolutionStage: 0,
+      stars: firstStar(meta),
       locked: false,
       acquiredAt: this.config.now(),
     };
@@ -272,7 +269,7 @@ export class LocalServer implements GameServer {
     if (state.currencies.candy < cost.candy || state.currencies.gold < cost.gold) {
       return fail('insufficient_items', 'not enough candy or gold');
     }
-    const next = leveledUp(instance, target - instance.level, this.config.progress, cap);
+    const next = leveledUp(instance, target - instance.level, cap);
     const grown = this.withTutorialAction(
       {
         ...state,
@@ -288,32 +285,6 @@ export class LocalServer implements GameServer {
     return this.commit(grown);
   }
 
-  async starUp(instanceId: string, stars: number): Promise<Result<AccountSnapshot>> {
-    const loaded = await this.load();
-    if (!loaded.ok) return loaded;
-    const found = this.find(loaded.value, instanceId);
-    if (!found) return fail('not_found', `no Wild "${instanceId}"`);
-    const { state, instance } = found;
-    const target = Math.min(this.config.progress.maxStars, instance.stars + Math.max(0, Math.floor(stars)));
-    if (target <= instance.stars) return fail('at_level_cap', 'already at max stars');
-    let shards = 0;
-    let gold = 0;
-    for (let s = instance.stars; s < target; s++) {
-      const step = starUpCost(s, this.config.progress);
-      shards += step.shards;
-      gold += step.gold;
-    }
-    if (state.currencies.shard < shards || state.currencies.gold < gold) {
-      return fail('insufficient_items', 'not enough shards or gold');
-    }
-    const next = starredUp(instance, target - instance.stars, this.config.progress);
-    return this.commit({
-      ...state,
-      roster: this.replace(state.roster, next),
-      currencies: { ...state.currencies, shard: state.currencies.shard - shards, gold: state.currencies.gold - gold },
-    });
-  }
-
   async evolve(instanceId: string): Promise<Result<AccountSnapshot>> {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
@@ -322,25 +293,19 @@ export class LocalServer implements GameServer {
     const { state, instance } = found;
     const meta = this.config.species.get(instance.speciesId);
     if (!meta) return fail('not_found', `unknown species "${instance.speciesId}"`);
-    const check = evolveCheck(instance, meta.stages.length, this.config.progress);
-    if ('reason' in check) return fail('evolution_blocked', 'already at final form');
-    if (!canEvolve(instance, meta.stages.length, this.config.progress)) {
-      return fail('evolution_blocked', `needs level ${check.minLevel} and ${check.minStars} stars`);
+    const view = evolutionView(state, (id) => this.config.species.get(id), instance.id);
+    if (!view || !view.next) return fail('evolution_blocked', 'already at the top star');
+    if (view.blocked === 'awakening') {
+      return fail('evolution_blocked', `${view.next.star}★ comes from Awakening, which arrives in a later milestone`);
     }
-    if (state.currencies.candy < check.candy || state.currencies.gold < check.gold || state.currencies.stone < check.stones) {
-      return fail('insufficient_items', 'not enough candy, gold or stones');
+    if (!view.ready) {
+      const short = view.requirements.find((r) => r.have < r.count);
+      return fail('insufficient_items', short ? `needs ${short.count} × ${short.star}★ ${short.own ? meta.name : `${short.faction ?? 'any'} Pokémon`}` : 'missing fodder');
     }
-    const next = evolved(instance, meta.stages.length, this.config.progress);
-    return this.commit({
-      ...state,
-      roster: this.replace(state.roster, next),
-      currencies: {
-        ...state.currencies,
-        candy: state.currencies.candy - check.candy,
-        gold: state.currencies.gold - check.gold,
-        stone: state.currencies.stone - check.stones,
-      },
-    });
+    const consumed = consumeFodder(state, view.consume);
+    const next = starredUp(instance, starRange(meta.stars).max);
+    const grown = this.withQuest({ ...consumed, roster: this.replace(consumed.roster, next) }, 'starUp');
+    return this.commit(grown);
   }
 
   async respawn(instanceId: string): Promise<Result<AccountSnapshot>> {
@@ -1331,10 +1296,10 @@ export class LocalServer implements GameServer {
    */
   private levelCapFor(instance: WildInstance, state: AccountState): number {
     const meta = this.config.species.get(instance.speciesId);
-    const topStage = Math.max(0, (meta?.stages.length ?? 1) - 1);
-    const stageCap = levelCapOf(instance, this.config.progress);
-    const atTopStage = instance.evolutionStage >= topStage && instance.level >= stageCap;
-    return effectiveLevelCap({ stars: instance.stars, atTopStage }, stageCap, state.pve.linkCrystal);
+    if (!meta) return instance.level;
+    const card = cardOf(meta, instance.stars);
+    const atTopStage = instance.stars >= starRange(meta.stars).max && instance.level >= card.maxLevel;
+    return effectiveLevelCap({ stars: instance.stars, atTopStage }, card.maxLevel, state.pve.linkCrystal);
   }
 
   /** Bump a daily-quest counter (progress is keyed by metric, shared by quests). */

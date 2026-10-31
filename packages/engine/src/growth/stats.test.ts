@@ -1,66 +1,57 @@
 import { describe, expect, it } from 'vitest';
-import type { CoreStats } from '../model';
-import { evolutionMult, levelCap, levelCurve, resolveCoreStats, starMult } from './stats';
-import type { GrowthTables } from './types';
+import { formIndex, formNames, resolveCoreStats, starCardFor, starRange } from './stats';
+import type { StarCard } from './types';
 
-const tables: GrowthTables = {
-  maxLevelByStage: [60, 80, 100, 140],
-  maxStars: 10,
-  levelGrowth: 0.022,
-  starStep: 0.12,
-  evolutionMult: [1.0, 1.18, 1.4, 1.65],
-  qualityMult: { common: 1.0, rare: 1.12, epic: 1.3, legendary: 1.5, supreme: 1.75, mythic: 2.0 },
+/** Darkrai's 5★ card, copied from the source (hero_evolution_json, hero 151). */
+const DARKRAI_5: StarCard = {
+  star: 5,
+  name: 'Darkrai',
+  maxLevel: 100,
+  basic: { hp: 7894, atk: 1702, spd: 20 },
+  growth: { hp: 633.04, atk: 135.94, pDef: 122.72, sDef: 61.36 },
+  factionBoost: { faction: 'light', value: 0.25 },
+  fodder: [{ own: true, star: 5, count: 1 }],
 };
 
-const base: CoreStats = { hp: 800, pAtk: 110, sAtk: 50, spd: 100, pDef: 55, sDef: 50 };
+const ladder: StarCard[] = [
+  { ...DARKRAI_5, star: 5, name: 'Beldum', maxLevel: 100 },
+  { ...DARKRAI_5, star: 6, name: 'Metang', maxLevel: 140 },
+  { ...DARKRAI_5, star: 7, name: 'Metang', maxLevel: 180 },
+  { ...DARKRAI_5, star: 8, name: 'Metagross', maxLevel: 220 },
+];
 
-describe('growth factors', () => {
-  it('levelCurve starts at 1 at level 1 and grows linearly', () => {
-    expect(levelCurve(1, tables)).toBe(1);
-    expect(levelCurve(11, tables)).toBeCloseTo(1 + 10 * 0.022, 10);
+describe('source stat formula (R1)', () => {
+  it('HP / ATK are basic + level × growth, P.ATK = S.ATK, DEF is level × growth only', () => {
+    const stats = resolveCoreStats(DARKRAI_5, 10);
+    expect(stats.hp).toBe(Math.round(7894 + 10 * 633.04));
+    expect(stats.pAtk).toBe(Math.round(1702 + 10 * 135.94));
+    expect(stats.sAtk).toBe(stats.pAtk);
+    expect(stats.pDef).toBe(Math.round(10 * 122.72));
+    expect(stats.sDef).toBe(Math.floor(10 * 61.36));
+    expect(stats.spd).toBe(20);
   });
 
-  it('clamps negative/zero levels to the level-1 curve', () => {
-    expect(levelCurve(0, tables)).toBe(1);
-    expect(levelCurve(-5, tables)).toBe(1);
+  it('adds the 19★+ extras flat and per level', () => {
+    const awakened: StarCard = {
+      ...DARKRAI_5,
+      extraBasic: { hp: 35837, atk: 7733 },
+      extraGrowth: { hp: 200, atk: 100 },
+    };
+    const plain = resolveCoreStats(DARKRAI_5, 340);
+    const extra = resolveCoreStats(awakened, 340);
+    expect(extra.hp - plain.hp).toBe(35837 + 340 * 200);
+    expect(extra.pAtk - plain.pAtk).toBe(7733 + 340 * 100);
+    expect(extra.pDef).toBe(plain.pDef);
   });
 
-  it('starMult starts at 1 at 1 star and steps per star', () => {
-    expect(starMult(1, tables)).toBe(1);
-    expect(starMult(5, tables)).toBeCloseTo(1 + 4 * 0.12, 10);
-    expect(starMult(0, tables)).toBe(1);
-  });
-
-  it('evolutionMult indexes by stage and clamps overflow', () => {
-    expect(evolutionMult(0, tables)).toBe(1.0);
-    expect(evolutionMult(2, tables)).toBe(1.4);
-    expect(evolutionMult(9, tables)).toBe(1.65);
-  });
-
-  it('levelCap follows the per-stage table and clamps', () => {
-    expect(levelCap(0, tables)).toBe(60);
-    expect(levelCap(3, tables)).toBe(140);
-    expect(levelCap(8, tables)).toBe(140);
-  });
-});
-
-describe('resolveCoreStats', () => {
-  it('is the base at level 1, star 1, stage 0, common', () => {
-    expect(resolveCoreStats({ base, level: 1, stars: 1, stage: 0, tier: 'common' }, tables)).toEqual(base);
-  });
-
-  it('multiplies every factor and rounds', () => {
-    const out = resolveCoreStats({ base, level: 11, stars: 2, stage: 1, tier: 'rare' }, tables);
-    const factor = (1 + 10 * 0.022) * (1 + 1 * 0.12) * 1.18 * 1.12;
-    expect(out.hp).toBe(Math.round(800 * factor));
-    expect(out.pAtk).toBe(Math.round(110 * factor));
-    expect(out.sDef).toBe(Math.round(50 * factor));
-  });
-
-  it('produces strictly larger stats for higher tier at the same growth', () => {
-    const common = resolveCoreStats({ base, level: 20, stars: 1, stage: 0, tier: 'common' }, tables);
-    const mythic = resolveCoreStats({ base, level: 20, stars: 1, stage: 0, tier: 'mythic' }, tables);
-    expect(mythic.hp).toBeGreaterThan(common.hp);
-    expect(mythic.sAtk).toBeGreaterThan(common.sAtk);
+  it('picks and clamps star cards and names the forms', () => {
+    expect(starCardFor(ladder, 6).name).toBe('Metang');
+    expect(starCardFor(ladder, 3).star).toBe(5);
+    expect(starCardFor(ladder, 30).star).toBe(8);
+    expect(starRange(ladder)).toEqual({ min: 5, max: 8 });
+    expect(formNames(ladder)).toEqual(['Beldum', 'Metang', 'Metagross']);
+    expect(formIndex(ladder, 5)).toBe(0);
+    expect(formIndex(ladder, 7)).toBe(1);
+    expect(formIndex(ladder, 8)).toBe(2);
   });
 });

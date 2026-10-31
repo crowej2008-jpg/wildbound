@@ -11,7 +11,7 @@ import {
 import WildPortrait from '../art/WildPortrait';
 import { squadModeLabel, strategyLabel, t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
-import { species } from '../wilds';
+import { formFor, species } from '../wilds';
 
 export default function Squad() {
   const { snapshot, run, busy } = useServer();
@@ -64,7 +64,7 @@ export default function Squad() {
         >
           {meta && wild ? (
             <>
-              <WildPortrait species={meta} stage={wild.evolutionStage} size={44} />
+              <WildPortrait species={meta} stage={formFor(meta, wild.stars)} size={44} />
               <span className="slot-name">{meta.name}</span>
               <span className="slot-sub">
                 {t('wild.level')}
@@ -154,7 +154,7 @@ export default function Squad() {
                   disabled={busy || used}
                   onClick={() => place(wild.id)}
                 >
-                  <WildPortrait species={meta} stage={wild.evolutionStage} size={40} />
+                  <WildPortrait species={meta} stage={formFor(meta, wild.stars)} size={40} />
                   <span className="candidate-name">{meta.name}</span>
                   <span className="candidate-power">{(snapshot.power[wild.id] ?? 0).toLocaleString()}</span>
                 </button>

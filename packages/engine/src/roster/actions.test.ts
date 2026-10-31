@@ -1,36 +1,27 @@
 import { describe, expect, it } from 'vitest';
-import { evolved, leveledUp, respawnRefund, respawned, starredUp } from './actions';
+import { leveledUp, respawnRefund, respawned, starredUp } from './actions';
 import { autoFormation, type SquadCandidate } from './squad';
 import { SQUAD_SIZE, type ProgressTables, type WildInstance } from './types';
 
 const tables: ProgressTables = {
   levelUp: { candyBase: 48, candyExponent: 1.2, goldPerCandy: 3 },
-  starUp: { shardsPerStar: 10, goldPerStar: 200 },
-  evolve: [{ minLevel: 1, minStars: 1, candy: 0, gold: 0, stones: 0 }, { minLevel: 20, minStars: 1, candy: 300, gold: 900, stones: 1 }],
   respawn: { gemCost: 20, refundRate: 0.8 },
-  maxLevelByStage: [60, 80],
-  maxStars: 10,
 };
 
 function instance(over: Partial<WildInstance> = {}): WildInstance {
-  return { id: 'w1', speciesId: 'twigleaf', level: 1, stars: 1, evolutionStage: 0, locked: false, acquiredAt: 0, ...over };
+  return { id: 'w1', speciesId: 'twigleaf', level: 1, stars: 5, locked: false, acquiredAt: 0, ...over };
 }
 
 describe('actions', () => {
-  it('leveledUp gains levels and clamps to the stage cap', () => {
-    expect(leveledUp(instance({ level: 10 }), 5, tables).level).toBe(15);
-    expect(leveledUp(instance({ level: 58 }), 10, tables).level).toBe(60);
-    expect(leveledUp(instance({ level: 5 }), -3, tables).level).toBe(5);
+  it('leveledUp gains levels and clamps to the star card cap', () => {
+    expect(leveledUp(instance({ level: 10 }), 5, 100).level).toBe(15);
+    expect(leveledUp(instance({ level: 98 }), 10, 100).level).toBe(100);
+    expect(leveledUp(instance({ level: 5 }), -3, 100).level).toBe(5);
   });
 
-  it('starredUp clamps to maxStars', () => {
-    expect(starredUp(instance({ stars: 3 }), 2, tables).stars).toBe(5);
-    expect(starredUp(instance({ stars: 9 }), 5, tables).stars).toBe(10);
-  });
-
-  it('evolved advances one stage and clamps at the last form', () => {
-    expect(evolved(instance(), 2, tables).evolutionStage).toBe(1);
-    expect(evolved(instance({ evolutionStage: 1 }), 2, tables).evolutionStage).toBe(1);
+  it("starredUp raises one star and clamps to the species' last star", () => {
+    expect(starredUp(instance({ stars: 5 }), 23).stars).toBe(6);
+    expect(starredUp(instance({ stars: 23 }), 23).stars).toBe(23);
   });
 
   it('respawnRefund returns most of the level investment', () => {
@@ -39,11 +30,10 @@ describe('actions', () => {
     expect(refund.gold).toBeGreaterThanOrEqual(refund.candy);
   });
 
-  it('respawned resets level and keeps stars/stage', () => {
-    const out = respawned(instance({ level: 30, stars: 4, evolutionStage: 1 }));
+  it('respawned resets level and keeps stars', () => {
+    const out = respawned(instance({ level: 30, stars: 8 }));
     expect(out.level).toBe(1);
-    expect(out.stars).toBe(4);
-    expect(out.evolutionStage).toBe(1);
+    expect(out.stars).toBe(8);
   });
 });
 

@@ -1,0 +1,7637 @@
+[
+  {
+    "id": "mewtwo",
+    "name": "Mewtwo",
+    "faction": "dark",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Mewtwo, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 8498,
+    "sourceId": 141,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Mewtwo",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 6648,
+          "atk": 2019,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 533.09,
+          "atk": 161.92,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Super Mewtwo",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 9312,
+          "atk": 2829,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 623.71,
+          "atk": 189.46,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Super Mewtwo",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 14736,
+          "atk": 4475,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 748.46,
+          "atk": 227.34,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Super Mewtwo",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 22987,
+          "atk": 6982,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 898.14,
+          "atk": 272.82,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Super Mewtwo",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 34304,
+          "atk": 10419,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1077.78,
+          "atk": 327.38,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Mega Mewtwo",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 49158,
+          "atk": 14931,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1293.33,
+          "atk": 392.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Mega Mewtwo",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 68493,
+          "atk": 20805,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1552,
+          "atk": 471.42,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 93720,
+          "atk": 28467,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1862.4,
+          "atk": 565.71,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 125786,
+          "atk": 38206,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 2234.88,
+          "atk": 678.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 167283,
+          "atk": 50811,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 2681.86,
+          "atk": 814.61,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 221866,
+          "atk": 67392,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 3218.22,
+          "atk": 977.54,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 233654,
+          "atk": 70973,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 3475.68,
+          "atk": 1055.74,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 245443,
+          "atk": 74554,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 3753.74,
+          "atk": 1140.19,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 257232,
+          "atk": 78134,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4054.03,
+          "atk": 1231.41,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 268784,
+          "atk": 81643,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4256.74,
+          "atk": 1292.99,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 16127,
+          "atk": 4898
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 292362,
+          "atk": 88805,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4469.58,
+          "atk": 1357.63,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 20465,
+          "atk": 6216
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 315939,
+          "atk": 95966,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4693.06,
+          "atk": 1425.52,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 25275,
+          "atk": 7677
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 339517,
+          "atk": 103128,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 5068.5,
+          "atk": 1539.55,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 27161,
+          "atk": 8250
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Mega Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 377242,
+          "atk": 114587,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 5473.98,
+          "atk": 1662.72,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 30179,
+          "atk": 9166
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "deoxys",
+    "name": "Deoxys",
+    "faction": "dark",
+    "class": "guardian",
+    "tier": "mythic",
+    "description": "Deoxys, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 2917,
+    "sourceId": 149,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Deoxys",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 8726,
+          "atk": 955,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 699.68,
+          "atk": 76.62,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Super Deoxys",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 12222,
+          "atk": 1338,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 818.62,
+          "atk": 89.66,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Super Deoxys",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 19341,
+          "atk": 2117,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 982.35,
+          "atk": 107.58,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Super Deoxys",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 30171,
+          "atk": 3304,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 1178.82,
+          "atk": 129.1,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Super Deoxys",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 45026,
+          "atk": 4931,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 1414.58,
+          "atk": 154.93,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Mega Deoxys",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 64522,
+          "atk": 7066,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 1697.5,
+          "atk": 185.92,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Mega Deoxys",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 89896,
+          "atk": 9845,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 2037.01,
+          "atk": 223.1,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 123008,
+          "atk": 13472,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 2444.4,
+          "atk": 267.71,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 165094,
+          "atk": 18082,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 2933.28,
+          "atk": 321.26,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 219560,
+          "atk": 24046,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 3519.94,
+          "atk": 385.52,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 291200,
+          "atk": 31893,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 4223.92,
+          "atk": 462.62,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 306672,
+          "atk": 33587,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 4561.84,
+          "atk": 499.63,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 322146,
+          "atk": 35282,
+          "spd": 14
+        },
+        "growth": {
+          "hp": 4926.78,
+          "atk": 539.6,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 337618,
+          "atk": 36976,
+          "spd": 15
+        },
+        "growth": {
+          "hp": 5320.93,
+          "atk": 582.77,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 352781,
+          "atk": 38637,
+          "spd": 15
+        },
+        "growth": {
+          "hp": 5586.98,
+          "atk": 611.9,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "extraBasic": {
+          "hp": 21166,
+          "atk": 2318
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 383726,
+          "atk": 42026,
+          "spd": 15
+        },
+        "growth": {
+          "hp": 5866.32,
+          "atk": 642.5,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "extraBasic": {
+          "hp": 26860,
+          "atk": 2941
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 414674,
+          "atk": 45414,
+          "spd": 15
+        },
+        "growth": {
+          "hp": 6159.65,
+          "atk": 674.62,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "extraBasic": {
+          "hp": 33173,
+          "atk": 3633
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 445619,
+          "atk": 48805,
+          "spd": 15
+        },
+        "growth": {
+          "hp": 6652.42,
+          "atk": 728.59,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "extraBasic": {
+          "hp": 35649,
+          "atk": 3904
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Mega Deoxys",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 495133,
+          "atk": 54227,
+          "spd": 15
+        },
+        "growth": {
+          "hp": 7184.61,
+          "atk": 786.88,
+          "pDef": 112.5,
+          "sDef": 225
+        },
+        "extraBasic": {
+          "hp": 39610,
+          "atk": 4338
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "darkrai",
+    "name": "Darkrai",
+    "faction": "dark",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Darkrai, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 3369,
+    "sourceId": 151,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Darkrai",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 7894,
+          "atk": 1702,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 633.04,
+          "atk": 135.94,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Super Darkrai",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 11059,
+          "atk": 2386,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 740.66,
+          "atk": 159.04,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Super Darkrai",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 17498,
+          "atk": 3776,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 888.8,
+          "atk": 190.86,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Super Darkrai",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 27298,
+          "atk": 5890,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1066.54,
+          "atk": 229.02,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Super Darkrai",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 40738,
+          "atk": 8790,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1279.86,
+          "atk": 274.83,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Mega Darkrai",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 58376,
+          "atk": 12597,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1535.84,
+          "atk": 329.81,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Mega Darkrai",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 81334,
+          "atk": 17550,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1843.01,
+          "atk": 395.76,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 111293,
+          "atk": 24014,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2211.6,
+          "atk": 474.91,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 149371,
+          "atk": 32232,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2653.92,
+          "atk": 569.89,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 198648,
+          "atk": 42866,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3184.7,
+          "atk": 683.87,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 263466,
+          "atk": 56853,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3821.65,
+          "atk": 820.66,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 277464,
+          "atk": 59874,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 4127.38,
+          "atk": 886.3,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 291464,
+          "atk": 62894,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 4457.57,
+          "atk": 957.2,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 305462,
+          "atk": 65915,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4814.18,
+          "atk": 1033.78,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 319182,
+          "atk": 68875,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5054.88,
+          "atk": 1085.47,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 19150,
+          "atk": 4132
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 347181,
+          "atk": 74917,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5307.63,
+          "atk": 1139.74,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 24302,
+          "atk": 5244
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 375179,
+          "atk": 80958,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5573.01,
+          "atk": 1196.74,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 30014,
+          "atk": 6476
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 403178,
+          "atk": 87000,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 6018.85,
+          "atk": 1292.46,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 32254,
+          "atk": 6960
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Mega Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 447974,
+          "atk": 96667,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 6500.35,
+          "atk": 1395.87,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 35837,
+          "atk": 7733
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "black-kyurem",
+    "name": "Black Kyurem",
+    "faction": "dark",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Black Kyurem, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 6694,
+    "sourceId": 159,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Flamewhite Kyurem",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 7894,
+          "atk": 1702,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 633.04,
+          "atk": 135.94,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Flamewhite Kyurem",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 11059,
+          "atk": 2386,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 740.66,
+          "atk": 159.04,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Flamewhite Kyurem",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 17498,
+          "atk": 3776,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 888.8,
+          "atk": 190.86,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Flamewhite Kyurem",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 27298,
+          "atk": 5890,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1066.54,
+          "atk": 229.02,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Flamewhite Kyurem",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 40738,
+          "atk": 8790,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1279.86,
+          "atk": 274.83,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Dark Kyurem",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 58376,
+          "atk": 12597,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1535.84,
+          "atk": 329.81,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Dark Kyurem",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 81334,
+          "atk": 17550,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1843.01,
+          "atk": 395.76,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 111293,
+          "atk": 24014,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2211.6,
+          "atk": 474.91,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 149371,
+          "atk": 32232,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2653.92,
+          "atk": 569.89,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 198648,
+          "atk": 42866,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3184.7,
+          "atk": 683.87,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 263466,
+          "atk": 56853,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3821.65,
+          "atk": 820.66,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 277464,
+          "atk": 59874,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 4127.38,
+          "atk": 886.3,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 291464,
+          "atk": 62894,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 4457.57,
+          "atk": 957.2,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 305462,
+          "atk": 65915,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4814.18,
+          "atk": 1033.78,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 319182,
+          "atk": 68875,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5054.88,
+          "atk": 1085.47,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 19150,
+          "atk": 4132
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 347181,
+          "atk": 74917,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5307.63,
+          "atk": 1139.74,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 24302,
+          "atk": 5244
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 375179,
+          "atk": 80958,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5573.01,
+          "atk": 1196.74,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 30014,
+          "atk": 6476
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 403178,
+          "atk": 87000,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 6018.85,
+          "atk": 1292.46,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 32254,
+          "atk": 6960
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Dark Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 447974,
+          "atk": 96667,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 6500.35,
+          "atk": 1395.87,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 35837,
+          "atk": 7733
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "meloetta",
+    "name": "Meloetta",
+    "faction": "dark",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Meloetta, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 4732,
+    "sourceId": 163,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Meloetta",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 6648,
+          "atk": 2019,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 533.09,
+          "atk": 161.92,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Super Meloetta",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 9312,
+          "atk": 2829,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 623.71,
+          "atk": 189.46,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Super Meloetta",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 14736,
+          "atk": 4475,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 748.46,
+          "atk": 227.34,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Super Meloetta",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 22987,
+          "atk": 6982,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 898.14,
+          "atk": 272.82,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Super Meloetta",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 34304,
+          "atk": 10419,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1077.78,
+          "atk": 327.38,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Mega Meloetta",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 49158,
+          "atk": 14931,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1293.33,
+          "atk": 392.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Mega Meloetta",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 68493,
+          "atk": 20805,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1552,
+          "atk": 471.42,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 93720,
+          "atk": 28467,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1862.4,
+          "atk": 565.71,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 125786,
+          "atk": 38206,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2234.88,
+          "atk": 678.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 167283,
+          "atk": 50811,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2681.86,
+          "atk": 814.61,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 221866,
+          "atk": 67392,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3218.22,
+          "atk": 977.54,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 233654,
+          "atk": 70973,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3475.68,
+          "atk": 1055.74,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 245443,
+          "atk": 74554,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3753.74,
+          "atk": 1140.19,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 257232,
+          "atk": 78134,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4054.03,
+          "atk": 1231.41,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 268784,
+          "atk": 81643,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4256.74,
+          "atk": 1292.99,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 16127,
+          "atk": 4898
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 292362,
+          "atk": 88805,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4469.58,
+          "atk": 1357.63,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 20465,
+          "atk": 6216
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 315939,
+          "atk": 95966,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4693.06,
+          "atk": 1425.52,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 25275,
+          "atk": 7677
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 339517,
+          "atk": 103128,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5068.5,
+          "atk": 1539.55,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 27161,
+          "atk": 8250
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Mega Meloetta",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 377242,
+          "atk": 114587,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5473.98,
+          "atk": 1662.72,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 30179,
+          "atk": 9166
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "hoopa",
+    "name": "Hoopa",
+    "faction": "dark",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Hoopa, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 5582,
+    "sourceId": 168,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Hoopa",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 6648,
+          "atk": 2019,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 533.09,
+          "atk": 161.92,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Super Hoopa",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 9312,
+          "atk": 2829,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 623.71,
+          "atk": 189.46,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Super Hoopa",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 14736,
+          "atk": 4475,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 748.46,
+          "atk": 227.34,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Super Hoopa",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 22987,
+          "atk": 6982,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 898.14,
+          "atk": 272.82,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Super Hoopa",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 34304,
+          "atk": 10419,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 1077.78,
+          "atk": 327.38,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Mega Hoopa",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 49158,
+          "atk": 14931,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 1293.33,
+          "atk": 392.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Mega Hoopa",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 68493,
+          "atk": 20805,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 1552,
+          "atk": 471.42,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 93720,
+          "atk": 28467,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 1862.4,
+          "atk": 565.71,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 125786,
+          "atk": 38206,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 2234.88,
+          "atk": 678.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 167283,
+          "atk": 50811,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 2681.86,
+          "atk": 814.61,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 221866,
+          "atk": 67392,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 3218.22,
+          "atk": 977.54,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 233654,
+          "atk": 70973,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 3475.68,
+          "atk": 1055.74,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 245443,
+          "atk": 74554,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 3753.74,
+          "atk": 1140.19,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 257232,
+          "atk": 78134,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 4054.03,
+          "atk": 1231.41,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 268784,
+          "atk": 81643,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 4256.74,
+          "atk": 1292.99,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 16127,
+          "atk": 4898
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 292362,
+          "atk": 88805,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 4469.58,
+          "atk": 1357.63,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 20465,
+          "atk": 6216
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 315939,
+          "atk": 95966,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 4693.06,
+          "atk": 1425.52,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 25275,
+          "atk": 7677
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 339517,
+          "atk": 103128,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 5068.5,
+          "atk": 1539.55,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 27161,
+          "atk": 8250
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Mega Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 377242,
+          "atk": 114587,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 5473.98,
+          "atk": 1662.72,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 30179,
+          "atk": 9166
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "lunala",
+    "name": "Lunala",
+    "faction": "dark",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Lunala, a mythic dark Wild from the owner's collection.",
+    "paletteSeed": 4352,
+    "sourceId": 174,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Lunala",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 7894,
+          "atk": 1702,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 633.04,
+          "atk": 135.94,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Super Lunala",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 11059,
+          "atk": 2386,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 740.66,
+          "atk": 159.04,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Super Lunala",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 17498,
+          "atk": 3776,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 888.8,
+          "atk": 190.86,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Super Lunala",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 27298,
+          "atk": 5890,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 1066.54,
+          "atk": 229.02,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Super Lunala",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 40738,
+          "atk": 8790,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 1279.86,
+          "atk": 274.83,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Mega Lunala",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 58376,
+          "atk": 12597,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 1535.84,
+          "atk": 329.81,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Mega Lunala",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 81334,
+          "atk": 17550,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 1843.01,
+          "atk": 395.76,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 111293,
+          "atk": 24014,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 2211.6,
+          "atk": 474.91,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 149371,
+          "atk": 32232,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 2653.92,
+          "atk": 569.89,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 198648,
+          "atk": 42866,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 3184.7,
+          "atk": 683.87,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 263466,
+          "atk": 56853,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 3821.65,
+          "atk": 820.66,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 277464,
+          "atk": 59874,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 4127.38,
+          "atk": 886.3,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 291464,
+          "atk": 62894,
+          "spd": 35
+        },
+        "growth": {
+          "hp": 4457.57,
+          "atk": 957.2,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 305462,
+          "atk": 65915,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 4814.18,
+          "atk": 1033.78,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 319182,
+          "atk": 68875,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 5054.88,
+          "atk": 1085.47,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 19150,
+          "atk": 4132
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 347181,
+          "atk": 74917,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 5307.63,
+          "atk": 1139.74,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 24302,
+          "atk": 5244
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 375179,
+          "atk": 80958,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 5573.01,
+          "atk": 1196.74,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 30014,
+          "atk": 6476
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 403178,
+          "atk": 87000,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 6018.85,
+          "atk": 1292.46,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 32254,
+          "atk": 6960
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Mega Lunala",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 447974,
+          "atk": 96667,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 6500.35,
+          "atk": 1395.87,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 35837,
+          "atk": 7733
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "shiny-darkrai",
+    "name": "Shiny Darkrai",
+    "faction": "dark",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Shiny Darkrai, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 3071,
+    "sourceId": 182,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Shiny Darkrai",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 7894,
+          "atk": 1702,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 633.04,
+          "atk": 135.94,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Shiny S.Darkrai",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 11059,
+          "atk": 2386,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 740.66,
+          "atk": 159.04,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Shiny S.Darkrai",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 17498,
+          "atk": 3776,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 888.8,
+          "atk": 190.86,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Shiny S.Darkrai",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 27298,
+          "atk": 5890,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1066.54,
+          "atk": 229.02,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Shiny S.Darkrai",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 40738,
+          "atk": 8790,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1279.86,
+          "atk": 274.83,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 58376,
+          "atk": 12597,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1535.84,
+          "atk": 329.81,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 81334,
+          "atk": 17550,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1843.01,
+          "atk": 395.76,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 111293,
+          "atk": 24014,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2211.6,
+          "atk": 474.91,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 149371,
+          "atk": 32232,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2653.92,
+          "atk": 569.89,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 198648,
+          "atk": 42866,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3184.7,
+          "atk": 683.87,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 263466,
+          "atk": 56853,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3821.65,
+          "atk": 820.66,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 277464,
+          "atk": 59874,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 4127.38,
+          "atk": 886.3,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 291464,
+          "atk": 62894,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 4457.57,
+          "atk": 957.2,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 305462,
+          "atk": 65915,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4814.18,
+          "atk": 1033.78,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 319182,
+          "atk": 68875,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5054.88,
+          "atk": 1085.47,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 19150,
+          "atk": 4132
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 347181,
+          "atk": 74917,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5307.63,
+          "atk": 1139.74,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 24302,
+          "atk": 5244
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 375179,
+          "atk": 80958,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5573.01,
+          "atk": 1196.74,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 30014,
+          "atk": 6476
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 403178,
+          "atk": 87000,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 6018.85,
+          "atk": 1292.46,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 32254,
+          "atk": 6960
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Shiny M.Darkrai",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 447974,
+          "atk": 96667,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 6500.35,
+          "atk": 1395.87,
+          "pDef": 122.72,
+          "sDef": 61.36
+        },
+        "extraBasic": {
+          "hp": 35837,
+          "atk": 7733
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "shiny-mewtwo",
+    "name": "Shiny Mewtwo",
+    "faction": "dark",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Shiny Mewtwo, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 9152,
+    "sourceId": 184,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Shiny Mewtwo",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 6648,
+          "atk": 2019,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 533.09,
+          "atk": 161.92,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Shiny S.Mewtwo",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 9312,
+          "atk": 2829,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 623.71,
+          "atk": 189.46,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Shiny S.Mewtwo",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 14736,
+          "atk": 4475,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 748.46,
+          "atk": 227.34,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Shiny S.Mewtwo",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 22987,
+          "atk": 6982,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 898.14,
+          "atk": 272.82,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Shiny S.Mewtwo",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 34304,
+          "atk": 10419,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1077.78,
+          "atk": 327.38,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 49158,
+          "atk": 14931,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1293.33,
+          "atk": 392.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 68493,
+          "atk": 20805,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1552,
+          "atk": 471.42,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 93720,
+          "atk": 28467,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1862.4,
+          "atk": 565.71,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 125786,
+          "atk": 38206,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 2234.88,
+          "atk": 678.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 167283,
+          "atk": 50811,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 2681.86,
+          "atk": 814.61,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 221866,
+          "atk": 67392,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 3218.22,
+          "atk": 977.54,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 233654,
+          "atk": 70973,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 3475.68,
+          "atk": 1055.74,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 245443,
+          "atk": 74554,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 3753.74,
+          "atk": 1140.19,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 257232,
+          "atk": 78134,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4054.03,
+          "atk": 1231.41,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 268784,
+          "atk": 81643,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4256.74,
+          "atk": 1292.99,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 16127,
+          "atk": 4898
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 292362,
+          "atk": 88805,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4469.58,
+          "atk": 1357.63,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 20465,
+          "atk": 6216
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 315939,
+          "atk": 95966,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4693.06,
+          "atk": 1425.52,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 25275,
+          "atk": 7677
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 339517,
+          "atk": 103128,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 5068.5,
+          "atk": 1539.55,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 27161,
+          "atk": 8250
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Shiny M.Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 377242,
+          "atk": 114587,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 5473.98,
+          "atk": 1662.72,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 30179,
+          "atk": 9166
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "shiny-hoopa",
+    "name": "Shiny Hoopa",
+    "faction": "dark",
+    "class": "striker",
+    "tier": "mythic",
+    "description": "Shiny Hoopa, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 4536,
+    "sourceId": 189,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Shiny Hoopa",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 6648,
+          "atk": 2019,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 533.09,
+          "atk": 161.92,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Shiny S.Hoopa",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 9312,
+          "atk": 2829,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 623.71,
+          "atk": 189.46,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Shiny S.Hoopa",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 14736,
+          "atk": 4475,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 748.46,
+          "atk": 227.34,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Shiny S.Hoopa",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 22987,
+          "atk": 6982,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 898.14,
+          "atk": 272.82,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Shiny S.Hoopa",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 34304,
+          "atk": 10419,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 1077.78,
+          "atk": 327.38,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 49158,
+          "atk": 14931,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 1293.33,
+          "atk": 392.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 68493,
+          "atk": 20805,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 1552,
+          "atk": 471.42,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 93720,
+          "atk": 28467,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 1862.4,
+          "atk": 565.71,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 125786,
+          "atk": 38206,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 2234.88,
+          "atk": 678.85,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 167283,
+          "atk": 50811,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 2681.86,
+          "atk": 814.61,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 221866,
+          "atk": 67392,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 3218.22,
+          "atk": 977.54,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 233654,
+          "atk": 70973,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 3475.68,
+          "atk": 1055.74,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 245443,
+          "atk": 74554,
+          "spd": 36
+        },
+        "growth": {
+          "hp": 3753.74,
+          "atk": 1140.19,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 257232,
+          "atk": 78134,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 4054.03,
+          "atk": 1231.41,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 268784,
+          "atk": 81643,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 4256.74,
+          "atk": 1292.99,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 16127,
+          "atk": 4898
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 292362,
+          "atk": 88805,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 4469.58,
+          "atk": 1357.63,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 20465,
+          "atk": 6216
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 315939,
+          "atk": 95966,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 4693.06,
+          "atk": 1425.52,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 25275,
+          "atk": 7677
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 339517,
+          "atk": 103128,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 5068.5,
+          "atk": 1539.55,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 27161,
+          "atk": 8250
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Shiny M.Hoopa",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 377242,
+          "atk": 114587,
+          "spd": 37
+        },
+        "growth": {
+          "hp": 5473.98,
+          "atk": 1662.72,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 30179,
+          "atk": 9166
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "shiny-kyurem",
+    "name": "Shiny Kyurem",
+    "faction": "dark",
+    "class": "adept",
+    "tier": "mythic",
+    "description": "Shiny Kyurem, a shiny mythic dark Wild from the owner's collection.",
+    "paletteSeed": 3510,
+    "sourceId": 191,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Shiny White Kyurem",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 7894,
+          "atk": 1702,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 633.04,
+          "atk": 135.94,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 6,
+        "name": "Shiny White Kyurem",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 11059,
+          "atk": 2386,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 740.66,
+          "atk": 159.04,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 7,
+        "name": "Shiny White Kyurem",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 17498,
+          "atk": 3776,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 888.8,
+          "atk": 190.86,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 8,
+        "name": "Shiny White Kyurem",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 27298,
+          "atk": 5890,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1066.54,
+          "atk": 229.02,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 9,
+        "name": "Shiny White Kyurem",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 40738,
+          "atk": 8790,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1279.86,
+          "atk": 274.83,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 10,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 58376,
+          "atk": 12597,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1535.84,
+          "atk": 329.81,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 11,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 81334,
+          "atk": 17550,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1843.01,
+          "atk": 395.76,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 12,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 111293,
+          "atk": 24014,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2211.6,
+          "atk": 474.91,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 13,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 149371,
+          "atk": 32232,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2653.92,
+          "atk": 569.89,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 14,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 198648,
+          "atk": 42866,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3184.7,
+          "atk": 683.87,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ]
+      },
+      {
+        "star": 15,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 263466,
+          "atk": 56853,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3821.65,
+          "atk": 820.66,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 16,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 277464,
+          "atk": 59874,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 4127.38,
+          "atk": 886.3,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 17,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 291464,
+          "atk": 62894,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 4457.57,
+          "atk": 957.2,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 18,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 305462,
+          "atk": 65915,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4814.18,
+          "atk": 1033.78,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 319182,
+          "atk": 68875,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5054.88,
+          "atk": 1085.47,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 19150,
+          "atk": 4132
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 20,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 347181,
+          "atk": 74917,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5307.63,
+          "atk": 1139.74,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 24302,
+          "atk": 5244
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 1000
+          }
+        ]
+      },
+      {
+        "star": 21,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 375179,
+          "atk": 80958,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5573.01,
+          "atk": 1196.74,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 30014,
+          "atk": 6476
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 1
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 22,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 403178,
+          "atk": 87000,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 6018.85,
+          "atk": 1292.46,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 32254,
+          "atk": 6960
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 5,
+            "count": 2
+          }
+        ],
+        "fodderItems": [
+          {
+            "item": 10805,
+            "count": 2000
+          }
+        ]
+      },
+      {
+        "star": 23,
+        "name": "Shiny Black Kyurem",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 447974,
+          "atk": 96667,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 6500.35,
+          "atk": 1395.87,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 35837,
+          "atk": 7733
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "origin-rayquaza",
+    "name": "Origin Rayquaza",
+    "faction": "dark",
+    "class": "adept",
+    "tier": "origin",
+    "description": "Origin Rayquaza, a origin dark Wild from the owner's collection.",
+    "paletteSeed": 6502,
+    "sourceId": 301,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Origin Rayquaza",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 7302,
+          "atk": 1575,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 585.56,
+          "atk": 125.74,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 6,
+        "name": "Origin Rayquaza",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 10230,
+          "atk": 2207,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 685.11,
+          "atk": 147.11,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 7,
+        "name": "Origin Rayquaza",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 16185,
+          "atk": 3493,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 822.14,
+          "atk": 176.55,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 8,
+        "name": "Origin Rayquaza",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 25250,
+          "atk": 5448,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 986.55,
+          "atk": 211.85,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 9,
+        "name": "Origin Rayquaza",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 37682,
+          "atk": 8131,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1183.87,
+          "atk": 254.22,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 10,
+        "name": "Origin Rayquaza",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 53998,
+          "atk": 11652,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1420.65,
+          "atk": 305.07,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 11,
+        "name": "Origin Rayquaza",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 75234,
+          "atk": 16234,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 1704.78,
+          "atk": 366.08,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 12,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 102946,
+          "atk": 22213,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2045.73,
+          "atk": 439.29,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 13,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 138168,
+          "atk": 29815,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2454.88,
+          "atk": 527.15,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 14,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 183749,
+          "atk": 39651,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 2945.85,
+          "atk": 632.58,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 15,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 243706,
+          "atk": 52589,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3535.02,
+          "atk": 759.11,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 16,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 256654,
+          "atk": 55383,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 3817.82,
+          "atk": 819.83,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 17,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 269604,
+          "atk": 58177,
+          "spd": 20
+        },
+        "growth": {
+          "hp": 4123.25,
+          "atk": 885.41,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 18,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 282553,
+          "atk": 60972,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4453.11,
+          "atk": 956.24,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 295244,
+          "atk": 63710,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4675.76,
+          "atk": 1004.06,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 17714,
+          "atk": 3822
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 20,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 321142,
+          "atk": 69298,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 4909.56,
+          "atk": 1054.26,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 22479,
+          "atk": 4850
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 21,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 347041,
+          "atk": 74887,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5155.03,
+          "atk": 1106.98,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 27763,
+          "atk": 5990
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 22,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 372939,
+          "atk": 80475,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 5567.43,
+          "atk": 1195.53,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 29835,
+          "atk": 6438
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 23,
+        "name": "Origin Rayquaza",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 414376,
+          "atk": 89417,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 6012.83,
+          "atk": 1291.18,
+          "pDef": 61.36,
+          "sDef": 122.72
+        },
+        "extraBasic": {
+          "hp": 33150,
+          "atk": 7153
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "origin-lugia",
+    "name": "Origin Lugia",
+    "faction": "dark",
+    "class": "guardian",
+    "tier": "origin",
+    "description": "Origin Lugia, a origin dark Wild from the owner's collection.",
+    "paletteSeed": 1720,
+    "sourceId": 302,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Origin Lugia",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 8072,
+          "atk": 884,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 647.2,
+          "atk": 70.88,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 6,
+        "name": "Origin Lugia",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 11306,
+          "atk": 1237,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 757.23,
+          "atk": 82.94,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 7,
+        "name": "Origin Lugia",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 17890,
+          "atk": 1958,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 908.68,
+          "atk": 99.52,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 8,
+        "name": "Origin Lugia",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 27908,
+          "atk": 3056,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 1090.4,
+          "atk": 119.42,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 9,
+        "name": "Origin Lugia",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 41649,
+          "atk": 4561,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 1308.48,
+          "atk": 143.31,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 10,
+        "name": "Origin Lugia",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 59682,
+          "atk": 6536,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 1570.19,
+          "atk": 171.98,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 11,
+        "name": "Origin Lugia",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 83154,
+          "atk": 9106,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 1884.23,
+          "atk": 206.37,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 12,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 113782,
+          "atk": 12462,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 2261.07,
+          "atk": 247.63,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 13,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 152712,
+          "atk": 16725,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 2713.28,
+          "atk": 297.17,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 14,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 203093,
+          "atk": 22243,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 3255.94,
+          "atk": 356.61,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 15,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 269360,
+          "atk": 29501,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 3907.13,
+          "atk": 427.93,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 16,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 283672,
+          "atk": 31068,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 4219.7,
+          "atk": 462.16,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 17,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 297985,
+          "atk": 32635,
+          "spd": 18
+        },
+        "growth": {
+          "hp": 4557.28,
+          "atk": 499.13,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 18,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 312296,
+          "atk": 34203,
+          "spd": 19
+        },
+        "growth": {
+          "hp": 4921.86,
+          "atk": 539.06,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 326322,
+          "atk": 35739,
+          "spd": 19
+        },
+        "growth": {
+          "hp": 5167.95,
+          "atk": 566.01,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "extraBasic": {
+          "hp": 19579,
+          "atk": 2144
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 20,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 354947,
+          "atk": 38874,
+          "spd": 19
+        },
+        "growth": {
+          "hp": 5426.35,
+          "atk": 594.31,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "extraBasic": {
+          "hp": 24846,
+          "atk": 2721
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 21,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 383573,
+          "atk": 42008,
+          "spd": 19
+        },
+        "growth": {
+          "hp": 5697.67,
+          "atk": 624.03,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "extraBasic": {
+          "hp": 30685,
+          "atk": 3360
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 22,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 412198,
+          "atk": 45144,
+          "spd": 19
+        },
+        "growth": {
+          "hp": 6153.48,
+          "atk": 673.95,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "extraBasic": {
+          "hp": 32975,
+          "atk": 3611
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 23,
+        "name": "Origin Lugia",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 457998,
+          "atk": 50160,
+          "spd": 19
+        },
+        "growth": {
+          "hp": 6645.76,
+          "atk": 727.86,
+          "pDef": 225,
+          "sDef": 112.5
+        },
+        "extraBasic": {
+          "hp": 36639,
+          "atk": 4012
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "shadow-mewtwo",
+    "name": "Shadow Mewtwo",
+    "faction": "dark",
+    "class": "striker",
+    "tier": "origin",
+    "description": "Shadow Mewtwo, a origin dark Wild from the owner's collection.",
+    "paletteSeed": 2191,
+    "sourceId": 303,
+    "shards": 50,
+    "stars": [
+      {
+        "star": 5,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 6149,
+          "atk": 1868,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 493.11,
+          "atk": 149.78,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 6,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 140,
+        "basic": {
+          "hp": 8614,
+          "atk": 2617,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 576.93,
+          "atk": 175.25,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 7,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 180,
+        "basic": {
+          "hp": 13631,
+          "atk": 4140,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 692.33,
+          "atk": 210.29,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 8,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 220,
+        "basic": {
+          "hp": 21263,
+          "atk": 6459,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 830.78,
+          "atk": 252.35,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 9,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 260,
+        "basic": {
+          "hp": 31731,
+          "atk": 9638,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 996.94,
+          "atk": 302.82,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 10,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 300,
+        "basic": {
+          "hp": 45472,
+          "atk": 13811,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1196.33,
+          "atk": 363.38,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 11,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 320,
+        "basic": {
+          "hp": 63356,
+          "atk": 19244,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1435.6,
+          "atk": 436.07,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 12,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 86691,
+          "atk": 26332,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 1722.72,
+          "atk": 523.28,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 13,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 116352,
+          "atk": 35341,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 2067.26,
+          "atk": 627.93,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 14,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 154737,
+          "atk": 47000,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 2480.72,
+          "atk": 753.51,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 15,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 205226,
+          "atk": 62338,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 2976.86,
+          "atk": 904.22,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 16,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 216130,
+          "atk": 65650,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 3215,
+          "atk": 976.56,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 17,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 227035,
+          "atk": 68962,
+          "spd": 32
+        },
+        "growth": {
+          "hp": 3472.21,
+          "atk": 1054.68,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 18,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 237940,
+          "atk": 72274,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 3749.98,
+          "atk": 1139.05,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 19,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 248625,
+          "atk": 75520,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 3937.48,
+          "atk": 1196.02,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 14917,
+          "atk": 4531
+        },
+        "extraGrowth": {
+          "hp": 100,
+          "atk": 50
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 20,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 270434,
+          "atk": 82144,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4134.37,
+          "atk": 1255.81,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 18930,
+          "atk": 5750
+        },
+        "extraGrowth": {
+          "hp": 150,
+          "atk": 75
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 21,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 292244,
+          "atk": 88769,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4341.08,
+          "atk": 1318.61,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 23379,
+          "atk": 7101
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 22,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 314053,
+          "atk": 95393,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 4688.36,
+          "atk": 1424.09,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 25124,
+          "atk": 7631
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      },
+      {
+        "star": 23,
+        "name": "Shadow Mewtwo",
+        "maxLevel": 340,
+        "basic": {
+          "hp": 348948,
+          "atk": 105993,
+          "spd": 33
+        },
+        "growth": {
+          "hp": 5063.44,
+          "atk": 1538.02,
+          "pDef": 50,
+          "sDef": 100
+        },
+        "extraBasic": {
+          "hp": 27915,
+          "atk": 8479
+        },
+        "extraGrowth": {
+          "hp": 200,
+          "atk": 100
+        },
+        "factionBoost": {
+          "faction": "light",
+          "value": 0.25
+        }
+      }
+    ]
+  }
+]

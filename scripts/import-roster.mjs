@@ -1,4 +1,10 @@
 /* eslint-disable no-undef */
+
+// Superseded by scripts/import-species.mjs (R1 source retrofit, 2026-10-31): species now copy the
+// source's factions, classes, qualities and star ladders. Re-running this would overwrite them with
+// the old generated stats, so it refuses to run.
+console.error('import-roster.mjs is superseded by import-species.mjs (R1); see docs/ASSUMPTIONS.md #49');
+process.exit(1);
 // One-off content generator (2026-10-15 owner override).
 //
 // Turns the owner's wiki dump (wiki-pokemon-skills.xlsx) into the game's species

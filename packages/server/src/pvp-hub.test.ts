@@ -33,7 +33,7 @@ function clearChapter(state: AccountState, cfg: ReturnType<typeof config>, chapt
 /** A fixture with both ladder chapters clear and a fully grown six. */
 function grownState(cfg: ReturnType<typeof config>, strategy?: StrategyId): AccountState {
   const base = createInitialState(cfg);
-  const roster = base.roster.map((w) => ({ ...w, level: 140, stars: 10, evolutionStage: 3 }));
+  const roster = base.roster.map((w) => ({ ...w, level: 140, stars: 10 }));
   const ids: Squad = roster.map((w) => w.id);
   const opened = clearChapter(clearChapter(base, cfg, cfg.pvp.arenaChapter), cfg, cfg.pvp.rankedChapter);
   return {

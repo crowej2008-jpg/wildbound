@@ -18,7 +18,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const contentDir = resolve(root, 'packages/content');
-const FILES = ['ember', 'tide', 'grove', 'volt', 'frost', 'shade'];
+// R1: kits are grouped by the source's five factions.
+const FILES = ['water', 'fire', 'grass', 'light', 'dark'];
 const SHEET = resolve(root, 'scripts/data/pokemon-skills.json');
 const REPORT = resolve(root, 'docs/PORT-REPORT.md');
 

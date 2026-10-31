@@ -1,18 +1,12 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import {
-  canEvolve,
-  effectiveLevelCap,
-  evolveCheck,
-  levelCapOf,
-  levelUpCost,
-  starUpCost,
-} from '@wildbound/engine';
+import { effectiveLevelCap, formNames, levelUpCost, type StarCard } from '@wildbound/engine';
+import { evolutionView, type EvolutionRequirement } from '@wildbound/server';
 import WildPortrait from '../art/WildPortrait';
-import { classLabel, t, tierLabel } from '../i18n';
+import { classLabel, factionLabel, t, tierLabel } from '../i18n';
 import { PROGRESS } from '../progress';
 import { useServer } from '../server/ServerProvider';
-import { species } from '../wilds';
+import { cardFor, formFor, species, topStar } from '../wilds';
 import BerryPanel from './wild/BerryPanel';
 import HeldItemPanel from './wild/HeldItemPanel';
 import OrbsPanel from './wild/OrbsPanel';
@@ -43,24 +37,23 @@ export default function WildDetail() {
   const meta = wild ? species(wild.speciesId) : undefined;
 
   const view = useMemo(() => {
-    if (!wild || !meta) return null;
-    const stageCap = levelCapOf(wild, PROGRESS);
-    const crystal = snapshot?.state.pve.linkCrystal ?? { unlocked: false, level: 0 };
-    const topStage = Math.max(0, meta.stages.length - 1);
-    const atTopStage = wild.evolutionStage >= topStage && wild.level >= stageCap;
-    const cap = effectiveLevelCap({ stars: wild.stars, atTopStage }, stageCap, crystal);
+    if (!wild || !meta || !snapshot) return null;
+    const card = cardFor(meta, wild.stars);
+    const top = topStar(meta);
+    const crystal = snapshot.state.pve.linkCrystal ?? { unlocked: false, level: 0 };
+    const atTopStage = wild.stars >= top && wild.level >= card.maxLevel;
+    const cap = effectiveLevelCap({ stars: wild.stars, atTopStage }, card.maxLevel, crystal);
     const nextCost = levelUpCost(wild.level, Math.min(cap, wild.level + 1), PROGRESS);
     const tenCost = levelUpCost(wild.level, Math.min(cap, wild.level + 10), PROGRESS);
-    const star = starUpCost(wild.stars, PROGRESS);
-    const evolve = evolveCheck(wild, meta.stages.length, PROGRESS);
-    return {
-      cap,
-      nextCost,
-      tenCost,
-      star,
-      info: 'reason' in evolve ? null : evolve,
-      canEvolve: canEvolve(wild, meta.stages.length, PROGRESS),
-    };
+    const evolution = evolutionView(
+      snapshot.state,
+      (speciesId) => {
+        const s = species(speciesId);
+        return s ? { faction: s.faction, stars: s.stars as StarCard[] } : undefined;
+      },
+      wild.id,
+    );
+    return { card, top, cap, nextCost, tenCost, evolution };
   }, [wild, meta, snapshot]);
 
   if (!snapshot) return <main className="main"><p className="muted">Loading account…</p></main>;
@@ -76,7 +69,9 @@ export default function WildDetail() {
   const power = snapshot.power[wild.id] ?? 0;
   const currencies = snapshot.state.currencies;
   const atCap = wild.level >= view.cap;
-  const atMaxStars = wild.stars >= PROGRESS.maxStars;
+  const forms = formNames(meta.stars as StarCard[]);
+  const form = formFor(meta, wild.stars);
+  const evolution = view.evolution;
 
   return (
     <main className="main">
@@ -85,20 +80,21 @@ export default function WildDetail() {
       </Link>
 
       <section className="card wild-detail-hero">
-        <WildPortrait species={meta} stage={wild.evolutionStage} size={132} label={meta.name} />
+        <WildPortrait species={meta} stage={form} size={132} label={meta.name} />
         <div className="wild-detail-info">
           <h1 className="page-title">{meta.name}</h1>
           <div className="chip-list">
             <span className="chip">{classLabel[meta.class]}</span>
             <span className={`chip tier-${meta.tier}`}>{tierLabel[meta.tier]}</span>
-            <span className="chip">{meta.stages[wild.evolutionStage]}</span>
+            <span className="chip">{factionLabel[meta.faction]}</span>
+            <span className="chip">{view.card.name}</span>
           </div>
           <p className="wild-power-lg">
             {t('wild.power')} <strong>{power.toLocaleString()}</strong>
           </p>
           <p className="muted">
             {t('wild.level')}
-            {wild.level} / {view.cap} · {wild.stars}★ / {PROGRESS.maxStars}★
+            {wild.level} / {view.cap} · {wild.stars}★ / {view.top}★
             {wild.locked && ` · ${t('wild.locked')}`}
           </p>
         </div>
@@ -190,55 +186,46 @@ export default function WildDetail() {
               </div>
             </>
           )}
-          <hr className="divider" />
-          {atMaxStars ? (
-            <p className="muted">{t('wild.stars')}: {wild.stars}★ / {PROGRESS.maxStars}★</p>
-          ) : (
-            <>
-              <div className="cost-row">
-                <span>{t('wild.upgrade.starCost')} {view.star.shards.toLocaleString()}</span>
-                <span>{t('wild.upgrade.gold')} {view.star.gold.toLocaleString()}</span>
-              </div>
-              <button type="button" className="btn btn-primary" disabled={busy} onClick={() => void run((s) => s.starUp(wild.id, 1))}>
-                {t('wild.upgrade.star')} → {wild.stars + 1}★
-              </button>
-            </>
-          )}
           <p className="wallet muted">
-            {t('wild.upgrade.candy')} {currencies.candy.toLocaleString()} · {t('wild.upgrade.gold')} {currencies.gold.toLocaleString()} · {t('wild.upgrade.starCost')} {currencies.shard.toLocaleString()}
+            {t('wild.upgrade.candy')} {currencies.candy.toLocaleString()} · {t('wild.upgrade.gold')} {currencies.gold.toLocaleString()}
           </p>
         </section>
       ) : tab === 'evolve' ? (
         <section className="card">
-          {view.info === null ? (
+          {!evolution || evolution.blocked === 'max_star' || !evolution.next ? (
             <p className="muted">{t('wild.evolve.maxed')}</p>
+          ) : evolution.blocked === 'awakening' ? (
+            <p className="muted">
+              {evolution.next.star}★ {t('wild.evolve.awakening')}
+            </p>
           ) : (
             <>
               <p>
-                {t('wild.evolve.next')}: <strong>{meta.stages[(wild.evolutionStage + 1)]}</strong>
+                {t('wild.evolve.next')}: <strong>{evolution.next.name}</strong> · {evolution.next.star}★ ·{' '}
+                {t('wild.evolve.levelCap')} {evolution.next.maxLevel}
               </p>
-              <p className="muted">
-                {t('wild.evolve.requires')}: {t('wild.evolve.levelReq')}
-                {view.info.minLevel} · {view.info.minStars} {t('wild.evolve.starReq')}
-              </p>
-              <div className="cost-row">
-                <span>{t('wild.upgrade.candy')} {view.info.candy.toLocaleString()}</span>
-                <span>{t('wild.upgrade.gold')} {view.info.gold.toLocaleString()}</span>
-                <span>{t('currency.stone')} {view.info.stones.toLocaleString()}</span>
-              </div>
+              <p className="muted">{t('wild.evolve.requires')}:</p>
+              <ul className="fodder-list">
+                {evolution.requirements.map((req, index) => (
+                  <li key={index} className={req.have >= req.count ? 'fodder-row fodder-met' : 'fodder-row'}>
+                    {fodderLabel(req, meta.name)} · {req.have}/{req.count}
+                  </li>
+                ))}
+              </ul>
               <button
                 type="button"
                 className="btn btn-primary"
-                disabled={busy || !view.canEvolve}
+                disabled={busy || !evolution.ready}
                 onClick={() => void run((s) => s.evolve(wild.id))}
               >
-                {t('wild.evolve.cta')}
+                {t('wild.evolve.cta')} → {evolution.next.star}★
               </button>
+              <p className="muted">{t('wild.evolve.fodderNote')}</p>
             </>
           )}
           <div className="evolve-preview">
-            {meta.stages.map((stageName, stage) => (
-              <figure key={stage} className={stage === wild.evolutionStage ? 'stage-figure stage-current' : 'stage-figure'}>
+            {forms.map((stageName, stage) => (
+              <figure key={stage} className={stage === form ? 'stage-figure stage-current' : 'stage-figure'}>
                 <WildPortrait species={meta} stage={stage} size={72} />
                 <figcaption>{stageName}</figcaption>
               </figure>
@@ -248,4 +235,10 @@ export default function WildDetail() {
       ) : null}
     </main>
   );
+}
+
+/** "2 × 5★ Darkrai" or "4 × 5★ Grass Pokémon". */
+function fodderLabel(req: EvolutionRequirement, ownName: string): string {
+  const who = req.own ? ownName : req.faction ? `${factionLabel[req.faction]} ${t('wild.evolve.anyOf')}` : t('wild.evolve.any');
+  return `${req.count} × ${req.star}★ ${who}`;
 }

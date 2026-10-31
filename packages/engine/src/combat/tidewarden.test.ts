@@ -13,7 +13,7 @@ import type { KitDef, SpecInput } from './types';
 const tidewardenKit: KitDef = {
   id: 'tidewarden',
   name: 'Tidewarden',
-  faction: 'tide',
+  faction: 'water',
   class: 'guardian',
   tier: 'mythic',
   skills: {

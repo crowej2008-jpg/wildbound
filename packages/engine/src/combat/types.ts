@@ -402,6 +402,14 @@ export interface SpecInput {
   soulheart?: SoulheartHooks;
   /** M9: the creature's level, for `scalesWithLevel` ladders (default 1). */
   level?: number;
+  /** R1: the star card's "DMG BST to [faction]" (source basic_attr 138–146). */
+  factionBoost?: FactionBoost;
+}
+
+/** "DMG BST to [faction]": extra damage against defenders of that faction (0.25 = 25%). */
+export interface FactionBoost {
+  faction: Faction;
+  value: number;
 }
 
 /** A resolved, buffable stat sheet as the battle sees it (base values). */
@@ -482,6 +490,8 @@ export interface Combatant {
   resources?: Record<string, number>;
   /** M9: the creature's level (for `scalesWithLevel` ladders; default 1). */
   level?: number;
+  /** R1: "DMG BST to [faction]" from the star card. */
+  factionBoost?: FactionBoost;
 }
 
 export interface BattleConfig {

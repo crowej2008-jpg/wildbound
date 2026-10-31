@@ -78,6 +78,19 @@ export function tableRows(name, root = sourceRoot) {
   return [data];
 }
 
+/**
+ * The dumps' English translations: every `_text` note (Chinese string → English) merged, later dumps
+ * winning. Used for names and descriptions that the config stores in Chinese.
+ */
+export function loadTextMap(root = sourceRoot) {
+  const text = {};
+  for (const file of dumpFiles(root)) {
+    const dump = JSON.parse(readFileSync(file, 'utf8'));
+    if (dump._text && typeof dump._text === 'object' && !Array.isArray(dump._text)) Object.assign(text, dump._text);
+  }
+  return text;
+}
+
 /** Row count and the field names of the first row, for the index. */
 export function describeTable(data) {
   const rows = Array.isArray(data) ? data : data && typeof data === 'object' ? Object.values(data) : [data];

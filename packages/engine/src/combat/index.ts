@@ -67,6 +67,7 @@ export type {
   SkillDef,
   SkillSlot,
   SpecInput,
+  FactionBoost,
   StatSheet,
   TalentDef,
   TargetFilter,

@@ -7,7 +7,7 @@ import { z } from 'zod';
 
 export const TIERS = ['common', 'rare', 'epic', 'legendary', 'supreme', 'mythic'] as const;
 export const CLASSES = ['striker', 'guardian', 'adept'] as const;
-export const FACTIONS = ['ember', 'tide', 'grove', 'volt', 'frost', 'shade'] as const;
+export const FACTIONS = ['water', 'fire', 'grass', 'light', 'dark'] as const;
 
 export const CORE_FIELDS = ['hp', 'pAtk', 'sAtk', 'spd', 'pDef', 'sDef'] as const;
 export const SOUL_FIELDS = ['spiritAtk', 'spiritDef'] as const;

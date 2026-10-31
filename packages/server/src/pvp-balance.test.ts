@@ -44,13 +44,13 @@ function makeConfig(): GameConfig {
   return { ...buildConfig(), now: () => NOW };
 }
 
-function squad(config: GameConfig, level: number, stars: number, stage: number): AccountState {
+/** `_stage` is kept for the call sites' readability; since R1 the star alone decides the form. */
+function squad(config: GameConfig, level: number, stars: number, _stage: number): AccountState {
   const base = createInitialState(config);
   const roster = base.roster.map((wild, index) => ({
     ...wild,
     level,
     stars,
-    evolutionStage: stage,
     speciesId: STARTERS[index] ?? wild.speciesId,
   }));
   const ids: Squad = roster.map((wild) => wild.id);

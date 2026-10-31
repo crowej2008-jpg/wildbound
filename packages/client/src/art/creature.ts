@@ -23,7 +23,19 @@ export interface SpeciesLike {
   id: string;
   faction: Faction;
   paletteSeed: number;
-  stages: string[];
+  /** The star ladder; each distinct card name is one visible form (R1). */
+  stars: { name: string }[];
+}
+
+/** How many distinct forms a species shows along its star ladder. */
+export function formCount(species: SpeciesLike): number {
+  let count = 0;
+  let last = '';
+  for (const card of species.stars) {
+    if (card.name !== last) count += 1;
+    last = card.name;
+  }
+  return Math.max(1, count);
 }
 
 const EYE_STYLES = ['round', 'slit', 'sleepy', 'wide'] as const;
@@ -40,7 +52,7 @@ function pick<T>(rng: () => number, arr: readonly T[]): T {
  * limbs, horns, fins and markings so evolution is visible.
  */
 export function buildCreature(species: SpeciesLike, stage: number): CreatureShape {
-  const clamped = Math.min(Math.max(0, stage), Math.max(0, species.stages.length - 1));
+  const clamped = Math.min(Math.max(0, stage), Math.min(2, formCount(species) - 1));
   const seed = (species.paletteSeed * 31 + clamped * 101) >>> 0;
   const rng = mulberry32(seed);
   const palette = paletteFor(species.faction, species.paletteSeed);

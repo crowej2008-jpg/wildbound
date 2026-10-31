@@ -35,7 +35,7 @@ function clearChapter(state: AccountState, cfg: ReturnType<typeof config>, chapt
 /** A fixture whose six Wilds are grown past the first rung's rivals (a clear win). */
 function grownState(cfg: ReturnType<typeof config>): AccountState {
   const base = createInitialState(cfg);
-  const roster = base.roster.map((w) => ({ ...w, level: 200, stars: 10, evolutionStage: 2 }));
+  const roster = base.roster.map((w) => ({ ...w, level: 200, stars: 10 }));
   const ids = roster.map((w) => w.id);
   const unlocked = clearChapter(base, cfg, cfg.pvp.rankedChapter);
   return { ...unlocked, roster, squads: { ...unlocked.squads, arenaAttack: ids } };

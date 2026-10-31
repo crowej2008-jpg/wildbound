@@ -23,7 +23,6 @@ function grownSave(stars: Record<string, number> = { 'c2-10': 3 }): string {
     speciesId,
     level: 140,
     stars: 10,
-    evolutionStage: 2,
     locked: false,
     acquiredAt: 0,
   }));

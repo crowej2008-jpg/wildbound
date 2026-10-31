@@ -17,6 +17,7 @@
   --tier-legendary: #e8962e;
   --tier-supreme: #d6484e;
   --tier-mythic: #cdad3f;
+  --tier-origin: #e0564f;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -314,6 +315,7 @@ body {
 .chip.tier-legendary { border-color: var(--tier-legendary); color: var(--tier-legendary); }
 .chip.tier-supreme { border-color: var(--tier-supreme); color: var(--tier-supreme); }
 .chip.tier-mythic { border-color: var(--tier-mythic); color: var(--tier-mythic); }
+.chip.tier-origin { border-color: var(--tier-origin); color: var(--tier-origin); }
 
 /* --- M3: HUD, roster, wild detail, squads, debug ------------------------- */
 

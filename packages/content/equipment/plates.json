@@ -3,55 +3,96 @@
     {
       "id": "plate-ember",
       "name": "Emberforged Plate",
-      "faction": "ember",
+      "faction": "fire",
       "lines": [
-        { "kind": "core", "field": "pAtk", "base": 8, "perLevel": 8 },
-        { "kind": "percent", "field": "dmgBoost", "base": 0.004, "perLevel": 0.004 }
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 8,
+          "perLevel": 8
+        },
+        {
+          "kind": "percent",
+          "field": "dmgBoost",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
       ]
     },
     {
       "id": "plate-tide",
       "name": "Tidewrought Plate",
-      "faction": "tide",
+      "faction": "water",
       "lines": [
-        { "kind": "core", "field": "hp", "base": 60, "perLevel": 60 },
-        { "kind": "core", "field": "sDef", "base": 5, "perLevel": 5 }
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 60,
+          "perLevel": 60
+        },
+        {
+          "kind": "core",
+          "field": "sDef",
+          "base": 5,
+          "perLevel": 5
+        }
       ]
     },
     {
       "id": "plate-grove",
       "name": "Grovebound Plate",
-      "faction": "grove",
+      "faction": "grass",
       "lines": [
-        { "kind": "core", "field": "hp", "base": 50, "perLevel": 50 },
-        { "kind": "core", "field": "sAtk", "base": 8, "perLevel": 8 }
+        {
+          "kind": "core",
+          "field": "hp",
+          "base": 50,
+          "perLevel": 50
+        },
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 8,
+          "perLevel": 8
+        }
       ]
     },
     {
       "id": "plate-volt",
       "name": "Voltcharged Plate",
-      "faction": "volt",
+      "faction": "light",
       "lines": [
-        { "kind": "core", "field": "spd", "base": 3, "perLevel": 3 },
-        { "kind": "core", "field": "pAtk", "base": 6, "perLevel": 6 }
-      ]
-    },
-    {
-      "id": "plate-frost",
-      "name": "Frostsealed Plate",
-      "faction": "frost",
-      "lines": [
-        { "kind": "core", "field": "sDef", "base": 7, "perLevel": 7 },
-        { "kind": "core", "field": "hp", "base": 40, "perLevel": 40 }
+        {
+          "kind": "core",
+          "field": "spd",
+          "base": 3,
+          "perLevel": 3
+        },
+        {
+          "kind": "core",
+          "field": "pAtk",
+          "base": 6,
+          "perLevel": 6
+        }
       ]
     },
     {
       "id": "plate-shade",
       "name": "Shadeveiled Plate",
-      "faction": "shade",
+      "faction": "dark",
       "lines": [
-        { "kind": "core", "field": "sAtk", "base": 9, "perLevel": 9 },
-        { "kind": "percent", "field": "crit", "base": 0.004, "perLevel": 0.004 }
+        {
+          "kind": "core",
+          "field": "sAtk",
+          "base": 9,
+          "perLevel": 9
+        },
+        {
+          "kind": "percent",
+          "field": "crit",
+          "base": 0.004,
+          "perLevel": 0.004
+        }
       ]
     }
   ]

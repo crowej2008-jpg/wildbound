@@ -33,7 +33,7 @@ function clearChapter(state: AccountState, cfg: ReturnType<typeof config>, chapt
 /** A fixture whose six Wilds are fully grown and whose Arena squads are set. */
 function grownState(cfg: ReturnType<typeof config>): AccountState {
   const base = createInitialState(cfg);
-  const roster = base.roster.map((w) => ({ ...w, level: 140, stars: 10, evolutionStage: 3 }));
+  const roster = base.roster.map((w) => ({ ...w, level: 140, stars: 10 }));
   const ids = roster.map((w) => w.id);
   const unlocked = clearChapter(base, cfg, cfg.pvp.arenaChapter);
   return {

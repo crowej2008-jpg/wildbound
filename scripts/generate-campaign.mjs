@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+// R1/R9 note: this generator still uses the pre-retrofit six factions and invented values; R9 replaces
+// its output with rows copied from the source. Do not re-run before then.
 // M13.0a campaign generator (dev-only; the generated JSON is committed).
 //
 // Source shape: 182 chapters x 10 stages, 60 gym gates at every third chapter,

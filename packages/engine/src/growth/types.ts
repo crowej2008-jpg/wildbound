@@ -1,20 +1,38 @@
-import type { CoreStats, PercentLines, Tier } from '../model';
+import type { CoreStats, Faction, PercentLines } from '../model';
 
 /**
- * Growth & Power tables (M2). The engine stays pure and never imports content:
- * callers pass these tables in, the CLI validator checks the JSON matches them.
+ * One star of a species' ladder, copied from the source's hero_evolution_json (R1, see
+ * docs/ASSUMPTIONS.md #49). The star decides the form's name, its level cap and its stats.
  */
-export interface GrowthTables {
-  /** Level cap per evolution stage (index = stage). */
-  maxLevelByStage: number[];
-  maxStars: number;
-  /** Per-level (beyond level 1) multiplier slope for `levelCurve`. */
-  levelGrowth: number;
-  /** Per-star (beyond star 1) multiplier step for `starMult`. */
-  starStep: number;
-  /** Evolution multiplier per stage (index = stage). */
-  evolutionMult: number[];
-  qualityMult: Record<Tier, number>;
+export interface StarCard {
+  star: number;
+  /** The form's name at this star (e.g. Beldum → Metang → Metagross). */
+  name: string;
+  maxLevel: number;
+  /** basic_attr: HP, attack (P.ATK = S.ATK) and SPD at level 0. */
+  basic: { hp: number; atk: number; spd: number };
+  /** growth_attr: gained per level. DEF only ever comes from level × growth. */
+  growth: { hp: number; atk: number; pDef: number; sDef: number };
+  /** 19★+ (Awakening) extras: flat, and per level. */
+  extraBasic?: { hp: number; atk: number };
+  extraGrowth?: { hp: number; atk: number };
+  /** "DMG BST to [faction]" on the card (0.25 = 25%). */
+  factionBoost?: { faction: Faction; value: number };
+  /** What it costs to go from this star to the next; absent = this star can't be raised by evolving. */
+  fodder?: FodderReq[];
+  /** Extra items for the next star (Awakening Stones from 19★). */
+  fodderItems?: { item: number; count: number }[];
+}
+
+/**
+ * One fodder line: `count` Wilds at exactly `star`. `own` = the same species; otherwise any species of
+ * `faction` (or of any faction when it is absent).
+ */
+export interface FodderReq {
+  own: boolean;
+  star: number;
+  count: number;
+  faction?: Faction;
 }
 
 /** One stat line's Power weighting: core points and the percent-value extensions. */
@@ -28,12 +46,4 @@ export interface PowerWeights {
   percent: Partial<Record<keyof PercentLines, PowerRow>>;
   /** Percent values are fractions; this scales them to the formula's units. */
   scale: number;
-}
-
-export interface GrowthInput {
-  base: CoreStats;
-  level: number;
-  stars: number;
-  tier: Tier;
-  stage: number;
 }

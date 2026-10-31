@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { buildConfig } from './config';
+import { buildConfig, cardOf } from './config';
 import { LocalServer } from './local-server';
 import { MemoryStore } from './storage';
-import { BACKUP_KEY, createInitialState, RETIRED_KEY, SAVE_KEY } from './save';
+import { setWildStars } from './testing';
+import { BACKUP_KEY, createInitialState, MIN_SAVE_VERSION, RETIRED_KEY, SAVE_KEY } from './save';
 
 function server(): { store: MemoryStore; srv: LocalServer } {
   const store = new MemoryStore();
@@ -23,7 +24,7 @@ describe('LocalServer', () => {
 
   it('retires a save older than MIN_SAVE_VERSION and starts a fresh account', async () => {
     const { store, srv } = server();
-    const old = JSON.stringify({ version: 17, state: createInitialState(buildConfig()) });
+    const old = JSON.stringify({ version: MIN_SAVE_VERSION - 1, state: createInitialState(buildConfig()) });
     await store.write(SAVE_KEY, old);
     await store.write(BACKUP_KEY, old);
     const loaded = await srv.loadAccount();
@@ -88,17 +89,39 @@ describe('LocalServer', () => {
     if (!capped.ok) expect(capped.error).toBe('at_level_cap');
   });
 
-  it('evolves a Wild once it meets the requirements', async () => {
+  it('evolves one star by consuming the star card fodder (source Evolve)', async () => {
     const { srv } = server();
+    const config = buildConfig();
     const load = await srv.loadAccount();
     if (!load.ok) return;
-    const id = load.value.state.roster[0]?.id as string;
-    expect((await srv.evolve(id)).ok).toBe(false);
-    await srv.levelUp(id, 19);
-    const evolved = await srv.evolve(id);
+    const target = load.value.state.roster[0]!;
+    const meta = config.species.get(target.speciesId)!;
+    const card = cardOf(meta, target.stars);
+    expect(card.fodder?.length).toBeGreaterThan(0);
+    const blocked = await srv.evolve(target.id);
+    expect(blocked.ok).toBe(false);
+    if (!blocked.ok) expect(blocked.error).toBe('insufficient_items');
+
+    // Grant exactly the fodder each line asks for.
+    const fodderIds: string[] = [];
+    for (const req of card.fodder ?? []) {
+      const speciesId = req.own
+        ? target.speciesId
+        : [...config.species.values()].find((s) => s.id !== target.speciesId && (!req.faction || s.faction === req.faction))!.id;
+      for (let i = 0; i < req.count; i++) {
+        const granted = await srv.grantWild(speciesId);
+        if (!granted.ok) throw new Error(granted.message);
+        const copy = granted.value.state.roster[granted.value.state.roster.length - 1]!;
+        await setWildStars(srv, copy.id, req.star);
+        fodderIds.push(copy.id);
+      }
+    }
+    const evolved = await srv.evolve(target.id);
     expect(evolved.ok).toBe(true);
     if (!evolved.ok) return;
-    expect(evolved.value.state.roster.find((w) => w.id === id)?.evolutionStage).toBe(1);
+    const roster = evolved.value.state.roster;
+    expect(roster.find((w) => w.id === target.id)?.stars).toBe(target.stars + 1);
+    for (const id of fodderIds) expect(roster.some((w) => w.id === id)).toBe(false);
   });
 
   it('auto-fills a legal squad and rejects duplicates', async () => {

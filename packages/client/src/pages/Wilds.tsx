@@ -5,7 +5,7 @@ import type { Faction } from '@wildbound/engine';
 import WildPortrait from '../art/WildPortrait';
 import { classLabel, factionLabel, t, tierLabel } from '../i18n';
 import { useServer } from '../server/ServerProvider';
-import { species } from '../wilds';
+import { cardFor, formFor, species } from '../wilds';
 
 type Filter = Faction | 'all';
 type Sort = 'power' | 'recent';
@@ -77,13 +77,13 @@ export default function Wilds() {
           {rows.map(({ wild, meta, power }) => (
             <li key={wild.id}>
               <Link className="roster-item" to={`/wilds/${wild.id}`}>
-                {meta && <WildPortrait species={meta} stage={wild.evolutionStage} size={64} />}
+                {meta && <WildPortrait species={meta} stage={formFor(meta, wild.stars)} size={64} />}
                 <span className="roster-info">
                   <span className="roster-name">
                     {meta?.name} {wild.locked && <span className="lock-dot" title={t('wild.locked')}>●</span>}
                   </span>
                   <span className="roster-sub">
-                    {meta && `${classLabel[meta.class]} · ${meta.stages[wild.evolutionStage] ?? ''}`}
+                    {meta && `${classLabel[meta.class]} · ${cardFor(meta, wild.stars).name} · ${wild.stars}★`}
                   </span>
                   <span className="roster-chips">
                     {meta && <span className={`chip tier-${meta.tier}`}>{tierLabel[meta.tier]}</span>}

@@ -90,8 +90,8 @@ const RANKED: RankedTuning = {
     { matches: 10, reward: { gold: 25000, shard: 30 } },
   ],
   phases: [
-    { id: 'p1', name: 'P1', teams: 2, teamSize: 4, coins: TIERS.map((_, i) => 100 + i), weather: ['grove', 'tide'] },
-    { id: 'p2', name: 'P2', teams: 3, teamSize: 6, coins: TIERS.map((_, i) => 200 + i), weather: ['ember', 'frost'] },
+    { id: 'p1', name: 'P1', teams: 2, teamSize: 4, coins: TIERS.map((_, i) => 100 + i), weather: ['grass', 'water'] },
+    { id: 'p2', name: 'P2', teams: 3, teamSize: 6, coins: TIERS.map((_, i) => 200 + i), weather: ['fire', 'light'] },
   ],
 };
 
@@ -346,16 +346,16 @@ describe('pvp state slice', () => {
 
 describe('ranked weather', () => {
   it('picks a stable current/next pair from the rotation for a season', () => {
-    const a = weatherFor(['grove', 'tide', 'ember'], '2026-W02');
-    const b = weatherFor(['grove', 'tide', 'ember'], '2026-W02');
+    const a = weatherFor(['grass', 'water', 'fire'], '2026-W02');
+    const b = weatherFor(['grass', 'water', 'fire'], '2026-W02');
     expect(a).toEqual(b);
-    expect(['grove', 'tide', 'ember']).toContain(a.current);
-    expect(['grove', 'tide', 'ember']).toContain(a.next);
+    expect(['grass', 'water', 'fire']).toContain(a.current);
+    expect(['grass', 'water', 'fire']).toContain(a.next);
     expect(a.next).not.toBe(a.current);
   });
 
   it('builds the BattleRules weather value', () => {
-    expect(weatherRule({ current: 'frost', next: 'ember' }, 0.3)).toEqual({ factions: ['frost'], dmg: 0.3 });
+    expect(weatherRule({ current: 'light', next: 'fire' }, 0.3)).toEqual({ factions: ['light'], dmg: 0.3 });
   });
 
   it('throws on an empty rotation', () => {

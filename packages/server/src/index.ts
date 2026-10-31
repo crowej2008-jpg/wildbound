@@ -228,7 +228,7 @@ export interface GameServer {
   grantRandomWild(): Promise<Result<AccountSnapshot>>;
   grantCurrency(currency: string, amount?: number): Promise<Result<AccountSnapshot>>;
   levelUp(instanceId: string, levels: number): Promise<Result<AccountSnapshot>>;
-  starUp(instanceId: string, stars: number): Promise<Result<AccountSnapshot>>;
+  /** R1: the source's Evolve — one star up, consuming the star card's fodder (auto-picked). */
   evolve(instanceId: string): Promise<Result<AccountSnapshot>>;
   respawn(instanceId: string): Promise<Result<AccountSnapshot>>;
   toggleLock(instanceId: string): Promise<Result<AccountSnapshot>>;
@@ -413,6 +413,7 @@ export * from './gacha';
 export * from './shops';
 export * from './equipment';
 export * from './equipment-view';
+export * from './growth';
 export * from './pve';
 export * from './pve-view';
 export * from './pvp';

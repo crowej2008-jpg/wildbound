@@ -7,9 +7,10 @@ import { z } from 'zod';
  * file under packages/content against these before a milestone ships.
  */
 
-export const factionSchema = z.enum(['ember', 'tide', 'grove', 'volt', 'frost', 'shade']);
+/** The source's five factions (R1). */
+export const factionSchema = z.enum(['water', 'fire', 'grass', 'light', 'dark']);
 export const classSchema = z.enum(['striker', 'guardian', 'adept']);
-export const tierSchema = z.enum(['common', 'rare', 'epic', 'legendary', 'supreme', 'mythic']);
+export const tierSchema = z.enum(['common', 'rare', 'epic', 'legendary', 'supreme', 'mythic', 'origin']);
 export const skillSlotSchema = z.enum(['normal', 'basic', 'ult']);
 export const targetRuleSchema = z.enum([
   'column',
@@ -379,10 +380,43 @@ export const coreStatsSchema = z
   })
   .strict();
 
+const fodderSchema = z
+  .object({
+    own: z.boolean(),
+    star: z.number().int().positive(),
+    count: z.number().int().positive(),
+    faction: factionSchema.optional(),
+  })
+  .strict();
+
+const hpAtkSchema = z.object({ hp: z.number().nonnegative(), atk: z.number().nonnegative() }).strict();
+
+/** One star card, copied from the source's hero_evolution_json by scripts/import-species.mjs (R1). */
+export const starCardSchema = z
+  .object({
+    star: z.number().int().positive(),
+    name: z.string().min(1),
+    maxLevel: z.number().int().positive(),
+    basic: z.object({ hp: z.number().nonnegative(), atk: z.number().nonnegative(), spd: z.number().nonnegative() }).strict(),
+    growth: z
+      .object({
+        hp: z.number().nonnegative(),
+        atk: z.number().nonnegative(),
+        pDef: z.number().nonnegative(),
+        sDef: z.number().nonnegative(),
+      })
+      .strict(),
+    extraBasic: hpAtkSchema.optional(),
+    extraGrowth: hpAtkSchema.optional(),
+    factionBoost: z.object({ faction: factionSchema, value: z.number().positive() }).strict().optional(),
+    fodder: z.array(fodderSchema).min(1).optional(),
+    fodderItems: z.array(z.object({ item: z.number().int(), count: z.number().int().positive() }).strict()).optional(),
+  })
+  .strict();
+
 /**
- * One Wild (PROMPT §9.1). `stages` are the display names of the 1-3 evolution
- * forms (index = stage); `base` seeds the engine stat formula; `paletteSeed`
- * seeds the procedural portrait.
+ * One species (PROMPT §9.1). Name, description, portrait seed and kit are the owner's roster; faction,
+ * class, quality, shard count and the star ladder are copied from the source (R1).
  */
 export const speciesSchema = z
   .object({
@@ -393,10 +427,16 @@ export const speciesSchema = z
     tier: tierSchema,
     description: z.string().min(1),
     paletteSeed: z.number().int(),
-    stages: z.array(z.string().min(1)).min(1).max(3),
-    base: coreStatsSchema,
+    /** The source's hero id (hero_basic_json). */
+    sourceId: z.number().int().positive(),
+    /** Shards that make one copy (item_num: 30 / 40 / 50). */
+    shards: z.number().int().positive(),
+    stars: z.array(starCardSchema).min(1),
   })
-  .strict();
+  .strict()
+  .refine((s) => s.stars.every((card, i) => i === 0 || card.star === s.stars[i - 1]!.star + 1), {
+    message: 'star cards must be consecutive',
+  });
 
 /** A single stat line's Power weighting (reference attr_power_weight rows). */
 const powerRowSchema = z
@@ -421,25 +461,14 @@ export const powerSchema = z
   })
   .strict();
 
-/** Growth tuning (M2, PROMPT §7.1): all four stat-formula factors as data. */
+/**
+ * Growth tuning. Since R1 the stat formula, star caps, level caps and evolution fodder come from each
+ * species' star cards; only the level-up price (a stand-in until the source table is captured —
+ * ASSUMPTIONS #51) and the respawn rule remain here.
+ */
 export const growthSchema = z
   .object({
-    maxLevelByStage: z.array(z.number().int().positive()).min(1),
-    maxStars: z.number().int().positive(),
-    levelGrowth: z.number().nonnegative(),
-    starStep: z.number().nonnegative(),
-    evolutionMult: z.array(z.number().positive()).min(1),
-    qualityMult: z
-      .object({
-        common: z.number().positive(),
-        rare: z.number().positive(),
-        epic: z.number().positive(),
-        legendary: z.number().positive(),
-        supreme: z.number().positive(),
-        mythic: z.number().positive(),
-      })
-      .strict(),
-    /** Level-up cost curve (M3): candy(level) = round(base × level^exponent). */
+    /** Level-up cost curve: candy(level) = round(base × level^exponent); gold = candy × goldPerCandy. */
     levelUp: z
       .object({
         candyBase: z.number().positive(),
@@ -447,23 +476,6 @@ export const growthSchema = z
         goldPerCandy: z.number().nonnegative(),
       })
       .strict(),
-    /** Star-up cost (M3): linear in the current star. */
-    starUp: z
-      .object({ shardsPerStar: z.number().nonnegative(), goldPerStar: z.number().nonnegative() })
-      .strict(),
-    /** Evolution steps indexed by target stage (index 0 unused). */
-    evolve: z.array(
-      z
-        .object({
-          minLevel: z.number().int().positive(),
-          minStars: z.number().int().positive(),
-          candy: z.number().nonnegative(),
-          gold: z.number().nonnegative(),
-          stones: z.number().nonnegative(),
-        })
-        .strict(),
-    ),
-    /** Respawn (M3): gem cost + fraction of level investment refunded. */
     respawn: z.object({ gemCost: z.number().nonnegative(), refundRate: z.number().min(0).max(1) }).strict(),
   })
   .strict();

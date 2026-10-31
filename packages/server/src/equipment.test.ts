@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { setWildStars } from './testing';
 import { emptyLoadout } from '@wildbound/engine';
 import { buildConfig } from './config';
 import { consumeCharms, levelRelicAction, levelRuneAction } from './equipment';
@@ -113,10 +114,7 @@ describe('M11.0 equipment view and actions', () => {
 
   it('unlocks orbs at the star gate and folds their lines into Power', async () => {
     const { srv, wildId } = await supremeStriker();
-    for (let i = 0; i < 3; i++) {
-      const up = await srv.starUp(wildId, 1);
-      if (!up.ok) throw new Error(up.message);
-    }
+    // R1: a Supreme starts at 5★, already past the orb (3★) and Berry (4★) gates.
     const view = await srv.getEquipment(wildId);
     if (!view.ok) throw new Error(view.message);
     expect(view.value.unlocks.runes).toBe(true);
@@ -133,10 +131,7 @@ describe('M11.0 equipment view and actions', () => {
 
   it('equips two Berry slots, stars with copies + Essence, and dismantles a spare', async () => {
     const { srv, wildId } = await supremeStriker();
-    for (let i = 0; i < 4; i++) {
-      const up = await srv.starUp(wildId, 1);
-      if (!up.ok) throw new Error(up.message);
-    }
+    // R1: a Supreme starts at 5★, already past the orb (3★) and Berry (4★) gates.
     await srv.grantCurrency('berryEssence', 1_000);
     const view = await srv.getEquipment(wildId);
     if (!view.ok) throw new Error(view.message);
@@ -195,10 +190,7 @@ describe('M11.0 equipment view and actions', () => {
 
   it('levels an equipped orb with Orb Essence and raises its Power contribution', async () => {
     const { srv, wildId } = await supremeStriker();
-    for (let i = 0; i < 3; i++) {
-      const up = await srv.starUp(wildId, 1);
-      if (!up.ok) throw new Error(up.message);
-    }
+    // R1: a Supreme starts at 5★, already past the orb (3★) and Berry (4★) gates.
     await srv.grantCurrency('orbEssence', 1_000);
     const view = await srv.getEquipment(wildId);
     if (!view.ok) throw new Error(view.message);
@@ -247,10 +239,7 @@ describe('M11.0 equipment view and actions', () => {
 
   it('equips two Soul-heart pieces, shows the 2-piece bonus, and stars one up', async () => {
     const { srv, wildId } = await supremeStriker();
-    for (let i = 0; i < 9; i++) {
-      const up = await srv.starUp(wildId, 1);
-      if (!up.ok) throw new Error(up.message);
-    }
+    await setWildStars(srv, wildId, 10);
     await srv.grantCurrency('soulHeartExp', 1_000);
     const view = await srv.getEquipment(wildId);
     if (!view.ok) throw new Error(view.message);

@@ -27,7 +27,13 @@ import {
   type WildInstance,
 } from '@wildbound/engine';
 import { applyGrant } from './economy';
-import type { GameConfig } from './config';
+import { firstStar, type GameConfig } from './config';
+
+/** A new copy starts at its species' first star (R1). */
+function startStar(config: GameConfig, speciesId: string): number {
+  const meta = config.species.get(speciesId);
+  return meta ? firstStar(meta) : 1;
+}
 import type { Outcome } from './outcome';
 
 /**
@@ -111,8 +117,7 @@ export function applySummon(
       id: `w${seq++}`,
       speciesId: r.speciesId,
       level: 1,
-      stars: 1,
-      evolutionStage: 0,
+      stars: startStar(config, r.speciesId),
       locked: false,
       acquiredAt: now,
     };

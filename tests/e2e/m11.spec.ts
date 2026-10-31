@@ -24,7 +24,6 @@ function grownSave({ roster = ROSTER, currencies = {}, profile = {} }: SaveOptio
         speciesId,
         level: 40,
         stars: 10,
-        evolutionStage: 2,
         locked: false,
         acquiredAt: 0,
       })),

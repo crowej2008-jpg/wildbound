@@ -235,7 +235,7 @@ export function validateContent(repoRoot: string): ValidateReport {
     for (const r of EQUIPMENT_TUNING.starting.relics) {
       if (!relicIds.has(r.defId)) errors.push(`equipment: starting relic "${r.defId}" has no design`);
     }
-    for (const faction of ['ember', 'tide', 'grove', 'volt', 'frost', 'shade']) {
+    for (const faction of ['water', 'fire', 'grass', 'light', 'dark']) {
       const count = PLATES.filter((p) => p.faction === faction).length;
       if (count !== 1) errors.push(`equipment: faction "${faction}" has ${count} plates (want 1)`);
     }

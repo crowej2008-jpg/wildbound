@@ -1,29 +1,19 @@
 import type { ProgressTables, WildInstance } from './types';
-import { levelCapOf, levelUpCost } from './costs';
+import { levelUpCost } from './costs';
 
 /**
  * Pure transforms. Each returns a new instance; the server decides affordability
- * and persistence. Levels/stars clamp to their caps here (never trust the caller).
+ * and persistence. Levels clamp to the cap the caller passes (never trust the caller's amount).
  */
 
-export function leveledUp(
-  instance: WildInstance,
-  levels: number,
-  tables: ProgressTables,
-  cap: number = levelCapOf(instance, tables),
-): WildInstance {
+export function leveledUp(instance: WildInstance, levels: number, cap: number): WildInstance {
   const level = Math.min(cap, Math.max(1, instance.level + Math.max(0, Math.floor(levels))));
   return { ...instance, level };
 }
 
-export function starredUp(instance: WildInstance, stars: number, tables: ProgressTables): WildInstance {
-  const next = Math.min(tables.maxStars, Math.max(1, instance.stars + Math.max(0, Math.floor(stars))));
-  return { ...instance, stars: next };
-}
-
-export function evolved(instance: WildInstance, stageCount: number, tables: ProgressTables): WildInstance {
-  const next = Math.min(instance.evolutionStage + 1, stageCount - 1, tables.evolve.length - 1);
-  return { ...instance, evolutionStage: Math.max(0, next) };
+/** One star up (the source's Evolve), clamped to the species' last star. */
+export function starredUp(instance: WildInstance, maxStar: number): WildInstance {
+  return { ...instance, stars: Math.min(maxStar, instance.stars + 1) };
 }
 
 /** Candy+gold refunded by a respawn (most of what was invested in levels). */
@@ -33,7 +23,7 @@ export function respawnRefund(instance: WildInstance, tables: ProgressTables): {
   return { candy: Math.floor(invested.candy * rate), gold: Math.floor(invested.gold * rate) };
 }
 
-/** A respawned instance: level reset to 1, stars/stage kept (reference shape). */
+/** A respawned instance: level reset to 1, stars kept (reference shape). */
 export function respawned(instance: WildInstance): WildInstance {
   return { ...instance, level: 1 };
 }

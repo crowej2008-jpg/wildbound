@@ -100,7 +100,7 @@ function charmUseCount(loadouts: AccountState['loadouts'], charmId: string): num
 }
 
 /** Remove consumed duplicates from the roster and drop their stale loadouts. */
-function consumeFodder(state: AccountState, ids: string[]): AccountState {
+export function consumeFodder(state: AccountState, ids: string[]): AccountState {
   if (ids.length === 0) return state;
   const removed = new Set(ids);
   const loadouts = { ...state.loadouts };

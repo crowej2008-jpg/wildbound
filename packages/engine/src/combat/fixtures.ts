@@ -47,7 +47,7 @@ export function kit(over: {
   return {
     id: over.id ?? 'testkit',
     name: over.id ?? 'Test Kit',
-    faction: over.faction ?? 'tide',
+    faction: over.faction ?? 'water',
     class: cls,
     tier: over.tier ?? 'rare',
     skills: {
