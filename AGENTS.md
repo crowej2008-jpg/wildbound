@@ -1,8 +1,9 @@
 # AGENTS.md
 
 This file is the working agreement between the human owner and OpenCode for the Wildbound project.
-Read `PROMPT.md` first. At the start of **every** session, read `docs/SCOPE.md` and
-`docs/ASSUMPTIONS.md` before writing or editing any code.
+Read `PROMPT.md` first. At the start of **every** session, read `wiki/index.md` (then the pages it
+points to for the work at hand), `docs/SCOPE.md` and `docs/ASSUMPTIONS.md` before writing or editing
+any code. The wiki is the project's memory across sessions and tools — see "Project wiki" below.
 
 ## Mission
 
@@ -102,3 +103,33 @@ pnpm check            full gate: lint + typecheck + test + content:validate + bu
 `reference/game-rebuild/` is a read-only copy of the owner's research wiki and repo. `reference/sim/`
 is reserved for the Python battle simulator (`battle_sim.py`, `kits.py`, and tests). See PROMPT.md
 section 3 for the read order and per-system mapping.
+
+## Project wiki (`wiki/`)
+
+`wiki/` is an LLM-maintained knowledge base of this project: owner decisions (with dates and his
+words), how each system works, milestone status, open questions and the owner's unscheduled ideas.
+Agents write it; the owner reads it (it opens as an Obsidian vault). It **links to** `docs/` rather
+than copying it — `docs/SCOPE.md`, `ASSUMPTIONS.md` and `CHANGELOG.md` stay the detailed records.
+
+Layout: `index.md` (catalog — read first), `log.md` (append-only), `open-questions.md`, `overview.md`,
+`project/`, `decisions/`, `systems/`, `milestones/`, `ideas/`, `sources/`. Every page has YAML
+frontmatter (`title`, `type`, `updated`, `sources`, plus `status`/`milestone`/`date` where useful) and
+uses relative markdown links.
+
+Workflows:
+
+- **Session start:** read `wiki/index.md`, `wiki/project/owner-rules.md` and `wiki/open-questions.md`.
+- **Owner makes a decision:** add or update a page in `decisions/` (date, his words, what changes),
+  update the affected `systems/` pages, and remove it from `open-questions.md` if it was there.
+- **Sub-milestone done:** update the system page(s), `milestones/m<N>.md`, `milestones/history.md`
+  (date, commit, test counts), `overview.md` "where things stand", `index.md` "Now" line and
+  `systems/save-versions.md` if the save bumped. Commit the wiki with the milestone.
+- **Ingest a source** (session export, spreadsheet, friend feedback, plan doc): summarise it in
+  `sources/`, update every page it touches, append to `log.md`.
+- **Query:** answer from the wiki first; file answers worth keeping as new pages and link them from
+  `index.md`.
+- **Lint** (when asked, or every few milestones): check pages against the code and `docs/`, flag
+  contradictions and stale claims in `open-questions.md`, add missing cross-links.
+- Every change appends a `log.md` entry: `## [YYYY-MM-DD] <ingest|query|lint|update> | <title>`.
+- Facts only: write what the owner said or what the repo shows; mark the agent's own recommendations
+  as such. Keep pages short (aim under 120 lines).

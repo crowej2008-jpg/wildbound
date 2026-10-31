@@ -990,3 +990,12 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   files**; **90 e2e** green.
 - **Docs.** `docs/design/sky-pillar.md`, SCOPE's M13 plan, ASSUMPTIONS 46 and the design index.
 - **Next:** 13.3 - Hoopa's Vault (300 floors, Resetter Shard retrofit).
+
+## Docs - project wiki (2026-10-31)
+
+- **New `wiki/`.** An LLM-maintained knowledge base (index, log, open questions, owner rules,
+  dated decisions, one page per system, milestone status, the owner's unscheduled ideas), built from
+  the Oct 12-31 OpenCode session and the repo docs. It links to `docs/` instead of copying it.
+- **AGENTS.md** now says to read `wiki/index.md` at session start and describes how to keep the wiki
+  current (decisions, milestone close-out, ingest, query, lint, log).
+- No code, content or tests changed.

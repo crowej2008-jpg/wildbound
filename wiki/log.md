@@ -1,0 +1,23 @@
+---
+title: Wiki log
+type: log
+---
+
+# Wiki log
+
+Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|update> | <title>`
+(`grep "^## \[" wiki/log.md | tail -5` shows the latest).
+
+## [2026-10-31] ingest | Wiki created from the OpenCode session + repo docs
+- Built by Claude from: the OpenCode session export (Oct 12–31, 98 owner messages),
+  `PROMPT.md`, `AGENTS.md`, `docs/SCOPE.md`, `docs/ASSUMPTIONS.md`, `docs/CHANGELOG.md`,
+  `docs/design/*`, content JSON, and the owner's design ideas from Claude chats (co-op tower,
+  18-item change list).
+- Created: overview, index, open questions, 3 project pages, 10 decisions, 26 systems, 3 milestone
+  pages, 2 ideas, 1 source page.
+- State at ingest: last commit `27536b7` (M13.2 Sky Pillar), save v17, 510 unit / 90 e2e green;
+  M13.3 Hoopa's Vault next, not started.
+
+## [2026-10-31] lint | First health check
+- Found the out-of-date repo docs listed in [open questions](open-questions.md) (README milestone,
+  PROMPT §1 roster size, ASSUMPTIONS #41 ladder, design README plan list, M11 plan vs built).

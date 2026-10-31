@@ -1,0 +1,27 @@
+---
+title: M8 PvE modes (Tower, Trials, World Boss, Dungeons, Link Crystal)
+type: system
+milestone: M8
+status: built
+updated: 2026-10-31
+sources: [docs/design/pve-modes.md, docs/ASSUMPTIONS.md M8, opencode-session-2026-10 msg 26]
+---
+
+# M8 PvE modes
+
+Challenges hub at `/combat`; routes `/tower`, `/trials`, `/boss`, `/dungeons`, `/crystal`.
+
+| Mode | Shape |
+|---|---|
+| **Tower** | Floors permanent; climbs reset **weekly**, sweeps **daily** (PROMPT §7.6, not the source's per-day reset). Milestone chests. |
+| **Trials** (5) | Stormwall Bastion (faction-locked), Silent Peak (no ultimates), Locked Vale (Lv40 cap), Lastlight Stand (survive 8 rounds), Moonfall Crypt (Tue/Thu/Sat). |
+| **Daily Dungeons** (7, one per weekday) | Sunforge Kiln, Grove Nursery, Tidepool Hollow, Volt Foundry, Frost Reliquary, Shade Bazaar, Emberworks Foundry. |
+| **World Boss** | 7-day rotation; local ghost ladder (own history + deterministic bots); milestones. |
+| **Link Crystal** | Endgame level lift; unlocks on a Wild that is final-form **and** at form cap; star gate 10★ (our max). Feeds [Resonance](collection-layers.md#resonance). |
+
+- Enemies come from a **difficulty curve** (`generateEnemies`), not authored floor tables.
+- `BattleRules { noUltimate, survivalRounds }` added for trials.
+- Names above are the agent's; owner was offered renames and didn't ask for any.
+
+Not to be confused with the M13 [Faction Tower](faction-tower.md) or the planned
+[co-op boss tower](../ideas/coop-boss-tower.md).
