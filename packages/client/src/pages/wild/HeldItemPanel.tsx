@@ -199,6 +199,12 @@ function HeldRow({ item, wildId, view, busy, act }: RowProps) {
         <p className="muted">
           <strong>{item.skill.name}</strong>: {item.skill.text}
           {!item.skill.active && ` (${t('held.skillInactive')})`}
+          {item.skill.standIn && (
+            <small>
+              {' '}
+              ({t('held.standIn')}: {item.skill.standIn})
+            </small>
+          )}
         </p>
       )}
 

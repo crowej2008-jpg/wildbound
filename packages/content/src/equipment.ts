@@ -2,6 +2,7 @@ import charms from '../equipment/charms.json';
 import cores from '../equipment/cores.json';
 import plates from '../equipment/plates.json';
 import heldItems from '../equipment/held-items.json';
+import { toEngineTrigger } from './kit-to-engine';
 import runes from '../equipment/runes.json';
 import talents from '../equipment/talents.json';
 import trinkets from '../equipment/trinkets.json';
@@ -23,8 +24,10 @@ import {
  */
 export const EQUIPMENT_TUNING = equipmentTuningSchema.parse(equipmentTuning);
 const HELD_CATALOGUE = heldItemsSchema.parse(heldItems);
-/** R5: the source's 75 held items (code id: relics). */
-export const RELICS = HELD_CATALOGUE.items;
+/** R5: the source's 75 held items (code id: relics); E2 skill triggers converted for the engine. */
+export const RELICS = HELD_CATALOGUE.items.map((item) =>
+  item.skill ? { ...item, skill: { ...item.skill, triggers: item.skill.triggers?.map(toEngineTrigger) } } : item,
+);
 /** R5: held-item pools, level costs and the refine ladder. */
 export const HELD_TABLES = {
   mainPool: HELD_CATALOGUE.mainPool,

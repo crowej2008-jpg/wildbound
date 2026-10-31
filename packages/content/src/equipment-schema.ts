@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { damageModSchema, triggerSchema } from './schemas';
 
 /**
  * Equipment content schemas (M7). Shapes mirror the engine's `equipment/types.ts`
@@ -63,6 +64,9 @@ export const COMBAT_FIELDS = [
   'counterBoost',
   'spiritAtk',
   'spiritDef',
+  'atkPct',
+  'ignoreBlock',
+  'basicRate',
 ] as const;
 
 export const statLineSchema = z
@@ -114,6 +118,10 @@ export const heldItemsSchema = z
             text: z.string(),
             active: z.boolean(),
             effects: z.array(roundEffectSchema),
+            triggers: z.array(triggerSchema).optional(),
+            damageMods: z.array(damageModSchema).optional(),
+            /** A number the source text leaves out, and the value used instead. */
+            standIn: z.string().optional(),
           })
           .nullable(),
       }),

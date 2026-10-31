@@ -27,7 +27,17 @@ export function evalCondition(
     if (cond.targetStackAtLeast && !(stackCount(target, cond.targetStackAtLeast.tag) >= cond.targetStackAtLeast.n)) {
       return false;
     }
+    if (cond.targetHasAnyTag !== undefined && !cond.targetHasAnyTag.some((tag) => hasTag(target, tag))) return false;
+  } else if (cond.targetHasAnyTag !== undefined) {
+    return false;
   }
+  if (cond.round !== undefined) {
+    const { from, until, even } = cond.round;
+    if (from !== undefined && ctx.round < from) return false;
+    if (until !== undefined && ctx.round > until) return false;
+    if (even !== undefined && (ctx.round % 2 === 0) !== even) return false;
+  }
+  if (cond.selfControlled !== undefined && cond.selfControlled !== isControlled(self)) return false;
   if (cond.selfHasTag !== undefined && !hasTag(self, cond.selfHasTag)) return false;
   if (cond.selfStackAtLeast && !(stackCount(self, cond.selfStackAtLeast.tag) >= cond.selfStackAtLeast.n)) return false;
   if (cond.allyUnderControl !== undefined && cond.allyUnderControl !== allyUnderControl(ctx, self)) return false;

@@ -80,7 +80,8 @@ export interface RelicView {
   main: { name: string; value: number; percent: boolean }[];
   lines: HeldLineView[];
   pending: { slot: number; name: string; value: number; min: number; max: number } | null;
-  skill: { name: string; text: string; active: boolean } | null;
+  /** `standIn` names a number the source text leaves out and the value used. */
+  skill: { name: string; text: string; active: boolean; standIn: string | null } | null;
   refines: number;
   maxRefine: number;
   refineSlots: number;
@@ -400,7 +401,9 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
         r.pending && pendingRow
           ? { slot: r.pending.slot, name: pendingRow.name, value: r.pending.value, min: pendingRow.min, max: pendingRow.max }
           : null,
-      skill: def.skill ? { name: def.skill.name, text: def.skill.text, active: def.skill.active } : null,
+      skill: def.skill
+        ? { name: def.skill.name, text: def.skill.text, active: def.skill.active, standIn: def.skill.standIn ?? null }
+        : null,
       refines: r.refines,
       maxRefine: heldMaxRefine(held),
       refineSlots: def.refineSlots,

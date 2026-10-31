@@ -36,7 +36,13 @@ export type CombatField =
   | 'receiveHealBoost'
   | 'counterBoost'
   | 'spiritAtk'
-  | 'spiritDef';
+  | 'spiritDef'
+  /** E1: share of P.ATK and S.ATK added on top (0.1 = +10% attack). */
+  | 'atkPct'
+  /** E1: share of the target's Block this unit's hits ignore (0.5 = half). */
+  | 'ignoreBlock'
+  /** E1: added to the unit's basic-skill chance. */
+  | 'basicRate';
 
 /**
  * A conditional stat change owned by an equipment layer (M7). Applied once, at the
@@ -104,7 +110,9 @@ export type BuffKind =
   /** M11.4: attacks ignore shields while this buff is live. */
   | 'puncture'
   /** M9.6: forced targeting — the holder's enemy-side skills are aimed at the taunter. */
-  | 'taunt';
+  | 'taunt'
+  /** E1: the holder gains no Rage while this is live (Shell Bell). */
+  | 'rageBlock';
 
 export interface BuffSpec {
   tag: string;
@@ -166,6 +174,12 @@ export interface Condition {
   allyUnderControl?: boolean;
   targetRow?: TargetRow;
   targetTrait?: string;
+  /** E1: the target carries any of these tags (e.g. a burn or a poison). */
+  targetHasAnyTag?: string[];
+  /** E1: the current big round is in this window (`even` = rounds 2, 4, 6…). */
+  round?: { from?: number; until?: number; even?: boolean };
+  /** E1: the unit the condition is evaluated for is controlled. */
+  selfControlled?: boolean;
 }
 
 /** A damage-over-time instance (M9). `damageType: 'dot'` + `hpShare` is the M1 form. */
@@ -240,7 +254,7 @@ export type Effect =
       op: 'heal';
       target: TargetSel;
       rate: number;
-      basis?: 'targetMaxHp' | 'casterAtk';
+      basis?: HealBasis;
       over?: number;
       condition?: Condition;
       chance?: number;
@@ -273,8 +287,31 @@ export type Effect =
       chance?: number;
     };
 
+/**
+ * What a heal reads: the target's max HP (default), the caster's P.ATK (`casterAtk`), S.ATK
+ * (`casterSAtk`, E1) or current HP (`casterCurrentHp`, E1).
+ */
+export type HealBasis = 'targetMaxHp' | 'casterAtk' | 'casterSAtk' | 'casterCurrentHp';
+
+/**
+ * E1: a damage modifier owned by a unit (held items, talents). On each of the unit's direct hits
+ * whose slot and condition match (and whose chance rolls), `dmg` joins the additive G pair,
+ * `atk` raises the attack the hit reads, and `ignoreBlock` ignores that share of the target's Block.
+ */
+export interface DamageMod {
+  tag: string;
+  slot?: SkillSlot;
+  condition?: Condition;
+  chance?: number;
+  dmg?: number;
+  atk?: number;
+  ignoreBlock?: number;
+}
+
 /** A target selection for an effect (M9): side + rule + narrowing. */
 export interface TargetSel {
+  /** E1: the unit the trigger's event is about (the attacker, the one hit, the controller…). */
+  event?: boolean;
   side?: TargetSide;
   rule?: TargetRule;
   n?: number;
@@ -304,7 +341,21 @@ export type TriggerOn =
   | 'onKill'
   | 'onDeath'
   | 'onAllyDeath'
-  | 'hpBelow';
+  | 'hpBelow'
+  /** E1: the owner landed a critical hit (target = the one hit). */
+  | 'onCrit'
+  /** E1: the owner's hit was blocked (target = the blocker). */
+  | 'onBlocked'
+  /** E1: the owner's direct hit landed (target = the one hit). */
+  | 'onDealDamage'
+  /** E1: a control landed on the owner (target = the controller). */
+  | 'onControlled'
+  /** E1: the owner landed a control (target = the controlled unit). */
+  | 'onInflictControl'
+  /** E1: after the owner's normal attack / basic skill / ultimate (target = its first target). */
+  | 'afterNormal'
+  | 'afterBasic'
+  | 'afterUlt';
 
 /**
  * A talent trigger (M9.4): an event on the owner (`on`), optional gates
@@ -320,6 +371,8 @@ export interface TriggerDef {
   perTurn?: number;
   /** big rounds to wait after activating */
   cooldown?: number;
+  /** E1: activations allowed per battle ("once per battle" = 1). */
+  maxFires?: number;
   condition?: Condition;
   effects?: Effect[];
   /** shorthand: Rage delta applied to the owner */
@@ -385,6 +438,9 @@ export interface SheetInput {
   counterBoost?: number;
   spiritAtk?: number;
   spiritDef?: number;
+  atkPct?: number;
+  ignoreBlock?: number;
+  basicRate?: number;
 }
 
 export interface SpecInput {
@@ -404,6 +460,10 @@ export interface SpecInput {
   level?: number;
   /** R1: the star card's "DMG BST to [faction]" (source basic_attr 138–146). */
   factionBoost?: FactionBoost;
+  /** E1: extra triggers from gear (held-item skills); they fire after the kit's own. */
+  triggers?: TriggerDef[];
+  /** E1: damage modifiers from gear. */
+  damageMods?: DamageMod[];
 }
 
 /** "DMG BST to [faction]": extra damage against defenders of that faction (0.25 = 25%). */
@@ -441,6 +501,9 @@ export interface StatSheet {
   counterBoost: number;
   spiritAtk: number;
   spiritDef: number;
+  atkPct: number;
+  ignoreBlock: number;
+  basicRate: number;
 }
 
 export interface Buff {
@@ -492,6 +555,9 @@ export interface Combatant {
   level?: number;
   /** R1: "DMG BST to [faction]" from the star card. */
   factionBoost?: FactionBoost;
+  /** E1: gear triggers and damage modifiers (see SpecInput). */
+  triggers?: TriggerDef[];
+  damageMods?: DamageMod[];
 }
 
 export interface BattleConfig {

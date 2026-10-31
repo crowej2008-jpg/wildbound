@@ -17,8 +17,9 @@ export function fireTriggers(
   on: TriggerOn,
   opts: { target?: Combatant } = {},
 ): void {
-  const list = self.kit.talents?.triggers;
-  if (!list || list.length === 0) return;
+  const kitList = self.kit.talents?.triggers ?? [];
+  const list = self.triggers && self.triggers.length > 0 ? [...kitList, ...self.triggers] : kitList;
+  if (list.length === 0) return;
   if ((ctx.triggerDepth ?? 0) >= ctx.settings.triggerDepthCap) return;
 
   ctx.triggerDepth = (ctx.triggerDepth ?? 0) + 1;
@@ -45,6 +46,8 @@ export function fireTriggers(
         if ((counters.get(key) ?? 0) >= t.perTurn) continue;
       }
       if (t.cooldown !== undefined && ctx.round < (counters.get(`${self.key}#trig#${idx}#cd`) ?? 0)) continue;
+      const firesKey = `${self.key}#trig#${idx}#fires`;
+      if (t.maxFires !== undefined && (counters.get(firesKey) ?? 0) >= t.maxFires) continue;
       if (t.chance !== undefined && !(ctx.deterministic ? false : ctx.rng() < t.chance)) continue;
 
       if (t.hpBelow !== undefined) counters.set(firedKey, 1);
@@ -53,6 +56,7 @@ export function fireTriggers(
         counters.set(key, (counters.get(key) ?? 0) + 1);
       }
       if (t.cooldown !== undefined) counters.set(`${self.key}#trig#${idx}#cd`, ctx.round + t.cooldown);
+      if (t.maxFires !== undefined) counters.set(firesKey, (counters.get(firesKey) ?? 0) + 1);
       activate(ctx, self, t, opts.target);
     }
   } finally {

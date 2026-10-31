@@ -1,7 +1,7 @@
 ﻿import { effective } from './stats';
 import { scaleBuff } from './scaling';
 import { applyBuff } from './buffs';
-import type { BattleContext, Combatant, SkillDef } from './types';
+import type { BattleContext, Combatant, HealBasis, SkillDef } from './types';
 
 /**
  * Sustain (measured â€” stats-and-combat.md 7):
@@ -52,10 +52,17 @@ export function resolveHealWithBasis(
   caster: Combatant,
   target: Combatant,
   rate: number,
-  basis?: 'targetMaxHp' | 'casterAtk',
+  basis?: HealBasis,
 ): number {
   const b = basis ?? ctx.settings.healBasis;
-  const base = b === 'casterAtk' ? eff(caster, 'pAtk') : target.base.hp;
+  const base =
+    b === 'casterAtk'
+      ? eff(caster, 'pAtk')
+      : b === 'casterSAtk'
+        ? eff(caster, 'sAtk')
+        : b === 'casterCurrentHp'
+          ? caster.hp
+          : target.base.hp;
   return Math.floor(rate * base * (1 + eff(caster, 'healBoost')) * (1 + eff(target, 'receiveHealBoost')));
 }
 
@@ -103,6 +110,6 @@ function resolvePool(
   return targets;
 }
 
-function eff(u: Combatant, field: 'pAtk' | 'healBoost' | 'receiveHealBoost'): number {
+function eff(u: Combatant, field: 'pAtk' | 'sAtk' | 'healBoost' | 'receiveHealBoost'): number {
   return effective(u.base, u.buffs, field);
 }

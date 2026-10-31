@@ -46,6 +46,12 @@ const conditionSchema = z
     allyUnderControl: z.boolean().optional(),
     targetRow: targetRowSchema.optional(),
     targetTrait: z.string().min(1).optional(),
+    targetHasAnyTag: z.array(z.string().min(1)).min(1).optional(),
+    round: z
+      .object({ from: z.number().int().positive().optional(), until: z.number().int().positive().optional(), even: z.boolean().optional() })
+      .strict()
+      .optional(),
+    selfControlled: z.boolean().optional(),
   })
   .strict();
 
@@ -63,6 +69,7 @@ const dotSpecSchema = z
 
 const targetSelSchema = z
   .object({
+    event: z.literal(true).optional(),
     side: targetSideSchema.optional(),
     rule: targetRuleSchema.optional(),
     n: z.number().int().positive().optional(),
@@ -100,12 +107,15 @@ const combatFieldSchema = z.enum([
   'counterBoost',
   'spiritAtk',
   'spiritDef',
+  'atkPct',
+  'ignoreBlock',
+  'basicRate',
 ]);
 
 const buffSpecSchema = z
   .object({
     tag: z.string().min(1),
-    kind: z.enum(['stat', 'immune', 'regen', 'stack', 'taunt']).optional(),
+    kind: z.enum(['stat', 'immune', 'regen', 'stack', 'taunt', 'rageBlock']).optional(),
     field: combatFieldSchema.optional(),
     amount: z.number().optional(),
     turns: z.number().int().positive().optional(),
@@ -140,7 +150,7 @@ const effectSchema = z.discriminatedUnion('op', [
       op: z.literal('heal'),
       target: targetSelSchema,
       rate: z.number().min(0),
-      basis: z.enum(['targetMaxHp', 'casterAtk']).optional(),
+      basis: z.enum(['targetMaxHp', 'casterAtk', 'casterSAtk', 'casterCurrentHp']).optional(),
       over: z.number().int().positive().optional(),
       condition: conditionSchema.optional(),
       chance: z.number().min(0).max(1).optional(),
@@ -266,7 +276,20 @@ const statModSchema = z
   .strict()
   .refine((m) => m.mult !== undefined || m.add !== undefined, { message: 'statMod needs mult and/or add' });
 
-const triggerSchema = z
+/** E1: a damage modifier owned by a unit (held items, talents). */
+export const damageModSchema = z
+  .object({
+    tag: z.string().min(1),
+    slot: skillSlotSchema.optional(),
+    condition: conditionSchema.optional(),
+    chance: z.number().min(0).max(1).optional(),
+    dmg: z.number().optional(),
+    atk: z.number().optional(),
+    ignoreBlock: z.number().min(0).max(1).optional(),
+  })
+  .strict();
+
+export const triggerSchema = z
   .object({
     on: z.enum([
       'battleStart',
@@ -279,11 +302,20 @@ const triggerSchema = z
       'onDeath',
       'onAllyDeath',
       'hpBelow',
+      'onCrit',
+      'onBlocked',
+      'onDealDamage',
+      'onControlled',
+      'onInflictControl',
+      'afterNormal',
+      'afterBasic',
+      'afterUlt',
     ]),
     hpBelow: z.number().min(0).max(1).optional(),
     chance: z.number().min(0).max(1).optional(),
     perTurn: z.number().int().positive().optional(),
     cooldown: z.number().int().positive().optional(),
+    maxFires: z.number().int().positive().optional(),
     condition: conditionSchema.optional(),
     effects: z.array(effectSchema).optional(),
     rage: z.number().optional(),

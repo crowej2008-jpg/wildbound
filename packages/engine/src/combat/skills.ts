@@ -1,4 +1,6 @@
 ﻿import { applyBuff } from './buffs';
+import { effective } from './stats';
+import { fireTriggers } from './triggers';
 import { addRage, channelHit, computeDamage, type TeamSides } from './damage';
 import { applyCounterReflect } from './counter';
 import { applyControl } from './control';
@@ -79,6 +81,9 @@ export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): 
     addRage(ctx, u, ctx.settings.ragePerAction);
   }
   processTalentsOnAction(ctx, u);
+  // E1: "after using a basic skill / the ultimate" (Muscle Band, Soul Dew, Grip Claw, Leftovers).
+  const after = slot === 'ult' ? 'afterUlt' : slot === 'basic' ? 'afterBasic' : 'afterNormal';
+  if (u.alive) fireTriggers(ctx, u, after, lastTargets[0] ? { target: lastTargets[0] } : {});
 }
 
 /** Damage + control + debuffs + DoTs + effect riders for one cast. */
@@ -104,6 +109,9 @@ function resolveCast(
       hitDamages.push(dealt);
       ctx.damageDealt[u.key] = (ctx.damageDealt[u.key] ?? 0) + outcome.dmg;
       ctx.damageTaken[t.key] = (ctx.damageTaken[t.key] ?? 0) + outcome.dmg;
+      // E1: crit / blocked reactions (Scope Lens, Zoom Lens).
+      if (outcome.crit && u.alive) fireTriggers(ctx, u, 'onCrit', { target: t });
+      if (outcome.blocked && u.alive) fireTriggers(ctx, u, 'onBlocked', { target: t });
     }
   }
 
@@ -128,7 +136,8 @@ function resolveCast(
 }
 
 function rollSkillSlot(ctx: BattleContext, u: Combatant): SkillSlot {
-  const rate = u.kit.talents?.basicRate ?? ctx.settings.basicReplace;
+  // E1: `basicRate` buffs and lines add to the kit's (or the default) basic-skill chance.
+  const rate = (u.kit.talents?.basicRate ?? ctx.settings.basicReplace) + effective(u.base, u.buffs, 'basicRate');
   return ctx.rng() < rate ? 'basic' : 'normal';
 }
 

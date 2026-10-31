@@ -1,16 +1,122 @@
 {
-  "_note": "Hand-authored battle effects for the source's held-item skills (skill_passivity_json 13xxxxx). Only skills the round-effect DSL can express exactly are listed; every other skill shows its source text and is marked not active in battle. Read by scripts/import-held-items.mjs.",
-  "1300301": [{ "tag": "held-choice-specs", "field": "dmgBoost", "fromRound": 4, "bigRounds": 1, "add": 0.18 }],
-  "1300311": [{ "tag": "held-choice-specs", "field": "dmgBoost", "fromRound": 4, "bigRounds": 1, "add": 0.3 }],
-  "1302001": [
+  "_note": "Battle effects for the source's held-item skills (skill_passivity_json 13xxxxx), keyed by skill id. Each entry may carry `effects` (round-start stat changes), `triggers` (event reactions) and `damageMods` (per-hit modifiers) in the kit DSL, plus `standIn` naming any number the source text leaves out. Read by scripts/import-held-items.mjs. Turn counts: a self buff applied during the holder's own action uses turns N+1 so it lasts N further turns.",
+
+  "1300101": {
+    "triggers": [{ "on": "onDealDamage", "condition": { "round": { "until": 1 } }, "chance": 0.6, "effects": [{ "op": "buff", "target": { "event": true }, "buff": { "tag": "held-shell-bell", "kind": "rageBlock", "bigRounds": 1 } }] }]
+  },
+  "1300111": {
+    "triggers": [{ "on": "onDealDamage", "condition": { "round": { "until": 1 } }, "effects": [{ "op": "buff", "target": { "event": true }, "buff": { "tag": "held-shell-bell", "kind": "rageBlock", "bigRounds": 1 } }] }]
+  },
+  "1300201": {
+    "damageMods": [{ "tag": "held-smooth-rock", "condition": { "targetHasAnyTag": ["poison", "poisoned"] }, "chance": 0.5, "atk": 0.06 }],
+    "standIn": "chance 50% (the text says only 'a chance')"
+  },
+  "1300211": {
+    "damageMods": [{ "tag": "held-smooth-rock", "condition": { "targetHasAnyTag": ["poison", "poisoned"] }, "chance": 0.5, "atk": 0.1 }],
+    "standIn": "chance 50% (the text says only 'a chance')"
+  },
+  "1300301": { "effects": [{ "tag": "held-choice-specs", "field": "dmgBoost", "fromRound": 4, "bigRounds": 1, "add": 0.18 }] },
+  "1300311": { "effects": [{ "tag": "held-choice-specs", "field": "dmgBoost", "fromRound": 4, "bigRounds": 1, "add": 0.3 }] },
+  "1300401": {
+    "triggers": [{ "on": "onBlocked", "effects": [
+      { "op": "buff", "target": { "side": "ally", "rule": "self" }, "buff": { "tag": "held-zoom-lens-dmg", "field": "dmgBoost", "amount": 0.12, "turns": 2 } },
+      { "op": "buff", "target": { "side": "ally", "rule": "self" }, "buff": { "tag": "held-zoom-lens-gb", "field": "guardBreak", "amount": 0.12, "turns": 2 } }
+    ] }]
+  },
+  "1300411": {
+    "triggers": [{ "on": "onBlocked", "effects": [
+      { "op": "buff", "target": { "side": "ally", "rule": "self" }, "buff": { "tag": "held-zoom-lens-dmg", "field": "dmgBoost", "amount": 0.2, "turns": 2 } },
+      { "op": "buff", "target": { "side": "ally", "rule": "self" }, "buff": { "tag": "held-zoom-lens-gb", "field": "guardBreak", "amount": 0.2, "turns": 2 } }
+    ] }]
+  },
+  "1300511": {
+    "damageMods": [{ "tag": "held-heat-rock", "condition": { "targetHasAnyTag": ["burning", "flame"] }, "chance": 0.5, "atk": 0.1 }],
+    "standIn": "chance 50% (the text says only 'a chance')"
+  },
+  "1300611": { "damageMods": [{ "tag": "held-wide-lens", "condition": { "targetRow": "back" }, "dmg": 0.1 }] },
+  "1300711": { "damageMods": [{ "tag": "held-choice-band", "condition": { "round": { "until": 2 } }, "ignoreBlock": 0.5 }] },
+  "1300811": {
+    "triggers": [{ "on": "onCrit", "effects": [{ "op": "buff", "target": { "event": true }, "buff": { "tag": "held-easy-crit", "field": "critRes", "amount": -0.1, "maxStacks": 3, "bigRounds": 2 } }] }]
+  },
+  "1300911": {
+    "triggers": [{ "on": "afterBasic", "effects": [{ "op": "buff", "target": { "side": "ally", "rule": "self" }, "buff": { "tag": "held-muscle-band", "field": "ultBoost", "amount": 0.1, "maxStacks": 2, "bigRounds": 2 } }] }]
+  },
+
+  "1301001": {
+    "triggers": [{ "on": "roundStart", "condition": { "round": { "until": 1 } }, "chance": 0.6, "effects": [{ "op": "control", "target": { "side": "enemy", "rule": "random", "n": 1 }, "control": { "kind": "taunt", "chance": null } }] }]
+  },
+  "1301011": {
+    "triggers": [{ "on": "roundStart", "condition": { "round": { "until": 1 } }, "effects": [{ "op": "control", "target": { "side": "enemy", "rule": "random", "n": 1 }, "control": { "kind": "taunt", "chance": null } }] }]
+  },
+  "1301101": {
+    "triggers": [{ "on": "onControlled", "effects": [{ "op": "heal", "target": { "side": "ally", "rule": "self" }, "rate": 0.6, "basis": "casterSAtk" }] }]
+  },
+  "1301111": {
+    "triggers": [{ "on": "onControlled", "effects": [{ "op": "heal", "target": { "side": "ally", "rule": "self" }, "rate": 1, "basis": "casterSAtk" }] }]
+  },
+  "1301201": { "triggers": [{ "on": "onHit", "chance": 0.1, "effects": [{ "op": "cleanse", "target": { "side": "ally", "rule": "self" }, "count": 1 }] }] },
+  "1301211": { "triggers": [{ "on": "onHit", "chance": 0.15, "effects": [{ "op": "cleanse", "target": { "side": "ally", "rule": "self" }, "count": 1 }] }] },
+  "1301301": {
+    "triggers": [{ "on": "hpBelow", "hpBelow": 0.1, "maxFires": 1, "buff": { "tag": "held-full-incense", "field": "dmgRdct", "amount": 0.06, "bigRounds": 1 } }]
+  },
+  "1301311": {
+    "triggers": [{ "on": "hpBelow", "hpBelow": 0.1, "maxFires": 1, "buff": { "tag": "held-full-incense", "field": "dmgRdct", "amount": 0.1, "bigRounds": 1 } }]
+  },
+  "1301411": {
+    "triggers": [{ "on": "onHit", "effects": [{ "op": "buff", "target": { "event": true }, "buff": { "tag": "held-rocky-helmet", "field": "dmgRdct", "amount": -0.1, "bigRounds": 1 } }] }],
+    "standIn": "lasts to the end of the round (the text gives no duration); refreshes, never stacks"
+  },
+  "1301511": {
+    "triggers": [{ "on": "turnStart", "chance": 0.8, "effects": [
+      { "op": "buff", "target": { "side": "enemy", "rule": "same_position" }, "buff": { "tag": "held-terrain-extender-foe", "field": "dmgBoost", "amount": -0.1, "bigRounds": 1 } },
+      { "op": "buff", "target": { "side": "ally", "rule": "self" }, "buff": { "tag": "held-terrain-extender-self", "field": "dmgRdct", "amount": 0.1, "bigRounds": 1 } }
+    ] }],
+    "standIn": "80% from the kb's tier-I reading; read as: the opposite enemy deals 10% less and the holder takes 10% less, until the round ends"
+  },
+  "1301611": {
+    "triggers": [{ "on": "onHit", "chance": 0.5, "effects": [{ "op": "heal", "target": { "side": "ally", "rule": "lowest_hp", "n": 1 }, "rate": 0.35, "basis": "casterSAtk" }] }]
+  },
+  "1301711": {
+    "triggers": [{ "on": "turnStart", "effects": [{ "op": "heal", "target": { "side": "ally", "rule": "all", "rowFilter": "back" }, "rate": 0.05, "basis": "casterCurrentHp" }] }]
+  },
+  "1301811": {
+    "effects": [{ "tag": "held-damp-rock", "field": "basicRate", "fromRound": 1, "add": 0.25 }],
+    "standIn": "read as +25% to the basic-skill chance every turn"
+  },
+  "1301901": {
+    "triggers": [{ "on": "onControlled", "effects": [{ "op": "buff", "target": { "side": "ally", "rule": "self" }, "buff": { "tag": "held-assault-vest", "field": "atkPct", "amount": 0.06, "bigRounds": 2 } }] }]
+  },
+  "1301911": {
+    "triggers": [{ "on": "onControlled", "effects": [{ "op": "buff", "target": { "side": "ally", "rule": "self" }, "buff": { "tag": "held-assault-vest", "field": "atkPct", "amount": 0.1, "bigRounds": 2 } }] }]
+  },
+
+  "1302001": { "effects": [
     { "tag": "held-razor-fang", "field": "spd", "fromRound": 3, "add": 2 },
     { "tag": "held-razor-fang", "field": "spd", "fromRound": 4, "add": 2 },
     { "tag": "held-razor-fang", "field": "spd", "fromRound": 5, "add": 2 }
-  ],
-  "1302011": [
+  ] },
+  "1302011": { "effects": [
     { "tag": "held-razor-fang", "field": "spd", "fromRound": 3, "add": 4 },
     { "tag": "held-razor-fang", "field": "spd", "fromRound": 4, "add": 4 },
     { "tag": "held-razor-fang", "field": "spd", "fromRound": 5, "add": 4 }
-  ],
-  "1302411": "evenRounds:guardBreak:0.5"
+  ] },
+  "1302101": { "triggers": [{ "on": "afterUlt", "chance": 0.5, "effects": [{ "op": "cleanse", "target": { "side": "ally", "rule": "random", "n": 1 }, "count": 1 }] }] },
+  "1302111": { "triggers": [{ "on": "afterUlt", "chance": 0.8, "effects": [{ "op": "cleanse", "target": { "side": "ally", "rule": "random", "n": 1 }, "count": 1 }] }] },
+  "1302201": {
+    "triggers": [{ "on": "afterUlt", "chance": 0.5, "effects": [{ "op": "buff", "target": { "side": "ally", "rule": "random", "n": 1 }, "buff": { "tag": "held-grip-claw", "field": "dmgBoost", "amount": 0.1, "turns": 2 } }] }]
+  },
+  "1302211": {
+    "triggers": [{ "on": "afterUlt", "chance": 0.8, "effects": [{ "op": "buff", "target": { "side": "ally", "rule": "random", "n": 1 }, "buff": { "tag": "held-grip-claw", "field": "dmgBoost", "amount": 0.1, "turns": 2 } }] }]
+  },
+  "1302311": {
+    "triggers": [{ "on": "roundStart", "condition": { "round": { "from": 3 } }, "effects": [{ "op": "buff", "target": { "side": "enemy", "rule": "all", "rowFilter": "front" }, "buff": { "tag": "held-icy-rocks", "field": "receiveHealBoost", "amount": -0.2, "maxStacks": 3, "bigRounds": 3 } }] }]
+  },
+  "1302411": "evenRounds:guardBreak:0.5",
+  "1302511": { "damageMods": [{ "tag": "held-sticky-barb", "condition": { "targetControlled": true }, "ignoreBlock": 1 }] },
+  "1302611": {
+    "triggers": [{ "on": "onInflictControl", "effects": [{ "op": "damage", "target": { "event": true }, "basis": "targetCurrentHp", "share": 0.05 }] }]
+  },
+  "1302711": {
+    "triggers": [{ "on": "afterUlt", "effects": [{ "op": "buff", "target": { "side": "ally", "rule": "self" }, "buff": { "tag": "held-leftovers", "field": "basicRate", "amount": 0.5, "turns": 3 } }] }]
+  }
 }

@@ -121,6 +121,9 @@ export function unit(over: {
     counterBoost: base.counterBoost ?? 0,
     spiritAtk: base.spiritAtk ?? 0,
     spiritDef: base.spiritDef ?? 0,
+    atkPct: base.atkPct ?? 0,
+    ignoreBlock: base.ignoreBlock ?? 0,
+    basicRate: base.basicRate ?? 0,
   };
   const maxHp = resolved.hp;
   return {

@@ -68,7 +68,7 @@ function baseBuff(spec: BuffSpec, source: string): Buff {
 }
 
 /** Kinds a cleanse treats as "negative" (removable by an ally cleanse). */
-export const NEGATIVE_KINDS: Buff['kind'][] = ['control', 'silence', 'confusion', 'paralysis', 'dot'];
+export const NEGATIVE_KINDS: Buff['kind'][] = ['control', 'silence', 'confusion', 'paralysis', 'dot', 'rageBlock'];
 
 export function isNegativeBuff(b: Buff): boolean {
   if (b.kind === 'stat') return (b.amount ?? 0) < 0;

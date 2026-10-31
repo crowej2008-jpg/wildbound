@@ -1,4 +1,4 @@
-import type { CombatField, RoundEffect, SoulheartHooks } from '../combat/types';
+import type { CombatField, DamageMod, RoundEffect, SoulheartHooks, TriggerDef } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats, Tier, WildClass, Faction } from '../model';
 
 /**
@@ -43,9 +43,16 @@ export interface HeldSkillDef {
   id: string;
   name: string;
   text: string;
-  /** False when the round-effect DSL can't express it yet; the text still shows. */
+  /** False when the battle engine can't express it yet; the text still shows. */
   active: boolean;
+  /** Round-start stat changes (Choice Specs, Razor Fang…). */
   effects: RoundEffect[];
+  /** E2: event triggers (Light Clay, Scope Lens…). */
+  triggers?: TriggerDef[];
+  /** E2: damage modifiers (Wide Lens, Heat Rock…). */
+  damageMods?: DamageMod[];
+  /** A number the source text leaves out, and the value used instead. */
+  standIn?: string;
 }
 
 /** One of the source's 75 held items (code id: relic). See equipment/held.ts. */

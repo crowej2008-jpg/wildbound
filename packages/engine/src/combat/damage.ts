@@ -60,17 +60,21 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
     };
   }
 
-  const raw = (skill.type === 'P' ? eff(attacker, 'pAtk') : eff(attacker, 'sAtk')) * (skill.rates[hitIndex] ?? skill.rates[0]!);
+  let raw = (skill.type === 'P' ? eff(attacker, 'pAtk') : eff(attacker, 'sAtk')) * (skill.rates[hitIndex] ?? skill.rates[0]!);
 
   if (skill.trueDamage) {
     return { dmg: Math.max(1, Math.floor(raw)), crit: false, blocked: false, trueDmg: true };
   }
 
+  // E1: the attacker's damage modifiers (held items, talents) that match this hit.
+  const mods = activeDamageMods(ctx, attacker, defender, skill);
+  if (mods.atk !== 0) raw *= 1 + mods.atk;
+
   // R1: the star card's "DMG BST to [faction]" joins the additive DMG Boost pair against that faction
   // (how the source combines it is open — ASSUMPTIONS #52).
   const factionBoost =
     attacker.factionBoost && attacker.factionBoost.faction === defender.kit.faction ? attacker.factionBoost.value : 0;
-  const G = Math.max(S.gFloor, 1 + eff(attacker, 'dmgBoost') + factionBoost - eff(defender, 'dmgRdct'));
+  const G = Math.max(S.gFloor, 1 + eff(attacker, 'dmgBoost') + factionBoost + mods.dmg - eff(defender, 'dmgRdct'));
   const P =
     S.mode === 'pvp' ? Math.max(S.pFloor, 1 + eff(attacker, 'pvpBoost') - eff(defender, 'pvpRdct') - S.pvpConst) : 1;
 
@@ -121,7 +125,8 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   const critMult = Math.max(S.critBaseMult, S.critBaseMult + eff(attacker, 'critPower') - 0.5 * critRes);
   if (crit) dmg *= critMult;
 
-  const blocked = !ctx.deterministic && ctx.rng() < blockChanceAt(attacker, defender, S.blockPoints);
+  const ignoreBlock = Math.min(1, Math.max(0, eff(attacker, 'ignoreBlock') + mods.ignoreBlock));
+  const blocked = !ctx.deterministic && ctx.rng() < blockChanceAt(attacker, defender, S.blockPoints, ignoreBlock);
   if (blocked) {
     const kept = Math.max(0, S.blockKeep - S.blockIntScale * eff(attacker, 'blockPower'));
     dmg *= kept;
@@ -141,8 +146,33 @@ export function critRateAt(
   return Math.max(floor, Math.min(1, slope * (eff(attacker, 'crit') - critRes)));
 }
 
-export function blockChanceAt(attacker: Combatant, defender: Combatant, points: [number, number][]): number {
-  return Math.min(1, Math.max(0, piecewise(points, eff(defender, 'block') - eff(attacker, 'guardBreak'))));
+export function blockChanceAt(
+  attacker: Combatant,
+  defender: Combatant,
+  points: [number, number][],
+  ignoreBlock = 0,
+): number {
+  const block = eff(defender, 'block') * (1 - ignoreBlock);
+  return Math.min(1, Math.max(0, piecewise(points, block - eff(attacker, 'guardBreak'))));
+}
+
+/** E1: sum the attacker's damage modifiers whose slot, condition and chance pass for this hit. */
+function activeDamageMods(
+  ctx: BattleContext,
+  attacker: Combatant,
+  defender: Combatant,
+  skill: SkillDef,
+): { dmg: number; atk: number; ignoreBlock: number } {
+  const out = { dmg: 0, atk: 0, ignoreBlock: 0 };
+  for (const mod of attacker.damageMods ?? []) {
+    if (mod.slot !== undefined && mod.slot !== skill.slot) continue;
+    if (mod.condition && !evalCondition(mod.condition, ctx, attacker, defender)) continue;
+    if (mod.chance !== undefined && (ctx.deterministic || !(ctx.rng() < mod.chance))) continue;
+    out.dmg += mod.dmg ?? 0;
+    out.atk += mod.atk ?? 0;
+    out.ignoreBlock += mod.ignoreBlock ?? 0;
+  }
+  return out;
 }
 
 export interface HitFlags {
@@ -200,11 +230,16 @@ export function channelHit(
     }
   }
 
+  const hitLanded = shielded > 0 || hpLost > 0;
+  // E1: "when dealing damage" (Shell Bell) fires before the target's Rage gain so it can stop it.
+  if (hitLanded && kind === 'hit' && attacker !== defender && attacker.alive) {
+    fireTriggers(ctx, attacker, 'onDealDamage', { target: defender });
+  }
+
   // The flat +rageHitBase applies only to direct hits (plain and shielded);
   // hpShare is unmodified damage and skips the flat base. The proportional term
   // uses real HP lost from any source. The shielded part never counts toward
   // hpLost (seen).
-  const hitLanded = shielded > 0 || hpLost > 0;
   let gain = 0;
   if (hitLanded && kind === 'hit' && !flags.hpShare) gain += ctx.settings.rageHitBase;
   gain += defender.kit.talents?.rageOnHit ?? 0;

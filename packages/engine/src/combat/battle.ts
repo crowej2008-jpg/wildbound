@@ -139,6 +139,8 @@ function spawn(specs: SpecInput[], side: 'attackers' | 'defenders', settings: Co
       resources: {},
       level: spec.level ?? 1,
       ...(spec.factionBoost ? { factionBoost: spec.factionBoost } : {}),
+      ...(spec.triggers && spec.triggers.length > 0 ? { triggers: spec.triggers } : {}),
+      ...(spec.damageMods && spec.damageMods.length > 0 ? { damageMods: spec.damageMods } : {}),
     };
   });
 }

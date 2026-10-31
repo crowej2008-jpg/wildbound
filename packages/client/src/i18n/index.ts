@@ -139,6 +139,7 @@ export const en = {
   'held.maxLevel': 'Max level',
   'held.compound': 'Make a Resetter ({count} Resetter Shards)',
   'held.skillInactive': 'not active in battle yet',
+  'held.standIn': 'stand-in',
   'held.wearOnly': 'Wear it to refine',
   'gear.sub.plates': 'Plates',
   'gear.sub.trinkets': 'Trinkets',

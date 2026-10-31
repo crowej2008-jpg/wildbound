@@ -37,6 +37,9 @@ export function resolveSheet(spec: SpecInput): StatSheet {
     counterBoost: pct(s.counterBoost),
     spiritAtk: pct(s.spiritAtk),
     spiritDef: pct(s.spiritDef),
+    atkPct: pct(s.atkPct),
+    ignoreBlock: pct(s.ignoreBlock),
+    basicRate: pct(s.basicRate),
   };
   for (const mod of spec.kit.talents?.statMods ?? []) {
     const level = spec.level ?? 1;
@@ -57,11 +60,18 @@ export function applyStatMod(
   if (add !== undefined) sheet[field] += add;
 }
 
-/** Runtime effective stat: base value plus every applied stat buff (additive). */
+/**
+ * Runtime effective stat: base value plus every applied stat buff (additive). P.ATK and S.ATK are
+ * then raised by `atkPct` (E1: "+10% attack" buffs).
+ */
 export function effective(base: StatSheet, buffs: Buff[], field: CombatField): number {
   let v = base[field];
   for (const b of buffs) {
     if (b.kind === 'stat' && b.field === field && b.amount !== undefined) v += b.amount;
+  }
+  if (field === 'pAtk' || field === 'sAtk') {
+    const pct = effective(base, buffs, 'atkPct');
+    if (pct !== 0) v *= 1 + pct;
   }
   return v;
 }

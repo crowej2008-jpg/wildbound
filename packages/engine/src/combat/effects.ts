@@ -47,7 +47,7 @@ export function applyEffectList(
 
 function targetsFor(ctx: BattleContext, caster: Combatant, e: Effect, fallback: Combatant[]): Combatant[] {
   if (e.op === 'revive') return deadAllies(ctx, caster);
-  if (!e.target) return fallback;
+  if (!e.target || e.target.event) return fallback;
   return selectFor(ctx, caster, e.target);
 }
 

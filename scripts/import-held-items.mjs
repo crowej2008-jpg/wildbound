@@ -62,17 +62,25 @@ const attrName = (id) => tr(attrs[id]?.name) ?? String(id);
 // --- skills, by name ------------------------------------------------------------
 const MAX_ROUNDS = JSON.parse(readFileSync(join(repoRoot, 'packages/content/tuning/combat.json'), 'utf8')).maxRounds;
 const effectsFile = JSON.parse(readFileSync(join(repoRoot, 'scripts/data/held-item-effects.json'), 'utf8'));
-function effectsFor(skillId) {
+/** A skill's battle data: { effects, triggers?, damageMods?, standIn? } (see the data file's note). */
+function battleFor(skillId) {
   const raw = effectsFile[String(skillId)];
-  if (!raw) return [];
-  if (Array.isArray(raw)) return raw;
-  const [rule, field, add] = raw.split(':');
-  if (rule !== 'evenRounds') throw new Error(`unknown effect rule ${raw}`);
-  const out = [];
-  for (let round = 2; round <= MAX_ROUNDS; round += 2) {
-    out.push({ tag: `held-${skillId}-r${round}`, field, fromRound: round, bigRounds: 1, add: Number(add) });
+  if (!raw) return null;
+  if (typeof raw === 'string') {
+    const [rule, field, add] = raw.split(':');
+    if (rule !== 'evenRounds') throw new Error(`unknown effect rule ${raw}`);
+    const effects = [];
+    for (let round = 2; round <= MAX_ROUNDS; round += 2) {
+      effects.push({ tag: `held-${skillId}-r${round}`, field, fromRound: round, bigRounds: 1, add: Number(add) });
+    }
+    return { effects };
   }
-  return out;
+  return {
+    effects: raw.effects ?? [],
+    ...(raw.triggers ? { triggers: raw.triggers } : {}),
+    ...(raw.damageMods ? { damageMods: raw.damageMods } : {}),
+    ...(raw.standIn ? { standIn: raw.standIn } : {}),
+  };
 }
 const skillsByName = new Map();
 for (const s of tableRows('skill_passivity_json')) {
@@ -93,8 +101,8 @@ const items = tableRows('held_item_json')
     if (roman) {
       const s = skillsByName.get(`${name} ${roman}`);
       if (!s) throw new Error(`no skill "${name} ${roman}"`);
-      const effects = effectsFor(s.id);
-      skill = { ...s, active: effects.length > 0, effects };
+      const battle = battleFor(s.id);
+      skill = { ...s, active: battle !== null, effects: [], ...battle };
     }
     const [[shardItem, shards]] = r.decompose;
     if (shardItem !== 100001) throw new Error(`unexpected dismantle item ${shardItem}`);

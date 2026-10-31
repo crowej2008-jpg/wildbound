@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { grantHeldItem, setWildStars } from './testing';
-import { emptyLoadout } from '@wildbound/engine';
+import { emptyLoadout, mulberry32 } from '@wildbound/engine';
 import { buildConfig } from './config';
-import { consumeCharms, levelRelicAction, levelRuneAction } from './equipment';
+import { consumeCharms, grantRelic, levelRelicAction, levelRuneAction } from './equipment';
+import { equippedSheet } from './battle';
 import { LocalServer } from './local-server';
 import { createInitialState } from './save';
 import { MemoryStore } from './storage';
@@ -425,5 +426,29 @@ describe('R5 held-item data is the source', () => {
 
   it('has 31 lines per quality pool', () => {
     for (const pool of [11, 12, 13, 14, 15]) expect(held.linePool.filter((r) => r.pool === pool)).toHaveLength(31);
+  });
+});
+
+describe('E2 held-item skills reach the battle', () => {
+  it('every Legendary+ skill is active in battle', () => {
+    const config = buildConfig();
+    const skills = config.equipment.relics.flatMap((r) => (r.skill ? [r.skill] : []));
+    expect(skills).toHaveLength(57);
+    expect(skills.every((s) => s.active)).toBe(true);
+  });
+
+  it("a worn Light Clay puts its turn-start heal into the wearer's battle spec", async () => {
+    const config = buildConfig();
+    const state = createInitialState(config);
+    const guardianSpecies = [...config.species.values()].find((s) => s.className === 'guardian' && s.tier === 'mythic');
+    if (!guardianSpecies) throw new Error('no mythic guardian');
+    const granted = grantRelic(config, state, '105208', mulberry32(1));
+    if (!granted.ok) throw new Error(granted.message);
+    const next = granted.value;
+    const wild = { id: 'wx', speciesId: guardianSpecies.id, level: 1, stars: guardianSpecies.stars[0]!.star, locked: false, acquiredAt: 0 };
+    next.roster.push(wild as (typeof next.roster)[number]);
+    next.loadouts[wild.id] = { ...emptyLoadout(config.equipment.tuning), relic: `re${state.equipment.nextSeq}` };
+    const equipped = equippedSheet(wild as (typeof next.roster)[number], config, next);
+    expect(equipped?.triggers.some((t) => t.on === 'turnStart')).toBe(true);
   });
 });

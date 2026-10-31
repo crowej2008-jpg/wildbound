@@ -94,6 +94,8 @@ export interface EquippedSheet {
   effects: RoundEffect[];
   soulheart: FoldedLoadout['soulheart'];
   soulheartText: string[];
+  triggers: FoldedLoadout['triggers'];
+  damageMods: FoldedLoadout['damageMods'];
 }
 
 /** Apply title-style percent-of-total lines after flat equipment has merged. */
@@ -121,7 +123,7 @@ export function equippedSheet(
 ): EquippedSheet | null {
   const sheet = sheetOf(wild, config);
   if (!sheet) return null;
-  if (!state) return { sheet, percent: {}, effects: [], soulheart: {}, soulheartText: [] };
+  if (!state) return { sheet, percent: {}, effects: [], soulheart: {}, soulheartText: [], triggers: [], damageMods: [] };
   const loadout = state.loadouts[wild.id] ?? emptyLoadout(config.equipment.tuning);
   const meta = config.species.get(wild.speciesId);
   const folded = foldLoadout(
@@ -139,6 +141,8 @@ export function equippedSheet(
     effects: folded.effects,
     soulheart: folded.soulheart,
     soulheartText: folded.soulheartText,
+    triggers: folded.triggers,
+    damageMods: folded.damageMods,
   };
 }
 
@@ -211,6 +215,8 @@ export function buildWildTeam(
       ...(card.factionBoost ? { factionBoost: card.factionBoost } : {}),
       ...(equipped.effects.length > 0 ? { roundEffects: equipped.effects } : {}),
       ...(Object.keys(equipped.soulheart).length > 0 ? { soulheart: equipped.soulheart } : {}),
+      ...(equipped.triggers.length > 0 ? { triggers: equipped.triggers } : {}),
+      ...(equipped.damageMods.length > 0 ? { damageMods: equipped.damageMods } : {}),
     });
     meta.set(`${side}:${position}`, {
       name: species.name,

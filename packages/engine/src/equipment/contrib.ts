@@ -1,4 +1,4 @@
-import type { RoundEffect, SoulheartHooks } from '../combat/types';
+import type { DamageMod, RoundEffect, SoulheartHooks, TriggerDef } from '../combat/types';
 import { heldDelta } from './held';
 import type { SheetInput } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats } from '../model';
@@ -118,6 +118,9 @@ export interface FoldedLoadout {
   soulheart: SoulheartHooks;
   /** Authored set-bonus sentences for the gear screen. */
   soulheartText: string[];
+  /** E2: held-item skill triggers and damage modifiers for the battle spec. */
+  triggers: TriggerDef[];
+  damageMods: DamageMod[];
 }
 
 const HOOK_NUMBERS = [
@@ -189,11 +192,17 @@ export function foldLoadout(
   const relic = findRelic(state, loadout.relic);
   const relicDef = relic ? tables.relics.find((d) => d.id === relic.defId) : undefined;
   let heldLifesteal = 0;
+  const triggers: TriggerDef[] = [];
+  const damageMods: DamageMod[] = [];
   if (relic && relicDef) {
     const held = heldDelta(relic, relicDef, tables.held, plate?.faction);
     addDelta(layers.relic, held.delta);
     heldLifesteal = held.lifesteal;
-    if (relicDef.skill?.active) effects.push(...relicDef.skill.effects);
+    if (relicDef.skill?.active) {
+      effects.push(...relicDef.skill.effects);
+      triggers.push(...(relicDef.skill.triggers ?? []));
+      damageMods.push(...(relicDef.skill.damageMods ?? []));
+    }
   }
 
   // --- Plates: the faction's plate, scaled by its stage (0 adds nothing) ---
@@ -308,7 +317,7 @@ export function foldLoadout(
   addDelta(delta, layers.charms);
   addDelta(delta, layers.cores);
   addDelta(delta, layers.talents);
-  return { delta, layers, effects, soulheart, soulheartText };
+  return { delta, layers, effects, soulheart, soulheartText, triggers, damageMods };
 }
 
 /**

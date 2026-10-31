@@ -6,6 +6,8 @@ import type { BattleContext, Combatant } from './types';
  * `rageChange` event only when the bar actually moved.
  */
 export function addRage(ctx: BattleContext, u: Combatant, delta: number): void {
+  // E1: a live `rageBlock` stops every Rage gain (losses still apply).
+  if (delta > 0 && u.buffs.some((b) => b.kind === 'rageBlock')) return;
   const before = u.rage;
   u.rage = Math.max(0, Math.min(ctx.settings.rageMax, u.rage + delta));
   const applied = u.rage - before;

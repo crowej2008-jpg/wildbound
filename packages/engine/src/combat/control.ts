@@ -1,3 +1,4 @@
+import { fireTriggers } from './triggers';
 import type { BattleContext, Combatant, ControlSpec, Buff } from './types';
 
 /**
@@ -50,6 +51,11 @@ export function landControl(ctx: BattleContext, attacker: Combatant, t: Combatan
   }
   t.buffs.push(b);
   ctx.events.push({ type: 'control', tgt: t.key, kind, landed: true });
+  // E1: "when controlled" (Lax Incense, Assault Vest) and "after landing a control" (King's Rock).
+  if (b.kind !== 'taunt') {
+    fireTriggers(ctx, t, 'onControlled', { target: attacker });
+    if (attacker !== t) fireTriggers(ctx, attacker, 'onInflictControl', { target: t });
+  }
 }
 
 export function buffKindFor(kind: string): Buff['kind'] {

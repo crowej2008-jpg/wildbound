@@ -231,8 +231,32 @@
         "id": "1300101",
         "name": "Shell Bell I",
         "text": "In the first round, when dealing damage, there is a 60% chance to prevent the enemy from recovering rage",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "round": {
+                "until": 1
+              }
+            },
+            "chance": 0.6,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "held-shell-bell",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -249,8 +273,22 @@
         "id": "1300201",
         "name": "Smooth Rock I",
         "text": "When attacking, if the enemy is poisoned, there is a chance to increase attack power by 6% for this attack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "damageMods": [
+          {
+            "tag": "held-smooth-rock",
+            "condition": {
+              "targetHasAnyTag": [
+                "poison",
+                "poisoned"
+              ]
+            },
+            "chance": 0.5,
+            "atk": 0.06
+          }
+        ],
+        "standIn": "chance 50% (the text says only 'a chance')"
       }
     },
     {
@@ -293,8 +331,41 @@
         "id": "1300401",
         "name": "Zoom Lens I",
         "text": "Damage increased by 12% and block breaking increased by 12% for 1 turn after an attack is blocked",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onBlocked",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-zoom-lens-dmg",
+                  "field": "dmgBoost",
+                  "amount": 0.12,
+                  "turns": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-zoom-lens-gb",
+                  "field": "guardBreak",
+                  "amount": 0.12,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -311,8 +382,33 @@
         "id": "1301001",
         "name": "Choice Scarf I",
         "text": "In the first round, 60% chance to taunt a random enemy unit",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "roundStart",
+            "condition": {
+              "round": {
+                "until": 1
+              }
+            },
+            "chance": 0.6,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "side": "enemy",
+                  "rule": "random",
+                  "n": 1
+                },
+                "control": {
+                  "kind": "taunt",
+                  "chance": null
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -329,8 +425,24 @@
         "id": "1301101",
         "name": "Lax Incense I",
         "text": "Restore HP when controlled, recovery amount equals 60% of own special attack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onControlled",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.6,
+                "basis": "casterSAtk"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -347,8 +459,24 @@
         "id": "1301201",
         "name": "Black Sludge I",
         "text": "After taking damage, 10% chance to purify one debuff effect from self",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onHit",
+            "chance": 0.1,
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 1
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -365,8 +493,21 @@
         "id": "1301301",
         "name": "Full Incense I",
         "text": "When first taking damage and HP drops to 10%, reduce damage taken by 6% for 1 round",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.1,
+            "maxFires": 1,
+            "buff": {
+              "tag": "held-full-incense",
+              "field": "dmgRdct",
+              "amount": 0.06,
+              "bigRounds": 1
+            }
+          }
+        ]
       }
     },
     {
@@ -383,8 +524,28 @@
         "id": "1301901",
         "name": "Assault Vest I",
         "text": "Increase attack by 6% when controlled, lasts 2 rounds, maximum 1 stack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onControlled",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-assault-vest",
+                  "field": "atkPct",
+                  "amount": 0.06,
+                  "bigRounds": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -438,8 +599,25 @@
         "id": "1302101",
         "name": "Soul Dew I",
         "text": "When releasing the ultimate skill, there is a 50% chance to purify 1 layer of debuff from a random single character of my team",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.5,
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "random",
+                  "n": 1
+                },
+                "count": 1
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -456,8 +634,30 @@
         "id": "1302201",
         "name": "Grip Claw I",
         "text": "Each time a big skill is released, there is a 50% chance to increase the damage by 10% for a random ally for 2 turns",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.5,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "random",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "held-grip-claw",
+                  "field": "dmgBoost",
+                  "amount": 0.1,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -474,8 +674,31 @@
         "id": "1300111",
         "name": "Shell Bell II",
         "text": "In the first round, when dealing damage, there is a 100% chance to prevent the enemy from recovering rage",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "round": {
+                "until": 1
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "held-shell-bell",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -492,8 +715,22 @@
         "id": "1300211",
         "name": "Smooth Rock II",
         "text": "When attacking, if the enemy is poisoned, there is a chance to increase attack power by 10% for this attack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "damageMods": [
+          {
+            "tag": "held-smooth-rock",
+            "condition": {
+              "targetHasAnyTag": [
+                "poison",
+                "poisoned"
+              ]
+            },
+            "chance": 0.5,
+            "atk": 0.1
+          }
+        ],
+        "standIn": "chance 50% (the text says only 'a chance')"
       }
     },
     {
@@ -536,8 +773,41 @@
         "id": "1300411",
         "name": "Zoom Lens II",
         "text": "Damage increased by 20% and block breaking increased by 20% for 1 turn after an attack is blocked",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onBlocked",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-zoom-lens-dmg",
+                  "field": "dmgBoost",
+                  "amount": 0.2,
+                  "turns": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-zoom-lens-gb",
+                  "field": "guardBreak",
+                  "amount": 0.2,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -554,8 +824,22 @@
         "id": "1300511",
         "name": "Heat Rock II",
         "text": "When attacking, if the enemy is burned, there is a chance to increase attack power by 10% for this attack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "damageMods": [
+          {
+            "tag": "held-heat-rock",
+            "condition": {
+              "targetHasAnyTag": [
+                "burning",
+                "flame"
+              ]
+            },
+            "chance": 0.5,
+            "atk": 0.1
+          }
+        ],
+        "standIn": "chance 50% (the text says only 'a chance')"
       }
     },
     {
@@ -572,8 +856,17 @@
         "id": "1300611",
         "name": "Wide Lens II",
         "text": "Increase damage by 10% when dealing damage to the enemy's backline",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "damageMods": [
+          {
+            "tag": "held-wide-lens",
+            "condition": {
+              "targetRow": "back"
+            },
+            "dmg": 0.1
+          }
+        ]
       }
     },
     {
@@ -590,8 +883,32 @@
         "id": "1301011",
         "name": "Choice Scarf II",
         "text": "In the first round, 100% chance to taunt a random enemy unit",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "roundStart",
+            "condition": {
+              "round": {
+                "until": 1
+              }
+            },
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "side": "enemy",
+                  "rule": "random",
+                  "n": 1
+                },
+                "control": {
+                  "kind": "taunt",
+                  "chance": null
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -608,8 +925,24 @@
         "id": "1301111",
         "name": "Lax Incense II",
         "text": "Restore HP when controlled, recovery amount equals 100% of own special attack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onControlled",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 1,
+                "basis": "casterSAtk"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -626,8 +959,24 @@
         "id": "1301211",
         "name": "Black Sludge II",
         "text": "After taking damage, 15% chance to purify one debuff effect from self",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onHit",
+            "chance": 0.15,
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 1
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -644,8 +993,21 @@
         "id": "1301311",
         "name": "Full Incense II",
         "text": "When first taking damage and HP drops to 10%, reduce damage taken by 10% for 1 round",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.1,
+            "maxFires": 1,
+            "buff": {
+              "tag": "held-full-incense",
+              "field": "dmgRdct",
+              "amount": 0.1,
+              "bigRounds": 1
+            }
+          }
+        ]
       }
     },
     {
@@ -662,8 +1024,28 @@
         "id": "1301411",
         "name": "Rocky Helmet II",
         "text": "Reduce opponent’s damage reduction by 10% when taking damage",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "held-rocky-helmet",
+                  "field": "dmgRdct",
+                  "amount": -0.1,
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ],
+        "standIn": "lasts to the end of the round (the text gives no duration); refreshes, never stacks"
       }
     },
     {
@@ -680,8 +1062,43 @@
         "id": "1301511",
         "name": "Terrain Extender II",
         "text": "Each turn has a chance to reduce damage by 10% for the opposing character and yourself",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "chance": 0.8,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "enemy",
+                  "rule": "same_position"
+                },
+                "buff": {
+                  "tag": "held-terrain-extender-foe",
+                  "field": "dmgBoost",
+                  "amount": -0.1,
+                  "bigRounds": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-terrain-extender-self",
+                  "field": "dmgRdct",
+                  "amount": 0.1,
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ],
+        "standIn": "80% from the kb's tier-I reading; read as: the opposite enemy deals 10% less and the holder takes 10% less, until the round ends"
       }
     },
     {
@@ -698,8 +1115,28 @@
         "id": "1301911",
         "name": "Assault Vest II",
         "text": "Increase attack by 10% when controlled, lasts 2 rounds, maximum 1 stack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onControlled",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-assault-vest",
+                  "field": "atkPct",
+                  "amount": 0.1,
+                  "bigRounds": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -753,8 +1190,25 @@
         "id": "1302111",
         "name": "Soul Dew II",
         "text": "When releasing the ultimate skill, there is an 80% chance to purify 1 layer of debuff from a random single character of my team",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.8,
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "random",
+                  "n": 1
+                },
+                "count": 1
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -771,8 +1225,30 @@
         "id": "1302211",
         "name": "Grip Claw II",
         "text": "Each time a big skill is released, there is an 80% chance to increase the damage by 10% for a random ally for 2 turns",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.8,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "random",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "held-grip-claw",
+                  "field": "dmgBoost",
+                  "amount": 0.1,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -789,8 +1265,35 @@
         "id": "1302311",
         "name": "Icy Rocks II",
         "text": "From the third round onward, reduce enemy front row healing effects by 20% per round, up to 60%, lasting 3 rounds",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "roundStart",
+            "condition": {
+              "round": {
+                "from": 3
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "enemy",
+                  "rule": "all",
+                  "rowFilter": "front"
+                },
+                "buff": {
+                  "tag": "held-icy-rocks",
+                  "field": "receiveHealBoost",
+                  "amount": -0.2,
+                  "maxStacks": 3,
+                  "bigRounds": 3
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -875,8 +1378,31 @@
         "id": "1300111",
         "name": "Shell Bell II",
         "text": "In the first round, when dealing damage, there is a 100% chance to prevent the enemy from recovering rage",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "round": {
+                "until": 1
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "held-shell-bell",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -893,8 +1419,22 @@
         "id": "1300211",
         "name": "Smooth Rock II",
         "text": "When attacking, if the enemy is poisoned, there is a chance to increase attack power by 10% for this attack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "damageMods": [
+          {
+            "tag": "held-smooth-rock",
+            "condition": {
+              "targetHasAnyTag": [
+                "poison",
+                "poisoned"
+              ]
+            },
+            "chance": 0.5,
+            "atk": 0.1
+          }
+        ],
+        "standIn": "chance 50% (the text says only 'a chance')"
       }
     },
     {
@@ -937,8 +1477,41 @@
         "id": "1300411",
         "name": "Zoom Lens II",
         "text": "Damage increased by 20% and block breaking increased by 20% for 1 turn after an attack is blocked",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onBlocked",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-zoom-lens-dmg",
+                  "field": "dmgBoost",
+                  "amount": 0.2,
+                  "turns": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-zoom-lens-gb",
+                  "field": "guardBreak",
+                  "amount": 0.2,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -955,8 +1528,22 @@
         "id": "1300511",
         "name": "Heat Rock II",
         "text": "When attacking, if the enemy is burned, there is a chance to increase attack power by 10% for this attack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "damageMods": [
+          {
+            "tag": "held-heat-rock",
+            "condition": {
+              "targetHasAnyTag": [
+                "burning",
+                "flame"
+              ]
+            },
+            "chance": 0.5,
+            "atk": 0.1
+          }
+        ],
+        "standIn": "chance 50% (the text says only 'a chance')"
       }
     },
     {
@@ -973,8 +1560,17 @@
         "id": "1300611",
         "name": "Wide Lens II",
         "text": "Increase damage by 10% when dealing damage to the enemy's backline",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "damageMods": [
+          {
+            "tag": "held-wide-lens",
+            "condition": {
+              "targetRow": "back"
+            },
+            "dmg": 0.1
+          }
+        ]
       }
     },
     {
@@ -991,8 +1587,19 @@
         "id": "1300711",
         "name": "Choice Band II",
         "text": "Ignore opponent's block 50% for the first 2 rounds",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "damageMods": [
+          {
+            "tag": "held-choice-band",
+            "condition": {
+              "round": {
+                "until": 2
+              }
+            },
+            "ignoreBlock": 0.5
+          }
+        ]
       }
     },
     {
@@ -1009,8 +1616,28 @@
         "id": "1300811",
         "name": "Scope Lens II",
         "text": "After dealing a critical hit, inflict Easy Crit on the target, Easy Crit: reduce 10% crit resistance, up to 3 layers, lasts 2 rounds",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "held-easy-crit",
+                  "field": "critRes",
+                  "amount": -0.1,
+                  "maxStacks": 3,
+                  "bigRounds": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1027,8 +1654,29 @@
         "id": "1300911",
         "name": "Muscle Band II",
         "text": "After using a small skill, the ultimate skill increases damage by 10% for 2 rounds, maximum 2 stacks",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-muscle-band",
+                  "field": "ultBoost",
+                  "amount": 0.1,
+                  "maxStacks": 2,
+                  "bigRounds": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1045,8 +1693,32 @@
         "id": "1301011",
         "name": "Choice Scarf II",
         "text": "In the first round, 100% chance to taunt a random enemy unit",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "roundStart",
+            "condition": {
+              "round": {
+                "until": 1
+              }
+            },
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "side": "enemy",
+                  "rule": "random",
+                  "n": 1
+                },
+                "control": {
+                  "kind": "taunt",
+                  "chance": null
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1063,8 +1735,24 @@
         "id": "1301111",
         "name": "Lax Incense II",
         "text": "Restore HP when controlled, recovery amount equals 100% of own special attack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onControlled",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 1,
+                "basis": "casterSAtk"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1081,8 +1769,24 @@
         "id": "1301211",
         "name": "Black Sludge II",
         "text": "After taking damage, 15% chance to purify one debuff effect from self",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onHit",
+            "chance": 0.15,
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 1
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1099,8 +1803,21 @@
         "id": "1301311",
         "name": "Full Incense II",
         "text": "When first taking damage and HP drops to 10%, reduce damage taken by 10% for 1 round",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.1,
+            "maxFires": 1,
+            "buff": {
+              "tag": "held-full-incense",
+              "field": "dmgRdct",
+              "amount": 0.1,
+              "bigRounds": 1
+            }
+          }
+        ]
       }
     },
     {
@@ -1117,8 +1834,28 @@
         "id": "1301411",
         "name": "Rocky Helmet II",
         "text": "Reduce opponent’s damage reduction by 10% when taking damage",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "held-rocky-helmet",
+                  "field": "dmgRdct",
+                  "amount": -0.1,
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ],
+        "standIn": "lasts to the end of the round (the text gives no duration); refreshes, never stacks"
       }
     },
     {
@@ -1135,8 +1872,43 @@
         "id": "1301511",
         "name": "Terrain Extender II",
         "text": "Each turn has a chance to reduce damage by 10% for the opposing character and yourself",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "chance": 0.8,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "enemy",
+                  "rule": "same_position"
+                },
+                "buff": {
+                  "tag": "held-terrain-extender-foe",
+                  "field": "dmgBoost",
+                  "amount": -0.1,
+                  "bigRounds": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-terrain-extender-self",
+                  "field": "dmgRdct",
+                  "amount": 0.1,
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ],
+        "standIn": "80% from the kb's tier-I reading; read as: the opposite enemy deals 10% less and the holder takes 10% less, until the round ends"
       }
     },
     {
@@ -1153,8 +1925,26 @@
         "id": "1301611",
         "name": "Big Root II",
         "text": "After taking damage, 50% chance to restore ally’s HP, recovery amount equals 35% of own special attack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onHit",
+            "chance": 0.5,
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "rate": 0.35,
+                "basis": "casterSAtk"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1171,8 +1961,25 @@
         "id": "1301711",
         "name": "Light Clay II",
         "text": "Restore backline HP every turn, healing amount is 5% of current HP",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "back"
+                },
+                "rate": 0.05,
+                "basis": "casterCurrentHp"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1189,8 +1996,16 @@
         "id": "1301811",
         "name": "Damp Rock II",
         "text": "Each turn has a 25% chance for small skills to trigger",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [
+          {
+            "tag": "held-damp-rock",
+            "field": "basicRate",
+            "fromRound": 1,
+            "add": 0.25
+          }
+        ],
+        "standIn": "read as +25% to the basic-skill chance every turn"
       }
     },
     {
@@ -1207,8 +2022,28 @@
         "id": "1301911",
         "name": "Assault Vest II",
         "text": "Increase attack by 10% when controlled, lasts 2 rounds, maximum 1 stack",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onControlled",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-assault-vest",
+                  "field": "atkPct",
+                  "amount": 0.1,
+                  "bigRounds": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1262,8 +2097,25 @@
         "id": "1302111",
         "name": "Soul Dew II",
         "text": "When releasing the ultimate skill, there is an 80% chance to purify 1 layer of debuff from a random single character of my team",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.8,
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "random",
+                  "n": 1
+                },
+                "count": 1
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1280,8 +2132,30 @@
         "id": "1302211",
         "name": "Grip Claw II",
         "text": "Each time a big skill is released, there is an 80% chance to increase the damage by 10% for a random ally for 2 turns",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.8,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "random",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "held-grip-claw",
+                  "field": "dmgBoost",
+                  "amount": 0.1,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1298,8 +2172,35 @@
         "id": "1302311",
         "name": "Icy Rocks II",
         "text": "From the third round onward, reduce enemy front row healing effects by 20% per round, up to 60%, lasting 3 rounds",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "roundStart",
+            "condition": {
+              "round": {
+                "from": 3
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "enemy",
+                  "rule": "all",
+                  "rowFilter": "front"
+                },
+                "buff": {
+                  "tag": "held-icy-rocks",
+                  "field": "receiveHealBoost",
+                  "amount": -0.2,
+                  "maxStacks": 3,
+                  "bigRounds": 3
+                }
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1384,8 +2285,17 @@
         "id": "1302511",
         "name": "Sticky Barb II",
         "text": "Ignore the target's 100% block value when controlled",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "damageMods": [
+          {
+            "tag": "held-sticky-barb",
+            "condition": {
+              "targetControlled": true
+            },
+            "ignoreBlock": 1
+          }
+        ]
       }
     },
     {
@@ -1402,8 +2312,23 @@
         "id": "1302611",
         "name": "King's Rock II",
         "text": "Deal 5% of current HP as damage to controlled target",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "onInflictControl",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetCurrentHp",
+                "share": 0.05
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -1420,8 +2345,28 @@
         "id": "1302711",
         "name": "Leftover fruit core II",
         "text": "After releasing the ultimate skill, increase the small skill probability by 50% for two turns",
-        "active": false,
-        "effects": []
+        "active": true,
+        "effects": [],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "held-leftovers",
+                  "field": "basicRate",
+                  "amount": 0.5,
+                  "turns": 3
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   ],

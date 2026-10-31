@@ -19,7 +19,7 @@ import type { KitJson } from './schemas';
 
 interface ContentBuffSpec {
   tag: string;
-  kind?: 'stat' | 'immune' | 'regen' | 'stack' | 'taunt';
+  kind?: 'stat' | 'immune' | 'regen' | 'stack' | 'taunt' | 'rageBlock';
   field?: CombatField;
   amount?: number;
   turns?: number;
@@ -44,7 +44,7 @@ function toEngineEffect(e: ContentEffect): Effect {
   return e;
 }
 
-function toEngineTrigger(t: ContentTrigger): TriggerDef {
+export function toEngineTrigger(t: ContentTrigger): TriggerDef {
   return {
     ...t,
     buff: t.buff ? withKind(t.buff) : undefined,
