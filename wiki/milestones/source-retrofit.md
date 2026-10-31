@@ -60,6 +60,12 @@ names), plus `pokemon-growth.md` / `stats-and-combat.md` notes.
 - Ripple effects: PvP weather, plates, trinket lines, mode enemy pools and campaign squads all key off
   faction/class and get updated in the same step. Kits stay the owner's (M9).
 
+## Data check before R2 (2026-10-31)
+Complete in the dumps: Potential, Held Items, Berries, Plates, Trinkets, Resonance, Titles (VIP partly).
+**Missing:** Gear (8 of 64 piece rows, no set table) and Orbs (no basic/set/socket tables). Proposed
+order: R5 Held Items → R4 Potential → R6 → R7 → R8 while the owner re-extracts the gear and orb
+tables, then R2 / R3.
+
 ## Size
 This is effectively re-doing the content of M2–M13.2: expect it to take longer than any milestone
 so far. The engine, server boundary, screens and tests mostly stay; data and rules change.

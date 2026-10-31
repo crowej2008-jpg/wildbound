@@ -21,7 +21,10 @@ updated: 2026-10-31
 
 ## Source tables still missing (stand-ins in use)
 - Pokémon level-up candy/gold per level, trainer-level XP, per-species milestone stats
-  (`hero_upstage_attr_json`), level-unlocked talent stat bonuses. Can the owner re-extract them from
+  (`hero_upstage_attr_json`), level-unlocked talent stat bonuses.
+- **Gear:** the dumps hold only 8 of the 64 `god_eqm_basic_json` rows and no `god_eqm_suit_json`.
+- **Orbs:** `hero_orb_basic_json`, `hero_orb_suit_json`, `hero_orb_pos_json` are not dumped (only
+  `hero_orb_decompose_json`). These block an exact R2 / R3. Can the owner re-extract them from
   the bot's cache? (ASSUMPTIONS #50–51)
 
 ## Known test problems
