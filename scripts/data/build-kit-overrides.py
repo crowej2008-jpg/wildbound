@@ -485,7 +485,9 @@ kit("mimikyu",
 
 kit("wobbuffet",
     skill("S", 1.0, effects=[give(SELF, buff("wobble-guard", "dmgRdct", 0.15, turns=3))]),
-    skill("S", 1.6, "row", effects=[dmg(T, basis="casterLostLastRound", share=0.5)]),
+    # E5: Counter — the server reflects 75% of the HP lost last round (kb, 124,772 hits), not the
+    # sheet's 50%; a separate HP change that passes shields (engine applyCounterReflect).
+    skill("S", 1.6, "row", counter=True),
     skill("S", 1.2, effects=[give(SELF, buff("wobble-guard", "dmgRdct", 0.15, turns=3))]),
     statMods=bundle(0.06, 0.38, 0.06, 0.09, 0.09, 0.08),
     triggers=[ally_rdct_stacks(0.03, 4)],

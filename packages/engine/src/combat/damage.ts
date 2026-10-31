@@ -137,7 +137,8 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   const ignoreBlock = Math.min(1, Math.max(0, eff(attacker, 'ignoreBlock') + mods.ignoreBlock));
   const blocked = !ctx.deterministic && ctx.rng() < blockChanceAt(attacker, defender, S.blockPoints, ignoreBlock);
   if (blocked) {
-    const kept = Math.max(0, S.blockKeep - S.blockIntScale * eff(attacker, 'blockPower'));
+    // E5: Block INT is the blocker's stat (a tank line on held items, orbs and talents).
+    const kept = Math.max(0, S.blockKeep - S.blockIntScale * eff(defender, 'blockPower'));
     dmg *= kept;
   }
 

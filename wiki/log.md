@@ -81,3 +81,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-10-31] update | E4 built — Origin skill levels and species shards
 - Owner: "lets do per pokemon shards as with the origin skills"; shard source "No source until R9".
   Save v21. Pages: battle engine, save versions, index.
+
+## [2026-10-31] update | E5 — combat numbers checked against the notes
+- Symmetric team cut, Block INT on the blocker, Counter passes shields, Wobbuffet 75%, Ranked base 16.
+  New page [combat numbers](systems/combat-numbers.md).

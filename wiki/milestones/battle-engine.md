@@ -17,8 +17,8 @@ R4 Potential resumes afterwards.
 | E2 ✅ | All 27 held-item skills active in battle ([held items](../systems/held-items.md)) | built 2026-10-31 |
 | E3 ✅ | The kit clauses the parser could not express — 68 kits hand-ported | built 2026-10-31 |
 | E4 ✅ | Origin skill levels LV.2 / LV.3 + per-species shards (pulled forward from R9) | built 2026-10-31 |
-| E5 (next) | Re-check the open combat numbers against the kb (faction bonus ×1.43 vs ×1.25, crit slope, class matchups, heal basis) | pending |
-| E6 | Tests + campaign/PvP balance re-check | pending |
+| E5 ✅ | Re-check the open combat numbers against the kb (faction bonus ×1.43 vs ×1.25, crit slope, class matchups, heal basis) | pending |
+| E6 (next) | Tests + campaign/PvP balance re-check | pending |
 
 Not in scope (wired when their systems are retrofitted): Potential options (R4), plate stage-6 skill
 swap and trinket skills (R6), gear/orb set skills (R2/R3).
@@ -59,3 +59,8 @@ swap and trinket skills (R6), gear/orb set skills (R2/R3).
 - Owner: *"lets do per pokemon shards as with the origin skills"*; shard source: *"No source until R9"*.
 - Built: `speciesShards`, compose on the Evolve tab, Skills tab for Origins, the 24 LV.2/LV.3 rows in
   battle (`applySkillLevels`; gaps in `docs/PORT-REPORT.md`). Save v21. ASSUMPTIONS #61.
+
+## E5 — combat numbers (checked 2026-10-31)
+Result page: [combat numbers](../systems/combat-numbers.md). Changed: symmetric team-Power cut, Block INT
+on the blocker, Counter passes shields, Wobbuffet's Counter 75%, Ranked `baseLevel` 16 (golden
+baselines re-exported). Seven questions stay open, each with the test that would answer it.

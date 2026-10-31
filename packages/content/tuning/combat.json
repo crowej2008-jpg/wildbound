@@ -9,11 +9,24 @@
   "critFloor": 0.03,
   "critSlope": 1.2,
   "critBaseMult": 1.2,
-  "blockPoints": [[-0.4, 0.03], [0.5, 0.5], [1.0, 1.0]],
+  "blockPoints": [
+    [
+      -0.4,
+      0.03
+    ],
+    [
+      0.5,
+      0.5
+    ],
+    [
+      1.0,
+      1.0
+    ]
+  ],
   "blockKeep": 0.8,
   "blockIntScale": 0,
   "tpThreshold": 0.7,
-  "tpSymmetric": false,
+  "tpSymmetric": true,
   "classMult": {},
   "weatherDefault": 0.3,
   "basicReplace": 0.2,

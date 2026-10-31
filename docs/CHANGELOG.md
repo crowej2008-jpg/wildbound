@@ -1099,3 +1099,10 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   LV.3 rows of the sheet are hand-ported as kit `levels` and applied in battle (`applySkillLevels`).
 - Engine: `onEnemyUlt` trigger, per-tagged-unit heals and Rage, capped HP-share damage, trigger and
   modifier groups. Save v21. No in-game shard source until R9 (owner's choice).
+
+## E5 - Combat numbers checked (2026-10-31)
+
+- `tpSymmetric` true (the team-Power cut applies to weaker defenders too — measured); Block INT is the
+  blocker's stat (size still open); the Counter reflect passes shields; Wobbuffet's Counter uses the
+  measured 75% (sheet 50%). Ranked rival `baseLevel` 12 → 16 re-measured. Golden baselines
+  re-exported (squad-camp, tidewarden). Open questions: `wiki/systems/combat-numbers.md`.

@@ -27,11 +27,11 @@ export interface CombatSettings {
   blockPoints: [number, number][];
   /** share of damage a blocked hit keeps (seen: at most 0.80). */
   blockKeep: number;
-  /** how much attacker blockPower cuts a blocked hit (open; 0 keeps exactly blockKeep). */
+  /** how much the blocker's Block INT cuts a blocked hit further (E5: side fixed; size open — 0 keeps blockKeep). */
   blockIntScale: number;
   /** team-Power cut: only weaker attackers below this ratio are cut (open). */
   tpThreshold: number;
-  /** do weaker defenders also deal less (open — false per the measured model). */
+  /** do weaker defenders also deal less (E5: seen — "a weaker opponent's hits on us rose the same way when our Power fell"). */
   tpSymmetric: boolean;
   /** class-matchup multiplications; key is `${a.class}>${b.class}` (open). */
   classMult: Record<string, number>;
@@ -100,7 +100,7 @@ function readDefaults(): CombatSettings {
     blockKeep: 0.8,
     blockIntScale: 0,
     tpThreshold: 0.7,
-    tpSymmetric: false,
+    tpSymmetric: true,
     classMult: {},
     weatherDefault: 0.3,
     basicReplace: 0.2,

@@ -7,8 +7,8 @@ import type { BattleContext, Combatant, SkillDef } from './types';
  *   reflect = floor(counterShare Ã— T Ã— (1 + counterBoost))
  * T = the HP the caster lost in the previous big round from any source (shield
  * loss excluded); none in big round 1. It is a separate HP change applied after
- * the base hit: no factor, no shield, no crit, no block; every target of the
- * hit takes the full amount.
+ * the base hit: no factor, no crit, no block, and it passes shields; every target
+ * of the hit takes the full amount.
  */
 export function applyCounterReflect(
   ctx: BattleContext,
@@ -24,6 +24,7 @@ export function applyCounterReflect(
   if (reflected <= 0) return;
   for (const t of targets) {
     if (!t.alive) continue;
-    channelHit(ctx, caster, t, reflected, { kind: 'reflect' });
+    // E5: the reflect passes shields (measured on 124,772 target hits).
+    channelHit(ctx, caster, t, reflected, { kind: 'reflect', ignoreShield: true });
   }
 }

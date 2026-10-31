@@ -7187,16 +7187,7 @@
      1.6
     ],
     "rule": "row",
-    "effects": [
-     {
-      "op": "damage",
-      "target": {
-       "event": true
-      },
-      "basis": "casterLostLastRound",
-      "share": 0.5
-     }
-    ]
+    "counter": true
    }
   },
   "statMods": [
