@@ -124,6 +124,10 @@ export function unit(over: {
     atkPct: base.atkPct ?? 0,
     ignoreBlock: base.ignoreBlock ?? 0,
     basicRate: base.basicRate ?? 0,
+    pRdct: base.pRdct ?? 0,
+    sRdct: base.sRdct ?? 0,
+    dotTaken: base.dotTaken ?? 0,
+    lifesteal: base.lifesteal ?? 0,
   };
   const maxHp = resolved.hp;
   return {

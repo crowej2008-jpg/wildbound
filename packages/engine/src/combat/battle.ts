@@ -1,5 +1,5 @@
 import { mulberry32 } from '../rng';
-import { resolveSheet } from './stats';
+import { effective, resolveSheet } from './stats';
 import { resolveSettings, type CombatSettings } from './settings';
 import { takeTurn } from './skills';
 import { tickBigRoundBuffs, tickUnitBuffs } from './buffs';
@@ -53,6 +53,7 @@ export function runBattle(config: BattleConfig): BattleResult {
     defendersPower: sumPower(config.defenders),
   };
 
+  ctx.team = team;
   let winner: 'attackers' | 'defenders' | undefined;
 
   // M11.4: Soul-heart battle-start shields/guards, then M9.4 triggers.
@@ -150,7 +151,8 @@ function turnOrder(ctx: BattleContext): Combatant[] {
     .filter((u) => u.alive)
     .slice()
     .sort((a, b) => {
-      const spdDiff = b.base.spd - a.base.spd;
+      // E3: SPD buffs (Greninja, Lunala's Moongeist hit) move a unit in the order.
+      const spdDiff = effective(b.base, b.buffs, 'spd') - effective(a.base, a.buffs, 'spd');
       if (spdDiff !== 0) return spdDiff;
       if (a.side !== b.side) return a.side === 'attackers' ? -1 : 1;
       return a.position - b.position;

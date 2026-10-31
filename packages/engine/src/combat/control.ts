@@ -14,7 +14,8 @@ export function applyControl(
 ): void {
   for (const t of targets) {
     if (!t.alive) continue;
-    const immunity = t.buffs.some((b) => b.kind === 'immune');
+    // E3: an immunity may name the controls it stops ("Immune to Freeze"); none named = all.
+    const immunity = t.buffs.some((b) => b.kind === 'immune' && (!b.immuneTo || b.immuneTo.includes(control.kind)));
     if (control.chance === null) {
       if (immunity) {
         ctx.events.push({ type: 'immunity', unit: t.key, kind: control.kind });
@@ -41,7 +42,8 @@ export function applyControl(
 export function landControl(ctx: BattleContext, attacker: Combatant, t: Combatant, kind: string): void {
   const b: Buff = { tag: kind, kind: buffKindFor(kind), source: attacker.id, turns: 1 };
   if (b.kind === 'confusion') {
-    b.redirectChance = ctx.settings.redirectChance;
+    // E3: Metagross's Confuse forces every normal attack onto an ally; Zen Control is 50%.
+    b.redirectChance = kind === 'mindControl' ? 1 : kind === 'zenControl' || kind === 'zen-control' ? 0.5 : ctx.settings.redirectChance;
     b.bigRounds = 1;
   }
   // a live same-kind control is never refreshed or stacked (measured)
@@ -59,6 +61,13 @@ export function landControl(ctx: BattleContext, attacker: Combatant, t: Combatan
 }
 
 export function buffKindFor(kind: string): Buff['kind'] {
+  // E3: kits' named controls. Flinch / Nap = no basic skill; Shallow Sleep = no ultimate;
+  // Crit Seal = no crits; Disarm = no normal attack or basic skill.
+  if (kind === 'flinch' || kind === 'nap' || kind === 'noBasic') return 'noBasic';
+  if (kind === 'shallowSleep' || kind === 'shallow-sleep') return 'silence';
+  if (kind === 'critSeal' || kind === 'crit-seal' || kind === 'noCrit') return 'noCrit';
+  if (kind === 'disarm') return 'disarm';
+  if (kind === 'mindControl' || kind === 'zenControl' || kind === 'zen-control') return 'confusion';
   if (kind === 'silence') return 'silence';
   if (kind === 'confusion') return 'confusion';
   if (kind === 'paralysis') return 'paralysis';

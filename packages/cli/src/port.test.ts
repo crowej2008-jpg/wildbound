@@ -53,10 +53,16 @@ describe('faithful ports (numbers straight from the sheet)', () => {
           target: expect.objectContaining({ side: 'ally', rowFilter: 'back' }),
           buff: expect.objectContaining({ field: 'crit', amount: 0.1, turns: 2 }),
         }),
-        // "[Offer of Power] deducts 20% of current HP" — a cost the caster pays
-        expect.objectContaining({ op: 'damage', target: { rule: 'self' }, share: 0.2 }),
-        // "regenerates 100% Rage"
-        expect.objectContaining({ op: 'rage', target: { rule: 'self' }, pct: 1 }),
+      ]),
+    );
+    // E3: "After using Ultimates, gain [Offer of Power]" — deducts 20% of current HP, regenerates
+    // 100% Rage, +50% ultimate damage for a turn; cooldown 4 turns.
+    const offer = byId.get('charizard')?.talents?.triggers?.find((t) => t.on === 'afterUlt' && t.cooldown === 4);
+    expect(offer?.effects).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ op: 'damage', basis: 'casterCurrentHp', share: 0.2 }),
+        expect.objectContaining({ op: 'rage', fill: true }),
+        expect.objectContaining({ op: 'buff', buff: expect.objectContaining({ field: 'ultBoost', amount: 0.5 }) }),
       ]),
     );
   });
@@ -94,7 +100,7 @@ describe('faithful ports (numbers straight from the sheet)', () => {
   it('mimikyu: 15% chance to stun for 1 round', () => {
     expect(skill('mimikyu', 'ult').effects).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ op: 'control', control: { kind: 'stun', chance: 0.15, turns: 1 } }),
+        expect.objectContaining({ op: 'control', control: { kind: 'stun', chance: 0.15 } }),
       ]),
     );
   });
@@ -110,5 +116,38 @@ describe('faithful ports (numbers straight from the sheet)', () => {
     // The sheet only says "damage"; the P.ATK talent line decides the type.
     expect(skill('groudon', 'normal').type).toBe('P');
     expect(skill('groudon', 'normal').rule).toBe('lowest_hp');
+  });
+
+  it('E3: Rage talents count shares of the 1,000-point bar', () => {
+    // "Gain 1/8 additional Rage whenever you get hit" → 125 (was misread as 1 point).
+    expect(byId.get('deoxys')?.talents?.rageOnHit).toBe(125);
+    // "Normal attacks/basic skills generate 1/2 additional Rage; Ultimates generate 1/4 Rage".
+    const triggers = byId.get('darkrai')?.talents?.triggers ?? [];
+    expect(triggers).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ on: 'afterNormal', rage: 500 }),
+        expect.objectContaining({ on: 'afterBasic', rage: 500 }),
+        expect.objectContaining({ on: 'afterUlt', rage: 250 }),
+      ]),
+    );
+  });
+
+  it('E3: Talent 3 spellings — "Crit strength" is Crit Intensity and "Break" is Guard Break', () => {
+    const mods = byId.get('zacian')?.talents?.statMods ?? [];
+    expect(mods).toEqual(
+      expect.arrayContaining([
+        { field: 'critPower', add: 0.15 },
+        { field: 'guardBreak', add: 0.51 },
+      ]),
+    );
+  });
+
+  it('E3: hand-ported one-offs (Lugia endures once; Shadow Mewtwo splashes 10% after its basic skill)', () => {
+    const lugia = byId.get('lugia')?.talents?.triggers ?? [];
+    expect(lugia.some((t) => t.effects?.some((e) => e.op === 'buff' && e.buff.kind === 'endure'))).toBe(true);
+    const mewtwo = byId.get('shadow-mewtwo')?.talents?.triggers ?? [];
+    expect(mewtwo.find((t) => t.on === 'afterBasic')?.effects).toEqual(
+      expect.arrayContaining([expect.objectContaining({ op: 'splash', share: 0.1 })]),
+    );
   });
 });

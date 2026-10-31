@@ -62,7 +62,11 @@ export function resolveHealWithBasis(
         ? eff(caster, 'sAtk')
         : b === 'casterCurrentHp'
           ? caster.hp
-          : target.base.hp;
+          : b === 'targetMissingHp'
+            ? Math.max(0, target.base.hp - target.hp)
+            : b === 'eventDamage'
+              ? ctx.eventAmount ?? 0
+              : target.base.hp;
   return Math.floor(rate * base * (1 + eff(caster, 'healBoost')) * (1 + eff(target, 'receiveHealBoost')));
 }
 
@@ -80,7 +84,8 @@ export function applySkillSideEffects(
   hitDamages: number[],
 ): void {
   for (const b of skill.selfBuffs ?? []) applyBuff(attacker, scaleBuff(b, attacker.level ?? 1), ctx, attacker.id);
-  const lifesteal = (skill.lifesteal ?? 0) + (attacker.soulheart?.lifesteal ?? 0);
+  const lifesteal =
+    (skill.lifesteal ?? 0) + (attacker.soulheart?.lifesteal ?? 0) + effective(attacker.base, attacker.buffs, 'lifesteal');
   if (lifesteal > 0) {
     applyLifesteal(ctx, attacker, hitDamages.reduce((a, b) => a + b, 0), lifesteal);
   }

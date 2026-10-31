@@ -28,6 +28,7 @@ export interface ActionInput {
 }
 
 export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): void {
+  ctx.team = input.team;
   tickDots(ctx, u);
   tickRegen(ctx, u);
   soulheartTurnStart(ctx, u);
@@ -36,7 +37,8 @@ export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): 
   const strategy = sideStrategy(ctx.strategies, u.side);
   const ultReady =
     ctx.rules?.noUltimate !== true && u.rage >= ctx.settings.ultRageCost && !holdsUltimate(ctx, u, strategy);
-  const paralysis = u.buffs.some((b) => b.kind === 'paralysis');
+  // E3: a disarm works like paralysis — only a ready ultimate can still be cast.
+  const paralysis = u.buffs.some((b) => b.kind === 'paralysis' || b.kind === 'disarm');
 
   if (skip || (paralysis && !ultReady)) {
     ctx.events.push({ type: 'action', unit: u.key, skill: null });
@@ -95,6 +97,7 @@ function resolveCast(
   input: ActionInput,
 ): number[] {
   const hitDamages: number[] = [];
+  ctx.castDamage = new Map();
   for (let i = 0; i < skill.rates.length; i += 1) {
     for (const t of [...targets]) {
       if (!t.alive || !u.alive) continue;
@@ -107,10 +110,17 @@ function resolveCast(
         ignoreShield: skill.ignoreShield || u.buffs.some((b) => b.kind === 'puncture'),
       });
       hitDamages.push(dealt);
+      ctx.castDamage.set(t.key, (ctx.castDamage.get(t.key) ?? 0) + dealt);
       ctx.damageDealt[u.key] = (ctx.damageDealt[u.key] ?? 0) + outcome.dmg;
       ctx.damageTaken[t.key] = (ctx.damageTaken[t.key] ?? 0) + outcome.dmg;
       // E1: crit / blocked reactions (Scope Lens, Zoom Lens).
-      if (outcome.crit && u.alive) fireTriggers(ctx, u, 'onCrit', { target: t });
+      if (outcome.crit && u.alive) {
+        fireTriggers(ctx, u, 'onCrit', { target: t });
+        // E3: allies react to this unit's crit (Origin Rayquaza's linked strike).
+        for (const ally of ctx.units) {
+          if (ally !== u && ally.alive && ally.side === u.side) fireTriggers(ctx, ally, 'onAllyCrit', { target: t, actor: u });
+        }
+      }
       if (outcome.blocked && u.alive) fireTriggers(ctx, u, 'onBlocked', { target: t });
     }
   }
@@ -135,7 +145,31 @@ function resolveCast(
   return hitDamages;
 }
 
+/**
+ * E3: an extra action right away (Dialga "must act again", Mimikyu's extra minor skill, Pikachu's
+ * extra attack on a kill, Deoxys's periodic Rage Move). It costs no Rage; `noRage` also skips the
+ * action's own Rage gain. Its riders and side effects resolve as usual.
+ */
+export function extraAction(
+  ctx: BattleContext,
+  u: Combatant,
+  slot: SkillSlot | 'roll',
+  noRage: boolean,
+  team: TeamSides,
+): void {
+  if (!u.alive) return;
+  const picked: SkillSlot = slot === 'roll' ? rollSkillSlot(ctx, u) : slot;
+  const skill = u.kit.skills[picked];
+  ctx.events.push({ type: 'action', unit: u.key, skill: picked });
+  const targets = selectTargets(ctx, u, skill);
+  const hits = resolveCast(ctx, u, skill, targets, { bigRound: ctx.round, team });
+  applySkillSideEffects(ctx, u, skill, targets, hits);
+  if (!noRage && picked !== 'ult') addRage(ctx, u, ctx.settings.ragePerAction);
+}
+
 function rollSkillSlot(ctx: BattleContext, u: Combatant): SkillSlot {
+  // E3: a Flinch / Nap (`noBasic`) stops the basic skill.
+  if (u.buffs.some((b) => b.kind === 'noBasic')) return 'normal';
   // E1: `basicRate` buffs and lines add to the kit's (or the default) basic-skill chance.
   const rate = (u.kit.talents?.basicRate ?? ctx.settings.basicReplace) + effective(u.base, u.buffs, 'basicRate');
   return ctx.rng() < rate ? 'basic' : 'normal';

@@ -15,7 +15,7 @@ export function fireTriggers(
   ctx: BattleContext,
   self: Combatant,
   on: TriggerOn,
-  opts: { target?: Combatant } = {},
+  opts: { target?: Combatant; amount?: number; actor?: Combatant } = {},
 ): void {
   const kitList = self.kit.talents?.triggers ?? [];
   const list = self.triggers && self.triggers.length > 0 ? [...kitList, ...self.triggers] : kitList;
@@ -29,7 +29,13 @@ export function fireTriggers(
       const t = list[idx]!;
       if (t.on !== on) continue;
       if (on !== 'onDeath' && !self.alive) continue;
-      if (t.condition && !evalCondition(t.condition, ctx, self, opts.target)) continue;
+      if (t.condition) {
+        const prevActor = ctx.eventActor;
+        ctx.eventActor = opts.actor;
+        const ok = evalCondition(t.condition, ctx, self, opts.target);
+        ctx.eventActor = prevActor;
+        if (!ok) continue;
+      }
 
       const firedKey = `${self.key}#trig#${idx}#fired`;
       if (t.hpBelow !== undefined) {
@@ -57,7 +63,16 @@ export function fireTriggers(
       }
       if (t.cooldown !== undefined) counters.set(`${self.key}#trig#${idx}#cd`, ctx.round + t.cooldown);
       if (t.maxFires !== undefined) counters.set(firesKey, (counters.get(firesKey) ?? 0) + 1);
-      activate(ctx, self, t, opts.target);
+      const prevAmount = ctx.eventAmount;
+      const prevActor = ctx.eventActor;
+      ctx.eventAmount = opts.amount;
+      ctx.eventActor = opts.actor;
+      try {
+        activate(ctx, self, t, opts.target);
+      } finally {
+        ctx.eventAmount = prevAmount;
+        ctx.eventActor = prevActor;
+      }
     }
   } finally {
     ctx.triggerDepth -= 1;

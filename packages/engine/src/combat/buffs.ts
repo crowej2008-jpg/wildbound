@@ -17,6 +17,13 @@ export function countStacks(u: Combatant, tag: string): number {
   return n;
 }
 
+/** E3: stacks of a tag across stat buffs and stacking DoTs (Moltres's "2 stacks of Burning"). */
+export function countAnyStacks(u: Combatant, tag: string): number {
+  let n = 0;
+  for (const b of u.buffs) if ((b.tag === tag || b.tag.startsWith(`${tag}#`)) && (b.kind === 'stat' || b.kind === 'dot')) n += 1;
+  return n;
+}
+
 /** Stacking amounts must carry a per-stack tag: `${tag}#${i}`. */
 export function stackTag(tag: string, index: number): string {
   return `${tag}#${index}`;
@@ -64,11 +71,14 @@ function baseBuff(spec: BuffSpec, source: string): Buff {
     chance: spec.chance,
     redirectChance: spec.redirectChance,
     undispellable: spec.undispellable,
+    ...(spec.consumeOnHit ? { consumeOnHit: true } : {}),
+    ...(spec.immuneTo ? { immuneTo: spec.immuneTo } : {}),
+    ...(spec.endsWithSource ? { endsWithSource: true } : {}),
   };
 }
 
 /** Kinds a cleanse treats as "negative" (removable by an ally cleanse). */
-export const NEGATIVE_KINDS: Buff['kind'][] = ['control', 'silence', 'confusion', 'paralysis', 'dot', 'rageBlock'];
+export const NEGATIVE_KINDS: Buff['kind'][] = ['control', 'silence', 'confusion', 'paralysis', 'dot', 'rageBlock', 'disarm', 'noBasic', 'noCrit'];
 
 export function isNegativeBuff(b: Buff): boolean {
   if (b.kind === 'stat') return (b.amount ?? 0) < 0;
@@ -77,7 +87,7 @@ export function isNegativeBuff(b: Buff): boolean {
 
 export function isPositiveBuff(b: Buff): boolean {
   if (b.kind === 'stat') return (b.amount ?? 0) > 0;
-  return b.kind === 'immune' || b.kind === 'regen' || b.kind === 'stack';
+  return b.kind === 'immune' || b.kind === 'regen' || b.kind === 'stack' || b.kind === 'endure' || b.kind === 'invulnerable';
 }
 
 /**

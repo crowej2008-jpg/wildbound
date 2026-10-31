@@ -31,6 +31,7 @@ export function selectTargets(ctx: BattleContext, attacker: Combatant, skill: Sk
     n: gated ? skill.targets : undefined,
     rowFilter: gated ? skill.rowFilter : undefined,
     filters: gated ? skill.filters : undefined,
+    hasTag: gated ? skill.hasTag : undefined,
   });
 }
 
@@ -47,10 +48,16 @@ export function selectFor(ctx: BattleContext, self: Combatant, sel: TargetSel): 
   }
   let pool = ctx.units.filter((u) => u.alive && (friendly ? u.side === self.side : u.side !== self.side));
   if (!friendly) pool = pool.filter((u) => !isUntargetable(u));
+  if (sel.excludeSelf) pool = pool.filter((u) => u !== self);
   if (sel.rowFilter) pool = pool.filter((u) => u.row === sel.rowFilter);
   if (sel.filters && sel.filters.length > 0) {
     const narrowed = pool.filter((u) => sel.filters!.every((f) => matchesFilter(f, u)));
     if (narrowed.length > 0) pool = narrowed; // an empty narrowing never blanks the skill
+  }
+  if (sel.hasTag) {
+    const tag = sel.hasTag;
+    const tagged = pool.filter((u) => u.buffs.some((b) => b.tag === tag || b.tag.startsWith(`${tag}#`)) || (u.resources?.[tag] ?? 0) > 0);
+    if (tagged.length > 0) pool = tagged;
   }
   return applyRule(ctx, self, sel.rule ?? 'column', sel.n, pool);
 }
@@ -125,6 +132,8 @@ function matchesFilter(f: TargetFilter, u: Combatant): boolean {
   if (f === 'dot') return hasDot(u);
   if (f === 'controlled') return isControlled(u);
   if (f === 'debuffed') return u.buffs.some((b) => b.kind === 'stat' && (b.amount ?? 0) < 0);
+  if (f === 'fullRage') return u.rage >= 1000;
+  if (f === 'shielded') return u.shieldHp > 0;
   return true;
 }
 

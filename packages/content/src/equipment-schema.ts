@@ -67,6 +67,10 @@ export const COMBAT_FIELDS = [
   'atkPct',
   'ignoreBlock',
   'basicRate',
+  'pRdct',
+  'sRdct',
+  'dotTaken',
+  'lifesteal',
 ] as const;
 
 export const statLineSchema = z

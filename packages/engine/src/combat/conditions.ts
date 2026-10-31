@@ -1,4 +1,4 @@
-import { countStacks } from './buffs';
+import { countAnyStacks } from './buffs';
 import type { BattleContext, Combatant, Condition } from './types';
 
 /**
@@ -24,6 +24,7 @@ export function evalCondition(
     if (cond.targetControlled !== undefined && cond.targetControlled !== isControlled(target)) return false;
     if (cond.targetRow !== undefined && target.row !== cond.targetRow) return false;
     if (cond.targetTrait !== undefined && !(target.kit.traits ?? []).includes(cond.targetTrait)) return false;
+    if (cond.targetClass !== undefined && target.kit.class !== cond.targetClass) return false;
     if (cond.targetStackAtLeast && !(stackCount(target, cond.targetStackAtLeast.tag) >= cond.targetStackAtLeast.n)) {
       return false;
     }
@@ -32,11 +33,28 @@ export function evalCondition(
     return false;
   }
   if (cond.round !== undefined) {
-    const { from, until, even } = cond.round;
+    const { from, until, even, every } = cond.round;
     if (from !== undefined && ctx.round < from) return false;
     if (until !== undefined && ctx.round > until) return false;
     if (even !== undefined && (ctx.round % 2 === 0) !== even) return false;
+    if (every !== undefined && (ctx.round - (from ?? 1)) % every !== 0) return false;
   }
+  if (target) {
+    if (cond.targetShielded !== undefined && cond.targetShielded !== target.shieldHp > 0) return false;
+    if (cond.selfHpBelowTarget && !(hpShare(self) < hpShare(target))) return false;
+    if (cond.selfHpAboveTarget && !(hpShare(self) > hpShare(target))) return false;
+  } else if (cond.targetShielded !== undefined || cond.selfHpBelowTarget || cond.selfHpAboveTarget) {
+    return false;
+  }
+  if (cond.enemiesAtLeast !== undefined) {
+    const n = ctx.units.filter((u) => u.alive && u.side !== self.side).length;
+    if (n < cond.enemiesAtLeast) return false;
+  }
+  if (cond.otherAlliesAtMost !== undefined) {
+    const n = ctx.units.filter((u) => u.alive && u.side === self.side && u !== self).length;
+    if (n > cond.otherAlliesAtMost) return false;
+  }
+  if (cond.actorHasTag !== undefined && !(ctx.eventActor && hasTag(ctx.eventActor, cond.actorHasTag))) return false;
   if (cond.selfControlled !== undefined && cond.selfControlled !== isControlled(self)) return false;
   if (cond.selfHasTag !== undefined && !hasTag(self, cond.selfHasTag)) return false;
   if (cond.selfStackAtLeast && !(stackCount(self, cond.selfStackAtLeast.tag) >= cond.selfStackAtLeast.n)) return false;
@@ -59,7 +77,11 @@ function hasTag(u: Combatant, tag: string): boolean {
 
 /** Stacks for a tag: stat-buff stacks today, plus resource counters once M9.3 lands. */
 export function stackCount(u: Combatant, tag: string): number {
-  return countStacks(u, tag) + (u.resources?.[tag] ?? 0);
+  return countAnyStacks(u, tag) + (u.resources?.[tag] ?? 0);
+}
+
+function hpShare(u: Combatant): number {
+  return u.maxHp > 0 ? u.hp / u.maxHp : 0;
 }
 
 function hpBelow(u: Combatant, fraction: number): boolean {

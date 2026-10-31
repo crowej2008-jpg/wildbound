@@ -28,7 +28,7 @@
             "buff": {
               "tag": "shred-sAtk",
               "kind": "stat",
-              "field": "sAtk",
+              "field": "atkPct",
               "amount": -0.1,
               "turns": 3
             }
@@ -41,7 +41,7 @@
             "buff": {
               "tag": "steal-sAtk",
               "kind": "stat",
-              "field": "sAtk",
+              "field": "atkPct",
               "amount": 0.1,
               "turns": 3,
               "maxStacks": 1
@@ -105,7 +105,7 @@
               "buff": {
                 "tag": "self-sAtk",
                 "kind": "stat",
-                "field": "sAtk",
+                "field": "atkPct",
                 "amount": 0.2,
                 "turns": 1
               }
@@ -167,14 +167,15 @@
           {
             "op": "buff",
             "target": {
-              "rule": "column"
+              "side": "ally",
+              "rule": "self"
             },
             "buff": {
-              "tag": "mark-dmgRdct",
+              "tag": "deoxys-guard",
               "kind": "stat",
               "field": "dmgRdct",
               "amount": 0.15,
-              "turns": 2
+              "turns": 3
             }
           }
         ]
@@ -189,18 +190,7 @@
           {
             "op": "control",
             "target": {
-              "rule": "row"
-            },
-            "control": {
-              "kind": "taunt",
-              "chance": null,
-              "turns": 1
-            }
-          },
-          {
-            "op": "control",
-            "target": {
-              "rule": "row"
+              "event": true
             },
             "control": {
               "kind": "taunt",
@@ -260,14 +250,36 @@
                 "kind": "stat",
                 "field": "dmgRdct",
                 "amount": 0.03,
-                "turns": 99
+                "turns": 99,
+                "maxStacks": 4,
+                "undispellable": true
               }
+            }
+          ]
+        },
+        {
+          "on": "turnStart",
+          "condition": {
+            "round": {
+              "from": 3,
+              "every": 4
+            }
+          },
+          "effects": [
+            {
+              "op": "extraAction",
+              "target": {
+                "side": "ally",
+                "rule": "self"
+              },
+              "slot": "ult",
+              "noRage": true
             }
           ]
         }
       ],
       "rageStart": 500,
-      "rageOnHit": 1
+      "rageOnHit": 125
     }
   },
   {
@@ -354,6 +366,18 @@
         }
       ],
       "triggers": [
+        {
+          "on": "afterNormal",
+          "rage": 500
+        },
+        {
+          "on": "afterBasic",
+          "rage": 500
+        },
+        {
+          "on": "afterUlt",
+          "rage": 250
+        },
         {
           "on": "turnStart",
           "effects": [
@@ -497,14 +521,35 @@
           1
         ],
         "rule": "backline",
+        "targets": 1,
         "effects": [
           {
-            "op": "resource",
+            "op": "dot",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "tag": "frost",
-            "delta": 1
+            "dot": {
+              "share": 0.3,
+              "basis": "casterAtk",
+              "turns": 3,
+              "maxStacks": 2,
+              "type": "S"
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "frost-ctrlres",
+              "kind": "stat",
+              "field": "controlRes",
+              "amount": -0.15,
+              "turns": 3,
+              "maxStacks": 2
+            }
           }
         ]
       },
@@ -514,25 +559,45 @@
           1.2
         ],
         "rule": "backline",
+        "targets": 1,
         "effects": [
           {
             "op": "control",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "control": {
               "kind": "freeze",
-              "chance": null,
-              "turns": 1
+              "chance": null
             }
           },
           {
-            "op": "resource",
+            "op": "dot",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "tag": "frost",
-            "delta": 1
+            "dot": {
+              "share": 0.3,
+              "basis": "casterAtk",
+              "turns": 3,
+              "maxStacks": 2,
+              "type": "S"
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "frost-ctrlres",
+              "kind": "stat",
+              "field": "controlRes",
+              "amount": -0.15,
+              "turns": 3,
+              "maxStacks": 2
+            }
           }
         ]
       },
@@ -542,49 +607,43 @@
           2.5
         ],
         "rule": "backline",
+        "targets": 1,
         "effects": [
           {
             "op": "control",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "control": {
               "kind": "freeze",
-              "chance": 0.3,
-              "turns": 1
+              "chance": 0.3
             }
-          },
-          {
-            "op": "resource",
-            "target": {
-              "rule": "backline"
-            },
-            "tag": "frost",
-            "delta": 1
           },
           {
             "op": "dot",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "tag": "frost",
             "dot": {
-              "share": 0.15,
+              "share": 0.3,
               "basis": "casterAtk",
+              "turns": 3,
+              "maxStacks": 2,
               "type": "S"
             }
           },
           {
             "op": "buff",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "buff": {
-              "tag": "shred-controlRes",
+              "tag": "frost-ctrlres",
               "kind": "stat",
               "field": "controlRes",
               "amount": -0.15,
-              "turns": 2,
+              "turns": 3,
               "maxStacks": 2
             }
           }
@@ -600,93 +659,52 @@
         {
           "field": "sAtk",
           "mult": 1.25
+        },
+        {
+          "field": "crit",
+          "add": 0.45
+        },
+        {
+          "field": "critRes",
+          "add": 0.08
+        },
+        {
+          "field": "critPower",
+          "add": 0.12
+        },
+        {
+          "field": "block",
+          "add": 0.06
+        },
+        {
+          "field": "blockPower",
+          "add": 0.06
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.1
         }
       ],
       "triggers": [
+        {
+          "on": "afterNormal",
+          "rage": 500
+        },
+        {
+          "on": "afterBasic",
+          "rage": 500
+        },
+        {
+          "on": "afterUlt",
+          "rage": 250
+        },
         {
           "on": "battleStart",
           "effects": [
             {
               "op": "buff",
               "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-crit",
-                "kind": "stat",
-                "field": "crit",
-                "amount": 0.45,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-critRes",
-                "kind": "stat",
-                "field": "critRes",
-                "amount": 0.08,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-critPower",
-                "kind": "stat",
-                "field": "critPower",
-                "amount": 0.12,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-block",
-                "kind": "stat",
-                "field": "block",
-                "amount": 0.06,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-blockPower",
-                "kind": "stat",
-                "field": "blockPower",
-                "amount": 0.06,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-guardBreak",
-                "kind": "stat",
-                "field": "guardBreak",
-                "amount": 0.1,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
+                "side": "ally",
                 "rule": "self"
               },
               "buff": {
@@ -703,26 +721,44 @@
           "on": "onHit",
           "effects": [
             {
-              "op": "control",
+              "op": "dot",
               "target": {
-                "rule": "column"
+                "event": true
               },
-              "control": {
-                "kind": "freeze",
-                "chance": 0.25,
-                "turns": 3
+              "tag": "frost",
+              "dot": {
+                "share": 0.3,
+                "basis": "casterAtk",
+                "turns": 3,
+                "maxStacks": 2,
+                "type": "S"
               }
             },
             {
-              "op": "resource",
+              "op": "buff",
               "target": {
-                "rule": "column"
+                "event": true
               },
-              "tag": "frost",
-              "delta": 1
+              "buff": {
+                "tag": "frost-ctrlres",
+                "kind": "stat",
+                "field": "controlRes",
+                "amount": -0.15,
+                "turns": 3,
+                "maxStacks": 2
+              }
+            },
+            {
+              "op": "control",
+              "target": {
+                "event": true
+              },
+              "control": {
+                "kind": "freeze",
+                "chance": 0.25
+              }
             }
-          ],
-          "chance": 0.25
+          ]
         }
       ],
       "rageStart": 500
@@ -748,15 +784,13 @@
           1.2
         ],
         "rule": "row",
-        "ignoreShield": true,
         "effects": [
           {
-            "op": "shield",
+            "op": "breakShield",
             "target": {
-              "rule": "row"
+              "event": true
             },
-            "share": 0.6,
-            "basis": "casterHp"
+            "chance": 0.6
           }
         ]
       },
@@ -765,7 +799,23 @@
         "rates": [
           1.4
         ],
-        "rule": "backline"
+        "rule": "backline",
+        "effects": [
+          {
+            "op": "buff",
+            "target": {
+              "side": "ally",
+              "rule": "all"
+            },
+            "buff": {
+              "tag": "song-lifesteal",
+              "kind": "stat",
+              "field": "lifesteal",
+              "amount": 0.2,
+              "turns": 2
+            }
+          }
+        ]
       }
     },
     "talents": {
@@ -804,7 +854,53 @@
         }
       ],
       "rageStart": 1000,
-      "basicRate": 0.6
+      "basicRate": 0.6,
+      "triggers": [
+        {
+          "on": "battleStart",
+          "effects": [
+            {
+              "op": "buff",
+              "target": {
+                "side": "ally",
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "first-song-spd",
+                "kind": "stat",
+                "field": "spd",
+                "amount": 30,
+                "turns": 99
+              }
+            }
+          ]
+        },
+        {
+          "on": "afterUlt",
+          "maxFires": 1,
+          "effects": [
+            {
+              "op": "dispel",
+              "target": {
+                "side": "ally",
+                "rule": "self"
+              },
+              "kinds": [
+                "first-song-spd"
+              ]
+            }
+          ]
+        }
+      ],
+      "damageMods": [
+        {
+          "tag": "melody",
+          "dmg": 0.3,
+          "condition": {
+            "targetControlled": true
+          }
+        }
+      ]
     }
   },
   {
@@ -973,24 +1069,33 @@
           1.5
         ],
         "rule": "highest_spd",
+        "filters": [
+          "fullRage"
+        ],
         "effects": [
           {
             "op": "control",
             "target": {
-              "rule": "highest_spd"
+              "event": true
             },
             "control": {
-              "kind": "control",
-              "chance": 0.7
-            }
+              "kind": "stun",
+              "chance": null
+            },
+            "chance": 0.7
           },
           {
-            "op": "resource",
+            "op": "buff",
             "target": {
-              "rule": "highest_spd"
+              "event": true
             },
-            "tag": "ghost-seal",
-            "delta": 1
+            "buff": {
+              "tag": "ghost-seal",
+              "kind": "rageBlock",
+              "bigRounds": 1,
+              "undispellable": true
+            },
+            "chance": 0.7
           }
         ]
       },
@@ -1002,12 +1107,28 @@
         "rule": "frontline",
         "effects": [
           {
-            "op": "resource",
+            "op": "buff",
             "target": {
-              "rule": "frontline"
+              "event": true
             },
-            "tag": "moongeist-hit",
-            "delta": 1
+            "buff": {
+              "tag": "moongeist-spd",
+              "kind": "stat",
+              "field": "spd",
+              "amount": -10,
+              "bigRounds": 1
+            },
+            "chance": 0.5
+          },
+          {
+            "op": "control",
+            "target": {
+              "event": true
+            },
+            "control": {
+              "kind": "shallowSleep",
+              "chance": 0.5
+            }
           }
         ]
       }
@@ -1049,11 +1170,24 @@
       ],
       "triggers": [
         {
+          "on": "afterNormal",
+          "rage": 500
+        },
+        {
+          "on": "afterBasic",
+          "rage": 500
+        },
+        {
+          "on": "afterUlt",
+          "rage": 250
+        },
+        {
           "on": "battleStart",
           "effects": [
             {
               "op": "buff",
               "target": {
+                "side": "ally",
                 "rule": "self"
               },
               "buff": {
@@ -1065,10 +1199,29 @@
               }
             }
           ]
+        },
+        {
+          "on": "battleStart",
+          "effects": [
+            {
+              "op": "buff",
+              "target": {
+                "side": "ally",
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "lunar-first",
+                "kind": "stat",
+                "field": "basicRate",
+                "amount": 0.6,
+                "bigRounds": 1
+              }
+            }
+          ]
         }
       ],
       "rageStart": 500,
-      "basicRate": 1
+      "basicRate": 0.6
     }
   },
   {
@@ -1101,43 +1254,16 @@
         ],
         "rule": "row",
         "lifesteal": 0.4,
-        "ignoreDefense": 0.15,
         "effects": [
           {
-            "op": "control",
-            "target": {
-              "rule": "self"
-            },
-            "control": {
-              "kind": "sleep",
-              "chance": null
-            }
-          },
-          {
             "op": "resource",
             "target": {
+              "side": "ally",
               "rule": "self"
             },
             "tag": "nightmare",
-            "delta": 1
-          },
-          {
-            "op": "control",
-            "target": {
-              "rule": "row"
-            },
-            "control": {
-              "kind": "sleep",
-              "chance": null
-            }
-          },
-          {
-            "op": "resource",
-            "target": {
-              "rule": "row"
-            },
-            "tag": "nightmare",
-            "delta": 1
+            "delta": 1,
+            "max": 2
           }
         ]
       }
@@ -1151,93 +1277,52 @@
         {
           "field": "pAtk",
           "mult": 1.25
+        },
+        {
+          "field": "crit",
+          "add": 0.45
+        },
+        {
+          "field": "critRes",
+          "add": 0.08
+        },
+        {
+          "field": "critPower",
+          "add": 0.12
+        },
+        {
+          "field": "block",
+          "add": 0.06
+        },
+        {
+          "field": "blockPower",
+          "add": 0.06
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.1
         }
       ],
       "triggers": [
+        {
+          "on": "afterNormal",
+          "rage": 500
+        },
+        {
+          "on": "afterBasic",
+          "rage": 500
+        },
+        {
+          "on": "afterUlt",
+          "rage": 250
+        },
         {
           "on": "turnStart",
           "effects": [
             {
               "op": "buff",
               "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "tick-crit",
-                "kind": "stat",
-                "field": "crit",
-                "amount": 0.45,
-                "turns": 99
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "tick-critRes",
-                "kind": "stat",
-                "field": "critRes",
-                "amount": 0.08,
-                "turns": 99
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "tick-critPower",
-                "kind": "stat",
-                "field": "critPower",
-                "amount": 0.12,
-                "turns": 99
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "tick-block",
-                "kind": "stat",
-                "field": "block",
-                "amount": 0.06,
-                "turns": 99
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "tick-blockPower",
-                "kind": "stat",
-                "field": "blockPower",
-                "amount": 0.06,
-                "turns": 99
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "tick-guardBreak",
-                "kind": "stat",
-                "field": "guardBreak",
-                "amount": 0.1,
-                "turns": 99
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
+                "side": "ally",
                 "rule": "self"
               },
               "buff": {
@@ -1245,43 +1330,69 @@
                 "kind": "stat",
                 "field": "dmgBoost",
                 "amount": 0.015,
-                "turns": 99
+                "turns": 99,
+                "maxStacks": 4
               }
             }
           ]
         },
         {
           "on": "turnStart",
+          "condition": {
+            "selfControlled": true
+          },
           "effects": [
+            {
+              "op": "cleanse",
+              "target": {
+                "side": "ally",
+                "rule": "self"
+              },
+              "kinds": [
+                "control",
+                "silence",
+                "confusion",
+                "paralysis",
+                "disarm",
+                "noBasic",
+                "noCrit"
+              ]
+            },
             {
               "op": "shield",
               "target": {
+                "side": "ally",
                 "rule": "self"
               },
               "share": 3.25,
               "basis": "casterAtk"
             },
             {
-              "op": "cleanse",
-              "target": {
-                "rule": "self"
-              }
-            },
-            {
               "op": "buff",
               "target": {
+                "side": "ally",
                 "rule": "self"
               },
               "buff": {
-                "tag": "immunity",
+                "tag": "dark-void-immune",
                 "kind": "immune",
-                "turns": 2
+                "turns": 3
               }
             }
           ]
         }
       ],
-      "rageStart": 500
+      "rageStart": 500,
+      "damageMods": [
+        {
+          "tag": "nightmare",
+          "slot": "ult",
+          "dmg": 0.15,
+          "scale": {
+            "resource": "nightmare"
+          }
+        }
+      ]
     }
   },
   {
@@ -1313,7 +1424,7 @@
             "buff": {
               "tag": "shred-sAtk",
               "kind": "stat",
-              "field": "sAtk",
+              "field": "atkPct",
               "amount": -0.1,
               "turns": 3
             }
@@ -1326,7 +1437,7 @@
             "buff": {
               "tag": "steal-sAtk",
               "kind": "stat",
-              "field": "sAtk",
+              "field": "atkPct",
               "amount": 0.1,
               "turns": 3,
               "maxStacks": 1
@@ -1390,7 +1501,7 @@
               "buff": {
                 "tag": "self-sAtk",
                 "kind": "stat",
-                "field": "sAtk",
+                "field": "atkPct",
                 "amount": 0.2,
                 "turns": 1
               }
@@ -1587,14 +1698,35 @@
           1
         ],
         "rule": "backline",
+        "targets": 1,
         "effects": [
           {
-            "op": "resource",
+            "op": "dot",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "tag": "frost",
-            "delta": 1
+            "dot": {
+              "share": 0.3,
+              "basis": "casterAtk",
+              "turns": 3,
+              "maxStacks": 2,
+              "type": "S"
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "frost-ctrlres",
+              "kind": "stat",
+              "field": "controlRes",
+              "amount": -0.15,
+              "turns": 3,
+              "maxStacks": 2
+            }
           }
         ]
       },
@@ -1604,25 +1736,45 @@
           1.2
         ],
         "rule": "backline",
+        "targets": 1,
         "effects": [
           {
             "op": "control",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "control": {
               "kind": "freeze",
-              "chance": null,
-              "turns": 1
+              "chance": null
             }
           },
           {
-            "op": "resource",
+            "op": "dot",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "tag": "frost",
-            "delta": 1
+            "dot": {
+              "share": 0.3,
+              "basis": "casterAtk",
+              "turns": 3,
+              "maxStacks": 2,
+              "type": "S"
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "frost-ctrlres",
+              "kind": "stat",
+              "field": "controlRes",
+              "amount": -0.15,
+              "turns": 3,
+              "maxStacks": 2
+            }
           }
         ]
       },
@@ -1632,49 +1784,43 @@
           2.8
         ],
         "rule": "backline",
+        "targets": 1,
         "effects": [
           {
             "op": "control",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "control": {
               "kind": "freeze",
-              "chance": 0.3,
-              "turns": 1
+              "chance": 0.3
             }
-          },
-          {
-            "op": "resource",
-            "target": {
-              "rule": "backline"
-            },
-            "tag": "frost",
-            "delta": 1
           },
           {
             "op": "dot",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "tag": "frost",
             "dot": {
-              "share": 0.15,
+              "share": 0.3,
               "basis": "casterAtk",
+              "turns": 3,
+              "maxStacks": 2,
               "type": "S"
             }
           },
           {
             "op": "buff",
             "target": {
-              "rule": "backline"
+              "event": true
             },
             "buff": {
-              "tag": "shred-controlRes",
+              "tag": "frost-ctrlres",
               "kind": "stat",
               "field": "controlRes",
               "amount": -0.15,
-              "turns": 2,
+              "turns": 3,
               "maxStacks": 2
             }
           }
@@ -1690,93 +1836,56 @@
         {
           "field": "sAtk",
           "mult": 1.25
+        },
+        {
+          "field": "crit",
+          "add": 0.45
+        },
+        {
+          "field": "critRes",
+          "add": 0.08
+        },
+        {
+          "field": "critPower",
+          "add": 0.12
+        },
+        {
+          "field": "block",
+          "add": 0.06
+        },
+        {
+          "field": "blockPower",
+          "add": 0.06
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.1
+        },
+        {
+          "field": "basicRate",
+          "add": 0.2
         }
       ],
       "triggers": [
+        {
+          "on": "afterNormal",
+          "rage": 500
+        },
+        {
+          "on": "afterBasic",
+          "rage": 500
+        },
+        {
+          "on": "afterUlt",
+          "rage": 250
+        },
         {
           "on": "battleStart",
           "effects": [
             {
               "op": "buff",
               "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-crit",
-                "kind": "stat",
-                "field": "crit",
-                "amount": 0.45,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-critRes",
-                "kind": "stat",
-                "field": "critRes",
-                "amount": 0.08,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-critPower",
-                "kind": "stat",
-                "field": "critPower",
-                "amount": 0.12,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-block",
-                "kind": "stat",
-                "field": "block",
-                "amount": 0.06,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-blockPower",
-                "kind": "stat",
-                "field": "blockPower",
-                "amount": 0.06,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
-                "rule": "self"
-              },
-              "buff": {
-                "tag": "engage-guardBreak",
-                "kind": "stat",
-                "field": "guardBreak",
-                "amount": 0.1,
-                "turns": 2
-              }
-            },
-            {
-              "op": "buff",
-              "target": {
+                "side": "ally",
                 "rule": "self"
               },
               "buff": {
@@ -1793,27 +1902,41 @@
           "on": "onHit",
           "effects": [
             {
-              "op": "resource",
+              "op": "dot",
               "target": {
-                "rule": "column"
+                "event": true
               },
               "tag": "frost",
-              "delta": 1
-            }
-          ]
-        },
-        {
-          "on": "battleStart",
-          "effects": [
+              "dot": {
+                "share": 0.3,
+                "basis": "casterAtk",
+                "turns": 3,
+                "maxStacks": 2,
+                "type": "S"
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "event": true
+              },
+              "buff": {
+                "tag": "frost-ctrlres",
+                "kind": "stat",
+                "field": "controlRes",
+                "amount": -0.15,
+                "turns": 3,
+                "maxStacks": 2
+              }
+            },
             {
               "op": "control",
               "target": {
-                "rule": "self"
+                "event": true
               },
               "control": {
                 "kind": "freeze",
-                "chance": 0.25,
-                "turns": 3
+                "chance": 0.25
               }
             }
           ]
@@ -1846,18 +1969,43 @@
       "ult": {
         "type": "S",
         "rates": [
-          0
+          1.3
         ],
-        "rule": "column",
+        "rule": "all",
         "effects": [
           {
-            "op": "resource",
+            "op": "buff",
             "target": {
               "side": "ally",
-              "rule": "column"
+              "rule": "self"
             },
-            "tag": "delta-airflow",
-            "consume": 2
+            "buff": {
+              "tag": "rayquaza-guard",
+              "kind": "stat",
+              "field": "dmgRdct",
+              "amount": 0.1,
+              "turns": 99,
+              "maxStacks": 1,
+              "consumeOnHit": true
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "side": "ally",
+              "rule": "all",
+              "hasTag": "delta-link",
+              "excludeSelf": true
+            },
+            "buff": {
+              "tag": "delta-airflow",
+              "kind": "stat",
+              "field": "dmgRdct",
+              "amount": 0.3,
+              "turns": 99,
+              "maxStacks": 2,
+              "consumeOnHit": true
+            }
           }
         ]
       }
@@ -1881,7 +2029,7 @@
           "add": 0.32
         },
         {
-          "field": "crit",
+          "field": "critPower",
           "add": 0.15
         },
         {
@@ -1891,19 +2039,94 @@
         {
           "field": "blockPower",
           "add": 0.06
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.51
         }
       ],
       "triggers": [
         {
+          "on": "afterNormal",
+          "rage": 500
+        },
+        {
+          "on": "afterBasic",
+          "rage": 500
+        },
+        {
+          "on": "afterUlt",
+          "rage": 250
+        },
+        {
           "on": "battleStart",
           "effects": [
             {
-              "op": "heal",
+              "op": "buff",
               "target": {
-                "rule": "column"
+                "side": "ally",
+                "rule": "same_position",
+                "excludeSelf": true
               },
-              "rate": 0.25,
-              "basis": "targetMaxHp"
+              "buff": {
+                "tag": "delta-link",
+                "kind": "stack",
+                "turns": 99,
+                "undispellable": true
+              }
+            },
+            {
+              "op": "buff",
+              "target": {
+                "side": "ally",
+                "rule": "same_position",
+                "excludeSelf": true
+              },
+              "buff": {
+                "tag": "delta-stream",
+                "kind": "stat",
+                "field": "dmgRdct",
+                "amount": 0.3,
+                "turns": 99,
+                "maxStacks": 1,
+                "consumeOnHit": true
+              }
+            }
+          ]
+        },
+        {
+          "on": "roundStart",
+          "effects": [
+            {
+              "op": "buff",
+              "target": {
+                "side": "ally",
+                "rule": "self"
+              },
+              "buff": {
+                "tag": "round-dmgBoost",
+                "kind": "stat",
+                "field": "dmgBoost",
+                "amount": 0.025,
+                "turns": 99,
+                "maxStacks": 4
+              }
+            }
+          ]
+        },
+        {
+          "on": "onAllyCrit",
+          "condition": {
+            "actorHasTag": "delta-link"
+          },
+          "effects": [
+            {
+              "op": "damage",
+              "target": {
+                "event": true
+              },
+              "rate": 0.3,
+              "type": "S"
             }
           ]
         }
@@ -1924,26 +2147,7 @@
           1.1
         ],
         "rule": "column",
-        "effects": [
-          {
-            "op": "control",
-            "target": {
-              "rule": "column"
-            },
-            "control": {
-              "kind": "confinement",
-              "chance": null
-            }
-          },
-          {
-            "op": "resource",
-            "target": {
-              "rule": "column"
-            },
-            "tag": "darkness-confinement",
-            "delta": 1
-          }
-        ]
+        "hasTag": "darkness-confinement"
       },
       "basic": {
         "type": "P",
@@ -1951,45 +2155,32 @@
           1.1
         ],
         "rule": "column",
+        "hasTag": "darkness-confinement",
         "effects": [
-          {
-            "op": "control",
-            "target": {
-              "rule": "column"
-            },
-            "control": {
-              "kind": "confinement",
-              "chance": null
-            }
-          },
-          {
-            "op": "control",
-            "target": {
-              "rule": "column"
-            },
-            "control": {
-              "kind": "confinement",
-              "chance": null
-            }
-          },
           {
             "op": "rage",
             "target": {
-              "rule": "column"
+              "event": true
+            },
+            "condition": {
+              "targetHasTag": "darkness-confinement"
             },
             "delta": -125
           },
           {
             "op": "buff",
             "target": {
-              "rule": "column"
+              "event": true
             },
             "buff": {
-              "tag": "shred-pAtk",
+              "tag": "confined-atk",
               "kind": "stat",
-              "field": "pAtk",
+              "field": "atkPct",
               "amount": -0.1,
               "turns": 2
+            },
+            "condition": {
+              "targetHasTag": "darkness-confinement"
             }
           }
         ]
@@ -2004,47 +2195,16 @@
           {
             "op": "control",
             "target": {
-              "rule": "all"
+              "rule": "random",
+              "n": 1,
+              "rowFilter": "back"
             },
             "control": {
-              "kind": "confinement",
+              "kind": "darkness-confinement",
               "chance": null
-            }
-          },
-          {
-            "op": "resource",
-            "target": {
-              "rule": "all"
             },
-            "tag": "darkness-confinement",
-            "delta": 1
-          },
-          {
-            "op": "control",
-            "target": {
-              "rule": "all"
-            },
-            "control": {
-              "kind": "confinement",
-              "chance": null
-            }
-          },
-          {
-            "op": "resource",
-            "target": {
-              "rule": "all"
-            },
-            "tag": "darkness-confinement",
-            "delta": 1
-          },
-          {
-            "op": "control",
-            "target": {
-              "rule": "all"
-            },
-            "control": {
-              "kind": "confinement",
-              "chance": null
+            "condition": {
+              "enemiesAtLeast": 2
             }
           }
         ]
@@ -2069,7 +2229,7 @@
           "add": 0.22
         },
         {
-          "field": "crit",
+          "field": "critPower",
           "add": 0.06
         },
         {
@@ -2081,8 +2241,8 @@
           "add": 0.25
         },
         {
-          "field": "spd",
-          "add": 0.2
+          "field": "guardBreak",
+          "add": 0.15
         }
       ],
       "triggers": [
@@ -2090,36 +2250,38 @@
           "on": "battleStart",
           "effects": [
             {
-              "op": "dot",
+              "op": "buff",
               "target": {
+                "side": "ally",
                 "rule": "self"
               },
-              "tag": "dot",
-              "dot": {
-                "share": 0.15,
-                "basis": "casterAtk",
-                "type": "P"
+              "buff": {
+                "tag": "origin-lugia-endure",
+                "kind": "endure",
+                "undispellable": true
               }
             }
           ]
         },
         {
-          "on": "battleStart",
+          "on": "onEndure",
+          "maxFires": 1,
           "effects": [
             {
               "op": "control",
               "target": {
+                "side": "ally",
                 "rule": "self"
               },
               "control": {
                 "kind": "confinement",
-                "chance": null,
-                "turns": 1
+                "chance": null
               }
             },
             {
               "op": "rage",
               "target": {
+                "side": "ally",
                 "rule": "self"
               },
               "delta": 150
@@ -2127,24 +2289,39 @@
           ]
         },
         {
-          "on": "battleStart",
+          "on": "turnStart",
           "effects": [
             {
-              "op": "control",
+              "op": "buff",
               "target": {
                 "side": "ally",
-                "rule": "column"
+                "rule": "all"
               },
-              "control": {
-                "kind": "confinement",
-                "chance": null
+              "buff": {
+                "tag": "ally-dmgRdct",
+                "kind": "stat",
+                "field": "dmgRdct",
+                "amount": 0.05,
+                "turns": 99,
+                "maxStacks": 4,
+                "undispellable": true
               }
             }
           ]
         }
       ],
       "rageStart": 500,
-      "rageOnHit": 1
+      "rageOnHit": 125,
+      "damageMods": [
+        {
+          "tag": "origin-lugia-guard",
+          "role": "defend",
+          "type": "P",
+          "dmg": 0.15,
+          "scale": "selfMissingHp",
+          "cap": 0.15
+        }
+      ]
     }
   },
   {
@@ -2159,19 +2336,19 @@
         "rates": [
           1.2
         ],
-        "rule": "column"
+        "rule": "frontline"
       },
       "basic": {
         "type": "S",
         "rates": [
           1.5
         ],
-        "rule": "column",
+        "rule": "frontline",
         "effects": [
           {
             "op": "buff",
             "target": {
-              "rule": "column"
+              "event": true
             },
             "buff": {
               "tag": "heal-block",
@@ -2193,10 +2370,39 @@
           {
             "op": "damage",
             "target": {
-              "rule": "all"
+              "event": true
             },
             "basis": "targetMaxHp",
-            "share": 0.12
+            "share": 0.12,
+            "condition": {
+              "targetClass": "guardian"
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "rule": "all",
+              "rowFilter": "front"
+            },
+            "buff": {
+              "tag": "heal-cut",
+              "kind": "stat",
+              "field": "receiveHealBoost",
+              "amount": -0.3,
+              "turns": 2
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "side": "ally",
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "doubled-basic",
+              "kind": "stack",
+              "turns": 99
+            }
           }
         ]
       }
@@ -2220,7 +2426,7 @@
           "add": 0.32
         },
         {
-          "field": "crit",
+          "field": "critPower",
           "add": 0.15
         },
         {
@@ -2230,10 +2436,62 @@
         {
           "field": "blockPower",
           "add": 0.06
+        },
+        {
+          "field": "guardBreak",
+          "add": 0.51
         }
       ],
       "rageStart": 1000,
-      "basicRate": 1
+      "basicRate": 1,
+      "triggers": [
+        {
+          "on": "afterBasic",
+          "effects": [
+            {
+              "op": "splash",
+              "target": {
+                "event": true
+              },
+              "share": 0.1
+            },
+            {
+              "op": "buff",
+              "target": {
+                "event": true
+              },
+              "buff": {
+                "tag": "deepen",
+                "kind": "stat",
+                "field": "dmgRdct",
+                "amount": -0.1,
+                "turns": 2,
+                "maxStacks": 1
+              }
+            },
+            {
+              "op": "dispel",
+              "target": {
+                "side": "ally",
+                "rule": "self"
+              },
+              "kinds": [
+                "doubled-basic"
+              ]
+            }
+          ]
+        }
+      ],
+      "damageMods": [
+        {
+          "tag": "doubled-basic",
+          "slot": "basic",
+          "atk": 1,
+          "condition": {
+            "selfHasTag": "doubled-basic"
+          }
+        }
+      ]
     }
   }
 ]

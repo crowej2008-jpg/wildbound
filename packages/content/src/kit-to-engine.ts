@@ -19,7 +19,7 @@ import type { KitJson } from './schemas';
 
 interface ContentBuffSpec {
   tag: string;
-  kind?: 'stat' | 'immune' | 'regen' | 'stack' | 'taunt' | 'rageBlock';
+  kind?: BuffSpec['kind'];
   field?: CombatField;
   amount?: number;
   turns?: number;
@@ -78,6 +78,7 @@ function toEngineSkill(slot: SkillSlot, s: ContentSkill): SkillDef {
     side: s.side,
     rowFilter: s.rowFilter,
     filters: s.filters,
+    hasTag: s.hasTag,
     hpShareBasis: s.hpShareBasis,
     trueDamage: s.trueDamage,
     ignoreShield: s.ignoreShield,

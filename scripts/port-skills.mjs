@@ -32,6 +32,11 @@ const slug = (name) =>
 
 const num = (v) => Number.parseFloat(v);
 const pct = (v) => num(v) / 100;
+/** E3: a Rage amount as written: "1/8" → 125 (shares of the 1,000-point bar), "300" → 300. */
+const rageAmount = (v) => {
+  const frac = String(v).match(/(\d+)\s*\/\s*(\d+)/);
+  return frac ? Math.round((1000 * Number(frac[1])) / Number(frac[2])) : Number(v);
+};
 
 const MARK = '\u0001';
 /**
@@ -102,6 +107,15 @@ const FIELD = {
   'block int': 'blockPower',
   'blocking intensity': 'blockPower',
   'block strength': 'blockPower',
+  // E3: the sheet's other spellings ("15% Crit strength, 51% Break", "P.ATK DMG Reduction").
+  'crit strength': 'critPower',
+  'critical strength': 'critPower',
+  break: 'guardBreak',
+  'block break': 'guardBreak',
+  'p.atk dmg reduction': 'pRdct',
+  'p.atk damage reduction': 'pRdct',
+  's.atk dmg reduction': 'sRdct',
+  's.atk damage reduction': 'sRdct',
   'block reduction': 'block',
   'guard break': 'guardBreak',
   'dmg reduction': 'dmgRdct',
@@ -855,6 +869,8 @@ function finalizeSkill(b, kit, rep) {
 }
 
 function parseSkillSlot(slot, desc, kit, rep) {
+  CURRENT.sheetSlot = SHEET_SLOT[slot];
+  CURRENT.clause = desc;
   const b = makeBuilder(slot);
   const cl = splitClauses(desc, true);
   // Some slots state the target in its own clause ("Attacks all enemies")
@@ -872,6 +888,7 @@ function parseSkillSlot(slot, desc, kit, rep) {
     return ok;
   });
   cl.forEach((clause, i) => {
+    CURRENT.clause = clause;
     if (hit[i]) return;
     // A clause that is only a phase marker ("After using Ultimates", "On a
     // crit") carries no mechanic of its own — its riders are the next clauses.
@@ -943,17 +960,22 @@ function parseTalents(creature, kit, rep) {
   const talents = { statMods: [], triggers: [] };
   for (const s of creature.slots) {
     if (!s.slot.startsWith('Talent') && s.slot !== 'Passive') continue;
+    const before = { statMods: talents.statMods.length, triggers: talents.triggers.length };
+    CURRENT.sheetSlot = s.slot;
     for (const clause of splitClauses(s.desc, false)) {
+      CURRENT.clause = clause;
       const c = clause.toLowerCase();
 
-      if (/gain (half|full) rage|rage when engaged/.test(c)) {
+      // E3: "start with half of the rage bar filled" is the same Rage I opening.
+      if (/gain (half|full) rage|rage when engaged|start with (half|full) of the rage bar/.test(c)) {
         talents.rageStart = /full/.test(c) ? 1000 : 500;
         rep.consume('talent:rageStart');
         continue;
       }
       if (/get hit/.test(c) && /rage/.test(c)) {
-        const m = clause.match(/(\d+)\s*(?:\/|or)\s*\d+\s*additional rage/i) || clause.match(/(\d+)\s*additional rage/i);
-        if (m) talents.rageOnHit = Number(m[1]);
+        // E3 fix: "1/8 additional Rage" is a share of the 1,000-point bar (125), not 1 point.
+        const m = clause.match(/(\d+\s*\/\s*\d+|\d+)\s*additional rage/i);
+        if (m) talents.rageOnHit = rageAmount(m[1]);
         rep.consume('talent:rageOnHit');
         continue;
       }
@@ -963,15 +985,31 @@ function parseTalents(creature, kit, rep) {
         rep.consume('talent:rageCutChance');
         continue;
       }
+      // E3: "The chance to trigger a minor skill is increased by 20% (default is 20%)" → 40%.
+      if (/chance to trigger a minor skill is increased by/.test(c)) {
+        const m = clause.match(/increased by\s+(\d+(?:\.\d+)?)\s*%[^]*default is\s+(\d+(?:\.\d+)?)\s*%/i);
+        if (m) talents.basicRate = pct(m[1]) + pct(m[2]);
+        rep.consume('talent:basicRate');
+        continue;
+      }
       if (/triggering rate|trigger probability|triggering probability/.test(c)) {
         const m = clause.match(/\+(\d+(?:\.\d+)?)\s*%/) || clause.match(/(\d+(?:\.\d+)?)\s*%/);
         if (m) talents.basicRate = pct(m[1]);
         rep.consume('talent:basicRate');
         continue;
       }
+      // E3: per-action Rage ("Normal attacks/basic skills generate 1/2 additional Rage",
+      // "Gain 1/4 additional Rage whenever you use basic attacks/basic skills", "Ultimates generate
+      // 1/4 Rage") — shares of the 1,000-point bar, granted after the action.
       if (/additional rage|ultimates generate|generate \d/.test(c) && /rage/.test(c)) {
-        rep.count('talent: per-action Rage generation (not modelled)');
-        continue;
+        const m = clause.match(/(\d+\s*\/\s*\d+|\d+)\s*(?:additional\s+)?rage/i);
+        const amount = m ? rageAmount(m[1]) : 0;
+        const ons = /ultimate/.test(c) ? ['afterUlt'] : ['afterNormal', 'afterBasic'];
+        if (amount > 0) {
+          for (const on of ons) talents.triggers.push({ on, rage: amount });
+          rep.consume('talent: per-action Rage');
+          continue;
+        }
       }
       if (/convert[^]*of damage into healing|damage into healing/.test(c)) {
         rep.count('talent: damage-to-healing conversion (not modelled)');
@@ -1085,10 +1123,61 @@ function parseTalents(creature, kit, rep) {
 
       rep.residual(clause, `${kit.id}.${s.slot}`);
     }
+    // E3: remember which sheet slot each entry came from, so a hand port can replace that slot.
+    for (const m of talents.statMods.slice(before.statMods)) Object.defineProperty(m, '_slot', { value: s.slot });
+    for (const t of talents.triggers.slice(before.triggers)) Object.defineProperty(t, '_slot', { value: s.slot });
   }
   if (talents.statMods.length === 0) delete talents.statMods;
   if (talents.triggers.length === 0) delete talents.triggers;
   return talents;
+}
+
+// ------------------------------------------------------------- E3 hand ports
+/**
+ * `scripts/data/kit-overrides.json`: per kit, the sheet slots written by hand (`slots`; `also` = slots
+ * whose parsed entries stay and are only added to), whole skill
+ * replacements (`skills`), talent entries replacing the parsed ones of those slots (`statMods`,
+ * `triggers`, `damageMods`) and plain talent fields (`set`). Clauses of a hand-ported slot count as
+ * modelled in the report.
+ */
+const OVERRIDES = JSON.parse(readFileSync(resolve(root, 'scripts/data/kit-overrides.json'), 'utf8'));
+const SHEET_SLOT = { normal: 'Basic Attack', basic: 'Basic Skill', ult: 'Ult' };
+const CURRENT = { kit: '', sheetSlot: '', clause: '' };
+
+function isHandPorted() {
+  const o = OVERRIDES[CURRENT.kit];
+  return Boolean(o && [...(o.slots ?? []), ...(o.also ?? [])].includes(CURRENT.sheetSlot));
+}
+
+/**
+ * E3: "+10% S.ATK" / "ATK −8%" buffs were written as flat P.ATK/S.ATK adds of 0.1 / −0.08 points.
+ * A share of attack is the `atkPct` stat (it raises both attacks; a unit only uses its own type).
+ */
+function fixAttackPercents(node) {
+  if (Array.isArray(node)) return node.forEach(fixAttackPercents);
+  if (!node || typeof node !== 'object') return;
+  if ((node.field === 'pAtk' || node.field === 'sAtk') && typeof node.amount === 'number' && Math.abs(node.amount) < 5) {
+    node.field = 'atkPct';
+  }
+  for (const v of Object.values(node)) fixAttackPercents(v);
+}
+
+function applyOverride(kit) {
+  const o = OVERRIDES[kit.id];
+  if (!o) return;
+  const slots = new Set(o.slots ?? []);
+  for (const [slot, def] of Object.entries(o.skills ?? {})) kit.skills[slot] = def;
+  const t = kit.talents ?? {};
+  for (const key of ['statMods', 'triggers']) {
+    const kept = (t[key] ?? []).filter((e) => !slots.has(e._slot));
+    const next = [...kept, ...(o[key] ?? [])];
+    if (next.length > 0) t[key] = next;
+    else delete t[key];
+  }
+  if (o.damageMods) t.damageMods = o.damageMods;
+  Object.assign(t, o.set ?? {});
+  if (Object.keys(t).length > 0) kit.talents = t;
+  else delete kit.talents;
 }
 
 // ------------------------------------------------------------------ reporting
@@ -1097,11 +1186,16 @@ function makeReport() {
   const counts = new Map();
   const fallbacks = [];
   const perKit = new Map();
+  const handPorted = (name) => counts.set(`OK  ${name}`, (counts.get(`OK  ${name}`) ?? 0) + 1);
   return {
     consume: (name) => counts.set(`OK  ${name}`, (counts.get(`OK  ${name}`) ?? 0) + 1),
-    count: (name) => counts.set(`--- ${name}`, (counts.get(`--- ${name}`) ?? 0) + 1),
+    count: (name) => {
+      if (isHandPorted()) return handPorted(`hand-ported (kit-overrides.json): ${name.replace(/ \(not modelled\)/, '')}`);
+      counts.set(`--- ${name}`, (counts.get(`--- ${name}`) ?? 0) + 1);
+    },
     fallback: (where) => fallbacks.push(where),
     residual(clause, where) {
+      if (isHandPorted()) return handPorted('hand-ported (kit-overrides.json): unparsed clause');
       const key = normKey(clause);
       if (key.length < 3) return;
       const entry = residual.get(key) ?? { count: 0, example: clause, where: new Set() };
@@ -1149,6 +1243,7 @@ for (const creature of sheet) {
     continue;
   }
   seen.add(kit.id);
+  CURRENT.kit = kit.id;
   const bySlot = new Map(creature.slots.map((s) => [s.slot, s]));
   const slotFor = (name) => bySlot.get(name)?.desc ?? '';
   atkHint = atkTypeHint(creature);
@@ -1160,8 +1255,12 @@ for (const creature of sheet) {
   const talents = parseTalents(creature, kit, rep);
   if (Object.keys(talents).length > 0) kit.talents = talents;
   else delete kit.talents;
+  fixAttackPercents(kit.skills);
+  fixAttackPercents(kit.talents?.triggers);
+  applyOverride(kit);
 
   for (const s of creature.slots) {
+    CURRENT.sheetSlot = '';
     if (s.notes && s.notes.trim()) rep.count('sheet LV.2+ upgrade text (not modelled)');
   }
 }
@@ -1173,11 +1272,12 @@ for (const f of FILES) {
 }
 
 const lines = [];
-lines.push('# Skill port report (M9.6)');
+lines.push('# Skill port report (M9.6, E3)');
 lines.push('');
 lines.push('Generated by `node scripts/port-skills.mjs` from `scripts/data/pokemon-skills.json`.');
 lines.push(`Source rows: **${sheet.length}** creatures, **${sheet.reduce((n, c) => n + c.slots.length, 0)}** skill rows.`);
 lines.push(`Shipped kits: **${kitBySlug.size}**.`);
+lines.push(`Hand-ported kits (\`scripts/data/kit-overrides.json\`): **${Object.keys(OVERRIDES).filter((k) => !k.startsWith('_')).length}** — ${Object.keys(OVERRIDES).filter((k) => !k.startsWith('_')).join(', ')}.`);
 if (unmatched.length) lines.push(`\nUnmatched sheet creatures: ${unmatched.join(', ')}`);
 if (unported.length) lines.push(`\nKits with no sheet row: ${unported.join(', ')}`);
 lines.push('');
@@ -1203,6 +1303,11 @@ if (worst.length) {
   lines.push(worst.map(([id, n]) => `${id} (${n})`).join(', '));
   lines.push('');
 }
+const handGaps = Object.entries(OVERRIDES).filter(([k, o]) => !k.startsWith('_') && (o.notModelled ?? []).length > 0);
+lines.push(`## Hand-ported, still not modelled (${handGaps.reduce((n, [, o]) => n + o.notModelled.length, 0)} items)`);
+lines.push('');
+for (const [k, o] of handGaps) for (const note of o.notModelled) lines.push(`- **${k}** — ${note}`);
+lines.push('');
 lines.push(`## Unparsed clause patterns (${rep.residualMap.size} distinct, top 60)`);
 lines.push('');
 lines.push('| count | clause | example |');

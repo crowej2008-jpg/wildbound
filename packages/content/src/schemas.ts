@@ -29,7 +29,7 @@ export const targetRuleSchema = z.enum([
 ]);
 export const targetSideSchema = z.enum(['enemy', 'ally']);
 export const targetRowSchema = z.enum(['front', 'back']);
-export const targetFilterSchema = z.enum(['dot', 'controlled', 'debuffed']);
+export const targetFilterSchema = z.enum(['dot', 'controlled', 'debuffed', 'fullRage', 'shielded']);
 
 const conditionSchema = z
   .object({
@@ -48,10 +48,22 @@ const conditionSchema = z
     targetTrait: z.string().min(1).optional(),
     targetHasAnyTag: z.array(z.string().min(1)).min(1).optional(),
     round: z
-      .object({ from: z.number().int().positive().optional(), until: z.number().int().positive().optional(), even: z.boolean().optional() })
+      .object({
+        from: z.number().int().positive().optional(),
+        until: z.number().int().positive().optional(),
+        even: z.boolean().optional(),
+        every: z.number().int().positive().optional(),
+      })
       .strict()
       .optional(),
     selfControlled: z.boolean().optional(),
+    targetShielded: z.boolean().optional(),
+    selfHpBelowTarget: z.boolean().optional(),
+    selfHpAboveTarget: z.boolean().optional(),
+    actorHasTag: z.string().min(1).optional(),
+    enemiesAtLeast: z.number().int().positive().optional(),
+    otherAlliesAtMost: z.number().int().nonnegative().optional(),
+    targetClass: classSchema.optional(),
   })
   .strict();
 
@@ -70,6 +82,8 @@ const dotSpecSchema = z
 const targetSelSchema = z
   .object({
     event: z.literal(true).optional(),
+    hasTag: z.string().min(1).optional(),
+    excludeSelf: z.boolean().optional(),
     side: targetSideSchema.optional(),
     rule: targetRuleSchema.optional(),
     n: z.number().int().positive().optional(),
@@ -110,12 +124,18 @@ const combatFieldSchema = z.enum([
   'atkPct',
   'ignoreBlock',
   'basicRate',
+  'pRdct',
+  'sRdct',
+  'dotTaken',
+  'lifesteal',
 ]);
 
 const buffSpecSchema = z
   .object({
     tag: z.string().min(1),
-    kind: z.enum(['stat', 'immune', 'regen', 'stack', 'taunt', 'rageBlock']).optional(),
+    kind: z
+      .enum(['stat', 'immune', 'regen', 'stack', 'taunt', 'rageBlock', 'disarm', 'noBasic', 'noCrit', 'endure', 'invulnerable'])
+      .optional(),
     field: combatFieldSchema.optional(),
     amount: z.number().optional(),
     turns: z.number().int().positive().optional(),
@@ -123,6 +143,9 @@ const buffSpecSchema = z
     maxStacks: z.number().int().positive().optional(),
     undispellable: z.boolean().optional(),
     scalesWithLevel: z.array(z.tuple([z.number().int().positive(), z.number()])).optional(),
+    consumeOnHit: z.boolean().optional(),
+    endsWithSource: z.boolean().optional(),
+    immuneTo: z.array(z.string().min(1)).optional(),
   })
   .strict();
 
@@ -150,8 +173,10 @@ const effectSchema = z.discriminatedUnion('op', [
       op: z.literal('heal'),
       target: targetSelSchema,
       rate: z.number().min(0),
-      basis: z.enum(['targetMaxHp', 'casterAtk', 'casterSAtk', 'casterCurrentHp']).optional(),
+      basis: z.enum(['targetMaxHp', 'casterAtk', 'casterSAtk', 'casterCurrentHp', 'targetMissingHp', 'eventDamage']).optional(),
       over: z.number().int().positive().optional(),
+      bonusVs: z.object({ condition: conditionSchema, mult: z.number() }).strict().optional(),
+      perResource: z.string().min(1).optional(),
       condition: conditionSchema.optional(),
       chance: z.number().min(0).max(1).optional(),
     })
@@ -193,6 +218,8 @@ const effectSchema = z.discriminatedUnion('op', [
       delta: z.number().optional(),
       pct: z.number().optional(),
       steal: z.boolean().optional(),
+      fill: z.boolean().optional(),
+      force: z.boolean().optional(),
       condition: conditionSchema.optional(),
       chance: z.number().min(0).max(1).optional(),
     })
@@ -218,12 +245,30 @@ const effectSchema = z.discriminatedUnion('op', [
       target: targetSelSchema,
       rate: z.number().min(0).optional(),
       type: z.enum(['P', 'S']).optional(),
-      basis: z.enum(['targetMaxHp', 'targetCurrentHp', 'targetMissingHp']).optional(),
+      basis: z
+        .enum(['targetMaxHp', 'targetCurrentHp', 'targetMissingHp', 'casterCurrentHp', 'casterMissingHp', 'casterLostTotal', 'casterLostLastRound', 'eventDamage'])
+        .optional(),
       share: z.number().min(0).optional(),
       trueDamage: z.boolean().optional(),
       condition: conditionSchema.optional(),
       chance: z.number().min(0).max(1).optional(),
     })
+    .strict(),
+  z
+    .object({
+      op: z.literal('extraAction'),
+      target: targetSelSchema,
+      slot: z.enum(['normal', 'basic', 'ult', 'roll']),
+      noRage: z.boolean().optional(),
+      condition: conditionSchema.optional(),
+      chance: z.number().min(0).max(1).optional(),
+    })
+    .strict(),
+  z
+    .object({ op: z.literal('splash'), target: targetSelSchema, share: z.number().min(0), condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
+    .strict(),
+  z
+    .object({ op: z.literal('breakShield'), target: targetSelSchema, condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
     .strict(),
 ]);
 
@@ -251,6 +296,7 @@ const skillSchema = z
     side: targetSideSchema.optional(),
     rowFilter: targetRowSchema.optional(),
     filters: z.array(targetFilterSchema).optional(),
+    hasTag: z.string().min(1).optional(),
     hpShareBasis: z.enum(['max', 'current', 'missing']).optional(),
     trueDamage: z.boolean().optional(),
     ignoreShield: z.boolean().optional(),
@@ -286,6 +332,12 @@ export const damageModSchema = z
     dmg: z.number().optional(),
     atk: z.number().optional(),
     ignoreBlock: z.number().min(0).max(1).optional(),
+    scale: z
+      .union([z.enum(['selfRage', 'targetRage', 'selfMissingHp', 'selfHp']), z.object({ resource: z.string().min(1) }).strict()])
+      .optional(),
+    cap: z.number().optional(),
+    role: z.enum(['attack', 'defend']).optional(),
+    type: z.enum(['P', 'S']).optional(),
   })
   .strict();
 
@@ -310,6 +362,8 @@ export const triggerSchema = z
       'afterNormal',
       'afterBasic',
       'afterUlt',
+      'onAllyCrit',
+      'onEndure',
     ]),
     hpBelow: z.number().min(0).max(1).optional(),
     chance: z.number().min(0).max(1).optional(),
@@ -336,6 +390,7 @@ const talentSchema = z
       .optional(),
     turnHooks: z.array(z.enum(['allyShelterStack'])).optional(),
     triggers: z.array(triggerSchema).optional(),
+    damageMods: z.array(damageModSchema).optional(),
   })
   .strict();
 

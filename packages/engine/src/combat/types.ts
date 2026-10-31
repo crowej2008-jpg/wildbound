@@ -42,7 +42,14 @@ export type CombatField =
   /** E1: share of the target's Block this unit's hits ignore (0.5 = half). */
   | 'ignoreBlock'
   /** E1: added to the unit's basic-skill chance. */
-  | 'basicRate';
+  | 'basicRate'
+  /** E3: reduction of physical (P.ATK) / special (S.ATK) damage taken, in the G pair. */
+  | 'pRdct'
+  | 'sRdct'
+  /** E3: extra damage taken from damage-over-time ticks. */
+  | 'dotTaken'
+  /** E3: share of the damage dealt healed back (buffable lifesteal). */
+  | 'lifesteal';
 
 /**
  * A conditional stat change owned by an equipment layer (M7). Applied once, at the
@@ -112,7 +119,17 @@ export type BuffKind =
   /** M9.6: forced targeting — the holder's enemy-side skills are aimed at the taunter. */
   | 'taunt'
   /** E1: the holder gains no Rage while this is live (Shell Bell). */
-  | 'rageBlock';
+  | 'rageBlock'
+  /** E3: no normal attack or basic skill (the ultimate still fires when Rage is full). */
+  | 'disarm'
+  /** E3: the basic skill cannot trigger. */
+  | 'noBasic'
+  /** E3: the holder's hits cannot crit. */
+  | 'noCrit'
+  /** E3: fatal damage leaves the holder at 1 HP once (the buff is spent). */
+  | 'endure'
+  /** E3: the holder takes no damage. */
+  | 'invulnerable';
 
 export interface BuffSpec {
   tag: string;
@@ -130,6 +147,12 @@ export interface BuffSpec {
   undispellable?: boolean;
   /** M9: `[level, value][]` ladder replacing `amount` at the caster's level. */
   scalesWithLevel?: [number, number][];
+  /** E3: one stack is removed each time the holder takes a direct hit ("reduced by one layer"). */
+  consumeOnHit?: boolean;
+  /** E3: an `immune` buff that stops only these controls / DoT tags. */
+  immuneTo?: string[];
+  /** E3: removed when the unit that applied it dies. */
+  endsWithSource?: boolean;
 }
 
 export type SkillSlot = 'normal' | 'basic' | 'ult';
@@ -154,7 +177,7 @@ export type TargetSide = 'enemy' | 'ally';
 /** Row restriction applied before the target rule (M9). */
 export type TargetRow = 'front' | 'back';
 /** Predicate a candidate must satisfy to stay targetable (M9). */
-export type TargetFilter = 'dot' | 'controlled' | 'debuffed';
+export type TargetFilter = 'dot' | 'controlled' | 'debuffed' | 'fullRage' | 'shielded';
 
 /**
  * A predicate over the caster/target/battle (M9). Every present clause must hold
@@ -177,9 +200,21 @@ export interface Condition {
   /** E1: the target carries any of these tags (e.g. a burn or a poison). */
   targetHasAnyTag?: string[];
   /** E1: the current big round is in this window (`even` = rounds 2, 4, 6…). */
-  round?: { from?: number; until?: number; even?: boolean };
+  round?: { from?: number; until?: number; even?: boolean; every?: number };
   /** E1: the unit the condition is evaluated for is controlled. */
   selfControlled?: boolean;
+  /** E3: the target carries a shield. */
+  targetShielded?: boolean;
+  /** E3: the unit's HP share is below / above the target's. */
+  selfHpBelowTarget?: boolean;
+  selfHpAboveTarget?: boolean;
+  /** E3: the unit an ally event is about (e.g. the ally that crit) carries this tag. */
+  actorHasTag?: string;
+  /** E3: at least this many living enemies / at most this many other living allies. */
+  enemiesAtLeast?: number;
+  otherAlliesAtMost?: number;
+  /** E3: the target's class (the sheet's [ATK] / [DEF] / [SKILL] Pokémon). */
+  targetClass?: WildClass;
 }
 
 /** A damage-over-time instance (M9). `damageType: 'dot'` + `hpShare` is the M1 form. */
@@ -225,6 +260,8 @@ export interface SkillDef {
   rowFilter?: TargetRow;
   /** M9: candidate predicates; if the narrowed pool is empty the pool is not narrowed. */
   filters?: TargetFilter[];
+  /** E3: prefer targets carrying this tag (Origin Lugia's confined targets). */
+  hasTag?: string;
   /** M9: hpShare basis (default `max`, the measured M1 behaviour). */
   hpShareBasis?: 'max' | 'current' | 'missing';
   /** M9: bypasses every damage factor, both rolls and (by default) shields. */
@@ -256,6 +293,10 @@ export type Effect =
       rate: number;
       basis?: HealBasis;
       over?: number;
+      /** E3: extra multiplier when the condition holds for the healed unit. */
+      bonusVs?: { condition: Condition; mult: number };
+      /** E3: multiply by the caster's stacks of this resource. */
+      perResource?: string;
       condition?: Condition;
       chance?: number;
     }
@@ -268,6 +309,10 @@ export type Effect =
       delta?: number;
       pct?: number;
       steal?: boolean;
+      /** E3: set Rage to the full bar. */
+      fill?: boolean;
+      /** E3: ignores a rage block (Solgaleo's own refill). */
+      force?: boolean;
       condition?: Condition;
       chance?: number;
     }
@@ -279,19 +324,36 @@ export type Effect =
       /** attack ratio (P/S.ATK × rate) */
       rate?: number;
       type?: DamageType;
-      /** or a share of an HP basis */
-      basis?: 'targetMaxHp' | 'targetCurrentHp' | 'targetMissingHp';
+      /** or a share of an HP basis (E3 adds caster-side bases and the event's damage) */
+      basis?:
+        | 'targetMaxHp'
+        | 'targetCurrentHp'
+        | 'targetMissingHp'
+        | 'casterCurrentHp'
+        | 'casterMissingHp'
+        | 'casterLostTotal'
+        | 'casterLostLastRound'
+        | 'eventDamage';
       share?: number;
       trueDamage?: boolean;
       condition?: Condition;
       chance?: number;
-    };
+    }
+  | ExtraEffect;
 
 /**
  * What a heal reads: the target's max HP (default), the caster's P.ATK (`casterAtk`), S.ATK
  * (`casterSAtk`, E1) or current HP (`casterCurrentHp`, E1).
  */
-export type HealBasis = 'targetMaxHp' | 'casterAtk' | 'casterSAtk' | 'casterCurrentHp';
+export type HealBasis =
+  | 'targetMaxHp'
+  | 'casterAtk'
+  | 'casterSAtk'
+  | 'casterCurrentHp'
+  /** E3: the target's lost HP. */
+  | 'targetMissingHp'
+  /** E3: the damage the triggering event dealt (Celebi). */
+  | 'eventDamage';
 
 /**
  * E1: a damage modifier owned by a unit (held items, talents). On each of the unit's direct hits
@@ -306,12 +368,35 @@ export interface DamageMod {
   dmg?: number;
   atk?: number;
   ignoreBlock?: number;
+  /**
+   * E3: scale `dmg`/`atk` by a battle quantity (0–1 shares, or a resource's stacks), capped at
+   * `cap`: e.g. Dialga's damage by its own Rage share, up to 30%.
+   */
+  scale?: 'selfRage' | 'targetRage' | 'selfMissingHp' | 'selfHp' | { resource: string };
+  /** E3: only hits of this damage type (P.ATK / S.ATK). */
+  type?: DamageType;
+  cap?: number;
+  /** E3: `defend` mods belong to the unit being hit; their `dmg` cuts the damage it takes. */
+  role?: 'attack' | 'defend';
 }
+
+/** E3: extra effect ops. */
+export type ExtraEffect =
+  /** Take an extra action right away (`roll` = basic skill at its chance, else normal). */
+  | { op: 'extraAction'; target: TargetSel; slot: SkillSlot | 'roll'; noRage?: boolean; condition?: Condition; chance?: number }
+  /** Splash: the units next to the event's target take `share` of the damage dealt to it. */
+  | { op: 'splash'; target: TargetSel; share: number; condition?: Condition; chance?: number }
+  /** Remove every shield on the target. */
+  | { op: 'breakShield'; target: TargetSel; condition?: Condition; chance?: number };
 
 /** A target selection for an effect (M9): side + rule + narrowing. */
 export interface TargetSel {
   /** E1: the unit the trigger's event is about (the attacker, the one hit, the controller…). */
   event?: boolean;
+  /** E3: prefer units carrying this tag (no narrowing when none do). */
+  hasTag?: string;
+  /** E3: never pick the unit itself (an ally-side pick of "another" ally). */
+  excludeSelf?: boolean;
   side?: TargetSide;
   rule?: TargetRule;
   n?: number;
@@ -355,7 +440,11 @@ export type TriggerOn =
   /** E1: after the owner's normal attack / basic skill / ultimate (target = its first target). */
   | 'afterNormal'
   | 'afterBasic'
-  | 'afterUlt';
+  | 'afterUlt'
+  /** E3: an ally landed a crit (target = the one hit; the ally is the event's actor). */
+  | 'onAllyCrit'
+  /** E3: an endure buff saved the owner from fatal damage. */
+  | 'onEndure';
 
 /**
  * A talent trigger (M9.4): an event on the owner (`on`), optional gates
@@ -393,6 +482,8 @@ export interface TalentDef {
   basicRate?: number;
   /** M9.4: event triggers. */
   triggers?: TriggerDef[];
+  /** E3: the kit's own damage modifiers. */
+  damageMods?: DamageMod[];
 }
 
 export interface KitDef {
@@ -441,6 +532,10 @@ export interface SheetInput {
   atkPct?: number;
   ignoreBlock?: number;
   basicRate?: number;
+  pRdct?: number;
+  sRdct?: number;
+  dotTaken?: number;
+  lifesteal?: number;
 }
 
 export interface SpecInput {
@@ -504,6 +599,10 @@ export interface StatSheet {
   atkPct: number;
   ignoreBlock: number;
   basicRate: number;
+  pRdct: number;
+  sRdct: number;
+  dotTaken: number;
+  lifesteal: number;
 }
 
 export interface Buff {
@@ -524,6 +623,10 @@ export interface Buff {
   undispellable?: boolean;
   /** M9.6: a DoT that bypasses shields. */
   trueDamage?: boolean;
+  /** E3: see BuffSpec. */
+  consumeOnHit?: boolean;
+  immuneTo?: string[];
+  endsWithSource?: boolean;
 }
 
 export interface Combatant {
@@ -545,6 +648,8 @@ export interface Combatant {
   buffs: Buff[];
   lostThisRound: number;
   lostLastRound: number;
+  /** E3: HP lost over the whole battle (heals do not reduce it). */
+  lostTotal?: number;
   /** M7: equipment round effects not yet applied. */
   roundEffects?: RoundEffect[];
   /** M11.4: dynamic Soul-heart set hooks folded from the equipped pieces. */
@@ -673,6 +778,15 @@ export interface BattleContext {
   round: number;
   /** M9.4: current trigger nesting depth (bounded by `settings.triggerDepthCap`). */
   triggerDepth?: number;
+  /** E3: the damage and actor of the event a trigger is resolving (splash, Celebi, ally crit). */
+  eventAmount?: number;
+  eventActor?: Combatant;
+  /** E3: damage the current action dealt to each target (for splash). */
+  castDamage?: Map<string, number>;
+  /** E3: the team Power pair of the battle (extra actions need it). */
+  team?: { attackersPower: number; defendersPower: number };
+  /** E3: units whose endure fired during the current hit (their `onEndure` triggers run next). */
+  pendingEndure?: Combatant[];
   /** M9: scratch counters for trigger caps/cooldowns (not part of the result). */
   counters?: Map<string, number>;
   alreadyAppliedHooks: Set<string>;

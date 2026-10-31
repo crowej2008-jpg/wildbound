@@ -40,6 +40,10 @@ export function resolveSheet(spec: SpecInput): StatSheet {
     atkPct: pct(s.atkPct),
     ignoreBlock: pct(s.ignoreBlock),
     basicRate: pct(s.basicRate),
+    pRdct: pct(s.pRdct),
+    sRdct: pct(s.sRdct),
+    dotTaken: pct(s.dotTaken),
+    lifesteal: pct(s.lifesteal),
   };
   for (const mod of spec.kit.talents?.statMods ?? []) {
     const level = spec.level ?? 1;

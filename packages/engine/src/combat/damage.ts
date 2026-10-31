@@ -5,7 +5,7 @@ import { addRage } from './rage';
 import { fireTriggers } from './triggers';
 import { applyControl } from './control';
 import { applyHeal } from './sustain';
-import type { BattleContext, Combatant, CombatField, SkillDef } from './types';
+import type { BattleContext, Combatant, CombatField, DamageMod, SkillDef } from './types';
 
 export { addRage };
 
@@ -67,14 +67,20 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   }
 
   // E1: the attacker's damage modifiers (held items, talents) that match this hit.
-  const mods = activeDamageMods(ctx, attacker, defender, skill);
+  const mods = activeDamageMods(ctx, attacker, defender, skill, 'attack');
   if (mods.atk !== 0) raw *= 1 + mods.atk;
 
   // R1: the star card's "DMG BST to [faction]" joins the additive DMG Boost pair against that faction
   // (how the source combines it is open — ASSUMPTIONS #52).
   const factionBoost =
     attacker.factionBoost && attacker.factionBoost.faction === defender.kit.faction ? attacker.factionBoost.value : 0;
-  const G = Math.max(S.gFloor, 1 + eff(attacker, 'dmgBoost') + factionBoost + mods.dmg - eff(defender, 'dmgRdct'));
+  // E3: P.ATK / S.ATK damage reduction and the defender's own `defend` mods join the G pair too.
+  const typeRdct = skill.type === 'P' ? eff(defender, 'pRdct') : eff(defender, 'sRdct');
+  const guard = activeDamageMods(ctx, defender, attacker, skill, 'defend');
+  const G = Math.max(
+    S.gFloor,
+    1 + eff(attacker, 'dmgBoost') + factionBoost + mods.dmg - eff(defender, 'dmgRdct') - typeRdct - guard.dmg,
+  );
   const P =
     S.mode === 'pvp' ? Math.max(S.pFloor, 1 + eff(attacker, 'pvpBoost') - eff(defender, 'pvpRdct') - S.pvpConst) : 1;
 
@@ -121,7 +127,10 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   }
 
   const critRes = eff(defender, 'critRes');
-  const crit = !ctx.deterministic && ctx.rng() < critRateAt(attacker, defender, critRes, S.critSlope, S.critFloor);
+  // E3: a Crit Seal (`noCrit`) stops the attacker's crits; the roll is still drawn for determinism.
+  const sealed = attacker.buffs.some((b) => b.kind === 'noCrit');
+  const crit =
+    !ctx.deterministic && ctx.rng() < critRateAt(attacker, defender, critRes, S.critSlope, S.critFloor) && !sealed;
   const critMult = Math.max(S.critBaseMult, S.critBaseMult + eff(attacker, 'critPower') - 0.5 * critRes);
   if (crit) dmg *= critMult;
 
@@ -156,23 +165,42 @@ export function blockChanceAt(
   return Math.min(1, Math.max(0, piecewise(points, block - eff(attacker, 'guardBreak'))));
 }
 
-/** E1: sum the attacker's damage modifiers whose slot, condition and chance pass for this hit. */
+/**
+ * E1/E3: sum a unit's damage modifiers (kit + gear) of one role whose slot, condition and chance
+ * pass for this hit. `self` owns the mods; `other` is the unit on the far side of the hit.
+ */
 function activeDamageMods(
   ctx: BattleContext,
-  attacker: Combatant,
-  defender: Combatant,
+  self: Combatant,
+  other: Combatant,
   skill: SkillDef,
+  role: 'attack' | 'defend',
 ): { dmg: number; atk: number; ignoreBlock: number } {
   const out = { dmg: 0, atk: 0, ignoreBlock: 0 };
-  for (const mod of attacker.damageMods ?? []) {
-    if (mod.slot !== undefined && mod.slot !== skill.slot) continue;
-    if (mod.condition && !evalCondition(mod.condition, ctx, attacker, defender)) continue;
+  const all = [...(self.kit.talents?.damageMods ?? []), ...(self.damageMods ?? [])];
+  for (const mod of all) {
+    if ((mod.role ?? 'attack') !== role) continue;
+    if (role === 'attack' && mod.slot !== undefined && mod.slot !== skill.slot) continue;
+    if (mod.type !== undefined && mod.type !== skill.type) continue;
+    if (mod.condition && !evalCondition(mod.condition, ctx, self, other)) continue;
     if (mod.chance !== undefined && (ctx.deterministic || !(ctx.rng() < mod.chance))) continue;
-    out.dmg += mod.dmg ?? 0;
-    out.atk += mod.atk ?? 0;
+    const f = scaleFactor(mod.scale, self, other);
+    const cap = (v: number) => (mod.cap === undefined ? v : Math.min(mod.cap, v));
+    out.dmg += cap((mod.dmg ?? 0) * f);
+    out.atk += cap((mod.atk ?? 0) * f);
     out.ignoreBlock += mod.ignoreBlock ?? 0;
   }
   return out;
+}
+
+/** E3: the quantity a scaled damage modifier multiplies by (1 when unscaled). */
+function scaleFactor(scale: DamageMod['scale'], self: Combatant, other: Combatant): number {
+  if (scale === undefined) return 1;
+  if (scale === 'selfRage') return Math.min(1, self.rage / 1000);
+  if (scale === 'targetRage') return Math.min(1, other.rage / 1000);
+  if (scale === 'selfMissingHp') return self.maxHp > 0 ? Math.max(0, 1 - self.hp / self.maxHp) : 0;
+  if (scale === 'selfHp') return self.maxHp > 0 ? self.hp / self.maxHp : 0;
+  return self.resources?.[scale.resource] ?? 0;
 }
 
 export interface HitFlags {
@@ -200,15 +228,28 @@ export function channelHit(
 ): number {
   const kind = flags.kind ?? 'hit';
   const wasAlive = defender.alive;
+  // E3: an invulnerable unit (Lugia / Slaking after enduring) takes nothing.
+  if (defender.buffs.some((b) => b.kind === 'invulnerable')) dmg = 0;
   const bypassShield = flags.trueDmg === true || flags.ignoreShield === true;
   const shielded = bypassShield ? 0 : Math.min(defender.shieldHp, dmg);
   if (shielded > 0) {
     defender.shieldHp -= shielded;
     ctx.events.push({ type: 'shield', tgt: defender.key, amount: shielded, shieldAfter: defender.shieldHp });
   }
-  const hpLost = Math.min(defender.hp, dmg - shielded);
+  let hpLost = Math.min(defender.hp, dmg - shielded);
+  // E3: an endure buff turns fatal damage into "left at 1 HP", once.
+  if (hpLost > 0 && hpLost >= defender.hp && defender.alive) {
+    const endure = defender.buffs.findIndex((b) => b.kind === 'endure');
+    if (endure >= 0) {
+      const spent = defender.buffs.splice(endure, 1)[0]!;
+      ctx.events.push({ type: 'buffExpired', unit: defender.key, tag: spent.tag });
+      hpLost = defender.hp - 1;
+      ctx.pendingEndure = [...(ctx.pendingEndure ?? []), defender];
+    }
+  }
   if (hpLost > 0) {
     defender.hp -= hpLost;
+    defender.lostTotal = (defender.lostTotal ?? 0) + hpLost;
     defender.lostThisRound += hpLost;
     if (kind === 'reflect') {
       ctx.events.push({ type: 'reflect', src: attacker.key, tgt: defender.key, dmg: hpLost, hpAfter: defender.hp });
@@ -227,10 +268,13 @@ export function channelHit(
     if (defender.hp <= 0 && defender.alive) {
       defender.alive = false;
       ctx.events.push({ type: 'death', unit: defender.key });
+      dropSourcedBuffs(ctx, defender);
     }
   }
 
   const hitLanded = shielded > 0 || hpLost > 0;
+  // E3: "reduced by one layer after taking direct damage" (Origin Rayquaza's Delta Airflow).
+  if (hitLanded && kind === 'hit') consumeLayers(ctx, defender);
   // E1: "when dealing damage" (Shell Bell) fires before the target's Rage gain so it can stop it.
   if (hitLanded && kind === 'hit' && attacker !== defender && attacker.alive) {
     fireTriggers(ctx, attacker, 'onDealDamage', { target: defender });
@@ -268,8 +312,14 @@ export function channelHit(
   // `hpBelow` follows any HP loss; `onKill`/`onDeath` fire on a kill. Each call
   // runs one level deep and `fireTriggers` bounds the nesting.
   if (hitLanded) {
-    if (kind === 'hit') fireTriggers(ctx, defender, 'onHit', { target: attacker });
+    if (kind === 'hit') fireTriggers(ctx, defender, 'onHit', { target: attacker, amount: shielded + hpLost });
     fireTriggers(ctx, defender, 'hpBelow', { target: attacker });
+  }
+  // E3: follow-ups of an endure that just fired (Slaking's heal, Origin Lugia's release).
+  const endured = ctx.pendingEndure ?? [];
+  if (endured.length > 0) {
+    ctx.pendingEndure = [];
+    for (const u of endured) fireTriggers(ctx, u, 'onEndure', { target: attacker });
   }
   if (!defender.alive && wasAlive) {
     fireTriggers(ctx, defender, 'onDeath', { target: attacker });
@@ -280,6 +330,32 @@ export function channelHit(
     }
   }
   return hpLost;
+}
+
+/** E3: remove one stack of each `consumeOnHit` buff family on a unit that took a direct hit. */
+function consumeLayers(ctx: BattleContext, u: Combatant): void {
+  const seen = new Set<string>();
+  for (let i = u.buffs.length - 1; i >= 0; i -= 1) {
+    const b = u.buffs[i]!;
+    if (!b.consumeOnHit) continue;
+    const family = b.tag.split('#')[0]!;
+    if (seen.has(family)) continue;
+    seen.add(family);
+    u.buffs.splice(i, 1);
+    ctx.events.push({ type: 'buffExpired', unit: u.key, tag: b.tag });
+  }
+}
+
+/** E3: buffs flagged `endsWithSource` disappear when the unit that applied them dies. */
+function dropSourcedBuffs(ctx: BattleContext, dead: Combatant): void {
+  for (const u of ctx.units) {
+    for (let i = u.buffs.length - 1; i >= 0; i -= 1) {
+      const b = u.buffs[i]!;
+      if (!b.endsWithSource || (b.source !== dead.id && b.source !== dead.key)) continue;
+      u.buffs.splice(i, 1);
+      ctx.events.push({ type: 'buffExpired', unit: u.key, tag: b.tag });
+    }
+  }
 }
 
 function eff(u: Combatant, field: CombatField): number {

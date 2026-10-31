@@ -49,11 +49,20 @@ export function applyDotSpec(
 /** A clean, non-stacking DoT applied by an effect/rider (replaces the same source tag). */
 export function applyDotTag(ctx: BattleContext, src: Combatant, t: Combatant, tag: string, dot: DotSpec, skillType: DamageType): void {
   if (dot.share <= 0) return;
-  const idx = t.buffs.findIndex((b) => b.kind === 'dot' && b.tag === tag);
+  // E3: a targeted immunity ("Be immune to Burning") stops this DoT.
+  if (t.buffs.some((b) => b.kind === 'immune' && (b.immuneTo ?? []).includes(tag))) {
+    ctx.events.push({ type: 'immunity', unit: t.key, kind: tag });
+    return;
+  }
+  // E3: stacking DoTs (Poison ×25, Magma Armor ×6) keep one buff per stack; at the cap the oldest
+  // stack is refreshed. Without maxStacks a same-tag DoT refreshes (the M9 rule).
+  const max = dot.maxStacks ?? 1;
+  const stacks = t.buffs.filter((b) => b.kind === 'dot' && (b.tag === tag || b.tag.startsWith(`${tag}#`)));
+  const idx = max > 1 ? (stacks.length < max ? -1 : t.buffs.indexOf(stacks[0]!)) : t.buffs.findIndex((b) => b.kind === 'dot' && b.tag === tag);
   const type = dot.type ?? skillType;
   const power = type === 'P' ? effective(src.base, src.buffs, 'pAtk') : effective(src.base, src.buffs, 'sAtk');
   const buff: Buff = {
-    tag,
+    tag: max > 1 ? `${tag}#${idx >= 0 ? stacks.indexOf(t.buffs[idx]!) : stacks.length}` : tag,
     kind: 'dot',
     source: src.key,
     amount: dot.share,
@@ -80,7 +89,8 @@ export function tickDots(ctx: BattleContext, u: Combatant): void {
   if (dots.length === 0) return;
   for (const d of dots) {
     const src = ctx.units.find((x) => x.key === d.source);
-    const dmg = dotDamage(d, u);
+    // E3: `dotTaken` (Sceptile's Malignant Wounds) raises the damage the holder takes from ticks.
+    const dmg = Math.floor(dotDamage(d, u) * (1 + effective(u.base, u.buffs, 'dotTaken')));
     if (dmg > 0) channelHit(ctx, src ?? u, u, dmg, { kind: 'dot', trueDmg: d.trueDamage === true });
   }
   // duration (bigRounds) is ticked at big-round end by tickBigRoundBuffs
