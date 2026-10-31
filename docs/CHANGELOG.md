@@ -1070,3 +1070,17 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   `casterCurrentHp`; `target.event`. Gear passes triggers and damage mods through `SpecInput`.
 - All 27 held-item skills (57 item rows) run in battle from `scripts/data/held-item-effects.json`;
   stand-ins are shown on the item (ASSUMPTIONS #57).
+
+## E3 - Kit clauses (2026-10-31)
+
+- Port fixes (`scripts/port-skills.mjs`): Rage talents as shares of the 1,000-point bar ("1/8" =
+  125 — was read as 1 point in 19 kits), per-action Rage triggers, "Crit strength" / "Break"
+  spellings, "+X% ATK" buffs as `atkPct` (were flat adds of a fraction of a point).
+- 68 kits hand-ported from the sheet by `scripts/data/build-kit-overrides.py`; the port report lists
+  the 46 clauses still not modelled.
+- Engine: round cadence; conditions on class, shields, HP vs target, ally / enemy counts; controls
+  disarm, flinch / nap (no basic skill), shallow sleep, crit seal, mind control, zen control; endure,
+  invulnerable and `onEndure`; defend and scaled damage modifiers; P/S damage reduction; DoT
+  vulnerability; stacking DoTs; targeted immunities; extra actions; splash; shield break; layers spent
+  on hit; buffs ending with their source; `onAllyCrit`; buffable lifesteal; SPD buffs now move the
+  turn order.

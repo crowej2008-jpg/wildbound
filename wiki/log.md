@@ -65,3 +65,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: "could we take a break on the current milestone and finnish all of the battle enigine" → "ok".
 - New page [battle engine](milestones/battle-engine.md); CI 522 unit / 90 e2e. Pages: index, roadmap,
   combat engine, held items, open questions.
+
+## [2026-10-31] update | E3 built — kit clauses hand-ported
+- Owner: "yes". 68 kits hand-ported, parser Rage / stat-name fixes, engine rules; 46 bespoke clauses
+  left and listed. CI 541 unit / 90 e2e. Pages: battle engine, skill kits, index.

@@ -32,6 +32,10 @@ Talents 1–4 for every creature. Committed as `scripts/data/pokemon-skills.json
 | M9.6 | `c9a9400`, `06a95e4` | faithful port of all 84 kits; 0 unmatched |
 | M9.7 | `ea3a18b` | re-tune check — campaign balance still passes, no data change |
 
+## E3 (2026-10-31)
+68 kits hand-ported (`scripts/data/build-kit-overrides.py`), parser fixes for Rage shares, Crit
+strength / Break and attack-% buffs — see [battle engine](../milestones/battle-engine.md).
+
 ## Known limits
 - LV.2+ upgrade text is recorded, not modelled. Residual clauses are logged in `docs/PORT-REPORT.md`.
 - Default durations: DoT 2 turns, untimed control 1 turn, talents = `battleStart` with `turns: 99`.

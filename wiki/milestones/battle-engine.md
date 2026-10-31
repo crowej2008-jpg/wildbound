@@ -15,8 +15,8 @@ R4 Potential resumes afterwards.
 |---|---|---|
 | E1 ✅ | New battle triggers and rules (below) | built 2026-10-31 |
 | E2 ✅ | All 27 held-item skills active in battle ([held items](../systems/held-items.md)) | built 2026-10-31 |
-| E3 | The ~180 kit clauses `docs/PORT-REPORT.md` records as not modelled (68 per-action Rage, 12 empty triggers, ~110 one-off rules) | next |
-| E4 | Skill levels LV.2+ (24 skills) — model them if the source ties them to stars | pending |
+| E3 ✅ | The kit clauses the parser could not express — 68 kits hand-ported | built 2026-10-31 |
+| E4 | Skill levels LV.2+ (24 skills) — model them if the source ties them to stars | next |
 | E5 | Re-check the open combat numbers against the kb (faction bonus ×1.43 vs ×1.25, crit slope, class matchups, heal basis) | pending |
 | E6 | Tests + campaign/PvP balance re-check | pending |
 
@@ -34,3 +34,18 @@ swap and trinket skills (R6), gear/orb set skills (R2/R3).
 - **Buff kind** `rageBlock` (no Rage gain; cleansable). **Heal bases** `casterSAtk`, `casterCurrentHp`.
 - **Targeting:** `target: { event: true }` = the unit the trigger's event is about.
 - Tests: `packages/engine/src/combat/e1.test.ts`; CI 522 unit / 90 e2e.
+
+## E3 — kit clauses (built 2026-10-31)
+- **Parser fixes** (`scripts/port-skills.mjs`): Rage talents are shares of the 1,000 bar — "1/8 additional
+  Rage when hit" is **125** (it was read as 1 point in 19 kits); per-action Rage ("normal attacks / basic
+  skills generate 1/2 additional Rage", "ultimates generate 1/4") is now granted; "Crit strength" =
+  Crit Intensity and "Break" = Guard Break (they were Crit / missing); "+X% ATK" buffs are attack %
+  (they were tiny flat adds).
+- **Hand ports:** `scripts/data/build-kit-overrides.py` → `kit-overrides.json` rewrites the skills and
+  Passive / Talent 3 / Talent 4 rows of **68 kits**; Talent 1–2 stay parsed.
+- **Engine:** round cadence, disarm / flinch / nap / crit seal / mind control, endure + invulnerable,
+  defend and scaled damage mods, P/S damage reduction, stacking DoTs, targeted immunities, extra actions,
+  splash, shield break, layers spent on hit, ally-crit trigger, buffable lifesteal, SPD buffs move turn order.
+- **Still not modelled:** 46 bespoke clauses, each listed by kit in `docs/PORT-REPORT.md` (e.g. Deoxys's
+  damage transfer, Feraligatr's damage sharing, Rayquaza's mark strikes, Jirachi's Doom Desire, effects
+  on DEF which has no effect). Tests: `combat/e3.test.ts`; CI 541 unit / 90 e2e.

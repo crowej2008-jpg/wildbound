@@ -778,3 +778,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     basic-skill chance. A self buff "for N turns" applied during the holder's own action is authored
     as N + 1 turns, because turns tick at the end of the holder's own turn. *What would change it:* a
     measurement or the owner's reading.
+58. **Hand-ported kits (E3).** `scripts/data/build-kit-overrides.py` writes the 68 kits the parser could
+    not express. Readings: a self buff "for N turns" applied during the holder's action is N + 1 turns
+    (as #57); "[Offer of Power]" is an after-ultimate trigger with a 4-turn cooldown; "1/2 additional
+    Rage" etc. are shares of the 1,000-point bar (the kb's Rage talents); "+X% ATK" is `atkPct`, which
+    raises both attacks. Clauses still not modelled are listed per kit in `docs/PORT-REPORT.md`; DEF
+    clauses stay inert while `defendersUseDef` is off. *What would change it:* the owner's reading of a
+    clause, or source data for the bespoke mechanics.
