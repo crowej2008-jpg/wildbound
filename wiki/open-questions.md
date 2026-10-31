@@ -10,7 +10,7 @@ updated: 2026-10-31
 | R | [Source retrofit](milestones/source-retrofit.md): who builds it (OpenCode on the owner's PC can read `reference/` and run tests), and may test saves be reset instead of migrated? | R0 | 2026-10-31 |
 | # | Question | Blocks | Raised |
 |---|---|---|---|
-| 1 | ~~What is a refine?~~ **Answered 2026-10-31: copy the source (re-roll).** Source = re-roll one random line (keep/drop), only on 3 Mythic / 2 Supreme slots. Source = re-roll one random line (keep/drop), only on 3 Mythic / 2 Supreme slots. Ours = +20% to the item's effect. Switch to the source model (needs random lines on items), or keep ours with +20% or +5% per refine? | 13.3a | 2026-10-31 ([held items](systems/held-items.md)) |
+| 1 | ~~What is a refine?~~ **Answered and built (R5, 2026-10-31):** the source's re-roll with keep/drop on Mythic 3 / Supreme 2 slots, priced on the owner's ladder. | — | 2026-10-31 ([held items](systems/held-items.md)) |
 | 2 | Titles: keep King of Arena + Alliance Champion as the 14-day pair, or source-exact (King of Arena 7-day; Arena Sovereign V as 14-day)? | nothing | 2026-10-21 |
 | 3 | Arena Refresh is free and unbounded — cap it per day? | nothing | 2026-10-18 |
 | 4 | Island Challenge: the change list says "replace island with a different mode", but 13.8 is locked as full Island + alliance contest. Which? | 13.8 | [change list](ideas/change-list-2026-10.md) |
@@ -25,14 +25,19 @@ updated: 2026-10-31
 - **Gear:** the dumps hold only 8 of the 64 `god_eqm_basic_json` rows and no `god_eqm_suit_json`.
 - **Orbs:** `hero_orb_basic_json`, `hero_orb_suit_json`, `hero_orb_pos_json` are not dumped (only
   `hero_orb_decompose_json`). These block an exact R2 / R3. Can the owner re-extract them from
-  the bot's cache? (ASSUMPTIONS #50–51)
+  the bot's cache? (ASSUMPTIONS #50–51). Owner 2026-10-31: *"lets just go off of what we know"* — R2/R3
+  will use the kb notes with labelled stand-ins (ASSUMPTIONS #55).
+- **Held-item album:** `held_item_total_collect` / `held_item_group_collect` are not dumped (kb has only
+  the totals), so the album is deferred (ASSUMPTIONS #56).
+- **Held-item skills:** 24 of 27 skill names need battle events the round-effect DSL lacks (on-hit,
+  on-control, backline, taunt…); they show their text marked "not active in battle yet".
 
 ## Known test problems
 - Two mobile e2e tests in `tests/e2e/m11.spec.ts` (Trinkets, VIP) are flaky on CI — see [dev environment](project/dev-environment.md).
 
 ## Repo docs that are out of date (lint, 2026-10-31)
 - `PROMPT.md` §1 still says "about 36 original creatures"; the roster is 84 Pokémon.
-- `docs/ASSUMPTIONS.md` #41 refine ladder (1,1,2,3,4,5,6,8…) is superseded by the owner's
+- (Fixed in R5: ASSUMPTIONS #56 now records the owner's ladder.) `docs/ASSUMPTIONS.md` #41 refine ladder (1,1,2,3,4,5,6,8…) is superseded by the owner's
   free-then-1,1,2,2…10 ladder ([decision](decisions/resetter-shards-and-refine.md)).
 - `docs/design/README.md` "Planned notes" list (economy, growth, server-api, squads, time) never written.
 - M11's original plan numbers (20 VIP tiers, 10 Resonance slots, 48 orbs, Held Items Lv50/200) differ

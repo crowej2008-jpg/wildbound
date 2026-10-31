@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-undef */
 /**
  * R5: import the source's held items (Hoopa's Vault drops) into
  * packages/content/equipment/held-items.json.

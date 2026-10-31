@@ -32,6 +32,7 @@ after the retrofit, once friends have real saves.
 | 17 | M13.2 | `skyPillar` + squad mode |
 | **18** | R0 | **Reset baseline** — `MIN_SAVE_VERSION` 18; older saves retired, fresh account started |
 | 19 | R1 | species star ladders: `evolutionStage` removed, stars = source stars, five factions (reset) |
-| 20+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
+| 20 | R5 | held items: `RelicInstance` = level 0–200, main-stat group, rolled lines, refines, pending roll, lock; Resetter currencies (reset) |
+| 21+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

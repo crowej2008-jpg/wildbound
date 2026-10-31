@@ -758,3 +758,16 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     gone. 18★ → 19★ (Awakening) and the Origins' fodder-less stars show an honest "comes from
     Awakening" state. Per-species shards (`item_num`) are imported but composing arrives with R9's
     summoning retrofit, so the generic `shard` currency currently has no growth use.
+55. **Gear and Orbs from the notes (owner, 2026-10-31: "lets just go off of what we know").** The
+    dumps lack most gear (`god_eqm_*`) and all orb tables; R2 and R3 will be built from the kb notes
+    with each missing number a labelled stand-in, after R4, R6, R7 and R8. *What would change it:*
+    the owner re-extracting those tables.
+56. **Held items are the source's (R5).** Items, pools, level costs, dismantle values and skill texts
+    come from the dumps; the resonance gates on Lv 31…181 from `kb/held-items.md` (not dumped). The
+    refine is the source's re-roll with keep/drop and the `refine_max` slot rule, priced on the
+    **owner's ladder** (free, 1, 1, 2, 2 … 10, 10; 21 refines per item) instead of
+    `held_item_wash_cost_json` (supersedes #41). One pending roll at a time: a new refine waits for
+    keep/drop. *Stand-ins:* new accounts get three Rare items (one per class) until Hoopa's Vault
+    (13.3) drops them; the held-item album (18 milestones) waits for its tables, which are not in the
+    dumps. Skills the round-effect DSL can't express (24 of 27 names) show their text and are marked
+    inactive; Choice Band's "ignore 50 % block" is not approximated.

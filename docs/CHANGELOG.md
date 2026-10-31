@@ -1044,3 +1044,18 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - **Retired:** `scripts/import-roster.mjs` refuses to run; the campaign/Sky Pillar generators are
   marked "do not re-run before R9".
 - **Next:** R2 - Gear.
+
+## R5 - Held items from the source (2026-10-31)
+
+- 75 source held items (`scripts/import-held-items.mjs` → `content/equipment/held-items.json`)
+  replace the 27 invented relics: class-locked, Supreme/Mythic/Origin wearers, a rolled main stat
+  (HP / P.ATK / S.ATK + Total % from Legendary) that grows with level, and 1–6 rolled lines from the
+  quality's 31-line pool. Faction lines count only on that faction; Absorb HP Rate is lifesteal.
+- Levels 0–200 on the source shard table (7,350 to max), Lv 31+ gated on the Link Crystal level.
+- Refine = the source's re-roll (pending roll, Keep / Drop; Supreme 2 / Mythic 3 refinable slots),
+  priced on the owner's ladder in Held Item Resetters (first free, 21 per item). New currencies
+  Resetter Shards and Held Item Resetters, 20 → 1. Lock and dismantle (refunds level shards).
+- Item skills carry the source text; Choice Specs, Razor Fang and Razor Claw run in battle.
+- Fixed: Origin Pokémon could not wear held items (the tier order lacked `origin`).
+- Save v20 (older saves are retired with a fresh-start mail). Starting items: three Rares until
+  Hoopa's Vault. Album deferred (tables not in the dumps).

@@ -54,3 +54,9 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: "go" (stand-ins for the two missing tables). Five factions, ATK/DEF/SKILL, Origin tier, source
   star ladders and stats, fodder Evolve, faction damage bonus; save v19. 498 unit / 90 e2e on CI.
 - Pages: roster, combat engine, save versions, history, index, overview, open questions, retrofit.
+
+## [2026-10-31] update | R5 built — held items from the source
+- Owner: "lets just go off of what we know". 75 source items, rolled main stat + lines, re-roll refine
+  with keep/drop on the owner's ladder, levels to 200, lock, dismantle, Resetters; save v20.
+- Gear/Orbs will be built from the kb notes with labelled stand-ins (ASSUMPTIONS #55).
+- Pages: held items, resetter decision, currencies, save versions, retrofit, open questions.

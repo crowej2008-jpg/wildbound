@@ -36,7 +36,7 @@ his refine ladder, no real money.
 | R2 | **Gear** (missing today) | 64 pieces = 16 tiers × 4 slots (Core, Cube, trinket slot, Wings), Smithy 3 → 1 crafting with gold, orange/red named sets. Artifact gear (Evo Stones) waits for artifacts. |
 | R3 | Orbs | 12 kinds × 5 colours = 60 orbs; **2 sockets per gear piece** with family typing; caps +3/+5/+7/+10; level = 2 copies + gold ladder; Quick Upgrade; 26 sets (3- and 5-kind, pay at Lv 3/5/7/10); dismantle → Orb Essence. Opens player Lv 50, slots at 9★. |
 | R4 | Potential | 62 Pokémon (Legendary+) with per-Pokémon trees (15 distinct); tier N at 6+N★; source Potential Shard table (e.g. tier 1: 20,000 unlock … 360,000 total); fodder; reset 16 💎. |
-| R5 | **Held Items** | 75 source items (Choice Band, Scope Lens, Icy Rocks…), class-locked, Supreme+ wearers; main stat + 1–6 random lines from the 31-line pool; **re-roll refine** (keep/drop) on Mythic 3 / Supreme 2 slots with the **owner's ladder**; level cap 200 with the source shard table; lock; dismantle 5/8/10/15/20 shards; album. Adds Resetter Shards → Resetters (20 → 1). |
+| R5 ✅ | **Held Items** | 75 source items (Choice Band, Scope Lens, Icy Rocks…), class-locked, Supreme+ wearers; main stat + 1–6 random lines from the 31-line pool; **re-roll refine** (keep/drop) on Mythic 3 / Supreme 2 slots with the **owner's ladder**; level cap 200 with the source shard table; lock; dismantle 5/8/10/15/20 shards; album. Adds Resetter Shards → Resetters (20 → 1). |
 | R6 | Berries, Plates, Trinkets, Soul-hearts | Berries: 19, four tiers, Commons uncultivatable, flat dismantle 50/40. Plates: per type (18 types), stages 0–18, source Bottle/Fragment costs, opens player Lv 34. Trinkets: per Pokémon skills at Lv 10/20/30/40, 300,430 Star Shards to Lv 40, trinket chests. Soul-hearts: keep the owner's nine sets, copy the source's sockets/stars/EXP rules. |
 | R7 | Resonance | Crystal evolves at Lv 340; cap 340 + 8 per 12★ Pokémon; 2 free slots, source price ladder (30, 80, 100…), 24h slot cooldown (4 💎/hour to clear); slotted Pokémon **use the crystal's level**. |
 | R8 | Account layers | VIP 0–40 from Privilege XP (daily activity's 120-point chest pays 60; no purchases); Titles = the source's 102 by name; Trainer Tokens, Mount/Back Decor/Follower (new to us). |
@@ -59,6 +59,12 @@ names), plus `pokemon-growth.md` / `stats-and-combat.md` notes.
   or a recorded stand-in.
 - Ripple effects: PvP weather, plates, trinket lines, mode enemy pools and campaign squads all key off
   faction/class and get updated in the same step. Kits stay the owner's (M9).
+
+## R5 — Held items (built 2026-10-31)
+Owner: *"lets just go off of what we know"* (Gear/Orbs from notes later; R5 first because its data is
+complete). Built as listed above, with three gaps recorded: the album (tables not dumped), 24 skills
+the round-effect DSL can't express (text only), and the starting items (three Rares until the Vault).
+Save v20. Details: [held items](../systems/held-items.md).
 
 ## Data check before R2 (2026-10-31)
 Complete in the dumps: Potential, Held Items, Berries, Plates, Trinkets, Resonance, Titles (VIP partly).

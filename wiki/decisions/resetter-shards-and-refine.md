@@ -2,7 +2,7 @@
 title: Resetter Shards and the Held Item refine ladder
 type: decision
 date: 2026-10-31
-status: decided, not yet built (13.3a)
+status: built in R5 (2026-10-31)
 sources: [docs/ASSUMPTIONS.md M13 #41, opencode-session-2026-10 msgs 82, 94-95]
 ---
 
@@ -37,8 +37,9 @@ now prices the source-style **re-roll** refine ([held items](../systems/held-ite
 Effect per refine: currently **+20%** (→ 5.2× at refine 21). OpenCode recommended **+5%** (→ ~2.05×)
 moved into `combat.json`. **Owner hasn't answered.** → [open questions](../open-questions.md)
 
-## Current code (before 13.3a)
-`tuning/equipment.json`: `maxRefine: 5`, refine costs `800 + 400 × refine` gold and `10 + 10 × refine`
-Held Item Shards. All of that is replaced by 13.3a.
+## Built (R5, 2026-10-31)
+`content/equipment/held-items.json` `refineLadder` = [0, 1, 1, 2, 2 … 10, 10]; the price is per item
+(its `refines` count), cap 21. `resetterCompound` = 20 from `item_compound_json`. The old gold + shard
+refine and `maxRefine: 5` are gone.
 
 Related: [held items](../systems/held-items.md).

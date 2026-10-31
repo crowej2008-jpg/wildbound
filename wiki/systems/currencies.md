@@ -16,7 +16,8 @@ All currencies are `CurrencyId`s, so any of them can appear in `Rewards`. The HU
 | Mode coins (M6) | arenaToken, guildCoin, homeCoin, forestCoin, islandCoin, wildCoin | each mode's shop |
 | Growth | `shard` (Wild star-up), `stone` (Link Crystal) | [roster](roster.md) growth, [Link Crystal](pve-modes.md) |
 | M11 materials | Potential Shards, Orb Essence, Soul-heart EXP, Berry Essence, Held Item Shards, Plate Bottles, Plate Fragments, Star Shards, Resonation Shards, Title Tickets | one per [collection layer](collection-layers.md) |
-| Planned (13.3) | **Resetter Shards**, **Held Item Resetters**, Vault Secret Keys | [held items](held-items.md), [Hoopa's Vault](hoopa-vault.md) |
+| Held-item refining (R5, built) | **Resetter Shards** (`resetterShard`, 20 → 1) and **Held Item Resetters** (`heldItemResetter`) | [held items](held-items.md) |
+| Planned (13.3) | Vault Secret Keys; Resetter Shard drops | [Hoopa's Vault](hoopa-vault.md) |
 
 Notes
 - Canonical list: `CURRENCY_IDS` in `packages/engine/src/roster/types.ts`.
