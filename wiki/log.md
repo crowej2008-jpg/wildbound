@@ -25,3 +25,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-10-31] update | README refreshed, wiki merged to main
 - `README.md` now points to `wiki/index.md`, shows the real status (M13, next 13.3) and the
   84-Pokémon roster; removed from the stale-docs list in [open questions](open-questions.md).
+
+## [2026-10-31] query | What does a Held Item refine do?
+- Checked `reference/game-rebuild/kb/held-items.md`: in the source a refine re-rolls one random
+  line; ours scales the special effect by +20%. Added to [held items](systems/held-items.md) and
+  reworded open question #1.

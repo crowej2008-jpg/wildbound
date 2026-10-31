@@ -26,6 +26,20 @@ sources: [docs/CHANGELOG.md M11.6, tuning/equipment.json, opencode-session-2026-
 - Existing refine counts must survive the save migration.
 - **Open:** keep +20%/refine (5.2× at max) or switch to +5% (≈2.05×)? → [open questions](../open-questions.md)
 
+## How the source game refines (found 2026-10-31 in `reference/game-rebuild/kb/held-items.md`)
+**Refine in the source is a re-roll, not a power-up.**
+- Items carry **random extra lines** by quality: Rare 1 · Epic 2 · Legendary 3 · Supreme 5 · Mythic 6,
+  drawn at equal odds from a pool of 31 (faction Ult/Skill DMG up/RED, Crit, Crit Res, Crit INT,
+  Block, Block INT, Guard Break, Control Boost/Res, Absorb, two healing lines).
+- A refine re-rolls **one** line into a brand-new line + value; the player **keeps or drops** it.
+- Only some slots can ever be refined: Mythic 3, Supreme 2, lower 0. The main stat never.
+- Cost in Held Item Resetters by refine count: 1,1,2,3,4,5,6,8,10,12,14,16,18,20, then 20.
+- The item's special effect does **not** grow with refines.
+
+Wildbound's M7/M11 refine (+20% to the special effect, fixed lines, no re-roll) is an invention that
+doesn't match this. The owner's "first roll is free" wording fits the re-roll model. Which model to
+build is an [open question](../open-questions.md).
+
 ## Ideas from Claude chats (not in plan)
 The [co-op boss tower](../ideas/coop-boss-tower.md) idea rewards "one mythic held item of choice
 (usable only when Hoopa stage is above 181)".
