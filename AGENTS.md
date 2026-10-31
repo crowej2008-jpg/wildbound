@@ -67,7 +67,10 @@ pnpm e2e              Playwright end-to-end suite (builds + previews the client)
 pnpm sim -- <args>    CLI combat simulator (delivered M1)
 pnpm content:validate content schema / reference / IP-guard validation
 pnpm check            full gate: lint + typecheck + test + content:validate + build + e2e
+node scripts/source/index-tables.mjs   rebuild docs/SOURCE-TABLES.md from reference/ (owner's PC)
 ```
+
+CI runs `pnpm check` on every push (`.github/workflows/check.yml`, results in the Actions tab).
 
 `pnpm check` must pass before any milestone is declared done.
 

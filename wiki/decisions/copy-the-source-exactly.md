@@ -34,6 +34,10 @@ exactly."*
 2026-10-31 — it's an exception. Owner also said: *"lets fix up everything to match the source"* →
 [source retrofit](../milestones/source-retrofit.md).
 
+## Saves
+Owner chose to **reset** test saves rather than migrate them (2026-10-31): see
+[save versions](../systems/save-versions.md).
+
 ## Practical notes
 - `reference/` is gitignored and lives only on the owner's PC, so exact copying has to be done by an
   agent that can read it (OpenCode on his machine, or Claude with his folder shared).

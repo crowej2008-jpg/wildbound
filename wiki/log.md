@@ -44,3 +44,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - GitHub Actions runs `pnpm check` on every push; cloud agents read results through annotations.
   First runs: 510/510 unit, content PASS; e2e 90/90 then 88/90 (two flaky mobile M11 tests).
   See [dev environment](project/dev-environment.md).
+
+## [2026-10-31] update | R0 built — source loader, save reset
+- Owner: "ok lets reset". Save v18 = reset baseline; `scripts/source/source.mjs`, `docs/SOURCE-TABLES.md`.
+- Built by Claude in the cloud, verified on CI: 506 unit / 90 e2e. Pages: retrofit, save versions,
+  history, index, overview.

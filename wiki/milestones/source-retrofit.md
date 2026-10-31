@@ -15,10 +15,15 @@ Vault needs the real Held Items) and before any new mode.
 ## How to copy exactly
 The source's own config tables are on the owner's PC: `reference/game-rebuild/data/h5-client/2026-10-0{2,3,4}/*_cfg.json`
 (~35 MB: `pokemon_data_cfg`, `items_cfg`, `boosts_cfg`, `runes_cfg`, `potential_cfg`, `vip_cfg`,
-`gacha_cfg`, `afk_cfg`, `pet_home_cfg`, `modepages-*_cfg`, …), with human notes in
+`gacha_cfg`, `afk_cfg`, `pet_home_cfg`, `modepages-*_cfg`, …; full list in `docs/SOURCE-TABLES.md`), with human notes in
 `reference/game-rebuild/kb/<system>.md` ("Current picture" sections). Each step adds a
 `scripts/import-<system>.mjs` that reads those tables and writes `packages/content/…` JSON, committed
-like the existing generators, so the copy is reproducible and checkable.
+like the existing generators, so the copy is reproducible and checkable. Use `loadTable(name)` /
+`tableRows(name)` from `scripts/source/source.mjs` (set `WILDBOUND_SOURCE` if the dumps are staged
+elsewhere).
+
+**Saves:** reset, not migrated, until the retrofit ends — each step that changes the save shape
+bumps `SAVE_VERSION`, `MIN_SAVE_VERSION` and `tests/e2e/save-version.ts` together.
 
 **Keep (owner exceptions):** the 84-Pokémon roster/kits, his nine Soul-heart sets, Held Item Shards,
 his refine ladder, no real money.
@@ -26,7 +31,7 @@ his refine ladder, no real money.
 ## Steps (each: list → owner OK → build → `pnpm check` → wiki + commit)
 | Step | System | What changes (from the kb notes) |
 |---|---|---|
-| R0 | Import pipeline | Shared loader for the h5-client tables; decide save policy (migrate or reset test saves). |
+| R0 ✅ | Import pipeline | **Built 2026-10-31:** `scripts/source/source.mjs` + `docs/SOURCE-TABLES.md` (377 tables); saves **reset** (v18, `MIN_SAVE_VERSION`). |
 | R1 | Pokémon growth | Source level costs (XP Candies + Gold), level caps up to 340 then via Resonance, evolution lines (e.g. Bulbasaur → Ivysaur → Venusaur instead of Prime/Zenith), star/evolution fodder (own + same-faction copies at set stars), 30/40/50 shards per Pokémon, source base stats/classes, trainer level table (no 80 cap), bag size. |
 | R2 | **Gear** (missing today) | 64 pieces = 16 tiers × 4 slots (Core, Cube, trinket slot, Wings), Smithy 3 → 1 crafting with gold, orange/red named sets. Artifact gear (Evo Stones) waits for artifacts. |
 | R3 | Orbs | 12 kinds × 5 colours = 60 orbs; **2 sockets per gear piece** with family typing; caps +3/+5/+7/+10; level = 2 copies + gold ladder; Quick Upgrade; 26 sets (3- and 5-kind, pay at Lv 3/5/7/10); dismantle → Orb Essence. Opens player Lv 50, slots at 9★. |

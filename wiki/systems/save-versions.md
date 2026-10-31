@@ -7,8 +7,10 @@ sources: [docs/CHANGELOG.md, packages/server/src/save.ts]
 
 # Save versions
 
-`SAVE_VERSION` in `packages/server/src/save.ts` is **17** (as of `27536b7`). Every bump needs an
-additive migration + a migration test; old saves must load.
+`SAVE_VERSION` in `packages/server/src/save.ts` is **18** (R0). **During the source retrofit saves are
+reset, not migrated** (owner, 2026-10-31): `MIN_SAVE_VERSION` equals `SAVE_VERSION`, older saves are
+refused as `outdated_save` and LocalServer starts a fresh account. Migrations (additive + test) resume
+after the retrofit, once friends have real saves.
 
 | v | Milestone | Added |
 |---|---|---|
@@ -28,6 +30,7 @@ additive migration + a migration test; old saves must load.
 | 15 | M13.0b | `serverEpoch` (server-day gates) |
 | 16 | M13.1 | `petHome` |
 | 17 | M13.2 | `skyPillar` + squad mode |
-| **18** | M13.3 (planned) | Hoopa's Vault slice + vault squad; refine counts must survive |
+| **18** | R0 | **Reset baseline** — `MIN_SAVE_VERSION` 18; older saves retired, fresh account started |
+| 19+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

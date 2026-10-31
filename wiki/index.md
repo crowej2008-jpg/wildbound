@@ -10,8 +10,8 @@ updated: 2026-10-31
 [open questions](open-questions.md).** How the wiki is maintained: `AGENTS.md` › "Project wiki".
 Recent changes: [log](log.md).
 
-**Now:** M13.3 [Hoopa's Vault](systems/hoopa-vault.md) is next and not started. First comes the
-[source retrofit](milestones/source-retrofit.md) (make built systems match the source exactly). Last commit `27536b7`, save v17.
+**Now:** the [source retrofit](milestones/source-retrofit.md) — R0 done (source loader, save reset to v18);
+**R1 Pokémon growth** next. Then M13.3 [Hoopa's Vault](systems/hoopa-vault.md). Last commit `27536b7`, save v17.
 
 ## Start here
 - [overview](overview.md) — what Wildbound is, who it's for, where it stands

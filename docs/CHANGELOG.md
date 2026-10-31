@@ -999,3 +999,23 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - **AGENTS.md** now says to read `wiki/index.md` at session start and describes how to keep the wiki
   current (decisions, milestone close-out, ingest, query, lint, log).
 - No code, content or tests changed.
+
+## R0 - Source-retrofit foundation (2026-10-31)
+
+- **Owner rule:** copy the source exactly (ASSUMPTIONS override #11); retrofit plan in
+  `wiki/milestones/source-retrofit.md`.
+- **Source loader.** `scripts/source/source.mjs` (+ `.d.mts` types) loads any table from the source
+  game's config dumps; `scripts/source/index-tables.mjs` writes `docs/SOURCE-TABLES.md` (377 tables in
+  32 dumps) so agents without `reference/` can see what exists.
+- **Save reset.** Save **v18**, `MIN_SAVE_VERSION` 18, new `outdated_save` error. LocalServer retires
+  an old save (`wildbound.account.retired`) and starts fresh with a "fresh start" mail
+  (ASSUMPTIONS #47).
+- **Tests.** The version-by-version migration tests (v1, v6–v16, pre-M10 PvP) tested behaviour the
+  owner chose to drop, so they were replaced — not deleted to get green — by: every version below
+  `MIN_SAVE_VERSION` is refused; a current save with missing slices is still filled; the reset keeps
+  the retired save and refuses an old import; two loader tests; a check that the e2e fixtures'
+  `E2E_SAVE_VERSION` equals `SAVE_VERSION`. **506 unit tests / 66 files**, **90 e2e**.
+- **CI.** `.github/workflows/check.yml` runs `pnpm check` on every push and posts a summary
+  annotation agents can read. Two mobile M11 e2e tests (Trinkets, VIP) failed once on CI and passed
+  on other runs — flaky, not yet fixed.
+- **Next:** R1 - Pokémon growth from the source tables.

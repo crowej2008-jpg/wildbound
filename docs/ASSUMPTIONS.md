@@ -709,3 +709,19 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     3-star record's half reward. Save **v17** adds `skyPillar` and the `skyPillar` squad mode; v16
     and older saves migrate with a fresh slice and an empty squad. *What would change it:* a raised
     trainer-level cap, source-exact gate numbers, or owner approval for a different sweep rule.
+
+## Source retrofit (R)
+
+47. **Saves reset instead of migrating during the retrofit (owner decision, 2026-10-31).** Owner:
+    "ok lets reset". Save **v18** sets `MIN_SAVE_VERSION = 18`; anything older is refused as
+    `outdated_save`. On load, LocalServer keeps the old save under `wildbound.account.retired`,
+    clears the backup and starts a fresh account with a "fresh start" mail; importing an old save
+    shows the error instead. Every retrofit step that changes the save shape raises both constants
+    together (and `tests/e2e/save-version.ts`). Real migrations resume once friends have real
+    progress (after the M19 backend). *What would change it:* the owner wanting old saves kept.
+48. **Source tables are read from the owner's dumps, never at runtime (R0).**
+    `scripts/source/source.mjs` loads tables from `reference/game-rebuild/data/h5-client/` (or
+    `WILDBOUND_SOURCE`); when a table is in several dated dumps the latest wins. Import scripts write
+    committed content JSON; the game and CI never read `reference/`. `docs/SOURCE-TABLES.md` lists all
+    377 tables. Some dump keys are research extracts with annotated names (e.g.
+    `vip_priv_json (daily_dun_buy_num by VIP level)`); prefer the plain table when both exist.
