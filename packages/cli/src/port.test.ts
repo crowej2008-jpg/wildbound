@@ -146,7 +146,7 @@ describe('faithful ports (numbers straight from the sheet)', () => {
     const lugia = byId.get('lugia')?.talents?.triggers ?? [];
     expect(lugia.some((t) => t.effects?.some((e) => e.op === 'buff' && e.buff.kind === 'endure'))).toBe(true);
     const mewtwo = byId.get('shadow-mewtwo')?.talents?.triggers ?? [];
-    expect(mewtwo.find((t) => t.on === 'afterBasic')?.effects).toEqual(
+    expect(mewtwo.filter((t) => t.on === 'afterBasic').flatMap((t) => t.effects ?? [])).toEqual(
       expect.arrayContaining([expect.objectContaining({ op: 'splash', share: 0.1 })]),
     );
   });
