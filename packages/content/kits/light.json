@@ -2198,7 +2198,8 @@
               "tag": "light-energy",
               "delta": 2
             }
-          ]
+          ],
+          "group": "passive"
         },
         {
           "on": "afterBasic",
@@ -2212,7 +2213,8 @@
               "tag": "light-energy",
               "delta": 2
             }
-          ]
+          ],
+          "group": "passive"
         },
         {
           "on": "roundStart",
@@ -2269,7 +2271,8 @@
               "tag": "light-energy",
               "consume": 1
             }
-          ]
+          ],
+          "group": "talent4"
         }
       ],
       "rageStart": 500,
@@ -2280,9 +2283,339 @@
           "atk": 0.3,
           "scale": {
             "resource": "light-energy"
-          }
+          },
+          "group": "passive"
         }
       ]
+    },
+    "levels": {
+      "ult": {
+        "2": {
+          "skill": {
+            "type": "S",
+            "rates": [
+              1.1
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "resource",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "light-energy",
+                "consume": 99
+              }
+            ]
+          }
+        },
+        "3": {
+          "skill": {
+            "type": "S",
+            "rates": [
+              1.1
+            ],
+            "rule": "all",
+            "effects": []
+          }
+        },
+        "name": "Light That Burns the Sky",
+        "text": [
+          "Deals 110% S.ATK to all enemy units, and boosts the power of the move by 30% for each layer of light energy possessed. All light energy is consumed after using the move.",
+          "Ultimate comes with 30% ignore defense",
+          "Using the Ultimate no longer consumes light energy."
+        ]
+      },
+      "basic": {
+        "2": {
+          "skill": {
+            "type": "S",
+            "rates": [
+              1.3
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "random",
+                  "n": 1,
+                  "filters": [
+                    "controlled"
+                  ]
+                },
+                "kinds": [
+                  "control",
+                  "silence",
+                  "confusion",
+                  "paralysis",
+                  "disarm",
+                  "noBasic",
+                  "noCrit"
+                ]
+              }
+            ]
+          }
+        },
+        "3": {
+          "skill": {
+            "type": "S",
+            "rates": [
+              1.3
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "random",
+                  "n": 1,
+                  "filters": [
+                    "controlled"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "name": "Photon sharp edge",
+        "text": [
+          "Deals 130% S.ATK to a single enemy player, and selects a friendly player who is under control to remove the control status from them.",
+          "Basic skill attack range changed to enemy horizontal row",
+          "Cleanse all negative status of ally after removing their control status"
+        ]
+      },
+      "passive": {
+        "2": {
+          "triggers": [
+            {
+              "on": "afterNormal",
+              "effects": [
+                {
+                  "op": "resource",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "tag": "light-energy",
+                  "delta": 2
+                }
+              ],
+              "group": "passive"
+            },
+            {
+              "on": "afterBasic",
+              "effects": [
+                {
+                  "op": "resource",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "tag": "light-energy",
+                  "delta": 2
+                }
+              ],
+              "group": "passive"
+            }
+          ],
+          "damageMods": [
+            {
+              "tag": "light-energy",
+              "slot": "ult",
+              "atk": 0.45,
+              "scale": {
+                "resource": "light-energy"
+              },
+              "group": "passive"
+            }
+          ]
+        },
+        "3": {
+          "triggers": [
+            {
+              "on": "afterNormal",
+              "effects": [
+                {
+                  "op": "resource",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "tag": "light-energy",
+                  "delta": 2
+                }
+              ],
+              "group": "passive"
+            },
+            {
+              "on": "afterBasic",
+              "effects": [
+                {
+                  "op": "resource",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "tag": "light-energy",
+                  "delta": 2
+                }
+              ],
+              "group": "passive"
+            },
+            {
+              "on": "turnStart",
+              "condition": {
+                "allyUnderControl": true
+              },
+              "perTurn": 1,
+              "effects": [
+                {
+                  "op": "resource",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "tag": "light-energy",
+                  "delta": 2
+                }
+              ],
+              "group": "passive"
+            }
+          ],
+          "damageMods": [
+            {
+              "tag": "light-energy",
+              "slot": "ult",
+              "atk": 0.45,
+              "scale": {
+                "resource": "light-energy"
+              },
+              "group": "passive"
+            }
+          ]
+        },
+        "name": "Ultra Burst",
+        "text": [
+          "Must gain 2 levels of light energy after each release of basic skills and basic attacks.",
+          "The effect of light energy is increased to 45% more damage per level of the Ultimate.",
+          "At the beginning of each turn, if there is a ally under control on the field, gain 2 levels of light energy for self, triggered only once a turn"
+        ]
+      },
+      "talent4": {
+        "2": {
+          "triggers": [
+            {
+              "on": "turnStart",
+              "condition": {
+                "selfControlled": true,
+                "selfStackAtLeast": {
+                  "tag": "light-energy",
+                  "n": 1
+                }
+              },
+              "effects": [
+                {
+                  "op": "cleanse",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "kinds": [
+                    "control",
+                    "silence",
+                    "confusion",
+                    "paralysis",
+                    "disarm",
+                    "noBasic",
+                    "noCrit"
+                  ]
+                },
+                {
+                  "op": "resource",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "tag": "light-energy",
+                  "consume": 1
+                },
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "buff": {
+                    "tag": "necrozma-absorb",
+                    "kind": "stat",
+                    "field": "lifesteal",
+                    "amount": 0.5,
+                    "turns": 2
+                  }
+                }
+              ],
+              "group": "talent4"
+            }
+          ]
+        },
+        "3": {
+          "triggers": [
+            {
+              "on": "turnStart",
+              "condition": {
+                "selfControlled": true,
+                "selfStackAtLeast": {
+                  "tag": "light-energy",
+                  "n": 1
+                }
+              },
+              "effects": [
+                {
+                  "op": "cleanse",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "kinds": [
+                    "control",
+                    "silence",
+                    "confusion",
+                    "paralysis",
+                    "disarm",
+                    "noBasic",
+                    "noCrit"
+                  ]
+                },
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "buff": {
+                    "tag": "necrozma-absorb",
+                    "kind": "stat",
+                    "field": "lifesteal",
+                    "amount": 0.5,
+                    "turns": 2
+                  }
+                }
+              ],
+              "group": "talent4"
+            }
+          ]
+        },
+        "name": "Radiant Greatness",
+        "text": [
+          "Spend 1 level of light energy to remove control status if in control status at the beginning of own turn.",
+          "After successfully removing the control status, it gain 50% HP absorption for 1 turn.",
+          "Removing its own control status no longer consumes light energy."
+        ]
+      }
     }
   },
   {
@@ -2419,9 +2752,333 @@
           "role": "defend",
           "dmg": 0.5,
           "scale": "selfMissingHp",
-          "cap": 0.3
+          "cap": 0.3,
+          "group": "talent4"
         }
       ]
+    },
+    "levels": {
+      "ult": {
+        "2": {
+          "skill": {
+            "type": "P",
+            "rates": [
+              1.5
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "casterLostTotal",
+                "share": 0.4
+              },
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "chance": 0.7,
+                "delta": -250
+              }
+            ]
+          }
+        },
+        "3": {
+          "skill": {
+            "type": "P",
+            "rates": [
+              1.7
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "casterLostTotal",
+                "share": 0.4
+              },
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -250
+              }
+            ]
+          }
+        },
+        "name": "Beast Beheading",
+        "text": [
+          "Deals 150% physical damage to a horizontal row of enemies symmetrical to the center of the battlefield, plus damage equal to 40% of the HP it has lost during the battle (HP healed back still counts).",
+          "The Ultimate has a 70% chance to reduce the target's Rage by 250.",
+          "Base damage rises to 170%; the Rage-reduction chance rises to 100%."
+        ]
+      },
+      "basic": {
+        "2": {
+          "skill": {
+            "type": "P",
+            "rates": [
+              1.4
+            ],
+            "rule": "same_position",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "armor-break-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.2,
+                  "turns": 3
+                },
+                "condition": {
+                  "targetHasTag": "shattered-armor"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "shattered-armor",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": 0,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        },
+        "3": {
+          "skill": {
+            "type": "P",
+            "rates": [
+              1.6
+            ],
+            "rule": "same_position",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "armor-break-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.2,
+                  "turns": 3
+                },
+                "condition": {
+                  "targetHasTag": "shattered-armor"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "shattered-armor",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": 0,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        },
+        "name": "Close Battle",
+        "text": [
+          "Deals 140% physical damage to a single enemy symmetrical to the center of the battlefield and applies a layer of shattered armor. Each layer of Shattered Armor reduces the target's defense by 10% for 3 turns, up to 3 layers.",
+          "Armor Crunch effect increased to reduce the target's defense by 20%",
+          "Base factor increased to 160%, ATK ignores Dodge when HP is below 50%"
+        ]
+      },
+      "passive": {
+        "2": {
+          "triggers": [
+            {
+              "on": "onEnemyDeath",
+              "effects": [
+                {
+                  "op": "heal",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "rate": 0.1,
+                  "basis": "targetMaxHp"
+                },
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "buff": {
+                    "tag": "zacian-fallen",
+                    "kind": "stat",
+                    "field": "atkPct",
+                    "amount": 0.2,
+                    "turns": 999,
+                    "maxStacks": 99
+                  }
+                }
+              ],
+              "group": "passive"
+            },
+            {
+              "on": "onAllyDeath",
+              "effects": [
+                {
+                  "op": "heal",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "rate": 0.1,
+                  "basis": "targetMaxHp"
+                },
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "buff": {
+                    "tag": "zacian-fallen",
+                    "kind": "stat",
+                    "field": "atkPct",
+                    "amount": 0.2,
+                    "turns": 999,
+                    "maxStacks": 99
+                  }
+                }
+              ],
+              "group": "passive"
+            }
+          ]
+        },
+        "3": {
+          "triggers": [
+            {
+              "on": "onEnemyDeath",
+              "effects": [
+                {
+                  "op": "heal",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "rate": 0.2,
+                  "basis": "targetMaxHp"
+                },
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "buff": {
+                    "tag": "zacian-fallen",
+                    "kind": "stat",
+                    "field": "atkPct",
+                    "amount": 0.3,
+                    "turns": 999,
+                    "maxStacks": 99
+                  }
+                }
+              ],
+              "group": "passive"
+            },
+            {
+              "on": "onAllyDeath",
+              "effects": [
+                {
+                  "op": "heal",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "rate": 0.2,
+                  "basis": "targetMaxHp"
+                },
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "buff": {
+                    "tag": "zacian-fallen",
+                    "kind": "stat",
+                    "field": "atkPct",
+                    "amount": 0.3,
+                    "turns": 999,
+                    "maxStacks": 99
+                  }
+                }
+              ],
+              "group": "passive"
+            }
+          ]
+        },
+        "name": "King of Swords",
+        "text": [
+          "When attacking an enemy with reduced armor, you will receive a 20% ATK for 2 turns.",
+          "When any unit on the field (regardless of enemy or mine) is killed by a direct attack, Zacian restores 10% life and receives a 20% permanent attack boost",
+          "The amount of recovery when the unit dies is increased to 20% of life, and the effect of attack power increase becomes 30%"
+        ]
+      },
+      "talent4": {
+        "2": {
+          "damageMods": [
+            {
+              "tag": "zacian-guard",
+              "role": "defend",
+              "dmg": 0.5,
+              "scale": "selfMissingHp",
+              "cap": 0.3,
+              "group": "talent4"
+            }
+          ]
+        },
+        "3": {
+          "damageMods": [
+            {
+              "tag": "zacian-guard",
+              "role": "defend",
+              "dmg": 0.75,
+              "scale": "selfMissingHp",
+              "cap": 0.42,
+              "group": "talent4"
+            }
+          ]
+        },
+        "name": "Hero of Many Battles",
+        "text": [
+          "Gain DMG reduction based on current Self HP, 1% reduction for each 2% of HP lost, up to 30%",
+          "Gain lifesteal based on current self HP,1% lifesteal for each 1% of HP lost, up to 100%",
+          "DMG Reduction is increased to: 1.5% reduction for every 2% Hp loss up to 42%"
+        ]
+      }
     }
   },
   {
@@ -2543,7 +3200,8 @@
                 "chance": null
               }
             }
-          ]
+          ],
+          "group": "passive"
         },
         {
           "on": "turnStart",
@@ -2585,11 +3243,424 @@
                 "endsWithSource": true
               }
             }
-          ]
+          ],
+          "group": "talent4"
         }
       ],
       "rageStart": 500,
       "rageOnHit": 125
+    },
+    "levels": {
+      "ult": {
+        "2": {
+          "skill": {
+            "type": "P",
+            "rates": [
+              1
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "resource",
+                "target": {
+                  "event": true
+                },
+                "tag": "frost",
+                "delta": 1,
+                "max": 1
+              },
+              {
+                "op": "control",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "control": {
+                  "kind": "freeze",
+                  "chance": null
+                },
+                "condition": {
+                  "selfStackAtLeast": {
+                    "tag": "frost",
+                    "n": 1
+                  }
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "calyrex-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.2,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        },
+        "3": {
+          "skill": {
+            "type": "P",
+            "rates": [
+              1
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "resource",
+                "target": {
+                  "event": true
+                },
+                "tag": "frost",
+                "delta": 1,
+                "max": 1
+              },
+              {
+                "op": "control",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "control": {
+                  "kind": "freeze",
+                  "chance": null
+                },
+                "condition": {
+                  "selfStackAtLeast": {
+                    "tag": "frost",
+                    "n": 1
+                  }
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "calyrex-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.2,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        },
+        "name": "Radical Mania Ice",
+        "text": [
+          "Deals 100% P.ATK DMG to all enemies, and grants \"Frost\" to the target for 1 turn.Freeze yourself for one turn after releasing Ultimate when holding Frost",
+          "ult also reduces the target's ATK by 20% for 1 round",
+          "Grants \"Frost\" to the target for 2 turns."
+        ]
+      },
+      "basic": {
+        "2": {
+          "skill": {
+            "type": "P",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "freeze",
+                  "chance": 0.4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "resistance-shield",
+                  "kind": "invulnerable",
+                  "turns": 2,
+                  "consumeOnHit": true
+                }
+              }
+            ]
+          },
+          "triggers": []
+        },
+        "3": {
+          "skill": {
+            "type": "P",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "freeze",
+                  "chance": 0.4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "resistance-shield",
+                  "kind": "invulnerable",
+                  "turns": 2,
+                  "consumeOnHit": true
+                }
+              }
+            ]
+          },
+          "triggers": [
+            {
+              "on": "battleStart",
+              "effects": [
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "buff": {
+                    "tag": "calyrex-opening",
+                    "kind": "stat",
+                    "field": "basicRate",
+                    "amount": 1,
+                    "bigRounds": 2
+                  }
+                }
+              ],
+              "group": "basic"
+            }
+          ]
+        },
+        "name": "Snow Spear Impact",
+        "text": [
+          "Deals 120% P.ATK to single enemy, 40% chance of freezing target for 1 turn",
+          "Provides a resistance shield for the teammate with the lowest life for 1 turn after releasing the basic skill, offsetting 1 direct attack with a maximum cap of 1 layer.",
+          "The probability of basic skills triggering is increased to 100% within two turns Upon entering battle, and 10% of the target's maximum life is restored at the end of the turn after the resistance shield disappears"
+        ]
+      },
+      "passive": {
+        "2": {
+          "triggers": [
+            {
+              "on": "onHit",
+              "chance": 0.25,
+              "effects": [
+                {
+                  "op": "control",
+                  "target": {
+                    "event": true
+                  },
+                  "control": {
+                    "kind": "freeze",
+                    "chance": null
+                  }
+                }
+              ],
+              "group": "passive"
+            },
+            {
+              "on": "roundEnd",
+              "effects": [
+                {
+                  "op": "heal",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "rate": 0.05,
+                  "basis": "targetMaxHp",
+                  "perTagged": {
+                    "side": "enemy",
+                    "tag": "freeze",
+                    "max": 3
+                  }
+                }
+              ],
+              "group": "passive"
+            }
+          ]
+        },
+        "3": {
+          "triggers": [
+            {
+              "on": "onHit",
+              "chance": 0.25,
+              "effects": [
+                {
+                  "op": "control",
+                  "target": {
+                    "event": true
+                  },
+                  "control": {
+                    "kind": "freeze",
+                    "chance": null
+                  }
+                }
+              ],
+              "group": "passive"
+            },
+            {
+              "on": "roundEnd",
+              "effects": [
+                {
+                  "op": "heal",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "rate": 0.05,
+                  "basis": "targetMaxHp",
+                  "perTagged": {
+                    "side": "enemy",
+                    "tag": "freeze",
+                    "max": 3
+                  }
+                }
+              ],
+              "group": "passive"
+            },
+            {
+              "on": "roundEnd",
+              "effects": [
+                {
+                  "op": "rage",
+                  "target": {
+                    "side": "ally",
+                    "rule": "self"
+                  },
+                  "perTagged": {
+                    "side": "enemy",
+                    "tag": "freeze",
+                    "max": 3
+                  },
+                  "delta": 125
+                }
+              ],
+              "group": "passive"
+            }
+          ]
+        },
+        "name": "Chilling Neigh",
+        "text": [
+          "When the self is under attack, 25% chance to freeze the attacker for 1 turn",
+          "At the end of each turn, for every enemy unit on the field that is frozen, Calyrex returns 5% of HP. Works up to 3 times per turn",
+          "At the end of each turn, for every enemy unit on the field that is frozen, Calyrex returns 125 points of rage. Works up to 3 times per turn"
+        ]
+      },
+      "talent4": {
+        "2": {
+          "triggers": [
+            {
+              "on": "turnStart",
+              "effects": [
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "all"
+                  },
+                  "buff": {
+                    "tag": "leycrest-critRes",
+                    "kind": "stat",
+                    "field": "critRes",
+                    "amount": 0.05,
+                    "turns": 99,
+                    "maxStacks": 4,
+                    "endsWithSource": true
+                  }
+                },
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "all"
+                  },
+                  "buff": {
+                    "tag": "leycrest-block",
+                    "kind": "stat",
+                    "field": "block",
+                    "amount": 0.05,
+                    "turns": 99,
+                    "maxStacks": 4,
+                    "endsWithSource": true
+                  }
+                }
+              ],
+              "group": "talent4"
+            }
+          ]
+        },
+        "3": {
+          "triggers": [
+            {
+              "on": "turnStart",
+              "effects": [
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "all"
+                  },
+                  "buff": {
+                    "tag": "leycrest-critRes",
+                    "kind": "stat",
+                    "field": "critRes",
+                    "amount": 0.08,
+                    "turns": 99,
+                    "maxStacks": 4,
+                    "endsWithSource": true
+                  }
+                },
+                {
+                  "op": "buff",
+                  "target": {
+                    "side": "ally",
+                    "rule": "all"
+                  },
+                  "buff": {
+                    "tag": "leycrest-block",
+                    "kind": "stat",
+                    "field": "block",
+                    "amount": 0.08,
+                    "turns": 99,
+                    "maxStacks": 4,
+                    "endsWithSource": true
+                  }
+                }
+              ],
+              "group": "talent4"
+            }
+          ]
+        },
+        "name": "King of Abundance",
+        "text": [
+          "When in the field at the beginning of each turn, improve all teammates 5% Crit Res, 4 turns to reach the maximum, the effect disappears after the death of the King of Leycrest",
+          "When in the field at the beginning of each turn, improve all teammates 5% Block, 4 turns to reach the maximum, the effect disappears after the death of the King of Leycrest",
+          "The effect is increased to 8% Crit Res and 8% Block per turn"
+        ]
+      }
     }
   }
 ]

@@ -77,3 +77,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-10-31] decision | Owner kit changes: Snorlax, Mimikyu, Dialga
 - Snorlax +2%/1% lost uncapped; Mimikyu extra attacks gain Rage; Dialga fills the whole team's Rage.
   Page: [kit changes](decisions/kit-changes-2026-10-31.md).
+
+## [2026-10-31] update | E4 built — Origin skill levels and species shards
+- Owner: "lets do per pokemon shards as with the origin skills"; shard source "No source until R9".
+  Save v21. Pages: battle engine, save versions, index.

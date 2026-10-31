@@ -149,6 +149,10 @@ const buffSpecSchema = z
   })
   .strict();
 
+const perTaggedSchema = z
+  .object({ side: targetSideSchema, tag: z.string().min(1), max: z.number().int().positive().optional() })
+  .strict();
+
 const controlSchema = z
   .object({
     kind: z.string().min(1),
@@ -177,6 +181,7 @@ const effectSchema = z.discriminatedUnion('op', [
       over: z.number().int().positive().optional(),
       bonusVs: z.object({ condition: conditionSchema, mult: z.number() }).strict().optional(),
       perResource: z.string().min(1).optional(),
+      perTagged: perTaggedSchema.optional(),
       condition: conditionSchema.optional(),
       chance: z.number().min(0).max(1).optional(),
     })
@@ -220,6 +225,7 @@ const effectSchema = z.discriminatedUnion('op', [
       steal: z.boolean().optional(),
       fill: z.boolean().optional(),
       force: z.boolean().optional(),
+      perTagged: perTaggedSchema.optional(),
       condition: conditionSchema.optional(),
       chance: z.number().min(0).max(1).optional(),
     })
@@ -250,6 +256,7 @@ const effectSchema = z.discriminatedUnion('op', [
         .optional(),
       share: z.number().min(0).optional(),
       trueDamage: z.boolean().optional(),
+      capRate: z.number().min(0).optional(),
       condition: conditionSchema.optional(),
       chance: z.number().min(0).max(1).optional(),
     })
@@ -338,6 +345,7 @@ export const damageModSchema = z
     cap: z.number().optional(),
     role: z.enum(['attack', 'defend']).optional(),
     type: z.enum(['P', 'S']).optional(),
+    group: z.string().min(1).optional(),
   })
   .strict();
 
@@ -365,12 +373,14 @@ export const triggerSchema = z
       'onAllyCrit',
       'onEndure',
       'onEnemyDeath',
+      'onEnemyUlt',
     ]),
     hpBelow: z.number().min(0).max(1).optional(),
     chance: z.number().min(0).max(1).optional(),
     perTurn: z.number().int().positive().optional(),
     cooldown: z.number().int().positive().optional(),
     maxFires: z.number().int().positive().optional(),
+    group: z.string().min(1).optional(),
     condition: conditionSchema.optional(),
     effects: z.array(effectSchema).optional(),
     rage: z.number().optional(),
@@ -395,6 +405,24 @@ const talentSchema = z
   })
   .strict();
 
+const skillLevelSchema = z
+  .object({
+    skill: skillSchema.optional(),
+    triggers: z.array(triggerSchema).optional(),
+    damageMods: z.array(damageModSchema).optional(),
+  })
+  .strict();
+
+/** E4: an Origin skill row's sheet text per level and its LV.2 / LV.3 content. */
+const skillRowLevelsSchema = z
+  .object({
+    name: z.string().optional(),
+    text: z.array(z.string()).max(3).optional(),
+    '2': skillLevelSchema.optional(),
+    '3': skillLevelSchema.optional(),
+  })
+  .strict();
+
 export const kitSchema = z
   .object({
     id: z.string().min(1),
@@ -411,6 +439,11 @@ export const kitSchema = z
     counterShare: z.number().min(0).max(1).optional(),
     talents: talentSchema.optional(),
     hooksConfig: z.record(z.string(), z.record(z.string(), z.union([z.string(), z.number()]))).optional(),
+    levels: z
+      .object({ ult: skillRowLevelsSchema, basic: skillRowLevelsSchema, passive: skillRowLevelsSchema, talent4: skillRowLevelsSchema })
+      .partial()
+      .strict()
+      .optional(),
   })
   .strict();
 
@@ -565,6 +598,8 @@ export const growthSchema = z
       })
       .strict(),
     respawn: z.object({ gemCost: z.number().nonnegative(), refundRate: z.number().min(0).max(1) }).strict(),
+    /** E4 (hero_origin_skill_up_json): an Origin's own shards for skill LV.2 and LV.3. */
+    originSkill: z.object({ costs: z.array(z.number().int().positive()).length(2) }).strict(),
   })
   .strict();
 

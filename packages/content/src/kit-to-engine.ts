@@ -91,6 +91,27 @@ function toEngineSkill(slot: SkillSlot, s: ContentSkill): SkillDef {
   };
 }
 
+type ContentLevels = NonNullable<KitJson['levels']>;
+
+/** E4: convert an Origin's level rows (skills and triggers need the same mapping as the kit's). */
+function toEngineLevels(levels: ContentLevels): NonNullable<KitDef['levels']> {
+  const out: NonNullable<KitDef['levels']> = {};
+  for (const [row, def] of Object.entries(levels) as [keyof ContentLevels, NonNullable<ContentLevels[keyof ContentLevels]>][]) {
+    const conv = (lv: '2' | '3') => {
+      const d = def[lv];
+      if (!d) return undefined;
+      const slot: SkillSlot = row === 'basic' ? 'basic' : 'ult';
+      return {
+        ...(d.skill ? { skill: toEngineSkill(slot, d.skill) } : {}),
+        ...(d.triggers ? { triggers: d.triggers.map(toEngineTrigger) } : {}),
+        ...(d.damageMods ? { damageMods: d.damageMods } : {}),
+      };
+    };
+    out[row] = { name: def.name, text: def.text, '2': conv('2'), '3': conv('3') };
+  }
+  return out;
+}
+
 /** Convert one validated content kit into the engine's `KitDef`. */
 export function kitToEngine(j: KitJson): KitDef {
   return {
@@ -108,5 +129,6 @@ export function kitToEngine(j: KitJson): KitDef {
     counterShare: j.counterShare,
     talents: j.talents ? toEngineTalent(j.talents) : undefined,
     hooksConfig: j.hooksConfig,
+    ...(j.levels ? { levels: toEngineLevels(j.levels) } : {}),
   };
 }

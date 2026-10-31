@@ -888,6 +888,213 @@ kit("shiny-arceus",
     damageMods=[{"tag": "sanction", "atk": 0.075, "scale": {"resource": "sanction"}}],
     notModelled=["Sanction's +5% Crit Intensity per layer (the +7.5% S.ATK per layer is modelled)"])
 
+
+# ------------------------------------------------------------------ E4: Origin skill levels
+# Source (kb/pokemon-growth.md, hero_origin_skill_up_json): only the six Origins level skills — the
+# ult, basic skill, EXC passive and Talent 4, LV.2 for 50 and LV.3 for 100 of the Origin's own shards.
+# Each row's triggers / mods carry `group`; a level replaces its row's group (engine applySkillLevels).
+SHEET = json.loads((Path(__file__).parent / "pokemon-skills.json").read_text())
+ROW_SLOT = {"ult": "Ult", "basic": "Basic Skill", "passive": "Passive", "talent4": "Talent 4"}
+
+
+def g(obj, group):
+    return {**obj, "group": group}
+
+
+def sheet_text(kid, slot):
+    for c in SHEET:
+        if c["name"].lower().replace(" ", "-") == kid:
+            for s_ in c["slots"]:
+                if s_["slot"] == slot:
+                    notes = [n.strip() for n in s_.get("notes", "").split("|") if n.strip()]
+                    notes = [n.split(")", 1)[1].strip() if n.startswith("(LV.") else n for n in notes]
+                    return s_["name"], [s_["desc"]] + notes
+    raise SystemExit(f"no sheet text {kid} {slot}")
+
+
+def levels(kid, rows):
+    """rows: {row: {'2': {...}, '3': {...}}} → kit levels with the sheet's text per level."""
+    out = {}
+    for row in ("ult", "basic", "passive", "talent4"):
+        name, text = sheet_text(kid, ROW_SLOT[row])
+        out[row] = {"name": name, "text": text, **rows.get(row, {})}
+    K[kid]["levels"] = out
+
+
+def lv(skill_=None, triggers=None, damageMods=None):
+    d = {}
+    if skill_ is not None:
+        d["skill"] = skill_
+    if triggers is not None:
+        d["triggers"] = triggers
+    if damageMods is not None:
+        d["damageMods"] = damageMods
+    return d
+
+
+# Calyrex ------------------------------------------------------------------------------------------
+cal_ult = lambda extra: skill("P", 1.0, "all", effects=[
+    {"op": "resource", "target": T, "tag": "frost", "delta": 1, "max": 1},
+    control(SELF, "freeze", condition={"selfStackAtLeast": {"tag": "frost", "n": 1}}),
+] + extra)
+cal_basic = lambda extra: skill("P", 1.2, effects=[control(T, "freeze", 0.4)] + extra)
+resist = give({"side": "ally", "rule": "lowest_hp", "n": 1}, buff("resistance-shield", kind="invulnerable", turns=2, consumeOnHit=True))
+cal_passive = g(trig("onHit", [control(T, "freeze")], chance=0.25), "passive")
+cal_heal = g(trig("roundEnd", [heal(SELF, 0.05, "targetMaxHp", perTagged={"side": "enemy", "tag": "freeze", "max": 3})]), "passive")
+cal_rage = g(trig("roundEnd", [rage(SELF, 125, perTagged={"side": "enemy", "tag": "freeze", "max": 3})]), "passive")
+cal_t4 = lambda amount, block: g(trig("turnStart", [give(ALLIES, buff("leycrest-critRes", "critRes", amount, turns=99, stacks=4, endsWithSource=True))]
+                                      + ([give(ALLIES, buff("leycrest-block", "block", block, turns=99, stacks=4, endsWithSource=True))] if block else [])), "talent4")
+kit("calyrex", skill("P", 1.1), cal_ult([]), cal_basic([]),
+    statMods=bundle(0.06, 0.22, 0.06, 0.6, 0.25, 0.15),
+    triggers=[cal_passive, ally_rdct_stacks(0.05, 4), cal_t4(0.05, 0)],
+    notModelled=["Ult: 'Freeze yourself … when holding Frost' — read as Calyrex holding Frost (it never gains it itself)",
+                 "Ult LV.3: Frost lasting 2 turns changes nothing modelled",
+                 "Basic Skill LV.3: the 10% max-HP heal after the resistance shield ends"])
+cal_l3_basic_trig = g(trig("battleStart", [give(SELF, buff("calyrex-opening", "basicRate", 1, big=2))]), "basic")
+levels("calyrex", {
+    "ult": {"2": lv(cal_ult([give(T, buff("calyrex-atk", "atkPct", -0.2, turns=1))])),
+            "3": lv(cal_ult([give(T, buff("calyrex-atk", "atkPct", -0.2, turns=1))]))},
+    "basic": {"2": lv(cal_basic([resist]), []), "3": lv(cal_basic([resist]), [cal_l3_basic_trig])},
+    "passive": {"2": lv(triggers=[cal_passive, cal_heal]), "3": lv(triggers=[cal_passive, cal_heal, cal_rage])},
+    "talent4": {"2": lv(triggers=[cal_t4(0.05, 0.05)]), "3": lv(triggers=[cal_t4(0.08, 0.08)])},
+})
+
+# Necrozma -----------------------------------------------------------------------------------------
+nec_ult = lambda consume: skill("S", 1.1, "all", effects=([{"op": "resource", "target": SELF, "tag": "light-energy", "consume": 99}] if consume else []))
+nec_basic = lambda rule, kinds: skill("S", 1.3, rule, effects=[{"op": "cleanse", "target": {"side": "ally", "rule": "random", "n": 1, "filters": ["controlled"]}, **({"kinds": kinds} if kinds else {})}])
+nec_gain = [g(trig("afterNormal", [{"op": "resource", "target": SELF, "tag": "light-energy", "delta": 2}]), "passive"),
+            g(trig("afterBasic", [{"op": "resource", "target": SELF, "tag": "light-energy", "delta": 2}]), "passive")]
+nec_mod = lambda per: g({"tag": "light-energy", "slot": "ult", "atk": per, "scale": {"resource": "light-energy"}}, "passive")
+nec_t4 = lambda consume, lifesteal: g(trig("turnStart", [{"op": "cleanse", "target": SELF, "kinds": CONTROL_KINDS}]
+                                           + ([{"op": "resource", "target": SELF, "tag": "light-energy", "consume": 1}] if consume else [])
+                                           + ([give(SELF, buff("necrozma-absorb", "lifesteal", 0.5, turns=2))] if lifesteal else []),
+                                           condition={"selfControlled": True, "selfStackAtLeast": {"tag": "light-energy", "n": 1}}), "talent4")
+kit("necrozma", skill("S", 1.3), nec_ult(True), nec_basic("column", CONTROL_KINDS),
+    statMods=bundle(0.6, 0.3, 0.2, 0.06, 0.06, 0.21),
+    triggers=nec_gain + [trig("roundStart", [give(SELF, buff("round-dmgBoost", "dmgBoost", 0.025, turns=99, stacks=4))]), nec_t4(True, False)],
+    damageMods=[nec_mod(0.3)],
+    notModelled=["Ult LV.2: 30% ignore defense (DEF has no effect)"])
+nec_l3_gain = g(trig("turnStart", [{"op": "resource", "target": SELF, "tag": "light-energy", "delta": 2}], condition={"allyUnderControl": True}, perTurn=1), "passive")
+levels("necrozma", {
+    "ult": {"2": lv(nec_ult(True)), "3": lv(nec_ult(False))},
+    "basic": {"2": lv(nec_basic("row", CONTROL_KINDS)), "3": lv(nec_basic("row", None))},
+    "passive": {"2": lv(triggers=nec_gain, damageMods=[nec_mod(0.45)]), "3": lv(triggers=nec_gain + [nec_l3_gain], damageMods=[nec_mod(0.45)])},
+    "talent4": {"2": lv(triggers=[nec_t4(True, True)]), "3": lv(triggers=[nec_t4(False, True)])},
+})
+
+# Origin Lugia -------------------------------------------------------------------------------------
+CONFINED = {"rule": "random", "n": 1, "rowFilter": "back", "hasTag": "darkness-confinement"}
+ol_ult = lambda extra: skill("P", 1.3, "all", effects=[
+    control({"rule": "random", "n": 1, "rowFilter": "back"}, "darkness-confinement", condition={"enemiesAtLeast": 2})] + extra)
+ol_basic = lambda drain, extra: skill("P", 1.1, hasTag="darkness-confinement", effects=[
+    rage(T, -drain, condition={"targetHasTag": "darkness-confinement"}),
+    give(T, buff("confined-atk", "atkPct", -0.1, turns=2), condition={"targetHasTag": "darkness-confinement"}),
+] + extra)
+ol_endure = [g(trig("battleStart", [give(SELF, buff("origin-lugia-endure", kind="endure", undisp=True))]), "passive"),
+             g(trig("onEndure", [control(SELF, "confinement"), rage(SELF, 150)], maxFires=1), "passive")]
+ol_guard = g({"tag": "origin-lugia-guard", "role": "defend", "type": "P", "dmg": 0.15, "scale": "selfMissingHp", "cap": 0.15}, "passive")
+ol_feather = lambda healr: [
+    g(trig("onEnemyUlt", [give(SELF, buff("feather-dance", "pRdct", 0.1, turns=99, stacks=2))]), "passive"),
+    g(trig("roundEnd", [heal(ALLIES, healr, "casterAtk"), {"op": "dispel", "target": SELF, "kinds": ["feather-dance"], "count": 1}],
+           condition={"selfStackAtLeast": {"tag": "feather-dance", "n": 1}}), "passive"),
+]
+kit("origin-lugia", skill("P", 1.1, hasTag="darkness-confinement"), ol_ult([]), ol_basic(125, []),
+    statMods=bundle(0.06, 0.22, 0.06, 0.6, 0.25, 0.15),
+    triggers=ol_endure + [ally_rdct_stacks(0.05, 4)],
+    damageMods=[ol_guard],
+    notModelled=[
+        "Ult: a confined unit 'takes damage only from Origin Lugia'",
+        "Ult LV.2 / LV.3: the −20% ATK and −250 Rage land with the confinement, not when it ends",
+        "Passive: backline allies' 70%-strength copy of the P.ATK damage reduction",
+        "Talent 4 (all levels): the first ally(s) to take lethal damage stay at 1 HP and are imprisoned; +20 SPD while an imprisoned enemy is on the field",
+    ])
+levels("origin-lugia", {
+    "ult": {"2": lv(ol_ult([give(CONFINED, buff("dark-prison-atk", "atkPct", -0.2, turns=3))])),
+            "3": lv(ol_ult([give(CONFINED, buff("dark-prison-atk", "atkPct", -0.2, turns=3)), rage(CONFINED, -250)]))},
+    "basic": {"2": lv(ol_basic(125, [give(SELF, buff("dark-rate", "basicRate", 0.2, turns=99, stacks=3))])),
+              "3": lv(ol_basic(200, [give(SELF, buff("dark-rate", "basicRate", 0.2, turns=99, stacks=3))]))},
+    "passive": {"2": lv(triggers=ol_endure + ol_feather(0.6), damageMods=[ol_guard]),
+                "3": lv(triggers=ol_endure + ol_feather(0.75), damageMods=[ol_guard])},
+})
+
+# Origin Rayquaza ----------------------------------------------------------------------------------
+LINKED = {"side": "ally", "rule": "all", "hasTag": "delta-link", "excludeSelf": True}
+OR_PICK = {"side": "ally", "rule": "same_position", "excludeSelf": True}
+or_ult = lambda amount, stacks: skill("S", 1.3, "all", effects=[
+    give(SELF, buff("rayquaza-guard", "dmgRdct", 0.1, turns=99, stacks=1, consumeOnHit=True)),
+    give(LINKED, buff("delta-airflow", "dmgRdct", amount, turns=99, stacks=stacks, consumeOnHit=True)),
+])
+or_basic = lambda extra: skill("S", 1.2, "row", effects=extra)
+or_link = g(trig("battleStart", [give(OR_PICK, buff("delta-link", kind="stack", turns=99, undisp=True))]), "ult")
+or_stream = g(trig("battleStart", [give(OR_PICK, buff("delta-stream", "dmgRdct", 0.3, turns=99, stacks=1, consumeOnHit=True))]), "passive")
+or_crit = g(trig("turnStart", [give(LINKED, buff("thunder-crit", "crit", 0.05, turns=99, stacks=3))]), "passive")
+or_t4 = lambda r: g(trig("onAllyCrit", [dmg(T, rate=r, type="S")], condition={"actorHasTag": "delta-link"}), "talent4")
+kit("origin-rayquaza", skill("S", 1.2), or_ult(0.3, 2), or_basic([]),
+    statMods=bundle(0.15, 0.32, 0.15, 0.06, 0.06, 0.51),
+    triggers=[or_link, or_stream, trig("roundStart", [give(SELF, buff("round-dmgBoost", "dmgBoost", 0.025, turns=99, stacks=4))]), or_t4(0.3)],
+    notModelled=[
+        "Ult/Passive: the link moves to a new ally when the linked one dies; the link picks 'the closest ally, preferring the one below'",
+        "Passive: the linked ally does not drop below 1 HP on its first turn and restores 25% of lost HP from its second turn",
+        "Basic Skill LV.3 / Passive LV.3 / Talent 4 LV.3: the Thunderstorm count and the link target's attack bonus; Passive LV.2's +10% Crit Intensity after 3 stacks",
+    ])
+levels("origin-rayquaza", {
+    "ult": {"2": lv(or_ult(0.5, 2)), "3": lv(or_ult(0.5, 3))},
+    "basic": {"2": lv(or_basic([dmg(T, basis="targetMissingHp", share=0.3)])), "3": lv(or_basic([dmg(T, basis="targetMissingHp", share=0.3)]))},
+    "passive": {"2": lv(triggers=[or_stream, or_crit]), "3": lv(triggers=[or_stream, or_crit])},
+    "talent4": {"2": lv(triggers=[or_t4(0.5)]), "3": lv(triggers=[or_t4(0.5)])},
+})
+
+# Shadow Mewtwo ------------------------------------------------------------------------------------
+FRONT_FOES = {"rule": "all", "rowFilter": "front"}
+sm_ult = lambda turns, second: skill("S", 1.2, "all", effects=[
+    dmg(T, basis="targetMaxHp", share=0.12, condition={"targetClass": "guardian"}),
+    give(FRONT_FOES, buff("heal-cut", "receiveHealBoost", -0.3, turns=turns)),
+] + ([give(FRONT_FOES, buff("heal-cut-2", "receiveHealBoost", -0.2, turns=turns), condition={"selfStackAtLeast": {"tag": "mewtwo-ults", "n": 1}}),
+      {"op": "resource", "target": SELF, "tag": "mewtwo-ults", "delta": 1}] if second else []) + [
+    give(SELF, buff("doubled-basic", kind="stack", turns=99)),
+])
+sm_basic = lambda share, cap: skill("S", 1.5, "frontline", effects=[give(T, buff("heal-block", "receiveHealBoost", -1, turns=2))] + (
+    [dmg(T, basis="targetMaxHp", share=share, capRate=cap, type="S"), dmg(T, basis="targetMaxHp", share=0.12, condition={"targetClass": "guardian"})] if share else []))
+sm_doubled = [g(trig("afterBasic", [{"op": "dispel", "target": SELF, "kinds": ["doubled-basic"]}]), "ult")]
+sm_doubled_mod = g({"tag": "doubled-basic", "slot": "basic", "atk": 1.0, "condition": {"selfHasTag": "doubled-basic"}}, "ult")
+sm_ult_l3_trig = g(trig("afterUlt", [give({"rule": "random", "n": 1, "rowFilter": "front"}, buff("heal-ban", "receiveHealBoost", -1, turns=1))], chance=0.5), "ult")
+sm_splash = lambda share: g(trig("afterBasic", [{"op": "splash", "target": T, "share": share}]), "passive")
+sm_gb = g(trig("afterUlt", [give(SELF, buff("psystrike-gb", "guardBreak", 0.1, turns=999, stacks=3))]), "passive")
+sm_t4 = lambda d, b: g(trig("afterBasic", [give(T, buff("deepen", "dmgRdct", -d, turns=2, stacks=1))] + (
+    [give(T, buff("deepen-block", "block", -b, turns=2, stacks=1)), give(T, buff("deepen-bp", "blockPower", -b, turns=2, stacks=1))] if b else [])), "talent4")
+kit("shadow-mewtwo", skill("S", 1.2, "frontline"), sm_ult(2, False), sm_basic(0, 0),
+    statMods=bundle(0.15, 0.32, 0.15, 0.06, 0.06, 0.51),
+    triggers=sm_doubled + [sm_splash(0.1), sm_t4(0.1, 0)],
+    damageMods=[sm_doubled_mod],
+    notModelled=["Basic Skill LV.2 / LV.3: the max-HP bonus applies even when the hit is blocked"])
+levels("shadow-mewtwo", {
+    "ult": {"2": lv(sm_ult(2, True), sm_doubled, [sm_doubled_mod]), "3": lv(sm_ult(3, True), sm_doubled + [sm_ult_l3_trig], [sm_doubled_mod])},
+    "basic": {"2": lv(sm_basic(0.08, 0.8)), "3": lv(sm_basic(0.1, 1.0))},
+    "passive": {"2": lv(triggers=[sm_splash(0.1), sm_gb]), "3": lv(triggers=[sm_splash(0.2), sm_gb])},
+    "talent4": {"2": lv(triggers=[sm_t4(0.1, 0.1)]), "3": lv(triggers=[sm_t4(0.2, 0.2)])},
+})
+
+# Zacian -------------------------------------------------------------------------------------------
+z_atk = give(SELF, buff("armor-break-atk", "atkPct", 0.2, turns=3), condition={"targetHasTag": "shattered-armor"})
+z_ult = lambda rate, drain_chance: skill("P", rate, "row", effects=[dmg(T, basis="casterLostTotal", share=0.4)] + (
+    [rage(T, -250, **({"chance": drain_chance} if drain_chance < 1 else {}))] if drain_chance else []))
+z_basic = lambda rate: skill("P", rate, "same_position", effects=[z_atk, give(T, buff("shattered-armor", "pDef", 0, turns=3, stacks=3))])
+z_fall = lambda heal_r, atk: [g(trig(on, [heal(SELF, heal_r, "targetMaxHp"), give(SELF, buff("zacian-fallen", "atkPct", atk, turns=999, stacks=99))]), "passive")
+                              for on in ("onEnemyDeath", "onAllyDeath")]
+z_guard = lambda per, cap: g({"tag": "zacian-guard", "role": "defend", "dmg": per, "scale": "selfMissingHp", "cap": cap}, "talent4")
+kit("zacian", skill("S", 1.2, "same_position", effects=[z_atk]), z_ult(1.5, 0), z_basic(1.4),
+    statMods=bundle(0.15, 0.32, 0.15, 0.06, 0.06, 0.51),
+    damageMods=[z_guard(0.5, 0.3)],
+    notModelled=["Basic Skill: Shattered Armor's −10% / −20% DEF per layer (DEF has no effect while defendersUseDef is off)",
+                 "Passive LV.2+: counts every death, not only deaths to a direct attack",
+                 "Talent 4 LV.2: lifesteal of 1% per 1% HP lost (lifesteal cannot scale with HP yet)"])
+levels("zacian", {
+    "ult": {"2": lv(z_ult(1.5, 0.7)), "3": lv(z_ult(1.7, 1))},
+    "basic": {"2": lv(z_basic(1.4)), "3": lv(z_basic(1.6))},
+    "passive": {"2": lv(triggers=z_fall(0.1, 0.2)), "3": lv(triggers=z_fall(0.2, 0.3))},
+    "talent4": {"2": lv(damageMods=[z_guard(0.5, 0.3)]), "3": lv(damageMods=[z_guard(0.75, 0.42)])},
+})
+
 OUT = Path(__file__).with_name("kit-overrides.json")
 OUT.write_text(json.dumps({"_note": "Generated by scripts/data/build-kit-overrides.py (E3 hand ports). Do not edit by hand.", **K}, indent=1) + "\n")
 print(f"wrote {len(K)} hand-ported kits -> {OUT}")

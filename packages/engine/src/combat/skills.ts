@@ -76,6 +76,10 @@ export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): 
   applyCounterReflect(ctx, u, skill, lastTargets, input.bigRound);
 
   if (slot === 'ult') {
+    // E4: enemies react to an ultimate (Origin Lugia's Feather Dance).
+    for (const foe of ctx.units) {
+      if (foe.side !== u.side && foe.alive) fireTriggers(ctx, foe, 'onEnemyUlt', { target: u });
+    }
     const before = u.rage;
     u.rage = Math.max(0, u.rage - ctx.settings.ultRageCost);
     ctx.events.push({ type: 'rageChange', unit: u.key, delta: u.rage - before, rage: u.rage });

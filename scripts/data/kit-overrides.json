@@ -113,7 +113,8 @@
        "chance": null
       }
      }
-    ]
+    ],
+    "group": "passive"
    },
    {
     "on": "turnStart",
@@ -155,12 +156,427 @@
        "endsWithSource": true
       }
      }
-    ]
+    ],
+    "group": "talent4"
    }
   ],
   "notModelled": [
-   "Ult: 'Freeze yourself \u2026 when holding Frost' \u2014 read as Calyrex holding Frost (it never gains it itself)"
-  ]
+   "Ult: 'Freeze yourself \u2026 when holding Frost' \u2014 read as Calyrex holding Frost (it never gains it itself)",
+   "Ult LV.3: Frost lasting 2 turns changes nothing modelled",
+   "Basic Skill LV.3: the 10% max-HP heal after the resistance shield ends"
+  ],
+  "levels": {
+   "ult": {
+    "name": "Radical Mania Ice",
+    "text": [
+     "Deals 100% P.ATK DMG to all enemies, and grants \"Frost\" to the target for 1 turn.Freeze yourself for one turn after releasing Ultimate when holding Frost",
+     "ult also reduces the target's ATK by 20% for 1 round",
+     "Grants \"Frost\" to the target for 2 turns."
+    ],
+    "2": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.0
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "resource",
+        "target": {
+         "event": true
+        },
+        "tag": "frost",
+        "delta": 1,
+        "max": 1
+       },
+       {
+        "op": "control",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "control": {
+         "kind": "freeze",
+         "chance": null
+        },
+        "condition": {
+         "selfStackAtLeast": {
+          "tag": "frost",
+          "n": 1
+         }
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "calyrex-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.2,
+         "turns": 1
+        }
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.0
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "resource",
+        "target": {
+         "event": true
+        },
+        "tag": "frost",
+        "delta": 1,
+        "max": 1
+       },
+       {
+        "op": "control",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "control": {
+         "kind": "freeze",
+         "chance": null
+        },
+        "condition": {
+         "selfStackAtLeast": {
+          "tag": "frost",
+          "n": 1
+         }
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "calyrex-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.2,
+         "turns": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "basic": {
+    "name": "Snow Spear Impact",
+    "text": [
+     "Deals 120% P.ATK to single enemy, 40% chance of freezing target for 1 turn",
+     "Provides a resistance shield for the teammate with the lowest life for 1 turn after releasing the basic skill, offsetting 1 direct attack with a maximum cap of 1 layer.",
+     "The probability of basic skills triggering is increased to 100% within two turns Upon entering battle, and 10% of the target's maximum life is restored at the end of the turn after the resistance shield disappears"
+    ],
+    "2": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "freeze",
+         "chance": 0.4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "lowest_hp",
+         "n": 1
+        },
+        "buff": {
+         "tag": "resistance-shield",
+         "kind": "invulnerable",
+         "turns": 2,
+         "consumeOnHit": true
+        }
+       }
+      ]
+     },
+     "triggers": []
+    },
+    "3": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "freeze",
+         "chance": 0.4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "lowest_hp",
+         "n": 1
+        },
+        "buff": {
+         "tag": "resistance-shield",
+         "kind": "invulnerable",
+         "turns": 2,
+         "consumeOnHit": true
+        }
+       }
+      ]
+     },
+     "triggers": [
+      {
+       "on": "battleStart",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "calyrex-opening",
+          "kind": "stat",
+          "field": "basicRate",
+          "amount": 1,
+          "bigRounds": 2
+         }
+        }
+       ],
+       "group": "basic"
+      }
+     ]
+    }
+   },
+   "passive": {
+    "name": "Chilling Neigh",
+    "text": [
+     "When the self is under attack, 25% chance to freeze the attacker for 1 turn",
+     "At the end of each turn, for every enemy unit on the field that is frozen, Calyrex returns 5% of HP. Works up to 3 times per turn",
+     "At the end of each turn, for every enemy unit on the field that is frozen, Calyrex returns 125 points of rage. Works up to 3 times per turn"
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "onHit",
+       "chance": 0.25,
+       "effects": [
+        {
+         "op": "control",
+         "target": {
+          "event": true
+         },
+         "control": {
+          "kind": "freeze",
+          "chance": null
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "roundEnd",
+       "effects": [
+        {
+         "op": "heal",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "rate": 0.05,
+         "basis": "targetMaxHp",
+         "perTagged": {
+          "side": "enemy",
+          "tag": "freeze",
+          "max": 3
+         }
+        }
+       ],
+       "group": "passive"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "onHit",
+       "chance": 0.25,
+       "effects": [
+        {
+         "op": "control",
+         "target": {
+          "event": true
+         },
+         "control": {
+          "kind": "freeze",
+          "chance": null
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "roundEnd",
+       "effects": [
+        {
+         "op": "heal",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "rate": 0.05,
+         "basis": "targetMaxHp",
+         "perTagged": {
+          "side": "enemy",
+          "tag": "freeze",
+          "max": 3
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "roundEnd",
+       "effects": [
+        {
+         "op": "rage",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "perTagged": {
+          "side": "enemy",
+          "tag": "freeze",
+          "max": 3
+         },
+         "delta": 125
+        }
+       ],
+       "group": "passive"
+      }
+     ]
+    }
+   },
+   "talent4": {
+    "name": "King of Abundance",
+    "text": [
+     "When in the field at the beginning of each turn, improve all teammates 5% Crit Res, 4 turns to reach the maximum, the effect disappears after the death of the King of Leycrest",
+     "When in the field at the beginning of each turn, improve all teammates 5% Block, 4 turns to reach the maximum, the effect disappears after the death of the King of Leycrest",
+     "The effect is increased to 8% Crit Res and 8% Block per turn"
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "turnStart",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "all"
+         },
+         "buff": {
+          "tag": "leycrest-critRes",
+          "kind": "stat",
+          "field": "critRes",
+          "amount": 0.05,
+          "turns": 99,
+          "maxStacks": 4,
+          "endsWithSource": true
+         }
+        },
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "all"
+         },
+         "buff": {
+          "tag": "leycrest-block",
+          "kind": "stat",
+          "field": "block",
+          "amount": 0.05,
+          "turns": 99,
+          "maxStacks": 4,
+          "endsWithSource": true
+         }
+        }
+       ],
+       "group": "talent4"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "turnStart",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "all"
+         },
+         "buff": {
+          "tag": "leycrest-critRes",
+          "kind": "stat",
+          "field": "critRes",
+          "amount": 0.08,
+          "turns": 99,
+          "maxStacks": 4,
+          "endsWithSource": true
+         }
+        },
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "all"
+         },
+         "buff": {
+          "tag": "leycrest-block",
+          "kind": "stat",
+          "field": "block",
+          "amount": 0.08,
+          "turns": 99,
+          "maxStacks": 4,
+          "endsWithSource": true
+         }
+        }
+       ],
+       "group": "talent4"
+      }
+     ]
+    }
+   }
+  }
  },
  "necrozma": {
   "slots": [
@@ -266,7 +682,8 @@
       "tag": "light-energy",
       "delta": 2
      }
-    ]
+    ],
+    "group": "passive"
    },
    {
     "on": "afterBasic",
@@ -280,7 +697,8 @@
       "tag": "light-energy",
       "delta": 2
      }
-    ]
+    ],
+    "group": "passive"
    },
    {
     "on": "roundStart",
@@ -337,7 +755,8 @@
       "tag": "light-energy",
       "consume": 1
      }
-    ]
+    ],
+    "group": "talent4"
    }
   ],
   "damageMods": [
@@ -347,9 +766,342 @@
     "atk": 0.3,
     "scale": {
      "resource": "light-energy"
+    },
+    "group": "passive"
+   }
+  ],
+  "notModelled": [
+   "Ult LV.2: 30% ignore defense (DEF has no effect)"
+  ],
+  "levels": {
+   "ult": {
+    "name": "Light That Burns the Sky",
+    "text": [
+     "Deals 110% S.ATK to all enemy units, and boosts the power of the move by 30% for each layer of light energy possessed. All light energy is consumed after using the move.",
+     "Ultimate comes with 30% ignore defense",
+     "Using the Ultimate no longer consumes light energy."
+    ],
+    "2": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.1
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "resource",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "light-energy",
+        "consume": 99
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.1
+      ],
+      "rule": "all",
+      "effects": []
+     }
+    }
+   },
+   "basic": {
+    "name": "Photon sharp edge",
+    "text": [
+     "Deals 130% S.ATK to a single enemy player, and selects a friendly player who is under control to remove the control status from them.",
+     "Basic skill attack range changed to enemy horizontal row",
+     "Cleanse all negative status of ally after removing their control status"
+    ],
+    "2": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.3
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "cleanse",
+        "target": {
+         "side": "ally",
+         "rule": "random",
+         "n": 1,
+         "filters": [
+          "controlled"
+         ]
+        },
+        "kinds": [
+         "control",
+         "silence",
+         "confusion",
+         "paralysis",
+         "disarm",
+         "noBasic",
+         "noCrit"
+        ]
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.3
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "cleanse",
+        "target": {
+         "side": "ally",
+         "rule": "random",
+         "n": 1,
+         "filters": [
+          "controlled"
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   "passive": {
+    "name": "Ultra Burst",
+    "text": [
+     "Must gain 2 levels of light energy after each release of basic skills and basic attacks.",
+     "The effect of light energy is increased to 45% more damage per level of the Ultimate.",
+     "At the beginning of each turn, if there is a ally under control on the field, gain 2 levels of light energy for self, triggered only once a turn"
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "afterNormal",
+       "effects": [
+        {
+         "op": "resource",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "tag": "light-energy",
+         "delta": 2
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "afterBasic",
+       "effects": [
+        {
+         "op": "resource",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "tag": "light-energy",
+         "delta": 2
+        }
+       ],
+       "group": "passive"
+      }
+     ],
+     "damageMods": [
+      {
+       "tag": "light-energy",
+       "slot": "ult",
+       "atk": 0.45,
+       "scale": {
+        "resource": "light-energy"
+       },
+       "group": "passive"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "afterNormal",
+       "effects": [
+        {
+         "op": "resource",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "tag": "light-energy",
+         "delta": 2
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "afterBasic",
+       "effects": [
+        {
+         "op": "resource",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "tag": "light-energy",
+         "delta": 2
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "turnStart",
+       "condition": {
+        "allyUnderControl": true
+       },
+       "perTurn": 1,
+       "effects": [
+        {
+         "op": "resource",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "tag": "light-energy",
+         "delta": 2
+        }
+       ],
+       "group": "passive"
+      }
+     ],
+     "damageMods": [
+      {
+       "tag": "light-energy",
+       "slot": "ult",
+       "atk": 0.45,
+       "scale": {
+        "resource": "light-energy"
+       },
+       "group": "passive"
+      }
+     ]
+    }
+   },
+   "talent4": {
+    "name": "Radiant Greatness",
+    "text": [
+     "Spend 1 level of light energy to remove control status if in control status at the beginning of own turn.",
+     "After successfully removing the control status, it gain 50% HP absorption for 1 turn.",
+     "Removing its own control status no longer consumes light energy."
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "turnStart",
+       "condition": {
+        "selfControlled": true,
+        "selfStackAtLeast": {
+         "tag": "light-energy",
+         "n": 1
+        }
+       },
+       "effects": [
+        {
+         "op": "cleanse",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "kinds": [
+          "control",
+          "silence",
+          "confusion",
+          "paralysis",
+          "disarm",
+          "noBasic",
+          "noCrit"
+         ]
+        },
+        {
+         "op": "resource",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "tag": "light-energy",
+         "consume": 1
+        },
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "necrozma-absorb",
+          "kind": "stat",
+          "field": "lifesteal",
+          "amount": 0.5,
+          "turns": 2
+         }
+        }
+       ],
+       "group": "talent4"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "turnStart",
+       "condition": {
+        "selfControlled": true,
+        "selfStackAtLeast": {
+         "tag": "light-energy",
+         "n": 1
+        }
+       },
+       "effects": [
+        {
+         "op": "cleanse",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "kinds": [
+          "control",
+          "silence",
+          "confusion",
+          "paralysis",
+          "disarm",
+          "noBasic",
+          "noCrit"
+         ]
+        },
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "necrozma-absorb",
+          "kind": "stat",
+          "field": "lifesteal",
+          "amount": 0.5,
+          "turns": 2
+         }
+        }
+       ],
+       "group": "talent4"
+      }
+     ]
     }
    }
-  ]
+  }
  },
  "origin-lugia": {
   "slots": [
@@ -472,7 +1224,8 @@
        "undispellable": true
       }
      }
-    ]
+    ],
+    "group": "passive"
    },
    {
     "on": "onEndure",
@@ -497,7 +1250,8 @@
       },
       "delta": 150
      }
-    ]
+    ],
+    "group": "passive"
    },
    {
     "on": "turnStart",
@@ -528,14 +1282,474 @@
     "type": "P",
     "dmg": 0.15,
     "scale": "selfMissingHp",
-    "cap": 0.15
+    "cap": 0.15,
+    "group": "passive"
    }
   ],
   "notModelled": [
    "Ult: a confined unit 'takes damage only from Origin Lugia'",
+   "Ult LV.2 / LV.3: the \u221220% ATK and \u2212250 Rage land with the confinement, not when it ends",
    "Passive: backline allies' 70%-strength copy of the P.ATK damage reduction",
-   "Talent 4: the first other ally to take lethal damage stays at 1 HP and is imprisoned; +20 SPD while an imprisoned enemy is on the field"
-  ]
+   "Talent 4 (all levels): the first ally(s) to take lethal damage stay at 1 HP and are imprisoned; +20 SPD while an imprisoned enemy is on the field"
+  ],
+  "levels": {
+   "ult": {
+    "name": "Sea burial",
+    "text": [
+     "Deals 130% P.ATK DMG to all enemies and applies a cleansable [Darkness Confinement] to 1 random enemy in the back row; not applied while only 1 enemy is left. [Darkness Confinement]: cannot act and takes damage only from Origin Lugia; lasts until the confined unit's next action.",
+     "When the enemy's [Dark Prison] status is removed, reduces ATK by 20% for 2 turns",
+     "When [Darkness Confinement] ends, the target loses another 250 Rage."
+    ],
+    "2": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.3
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "rule": "random",
+         "n": 1,
+         "rowFilter": "back"
+        },
+        "control": {
+         "kind": "darkness-confinement",
+         "chance": null
+        },
+        "condition": {
+         "enemiesAtLeast": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 1,
+         "rowFilter": "back",
+         "hasTag": "darkness-confinement"
+        },
+        "buff": {
+         "tag": "dark-prison-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.2,
+         "turns": 3
+        }
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.3
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "rule": "random",
+         "n": 1,
+         "rowFilter": "back"
+        },
+        "control": {
+         "kind": "darkness-confinement",
+         "chance": null
+        },
+        "condition": {
+         "enemiesAtLeast": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 1,
+         "rowFilter": "back",
+         "hasTag": "darkness-confinement"
+        },
+        "buff": {
+         "tag": "dark-prison-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.2,
+         "turns": 3
+        }
+       },
+       {
+        "op": "rage",
+        "target": {
+         "rule": "random",
+         "n": 1,
+         "rowFilter": "back",
+         "hasTag": "darkness-confinement"
+        },
+        "delta": -250
+       }
+      ]
+     }
+    }
+   },
+   "basic": {
+    "name": "Darkness Rush",
+    "text": [
+     "Deals 110% P.ATK damage to a single enemy, prioritizing imprisoned targets. When the basic skill hits an imprisoned target, it also reduces the target's Rage by 125 and ATK by 10% for 2 turns.",
+     "Increases basic skill trigger probability by 20% after each basic skill release, stacks up to 3 times.",
+     "Rage reduction increased to 200 Rage points"
+    ],
+    "2": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.1
+      ],
+      "rule": "column",
+      "hasTag": "darkness-confinement",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "condition": {
+         "targetHasTag": "darkness-confinement"
+        },
+        "delta": -125
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "confined-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.1,
+         "turns": 2
+        },
+        "condition": {
+         "targetHasTag": "darkness-confinement"
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "dark-rate",
+         "kind": "stat",
+         "field": "basicRate",
+         "amount": 0.2,
+         "turns": 99,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.1
+      ],
+      "rule": "column",
+      "hasTag": "darkness-confinement",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "condition": {
+         "targetHasTag": "darkness-confinement"
+        },
+        "delta": -200
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "confined-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.1,
+         "turns": 2
+        },
+        "condition": {
+         "targetHasTag": "darkness-confinement"
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "dark-rate",
+         "kind": "stat",
+         "field": "basicRate",
+         "amount": 0.2,
+         "turns": 99,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    }
+   },
+   "passive": {
+    "name": "Feather Dance",
+    "text": [
+     "Each turn gains P.ATK damage reduction based on its remaining HP: the lower its HP, the higher the bonus, up to 15%. All backline allies gain the same effect at 70% strength. The first time it takes lethal damage, it imprisons itself for 1 turn and gains 150 Rage when released. Triggers once per battle.",
+     "After the opponent uses the Ultimate, own gain 1 level of [Feather Dance], each level boosts your own P.ATK Reduction by 10%, up to a maximum of 2 levels. At the end of the round, consume 1 layer of Feather Dance to restore 60% P.ATK HP for all allies based on the origin Lugia.",
+     "The healing from consuming [Feather Dance] rises to 75% of P.ATK."
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "battleStart",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "origin-lugia-endure",
+          "kind": "endure",
+          "undispellable": true
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "onEndure",
+       "maxFires": 1,
+       "effects": [
+        {
+         "op": "control",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "control": {
+          "kind": "confinement",
+          "chance": null
+         }
+        },
+        {
+         "op": "rage",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "delta": 150
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "onEnemyUlt",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "feather-dance",
+          "kind": "stat",
+          "field": "pRdct",
+          "amount": 0.1,
+          "turns": 99,
+          "maxStacks": 2
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "roundEnd",
+       "condition": {
+        "selfStackAtLeast": {
+         "tag": "feather-dance",
+         "n": 1
+        }
+       },
+       "effects": [
+        {
+         "op": "heal",
+         "target": {
+          "side": "ally",
+          "rule": "all"
+         },
+         "rate": 0.6,
+         "basis": "casterAtk"
+        },
+        {
+         "op": "dispel",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "kinds": [
+          "feather-dance"
+         ],
+         "count": 1
+        }
+       ],
+       "group": "passive"
+      }
+     ],
+     "damageMods": [
+      {
+       "tag": "origin-lugia-guard",
+       "role": "defend",
+       "type": "P",
+       "dmg": 0.15,
+       "scale": "selfMissingHp",
+       "cap": 0.15,
+       "group": "passive"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "battleStart",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "origin-lugia-endure",
+          "kind": "endure",
+          "undispellable": true
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "onEndure",
+       "maxFires": 1,
+       "effects": [
+        {
+         "op": "control",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "control": {
+          "kind": "confinement",
+          "chance": null
+         }
+        },
+        {
+         "op": "rage",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "delta": 150
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "onEnemyUlt",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "feather-dance",
+          "kind": "stat",
+          "field": "pRdct",
+          "amount": 0.1,
+          "turns": 99,
+          "maxStacks": 2
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "roundEnd",
+       "condition": {
+        "selfStackAtLeast": {
+         "tag": "feather-dance",
+         "n": 1
+        }
+       },
+       "effects": [
+        {
+         "op": "heal",
+         "target": {
+          "side": "ally",
+          "rule": "all"
+         },
+         "rate": 0.75,
+         "basis": "casterAtk"
+        },
+        {
+         "op": "dispel",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "kinds": [
+          "feather-dance"
+         ],
+         "count": 1
+        }
+       ],
+       "group": "passive"
+      }
+     ],
+     "damageMods": [
+      {
+       "tag": "origin-lugia-guard",
+       "role": "defend",
+       "type": "P",
+       "dmg": 0.15,
+       "scale": "selfMissingHp",
+       "cap": 0.15,
+       "group": "passive"
+      }
+     ]
+    }
+   },
+   "talent4": {
+    "name": "Diablo Guard",
+    "text": [
+     "While it is on the field, the first ally (not itself) to take lethal damage stays at 1 HP and is imprisoned; this imprisonment cannot be dispelled and lasts until that ally's next action. While an imprisoned enemy is on the field, Origin Lugia's SPD rises by 20.",
+     "The quantity is increased to the first 2 allies who receive fatal damage",
+     "Restore 10% of a allies's max HP when their [Confinement] ends"
+    ]
+   }
+  }
  },
  "origin-rayquaza": {
   "slots": [
@@ -559,7 +1773,8 @@
     "rates": [
      1.2
     ],
-    "rule": "row"
+    "rule": "row",
+    "effects": []
    },
    "ult": {
     "type": "S",
@@ -648,7 +1863,13 @@
        "turns": 99,
        "undispellable": true
       }
-     },
+     }
+    ],
+    "group": "ult"
+   },
+   {
+    "on": "battleStart",
+    "effects": [
      {
       "op": "buff",
       "target": {
@@ -666,7 +1887,8 @@
        "consumeOnHit": true
       }
      }
-    ]
+    ],
+    "group": "passive"
    },
    {
     "on": "roundStart",
@@ -702,13 +1924,319 @@
       "rate": 0.3,
       "type": "S"
      }
-    ]
+    ],
+    "group": "talent4"
    }
   ],
   "notModelled": [
    "Ult/Passive: the link moves to a new ally when the linked one dies; the link picks 'the closest ally, preferring the one below'",
-   "Passive: the linked ally does not drop below 1 HP on its first turn and restores 25% of lost HP from its second turn"
-  ]
+   "Passive: the linked ally does not drop below 1 HP on its first turn and restores 25% of lost HP from its second turn",
+   "Basic Skill LV.3 / Passive LV.3 / Talent 4 LV.3: the Thunderstorm count and the link target's attack bonus; Passive LV.2's +10% Crit Intensity after 3 stacks"
+  ],
+  "levels": {
+   "ult": {
+    "name": "Dragon Ascent",
+    "text": [
+     "Ultimate deals 130% S.ATK to all enemies, and after releasing Ultimate, the next direct damage you take is reduced by 10%, while providing 2 layers of [Delta Airflow] to linked friends automatically select the closest (priority to choose below itself) of a friendly unit after entering the battle to attach [Delta Link], the original target will be automatically replaced after death, you will not be the target of the link Delta Airflow: The direct damage taken is reduced by 30%. Effect does not stack, the maximum limit is 2 layers, reduced by one layer after taking direct damage",
+     "[Delta Stream] damage reduction ratio increased to 50%",
+     "[Delta Stream] limit increased to 3 levels"
+    ],
+    "2": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.3
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "rayquaza-guard",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.1,
+         "turns": 99,
+         "maxStacks": 1,
+         "consumeOnHit": true
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "hasTag": "delta-link",
+         "excludeSelf": true
+        },
+        "buff": {
+         "tag": "delta-airflow",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.5,
+         "turns": 99,
+         "maxStacks": 2,
+         "consumeOnHit": true
+        }
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.3
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "rayquaza-guard",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.1,
+         "turns": 99,
+         "maxStacks": 1,
+         "consumeOnHit": true
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "hasTag": "delta-link",
+         "excludeSelf": true
+        },
+        "buff": {
+         "tag": "delta-airflow",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.5,
+         "turns": 99,
+         "maxStacks": 3,
+         "consumeOnHit": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   "basic": {
+    "name": "Destroy Deadlight",
+    "text": [
+     "Deals 120% S.ATK damage to the enemies in a row",
+     "Adds damage equal to 30% of the enemy's lost HP.",
+     "After Thunderstorm triggers 3 times, the basic skill's damage ratio rises; changing the linked target does not reset the count."
+    ],
+    "2": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMissingHp",
+        "share": 0.3
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMissingHp",
+        "share": 0.3
+       }
+      ]
+     }
+    }
+   },
+   "passive": {
+    "name": "Delta Return",
+    "text": [
+     "Grants the linked target 1 level of Delta Stream at the opening. does not drop below 1 HP on its first turn, and restores 25% of its lost HP starting on its second turn.",
+     "Increases linked target crit by 5% each turn, stacking up to 3 levels. Increase linked target's crit intensity by an extra 10% after 3 times",
+     "Thunderstorm triggered, permanently increase triggering rate of the basic skills by 20% and can by layered 3 times."
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "battleStart",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "same_position",
+          "excludeSelf": true
+         },
+         "buff": {
+          "tag": "delta-stream",
+          "kind": "stat",
+          "field": "dmgRdct",
+          "amount": 0.3,
+          "turns": 99,
+          "maxStacks": 1,
+          "consumeOnHit": true
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "turnStart",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "all",
+          "hasTag": "delta-link",
+          "excludeSelf": true
+         },
+         "buff": {
+          "tag": "thunder-crit",
+          "kind": "stat",
+          "field": "crit",
+          "amount": 0.05,
+          "turns": 99,
+          "maxStacks": 3
+         }
+        }
+       ],
+       "group": "passive"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "battleStart",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "same_position",
+          "excludeSelf": true
+         },
+         "buff": {
+          "tag": "delta-stream",
+          "kind": "stat",
+          "field": "dmgRdct",
+          "amount": 0.3,
+          "turns": 99,
+          "maxStacks": 1,
+          "consumeOnHit": true
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "turnStart",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "all",
+          "hasTag": "delta-link",
+          "excludeSelf": true
+         },
+         "buff": {
+          "tag": "thunder-crit",
+          "kind": "stat",
+          "field": "crit",
+          "amount": 0.05,
+          "turns": 99,
+          "maxStacks": 3
+         }
+        }
+       ],
+       "group": "passive"
+      }
+     ]
+    }
+   },
+   "talent4": {
+    "name": "Thunderstorm",
+    "text": [
+     "When the linked ally lands a critical hit, adds damage equal to 30% of Rayquaza's own S.ATK to the target.",
+     "Increase damage to 50%",
+     "Additional 30% S.ATK/ATK to the damage of the linked target. Compare the link target S.ATK with ATK, and take the highest one."
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "onAllyCrit",
+       "condition": {
+        "actorHasTag": "delta-link"
+       },
+       "effects": [
+        {
+         "op": "damage",
+         "target": {
+          "event": true
+         },
+         "rate": 0.5,
+         "type": "S"
+        }
+       ],
+       "group": "talent4"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "onAllyCrit",
+       "condition": {
+        "actorHasTag": "delta-link"
+       },
+       "effects": [
+        {
+         "op": "damage",
+         "target": {
+          "event": true
+         },
+         "rate": 0.5,
+         "type": "S"
+        }
+       ],
+       "group": "talent4"
+      }
+     ]
+    }
+   }
+  }
  },
  "shadow-mewtwo": {
   "slots": [
@@ -827,12 +2355,34 @@
     "on": "afterBasic",
     "effects": [
      {
+      "op": "dispel",
+      "target": {
+       "side": "ally",
+       "rule": "self"
+      },
+      "kinds": [
+       "doubled-basic"
+      ]
+     }
+    ],
+    "group": "ult"
+   },
+   {
+    "on": "afterBasic",
+    "effects": [
+     {
       "op": "splash",
       "target": {
        "event": true
       },
       "share": 0.1
-     },
+     }
+    ],
+    "group": "passive"
+   },
+   {
+    "on": "afterBasic",
+    "effects": [
      {
       "op": "buff",
       "target": {
@@ -846,18 +2396,9 @@
        "turns": 2,
        "maxStacks": 1
       }
-     },
-     {
-      "op": "dispel",
-      "target": {
-       "side": "ally",
-       "rule": "self"
-      },
-      "kinds": [
-       "doubled-basic"
-      ]
      }
-    ]
+    ],
+    "group": "talent4"
    }
   ],
   "damageMods": [
@@ -867,9 +2408,551 @@
     "atk": 1.0,
     "condition": {
      "selfHasTag": "doubled-basic"
+    },
+    "group": "ult"
+   }
+  ],
+  "notModelled": [
+   "Basic Skill LV.2 / LV.3: the max-HP bonus applies even when the hit is blocked"
+  ],
+  "levels": {
+   "ult": {
+    "name": "Darkness End",
+    "text": [
+     "Deals 120% S.ATK damage to all enemies, plus damage equal to 12% of max HP to DEF-class targets, and reduces the healing all enemy front-row units receive by 30% for 2 turns. After the Ultimate, the next basic skill's base damage is doubled.",
+     "From its second Ultimate on, the healing reduction rises to 50%.",
+     "The base healing reduction now lasts 3 turns. After each Ultimate, 50% chance to block healing on a random front-row enemy for 1 turn."
+    ],
+    "2": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMaxHp",
+        "share": 0.12,
+        "condition": {
+         "targetClass": "guardian"
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all",
+         "rowFilter": "front"
+        },
+        "buff": {
+         "tag": "heal-cut",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.3,
+         "turns": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all",
+         "rowFilter": "front"
+        },
+        "buff": {
+         "tag": "heal-cut-2",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.2,
+         "turns": 2
+        },
+        "condition": {
+         "selfStackAtLeast": {
+          "tag": "mewtwo-ults",
+          "n": 1
+         }
+        }
+       },
+       {
+        "op": "resource",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "mewtwo-ults",
+        "delta": 1
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "doubled-basic",
+         "kind": "stack",
+         "turns": 99
+        }
+       }
+      ]
+     },
+     "triggers": [
+      {
+       "on": "afterBasic",
+       "effects": [
+        {
+         "op": "dispel",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "kinds": [
+          "doubled-basic"
+         ]
+        }
+       ],
+       "group": "ult"
+      }
+     ],
+     "damageMods": [
+      {
+       "tag": "doubled-basic",
+       "slot": "basic",
+       "atk": 1.0,
+       "condition": {
+        "selfHasTag": "doubled-basic"
+       },
+       "group": "ult"
+      }
+     ]
+    },
+    "3": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMaxHp",
+        "share": 0.12,
+        "condition": {
+         "targetClass": "guardian"
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all",
+         "rowFilter": "front"
+        },
+        "buff": {
+         "tag": "heal-cut",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.3,
+         "turns": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all",
+         "rowFilter": "front"
+        },
+        "buff": {
+         "tag": "heal-cut-2",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.2,
+         "turns": 3
+        },
+        "condition": {
+         "selfStackAtLeast": {
+          "tag": "mewtwo-ults",
+          "n": 1
+         }
+        }
+       },
+       {
+        "op": "resource",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "mewtwo-ults",
+        "delta": 1
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "doubled-basic",
+         "kind": "stack",
+         "turns": 99
+        }
+       }
+      ]
+     },
+     "triggers": [
+      {
+       "on": "afterBasic",
+       "effects": [
+        {
+         "op": "dispel",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "kinds": [
+          "doubled-basic"
+         ]
+        }
+       ],
+       "group": "ult"
+      },
+      {
+       "on": "afterUlt",
+       "chance": 0.5,
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "rule": "random",
+          "n": 1,
+          "rowFilter": "front"
+         },
+         "buff": {
+          "tag": "heal-ban",
+          "kind": "stat",
+          "field": "receiveHealBoost",
+          "amount": -1,
+          "turns": 1
+         }
+        }
+       ],
+       "group": "ult"
+      }
+     ],
+     "damageMods": [
+      {
+       "tag": "doubled-basic",
+       "slot": "basic",
+       "atk": 1.0,
+       "condition": {
+        "selfHasTag": "doubled-basic"
+       },
+       "group": "ult"
+      }
+     ]
+    }
+   },
+   "basic": {
+    "name": "Shadow Combo",
+    "text": [
+     "Deals 150% S.ATK damage to a single enemy, priority attack on the opposite front row,additional ban on healing for two turns",
+     "When basic skills are not blocked, 8% damage to the target's maximum HP is added, but not more than 80% S.ATK When hitting a DEF-class target, an additional 12% damage to the target's maximum HP is added",
+     "The effect is increased to:When basic skills are not blocked, 10% damage to the target's maximum HP is added, but not more than 100% S.ATK When hitting a DEF-class target, an additional 15% damage to the target's maximum HP is added"
+    ],
+    "2": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.5
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "heal-block",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -1,
+         "turns": 2
+        }
+       },
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMaxHp",
+        "share": 0.08,
+        "capRate": 0.8,
+        "type": "S"
+       },
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMaxHp",
+        "share": 0.12,
+        "condition": {
+         "targetClass": "guardian"
+        }
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "S",
+      "rates": [
+       1.5
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "heal-block",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -1,
+         "turns": 2
+        }
+       },
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMaxHp",
+        "share": 0.1,
+        "capRate": 1.0,
+        "type": "S"
+       },
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMaxHp",
+        "share": 0.12,
+        "condition": {
+         "targetClass": "guardian"
+        }
+       }
+      ]
+     }
+    }
+   },
+   "passive": {
+    "name": "Pok\u00e9monual Beyond",
+    "text": [
+     "After each basic skill, deals 10% splash to the units next to the main target. Splash: the units next to the main target (front, back, left and right) take that percentage of the damage dealt to the main target, ignoring defense; shields do not block it.",
+     "Permanently increases Guard Break by 10% after each release of the Ultimate, max 3 levels",
+     "The splash factor caused by the basic skill is increased to 20%."
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "afterBasic",
+       "effects": [
+        {
+         "op": "splash",
+         "target": {
+          "event": true
+         },
+         "share": 0.1
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "afterUlt",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "psystrike-gb",
+          "kind": "stat",
+          "field": "guardBreak",
+          "amount": 0.1,
+          "turns": 999,
+          "maxStacks": 3
+         }
+        }
+       ],
+       "group": "passive"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "afterBasic",
+       "effects": [
+        {
+         "op": "splash",
+         "target": {
+          "event": true
+         },
+         "share": 0.2
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "afterUlt",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "psystrike-gb",
+          "kind": "stat",
+          "field": "guardBreak",
+          "amount": 0.1,
+          "turns": 999,
+          "maxStacks": 3
+         }
+        }
+       ],
+       "group": "passive"
+      }
+     ]
+    }
+   },
+   "talent4": {
+    "name": "Shadow Resonation",
+    "text": [
+     "After each basic skill attack, the primary target suffers a 10% DMG deepening for 2 turns, stacks up to 1 time. Sputter targets are not affected.",
+     "Primary target suffers an additional 10% block reduction and 10% block strength reduction for 2 turns, maximum 1 level",
+     "The effect is increased to 20% DMG multiplier, 20% block reduction and 20% blocking intensity reduction."
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "afterBasic",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "event": true
+         },
+         "buff": {
+          "tag": "deepen",
+          "kind": "stat",
+          "field": "dmgRdct",
+          "amount": -0.1,
+          "turns": 2,
+          "maxStacks": 1
+         }
+        },
+        {
+         "op": "buff",
+         "target": {
+          "event": true
+         },
+         "buff": {
+          "tag": "deepen-block",
+          "kind": "stat",
+          "field": "block",
+          "amount": -0.1,
+          "turns": 2,
+          "maxStacks": 1
+         }
+        },
+        {
+         "op": "buff",
+         "target": {
+          "event": true
+         },
+         "buff": {
+          "tag": "deepen-bp",
+          "kind": "stat",
+          "field": "blockPower",
+          "amount": -0.1,
+          "turns": 2,
+          "maxStacks": 1
+         }
+        }
+       ],
+       "group": "talent4"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "afterBasic",
+       "effects": [
+        {
+         "op": "buff",
+         "target": {
+          "event": true
+         },
+         "buff": {
+          "tag": "deepen",
+          "kind": "stat",
+          "field": "dmgRdct",
+          "amount": -0.2,
+          "turns": 2,
+          "maxStacks": 1
+         }
+        },
+        {
+         "op": "buff",
+         "target": {
+          "event": true
+         },
+         "buff": {
+          "tag": "deepen-block",
+          "kind": "stat",
+          "field": "block",
+          "amount": -0.2,
+          "turns": 2,
+          "maxStacks": 1
+         }
+        },
+        {
+         "op": "buff",
+         "target": {
+          "event": true
+         },
+         "buff": {
+          "tag": "deepen-bp",
+          "kind": "stat",
+          "field": "blockPower",
+          "amount": -0.2,
+          "turns": 2,
+          "maxStacks": 1
+         }
+        }
+       ],
+       "group": "talent4"
+      }
+     ]
     }
    }
-  ]
+  }
  },
  "zacian": {
   "slots": [
@@ -997,12 +3080,338 @@
     "role": "defend",
     "dmg": 0.5,
     "scale": "selfMissingHp",
-    "cap": 0.3
+    "cap": 0.3,
+    "group": "talent4"
    }
   ],
   "notModelled": [
-   "Basic Skill: Shattered Armor's \u221210% DEF per layer (DEF has no effect while defendersUseDef is off)"
-  ]
+   "Basic Skill: Shattered Armor's \u221210% / \u221220% DEF per layer (DEF has no effect while defendersUseDef is off)",
+   "Passive LV.2+: counts every death, not only deaths to a direct attack",
+   "Talent 4 LV.2: lifesteal of 1% per 1% HP lost (lifesteal cannot scale with HP yet)"
+  ],
+  "levels": {
+   "ult": {
+    "name": "Beast Beheading",
+    "text": [
+     "Deals 150% physical damage to a horizontal row of enemies symmetrical to the center of the battlefield, plus damage equal to 40% of the HP it has lost during the battle (HP healed back still counts).",
+     "The Ultimate has a 70% chance to reduce the target's Rage by 250.",
+     "Base damage rises to 170%; the Rage-reduction chance rises to 100%."
+    ],
+    "2": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.5
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "casterLostTotal",
+        "share": 0.4
+       },
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "chance": 0.7,
+        "delta": -250
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.7
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "casterLostTotal",
+        "share": 0.4
+       },
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -250
+       }
+      ]
+     }
+    }
+   },
+   "basic": {
+    "name": "Close Battle",
+    "text": [
+     "Deals 140% physical damage to a single enemy symmetrical to the center of the battlefield and applies a layer of shattered armor. Each layer of Shattered Armor reduces the target's defense by 10% for 3 turns, up to 3 layers.",
+     "Armor Crunch effect increased to reduce the target's defense by 20%",
+     "Base factor increased to 160%, ATK ignores Dodge when HP is below 50%"
+    ],
+    "2": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.4
+      ],
+      "rule": "same_position",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "armor-break-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.2,
+         "turns": 3
+        },
+        "condition": {
+         "targetHasTag": "shattered-armor"
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "shattered-armor",
+         "kind": "stat",
+         "field": "pDef",
+         "amount": 0,
+         "turns": 3,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    },
+    "3": {
+     "skill": {
+      "type": "P",
+      "rates": [
+       1.6
+      ],
+      "rule": "same_position",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "armor-break-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.2,
+         "turns": 3
+        },
+        "condition": {
+         "targetHasTag": "shattered-armor"
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "shattered-armor",
+         "kind": "stat",
+         "field": "pDef",
+         "amount": 0,
+         "turns": 3,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    }
+   },
+   "passive": {
+    "name": "King of Swords",
+    "text": [
+     "When attacking an enemy with reduced armor, you will receive a 20% ATK for 2 turns.",
+     "When any unit on the field (regardless of enemy or mine) is killed by a direct attack, Zacian restores 10% life and receives a 20% permanent attack boost",
+     "The amount of recovery when the unit dies is increased to 20% of life, and the effect of attack power increase becomes 30%"
+    ],
+    "2": {
+     "triggers": [
+      {
+       "on": "onEnemyDeath",
+       "effects": [
+        {
+         "op": "heal",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "rate": 0.1,
+         "basis": "targetMaxHp"
+        },
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "zacian-fallen",
+          "kind": "stat",
+          "field": "atkPct",
+          "amount": 0.2,
+          "turns": 999,
+          "maxStacks": 99
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "onAllyDeath",
+       "effects": [
+        {
+         "op": "heal",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "rate": 0.1,
+         "basis": "targetMaxHp"
+        },
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "zacian-fallen",
+          "kind": "stat",
+          "field": "atkPct",
+          "amount": 0.2,
+          "turns": 999,
+          "maxStacks": 99
+         }
+        }
+       ],
+       "group": "passive"
+      }
+     ]
+    },
+    "3": {
+     "triggers": [
+      {
+       "on": "onEnemyDeath",
+       "effects": [
+        {
+         "op": "heal",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "rate": 0.2,
+         "basis": "targetMaxHp"
+        },
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "zacian-fallen",
+          "kind": "stat",
+          "field": "atkPct",
+          "amount": 0.3,
+          "turns": 999,
+          "maxStacks": 99
+         }
+        }
+       ],
+       "group": "passive"
+      },
+      {
+       "on": "onAllyDeath",
+       "effects": [
+        {
+         "op": "heal",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "rate": 0.2,
+         "basis": "targetMaxHp"
+        },
+        {
+         "op": "buff",
+         "target": {
+          "side": "ally",
+          "rule": "self"
+         },
+         "buff": {
+          "tag": "zacian-fallen",
+          "kind": "stat",
+          "field": "atkPct",
+          "amount": 0.3,
+          "turns": 999,
+          "maxStacks": 99
+         }
+        }
+       ],
+       "group": "passive"
+      }
+     ]
+    }
+   },
+   "talent4": {
+    "name": "Hero of Many Battles",
+    "text": [
+     "Gain DMG reduction based on current Self HP, 1% reduction for each 2% of HP lost, up to 30%",
+     "Gain lifesteal based on current self HP,1% lifesteal for each 1% of HP lost, up to 100%",
+     "DMG Reduction is increased to: 1.5% reduction for every 2% Hp loss up to 42%"
+    ],
+    "2": {
+     "damageMods": [
+      {
+       "tag": "zacian-guard",
+       "role": "defend",
+       "dmg": 0.5,
+       "scale": "selfMissingHp",
+       "cap": 0.3,
+       "group": "talent4"
+      }
+     ]
+    },
+    "3": {
+     "damageMods": [
+      {
+       "tag": "zacian-guard",
+       "role": "defend",
+       "dmg": 0.75,
+       "scale": "selfMissingHp",
+       "cap": 0.42,
+       "group": "talent4"
+      }
+     ]
+    }
+   }
+  }
  },
  "wind-god-pidgeot": {
   "slots": [

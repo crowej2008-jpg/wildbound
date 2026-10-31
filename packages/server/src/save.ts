@@ -37,14 +37,14 @@ import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 20;
+export const SAVE_VERSION = 21;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 20;
+export const MIN_SAVE_VERSION = 21;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -158,6 +158,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
       (config ? startingEquipment(config) : initialEquipment(emptyStartingEquipment())),
     loadouts: normalizeLoadouts(s.loadouts, charmSlots),
     plates: s.plates ?? {},
+    speciesShards: s.speciesShards ?? {},
     trinkets: s.trinkets ?? {},
     resonance: normalizeResonance(s.resonance, config),
     vip: { lastClaimDay: s.vip?.lastClaimDay ?? null },
@@ -228,6 +229,7 @@ export function createInitialState(config: GameConfig): AccountState {
     serverEpoch: now,
     profile: { name: config.playerName, level: 1, xp: 0 },
     roster,
+    speciesShards: {},
     squads: emptySquads(),
     strategies: defaultStrategies(),
     currencies: currenciesFrom(config.startingCurrencies),

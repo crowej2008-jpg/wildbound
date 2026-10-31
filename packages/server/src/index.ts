@@ -7,11 +7,13 @@ import type {
   SquadMode,
   StrategyId,
   SummonCost,
+  SkillRow,
   TitleSlot,
 } from '@wildbound/engine';
 import type { BattleView } from './battle';
 import type { GachaView } from './gacha';
 import type { ShopView } from './shops';
+import type { OriginSkillsView } from './shards';
 import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import type { ExploreView } from './explore-view';
@@ -288,6 +290,12 @@ export interface GameServer {
   upgradeCharm(charmId: string): Promise<Result<AccountSnapshot>>;
   /** Break one spare Berry copy into Berry Essence (M11.5). */
   dismantleCharm(charmId: string): Promise<Result<AccountSnapshot>>;
+  /** E4: spend a species' own shards on a new copy of it. */
+  composeWild(speciesId: string): Promise<Result<AccountSnapshot>>;
+  /** E4: raise one of an Origin's skill rows (ult / basic / passive / talent4) with its own shards. */
+  upgradeOriginSkill(wildId: string, row: SkillRow): Promise<Result<AccountSnapshot>>;
+  /** E4: an Origin's skill levels, texts and prices (null for ordinary Pokémon). */
+  getOriginSkills(wildId: string): Promise<Result<OriginSkillsView | null>>;
   /** Raise a held item one level (R5: source shard table, resonance gates, cap 200). */
   levelRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
   /** Roll a new line into one slot of a worn held item; keep or drop it with `settleRefine` (R5). */
@@ -422,6 +430,7 @@ export * from './shops';
 export * from './equipment';
 export * from './equipment-view';
 export * from './growth';
+export * from './shards';
 export * from './pve';
 export * from './pve-view';
 export * from './pvp';

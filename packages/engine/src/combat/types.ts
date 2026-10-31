@@ -297,6 +297,8 @@ export type Effect =
       bonusVs?: { condition: Condition; mult: number };
       /** E3: multiply by the caster's stacks of this resource. */
       perResource?: string;
+      /** E4: multiply by the number of living units on a side carrying a tag (capped). */
+      perTagged?: PerTagged;
       condition?: Condition;
       chance?: number;
     }
@@ -313,6 +315,8 @@ export type Effect =
       fill?: boolean;
       /** E3: ignores a rage block (Solgaleo's own refill). */
       force?: boolean;
+      /** E4: see the heal effect. */
+      perTagged?: PerTagged;
       condition?: Condition;
       chance?: number;
     }
@@ -336,10 +340,19 @@ export type Effect =
         | 'eventDamage';
       share?: number;
       trueDamage?: boolean;
+      /** E4: an HP-share hit capped at this ratio of the caster's attack ("no more than 80% S.ATK"). */
+      capRate?: number;
       condition?: Condition;
       chance?: number;
     }
   | ExtraEffect;
+
+/** E4: "for every enemy unit on the field that is frozen … up to 3 times". */
+export interface PerTagged {
+  side: TargetSide;
+  tag: string;
+  max?: number;
+}
 
 /**
  * What a heal reads: the target's max HP (default), the caster's P.ATK (`casterAtk`), S.ATK
@@ -378,6 +391,8 @@ export interface DamageMod {
   cap?: number;
   /** E3: `defend` mods belong to the unit being hit; their `dmg` cuts the damage it takes. */
   role?: 'attack' | 'defend';
+  /** E4: the skill row this modifier belongs to (see TriggerDef.group). */
+  group?: string;
 }
 
 /** E3: extra effect ops. */
@@ -446,7 +461,9 @@ export type TriggerOn =
   /** E3: an endure buff saved the owner from fatal damage. */
   | 'onEndure'
   /** An enemy of the owner fell, whoever defeated it (Mew: "every fallen enemy"). */
-  | 'onEnemyDeath';
+  | 'onEnemyDeath'
+  /** E4: an enemy of the owner cast its ultimate (Origin Lugia's Feather Dance). */
+  | 'onEnemyUlt';
 
 /**
  * A talent trigger (M9.4): an event on the owner (`on`), optional gates
@@ -464,6 +481,8 @@ export interface TriggerDef {
   cooldown?: number;
   /** E1: activations allowed per battle ("once per battle" = 1). */
   maxFires?: number;
+  /** E4: the skill row this trigger belongs to (an Origin skill level swaps a whole group). */
+  group?: string;
   condition?: Condition;
   effects?: Effect[];
   /** shorthand: Rage delta applied to the owner */
@@ -500,6 +519,26 @@ export interface KitDef {
   /** M9: tags a `Condition.targetTrait` can match (e.g. "def"). */
   traits?: string[];
   hooksConfig?: Record<string, Record<string, string | number>>;
+  /** E4: Origin skill levels — per row, the content at LV.2 and LV.3 (see `applySkillLevels`). */
+  levels?: Partial<Record<SkillRow, SkillRowLevels>>;
+}
+
+/** E4: the four Origin skill rows that level up. */
+export type SkillRow = 'ult' | 'basic' | 'passive' | 'talent4';
+
+/** E4: a row's sheet text per level (LV.1, LV.2, LV.3) and its content at LV.2 / LV.3. */
+export interface SkillRowLevels {
+  name?: string;
+  text?: string[];
+  '2'?: SkillLevelDef;
+  '3'?: SkillLevelDef;
+}
+
+/** E4: one row at one level: a replacement skill (ult / basic) and the row's triggers and mods. */
+export interface SkillLevelDef {
+  skill?: SkillDef;
+  triggers?: TriggerDef[];
+  damageMods?: DamageMod[];
 }
 
 /** Fully-resolved percent lines, soul stats and flat overrides for a combatant. */

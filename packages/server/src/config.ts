@@ -105,6 +105,8 @@ export interface GameConfig {
   startingRoster: string[];
   debugGrant: Record<string, number>;
   progress: ProgressTables;
+  /** E4: Origin skill-level prices in the Origin's own shards (LV.2, LV.3). */
+  originSkillCosts: number[];
   power: PowerWeights;
   species: Map<string, SpeciesMeta>;
   stages: StageDef[];
@@ -161,6 +163,7 @@ export function buildConfig(): GameConfig {
     startingCurrencies: ACCOUNT.startingCurrencies,
     startingRoster: ACCOUNT.startingRoster,
     debugGrant: ACCOUNT.debugGrantCurrency,
+    originSkillCosts: GROWTH.originSkill.costs,
     progress: {
       levelUp: GROWTH.levelUp,
       respawn: GROWTH.respawn,

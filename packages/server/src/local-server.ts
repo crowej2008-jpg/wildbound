@@ -51,6 +51,7 @@ import {
   type SquadMode,
   type StrategyId,
   type TitleSlot,
+  type SkillRow,
   type WildInstance,
 } from '@wildbound/engine';
 import {
@@ -150,6 +151,13 @@ import { buildArenaRankingsView, buildArenaView } from './pvp-view';
 import { buildRankedView, type RankedView } from './pvp-ranked-view';
 import { buildPvpHubView, type PvpHubView } from './pvp-hub-view';
 import {
+  composeWildAction,
+  grantSpeciesShardsAction,
+  originSkillsView,
+  upgradeOriginSkillAction,
+  type OriginSkillsView,
+} from './shards';
+import {
   allocateTalentAction,
   chooseTreeAction,
   consumeCharms,
@@ -235,6 +243,36 @@ export class LocalServer implements GameServer {
       nextInstanceSeq: state.nextInstanceSeq + 1,
       loadouts: { ...state.loadouts, [instance.id]: emptyLoadout(this.config.equipment.tuning) },
     });
+  }
+
+  // --- E4: species shards and Origin skill levels -----------------------------
+
+  async composeWild(speciesId: string): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const next = composeWildAction(this.config, loaded.value, speciesId, this.config.now());
+    return next.ok ? this.commit(next.value) : next;
+  }
+
+  async upgradeOriginSkill(wildId: string, row: SkillRow): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const next = upgradeOriginSkillAction(this.config, loaded.value, wildId, row);
+    return next.ok ? this.commit(next.value) : next;
+  }
+
+  async getOriginSkills(wildId: string): Promise<Result<OriginSkillsView | null>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(originSkillsView(this.config, loaded.value, wildId));
+  }
+
+  /** Debug / test support: add a species' shards (there is no in-game source until R9). */
+  async grantSpeciesShards(speciesId: string, amount: number): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const next = grantSpeciesShardsAction(this.config, loaded.value, speciesId, amount);
+    return next.ok ? this.commit(next.value) : next;
   }
 
   async grantRandomWild(): Promise<Result<AccountSnapshot>> {

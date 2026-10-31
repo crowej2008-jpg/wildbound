@@ -107,7 +107,8 @@ export function stripBuffs(
   for (let i = 0; i < u.buffs.length; i += 1) {
     const b = u.buffs[i]!;
     if (b.undispellable === true) continue;
-    if (kinds && kinds.length > 0 && !kinds.includes(b.tag) && !kinds.includes(b.kind)) continue;
+    // E4: a stacked buff (`tag#n`) matches its base tag too.
+    if (kinds && kinds.length > 0 && !kinds.includes(b.tag) && !kinds.includes(b.tag.split('#')[0]!) && !kinds.includes(b.kind)) continue;
     const ok = negative ? isNegativeBuff(b) : isPositiveBuff(b);
     if (ok) matches.push(i);
   }

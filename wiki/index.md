@@ -11,7 +11,7 @@ updated: 2026-10-31
 Recent changes: [log](log.md).
 
 **Now:** [battle engine completion](milestones/battle-engine.md) (owner's pause of the retrofit) —
-E1 triggers, E2 held-item skills and E3 kit hand ports done; **E4** (skill levels) next. The
+E1 triggers, E2 held-item skills, E3 kit hand ports and E4 Origin skill levels + species shards done; **E5** next. The
 [source retrofit](milestones/source-retrofit.md) has R0, R1 and R5 done (save v20) and resumes with
 R4 Potential; then M13.3 [Hoopa's Vault](systems/hoopa-vault.md).
 

@@ -9,6 +9,7 @@ Hand-ported kits (`scripts/data/kit-overrides.json`): **68** — calyrex, necroz
 
 | mechanic | clauses |
 | --- | --- |
+| E4: Origin skill level text (kit levels) | 24 |
 | hand-ported (kit-overrides.json): skill: modifier clause with no preceding effect | 11 |
 | hand-ported (kit-overrides.json): skill: phase marker (no effect of its own) | 21 |
 | hand-ported (kit-overrides.json): skill: support slot (no attack line, rates 0) | 4 |
@@ -68,20 +69,27 @@ Hand-ported kits (`scripts/data/kit-overrides.json`): **68** — calyrex, necroz
 
 | category | clauses |
 | --- | --- |
-| sheet LV.2+ upgrade text (not modelled) | 24 |
 | talent: modifier on the preceding clause | 1 |
 
 Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 
-## Hand-ported, still not modelled (44 items)
+## Hand-ported, still not modelled (52 items)
 
 - **calyrex** — Ult: 'Freeze yourself … when holding Frost' — read as Calyrex holding Frost (it never gains it itself)
+- **calyrex** — Ult LV.3: Frost lasting 2 turns changes nothing modelled
+- **calyrex** — Basic Skill LV.3: the 10% max-HP heal after the resistance shield ends
+- **necrozma** — Ult LV.2: 30% ignore defense (DEF has no effect)
 - **origin-lugia** — Ult: a confined unit 'takes damage only from Origin Lugia'
+- **origin-lugia** — Ult LV.2 / LV.3: the −20% ATK and −250 Rage land with the confinement, not when it ends
 - **origin-lugia** — Passive: backline allies' 70%-strength copy of the P.ATK damage reduction
-- **origin-lugia** — Talent 4: the first other ally to take lethal damage stays at 1 HP and is imprisoned; +20 SPD while an imprisoned enemy is on the field
+- **origin-lugia** — Talent 4 (all levels): the first ally(s) to take lethal damage stay at 1 HP and are imprisoned; +20 SPD while an imprisoned enemy is on the field
 - **origin-rayquaza** — Ult/Passive: the link moves to a new ally when the linked one dies; the link picks 'the closest ally, preferring the one below'
 - **origin-rayquaza** — Passive: the linked ally does not drop below 1 HP on its first turn and restores 25% of lost HP from its second turn
-- **zacian** — Basic Skill: Shattered Armor's −10% DEF per layer (DEF has no effect while defendersUseDef is off)
+- **origin-rayquaza** — Basic Skill LV.3 / Passive LV.3 / Talent 4 LV.3: the Thunderstorm count and the link target's attack bonus; Passive LV.2's +10% Crit Intensity after 3 stacks
+- **shadow-mewtwo** — Basic Skill LV.2 / LV.3: the max-HP bonus applies even when the hit is blocked
+- **zacian** — Basic Skill: Shattered Armor's −10% / −20% DEF per layer (DEF has no effect while defendersUseDef is off)
+- **zacian** — Passive LV.2+: counts every death, not only deaths to a direct attack
+- **zacian** — Talent 4 LV.2: lifesteal of 1% per 1% HP lost (lifesteal cannot scale with HP yet)
 - **wind-god-pidgeot** — Talent 4: +2% permanent DMG Deepening each time an enemy is controlled (4 per round, cap 26%) — 'DMG Deepening' on whom is unclear
 - **kyogre** — Ult: 'the healing effect cannot be stacked' (regen instances always stack)
 - **cresselia** — Ult: the Shallow Sleep / Nap victims' +30% damage taken — applied to the Sleep target only; shields 'for 1 turn' last until broken

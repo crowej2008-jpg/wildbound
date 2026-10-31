@@ -9,17 +9,19 @@ import { useServer } from '../server/ServerProvider';
 import { cardFor, formFor, species, topStar } from '../wilds';
 import BerryPanel from './wild/BerryPanel';
 import HeldItemPanel from './wild/HeldItemPanel';
+import OriginSkillsPanel from './wild/OriginSkillsPanel';
 import OrbsPanel from './wild/OrbsPanel';
 import PotentialPanel from './wild/PotentialPanel';
 import SoulHeartPanel from './wild/SoulHeartPanel';
 import StatSheet from './wild/StatSheet';
 import { useEquipment } from './wild/useEquipment';
 
-type Tab = 'upgrade' | 'evolve' | 'potential' | 'orbs' | 'soulHearts' | 'berries' | 'heldItems';
+type Tab = 'upgrade' | 'evolve' | 'skills' | 'potential' | 'orbs' | 'soulHearts' | 'berries' | 'heldItems';
 
-const TABS: { id: Tab; key: 'wild.tab.upgrade' | 'wild.tab.evolve' | 'wild.tab.potential' | 'wild.tab.orbs' | 'wild.tab.soulHearts' | 'wild.tab.berries' | 'wild.tab.heldItems' }[] = [
+const TABS: { id: Tab; key: 'wild.tab.upgrade' | 'wild.tab.evolve' | 'wild.tab.skills' | 'wild.tab.potential' | 'wild.tab.orbs' | 'wild.tab.soulHearts' | 'wild.tab.berries' | 'wild.tab.heldItems' }[] = [
   { id: 'upgrade', key: 'wild.tab.upgrade' },
   { id: 'evolve', key: 'wild.tab.evolve' },
+  { id: 'skills', key: 'wild.tab.skills' },
   { id: 'potential', key: 'wild.tab.potential' },
   { id: 'orbs', key: 'wild.tab.orbs' },
   { id: 'soulHearts', key: 'wild.tab.soulHearts' },
@@ -125,7 +127,7 @@ export default function WildDetail() {
       {gear.error && <p className="muted">{gear.error}</p>}
 
       <div className="tabs tabs-scroll">
-        {TABS.map((entry) => (
+        {TABS.filter((entry) => entry.id !== 'skills' || meta.tier === 'origin').map((entry) => (
           <button
             key={entry.id}
             type="button"
@@ -137,7 +139,9 @@ export default function WildDetail() {
         ))}
       </div>
 
-      {tab !== 'upgrade' && tab !== 'evolve' && (
+      {tab === 'skills' && <OriginSkillsPanel wildId={id} name={meta.name} />}
+
+      {tab !== 'upgrade' && tab !== 'evolve' && tab !== 'skills' && (
         !gear.view ? (
           <section className="card">
             <p className="muted">Loading gear…</p>
@@ -192,6 +196,19 @@ export default function WildDetail() {
         </section>
       ) : tab === 'evolve' ? (
         <section className="card">
+          <div className="row-actions">
+            <span className="muted">
+              {t('wild.shards')}: {(snapshot.state.speciesShards?.[wild.speciesId] ?? 0).toLocaleString()}/{meta.shards}
+            </span>
+            <button
+              type="button"
+              className="btn"
+              disabled={busy || (snapshot.state.speciesShards?.[wild.speciesId] ?? 0) < meta.shards}
+              onClick={() => void run((s) => s.composeWild(wild.speciesId))}
+            >
+              {t('wild.compose')}
+            </button>
+          </div>
           {!evolution || evolution.blocked === 'max_star' || !evolution.next ? (
             <p className="muted">{t('wild.evolve.maxed')}</p>
           ) : evolution.blocked === 'awakening' ? (

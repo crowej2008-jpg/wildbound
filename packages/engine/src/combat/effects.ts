@@ -71,6 +71,7 @@ function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect,
       let amount = resolveHealWithBasis(ctx, caster, t, e.rate, e.basis);
       if (e.bonusVs && evalCondition(e.bonusVs.condition, ctx, caster, t)) amount = Math.floor(amount * e.bonusVs.mult);
       if (e.perResource) amount = Math.floor(amount * (caster.resources?.[e.perResource] ?? 0));
+      if (e.perTagged) amount = Math.floor(amount * countTagged(ctx, caster, e.perTagged));
       if (e.over !== undefined && e.over > 0) applyRegen(ctx, caster, t, Math.floor(amount / e.over), e.over);
       else applyHeal(ctx, t, amount);
       return;
@@ -88,6 +89,11 @@ function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect,
       stripBuffs(t, ctx, false, e.count, e.kinds, ctx.settings.cleanseOrder);
       return;
     case 'rage': {
+      if (e.perTagged) {
+        const n = countTagged(ctx, caster, e.perTagged);
+        if (n > 0) addRage(ctx, t, (e.delta ?? 0) * n, e.force === true);
+        return;
+      }
       if (e.fill) {
         addRage(ctx, t, ctx.settings.rageMax - t.rage, e.force === true);
         return;
@@ -121,7 +127,11 @@ function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect,
       return;
     }
     case 'damage': {
-      const dmg = e.basis ? hpBasisDamage(ctx, e, caster, t) : attackBasisDamage(e, caster, skillType);
+      let dmg = e.basis ? hpBasisDamage(ctx, e, caster, t) : attackBasisDamage(e, caster, skillType);
+      if (e.capRate !== undefined) {
+        const atk = effective(caster.base, caster.buffs, (e.type ?? skillType) === 'P' ? 'pAtk' : 'sAtk');
+        dmg = Math.max(1, Math.min(dmg, Math.floor(atk * e.capRate)));
+      }
       channelHit(ctx, caster, t, dmg, { trueDmg: e.trueDamage === true, kind: 'hit' });
       return;
     }
@@ -185,6 +195,17 @@ function hpBasisDamage(
                 ? ctx.eventAmount ?? 0
                 : t.maxHp;
   return Math.max(1, Math.floor((e.share ?? 0) * base));
+}
+
+/** E4: living units on one side (relative to the caster) carrying a tag, capped at `max`. */
+function countTagged(ctx: BattleContext, caster: Combatant, p: { side: 'enemy' | 'ally'; tag: string; max?: number }): number {
+  const n = ctx.units.filter(
+    (u) =>
+      u.alive &&
+      (p.side === 'ally' ? u.side === caster.side : u.side !== caster.side) &&
+      u.buffs.some((b) => b.tag === p.tag || b.tag.startsWith(`${p.tag}#`)),
+  ).length;
+  return p.max === undefined ? n : Math.min(p.max, n);
 }
 
 /** E3: the units next to `t` on its own side — left/right in its row and the one in front/behind. */

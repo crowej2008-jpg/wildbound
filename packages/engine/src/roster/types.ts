@@ -144,6 +144,8 @@ export interface WildInstance {
   stars: number;
   locked: boolean;
   acquiredAt: number;
+  /** E4: an Origin's skill levels (ult / basic / passive / talent4, 1–3; absent = 1). */
+  skillLevels?: Partial<Record<'ult' | 'basic' | 'passive' | 'talent4', number>>;
 }
 
 export interface PlayerProfile {
@@ -160,6 +162,8 @@ export interface AccountState {
   serverEpoch: number;
   profile: PlayerProfile;
   roster: WildInstance[];
+  /** E4: each species' own shards (source items 40001–40095, Origins 41001–41006). */
+  speciesShards: Record<string, number>;
   squads: Record<SquadMode, Squad>;
   strategies: Record<SquadMode, StrategyId>;
   currencies: Record<CurrencyId, number>;

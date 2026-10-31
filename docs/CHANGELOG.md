@@ -1090,3 +1090,12 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Mew / Shiny Mew: Talent 4 Rage on every fallen enemy (`onEnemyDeath` trigger).
 - Snorlax ultimate +2% damage per 1% HP lost, uncapped; Mimikyu's extra attacks gain Rage; Dialga's
   ultimate fills the whole team's Rage, its own included (ASSUMPTIONS #59–60).
+
+## E4 - Species shards and Origin skill levels (2026-10-31)
+
+- Each species' own shards (`speciesShards`), compose a copy from `item_num` shards (Evolve tab).
+- Origins (Calyrex, Zacian, Necrozma, Shadow Mewtwo, Origin Lugia, Origin Rayquaza) level their ult,
+  basic skill, passive and Talent 4 to LV.3 for 50 / 100 own shards (new Skills tab); the 24 LV.2 /
+  LV.3 rows of the sheet are hand-ported as kit `levels` and applied in battle (`applySkillLevels`).
+- Engine: `onEnemyUlt` trigger, per-tagged-unit heals and Rage, capped HP-share damage, trigger and
+  modifier groups. Save v21. No in-game shard source until R9 (owner's choice).

@@ -793,3 +793,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     Mimikyu's extra attacks gain Rage ("make the extra attacks give rage"; the sheet: they do not).
     Dialga's ultimate fills every ally's Rage to the max, Dialga included, after its own cost is paid
     ("fill all team members including himself rage bar to the max"; the sheet: +200 to backline allies).
+61. **Species shards and Origin skill levels (E4; owner 2026-10-31: "lets do per pokemon shards as
+    with the origin skills", then "No source until R9").** Each species has its own shards (`speciesShards`
+    in the save); `item_num` of them (30 / 40 / 50, Origins 50) compose a new copy at its first star.
+    Only the six Origins level skills — ult, basic skill, passive, Talent 4 — LV.2 for 50 and LV.3 for 100
+    of their own shards (`hero_origin_skill_up_json`); ordinary Pokémon's talents step up with stars in
+    the source, but those tier texts are not dumped, so their talents stay at the sheet's tier. No reward
+    pays species shards until R9 maps the shops, campaign and quests (debug grant only). The general
+    Shards currency is unchanged. Save v21.

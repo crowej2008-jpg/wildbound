@@ -1175,6 +1175,7 @@ function applyOverride(kit) {
     else delete t[key];
   }
   if (o.damageMods) t.damageMods = o.damageMods;
+  if (o.levels) kit.levels = o.levels;
   Object.assign(t, o.set ?? {});
   if (Object.keys(t).length > 0) kit.talents = t;
   else delete kit.talents;
@@ -1261,7 +1262,11 @@ for (const creature of sheet) {
 
   for (const s of creature.slots) {
     CURRENT.sheetSlot = '';
-    if (s.notes && s.notes.trim()) rep.count('sheet LV.2+ upgrade text (not modelled)');
+    if (s.notes && s.notes.trim()) {
+      // E4: the Origins' LV.2 / LV.3 rows are hand-ported as kit `levels`.
+      if (OVERRIDES[kit.id]?.levels) rep.consume('E4: Origin skill level text (kit levels)');
+      else rep.count('sheet LV.2+ upgrade text (not modelled)');
+    }
   }
 }
 

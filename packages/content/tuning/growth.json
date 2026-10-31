@@ -7,5 +7,11 @@
   "respawn": {
     "gemCost": 20,
     "refundRate": 0.8
+  },
+  "originSkill": {
+    "costs": [
+      50,
+      100
+    ]
   }
 }

@@ -1,5 +1,6 @@
 import { COMBAT_SETTINGS, kitById, kitToEngine } from '@wildbound/content';
 import {
+  applySkillLevels,
   computePower,
   emptyLoadout,
   formIndex,
@@ -208,7 +209,8 @@ export function buildWildTeam(
       name: species.name,
       position,
       side,
-      kit: kitToEngine(kitJson),
+      // E4: an Origin's bought skill levels swap in their LV.2 / LV.3 content.
+      kit: applySkillLevels(kitToEngine(kitJson), wild.skillLevels),
       sheet: equipped.sheet,
       power: unitPower,
       level: wild.level,
