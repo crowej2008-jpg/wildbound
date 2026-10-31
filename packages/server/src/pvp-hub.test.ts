@@ -45,14 +45,12 @@ function grownState(cfg: ReturnType<typeof config>, strategy?: StrategyId): Acco
 }
 
 /**
- * A sparring wall: the same six species at their top star and the squad's level (R1: under the
- * source stat formula a lone wall dies or wins in one round), so the fight runs several rounds and
- * every action policy actually gets a turn.
+ * A sparring wall: one tough support Pokémon at its top star (Manaphy, Lv200) that the grown squad
+ * can't burst down, so the fight runs several rounds and every action policy gets a turn. R1 picked
+ * it by simulation under the source stat formula: its fights differ by strategy at Lv140–340.
  */
-function wallEnemies(cfg: ReturnType<typeof config>) {
-  // R1: one of the starters themselves (top star, lower level) so it can neither one-shot the
-  // grown squad nor be one-shot by it under the source stat formula.
-  return cfg.startingRoster.map((speciesId) => ({ speciesId, level: 140, stars: 20, stage: 2 }));
+function wallEnemies(_cfg: ReturnType<typeof config>) {
+  return [{ speciesId: 'manaphy', level: 200, stars: 20, stage: 2 }];
 }
 
 describe('PvP hub (M10.5)', () => {
