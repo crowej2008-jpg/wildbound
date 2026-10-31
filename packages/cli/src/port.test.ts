@@ -150,4 +150,19 @@ describe('faithful ports (numbers straight from the sheet)', () => {
       expect.arrayContaining([expect.objectContaining({ op: 'splash', share: 0.1 })]),
     );
   });
+
+  it("owner changes (2026-10-31): Snorlax +2% per 1% lost, Mimikyu's extra attacks gain Rage, Dialga fills the team's Rage", () => {
+    const snorlax = byId.get('snorlax')?.talents?.damageMods?.find((m) => m.tag === 'snorlax-desperation');
+    expect(snorlax).toMatchObject({ slot: 'ult', dmg: 2, scale: 'selfMissingHp' });
+    expect(snorlax?.cap).toBeUndefined();
+    const mimikyu = byId.get('mimikyu')?.talents?.triggers?.find((t) => t.on === 'afterBasic' && t.effects);
+    expect(mimikyu?.effects?.[0]).toMatchObject({ op: 'extraAction', slot: 'roll' });
+    expect(mimikyu?.effects?.[0]).not.toHaveProperty('noRage');
+    const dialga = byId.get('dialga')?.talents?.triggers ?? [];
+    expect(dialga).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ on: 'afterUlt', effects: [expect.objectContaining({ op: 'rage', target: { side: 'ally', rule: 'all' }, fill: true })] }),
+      ]),
+    );
+  });
 });

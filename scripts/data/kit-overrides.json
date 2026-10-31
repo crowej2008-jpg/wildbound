@@ -3310,9 +3310,8 @@
    {
     "tag": "snorlax-desperation",
     "slot": "ult",
-    "dmg": 0.6,
-    "scale": "selfMissingHp",
-    "cap": 0.6
+    "dmg": 2.0,
+    "scale": "selfMissingHp"
    },
    {
     "tag": "snorlax-grit",
@@ -4711,8 +4710,7 @@
        "side": "ally",
        "rule": "self"
       },
-      "slot": "roll",
-      "noRage": true
+      "slot": "roll"
      }
     ]
    }
@@ -5423,15 +5421,6 @@
        "event": true
       },
       "delta": -200
-     },
-     {
-      "op": "rage",
-      "target": {
-       "side": "ally",
-       "rule": "all",
-       "rowFilter": "back"
-      },
-      "delta": 200
      }
     ]
    }
@@ -5493,6 +5482,19 @@
        "rule": "self"
       },
       "slot": "normal"
+     }
+    ]
+   },
+   {
+    "on": "afterUlt",
+    "effects": [
+     {
+      "op": "rage",
+      "target": {
+       "side": "ally",
+       "rule": "all"
+      },
+      "fill": true
      }
     ]
    }

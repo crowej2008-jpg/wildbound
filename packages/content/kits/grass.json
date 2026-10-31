@@ -1747,15 +1747,6 @@
               "event": true
             },
             "delta": -200
-          },
-          {
-            "op": "rage",
-            "target": {
-              "side": "ally",
-              "rule": "all",
-              "rowFilter": "back"
-            },
-            "delta": 200
           }
         ]
       }
@@ -1838,6 +1829,19 @@
                 "rule": "self"
               },
               "slot": "normal"
+            }
+          ]
+        },
+        {
+          "on": "afterUlt",
+          "effects": [
+            {
+              "op": "rage",
+              "target": {
+                "side": "ally",
+                "rule": "all"
+              },
+              "fill": true
             }
           ]
         }

@@ -73,3 +73,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-10-31] update | Owner reading: Mew counts every fallen enemy
 - Owner: "i want it as every enemies" — Mew / Shiny Mew Talent 4 Rage on any enemy death (`onEnemyDeath`).
   ASSUMPTIONS #59.
+
+## [2026-10-31] decision | Owner kit changes: Snorlax, Mimikyu, Dialga
+- Snorlax +2%/1% lost uncapped; Mimikyu extra attacks gain Rage; Dialga fills the whole team's Rage.
+  Page: [kit changes](decisions/kit-changes-2026-10-31.md).

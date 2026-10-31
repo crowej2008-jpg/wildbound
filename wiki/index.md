@@ -38,6 +38,7 @@ R4 Potential; then M13.3 [Hoopa's Vault](systems/hoopa-vault.md).
 - [copy the source exactly](decisions/copy-the-source-exactly.md) — 2026-10-31, exact copy except owner's own features
 - [Resetter Shards and refine ladder](decisions/resetter-shards-and-refine.md) — 2026-10-23/31 free, 1,1,2,2…10
 - [server boundary now, backend later](decisions/server-boundary-now.md) — 2026-10-31
+- [owner kit changes](decisions/kit-changes-2026-10-31.md) — 2026-10-31 Mew, Snorlax, Mimikyu, Dialga
 
 ## Systems — built
 - [combat engine](systems/combat-engine.md) · [skill kits (M9)](systems/skill-kits.md) · [roster](systems/roster.md)

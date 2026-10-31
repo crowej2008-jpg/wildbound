@@ -402,7 +402,8 @@ kit("snorlax",
         trig("onHit", [heal(SELF, 0.05, "targetMaxHp")], chance=0.5),
     ],
     damageMods=[
-        {"tag": "snorlax-desperation", "slot": "ult", "dmg": 0.6, "scale": "selfMissingHp", "cap": 0.6},
+        # Owner 2026-10-31: "make it 2% damage per 1% lost" — no cap.
+        {"tag": "snorlax-desperation", "slot": "ult", "dmg": 2.0, "scale": "selfMissingHp"},
         {"tag": "snorlax-grit", "slot": "basic", "dmg": 0.3, "condition": {"selfHpBelowTarget": True}},
     ])
 
@@ -479,7 +480,8 @@ kit("mimikyu",
     skill("P", 1.0, "all", effects=[control(T, "stun", 0.15), give(ALLIES, buff("disguise-rate", "basicRate", 0.1, big=2))]),
     skill("P", 0.8, "all"),
     statMods=bundle(0.08, 0.08, 0.11, 0.06, 0.06, 0.38),
-    triggers=[trig("afterBasic", [{"op": "extraAction", "target": SELF, "slot": "roll", "noRage": True}], perTurn=1)])
+    # Owner 2026-10-31: "make the extra attacks give rage" (the sheet: they do not).
+    triggers=[trig("afterBasic", [{"op": "extraAction", "target": SELF, "slot": "roll"}], perTurn=1)])
 
 kit("wobbuffet",
     skill("S", 1.0, effects=[give(SELF, buff("wobble-guard", "dmgRdct", 0.15, turns=3))]),
@@ -536,10 +538,13 @@ kit("palkia",
 
 kit("dialga",
     skill("P", 1.0),
-    skill("P", 1.6, "row", effects=[rage(T, -200), rage(BACK_ALLIES, 200)]),
+    # Owner 2026-10-31: the ultimate fills every team member's Rage to the max, Dialga included
+    # (after its own cost is paid — see the afterUlt trigger below).
+    skill("P", 1.6, "row", effects=[rage(T, -200)]),
     skill("P", 1.35, effects=[rage(SELF, 300)]),
     statMods=bundle(0.08, 0.08, 0.11, 0.06, 0.06, 0.38),
-    triggers=[engage_rdct(), trig("afterBasic", [{"op": "extraAction", "target": SELF, "slot": "normal"}], perTurn=1)],
+    triggers=[engage_rdct(), trig("afterBasic", [{"op": "extraAction", "target": SELF, "slot": "normal"}], perTurn=1),
+              trig("afterUlt", [rage(ALLIES, fill=True)])],
     damageMods=[{"tag": "roar-of-time", "dmg": 0.3, "scale": "selfRage", "cap": 0.3}])
 
 kit("keldeo",

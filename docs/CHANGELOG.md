@@ -1084,3 +1084,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   vulnerability; stacking DoTs; targeted immunities; extra actions; splash; shield break; layers spent
   on hit; buffs ending with their source; `onAllyCrit`; buffable lifesteal; SPD buffs now move the
   turn order.
+
+## Owner kit changes (2026-10-31)
+
+- Mew / Shiny Mew: Talent 4 Rage on every fallen enemy (`onEnemyDeath` trigger).
+- Snorlax ultimate +2% damage per 1% HP lost, uncapped; Mimikyu's extra attacks gain Rage; Dialga's
+  ultimate fills the whole team's Rage, its own included (ASSUMPTIONS #59–60).

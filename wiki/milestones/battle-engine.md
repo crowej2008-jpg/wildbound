@@ -51,3 +51,4 @@ swap and trinket skills (R6), gear/orb set skills (R2/R3).
   on DEF which has no effect). Tests: `combat/e3.test.ts`; CI 541 unit / 90 e2e.
 - **Owner readings since:** Mew / Shiny Mew gain their Talent 4 Rage from every fallen enemy, not only
   their own kills (2026-10-31, "i want it as every enemies").
+- **Owner changes:** Snorlax, Mimikyu, Dialga — see [kit changes](../decisions/kit-changes-2026-10-31.md).

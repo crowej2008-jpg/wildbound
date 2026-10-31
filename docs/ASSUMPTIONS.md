@@ -788,3 +788,8 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 59. **Mew / Shiny Mew "every fallen enemy" (owner, 2026-10-31: "i want it as every enemies").** Talent 4's
     Rage (Mew 250, Shiny Mew 500) comes from every enemy that falls, whoever defeated it — the
     `onEnemyDeath` trigger.
+60. **Owner kit changes (2026-10-31), deliberate departures from the sheet.** Snorlax's ultimate gains
+    +2% damage per 1% HP lost, no cap ("make it 2% damage per 1% lost"; the sheet: up to 60%).
+    Mimikyu's extra attacks gain Rage ("make the extra attacks give rage"; the sheet: they do not).
+    Dialga's ultimate fills every ally's Rage to the max, Dialga included, after its own cost is paid
+    ("fill all team members including himself rage bar to the max"; the sheet: +200 to backline allies).
