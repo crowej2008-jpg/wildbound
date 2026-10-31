@@ -30,9 +30,11 @@ owner's PC with `WILDBOUND_SOURCE`); hand-written battle effects in `scripts/dat
   Price: **owner's ladder** in Held Item Resetters — free, 1, 1, 2, 2 … 10, 10 (21 refines, 110).
 - **Lock** toggles; **dismantle** (unworn, unlocked) pays 5/8/10/15/20 shards + all level shards.
 - **Resetters:** 20 Resetter Shards → 1 Held Item Resetter (button on the panel).
-- **Skills:** source text on every Legendary+ item; **active in battle:** Choice Specs (round 4
-  damage), Razor Fang (+speed rounds 3–5), Razor Claw (Guard Break on even rounds). The other 24
-  names show "not active in battle yet" — see [open questions](../open-questions.md).
+- **Skills:** source text on every Legendary+ item, and **all 27 are active in battle** since E2
+  (`scripts/data/held-item-effects.json`). Stand-ins where the text leaves a number out, shown on
+  the item: Smooth/Heat Rock "a chance" = 50 %; Rocky Helmet's −10 % DMG RED lasts to round end;
+  Terrain Extender 80 % (kb), read as "the opposite enemy deals 10 % less, the holder takes 10 % less";
+  Damp Rock read as +25 % basic-skill chance.
 - **Not built:** the album (tables not dumped); drops come with [Hoopa's Vault](hoopa-vault.md) (13.3).
   New accounts start with three Rares (one per class) as a stand-in.
 

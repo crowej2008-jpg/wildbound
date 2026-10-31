@@ -771,3 +771,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     (13.3) drops them; the held-item album (18 milestones) waits for its tables, which are not in the
     dumps. Skills the round-effect DSL can't express (24 of 27 names) show their text and are marked
     inactive; Choice Band's "ignore 50 % block" is not approximated.
+57. **Held-item skill readings (E2).** Where the source text leaves a number out the item carries a
+    labelled stand-in: Smooth Rock / Heat Rock "a chance" = 50 %; Rocky Helmet's −10 % DMG RED on the
+    attacker lasts to the end of the round and refreshes; Terrain Extender (80 %, from the kb) = the
+    opposite enemy deals 10 % less and the holder takes 10 % less until round end; Damp Rock = +25 %
+    basic-skill chance. A self buff "for N turns" applied during the holder's own action is authored
+    as N + 1 turns, because turns tick at the end of the holder's own turn. *What would change it:* a
+    measurement or the owner's reading.

@@ -104,6 +104,11 @@ JSON in `packages/content/kits`, validated by zod (`schema.ts` in the content pa
   `shield {target, share}`, `lifesteal`, `dot {share}`.
 - talents: `statMods[]`, `rageOnHit`, `rageCutChance`, `safeguard {active, cycle}`, `turnHooks[]`.
 - turn hooks are named and registered in engine code; unknown names are a zod/refinement error.
+- E1 (2026-10-31): triggers `onCrit`, `onBlocked`, `onDealDamage`, `onControlled`,
+  `onInflictControl`, `afterNormal|afterBasic|afterUlt`, `maxFires`; conditions `round`,
+  `targetHasAnyTag`, `selfControlled`; `target.event`; heal bases `casterSAtk`, `casterCurrentHp`;
+  buff kind `rageBlock`; stats `atkPct`, `ignoreBlock`, `basicRate`. Units may also carry gear
+  `triggers[]` and `damageMods[]` (`{tag, slot?, condition?, chance?, dmg?, atk?, ignoreBlock?}`).
 
 Appendix B's `tidewarden` ships as `content/kits/tidewarden.json` with its required tests.
 

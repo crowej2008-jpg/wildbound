@@ -1059,3 +1059,14 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Fixed: Origin Pokémon could not wear held items (the tier order lacked `origin`).
 - Save v20 (older saves are retired with a fresh-start mail). Starting items: three Rares until
   Hoopa's Vault. Album deferred (tables not in the dumps).
+
+## E1 + E2 - Battle triggers and held-item skills (2026-10-31)
+
+- Owner paused the retrofit to finish the battle engine (`wiki/milestones/battle-engine.md`).
+- Engine (additive; golden replays unchanged): triggers `onCrit`, `onBlocked`, `onDealDamage`,
+  `onControlled`, `onInflictControl`, `afterNormal/afterBasic/afterUlt`, `maxFires`; conditions
+  `round`, `targetHasAnyTag`, `selfControlled`; per-unit `damageMods` (dmg / atk / ignoreBlock);
+  stats `atkPct`, `ignoreBlock`, `basicRate`; buff kind `rageBlock`; heal bases `casterSAtk`,
+  `casterCurrentHp`; `target.event`. Gear passes triggers and damage mods through `SpecInput`.
+- All 27 held-item skills (57 item rows) run in battle from `scripts/data/held-item-effects.json`;
+  stand-ins are shown on the item (ASSUMPTIONS #57).

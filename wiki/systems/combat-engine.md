@@ -41,6 +41,12 @@ targeting (fixed in M9). Heals use **target max HP** as basis.
 `runBattle` returns an immutable event log (+ `battleId`, `seed`). The M4 battle screen folds the
 log into frames — no re-simulation. Golden lock in `packages/cli/tests/golden/` replays byte-for-byte.
 
+## E1 additions (2026-10-31)
+Event triggers on crit / blocked / dealing damage / being controlled / landing a control / after each
+skill slot, once-per-battle caps, round and tag conditions, per-hit damage modifiers, ignore-block,
++% attack, basic-rate and rage-block — see [battle engine](../milestones/battle-engine.md). Gear adds
+triggers and damage modifiers to a unit without touching its kit.
+
 ## Squad strategies (M10.5)
 `aggressive` / `balanced` / `defensive` are live via `BattleConfig.strategies`
 (`strategyUltHoldHp` 0.75). `balanced` = old behaviour.

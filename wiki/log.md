@@ -60,3 +60,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
   with keep/drop on the owner's ladder, levels to 200, lock, dismantle, Resetters; save v20.
 - Gear/Orbs will be built from the kb notes with labelled stand-ins (ASSUMPTIONS #55).
 - Pages: held items, resetter decision, currencies, save versions, retrofit, open questions.
+
+## [2026-10-31] update | E1 + E2 built — battle triggers, all held-item skills live
+- Owner: "could we take a break on the current milestone and finnish all of the battle enigine" → "ok".
+- New page [battle engine](milestones/battle-engine.md); CI 522 unit / 90 e2e. Pages: index, roadmap,
+  combat engine, held items, open questions.

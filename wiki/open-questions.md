@@ -29,8 +29,8 @@ updated: 2026-10-31
   will use the kb notes with labelled stand-ins (ASSUMPTIONS #55).
 - **Held-item album:** `held_item_total_collect` / `held_item_group_collect` are not dumped (kb has only
   the totals), so the album is deferred (ASSUMPTIONS #56).
-- **Held-item skills:** 24 of 27 skill names need battle events the round-effect DSL lacks (on-hit,
-  on-control, backline, taunt…); they show their text marked "not active in battle yet".
+- **Held-item skill numbers the text leaves out (E2 stand-ins):** Smooth Rock / Heat Rock chance (50 %),
+  Rocky Helmet duration (to round end), Terrain Extender's reading, Damp Rock's reading (+25 %).
 
 ## Known test problems
 - Two mobile e2e tests in `tests/e2e/m11.spec.ts` (Trinkets, VIP) are flaky on CI — see [dev environment](project/dev-environment.md).

@@ -10,8 +10,10 @@ updated: 2026-10-31
 [open questions](open-questions.md).** How the wiki is maintained: `AGENTS.md` › "Project wiki".
 Recent changes: [log](log.md).
 
-**Now:** the [source retrofit](milestones/source-retrofit.md) — R0 and R1 done (source loader; species,
-star ladders, stats and Evolve copied from the source; save v19). **R2 Gear** next. Then M13.3 [Hoopa's Vault](systems/hoopa-vault.md). Last commit `27536b7`, save v17.
+**Now:** [battle engine completion](milestones/battle-engine.md) (owner's pause of the retrofit) —
+E1 triggers and E2 held-item skills done; **E3** (unmodelled kit clauses) next. The
+[source retrofit](milestones/source-retrofit.md) has R0, R1 and R5 done (save v20) and resumes with
+R4 Potential; then M13.3 [Hoopa's Vault](systems/hoopa-vault.md).
 
 ## Start here
 - [overview](overview.md) — what Wildbound is, who it's for, where it stands
@@ -52,6 +54,7 @@ star ladders, stats and Evolve copied from the source; save v19). **R2 Gear** ne
 ## Milestones
 - [roadmap](milestones/roadmap.md) — M0–M20 with status
 - [source retrofit](milestones/source-retrofit.md) — R0–R10, runs before M13.3
+- [battle engine](milestones/battle-engine.md) — E1–E6, the owner's pause to finish combat
 - [M13](milestones/m13.md) — sub-step table
 - [history](milestones/history.md) — dates, commits, test counts
 
