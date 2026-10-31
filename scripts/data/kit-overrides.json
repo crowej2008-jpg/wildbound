@@ -1995,7 +1995,7 @@
     ]
    },
    {
-    "on": "onKill",
+    "on": "onEnemyDeath",
     "effects": [
      {
       "op": "rage",
@@ -2112,7 +2112,7 @@
     ]
    },
    {
-    "on": "onKill",
+    "on": "onEnemyDeath",
     "effects": [
      {
       "op": "rage",

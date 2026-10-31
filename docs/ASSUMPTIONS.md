@@ -785,3 +785,6 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     raises both attacks. Clauses still not modelled are listed per kit in `docs/PORT-REPORT.md`; DEF
     clauses stay inert while `defendersUseDef` is off. *What would change it:* the owner's reading of a
     clause, or source data for the bespoke mechanics.
+59. **Mew / Shiny Mew "every fallen enemy" (owner, 2026-10-31: "i want it as every enemies").** Talent 4's
+    Rage (Mew 250, Shiny Mew 500) comes from every enemy that falls, whoever defeated it — the
+    `onEnemyDeath` trigger.

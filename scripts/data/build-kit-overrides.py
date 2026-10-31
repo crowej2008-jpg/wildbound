@@ -300,8 +300,9 @@ for kid in ("kyogre", "shiny-kyogre"):
     K[kid]["skills"]["ult"]["rates"] = [0]
 
 for kid, ult_rate, ult_rule, chance, t4 in (
-        ("mew", 1.5, "backline", 0.5, trig("onKill", [rage(SELF, 250)])),
-        ("shiny-mew", 1.0, "all", 0.25, trig("onKill", [rage(SELF, 500)]))):
+        # Owner 2026-10-31: "every fallen enemy" counts every enemy that falls, not only Mew's kills.
+        ("mew", 1.5, "backline", 0.5, trig("onEnemyDeath", [rage(SELF, 250)])),
+        ("shiny-mew", 1.0, "all", 0.25, trig("onEnemyDeath", [rage(SELF, 500)]))):
     kit(kid,
         skill("P", 1.0),
         skill("P", ult_rate, ult_rule, effects=[control(T, "silence", chance)]),

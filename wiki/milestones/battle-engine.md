@@ -49,3 +49,5 @@ swap and trinket skills (R6), gear/orb set skills (R2/R3).
 - **Still not modelled:** 46 bespoke clauses, each listed by kit in `docs/PORT-REPORT.md` (e.g. Deoxys's
   damage transfer, Feraligatr's damage sharing, Rayquaza's mark strikes, Jirachi's Doom Desire, effects
   on DEF which has no effect). Tests: `combat/e3.test.ts`; CI 541 unit / 90 e2e.
+- **Owner readings since:** Mew / Shiny Mew gain their Talent 4 Rage from every fallen enemy, not only
+  their own kills (2026-10-31, "i want it as every enemies").

@@ -328,6 +328,10 @@ export function channelHit(
       if (ally.side !== defender.side || ally === defender || !ally.alive) continue;
       fireTriggers(ctx, ally, 'onAllyDeath', { target: defender });
     }
+    for (const foe of ctx.units) {
+      if (foe.side === defender.side || !foe.alive) continue;
+      fireTriggers(ctx, foe, 'onEnemyDeath', { target: defender });
+    }
   }
   return hpLost;
 }

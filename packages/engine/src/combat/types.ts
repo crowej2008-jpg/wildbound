@@ -444,7 +444,9 @@ export type TriggerOn =
   /** E3: an ally landed a crit (target = the one hit; the ally is the event's actor). */
   | 'onAllyCrit'
   /** E3: an endure buff saved the owner from fatal damage. */
-  | 'onEndure';
+  | 'onEndure'
+  /** An enemy of the owner fell, whoever defeated it (Mew: "every fallen enemy"). */
+  | 'onEnemyDeath';
 
 /**
  * A talent trigger (M9.4): an event on the owner (`on`), optional gates

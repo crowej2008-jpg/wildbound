@@ -209,3 +209,15 @@ describe('E3 extra actions and splash', () => {
     expect(far.hp).toBe(1e6);
   });
 });
+
+describe('onEnemyDeath (owner 2026-10-31: Mew counts every fallen enemy)', () => {
+  it('fires for the other side whoever made the kill', () => {
+    const killer = unit({ key: 'k', side: 'attackers', position: 1 });
+    const mew = unit({ key: 'm', side: 'attackers', position: 2, rage: 0 });
+    mew.triggers = [{ on: 'onEnemyDeath', rage: 250 }];
+    const foe = unit({ key: 'f', side: 'defenders', position: 4 });
+    const ctx = makeCtx({ units: [killer, mew, foe], deterministic: true });
+    channelHit(ctx, killer, foe, 1e9);
+    expect(mew.rage).toBe(250);
+  });
+});

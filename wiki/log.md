@@ -69,3 +69,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-10-31] update | E3 built — kit clauses hand-ported
 - Owner: "yes". 68 kits hand-ported, parser Rage / stat-name fixes, engine rules; 46 bespoke clauses
   left and listed. CI 541 unit / 90 e2e. Pages: battle engine, skill kits, index.
+
+## [2026-10-31] update | Owner reading: Mew counts every fallen enemy
+- Owner: "i want it as every enemies" — Mew / Shiny Mew Talent 4 Rage on any enemy death (`onEnemyDeath`).
+  ASSUMPTIONS #59.

@@ -364,6 +364,7 @@ export const triggerSchema = z
       'afterUlt',
       'onAllyCrit',
       'onEndure',
+      'onEnemyDeath',
     ]),
     hpBelow: z.number().min(0).max(1).optional(),
     chance: z.number().min(0).max(1).optional(),
