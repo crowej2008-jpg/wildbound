@@ -29,4 +29,16 @@ sources: [opencode-session-2026-10, README.md]
 - **OpenCode free tier:** the session ran on OpenCode's free "big-pickle" model and stopped on
   "Free usage limit reached" (2026-10-31 08:09). Long autonomous runs can die mid-step — check
   `git status` before resuming.
-- **Cloud Claude sessions** may not reach the npm registry, so they can edit but not run `pnpm check`.
+- **Cloud Claude sessions** may not reach the npm registry, so they can't run `pnpm check` locally —
+  they use CI instead (below).
+
+## CI (GitHub Actions) — added 2026-10-31
+- `.github/workflows/check.yml` runs `pnpm install`, Playwright Chromium and the full `pnpm check` on
+  every push and PR (~2–3 min, free on a public repo). Results: the repo's **Actions** tab.
+- Agents without a local shell: push a branch, then
+  `gh run watch <id> --exit-status` and read the "check summary" / "check log tail" annotations via
+  `gh api repos/crowej2008-jpg/wildbound/check-runs/<job id>/annotations` (raw log downloads are blocked
+  from cloud sessions).
+- **Known flaky e2e (found 2026-10-31):** `m11.spec.ts` "Trinkets level with Star Shards…" and "VIP
+  derives its tier…" failed on the **mobile** project in one CI run and passed in the previous one with
+  identical code. Not fixed yet.

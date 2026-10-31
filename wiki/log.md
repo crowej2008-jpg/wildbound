@@ -39,3 +39,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-10-31] update | Owner keeps his refine ladder; source retrofit planned
 - Refine ladder = owner's (exception to copy-exactly). Owner: "fix up everything to match the source".
 - New [source retrofit](milestones/source-retrofit.md) plan R0–R10 from the kb notes; runs before M13.3.
+
+## [2026-10-31] update | CI added
+- GitHub Actions runs `pnpm check` on every push; cloud agents read results through annotations.
+  First runs: 510/510 unit, content PASS; e2e 90/90 then 88/90 (two flaky mobile M11 tests).
+  See [dev environment](project/dev-environment.md).
