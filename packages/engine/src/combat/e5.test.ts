@@ -6,10 +6,14 @@ import { makeCtx, sheet, skill, unit } from './fixtures';
 /** E5: combat numbers re-checked against kb/stats-and-combat.md. */
 
 describe('E5 rules from the measured model', () => {
-  it('a weaker team is cut on both sides (team Power, tpSymmetric)', () => {
+  it('owner 2026-10-31: no team-Power cut by default; the measured rule (both sides) is a switch', () => {
     const atk = unit({ key: 'a', side: 'attackers', position: 4, sheet: sheet({ pAtk: 1000 }) });
     const def = unit({ key: 'd', side: 'defenders', position: 4, sheet: sheet({ pAtk: 1000 }) });
-    const ctx = makeCtx({ units: [atk, def], deterministic: true });
+    const off = makeCtx({ units: [atk, def], deterministic: true });
+    const hit = (team: { attackersPower: number; defendersPower: number }, c = off) =>
+      computeDamage({ attacker: def, defender: atk, skill: skill({ slot: 'normal' }), hitIndex: 0, team }, c).dmg;
+    expect(hit({ attackersPower: 100, defendersPower: 35 })).toBe(hit({ attackersPower: 100, defendersPower: 100 }));
+    const ctx = makeCtx({ units: [atk, def], deterministic: true, settings: { teamPowerCut: true } });
     const s = skill({ slot: 'normal' });
     const even = computeDamage({ attacker: def, defender: atk, skill: s, hitIndex: 0, team: { attackersPower: 100, defendersPower: 100 } }, ctx).dmg;
     const weakDefenders = computeDamage({ attacker: def, defender: atk, skill: s, hitIndex: 0, team: { attackersPower: 100, defendersPower: 35 } }, ctx).dmg;

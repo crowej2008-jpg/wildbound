@@ -1106,3 +1106,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   blocker's stat (size still open); the Counter reflect passes shields; Wobbuffet's Counter uses the
   measured 75% (sheet 50%). Ranked rival `baseLevel` 12 → 16 re-measured. Golden baselines
   re-exported (squad-camp, tidewarden). Open questions: `wiki/systems/combat-numbers.md`.
+
+## Owner change: no team-Power cut (2026-10-31)
+
+- "i dont want there to be a cut for weaker teams against stronger teams": `teamPowerCut` false (the
+  measured both-sides rule stays as a switch). Ranked rival `baseLevel` back to 12. Golden baselines
+  re-exported.

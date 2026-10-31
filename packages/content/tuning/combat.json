@@ -25,6 +25,7 @@
   ],
   "blockKeep": 0.8,
   "blockIntScale": 0,
+  "teamPowerCut": false,
   "tpThreshold": 0.7,
   "tpSymmetric": true,
   "classMult": {},

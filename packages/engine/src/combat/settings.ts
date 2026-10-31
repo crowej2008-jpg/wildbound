@@ -30,6 +30,8 @@ export interface CombatSettings {
   /** how much the blocker's Block INT cuts a blocked hit further (E5: side fixed; size open — 0 keeps blockKeep). */
   blockIntScale: number;
   /** team-Power cut: only weaker attackers below this ratio are cut (open). */
+  /** Owner 2026-10-31: "i dont want there to be a cut for weaker teams" — off by default; the measured rule stays as a switch. */
+  teamPowerCut: boolean;
   tpThreshold: number;
   /** do weaker defenders also deal less (E5: seen — "a weaker opponent's hits on us rose the same way when our Power fell"). */
   tpSymmetric: boolean;
@@ -99,6 +101,7 @@ function readDefaults(): CombatSettings {
     ],
     blockKeep: 0.8,
     blockIntScale: 0,
+    teamPowerCut: false,
     tpThreshold: 0.7,
     tpSymmetric: true,
     classMult: {},

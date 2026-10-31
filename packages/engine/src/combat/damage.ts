@@ -92,7 +92,7 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   const soul = 1 + (S.soulCap * x) / (Math.abs(x) + S.soulHalf);
 
   let teamFactor = 1;
-  if (p.team.defendersPower > 0) {
+  if (S.teamPowerCut && p.team.defendersPower > 0) {
     const own = attacker.side === 'attackers' ? p.team.attackersPower : p.team.defendersPower;
     const enemy = attacker.side === 'attackers' ? p.team.defendersPower : p.team.attackersPower;
     const ratio = own / enemy;

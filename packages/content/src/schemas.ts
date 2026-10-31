@@ -462,6 +462,7 @@ export const combatSettingsSchema = z
     blockPoints: z.array(z.tuple([z.number(), z.number()])),
     blockKeep: z.number().min(0).max(1),
     blockIntScale: z.number(),
+    teamPowerCut: z.boolean(),
     tpThreshold: z.number().min(0).max(1),
     tpSymmetric: z.boolean(),
     classMult: z.record(z.string(), z.number()),

@@ -85,3 +85,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-10-31] update | E5 — combat numbers checked against the notes
 - Symmetric team cut, Block INT on the blocker, Counter passes shields, Wobbuffet 75%, Ranked base 16.
   New page [combat numbers](systems/combat-numbers.md).
+
+## [2026-10-31] decision | No team-Power cut
+- Owner: "i dont want there to be a cut for weaker teams against stronger teams". `teamPowerCut` false,
+  Ranked base back to 12. Pages: combat numbers, owner changes.

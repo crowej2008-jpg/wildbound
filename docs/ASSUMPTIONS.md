@@ -801,7 +801,9 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     the source, but those tier texts are not dumped, so their talents stay at the sheet's tier. No reward
     pays species shards until R9 maps the shops, campaign and quests (debug grant only). The general
     Shards currency is unchanged. Save v21.
-62. **E5 combat numbers.** From the measured notes: the team-Power cut is symmetric (`tpSymmetric`
-    true), Block INT is the blocker's, the Counter reflect passes shields, and Wobbuffet's Counter is the
-    server's 75% (its sheet says 50%). The Ranked rival `baseLevel` went 12 → 16 so the M10.6 checks hold
-    (entry 0.50, mid 1.00, strong 0.00, maxed 0.61). Still open, with tests: `wiki/systems/combat-numbers.md`.
+62. **E5 combat numbers.** From the measured notes: Block INT is the blocker's, the Counter reflect passes
+    shields, and Wobbuffet's Counter is the server's 75% (its sheet says 50%). **No team-Power cut (owner,
+    2026-10-31: "i dont want there to be a cut for weaker teams against stronger teams")** — a deliberate
+    change from the source, which cuts a weaker team's damage on both sides; `teamPowerCut` keeps the
+    measured rule as a switch. Ranked rival `baseLevel` stays 12 (entry 0.67, mid 1.00, strong 0.50,
+    maxed 1.00). Still open, with tests: `wiki/systems/combat-numbers.md`.

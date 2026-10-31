@@ -6,7 +6,7 @@ status: built
 sources: [owner chat 2026-10-31, docs/ASSUMPTIONS.md #59-60]
 ---
 
-# Owner kit changes (2026-10-31)
+# Owner kit and combat changes (2026-10-31)
 
 Made while reviewing the [E3 hand-port readings](../milestones/battle-engine.md). Each is the owner's
 own change to a source skill (see [copy the source exactly](copy-the-source-exactly.md)).
@@ -19,3 +19,8 @@ own change to a source skill (see [copy the source exactly](copy-the-source-exac
 | Dialga ult | "Grant backline allies 200 rage" | *"fill all team members including himself rage bar to the max"* | every ally, Dialga too, to 1,000 after the ultimate |
 
 Code: `scripts/data/build-kit-overrides.py` (comments name the date). Tests: `packages/cli/src/port.test.ts`.
+
+## Combat rule
+| Rule | Source | Owner's words | Built |
+|---|---|---|---|
+| Team-Power cut | a team well below the other's Power deals less damage (both sides) | *"i dont want there to be a cut for weaker teams against stronger teams"* | no cut (`teamPowerCut` false) |

@@ -197,7 +197,7 @@
       "factions": [],
       "tiers": ["rare", "legendary", "epic"],
       "count": 6,
-      "baseLevel": 16,
+      "baseLevel": 12,
       "levelSlope": 1.24,
       "starsEvery": 2,
       "maxStars": 10,
