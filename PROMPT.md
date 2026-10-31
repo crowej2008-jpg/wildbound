@@ -53,6 +53,11 @@ procedurally generated (section 9.4).
 to understand formula shapes and curves. Never copy rows, ids, names or whole tables into the shipped
 game. Write your own tables and tune them (section 9.5).
 
+**Owner override (2026-10-31): copy the source exactly.** For this private build, everything that
+exists in the source game is copied exactly — rules, numbers, rows, names and text — and the
+paragraph above no longer applies. Only the owner's brand-new features and explicitly recorded
+changes differ (`docs/ASSUMPTIONS.md` › Owner content override, item 11; `wiki/decisions/copy-the-source-exactly.md`).
+
 Do not fetch, scrape, probe or connect to any server or website belonging to the source game or any
 other game. No network calls at all other than loading the app's own files. No analytics, ads or trackers.
 

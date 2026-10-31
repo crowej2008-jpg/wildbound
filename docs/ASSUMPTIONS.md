@@ -285,6 +285,15 @@ assumptions are also named settings in `packages/content/tuning/combat.json` (M1
     in `packages/content` (the `tuning/pvp.json` table) and are display strings — no code branches on
     them. This is the same private, small-group scope as item 9. *What would change it:* a decision to
     re-theme the ladder to original region/rank names, which is a content edit only.
+11. **Copy the source exactly (owner decision, 2026-10-31).** Owner: "everything that is not a brand
+    new feature is a copy from the source and i want it copied exactly." This **supersedes** the
+    "own names, numbers and values / no copied rows" rule used through M8–M13.2 (including M13's
+    content-volume choice 6B) and PROMPT §2.1's data-dump paragraph. Existing systems built with
+    invented names, numbers or mechanics must be brought in line with `reference/game-rebuild/`
+    (audit: `wiki/project/source-fidelity-audit.md`). Exceptions are only the owner's brand-new
+    features and explicitly recorded changes (`wiki/decisions/copy-the-source-exactly.md`). The
+    no-real-money rule still stands. *What would change it:* the owner naming further deliberate
+    changes.
 
 ## M9 (design) — skill kits
 

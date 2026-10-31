@@ -24,7 +24,8 @@ sources: [docs/CHANGELOG.md M11.6, tuning/equipment.json, opencode-session-2026-
 - **27 mythic variants** so [Hoopa's Vault](hoopa-vault.md)'s 181+ floors have a mythic pool.
 - UI: both balances, compound button, "Free" on first refine.
 - Existing refine counts must survive the save migration.
-- **Open:** keep +20%/refine (5.2× at max) or switch to +5% (≈2.05×)? → [open questions](../open-questions.md)
+- **Superseded 2026-10-31:** the +20%/+5% question is gone — refine becomes the source's re-roll
+  ([copy the source exactly](../decisions/copy-the-source-exactly.md)). Still open: which cost ladder.
 
 ## How the source game refines (found 2026-10-31 in `reference/game-rebuild/kb/held-items.md`)
 **Refine in the source is a re-roll, not a power-up.**

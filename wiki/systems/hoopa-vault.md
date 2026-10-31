@@ -38,4 +38,5 @@ after only reading files. **Nothing is built yet.**
 - Paid Vault passes removed.
 
 ## Open
-+20% vs +5% per refine → [open questions](../open-questions.md).
+Refine cost ladder (owner's vs source's) → [open questions](../open-questions.md). Held Items must be
+rebuilt to the source (random lines, re-roll refine, 75 items) in 13.3a.

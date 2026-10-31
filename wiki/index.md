@@ -10,8 +10,8 @@ updated: 2026-10-31
 [open questions](open-questions.md).** How the wiki is maintained: `AGENTS.md` › "Project wiki".
 Recent changes: [log](log.md).
 
-**Now:** M13.3 [Hoopa's Vault](systems/hoopa-vault.md) is next and not started. Blocked on one owner
-answer (refine +20% vs +5%). Last commit `27536b7`, save v17.
+**Now:** M13.3 [Hoopa's Vault](systems/hoopa-vault.md) is next and not started. Held Items must be rebuilt to the
+source's re-roll refine first; one owner answer pending (whose refine cost ladder). Last commit `27536b7`, save v17.
 
 ## Start here
 - [overview](overview.md) — what Wildbound is, who it's for, where it stands
@@ -21,6 +21,7 @@ answer (refine +20% vs +5%). Last commit `27536b7`, save v17.
 ## Project
 - [owner rules](project/owner-rules.md) — Jayden's standing instructions (push to git, list before each milestone, F2P)
 - [architecture](project/architecture.md) — packages, boundaries, the per-mode build pattern
+- [source-fidelity audit](project/source-fidelity-audit.md) — built systems that differ from the source
 - [dev environment](project/dev-environment.md) — repo/local paths, Windows/pnpm/git quirks, OpenCode limits
 
 ## Decisions (dated, with the owner's words)
@@ -32,6 +33,7 @@ answer (refine +20% vs +5%). Last commit `27536b7`, save v17.
 - [M12 deferred, Gods Trials parked](decisions/m12-artifacts-deferred.md) — 2026-10-21/23
 - [M13 scope and gates](decisions/m13-scope-and-gates.md) — 2026-10-23 182×10 campaign, A/B gates, source counts
 - [free to play](decisions/free-to-play.md) — 2026-10-23 no real money
+- [copy the source exactly](decisions/copy-the-source-exactly.md) — 2026-10-31, exact copy except owner's own features
 - [Resetter Shards and refine ladder](decisions/resetter-shards-and-refine.md) — 2026-10-23/31 free, 1,1,2,2…10
 - [server boundary now, backend later](decisions/server-boundary-now.md) — 2026-10-31
 

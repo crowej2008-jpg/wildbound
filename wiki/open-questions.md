@@ -9,7 +9,8 @@ updated: 2026-10-31
 ## Waiting on the owner
 | # | Question | Blocks | Raised |
 |---|---|---|---|
-| 1 | **What is a refine?** Source = re-roll one random line (keep/drop), only on 3 Mythic / 2 Supreme slots. Ours = +20% to the item's effect. Switch to the source model (needs random lines on items), or keep ours with +20% or +5% per refine? | 13.3a | 2026-10-31 ([held items](systems/held-items.md)) |
+| 0 | Refine cost ladder: owner's (free, 1,1,2,2…10) or the source's (1,1,2,3,4,5,6,8…20, then 20)? Now that everything copies the source. | 13.3a | 2026-10-31 |
+| 1 | ~~What is a refine?~~ **Answered 2026-10-31: copy the source (re-roll).** Source = re-roll one random line (keep/drop), only on 3 Mythic / 2 Supreme slots. Source = re-roll one random line (keep/drop), only on 3 Mythic / 2 Supreme slots. Ours = +20% to the item's effect. Switch to the source model (needs random lines on items), or keep ours with +20% or +5% per refine? | 13.3a | 2026-10-31 ([held items](systems/held-items.md)) |
 | 2 | Titles: keep King of Arena + Alliance Champion as the 14-day pair, or source-exact (King of Arena 7-day; Arena Sovereign V as 14-day)? | nothing | 2026-10-21 |
 | 3 | Arena Refresh is free and unbounded — cap it per day? | nothing | 2026-10-18 |
 | 4 | Island Challenge: the change list says "replace island with a different mode", but 13.8 is locked as full Island + alliance contest. Which? | 13.8 | [change list](ideas/change-list-2026-10.md) |

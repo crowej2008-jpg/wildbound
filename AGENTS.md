@@ -26,8 +26,11 @@ Architecture required by the master prompt:
   and no franchise names, logos or text from any other game may ship. **Owner override (2026-10-15):**
   this private, never-distributed build uses the owner's own Pokémon-themed roster (collected in
   `reference/`), so Pokémon species and skill names are permitted in `packages/content` — and only
-  there. Do not copy rows/ids/names/tables from `reference/game-rebuild/data/` into shipped content —
-  use those dumps only for formula shapes and curves. No network calls except loading the app's own
+  there. **Copy the source exactly (owner decision 2026-10-31):** every system that exists in the
+  source game is copied exactly from `reference/game-rebuild/` — its rules, numbers, tables, rows,
+  names and text. Only the owner's brand-new features and his explicitly recorded changes differ
+  (see `wiki/decisions/copy-the-source-exactly.md`); when unsure whether something is a deliberate
+  change, ask. No network calls except loading the app's own
   files; no analytics, ads, or trackers. The IP guard test in `tests/ip-guard/ip-guard.test.ts` stays
   green for the remaining franchise terms. **Art allowance (2026-10-17):** the guard's binary-media
   check exempts `packages/client/public/art/` only — 2D sprite image files may live there; every other

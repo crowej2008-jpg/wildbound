@@ -30,3 +30,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Checked `reference/game-rebuild/kb/held-items.md`: in the source a refine re-rolls one random
   line; ours scales the special effect by +20%. Added to [held items](systems/held-items.md) and
   reworded open question #1.
+
+## [2026-10-31] update | Owner rule: copy the source exactly
+- New [decision](decisions/copy-the-source-exactly.md) and preliminary
+  [source-fidelity audit](project/source-fidelity-audit.md); AGENTS.md, PROMPT §2.1 and
+  ASSUMPTIONS override #11 amended. Refine = source re-roll; open question 0 asks which cost ladder.

@@ -17,6 +17,7 @@ before doing any work.
 | 2026-10-21 | **Before every milestone, give a list of what is needed** — and wait. Lasts "till I say stop". | Still active. Every sub-milestone since has opened with a "what is needed" list. |
 | 2026-10-23 | Game must be **almost completely free to play**; anything costing real money is removed. | [free-to-play](../decisions/free-to-play.md) |
 | 2026-10-23 | When unsure about a mode, **check the source** (`reference/game-rebuild/`). | e.g. "look at the source for pet home", "follow the source". |
+| 2026-10-31 | **Copy the source exactly** — everything that isn't a brand-new feature matches the source game's rules, numbers, rows and names. | [decision](../decisions/copy-the-source-exactly.md) · [audit](source-fidelity-audit.md) |
 | 2026-10-15 | Use the **Pokémon names and skills** from the owner's wiki/spreadsheet; no original Wilds. | [roster override](../decisions/pokemon-roster-override.md) |
 
 ## How Jayden works

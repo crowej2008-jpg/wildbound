@@ -17,7 +17,7 @@ Owner answers: `1. A … 4. A 5. A 6. B …` then `1. follow the source 2. later
 | Gates | Two classes. **A** = campaign stage + player level. **B** = server-day gates, *only* for Gods Trials, Joint Battle, Relic Battlefield and Hoopa's Vault. |
 | Island | Full simulated 5v5 alliance contest with bot alliances. |
 | Rift | Two steps: Barriers + Merchant, then Ring Battle + Quiz. |
-| Content volume | **6B — match the source counts** (1,800 Sky stages, 3,000 Faction floors, 244 runes, 135 hires…) with our own names/numbers. No copied rows. |
+| Content volume | ~~6B — source counts with our own names/numbers~~ **Superseded 2026-10-31:** copy the source exactly ([decision](copy-the-source-exactly.md)). |
 | Paid | Removed — see [free-to-play](free-to-play.md). |
 | Gods Trials | Parked — see [M12/Gods](m12-artifacts-deferred.md). |
 
