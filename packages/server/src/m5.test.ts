@@ -212,4 +212,3 @@ describe('save migration', () => {
     if (!migrated.ok) expect(migrated.error).toBe('outdated_save');
   });
 });
-});
