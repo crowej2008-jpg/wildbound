@@ -24,7 +24,7 @@ simulator. It is deliberately the **last** milestone (M20).
 ## Where things stand (2026-10-31)
 - **Built:** M0–M11, M13.0a, M13.0b, M13.1 [Pet Home](systems/pet-home.md), M13.2
   [Sky Pillar](systems/sky-pillar.md). Last commit `27536b7`, save v17, 510 unit + 90 e2e tests green.
-- **Now:** the [source retrofit](milestones/source-retrofit.md) — R0 done (save v18, saves reset); R1 next — owner rule since 2026-10-31 is
+- **Now:** the [source retrofit](milestones/source-retrofit.md) — R0–R1 done (save v19); R2 Gear next — owner rule since 2026-10-31 is
   [copy the source exactly](decisions/copy-the-source-exactly.md). Then M13.3
   [Hoopa's Vault](systems/hoopa-vault.md).
 - **Skipped/parked:** M12 artifacts ([decision](decisions/m12-artifacts-deferred.md)),

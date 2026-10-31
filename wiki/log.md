@@ -49,3 +49,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: "ok lets reset". Save v18 = reset baseline; `scripts/source/source.mjs`, `docs/SOURCE-TABLES.md`.
 - Built by Claude in the cloud, verified on CI: 506 unit / 90 e2e. Pages: retrofit, save versions,
   history, index, overview.
+
+## [2026-10-31] update | R1 built — species and growth from the source
+- Owner: "go" (stand-ins for the two missing tables). Five factions, ATK/DEF/SKILL, Origin tier, source
+  star ladders and stats, fodder Evolve, faction damage bonus; save v19. 498 unit / 90 e2e on CI.
+- Pages: roster, combat engine, save versions, history, index, overview, open questions, retrofit.

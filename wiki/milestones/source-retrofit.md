@@ -32,7 +32,7 @@ his refine ladder, no real money.
 | Step | System | What changes (from the kb notes) |
 |---|---|---|
 | R0 ✅ | Import pipeline | **Built 2026-10-31:** `scripts/source/source.mjs` + `docs/SOURCE-TABLES.md` (377 tables); saves **reset** (v18, `MIN_SAVE_VERSION`). |
-| R1 | Pokémon growth | Source level costs (XP Candies + Gold), level caps up to 340 then via Resonance, evolution lines (e.g. Bulbasaur → Ivysaur → Venusaur instead of Prime/Zenith), star/evolution fodder (own + same-faction copies at set stars), 30/40/50 shards per Pokémon, source base stats/classes, trainer level table (no 80 cap), bag size. |
+| R1 ✅ | Pokémon growth | Source level costs (XP Candies + Gold), level caps up to 340 then via Resonance, evolution lines (e.g. Bulbasaur → Ivysaur → Venusaur instead of Prime/Zenith), star/evolution fodder (own + same-faction copies at set stars), 30/40/50 shards per Pokémon, source base stats/classes, trainer level table (no 80 cap), bag size. |
 | R2 | **Gear** (missing today) | 64 pieces = 16 tiers × 4 slots (Core, Cube, trinket slot, Wings), Smithy 3 → 1 crafting with gold, orange/red named sets. Artifact gear (Evo Stones) waits for artifacts. |
 | R3 | Orbs | 12 kinds × 5 colours = 60 orbs; **2 sockets per gear piece** with family typing; caps +3/+5/+7/+10; level = 2 copies + gold ladder; Quick Upgrade; 26 sets (3- and 5-kind, pay at Lv 3/5/7/10); dismantle → Orb Essence. Opens player Lv 50, slots at 9★. |
 | R4 | Potential | 62 Pokémon (Legendary+) with per-Pokémon trees (15 distinct); tier N at 6+N★; source Potential Shard table (e.g. tier 1: 20,000 unlock … 360,000 total); fodder; reset 16 💎. |
@@ -43,7 +43,7 @@ his refine ladder, no real money.
 | R9 | Built modes' data | Campaign (main story rows), M8 modes (Tower **daily** reset, World Boss, Trials, Dungeons, Link Crystal **12★**), summoning rates/duplicates, shops, daily quests/sign-in, Arena/Ranked reward tables, Pet Home rows, Sky Pillar rows. |
 | R10 | Close-out | Balance snapshot, e2e, docs, wiki. |
 
-## R1 — Pokémon growth: what is needed (proposed 2026-10-31, waiting for the owner)
+## R1 — Pokémon growth (built 2026-10-31; owner said "go", stand-ins for the two missing tables)
 Source tables: `hero_basic_json` (84 rows), `hero_evolution_json` (1,386 star rows), `_text` (English
 names), plus `pokemon-growth.md` / `stats-and-combat.md` notes.
 - **Identity:** each species' faction from `race` — the source has **5** (Water, Fire, Grass, Light,

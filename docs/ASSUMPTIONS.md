@@ -725,3 +725,36 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     committed content JSON; the game and CI never read `reference/`. `docs/SOURCE-TABLES.md` lists all
     377 tables. Some dump keys are research extracts with annotated names (e.g.
     `vip_priv_json (daily_dun_buy_num by VIP level)`); prefer the plain table when both exist.
+49. **Species copy the source (R1, 2026-10-31).** `scripts/import-species.mjs` copies each species'
+    faction (`race`: the source's **five** — water, fire, grass, light, dark; Light is no longer split
+    into volt/frost), class (`career`: ATK → striker, DEF → guardian, SKILL → adept; shown as ATK / DEF
+    / SKILL), quality (`potential` 13–18; **Origin** is new), shards per copy (`item_num`) and every
+    star card (name, level cap, stats, faction bonus, fodder) from `hero_basic_json` /
+    `hero_evolution_json`. Kept from the owner's roster: ids, names, descriptions, portrait seeds and
+    kits. The hero → species map is `scripts/data/source-hero-map.json` (80 by form name, 4 by hand:
+    Vulpix→Ninetales, Flamewhite Kyurem→Black Kyurem, Shiny White Kyurem→Shiny Kyurem, Wind God
+    Pidgeotto→Wind-God Pidgeot). *What would change it:* a re-capture of the tables.
+50. **Stats are the source's naked stats.** HP = basic + level × growth; P.ATK = S.ATK = basic + level ×
+    growth; P.DEF = level × growth; S.DEF = floor(level × growth); SPD = basic. 19★+ cards add
+    `extraBasic` flat and `extraGrowth` per level (the kb leaves per-level open). The per-species
+    milestone rows (`hero_upstage_attr_json`) and level-unlocked talent stat bonuses are **not in the
+    dumps** and count as 0 for now. *What would change it:* capturing those tables.
+51. **Stand-ins until the source tables are captured (owner chose stand-ins, 2026-10-31).** The
+    per-level XP-candy/gold table is not in the dumps; the old curve (48 × level^1.2 candy, 3 gold per
+    candy) stays because it matches the one known point (Lv1→2 = 48 candy; the source charges 143
+    gold, we charge 144). The trainer-level XP table is likewise not dumped and keeps our curve.
+52. **"DMG BST to [faction]" joins the additive DMG Boost pair.** Each star card carries one 25 %
+    bonus against a faction (attr 138–146); the battle adds it to `1 + dmgBoost − dmgRdct` when the
+    defender is that faction. The kb measured a Water defender taking × 1.43 from an attacker with
+    25 % to Water — about × 1.14 more than this explains — so how the source combines it is open.
+53. **Interim enemy stars (R1 → R9).** Enemy rows (campaign, gyms, mode curves, PvP ghosts, Sky
+    Pillar) keep their pre-retrofit 1–10 `stars`; `enemyStar` counts them up from the species' first
+    star and ignores the old `stage`. Re-measured under the new stats: the Ranked rival curve's
+    `levelSlope` went 1.18 → 1.24 so the M10.6 balance checks still hold (entry 0.78, mid 1.0, Lv140
+    at King 0.33, maxed 0.83). R9 replaces all enemy rows with the source's.
+54. **Evolve is the source's (R1).** A star goes up one at a time by consuming the star card's fodder
+    (own copies, and same-faction Pokémon, at exact stars); fodder is auto-picked lowest level first
+    and never taken from a squad or a locked Wild. The old shard star-up and 3-stage evolution are
+    gone. 18★ → 19★ (Awakening) and the Origins' fodder-less stars show an honest "comes from
+    Awakening" state. Per-species shards (`item_num`) are imported but composing arrives with R9's
+    summoning retrofit, so the generic `shard` currency currently has no growth use.

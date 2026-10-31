@@ -1019,3 +1019,28 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   annotation agents can read. Two mobile M11 e2e tests (Trinkets, VIP) failed once on CI and passed
   on other runs — flaky, not yet fixed.
 - **Next:** R1 - Pokémon growth from the source tables.
+
+## R1 - Pokémon growth from the source (2026-10-31)
+
+- **Import.** `scripts/import-species.mjs` + `scripts/data/source-hero-map.json` copy faction, class,
+  quality, shards and the full star ladder of all 84 species (1,386 star cards) from the source's
+  config; owner's names and kits kept (ASSUMPTIONS #49). Species/kits now live in five faction files.
+- **Factions.** The source's five (water, fire, grass, light, dark) across content, engine, client and
+  tests; one plate per faction (the extra Light plate dropped); weather phase de-duplicated.
+- **Stats.** The multiplicative stat model is replaced by the source's basic + level × growth
+  (ASSUMPTIONS #50); `growth.json` keeps only the level-up price (stand-in, #51) and respawn.
+- **Stars and Evolve.** `WildInstance.evolutionStage` is gone; `stars` is the source star. Evolve =
+  +1 star consuming auto-picked fodder (`planFodder`, `server/growth.ts evolutionView`); the old
+  shard star-up was removed from `GameServer`. Level caps come from the star card (Link Crystal
+  still extends a top-star Wild). New copies start at their species' first star.
+- **Combat.** Star cards' "DMG BST to [faction]" reaches the damage formula (#52).
+- **Interim enemies.** Legacy enemy stars count from each species' first star (#53); Ranked rival
+  slope 1.18 → 1.24 after re-measuring the balance suite.
+- **Client.** Forms come from star-card names (portraits, roster, gallery); the Evolve tab lists
+  each fodder line with have/need; Origin tier chip; ATK/DEF/SKILL and the five faction labels.
+- **Save v19** (reset). **Tests:** stat formula, star cards/forms, fodder planning and a full
+  server Evolve; balance tests grow squads to the equivalent star profile; the strategy tests use a
+  simulated Manaphy wall. **498 unit tests / 66 files**, content PASS, **90 e2e**.
+- **Retired:** `scripts/import-roster.mjs` refuses to run; the campaign/Sky Pillar generators are
+  marked "do not re-run before R9".
+- **Next:** R2 - Gear.

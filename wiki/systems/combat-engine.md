@@ -23,6 +23,9 @@ never provided, so PROMPT §6 is the authority).
 - `G = max(gFloor, 1 + dmgBoost − dmgRdct)`; `P` PvP floor; `K` ult/skill boost vs reduction;
   `Soul` saturating curve on spiritAtk − spiritDef; `Team` cuts only the weaker side.
 - Crit and block roll independently afterwards. `hpShare` skills bypass everything.
+- **R1:** the attacker's star-card "DMG BST to [faction]" (25 %) is added to the G pair when the
+  defender is that faction (how the source combines it is open — ASSUMPTIONS #52).
+- Unit stats come from the source formula since R1 — see [roster](roster.md).
 - **DEF is inert** by default (`defendersUseDef: false`) — the measured model says so.
 
 ## Rage

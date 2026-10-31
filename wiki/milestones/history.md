@@ -30,3 +30,4 @@ Test counts are unit / e2e at the end of each step (green `pnpm check`).
 | 10-31 | M13.3 | Started 08:07, OpenCode hit free usage limit 08:09; no edits | |
 | 10-31 | Rules | [Copy the source exactly](../decisions/copy-the-source-exactly.md); CI added; [retrofit](source-retrofit.md) planned | |
 | 10-31 | R0 | Source loader + `docs/SOURCE-TABLES.md`; save v18 reset (built by Claude, tested on CI) | 506 / 90 |
+| 10-31 | R1 | Species, five factions, star ladders, source stats, fodder Evolve; save v19 | 498 / 90 |

@@ -19,6 +19,11 @@ updated: 2026-10-31
 | 7 | Undefined change-list terms: gold wings, ecology, purple things, mecha, beast egg. | — | [change list](ideas/change-list-2026-10.md) |
 | 8 | Friend feedback on the M13 plan — not yet turned into a change list. | — | Claude chats |
 
+## Source tables still missing (stand-ins in use)
+- Pokémon level-up candy/gold per level, trainer-level XP, per-species milestone stats
+  (`hero_upstage_attr_json`), level-unlocked talent stat bonuses. Can the owner re-extract them from
+  the bot's cache? (ASSUMPTIONS #50–51)
+
 ## Known test problems
 - Two mobile e2e tests in `tests/e2e/m11.spec.ts` (Trinkets, VIP) are flaky on CI — see [dev environment](project/dev-environment.md).
 
