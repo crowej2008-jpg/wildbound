@@ -43,6 +43,23 @@ his refine ladder, no real money.
 | R9 | Built modes' data | Campaign (main story rows), M8 modes (Tower **daily** reset, World Boss, Trials, Dungeons, Link Crystal **12★**), summoning rates/duplicates, shops, daily quests/sign-in, Arena/Ranked reward tables, Pet Home rows, Sky Pillar rows. |
 | R10 | Close-out | Balance snapshot, e2e, docs, wiki. |
 
+## R1 — Pokémon growth: what is needed (proposed 2026-10-31, waiting for the owner)
+Source tables: `hero_basic_json` (84 rows), `hero_evolution_json` (1,386 star rows), `_text` (English
+names), plus `pokemon-growth.md` / `stats-and-combat.md` notes.
+- **Identity:** each species' faction from `race` — the source has **5** (Water, Fire, Grass, Light,
+  Dark), not our 6 (Light was split into volt/frost); class from `career` (ATK / DEF / SKILL — ours were
+  cycled); quality from `potential` (13 Rare … 17 Mythic, **18 Origin** — a tier we don't have).
+- **Star ladder:** the source's per-species star rows (e.g. Darkrai 5★–23★) replace our 1–10★ +
+  `Prime/Zenith` stages: each star's level cap (60 … 340), base stats (`growth_attr`), skills, and the
+  card name/evolution line (Beldum → Metang → Metagross).
+- **Star-up / evolution cost:** the source fodder rules (own copies + same-faction copies at set stars).
+- **Shards:** one shard item per species; 30 / 40 / 50 shards make a Pokémon.
+- **Not in the dumps:** the per-level XP-candy/gold table (only "Lv 1→2 = 48 candy + 143 gold" is known)
+  and the trainer-level table (only cumulative XP at a few levels). Needs the owner to re-extract them,
+  or a recorded stand-in.
+- Ripple effects: PvP weather, plates, trinket lines, mode enemy pools and campaign squads all key off
+  faction/class and get updated in the same step. Kits stay the owner's (M9).
+
 ## Size
 This is effectively re-doing the content of M2–M13.2: expect it to take longer than any milestone
 so far. The engine, server boundary, screens and tests mostly stay; data and rules change.
