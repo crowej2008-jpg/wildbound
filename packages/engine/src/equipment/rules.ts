@@ -13,7 +13,7 @@ import type {
  * show requirements. See docs/design/equipment.md.
  */
 
-const TIER_ORDER: readonly Tier[] = ['common', 'rare', 'epic', 'legendary', 'supreme', 'mythic'];
+const TIER_ORDER: readonly Tier[] = ['common', 'rare', 'epic', 'legendary', 'supreme', 'mythic', 'origin'];
 
 export function tierRankOf(tier: Tier): number {
   const i = TIER_ORDER.indexOf(tier);
@@ -47,19 +47,6 @@ export function talentsUnlocked(wildTier: Tier, tuning: EquipmentTuning): boolea
 /** A relic fits when the Wild's class matches and the Wild is high enough tier. */
 export function canEquipRelic(def: RelicDef, wildClass: WildClass, wildTier: Tier, tuning: EquipmentTuning): boolean {
   return def.className === wildClass && relicUnlocked(wildTier, tuning);
-}
-
-export function relicLevelCost(level: number, tuning: EquipmentTuning): { shards: number } {
-  const { shards, shardsPerLevel } = tuning.relicLevelCost;
-  return { shards: Math.round(shards + shardsPerLevel * Math.max(0, level - 1)) };
-}
-
-export function relicRefineCost(refine: number, tuning: EquipmentTuning): { gold: number; shards: number } {
-  const { gold, shards, goldPerRefine, shardsPerRefine } = tuning.relicRefineCost;
-  return {
-    gold: Math.round(gold + goldPerRefine * Math.max(0, refine)),
-    shards: Math.round(shards + shardsPerRefine * Math.max(0, refine)),
-  };
 }
 
 export function runeLevelCost(level: number, tuning: EquipmentTuning): { gold: number } {

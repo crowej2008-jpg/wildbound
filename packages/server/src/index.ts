@@ -288,9 +288,17 @@ export interface GameServer {
   upgradeCharm(charmId: string): Promise<Result<AccountSnapshot>>;
   /** Break one spare Berry copy into Berry Essence (M11.5). */
   dismantleCharm(charmId: string): Promise<Result<AccountSnapshot>>;
-  /** Level or refine a relic (M7). */
+  /** Raise a held item one level (R5: source shard table, resonance gates, cap 200). */
   levelRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
-  refineRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
+  /** Roll a new line into one slot of a worn held item; keep or drop it with `settleRefine` (R5). */
+  refineRelic(instanceId: string, slot: number, seed?: number): Promise<Result<AccountSnapshot>>;
+  settleRefine(instanceId: string, keep: boolean): Promise<Result<AccountSnapshot>>;
+  /** Toggle a held item's lock (a locked item can't be dismantled) (R5). */
+  lockRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
+  /** Break unworn, unlocked held items into Held Item Shards (R5). */
+  dismantleRelics(instanceIds: string[]): Promise<Result<AccountSnapshot>>;
+  /** Turn Resetter Shards into Held Item Resetters, 20 → 1 (R5). */
+  compoundResetters(count: number): Promise<Result<AccountSnapshot>>;
   /** Raise a Wild's element-keyed plate by one stage (M11.7). */
   upgradePlate(wildId: string): Promise<Result<AccountSnapshot>>;
   /** Raise the Wild's species-signature trinket by one level (M11.8). */

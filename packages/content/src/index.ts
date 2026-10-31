@@ -120,6 +120,7 @@ export { SHOPS } from './shops';
 export {
   EQUIPMENT_TUNING,
   RELICS,
+  HELD_TABLES,
   PLATES,
   TRINKETS,
   RUNES,
@@ -137,7 +138,7 @@ export {
 } from './equipment';
 export {
   equipmentTuningSchema,
-  relicsSchema,
+  heldItemsSchema,
   platesSchema,
   trinketsSchema,
   runesSchema,
@@ -145,6 +146,7 @@ export {
   coresSchema,
   talentsSchema,
   type RelicJson,
+  type HeldItemsJson,
   type PlateJson,
   type TrinketJson,
   type RuneJson,

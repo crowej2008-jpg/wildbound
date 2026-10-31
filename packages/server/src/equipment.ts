@@ -9,15 +9,21 @@ import {
   equipCore,
   equipRelic,
   equipRune,
-  relicLevelCost,
-  relicRefineCost,
+  heldDismantleShards,
+  heldLevelCost,
+  heldLevelGate,
+  heldRefineCost,
+  refineBlock,
+  rollHeldItem,
+  rollRefine,
+  settleRefine,
   relicUnlocked,
   runeLevelCost,
   runesUnlocked,
   talentsUnlocked,
   type CurrencyId,
 } from '@wildbound/engine';
-import type { AccountState, EquipmentTables, Loadout, WildClass, Tier } from '@wildbound/engine';
+import type { AccountState, EquipmentTables, Loadout, RelicInstance, Rng, WildClass, Tier } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
 import {
   charmUpgradeEssence,
@@ -131,7 +137,7 @@ export function equipRelicAction(
   const { wild, meta } = context(config, state, wildId);
   if (!wild || !meta) return fail('not_found', `no Wild ${wildId}`);
   const { tuning } = config.equipment;
-  if (!relicUnlocked(meta.tier, tuning)) return fail('resource_locked', `Relics unlock at ${tuning.relic.minTier}`);
+  if (!relicUnlocked(meta.tier, tuning)) return fail('resource_locked', `Held items unlock at ${tuning.relic.minTier}`);
   const loadout = loadoutOf(state, wild.id, config.equipment);
   if (instanceId === null) return ok(withLoadout(state, wild.id, equipRelic(loadout, null)));
 
@@ -140,7 +146,7 @@ export function equipRelicAction(
   const def = config.equipment.relics.find((d) => d.id === relic.defId);
   if (!def) return fail('not_found', `unknown relic ${relic.defId}`);
   if (!canEquipRelic(def, meta.className, meta.tier, tuning)) {
-    return fail('invalid_input', `${def.name} is a ${def.className} relic`);
+    return fail('invalid_input', `${def.name} is a ${def.className} held item`);
   }
   const wornBy = equippedOn(state, instanceId);
   let next = state;
@@ -312,28 +318,122 @@ export function consumeCharms(state: AccountState, wildIds: string[]): AccountSt
 
 // --- upgrades ---------------------------------------------------------------
 
-export function levelRelicAction(config: SpeciesLookup, state: AccountState, instanceId: string): Result<AccountState> {
+function findHeld(config: SpeciesLookup, state: AccountState, instanceId: string) {
   const relic = state.equipment.relics.find((r) => r.id === instanceId);
-  if (!relic) return fail('not_found', `no relic ${instanceId}`);
-  const { tuning } = config.equipment;
-  if (relic.level >= tuning.relic.maxLevel) return fail('at_level_cap', 'max relic level');
-  const cost = relicLevelCost(relic.level, tuning);
-  const paid = pay(state, { heldItemShard: cost.shards });
-  if (!paid) return fail('insufficient_items', 'not enough Held Item Shards');
-  const relics = paid.equipment.relics.map((r) => (r.id === instanceId ? { ...r, level: r.level + 1 } : r));
-  return ok({ ...paid, equipment: { ...paid.equipment, relics } });
+  const def = relic ? config.equipment.relics.find((d) => d.id === relic.defId) : undefined;
+  return { relic, def };
 }
 
-export function refineRelicAction(config: SpeciesLookup, state: AccountState, instanceId: string): Result<AccountState> {
-  const relic = state.equipment.relics.find((r) => r.id === instanceId);
-  if (!relic) return fail('not_found', `no relic ${instanceId}`);
-  const { tuning } = config.equipment;
-  if (relic.refine >= tuning.relic.maxRefine) return fail('at_level_cap', 'max relic refine');
-  const cost = relicRefineCost(relic.refine, tuning);
-  const paid = pay(state, { gold: cost.gold, heldItemShard: cost.shards });
-  if (!paid) return fail('insufficient_items', 'not enough gold or Held Item Shards');
-  const relics = paid.equipment.relics.map((r) => (r.id === instanceId ? { ...r, refine: r.refine + 1 } : r));
-  return ok({ ...paid, equipment: { ...paid.equipment, relics } });
+function withRelic(state: AccountState, next: RelicInstance): AccountState {
+  const relics = state.equipment.relics.map((r) => (r.id === next.id ? next : r));
+  return { ...state, equipment: { ...state.equipment, relics } };
+}
+
+/** Raise a held item one level: source shard table, resonance gates from Lv 31, cap 200. */
+export function levelRelicAction(config: SpeciesLookup, state: AccountState, instanceId: string): Result<AccountState> {
+  const { relic } = findHeld(config, state, instanceId);
+  if (!relic) return fail('not_found', `no held item ${instanceId}`);
+  const { held } = config.equipment;
+  const cost = heldLevelCost(relic.level, held);
+  if (cost === null) return fail('at_level_cap', 'max held item level');
+  const gate = heldLevelGate(relic.level, held);
+  if (state.pve.linkCrystal.level < gate) return fail('resource_locked', `needs resonance level ${gate}`);
+  const paid = pay(state, { heldItemShard: cost });
+  if (!paid) return fail('insufficient_items', 'not enough Held Item Shards');
+  return ok(withRelic(paid, { ...relic, level: relic.level + 1 }));
+}
+
+/**
+ * Roll a new line into one slot of a worn item (source: HELD_REFINE). The roll waits until it is
+ * kept or dropped; prices follow the owner's ladder in Held Item Resetters.
+ */
+export function refineRelicAction(
+  config: SpeciesLookup,
+  state: AccountState,
+  instanceId: string,
+  slot: number,
+  rng: Rng,
+): Result<AccountState> {
+  const { relic, def } = findHeld(config, state, instanceId);
+  if (!relic || !def) return fail('not_found', `no held item ${instanceId}`);
+  if (!equippedOn(state, instanceId)) return fail('invalid_input', 'only a worn held item can be refined');
+  if (relic.pending) return fail('invalid_input', 'keep or drop the last refine first');
+  const { held } = config.equipment;
+  const block = refineBlock(relic, def, held, slot);
+  if (block === 'no_slots') return fail('resource_locked', `${def.name} has no refinable lines`);
+  if (block === 'main_stat') return fail('invalid_input', 'the main stat cannot be refined');
+  if (block === 'slot_limit') return fail('resource_locked', 'reached the maximum refinable line count');
+  if (block === 'max_refine') return fail('at_level_cap', 'no refines left');
+  const cost = heldRefineCost(relic, held) ?? 0;
+  const paid = pay(state, { heldItemResetter: cost });
+  if (!paid) return fail('insufficient_items', 'not enough Held Item Resetters');
+  return ok(withRelic(paid, rollRefine(relic, def, held, slot, rng)));
+}
+
+/** Keep (`true`) or drop (`false`) the pending refine roll (source: HELD_REFINE_CONFIRM). */
+export function settleRefineAction(
+  config: SpeciesLookup,
+  state: AccountState,
+  instanceId: string,
+  keep: boolean,
+): Result<AccountState> {
+  const { relic } = findHeld(config, state, instanceId);
+  if (!relic) return fail('not_found', `no held item ${instanceId}`);
+  if (!relic.pending) return fail('invalid_input', 'refine first');
+  return ok(withRelic(state, settleRefine(relic, keep)));
+}
+
+export function lockRelicAction(config: SpeciesLookup, state: AccountState, instanceId: string): Result<AccountState> {
+  const { relic } = findHeld(config, state, instanceId);
+  if (!relic) return fail('not_found', `no held item ${instanceId}`);
+  return ok(withRelic(state, { ...relic, locked: !relic.locked }));
+}
+
+/**
+ * Dismantle unworn, unlocked held items for Held Item Shards: the item's own value plus every
+ * shard spent on its levels (source: HELD_DECOMPOSE).
+ */
+export function dismantleRelicsAction(config: SpeciesLookup, state: AccountState, instanceIds: string[]): Result<AccountState> {
+  if (instanceIds.length === 0) return fail('invalid_input', 'nothing to dismantle');
+  const ids = new Set(instanceIds);
+  let shards = 0;
+  for (const id of ids) {
+    const { relic, def } = findHeld(config, state, id);
+    if (!relic || !def) return fail('not_found', `no held item ${id}`);
+    if (equippedOn(state, id)) return fail('in_use', `${def.name} is worn`);
+    if (relic.locked) return fail('resource_locked', `${def.name} is locked`);
+    shards += heldDismantleShards(relic, def, config.equipment.held);
+  }
+  const relics = state.equipment.relics.filter((r) => !ids.has(r.id));
+  return ok({
+    ...state,
+    equipment: { ...state.equipment, relics },
+    currencies: { ...state.currencies, heldItemShard: (state.currencies.heldItemShard ?? 0) + shards },
+  });
+}
+
+/** Turn Resetter Shards into Held Item Resetters (20 → 1, item_compound_json). */
+export function compoundResettersAction(config: SpeciesLookup, state: AccountState, count: number): Result<AccountState> {
+  if (!Number.isInteger(count) || count < 1) return fail('invalid_input', 'count must be a positive integer');
+  const per = config.equipment.held.resetterCompound;
+  const paid = pay(state, { resetterShard: per * count });
+  if (!paid) return fail('insufficient_items', 'not enough Resetter Shards');
+  return ok({
+    ...paid,
+    currencies: { ...paid.currencies, heldItemResetter: (paid.currencies.heldItemResetter ?? 0) + count },
+  });
+}
+
+/** Add a freshly rolled held item to the account (Vault drops, tests). */
+export function grantRelic(config: SpeciesLookup, state: AccountState, defId: string, rng: Rng): Result<AccountState> {
+  const def = config.equipment.relics.find((d) => d.id === defId);
+  if (!def) return fail('not_found', `unknown held item ${defId}`);
+  const seq = state.equipment.nextSeq;
+  const inst = rollHeldItem(def, config.equipment.held, rng, `re${seq}`);
+  return ok({
+    ...state,
+    equipment: { ...state.equipment, relics: [...state.equipment.relics, inst], nextSeq: seq + 1 },
+  });
 }
 
 export function levelRuneAction(

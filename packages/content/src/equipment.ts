@@ -1,7 +1,7 @@
 import charms from '../equipment/charms.json';
 import cores from '../equipment/cores.json';
 import plates from '../equipment/plates.json';
-import relics from '../equipment/relics.json';
+import heldItems from '../equipment/held-items.json';
 import runes from '../equipment/runes.json';
 import talents from '../equipment/talents.json';
 import trinkets from '../equipment/trinkets.json';
@@ -11,7 +11,7 @@ import {
   coresSchema,
   equipmentTuningSchema,
   platesSchema,
-  relicsSchema,
+  heldItemsSchema,
   runesSchema,
   talentsSchema,
   trinketsSchema,
@@ -22,7 +22,18 @@ import {
  * `equipment/types.ts`; the server assembles an `EquipmentTables` from these.
  */
 export const EQUIPMENT_TUNING = equipmentTuningSchema.parse(equipmentTuning);
-export const RELICS = relicsSchema.parse(relics).relics;
+const HELD_CATALOGUE = heldItemsSchema.parse(heldItems);
+/** R5: the source's 75 held items (code id: relics). */
+export const RELICS = HELD_CATALOGUE.items;
+/** R5: held-item pools, level costs and the refine ladder. */
+export const HELD_TABLES = {
+  mainPool: HELD_CATALOGUE.mainPool,
+  linePool: HELD_CATALOGUE.linePool,
+  levelCost: HELD_CATALOGUE.levelCost,
+  levelGates: HELD_CATALOGUE.levelGates,
+  refineLadder: HELD_CATALOGUE.refineLadder,
+  resetterCompound: HELD_CATALOGUE.resetterCompound,
+};
 export const PLATES = platesSchema.parse(plates).plates;
 export const TRINKETS = trinketsSchema.parse(trinkets).trinkets;
 

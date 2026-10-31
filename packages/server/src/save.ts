@@ -9,6 +9,8 @@ import {
   emptySquads,
   emptyStartingEquipment,
   initialEquipment,
+  mulberry32,
+  rollHeldItem,
   initialIdle,
   initialGacha,
   initialPetHome,
@@ -35,14 +37,14 @@ import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 19;
+export const SAVE_VERSION = 20;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 19;
+export const MIN_SAVE_VERSION = 20;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -151,7 +153,9 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     tutorial: s.tutorial ?? { step: 0, done: false },
     gacha: s.gacha ?? initialGacha(config?.gacha?.machines ?? [], day),
     shops: s.shops ?? initialShopState(config?.shops ?? [], now, day),
-    equipment: s.equipment ?? initialEquipment(config?.equipment?.tuning?.starting ?? emptyStartingEquipment()),
+    equipment:
+      s.equipment ??
+      (config ? startingEquipment(config) : initialEquipment(emptyStartingEquipment())),
     loadouts: normalizeLoadouts(s.loadouts, charmSlots),
     plates: s.plates ?? {},
     trinkets: s.trinkets ?? {},
@@ -175,6 +179,20 @@ function welcomeMail(config: GameConfig, now: number): MailItem {
     grants: config.economy.welcome,
     createdAt: now,
     ttlMs: Math.round(config.economy.mailTtlHours * 3_600_000),
+  });
+}
+
+/**
+ * The starting inventory. Held items roll their main stat and lines; a fixed seed per slot keeps a
+ * new account the same every time (the engine never calls Math.random).
+ */
+export function startingEquipment(config: GameConfig): AccountState['equipment'] {
+  const { relics, held, tuning } = config.equipment;
+  let slot = 0;
+  return initialEquipment(tuning.starting, (defId, id) => {
+    const def = relics.find((d) => d.id === defId);
+    slot += 1;
+    return def ? rollHeldItem(def, held, mulberry32(0x4e1d + slot), id) : null;
   });
 }
 
@@ -221,7 +239,7 @@ export function createInitialState(config: GameConfig): AccountState {
     tutorial: { step: 0, done: false },
     gacha: initialGacha(config.gacha.machines, day),
     shops: initialShopState(config.shops, now, day),
-    equipment: initialEquipment(config.equipment.tuning.starting),
+    equipment: startingEquipment(config),
     loadouts: {},
     plates: {},
     trinkets: {},

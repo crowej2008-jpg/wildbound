@@ -161,6 +161,10 @@ import {
   levelRelicAction,
   levelRuneAction,
   refineRelicAction,
+  settleRefineAction,
+  lockRelicAction,
+  dismantleRelicsAction,
+  compoundResettersAction,
   resetTalentsAction,
   starUpCoreAction,
   upgradeCharmAction,
@@ -750,8 +754,25 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) => levelRelicAction(this.config, state, instanceId));
   }
 
-  async refineRelic(instanceId: string): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => refineRelicAction(this.config, state, instanceId));
+  async refineRelic(instanceId: string, slot: number, seed?: number): Promise<Result<AccountSnapshot>> {
+    const rng = typeof seed === 'number' ? mulberry32(seed) : this.config.rng;
+    return this.applyEquipment((state) => refineRelicAction(this.config, state, instanceId, slot, rng));
+  }
+
+  async settleRefine(instanceId: string, keep: boolean): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => settleRefineAction(this.config, state, instanceId, keep));
+  }
+
+  async lockRelic(instanceId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => lockRelicAction(this.config, state, instanceId));
+  }
+
+  async dismantleRelics(instanceIds: string[]): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => dismantleRelicsAction(this.config, state, instanceIds));
+  }
+
+  async compoundResetters(count: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => compoundResettersAction(this.config, state, count));
   }
 
   async upgradePlate(wildId: string): Promise<Result<AccountSnapshot>> {

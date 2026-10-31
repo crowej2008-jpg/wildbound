@@ -69,6 +69,9 @@ export type CurrencyId =
   | 'soulHeartExp'
   | 'berryEssence'
   | 'heldItemShard'
+  // R5 held-item refining (source items 100002 / 100003).
+  | 'resetterShard'
+  | 'heldItemResetter'
   | 'plateBottle'
   | 'plateFragment'
   | 'starShard'
@@ -94,6 +97,8 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'soulHeartExp',
   'berryEssence',
   'heldItemShard',
+  'resetterShard',
+  'heldItemResetter',
   'plateBottle',
   'plateFragment',
   'starShard',
@@ -108,6 +113,8 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'soulHeartExp',
   'berryEssence',
   'heldItemShard',
+  'resetterShard',
+  'heldItemResetter',
   'plateBottle',
   'plateFragment',
   'starShard',

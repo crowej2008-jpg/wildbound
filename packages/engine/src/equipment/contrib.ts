@@ -1,4 +1,5 @@
 import type { RoundEffect, SoulheartHooks } from '../combat/types';
+import { heldDelta } from './held';
 import type { SheetInput } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats } from '../model';
 import type { Faction } from '../model';
@@ -58,16 +59,6 @@ export function addDelta(target: StatDelta, src: StatDelta): StatDelta {
     target.soul[field] = (target.soul[field] ?? 0) + (v as number);
   }
   return target;
-}
-
-/** Scale an effect by the relic's refine level (each refine adds 20%). */
-export function refineEffect(effect: RoundEffect, refine: number, step = 0.2): RoundEffect {
-  const scale = 1 + Math.max(0, refine) * step;
-  return {
-    ...effect,
-    add: effect.add === undefined ? undefined : effect.add * scale,
-    mult: effect.mult === undefined ? undefined : 1 + (effect.mult - 1) * scale,
-  };
 }
 
 function findRelic(state: EquipmentState, id: string | null): RelicInstance | undefined {
@@ -193,12 +184,16 @@ export function foldLoadout(
   const soulheart: SoulheartHooks = {};
   const soulheartText: string[] = [];
 
-  // --- Relics: lines scale with level; the design's effect scales with refine ---
+  // --- Held items (R5): main stat by level + rolled lines; faction lines need the wearer's
+  // faction, which arrives with the plate fold. Absorb HP Rate becomes lifesteal. ---
   const relic = findRelic(state, loadout.relic);
   const relicDef = relic ? tables.relics.find((d) => d.id === relic.defId) : undefined;
+  let heldLifesteal = 0;
   if (relic && relicDef) {
-    addLines(layers.relic, relicDef.lines, relic.level);
-    effects.push(refineEffect(relicDef.effect, relic.refine));
+    const held = heldDelta(relic, relicDef, tables.held, plate?.faction);
+    addDelta(layers.relic, held.delta);
+    heldLifesteal = held.lifesteal;
+    if (relicDef.skill?.active) effects.push(...relicDef.skill.effects);
   }
 
   // --- Plates: the faction's plate, scaled by its stage (0 adds nothing) ---
@@ -300,6 +295,8 @@ export function foldLoadout(
       if (block.effect) effects.push(block.effect);
     });
   }
+
+  if (heldLifesteal > 0) soulheart.lifesteal = (soulheart.lifesteal ?? 0) + heldLifesteal;
 
   const delta = emptyDelta();
   addDelta(delta, layers.relic);

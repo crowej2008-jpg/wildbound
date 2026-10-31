@@ -8,8 +8,6 @@ import {
   canAllocateTalent,
   canEquipRelic,
   equipRune,
-  relicLevelCost,
-  relicRefineCost,
   relicUnlocked,
   talentsUnlocked,
 } from './rules';
@@ -22,13 +20,11 @@ import {
 } from './types';
 
 const TUNING: EquipmentTuning = {
-  relic: { minTier: 'supreme', maxLevel: 60, maxRefine: 5 },
+  relic: { minTier: 'supreme' },
   runes: { minStars: 3, sockets: 4, maxLevel: 6 },
   charms: { minStars: 4, slots: 2 },
   cores: { minStars: 10, sockets: 6, pieceMinStars: 2, pieceMaxStars: 5 },
   talents: { minTier: 'legendary', tiers: 9, optionsPerTier: 3, resetGems: 50, allocateGold: 50 },
-  relicLevelCost: { shards: 5, shardsPerLevel: 2 },
-  relicRefineCost: { gold: 800, shards: 10, goldPerRefine: 400, shardsPerRefine: 10 },
   runeLevelCost: { gold: 100, goldPerLevel: 50 },
   starting: { relics: [], runes: [], cores: [], charms: [] },
 };
@@ -40,13 +36,34 @@ const TABLES: EquipmentTables = {
       name: 'A',
       className: 'striker',
       tier: 'supreme',
-      lines: [
-        { kind: 'core', field: 'pAtk', base: 40, perLevel: 20 },
-        { kind: 'percent', field: 'crit', base: 0.05, perLevel: 0.01 },
-      ],
-      effect: { tag: 'relicA', text: '+dmg late', field: 'dmgBoost', add: 0.2, fromRound: 3 },
+      mainPool: 1,
+      linePool: 1,
+      lineCount: 3,
+      refineSlots: 1,
+      dismantle: 20,
+      skill: {
+        id: 's1',
+        name: 'A II',
+        text: '+dmg late',
+        active: true,
+        effects: [{ tag: 'relicA', field: 'dmgBoost', add: 0.2, fromRound: 3 }],
+      },
     },
   ],
+  held: {
+    mainPool: [
+      { index: 101, pool: 1, group: 1, weight: 100, name: 'P.ATK', kind: 'core', field: 'pAtk', value: 40, every: 1, step: 20 },
+    ],
+    linePool: [
+      { index: 11, pool: 1, weight: 100, name: 'Critical', kind: 'percent', field: 'crit', min: 500, max: 900 },
+      { index: 12, pool: 1, weight: 100, name: 'Fire Ult DMG↑', kind: 'percent', field: 'ultBoost', faction: 'fire', min: 600, max: 1500 },
+      { index: 13, pool: 1, weight: 100, name: 'Water Ult DMG↑', kind: 'percent', field: 'ultBoost', faction: 'water', min: 600, max: 1500 },
+    ],
+    levelCost: [20, 20, 25],
+    levelGates: [],
+    refineLadder: [0, 1, 1],
+    resetterCompound: 20,
+  },
   plates: [
     {
       id: 'plateA',
@@ -181,7 +198,7 @@ describe('stat lines', () => {
 describe('layer contributions', () => {
   it('folds every layer into the delta and reports per-layer lines', () => {
     const state: EquipmentState = {
-      relics: [{ id: 're1', defId: 'relicA', level: 3, refine: 2 }],
+      relics: [{ id: 're1', defId: 'relicA', level: 2, group: 1, lines: [{ index: 11, value: 700, refines: 0 }, { index: 12, value: 1000, refines: 0 }, { index: 13, value: 1000, refines: 0 }], refines: 0, pending: null, locked: false }],
       runes: [
         { id: 'ru1', defId: 'rune1', level: 6 },
         { id: 'ru2', defId: 'rune2', level: 2 },
@@ -214,9 +231,10 @@ describe('layer contributions', () => {
       { level: 5, perLevel: { pAtk: 10, spd: 0.1 } },
       { lines: [{ kind: 'core', field: 'hp', base: 100, perLevel: 0 }] },
     );
-    // relic level 3: pAtk 80, crit 0.07
+    // held item level 2: pAtk 40 + 2×20, Critical 700 → 0.07; only the fire (own-faction) line counts
     expect(folded.layers.relic.core.pAtk).toBeCloseTo(80);
     expect(folded.layers.relic.percent.crit).toBeCloseTo(0.07);
+    expect(folded.layers.relic.percent.ultBoost).toBeCloseTo(0.1);
     // plate stage 5: pAtk 50, dmgBoost 0.05
     expect(folded.layers.plates.core.pAtk).toBeCloseTo(50);
     expect(folded.layers.plates.percent.dmgBoost).toBeCloseTo(0.05);
@@ -254,23 +272,6 @@ describe('layer contributions', () => {
     expect(one.layers.charms.core.hp).toBeCloseTo(200);
     expect(two.layers.charms.core.hp).toBeCloseTo(400);
   });
-
-  it('scales a relic effect with its refine level', () => {
-    const base = foldLoadout(
-      { ...emptyLoadout(TUNING), relic: 're1' },
-      { relics: [{ id: 're1', defId: 'relicA', level: 1, refine: 0 }], runes: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 },
-      TABLES,
-    );
-    const refined = foldLoadout(
-      { ...emptyLoadout(TUNING), relic: 're1' },
-      { relics: [{ id: 're1', defId: 'relicA', level: 1, refine: 5 }], runes: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 },
-      TABLES,
-    );
-    const baseAdd = base.effects[0]?.add ?? 0;
-    const refinedAdd = refined.effects[0]?.add ?? 0;
-    expect(refinedAdd).toBeGreaterThan(baseAdd);
-    expect(refinedAdd).toBeCloseTo(baseAdd * 2);
-  });
 });
 
 describe('rules', () => {
@@ -280,14 +281,8 @@ describe('rules', () => {
     expect(canEquipRelic(def, 'guardian', 'mythic', TUNING)).toBe(false);
     expect(canEquipRelic(def, 'striker', 'epic', TUNING)).toBe(false);
     expect(relicUnlocked('mythic', TUNING)).toBe(true);
+    expect(relicUnlocked('origin', TUNING)).toBe(true);
     expect(talentsUnlocked('epic', TUNING)).toBe(false);
-  });
-
-  it('prices level-ups and refines in Held Item Shards up to level 60', () => {
-    expect(relicLevelCost(1, TUNING)).toEqual({ shards: 5 });
-    expect(relicLevelCost(60, TUNING)).toEqual({ shards: 123 });
-    expect(relicRefineCost(0, TUNING)).toEqual({ gold: 800, shards: 10 });
-    expect(relicRefineCost(4, TUNING)).toEqual({ gold: 2400, shards: 50 });
   });
 
   it('sockets a rune into a chosen slot only', () => {
@@ -398,7 +393,7 @@ describe('every layer moves a battle in the intended direction', () => {
     runBattle({ attackers: [attacker(base)], defenders: [defender(120000)], seed: 11 }).damageDealt['attackers:4'] ?? 0;
 
   it('relic core/percent lines raise damage', () => {
-    const state = stateWith({ relics: [{ id: 're1', defId: 'relicA', level: 3, refine: 0 }] });
+    const state = stateWith({ relics: [{ id: 're1', defId: 'relicA', level: 2, group: 1, lines: [{ index: 11, value: 700, refines: 0 }, { index: 12, value: 1000, refines: 0 }, { index: 13, value: 1000, refines: 0 }], refines: 0, pending: null, locked: false }] });
     const up = battleWith(base, state, { ...emptyLoadout(TUNING), relic: 're1' });
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });

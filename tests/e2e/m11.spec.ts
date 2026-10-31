@@ -12,9 +12,10 @@ interface SaveOptions {
   roster?: string[];
   currencies?: Record<string, number>;
   profile?: { name?: string; level?: number; xp?: number };
+  equipment?: unknown;
 }
 
-function grownSave({ roster = ROSTER, currencies = {}, profile = {} }: SaveOptions = {}): string {
+function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment }: SaveOptions = {}): string {
   return JSON.stringify({
     version: E2E_SAVE_VERSION,
     state: {
@@ -54,6 +55,7 @@ function grownSave({ roster = ROSTER, currencies = {}, profile = {} }: SaveOptio
       nextInstanceSeq: roster.length + 1,
       campaign: { stars: { 'c2-10': 3, 'c3-10': 3 } },
       tutorial: { step: 0, done: true },
+      ...(equipment ? { equipment } : {}),
     },
   });
 }
@@ -109,29 +111,55 @@ test('Wild screen shows the stat sheet and equipping a held item raises Power', 
     .toBeGreaterThan(before);
 });
 
-test('Held Items level to 60 and refine with Held Item Shards', async ({ page }) => {
-  await importSave(page, { currencies: { heldItemShard: 1_000 } });
+/** R5: one Mythic Shell Bell (ATK) with six fixed Critical lines. */
+const MYTHIC_EQUIPMENT = {
+  relics: [
+    {
+      id: 're1',
+      defId: '105101',
+      level: 0,
+      group: 2,
+      lines: Array.from({ length: 6 }, () => ({ index: 1521, value: 1000, refines: 0 })),
+      refines: 0,
+      pending: null,
+      locked: false,
+    },
+  ],
+  runes: [],
+  cores: [],
+  charms: {},
+  charmStars: {},
+  nextSeq: 2,
+};
+
+test('Held Items level from 0 on the source table and refine a worn Mythic (first roll free)', async ({ page }) => {
+  await importSave(page, { currencies: { heldItemShard: 1_000 }, equipment: MYTHIC_EQUIPMENT });
   await page.goto('/wilds');
   await page.locator('.roster-item').first().click();
   await page.getByRole('button', { name: 'Held Items', exact: true }).click();
 
-  await expect(page.getByText('Held Item Shards: 1,000')).toBeVisible();
+  await expect(page.getByText(/Held Item Shards: 1,000/)).toBeVisible();
   const row = page.locator('.gear-row').first();
-  await expect(row).toContainText('Lv1/60');
+  await expect(row).toContainText('Shell Bell');
+  await expect(row).toContainText('Lv0/200');
+  await expect(row).toContainText('P.ATK +38,515');
+  await expect(row).toContainText('Total P.ATK +12.00%');
   await row.getByRole('button', { name: 'Equip', exact: true }).click();
   await expect(row.getByRole('button', { name: 'Unequip', exact: true })).toBeVisible();
   const power = () =>
     page.locator('.wild-power-lg strong').first().innerText().then((text) => Number(text.replace(/,/g, '')));
   const before = await power();
 
-  await row.getByRole('button', { name: /Level up .*5 Held Item Shards/ }).click();
-  await expect(row).toContainText('Lv2/60');
-  await expect(page.getByText('Held Item Shards: 995')).toBeVisible();
+  await row.getByRole('button', { name: /Level up .*20 Held Item Shards/ }).click();
+  await expect(row).toContainText('Lv1/200');
+  await expect(page.getByText(/Held Item Shards: 980/)).toBeVisible();
   await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(before);
 
-  await row.getByRole('button', { name: /Refine .*800 Gold .*10 Held Item Shards/ }).click();
-  await expect(row).toContainText('Refine 1/5');
-  await expect(page.getByText('Held Item Shards: 985')).toBeVisible();
+  await row.getByRole('button', { name: 'Refine · Free' }).first().click();
+  await expect(row.getByText('New roll', { exact: false })).toBeVisible();
+  await row.getByRole('button', { name: 'Keep', exact: true }).click();
+  await expect(row).toContainText('Refines 1/21');
+  await expect(row.getByRole('button', { name: 'Refine · 1 Resetters' }).first()).toBeVisible();
 });
 
 test('Plates rise from stage 0 to 6 with Bottles then Fragments', async ({ page }) => {

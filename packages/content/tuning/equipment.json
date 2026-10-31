@@ -1,8 +1,6 @@
 {
   "relic": {
-    "minTier": "supreme",
-    "maxLevel": 60,
-    "maxRefine": 5
+    "minTier": "supreme"
   },
   "runes": {
     "minStars": 3,
@@ -26,16 +24,6 @@
     "resetGems": 50,
     "allocateGold": 500
   },
-  "relicLevelCost": {
-    "shards": 5,
-    "shardsPerLevel": 2
-  },
-  "relicRefineCost": {
-    "gold": 800,
-    "shards": 10,
-    "goldPerRefine": 400,
-    "shardsPerRefine": 10
-  },
   "runeLevelCost": {
     "gold": 300,
     "goldPerLevel": 200
@@ -43,19 +31,13 @@
   "starting": {
     "relics": [
       {
-        "defId": "relic-ashpike-sigil",
-        "level": 1,
-        "refine": 0
+        "defId": "101101"
       },
       {
-        "defId": "relic-bulwark-sigil",
-        "level": 1,
-        "refine": 0
+        "defId": "101201"
       },
       {
-        "defId": "relic-runeweaver-sigil",
-        "level": 1,
-        "refine": 0
+        "defId": "101301"
       }
     ],
     "runes": [

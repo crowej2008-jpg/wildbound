@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { setWildStars } from './testing';
+import { grantHeldItem, setWildStars } from './testing';
 import { emptyLoadout } from '@wildbound/engine';
 import { buildConfig } from './config';
 import { consumeCharms, levelRelicAction, levelRuneAction } from './equipment';
@@ -63,13 +63,15 @@ describe('M11.0 equipment view and actions', () => {
     expect(after.value.power.layers.relic).toBeGreaterThan(0);
   });
 
-  it('levels an equipped held item to 60 and charges Held Item Shards', async () => {
+  it('levels a held item from 0 on the source shard table (20 a level to 30), cap 200', async () => {
     const { srv, wildId } = await supremeStriker();
     const view = await srv.getEquipment(wildId);
     if (!view.ok) throw new Error(view.message);
     const relic = view.value.relics.find((r) => r.className === 'striker');
     if (!relic) throw new Error('no striker relic');
-    expect(relic.maxLevel).toBe(60);
+    expect(relic.level).toBe(0);
+    expect(relic.maxLevel).toBe(200);
+    expect(relic.levelCost).toBe(20);
     await srv.equipRelic(wildId, relic.instanceId);
 
     const load = await srv.loadAccount();
@@ -79,37 +81,106 @@ describe('M11.0 equipment view and actions', () => {
     expect(levelled.ok).toBe(true);
     if (!levelled.ok) return;
     const now = levelled.value.state.equipment.relics.find((r) => r.id === relic.instanceId);
-    expect(now?.level).toBe(relic.level + 1);
-    expect(levelled.value.state.currencies.heldItemShard).toBe(shardsBefore - 5);
+    expect(now?.level).toBe(1);
+    expect(levelled.value.state.currencies.heldItemShard).toBe(shardsBefore - 20);
   });
 
-  it('refines a held item with gold + Held Item Shards', async () => {
+  it('gates level 31 on resonance 250 and stops at 200', () => {
+    const config = buildConfig();
+    const state = createInitialState(config);
+    state.currencies.heldItemShard = 100_000;
+    const relic = state.equipment.relics[0]!;
+    relic.level = 30;
+    const gated = levelRelicAction(config, state, relic.id);
+    expect(gated.ok).toBe(false);
+    if (!gated.ok) expect(gated.error).toBe('resource_locked');
+    state.pve.linkCrystal.level = 250;
+    expect(levelRelicAction(config, state, relic.id).ok).toBe(true);
+    relic.level = 200;
+    state.pve.linkCrystal.level = 600;
+    const capped = levelRelicAction(config, state, relic.id);
+    expect(capped.ok).toBe(false);
+    if (!capped.ok) expect(capped.error).toBe('at_level_cap');
+  });
+
+  it('refines a worn Mythic: first roll free, then Held Item Resetters on the ladder, keep or drop', async () => {
+    const { srv, wildId } = await supremeStriker();
+    const config = buildConfig();
+    const id = await grantHeldItem(srv, config, '105101', 3);
+    const notWorn = await srv.refineRelic(id, 0, 1);
+    expect(notWorn.ok).toBe(false);
+    expect((await srv.equipRelic(wildId, id)).ok).toBe(true);
+
+    const view = await srv.getEquipment(wildId);
+    if (!view.ok) throw new Error(view.message);
+    const item = view.value.relics.find((r) => r.instanceId === id)!;
+    expect(item.lines).toHaveLength(6);
+    expect(item.refineSlots).toBe(3);
+    expect(item.refineCost).toBe(0);
+    expect(item.skill?.name).toBe('Shell Bell II');
+
+    const rolled = await srv.refineRelic(id, 0, 42);
+    expect(rolled.ok).toBe(true);
+    if (!rolled.ok) return;
+    const pending = rolled.value.state.equipment.relics.find((r) => r.id === id)!.pending;
+    expect(pending?.slot).toBe(0);
+    // a second roll waits for keep/drop
+    expect((await srv.refineRelic(id, 0, 43)).ok).toBe(false);
+    const kept = await srv.settleRefine(id, true);
+    expect(kept.ok).toBe(true);
+    if (!kept.ok) return;
+    const line = kept.value.state.equipment.relics.find((r) => r.id === id)!.lines[0]!;
+    expect(line.index).toBe(pending!.index);
+    expect(line.value).toBe(pending!.value);
+
+    // the second refine costs 1 Held Item Resetter
+    const broke = await srv.refineRelic(id, 0, 44);
+    expect(broke.ok).toBe(false);
+    if (!broke.ok) expect(broke.error).toBe('insufficient_items');
+    await srv.grantCurrency('resetterShard', 40);
+    expect((await srv.compoundResetters(2)).ok).toBe(true);
+    const paid = await srv.refineRelic(id, 0, 44);
+    expect(paid.ok).toBe(true);
+    if (!paid.ok) return;
+    expect(paid.value.state.currencies.heldItemResetter).toBe(1);
+    expect(paid.value.state.currencies.resetterShard).toBe(0);
+    expect((await srv.settleRefine(id, false)).ok).toBe(true);
+    expect((await srv.settleRefine(id, false)).ok).toBe(false);
+  });
+
+  it('has nothing to refine on a Rare', async () => {
     const { srv, wildId } = await supremeStriker();
     const view = await srv.getEquipment(wildId);
     if (!view.ok) throw new Error(view.message);
-    const relic = view.value.relics.find((r) => r.className === 'striker');
-    if (!relic) throw new Error('no striker relic');
-    const load = await srv.loadAccount();
-    if (!load.ok) throw new Error('reload failed');
-    const goldBefore = load.value.state.currencies.gold;
-    const shardsBefore = load.value.state.currencies.heldItemShard;
-
-    const refined = await srv.refineRelic(relic.instanceId);
-    expect(refined.ok).toBe(true);
-    if (!refined.ok) return;
-    const now = refined.value.state.equipment.relics.find((r) => r.id === relic.instanceId);
-    expect(now?.refine).toBe(relic.refine + 1);
-    expect(refined.value.state.currencies.gold).toBe(goldBefore - 800);
-    expect(refined.value.state.currencies.heldItemShard).toBe(shardsBefore - 10);
+    const rare = view.value.relics.find((r) => r.className === 'striker')!;
+    expect(rare.refineCost).toBeNull();
+    await srv.equipRelic(wildId, rare.instanceId);
+    const refused = await srv.refineRelic(rare.instanceId, 0, 1);
+    expect(refused.ok).toBe(false);
   });
 
-  it('stops a Held Item at its level cap', () => {
+  it('dismantles only unworn, unlocked items, paying back their levels', async () => {
+    const { srv, wildId } = await supremeStriker();
     const config = buildConfig();
-    const state = createInitialState(config);
-    const relic = state.equipment.relics[0]!;
-    relic.level = 60;
-    const result = levelRelicAction(config, state, relic.id);
-    expect(result.ok).toBe(false);
+    const id = await grantHeldItem(srv, config, '105101', 5);
+    expect((await srv.levelRelic(id)).ok).toBe(true);
+    expect((await srv.lockRelic(id)).ok).toBe(true);
+    expect((await srv.dismantleRelics([id])).ok).toBe(false);
+    expect((await srv.lockRelic(id)).ok).toBe(true);
+    await srv.equipRelic(wildId, id);
+    const worn = await srv.dismantleRelics([id]);
+    expect(worn.ok).toBe(false);
+    if (!worn.ok) expect(worn.error).toBe('in_use');
+    await srv.equipRelic(wildId, null);
+
+    const load = await srv.loadAccount();
+    if (!load.ok) throw new Error('reload failed');
+    const before = load.value.state.currencies.heldItemShard;
+    const done = await srv.dismantleRelics([id]);
+    expect(done.ok).toBe(true);
+    if (!done.ok) return;
+    expect(done.value.state.equipment.relics.some((r) => r.id === id)).toBe(false);
+    expect(done.value.state.currencies.heldItemShard).toBe(before + 20 + 20);
   });
 
   it('unlocks orbs at the star gate and folds their lines into Power', async () => {
@@ -326,5 +397,33 @@ describe('M11.0 equipment view and actions', () => {
     await srv.toggleLock(duplicateId);
     const allowed = await srv.allocateTalent(wildId, 0, 0);
     expect(allowed.ok).toBe(true);
+  });
+});
+
+describe('R5 held-item data is the source', () => {
+  const config = buildConfig();
+  const { relics, held } = config.equipment;
+
+  it('has the 75 items at 9 / 9 / 12 / 18 / 27 per quality, class-locked, with tier-I/II skills from Legendary', () => {
+    expect(relics).toHaveLength(75);
+    const count = (tier: string) => relics.filter((r) => r.tier === tier).length;
+    expect([count('rare'), count('epic'), count('legendary'), count('supreme'), count('mythic')]).toEqual([9, 9, 12, 18, 27]);
+    expect(relics.filter((r) => r.tier === 'mythic').every((r) => r.lineCount === 6 && r.refineSlots === 3 && r.dismantle === 20)).toBe(true);
+    expect(relics.filter((r) => r.tier === 'supreme').every((r) => r.lineCount === 5 && r.refineSlots === 2)).toBe(true);
+    expect(relics.filter((r) => r.tier === 'rare' || r.tier === 'epic').every((r) => r.skill === null)).toBe(true);
+    expect(relics.find((r) => r.id === '105107')).toMatchObject({ name: 'Choice Band', className: 'striker' });
+    expect(relics.find((r) => r.id === '105208')?.skill?.text).toBe('Restore backline HP every turn, healing amount is 5% of current HP');
+  });
+
+  it('prices 7,350 shards to Lv 200 and 110 Resetters for the owner ladder of 21 refines', () => {
+    expect(held.levelCost.reduce((a, b) => a + b, 0)).toBe(7350);
+    expect(held.refineLadder).toHaveLength(21);
+    expect(held.refineLadder[0]).toBe(0);
+    expect(held.refineLadder.reduce((a, b) => a + b, 0)).toBe(110);
+    expect(held.resetterCompound).toBe(20);
+  });
+
+  it('has 31 lines per quality pool', () => {
+    for (const pool of [11, 12, 13, 14, 15]) expect(held.linePool.filter((r) => r.pool === pool)).toHaveLength(31);
   });
 });

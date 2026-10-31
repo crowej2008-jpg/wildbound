@@ -23,6 +23,8 @@ export interface Rewards {
   soulHeartExp?: number;
   berryEssence?: number;
   heldItemShard?: number;
+  resetterShard?: number;
+  heldItemResetter?: number;
   plateBottle?: number;
   plateFragment?: number;
   starShard?: number;
@@ -51,6 +53,8 @@ export const CURRENCY_REWARD_KEYS = [
   'soulHeartExp',
   'berryEssence',
   'heldItemShard',
+  'resetterShard',
+  'heldItemResetter',
   'plateBottle',
   'plateFragment',
   'starShard',

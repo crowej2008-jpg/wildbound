@@ -716,6 +716,11 @@ a.btn { display: inline-flex; align-items: center; text-decoration: none; }
 .gear-row { padding: var(--space-2); border: 1px solid var(--color-border); border-radius: var(--radius-m); background: var(--color-bg); }
 .gear-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
 .gear-row p { margin: var(--space-1) 0; }
+.held-main { font-weight: 600; }
+.held-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+.held-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.held-pending { padding: var(--space-2); border: 1px dashed var(--color-border); border-radius: var(--radius-m); }
+.btn-small { padding: 2px var(--space-2); font-size: 0.85em; min-height: 0; }
 .material-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-1) var(--space-4); margin-top: var(--space-2); }
 .material-row { display: flex; justify-content: space-between; gap: var(--space-2); padding: 2px 0; border-bottom: 1px solid var(--color-border); }
 

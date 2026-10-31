@@ -1,0 +1,16 @@
+{
+  "_note": "Hand-authored battle effects for the source's held-item skills (skill_passivity_json 13xxxxx). Only skills the round-effect DSL can express exactly are listed; every other skill shows its source text and is marked not active in battle. Read by scripts/import-held-items.mjs.",
+  "1300301": [{ "tag": "held-choice-specs", "field": "dmgBoost", "fromRound": 4, "bigRounds": 1, "add": 0.18 }],
+  "1300311": [{ "tag": "held-choice-specs", "field": "dmgBoost", "fromRound": 4, "bigRounds": 1, "add": 0.3 }],
+  "1302001": [
+    { "tag": "held-razor-fang", "field": "spd", "fromRound": 3, "add": 2 },
+    { "tag": "held-razor-fang", "field": "spd", "fromRound": 4, "add": 2 },
+    { "tag": "held-razor-fang", "field": "spd", "fromRound": 5, "add": 2 }
+  ],
+  "1302011": [
+    { "tag": "held-razor-fang", "field": "spd", "fromRound": 3, "add": 4 },
+    { "tag": "held-razor-fang", "field": "spd", "fromRound": 4, "add": 4 },
+    { "tag": "held-razor-fang", "field": "spd", "fromRound": 5, "add": 4 }
+  ],
+  "1302411": "evenRounds:guardBreak:0.5"
+}

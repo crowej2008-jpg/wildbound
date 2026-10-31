@@ -5,8 +5,17 @@ import {
   emptyLoadout,
   foldLoadout,
   mergeDelta,
-  relicLevelCost,
-  relicRefineCost,
+  heldDismantleShards,
+  heldLevelCost,
+  heldLevelGate,
+  heldMaxLevel,
+  heldMaxRefine,
+  heldRefineCost,
+  HELD_SCALE,
+  lineRow,
+  mainRows,
+  mainValue,
+  refineBlock,
   relicUnlocked,
   runeLevelCost,
   runesUnlocked,
@@ -19,6 +28,7 @@ import {
   type SoulStats,
   type StatDelta,
   type Tier,
+  type Faction,
   type WildClass,
 } from '@wildbound/engine';
 import type { AccountState, WildInstance } from '@wildbound/engine';
@@ -42,6 +52,22 @@ export function charmUpgradeEssence(stars: number, collection: GameConfig['colle
   return upgradeEssenceBase + Math.max(0, stars - 1) * upgradeEssencePerStar;
 }
 
+/** One rolled line on a held item; values are the source's per-ten-thousand numbers. */
+export interface HeldLineView {
+  slot: number;
+  name: string;
+  value: number;
+  min: number;
+  max: number;
+  /** Set on the 20 faction lines: they count only on a Pokémon of that faction. */
+  faction: Faction | null;
+  /** Whether the line counts on the Wild this view is for. */
+  counts: boolean;
+  refines: number;
+  /** Whether this slot can be refined now (ignores the price). */
+  refinable: boolean;
+}
+
 export interface RelicView {
   instanceId: string;
   defId: string;
@@ -49,12 +75,24 @@ export interface RelicView {
   className: WildClass;
   tier: Tier;
   level: number;
-  refine: number;
   maxLevel: number;
+  /** Main stat at this level: flat value, plus "Total %" (per ten-thousand) from Legendary. */
+  main: { name: string; value: number; percent: boolean }[];
+  lines: HeldLineView[];
+  pending: { slot: number; name: string; value: number; min: number; max: number } | null;
+  skill: { name: string; text: string; active: boolean } | null;
+  refines: number;
   maxRefine: number;
-  effectText: string;
-  levelCost: { shards: number } | null;
-  refineCost: { gold: number; shards: number } | null;
+  refineSlots: number;
+  refineSlotsUsed: number;
+  /** Held Item Resetters for the next refine (0 = free), or null when none are left. */
+  refineCost: number | null;
+  /** Held Item Shards for the next level, or null at the cap. */
+  levelCost: number | null;
+  /** Resonance (Link Crystal) level the next level needs; 0 = none. */
+  levelGate: number;
+  locked: boolean;
+  dismantleShards: number;
   equippedOn: string | null;
 }
 
@@ -146,6 +184,14 @@ export interface EquipmentView {
   soulHeartExp: number;
   berryEssence: number;
   heldItemShards: number;
+  resetterShards: number;
+  heldItemResetters: number;
+  /** Resetter Shards per Held Item Resetter. */
+  resetterCompound: number;
+  /** Account resonance (Link Crystal) level, for the held-item level gates. */
+  resonanceLevel: number;
+  /** Divide held-item values by this to get a fraction (1,067 → 10.67%). */
+  heldScale: number;
   plateBottles: number;
   plateFragments: number;
   starShards: number;
@@ -250,7 +296,7 @@ export interface EquipmentDeps {
 /** tag → the authored text a conditional effect should show in the UI. */
 function effectTextMap(tables: EquipmentTables): Map<string, string> {
   const map = new Map<string, string>();
-  for (const relic of tables.relics) map.set(relic.effect.tag, relic.effect.text);
+  for (const relic of tables.relics) for (const fx of relic.skill?.effects ?? []) map.set(fx.tag, relic.skill!.text);
   for (const set of tables.coreSets) for (const bonus of set.bonuses) if (bonus.effect) map.set(bonus.effect.tag, bonus.effect.text);
   for (const block of tables.talentBlocks) if (block.effect) map.set(block.effect.tag, block.effect.text);
   return map;
@@ -316,24 +362,57 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     for (const id of l.cores) if (id) coreOn.set(id, wildId);
   }
 
-  const relics: RelicView[] = state.equipment.relics.map((r) => {
+  const held = tables.held;
+  const relics: RelicView[] = [];
+  for (const r of state.equipment.relics) {
     const def = tables.relics.find((d) => d.id === r.defId);
-    return {
+    if (!def) continue;
+    const refineSlotsUsed = r.lines.filter((l) => l.refines > 0).length;
+    const pendingRow = r.pending ? lineRow(held, r.pending.index) : undefined;
+    relics.push({
       instanceId: r.id,
       defId: r.defId,
-      name: def?.name ?? r.defId,
-      className: def?.className ?? 'striker',
-      tier: def?.tier ?? 'common',
+      name: def.name,
+      className: def.className,
+      tier: def.tier,
       level: r.level,
-      refine: r.refine,
-      maxLevel: tuning.relic.maxLevel,
-      maxRefine: tuning.relic.maxRefine,
-      effectText: def?.effect.text ?? '',
-      levelCost: r.level >= tuning.relic.maxLevel ? null : relicLevelCost(r.level, tuning),
-      refineCost: r.refine >= tuning.relic.maxRefine ? null : relicRefineCost(r.refine, tuning),
+      maxLevel: heldMaxLevel(held),
+      main: mainRows(def, held, r.group).map((row) => ({
+        name: row.name,
+        value: mainValue(row, r.level),
+        percent: row.kind === 'percent',
+      })),
+      lines: r.lines.map((line, slot) => {
+        const row = lineRow(held, line.index);
+        return {
+          slot,
+          name: row?.name ?? String(line.index),
+          value: line.value,
+          min: row?.min ?? 0,
+          max: row?.max ?? 0,
+          faction: row?.faction ?? null,
+          counts: !row?.faction || row.faction === meta?.faction,
+          refines: line.refines,
+          refinable: refineBlock(r, def, held, slot) === null,
+        };
+      }),
+      pending:
+        r.pending && pendingRow
+          ? { slot: r.pending.slot, name: pendingRow.name, value: r.pending.value, min: pendingRow.min, max: pendingRow.max }
+          : null,
+      skill: def.skill ? { name: def.skill.name, text: def.skill.text, active: def.skill.active } : null,
+      refines: r.refines,
+      maxRefine: heldMaxRefine(held),
+      refineSlots: def.refineSlots,
+      refineSlotsUsed,
+      refineCost: def.refineSlots > 0 ? heldRefineCost(r, held) : null,
+      levelCost: heldLevelCost(r.level, held),
+      levelGate: heldLevelGate(r.level, held),
+      locked: r.locked,
+      dismantleShards: heldDismantleShards(r, def, held),
       equippedOn: relicOn.get(r.id) ?? null,
-    };
-  });
+    });
+  }
 
   const wornRunes = new Set(runeOn.keys());
   const runes: RuneView[] = state.equipment.runes.map((r) => {
@@ -478,6 +557,11 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     soulHeartExp: state.currencies.soulHeartExp ?? 0,
     berryEssence: state.currencies.berryEssence ?? 0,
     heldItemShards: state.currencies.heldItemShard ?? 0,
+    resetterShards: state.currencies.resetterShard ?? 0,
+    heldItemResetters: state.currencies.heldItemResetter ?? 0,
+    resetterCompound: held.resetterCompound,
+    resonanceLevel: state.pve.linkCrystal.level,
+    heldScale: HELD_SCALE,
     plateBottles: state.currencies.plateBottle ?? 0,
     plateFragments: state.currencies.plateFragment ?? 0,
     starShards: state.currencies.starShard ?? 0,

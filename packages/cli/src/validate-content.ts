@@ -28,7 +28,7 @@ import {
   PVE,
   pvpSchema,
   PVP,
-  relicsSchema,
+  heldItemsSchema,
   platesSchema,
   trinketsSchema,
   TITLES,
@@ -99,7 +99,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
 
 /** M7 catalogue files are identified by filename; each maps to one schema. */
 const EQUIPMENT_SCHEMAS: Record<string, AnySchema> = {
-  'relics.json': relicsSchema,
+  'held-items.json': heldItemsSchema,
   'plates.json': platesSchema,
   'trinkets.json': trinketsSchema,
   'runes.json': runesSchema,
@@ -308,7 +308,7 @@ export function validateContent(repoRoot: string): ValidateReport {
       if (c.tier !== 'common' && c.maxStars <= 0) errors.push(`equipment: Berry "${c.id}" needs a star cap`);
     }
     checks.push(
-      `equipment: ${RELICS.length} relic(s), ${PLATES.length} plate(s), ${TRINKETS.length} trinket(s), ${RUNES.length} rune(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s), ${TALENT_TREES.length} talent tree(s) validated`,
+      `equipment: ${RELICS.length} held item(s), ${PLATES.length} plate(s), ${TRINKETS.length} trinket(s), ${RUNES.length} rune(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s), ${TALENT_TREES.length} talent tree(s) validated`,
     );
   }
 

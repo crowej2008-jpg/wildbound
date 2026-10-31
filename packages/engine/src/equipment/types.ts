@@ -38,13 +38,69 @@ export interface SoulheartEffectDef extends SoulheartHooks {
   text: string;
 }
 
+/** A held item's skill (Legendary tier I, Supreme/Mythic tier II), copied from the source. */
+export interface HeldSkillDef {
+  id: string;
+  name: string;
+  text: string;
+  /** False when the round-effect DSL can't express it yet; the text still shows. */
+  active: boolean;
+  effects: RoundEffect[];
+}
+
+/** One of the source's 75 held items (code id: relic). See equipment/held.ts. */
 export interface RelicDef {
   id: string;
   name: string;
   className: WildClass;
   tier: Tier;
-  lines: StatLine[];
-  effect: EffectDef;
+  mainPool: number;
+  linePool: number;
+  lineCount: number;
+  /** How many line slots can ever be refined (Supreme 2, Mythic 3). */
+  refineSlots: number;
+  /** Held Item Shards paid on dismantle. */
+  dismantle: number;
+  skill: HeldSkillDef | null;
+}
+
+/** A main-stat row; `value + ⌊level / every⌋ × step` (percent rows per ten-thousand). */
+export interface HeldMainRow {
+  index: number;
+  pool: number;
+  group: number;
+  weight: number;
+  name: string;
+  kind: 'core' | 'percent';
+  field: string;
+  value: number;
+  every: number;
+  step: number;
+}
+
+/** A random-line row (per ten-thousand); a faction line counts only on that faction. */
+export interface HeldLineRow {
+  index: number;
+  pool: number;
+  weight: number;
+  name: string;
+  kind: 'percent' | 'lifesteal';
+  field: string;
+  faction?: Faction;
+  min: number;
+  max: number;
+}
+
+export interface HeldTables {
+  mainPool: HeldMainRow[];
+  linePool: HeldLineRow[];
+  /** Held Item Shards for level n → n + 1 (index n). */
+  levelCost: number[];
+  levelGates: { level: number; resonance: number }[];
+  /** Held Item Resetters per refine (owner's ladder). */
+  refineLadder: number[];
+  /** Resetter Shards per Held Item Resetter. */
+  resetterCompound: number;
 }
 
 /** One element-keyed plate per faction; stage 0 is empty. */
@@ -129,11 +185,26 @@ export interface TalentTreeDef {
 
 // --- owned instances -------------------------------------------------------
 
+export interface HeldLine {
+  /** Row in the line pool. */
+  index: number;
+  value: number;
+  /** How often this slot has been refined. */
+  refines: number;
+}
+
 export interface RelicInstance {
   id: string;
   defId: string;
   level: number;
-  refine: number;
+  /** Main-stat group (1 HP, 2 P.ATK, 3 S.ATK). */
+  group: number;
+  lines: HeldLine[];
+  /** Refines paid on this item (prices the next one). */
+  refines: number;
+  /** A refine roll not yet kept or dropped. */
+  pending: { slot: number; index: number; value: number } | null;
+  locked: boolean;
 }
 
 export interface RuneInstance {
@@ -162,19 +233,17 @@ export interface Loadout {
 // --- tuning ----------------------------------------------------------------
 
 export interface EquipmentTuning {
-  relic: { minTier: Tier; maxLevel: number; maxRefine: number };
+  relic: { minTier: Tier };
   runes: { minStars: number; sockets: number; maxLevel: number };
   charms: { minStars: number; slots: number };
   cores: { minStars: number; sockets: number; pieceMinStars: number; pieceMaxStars: number };
   talents: { minTier: Tier; tiers: number; optionsPerTier: number; resetGems: number; allocateGold: number };
-  relicLevelCost: { shards: number; shardsPerLevel: number };
-  relicRefineCost: { gold: number; shards: number; goldPerRefine: number; shardsPerRefine: number };
   runeLevelCost: { gold: number; goldPerLevel: number };
   starting: StartingEquipment;
 }
 
 export interface StartingEquipment {
-  relics: { defId: string; level: number; refine: number }[];
+  relics: { defId: string }[];
   runes: { defId: string; level: number }[];
   cores: { setId: string; socket: number; stars: number }[];
   charms: { defId: string; stars: number; count: number }[];
@@ -196,6 +265,7 @@ export interface EquipmentState {
 /** Everything the engine needs to apply the five layers. */
 export interface EquipmentTables {
   relics: RelicDef[];
+  held: HeldTables;
   plates: PlateDef[];
   trinkets: TrinketDef[];
   runes: RuneDef[];
@@ -226,11 +296,20 @@ export function emptyStartingEquipment(): StartingEquipment {
   return { relics: [], runes: [], cores: [], charms: [] };
 }
 
-/** Build the owned-inventory slice of an account from the tuning `starting` list. */
-export function initialEquipment(starting: StartingEquipment): EquipmentState {
+/**
+ * Build the owned-inventory slice of an account from the tuning `starting` list. Held items need
+ * their lines rolled, so `rollRelic` is passed in by the caller (omitted = none granted).
+ */
+export function initialEquipment(
+  starting: StartingEquipment,
+  rollRelic?: (defId: string, id: string) => RelicInstance | null,
+): EquipmentState {
   const state: EquipmentState = { relics: [], runes: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 };
   for (const r of starting.relics) {
-    state.relics.push({ id: `re${state.nextSeq++}`, defId: r.defId, level: r.level, refine: r.refine });
+    const inst = rollRelic?.(r.defId, `re${state.nextSeq}`);
+    if (!inst) continue;
+    state.nextSeq += 1;
+    state.relics.push(inst);
   }
   for (const r of starting.runes) {
     state.runes.push({ id: `ru${state.nextSeq++}`, defId: r.defId, level: r.level });

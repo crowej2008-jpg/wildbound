@@ -1,3 +1,6 @@
+import { mulberry32, type AccountState } from '@wildbound/engine';
+import type { GameConfig } from './config';
+import { grantRelic } from './equipment';
 import type { LocalServer } from './local-server';
 
 /**
@@ -13,4 +16,17 @@ export async function setWildStars(srv: LocalServer, wildId: string, stars: numb
   wild.stars = stars;
   const imported = await srv.importSave(JSON.stringify(save));
   if (!imported.ok) throw new Error(imported.message);
+}
+
+/** Test support: add a freshly rolled held item (seeded) and return its instance id. */
+export async function grantHeldItem(srv: LocalServer, config: GameConfig, defId: string, seed = 1): Promise<string> {
+  const exported = await srv.exportSave();
+  if (!exported.ok) throw new Error(exported.message);
+  const save = JSON.parse(exported.value) as { state: AccountState };
+  const granted = grantRelic(config, save.state, defId, mulberry32(seed));
+  if (!granted.ok) throw new Error(granted.message);
+  const id = `re${save.state.equipment.nextSeq}`;
+  const imported = await srv.importSave(JSON.stringify({ ...save, state: granted.value }));
+  if (!imported.ok) throw new Error(imported.message);
+  return id;
 }

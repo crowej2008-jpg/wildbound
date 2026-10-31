@@ -511,6 +511,8 @@ export const rewardSchema = z
     soulHeartExp: z.number().nonnegative().optional(),
     berryEssence: z.number().nonnegative().optional(),
     heldItemShard: z.number().nonnegative().optional(),
+    resetterShard: z.number().nonnegative().optional(),
+    heldItemResetter: z.number().nonnegative().optional(),
     plateBottle: z.number().nonnegative().optional(),
     plateFragment: z.number().nonnegative().optional(),
     starShard: z.number().nonnegative().optional(),

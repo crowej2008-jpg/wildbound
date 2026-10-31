@@ -35,6 +35,8 @@ export const en = {
   'currency.soulHeartExp': 'Soul-heart EXP',
   'currency.berryEssence': 'Berry Essence',
   'currency.heldItemShard': 'Held Item Shards',
+  'currency.resetterShard': 'Resetter Shards',
+  'currency.heldItemResetter': 'Held Item Resetters',
   'currency.plateBottle': 'Plate Bottles',
   'currency.plateFragment': 'Plate Fragments',
   'currency.starShard': 'Star Shards',
@@ -119,6 +121,25 @@ export const en = {
   'gear.berry.spare': 'spare',
   'gear.starUp': 'Star-up',
   'gear.sub.held': 'Held Items',
+  'held.lines': 'Additional attributes',
+  'held.otherFaction': 'only on a {faction} Pokémon',
+  'held.refineFree': 'Free',
+  'held.resetters': 'Resetters',
+  'held.refinesLeft': 'Refines',
+  'held.slots': 'Refinable lines',
+  'held.newLine': 'New roll',
+  'held.keep': 'Keep',
+  'held.drop': 'Drop',
+  'held.lock': 'Lock',
+  'held.unlock': 'Unlock',
+  'held.locked': 'Locked',
+  'held.dismantle': 'Dismantle',
+  'held.confirmDismantle': 'Dismantle this item for {shards} Held Item Shards?',
+  'held.needResonance': 'Next level needs resonance {level}',
+  'held.maxLevel': 'Max level',
+  'held.compound': 'Make a Resetter ({count} Resetter Shards)',
+  'held.skillInactive': 'not active in battle yet',
+  'held.wearOnly': 'Wear it to refine',
   'gear.sub.plates': 'Plates',
   'gear.sub.trinkets': 'Trinkets',
   'gear.plate.stage': 'Stage',
@@ -864,6 +885,8 @@ export type CurrencyKey =
   | 'soulHeartExp'
   | 'berryEssence'
   | 'heldItemShard'
+  | 'resetterShard'
+  | 'heldItemResetter'
   | 'plateBottle'
   | 'plateFragment'
   | 'starShard'
@@ -889,6 +912,8 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   soulHeartExp: en['currency.soulHeartExp'],
   berryEssence: en['currency.berryEssence'],
   heldItemShard: en['currency.heldItemShard'],
+  resetterShard: en['currency.resetterShard'],
+  heldItemResetter: en['currency.heldItemResetter'],
   plateBottle: en['currency.plateBottle'],
   plateFragment: en['currency.plateFragment'],
   starShard: en['currency.starShard'],
