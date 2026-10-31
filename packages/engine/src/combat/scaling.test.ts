@@ -11,29 +11,29 @@ describe('M9.3 resource counters', () => {
     const s = skill({
       slot: 'normal',
       effects: [
-        { op: 'resource', target: { side: 'ally', rule: 'all' }, tag: 'light', delta: 2, max: 3 },
-        { op: 'resource', target: { side: 'ally', rule: 'all' }, tag: 'light', delta: 2, max: 3 },
+        { op: 'resource', target: { side: 'ally', rule: 'all' }, tag: 'frost', delta: 2, max: 3 },
+        { op: 'resource', target: { side: 'ally', rule: 'all' }, tag: 'frost', delta: 2, max: 3 },
       ],
     });
     const a = unit({ key: 'a', side: 'attackers', position: 1, sheet: sheet() });
     const ctx = makeCtx({ units: [a], deterministic: true });
     applyEffects(ctx, a, s, []);
-    expect(a.resources?.['light']).toBe(3); // 2 + 2 capped at 3
+    expect(a.resources?.['frost']).toBe(3); // 2 + 2 capped at 3
 
     const consume = skill({
       slot: 'normal',
-      effects: [{ op: 'resource', target: { side: 'ally', rule: 'all' }, tag: 'light', consume: 1 }],
+      effects: [{ op: 'resource', target: { side: 'ally', rule: 'all' }, tag: 'frost', consume: 1 }],
     });
     applyEffects(ctx, a, consume, []);
-    expect(a.resources?.['light']).toBe(2);
+    expect(a.resources?.['frost']).toBe(2);
   });
 
   it('conditions read resource stacks', () => {
     const a = unit({ key: 'a', side: 'attackers', position: 1, sheet: sheet() });
     a.resources = { frost: 2 };
     const ctx = makeCtx({ units: [a], deterministic: true });
-    expect(evalCondition({ selfStackAtLeast: { tag: 'light', n: 2 } }, ctx, a)).toBe(true);
-    expect(evalCondition({ selfStackAtLeast: { tag: 'light', n: 3 } }, ctx, a)).toBe(false);
+    expect(evalCondition({ selfStackAtLeast: { tag: 'frost', n: 2 } }, ctx, a)).toBe(true);
+    expect(evalCondition({ selfStackAtLeast: { tag: 'frost', n: 3 } }, ctx, a)).toBe(false);
   });
 });
 

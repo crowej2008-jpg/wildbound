@@ -50,7 +50,9 @@ function grownState(cfg: ReturnType<typeof config>, strategy?: StrategyId): Acco
  * rounds and every action policy actually gets a turn.
  */
 function wallEnemies(cfg: ReturnType<typeof config>) {
-  const speciesId = [...cfg.species.keys()][0]!;
+  // R1: one of the starters themselves (top star, lower level) so it can neither one-shot the
+  // grown squad nor be one-shot by it under the source stat formula.
+  const speciesId = cfg.startingRoster[0]!;
   return [{ speciesId, level: 80, stars: 20, stage: 2 }];
 }
 

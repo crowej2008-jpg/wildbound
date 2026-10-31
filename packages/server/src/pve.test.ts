@@ -25,10 +25,13 @@ function config() {
   return { ...buildConfig(), now: () => NOW };
 }
 
-/** A fixture account whose six Wilds are fully grown, so modes are winnable. */
+/** A fixture account whose six Wilds are fully grown (top star, top level cap), so modes are winnable. */
 function strongState(cfg: ReturnType<typeof config>): AccountState {
   const base = createInitialState(cfg);
-  const roster = base.roster.map((w) => ({ ...w, level: 140, stars: 10 }));
+  const roster = base.roster.map((w) => {
+    const top = cfg.species.get(w.speciesId)!.stars.at(-1)!;
+    return { ...w, level: top.maxLevel, stars: top.star };
+  });
   return {
     ...base,
     roster,

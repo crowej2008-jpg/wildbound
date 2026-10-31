@@ -1,16 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { isCleared, orderStages } from '@wildbound/engine';
-import { buildConfig } from './config';
+import { buildConfig, firstStar } from './config';
 import { LocalServer } from './local-server';
 import { MemoryStore } from './storage';
+import { setWildStars } from './testing';
 
 /**
  * Campaign difficulty regression (M5, PROMPT §13 "play from first launch to chapter 3").
  *
  * The starting account is six common Wilds; summoning arrives in M6, so chapters
  * 1-3 must be clearable by growing the starter roster alone. This test pins the
- * authored curve: a squad grown to the chapter-3 target profile (Lv26, 3 stars,
- * stage 1) clears every stage through the end of chapter 3.
+ * authored curve: a squad grown to the chapter-3 target profile (Lv26, two stars
+ * above its first star — the old "3 stars" under R1's star ladders) clears every
+ * stage through the end of chapter 3.
  *
  * Resources are granted directly so the test isolates the *combat curve* from the
  * economy. The candy/gold these represent are produced in play by campaign
@@ -43,6 +45,8 @@ describe('M5 campaign balance', () => {
     if (!after.ok) throw new Error('reload failed');
     for (const wild of after.value.state.roster) {
       await srv.levelUp(wild.id, 26 - wild.level);
+      // The old "3 stars" profile: two stars above the species' first star (R1 star ladders).
+      await setWildStars(srv, wild.id, firstStar(config.species.get(wild.speciesId)!) + 2);
     }
 
     const ordered = orderStages(config.stages).filter((stage) => stage.chapter <= 3);

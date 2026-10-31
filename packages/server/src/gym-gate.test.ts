@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { buildConfig } from './config';
+import { buildConfig, firstStar } from './config';
 import { LocalServer } from './local-server';
 import { MemoryStore } from './storage';
+import { setWildStars } from './testing';
 
 /**
  * M13.0a gate flow: a story gate is locked until its gym falls, the gym only
@@ -17,7 +18,7 @@ function makeServer() {
 }
 
 async function grownSave(): Promise<{ srv: LocalServer; json: string }> {
-  const { server: srv } = makeServer();
+  const { config, server: srv } = makeServer();
   await srv.loadAccount();
   await srv.grantCurrency('candy', 400_000);
   await srv.grantCurrency('gold', 1_200_000);
@@ -27,6 +28,8 @@ async function grownSave(): Promise<{ srv: LocalServer; json: string }> {
   if (!loaded.ok) throw new Error('load failed');
   for (const wild of loaded.value.state.roster) {
     await srv.levelUp(wild.id, 26 - wild.level);
+    // The old "3 stars" profile: two stars above the species' first star (R1 star ladders).
+    await setWildStars(srv, wild.id, firstStar(config.species.get(wild.speciesId)!) + 2);
   }
   const exported = await srv.exportSave();
   if (!exported.ok) throw new Error('export failed');

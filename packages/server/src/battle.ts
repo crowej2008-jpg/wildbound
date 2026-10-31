@@ -3,6 +3,7 @@ import {
   computePower,
   emptyLoadout,
   formIndex,
+  starRange,
   foldLoadout,
   mergeDelta,
   resolveCoreStats,
@@ -27,7 +28,7 @@ import {
   type WildClass,
   type WildInstance,
 } from '@wildbound/engine';
-import { cardOf, type GameConfig } from './config';
+import { cardOf, type GameConfig, type SpeciesMeta } from './config';
 import { resonanceFoldFor } from './resonance';
 import { titleFoldFor } from './titles';
 
@@ -227,6 +228,17 @@ function rageStart(className: WildClass): number {
   return className === 'striker' ? COMBAT_SETTINGS.rageStrikerStart : COMBAT_SETTINGS.rageStart;
 }
 
+/**
+ * R1 interim: enemy rows (campaign stages, gyms, mode curves, PvP ghosts, Sky Pillar) still carry the
+ * pre-retrofit 1–10 `stars`, where 1★ meant a fresh copy. Until R9 re-copies them from the source,
+ * an enemy's `stars` counts up from its species' first star (1★ = the first card), clamped to the
+ * ladder; the old `stage` field is ignored (ASSUMPTIONS #53).
+ */
+export function enemyStar(species: SpeciesMeta, legacyStars: number): number {
+  const { min, max } = starRange(species.stars);
+  return Math.min(max, min + Math.max(0, Math.floor(legacyStars) - 1));
+}
+
 /** Build a defender team from a campaign stage's authored enemy list. */
 export function buildEnemyTeam(enemies: StageEnemy[], config: GameConfig): BuiltTeam {
   const specs: SpecInput[] = [];
@@ -236,9 +248,8 @@ export function buildEnemyTeam(enemies: StageEnemy[], config: GameConfig): Built
     const species = config.species.get(enemy.speciesId);
     const kitJson = kitById(enemy.speciesId);
     if (!species || !kitJson) return;
-    // R1: an enemy's `stars` picks its star card (clamped into the species' ladder); its old
-    // `stage` no longer matters. Enemy rows are re-copied from the source in R9.
-    const card = cardOf(species, enemy.stars);
+    const star = enemyStar(species, enemy.stars);
+    const card = cardOf(species, star);
     const core = resolveCoreStats(card, enemy.level);
     const sheet: SheetInput = { hp: core.hp, pAtk: core.pAtk, sAtk: core.sAtk, spd: core.spd, pDef: core.pDef, sDef: core.sDef };
     const unitPower = computePower(core, {}, config.power);
@@ -259,7 +270,7 @@ export function buildEnemyTeam(enemies: StageEnemy[], config: GameConfig): Built
       name: species.name,
       speciesId: enemy.speciesId,
       className: species.className,
-      stage: formIndex(species.stars, enemy.stars),
+      stage: formIndex(species.stars, star),
       power: unitPower,
     });
     power += unitPower;
