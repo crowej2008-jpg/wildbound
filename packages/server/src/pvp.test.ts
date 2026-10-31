@@ -206,12 +206,12 @@ describe('Arena (server glue)', () => {
     expect(buildArenaRankingsView(cfg, state, NOW).entries).toEqual(view.entries);
   });
 
-  it('fills the PvP slice when migrating an older save', () => {
+  it('fills a missing PvP slice when a save loads', () => {
     const cfg = config();
     const state = createInitialState(cfg);
     const withoutPvp = { ...state } as Record<string, unknown>;
     delete withoutPvp.pvp;
-    const raw = { version: SAVE_VERSION - 1, state: withoutPvp };
+    const raw = { version: SAVE_VERSION, state: withoutPvp };
     const migrated = migrateSave(raw, NOW, cfg);
     expect(migrated.ok).toBe(true);
     if (!migrated.ok) return;
