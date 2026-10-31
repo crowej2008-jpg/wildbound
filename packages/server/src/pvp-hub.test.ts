@@ -117,12 +117,12 @@ describe('PvP hub (M10.5)', () => {
     expect(hub.value.cards.filter((c) => c.live)).toHaveLength(3);
   });
 
-  it('fills the hub for a pre-M10 save (migration)', () => {
+  it('fills the hub for a save missing its PvP slice', () => {
     const cfg = config();
     const base = createInitialState(cfg);
     const withoutPvp = { ...base } as Record<string, unknown>;
     delete withoutPvp.pvp;
-    const migrated = migrateSave({ version: SAVE_VERSION - 1, state: withoutPvp }, NOW, cfg);
+    const migrated = migrateSave({ version: SAVE_VERSION, state: withoutPvp }, NOW, cfg);
     expect(migrated.ok).toBe(true);
     if (!migrated.ok) return;
     expect(buildPvpHubView(cfg, migrated.value, NOW).cards).toHaveLength(6);

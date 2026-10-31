@@ -180,7 +180,15 @@ import { buildVipView, claimVipDailyAction, vipIdleCapMinutes } from './vip';
 import { activateTitleAction, buildTitlesView, setTitleSlotAction } from './titles';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
-import { BACKUP_KEY, createInitialState, parseSave, SAVE_KEY, serializeSave } from './save';
+import {
+  BACKUP_KEY,
+  createInitialState,
+  freshStartMail,
+  parseSave,
+  RETIRED_KEY,
+  SAVE_KEY,
+  serializeSave,
+} from './save';
 import type { SaveStore } from './storage';
 
 /**
@@ -1385,7 +1393,20 @@ export class LocalServer implements GameServer {
       const recovered = parseSave(backup, this.config.now(), this.config);
       if (recovered.ok) return this.accept(recovered.value);
     }
+    if (parsed.error === 'outdated_save') return this.startFresh(raw);
     return fail('corrupt_save', parsed.message);
+  }
+
+  /** Replace a save that predates MIN_SAVE_VERSION: keep it under RETIRED_KEY, start a new account. */
+  private async startFresh(retired: string): Promise<Result<AccountState>> {
+    await this.store.write(RETIRED_KEY, retired);
+    await this.store.remove(BACKUP_KEY);
+    const fresh = createInitialState(this.config);
+    fresh.mail = [freshStartMail(this.config, this.config.now()), ...fresh.mail];
+    // Write directly: persist() would copy the retired save into BACKUP_KEY.
+    await this.store.write(SAVE_KEY, serializeSave(fresh));
+    this.state = fresh;
+    return ok(fresh);
   }
 
   /** Normalize a loaded state (daily reset, mail prune) and cache/persist it. */

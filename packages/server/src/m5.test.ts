@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { buildConfig, type GameConfig } from './config';
 import { LocalServer } from './local-server';
 import { MemoryStore } from './storage';
-import { migrateSave, SAVE_VERSION } from './save';
+import { migrateSave } from './save';
 
 const START = Date.parse('2026-01-01T00:00:00Z');
 
@@ -194,7 +194,7 @@ describe('LocalServer M5 tutorial and debug clock', () => {
 });
 
 describe('save migration', () => {
-  it('upgrades a v1 save to v2 with default M5 slices', () => {
+  it('refuses a v1 save as outdated since the source-retrofit reset', () => {
     const v1 = {
       version: 1,
       state: {
@@ -208,12 +208,8 @@ describe('save migration', () => {
       },
     };
     const migrated = migrateSave(v1, START);
-    expect(migrated.ok).toBe(true);
-    if (!migrated.ok) return;
-    expect(migrated.value.schemaVersion).toBe(SAVE_VERSION);
-    expect(migrated.value.campaign.stars).toEqual({});
-    expect(migrated.value.mail).toEqual([]);
-    expect(migrated.value.tutorial.done).toBe(false);
-    expect(migrated.value.quests.day).toBe('2026-01-01');
+    expect(migrated.ok).toBe(false);
+    if (!migrated.ok) expect(migrated.error).toBe('outdated_save');
   });
+});
 });

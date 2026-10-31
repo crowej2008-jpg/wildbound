@@ -46,6 +46,7 @@ export type ServerError =
   | 'resource_locked'
   | 'invalid_input'
   | 'corrupt_save'
+  | 'outdated_save'
   | 'not_found'
   | 'evolution_blocked'
   | 'invalid_squad'

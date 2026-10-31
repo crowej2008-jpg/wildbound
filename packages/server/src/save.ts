@@ -34,10 +34,18 @@ import {
 import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
-/** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 17;
+/** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
+export const SAVE_VERSION = 18;
+/**
+ * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
+ * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
+ * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
+ * account and keeps the old save under RETIRED_KEY.
+ */
+export const MIN_SAVE_VERSION = 18;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
+export const RETIRED_KEY = 'wildbound.account.retired';
 
 function currenciesFrom(source: Record<string, number>): Record<CurrencyId, number> {
   const out = {} as Record<CurrencyId, number>;
@@ -170,6 +178,18 @@ function welcomeMail(config: GameConfig, now: number): MailItem {
   });
 }
 
+/** Told to a player whose save was older than MIN_SAVE_VERSION and was replaced by a fresh account. */
+export function freshStartMail(config: GameConfig, now: number): MailItem {
+  return createMail({
+    id: 'mail_fresh_start',
+    subjectKey: 'mail.freshStart.subject',
+    bodyKey: 'mail.freshStart.body',
+    grants: {},
+    createdAt: now,
+    ttlMs: Math.round(config.economy.mailTtlHours * 3_600_000),
+  });
+}
+
 /** A fresh account seeded from content (starting currencies + roster). */
 export function createInitialState(config: GameConfig): AccountState {
   const now = config.now();
@@ -241,6 +261,12 @@ export function migrateSave(raw: unknown, now: number = Date.now(), config?: Gam
   const version = typeof envelope.version === 'number' ? envelope.version : NaN;
   if (!Number.isFinite(version)) return fail('corrupt_save', 'save has no version');
   if (version > SAVE_VERSION) return fail('corrupt_save', `save version ${version} is newer than supported ${SAVE_VERSION}`);
+  if (version < MIN_SAVE_VERSION) {
+    return fail(
+      'outdated_save',
+      `This save is from an older version of Wildbound (v${version}) and can't be loaded after the source update. Start a new game.`,
+    );
+  }
   const state = envelope.state;
   if (state === null || typeof state !== 'object') return fail('corrupt_save', 'save is missing required account fields');
   // When migrating from old incomplete shapes, be lenient and fill defaults

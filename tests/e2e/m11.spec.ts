@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { E2E_SAVE_VERSION } from './save-version';
 
 /**
  * M11.0: the Wild screen's gear tabs exist, show a real stat sheet, and equipping
@@ -15,7 +16,7 @@ interface SaveOptions {
 
 function grownSave({ roster = ROSTER, currencies = {}, profile = {} }: SaveOptions = {}): string {
   return JSON.stringify({
-    version: 6,
+    version: E2E_SAVE_VERSION,
     state: {
       profile: { name: 'Gear Tester', level: 1, xp: 0, ...profile },
       roster: roster.map((speciesId, index) => ({

@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { E2E_SAVE_VERSION } from './save-version';
 
 /** M13.2: a 7-1 save opens Sky Pillar, sweeps, claims and challenges. */
 
@@ -17,7 +18,7 @@ function skySave(): string {
   const stars: Record<string, number> = {};
   for (let stage = 1; stage <= 10; stage += 1) stars[`1:${stage}`] = 3;
   return JSON.stringify({
-    version: 16,
+    version: E2E_SAVE_VERSION,
     state: {
       profile: { name: 'Sky Tester', level: 50, xp: 0 },
       roster,

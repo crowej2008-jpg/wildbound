@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { E2E_SAVE_VERSION } from './save-version';
 
 /**
  * M13.0a campaign volume and the first Victory Road gate. A minimal grown save
@@ -27,7 +28,7 @@ function grownSave(): string {
     acquiredAt: 0,
   }));
   return JSON.stringify({
-    version: 6,
+    version: E2E_SAVE_VERSION,
     state: {
       profile: { name: 'Gate Tester', level: 1, xp: 0 },
       roster,

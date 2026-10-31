@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { E2E_SAVE_VERSION } from './save-version';
 
 /**
  * M10.2 Arena (PROMPT §7.7). Fresh contexts start with a brand-new account, so
@@ -27,7 +28,7 @@ function grownSave(stars: Record<string, number> = { 'c2-10': 3 }): string {
     acquiredAt: 0,
   }));
   return JSON.stringify({
-    version: 6,
+    version: E2E_SAVE_VERSION,
     state: {
       profile: { name: 'Arena Tester', level: 1, xp: 0 },
       roster,

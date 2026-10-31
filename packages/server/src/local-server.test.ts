@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { buildConfig } from './config';
 import { LocalServer } from './local-server';
 import { MemoryStore } from './storage';
-import { SAVE_KEY } from './save';
+import { BACKUP_KEY, createInitialState, RETIRED_KEY, SAVE_KEY } from './save';
 
 function server(): { store: MemoryStore; srv: LocalServer } {
   const store = new MemoryStore();
@@ -19,6 +19,22 @@ describe('LocalServer', () => {
     expect(view.value.floors).toHaveLength(180);
     expect(view.value.detail?.stages).toHaveLength(10);
     expect(view.value.unlocked).toBe(false);
+  });
+
+  it('retires a save older than MIN_SAVE_VERSION and starts a fresh account', async () => {
+    const { store, srv } = server();
+    const old = JSON.stringify({ version: 17, state: createInitialState(buildConfig()) });
+    await store.write(SAVE_KEY, old);
+    await store.write(BACKUP_KEY, old);
+    const loaded = await srv.loadAccount();
+    expect(loaded.ok).toBe(true);
+    if (!loaded.ok) return;
+    expect(loaded.value.state.mail[0]?.id).toBe('mail_fresh_start');
+    expect(await store.read(RETIRED_KEY)).toBe(old);
+    expect(await store.read(BACKUP_KEY)).toBeNull();
+    const imported = await srv.importSave(old);
+    expect(imported.ok).toBe(false);
+    if (!imported.ok) expect(imported.error).toBe('outdated_save');
   });
 
   it('seeds a fresh account on first load', async () => {

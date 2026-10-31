@@ -401,6 +401,9 @@ export const en = {
   'mail.expires': 'Expires',
   'mail.welcome.subject': 'Welcome to Wildbound',
   'mail.welcome.body': 'Thanks for joining! Here is a starter kit to help you grow your first squad.',
+  'mail.freshStart.subject': 'A fresh start',
+  'mail.freshStart.body':
+    'Wildbound was rebuilt to match the original game, so saves from before the update were retired and you are starting a new account.',
   'mail.chapter.subject': 'Chapter cleared!',
   'mail.chapter.body': 'You cleared a full chapter. Here is a bonus reward — keep going!',
   'mail.arena.subject': 'Arena Rewards',

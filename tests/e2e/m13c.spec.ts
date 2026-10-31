@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { E2E_SAVE_VERSION } from './save-version';
 
 /** M13.1: a cleared c1-10 save opens the Pet Home merge board and its shops. */
 
@@ -15,7 +16,7 @@ function homeSave(): string {
     acquiredAt: 0,
   }));
   return JSON.stringify({
-    version: 6,
+    version: E2E_SAVE_VERSION,
     state: {
       profile: { name: 'Home Tester', level: 50, xp: 0 },
       roster,
