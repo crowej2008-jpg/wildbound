@@ -24,7 +24,24 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm check
+      - name: pnpm check
+        run: |
+          set -o pipefail
+          pnpm check 2>&1 | tee check.log
+      # Cloud agents can read annotations through the GitHub API but not raw logs, so publish a short
+      # summary (test counts on success, the tail of the log on failure) as an annotation.
+      - name: Summary for agents
+        if: always()
+        run: |
+          [ -f check.log ] || exit 0
+          sed -i 's/\x1b\[[0-9;]*[A-Za-z]//g' check.log
+          summary=$(grep -E 'Test Files|Tests +[0-9]|content:validate|PASS|[0-9]+ passed|[0-9]+ failed|[0-9]+ flaky|error TS|✖|problems?' check.log | tail -20)
+          tailtxt=$(tail -60 check.log)
+          enc() { python3 -c 'import sys,urllib.parse;print(sys.stdin.read().replace("%","%25").replace("\r","").replace("\n","%0A"))'; }
+          echo "::notice title=check summary::$(printf '%s' "$summary" | enc)"
+          if [ "${{ job.status }}" != "success" ]; then
+            echo "::error title=check log tail::$(printf '%s' "$tailtxt" | enc)"
+          fi
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
