@@ -19,7 +19,6 @@ updated: 2026-10-31
 | 8 | Friend feedback on the M13 plan — not yet turned into a change list. | — | Claude chats |
 
 ## Repo docs that are out of date (lint, 2026-10-31)
-- `README.md` says current milestone **M5/M6**; reality is M13.3.
 - `PROMPT.md` §1 still says "about 36 original creatures"; the roster is 84 Pokémon.
 - `docs/ASSUMPTIONS.md` #41 refine ladder (1,1,2,3,4,5,6,8…) is superseded by the owner's
   free-then-1,1,2,2…10 ladder ([decision](decisions/resetter-shards-and-refine.md)).

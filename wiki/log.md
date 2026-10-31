@@ -21,3 +21,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-10-31] lint | First health check
 - Found the out-of-date repo docs listed in [open questions](open-questions.md) (README milestone,
   PROMPT §1 roster size, ASSUMPTIONS #41 ladder, design README plan list, M11 plan vs built).
+
+## [2026-10-31] update | README refreshed, wiki merged to main
+- `README.md` now points to `wiki/index.md`, shows the real status (M13, next 13.3) and the
+  84-Pokémon roster; removed from the stale-docs list in [open questions](open-questions.md).
