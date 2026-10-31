@@ -45,15 +45,14 @@ function grownState(cfg: ReturnType<typeof config>, strategy?: StrategyId): Acco
 }
 
 /**
- * A sparring wall: one very tough, low-threat enemy (20★ at level 80) that a grown
- * squad cannot one-shot but who barely scratches it — so the fight runs several
- * rounds and every action policy actually gets a turn.
+ * A sparring wall: the same six species at their top star and the squad's level (R1: under the
+ * source stat formula a lone wall dies or wins in one round), so the fight runs several rounds and
+ * every action policy actually gets a turn.
  */
 function wallEnemies(cfg: ReturnType<typeof config>) {
   // R1: one of the starters themselves (top star, lower level) so it can neither one-shot the
   // grown squad nor be one-shot by it under the source stat formula.
-  const speciesId = cfg.startingRoster[0]!;
-  return [{ speciesId, level: 80, stars: 20, stage: 2 }];
+  return cfg.startingRoster.map((speciesId) => ({ speciesId, level: 140, stars: 20, stage: 2 }));
 }
 
 describe('PvP hub (M10.5)', () => {

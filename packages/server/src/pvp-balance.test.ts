@@ -11,7 +11,7 @@ import {
 import { buildConfig, type GameConfig } from './config';
 import { createInitialState } from './save';
 import { resolveCurve } from './pve/shared';
-import { modeBattle } from './battle';
+import { enemyStar, modeBattle } from './battle';
 
 /**
  * PvP balance regression (M10.6 — PROMPT §7.7, §13 "statistical tests").
@@ -47,12 +47,13 @@ function makeConfig(): GameConfig {
 /** `_stage` is kept for the call sites' readability; since R1 the star alone decides the form. */
 function squad(config: GameConfig, level: number, stars: number, _stage: number): AccountState {
   const base = createInitialState(config);
-  const roster = base.roster.map((wild, index) => ({
-    ...wild,
-    level,
-    stars,
-    speciesId: STARTERS[index] ?? wild.speciesId,
-  }));
+  const roster = base.roster.map((wild, index) => {
+    const speciesId = STARTERS[index] ?? wild.speciesId;
+    // R1: `stars` here keeps the pre-retrofit meaning (1★ = a fresh copy), like the ghosts' legacy
+    // stars (battle.ts enemyStar), so both sides count up from their species' first star.
+    const meta = config.species.get(speciesId)!;
+    return { ...wild, level, stars: enemyStar(meta, stars), speciesId };
+  });
   const ids: Squad = roster.map((wild) => wild.id);
   return { ...base, roster, squads: { ...base.squads, arenaAttack: ids } };
 }
