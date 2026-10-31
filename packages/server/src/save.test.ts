@@ -199,6 +199,27 @@ describe('save codec', () => {
     expect(typeof result.value.petHome.summonDay).toBe('string');
   });
 
+  it('adds the Sky Pillar slice and squad mode when a v16 save loads', () => {
+    const now = Date.UTC(2026, 9, 30);
+    const state = createInitialState(config);
+    const raw = state as unknown as Record<string, unknown>;
+    delete raw.skyPillar;
+    const squads = { ...(raw.squads as Record<string, unknown>) };
+    delete squads.skyPillar;
+    const result = migrateSave(
+      { version: 16, state: { ...raw, schemaVersion: 16, squads } },
+      now,
+      config,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.schemaVersion).toBe(SAVE_VERSION);
+    expect(result.value.skyPillar.proofs).toBe(6);
+    expect(result.value.skyPillar.stars).toEqual({});
+    expect(result.value.skyPillar.lastProofAt).toBe(now);
+    expect(result.value.squads.skyPillar).toHaveLength(6);
+  });
+
   it('rejects malformed JSON and missing fields', () => {
     expect(parseSave('{ not json').ok).toBe(false);
     expect(parseSave('{}').ok).toBe(false);
@@ -208,6 +229,9 @@ describe('save codec', () => {
     const petHome = { ...(raw.petHome as Record<string, unknown>) };
     delete petHome.nextPetSeq;
     expect(migrateSave({ version: SAVE_VERSION, state: { ...raw, petHome } }).ok).toBe(false);
+    const skyPillar = { ...(raw.skyPillar as Record<string, unknown>) };
+    delete skyPillar.claimedChests;
+    expect(migrateSave({ version: SAVE_VERSION, state: { ...raw, skyPillar } }).ok).toBe(false);
   });
 
   it('rejects a save from a newer schema version', () => {

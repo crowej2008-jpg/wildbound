@@ -51,6 +51,7 @@ export type BattleModeLabel =
   | 'campaignStage'
   | 'gymGate'
   | 'towerFloor'
+  | 'skyPillarStage'
   | 'trial'
   | 'worldBossFight'
   | 'dungeon'

@@ -16,6 +16,7 @@ import LinkCrystal from './pages/LinkCrystal';
 import Mail from './pages/Mail';
 import More from './pages/More';
 import PetHome from './pages/PetHome';
+import SkyPillar from './pages/SkyPillar';
 import PveTower from './pages/PveTower';
 import PveTrials from './pages/PveTrials';
 import Pvp from './pages/Pvp';
@@ -49,6 +50,7 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/explore/pet-home" element={<PetHome />} />
+        <Route path="/explore/sky-pillar" element={<SkyPillar />} />
         <Route path="/explore/:id" element={<ExploreMode />} />
         <Route path="/campaign" element={<Campaign />} />
         <Route path="/idle" element={<Idle />} />

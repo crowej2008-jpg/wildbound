@@ -26,5 +26,6 @@ Status:
 - M10 (design): `pvp.md` (Arena credits, ghosts and weekly settlement via Mail; the Ranked ladder with
   promotion matches, faction weather and best-of-3; live squad strategies; and the M10.6 measured
   balance pass with its tier-banded ghost pools).
-- M13 (design): `explore.md` (the hub, gates, server-day clock and resets) and `pet-home.md` (the
-  merge board, 17 Home levels, lazy 8-hour income, summons, level rewards and the two shops).
+- M13 (design): `explore.md` (the hub, gates, server-day clock and resets), `pet-home.md` (the
+  merge board, 17 Home levels, lazy 8-hour income, summons, level rewards and the two shops) and
+  `sky-pillar.md` (180 floors x 10 stages, proofs, star grades, sweeps and chests).

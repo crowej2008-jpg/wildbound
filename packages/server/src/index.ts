@@ -16,6 +16,7 @@ import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import type { ExploreView } from './explore-view';
 import type { PetHomeView } from './pet-home-view';
+import type { SkyPillarView } from './sky-pillar-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -150,6 +151,27 @@ export interface WorldBossBattleResult {
   rank: number;
   ghosts: number[];
   attemptsLeft: number;
+  snapshot: AccountSnapshot;
+}
+
+/** A Sky Pillar stage (M13.2): graded stars and the first-clear payout. */
+export interface SkyPillarBattleResult {
+  battle: BattleView;
+  floor: number;
+  stage: number;
+  win: boolean;
+  stars: number;
+  bestStars: number;
+  firstClear: boolean;
+  rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** A Sky Pillar sweep (M13.2): the highest 3-star record's half payout. */
+export interface SkyPillarSweepResult {
+  floor: number;
+  stage: number;
+  granted: Rewards;
   snapshot: AccountSnapshot;
 }
 
@@ -338,6 +360,14 @@ export interface GameServer {
   buyPetHomeShopOffer(shopId: 'home' | 'deluxe', offerId: string): Promise<Result<ClaimResult>>;
   /** Spend gems for a fresh nine-offer shop page. */
   refreshPetHomeShop(shopId: 'home' | 'deluxe'): Promise<Result<AccountSnapshot>>;
+  /** Display-ready Sky Pillar: proofs, all floors and the selected floor (M13.2). */
+  getSkyPillar(floor?: number): Promise<Result<SkyPillarView>>;
+  /** Challenge a Sky Pillar stage; a first clear spends one Proof of Sky. */
+  challengeSkyPillar(floor: number, stage: number, seed?: number): Promise<Result<SkyPillarBattleResult>>;
+  /** Sweep the highest 3-star stage for its half payout (one proof). */
+  sweepSkyPillar(): Promise<Result<SkyPillarSweepResult>>;
+  /** Claim a reached 10/20/30-star floor chest once. */
+  claimSkyPillarChest(floor: number, stars: number): Promise<Result<ClaimResult>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -391,6 +421,8 @@ export * from './pvp-hub-view';
 export * from './explore-view';
 export * from './pet-home';
 export * from './pet-home-view';
+export * from './sky-pillar';
+export * from './sky-pillar-view';
 export * from './plates';
 export * from './trinkets';
 export * from './vip';

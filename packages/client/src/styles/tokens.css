@@ -849,3 +849,53 @@ a.btn { display: inline-flex; align-items: center; text-decoration: none; }
 }
 .pet-home-help { margin-top: var(--space-3); }
 .pet-home-help summary { cursor: pointer; font-weight: 600; font-size: var(--text-sm); }
+
+/* M13.2 - Sky Pillar */
+.btn-sm { padding: 4px 8px; font-size: var(--text-xs); }
+.sky-summary { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.sky-summary > span { display: flex; flex-direction: column; gap: 2px; min-width: 120px; }
+.sky-summary strong { font-size: var(--text-sm); }
+.sky-wing { padding-bottom: var(--space-2); }
+.sky-floor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: var(--space-2); }
+.sky-floor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 3px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 10px;
+}
+.sky-floor:hover { border-color: var(--color-accent); }
+.sky-floor.is-selected { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+.sky-floor.is-cleared { background: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg)); }
+.sky-floor.is-locked { opacity: 0.5; border-style: dashed; }
+.sky-floor-number { font-size: var(--text-sm); font-weight: 700; }
+.sky-floor-stars { color: var(--color-text-muted); white-space: nowrap; }
+.sky-detail { display: flex; flex-direction: column; gap: var(--space-2); }
+.sky-chests { display: flex; flex-direction: column; gap: var(--space-2); }
+.sky-chest { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.sky-chest .reward-line { flex: 1; min-width: 0; }
+.sky-stages { display: flex; flex-direction: column; gap: var(--space-2); }
+.sky-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  background: var(--color-bg);
+}
+.sky-stage.is-locked { opacity: 0.6; }
+.sky-stage-head { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.sky-stage-head strong { flex: 1; }
+.sky-stage-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); font-size: var(--text-xs); }
+.sky-stage-meta .reward-line { display: inline-flex; gap: 2px; }
+.sky-conditions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-1); font-size: var(--text-xs); }
+.sky-stars { letter-spacing: 1px; color: var(--color-text-muted); white-space: nowrap; }
+.sky-stars.is-earned { color: var(--color-accent); }
+.sky-sweep-result { display: flex; flex-direction: column; gap: var(--space-1); margin-top: var(--space-2); }

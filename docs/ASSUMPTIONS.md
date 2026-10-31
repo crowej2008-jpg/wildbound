@@ -691,3 +691,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     (Orb Atelier) opens at Home Lv 10 and pays in Orb Essence; Home Exchange pays in Home Coins.
     *What would change it:* the source evidence shows separate per-shop counters, or the owner asks
     for one shared page instead.
+46. **Sky Pillar follows the source's 180x10 shape with an 80-level gate cap (2026-10-31).** Six
+    30-floor wings, ten stages per floor, two extra star conditions per stage, 10/20/30-star floor
+    chests and six Proofs of Sky recharging every 480 minutes. The source's player-level gates run to
+    200; this build caps trainer level at 80, so the last floors ask for 80. The visible 15-turn
+    counter is a loss on time-out (`BattleRules.roundLimit`, used only here). A first clear costs one
+    proof; re-challenging a passed stage is free; a sweep costs one proof and pays the highest
+    3-star record's half reward. Save **v17** adds `skyPillar` and the `skyPillar` squad mode; v16
+    and older saves migrate with a fresh slice and an empty squad. *What would change it:* a raised
+    trainer-level cap, source-exact gate numbers, or owner approval for a different sweep rule.

@@ -85,6 +85,7 @@ export {
   CAMPAIGN,
   EXPLORE,
   PET_HOME,
+  SKY_PILLAR,
   GACHA_TUNING,
   COLLECTION_TUNING,
 } from './tuning';
@@ -95,9 +96,17 @@ export type {
   ExploreModeJson,
   ExploreGateJson,
   PetHomeJson,
+  SkyPillarJson,
 } from './tuning';
 export { collectionTuningSchema } from './collection-schema';
 export { petHomeSchema } from './pet-home-schema';
+export { skyPillarSchema } from './sky-pillar-schema';
+export type {
+  SkyPillarConditionJson,
+  SkyPillarStageJson,
+  SkyPillarChestJson,
+  SkyPillarFloorJson,
+} from './sky-pillar-schema';
 export type {
   PetHomeLevelJson,
   PetHomeTileJson,

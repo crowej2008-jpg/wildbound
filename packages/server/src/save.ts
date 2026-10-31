@@ -4,6 +4,7 @@ import {
   dayKey,
   weekKey,
   defaultStrategies,
+  SQUAD_MODES,
   emptyQuestState,
   emptySquads,
   emptyStartingEquipment,
@@ -17,11 +18,15 @@ import {
   initialShopState,
   initialTitles,
   initialVip,
+  initialSkyPillar,
   TITLE_SLOTS,
   type AccountState,
   type CurrencyId,
   type MailItem,
   type ResonanceState,
+  type SkyPillarState,
+  type Squad,
+  type SquadMode,
   type TitleOwnership,
   type TitlesState,
   type WildInstance,
@@ -30,7 +35,7 @@ import { fail, ok, type Result } from './index';
 import type { GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades older saves. */
-export const SAVE_VERSION = 16;
+export const SAVE_VERSION = 17;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 
@@ -96,7 +101,22 @@ function normalizeTitles(
   return { owned, equipped };
 }
 
-/** Fill any missing slices on an older save (v1–v12 → current). */
+/** Fill every squad mode and strategy, including modes added after an old save. */
+function normalizeSquads(
+  source: Partial<Record<SquadMode, Squad>> | undefined,
+): Record<SquadMode, Squad> {
+  const base = emptySquads();
+  for (const mode of SQUAD_MODES) {
+    const slots = source?.[mode];
+    if (!Array.isArray(slots)) continue;
+    base[mode] = base[mode].map((_, index) =>
+      typeof slots[index] === 'string' ? (slots[index] as string) : null,
+    );
+  }
+  return base;
+}
+
+/** Fill any missing slices on an older save (v1–v16 → current). */
 function withDefaults(state: AccountState, now: number, config: GameConfig): AccountState {
   const s = state as Partial<AccountState>;
   const day = dayKey(now);
@@ -110,6 +130,8 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     ...state,
     schemaVersion: SAVE_VERSION,
     serverEpoch,
+    squads: normalizeSquads(s.squads),
+    strategies: { ...defaultStrategies(), ...(s.strategies ?? {}) },
     currencies: currenciesFrom(s.currencies ?? {}),
     campaign: {
       stars: s.campaign?.stars ?? {},
@@ -131,6 +153,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     petHome: s.petHome ?? initialPetHome(now, day),
+    skyPillar: s.skyPillar ?? initialSkyPillar(now, config?.skyPillar),
     debugClockOffset: s.debugClockOffset ?? 0,
   };
 }
@@ -192,6 +215,7 @@ export function createInitialState(config: GameConfig): AccountState {
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     petHome: initialPetHome(now, day),
+    skyPillar: initialSkyPillar(now, config.skyPillar),
     debugClockOffset: 0,
   };
 }
@@ -242,6 +266,7 @@ function isAccountState(value: unknown): value is AccountState {
   if (!s.squads || typeof s.squads !== 'object') return false;
   if (!s.currencies || typeof s.currencies !== 'object') return false;
   if (!isPetHome(s.petHome)) return false;
+  if (!isSkyPillar(s.skyPillar)) return false;
   if (typeof s.nextInstanceSeq !== 'number') return false;
   return true;
 }
@@ -264,6 +289,19 @@ function isPetHome(value: unknown): value is AccountState['petHome'] {
   if (!Array.isArray(home.album) || !home.album.every((id) => typeof id === 'string')) return false;
   if (typeof home.shopRefreshes !== 'number') return false;
   if (!Array.isArray(home.shopBought) || !home.shopBought.every((id) => typeof id === 'string')) {
+    return false;
+  }
+  return true;
+}
+
+function isSkyPillar(value: unknown): value is SkyPillarState {
+  if (value === null || typeof value !== 'object') return false;
+  const sky = value as Partial<SkyPillarState>;
+  if (typeof sky.proofs !== 'number' || !Number.isFinite(sky.proofs)) return false;
+  if (typeof sky.lastProofAt !== 'number' || !Number.isFinite(sky.lastProofAt)) return false;
+  if (!sky.stars || typeof sky.stars !== 'object') return false;
+  if (!Object.values(sky.stars).every((stars) => typeof stars === 'number')) return false;
+  if (!Array.isArray(sky.claimedChests) || !sky.claimedChests.every((key) => typeof key === 'string')) {
     return false;
   }
   return true;

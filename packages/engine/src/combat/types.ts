@@ -521,6 +521,11 @@ export interface BattleRules {
   /** Ultimates never fire; the turn falls back to a normal/basic skill. */
   noUltimate?: boolean;
   /**
+   * The loop is capped at this many big rounds. Unlike `survivalRounds`, a
+   * time-out is a loss; Sky Pillar uses the source's 15-turn counter.
+   */
+  roundLimit?: number;
+  /**
    * The loop is capped at this many big rounds and the time-out flips: the
    * attackers win if any of them is still alive when the rounds run out.
    */

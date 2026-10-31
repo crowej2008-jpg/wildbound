@@ -94,4 +94,12 @@ describe('runBattle', () => {
     const survival = runBattle({ attackers, defenders, seed: 5, deterministic: true, rules: { survivalRounds: 5 } });
     expect(survival.winner).toBe('defenders');
   });
+
+  it('M13 roundLimit: a time-out is a loss even with survivors', () => {
+    const attackers = [spec({ id: 'a', side: 'attackers', position: 1, kit: weakKit(), sheet: sheet({ hp: 5000, pAtk: 50, spd: 200 }) })];
+    const defenders = [spec({ id: 'd', side: 'defenders', position: 4, kit: weakKit(), sheet: sheet({ hp: 200000 }) })];
+    const limited = runBattle({ attackers, defenders, seed: 5, deterministic: true, rules: { roundLimit: 5 } });
+    expect(limited.winner).toBe('defenders');
+    expect(limited.rounds).toBe(5);
+  });
 });

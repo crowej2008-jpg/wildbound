@@ -17,6 +17,7 @@ import {
   PVP,
   TITLES,
   PET_HOME,
+  SKY_PILLAR,
 } from '@wildbound/content';
 import {
   CHARMS,
@@ -38,6 +39,7 @@ import type {
   ExploreJson,
   GymJson,
   PetHomeJson,
+  SkyPillarJson,
   PveJson,
   PvpJson,
   TitlesJson,
@@ -100,6 +102,8 @@ export interface GameConfig {
   explore: ExploreJson;
   /** M13.1: Pet Home merge-board levels, tiles, income and shops. */
   petHome: PetHomeJson;
+  /** M13.2: Sky Pillar floors, stages, star conditions and proofs. */
+  skyPillar: SkyPillarJson;
   quests: QuestDef[];
   gacha: { machines: GachaMachineDef[] };
   shops: ShopDef[];
@@ -166,6 +170,7 @@ export function buildConfig(): GameConfig {
     gymById: new Map(GYMS.map((gym) => [gym.id, gym])),
     explore: EXPLORE,
     petHome: PET_HOME,
+    skyPillar: SKY_PILLAR,
     quests: QUESTS,
     gacha: { machines: GACHA.machines as unknown as GachaMachineDef[] },
     shops: SHOPS as unknown as ShopDef[],

@@ -961,3 +961,32 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - **Docs.** `docs/design/pet-home.md`, `docs/design/explore.md`, SCOPE's M13 plan and ASSUMPTIONS
   44-45.
 - **Next:** 13.2 - Sky Pillar (1,800 stages, daily resets).
+
+## M13.2 - Sky Pillar (2026-10-31)
+
+- **Scope.** Replaced the Sky Pillar shell with the live 180-floor x 10-stage climb across six
+  30-floor wings. Every stage is graded up to 3 stars: the clear plus two of "knockouts at most",
+  "every survivor above N% HP" and "rounds at most". Each floor carries 10/20/30-star chests.
+  Proofs of Sky recharge every 8 hours (cap 6), a first clear costs one proof, a passed stage can be
+  re-challenged free, and a sweep costs one proof for the highest 3-star record's half reward.
+- **Data.** `packages/content/tuning/sky-pillar.json` holds the 1,800 stages, six wing names, floor
+  level gates, faction pools, star conditions and chests, generated once by
+  `scripts/generate-sky-pillar.mjs`. Counts and shapes follow the source; every name, number,
+  condition and reward is original. `skyPillarSchema` and `content:validate` check floor order,
+  wing size, stage count, ascending gates, 10/20/30 chests and real factions.
+- **Rules.** `packages/engine/src/sky-pillar/` owns lazy proof recharge (the cap stops the clock, not
+  the purse), proof spending, stage/floor unlocks, best-star records, 3-star sweep selection and
+  chest eligibility. `BattleRules.roundLimit` adds the source's 15-turn counter as a time-out loss
+  (Sky Pillar only). The `skyPillar` squad mode and strategy default were added.
+- **Server/save.** `sky-pillar.ts` binds gates, enemies, battles, star grading, rewards and chests;
+  `sky-pillar-view.ts` is a pure view with all 180 floor summaries and one selected floor's cards.
+  Save **v17** adds `skyPillar`; v16 and older saves migrate with a fresh slice, and missing
+  `skyPillar` squad slots are filled. Every write rejects an unopened 7-1 gate.
+- **Screen.** `/explore/sky-pillar` shows the proof purse and countdown, next stage, six wing grids,
+  a floor detail with stage conditions, sweep, challenge/re-challenge, floor chests and a locked
+  gate checklist. The Explore card is live.
+- **Tests.** +4 content tests, +5 engine tests (4 Sky Pillar + 1 round-limit), +9 server/view tests,
+  +2 save migration assertions, +1 LocalServer boundary test and +1 e2e flow. **510 unit tests / 64
+  files**; **90 e2e** green.
+- **Docs.** `docs/design/sky-pillar.md`, SCOPE's M13 plan, ASSUMPTIONS 46 and the design index.
+- **Next:** 13.3 - Hoopa's Vault (300 floors, Resetter Shard retrofit).

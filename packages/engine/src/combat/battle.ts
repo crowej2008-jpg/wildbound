@@ -60,8 +60,11 @@ export function runBattle(config: BattleConfig): BattleResult {
   for (const u of units) fireTriggers(ctx, u, 'battleStart');
 
   const survival = config.rules?.survivalRounds;
-  const maxRounds =
-    survival !== undefined ? Math.min(settings.maxRounds, Math.max(1, Math.floor(survival))) : settings.maxRounds;
+  const roundLimit = config.rules?.roundLimit;
+  const caps = [settings.maxRounds];
+  if (survival !== undefined) caps.push(Math.max(1, Math.floor(survival)));
+  if (roundLimit !== undefined) caps.push(Math.max(1, Math.floor(roundLimit)));
+  const maxRounds = Math.min(...caps);
 
   for (let bigRound = 1; bigRound <= maxRounds; bigRound += 1) {
     ctx.round = bigRound;

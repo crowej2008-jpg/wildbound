@@ -15,6 +15,7 @@ import type { WorldBossState } from '../pve/worldBoss';
 import type { DungeonState } from '../pve/dungeons';
 import type { LinkCrystalState } from '../pve/linkCrystal';
 import type { PetHomeState } from '../pet-home/types';
+import type { SkyPillarState } from '../sky-pillar/types';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -25,7 +26,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -33,6 +34,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'arenaDefence',
   'tower',
   'worldBoss',
+  'skyPillar',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -190,6 +192,8 @@ export interface AccountState {
   pvp: PvpState;
   /** M13.1: the Pet Home merge board, album and shop bookkeeping. */
   petHome: PetHomeState;
+  /** M13.2: Sky Pillar star records, proofs and floor chests. */
+  skyPillar: SkyPillarState;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }
@@ -315,6 +319,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     arenaDefence: emptySquad(),
     tower: emptySquad(),
     worldBoss: emptySquad(),
+    skyPillar: emptySquad(),
   };
 }
 
@@ -325,6 +330,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     arenaDefence: 'defensive',
     tower: 'balanced',
     worldBoss: 'aggressive',
+    skyPillar: 'balanced',
   };
 }
 

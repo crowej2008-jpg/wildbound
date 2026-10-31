@@ -10,6 +10,17 @@ function server(): { store: MemoryStore; srv: LocalServer } {
 }
 
 describe('LocalServer', () => {
+  it('loads a fresh account and exposes the Sky Pillar view through the server boundary', async () => {
+    const { srv } = server();
+    await expect(srv.loadAccount()).resolves.toMatchObject({ ok: true });
+    const view = await srv.getSkyPillar();
+    expect(view.ok).toBe(true);
+    if (!view.ok) return;
+    expect(view.value.floors).toHaveLength(180);
+    expect(view.value.detail?.stages).toHaveLength(10);
+    expect(view.value.unlocked).toBe(false);
+  });
+
   it('seeds a fresh account on first load', async () => {
     const { srv } = server();
     const loaded = await srv.loadAccount();

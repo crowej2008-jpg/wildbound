@@ -78,6 +78,8 @@ import {
   type Result,
   type ServerInfo,
   type ShopView,
+  type SkyPillarBattleResult,
+  type SkyPillarSweepResult,
   type StageBattleResult,
   type SummonResult,
   type TowerBattleResult,
@@ -88,6 +90,13 @@ import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldB
 import { buildExploreView } from './explore-view';
 import type { ExploreView } from './explore-view';
 import { buildPetHomeView, type PetHomeView } from './pet-home-view';
+import { buildSkyPillarView, type SkyPillarView } from './sky-pillar-view';
+import {
+  challengeSkyPillar as challengeSkyPillarAction,
+  claimSkyPillarChest as claimSkyPillarChestAction,
+  prepareSkyPillar,
+  sweepSkyPillar as sweepSkyPillarAction,
+} from './sky-pillar';
 import {
   buyShopOfferAction,
   claimLevelAction,
@@ -1075,6 +1084,76 @@ export class LocalServer implements GameServer {
     const outcome = refreshShopAction(this.config, loaded.value, this.now(loaded.value), shopId);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commit(outcome.value);
+  }
+
+  async getSkyPillar(floor?: number): Promise<Result<SkyPillarView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const now = this.now(state);
+    const prepared = prepareSkyPillar(this.config, state, now);
+    if (prepared.changed) {
+      const committed = await this.commit(prepared.state);
+      if (!committed.ok) return committed;
+    }
+    return ok(buildSkyPillarView(this.config, prepared.state, now, floor));
+  }
+
+  async challengeSkyPillar(
+    floor: number,
+    stage: number,
+    seed?: number,
+  ): Promise<Result<SkyPillarBattleResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const outcome = challengeSkyPillarAction(this.config, state, this.now(state), floor, stage, seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    let next = value.state;
+    if (value.win) {
+      next = this.withQuest(next, 'winBattle');
+      next = this.withTutorialAction(next, 'winStage');
+    }
+    next = consumeCharms(next, fielded(state, 'skyPillar').map((w) => w.id));
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      battle: value.battle,
+      floor: value.extra.floor,
+      stage: value.extra.stage,
+      win: value.win,
+      stars: value.extra.stars,
+      bestStars: value.extra.bestStars,
+      firstClear: value.extra.firstClear,
+      rewards: value.rewards,
+      snapshot: committed.value,
+    });
+  }
+
+  async sweepSkyPillar(): Promise<Result<SkyPillarSweepResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    const outcome = sweepSkyPillarAction(this.config, state, this.now(state));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const next = this.withQuest(outcome.value.state, 'sweepStage');
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      floor: outcome.value.floor,
+      stage: outcome.value.stage,
+      granted: outcome.value.granted,
+      snapshot: committed.value,
+    });
+  }
+
+  async claimSkyPillarChest(floor: number, stars: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimSkyPillarChestAction(this.config, loaded.value, floor, stars);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.reward);
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

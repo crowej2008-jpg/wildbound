@@ -10,6 +10,8 @@ import {
   exploreSchema,
   PET_HOME,
   petHomeSchema,
+  SKY_PILLAR,
+  skyPillarSchema,
   GYMS,
   contentManifest,
   economySchema,
@@ -86,6 +88,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'campaign.json': campaignSchema,
   'explore.json': exploreSchema,
   'pet-home.json': petHomeSchema,
+  'sky-pillar.json': skyPillarSchema,
   'economy.json': economySchema,
   'gacha.json': gachaSchema as AnySchema,
   'equipment.json': equipmentTuningSchema,
@@ -196,6 +199,7 @@ export function validateContent(repoRoot: string): ValidateReport {
   crossReferenceCampaign(species, stages, errors, checks);
   crossReferenceExplore(stages, errors, checks);
   crossReferencePetHome(errors, checks);
+  crossReferenceSkyPillar(species, errors, checks);
   if (stages.size > 0) checks.push(`campaign: ${stages.size} stage(s) validated`);
   if (quests.size > 0) checks.push(`quests: ${quests.size} daily quest(s) validated`);
   if (shops.size > 0) {
@@ -540,6 +544,75 @@ function crossReferencePetHome(errors: string[], checks: string[]): void {
   checks.push(
     `pet-home: ${levels.length} Home levels, ${tiles.length} tiles, ${homeRows}+${deluxeRows} shop rows validated`,
   );
+}
+
+/**
+ * Sky Pillar tuning (M13.2): 180 floors x 10 stages across six 30-floor wings.
+ * Every enemy faction must resolve to a real species, floor gates must ascend,
+ * and the 10/20/30-star chests must exist exactly once per floor.
+ */
+function crossReferenceSkyPillar(
+  species: Map<string, { file: string; data: SpeciesJson }>,
+  errors: string[],
+  checks: string[],
+): void {
+  const factions = new Set<string>([...species.values()].map((s) => s.data.faction));
+  const { floors, wings } = SKY_PILLAR;
+  if (floors.length !== 180) errors.push(`sky-pillar.json: ${floors.length} floors (want 180)`);
+  if (wings.length !== 6) errors.push(`sky-pillar.json: ${wings.length} wings (want 6)`);
+  const wingNames = new Set<string>();
+  for (const wing of wings) {
+    if (wingNames.has(wing.name)) errors.push(`sky-pillar.json: duplicate wing name "${wing.name}"`);
+    wingNames.add(wing.name);
+  }
+  let previousLevel = 0;
+  let previousFloor = 0;
+  let stages = 0;
+  for (const floor of floors) {
+    if (floor.floor !== previousFloor + 1) {
+      errors.push(`sky-pillar.json: floor ${floor.floor} is out of order`);
+    }
+    previousFloor = floor.floor;
+    const expectedWing = Math.floor((floor.floor - 1) / 30) + 1;
+    if (floor.wing !== expectedWing) {
+      errors.push(`sky-pillar.json: floor ${floor.floor} is in wing ${floor.wing} (want ${expectedWing})`);
+    }
+    if (floor.playerLevel < previousLevel) {
+      errors.push(`sky-pillar.json: floor ${floor.floor} lowers the player-level gate`);
+    }
+    previousLevel = floor.playerLevel;
+    if (floor.stages.length !== 10) {
+      errors.push(`sky-pillar.json: floor ${floor.floor} has ${floor.stages.length} stages (want 10)`);
+    }
+    if (floor.chests.map((chest) => chest.stars).join(',') !== '10,20,30') {
+      errors.push(`sky-pillar.json: floor ${floor.floor} chest stars are not 10/20/30`);
+    }
+    const seenStages = new Set<number>();
+    for (const stage of floor.stages) {
+      stages += 1;
+      if (stage.stage < 1 || stage.stage > 10 || seenStages.has(stage.stage)) {
+        errors.push(`sky-pillar.json: floor ${floor.floor} repeats or skips stage ${stage.stage}`);
+      }
+      seenStages.add(stage.stage);
+      if (stage.conditions.length !== 2) {
+        errors.push(`sky-pillar.json: floor ${floor.floor} stage ${stage.stage} needs 2 star conditions`);
+      }
+      const pass = stage.pass.potentialShard ?? 0;
+      const sweep = stage.sweep.potentialShard ?? 0;
+      if (pass <= 0) {
+        errors.push(`sky-pillar.json: floor ${floor.floor} stage ${stage.stage} pays no Potential Shard`);
+      }
+      if (sweep !== Math.floor(pass / 2)) {
+        errors.push(`sky-pillar.json: floor ${floor.floor} stage ${stage.stage} sweep is not half the pass`);
+      }
+    }
+    for (const faction of floor.enemy.factions) {
+      if (!factions.has(faction)) {
+        errors.push(`sky-pillar.json: floor ${floor.floor} references unknown faction "${faction}"`);
+      }
+    }
+  }
+  checks.push(`sky-pillar: ${floors.length} floors, ${stages} stages, ${wings.length} wings validated`);
 }
 
 function crossReferencePve(

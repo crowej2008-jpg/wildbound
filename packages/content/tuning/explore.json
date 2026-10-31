@@ -35,13 +35,13 @@
       "name": "Sky Pillar",
       "sigil": "SP",
       "tagline": "Climb until the clouds give way.",
-      "description": "A long vertical climb of staged fights. Each cleared floor improves the daily haul, and the pillar resets its attempts every day.",
+      "description": "A long vertical climb of staged fights. Every stage is graded in stars, and each cleared floor opens the next.", 
       "scale": "1,800 stages",
-      "status": "planned",
+      "status": "live",
       "arrivesIn": "13.2",
-      "reset": "daily",
+      "reset": "permanent",
       "gates": [{ "kind": "campaign", "chapter": 7, "stage": 1 }],
-      "features": ["1,800 stages across six wings", "Daily attempt resets", "Milestone chests and ascension rewards"]
+      "features": ["1,800 stages across six wings", "8-hour Proofs of Sky", "Star grades, sweeps and floor chests"]
     },
     {
       "id": "faction-tower",
