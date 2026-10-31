@@ -29,7 +29,11 @@ Owner: *"the first roll is free then it should be 1,1,2,2 and like that pattern 
 - `maxRefine` goes from 5 → 21. No gold, no Held Item Shards in refine.
 - ASSUMPTIONS #41's older ladder (1,1,2,3,4,5,6,8,10…20) is **superseded** — update it in 13.3a.
 
-## Still open
+## Confirmed 2026-10-31
+Owner kept **his ladder** even after learning the source's ("lets do my ladder for refines"). The ladder
+now prices the source-style **re-roll** refine ([held items](../systems/held-items.md)), not a power-up.
+
+## No longer open
 Effect per refine: currently **+20%** (→ 5.2× at refine 21). OpenCode recommended **+5%** (→ ~2.05×)
 moved into `combat.json`. **Owner hasn't answered.** → [open questions](../open-questions.md)
 

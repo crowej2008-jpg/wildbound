@@ -35,3 +35,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - New [decision](decisions/copy-the-source-exactly.md) and preliminary
   [source-fidelity audit](project/source-fidelity-audit.md); AGENTS.md, PROMPT §2.1 and
   ASSUMPTIONS override #11 amended. Refine = source re-roll; open question 0 asks which cost ladder.
+
+## [2026-10-31] update | Owner keeps his refine ladder; source retrofit planned
+- Refine ladder = owner's (exception to copy-exactly). Owner: "fix up everything to match the source".
+- New [source retrofit](milestones/source-retrofit.md) plan R0–R10 from the kb notes; runs before M13.3.

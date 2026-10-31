@@ -38,5 +38,5 @@ after only reading files. **Nothing is built yet.**
 - Paid Vault passes removed.
 
 ## Open
-Refine cost ladder (owner's vs source's) → [open questions](../open-questions.md). Held Items must be
-rebuilt to the source (random lines, re-roll refine, 75 items) in 13.3a.
+Held Items are rebuilt to the source first in [retrofit R5](../milestones/source-retrofit.md); 13.3 then
+builds the Vault itself, copied exactly from the source.

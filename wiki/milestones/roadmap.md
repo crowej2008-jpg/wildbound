@@ -25,7 +25,8 @@ Numbers changed twice — see [renumbering](../decisions/milestone-renumbering.m
 | M10 | [PvP — Arena + Ranked](../systems/pvp.md) | built |
 | M11 | [Collection layers II](../systems/collection-layers.md) | built |
 | M12 | [Artifacts, Suppression, Ruins](../systems/artifacts-and-relic.md) | **deferred** |
-| M13 | [Explore modes](m13.md) | **in progress** (13.3 next) |
+| R | [Source retrofit](source-retrofit.md) — built systems copied exactly from the source | **next** (before 13.3) |
+| M13 | [Explore modes](m13.md) | in progress (13.3 after R) |
 | M14 | Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles, Shovel Carnival | pending |
 | M15 | Guild, merge, events (simulated) | pending |
 | M16 | Guild war + Relic Battlefield (needs M12) | pending |

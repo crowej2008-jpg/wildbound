@@ -24,8 +24,9 @@ simulator. It is deliberately the **last** milestone (M20).
 ## Where things stand (2026-10-31)
 - **Built:** M0–M11, M13.0a, M13.0b, M13.1 [Pet Home](systems/pet-home.md), M13.2
   [Sky Pillar](systems/sky-pillar.md). Last commit `27536b7`, save v17, 510 unit + 90 e2e tests green.
-- **Next:** M13.3 [Hoopa's Vault](systems/hoopa-vault.md) — not started (the OpenCode session hit
-  its free usage limit at 08:09 on 2026-10-31 before editing anything).
+- **Next:** the [source retrofit](milestones/source-retrofit.md) — owner rule since 2026-10-31 is
+  [copy the source exactly](decisions/copy-the-source-exactly.md). Then M13.3
+  [Hoopa's Vault](systems/hoopa-vault.md).
 - **Skipped/parked:** M12 artifacts ([decision](decisions/m12-artifacts-deferred.md)),
   [Gods Trials](systems/gods-trials.md).
 - Full plan: [roadmap](milestones/roadmap.md).

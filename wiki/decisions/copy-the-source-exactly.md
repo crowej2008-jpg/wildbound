@@ -24,13 +24,15 @@ exactly."*
 |---|---|
 | The 84-Pokémon roster and skills from the owner's wiki | [roster override](pokemon-roster-override.md) |
 | The nine Soul-heart sets | [soul-hearts](../systems/soul-hearts.md) |
+| Refine cost ladder: free, then 1,1,2,2 … 10,10 (owner's, not the source's) | [Resetter decision](resetter-shards-and-refine.md) |
 | Held Item Shards (owner's invention, levelling only) | [Resetter decision](resetter-shards-and-refine.md) |
 | No real money; paid tracks/passes/assistant removed; gems earnable | [free-to-play](free-to-play.md) |
 | Brand-new ideas: [co-op boss tower](../ideas/coop-boss-tower.md), [change list](../ideas/change-list-2026-10.md) | ideas/ |
 | Milestone order, M12 skipped, Gods Trials parked (scheduling, not content) | [roadmap](../milestones/roadmap.md) |
 
-**Unclear — ask the owner:** his refine ladder (free, then 1,1,2,2…10) vs the source's
-(1,1,2,3,4,5,6,8,10,12,14,16,18,20, then 20). He set his ladder before learning how the source refines.
+**Refine ladder:** the owner chose **his own** ladder (free, then 1,1,2,2…10) over the source's on
+2026-10-31 — it's an exception. Owner also said: *"lets fix up everything to match the source"* →
+[source retrofit](../milestones/source-retrofit.md).
 
 ## Practical notes
 - `reference/` is gitignored and lives only on the owner's PC, so exact copying has to be done by an

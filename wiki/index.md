@@ -10,8 +10,8 @@ updated: 2026-10-31
 [open questions](open-questions.md).** How the wiki is maintained: `AGENTS.md` › "Project wiki".
 Recent changes: [log](log.md).
 
-**Now:** M13.3 [Hoopa's Vault](systems/hoopa-vault.md) is next and not started. Held Items must be rebuilt to the
-source's re-roll refine first; one owner answer pending (whose refine cost ladder). Last commit `27536b7`, save v17.
+**Now:** M13.3 [Hoopa's Vault](systems/hoopa-vault.md) is next and not started. First comes the
+[source retrofit](milestones/source-retrofit.md) (make built systems match the source exactly). Last commit `27536b7`, save v17.
 
 ## Start here
 - [overview](overview.md) — what Wildbound is, who it's for, where it stands
@@ -51,6 +51,7 @@ source's re-roll refine first; one owner answer pending (whose refine cost ladde
 
 ## Milestones
 - [roadmap](milestones/roadmap.md) — M0–M20 with status
+- [source retrofit](milestones/source-retrofit.md) — R0–R10, runs before M13.3
 - [M13](milestones/m13.md) — sub-step table
 - [history](milestones/history.md) — dates, commits, test counts
 
