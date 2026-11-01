@@ -43,7 +43,7 @@ plate("shiny-blastoise", {
 })
 
 plate("psyduck", {
-    6: {"triggers": [trig("afterUlt", [give(T, buff("psy-sdef", "sRdct", -0.3, big=2, stacks=1))])]},
+    6: {"triggers": [trig("afterUlt", [give(T, buff("psy-sdef", "sDef", -0.3, big=2, stacks=1))])]},
     12: {"damageMods": [{"tag": "psy-plate-ult", "slot": "ult", "dmg": 0.2}, {"tag": "psy-plate-basic", "slot": "basic", "dmg": 0.2}]},
     18: {"skills": {
         "basic": skill("S", 1.0, "frontline", effects=[control(T, "zenControlPlus")]),
@@ -503,8 +503,13 @@ plate("shiny-venusaur", {
 
 
 def _sdarkrai(stage):
+    """6: Nightmare's ignore DEF 12 % -> 18 % a stack; 18: rate 195 %, 2 stacks per ult."""
     def fn(s):
-        s["ignoreDefense"] = 0.18
+        for e in list(s["effects"]):
+            if e["op"] == "buff" and e["buff"]["tag"] == "nightmare-ignore":
+                e["buff"]["amount"] = 0.18
+                if stage >= 18:
+                    s["effects"].append(_copy.deepcopy(e))
         if stage >= 18:
             s["rates"] = [1.95]
             for e in s["effects"]:
@@ -569,7 +574,9 @@ plate("suicune", {
     6: {"skills": {"basic": edited("suicune", "basic", lambda s: s["effects"][0].update(chance=0.5))},
         "triggers": [trig("afterNormal", [give(SELF, buff("thorn", kind="stack", turns=3, stacks=1))], chance=0.1),
                      trig("onHit", [dmg({"event": True}, rate=0.75, type="S", trueDamage=True)], condition=_THORN)]},
-    12: {"triggers": [trig("afterUlt", [give(SELF, buff("suicune-block", "block", 0.2, turns=2, stacks=1))]),
+    12: {"triggers": [trig("afterUlt", [give(SELF, buff("suicune-block", "block", 0.2, turns=2, stacks=1)),
+                                        give(T, buff("suicune-sdef-steal-x", "sDef", -0.1, turns=2, stacks=1)),
+                                        give(SELF, buff("suicune-sdef-gain-x", "sDef", 0.1, turns=2, stacks=1))]),
                       trig("onHit", [dmg({"event": True}, rate=0.15, type="S", trueDamage=True)], condition=_THORN)]},
     18: {"triggers": [trig("afterUlt", [give(SELF, buff("suicune-rdct", "dmgRdct", 0.25, turns=2, stacks=1))])]},
 })
@@ -637,7 +644,8 @@ plate("metagross", {
 })
 
 plate("garchomp", {
-    6: {},
+    6: {"skills": {"ult": edited("garchomp", "ult", lambda s: [e["buff"].update(amount=-0.55) for e in s["effects"]
+                                                               if e["op"] == "buff" and e["buff"]["field"] in ("pDef", "sDef")])}},
     12: {"triggers": [trig("onDealDamage", [give(SELF, buff("garchomp-rdct", "dmgRdct", 0.07, turns=3, stacks=3))],
                            condition=ON_ULT)]},
     18: {},
@@ -876,12 +884,12 @@ plate("rayquaza", {
 note("God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.")
 note("Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).")
 note("Shiny Blastoise 6: 'increases P.ATK DMG RDCT by 50 %' read as x1.5 (30 % -> 45 %); 18 (Regrowth Mark heals him when allies hit marked enemies) not modelled — no ally-hit trigger yet.")
-note("Psyduck 6: 'S.DEF -30 %' read as +30 % S.ATK damage taken (sRdct -0.3).")
+note("Psyduck 6: S.DEF -30 % on the ult's first target for 2 rounds.")
 note("Dialga 12 / 18 (Rage to backline / frontline): no effect — the owner's ultimate already fills the team.")
 note("Darkrai 12: 'after 2 [Nightmare] stacks' read as from round 2 on; 18 read as the normal attack at 135 %.")
 note("Snorlax 12: one hit at 70 % reduction (consumed on the hit), no damage transfer; 18: endure 2 turns, every 4.")
 note("Yveltal 12 (ult burns to 100 %) and Lugia 12 (SKILL allies' DMG Boost — no amount given): not modelled; Yveltal 18 'debuffed' read as carrying a DoT.")
-note("Keldeo 12: the 'ignores 20 % DEF' half is not modelled (no per-target DEF ignore on damage mods).")
+note("Keldeo 12: the 'ignores 20 % DEF' half is not modelled (no DEF ignore limited to shielded targets).")
 note("Shiny Hoopa 12: Sacred Fire at Ho-Oh's 125 % S.ATK for 2 turns (the text gives no number).")
 note("Shiny Mewtwo 18: 'before the Ultimate' applied right after it (no before-ult trigger), so it helps the next.")
 note("Jirachi 18 (Doom Desire's missing-HP damage to 50 %): not modelled (no target-missing-HP damage scale).")
@@ -909,22 +917,22 @@ note("Shiny Darkrai 6: Nightmare 15 % -> 20 % per stack (+5 %); 12: the 70 % stu
 
 note("Raikou 6: the vs-[DEF] bonus on normal / basic read as x1.5 (from x1.3); 18: the 15 % missing-HP true damage lands right after the ult (not at round end, and whether or not it killed).")
 note("Entei 12 / 18: 'base damage to 15 % / further +20 %' read as the ult rate +15 / +35 points (80 % -> 95 % -> 115 %); 18's Crit / Crit DMG land after the ult (no before-ult trigger), 2 turns.")
-note("Suicune: [Thorn] 60 % -> 135 % -> 150 % as extra true hits (+75 %, +15 %) while Thorn is up; 12's S.DEF steal not modelled (DEF has no effect).")
+note("Suicune: [Thorn] 60 % -> 135 % -> 150 % as extra true hits (+75 %, +15 %) while Thorn is up; 12's S.DEF steal 10 % -> 20 % as a second 10 % steal.")
 note("Zapdos 6: 'up to 3 times' read as 3 times a battle; 12: [Thunder]'s extra true damage comes only on Zapdos's own hits (no hook for other attackers); 18's DMG Multiplier as DMG Boost.")
 note("Moltres 6: the +30 % taken applies to all DoTs (no per-tag DoT amp); 18: '+100 % stacking chance' — basic burn to 100 %, plus a second 30 % on-hit roll.")
 note("Articuno 6: read as the basic skill (the freezing skill).")
 
 note("Metagross 6: confused (mind-controlled) targets get +30 % ATK for their next action; 12 (confused units still use basic skills) not modelled — depends on how mind control picks the slot; 18: 'all Rage' as -1000.")
-note("Garchomp 6 / 18 (the ult's DEF cut to 55 % / guaranteed): no effect — DEF has no effect; 12: +7 % DMG RDCT per ult hit (3 stacks).")
+note("Garchomp 6: the ult's DEF cut 35 % -> 55 %; 18 ('guaranteed'): no change — the port's cut has no chance roll; 12: +7 % DMG RDCT per ult hit (3 stacks).")
 note("Hydreigon 6 (ult aims at the row of the lowest-HP enemy) not modelled — no such target rule; 12 lands after the ult (no before-ult trigger).")
 note("Gyarados 6: 'Magikarp prioritizes backline units' not modelled; the 12.5 % Rage steal is 125 on every normal / basic hit.")
-note("Gardevoir 6: the 25 % ignore DEF has no effect (DEF has no effect); the ATK buff becomes undispellable.")
+note("Gardevoir 6: the ult ignores 25 % DEF; the ATK buff becomes undispellable.")
 note("Gengar 18: '+25 % Rage' (125 -> 250) once per ult when any target is controlled; the 35 % cut is 250 Rage.")
 
 note("Charizard: as Shiny Charizard at its own numbers (Vulnerability 10 %, Crit +10 % after the ult, Offer-of-Power backline Crit 10 % -> 18 %).")
 note("Blastoise 6: the ult mark's P.ATK reduction x1.3 (18 % -> 23.4 %) plus a 15 % S.ATK one on the same targets; 18 (Regrowth Mark) not modelled — no ally-hit trigger yet.")
 note("Venusaur: as Shiny Venusaur (1 % poison stacks).")
-note("Blaziken 6: 'base damage to 15 %' read as the ult rate +15 points (210 % -> 225 %); 12's 40 % S.DEF ignore has no effect (DEF has no effect); 18 (prioritizes the lowest-HP enemies) not modelled — the ult hits a column.")
+note("Blaziken 6: 'base damage to 15 %' read as the ult rate +15 points (210 % -> 225 %); 12 ignores 40 % S.DEF; 18 (prioritizes the lowest-HP enemies) not modelled — the ult hits a column.")
 note("Swampert 6: [Foresight] 80 % -> 100 % ATK; the extra true damage of 30 % of the target's S.ATK not modelled (no target-ATK basis).")
 note("Sceptile 12: [Malignant Wounds]' -12 % S.ATK as -12 % ATK; 18: 'DoT except Bleed' as poison / burn / flame / Foresight / frost / curse tags.")
 note("Typhlosion: 'if not blocked' is not checked (every landed hit counts); 18's 'basic attack' read as the normal attack.")

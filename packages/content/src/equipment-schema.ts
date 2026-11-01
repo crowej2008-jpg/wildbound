@@ -66,6 +66,7 @@ export const COMBAT_FIELDS = [
   'spiritDef',
   'atkPct',
   'ignoreBlock',
+  'ignoreDefense',
   'basicRate',
   'pRdct',
   'sRdct',

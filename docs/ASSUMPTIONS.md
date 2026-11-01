@@ -853,3 +853,13 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     trinket chests (the stand-in for a missing own item) are not built. Starmie, Ninetales and the Origins have
     no trinket (the Origins' follows its three synergy Pokémon — waits for the synergy system). The skills at
     Lv 10 / 20 / 30 / 40 come in part 2.
+
+69. **DEF is on (owner, 2026-11-01: "def should not be turned off"; strength "Light").** The source measurements
+    found main P.DEF / S.DEF did nothing measurable, so there is no source number: `defendersUseDef` is now
+    `true` with `defK` 300,000 on the existing `def / (def + defK)` curve — a maxed DEF tank (~76k P.DEF) takes
+    about 20 % less damage, an attacker (~15k) about 5 % less. This replaces M9 decision 1 ("DEF stays inert").
+    With it, the skills' DEF lines are live: "ignore x % DEF" (skill `ignoreDefense` plus a new `ignoreDefense`
+    stat for trinket / stack effects) and DEF cuts / steals as buffs. P.ATK / S.ATK / P.DEF / S.DEF stat buffs
+    now count as shares of the unit's own stat (every such buff in the kits was a %; they used to add the raw
+    number, so +5 % S.ATK added 0.05 points). Re-checking balance with DEF on belongs in the R10 tier re-check.
+

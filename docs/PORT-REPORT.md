@@ -73,12 +73,11 @@ Hand-ported kits (`scripts/data/kit-overrides.json`): **68** — calyrex, necroz
 
 Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 
-## Hand-ported, still not modelled (52 items)
+## Hand-ported, still not modelled (49 items)
 
 - **calyrex** — Ult: 'Freeze yourself … when holding Frost' — read as Calyrex holding Frost (it never gains it itself)
 - **calyrex** — Ult LV.3: Frost lasting 2 turns changes nothing modelled
 - **calyrex** — Basic Skill LV.3: the 10% max-HP heal after the resistance shield ends
-- **necrozma** — Ult LV.2: 30% ignore defense (DEF has no effect)
 - **origin-lugia** — Ult: a confined unit 'takes damage only from Origin Lugia'
 - **origin-lugia** — Ult LV.2 / LV.3: the −20% ATK and −250 Rage land with the confinement, not when it ends
 - **origin-lugia** — Passive: backline allies' 70%-strength copy of the P.ATK damage reduction
@@ -87,7 +86,7 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 - **origin-rayquaza** — Passive: the linked ally does not drop below 1 HP on its first turn and restores 25% of lost HP from its second turn
 - **origin-rayquaza** — Basic Skill LV.3 / Passive LV.3 / Talent 4 LV.3: the Thunderstorm count and the link target's attack bonus; Passive LV.2's +10% Crit Intensity after 3 stacks
 - **shadow-mewtwo** — Basic Skill LV.2 / LV.3: the max-HP bonus applies even when the hit is blocked
-- **zacian** — Basic Skill: Shattered Armor's −10% / −20% DEF per layer (DEF has no effect while defendersUseDef is off)
+- **zacian** — Basic Skill: Shattered Armor's −10% / −20% DEF per layer read as LV.1 / LV.2+
 - **zacian** — Passive LV.2+: counts every death, not only deaths to a direct attack
 - **zacian** — Talent 4 LV.2: lifesteal of 1% per 1% HP lost (lifesteal cannot scale with HP yet)
 - **wind-god-pidgeot** — Talent 4: +2% permanent DMG Deepening each time an enemy is controlled (4 per round, cap 26%) — 'DMG Deepening' on whom is unclear
@@ -108,24 +107,22 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 - **xerneas** — Ult: the +25% Crit Intensity applies from this ultimate on (buffs land after the hits)
 - **zygarde** — Ult: the 8% current HP it spends (the damage to all targets is modelled; the cost is not)
 - **palkia** — Ult: the crit stacks count hits from any enemy, not only the taunted ones
-- **victini** — Magma Armor's −10% P.DEF / S.DEF per layer (DEF has no effect); the battle-start shield's 2-turn limit
+- **victini** — Magma Armor's DEF cut is its own 6-layer stack beside the DoT (they can fall out of step); the battle-start shield's 2-turn limit
 - **infernape** — Talent 4: the Flame-damage bonus is a flat 40% (the sheet scales it with Infernape's missing HP up to 40%);
 - **greninja** — Talent 4 fires on the first crit of a turn; the sheet needs 2 crits in one turn
 - **ho-oh** — Sacred Fire / Infinite Fire 'ignite after one turn' as one tick at the target's next turn start
 - **rayquaza** — Ult: the mark's end-of-turn 1 / turn 2 strikes (90% / 115% S.ATK, +25% vs backline, 10% / 60% healing) and 'cannot ultimate while marked'
 - **entei** — Ult: 'if it crits' is read per hit of any slot, once a turn
-- **suicune** — Ult: steals 10% S.DEF (DEF has no effect)
+- **suicune** — Ult: the 10% S.DEF steal lasts 2 turns (no duration given)
 - **suicune** — Talent 4: the heal fires on the first hit of a turn, not the fourth
 - **raikou** — Ult: 'when the target is slain' fires on any kill (once a turn)
 - **raikou** — Talent 4: [channeling] focus target
 - **gyarados** — Ult: the recast is not tied to Offer of Power
 - **blaziken** — Talent 4: the recast is not tied to Offer of Power
 - **feraligatr** — Ult: [Protect] — shares 25% of the damage the ally above takes for 2 turns (damage sharing)
-- **garchomp** — Ult: −35% P.DEF / S.DEF (DEF has no effect)
-- **gardevoir** — Ult / Basic Skill: ignore 10% S.DEF (DEF has no effect)
+- **garchomp** — Ult: the −35% P.DEF / S.DEF lasts 2 turns (no duration given)
 - **slaking** — Ult: Regrowth's 'cannot be stacked' and the DoT condition checked on the healed ally
 - **gengar** — Ult: the 12.5% Rage fires per target already controlled (the sheet: once if any)
-- **shiny-darkrai** — Ult: Nightmare's 12% Ignore DEF per stack (DEF has no effect)
 - **shiny-arceus** — Sanction's +5% Crit Intensity per layer (the +7.5% S.ATK per layer is modelled)
 
 ## Plate skills (R6a part 2, hand-ported in `scripts/data/plate-skills.py`): 76
@@ -138,12 +135,12 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.
 - Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).
 - Shiny Blastoise 6: 'increases P.ATK DMG RDCT by 50 %' read as x1.5 (30 % -> 45 %); 18 (Regrowth Mark heals him when allies hit marked enemies) not modelled — no ally-hit trigger yet.
-- Psyduck 6: 'S.DEF -30 %' read as +30 % S.ATK damage taken (sRdct -0.3).
+- Psyduck 6: S.DEF -30 % on the ult's first target for 2 rounds.
 - Dialga 12 / 18 (Rage to backline / frontline): no effect — the owner's ultimate already fills the team.
 - Darkrai 12: 'after 2 [Nightmare] stacks' read as from round 2 on; 18 read as the normal attack at 135 %.
 - Snorlax 12: one hit at 70 % reduction (consumed on the hit), no damage transfer; 18: endure 2 turns, every 4.
 - Yveltal 12 (ult burns to 100 %) and Lugia 12 (SKILL allies' DMG Boost — no amount given): not modelled; Yveltal 18 'debuffed' read as carrying a DoT.
-- Keldeo 12: the 'ignores 20 % DEF' half is not modelled (no per-target DEF ignore on damage mods).
+- Keldeo 12: the 'ignores 20 % DEF' half is not modelled (no DEF ignore limited to shielded targets).
 - Shiny Hoopa 12: Sacred Fire at Ho-Oh's 125 % S.ATK for 2 turns (the text gives no number).
 - Shiny Mewtwo 18: 'before the Ultimate' applied right after it (no before-ult trigger), so it helps the next.
 - Jirachi 18 (Doom Desire's missing-HP damage to 50 %): not modelled (no target-missing-HP damage scale).
@@ -169,20 +166,20 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Shiny Darkrai 6: Nightmare 15 % -> 20 % per stack (+5 %); 12: the 70 % stun once 2 Nightmare stacks are held.
 - Raikou 6: the vs-[DEF] bonus on normal / basic read as x1.5 (from x1.3); 18: the 15 % missing-HP true damage lands right after the ult (not at round end, and whether or not it killed).
 - Entei 12 / 18: 'base damage to 15 % / further +20 %' read as the ult rate +15 / +35 points (80 % -> 95 % -> 115 %); 18's Crit / Crit DMG land after the ult (no before-ult trigger), 2 turns.
-- Suicune: [Thorn] 60 % -> 135 % -> 150 % as extra true hits (+75 %, +15 %) while Thorn is up; 12's S.DEF steal not modelled (DEF has no effect).
+- Suicune: [Thorn] 60 % -> 135 % -> 150 % as extra true hits (+75 %, +15 %) while Thorn is up; 12's S.DEF steal 10 % -> 20 % as a second 10 % steal.
 - Zapdos 6: 'up to 3 times' read as 3 times a battle; 12: [Thunder]'s extra true damage comes only on Zapdos's own hits (no hook for other attackers); 18's DMG Multiplier as DMG Boost.
 - Moltres 6: the +30 % taken applies to all DoTs (no per-tag DoT amp); 18: '+100 % stacking chance' — basic burn to 100 %, plus a second 30 % on-hit roll.
 - Articuno 6: read as the basic skill (the freezing skill).
 - Metagross 6: confused (mind-controlled) targets get +30 % ATK for their next action; 12 (confused units still use basic skills) not modelled — depends on how mind control picks the slot; 18: 'all Rage' as -1000.
-- Garchomp 6 / 18 (the ult's DEF cut to 55 % / guaranteed): no effect — DEF has no effect; 12: +7 % DMG RDCT per ult hit (3 stacks).
+- Garchomp 6: the ult's DEF cut 35 % -> 55 %; 18 ('guaranteed'): no change — the port's cut has no chance roll; 12: +7 % DMG RDCT per ult hit (3 stacks).
 - Hydreigon 6 (ult aims at the row of the lowest-HP enemy) not modelled — no such target rule; 12 lands after the ult (no before-ult trigger).
 - Gyarados 6: 'Magikarp prioritizes backline units' not modelled; the 12.5 % Rage steal is 125 on every normal / basic hit.
-- Gardevoir 6: the 25 % ignore DEF has no effect (DEF has no effect); the ATK buff becomes undispellable.
+- Gardevoir 6: the ult ignores 25 % DEF; the ATK buff becomes undispellable.
 - Gengar 18: '+25 % Rage' (125 -> 250) once per ult when any target is controlled; the 35 % cut is 250 Rage.
 - Charizard: as Shiny Charizard at its own numbers (Vulnerability 10 %, Crit +10 % after the ult, Offer-of-Power backline Crit 10 % -> 18 %).
 - Blastoise 6: the ult mark's P.ATK reduction x1.3 (18 % -> 23.4 %) plus a 15 % S.ATK one on the same targets; 18 (Regrowth Mark) not modelled — no ally-hit trigger yet.
 - Venusaur: as Shiny Venusaur (1 % poison stacks).
-- Blaziken 6: 'base damage to 15 %' read as the ult rate +15 points (210 % -> 225 %); 12's 40 % S.DEF ignore has no effect (DEF has no effect); 18 (prioritizes the lowest-HP enemies) not modelled — the ult hits a column.
+- Blaziken 6: 'base damage to 15 %' read as the ult rate +15 points (210 % -> 225 %); 12 ignores 40 % S.DEF; 18 (prioritizes the lowest-HP enemies) not modelled — the ult hits a column.
 - Swampert 6: [Foresight] 80 % -> 100 % ATK; the extra true damage of 30 % of the target's S.ATK not modelled (no target-ATK basis).
 - Sceptile 12: [Malignant Wounds]' -12 % S.ATK as -12 % ATK; 18: 'DoT except Bleed' as poison / burn / flame / Foresight / frost / curse tags.
 - Typhlosion: 'if not blocked' is not checked (every landed hit counts); 18's 'basic attack' read as the normal attack.
@@ -202,19 +199,19 @@ Source: `scripts/data/trinket-skills-source.json` (hero_weapon_json skill_list, 
 
 Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, hoopa, shiny-hoopa, mewtwo, shiny-mewtwo, jirachi, solgaleo, meloetta, arceus, shiny-arceus, kyogre, deoxys, mew, cresselia, celebi, manaphy, infernape, black-kyurem, shaymin, victini, palkia, giratina, zygarde, xerneas, lunala, wind-god-pidgeot, shiny-god-ash-pikachu, shiny-charizard, shiny-raichu, shiny-gengar, shiny-venusaur, shiny-darkrai, raikou, entei, suicune, zapdos, moltres, articuno, rayquaza, metagross, garchomp, hydreigon, gyarados, gardevoir, gengar, raichu, charizard, blastoise, venusaur, blaziken, swampert, sceptile, typhlosion, feraligatr, meganium, slaking, dragonite, tyranitar, salamence.
 
-- God Ash-Pikachu (Ruse): the S.DEF ignore (10-35 %) has no effect (DEF has no effect); the Basic Skill bonus is +x % basic-skill damage per attack, its 'rounds' read as Pikachu's own turns.
+- God Ash-Pikachu (Ruse): 'ignore x % of S.DEF' as ignore x % DEF on every hit (its hits are S.ATK); the Basic Skill bonus is +x % basic-skill damage per attack, its 'rounds' read as Pikachu's own turns.
 - Wobbuffet (Mirror Coat): the bounce is true damage of the hit's damage (shield included), to the attacker.
 - Shiny Blastoise (Mass Healing): 'the first 4 / 5 turns' read as big rounds 1-4 / 1-5.
 - Psyduck (Psycho Shift): the heal is modelled; moving its mitigation buffs to 3 enemies is not (no buff-transfer op).
 - Darkrai (Ruse): +x % ATK a turn from round 2, 8 stacks (24-40 %); the extra stack 'while immune to control' reads a 'darkrai-immune' tag, which nothing gives yet — so it does not fire.
 - Ho-Oh (Enrage): the 'mark' for 2 turns after the ult is the window in which each hit taken gives Rage.
-- Yveltal (Last out): the S.ATK steal as -x % / +x % S.ATK (5 turns, 3 stacks); the S.DEF half has no effect.
+- Yveltal (Last out): the S.ATK (and from Lv 30 S.DEF) steal as -x % / +x % (5 turns, 3 stacks).
 - Lugia (Enhanced Lifesteal): not modelled — lifesteal cannot grow with damage taken yet.
 - Keldeo (Unwavering Will): the extra max-HP hit goes to the ult's first target.
 - Mewtwo / Shiny Mewtwo: the Mental Bomb (80 % S.ATK after 3 turns) as a 1-round DoT on the front row; 'no new bomb while held' is not enforced. Shiny Mewtwo's source lists a skill only at Lv 40.
 - Jirachi (Predict Future): the healing cut goes on the ult's first target for 3 turns; the Doom Desire boost has no effect (Doom Desire's detonation is not modelled).
 - Solgaleo (Cosmic Power): 'must hit' has no effect (no dodge).
-- Arceus (Refresh): the S.DEF ignore below 50 % HP has no effect (DEF has no effect).
+- Arceus / Shiny Arceus (Refresh): the S.DEF ignore below 50 % HP is checked at the start of each turn.
 - Kyogre (Frustration): '+Rage when hit, without the passive's high DMG Reduction' — the Rage comes on every hit (the passive's reduction window is not checked).
 - Mew (Control Immunity Chance): Lv 10-30 — +125 Rage and the immunity roll after the basic skill; Lv 40 — +125 Rage after every attack, +125 more and the roll after the ult. The immunity is to every control.
 - Cresselia (Lunar Blade): 'stackable' with no cap or duration — the ATK cut stacks for the battle.
@@ -222,7 +219,7 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Shiny Kyogre, Shiny Mew and Shiny Cresselia list no trinket skills in the source.
 - Infernape (Meditation): the shield comes each time HP falls below the line (re-arms above it); its 3-turn limit and 'cannot be dispelled' are not kept (shields have neither).
 - Shiny Kyurem lists no trinket skills in the source.
-- Shaymin (Sweet Scent): the S.DEF cut on [Leech Seed] targets has no effect (DEF has no effect); Lv 30 / 40 heal after each attack.
+- Shaymin (Sweet Scent): the S.DEF cut lands on [Leech Seed] targets when hit; Lv 30 / 40 heal after each attack.
 - Victini (Rise from the Dead): [Dauntless] for the first 3 / 4 turns; the dodges and their healing (Lv 20+) are not modelled (no dodge).
 - Palkia (Immune): the DoTs cannot be applied to it (rather than landing for no damage).
 - Zygarde (Power Construct): not modelled — [Activity] by HP share, the basic-skill chance per layer and the consuming hit need a resource fed by HP.
@@ -232,13 +229,12 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Shiny God Ash-Pikachu: as God Ash-Pikachu.
 - Shiny Charizard (DEF Pokémon Killer): the allies' boost counts against every target, not only [DEF] ones (a buff cannot carry a target condition).
 - Shiny Gengar (Immune): Confusion covers the mind control kind too.
-- Shiny Venusaur (Impair DEF): no effect — DEF has no effect.
 - Shiny Darkrai: as Darkrai (4-8 % a stack, 8 stacks).
 - Rayquaza (Enhanced End-game): re-set each turn from the fallen enemies (the first matching line wins).
 - Metagross (Reduces Rage at Low HP): each hit taken below the line cuts the attacker's Rage; the 'lasting N turns' has no separate effect.
 - Hydreigon (Benefit from Damage): counts the fallen enemies only (living ones under the HP line are not counted).
 - Gardevoir (Endurance): one stack a turn from the starting round.
-- Venusaur (Impair DEF): no effect — DEF has no effect. Charizard / Raichu / Blastoise / Gengar: as their Shiny forms at their own numbers.
+- Charizard / Raichu / Blastoise / Gengar / Venusaur: as their Shiny forms at their own numbers.
 - Blaziken / Raikou: 'when the Ultimate kills' reads the slot of the killing hit.
 - Swampert: the shield break lands after the attack (no before-hit hook) and is not gated on 'not blocked'.
 - Feraligatr: the block shield goes to Feraligatr only ('the ally above' has no target rule); its 3-stack cap and 2 turns are not kept.

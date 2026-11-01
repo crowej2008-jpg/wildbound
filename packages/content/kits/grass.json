@@ -343,7 +343,8 @@
         "rates": [
           1.2
         ],
-        "rule": "column"
+        "rule": "column",
+        "ignoreDefense": 0.1
       },
       "ult": {
         "type": "S",
@@ -351,6 +352,7 @@
           1.35
         ],
         "rule": "frontline",
+        "ignoreDefense": 0.1,
         "effects": [
           {
             "op": "buff",
@@ -439,6 +441,7 @@
               1.35
             ],
             "rule": "frontline",
+            "ignoreDefense": 0.25,
             "effects": [
               {
                 "op": "buff",
@@ -456,8 +459,7 @@
                   "undispellable": true
                 }
               }
-            ],
-            "ignoreDefense": 0.25
+            ]
           }
         }
       },
@@ -470,6 +472,7 @@
               1.35
             ],
             "rule": "frontline",
+            "ignoreDefense": 0.25,
             "effects": [
               {
                 "op": "buff",
@@ -487,8 +490,7 @@
                   "undispellable": true
                 }
               }
-            ],
-            "ignoreDefense": 0.25
+            ]
           }
         }
       },
@@ -1264,16 +1266,168 @@
     },
     "trinket": {
       "10": {
-        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 15% for 2 turns. Stacks up to 1 times."
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 15% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-pdef",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": -0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       },
       "20": {
-        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 20% for 2 turns. Stacks up to 1 times."
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 20% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-pdef",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": -0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       },
       "30": {
-        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 25% for 3 turns. Stacks up to 1 times."
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 25% for 3 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-pdef",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": -0.25,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.25,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       },
       "40": {
-        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 30% for 3 turns. Stacks up to 1 times."
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 30% for 3 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-pdef",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": -0.3,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.3,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -4580,6 +4734,12 @@
     "trinket": {
       "10": {
         "text": "All attacks ignore 10% of Special Defense. Basic skill attack increases 10% after an attack and lasts 2 rounds. Can by layered 2 times.",
+        "statMods": [
+          {
+            "field": "ignoreDefense",
+            "add": 0.1
+          }
+        ],
         "triggers": [
           {
             "on": "afterNormal",
@@ -4645,6 +4805,12 @@
       },
       "20": {
         "text": "All attacks ignore 15% of Special Defense. Basic skill attack increases 15% after an attack and lasts 2 rounds. Can by layered 2 times.",
+        "statMods": [
+          {
+            "field": "ignoreDefense",
+            "add": 0.15
+          }
+        ],
         "triggers": [
           {
             "on": "afterNormal",
@@ -4710,6 +4876,12 @@
       },
       "30": {
         "text": "All attacks ignore 22% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+        "statMods": [
+          {
+            "field": "ignoreDefense",
+            "add": 0.22
+          }
+        ],
         "triggers": [
           {
             "on": "afterNormal",
@@ -4775,6 +4947,12 @@
       },
       "40": {
         "text": "All attacks ignore 35% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+        "statMods": [
+          {
+            "field": "ignoreDefense",
+            "add": 0.35
+          }
+        ],
         "triggers": [
           {
             "on": "afterNormal",
@@ -5116,14 +5294,84 @@
     },
     "trinket": {
       "10": {
-        "text": "After attacking a unit with [Leech Seed], reduces target's S.DEF by 15% for 2 turns. Stacks up to 1 times."
+        "text": "After attacking a unit with [Leech Seed], reduces target's S.DEF by 15% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "leech-seed"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sweet-scent",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       },
       "20": {
-        "text": "After attacking a unit with [Leech Seed], reduces target's S.DEF by 20% for 2 turns. Stacks up to 1 times."
+        "text": "After attacking a unit with [Leech Seed], reduces target's S.DEF by 20% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "leech-seed"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sweet-scent",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       },
       "30": {
         "text": "After attack, heal self for 30% S.ATK; After attacking a unit with [Leech Seed], reduces target's Special Defense by 20% for 3 turns. Stacks up to 1 times.",
         "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "leech-seed"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sweet-scent",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.2,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
           {
             "on": "afterNormal",
             "effects": [
@@ -5171,6 +5419,28 @@
       "40": {
         "text": "After attack, heal self for 50% S.ATK; After attacking a unit with [Leech Seed], reduces target's Special Defense by 25% for 3 turns. Stacks up to 1 times.",
         "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "leech-seed"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sweet-scent",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.25,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
           {
             "on": "afterNormal",
             "effects": [
@@ -5974,6 +6244,12 @@
     "trinket": {
       "10": {
         "text": "All attacks ignore 10% of Special Defense. Basic skill attack increases 10% after an attack and lasts 2 rounds. Can by layered 2 times.",
+        "statMods": [
+          {
+            "field": "ignoreDefense",
+            "add": 0.1
+          }
+        ],
         "triggers": [
           {
             "on": "afterNormal",
@@ -6039,6 +6315,12 @@
       },
       "20": {
         "text": "All attacks ignore 15% of Special Defense. Basic skill attack increases 15% after an attack and lasts 2 rounds. Can by layered 2 times.",
+        "statMods": [
+          {
+            "field": "ignoreDefense",
+            "add": 0.15
+          }
+        ],
         "triggers": [
           {
             "on": "afterNormal",
@@ -6104,6 +6386,12 @@
       },
       "30": {
         "text": "All attacks ignore 22% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+        "statMods": [
+          {
+            "field": "ignoreDefense",
+            "add": 0.22
+          }
+        ],
         "triggers": [
           {
             "on": "afterNormal",
@@ -6169,6 +6457,12 @@
       },
       "40": {
         "text": "All attacks ignore 35% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+        "statMods": [
+          {
+            "field": "ignoreDefense",
+            "add": 0.35
+          }
+        ],
         "triggers": [
           {
             "on": "afterNormal",
@@ -6933,16 +7227,168 @@
     },
     "trinket": {
       "10": {
-        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 15% for 2 turns. Stacks up to 1 times."
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 15% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-pdef",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": -0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       },
       "20": {
-        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 20% for 2 turns. Stacks up to 1 times."
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 20% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-pdef",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": -0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       },
       "30": {
-        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 25% for 3 turns. Stacks up to 1 times."
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 25% for 3 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-pdef",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": -0.25,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.25,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       },
       "40": {
-        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 30% for 3 turns. Stacks up to 1 times."
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 30% for 3 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-pdef",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": -0.3,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "impair-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.3,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },

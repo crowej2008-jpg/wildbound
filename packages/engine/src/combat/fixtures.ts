@@ -123,6 +123,7 @@ export function unit(over: {
     spiritDef: base.spiritDef ?? 0,
     atkPct: base.atkPct ?? 0,
     ignoreBlock: base.ignoreBlock ?? 0,
+    ignoreDefense: base.ignoreDefense ?? 0,
     basicRate: base.basicRate ?? 0,
     pRdct: base.pRdct ?? 0,
     sRdct: base.sRdct ?? 0,

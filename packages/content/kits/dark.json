@@ -3038,6 +3038,20 @@
             "tag": "nightmare",
             "delta": 1,
             "max": 2
+          },
+          {
+            "op": "buff",
+            "target": {
+              "side": "ally",
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "nightmare-ignore",
+              "kind": "stat",
+              "field": "ignoreDefense",
+              "amount": 0.12,
+              "maxStacks": 2
+            }
           }
         ]
       }
@@ -3189,9 +3203,22 @@
                 "tag": "nightmare",
                 "delta": 1,
                 "max": 2
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "nightmare-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.18,
+                  "maxStacks": 2
+                }
               }
-            ],
-            "ignoreDefense": 0.18
+            ]
           }
         },
         "damageMods": [
@@ -3251,9 +3278,36 @@
                 "tag": "nightmare",
                 "delta": 2,
                 "max": 2
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "nightmare-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.18,
+                  "maxStacks": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "nightmare-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.18,
+                  "maxStacks": 2
+                }
               }
-            ],
-            "ignoreDefense": 0.18
+            ]
           }
         }
       }

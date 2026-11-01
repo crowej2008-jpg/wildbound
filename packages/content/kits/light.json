@@ -2322,6 +2322,28 @@
                 "count": 1
               }
             ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.5
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "refresh-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.1,
+                  "turns": 1
+                }
+              }
+            ]
           }
         ]
       },
@@ -2338,6 +2360,28 @@
                   "rule": "self"
                 },
                 "count": 2
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.5
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "refresh-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.15,
+                  "turns": 1
+                }
               }
             ]
           }
@@ -2358,6 +2402,28 @@
                 "count": 3
               }
             ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.5
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "refresh-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.2,
+                  "turns": 1
+                }
+              }
+            ]
           }
         ]
       },
@@ -2374,6 +2440,28 @@
                   "rule": "self"
                 },
                 "count": 4
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.5
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "refresh-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.25,
+                  "turns": 1
+                }
               }
             ]
           }
@@ -3008,6 +3096,28 @@
                 "count": 1
               }
             ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.5
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "refresh-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.1,
+                  "turns": 1
+                }
+              }
+            ]
           }
         ]
       },
@@ -3024,6 +3134,28 @@
                   "rule": "self"
                 },
                 "count": 2
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.5
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "refresh-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.15,
+                  "turns": 1
+                }
               }
             ]
           }
@@ -3044,6 +3176,28 @@
                 "count": 3
               }
             ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.5
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "refresh-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.2,
+                  "turns": 1
+                }
+              }
+            ]
           }
         ]
       },
@@ -3060,6 +3214,28 @@
                   "rule": "self"
                 },
                 "count": 4
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.5
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "refresh-ignore",
+                  "kind": "stat",
+                  "field": "ignoreDefense",
+                  "amount": 0.25,
+                  "turns": 1
+                }
               }
             ]
           }
@@ -4408,6 +4584,7 @@
               1.1
             ],
             "rule": "all",
+            "ignoreDefense": 0.3,
             "effects": [
               {
                 "op": "resource",
@@ -4428,6 +4605,7 @@
               1.1
             ],
             "rule": "all",
+            "ignoreDefense": 0.3,
             "effects": []
           }
         },
@@ -4795,7 +4973,21 @@
               "tag": "shattered-armor",
               "kind": "stat",
               "field": "pDef",
-              "amount": 0,
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 3
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "shattered-armor-s",
+              "kind": "stat",
+              "field": "sDef",
+              "amount": -0.1,
               "turns": 3,
               "maxStacks": 3
             }
@@ -4965,7 +5157,21 @@
                   "tag": "shattered-armor",
                   "kind": "stat",
                   "field": "pDef",
-                  "amount": 0,
+                  "amount": -0.2,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "shattered-armor-s",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.2,
                   "turns": 3,
                   "maxStacks": 3
                 }
@@ -5007,7 +5213,21 @@
                   "tag": "shattered-armor",
                   "kind": "stat",
                   "field": "pDef",
-                  "amount": 0,
+                  "amount": -0.2,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "shattered-armor-s",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.2,
                   "turns": 3,
                   "maxStacks": 3
                 }

@@ -56,7 +56,8 @@ function addMultiplier(
   mult: number | undefined,
 ): void {
   if (mult === undefined || mult <= 1) return;
-  const bonus = Math.round((u.base[field] ?? 0) * (mult - 1));
+  // R6b: S.ATK buffs are shares of the base stat; the soul stats stay flat.
+  const bonus = field === 'sAtk' ? mult - 1 : Math.round((u.base[field] ?? 0) * (mult - 1));
   if (bonus <= 0) return;
   u.buffs.push({ tag, kind: 'stat', source: u.id, field, amount: bonus });
   ctx.events.push({ type: 'buffApplied', unit: u.key, tag, amount: bonus });

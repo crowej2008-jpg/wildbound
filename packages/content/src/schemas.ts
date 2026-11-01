@@ -129,6 +129,7 @@ export const combatFieldSchema = z.enum([
   'spiritDef',
   'atkPct',
   'ignoreBlock',
+  'ignoreDefense',
   'basicRate',
   'pRdct',
   'sRdct',

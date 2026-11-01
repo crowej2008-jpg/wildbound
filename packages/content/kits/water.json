@@ -111,7 +111,37 @@
         "rates": [
           1.35
         ],
-        "rule": "frontline"
+        "rule": "frontline",
+        "effects": [
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "garchomp-pdef-cut",
+              "kind": "stat",
+              "field": "pDef",
+              "amount": -0.35,
+              "turns": 2,
+              "maxStacks": 1
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "garchomp-sdef-cut",
+              "kind": "stat",
+              "field": "sDef",
+              "amount": -0.35,
+              "turns": 2,
+              "maxStacks": 1
+            }
+          }
+        ]
       }
     },
     "talents": {
@@ -182,7 +212,46 @@
     },
     "plate": {
       "6": {
-        "text": "Ultimate's damage reduction effect is increased to 55%"
+        "text": "Ultimate's damage reduction effect is increased to 55%",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.35
+            ],
+            "rule": "frontline",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "garchomp-pdef-cut",
+                  "kind": "stat",
+                  "field": "pDef",
+                  "amount": -0.55,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "garchomp-sdef-cut",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.55,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        }
       },
       "12": {
         "text": "Every 1 targets whose DEF is reduced by your Ultimate, you gain 7% DMG Reduction for 3 turns. Stacks up to 3 times.",
@@ -2408,6 +2477,35 @@
               "turns": 3,
               "maxStacks": 1
             }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "suicune-sdef-steal",
+              "kind": "stat",
+              "field": "sDef",
+              "amount": -0.1,
+              "turns": 2,
+              "maxStacks": 1
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "side": "ally",
+              "rule": "self"
+            },
+            "buff": {
+              "tag": "suicune-sdef-gain",
+              "kind": "stat",
+              "field": "sDef",
+              "amount": 0.1,
+              "turns": 2,
+              "maxStacks": 1
+            }
           }
         ]
       }
@@ -2626,6 +2724,35 @@
                   "kind": "stat",
                   "field": "block",
                   "amount": 0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "suicune-sdef-steal-x",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "suicune-sdef-gain-x",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": 0.1,
                   "turns": 2,
                   "maxStacks": 1
                 }
@@ -5922,7 +6049,7 @@
                 "buff": {
                   "tag": "psy-sdef",
                   "kind": "stat",
-                  "field": "sRdct",
+                  "field": "sDef",
                   "amount": -0.3,
                   "bigRounds": 2,
                   "maxStacks": 1

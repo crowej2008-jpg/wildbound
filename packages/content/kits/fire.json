@@ -4471,6 +4471,34 @@
               "maxStacks": 6,
               "type": "P"
             }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "magma-armor-pdef",
+              "kind": "stat",
+              "field": "pDef",
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 6
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "magma-armor-sdef",
+              "kind": "stat",
+              "field": "sDef",
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 6
+            }
           }
         ]
       },
@@ -4493,6 +4521,34 @@
               "turns": 3,
               "maxStacks": 6,
               "type": "P"
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "magma-armor-pdef",
+              "kind": "stat",
+              "field": "pDef",
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 6
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "magma-armor-sdef",
+              "kind": "stat",
+              "field": "sDef",
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 6
             }
           }
         ]
@@ -4519,17 +4575,31 @@
             }
           },
           {
-            "op": "dot",
+            "op": "buff",
             "target": {
               "event": true
             },
-            "tag": "magma-armor",
-            "dot": {
-              "share": 0.2,
-              "basis": "casterAtk",
+            "buff": {
+              "tag": "magma-armor-pdef",
+              "kind": "stat",
+              "field": "pDef",
+              "amount": -0.1,
               "turns": 3,
-              "maxStacks": 6,
-              "type": "P"
+              "maxStacks": 6
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "magma-armor-sdef",
+              "kind": "stat",
+              "field": "sDef",
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 6
             }
           },
           {
@@ -4544,6 +4614,76 @@
               "turns": 3,
               "maxStacks": 6,
               "type": "P"
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "magma-armor-pdef",
+              "kind": "stat",
+              "field": "pDef",
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 6
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "magma-armor-sdef",
+              "kind": "stat",
+              "field": "sDef",
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 6
+            }
+          },
+          {
+            "op": "dot",
+            "target": {
+              "event": true
+            },
+            "tag": "magma-armor",
+            "dot": {
+              "share": 0.2,
+              "basis": "casterAtk",
+              "turns": 3,
+              "maxStacks": 6,
+              "type": "P"
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "magma-armor-pdef",
+              "kind": "stat",
+              "field": "pDef",
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 6
+            }
+          },
+          {
+            "op": "buff",
+            "target": {
+              "event": true
+            },
+            "buff": {
+              "tag": "magma-armor-sdef",
+              "kind": "stat",
+              "field": "sDef",
+              "amount": -0.1,
+              "turns": 3,
+              "maxStacks": 6
             }
           }
         ]
@@ -5490,6 +5630,35 @@
                   "turns": 5,
                   "maxStacks": 3
                 }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "last-out-sdef-cut",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.1,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "last-out-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": 0.1,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
               }
             ]
           }
@@ -5525,6 +5694,35 @@
                   "tag": "last-out",
                   "kind": "stat",
                   "field": "sAtk",
+                  "amount": 0.2,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "last-out-sdef-cut",
+                  "kind": "stat",
+                  "field": "sDef",
+                  "amount": -0.2,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "last-out-sdef",
+                  "kind": "stat",
+                  "field": "sDef",
                   "amount": 0.2,
                   "turns": 5,
                   "maxStacks": 3

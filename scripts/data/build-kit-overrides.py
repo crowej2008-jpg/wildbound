@@ -249,11 +249,12 @@ kit("zacian",
     skill("P", 1.5, "row", effects=[dmg(T, basis="casterLostTotal", share=0.4)]),
     skill("P", 1.4, "same_position", effects=[
         give(SELF, buff("armor-break-atk", "atkPct", 0.2, turns=3), condition={"targetHasTag": "shattered-armor"}),
-        give(T, buff("shattered-armor", "pDef", 0, turns=3, stacks=3)),
+        give(T, buff("shattered-armor", "pDef", -0.1, turns=3, stacks=3)),
+        give(T, buff("shattered-armor-s", "sDef", -0.1, turns=3, stacks=3)),
     ]),
     statMods=bundle(0.15, 0.32, 0.15, 0.06, 0.06, 0.51),
     damageMods=[{"tag": "zacian-guard", "role": "defend", "dmg": 0.5, "scale": "selfMissingHp", "cap": 0.3}],
-    notModelled=["Basic Skill: Shattered Armor's −10% DEF per layer (DEF has no effect while defendersUseDef is off)"])
+    notModelled=[])
 
 # ---------------------------------------------------------------- Mythics
 kit("wind-god-pidgeot",
@@ -563,14 +564,16 @@ kit("keldeo",
         {"tag": "resolve-max", "dmg": 0.45, "condition": {"selfStackAtLeast": {"tag": "resolve", "n": 3}}},
     ])
 
-magma = [dot(T, "magma-armor", 0.2, turns=3, stacks=6, type_="P")]
+magma = [dot(T, "magma-armor", 0.2, turns=3, stacks=6, type_="P"),
+         give(T, buff("magma-armor-pdef", "pDef", -0.1, turns=3, stacks=6)),
+         give(T, buff("magma-armor-sdef", "sDef", -0.1, turns=3, stacks=6))]
 kit("victini",
     skill("P", 1.0, effects=magma),
     skill("P", 1.35, "frontline", effects=magma * 3),
     skill("P", 1.2, effects=magma),
     statMods=bundle(0.06, 0.38, 0.06, 0.09, 0.09, 0.08),
     triggers=[ally_rdct_stacks(0.03, 4), trig("battleStart", [shield(BACK_ALLIES, 1.5, "casterAtk")])],
-    notModelled=["Magma Armor's −10% P.DEF / S.DEF per layer (DEF has no effect); the battle-start shield's 2-turn limit"])
+    notModelled=["Magma Armor's DEF cut is its own 6-layer stack beside the DoT (they can fall out of step); the battle-start shield's 2-turn limit"])
 
 kit("infernape",
     skill("S", 1.0),
@@ -678,6 +681,9 @@ kit("suicune",
     skill("S", 2.5, effects=[
         control(ENEMIES, "taunt"),
         give(SELF, buff("thorn", kind="stack", turns=3, stacks=1)),
+        # DEF on (owner, 2026-11-01): steals 10% S.DEF (2 turns; the sheet gives no duration).
+        give(T, buff("suicune-sdef-steal", "sDef", -0.1, turns=2, stacks=1)),
+        give(SELF, buff("suicune-sdef-gain", "sDef", 0.1, turns=2, stacks=1)),
     ]),
     skill("S", 1.2, effects=[give(SELF, buff("thorn", kind="stack", turns=3, stacks=1), chance=0.3)]),
     statMods=bundle(0.06, 0.08, 0.06, 0.45, 0.125, 0.08),
@@ -687,7 +693,7 @@ kit("suicune",
         trig("onHit", [give(T, buff("aurora-gb", "guardBreak", -0.05, turns=2, stacks=1))]),
         trig("onHit", [heal(SELF, 0.12, "targetMaxHp")], perTurn=1),
     ],
-    notModelled=["Ult: steals 10% S.DEF (DEF has no effect)", "Talent 4: the heal fires on the first hit of a turn, not the fourth"])
+    notModelled=["Ult: the 10% S.DEF steal lasts 2 turns (no duration given)", "Talent 4: the heal fires on the first hit of a turn, not the fourth"])
 
 kit("raikou",
     skill("S", 1.0, effects=[give(T, buff("short-circuit", kind="rageBlock", turns=1))],
@@ -806,10 +812,11 @@ kit("metagross",
 
 kit("garchomp",
     skill("P", 1.0),
-    skill("P", 1.35, "frontline"),
+    skill("P", 1.35, "frontline", effects=[give(T, buff("garchomp-pdef-cut", "pDef", -0.35, turns=2, stacks=1)),
+                                           give(T, buff("garchomp-sdef-cut", "sDef", -0.35, turns=2, stacks=1))]),
     skill("P", 1.2, effects=[give(T, buff("vulnerability", "dmgRdct", -0.1, turns=2, stacks=1))]),
     statMods=bundle(0.06, 0.425, 0.06, 0.09, 0.1, 0.08),
-    notModelled=["Ult: −35% P.DEF / S.DEF (DEF has no effect)"])
+    notModelled=["Ult: the −35% P.DEF / S.DEF lasts 2 turns (no duration given)"])
 
 kit("hydreigon",
     skill("P", 1.0),
@@ -821,10 +828,9 @@ kit("hydreigon",
 
 kit("gardevoir",
     skill("S", 1.0),
-    skill("S", 1.35, "frontline", effects=[give(ALLIES, buff("gardevoir-atk", "atkPct", 0.1, turns=10, stacks=3))]),
-    skill("S", 1.2),
-    statMods=bundle(0.08, 0.08, 0.11, 0.06, 0.06, 0.38) + [{"field": "sRdct", "add": 0.25}, {"field": "pRdct", "add": 0.1}],
-    notModelled=["Ult / Basic Skill: ignore 10% S.DEF (DEF has no effect)"])
+    skill("S", 1.35, "frontline", ignoreDefense=0.1, effects=[give(ALLIES, buff("gardevoir-atk", "atkPct", 0.1, turns=10, stacks=3))]),
+    skill("S", 1.2, ignoreDefense=0.1),
+    statMods=bundle(0.08, 0.08, 0.11, 0.06, 0.06, 0.38) + [{"field": "sRdct", "add": 0.25}, {"field": "pRdct", "add": 0.1}])
 
 kit("slaking",
     skill("P", 1.0),
@@ -863,7 +869,9 @@ for kid in ("gengar",):
 
 kit("shiny-darkrai",
     skill("P", 1.0, lifesteal=0.2),
-    skill("P", 1.75, "row", lifesteal=0.4, effects=[{"op": "resource", "target": SELF, "tag": "nightmare", "delta": 1, "max": 2}]),
+    skill("P", 1.75, "row", lifesteal=0.4, effects=[{"op": "resource", "target": SELF, "tag": "nightmare", "delta": 1, "max": 2},
+                                                    # DEF on: each Nightmare stack ignores 12% DEF (a stack-capped buff beside it).
+                                                    give(SELF, buff("nightmare-ignore", "ignoreDefense", 0.12, stacks=2))]),
     skill("P", 1.35, lifesteal=0.2),
     statMods=bundle(0.45, 0.08, 0.12, 0.06, 0.06, 0.1),
     triggers=[
@@ -875,7 +883,7 @@ kit("shiny-darkrai",
         ], condition={"selfControlled": True}),
     ],
     damageMods=[{"tag": "nightmare", "slot": "ult", "dmg": 0.15, "scale": {"resource": "nightmare"}}],
-    notModelled=["Ult: Nightmare's 12% Ignore DEF per stack (DEF has no effect)"])
+    notModelled=[])
 
 kit("shiny-arceus",
     skill("S", 1.0, effects=[{"op": "resource", "target": SELF, "tag": "sanction", "delta": 1, "max": 999}]),
@@ -962,7 +970,7 @@ levels("calyrex", {
 })
 
 # Necrozma -----------------------------------------------------------------------------------------
-nec_ult = lambda consume: skill("S", 1.1, "all", effects=([{"op": "resource", "target": SELF, "tag": "light-energy", "consume": 99}] if consume else []))
+nec_ult = lambda consume, ignore=None: skill("S", 1.1, "all", ignoreDefense=ignore, effects=([{"op": "resource", "target": SELF, "tag": "light-energy", "consume": 99}] if consume else []))
 nec_basic = lambda rule, kinds: skill("S", 1.3, rule, effects=[{"op": "cleanse", "target": {"side": "ally", "rule": "random", "n": 1, "filters": ["controlled"]}, **({"kinds": kinds} if kinds else {})}])
 nec_gain = [g(trig("afterNormal", [{"op": "resource", "target": SELF, "tag": "light-energy", "delta": 2}]), "passive"),
             g(trig("afterBasic", [{"op": "resource", "target": SELF, "tag": "light-energy", "delta": 2}]), "passive")]
@@ -974,11 +982,10 @@ nec_t4 = lambda consume, lifesteal: g(trig("turnStart", [{"op": "cleanse", "targ
 kit("necrozma", skill("S", 1.3), nec_ult(True), nec_basic("column", CONTROL_KINDS),
     statMods=bundle(0.6, 0.3, 0.2, 0.06, 0.06, 0.21),
     triggers=nec_gain + [trig("roundStart", [give(SELF, buff("round-dmgBoost", "dmgBoost", 0.025, turns=99, stacks=4))]), nec_t4(True, False)],
-    damageMods=[nec_mod(0.3)],
-    notModelled=["Ult LV.2: 30% ignore defense (DEF has no effect)"])
+    damageMods=[nec_mod(0.3)])
 nec_l3_gain = g(trig("turnStart", [{"op": "resource", "target": SELF, "tag": "light-energy", "delta": 2}], condition={"allyUnderControl": True}, perTurn=1), "passive")
 levels("necrozma", {
-    "ult": {"2": lv(nec_ult(True)), "3": lv(nec_ult(False))},
+    "ult": {"2": lv(nec_ult(True, 0.3)), "3": lv(nec_ult(False, 0.3))},
     "basic": {"2": lv(nec_basic("row", CONTROL_KINDS)), "3": lv(nec_basic("row", None))},
     "passive": {"2": lv(triggers=nec_gain, damageMods=[nec_mod(0.45)]), "3": lv(triggers=nec_gain + [nec_l3_gain], damageMods=[nec_mod(0.45)])},
     "talent4": {"2": lv(triggers=[nec_t4(True, True)]), "3": lv(triggers=[nec_t4(False, True)])},
@@ -1080,19 +1087,20 @@ levels("shadow-mewtwo", {
 z_atk = give(SELF, buff("armor-break-atk", "atkPct", 0.2, turns=3), condition={"targetHasTag": "shattered-armor"})
 z_ult = lambda rate, drain_chance: skill("P", rate, "row", effects=[dmg(T, basis="casterLostTotal", share=0.4)] + (
     [rage(T, -250, **({"chance": drain_chance} if drain_chance < 1 else {}))] if drain_chance else []))
-z_basic = lambda rate: skill("P", rate, "same_position", effects=[z_atk, give(T, buff("shattered-armor", "pDef", 0, turns=3, stacks=3))])
+z_basic = lambda rate, per=-0.1: skill("P", rate, "same_position", effects=[
+    z_atk, give(T, buff("shattered-armor", "pDef", per, turns=3, stacks=3)), give(T, buff("shattered-armor-s", "sDef", per, turns=3, stacks=3))])
 z_fall = lambda heal_r, atk: [g(trig(on, [heal(SELF, heal_r, "targetMaxHp"), give(SELF, buff("zacian-fallen", "atkPct", atk, turns=999, stacks=99))]), "passive")
                               for on in ("onEnemyDeath", "onAllyDeath")]
 z_guard = lambda per, cap: g({"tag": "zacian-guard", "role": "defend", "dmg": per, "scale": "selfMissingHp", "cap": cap}, "talent4")
 kit("zacian", skill("S", 1.2, "same_position", effects=[z_atk]), z_ult(1.5, 0), z_basic(1.4),
     statMods=bundle(0.15, 0.32, 0.15, 0.06, 0.06, 0.51),
     damageMods=[z_guard(0.5, 0.3)],
-    notModelled=["Basic Skill: Shattered Armor's −10% / −20% DEF per layer (DEF has no effect while defendersUseDef is off)",
+    notModelled=["Basic Skill: Shattered Armor's −10% / −20% DEF per layer read as LV.1 / LV.2+",
                  "Passive LV.2+: counts every death, not only deaths to a direct attack",
                  "Talent 4 LV.2: lifesteal of 1% per 1% HP lost (lifesteal cannot scale with HP yet)"])
 levels("zacian", {
     "ult": {"2": lv(z_ult(1.5, 0.7)), "3": lv(z_ult(1.7, 1))},
-    "basic": {"2": lv(z_basic(1.4)), "3": lv(z_basic(1.6))},
+    "basic": {"2": lv(z_basic(1.4, -0.2)), "3": lv(z_basic(1.6, -0.2))},
     "passive": {"2": lv(triggers=z_fall(0.1, 0.2)), "3": lv(triggers=z_fall(0.2, 0.3))},
     "talent4": {"2": lv(damageMods=[z_guard(0.5, 0.3)]), "3": lv(damageMods=[z_guard(0.75, 0.42)])},
 })

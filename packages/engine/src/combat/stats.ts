@@ -39,6 +39,7 @@ export function resolveSheet(spec: SpecInput): StatSheet {
     spiritDef: pct(s.spiritDef),
     atkPct: pct(s.atkPct),
     ignoreBlock: pct(s.ignoreBlock),
+    ignoreDefense: pct(s.ignoreDefense),
     basicRate: pct(s.basicRate),
     pRdct: pct(s.pRdct),
     sRdct: pct(s.sRdct),
@@ -68,11 +69,19 @@ export function applyStatMod(
  * Runtime effective stat: base value plus every applied stat buff (additive). P.ATK and S.ATK are
  * then raised by `atkPct` (E1: "+10% attack" buffs).
  */
+/** R6b: P.ATK / S.ATK / P.DEF / S.DEF buffs are shares of the unit's own stat (every one in the kits is a %). */
+const PCT_OF_BASE: ReadonlySet<CombatField> = new Set(['pAtk', 'sAtk', 'pDef', 'sDef']);
+
 export function effective(base: StatSheet, buffs: Buff[], field: CombatField): number {
   let v = base[field];
+  let share = 0;
   for (const b of buffs) {
-    if (b.kind === 'stat' && b.field === field && b.amount !== undefined) v += b.amount;
+    if (b.kind === 'stat' && b.field === field && b.amount !== undefined) {
+      if (PCT_OF_BASE.has(field)) share += b.amount;
+      else v += b.amount;
+    }
   }
+  if (share !== 0) v *= Math.max(0, 1 + share);
   if (field === 'pAtk' || field === 'sAtk') {
     const pct = effective(base, buffs, 'atkPct');
     if (pct !== 0) v *= 1 + pct;

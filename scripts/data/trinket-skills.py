@@ -14,11 +14,15 @@ def per_tier(fn, values):
 ATTACKS = ("afterNormal", "afterBasic", "afterUlt")
 
 # --- batch 1: the meta six (Origin Lugia has no trinket) -------------------------------------------
-trinket("god-ash-pikachu", per_tier(lambda amt, turns, n: {"triggers": [
-    trig(on, [give(SELF, buff("ruse-basic", "skillBoost", amt, turns=turns, stacks=n))]) for on in ATTACKS]},
-    [(0.1, 2, 2), (0.15, 2, 2), (0.15, 10, 3), (0.15, 10, 3)]))
-tnote("God Ash-Pikachu (Ruse): the S.DEF ignore (10-35 %) has no effect (DEF has no effect); the Basic Skill "
-      "bonus is +x % basic-skill damage per attack, its 'rounds' read as Pikachu's own turns.")
+def _ruse(amt, turns, n, ignore):
+    return {"statMods": [{"field": "ignoreDefense", "add": ignore}],
+            "triggers": [trig(on, [give(SELF, buff("ruse-basic", "skillBoost", amt, turns=turns, stacks=n))]) for on in ATTACKS]}
+
+
+_RUSE = [(0.1, 2, 2, 0.1), (0.15, 2, 2, 0.15), (0.15, 10, 3, 0.22), (0.15, 10, 3, 0.35)]
+trinket("god-ash-pikachu", per_tier(_ruse, _RUSE))
+tnote("God Ash-Pikachu (Ruse): 'ignore x % of S.DEF' as ignore x % DEF on every hit (its hits are S.ATK); the Basic "
+      "Skill bonus is +x % basic-skill damage per attack, its 'rounds' read as Pikachu's own turns.")
 
 trinket("wobbuffet", per_tier(lambda share: {"triggers": [
     trig("onHit", [{"op": "damage", "target": T, "basis": "eventDamage", "share": share, "trueDamage": True}])]},
@@ -94,12 +98,16 @@ trinket("snorlax", per_tier(_sleep, [(0.3, 0.08, 2), (0.35, 0.1, 2), (0.35, 0.1,
 
 
 def _last_out(amt, sdef):
-    return {"triggers": [trig("onHit", [give(T, buff("last-out-cut", "sAtk", -amt, turns=5, stacks=3)),
-                                       give(SELF, buff("last-out", "sAtk", amt, turns=5, stacks=3))])]}
+    effs = [give(T, buff("last-out-cut", "sAtk", -amt, turns=5, stacks=3)),
+            give(SELF, buff("last-out", "sAtk", amt, turns=5, stacks=3))]
+    if sdef:
+        effs += [give(T, buff("last-out-sdef-cut", "sDef", -amt, turns=5, stacks=3)),
+                 give(SELF, buff("last-out-sdef", "sDef", amt, turns=5, stacks=3))]
+    return {"triggers": [trig("onHit", effs)]}
 
 
 trinket("yveltal", per_tier(_last_out, [(0.05, False), (0.1, False), (0.1, True), (0.2, True)]))
-tnote("Yveltal (Last out): the S.ATK steal as -x % / +x % S.ATK (5 turns, 3 stacks); the S.DEF half has no effect.")
+tnote("Yveltal (Last out): the S.ATK (and from Lv 30 S.DEF) steal as -x % / +x % (5 turns, 3 stacks).")
 
 trinket("lugia", {t: {} for t in TIERS})
 tnote("Lugia (Enhanced Lifesteal): not modelled — lifesteal cannot grow with damage taken yet.")
@@ -155,13 +163,18 @@ trinket("meloetta", per_tier(lambda amt: {"triggers": [
     trig("onDealDamage", [give(SELF, buff("dream-shake", "atkPct", amt, stacks=10))])]},
     [0.02, 0.03, 0.04, 0.05]))
 
-trinket("arceus", per_tier(lambda n: {"triggers": [
-    trig("afterUlt", [{"op": "cleanse", "target": SELF, "count": n}])]}, [1, 2, 3, 4]))
-tnote("Arceus (Refresh): the S.DEF ignore below 50 % HP has no effect (DEF has no effect).")
+def _refresh(n, ignore):
+    return {"triggers": [trig("afterUlt", [{"op": "cleanse", "target": SELF, "count": n}]),
+                         trig("turnStart", [give(SELF, buff("refresh-ignore", "ignoreDefense", ignore, turns=1))],
+                              condition={"selfHpBelow": 0.5})]}
+
+
+_REFRESH = [(1, 0.1), (2, 0.15), (3, 0.2), (4, 0.25)]
+trinket("arceus", per_tier(_refresh, _REFRESH))
+tnote("Arceus / Shiny Arceus (Refresh): the S.DEF ignore below 50 % HP is checked at the start of each turn.")
 
 # --- batch 4 -------------------------------------------------------------------------------------
-trinket("shiny-arceus", per_tier(lambda n: {"triggers": [
-    trig("afterUlt", [{"op": "cleanse", "target": SELF, "count": n}])]}, [1, 2, 3, 4]))
+trinket("shiny-arceus", per_tier(_refresh, _REFRESH))
 
 trinket("kyogre", per_tier(lambda r: {"triggers": [trig("onHit", [rage(SELF, r)])]}, [50, 65, 80, 100]))
 tnote("Kyogre (Frustration): '+Rage when hit, without the passive's high DMG Reduction' — the Rage comes on every hit "
@@ -227,9 +240,16 @@ def _blizzard(cut, dmg_up, slow):
 trinket("black-kyurem", per_tier(_blizzard, [(0.1, 0.08, 0), (0.12, 0.12, 0), (0.15, 0.15, 2), (0.15, 0.18, 4)]))
 tnote("Shiny Kyurem lists no trinket skills in the source.")
 
-trinket("shaymin", per_tier(lambda h: {"triggers": [trig(on, [heal(SELF, h, "casterSAtk")]) for on in ATTACKS]} if h else {},
-                            [0, 0, 0.3, 0.5]))
-tnote("Shaymin (Sweet Scent): the S.DEF cut on [Leech Seed] targets has no effect (DEF has no effect); Lv 30 / 40 heal after each attack.")
+def _sweet_scent(h, cut, turns):
+    t = [trig("onDealDamage", [give(T, buff("sweet-scent", "sDef", -cut, turns=turns, stacks=1))],
+              condition={"targetHasTag": "leech-seed"})]
+    if h:
+        t += [trig(on, [heal(SELF, h, "casterSAtk")]) for on in ATTACKS]
+    return {"triggers": t}
+
+
+trinket("shaymin", per_tier(_sweet_scent, [(0, 0.15, 2), (0, 0.2, 2), (0.3, 0.2, 3), (0.5, 0.25, 3)]))
+tnote("Shaymin (Sweet Scent): the S.DEF cut lands on [Leech Seed] targets when hit; Lv 30 / 40 heal after each attack.")
 
 trinket("victini", per_tier(lambda turns: {"triggers": [
     trig("battleStart", [give(SELF, buff("victini-dauntless", kind="endure", turns=turns))])]}, [3, 4, 4, 4]))
@@ -265,9 +285,7 @@ trinket("wind-god-pidgeot", per_tier(lambda atk, rd, cap: {"triggers": [
 tnote("Wind God Pidgeot (Gale Spell): 3 a turn (not a big round); the cap is in stacks of the ATK gain.")
 
 # --- batch 6 -------------------------------------------------------------------------------------
-trinket("shiny-god-ash-pikachu", per_tier(lambda amt, turns, n: {"triggers": [
-    trig(on, [give(SELF, buff("ruse-basic", "skillBoost", amt, turns=turns, stacks=n))]) for on in ATTACKS]},
-    [(0.1, 2, 2), (0.15, 2, 2), (0.15, 10, 3), (0.15, 10, 3)]))
+trinket("shiny-god-ash-pikachu", per_tier(_ruse, _RUSE))
 tnote("Shiny God Ash-Pikachu: as God Ash-Pikachu.")
 
 trinket("shiny-charizard", per_tier(lambda amt, turns: {"triggers": [
@@ -288,8 +306,14 @@ trinket("shiny-gengar", per_tier(lambda tags: {"triggers": [
     _SG_IMMUNE))
 tnote("Shiny Gengar (Immune): Confusion covers the mind control kind too.")
 
-trinket("shiny-venusaur", {t: {} for t in TIERS})
-tnote("Shiny Venusaur (Impair DEF): no effect — DEF has no effect.")
+def _impair(cut, turns):
+    return {"triggers": [trig("onDealDamage", [give(T, buff("impair-pdef", "pDef", -cut, turns=turns, stacks=1)),
+                                              give(T, buff("impair-sdef", "sDef", -cut, turns=turns, stacks=1))],
+                              condition=ON_ULT)]}
+
+
+_IMPAIR = [(0.15, 2), (0.2, 2), (0.25, 3), (0.3, 3)]
+trinket("shiny-venusaur", per_tier(_impair, _IMPAIR))
 
 trinket("shiny-darkrai", per_tier(_darkrai_ruse, [(0.04, False), (0.05, True), (0.06, True), (0.08, True)]))
 tnote("Shiny Darkrai: as Darkrai (4-8 % a stack, 8 stacks).")
@@ -392,8 +416,8 @@ trinket("charizard", per_tier(lambda amt, turns: {"triggers": [
 
 trinket("blastoise", per_tier(_mass_healing, [(0.2, 0.04, 4), (0.28, 0.05, 4), (0.35, 0.05, 5), (0.4, 0.07, 5)]))
 
-trinket("venusaur", {t: {} for t in TIERS})
-tnote("Venusaur (Impair DEF): no effect — DEF has no effect. Charizard / Raichu / Blastoise / Gengar: as their Shiny forms at their own numbers.")
+trinket("venusaur", per_tier(_impair, _IMPAIR))
+tnote("Charizard / Raichu / Blastoise / Gengar / Venusaur: as their Shiny forms at their own numbers.")
 
 # --- batch 8 (last) ------------------------------------------------------------------------------
 trinket("blaziken", per_tier(lambda h: {"triggers": [

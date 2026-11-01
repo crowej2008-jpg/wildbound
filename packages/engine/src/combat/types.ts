@@ -41,6 +41,8 @@ export type CombatField =
   | 'atkPct'
   /** E1: share of the target's Block this unit's hits ignore (0.5 = half). */
   | 'ignoreBlock'
+  /** R6b (owner: DEF stays on): share of the target's P.DEF / S.DEF every hit ignores. */
+  | 'ignoreDefense'
   /** E1: added to the unit's basic-skill chance. */
   | 'basicRate'
   /** E3: reduction of physical (P.ATK) / special (S.ATK) damage taken, in the G pair. */
@@ -605,6 +607,7 @@ export interface SheetInput {
   spiritDef?: number;
   atkPct?: number;
   ignoreBlock?: number;
+  ignoreDefense?: number;
   basicRate?: number;
   pRdct?: number;
   sRdct?: number;
@@ -674,6 +677,7 @@ export interface StatSheet {
   spiritDef: number;
   atkPct: number;
   ignoreBlock: number;
+  ignoreDefense: number;
   basicRate: number;
   pRdct: number;
   sRdct: number;

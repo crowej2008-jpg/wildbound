@@ -1193,3 +1193,14 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   conditions `targetRageAbove`, `enemiesDeadAtLeast`. Content: the `removeBuff` effect.
 - Fix: Tyranitar's plate 12 riders now hit only controlled enemies (an empty `filters` narrowing used to fall back
   to all enemies).
+
+## DEF switched on (owner, 2026-11-01)
+
+- `defendersUseDef` true, `defK` 300,000 ("Light": ~20 % less damage for a maxed DEF tank, ~5 % for an attacker).
+  ASSUMPTIONS #69.
+- New `ignoreDefense` stat (adds to a skill's own ignore); DEF effects that were skipped as "no effect" are ported:
+  Garchomp's ult DEF cut (and plate 6 at 55 %), Suicune's S.DEF steal (and plate 12), Gardevoir's 10 % ignore,
+  Necrozma LV.2+ 30 % ignore, Zacian's Shattered Armor and Victini's Magma Armor DEF layers, Shiny Darkrai's
+  Nightmare ignore per stack (18 % from plate 6), Psyduck plate 6 as an S.DEF cut, and the trinkets of God Ash-
+  Pikachu (both), Arceus (both), Yveltal, Shaymin and Venusaur (both).
+- Fix: P.ATK / S.ATK / P.DEF / S.DEF stat buffs are shares of the unit's own stat (they added the raw number).

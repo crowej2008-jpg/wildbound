@@ -103,13 +103,15 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   const classMult = S.classMult[`${attacker.kit.class}>${defender.kit.class}`] ?? 1;
   const weatherMult = ctx.weather?.factions.includes(attacker.kit.faction) ? 1 + ctx.weather.dmg : 1;
 
-  // M9.5: DEF is inert by default (the measured model shows it has no effect).
+  // M9.5: DEF was inert by default (the measured model shows it has no effect); the owner turned it on
+  // (2026-11-01, "light": defK 300,000).
   // When `defendersUseDef` is on, P.DEF/S.DEF cut incoming damage on a
   // def/(def+defK) curve (half damage at DEF == defK).
   let defMult = 1;
   if (S.defendersUseDef) {
     const rawDef = skill.type === 'P' ? eff(defender, 'pDef') : eff(defender, 'sDef');
-    const def = Math.max(0, rawDef * (1 - (skill.ignoreDefense ?? 0)));
+    const ignore = Math.min(1, (skill.ignoreDefense ?? 0) + eff(attacker, 'ignoreDefense'));
+    const def = Math.max(0, rawDef * (1 - ignore));
     defMult = 1 - def / (def + S.defK);
   }
 
