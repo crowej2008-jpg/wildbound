@@ -41,7 +41,7 @@ R4 Potential; then M13.3 [Hoopa's Vault](systems/hoopa-vault.md).
 - [owner kit changes](decisions/kit-changes-2026-10-31.md) — 2026-10-31 Mew, Snorlax, Mimikyu, Dialga
 
 ## Systems — built
-- [combat engine](systems/combat-engine.md) · [skill kits (M9)](systems/skill-kits.md) · [roster](systems/roster.md) · [combat numbers (E5)](systems/combat-numbers.md)
+- [combat engine](systems/combat-engine.md) · [skill kits (M9)](systems/skill-kits.md) · [roster](systems/roster.md) · [combat numbers (E5)](systems/combat-numbers.md) · [E6 tier list](systems/e6-tier-list.md)
 - [campaign](systems/campaign.md) · [summoning and shops](systems/summoning-and-shops.md) · [M8 PvE modes](systems/pve-modes.md)
 - [PvP](systems/pvp.md) · [collection layers](systems/collection-layers.md) · [soul-hearts](systems/soul-hearts.md) · [held items](systems/held-items.md)
 - [explore hub](systems/explore-hub.md) · [Pet Home](systems/pet-home.md) · [Sky Pillar](systems/sky-pillar.md)

@@ -94,3 +94,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: "pokemon only get +250 rage if they are a skill class". Only `adept` gains the +250 per normal
   attack / basic skill; Strikers and Guardians gain 0. Mimikyu (Striker) extra attacks gain 0 too.
 - Dialga fallback (Dialga + 2 allies to full) recorded, not built. Page: owner changes.
+
+## [2026-11-01] update | E6 tier list
+- Owner scope: Supremes, Mythics and Origins only (56). Random-team sims at three stages plus long-fight
+  runs; Dialga vs the friend's version measured. Page: [E6 tier list](systems/e6-tier-list.md). Harness
+  `scripts/balance/tier.ts`.
