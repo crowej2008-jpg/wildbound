@@ -77,6 +77,10 @@ Seven tiers (Visitor → Crown) from **lifetime XP** (0–250,000) — nothing i
 hours, shop discount, daily Common Ticket supply. Save v12.
 
 ## Titles
+**R8 (2026-11-01):** the source's 102, each paid with its own activation card (no Title Tickets); Starter
+Trainer from the start, Beginner → Master Trainer from Tower floors 5 / 135 / 400 / 500; the rest wait for their
+modes. ASSUMPTIONS #73. Save v30.
+
 102 titles (85 permanent, 15 × 7-day, 2 × 14-day), three slots (Common/Premium/Rare), Title Tickets
 for activation/upgrade/Continuation, lazy expiry, account-wide stat lines. Guild/event titles locked
 until M15/M16. Save v13. One taste question open — see [open questions](../open-questions.md).

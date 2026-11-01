@@ -49,7 +49,8 @@ describe('M11.0 equipment view and actions', () => {
     const before = await srv.getEquipment(wildId);
     if (!before.ok) throw new Error(before.message);
     expect(before.value.power.base).toBeGreaterThan(0);
-    expect(before.value.power.equipped).toBe(before.value.power.base);
+    // R8: Starter Trainer (Total HP +0.1%) is worn from the start.
+    expect(before.value.power.equipped).toBe(before.value.power.base + before.value.power.layers.titles);
     expect(before.value.unlocks.relic).toBe(true);
 
     const relic = before.value.relics.find((r) => r.className === 'striker');

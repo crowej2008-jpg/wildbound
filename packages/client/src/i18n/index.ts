@@ -42,7 +42,6 @@ export const en = {
   'currency.plateFragment': 'Plate Fragments',
   'currency.starShard': 'Star Shards',
   'currency.resonationShard': 'Resonation Shards',
-  'currency.titleTicket': 'Title Tickets',
   'currency.factionCoin': 'Faction Tower Coins',
   'currency.trinketChestOrange': 'Orange Trinket Chests',
   'currency.trinketChestRed': 'Red Trinket Chests',
@@ -322,8 +321,9 @@ export const en = {
   'trainer.vip.coming': 'Coming with their systems: {dungeons} daily dungeon buys, {refreshes} Daily Shop refreshes, a {bag}-Pokémon bag, Golden Touch and the Exclusive Packs.',
   'trainer.titles': 'Titles',
   'titles.note': 'Three slots, one title each. Title stats apply to every Wild.',
-  'titles.tickets': 'Title Tickets',
-  'titles.noTickets': 'Title Ticket sources arrive with later milestones.',
+  'titles.cards': 'Activation cards',
+  'titles.earnedHere': 'Earned from',
+  'titles.comingLater': 'Its mode arrives in a later milestone.',
   'titles.owned': 'Owned',
   'titles.empty': 'Empty slot',
   'titles.expires': 'Expires',
@@ -335,9 +335,6 @@ export const en = {
   'titles.stages': 'stages',
   'titles.stage': 'Stage',
   'titles.permanent': 'Permanent',
-  'titles.requires': 'Requires',
-  'titles.lockedGuild': 'Coming later: guild war (M16).',
-  'titles.lockedEvent': 'Coming later: events (M15).',
   'titles.activate': 'Activate',
   'titles.upgrade': 'Upgrade',
   'titles.continue': 'Continue',
@@ -963,7 +960,6 @@ export type CurrencyKey =
   | 'plateFragment'
   | 'starShard'
   | 'resonationShard'
-  | 'titleTicket'
   | 'factionCoin'
   | 'trinketChestOrange'
   | 'trinketChestRed'
@@ -1004,7 +1000,6 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   plateFragment: en['currency.plateFragment'],
   starShard: en['currency.starShard'],
   resonationShard: en['currency.resonationShard'],
-  titleTicket: en['currency.titleTicket'],
   factionCoin: en['currency.factionCoin'],
   trinketChestOrange: en['currency.trinketChestOrange'],
   trinketChestRed: en['currency.trinketChestRed'],

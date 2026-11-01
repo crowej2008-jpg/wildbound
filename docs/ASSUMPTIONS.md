@@ -901,3 +901,16 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     day. Shown but waiting for their systems: daily dungeon buys, Daily Shop refreshes, bag size, Golden Touch and
     the Exclusive Packs. Replaces the M11 seven-tier lifetime-XP VIP (and its daily claim and shop discount); the
     old `idle.capHours` / `quickCollectDailyLimit` tuning is gone.
+
+73. **R8 Titles.** Copied from the source (`title_basic_json`, `title_up_stage_json`, English from the dump's notes):
+    the 102 titles in three slots (Common 8 / Premium 52 / Rare 42, one worn per slot), 85 permanent, 15 × 7-day,
+    2 × 14-day; the 35 event titles climb 15 stages (+1.5% → +5.25%). Each stage is paid with the title's own
+    activation card (one per stage); a timed title at its top stage pays one card to continue (extends from its
+    expiry); expired titles drop lazily. Flat HP / P.ATK / S.ATK and Total HP / P.ATK / S.ATK % apply to every
+    Pokémon (the source does not name the receivers; the trainer screen shows them as account bonuses). Sources in
+    Wildbound now: Starter Trainer is owned and worn from the start (source type 1, trainer level 1); Beginner →
+    Master Trainer cards at Tower floors 5 / 135 / 400 / 500 (source `dun_tower_json` achieve_reward). The rest show
+    the source's how-to-earn text and wait for their modes (Champion Road / champion challenge M14, guild M15–M16,
+    events M15, Pokémon Temple M17; the Arena titles come from a retired source mode). King of Eternity, Ever
+    Victorious and Dark Vanguard have no card (the Temple grants them). Replaces the M11.11 authored titles and the
+    Title Ticket currency; Pet Home's Title Ticket row sells Reforge Potions instead (Pet Home is still a stand-in).

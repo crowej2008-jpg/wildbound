@@ -17,6 +17,7 @@ import { modeBattle } from '../battle';
 import { applyGrant } from '../economy';
 import { fail, ok, type Result } from '../index';
 import type { GameConfig } from '../config';
+import { towerTitleCards } from '../titles';
 import { enemiesFor, towerTuning, type BattleOutcome } from './shared';
 
 /** Tower (M8, PROMPT §7.6): weekly climbs, daily sweeps, permanent floors. */
@@ -55,6 +56,8 @@ export function challengeTower(
     }
     const advanced = { ...advanceTower(rolled, floor), claimedMilestones: claimed };
     next = applyGrant(config, { ...state, pve: { ...state.pve, tower: advanced } }, rewards);
+    // R8: the source pays a title activation card at Tower floors 5 / 135 / 400 / 500.
+    next = towerTitleCards(config, next, floor);
   }
   return ok({
     state: next,

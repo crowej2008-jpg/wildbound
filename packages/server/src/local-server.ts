@@ -206,7 +206,7 @@ import {
   upgradeResonanceAction,
 } from './resonance';
 import { buildVipView, vipIdleCapMinutes, vipPerks } from './vip';
-import { activateTitleAction, buildTitlesView, setTitleSlotAction } from './titles';
+import { activateTitleAction, buildTitlesView, grantTitleCards, setTitleSlotAction } from './titles';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
 import {
@@ -308,6 +308,15 @@ export class LocalServer implements GameServer {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     return this.commit(grantTrinketItem(loaded.value, speciesId, Math.floor(amount)));
+  }
+
+  async grantTitleCards(titleId: string, amount: number): Promise<Result<AccountSnapshot>> {
+    const title = this.config.titleById.get(titleId);
+    if (!title || title.card === null) return fail('not_found', `no activation card for title "${titleId}"`);
+    if (!Number.isFinite(amount) || amount < 0) return fail('invalid_input', 'amount must be non-negative');
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commit(grantTitleCards(loaded.value, titleId, Math.floor(amount)));
   }
 
   async grantCurrency(currency: string, amount?: number): Promise<Result<AccountSnapshot>> {

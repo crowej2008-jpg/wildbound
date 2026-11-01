@@ -1,3 +1,4 @@
+import { startingTitles } from './titles';
 import {
   createMail,
   CURRENCY_IDS,
@@ -38,14 +39,14 @@ import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 29;
+export const SAVE_VERSION = 30;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 29;
+export const MIN_SAVE_VERSION = 30;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -86,9 +87,10 @@ function normalizeResonance(source: Partial<ResonanceState> | undefined, config:
 function normalizeTitles(
   source: Partial<TitlesState> | undefined,
   now: number,
+  config?: GameConfig,
 ): TitlesState {
-  const base = initialTitles();
-  const owned: Record<string, TitleOwnership> = {};
+  const base = config?.titles ? startingTitles(config) : initialTitles();
+  const owned: Record<string, TitleOwnership> = { ...base.owned };
   for (const [id, value] of Object.entries(source?.owned ?? {})) {
     if (!value || typeof value.stage !== 'number' || !Number.isFinite(value.stage)) continue;
     const expiresAt =
@@ -100,8 +102,13 @@ function normalizeTitles(
   for (const slot of TITLE_SLOTS) {
     const id = source?.equipped?.[slot];
     if (typeof id === 'string' && owned[id]) equipped[slot] = id;
+    else if (source?.equipped && slot in source.equipped && id === null) equipped[slot] = null;
   }
-  return { owned, equipped };
+  const cards: Record<string, number> = {};
+  for (const [id, n] of Object.entries(source?.cards ?? {})) {
+    if (typeof n === 'number' && Number.isFinite(n) && n > 0) cards[id] = Math.floor(n);
+  }
+  return { owned, equipped, cards };
 }
 
 /** Fill every squad mode and strategy, including modes added after an old save. */
@@ -156,7 +163,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     trinketItems: s.trinketItems ?? {},
     trinkets: s.trinkets ?? {},
     resonance: normalizeResonance(s.resonance, config),
-    titles: normalizeTitles(s.titles, now),
+    titles: normalizeTitles(s.titles, now, config),
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     petHome: s.petHome ?? initialPetHome(now, day),
@@ -250,7 +257,7 @@ export function createInitialState(config: GameConfig): AccountState {
     plates: {},
     trinkets: {},
     resonance: initialResonance(config.resonance),
-    titles: initialTitles(),
+    titles: startingTitles(config),
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     petHome: initialPetHome(now, day),

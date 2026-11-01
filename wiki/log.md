@@ -192,3 +192,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R8 VIP
 - The source's VIP 0–40 from Privilege XP replaces the seven-tier VIP; idle cap, Quick Combat and Arena buys read
   it (ASSUMPTIONS #72, save v29). Next: Titles.
+
+## [2026-11-01] update | R8 Titles
+- The source's 102 titles with per-title activation cards replace the authored titles and Title Tickets; the
+  14-day-pair open question is closed by copying the source (ASSUMPTIONS #73, save v30). Next: Trainer Tokens.

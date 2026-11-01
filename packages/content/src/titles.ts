@@ -1,7 +1,7 @@
 import raw from '../titles/titles.json';
 import { titlesSchema, type TitlesJson, type TitleJson } from './titles-schema';
 
-/** M11.11: the authored title catalogue (85 permanent, 15x7-day, 2x14-day). */
+/** R8: the source title catalogue (85 permanent, 15 × 7-day, 2 × 14-day). */
 export const TITLES: TitlesJson = titlesSchema.parse(raw);
 
 const BY_ID = new Map(TITLES.map((title) => [title.id, title]));

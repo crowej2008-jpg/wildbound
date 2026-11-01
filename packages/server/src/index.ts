@@ -233,6 +233,8 @@ export interface GameServer {
   grantCurrency(currency: string, amount?: number): Promise<Result<AccountSnapshot>>;
   /** Debug (R6b): grant a trinket holder's own levelling item. */
   grantTrinketItem(speciesId: string, amount: number): Promise<Result<AccountSnapshot>>;
+  /** Debug (R8): grant a title's own activation cards. */
+  grantTitleCards(titleId: string, amount: number): Promise<Result<AccountSnapshot>>;
   levelUp(instanceId: string, levels: number): Promise<Result<AccountSnapshot>>;
   /** R1: the source's Evolve — one star up, consuming the star card's fodder (auto-picked). */
   evolve(instanceId: string): Promise<Result<AccountSnapshot>>;

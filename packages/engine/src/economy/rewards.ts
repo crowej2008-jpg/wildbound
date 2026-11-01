@@ -29,7 +29,6 @@ export interface Rewards {
   plateFragment?: number;
   starShard?: number;
   resonationShard?: number;
-  titleTicket?: number;
   factionCoin?: number;
   trinketChestOrange?: number;
   trinketChestRed?: number;
@@ -72,7 +71,6 @@ export const CURRENCY_REWARD_KEYS = [
   'plateFragment',
   'starShard',
   'resonationShard',
-  'titleTicket',
   'factionCoin',
   'trinketChestOrange',
   'trinketChestRed',

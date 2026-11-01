@@ -46,14 +46,13 @@ export {
   titlesSchema,
   titleSchema,
   titleStageSchema,
-  titleRequirementSchema,
+  titleEarnedBySchema,
   TITLE_SLOTS,
-  TITLE_SOURCES,
   type TitlesJson,
   type TitleJson,
   type TitleStageJson,
   type TitleSlotJson,
-  type TitleSourceJson,
+  type TitleEarnedBy,
 } from './titles-schema';
 export { PVE } from './pve';
 export { pveSchema, type PveJson, type EnemyPoolJson, type TrialDefJson, type DungeonDefJson } from './pve-schema';

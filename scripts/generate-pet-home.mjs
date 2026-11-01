@@ -76,7 +76,8 @@ const templates = [
   { key: 'resonationShard', label: 'Resonation Shard', values: [2, 4, 8, 16, 32, 64, 128] },
   { key: 'plateBottle', label: 'Plate Bottle', values: [1, 1, 2, 2, 3, 4, 5] },
   { key: 'plateFragment', label: 'Plate Fragment', values: [5, 10, 20, 40, 80, 160, 320] },
-  { key: 'titleTicket', label: 'Title Ticket', values: [1, 1, 1, 2, 2, 3, 4] },
+  // R8: Title Tickets are gone (source titles use their own cards); Reforge Potions take the row (stand-in).
+  { key: 'reforgePotion', label: 'Reforge Potion', values: [1, 1, 1, 2, 2, 3, 4] },
   { key: 'candy', label: 'Candy', values: [300, 600, 1200, 2400, 4800, 9600, 19200] },
   { key: 'gold', label: 'Gold', values: [1000, 2000, 4000, 8000, 16000, 32000, 64000] },
 ];

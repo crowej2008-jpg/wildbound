@@ -77,7 +77,6 @@ export type CurrencyId =
   | 'plateFragment'
   | 'starShard'
   | 'resonationShard'
-  | 'titleTicket'
   // R6b: the Faction Tower Shop's coin (source item 33) and the trinket chests (hero_weapon_box).
   | 'factionCoin'
   | 'trinketChestOrange'
@@ -121,7 +120,6 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'plateFragment',
   'starShard',
   'resonationShard',
-  'titleTicket',
   'factionCoin',
   'trinketChestOrange',
   'trinketChestRed',
@@ -151,7 +149,6 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'plateFragment',
   'starShard',
   'resonationShard',
-  'titleTicket',
   'factionCoin',
   'trinketChestOrange',
   'trinketChestRed',
@@ -296,7 +293,7 @@ export function initialPvp(day: string, week: string): PvpState {
 
 
 
-/** M11.11: three account-wide title slots. */
+/** Three account-wide title slots (source layers 1–3: Common / Premium / Rare). */
 export const TITLE_SLOTS = ['common', 'premium', 'rare'] as const;
 export type TitleSlot = (typeof TITLE_SLOTS)[number];
 
@@ -310,10 +307,12 @@ export interface TitleOwnership {
 export interface TitlesState {
   owned: Record<string, TitleOwnership>;
   equipped: Record<TitleSlot, string | null>;
+  /** R8: each title's own activation cards (source: one item per title), by title id. */
+  cards: Record<string, number>;
 }
 
 export function initialTitles(): TitlesState {
-  return { owned: {}, equipped: { common: null, premium: null, rare: null } };
+  return { owned: {}, equipped: { common: null, premium: null, rare: null }, cards: {} };
 }
 
 /** Drop expired titles and clear any slot that pointed at one (lazy expiry). */
@@ -335,7 +334,7 @@ export function expireTitles(titles: TitlesState, now: number): TitlesState {
       changed = true;
     }
   }
-  return changed ? { owned, equipped } : titles;
+  return changed ? { ...titles, owned, equipped } : titles;
 }
 
 export interface TutorialState {

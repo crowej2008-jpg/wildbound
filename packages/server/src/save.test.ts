@@ -17,8 +17,10 @@ describe('save codec', () => {
     expect(state.resonance.slots).toHaveLength(2);
     expect(state.resonance.evolved).toBe(false);
     expect(state.resonance.slots.every((id) => id === null)).toBe(true);
-    expect(state.titles.owned).toEqual({});
-    expect(state.titles.equipped).toEqual({ common: null, premium: null, rare: null });
+    // R8: Starter Trainer (source type 1, trainer level 1) is owned and worn from the start.
+    expect(state.titles.owned).toEqual({ '11': { stage: 1, expiresAt: null } });
+    expect(state.titles.equipped).toEqual({ common: '11', premium: null, rare: null });
+    expect(state.titles.cards).toEqual({});
     expect(state.campaign.gyms).toEqual({});
     expect(new Set(state.roster.map((w) => w.id)).size).toBe(state.roster.length);
   });

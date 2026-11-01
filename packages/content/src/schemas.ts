@@ -684,7 +684,6 @@ export const rewardSchema = z
     plateFragment: z.number().nonnegative().optional(),
     starShard: z.number().nonnegative().optional(),
     resonationShard: z.number().nonnegative().optional(),
-    titleTicket: z.number().nonnegative().optional(),
     factionCoin: z.number().nonnegative().optional(),
     trinketChestOrange: z.number().nonnegative().optional(),
     trinketChestRed: z.number().nonnegative().optional(),

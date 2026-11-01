@@ -1240,3 +1240,11 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   level. New currency `privilegeXp`; the top daily-activity chest pays 60 (stand-in until R9). Save v29.
 - Removed: the M11 seven-tier VIP (`state.vip`, daily claim, shop discount), `collection.json`, and the economy
   idle cap / quick-collect limit. ASSUMPTIONS #72.
+
+## R8 part 2 — Titles from the source (2026-11-01)
+
+- `scripts/import-titles.mjs` → `packages/content/titles/titles.json` (the source 102). Save v30 adds
+  `titles.cards` (each title's own activation cards); Starter Trainer is owned and worn on a new account; Tower
+  floors 5 / 135 / 400 / 500 pay the Beginner → Master Trainer cards. Debug `grantTitleCards`.
+- Removed: the authored M11.11 titles, their requirements and the `titleTicket` currency. Percent stat text now
+  shows up to two decimals (+5.25%). ASSUMPTIONS #73.

@@ -1,21 +1,23 @@
 import type { TitleJson } from '@wildbound/content';
 import {
+  initialTitles,
   TITLE_SLOTS,
   type AccountState,
   type StatLine,
   type TitleFold,
   type TitleOwnership,
   type TitleSlot,
+  type TitlesState,
 } from '@wildbound/engine';
 import type { GameConfig } from './config';
-import { pay } from './equipment';
 import { statLineText } from './gear-text';
 import { fail, ok, type Result } from './index';
 
 /**
- * M11.11 titles. Three account-wide slots (Common / Premium / Rare); one title
- * per slot. Permanent titles are a one-off cost, timed titles expire lazily and
- * can be continued at max stage. See docs/design/collection.md.
+ * R8 titles, copied from the source (packages/content/titles/titles.json, scripts/import-titles.mjs). Three
+ * account-wide slots, one title each. A title is activated, raised a stage and (timed ones, at the top stage)
+ * continued by paying its own activation card; timed titles expire lazily. Starter Trainer is owned from the start;
+ * Beginner → Master Trainer cards come from the Tower floors the source pays them at. See ASSUMPTIONS #73.
  */
 
 const DAY_MS = 86_400_000;
@@ -24,15 +26,6 @@ export const TITLE_SLOT_LABELS: Record<TitleSlot, string> = {
   common: 'Common Title',
   premium: 'Premium Title',
   rare: 'Rare Title',
-};
-
-const SOURCE_LABELS: Record<TitleJson['source'], string> = {
-  trainer: 'Trainer',
-  collection: 'Collection',
-  arena: 'Arena',
-  ranked: 'Ranked',
-  guild: 'Guild war',
-  event: 'Event',
 };
 
 export type TitleAction = 'activate' | 'upgrade' | 'continue';
@@ -50,8 +43,6 @@ export interface TitleRowView {
   id: string;
   name: string;
   slot: TitleSlot;
-  source: TitleJson['source'];
-  sourceLabel: string;
   durationDays: number | null;
   stage: number;
   maxStage: number;
@@ -60,57 +51,50 @@ export interface TitleRowView {
   expiresAt: number | null;
   bonusText: string[];
   action: TitleAction | null;
+  /** Activation cards the next action costs, and how many are held. */
   nextCost: number | null;
-  requirementText: string | null;
-  requirementMet: boolean;
-  available: boolean;
-  lockedReason: 'guild' | 'event' | null;
+  cards: number;
+  /** The source's how-to-earn text, and where Wildbound gives it today. */
+  earn: string | null;
+  earnedHere: string | null;
   canAct: boolean;
 }
 
 export interface TitlesView {
-  tickets: number;
   ownedCount: number;
   slots: TitleSlotView[];
   rows: TitleRowView[];
 }
 
-function available(title: TitleJson): boolean {
-  return title.source !== 'guild' && title.source !== 'event';
+/** A fresh account's titles: the auto-granted ones (Starter Trainer) owned and worn. */
+export function startingTitles(config: GameConfig): TitlesState {
+  const titles = initialTitles();
+  for (const title of config.titles) {
+    if (title.earnedBy?.kind !== 'start') continue;
+    titles.owned[title.id] = { stage: 1, expiresAt: null };
+    if (titles.equipped[title.slot] === null) titles.equipped[title.slot] = title.id;
+  }
+  return titles;
 }
 
-function requirementMet(state: AccountState, title: TitleJson): boolean {
-  const requirement = title.requirement;
-  if (!requirement) return true;
-  switch (requirement.kind) {
-    case 'trainerLevel':
-      return state.profile.level >= requirement.value;
-    case 'uniqueSpecies':
-      return new Set(state.roster.map((wild) => wild.speciesId)).size >= requirement.value;
-    case 'arenaCredits':
-      return state.pvp.arena.bestCredits >= requirement.value;
-    case 'arenaBestPlace':
-      return state.pvp.arena.bestPlace > 0 && state.pvp.arena.bestPlace <= requirement.value;
-    case 'rankedWins':
-      return state.pvp.ranked.wins >= requirement.value;
-  }
+/** Add activation cards for a title. */
+export function grantTitleCards(state: AccountState, titleId: string, count: number): AccountState {
+  const cards = { ...state.titles.cards, [titleId]: (state.titles.cards[titleId] ?? 0) + count };
+  return { ...state, titles: { ...state.titles, cards } };
 }
 
-function requirementText(title: TitleJson): string | null {
-  const requirement = title.requirement;
-  if (!requirement) return null;
-  switch (requirement.kind) {
-    case 'trainerLevel':
-      return `Trainer level ${requirement.value}`;
-    case 'uniqueSpecies':
-      return `${requirement.value} unique species`;
-    case 'arenaCredits':
-      return `Arena best ${requirement.value} credits`;
-    case 'arenaBestPlace':
-      return `Arena best place ${requirement.value}`;
-    case 'rankedWins':
-      return `Ranked ${requirement.value} wins`;
+/** The Tower floor clears that pay title cards (source dun_tower_json achieve_reward). */
+export function towerTitleCards(config: GameConfig, state: AccountState, floor: number): AccountState {
+  let next = state;
+  for (const title of config.titles) {
+    if (title.earnedBy?.kind === 'tower' && title.earnedBy.floor === floor) next = grantTitleCards(next, title.id, 1);
   }
+  return next;
+}
+
+function earnedHere(title: TitleJson): string | null {
+  if (!title.earnedBy) return null;
+  return title.earnedBy.kind === 'start' ? 'Owned from the start' : `Tower floor ${title.earnedBy.floor}`;
 }
 
 function stageStats(title: TitleJson, stage: number): StatLine[] {
@@ -122,28 +106,26 @@ function bonusText(title: TitleJson, stage: number): string[] {
   return stageStats(title, stage).map((line) => statLineText(line, 1));
 }
 
-function liveOwnership(
-  state: AccountState,
-  titleId: string,
-  now: number,
-): TitleOwnership | undefined {
+function liveOwnership(state: AccountState, titleId: string, now: number): TitleOwnership | undefined {
   const owned = state.titles.owned[titleId];
   if (!owned) return undefined;
   if (owned.expiresAt !== null && owned.expiresAt <= now) return undefined;
   return owned;
 }
 
-function nextCost(title: TitleJson, owned: TitleOwnership | undefined): number | null {
-  if (!owned) return title.stages[0]?.cost ?? null;
-  if (owned.stage < title.stages.length) return title.stages[owned.stage]?.cost ?? null;
-  if (title.durationDays !== null) return title.stages[title.stages.length - 1]?.cost ?? null;
-  return null;
-}
-
 function nextAction(title: TitleJson, owned: TitleOwnership | undefined): TitleAction | null {
+  if (title.card === null) return null;
   if (!owned) return 'activate';
   if (owned.stage < title.stages.length) return 'upgrade';
   if (title.durationDays !== null) return 'continue';
+  return null;
+}
+
+function nextCost(title: TitleJson, owned: TitleOwnership | undefined): number | null {
+  const action = nextAction(title, owned);
+  if (action === 'activate') return title.stages[0]?.cost ?? null;
+  if (action === 'upgrade') return title.stages[owned!.stage]?.cost ?? null;
+  if (action === 'continue') return title.continueCost;
   return null;
 }
 
@@ -180,42 +162,36 @@ export function buildTitlesView(config: GameConfig, state: AccountState, now: nu
     };
   });
 
-  const rows: TitleRowView[] = config.titles.map((title) => {
-    const owned = liveOwnership(state, title.id, now);
-    const action = nextAction(title, owned);
-    const requirementOk = requirementMet(state, title);
-    const unlocked = available(title);
-    const cost = nextCost(title, owned);
-    const equippedSlot = equippedBy.get(title.id) ?? null;
-    return {
-      id: title.id,
-      name: title.name,
-      slot: title.slot,
-      source: title.source,
-      sourceLabel: SOURCE_LABELS[title.source],
-      durationDays: title.durationDays,
-      stage: owned?.stage ?? 0,
-      maxStage: title.stages.length,
-      owned: owned !== undefined,
-      equippedSlot,
-      expiresAt: owned?.expiresAt ?? null,
-      bonusText: bonusText(title, owned?.stage ?? 1),
-      action,
-      nextCost: cost,
-      requirementText: requirementText(title),
-      requirementMet: requirementOk,
-      available: unlocked,
-      lockedReason: title.source === 'guild' ? 'guild' : title.source === 'event' ? 'event' : null,
-      canAct: unlocked && requirementOk && action !== null && cost !== null && state.currencies.titleTicket >= cost,
-    };
-  });
+  const rows: TitleRowView[] = [...config.titles]
+    .sort((a, b) => TITLE_SLOTS.indexOf(a.slot) - TITLE_SLOTS.indexOf(b.slot) || a.order - b.order)
+    .map((title) => {
+      const owned = liveOwnership(state, title.id, now);
+      const action = nextAction(title, owned);
+      const cost = nextCost(title, owned);
+      const cards = state.titles.cards[title.id] ?? 0;
+      return {
+        id: title.id,
+        name: title.name,
+        slot: title.slot,
+        durationDays: title.durationDays,
+        stage: owned?.stage ?? 0,
+        maxStage: title.stages.length,
+        owned: owned !== undefined,
+        equippedSlot: equippedBy.get(title.id) ?? null,
+        expiresAt: owned?.expiresAt ?? null,
+        // Source: owned shows the current stage's stats, not owned shows stage 1's.
+        bonusText: bonusText(title, owned?.stage ?? 1),
+        action,
+        nextCost: cost,
+        cards,
+        earn: title.earn,
+        earnedHere: earnedHere(title),
+        canAct: action !== null && cost !== null && cards >= cost,
+      };
+    });
 
-  return {
-    tickets: state.currencies.titleTicket,
-    ownedCount: Object.keys(state.titles.owned).length,
-    slots,
-    rows,
-  };
+  const ownedCount = config.titles.filter((title) => liveOwnership(state, title.id, now)).length;
+  return { ownedCount, slots, rows };
 }
 
 export function activateTitleAction(
@@ -226,41 +202,36 @@ export function activateTitleAction(
 ): Result<AccountState> {
   const title = config.titleById.get(titleId);
   if (!title) return fail('not_found', `no title "${titleId}"`);
-  if (!available(title)) return fail('resource_locked', `${title.name} is not live yet`);
-  if (!requirementMet(state, title)) {
-    return fail('resource_locked', requirementText(title) ?? 'requirement not met');
-  }
-
   const existing = liveOwnership(state, titleId, now);
   const action = nextAction(title, existing);
-  if (action === null) return fail('at_level_cap', `${title.name} is already at max stage`);
+  if (action === null) {
+    return title.card === null
+      ? fail('resource_locked', `${title.name} is not activated with a card`)
+      : fail('at_level_cap', `${title.name} is already at max stage`);
+  }
+  const cost = nextCost(title, existing) ?? 0;
+  const cards = state.titles.cards[titleId] ?? 0;
+  if (cards < cost) return fail('insufficient_items', `not enough ${title.name} activation cards`);
 
   let stage: number;
   let expiresAt: number | null;
-  let cost: number;
   if (!existing) {
     stage = 1;
-    cost = title.stages[0]?.cost ?? 0;
     expiresAt = title.durationDays === null ? null : now + title.durationDays * DAY_MS;
-  } else if (existing.stage < title.stages.length) {
+  } else if (action === 'upgrade') {
     stage = existing.stage + 1;
-    cost = title.stages[existing.stage]?.cost ?? 0;
     expiresAt = existing.expiresAt;
   } else {
     stage = existing.stage;
-    cost = title.stages[title.stages.length - 1]?.cost ?? 0;
     expiresAt = Math.max(now, existing.expiresAt ?? now) + (title.durationDays ?? 0) * DAY_MS;
   }
 
-  const paid = pay(state, { titleTicket: cost });
-  if (!paid) return fail('insufficient_items', 'not enough Title Tickets');
-
-  const owned = { ...paid.titles.owned, [title.id]: { stage, expiresAt } };
-  const equipped = { ...paid.titles.equipped };
-  if (equipped[title.slot] === null || equipped[title.slot] === title.id) {
-    equipped[title.slot] = title.id;
-  }
-  return ok({ ...paid, titles: { owned, equipped } });
+  const owned = { ...state.titles.owned, [title.id]: { stage, expiresAt } };
+  const equipped = { ...state.titles.equipped };
+  if (equipped[title.slot] === null || equipped[title.slot] === title.id) equipped[title.slot] = title.id;
+  const nextCards = { ...state.titles.cards, [title.id]: cards - cost };
+  if (nextCards[title.id] === 0) delete nextCards[title.id];
+  return ok({ ...state, titles: { owned, equipped, cards: nextCards } });
 }
 
 export function setTitleSlotAction(

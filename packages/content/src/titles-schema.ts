@@ -2,34 +2,23 @@ import { z } from 'zod';
 import { statLineSchema } from './equipment-schema';
 
 /**
- * M11.11 title catalogue. A title occupies one of three slots and is either
- * permanent or timed. Every stage cost is paid in Title Tickets; event titles
- * keep the reference's 15-stage ladder even though no event feeds them yet.
+ * R8 title catalogue, imported from the source by scripts/import-titles.mjs (title_basic_json +
+ * title_up_stage_json). A title sits in one of three slots and is permanent or timed (7 / 14 days). Each stage is
+ * paid with the title's own activation card; event titles climb 15 stages.
  */
 
 export const TITLE_SLOTS = ['common', 'premium', 'rare'] as const;
 export type TitleSlotJson = (typeof TITLE_SLOTS)[number];
 
-export const TITLE_SOURCES = [
-  'trainer',
-  'collection',
-  'arena',
-  'ranked',
-  'guild',
-  'event',
-] as const;
-export type TitleSourceJson = (typeof TITLE_SOURCES)[number];
-
-export const titleRequirementSchema = z
-  .object({
-    kind: z.enum(['trainerLevel', 'uniqueSpecies', 'arenaCredits', 'arenaBestPlace', 'rankedWins']),
-    value: z.number().int().min(0),
-  })
-  .strict();
+/** Where Wildbound hands out the title today (null = its source mode is not built yet). */
+export const titleEarnedBySchema = z.union([
+  z.object({ kind: z.literal('start') }).strict(),
+  z.object({ kind: z.literal('tower'), floor: z.number().int().min(1) }).strict(),
+]);
 
 export const titleStageSchema = z
   .object({
-    /** Title Tickets paid to reach this stage (or to continue a timed title). */
+    /** Activation cards paid to reach this stage. */
     cost: z.number().int().min(0),
     stats: z.array(statLineSchema).min(1),
   })
@@ -40,17 +29,24 @@ export const titleSchema = z
     id: z.string().min(1),
     name: z.string().min(1),
     slot: z.enum(TITLE_SLOTS),
-    source: z.enum(TITLE_SOURCES),
-    /** null = permanent; otherwise the activation/continuation window. */
+    /** Source priority: the order within the slot. */
+    order: z.number().int(),
+    /** null = permanent; otherwise the activation / continuation window. */
     durationDays: z.number().int().min(1).nullable(),
-    /** null = no gate beyond the title source being live. */
-    requirement: titleRequirementSchema.nullable(),
+    /** The source item id of the title's activation card (null = granted directly, no card). */
+    card: z.number().int().nullable(),
+    /** Cards a Continuation costs (timed titles only). */
+    continueCost: z.number().int().min(0).nullable(),
+    /** The source's how-to-earn text. */
+    earn: z.string().nullable(),
+    earnedBy: titleEarnedBySchema.nullable(),
     stages: z.array(titleStageSchema).min(1),
   })
   .strict();
 
-export const titlesSchema = z.array(titleSchema).min(1);
+export const titlesSchema = z.array(titleSchema).length(102);
 
 export type TitleJson = z.infer<typeof titleSchema>;
 export type TitlesJson = z.infer<typeof titlesSchema>;
 export type TitleStageJson = z.infer<typeof titleStageSchema>;
+export type TitleEarnedBy = z.infer<typeof titleEarnedBySchema>;

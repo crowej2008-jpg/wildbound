@@ -6,8 +6,10 @@ import { createInitialState } from './save';
 import {
   activateTitleAction,
   buildTitlesView,
+  grantTitleCards,
   setTitleSlotAction,
   titleFoldFor,
+  towerTitleCards,
 } from './titles';
 
 const NOW = Date.parse('2026-01-01T00:00:00Z');
@@ -17,106 +19,110 @@ function makeState() {
   const config = buildConfig();
   config.now = () => NOW;
   const state = createInitialState(config);
-  state.currencies.titleTicket = 200;
   return { config, state };
 }
 
-describe('M11.11 titles', () => {
-  it('ships 85 permanent, 15 seven-day and 2 fourteen-day titles', () => {
+describe('R8 titles from the source', () => {
+  it('ships the source 102: 8 / 52 / 42 by slot, 85 permanent, 15 seven-day, 2 fourteen-day', () => {
     const { config } = makeState();
     expect(config.titles).toHaveLength(102);
+    const bySlot = (slot: string) => config.titles.filter((title) => title.slot === slot).length;
+    expect([bySlot('common'), bySlot('premium'), bySlot('rare')]).toEqual([8, 52, 42]);
     expect(config.titles.filter((title) => title.durationDays === null)).toHaveLength(85);
     expect(config.titles.filter((title) => title.durationDays === 7)).toHaveLength(15);
     expect(config.titles.filter((title) => title.durationDays === 14)).toHaveLength(2);
+    // The 35 event titles climb 15 stages to +5.25%.
+    const superb = config.titleById.get('601')!;
+    expect(superb.stages).toHaveLength(15);
+    expect(superb.stages[0]!.stats[0]).toMatchObject({ field: 'pAtkPct', base: 0.015 });
+    expect(superb.stages[14]!.stats[0]).toMatchObject({ field: 'pAtkPct', base: 0.0525 });
   });
 
-  it('activates a title, auto-equips it and pays Title Tickets', () => {
+  it('starts with Starter Trainer owned and worn', () => {
+    const { config, state } = makeState();
+    expect(state.titles.owned['11']).toEqual({ stage: 1, expiresAt: null });
+    expect(state.titles.equipped.common).toBe('11');
+    expect(titleFoldFor(config, state)?.lines).toEqual([{ kind: 'percent', field: 'hpPct', base: 0.001, perLevel: 0 }]);
+    const row = buildTitlesView(config, state, NOW).rows.find((entry) => entry.id === '11');
+    expect(row?.action).toBeNull();
+  });
+
+  it('activates a title with its own card, wears it in a free slot and raises the sheet', () => {
     const { config, state } = makeState();
     const wild = state.roster[0]!;
     wild.level = 100;
     const before = equippedSheet(wild, config, state);
     if (!before) throw new Error('no sheet');
-    const view = buildTitlesView(config, state, NOW);
-    const row = view.rows.find((entry) => entry.id === 'trail-01');
-    expect(row?.action).toBe('activate');
-    expect(row?.canAct).toBe(true);
 
-    const activated = activateTitleAction(config, state, 'trail-01', NOW);
+    const noCard = activateTitleAction(config, state, '1', NOW);
+    expect(noCard.ok).toBe(false);
+    if (!noCard.ok) expect(noCard.error).toBe('insufficient_items');
+
+    const withCard = grantTitleCards(state, '1', 1);
+    expect(buildTitlesView(config, withCard, NOW).rows.find((row) => row.id === '1')?.canAct).toBe(true);
+    const activated = activateTitleAction(config, withCard, '1', NOW);
     expect(activated.ok).toBe(true);
     if (!activated.ok) return;
-    expect(activated.value.currencies.titleTicket).toBe(199);
-    expect(activated.value.titles.owned['trail-01']).toEqual({ stage: 1, expiresAt: null });
-    expect(activated.value.titles.equipped.common).toBe('trail-01');
-    expect(titleFoldFor(config, activated.value)?.lines).toHaveLength(3);
+    expect(activated.value.titles.cards['1']).toBeUndefined();
+    expect(activated.value.titles.owned['1']).toEqual({ stage: 1, expiresAt: null });
+    expect(activated.value.titles.equipped.rare).toBe('1');
 
     const after = equippedSheet(wild, config, activated.value);
     if (!after) throw new Error('no sheet');
     expect(after.sheet.hp).toBeGreaterThan(before.sheet.hp);
     expect(after.sheet.pAtk).toBeGreaterThan(before.sheet.pAtk);
-
     const gear = buildEquipmentView({ config, state: activated.value, wild });
     expect(gear.power.layers.titles).toBeGreaterThan(0);
-    expect(gear.power.equipped).toBe(gear.power.base + gear.power.layers.titles);
 
-    const viewAfter = buildTitlesView(config, activated.value, NOW);
-    expect(viewAfter.slots[0]?.titleId).toBe('trail-01');
-    expect(viewAfter.ownedCount).toBe(1);
+    const maxed = activateTitleAction(config, grantTitleCards(activated.value, '1', 1), '1', NOW);
+    expect(maxed.ok).toBe(false);
+    if (!maxed.ok) expect(maxed.error).toBe('at_level_cap');
 
-    const cleared = setTitleSlotAction(config, activated.value, 'common', null, NOW);
+    const cleared = setTitleSlotAction(config, activated.value, 'rare', null, NOW);
     expect(cleared.ok).toBe(true);
-    if (!cleared.ok) return;
-    expect(titleFoldFor(config, cleared.value)).toBeUndefined();
+    if (cleared.ok) expect(cleared.value.titles.equipped.rare).toBeNull();
   });
 
-  it('gates titles on trainer level and locks guild/event rows', () => {
+  it('raises an event title a stage per card', () => {
     const { config, state } = makeState();
-    const blocked = activateTitleAction(config, state, 'trail-02', NOW);
-    expect(blocked.ok).toBe(false);
-    if (!blocked.ok) expect(blocked.error).toBe('resource_locked');
-
-    const guild = activateTitleAction(config, state, 'guild-vanguard', NOW);
-    expect(guild.ok).toBe(false);
-    if (!guild.ok) expect(guild.error).toBe('resource_locked');
-
-    const view = buildTitlesView(config, state, NOW);
-    expect(view.rows.find((row) => row.id === 'guild-vanguard')?.lockedReason).toBe('guild');
-    expect(view.rows.find((row) => row.id === 'event-festival')?.lockedReason).toBe('event');
+    let s = grantTitleCards(state, '601', 3);
+    for (let i = 0; i < 3; i += 1) {
+      const r = activateTitleAction(config, s, '601', NOW);
+      if (!r.ok) throw new Error(r.message);
+      s = r.value;
+    }
+    expect(s.titles.owned['601']?.stage).toBe(3);
+    expect(titleFoldFor(config, s)?.lines).toContainEqual({ kind: 'percent', field: 'pAtkPct', base: 0.021, perLevel: 0 });
   });
 
-  it('extends a max-stage timed title from its current expiry', () => {
+  it('continues a timed title from its current expiry, and it lapses lazily', () => {
     const { config, state } = makeState();
-    state.pvp.arena.bestCredits = 250;
-    const first = activateTitleAction(config, state, 'arena-banner-01', NOW);
-    expect(first.ok).toBe(true);
-    if (!first.ok) return;
-    expect(first.value.titles.owned['arena-banner-01']?.expiresAt).toBe(NOW + 7 * DAY);
-    expect(first.value.titles.equipped.premium).toBe('arena-banner-01');
+    const first = activateTitleAction(config, grantTitleCards(state, '4001', 2), '4001', NOW);
+    if (!first.ok) throw new Error(first.message);
+    expect(first.value.titles.owned['4001']?.expiresAt).toBe(NOW + 7 * DAY);
+    expect(first.value.titles.equipped.premium).toBe('4001');
+    const continued = activateTitleAction(config, first.value, '4001', NOW + DAY);
+    if (!continued.ok) throw new Error(continued.message);
+    expect(continued.value.titles.owned['4001']?.expiresAt).toBe(NOW + 14 * DAY);
+    expect(buildTitlesView(config, continued.value, NOW + 15 * DAY).rows.find((r) => r.id === '4001')?.owned).toBe(false);
 
-    const continued = activateTitleAction(config, first.value, 'arena-banner-01', NOW + DAY);
-    expect(continued.ok).toBe(true);
-    if (!continued.ok) return;
-    expect(continued.value.titles.owned['arena-banner-01']?.stage).toBe(1);
-    expect(continued.value.titles.owned['arena-banner-01']?.expiresAt).toBe(NOW + 14 * DAY);
-    expect(continued.value.currencies.titleTicket).toBe(184);
-
-    const wrongSlot = setTitleSlotAction(config, continued.value, 'common', 'arena-banner-01', NOW);
+    const wrongSlot = setTitleSlotAction(config, continued.value, 'common', '4001', NOW);
     expect(wrongSlot.ok).toBe(false);
-    if (!wrongSlot.ok) expect(wrongSlot.error).toBe('invalid_input');
   });
 
-  it('applies percent-total title lines to the sheet', () => {
+  it('pays the Beginner → Master Trainer cards at Tower floors 5 / 135 / 400 / 500', () => {
     const { config, state } = makeState();
-    const wild = state.roster[0]!;
-    wild.level = 100;
-    state.profile.level = 20;
-    const before = equippedSheet(wild, config, state);
-    if (!before) throw new Error('no sheet');
-    const activated = activateTitleAction(config, state, 'collector-01', NOW);
-    expect(activated.ok).toBe(true);
-    if (!activated.ok) return;
-    expect(activated.value.titles.equipped.premium).toBe('collector-01');
-    const after = equippedSheet(wild, config, activated.value);
-    if (!after) throw new Error('no sheet');
-    expect(after.sheet.hp).toBeGreaterThan(before.sheet.hp);
+    expect(towerTitleCards(config, state, 4).titles.cards).toEqual({});
+    expect(towerTitleCards(config, state, 5).titles.cards).toEqual({ '12': 1 });
+    expect(towerTitleCards(config, state, 135).titles.cards).toEqual({ '13': 1 });
+    expect(towerTitleCards(config, state, 400).titles.cards).toEqual({ '14': 1 });
+    expect(towerTitleCards(config, state, 500).titles.cards).toEqual({ '15': 1 });
+  });
+
+  it('refuses titles the source grants without a card', () => {
+    const { config, state } = makeState();
+    const temple = activateTitleAction(config, state, '2001', NOW);
+    expect(temple.ok).toBe(false);
+    if (!temple.ok) expect(temple.error).toBe('resource_locked');
   });
 });

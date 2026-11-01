@@ -13,10 +13,11 @@ interface SaveOptions {
   currencies?: Record<string, number>;
   profile?: { name?: string; level?: number; xp?: number };
   equipment?: unknown;
+  titles?: unknown;
   level?: number;
 }
 
-function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, level = 40 }: SaveOptions = {}): string {
+function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, titles, level = 40 }: SaveOptions = {}): string {
   return JSON.stringify({
     version: E2E_SAVE_VERSION,
     state: {
@@ -58,6 +59,7 @@ function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, 
       campaign: { stars: { 'c2-10': 3, 'c3-10': 3 } },
       tutorial: { step: 0, done: true },
       ...(equipment ? { equipment } : {}),
+      ...(titles ? { titles } : {}),
     },
   });
 }
@@ -76,7 +78,7 @@ test('the Trainer tab lists the M11 materials and keeps More reachable', async (
   await expect(page.getByRole('heading', { name: 'Trainer', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Collection materials', exact: true })).toBeVisible();
   await expect(page.getByText('Potential Shards')).toBeVisible();
-  await expect(page.getByText('Title Tickets', { exact: true })).toBeVisible();
+  await expect(page.locator('.material-row').getByText('Resonation Shards', { exact: true })).toBeVisible();
   await expect(page.getByText('VIP 0', { exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Debug & saves' }).click();
   await expect(page.getByRole('heading', { name: 'More' })).toBeVisible();
@@ -231,28 +233,27 @@ test('VIP comes from Privilege XP on the source table (VIP 14 at 300)', async ({
   await expect(page.getByText(/There are no purchases\./)).toBeVisible();
 });
 
-test('Titles activate, equip a slot and keep locked rows honest', async ({ page }) => {
-  await importSave(page, { currencies: { titleTicket: 20 } });
+test('Titles: Starter Trainer is worn, a card activates a title, and unbuilt sources stay honest', async ({ page }) => {
+  await importSave(page, { titles: { cards: { '12': 1 } } });
   await page.goto('/trainer');
 
   await expect(page.getByRole('heading', { name: 'Titles' })).toBeVisible();
-  await expect(page.getByText('Title Tickets: 20 · Owned: 0')).toBeVisible();
-  await expect(page.getByLabel('Common Title')).toBeVisible();
+  await expect(page.getByText('Owned: 1', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('Common Title')).toHaveValue('11');
+  await expect(page.getByText('Total HP +0.1%').first()).toBeVisible();
 
-  const first = page.locator('[data-title-id="trail-01"]');
-  await expect(first.getByRole('button', { name: /Activate .*1 Title Tickets/ })).toBeVisible();
-  await first.getByRole('button', { name: /Activate .*1 Title Tickets/ }).click();
+  const beginner = page.locator('[data-title-id="12"]');
+  await expect(beginner.getByText('Earned from: Tower floor 5')).toBeVisible();
+  await beginner.getByRole('button', { name: /Activate · Activation cards 1\/1/ }).click();
+  await expect(beginner.getByText('Stage 1/1')).toBeVisible();
+  await expect(page.getByText('Owned: 2', { exact: true })).toBeVisible();
 
-  await expect(page.getByLabel('Common Title')).toHaveValue('trail-01');
-  await expect(first.getByText('Stage 1/1')).toBeVisible();
-  await expect(page.getByText('Title Tickets: 19 · Owned: 1')).toBeVisible();
-
-  await expect(page.locator('[data-title-id="trail-02"]').getByText('Requires: Trainer level 2')).toBeVisible();
-
-  await page.getByRole('tab', { name: 'Rare' }).click();
-  await expect(page.getByText('Guild Vanguard')).toBeVisible();
-  await expect(page.getByText('Coming later: guild war (M16).').first()).toBeVisible();
-  await expect(page.getByText('Coming later: events (M15).').first()).toBeVisible();
+  await page.getByRole('tab', { name: 'Premium' }).click();
+  const event = page.locator('[data-title-id="601"]');
+  await expect(event.getByText('Superb Care')).toBeVisible();
+  await expect(event.getByText('15 stages')).toBeVisible();
+  await expect(event.getByText('Its mode arrives in a later milestone.')).toBeVisible();
+  await expect(event.getByRole('button', { name: /Activate · Activation cards 0\/1/ })).toBeDisabled();
 });
 
 test('Orbs: socket a red Sharp Orb, then level it with two copies', async ({ page }) => {

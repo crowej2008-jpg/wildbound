@@ -3,7 +3,7 @@ import type { TitleSlot } from '@wildbound/engine';
 import { t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
 
-/** M11.11: three title slots plus the authored catalogue on the Trainer screen. */
+/** R8: three title slots plus the source's 102 titles on the Trainer screen. */
 export default function TitlesPanel() {
   const { snapshot, busy, run } = useServer();
   const [filter, setFilter] = useState<TitleSlot>('common');
@@ -16,9 +16,8 @@ export default function TitlesPanel() {
       <h2 className="section-title">{t('trainer.titles')}</h2>
       <p className="muted">{t('titles.note')}</p>
       <p className="muted">
-        {t('titles.tickets')}: {view.tickets.toLocaleString()} · {t('titles.owned')}: {view.ownedCount}
+        {t('titles.owned')}: {view.ownedCount}
       </p>
-      {view.tickets === 0 && <p className="muted">{t('titles.noTickets')}</p>}
 
       <div className="gear-list">
         {view.slots.map((slot) => (
@@ -77,7 +76,6 @@ export default function TitlesPanel() {
           <div key={row.id} className="gear-row" data-title-id={row.id}>
             <div className="gear-head">
               <strong>{row.name}</strong>
-              <span className="chip">{row.sourceLabel}</span>
               {row.durationDays !== null && (
                 <span className="chip">
                   {row.durationDays} {t('titles.days')}
@@ -98,13 +96,15 @@ export default function TitlesPanel() {
                   : ` · ${t('titles.permanent')}`}
               </p>
             )}
-            {!row.requirementMet && row.requirementText && (
-              <p className="muted">
-                {t('titles.requires')}: {row.requirementText}
-              </p>
-            )}
-            {row.lockedReason === 'guild' && <p className="muted">{t('titles.lockedGuild')}</p>}
-            {row.lockedReason === 'event' && <p className="muted">{t('titles.lockedEvent')}</p>}
+            {!row.owned && row.earn && <p className="muted">{row.earn}</p>}
+            {!row.owned &&
+              (row.earnedHere ? (
+                <p className="muted">
+                  {t('titles.earnedHere')}: {row.earnedHere}
+                </p>
+              ) : (
+                row.cards === 0 && <p className="muted">{t('titles.comingLater')}</p>
+              ))}
             <div className="row-actions">
               {row.action && (
                 <button
@@ -118,7 +118,7 @@ export default function TitlesPanel() {
                     : row.action === 'upgrade'
                       ? t('titles.upgrade')
                       : t('titles.continue')}
-                  {row.nextCost !== null ? ` · ${row.nextCost} ${t('currency.titleTicket')}` : ''}
+                  {row.nextCost !== null ? ` · ${t('titles.cards')} ${row.cards}/${row.nextCost}` : ''}
                 </button>
               )}
               {row.owned && row.action === null && (

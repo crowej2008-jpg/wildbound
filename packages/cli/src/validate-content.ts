@@ -259,8 +259,11 @@ export function validateContent(repoRoot: string): ValidateReport {
       if (titleIds.has(title.id)) errors.push(`titles: duplicate id "${title.id}"`);
       titleIds.add(title.id);
       if (!titleSlots.has(title.slot)) errors.push(`titles: "${title.id}" has unknown slot "${title.slot}"`);
-      if (title.source === 'event' && title.stages.length !== 15) {
-        errors.push(`titles: event title "${title.id}" must have 15 stages`);
+      if (title.card === null && title.earnedBy?.kind !== 'start' && title.stages.some((stage) => stage.cost > 0)) {
+        errors.push(`titles: "${title.id}" costs cards but has no card`);
+      }
+      if ((title.durationDays === null) !== (title.continueCost === null)) {
+        errors.push(`titles: "${title.id}" continuation cost must match its timer`);
       }
       if (title.stages.some((stage) => stage.cost < 0)) {
         errors.push(`titles: "${title.id}" has a negative stage cost`);

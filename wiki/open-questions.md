@@ -11,7 +11,6 @@ updated: 2026-10-31
 | # | Question | Blocks | Raised |
 |---|---|---|---|
 | 1 | ~~What is a refine?~~ **Answered and built (R5, 2026-10-31):** the source's re-roll with keep/drop on Mythic 3 / Supreme 2 slots, priced on the owner's ladder. | — | 2026-10-31 ([held items](systems/held-items.md)) |
-| 2 | Titles: keep King of Arena + Alliance Champion as the 14-day pair, or source-exact (King of Arena 7-day; Arena Sovereign V as 14-day)? | nothing | 2026-10-21 |
 | 3 | Arena Refresh is free and unbounded — cap it per day? | nothing | 2026-10-18 |
 | 4 | Island Challenge: the change list says "replace island with a different mode", but 13.8 is locked as full Island + alliance contest. Which? | 13.8 | [change list](ideas/change-list-2026-10.md) |
 | 5 | Gods Trials Origin gap: seasonal star bonus, minimal Origin slice, or a real Origin system (change-list #12)? | Gods Trials | 2026-10-22 |

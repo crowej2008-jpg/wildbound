@@ -518,12 +518,12 @@
               }
             },
             {
-              "id": "home-0-titleTicket-0",
-              "name": "Title Ticket Satchel",
-              "description": "A satchel of title ticket for the Home.",
+              "id": "home-0-reforgePotion-0",
+              "name": "Reforge Potion Satchel",
+              "description": "A satchel of reforge potion for the Home.",
               "price": 8000,
               "grants": {
-                "titleTicket": 1
+                "reforgePotion": 1
               }
             },
             {
@@ -631,12 +631,12 @@
               }
             },
             {
-              "id": "home-4-titleTicket-1",
-              "name": "Title Ticket Crate",
-              "description": "A crate of title ticket for the Home.",
+              "id": "home-4-reforgePotion-1",
+              "name": "Reforge Potion Crate",
+              "description": "A crate of reforge potion for the Home.",
               "price": 45000,
               "grants": {
-                "titleTicket": 1
+                "reforgePotion": 1
               }
             },
             {
@@ -744,12 +744,12 @@
               }
             },
             {
-              "id": "home-6-titleTicket-2",
-              "name": "Title Ticket Chest",
-              "description": "A chest of title ticket for the Home.",
+              "id": "home-6-reforgePotion-2",
+              "name": "Reforge Potion Chest",
+              "description": "A chest of reforge potion for the Home.",
               "price": 180000,
               "grants": {
-                "titleTicket": 1
+                "reforgePotion": 1
               }
             },
             {
@@ -857,12 +857,12 @@
               }
             },
             {
-              "id": "home-7-titleTicket-2",
-              "name": "Title Ticket Chest",
-              "description": "A chest of title ticket for the Home.",
+              "id": "home-7-reforgePotion-2",
+              "name": "Reforge Potion Chest",
+              "description": "A chest of reforge potion for the Home.",
               "price": 180000,
               "grants": {
-                "titleTicket": 1
+                "reforgePotion": 1
               }
             },
             {
@@ -965,12 +965,12 @@
               }
             },
             {
-              "id": "home-7-titleTicket-3",
-              "name": "Title Ticket Cache",
-              "description": "A cache of title ticket for the Home.",
+              "id": "home-7-reforgePotion-3",
+              "name": "Reforge Potion Cache",
+              "description": "A cache of reforge potion for the Home.",
               "price": 600000,
               "grants": {
-                "titleTicket": 2
+                "reforgePotion": 2
               }
             },
             {
@@ -1073,12 +1073,12 @@
               }
             },
             {
-              "id": "home-7-titleTicket-4",
-              "name": "Title Ticket Hoard",
-              "description": "A hoard of title ticket for the Home.",
+              "id": "home-7-reforgePotion-4",
+              "name": "Reforge Potion Hoard",
+              "description": "A hoard of reforge potion for the Home.",
               "price": 1200000,
               "grants": {
-                "titleTicket": 2
+                "reforgePotion": 2
               }
             },
             {
@@ -1186,12 +1186,12 @@
               }
             },
             {
-              "id": "home-8-titleTicket-4",
-              "name": "Title Ticket Hoard",
-              "description": "A hoard of title ticket for the Home.",
+              "id": "home-8-reforgePotion-4",
+              "name": "Reforge Potion Hoard",
+              "description": "A hoard of reforge potion for the Home.",
               "price": 1200000,
               "grants": {
-                "titleTicket": 2
+                "reforgePotion": 2
               }
             },
             {
@@ -1321,12 +1321,12 @@
               }
             },
             {
-              "id": "deluxe-10-titleTicket-3",
-              "name": "Title Ticket Cache",
-              "description": "A cache of title ticket for the Home.",
+              "id": "deluxe-10-reforgePotion-3",
+              "name": "Reforge Potion Cache",
+              "description": "A cache of reforge potion for the Home.",
               "price": 300,
               "grants": {
-                "titleTicket": 2
+                "reforgePotion": 2
               }
             },
             {
@@ -1429,12 +1429,12 @@
               }
             },
             {
-              "id": "deluxe-10-titleTicket-4",
-              "name": "Title Ticket Hoard",
-              "description": "A hoard of title ticket for the Home.",
+              "id": "deluxe-10-reforgePotion-4",
+              "name": "Reforge Potion Hoard",
+              "description": "A hoard of reforge potion for the Home.",
               "price": 900,
               "grants": {
-                "titleTicket": 2
+                "reforgePotion": 2
               }
             },
             {
@@ -1537,12 +1537,12 @@
               }
             },
             {
-              "id": "deluxe-10-titleTicket-5",
-              "name": "Title Ticket Vault",
-              "description": "A vault of title ticket for the Home.",
+              "id": "deluxe-10-reforgePotion-5",
+              "name": "Reforge Potion Vault",
+              "description": "A vault of reforge potion for the Home.",
               "price": 2700,
               "grants": {
-                "titleTicket": 3
+                "reforgePotion": 3
               }
             },
             {
@@ -1645,12 +1645,12 @@
               }
             },
             {
-              "id": "deluxe-10-titleTicket-6",
-              "name": "Title Ticket Trove",
-              "description": "A trove of title ticket for the Home.",
+              "id": "deluxe-10-reforgePotion-6",
+              "name": "Reforge Potion Trove",
+              "description": "A trove of reforge potion for the Home.",
               "price": 8100,
               "grants": {
-                "titleTicket": 4
+                "reforgePotion": 4
               }
             },
             {

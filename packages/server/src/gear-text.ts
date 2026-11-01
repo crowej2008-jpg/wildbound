@@ -32,6 +32,6 @@ const LINE_LABELS: Record<string, string> = {
 export function statLineText(line: StatLine, level: number): string {
   const value = lineValue(line, level);
   const label = LINE_LABELS[line.field] ?? line.field;
-  if (line.kind === 'percent') return `${label} +${(value * 100).toFixed(1)}%`;
+  if (line.kind === 'percent') return `${label} +${Number((value * 100).toFixed(2))}%`;
   return `${label} +${Math.round(value).toLocaleString()}`;
 }
