@@ -303,7 +303,7 @@ export interface PveState {
   dungeons: DungeonState;
 }
 
-export function initialPve(day: string, week: string): PveState {
+export function initialPve(day: string): PveState {
   return {
     tower: initialTowerState(day),
     trials: { lastCleared: {} },
