@@ -17,7 +17,7 @@ import type { PotentialView } from './potential';
 import type { OrbsPanelView } from './orbs';
 import type { BerriesPanelView } from './berries';
 import type { EquipmentView } from './equipment-view';
-import type { DungeonCardView, TowerView, TrialCardView, WorldBossView } from './pve-view';
+import type { DungeonCardView, TowerView, WorldBossView } from './pve-view';
 import type { ExploreView } from './explore-view';
 import type { PetHomeView } from './pet-home-view';
 import type { SkyPillarView } from './sky-pillar-view';
@@ -127,17 +127,6 @@ export interface TowerBattleResult {
   battle: BattleView;
   floor: number;
   win: boolean;
-  rewards: Rewards;
-  snapshot: AccountSnapshot;
-}
-
-/** A trial clear (M8). */
-export interface TrialBattleResult {
-  battle: BattleView;
-  trialId: string;
-  win: boolean;
-  /** True when this clear paid out (the first clear of the UTC day). */
-  firstToday: boolean;
   rewards: Rewards;
   snapshot: AccountSnapshot;
 }
@@ -404,10 +393,6 @@ export interface GameServer {
   challengeTower(seed?: number, kind?: TowerKind): Promise<Result<TowerBattleResult>>;
   /** Re-play the highest cleared tower floor for its reward, up to the daily cap (M8). */
   sweepTower(): Promise<Result<ClaimResult>>;
-  /** Display-ready trial cards: open/closed, cleared today, preview (M8). */
-  getTrials(): Promise<Result<TrialCardView[]>>;
-  /** Fight a trial with the campaign squad under its rule (M8). */
-  challengeTrial(trialId: string, seed?: number): Promise<Result<TrialBattleResult>>;
   /** Display-ready world-boss state: today's boss, attempts, milestones, rank (M8). */
   getWorldBoss(): Promise<Result<WorldBossView>>;
   /** Fight today's world boss and score damage against the ghost ladder (M8). */

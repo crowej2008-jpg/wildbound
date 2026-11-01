@@ -37,31 +37,6 @@ export interface ResolvedCurve {
   maxStage: number;
 }
 
-export type TrialRule = 'factionLocked' | 'noUltimate' | 'levelCapped' | 'survival' | 'weekdayBoss';
-
-/** One Trials card with its special rule and reward preview (PROMPT §7.6). */
-export interface TrialDef {
-  id: string;
-  name: string;
-  tagline: string;
-  rule: TrialRule;
-  /** `factionLocked`: the faction the fielded squad must share. */
-  faction?: Faction;
-  /** `levelCapped`: Wilds are treated at this level or below. */
-  maxLevel?: number;
-  /** `survival`: big rounds the attackers must survive. */
-  survivalRounds?: number;
-  /** `weekdayBoss`: UTC weekdays it opens on (0=Sun..6=Sat); empty/none = always. */
-  weekdays?: number[];
-  /** Minimum trainer level to open the trial. */
-  unlockLevel: number;
-  /** Reward preview shown on the card (superset of the actual bundle). */
-  preview: Rewards;
-  /** Granted on the first clear each day. */
-  rewards: Rewards;
-  enemy: EnemyPoolSpec;
-}
-
 /** R9: a daily-dungeon grade goal (source dun_score_reward_json): kills or damage, optionally within N rounds. */
 export interface DungeonGradeGoal {
   grade: 'C' | 'B' | 'A' | 'S';

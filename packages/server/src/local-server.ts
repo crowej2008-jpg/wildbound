@@ -110,10 +110,9 @@ import {
   type StageBattleResult,
   type SummonResult,
   type TowerBattleResult,
-  type TrialBattleResult,
   type WorldBossBattleResult,
 } from './index';
-import type { DungeonCardView, TowerView, TrialCardView, WorldBossView } from './pve-view';
+import type { DungeonCardView, TowerView, WorldBossView } from './pve-view';
 import { buildExploreView } from './explore-view';
 import type { ExploreView } from './explore-view';
 import { buildPetHomeView, type PetHomeView } from './pet-home-view';
@@ -151,7 +150,6 @@ import {
   sweepDungeon as sweepDungeonAction,
   claimDungeonChest as claimDungeonChestAction,
   challengeTower as challengeTowerAction,
-  challengeTrial as challengeTrialAction,
   challengeWorldBoss as challengeWorldBossAction,
   claimWorldBossMilestone as claimWorldBossMilestoneAction,
   sweepTower as sweepTowerAction,
@@ -159,7 +157,6 @@ import {
 import {
   buildDungeonsView,
   buildTowerView,
-  buildTrialsView,
   buildWorldBossView,
 } from './pve-view';
 import {
@@ -1114,34 +1111,6 @@ export class LocalServer implements GameServer {
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const next = this.withQuest(outcome.value.state, 'sweepStage');
     return this.commitClaim(next, outcome.value.granted);
-  }
-
-  async getTrials(): Promise<Result<TrialCardView[]>> {
-    const loaded = await this.load();
-    if (!loaded.ok) return loaded;
-    const state = loaded.value;
-    return ok(buildTrialsView(this.config, state, this.now(state)));
-  }
-
-  async challengeTrial(trialId: string, seed?: number): Promise<Result<TrialBattleResult>> {
-    const loaded = await this.load();
-    if (!loaded.ok) return loaded;
-    const state = loaded.value;
-    const outcome = challengeTrialAction(this.config, state, trialId, this.now(state), seed);
-    if (!outcome.ok) return fail(outcome.error, outcome.message);
-    const value = outcome.value;
-    let next = value.state;
-    if (value.win) next = this.withQuest(next, 'winBattle');
-    const committed = await this.commit(next);
-    if (!committed.ok) return fail(committed.error, committed.message);
-    return ok({
-      battle: value.battle,
-      trialId: value.extra.trialId,
-      win: value.win,
-      firstToday: value.extra.firstToday,
-      rewards: value.rewards,
-      snapshot: committed.value,
-    });
   }
 
   async getWorldBoss(): Promise<Result<WorldBossView>> {

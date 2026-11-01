@@ -6,7 +6,6 @@ import {
   type Rewards,
   type StageEnemy,
   type TowerTuning,
-  type TrialDef,
   type WorldBossDef,
 } from '@wildbound/engine';
 import type { BattleView } from '../battle';
@@ -55,11 +54,6 @@ export function towerTuning(config: GameConfig): TowerTuning {
     reward: t.reward,
   };
 }
-
-export function trialDefs(config: GameConfig): TrialDef[] {
-  return config.pve.trials as TrialDef[];
-}
-
 
 export function worldBossDefs(config: GameConfig): WorldBossDef[] {
   return config.pve.worldBoss.rotation as WorldBossDef[];

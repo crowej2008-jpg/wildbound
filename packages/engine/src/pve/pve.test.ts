@@ -2,10 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { generateEnemies, curveLevel } from './curve';
 import { isSameUtcWeek, nextWeekStart, weekKey, weekdayUtc } from './reset';
 import { advanceTower, canClimb, canSweep, initialTowerState, nextTowerFloor, rollTower, spendClimb, spendSweep, towerFloorReward, type TowerTuning } from './tower';
-import { isTrialEligible, trialAvailable, trialBattleRules, trialLevelCap, trialOpenOn, trialSurvivalRounds } from './trials';
 import { attackerDamage, canChallengeBoss, claimableMilestones, ghostRecords, initialWorldBossState, rankDamage, reachedMilestones, recordBossDamage, rollWorldBossDay, worldBossForWeekday } from './worldBoss';
 import { betterGrade, dungeonGrade, initialDungeonState, openChests, rollDungeonDay } from './dungeons';
-import type { DungeonGradeGoal, GeneratedEnemy, TrialDef, WorldBossDef, WorldBossMilestone } from './index';
+import type { DungeonGradeGoal, GeneratedEnemy, WorldBossDef, WorldBossMilestone } from './index';
 
 const towerTuning: TowerTuning = {
   climbsPerDay: 20,
@@ -98,50 +97,6 @@ describe('tower', () => {
     expect(floor1.wildCoin).toBe(22);
   });
 
-});
-
-const trialBase: Omit<TrialDef, 'rule'> = {
-  id: 't',
-  name: 'T',
-  tagline: 'tag',
-  unlockLevel: 1,
-  preview: { gold: 100 },
-  rewards: { gold: 200 },
-  enemy: { factions: [], tiers: [], count: 3, baseLevel: 5, levelSlope: 1.1, starsEvery: 5, maxStars: 6, stageEvery: 10, maxStage: 3 },
-};
-
-describe('trials', () => {
-  it('enforces a faction lock', () => {
-    const t: TrialDef = { ...trialBase, rule: 'factionLocked', faction: 'fire' };
-    expect(isTrialEligible(t, 'fire')).toBe(true);
-    expect(isTrialEligible(t, 'water')).toBe(false);
-    const other: TrialDef = { ...trialBase, rule: 'noUltimate' };
-    expect(isTrialEligible(other, 'water')).toBe(true);
-  });
-
-  it('exposes the level cap and survival rounds per rule', () => {
-    const capped: TrialDef = { ...trialBase, rule: 'levelCapped', maxLevel: 20 };
-    expect(trialLevelCap(capped)).toBe(20);
-    expect(trialLevelCap({ ...trialBase, rule: 'noUltimate' })).toBeNull();
-    const surv: TrialDef = { ...trialBase, rule: 'survival', survivalRounds: 5 };
-    expect(trialSurvivalRounds(surv)).toBe(5);
-    expect(trialSurvivalRounds({ ...trialBase, rule: 'noUltimate' })).toBeNull();
-  });
-
-  it('only opens a weekday boss on its days', () => {
-    const boss: TrialDef = { ...trialBase, rule: 'weekdayBoss', weekdays: [1, 3] };
-    expect(trialOpenOn(boss, 1)).toBe(true);
-    expect(trialOpenOn(boss, 2)).toBe(false);
-    expect(trialOpenOn({ ...trialBase, rule: 'noUltimate' }, 2)).toBe(true);
-    expect(trialAvailable(boss, 1, 1)).toBe(true);
-    expect(trialAvailable(boss, 1, 2)).toBe(false);
-  });
-
-  it('derives combat rules', () => {
-    expect(trialBattleRules({ ...trialBase, rule: 'noUltimate' })).toEqual({ noUltimate: true });
-    expect(trialBattleRules({ ...trialBase, rule: 'survival', survivalRounds: 6 })).toEqual({ survivalRounds: 6 });
-    expect(trialBattleRules({ ...trialBase, rule: 'factionLocked', faction: 'grass' })).toEqual({});
-  });
 });
 
 const bossDefs: WorldBossDef[] = [

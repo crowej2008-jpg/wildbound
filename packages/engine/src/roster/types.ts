@@ -282,7 +282,7 @@ export interface AccountState {
   signIn: SignInState;
   /** R8 Mount / Back Decor / Follower / Outfits. */
   fashion: FashionState;
-  /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
+  /** M8 / R9: PvE mode progress (tower, world boss, daily dungeons). */
   pve: PveState;
   /** M10: PvP progress (Arena credits/rank, Ranked ladder). */
   pvp: PvpState;
@@ -297,8 +297,6 @@ export interface AccountState {
 /** M8 mode progress. Pure data; the engine owns every rule that reads it. */
 export interface PveState {
   tower: TowerState;
-  /** Trial id → UTC day-key it was last cleared (first clear each day pays). */
-  trials: { lastCleared: Record<string, string> };
   worldBoss: WorldBossState;
   dungeons: DungeonState;
 }
@@ -306,7 +304,6 @@ export interface PveState {
 export function initialPve(day: string): PveState {
   return {
     tower: initialTowerState(day),
-    trials: { lastCleared: {} },
     worldBoss: initialWorldBossState(day),
     dungeons: initialDungeonState(day),
   };

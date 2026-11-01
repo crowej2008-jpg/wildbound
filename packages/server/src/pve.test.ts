@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { dayKey, weekdayUtc, weekKey, type AccountState } from '@wildbound/engine';
+import { dayKey, weekKey, type AccountState } from '@wildbound/engine';
 import { buildConfig } from './config';
 import { createInitialState } from './save';
 import {
@@ -7,7 +7,6 @@ import {
   claimDungeonChest,
   sweepDungeon,
   challengeTower,
-  challengeTrial,
   challengeWorldBoss,
   claimWorldBossMilestone,
   resolvePool,
@@ -111,34 +110,6 @@ describe('PvE modes (server glue)', () => {
     if (!swept.ok) return;
     expect(swept.value.granted.gold).toBeGreaterThan(0);
     expect(swept.value.state.pve.tower.sweepsToday).toBe(1);
-  });
-
-  it('clears a trial, disables ultimates, and pays only the first clear of the day', () => {
-    const cfg = config();
-    const state = strongState(cfg);
-    const first = challengeTrial(cfg, state, 'silentpeak', NOW, 11);
-    expect(first.ok).toBe(true);
-    if (!first.ok) return;
-    expect(first.value.win).toBe(true);
-    expect(first.value.extra.firstToday).toBe(true);
-    expect(first.value.battle.events.some((e) => e.type === 'action' && e.skill === 'ult')).toBe(false);
-
-    const second = challengeTrial(cfg, first.value.state, 'silentpeak', NOW, 11);
-    if (!second.ok) throw new Error('second trial failed');
-    expect(second.value.extra.firstToday).toBe(false);
-    expect(second.value.rewards).toEqual({});
-  });
-
-  it('locks a trial out on the wrong weekday', () => {
-    const cfg = config();
-    // 'moonfall' opens Tue/Thu/Sat; pick a Monday.
-    const monday = Date.UTC(2026, 9, 12, 12, 0, 0);
-    const mondayConfig = { ...cfg, now: () => monday };
-    const state = strongState(mondayConfig);
-    expect(weekdayUtc(monday)).toBe(1);
-    const closed = challengeTrial(mondayConfig, state, 'moonfall', monday, 3);
-    expect(closed.ok).toBe(false);
-    if (!closed.ok) expect(closed.error).toBe('stage_locked');
   });
 
   it('runs the source daily dungeons: level gates, two runs a day, grades, sweeps and one-off chests', () => {

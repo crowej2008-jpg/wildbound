@@ -40,31 +40,6 @@ export const towerSchema = z
   })
   .strict();
 
-export const trialRuleSchema = z.enum([
-  'factionLocked',
-  'noUltimate',
-  'levelCapped',
-  'survival',
-  'weekdayBoss',
-]);
-
-export const trialSchema = z
-  .object({
-    id: z.string().min(1),
-    name: z.string().min(1),
-    tagline: z.string().min(1),
-    rule: trialRuleSchema,
-    faction: factionSchema.optional(),
-    maxLevel: z.number().int().positive().optional(),
-    survivalRounds: z.number().int().positive().optional(),
-    weekdays: z.array(z.number().int().min(0).max(6)).optional(),
-    unlockLevel: z.number().int().nonnegative(),
-    preview: rewardSchema,
-    rewards: rewardSchema,
-    enemy: enemyPoolSchema,
-  })
-  .strict();
-
 /**
  * R9: stand-in enemies for the source's four daily dungeons (their monster bags are not in the dumps); the
  * difficulty's trainer level sets the enemy level.
@@ -107,12 +82,10 @@ export const pveSchema = z
   .object({
     tower: towerSchema,
     worldBoss: worldBossSchema,
-    trials: z.array(trialSchema).min(1),
     dungeonEnemies: dungeonEnemiesSchema,
   })
   .strict();
 
 export type PveJson = z.infer<typeof pveSchema>;
 export type EnemyPoolJson = z.infer<typeof enemyPoolSchema>;
-export type TrialDefJson = z.infer<typeof trialSchema>;
 

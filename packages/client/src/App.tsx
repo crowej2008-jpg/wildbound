@@ -17,7 +17,6 @@ import More from './pages/More';
 import PetHome from './pages/PetHome';
 import SkyPillar from './pages/SkyPillar';
 import PveTower from './pages/PveTower';
-import PveTrials from './pages/PveTrials';
 import Pvp from './pages/Pvp';
 import Quests from './pages/Quests';
 import SignIn from './pages/SignIn';
@@ -64,7 +63,6 @@ function AppRoutes() {
         <Route path="/combat" element={<Challenges />} />
         <Route path="/combat/training" element={<Combat />} />
         <Route path="/tower" element={<PveTower />} />
-        <Route path="/trials" element={<PveTrials />} />
         <Route path="/boss" element={<WorldBoss />} />
         <Route path="/dungeons" element={<Dungeons />} />
         <Route path="/arena" element={<Arena />} />

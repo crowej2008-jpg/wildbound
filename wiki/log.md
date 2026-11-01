@@ -226,3 +226,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-01] update | World Boss owner changes
 - Owner: drops are 5-Star Pokémon Shards; add the VIP 14 skip; the boss is really strong and cannot die.
+
+## [2026-11-01] update | Trials removed
+- Owner: remove the invented M8 Trials (no source counterpart). ASSUMPTIONS #81, save v37. Next: summoning.

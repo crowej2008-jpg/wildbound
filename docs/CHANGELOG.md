@@ -1295,3 +1295,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - World Boss (owner, 2026-11-01): a 5-Star Pokémon Shard drop every fight, an unkillable and much stronger boss
   (engine rule `undyingDefenders`, enemy sheet multipliers), and Skip to end only from VIP 14.
+
+## R9 part 6 — Trials removed (owner, 2026-11-01)
+
+- The invented M8 Trials are gone (engine rules module, server mode, view, page, route, content, tests). The
+  Challenges hub lists the Tower, the World Boss and the daily dungeons. Save v37. ASSUMPTIONS #81.

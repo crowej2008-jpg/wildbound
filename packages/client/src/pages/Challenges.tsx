@@ -4,7 +4,6 @@ import { t } from '../i18n';
 /** Combat hub (M8): entry points into every PvE mode. */
 const MODES = [
   { to: '/tower', icon: '🗼', title: 'pve.tower' as const, desc: 'pve.tower.desc' as const },
-  { to: '/trials', icon: '⚖', title: 'pve.trials' as const, desc: 'pve.trials.desc' as const },
   { to: '/boss', icon: '🐉', title: 'pve.boss' as const, desc: 'pve.boss.desc' as const },
   { to: '/dungeons', icon: '⛰', title: 'pve.dungeons' as const, desc: 'pve.dungeons.desc' as const },
   { to: '/combat/training', icon: '⚔', title: 'pve.training' as const, desc: 'pve.training.desc' as const },

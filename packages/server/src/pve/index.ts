@@ -5,6 +5,5 @@
  */
 export * from './shared';
 export * from './tower';
-export * from './trials';
 export * from './dungeons';
 export * from './worldBoss';

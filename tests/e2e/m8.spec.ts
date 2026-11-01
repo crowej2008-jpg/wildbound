@@ -8,7 +8,7 @@ import { expect, test } from '@playwright/test';
 test('the combat hub links every PvE mode', async ({ page }) => {
   await page.goto('/combat');
   await expect(page.getByRole('heading', { name: 'Challenges' })).toBeVisible();
-  for (const name of ['Tower', 'Trials', 'World Boss', 'Dungeons']) {
+  for (const name of ['Tower', 'World Boss', 'Dungeons']) {
     await expect(page.getByRole('link', { name: new RegExp(name) })).toBeVisible();
   }
 });
@@ -27,13 +27,6 @@ test('climbs the tower and shows a replayable result', async ({ page }) => {
   expect(['Floor cleared!', 'Your squad fell on this floor.']).toContain(banner);
   await page.getByRole('button', { name: 'Back to tower' }).click();
   await expect(page.getByRole('heading', { name: 'Tower', exact: true })).toBeVisible();
-});
-
-test('lists the five trials', async ({ page }) => {
-  await page.goto('/trials');
-  await expect(page.getByRole('heading', { name: 'Trials' })).toBeVisible();
-  await expect(page.locator('main .card')).toHaveCount(5);
-  await expect(page.getByRole('button', { name: 'Fight' }).first()).toBeVisible();
 });
 
 test('shows the world boss and its damage milestones', async ({ page }) => {

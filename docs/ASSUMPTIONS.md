@@ -998,3 +998,8 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     is not in the dumps); the boss is really strong — its top star at its top level, HP ×200, Attack ×4, DEF ×3
     — and cannot die (`undyingDefenders`: held at 1 HP, every hit's damage still scores), so each fight runs its
     rounds. Skipping the fight needs VIP 14 as in the source (fight_basic dtype 12). Replaces the one-fight-a-day stand-in bosses.
+
+81. **R9 Trials removed (owner, 2026-11-01).** The five M8 Trials (Stormwall Bastion, Silent Peak, Locked Vale,
+    Lastlight Stand, Moonfall Crypt) were Wildbound inventions with no source counterpart; the owner chose to remove
+    them under copy-the-source. The engine keeps the generic battle rules they used (no ultimates, survival rounds),
+    which other modes may need.

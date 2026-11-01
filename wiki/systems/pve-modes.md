@@ -14,7 +14,7 @@ Challenges hub at `/combat`; routes `/tower`, `/trials`, `/boss`, `/dungeons`, `
 | Mode | Shape |
 |---|---|
 | **Tower** | Floors permanent; climbs reset **weekly**, sweeps **daily** (PROMPT §7.6, not the source's per-day reset). Milestone chests. |
-| **Trials** (5) | Stormwall Bastion (faction-locked), Silent Peak (no ultimates), Locked Vale (Lv40 cap), Lastlight Stand (survive 8 rounds), Moonfall Crypt (Tue/Thu/Sat). |
+| ~~Trials~~ | Removed 2026-11-01 (owner): invented in M8, no source counterpart (ASSUMPTIONS #81). |
 | **World Boss** (R9) | Weekday Megas, two windows a day (12–13, 18–19 UTC) × 3 fights; window damage → milestones and a mailed rank reward (ASSUMPTIONS #80). |
 | **Tower** (R9) | Normal 1,000 floors + Hard 750 floors with a lineup rule per five-floor stage; source achievements; climbs reset daily (ASSUMPTIONS #79). |
 | **Daily Dungeons** (R9: the source's 4, open daily) | Gold, Vanity, XP & ASC, Shard — ten difficulties by trainer level, two runs a day, C–S grades, sweeps, one-off grade chests (ASSUMPTIONS #78). Replaced the seven weekday stand-ins. |

@@ -12,7 +12,6 @@ import {
   hardTowerRule,
   resolveCurve,
   towerTuning,
-  trialDefs,
   worldBossDefs,
 } from './pve';
 import {
@@ -27,12 +26,7 @@ import {
   rankDamage,
   reachedMilestones,
   rollTower,
-  trialAvailable,
-  trialFaction,
-  trialLevelCap,
-  trialSurvivalRounds,
   type TowerKind,
-  type TrialRule,
 } from '@wildbound/engine';
 import type { TowerRuleJson } from '@wildbound/content';
 
@@ -113,48 +107,6 @@ export function buildTowerView(config: GameConfig, state: AccountState, now: num
   };
 }
 
-export interface TrialCardView {
-  id: string;
-  name: string;
-  tagline: string;
-  rule: TrialRule;
-  ruleDetail: string;
-  open: boolean;
-  locked: boolean;
-  clearedToday: boolean;
-  preview: Rewards;
-}
-
-function ruleDetail(trial: ReturnType<typeof trialDefs>[number]): string {
-  const faction = trialFaction(trial);
-  if (faction) return `Faction lock: ${faction}`;
-  const cap = trialLevelCap(trial);
-  if (cap !== null) return `Level cap: ${cap}`;
-  const rounds = trialSurvivalRounds(trial);
-  if (rounds !== null) return `Survive ${rounds} rounds`;
-  if (trial.rule === 'noUltimate') return 'Ultimates disabled';
-  if (trial.weekdays) return `Open weekdays ${trial.weekdays.join(', ')}`;
-  return '';
-}
-
-export function buildTrialsView(config: GameConfig, state: AccountState, now: number): TrialCardView[] {
-  const weekday = weekdayUtc(now);
-  const day = dayKey(now);
-  return trialDefs(config).map((trial) => {
-    const open = trialAvailable(trial, state.profile.level, weekday);
-    return {
-      id: trial.id,
-      name: trial.name,
-      tagline: trial.tagline,
-      rule: trial.rule,
-      ruleDetail: ruleDetail(trial),
-      open,
-      locked: state.profile.level < trial.unlockLevel,
-      clearedToday: state.pve.trials.lastCleared[trial.id] === day,
-      preview: trial.preview as Rewards,
-    };
-  });
-}
 
 export interface WorldBossMilestoneView {
   index: number;

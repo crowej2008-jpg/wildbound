@@ -55,7 +55,7 @@ export {
   type TitleEarnedBy,
 } from './titles-schema';
 export { PVE } from './pve';
-export { pveSchema, type PveJson, type EnemyPoolJson, type TrialDefJson } from './pve-schema';
+export { pveSchema, type PveJson, type EnemyPoolJson } from './pve-schema';
 export { PVP } from './pvp';
 export {
   pvpSchema,

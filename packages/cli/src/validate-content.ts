@@ -620,7 +620,6 @@ function crossReferencePve(
   const pools: { label: string; factions: string[] }[] = [
     { label: 'tower', factions: PVE.tower.enemy.factions },
     { label: 'worldBoss', factions: PVE.worldBoss.enemy.factions },
-    ...PVE.trials.map((t) => ({ label: `trial "${t.id}"`, factions: t.enemy.factions })),
     ...Object.entries(PVE.dungeonEnemies).map(([id, pool]) => ({ label: `dungeon "${id}"`, factions: pool.factions })),
   ];
   for (const pool of pools) {
@@ -630,18 +629,13 @@ function crossReferencePve(
       }
     }
   }
-  for (const trial of PVE.trials) {
-    if (trial.rule === 'factionLocked' && trial.faction && !factions.has(trial.faction)) {
-      errors.push(`pve.json: trial "${trial.id}" locks an unknown faction "${trial.faction}"`);
-    }
-  }
   for (const boss of PVE.worldBoss.rotation) {
     if (!species.has(boss.speciesId)) {
       errors.push(`pve.json: world boss "${boss.name}" species "${boss.speciesId}" has no species file`);
     }
   }
   checks.push(
-    `pve: ${PVE.trials.length} trial(s), ${Object.keys(PVE.dungeonEnemies).length} dungeon enemy pool(s), ${PVE.worldBoss.rotation.length} boss day(s) validated`,
+    `pve: ${Object.keys(PVE.dungeonEnemies).length} dungeon enemy pool(s), ${PVE.worldBoss.rotation.length} boss day(s) validated`,
   );
 }
 
