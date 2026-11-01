@@ -91,6 +91,8 @@ export type CurrencyId =
   | 'berryMulchOrange'
   | 'berryMulchRed'
   | 'reforgePotion'
+  | 'pokemonShard3'
+  | 'pokemonShard5'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -132,6 +134,8 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'berryMulchOrange',
   'berryMulchRed',
   'reforgePotion',
+  'pokemonShard3',
+  'pokemonShard5',
   'privilegeXp',
 ];
 
@@ -161,6 +165,8 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'berryMulchOrange',
   'berryMulchRed',
   'reforgePotion',
+  'pokemonShard3',
+  'pokemonShard5',
   'privilegeXp',
 ];
 
@@ -245,6 +251,8 @@ export interface AccountState {
   titles: TitlesState;
   /** R8 Trainer Tokens (source celestica_trial_token_json). */
   trainerTokens: TrainerTokensState;
+  /** R9 Sign In (source sign_json). */
+  signIn: SignInState;
   /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
   pve: PveState;
   /** M10: PvP progress (Arena credits/rank, Ranked ladder). */
@@ -308,6 +316,21 @@ export interface TrainerTokensState {
 
 export function initialTrainerTokens(): TrainerTokensState {
   return { levels: {}, fragments: {}, treasureTotals: {} };
+}
+
+/**
+ * R9 Sign In: a 31-day calendar starting on `calendarStart` (a UTC day key); the next calendar starts the day after
+ * day 31. `signed` / `doubled` hold this calendar's day numbers, `milestones` the signed-day bonuses claimed.
+ */
+export interface SignInState {
+  calendarStart: string;
+  signed: number[];
+  doubled: number[];
+  milestones: number[];
+}
+
+export function initialSignIn(day: string): SignInState {
+  return { calendarStart: day, signed: [], doubled: [], milestones: [] };
 }
 
 /** Three account-wide title slots (source layers 1–3: Common / Premium / Rare). */

@@ -54,6 +54,8 @@ export const en = {
   'currency.berryMulchOrange': 'Orange Mulch',
   'currency.berryMulchRed': 'Red Mulch',
   'currency.reforgePotion': 'Reforge Potions',
+  'currency.pokemonShard3': '3-Star Pokémon Shards',
+  'currency.pokemonShard5': '5-Star Pokémon Shards',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -530,6 +532,18 @@ export const en = {
   'home.link.campaign': 'Campaign',
   'home.link.idle': 'Idle',
   'home.link.quests': 'Quests',
+  'home.link.signin': 'Sign In',
+  'signin.title': 'Sign In',
+  'signin.subtitle': 'Sign in once a day. Days with a VIP ribbon pay double at that VIP level; a missed day can be signed later for Diamonds; signed days add up to bonuses.',
+  'signin.day': 'Day',
+  'signin.signed': 'Signed',
+  'signin.vipDouble': 'VIP {vip} Double',
+  'signin.sign': 'Sign in',
+  'signin.patch': 'Sign late · {gems} Diamonds',
+  'signin.double': 'Claim double',
+  'signin.done': 'Signed',
+  'signin.bonuses': 'Signed-day bonuses',
+  'signin.bonusDays': '{days} days signed',
   'home.link.mail': 'Mail',
   'home.link.wilds': 'Wilds',
   'home.link.squad': 'Squad',
@@ -975,6 +989,8 @@ export type CurrencyKey =
   | 'berryMulchOrange'
   | 'berryMulchRed'
   | 'reforgePotion'
+  | 'pokemonShard3'
+  | 'pokemonShard5'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1015,6 +1031,8 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   berryMulchOrange: en['currency.berryMulchOrange'],
   berryMulchRed: en['currency.berryMulchRed'],
   reforgePotion: en['currency.reforgePotion'],
+  pokemonShard3: en['currency.pokemonShard3'],
+  pokemonShard5: en['currency.pokemonShard5'],
   privilegeXp: en['currency.privilegeXp'],
 };
 

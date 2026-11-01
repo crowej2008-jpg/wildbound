@@ -35,6 +35,8 @@
     "berryMulchOrange": 0,
     "berryMulchRed": 0,
     "reforgePotion": 0,
+    "pokemonShard3": 0,
+    "pokemonShard5": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -80,6 +82,8 @@
     "berryMulchOrange": 100,
     "berryMulchRed": 100,
     "reforgePotion": 500,
+    "pokemonShard3": 100,
+    "pokemonShard5": 100,
     "privilegeXp": 300
   }
 }

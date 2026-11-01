@@ -5,6 +5,7 @@ import {
   RESONANCE,
   VIP,
   TOKENS,
+  SIGN_IN,
   ECONOMY,
   EXPLORE,
   GROWTH,
@@ -33,7 +34,7 @@ import {
   TRINKET_RULES,
   POTENTIAL,
 } from '@wildbound/content';
-import type { TokensJson, VipJson } from '@wildbound/content';
+import type { SignInJson, TokensJson, VipJson } from '@wildbound/content';
 import type {
   CampaignJson,
   ChapterMetaJson,
@@ -142,6 +143,8 @@ export interface GameConfig {
   vip: VipJson;
   /** R8 Trainer Tokens (source celestica_trial_token_json). */
   tokens: TokensJson;
+  /** R9 Sign In (source sign_json). */
+  signIn: SignInJson;
   pvp: PvpJson;
   /** M11.11 title catalogue. */
   titles: TitlesJson;
@@ -209,6 +212,7 @@ export function buildConfig(): GameConfig {
     resonance: RESONANCE as ResonanceTables,
     vip: VIP,
     tokens: TOKENS,
+    signIn: SIGN_IN,
     pvp: PVP,
     titles: TITLES,
     titleById: new Map(TITLES.map((title) => [title.id, title])),

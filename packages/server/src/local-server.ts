@@ -208,6 +208,15 @@ import {
 } from './resonance';
 import { buildVipView, vipIdleCapMinutes, vipPerks } from './vip';
 import { buildTokensView, grantTokenFragments, levelTokenAction } from './tokens';
+import {
+  buildSignInView,
+  claimSignInMilestoneAction,
+  doubleSignInAction,
+  patchSignInAction,
+  signTodayAction,
+  type SignInResult,
+  type SignInView,
+} from './signin';
 import { activateTitleAction, buildTitlesView, grantTitleCards, setTitleSlotAction } from './titles';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
@@ -954,6 +963,38 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) =>
       setTitleSlotAction(this.config, state, slot, titleId, this.now(state)),
     );
+  }
+
+  // --- R9 Sign In --------------------------------------------------------------
+
+  async getSignIn(): Promise<Result<SignInView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildSignInView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async signIn(): Promise<Result<ClaimResult>> {
+    return this.signInStep((state, now) => signTodayAction(this.config, state, now));
+  }
+
+  async patchSignIn(day: number): Promise<Result<ClaimResult>> {
+    return this.signInStep((state, now) => patchSignInAction(this.config, state, day, now));
+  }
+
+  async doubleSignIn(day: number): Promise<Result<ClaimResult>> {
+    return this.signInStep((state, now) => doubleSignInAction(this.config, state, day, now));
+  }
+
+  async claimSignInMilestone(index: number): Promise<Result<ClaimResult>> {
+    return this.signInStep((state, now) => claimSignInMilestoneAction(this.config, state, index, now));
+  }
+
+  private async signInStep(step: (state: AccountState, now: number) => Result<SignInResult>): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const done = step(loaded.value, this.now(loaded.value));
+    if (!done.ok) return fail(done.error, done.message);
+    return this.commitClaim(done.value.state, done.value.granted);
   }
 
   async levelToken(tokenId: number): Promise<Result<AccountSnapshot>> {

@@ -204,3 +204,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R8 paused, R9 dailies
 - Mount / Back Decor / Follower wait on `fashion_up_star_json` and the skin stats (not in the dumps; listed in
   open questions). R9 started: the source's 12 dailies replace the M5 quests (ASSUMPTIONS #75).
+
+## [2026-11-01] update | R9 Sign In
+- The source's 31-day Sign In (VIP doubles, late signing, 11 bonuses) is new to Wildbound (ASSUMPTIONS #76, save v32).

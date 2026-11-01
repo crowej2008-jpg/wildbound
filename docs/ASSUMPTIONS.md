@@ -936,3 +936,13 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     donations (M15) show where they arrive, so 120 activity is reachable. Activity chests: the source table is not
     in the dumps; only the 120-point chest's Privilege XP ×60 is recorded, so it is a chest of its own and the 20 /
     50 / 80 stand-ins stay until the table is found.
+
+76. **R9 Sign In.** Copied from the source (`sign_json`, `sign_heap_json`, `vip_priv_json` sign_patch_*): a 31-day
+    calendar of five repeating rewards (Premium Ticket, 100 Diamonds, 100,000 Gold, 80,000 XP Candy, ten 5-Star
+    Pokémon Shards), VIP ribbons that double a day from VIP 1 (day 1) to VIP 10, a missed day signed up to 30 days
+    later for 10 Diamonds, and 11 signed-day bonuses (Diamonds, Pokémon Shards, Ascension Stones). Readings: the
+    source server decides which calendar and day it is (the client has no date logic), so Wildbound starts a
+    calendar on the account's first day and the next one the day after day 31 (all three source calendars are
+    identical); a late-signed day pays its plain reward (a VIP double can then be claimed as for any signed day);
+    "Premium GV" is the Premium Ticket and the Ascension Stone is Wildbound's `stone`; the 3★ / 5★ Pokémon Shards
+    are new currencies kept until summoning is copied (their use there).

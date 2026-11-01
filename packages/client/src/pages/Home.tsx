@@ -19,6 +19,7 @@ const TOWN = [
   { to: '/campaign', key: 'home.link.campaign' as const, icon: '⚔' },
   { to: '/idle', key: 'home.link.idle' as const, icon: '⏳' },
   { to: '/quests', key: 'home.link.quests' as const, icon: '☑' },
+  { to: '/sign-in', key: 'home.link.signin' as const, icon: '📆' },
   { to: '/mail', key: 'home.link.mail' as const, icon: '✉' },
   { to: '/wilds', key: 'home.link.wilds' as const, icon: '🐾' },
   { to: '/squad', key: 'home.link.squad' as const, icon: '🛡' },

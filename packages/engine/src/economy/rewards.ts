@@ -41,6 +41,9 @@ export interface Rewards {
   berryMulchOrange?: number;
   berryMulchRed?: number;
   reforgePotion?: number;
+  /** R9: the source's 3★ / 5★ Pokémon Shards (sign-in; their use comes with the summoning retrofit). */
+  pokemonShard3?: number;
+  pokemonShard5?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -83,6 +86,8 @@ export const CURRENCY_REWARD_KEYS = [
   'berryMulchOrange',
   'berryMulchRed',
   'reforgePotion',
+  'pokemonShard3',
+  'pokemonShard5',
   'privilegeXp',
 ] as const;
 

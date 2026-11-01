@@ -23,6 +23,7 @@ import {
   initialShopState,
   initialTitles,
   initialTrainerTokens,
+  initialSignIn,
   initialSkyPillar,
   TITLE_SLOTS,
   type AccountState,
@@ -35,20 +36,21 @@ import {
   type TitleOwnership,
   type TitlesState,
   type TrainerTokensState,
+  type SignInState,
   type WildInstance,
 } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 31;
+export const SAVE_VERSION = 32;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 31;
+export const MIN_SAVE_VERSION = 32;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -97,6 +99,20 @@ function normalizeTrainerTokens(source: Partial<TrainerTokensState> | undefined)
     levels: numberMap(source?.levels),
     fragments: numberMap(source?.fragments),
     treasureTotals: numberMap(source?.treasureTotals),
+  };
+}
+
+function dayList(source: unknown): number[] {
+  return Array.isArray(source) ? source.filter((d): d is number => Number.isInteger(d) && d >= 1 && d <= 31) : [];
+}
+
+function normalizeSignIn(source: Partial<SignInState> | undefined, day: string): SignInState {
+  const start = typeof source?.calendarStart === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(source.calendarStart) ? source.calendarStart : day;
+  return {
+    calendarStart: start,
+    signed: dayList(source?.signed),
+    doubled: dayList(source?.doubled),
+    milestones: dayList(source?.milestones),
   };
 }
 
@@ -182,6 +198,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     resonance: normalizeResonance(s.resonance, config),
     titles: normalizeTitles(s.titles, now, config),
     trainerTokens: normalizeTrainerTokens(s.trainerTokens),
+    signIn: normalizeSignIn(s.signIn, day),
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     petHome: s.petHome ?? initialPetHome(now, day),
@@ -277,6 +294,7 @@ export function createInitialState(config: GameConfig): AccountState {
     resonance: initialResonance(config.resonance),
     titles: startingTitles(config),
     trainerTokens: initialTrainerTokens(),
+    signIn: initialSignIn(day),
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     petHome: initialPetHome(now, day),

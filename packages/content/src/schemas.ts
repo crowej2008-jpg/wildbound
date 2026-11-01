@@ -698,6 +698,8 @@ export const rewardSchema = z
     berryMulchOrange: z.number().nonnegative().optional(),
     berryMulchRed: z.number().nonnegative().optional(),
     reforgePotion: z.number().nonnegative().optional(),
+    pokemonShard3: z.number().nonnegative().optional(),
+    pokemonShard5: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

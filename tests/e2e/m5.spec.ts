@@ -115,3 +115,16 @@ test('collecting idle income completes a daily quest that can be claimed', async
     page.locator('.quest-row').filter({ hasText: 'Challenge Adventure Quest once' }).getByText('Its mode arrives in M13.'),
   ).toBeVisible();
 });
+
+test('signs in today from the town hub and shows the VIP ribbon and bonuses', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: /Sign In/ }).click();
+  await expect(page.getByRole('heading', { name: 'Sign In', exact: true })).toBeVisible();
+
+  const day1 = page.locator('[data-sign-day="1"]');
+  await expect(day1.getByText('Day 1 · VIP 1 Double')).toBeVisible();
+  await day1.getByRole('button', { name: 'Sign in' }).click();
+  await expect(day1.getByText('Signed', { exact: true })).toBeVisible();
+  await expect(page.getByText('Day 1 · Signed: 1')).toBeVisible();
+  await expect(page.getByText('2 days signed')).toBeVisible();
+});

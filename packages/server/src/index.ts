@@ -27,6 +27,7 @@ import type { PvpHubView } from './pvp-hub-view';
 import type { ResonanceView } from './resonance';
 import type { VipView } from './vip';
 import type { TokenView } from './tokens';
+import type { SignInView } from './signin';
 import type { TitlesView } from './titles';
 
 /**
@@ -360,6 +361,16 @@ export interface GameServer {
   evolveResonance(): Promise<Result<AccountSnapshot>>;
   /** R7: raise the evolved crystal one level. */
   upgradeResonance(): Promise<Result<AccountSnapshot>>;
+  /** R9: the Sign In calendar. */
+  getSignIn(): Promise<Result<SignInView>>;
+  /** R9: sign today's day. */
+  signIn(): Promise<Result<ClaimResult>>;
+  /** R9: sign a missed day for Diamonds. */
+  patchSignIn(day: number): Promise<Result<ClaimResult>>;
+  /** R9: take a signed day's VIP double after the VIP level rises. */
+  doubleSignIn(day: number): Promise<Result<ClaimResult>>;
+  /** R9: claim a signed-day bonus. */
+  claimSignInMilestone(index: number): Promise<Result<ClaimResult>>;
   /** R8: raise a Trainer Token one level (its season's Suppression Treasure total and its own fragments). */
   levelToken(tokenId: number): Promise<Result<AccountSnapshot>>;
   /** Debug (R8): grant a Trainer Token's own fragments. */
@@ -485,4 +496,5 @@ export * from './berries';
 export * from './vip';
 export * from './titles';
 export * from './tokens';
+export * from './signin';
 export * from './local-server';

@@ -20,6 +20,7 @@ import PveTower from './pages/PveTower';
 import PveTrials from './pages/PveTrials';
 import Pvp from './pages/Pvp';
 import Quests from './pages/Quests';
+import SignIn from './pages/SignIn';
 import Ranked from './pages/Ranked';
 import Shop from './pages/Shop';
 import Squad from './pages/Squad';
@@ -54,6 +55,7 @@ function AppRoutes() {
         <Route path="/campaign" element={<Campaign />} />
         <Route path="/idle" element={<Idle />} />
         <Route path="/quests" element={<Quests />} />
+        <Route path="/sign-in" element={<SignIn />} />
         <Route path="/mail" element={<Mail />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/wilds" element={<Wilds />} />
