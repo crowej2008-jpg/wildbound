@@ -17,6 +17,7 @@ import {
 } from '@wildbound/engine';
 import type { AccountState, EquipmentTables, Loadout, RelicInstance, Rng, WildClass, Tier } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
+import { resonanceLevel } from './resonance';
 import { equippedOn, loadoutOf } from './equipment-view';
 import type { GameConfig, SpeciesMeta } from './config';
 
@@ -173,7 +174,7 @@ export function levelRelicAction(config: SpeciesLookup, state: AccountState, ins
   const cost = heldLevelCost(relic.level, held);
   if (cost === null) return fail('at_level_cap', 'max held item level');
   const gate = heldLevelGate(relic.level, held);
-  if (state.pve.linkCrystal.level < gate) return fail('resource_locked', `needs resonance level ${gate}`);
+  if (resonanceLevel(config, state) < gate) return fail('resource_locked', `needs resonance level ${gate}`);
   const paid = pay(state, { heldItemShard: cost });
   if (!paid) return fail('insufficient_items', 'not enough Held Item Shards');
   return ok(withRelic(paid, { ...relic, level: relic.level + 1 }));

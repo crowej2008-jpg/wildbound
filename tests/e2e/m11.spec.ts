@@ -200,25 +200,24 @@ test('Trinkets level with Star Shards and show the shared species state', async 
   await expect(page.getByRole('button', { name: /Level up .*1,905 Star Shards/ })).toBeVisible();
 });
 
-test('Resonance opens slots and assigns a Wild', async ({ page }) => {
+test('Resonance: the top six set the crystal level, slots open with Resonation Shards and take a Pokémon', async ({ page }) => {
   await importSave(page, { currencies: { resonationShard: 200 } });
   await page.goto('/trainer');
 
   await expect(page.getByRole('heading', { name: 'Resonance' })).toBeVisible();
+  await expect(page.getByText('Crystal level: 40')).toBeVisible();
   await expect(page.getByText('Resonation Shards: 200')).toBeVisible();
-  await expect(page.getByLabel('Slot 1')).toBeVisible();
-  await expect(page.getByLabel('Slot 2')).toBeVisible();
-  await expect(page.getByRole('button', { name: /Open slot 3 .*50 Resonation Shards/ })).toBeVisible();
+  await expect(page.getByLabel('Slot 1', { exact: true })).toBeVisible();
+  await expect(page.getByLabel('Slot 2', { exact: true })).toBeVisible();
 
-  await page.getByRole('button', { name: /Open slot 3 .*50 Resonation Shards/ }).click();
-  await expect(page.getByText('Resonation Shards: 150')).toBeVisible();
-  await expect(page.getByLabel('Slot 3')).toBeVisible();
-  await expect(page.getByRole('button', { name: /Open slot 4 .*100 Resonation Shards/ })).toBeVisible();
+  await page.getByRole('button', { name: /Open slot · 30 Resonation Shards/ }).click();
+  await expect(page.getByText('Resonation Shards: 170')).toBeVisible();
+  await expect(page.getByLabel('Slot 3', { exact: true })).toBeVisible();
 
-  await page.getByLabel('Slot 1').selectOption('w1');
-  await expect(page.getByLabel('Slot 1')).toHaveValue('w1');
-  await expect(page.getByText('Link Crystal locked')).toBeVisible();
-  await expect(page.getByText('No bonus until the Link Crystal is unlocked.')).toBeVisible();
+  const slot = page.getByLabel('Slot 1', { exact: true });
+  await slot.getByRole('button', { name: 'Choose a Pokémon' }).click();
+  await slot.getByLabel('Choose a Pokémon').selectOption('w2');
+  await expect(slot.getByRole('button', { name: 'Take out' })).toBeVisible();
 });
 
 test('VIP derives its tier from lifetime XP and claims the daily supply', async ({ page }) => {

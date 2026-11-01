@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { effectiveLevelCap, formNames, levelUpCost, type StarCard } from '@wildbound/engine';
+import { formNames, levelUpCost, type StarCard } from '@wildbound/engine';
 import { evolutionView, type EvolutionRequirement } from '@wildbound/server';
 import WildPortrait from '../art/WildPortrait';
 import { classLabel, factionLabel, t, tierLabel } from '../i18n';
@@ -42,9 +42,8 @@ export default function WildDetail() {
     if (!wild || !meta || !snapshot) return null;
     const card = cardFor(meta, wild.stars);
     const top = topStar(meta);
-    const crystal = snapshot.state.pve.linkCrystal ?? { unlocked: false, level: 0 };
-    const atTopStage = wild.stars >= top && wild.level >= card.maxLevel;
-    const cap = effectiveLevelCap({ stars: wild.stars, atTopStage }, card.maxLevel, crystal);
+    // R7: a resonating Pokémon shows the crystal level and cannot be levelled by hand.
+    const cap = wild.ownLevel !== undefined ? wild.level : card.maxLevel;
     const nextCost = levelUpCost(wild.level, Math.min(cap, wild.level + 1), PROGRESS);
     const tenCost = levelUpCost(wild.level, Math.min(cap, wild.level + 10), PROGRESS);
     const evolution = evolutionView(
@@ -71,6 +70,7 @@ export default function WildDetail() {
   const power = snapshot.power[wild.id] ?? 0;
   const currencies = snapshot.state.currencies;
   const atCap = wild.level >= view.cap;
+  const resonating = wild.ownLevel !== undefined;
   const forms = formNames(meta.stars as StarCard[]);
   const form = formFor(meta, wild.stars);
   const evolution = view.evolution;
@@ -98,6 +98,7 @@ export default function WildDetail() {
             {t('wild.level')}
             {wild.level} / {view.cap} · {wild.stars}★ / {view.top}★
             {wild.locked && ` · ${t('wild.locked')}`}
+            {resonating && ` · ${t('wild.resonating')}`}
           </p>
         </div>
       </section>

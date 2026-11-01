@@ -7,25 +7,6 @@ import { z } from 'zod';
  */
 export const collectionTuningSchema = z
   .object({
-    resonance: z.object({
-      /** Total slots on the account-wide resonance board. */
-      slots: z.number().int().min(1),
-      /** Slots open without spending Resonation Shards. */
-      openSlots: z.number().int().min(1),
-      /** Shards for the first locked slot. */
-      unlockBase: z.number().int().min(0),
-      /** Extra Shards for each later locked slot. */
-      unlockPerSlot: z.number().int().min(0),
-      /** Stats granted per Link Crystal level to a slotted Wild. */
-      perLevel: z.object({
-        hp: z.number().min(0),
-        pAtk: z.number().min(0),
-        sAtk: z.number().min(0),
-        pDef: z.number().min(0),
-        sDef: z.number().min(0),
-        spd: z.number().min(0),
-      }),
-    }),
     vip: z.object({
       /** Activity tiers, ascending by lifetime XP; tier 0 starts at 0 XP. */
       tiers: z.array(

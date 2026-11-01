@@ -39,7 +39,6 @@ const LAYER_ROWS = [
   ['relic', 'wild.tab.heldItems'],
   ['plates', 'wild.gear.plates'],
   ['trinkets', 'wild.gear.trinkets'],
-  ['resonance', 'trainer.resonance'],
   ['titles', 'trainer.titles'],
   ['runes', 'wild.tab.orbs'],
   ['berries', 'wild.tab.berries'],

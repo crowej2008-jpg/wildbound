@@ -881,3 +881,14 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     no longer used up by battles (that was the M11 stand-in). Berries come only from the starting four and the
     debug grant until shops / modes carry them (the source sells them in the Rank Ladder shop).
 
+71. **R7 Resonance.** Copied from the source (hero_share_* tables, the server's answers in kb/resonance.md): the six
+    highest-level Pokémon (not slotted, not Origins) set the crystal level (the lowest of them); every slotted
+    Pokémon takes it, past its own cap, keeps its own level aside (`ownLevel`) and gets it back when it leaves;
+    resonating Pokémon cannot be levelled by hand. At Lv 340 the crystal evolves (free): six more slots, then it is
+    levelled directly with XP Candy, Gold (3 × Candy) and Ascension Stones up to 340 + 8 per Pokémon at 12★, and the
+    top six share its level too. Slots: 2 open, the rest from the source price table (Resonation Shards, or Diamonds
+    when short), 82 / 88 at most. Readings: the crystal-level price is the server's at the 21 levels read and linear
+    between them (Candy to 2,500, Stones to 50; 340–349 continue the 350–360 line); any take-out starts the 24-hour
+    slot cooldown (the source names Respawn and Rewind; a plain take-out is unconfirmed); Pokémon with fewer than six
+    others give a crystal level of 0. This replaces the M8 Link Crystal mode and the M11.9 stat-share slots.
+

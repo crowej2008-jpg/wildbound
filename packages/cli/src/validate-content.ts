@@ -35,6 +35,7 @@ import {
   TITLE_SLOTS,
   orbsSchema,
   berriesSchema,
+  resonanceSchema,
   berrySkillsSchema,
   coresSchema,
   equipmentTuningSchema,
@@ -92,6 +93,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'equipment.json': equipmentTuningSchema,
   'collection.json': collectionTuningSchema,
   'pve.json': pveSchema as AnySchema,
+  'resonance.json': resonanceSchema as AnySchema,
   'pvp.json': pvpSchema as AnySchema,
 };
 

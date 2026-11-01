@@ -7,7 +7,6 @@ const MODES = [
   { to: '/trials', icon: '⚖', title: 'pve.trials' as const, desc: 'pve.trials.desc' as const },
   { to: '/boss', icon: '🐉', title: 'pve.boss' as const, desc: 'pve.boss.desc' as const },
   { to: '/dungeons', icon: '⛰', title: 'pve.dungeons' as const, desc: 'pve.dungeons.desc' as const },
-  { to: '/crystal', icon: '💠', title: 'pve.crystal' as const, desc: 'pve.crystal.desc' as const },
   { to: '/combat/training', icon: '⚔', title: 'pve.training' as const, desc: 'pve.training.desc' as const },
 ];
 

@@ -42,19 +42,6 @@ export const towerSchema = z
   })
   .strict();
 
-export const linkCrystalSchema = z
-  .object({
-    baseCap: z.number().int().positive(),
-    perStarWild: z.number().int().nonnegative(),
-    starThreshold: z.number().int().positive(),
-    initialLevel: z.number().int().positive(),
-    candyBase: z.number().positive(),
-    candyExponent: z.number().positive(),
-    goldPerCandy: z.number().nonnegative(),
-    stonesPerLevel: z.number().int().nonnegative(),
-  })
-  .strict();
-
 export const trialRuleSchema = z.enum([
   'factionLocked',
   'noUltimate',
@@ -113,7 +100,6 @@ export const worldBossSchema = z
 export const pveSchema = z
   .object({
     tower: towerSchema,
-    linkCrystal: linkCrystalSchema,
     worldBoss: worldBossSchema,
     trials: z.array(trialSchema).min(1),
     dungeons: z.array(dungeonSchema).min(1),

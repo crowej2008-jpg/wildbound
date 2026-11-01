@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { runBattle } from '../combat/battle';
 import type { KitDef, RoundEffect, SheetInput, SpecInput } from '../combat/types';
-import type { CoreStats } from '../model';
 import { foldLoadout, lineValue, mergeDelta } from './contrib';
 import {
   canEquipRelic,
@@ -214,7 +213,6 @@ describe('layer contributions', () => {
       TABLES,
       { faction: 'fire', stage: 5 },
       { speciesId: 'sp1', level: 5 },
-      { level: 5, perLevel: { pAtk: 10, spd: 0.1 } },
       { lines: [{ kind: 'core', field: 'hp', base: 100, perLevel: 0 }] },
     );
     // held item level 2: pAtk 40 + 2×20, Critical 700 → 0.07; only the fire (own-faction) line counts
@@ -227,9 +225,6 @@ describe('layer contributions', () => {
     // trinket level 5: pAtk 60, dmgBoost 0.05
     expect(folded.layers.trinkets.core.pAtk).toBeCloseTo(60);
     expect(folded.layers.trinkets.percent.dmgBoost).toBeCloseTo(0.05);
-    // resonance level 5 at +10 pAtk / +0.1 spd per level
-    expect(folded.layers.resonance.core.pAtk).toBeCloseTo(50);
-    expect(folded.layers.resonance.core.spd).toBeCloseTo(0.5);
     // title lines are account-wide and independent of the loadout
     expect(folded.layers.titles.core.hp).toBeCloseTo(100);
     // orbs: Sharp's DMG Boost line at +3 (3 × 0.8%); DMG Down is on at its lowest orb (+3): Orb ATK +15%
@@ -342,10 +337,9 @@ function battleWith(
   loadout: Loadout,
   plate?: { faction: 'fire'; stage: number },
   trinket?: { speciesId: string; level: number },
-  resonance?: { level: number; perLevel: Partial<CoreStats> },
   title?: { lines: { kind: 'core'; field: 'pAtk'; base: number; perLevel: number }[] },
 ) {
-  const folded = foldLoadout(loadout, state, TABLES, plate, trinket, resonance, title);
+  const folded = foldLoadout(loadout, state, TABLES, plate, trinket, title);
   return runBattle({
     attackers: [{ ...attacker(mergeDelta(baseSheet, folded.delta), folded.effects), soulheart: folded.soulheart }],
     defenders: [defender(120000)],
@@ -380,16 +374,8 @@ describe('every layer moves a battle in the intended direction', () => {
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });
 
-  it('a resonance share raises damage', () => {
-    const up = battleWith(base, stateWith({}), emptyLoadout(TUNING), undefined, undefined, {
-      level: 40,
-      perLevel: { pAtk: 10, hp: 20 },
-    });
-    expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
-  });
-
   it('an equipped title raises damage', () => {
-    const up = battleWith(base, stateWith({}), emptyLoadout(TUNING), undefined, undefined, undefined, {
+    const up = battleWith(base, stateWith({}), emptyLoadout(TUNING), undefined, undefined, {
       lines: [{ kind: 'core', field: 'pAtk', base: 250, perLevel: 0 }],
     });
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());

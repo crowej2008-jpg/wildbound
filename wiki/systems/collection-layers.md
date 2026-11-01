@@ -60,6 +60,10 @@ share it). Strikers → Crit Intensity, Guardians → DMG Reduction, Adepts → 
 later. Save v10.
 
 ## Resonance
+**R7 (2026-11-01):** the source's shared-level crystal — top six set the level, slots share it, evolution at 340,
+then Candy / Gold / Stones to 340 + 8 per 12★ Pokémon; slot price table; 24-hour slot cooldown. Replaces the M8
+Link Crystal and the stat shares below. ASSUMPTIONS #71.
+
 Six slots (two open); unlock `50 + 50 × slot` Resonation Shards. A slotted Wild gains per-crystal-level
 shares (4 HP, 1 P.ATK, 1 S.ATK, 0.5 P/S.DEF, 0.05 SPD) × [Link Crystal](pve-modes.md) level. On the
 Trainer screen. Save v11.

@@ -95,10 +95,11 @@ describe('M11.0 equipment view and actions', () => {
     const gated = levelRelicAction(config, state, relic.id);
     expect(gated.ok).toBe(false);
     if (!gated.ok) expect(gated.error).toBe('resource_locked');
-    state.pve.linkCrystal.level = 250;
+    // R7: the resonance level is the lowest of the top six before the crystal evolves.
+    state.roster = state.roster.map((w) => ({ ...w, level: 250 }));
     expect(levelRelicAction(config, state, relic.id).ok).toBe(true);
     relic.level = 200;
-    state.pve.linkCrystal.level = 600;
+    state.resonance = { ...state.resonance, evolved: true, level: 600 };
     const capped = levelRelicAction(config, state, relic.id);
     expect(capped.ok).toBe(false);
     if (!capped.ok) expect(capped.error).toBe('at_level_cap');

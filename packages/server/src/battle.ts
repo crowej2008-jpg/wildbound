@@ -34,7 +34,6 @@ import {
   compilePotential,
 } from '@wildbound/engine';
 import { cardOf, type GameConfig, type SpeciesMeta } from './config';
-import { resonanceFoldFor } from './resonance';
 import { titleFoldFor } from './titles';
 
 /**
@@ -146,7 +145,6 @@ export function equippedSheet(
     config.equipment,
     meta ? { faction: meta.faction, stage: state.plates?.[wild.id] ?? 0 } : undefined,
     { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
-    resonanceFoldFor(config, state, wild.id),
     titleFoldFor(config, state),
   );
   return {

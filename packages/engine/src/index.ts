@@ -18,5 +18,6 @@ export * from './pet-home';
 export * from './sky-pillar';
 export * from './potential';
 export * from './pvp';
+export * from './resonance';
 export type { CoreStats, Faction, PercentLines, SoulStats, Tier, WildClass } from './model';
 export { FACTIONS } from './model';

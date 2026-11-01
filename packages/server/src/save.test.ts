@@ -14,8 +14,8 @@ describe('save codec', () => {
     expect(state.serverEpoch).toBeGreaterThan(0);
     expect(state.plates).toEqual({});
     expect(state.trinkets).toEqual({});
-    expect(state.resonance.unlocked).toBe(2);
-    expect(state.resonance.slots).toHaveLength(6);
+    expect(state.resonance.slots).toHaveLength(2);
+    expect(state.resonance.evolved).toBe(false);
     expect(state.resonance.slots.every((id) => id === null)).toBe(true);
     expect(state.vip.lastClaimDay).toBeNull();
     expect(state.titles.owned).toEqual({});

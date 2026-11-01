@@ -117,6 +117,7 @@ export type {
 } from './pet-home-schema';
 export { GACHA } from './tuning-gacha';
 export { SHOPS } from './shops';
+export { RESONANCE, resonanceSchema } from './resonance';
 export { BERRY_SKILLS, berrySkillAt, berrySkillsSchema } from './berry-skills';
 export {
   EQUIPMENT_TUNING,

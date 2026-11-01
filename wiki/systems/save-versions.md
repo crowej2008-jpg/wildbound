@@ -40,6 +40,7 @@ after the retrofit, once friends have real saves.
 | 25 | R6b | `trinketItems` (each holder's own levelling item, by species) (reset) |
 | 26 | R6b | Faction Tower Coins and the six trinket-chest currencies (reset) |
 | 27 | R6d | berry instances (`equipment.berries`, `loadout.berries`) replace the stand-in charms; Mulch and Reforge Potions (reset) |
-| 28+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
+| 28 | R7 | source Resonance (`resonance` slots, cooldowns, evolved, level; `WildInstance.ownLevel`); `pve.linkCrystal` removed (reset) |
+| 29+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

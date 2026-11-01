@@ -17,7 +17,7 @@ import type { PotentialView } from './potential';
 import type { OrbsPanelView } from './orbs';
 import type { BerriesPanelView } from './berries';
 import type { EquipmentView } from './equipment-view';
-import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
+import type { DungeonCardView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import type { ExploreView } from './explore-view';
 import type { PetHomeView } from './pet-home-view';
 import type { SkyPillarView } from './sky-pillar-view';
@@ -70,7 +70,7 @@ export interface AccountSnapshot {
   power: Record<string, number>;
   /** Summed Power per squad mode. */
   teamPower: Record<SquadMode, number>;
-  /** Display-ready account resonance board (M11.9). */
+  /** Display-ready Resonance (R7: top six, crystal, slots). */
   resonance: ResonanceView;
   /** Display-ready VIP tier, perks and daily claim state (M11.10). */
   vip: VipView;
@@ -345,10 +345,16 @@ export interface GameServer {
   upgradePlate(wildId: string): Promise<Result<AccountSnapshot>>;
   /** Raise the Wild's species-signature trinket by one level (M11.8). */
   upgradeTrinket(wildId: string): Promise<Result<AccountSnapshot>>;
-  /** Open the next resonance slot with Resonation Shards (M11.9). */
-  unlockResonanceSlot(): Promise<Result<AccountSnapshot>>;
-  /** Put a Wild in an open resonance slot, or clear it with `null` (M11.9). */
+  /** R7: open the next resonance slot (Resonation Shards, or Diamonds when short). */
+  buyResonanceSlot(): Promise<Result<AccountSnapshot>>;
+  /** R7: put a Pokémon in an open slot, or take it out with `null` (the slot then cools down 24 hours). */
   setResonanceSlot(slot: number, wildId: string | null): Promise<Result<AccountSnapshot>>;
+  /** R7: clear a slot's cooldown (4 Diamonds per hour left). */
+  clearResonanceCooldown(slot: number): Promise<Result<AccountSnapshot>>;
+  /** R7: evolve the crystal once the top six reach Lv 340 (free; six more slots). */
+  evolveResonance(): Promise<Result<AccountSnapshot>>;
+  /** R7: raise the evolved crystal one level. */
+  upgradeResonance(): Promise<Result<AccountSnapshot>>;
   /** Claim today's VIP Common Ticket supply (M11.10). */
   claimVipDaily(): Promise<Result<ClaimResult>>;
   /** Activate, upgrade or continue a title with Title Tickets (M11.11). */
@@ -375,10 +381,6 @@ export interface GameServer {
   getDungeons(): Promise<Result<DungeonCardView[]>>;
   /** Fight today's daily dungeon with the campaign squad (M8). */
   challengeDungeon(dungeonId: string, seed?: number): Promise<Result<DungeonBattleResult>>;
-  /** Display-ready Link Crystal state: level, cap, cost, eligibility (M8). */
-  getLinkCrystal(): Promise<Result<LinkCrystalView>>;
-  /** Spend candy/gold/stones to raise the Link Crystal one level (M8). */
-  upgradeLinkCrystal(): Promise<Result<AccountSnapshot>>;
   /** Display-ready Arena state: credits, rank, attempts, chests, opponents (M10). */
   getArena(): Promise<Result<ArenaView>>;
   /** Display-ready PvP hub: one card per entry point with its live status (M10.5). */

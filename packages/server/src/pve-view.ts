@@ -10,8 +10,6 @@ import {
 import { curveLevel } from '@wildbound/engine';
 import type { GameConfig } from './config';
 import {
-  crystalTuning,
-  crystalWilds,
   dungeonDefs,
   resolveCurve,
   towerTuning,
@@ -20,13 +18,8 @@ import {
 } from './pve';
 import {
   canSweep,
-  canUpgradeCrystal,
-  countQualifying,
-  crystalCap,
-  crystalUpgradeCost,
   dungeonsForWeekday,
   ghostRecords,
-  maybeUnlockCrystal,
   nextTowerFloor,
   rankDamage,
   reachedMilestones,
@@ -203,29 +196,3 @@ export function buildDungeonsView(config: GameConfig, state: AccountState, now: 
     }));
 }
 
-export interface LinkCrystalView {
-  unlocked: boolean;
-  level: number;
-  cap: number;
-  qualifying: number;
-  topStageCount: number;
-  starThreshold: number;
-  cost: { candy: number; gold: number; stones: number };
-  canUpgrade: boolean;
-}
-
-export function buildLinkCrystalView(config: GameConfig, state: AccountState): LinkCrystalView {
-  const tuning = crystalTuning(config);
-  const wilds = crystalWilds(config, state);
-  const unlocked = maybeUnlockCrystal(state.pve.linkCrystal, wilds, tuning);
-  return {
-    unlocked: unlocked.unlocked,
-    level: unlocked.level,
-    cap: crystalCap(wilds, tuning),
-    qualifying: countQualifying(wilds, tuning),
-    topStageCount: wilds.filter((w) => w.atTopStage).length,
-    starThreshold: tuning.starThreshold,
-    cost: crystalUpgradeCost(unlocked.level || tuning.initialLevel, tuning),
-    canUpgrade: canUpgradeCrystal(unlocked, wilds, tuning),
-  };
-}

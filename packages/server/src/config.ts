@@ -3,6 +3,7 @@ import {
   CAMPAIGN,
   CHAPTERS,
   COLLECTION_TUNING,
+  RESONANCE,
   ECONOMY,
   EXPLORE,
   GROWTH,
@@ -66,6 +67,7 @@ import {
   type XpCurve,
   type PotentialTable,
   type OrbTables,
+  ResonanceTables,
 } from '@wildbound/engine';
 
 /** Everything the LocalServer needs, lifted from content and injectable in tests. */
@@ -136,6 +138,8 @@ export interface GameConfig {
   potential: PotentialTable;
   /** M8 PvE mode tables (tower, trials, world boss, dungeons, link crystal). */
   pve: PveJson;
+  /** R7: the source's Resonance. */
+  resonance: ResonanceTables;
   pvp: PvpJson;
   /** M11.11 title catalogue. */
   titles: TitlesJson;
@@ -201,6 +205,7 @@ export function buildConfig(): GameConfig {
       tuning: EQUIPMENT_TUNING as unknown as EquipmentTables['tuning'],
     },
     pve: PVE,
+    resonance: RESONANCE as ResonanceTables,
     pvp: PVP,
     titles: TITLES,
     titleById: new Map(TITLES.map((title) => [title.id, title])),

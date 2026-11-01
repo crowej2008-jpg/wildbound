@@ -31,16 +31,6 @@
       "maxStage": 3
     }
   },
-  "linkCrystal": {
-    "baseCap": 340,
-    "perStarWild": 8,
-    "starThreshold": 10,
-    "initialLevel": 140,
-    "candyBase": 60,
-    "candyExponent": 1.2,
-    "goldPerCandy": 3,
-    "stonesPerLevel": 2
-  },
   "worldBoss": {
     "attemptsPerDay": 3,
     "ghostCount": 9,

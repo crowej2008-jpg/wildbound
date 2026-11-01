@@ -41,7 +41,6 @@ import {
   dayKey,
   emptyQuestState,
   emptyRewards,
-  effectiveLevelCap,
   expireTitles,
   isCleared,
   isGymAvailable,
@@ -51,7 +50,6 @@ import {
   isZeroRewards,
   leveledUp,
   levelUpCost,
-  maybeUnlockCrystal,
   mulberry32,
   orderStages,
   pendingIdle,
@@ -112,7 +110,7 @@ import {
   type TrialBattleResult,
   type WorldBossBattleResult,
 } from './index';
-import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
+import type { DungeonCardView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import { buildExploreView } from './explore-view';
 import type { ExploreView } from './explore-view';
 import { buildPetHomeView, type PetHomeView } from './pet-home-view';
@@ -150,13 +148,10 @@ import {
   challengeTrial as challengeTrialAction,
   challengeWorldBoss as challengeWorldBossAction,
   claimWorldBossMilestone as claimWorldBossMilestoneAction,
-  crystalWilds,
   sweepTower as sweepTowerAction,
-  upgradeLinkCrystal as upgradeLinkCrystalAction,
 } from './pve';
 import {
   buildDungeonsView,
-  buildLinkCrystalView,
   buildTowerView,
   buildTrialsView,
   buildWorldBossView,
@@ -202,8 +197,13 @@ import { upgradePlateAction } from './plates';
 import { grantTrinketItem, trinketOf, upgradeTrinketAction } from './trinkets';
 import {
   buildResonanceView,
+  buyResonanceSlotAction,
+  clearResonanceCooldownAction,
+  evolveResonanceAction,
+  isResonating,
   setResonanceSlotAction,
-  unlockResonanceSlotAction,
+  syncResonance,
+  upgradeResonanceAction,
 } from './resonance';
 import { buildVipView, claimVipDailyAction, vipIdleCapMinutes } from './vip';
 import { activateTitleAction, buildTitlesView, setTitleSlotAction } from './titles';
@@ -332,6 +332,8 @@ export class LocalServer implements GameServer {
     const found = this.find(loaded.value, instanceId);
     if (!found) return fail('not_found', `no Wild "${instanceId}"`);
     const { state, instance } = found;
+    // R7: a Pokémon sharing the crystal level cannot be levelled by hand.
+    if (isResonating(state, instance.id)) return fail('resource_locked', 'Resonating Pokémon take the crystal level');
     const cap = this.levelCapFor(instance, state);
     const target = Math.min(cap, instance.level + Math.max(0, Math.floor(levels)));
     if (target <= instance.level) return fail('at_level_cap', 'already at this stage\'s level cap');
@@ -352,7 +354,7 @@ export class LocalServer implements GameServer {
       },
       'levelUp',
     );
-    return this.commit(grown);
+    return this.commit(syncResonance(this.config, grown));
   }
 
   async evolve(instanceId: string): Promise<Result<AccountSnapshot>> {
@@ -901,14 +903,24 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) => upgradeTrinketAction(this.config, state, wildId));
   }
 
-  async unlockResonanceSlot(): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => unlockResonanceSlotAction(this.config, state));
+  async buyResonanceSlot(): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => buyResonanceSlotAction(this.config, state));
   }
 
   async setResonanceSlot(slot: number, wildId: string | null): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) =>
-      setResonanceSlotAction(this.config, state, slot, wildId),
-    );
+    return this.applyEquipment((state) => setResonanceSlotAction(this.config, state, slot, wildId, this.now(state)));
+  }
+
+  async clearResonanceCooldown(slot: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => clearResonanceCooldownAction(this.config, state, slot, this.now(state)));
+  }
+
+  async evolveResonance(): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => evolveResonanceAction(this.config, state));
+  }
+
+  async upgradeResonance(): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => upgradeResonanceAction(this.config, state));
   }
 
   async claimVipDaily(): Promise<Result<ClaimResult>> {
@@ -1087,20 +1099,6 @@ export class LocalServer implements GameServer {
       rewards: value.rewards,
       snapshot: committed.value,
     });
-  }
-
-  async getLinkCrystal(): Promise<Result<LinkCrystalView>> {
-    const loaded = await this.load();
-    if (!loaded.ok) return loaded;
-    return ok(buildLinkCrystalView(this.config, loaded.value));
-  }
-
-  async upgradeLinkCrystal(): Promise<Result<AccountSnapshot>> {
-    const loaded = await this.load();
-    if (!loaded.ok) return loaded;
-    const outcome = upgradeLinkCrystalAction(this.config, loaded.value);
-    if (!outcome.ok) return fail(outcome.error, outcome.message);
-    return this.commit(outcome.value.state);
   }
 
   // --- M10 PvP: Arena ------------------------------------------------------
@@ -1426,16 +1424,11 @@ export class LocalServer implements GameServer {
     return this.config.now() + state.debugClockOffset * 60_000;
   }
 
-  /**
-   * The level cap for a Wild: its evolution form's cap, raised to the Link
-   * Crystal's level when the Wild sits at its final form's cap (M8, PROMPT §7.1).
-   */
-  private levelCapFor(instance: WildInstance, state: AccountState): number {
+  /** The level cap for a Wild: its star card's cap (R7: going past it is Resonance's job). */
+  private levelCapFor(instance: WildInstance, _state: AccountState): number {
     const meta = this.config.species.get(instance.speciesId);
     if (!meta) return instance.level;
-    const card = cardOf(meta, instance.stars);
-    const atTopStage = instance.stars >= starRange(meta.stars).max && instance.level >= card.maxLevel;
-    return effectiveLevelCap({ stars: instance.stars, atTopStage }, card.maxLevel, state.pve.linkCrystal);
+    return cardOf(meta, instance.stars).maxLevel;
   }
 
   /** Bump a daily-quest counter (progress is keyed by metric, shared by quests). */
@@ -1541,9 +1534,10 @@ export class LocalServer implements GameServer {
       next = { ...next, mail: pruned };
       changed = true;
     }
-    const crystal = maybeUnlockCrystal(next.pve.linkCrystal, crystalWilds(this.config, next), this.config.pve.linkCrystal);
-    if (crystal !== next.pve.linkCrystal) {
-      next = { ...next, pve: { ...next.pve, linkCrystal: crystal } };
+    // R7: keep the shared Resonance levels written on the roster.
+    const synced = syncResonance(this.config, next);
+    if (synced !== next) {
+      next = synced;
       changed = true;
     }
     const titles = expireTitles(next.titles, this.now(next));
@@ -1577,7 +1571,7 @@ export class LocalServer implements GameServer {
       state,
       power,
       teamPower,
-      resonance: buildResonanceView(this.config, state),
+      resonance: buildResonanceView(this.config, state, this.now(state)),
       vip: buildVipView(this.config, state, this.now(state)),
       titles: buildTitlesView(this.config, state, this.now(state)),
     };

@@ -1,14 +1,14 @@
 import { expect, test } from '@playwright/test';
 
 /**
- * M8 PvE modes (PROMPT §13). Fresh contexts start with a brand-new account, so
- * the modes are reachable but the Link Crystal is still locked.
+ * M8 PvE modes (PROMPT §13). Fresh contexts start with a brand-new account. (R7: the Link Crystal became
+ * Resonance on the Trainer screen.)
  */
 
 test('the combat hub links every PvE mode', async ({ page }) => {
   await page.goto('/combat');
   await expect(page.getByRole('heading', { name: 'Challenges' })).toBeVisible();
-  for (const name of ['Tower', 'Trials', 'World Boss', 'Dungeons', 'Link Crystal']) {
+  for (const name of ['Tower', 'Trials', 'World Boss', 'Dungeons']) {
     await expect(page.getByRole('link', { name: new RegExp(name) })).toBeVisible();
   }
 });
@@ -44,10 +44,4 @@ test('lists seven daily dungeons', async ({ page }) => {
   await page.goto('/dungeons');
   await expect(page.getByRole('heading', { name: 'Dungeons' })).toBeVisible();
   await expect(page.locator('main .card')).toHaveCount(7);
-});
-
-test('shows the Link Crystal locked for a fresh account', async ({ page }) => {
-  await page.goto('/crystal');
-  await expect(page.getByRole('heading', { name: 'Link Crystal' })).toBeVisible();
-  await expect(page.getByText('Evolve a Wild to its final form')).toBeVisible();
 });

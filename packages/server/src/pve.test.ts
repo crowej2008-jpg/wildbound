@@ -1,21 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { dayKey, weekdayUtc, weekKey, type AccountState } from '@wildbound/engine';
 import { buildConfig } from './config';
-import { LocalServer } from './local-server';
-import { MemoryStore } from './storage';
-import { createInitialState, SAVE_KEY, serializeSave } from './save';
-import { buildLinkCrystalView } from './pve-view';
+import { createInitialState } from './save';
 import {
   challengeDungeon,
   challengeTower,
   challengeTrial,
   challengeWorldBoss,
   claimWorldBossMilestone,
-  crystalWilds,
   dungeonDefs,
   resolvePool,
   sweepTower,
-  upgradeLinkCrystal,
 } from './pve';
 
 /** A fixed Thursday (UTC): exercises the weekday-rotating modes deterministically. */
@@ -168,62 +163,8 @@ describe('PvE modes (server glue)', () => {
     expect(again.ok).toBe(false);
   });
 
-  it('unlocks and raises the Link Crystal once a top-stage Wild exists', () => {
-    const cfg = config();
-    const state = strongState(cfg);
-    expect(crystalWilds(cfg, state).every((w) => w.atTopStage)).toBe(true);
-    const up = upgradeLinkCrystal(cfg, state);
-    expect(up.ok).toBe(true);
-    if (!up.ok) return;
-    expect(up.value.level).toBe(cfg.pve.linkCrystal.initialLevel + 1);
-    expect(up.value.state.currencies.candy).toBeLessThan(state.currencies.candy);
-  });
-
   it('keys the tower week to the UTC ISO week', () => {
     expect(weekKey(NOW)).toBe(weekKey(NOW + 86_400_000 * 2));
     expect(dayKey(NOW)).not.toBe(dayKey(NOW + 86_400_000 * 2));
-  });
-
-  it('keeps the Link Crystal locked until a Wild is finished, then unlocks it', () => {
-    const cfg = config();
-    const fresh = createInitialState(cfg);
-    expect(buildLinkCrystalView(cfg, fresh).unlocked).toBe(false);
-
-    const w = fresh.roster[0]!;
-    const meta = cfg.species.get(w.speciesId)!;
-    const top = meta.stars[meta.stars.length - 1]!;
-    const stageCap = top.maxLevel;
-    const finished: AccountState = {
-      ...fresh,
-      roster: fresh.roster.map((x, i) => (i === 0 ? { ...x, level: stageCap, stars: top.star } : x)),
-    };
-    expect(buildLinkCrystalView(cfg, finished).unlocked).toBe(true);
-  });
-
-  it('levels a finished Wild past its form cap once the Link Crystal is raised', async () => {
-    const cfg = config();
-    const base = createInitialState(cfg);
-    const w = base.roster[0]!;
-    const meta = cfg.species.get(w.speciesId)!;
-    const top = meta.stars[meta.stars.length - 1]!;
-    const stageCap = top.maxLevel;
-    const crafted: AccountState = {
-      ...base,
-      roster: base.roster.map((x, i) => (i === 0 ? { ...x, level: stageCap, stars: top.star } : x)),
-      currencies: { ...base.currencies, candy: 100_000_000, gold: 100_000_000, stone: 1000 },
-      pve: { ...base.pve, linkCrystal: { unlocked: true, level: stageCap + 30 } },
-    };
-    const store = new MemoryStore();
-    await store.write(SAVE_KEY, serializeSave(crafted));
-    const srv = new LocalServer(store, cfg);
-    const loaded = await srv.loadAccount();
-    expect(loaded.ok).toBe(true);
-    if (!loaded.ok) return;
-
-    const res = await srv.levelUp(w.id, 1);
-    expect(res.ok).toBe(true);
-    if (!res.ok) return;
-    const after = res.value.state.roster.find((x) => x.id === w.id)!;
-    expect(after.level).toBe(stageCap + 1);
   });
 });

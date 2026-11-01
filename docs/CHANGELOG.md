@@ -1224,3 +1224,11 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - R6d follow-up (owner answers): Berry Rebirth — 100 Diamonds, everything spent on the berry comes back (each berry
   records what was spent on it; an optional field, so v27 saves stay valid). ASSUMPTIONS #70 updated.
+
+## R7 — Resonance from the source (2026-11-01)
+
+- `scripts/import-resonance.mjs` → `packages/content/tuning/resonance.json`. Engine `resonance` (top six, crystal
+  level, evolution, cap, slot prices, cooldowns, shared levels); server `resonance.ts` (view, sync, buy slot,
+  set / take out, clear cooldown, evolve, upgrade). A shared Pokémon keeps `ownLevel`. Save v28.
+- Removed: the M8 Link Crystal (its PvE page and tuning) and the M11.9 resonance stat layer. Held-item level gates
+  read the crystal level. ASSUMPTIONS #71.

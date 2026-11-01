@@ -37,8 +37,8 @@ import type { PlateView } from './plates';
 import { buildPlateView } from './plates';
 import type { TrinketView } from './trinkets';
 import { buildTrinketView } from './trinkets';
-import { resonanceFoldFor } from './resonance';
 import { titleFoldFor } from './titles';
+import { resonanceLevel } from './resonance';
 import { applySheetPercents, sheetOf } from './battle';
 
 /**
@@ -213,7 +213,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     tables,
     meta ? { faction: meta.faction, stage: state.plates[wild.id] ?? 0 } : undefined,
     { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
-    resonanceFoldFor(config, state, wild.id),
     titleFoldFor(config, state),
   );
   const baseSheet = sheetOf(wild, config) ?? { hp: 0, pAtk: 0, sAtk: 0, spd: 0, pDef: 0, sDef: 0 };
@@ -222,7 +221,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     'relic',
     'plates',
     'trinkets',
-    'resonance',
     'titles',
     'runes',
     'berries',
@@ -365,7 +363,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     resetterShards: state.currencies.resetterShard ?? 0,
     heldItemResetters: state.currencies.heldItemResetter ?? 0,
     resetterCompound: held.resetterCompound,
-    resonanceLevel: state.pve.linkCrystal.level,
+    resonanceLevel: resonanceLevel(config, state),
     heldScale: HELD_SCALE,
     plateBottles: state.currencies.plateBottle ?? 0,
     plateFragments: state.currencies.plateFragment ?? 0,

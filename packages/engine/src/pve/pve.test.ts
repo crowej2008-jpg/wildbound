@@ -5,7 +5,6 @@ import { advanceTower, canClimb, canSweep, claimableTowerMilestones, initialTowe
 import { isTrialEligible, trialAvailable, trialBattleRules, trialLevelCap, trialOpenOn, trialSurvivalRounds } from './trials';
 import { attackerDamage, canChallengeBoss, claimableMilestones, ghostRecords, initialWorldBossState, rankDamage, reachedMilestones, recordBossDamage, rollWorldBossDay, worldBossForWeekday } from './worldBoss';
 import { dungeonsForWeekday, initialDungeonState, isDungeonCleared, markDungeonCleared, rollDungeonDay } from './dungeons';
-import { canUpgradeCrystal, countQualifying, crystalCap, crystalUpgradeCost, effectiveLevelCap, initialLinkCrystal, isCrystalUnlocked, maybeUnlockCrystal, type LinkCrystalTuning } from './linkCrystal';
 import type { DungeonDef, GeneratedEnemy, TrialDef, WorldBossDef, WorldBossMilestone } from './index';
 
 const towerTuning: TowerTuning = {
@@ -229,52 +228,3 @@ describe('dungeons', () => {
   });
 });
 
-const crystalTuning: LinkCrystalTuning = {
-  baseCap: 340,
-  perStarWild: 8,
-  starThreshold: 10,
-  initialLevel: 140,
-  candyBase: 60,
-  candyExponent: 1.2,
-  goldPerCandy: 3,
-  stonesPerLevel: 2,
-};
-
-describe('link crystal', () => {
-  it('computes the cap from qualifying Wilds', () => {
-    const wilds = [{ stars: 10, atTopStage: true }, { stars: 9, atTopStage: true }, { stars: 10, atTopStage: false }];
-    expect(countQualifying(wilds, crystalTuning)).toBe(2);
-    expect(crystalCap(wilds, crystalTuning)).toBe(340 + 16);
-    expect(crystalCap([], crystalTuning)).toBe(340);
-  });
-
-  it('unlocks on the first top-stage Wild and starts at the initial level', () => {
-    const locked = initialLinkCrystal();
-    const wilds = [{ stars: 1, atTopStage: true }];
-    expect(isCrystalUnlocked(wilds)).toBe(true);
-    expect(isCrystalUnlocked([{ stars: 1, atTopStage: false }])).toBe(false);
-    expect(maybeUnlockCrystal(locked, wilds, crystalTuning)).toEqual({ unlocked: true, level: 140 });
-    expect(maybeUnlockCrystal(locked, [{ stars: 1, atTopStage: false }], crystalTuning)).toBe(locked);
-  });
-
-  it('prices upgrades by level and blocks them at the cap', () => {
-    const c1 = crystalUpgradeCost(140, crystalTuning);
-    const c2 = crystalUpgradeCost(200, crystalTuning);
-    expect(c1.gold).toBe(c1.candy * 3);
-    expect(c1.stones).toBe(2);
-    expect(c2.candy).toBeGreaterThan(c1.candy);
-    const wilds = [{ stars: 0, atTopStage: true }];
-    expect(crystalCap(wilds, crystalTuning)).toBe(340);
-    expect(canUpgradeCrystal({ unlocked: true, level: 340 }, wilds, crystalTuning)).toBe(false);
-    expect(canUpgradeCrystal({ unlocked: true, level: 339 }, wilds, crystalTuning)).toBe(true);
-    expect(canUpgradeCrystal({ unlocked: false, level: 0 }, wilds, crystalTuning)).toBe(false);
-  });
-
-  it('raises the level cap only for top-stage Wilds once unlocked', () => {
-    const crystal = { unlocked: true, level: 160 };
-    expect(effectiveLevelCap({ stars: 1, atTopStage: true }, 140, crystal)).toBe(160);
-    expect(effectiveLevelCap({ stars: 1, atTopStage: false }, 100, crystal)).toBe(100);
-    const locked = { unlocked: false, level: 0 };
-    expect(effectiveLevelCap({ stars: 1, atTopStage: true }, 140, locked)).toBe(140);
-  });
-});

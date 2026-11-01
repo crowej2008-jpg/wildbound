@@ -12,7 +12,6 @@ import ExploreMode from './pages/ExploreMode';
 import Gallery from './pages/Gallery';
 import Home from './pages/Home';
 import Idle from './pages/Idle';
-import LinkCrystal from './pages/LinkCrystal';
 import Mail from './pages/Mail';
 import More from './pages/More';
 import PetHome from './pages/PetHome';
@@ -66,7 +65,6 @@ function AppRoutes() {
         <Route path="/trials" element={<PveTrials />} />
         <Route path="/boss" element={<WorldBoss />} />
         <Route path="/dungeons" element={<Dungeons />} />
-        <Route path="/crystal" element={<LinkCrystal />} />
         <Route path="/arena" element={<Arena />} />
         <Route path="/arena/rankings" element={<ArenaRankings />} />
         <Route path="/ranked" element={<Ranked />} />

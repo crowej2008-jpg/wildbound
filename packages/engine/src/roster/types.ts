@@ -1,3 +1,4 @@
+import type { ResonanceState } from '../resonance';
 /**
  * Account / roster / squad domain types (M3) plus the M5 campaign/idle/daily
  * slices. Pure data — the engine owns the rules (in sibling modules), the server
@@ -13,13 +14,11 @@ import type { ShopState } from '../shop/types';
 import type { TowerState } from '../pve/tower';
 import type { WorldBossState } from '../pve/worldBoss';
 import type { DungeonState } from '../pve/dungeons';
-import type { LinkCrystalState } from '../pve/linkCrystal';
 import type { PetHomeState } from '../pet-home/types';
 import type { SkyPillarState } from '../sky-pillar/types';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
-import { initialLinkCrystal } from '../pve/linkCrystal';
 import type { ArenaState, RankedState } from '../pvp/types';
 import { initialArenaState } from '../pvp/arena';
 import { initialRankedState } from '../pvp/ranked';
@@ -189,6 +188,8 @@ export interface WildInstance {
   acquiredAt: number;
   /** E4: an Origin's skill levels (ult / basic / passive / talent4, 1–3; absent = 1). */
   skillLevels?: Partial<Record<'ult' | 'basic' | 'passive' | 'talent4', number>>;
+  /** R7: the Pokémon's own level while Resonance shares the crystal level with it (absent otherwise). */
+  ownLevel?: number;
 }
 
 export interface PlayerProfile {
@@ -237,7 +238,7 @@ export interface AccountState {
   plates: Record<string, number>;
   /** M11.8 signature trinket level per species id; absent means level 0. */
   trinkets: Record<string, number>;
-  /** M11.9 account-wide resonance slots sharing the Link Crystal level. */
+  /** R7: the source's Resonance (top six, crystal, slots, cooldowns). */
   resonance: ResonanceState;
   /** M11.10 daily VIP supply bookkeeping; the tier itself is derived from XP. */
   vip: VipState;
@@ -262,7 +263,6 @@ export interface PveState {
   trials: { lastCleared: Record<string, string> };
   worldBoss: WorldBossState;
   dungeons: DungeonState;
-  linkCrystal: LinkCrystalState;
 }
 
 export function initialPve(day: string, week: string): PveState {
@@ -271,7 +271,6 @@ export function initialPve(day: string, week: string): PveState {
     trials: { lastCleared: {} },
     worldBoss: initialWorldBossState(day),
     dungeons: initialDungeonState(day),
-    linkCrystal: initialLinkCrystal(),
   };
 }
 
@@ -293,18 +292,6 @@ export function initialPvp(day: string, week: string): PvpState {
   };
 }
 
-/** M11.9 resonance board: slots hold Wild ids and share the crystal level. */
-export interface ResonanceState {
-  /** How many slots are open; always between `openSlots` and `slots`. */
-  unlocked: number;
-  slots: (string | null)[];
-}
-
-export function initialResonance(slots: number, openSlots: number): ResonanceState {
-  const count = Math.max(1, Math.floor(slots));
-  const open = Math.min(count, Math.max(0, Math.floor(openSlots)));
-  return { unlocked: open, slots: Array.from({ length: count }, () => null) };
-}
 
 /** M11.10: the UTC day-key of the last claimed VIP supply. */
 export interface VipState {

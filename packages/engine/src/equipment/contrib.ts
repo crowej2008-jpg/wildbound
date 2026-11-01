@@ -75,7 +75,6 @@ export interface LayerDelta {
   relic: StatDelta;
   plates: StatDelta;
   trinkets: StatDelta;
-  resonance: StatDelta;
   titles: StatDelta;
   runes: StatDelta;
   berries: StatDelta;
@@ -92,12 +91,6 @@ export interface PlateFold {
 export interface TrinketFold {
   speciesId: string;
   level: number;
-}
-
-/** A slotted Wild's share of the Link Crystal level, scaled per level. */
-export interface ResonanceFold {
-  level: number;
-  perLevel: Partial<CoreStats>;
 }
 
 /** Account-wide title lines at their current stages (flat or percent totals). */
@@ -160,7 +153,6 @@ function emptyLayers(): LayerDelta {
     relic: emptyDelta(),
     plates: emptyDelta(),
     trinkets: emptyDelta(),
-    resonance: emptyDelta(),
     titles: emptyDelta(),
     runes: emptyDelta(),
     berries: emptyDelta(),
@@ -175,7 +167,6 @@ export function foldLoadout(
   tables: EquipmentTables,
   plate?: PlateFold,
   trinket?: TrinketFold,
-  resonance?: ResonanceFold,
   title?: TitleFold,
 ): FoldedLoadout {
   const layers = emptyLayers();
@@ -217,15 +208,6 @@ export function foldLoadout(
     const trinketDef = tables.trinkets.find((d) => d.speciesId === trinket.speciesId);
     const row = trinketDef?.levels[Math.min(trinket.level, trinketDef.levels.length - 1)];
     if (row) addLines(layers.trinkets, row.lines, 1);
-  }
-
-  // --- Resonance: a slotted Wild's share of the Link Crystal level ---
-  if (resonance && resonance.level > 0) {
-    for (const [key, perLevel] of Object.entries(resonance.perLevel)) {
-      if (typeof perLevel !== 'number') continue;
-      const field = key as keyof CoreStats;
-      layers.resonance.core[field] = (layers.resonance.core[field] ?? 0) + resonance.level * perLevel;
-    }
   }
 
   // --- Titles: account-wide lines from the three equipped slots ---
@@ -285,7 +267,6 @@ export function foldLoadout(
   addDelta(delta, layers.relic);
   addDelta(delta, layers.plates);
   addDelta(delta, layers.trinkets);
-  addDelta(delta, layers.resonance);
   addDelta(delta, layers.titles);
   addDelta(delta, layers.runes);
   addDelta(delta, layers.berries);

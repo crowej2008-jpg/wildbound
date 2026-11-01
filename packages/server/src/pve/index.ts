@@ -8,4 +8,3 @@ export * from './tower';
 export * from './trials';
 export * from './dungeons';
 export * from './worldBoss';
-export * from './linkCrystal';

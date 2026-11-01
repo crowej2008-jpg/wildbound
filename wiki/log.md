@@ -185,3 +185,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R6d Berries
 - Source berries as instances (stars, breakthrough, cultivated lines, reforge, skills by star); save v27. The
   server-side cultivation and line rules are stand-ins (ASSUMPTIONS #70). R6 is done; next R7 Resonance.
+
+## [2026-11-01] update | R7 Resonance
+- The source's shared-level Resonance replaces the Link Crystal and the stat-share slots; save v28. Next: R8 account layers.

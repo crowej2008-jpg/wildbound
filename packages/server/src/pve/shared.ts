@@ -1,13 +1,8 @@
 import {
-  countQualifying,
-  crystalCap,
   generateEnemies,
-  starRange,
   type AccountState,
-  type CrystalWildInfo,
   type DungeonDef,
   type EnemyPoolSpec,
-  type LinkCrystalTuning,
   type ResolvedCurve,
   type Rewards,
   type StageEnemy,
@@ -16,7 +11,7 @@ import {
   type WorldBossDef,
 } from '@wildbound/engine';
 import type { BattleView } from '../battle';
-import { cardOf, type GameConfig } from '../config';
+import type { GameConfig } from '../config';
 
 /**
  * Shared PvE helpers (M8, PROMPT §7.6): resolve content definitions, generate
@@ -62,10 +57,6 @@ export function towerTuning(config: GameConfig): TowerTuning {
   };
 }
 
-export function crystalTuning(config: GameConfig): LinkCrystalTuning {
-  return config.pve.linkCrystal;
-}
-
 export function trialDefs(config: GameConfig): TrialDef[] {
   return config.pve.trials as TrialDef[];
 }
@@ -78,19 +69,6 @@ export function worldBossDefs(config: GameConfig): WorldBossDef[] {
   return config.pve.worldBoss.rotation as WorldBossDef[];
 }
 
-/** The crystal facts for every owned Wild (top stage is per-species). */
-export function crystalWilds(config: GameConfig, state: AccountState): CrystalWildInfo[] {
-  return state.roster.map((w) => {
-    const meta = config.species.get(w.speciesId);
-    // Eligible only at the species' last star *and* already at its level cap,
-    // so a crystal can extend a finished Wild rather than unlock at birth.
-    const atTopStage = meta
-      ? w.stars >= starRange(meta.stars).max && w.level >= cardOf(meta, w.stars).maxLevel
-      : false;
-    return { stars: w.stars, atTopStage };
-  });
-}
-
 export interface BattleOutcome<T> {
   state: AccountState;
   battle: BattleView;
@@ -99,4 +77,3 @@ export interface BattleOutcome<T> {
   extra: T;
 }
 
-export { crystalCap, countQualifying };
