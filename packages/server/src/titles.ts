@@ -17,7 +17,7 @@ import { fail, ok, type Result } from './index';
  * R8 titles, copied from the source (packages/content/titles/titles.json, scripts/import-titles.mjs). Three
  * account-wide slots, one title each. A title is activated, raised a stage and (timed ones, at the top stage)
  * continued by paying its own activation card; timed titles expire lazily. Starter Trainer is owned from the start;
- * Beginner → Master Trainer cards come from the Tower floors the source pays them at. See ASSUMPTIONS #73.
+ * Beginner → Master Trainer cards come from the Hard Tower floors the source pays them at. See ASSUMPTIONS #73.
  */
 
 const DAY_MS = 86_400_000;
@@ -83,18 +83,9 @@ export function grantTitleCards(state: AccountState, titleId: string, count: num
   return { ...state, titles: { ...state.titles, cards } };
 }
 
-/** The Tower floor clears that pay title cards (source dun_tower_json achieve_reward). */
-export function towerTitleCards(config: GameConfig, state: AccountState, floor: number): AccountState {
-  let next = state;
-  for (const title of config.titles) {
-    if (title.earnedBy?.kind === 'tower' && title.earnedBy.floor === floor) next = grantTitleCards(next, title.id, 1);
-  }
-  return next;
-}
-
 function earnedHere(title: TitleJson): string | null {
   if (!title.earnedBy) return null;
-  return title.earnedBy.kind === 'start' ? 'Owned from the start' : `Tower floor ${title.earnedBy.floor}`;
+  return title.earnedBy.kind === 'start' ? 'Owned from the start' : `Hard Tower floor ${title.earnedBy.floor}`;
 }
 
 function stageStats(title: TitleJson, stage: number): StatLine[] {

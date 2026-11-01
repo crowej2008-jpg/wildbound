@@ -48,10 +48,10 @@ export function enemiesFor(config: GameConfig, spec: EnemyPoolSpec, index: numbe
 export function towerTuning(config: GameConfig): TowerTuning {
   const t = config.pve.tower;
   return {
-    climbsPerWeek: t.climbsPerWeek,
+    climbsPerDay: t.climbsPerDay,
     sweepsPerDay: t.sweepsPerDay,
-    milestoneEvery: t.milestoneEvery,
-    milestoneCap: t.milestoneCap,
+    normalFloors: config.tower.normalFloors,
+    hardFloors: config.tower.hardFloors,
     reward: t.reward,
   };
 }

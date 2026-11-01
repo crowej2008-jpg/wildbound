@@ -42,6 +42,10 @@
     "followerStone": 0,
     "pokemonShard4": 0,
     "cosmeticBox": 0,
+    "boxSupreme": 0,
+    "boxLegendary": 0,
+    "boxShinySupreme": 0,
+    "boxLD": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -94,6 +98,10 @@
     "followerStone": 20000,
     "pokemonShard4": 100,
     "cosmeticBox": 10,
+    "boxSupreme": 5,
+    "boxLegendary": 5,
+    "boxShinySupreme": 5,
+    "boxLD": 5,
     "privilegeXp": 300
   }
 }

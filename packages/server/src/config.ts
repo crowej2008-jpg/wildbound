@@ -8,6 +8,7 @@ import {
   SIGN_IN,
   FASHION,
   DAILY_DUNGEONS,
+  TOWER,
   ECONOMY,
   EXPLORE,
   GROWTH,
@@ -36,7 +37,7 @@ import {
   TRINKET_RULES,
   POTENTIAL,
 } from '@wildbound/content';
-import type { DailyDungeonsJson, FashionJson, SignInJson, TokensJson, VipJson } from '@wildbound/content';
+import type { TowerSourceJson, DailyDungeonsJson, FashionJson, SignInJson, TokensJson, VipJson } from '@wildbound/content';
 import type {
   CampaignJson,
   ChapterMetaJson,
@@ -151,6 +152,8 @@ export interface GameConfig {
   fashion: FashionJson;
   /** R9 daily dungeons (source dun_basic_json). */
   dailyDungeons: DailyDungeonsJson;
+  /** R9 Pokémon Tower achievements and Hard rules (source dun_tower_json). */
+  tower: TowerSourceJson;
   pvp: PvpJson;
   /** M11.11 title catalogue. */
   titles: TitlesJson;
@@ -221,6 +224,7 @@ export function buildConfig(): GameConfig {
     signIn: SIGN_IN,
     fashion: FASHION,
     dailyDungeons: DAILY_DUNGEONS,
+    tower: TOWER,
     pvp: PVP,
     titles: TITLES,
     titleById: new Map(TITLES.map((title) => [title.id, title])),

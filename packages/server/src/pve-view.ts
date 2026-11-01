@@ -10,6 +10,7 @@ import {
 import { curveLevel } from '@wildbound/engine';
 import type { GameConfig } from './config';
 import {
+  hardTowerRule,
   resolveCurve,
   towerTuning,
   trialDefs,
@@ -29,8 +30,10 @@ import {
   trialFaction,
   trialLevelCap,
   trialSurvivalRounds,
+  type TowerKind,
   type TrialRule,
 } from '@wildbound/engine';
+import type { TowerRuleJson } from '@wildbound/content';
 
 /**
  * Display-ready PvE views (M8). Pure reads of `AccountState` + `GameConfig`; the
@@ -40,40 +43,72 @@ import {
 export interface TowerMilestoneView {
   floor: number;
   reached: boolean;
-  claimed: boolean;
+  rewards: Rewards;
+  /** Species shards and title cards, as text. */
+  extras: string[];
 }
 
-export interface TowerView {
+export interface TowerSideView {
   floor: number;
+  top: number;
   nextFloor: number;
   nextEnemyLevel: number;
   climbsLeft: number;
-  sweepsLeft: number;
+  /** The next achievements (up to five) on this tower. */
   milestones: TowerMilestoneView[];
+}
+
+export interface TowerView extends TowerSideView {
+  sweepsLeft: number;
+  hard: TowerSideView & { rule: string | null };
   dayResetMs: number;
-  weekResetMs: number;
+}
+
+function ruleText(rule: TowerRuleJson | undefined): string | null {
+  if (!rule) return null;
+  if (rule.kind === 'noPositions') return `No Pokémon in position ${rule.positions.join(' and ')}`;
+  if (rule.kind === 'maxFaction') return `At most ${rule.max} ${rule.faction[0]!.toUpperCase()}${rule.faction.slice(1)} Pokémon`;
+  if (rule.kind === 'maxClass') return `At most ${rule.max} ${rule.className} Pokémon`;
+  return `At most ${rule.max} ${rule.tier[0]!.toUpperCase()}${rule.tier.slice(1)} Pokémon`;
+}
+
+function side(config: GameConfig, state: AccountState, kind: TowerKind, now: number): TowerSideView {
+  const tuning = towerTuning(config);
+  const rolled = rollTower(state.pve.tower, dayKey(now));
+  const floor = kind === 'hard' ? rolled.hardFloor : rolled.floor;
+  const nextFloor = nextTowerFloor(rolled, kind);
+  const curve = resolveCurve(config, config.pve.tower.enemy);
+  const rows = kind === 'hard' ? config.tower.hard : config.tower.normal;
+  return {
+    floor,
+    top: kind === 'hard' ? tuning.hardFloors : tuning.normalFloors,
+    nextFloor,
+    nextEnemyLevel: curveLevel(curve, kind === 'hard' ? nextFloor * 2 - 1 : nextFloor - 1),
+    climbsLeft: Math.max(0, tuning.climbsPerDay - (kind === 'hard' ? rolled.hardClimbsToday : rolled.climbsToday)),
+    milestones: rows
+      .filter((r) => r.floor > floor)
+      .slice(0, 5)
+      .map((r) => ({
+        floor: r.floor,
+        reached: false,
+        rewards: r.rewards,
+        extras: [
+          ...Object.entries(r.speciesShards ?? {}).map(([id, n]) => `${config.species.get(id)?.name ?? id} shards ×${n}`),
+          ...(r.titleCard ? [`Title: ${config.titleById.get(r.titleCard)?.name ?? r.titleCard}`] : []),
+        ],
+      })),
+  };
 }
 
 export function buildTowerView(config: GameConfig, state: AccountState, now: number): TowerView {
   const tuning = towerTuning(config);
-  const rolled = rollTower(state.pve.tower, dayKey(now), weekKey(now));
-  const nextFloor = nextTowerFloor(rolled);
-  const levels = [];
-  for (let f = tuning.milestoneEvery; f <= tuning.milestoneCap; f += tuning.milestoneEvery) levels.push(f);
-  const curve = resolveCurve(config, config.pve.tower.enemy);
+  const rolled = rollTower(state.pve.tower, dayKey(now));
+  const hard = side(config, state, 'hard', now);
   return {
-    floor: rolled.floor,
-    nextFloor,
-    nextEnemyLevel: curveLevel(curve, nextFloor - 1),
-    climbsLeft: Math.max(0, tuning.climbsPerWeek - rolled.climbsThisWeek),
+    ...side(config, state, 'normal', now),
     sweepsLeft: canSweep(rolled, tuning) ? tuning.sweepsPerDay - rolled.sweepsToday : 0,
-    milestones: levels.map((floor) => ({
-      floor,
-      reached: rolled.floor >= floor,
-      claimed: rolled.claimedMilestones.includes(floor),
-    })),
+    hard: { ...hard, rule: ruleText(hardTowerRule(config, hard.nextFloor)) },
     dayResetMs: msUntilNextUtcMidnight(now),
-    weekResetMs: nextWeekStart(now) - now,
   };
 }
 

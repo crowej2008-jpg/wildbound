@@ -12,7 +12,9 @@ import {
   claimWorldBossMilestone,
   resolvePool,
   sweepTower,
+  hardTowerRule,
 } from './pve';
+import { applyLineupRule, slotToPosition } from './battle';
 
 /** A fixed Thursday (UTC): exercises the weekday-rotating modes deterministically. */
 const NOW = Date.UTC(2026, 9, 15, 12, 0, 0);
@@ -45,7 +47,7 @@ describe('PvE modes (server glue)', () => {
     expect(top.every((id) => cfg.species.get(id)?.tier === 'mythic')).toBe(true);
   });
 
-  it('climbs the tower, pays the floor reward, and caps weekly climbs', () => {
+  it('climbs the tower, pays the floor reward, and caps the daily climbs', () => {
     const cfg = config();
     const state = strongState(cfg);
     const first = challengeTower(cfg, state, NOW, 7);
@@ -54,17 +56,48 @@ describe('PvE modes (server glue)', () => {
     expect(first.value.win).toBe(true);
     expect(first.value.extra.floor).toBe(1);
     expect(first.value.state.pve.tower.floor).toBe(1);
-    expect(first.value.state.pve.tower.climbsThisWeek).toBe(1);
+    expect(first.value.state.pve.tower.climbsToday).toBe(1);
     expect(first.value.state.currencies.gold).toBeGreaterThan(state.currencies.gold);
 
-    // Weekly cap: 20 climbs allowed (content tuning).
+    // Daily cap: 20 climbs a day (content tuning; the source resets daily).
     const spent: AccountState = {
       ...state,
-      pve: { ...state.pve, tower: { ...state.pve.tower, climbsThisWeek: cfg.pve.tower.climbsPerWeek } },
+      pve: { ...state.pve, tower: { ...state.pve.tower, day: dayKey(NOW), climbsToday: cfg.pve.tower.climbsPerDay } },
     };
     const capped = challengeTower(cfg, spent, NOW, 7);
     expect(capped.ok).toBe(false);
     if (!capped.ok) expect(capped.error).toBe('daily_limit');
+  });
+
+  it('pays the source achievement on floor 10 and applies the Hard stage rule', () => {
+    const cfg = config();
+    const state = strongState(cfg);
+    const at9: AccountState = { ...state, pve: { ...state.pve, tower: { ...state.pve.tower, floor: 9 } } };
+    const ten = challengeTower(cfg, at9, NOW, 7);
+    if (!ten.ok) throw new Error(ten.message);
+    expect(ten.value.win).toBe(true);
+    expect(ten.value.rewards.pokemonShard5).toBe(50);
+
+    // Hard floor 1–5 bans position 5; floor 5 pays the Beginner Trainer card.
+    expect(hardTowerRule(cfg, 3)).toEqual({ kind: 'noPositions', positions: [5] });
+    const at4: AccountState = { ...state, pve: { ...state.pve, tower: { ...state.pve.tower, hardFloor: 4 } } };
+    const five = challengeTower(cfg, at4, NOW, 7, 'hard');
+    if (!five.ok) throw new Error(five.message);
+    expect(five.value.battle.units.filter((u) => u.side === 'attackers').map((u) => u.position)).not.toContain(5);
+    if (five.value.win) expect(five.value.state.titles.cards['12']).toBe(1);
+  });
+
+  it('applies the Hard lineup caps by faction, class and tier', () => {
+    const cfg = config();
+    const state = strongState(cfg);
+    const wilds = state.roster.slice(0, 6);
+    const faction = cfg.species.get(wilds[0]!.speciesId)!.faction;
+    const capped = applyLineupRule(cfg, wilds, { kind: 'maxFaction', max: 1, faction });
+    expect(capped.wilds.filter((w) => cfg.species.get(w.speciesId)!.faction === faction)).toHaveLength(1);
+    const banned = applyLineupRule(cfg, wilds, { kind: 'noPositions', positions: [1, 5] });
+    expect(banned.slots.map(slotToPosition)).not.toContain(1);
+    expect(banned.slots.map(slotToPosition)).not.toContain(5);
+    expect(banned.wilds).toHaveLength(4);
   });
 
   it('sweeps the tower for the current floor reward, dally-capped', () => {

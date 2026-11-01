@@ -1280,3 +1280,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - `scripts/import-daily-dungeons.mjs` → `packages/content/tuning/daily-dungeons.json`; engine grades / runs / chests,
   server fight / sweep / chest, a rebuilt Dungeons page. `pve.json` keeps only stand-in enemy pools per dungeon.
   Save v34 (dungeon progress). Owner: no fashion set skills. ASSUMPTIONS #78.
+
+## R9 part 4 — Pokémon Tower from the source (2026-11-01)
+
+- `scripts/import-tower.mjs` → `packages/content/tuning/tower.json` (Normal and Hard achievements, Hard rules). The
+  climbs reset daily; a Hard Tower with lineup rules (`applyLineupRule`, formation positions kept); title cards
+  moved to the Hard floors. Save v35. ASSUMPTIONS #79.

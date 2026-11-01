@@ -9,7 +9,6 @@ import {
   grantTitleCards,
   setTitleSlotAction,
   titleFoldFor,
-  towerTitleCards,
 } from './titles';
 
 const NOW = Date.parse('2026-01-01T00:00:00Z');
@@ -110,13 +109,11 @@ describe('R8 titles from the source', () => {
     expect(wrongSlot.ok).toBe(false);
   });
 
-  it('pays the Beginner → Master Trainer cards at Tower floors 5 / 135 / 400 / 500', () => {
-    const { config, state } = makeState();
-    expect(towerTitleCards(config, state, 4).titles.cards).toEqual({});
-    expect(towerTitleCards(config, state, 5).titles.cards).toEqual({ '12': 1 });
-    expect(towerTitleCards(config, state, 135).titles.cards).toEqual({ '13': 1 });
-    expect(towerTitleCards(config, state, 400).titles.cards).toEqual({ '14': 1 });
-    expect(towerTitleCards(config, state, 500).titles.cards).toEqual({ '15': 1 });
+  it('takes the Beginner → Master Trainer cards from Hard Tower floors 5 / 135 / 400 / 500', () => {
+    const { config } = makeState();
+    const cards = config.tower.hard.filter((r) => r.titleCard).map((r) => [r.floor, r.titleCard]);
+    expect(cards).toEqual([[5, '12'], [135, '13'], [400, '14'], [500, '15']]);
+    expect(config.titleById.get('12')?.earnedBy).toEqual({ kind: 'hardTower', floor: 5 });
   });
 
   it('refuses titles the source grants without a card', () => {

@@ -9,7 +9,7 @@
  * activation card (one item per title). English names and how-to-earn text come from the dump's `_titles` notes.
  * Stats: 101 / 102 / 104 flat HP / P.ATK / S.ATK; 106 / 107 / 109 Total HP / P.ATK / S.ATK in hundredths of a %.
  * Wildbound sources (`earnedBy`): Starter Trainer is owned from the start; Beginner → Master Trainer come from the
- * Tower floors the source pays them at (dun_tower_json achieve_reward). The rest wait for their modes.
+ * Hard Tower floors the source pays them at (dun_tower_json achieve_reward). The rest wait for their modes.
  *
  *   WILDBOUND_SOURCE=…/h5-client node scripts/import-titles.mjs
  */
@@ -65,7 +65,8 @@ const titles = Object.values(basic)
     const earn = (en.how_to_earn ?? []).filter((t) => !/^Title activation card\. Used/.test(t));
     let earnedBy = null;
     if (auto) earnedBy = { kind: 'start' };
-    else if (card !== null && towerCards.has(card)) earnedBy = { kind: 'tower', floor: towerCards.get(card) };
+    // The cards sit on Hard Tower rows (dun_id 610xxx).
+    else if (card !== null && towerCards.has(card)) earnedBy = { kind: 'hardTower', floor: towerCards.get(card) };
     return {
       id: String(b.id),
       name: en.name,

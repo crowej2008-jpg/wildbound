@@ -61,6 +61,10 @@ export const en = {
   'currency.followerStone': 'Follower L.Stone',
   'currency.pokemonShard4': '4 Star Pokémon Fragments',
   'currency.cosmeticBox': 'Cosmetic Boxes',
+  'currency.boxSupreme': 'Supreme Random Boxes',
+  'currency.boxLegendary': 'Legendary Random Boxes',
+  'currency.boxShinySupreme': 'Shiny Supreme Random Boxes',
+  'currency.boxLD': 'L & D Opt Boxes',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -631,7 +635,7 @@ export const en = {
   'pve.title': 'Challenges',
   'pve.subtitle': 'PvE modes: the Tower, Trials, the World Boss and daily dungeons.',
   'pve.tower': 'Tower',
-  'pve.tower.desc': 'Climb endless floors. Weekly climbers, daily sweeps, milestone chests.',
+  'pve.tower.desc': 'The Normal Tower (1,000 floors) and the Hard Tower (750 floors, a lineup rule each stage). Climbs and sweeps reset daily; achievement floors pay once.',
   'pve.trials': 'Trials',
   'pve.trials.desc': 'Five rule-bending challenges that rotate through the week.',
   'pve.boss': 'World Boss',
@@ -643,16 +647,16 @@ export const en = {
   'tower.floor': 'Floor',
   'tower.next': 'Next floor',
   'tower.enemyLevel': 'Enemy Lv',
-  'tower.climbsLeft': 'Climbs left this week',
+  'tower.climbsLeft': 'Climbs left today',
   'tower.sweepsLeft': 'Sweeps left today',
   'tower.climb': 'Climb',
   'tower.sweep': 'Sweep',
   'tower.swept': 'Swept the current floor.',
-  'tower.milestones': 'Milestone chests',
-  'tower.milestone.claimed': 'Claimed',
-  'tower.milestone.reached': 'Reached',
-  'tower.milestone.locked': 'Locked',
-  'tower.weekReset': 'Week resets in',
+  'tower.milestones': 'Next achievements',
+  'tower.hardMilestones': 'Next Hard achievements',
+  'tower.hard': 'Hard Tower',
+  'tower.rule': 'This stage',
+  'tower.climbHard': 'Climb Hard',
   'tower.dayReset': 'Daily reset in',
   'tower.victory': 'Floor cleared!',
   'tower.defeat': 'Your squad fell on this floor.',
@@ -1027,6 +1031,10 @@ export type CurrencyKey =
   | 'followerStone'
   | 'pokemonShard4'
   | 'cosmeticBox'
+  | 'boxSupreme'
+  | 'boxLegendary'
+  | 'boxShinySupreme'
+  | 'boxLD'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1074,6 +1082,10 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   followerStone: en['currency.followerStone'],
   pokemonShard4: en['currency.pokemonShard4'],
   cosmeticBox: en['currency.cosmeticBox'],
+  boxSupreme: en['currency.boxSupreme'],
+  boxLegendary: en['currency.boxLegendary'],
+  boxShinySupreme: en['currency.boxShinySupreme'],
+  boxLD: en['currency.boxLD'],
   privilegeXp: en['currency.privilegeXp'],
 };
 

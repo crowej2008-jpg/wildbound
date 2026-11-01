@@ -38,6 +38,7 @@ import { cardOf, type GameConfig, type SpeciesMeta } from './config';
 import { titleFoldFor } from './titles';
 import { tokenPvpLines } from './tokens';
 import { fashionLines } from './fashion';
+import type { TowerRuleJson } from '@wildbound/content';
 
 /**
  * Battle setup + replay payload (M4). Builds two `SpecInput` teams from account
@@ -219,6 +220,8 @@ export function buildWildTeam(
   state?: AccountState,
   /** R8: PvP-only sheet lines (Trainer Tokens), added when the battle is PvP. */
   pvpLines?: Record<string, number>,
+  /** R9: each Wild's lineup slot (0-based) when some slots stay empty (Hard Tower rules). */
+  slots?: number[],
 ): BuiltTeam {
   const specs: SpecInput[] = [];
   const meta = new Map<string, { name: string; speciesId: string; className: WildClass; stage: number; power: number }>();
@@ -228,7 +231,7 @@ export function buildWildTeam(
     const kitJson = kitById(wild.speciesId);
     const equipped = equippedSheet(wild, config, state);
     if (!species || !kitJson || !equipped) return;
-    const position = slotToPosition(slot);
+    const position = slotToPosition(slots?.[slot] ?? slot);
     const unitPower = powerOf(wild, config, state);
     const card = cardOf(species, wild.stars);
     const id = `${side}-${slot}`;
@@ -515,6 +518,35 @@ export interface ModeBattleOptions {
   defenderStrategy?: BattleStrategy;
   /** R8: a PvP battle — PvP stats and the player's Trainer Tokens apply. */
   pvp?: boolean;
+  /** R9: a Hard Tower lineup rule (banned positions, or at most N of a faction / class / tier). */
+  lineupRule?: TowerRuleJson;
+}
+
+/** R9: apply a Hard Tower lineup rule to the fielded Wilds, keeping each one's lineup slot. */
+export function applyLineupRule(config: GameConfig, wilds: WildInstance[], rule: TowerRuleJson): { wilds: WildInstance[]; slots: number[] } {
+  const out: WildInstance[] = [];
+  const slots: number[] = [];
+  let counted = 0;
+  wilds.forEach((wild, slot) => {
+    const meta = config.species.get(wild.speciesId);
+    if (rule.kind === 'noPositions') {
+      if (rule.positions.includes(slotToPosition(slot))) return;
+    } else {
+      const hit =
+        rule.kind === 'maxFaction'
+          ? meta?.faction === rule.faction
+          : rule.kind === 'maxClass'
+            ? meta?.className === rule.className
+            : meta?.tier === rule.tier;
+      if (hit) {
+        if (counted >= rule.max) return;
+        counted += 1;
+      }
+    }
+    out.push(wild);
+    slots.push(slot);
+  });
+  return { wilds: out, slots };
 }
 
 /**
@@ -529,9 +561,11 @@ export function modeBattle(config: GameConfig, state: AccountState, opts: ModeBa
     0,
     opts.sizeCap ?? SQUAD_SIZE,
   );
-  if (players.length === 0) return null;
+  const ruled = opts.lineupRule ? applyLineupRule(config, players, opts.lineupRule) : null;
+  const lineup = ruled ? ruled.wilds : players;
+  if (lineup.length === 0) return null;
   const resolvedSeed = opts.seed ?? Math.floor(config.rng() * 0xffffffff);
-  const attackers = buildWildTeam(players, 'attackers', config, state, opts.pvp ? tokenPvpLines(config, state) : undefined);
+  const attackers = buildWildTeam(lineup, 'attackers', config, state, opts.pvp ? tokenPvpLines(config, state) : undefined, ruled?.slots);
   const defenders = buildEnemyTeam(opts.enemies, config);
   return runView(attackers, defenders, {
     seed: resolvedSeed,

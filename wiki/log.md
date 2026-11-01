@@ -215,3 +215,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R9 daily dungeons; no fashion set skills
 - Owner: fashion is stats and cosmetics only (no set skills). The source's four daily dungeons replace the seven
   weekday stand-ins (ASSUMPTIONS #78, save v34). Next: Tower achievements and reset.
+
+## [2026-11-01] update | R9 Tower
+- Normal and Hard towers with the source's achievement floors and Hard lineup rules; daily climbs (ASSUMPTIONS #79,
+  save v35). Next: World Boss and Trials data, then summoning.

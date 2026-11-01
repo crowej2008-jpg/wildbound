@@ -98,6 +98,10 @@ export type CurrencyId =
   | 'followerStone'
   | 'pokemonShard4'
   | 'cosmeticBox'
+  | 'boxSupreme'
+  | 'boxLegendary'
+  | 'boxShinySupreme'
+  | 'boxLD'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -146,6 +150,10 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'followerStone',
   'pokemonShard4',
   'cosmeticBox',
+  'boxSupreme',
+  'boxLegendary',
+  'boxShinySupreme',
+  'boxLD',
   'privilegeXp',
 ];
 
@@ -182,6 +190,10 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'followerStone',
   'pokemonShard4',
   'cosmeticBox',
+  'boxSupreme',
+  'boxLegendary',
+  'boxShinySupreme',
+  'boxLD',
   'privilegeXp',
 ];
 
@@ -293,7 +305,7 @@ export interface PveState {
 
 export function initialPve(day: string, week: string): PveState {
   return {
-    tower: initialTowerState(day, week),
+    tower: initialTowerState(day),
     trials: { lastCleared: {} },
     worldBoss: initialWorldBossState(day),
     dungeons: initialDungeonState(day),

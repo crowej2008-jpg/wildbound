@@ -22,11 +22,9 @@ export const enemyPoolSchema = z
 
 export const towerSchema = z
   .object({
-    climbsPerWeek: z.number().int().positive(),
+    /** R9: the climbs reset daily (source); the achievements come from tuning/tower.json. */
+    climbsPerDay: z.number().int().positive(),
     sweepsPerDay: z.number().int().nonnegative(),
-    milestoneEvery: z.number().int().positive(),
-    milestoneCap: z.number().int().positive(),
-    milestoneRewards: rewardSchema,
     reward: z
       .object({
         goldBase: z.number().nonnegative(),

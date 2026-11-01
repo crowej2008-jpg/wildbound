@@ -247,7 +247,7 @@ test('Titles: Starter Trainer is worn, a card activates a title, and unbuilt sou
   await expect(page.getByText('Total HP +0.1%').first()).toBeVisible();
 
   const beginner = page.locator('[data-title-id="12"]');
-  await expect(beginner.getByText('Earned from: Tower floor 5')).toBeVisible();
+  await expect(beginner.getByText('Earned from: Hard Tower floor 5')).toBeVisible();
   await beginner.getByRole('button', { name: /Activate · Activation cards 1\/1/ }).click();
   await expect(beginner.getByText('Stage 1/1')).toBeVisible();
   await expect(page.getByText('Owned: 2', { exact: true })).toBeVisible();

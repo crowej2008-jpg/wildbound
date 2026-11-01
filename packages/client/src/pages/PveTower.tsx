@@ -21,8 +21,8 @@ export default function PveTower() {
     void refresh();
   }, [refresh, snapshot?.state.pve.tower.floor]);
 
-  const onClimb = async () => {
-    const result = await call((s) => s.challengeTower(), (v) => v.snapshot);
+  const onClimb = async (kind: 'normal' | 'hard' = 'normal') => {
+    const result = await call((s) => s.challengeTower(undefined, kind), (v) => v.snapshot);
     if (result.ok) setBattle(result.value);
   };
 
@@ -97,7 +97,7 @@ export default function PveTower() {
           </div>
           {swept && <p className="muted">{t('tower.swept')}</p>}
           <p className="muted">
-            {t('tower.weekReset')}: {formatDuration(view.weekResetMs)} · {t('tower.dayReset')}: {formatDuration(view.dayResetMs)}
+            {t('tower.dayReset')}: {formatDuration(view.dayResetMs)}
           </p>
         </section>
       ) : (
@@ -105,22 +105,55 @@ export default function PveTower() {
       )}
 
       {view && (
-        <section className="card">
-          <h2 className="section-title">{t('tower.milestones')}</h2>
-          <ul className="plain-list">
-            {view.milestones.map((m) => (
-              <li key={m.floor} className="milestone-row">
-                <span>
-                  {t('tower.floor')} {m.floor}
-                </span>
-                <span className={m.claimed ? 'chip chip-on' : 'chip'}>
-                  {m.claimed ? t('tower.milestone.claimed') : m.reached ? t('tower.milestone.reached') : t('tower.milestone.locked')}
-                </span>
-              </li>
-            ))}
-          </ul>
+        <section className="card" data-tower="hard">
+          <h2 className="section-title">{t('tower.hard')}</h2>
+          <div className="stat-row">
+            <span className="stat">
+              <span className="muted">{t('tower.floor')}</span>
+              <strong>
+                {view.hard.floor}/{view.hard.top}
+              </strong>
+            </span>
+            <span className="stat">
+              <span className="muted">{t('tower.enemyLevel')}</span>
+              <strong>{view.hard.nextEnemyLevel}</strong>
+            </span>
+            <span className="stat">
+              <span className="muted">{t('tower.climbsLeft')}</span>
+              <strong>{view.hard.climbsLeft}</strong>
+            </span>
+          </div>
+          {view.hard.rule && (
+            <p className="muted">
+              {t('tower.rule')}: {view.hard.rule}
+            </p>
+          )}
+          <button type="button" className="btn btn-primary" disabled={busy || view.hard.climbsLeft <= 0} onClick={() => void onClimb('hard')}>
+            {t('tower.climbHard')}
+          </button>
         </section>
       )}
+
+      {view &&
+        ([
+          ['tower.milestones', view.milestones],
+          ['tower.hardMilestones', view.hard.milestones],
+        ] as const).map(([title, rows]) => (
+          <section key={title} className="card">
+            <h2 className="section-title">{t(title)}</h2>
+            <ul className="plain-list">
+              {rows.map((m) => (
+                <li key={m.floor} className="milestone-row">
+                  <span>
+                    {t('tower.floor')} {m.floor}
+                  </span>
+                  <RewardLine rewards={m.rewards} />
+                  {m.extras.length > 0 && <span className="muted">{m.extras.join(' · ')}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
     </main>
   );
 }

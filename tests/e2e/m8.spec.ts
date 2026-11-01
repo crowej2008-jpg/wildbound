@@ -15,15 +15,18 @@ test('the combat hub links every PvE mode', async ({ page }) => {
 
 test('climbs the tower and shows a replayable result', async ({ page }) => {
   await page.goto('/tower');
-  await expect(page.getByRole('heading', { name: 'Tower' })).toBeVisible();
-  await page.getByRole('button', { name: 'Climb' }).click();
+  await expect(page.getByRole('heading', { name: 'Tower', exact: true })).toBeVisible();
+  // R9: the Hard Tower shows its stage rule; floor 10 is the first Normal achievement.
+  await expect(page.locator('[data-tower="hard"]').getByText('This stage: No Pokémon in position 5')).toBeVisible();
+  await expect(page.getByText('Climbs left today').first()).toBeVisible();
+  await page.getByRole('button', { name: 'Climb', exact: true }).click();
   await expect(page.locator('.battle-unit')).toHaveCount(12);
   await page.getByRole('button', { name: 'Skip to end' }).click();
   await expect(page.locator('.result-panel')).toBeVisible();
   const banner = await page.locator('.result-rewards .result-banner strong').textContent();
   expect(['Floor cleared!', 'Your squad fell on this floor.']).toContain(banner);
   await page.getByRole('button', { name: 'Back to tower' }).click();
-  await expect(page.getByRole('heading', { name: 'Tower' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Tower', exact: true })).toBeVisible();
 });
 
 test('lists the five trials', async ({ page }) => {

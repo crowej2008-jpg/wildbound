@@ -51,6 +51,11 @@ export interface Rewards {
   /** R9: 4 Star Pokémon Fragments and Cosmetic Boxes (daily dungeons; their use comes later). */
   pokemonShard4?: number;
   cosmeticBox?: number;
+  /** R9: the Tower's Pokémon boxes (opened when summoning is copied). */
+  boxSupreme?: number;
+  boxLegendary?: number;
+  boxShinySupreme?: number;
+  boxLD?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -100,6 +105,10 @@ export const CURRENCY_REWARD_KEYS = [
   'followerStone',
   'pokemonShard4',
   'cosmeticBox',
+  'boxSupreme',
+  'boxLegendary',
+  'boxShinySupreme',
+  'boxLD',
   'privilegeXp',
 ] as const;
 

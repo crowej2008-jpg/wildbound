@@ -1,37 +1,36 @@
 import type { Rewards } from '../economy/rewards';
 
 /**
- * The endless tower (M8, PROMPT §7.6). Floors are permanent; the weekly reset
- * replenishes the climb allowance and rotates the featured faction, and each day
- * replenishes the sweep allowance. Pure rules; the tuning is an argument. See
- * docs/design/pve-modes.md.
+ * The Pokémon Tower (M8; R9 from the source): the Normal tower (1,000 floors) and the Hard tower (750 floors, each
+ * stage of five with a lineup rule). Floors are permanent; the climbs and sweeps reset every day. Pure rules; the
+ * tuning is an argument. See docs/design/pve-modes.md.
  */
 
+export type TowerKind = 'normal' | 'hard';
+
 export interface TowerState {
-  /** Highest floor cleared (0 = none). Permanent. */
+  /** Highest Normal floor cleared (0 = none). Permanent. */
   floor: number;
-  /** New floors attempted since the weekly reset. */
-  climbsThisWeek: number;
-  /** Sweeps used since the daily reset. */
+  /** Highest Hard floor cleared (0 = none). Permanent. */
+  hardFloor: number;
+  /** Climbs used today (Normal and Hard each). */
+  climbsToday: number;
+  hardClimbsToday: number;
+  /** Sweeps used today. */
   sweepsToday: number;
-  /** Milestone floors already paid out. */
-  claimedMilestones: number[];
-  /** UTC day-key of `sweepsToday`. */
+  /** UTC day-key of the daily counters. */
   day: string;
-  /** ISO week-key of `climbsThisWeek` (the weekly reset boundary). */
-  week: string;
 }
 
 export interface TowerTuning {
-  /** New floors one may clear per week. */
-  climbsPerWeek: number;
+  /** Climbs a day, in each tower. */
+  climbsPerDay: number;
   /** Sweeps per day. */
   sweepsPerDay: number;
-  /** A milestone chest is granted at each multiple of this floor. */
-  milestoneEvery: number;
-  /** Floors at or below which milestone chests exist. */
-  milestoneCap: number;
-  /** The mode coin the tower pays. */
+  /** Each tower's floor count. */
+  normalFloors: number;
+  hardFloors: number;
+  /** The stand-in per-floor pay (the source's floor drops are not in the dumps). */
   reward: {
     goldBase: number;
     goldPerFloor: number;
@@ -39,30 +38,28 @@ export interface TowerTuning {
     shardPerFloor: number;
     coinBase: number;
     coinPerFloor: number;
-    /** Growth stops at this floor (reference: ~floor 550). */
     capFloor: number;
   };
 }
 
-export function initialTowerState(day: string, week: string): TowerState {
-  return { floor: 0, climbsThisWeek: 0, sweepsToday: 0, claimedMilestones: [], day, week };
+export function initialTowerState(day: string): TowerState {
+  return { floor: 0, hardFloor: 0, climbsToday: 0, hardClimbsToday: 0, sweepsToday: 0, day };
 }
 
-/** Apply daily/weekly resets without losing permanent progress. */
-export function rollTower(state: TowerState, day: string, week: string): TowerState {
-  let next = state;
-  if (next.week !== week) next = { ...next, week, climbsThisWeek: 0 };
-  if (next.day !== day) next = { ...next, day, sweepsToday: 0 };
-  return next;
+/** Apply the daily reset without losing permanent progress. */
+export function rollTower(state: TowerState, day: string): TowerState {
+  return state.day === day ? state : { ...state, day, climbsToday: 0, hardClimbsToday: 0, sweepsToday: 0 };
 }
 
 /** The floor a climb would attempt (the next after the highest cleared). */
-export function nextTowerFloor(state: TowerState): number {
-  return state.floor + 1;
+export function nextTowerFloor(state: TowerState, kind: TowerKind = 'normal'): number {
+  return (kind === 'hard' ? state.hardFloor : state.floor) + 1;
 }
 
-export function canClimb(state: TowerState, tuning: TowerTuning): boolean {
-  return state.climbsThisWeek < tuning.climbsPerWeek;
+export function canClimb(state: TowerState, tuning: TowerTuning, kind: TowerKind = 'normal'): boolean {
+  const used = kind === 'hard' ? state.hardClimbsToday : state.climbsToday;
+  const top = kind === 'hard' ? tuning.hardFloors : tuning.normalFloors;
+  return used < tuning.climbsPerDay && nextTowerFloor(state, kind) <= top;
 }
 
 export function canSweep(state: TowerState, tuning: TowerTuning): boolean {
@@ -70,8 +67,15 @@ export function canSweep(state: TowerState, tuning: TowerTuning): boolean {
 }
 
 /** Record a successful climb onto `floor`. Caller checks `canClimb` first. */
-export function advanceTower(state: TowerState, floor: number): TowerState {
-  return { ...state, floor, climbsThisWeek: state.climbsThisWeek + 1 };
+export function advanceTower(state: TowerState, floor: number, kind: TowerKind = 'normal'): TowerState {
+  return kind === 'hard'
+    ? { ...state, hardFloor: floor, hardClimbsToday: state.hardClimbsToday + 1 }
+    : { ...state, floor, climbsToday: state.climbsToday + 1 };
+}
+
+/** A lost climb still uses one of the day's climbs. */
+export function spendClimb(state: TowerState, kind: TowerKind = 'normal'): TowerState {
+  return kind === 'hard' ? { ...state, hardClimbsToday: state.hardClimbsToday + 1 } : { ...state, climbsToday: state.climbsToday + 1 };
 }
 
 export function spendSweep(state: TowerState): TowerState {
@@ -87,18 +91,4 @@ export function towerFloorReward(floor: number, tuning: TowerTuning): Rewards {
     shard: tuning.reward.shardBase + tuning.reward.shardPerFloor * at,
     wildCoin: tuning.reward.coinBase + tuning.reward.coinPerFloor * at,
   };
-}
-
-/** Every milestone floor up to `milestoneCap`. */
-export function towerMilestones(tuning: TowerTuning): number[] {
-  const out: number[] = [];
-  for (let f = tuning.milestoneEvery; f <= tuning.milestoneCap; f += tuning.milestoneEvery) out.push(f);
-  return out;
-}
-
-/** Milestone floors the player has reached but not yet claimed. */
-export function claimableTowerMilestones(state: TowerState, tuning: TowerTuning): number[] {
-  return towerMilestones(tuning).filter(
-    (f) => f <= state.floor && !state.claimedMilestones.includes(f),
-  );
 }

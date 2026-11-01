@@ -972,3 +972,16 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     Pokémon Fragments and Cosmetic Boxes (kept until their uses are built). Note: Wildbound's stand-in trainer
     curve caps at level 80, so the difficulties opening at 82+ wait for the source's trainer-XP table. The daily
     quest now counts XP & ASC runs only. Replaces the seven M8 weekday dungeons.
+
+79. **R9 Pokémon Tower.** From the source (`dun_tower_json`, which holds only the achievement rows): two towers —
+    Normal, 1,000 floors in stages of ten, and Hard, 750 floors in stages of five, each Hard stage with a lineup rule
+    (no Pokémon in given positions; at most N of a faction, class or Mythic tier). A floor's first clear pays its
+    source achievement where it has one: 5-Star Pokémon Shards, Premium Tickets, Supreme / Legendary / Shiny Supreme
+    / L & D boxes (kept as currencies until summoning is copied), Palkia / Giratina / Xerneas / Shiny Gengar shards
+    (the source's "Shiny Gastly Shards" read as Shiny Gengar's) and, on Hard floors 5 / 135 / 400 / 500, the Beginner
+    → Master Trainer title cards (R8 put them on the Normal tower; they are Hard rows). The climbs reset daily (the
+    fidelity audit; 20 a day in each tower, the old weekly count), and a lost climb uses one. Readings: a Hard
+    stage's rule covers its five floors; "position" is the formation position; a cap keeps the first N in lineup
+    order and leaves the rest out. Stand-ins: the enemies (the Hard tower a step above the Normal curve) and the
+    per-floor gold / shard / coin pay, since the floors themselves are not in the dumps; Hard opens from the start.
+    Replaces the milestone chest every 5 floors.

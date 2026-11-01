@@ -8,7 +8,7 @@ import type {
   StrategyId,
   SummonCost,
   SkillRow,
-  TitleSlot, OrbColour, DungeonGrade } from '@wildbound/engine';
+  TitleSlot, OrbColour, DungeonGrade, TowerKind } from '@wildbound/engine';
 import type { BattleView } from './battle';
 import type { GachaView } from './gacha';
 import type { ShopView } from './shops';
@@ -398,7 +398,8 @@ export interface GameServer {
   /** Display-ready tower state: floor, weekly climbs, daily sweeps, milestones (M8). */
   getTower(): Promise<Result<TowerView>>;
   /** Climb the next tower floor with the tower squad (M8). */
-  challengeTower(seed?: number): Promise<Result<TowerBattleResult>>;
+  /** R9: `kind` picks the Normal or the Hard tower. */
+  challengeTower(seed?: number, kind?: TowerKind): Promise<Result<TowerBattleResult>>;
   /** Re-play the highest cleared tower floor for its reward, up to the daily cap (M8). */
   sweepTower(): Promise<Result<ClaimResult>>;
   /** Display-ready trial cards: open/closed, cleared today, preview (M8). */

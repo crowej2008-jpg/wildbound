@@ -80,6 +80,7 @@ import {
   type StrategyId,
   type TitleSlot,
   type DungeonGrade,
+  type TowerKind,
   type SkillRow,
   type WildInstance,
 } from '@wildbound/engine';
@@ -1083,11 +1084,11 @@ export class LocalServer implements GameServer {
     return ok(buildTowerView(this.config, state, this.now(state)));
   }
 
-  async challengeTower(seed?: number): Promise<Result<TowerBattleResult>> {
+  async challengeTower(seed?: number, kind: TowerKind = 'normal'): Promise<Result<TowerBattleResult>> {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     const state = loaded.value;
-    const outcome = challengeTowerAction(this.config, state, this.now(state), seed);
+    const outcome = challengeTowerAction(this.config, state, this.now(state), seed, kind);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
     let next = this.withQuest(value.state, 'towerChallenge');

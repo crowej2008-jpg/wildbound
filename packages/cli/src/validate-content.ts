@@ -41,6 +41,7 @@ import {
   signInSchema,
   fashionSchema,
   dailyDungeonsSchema,
+  towerSourceSchema,
   VIP,
   berrySkillsSchema,
   coresSchema,
@@ -102,6 +103,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'signin.json': signInSchema as AnySchema,
   'fashion.json': fashionSchema as AnySchema,
   'daily-dungeons.json': dailyDungeonsSchema as AnySchema,
+  'tower.json': towerSourceSchema as AnySchema,
   'pvp.json': pvpSchema as AnySchema,
 };
 

@@ -117,6 +117,7 @@ export { RESONANCE, resonanceSchema } from './resonance';
 export { VIP, vipSchema, type VipJson } from './vip';
 export { TOKENS, tokensSchema, type TokensJson, type TokenJson } from './tokens';
 export { SIGN_IN, signInSchema, type SignInJson } from './signin';
+export { TOWER, towerSourceSchema, towerRuleSchema, type TowerSourceJson, type TowerRuleJson } from './tower';
 export {
   DAILY_DUNGEONS,
   dailyDungeonsSchema,

@@ -395,7 +395,7 @@
     "continueCost": null,
     "earn": null,
     "earnedBy": {
-      "kind": "tower",
+      "kind": "hardTower",
       "floor": 5
     },
     "stages": [
@@ -422,7 +422,7 @@
     "continueCost": null,
     "earn": null,
     "earnedBy": {
-      "kind": "tower",
+      "kind": "hardTower",
       "floor": 135
     },
     "stages": [
@@ -449,7 +449,7 @@
     "continueCost": null,
     "earn": null,
     "earnedBy": {
-      "kind": "tower",
+      "kind": "hardTower",
       "floor": 400
     },
     "stages": [
@@ -476,7 +476,7 @@
     "continueCost": null,
     "earn": null,
     "earnedBy": {
-      "kind": "tower",
+      "kind": "hardTower",
       "floor": 500
     },
     "stages": [

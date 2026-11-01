@@ -13,7 +13,7 @@ export type TitleSlotJson = (typeof TITLE_SLOTS)[number];
 /** Where Wildbound hands out the title today (null = its source mode is not built yet). */
 export const titleEarnedBySchema = z.union([
   z.object({ kind: z.literal('start') }).strict(),
-  z.object({ kind: z.literal('tower'), floor: z.number().int().min(1) }).strict(),
+  z.object({ kind: z.literal('hardTower'), floor: z.number().int().min(1) }).strict(),
 ]);
 
 export const titleStageSchema = z

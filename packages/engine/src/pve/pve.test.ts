@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest';
 import { generateEnemies, curveLevel } from './curve';
 import { isSameUtcWeek, nextWeekStart, weekKey, weekdayUtc } from './reset';
-import { advanceTower, canClimb, canSweep, claimableTowerMilestones, initialTowerState, nextTowerFloor, rollTower, spendSweep, towerFloorReward, towerMilestones, type TowerTuning } from './tower';
+import { advanceTower, canClimb, canSweep, initialTowerState, nextTowerFloor, rollTower, spendClimb, spendSweep, towerFloorReward, type TowerTuning } from './tower';
 import { isTrialEligible, trialAvailable, trialBattleRules, trialLevelCap, trialOpenOn, trialSurvivalRounds } from './trials';
 import { attackerDamage, canChallengeBoss, claimableMilestones, ghostRecords, initialWorldBossState, rankDamage, reachedMilestones, recordBossDamage, rollWorldBossDay, worldBossForWeekday } from './worldBoss';
 import { betterGrade, dungeonGrade, initialDungeonState, openChests, rollDungeonDay } from './dungeons';
 import type { DungeonGradeGoal, GeneratedEnemy, TrialDef, WorldBossDef, WorldBossMilestone } from './index';
 
 const towerTuning: TowerTuning = {
-  climbsPerWeek: 20,
+  climbsPerDay: 20,
   sweepsPerDay: 2,
-  milestoneEvery: 5,
-  milestoneCap: 20,
+  normalFloors: 1000,
+  hardFloors: 750,
   reward: { goldBase: 3000, goldPerFloor: 500, shardBase: 50, shardPerFloor: 10, coinBase: 20, coinPerFloor: 2, capFloor: 10 },
 };
 
@@ -65,30 +65,25 @@ describe('enemy curve', () => {
 });
 
 describe('tower', () => {
-  it('resets the sweep counter daily and the climb counter weekly', () => {
-    let s = initialTowerState('2026-10-15', '2026-W42');
-    s = advanceTower(s, 1);
-    s = spendSweep(s);
-    expect(s.climbsThisWeek).toBe(1);
-    expect(s.sweepsToday).toBe(1);
-    // Same day, same week: unchanged.
-    expect(rollTower(s, '2026-10-15', '2026-W42')).toEqual(s);
-    // New day: sweeps reset, climbs kept.
-    const nextDay = rollTower(s, '2026-10-16', '2026-W42');
-    expect(nextDay.sweepsToday).toBe(0);
-    expect(nextDay.climbsThisWeek).toBe(1);
-    // New week: climbs reset too, floor is permanent.
-    const nextWeek = rollTower(s, '2026-10-19', '2026-W43');
-    expect(nextWeek.climbsThisWeek).toBe(0);
-    expect(nextWeek.floor).toBe(1);
+  it('resets climbs and sweeps daily; floors are permanent (R9: source daily reset)', () => {
+    let s = initialTowerState('2026-10-15');
+    s = spendSweep(advanceTower(advanceTower(s, 1), 1, 'hard'));
+    expect([s.climbsToday, s.hardClimbsToday, s.sweepsToday]).toEqual([1, 1, 1]);
+    expect(rollTower(s, '2026-10-15')).toBe(s);
+    const next = rollTower(s, '2026-10-16');
+    expect([next.climbsToday, next.hardClimbsToday, next.sweepsToday]).toEqual([0, 0, 0]);
+    expect([next.floor, next.hardFloor]).toEqual([1, 1]);
   });
 
-  it('limits climbs per week and sweeps per day', () => {
-    let s = initialTowerState('d', 'w');
-    for (let i = 0; i < 20; i += 1) s = advanceTower(s, i + 1);
+  it('limits each tower\'s climbs a day and stops at its top floor; a lost climb still counts', () => {
+    let s = initialTowerState('d');
+    for (let i = 0; i < 19; i += 1) s = advanceTower(s, i + 1);
+    s = spendClimb(s);
     expect(canClimb(s, towerTuning)).toBe(false);
+    expect(canClimb(s, towerTuning, 'hard')).toBe(true);
+    expect(nextTowerFloor(s)).toBe(20);
+    expect(canClimb({ ...initialTowerState('d'), hardFloor: 750 }, towerTuning, 'hard')).toBe(false);
     expect(canSweep(s, towerTuning)).toBe(true);
-    expect(nextTowerFloor(s)).toBe(21);
     s = spendSweep(spendSweep(s));
     expect(canSweep(s, towerTuning)).toBe(false);
   });
@@ -103,12 +98,6 @@ describe('tower', () => {
     expect(floor1.wildCoin).toBe(22);
   });
 
-  it('lists milestone floors and only offers reached, unclaimed ones', () => {
-    expect(towerMilestones(towerTuning)).toEqual([5, 10, 15, 20]);
-    let s = initialTowerState('d', 'w');
-    s = { ...advanceTower(s, 12), claimedMilestones: [5] };
-    expect(claimableTowerMilestones(s, towerTuning)).toEqual([10]);
-  });
 });
 
 const trialBase: Omit<TrialDef, 'rule'> = {

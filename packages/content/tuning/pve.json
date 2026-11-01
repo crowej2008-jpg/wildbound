@@ -1,15 +1,7 @@
 {
   "tower": {
-    "climbsPerWeek": 20,
+    "climbsPerDay": 20,
     "sweepsPerDay": 2,
-    "milestoneEvery": 5,
-    "milestoneCap": 100,
-    "milestoneRewards": {
-      "gold": 20000,
-      "gems": 120,
-      "candy": 2500,
-      "wildCoin": 60
-    },
     "reward": {
       "goldBase": 3000,
       "goldPerFloor": 500,
