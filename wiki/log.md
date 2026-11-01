@@ -178,3 +178,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R6b part 2 Trinket skills done
 - 72 holders' trinket skills ported (Shiny Kyogre / Mew / Cresselia / Kyurem list none). Not modelled: Zygarde,
   Lunala, Lugia (need HP-fed counters). Next: R6d Berries.
+
+## [2026-11-01] update | DEF on, trinket chests
+- Owner: DEF stays on ("Light", ASSUMPTIONS #69); the faction shop sells the trinket chests (save v26).

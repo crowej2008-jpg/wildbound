@@ -1,0 +1,14 @@
+{
+  "id": "faction",
+  "name": "Faction Tower Shop",
+  "currency": "factionCoin",
+  "restock": { "type": "interval", "days": 30, "hourUtc": 0 },
+  "items": [
+    { "id": "faction.chestBlue", "name": "Blue Trinket Chest ×100", "price": 2000, "grants": { "trinketChestBlue": 100 }, "limit": 999 },
+    { "id": "faction.chestPurple", "name": "Purple Trinket Chest ×100", "price": 4000, "grants": { "trinketChestPurple": 100 }, "limit": 999 },
+    { "id": "faction.chestOrange", "name": "Orange Trinket Chest ×100", "price": 5000, "grants": { "trinketChestOrange": 100 }, "limit": 999 },
+    { "id": "faction.boxShiny", "name": "Shiny Supreme Trinket Box ×100", "price": 6000, "grants": { "trinketBoxShiny": 100 }, "limit": 999 },
+    { "id": "faction.chestRed", "name": "Red Trinket Chest ×100", "price": 8000, "grants": { "trinketChestRed": 100 }, "limit": 999 },
+    { "id": "faction.chest", "name": "Trinket Chest ×100", "price": 10000, "grants": { "trinketChest": 100 }, "limit": 999 }
+  ]
+}

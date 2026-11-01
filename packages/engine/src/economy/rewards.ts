@@ -30,6 +30,13 @@ export interface Rewards {
   starShard?: number;
   resonationShard?: number;
   titleTicket?: number;
+  factionCoin?: number;
+  trinketChestOrange?: number;
+  trinketChestRed?: number;
+  trinketChestBlue?: number;
+  trinketChestPurple?: number;
+  trinketChest?: number;
+  trinketBoxShiny?: number;
   xp?: number;
 }
 
@@ -60,6 +67,13 @@ export const CURRENCY_REWARD_KEYS = [
   'starShard',
   'resonationShard',
   'titleTicket',
+  'factionCoin',
+  'trinketChestOrange',
+  'trinketChestRed',
+  'trinketChestBlue',
+  'trinketChestPurple',
+  'trinketChest',
+  'trinketBoxShiny',
 ] as const;
 
 /** Every key of a bundle, currencies then `xp`. */

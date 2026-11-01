@@ -53,6 +53,30 @@ describe('R6b trinkets', () => {
     if (r10.ok) expect(r10.value.trinketItems[grown.speciesId]).toBe(0);
   });
 
+  it('spends the holder\'s trinket chest for the missing items', () => {
+    const config = buildConfig();
+    const { state, wild } = grownState(config); // Charizard: no chest in the source
+    const holder = { ...wild, speciesId: 'metagross' }; // Beldum Sunglasses, a Blue Trinket Chest holder
+    state.roster[0] = holder;
+    state.currencies.starShard = 1_000_000;
+    state.trinkets.metagross = 9;
+    state.currencies.trinketChestBlue = 100;
+    const s = grantTrinketItem(state, 'metagross', 40); // 140 needed: 40 items + 100 chests
+    const r = upgradeTrinketAction(config, s, holder.id);
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    expect(r.value.trinkets.metagross).toBe(10);
+    expect(r.value.trinketItems.metagross).toBe(0);
+    expect(r.value.currencies.trinketChestBlue).toBe(0);
+  });
+
+  it('sells the trinket chests in the Faction Tower Shop', async () => {
+    const config = buildConfig();
+    const shop = config.shops.find((x) => x.id === 'faction');
+    expect(shop?.currency).toBe('factionCoin');
+    expect(shop?.items.map((i) => Object.keys(i.grants)[0])).toContain('trinketChestOrange');
+  });
+
   it('needs the holder at 7 stars and stops at level 40', () => {
     const config = buildConfig();
     const { state, wild } = grownState(config);

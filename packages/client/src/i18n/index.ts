@@ -43,6 +43,13 @@ export const en = {
   'currency.starShard': 'Star Shards',
   'currency.resonationShard': 'Resonation Shards',
   'currency.titleTicket': 'Title Tickets',
+  'currency.factionCoin': 'Faction Tower Coins',
+  'currency.trinketChestOrange': 'Orange Trinket Chests',
+  'currency.trinketChestRed': 'Red Trinket Chests',
+  'currency.trinketChestBlue': 'Blue Trinket Chests',
+  'currency.trinketChestPurple': 'Purple Trinket Chests',
+  'currency.trinketChest': 'Trinket Chests',
+  'currency.trinketBoxShiny': 'Shiny Supreme Trinket Boxes',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
   'wilds.empty': 'No Wilds yet. Grant one from More > Debug.',
@@ -200,6 +207,7 @@ export const en = {
   'gear.trinket.none': 'This Pokémon has no exclusive trinket.',
   'gear.trinket.lockRoster': 'Opens when {count} Pokémon reach Lv {level}.',
   'gear.trinket.lockStars': 'Opens at {stars}★.',
+  'gear.trinket.usesChests': 'Not enough of the trinket item: this level also uses {n} {chest}.',
   'gear.soul.sets': 'Set bonuses',
   'gear.soul.max': 'Max stars',
   'stat.hpPct': 'Total HP',
@@ -937,7 +945,14 @@ export type CurrencyKey =
   | 'plateFragment'
   | 'starShard'
   | 'resonationShard'
-  | 'titleTicket';
+  | 'titleTicket'
+  | 'factionCoin'
+  | 'trinketChestOrange'
+  | 'trinketChestRed'
+  | 'trinketChestBlue'
+  | 'trinketChestPurple'
+  | 'trinketChest'
+  | 'trinketBoxShiny';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
   gold: en['currency.gold'],
@@ -966,6 +981,13 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   starShard: en['currency.starShard'],
   resonationShard: en['currency.resonationShard'],
   titleTicket: en['currency.titleTicket'],
+  factionCoin: en['currency.factionCoin'],
+  trinketChestOrange: en['currency.trinketChestOrange'],
+  trinketChestRed: en['currency.trinketChestRed'],
+  trinketChestBlue: en['currency.trinketChestBlue'],
+  trinketChestPurple: en['currency.trinketChestPurple'],
+  trinketChest: en['currency.trinketChest'],
+  trinketBoxShiny: en['currency.trinketBoxShiny'],
 };
 
 export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar';

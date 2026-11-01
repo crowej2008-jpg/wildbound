@@ -5,6 +5,10 @@
   "restock": { "type": "interval", "days": 7, "hourUtc": 0 },
   "items": [
     { "id": "guild.stone", "name": "Stones ×1", "price": 800, "grants": { "stone": 1 }, "limit": 2 },
-    { "id": "guild.shard", "name": "Shards ×100", "price": 600, "grants": { "shard": 100 }, "limit": 2 }
+    { "id": "guild.shard", "name": "Shards ×100", "price": 600, "grants": { "shard": 100 }, "limit": 2 },
+    { "id": "guild.chestOrange", "name": "Orange Trinket Chest ×20", "price": 1200, "grants": { "trinketChestOrange": 20 }, "limit": 5 },
+    { "id": "guild.boxShiny", "name": "Shiny Supreme Trinket Box ×20", "price": 1440, "grants": { "trinketBoxShiny": 20 }, "limit": 5 },
+    { "id": "guild.chestRed", "name": "Red Trinket Chest ×20", "price": 1920, "grants": { "trinketChestRed": 20 }, "limit": 5 },
+    { "id": "guild.chest", "name": "Trinket Chest ×20", "price": 2400, "grants": { "trinketChest": 20 }, "limit": 5 }
   ]
 }

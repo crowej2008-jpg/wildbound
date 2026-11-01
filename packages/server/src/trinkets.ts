@@ -10,6 +10,8 @@ import { fail, ok, type Result } from './index';
  * 9 / 19 / 29 / 39 also the holder's own item. Opens when the account has 6 Pokémon at Lv 220 and this
  * Pokémon is at 7★ (kb/exclusive-trinkets.md). Starmie, Ninetales and the Origins have none here (the
  * Origins' trinket follows its synergy Pokémon — it waits for the synergy system). Skills: R6b part 2.
+ * When the own item runs short, the holder's trinket chest is spent in its place (one chest = one item;
+ * the source asks first — the button says how many). Chests are sold in the Faction Tower and Guild shops.
  */
 
 export interface TrinketCostView {
@@ -17,6 +19,11 @@ export interface TrinketCostView {
   item: number;
   itemName: string;
   haveItem: number;
+  /** The holder's chest (stands in for missing items), if it has one. */
+  chestName: string | null;
+  haveChests: number;
+  /** Chests this level would spend (the item shortfall). */
+  chestsUsed: number;
 }
 
 export interface TrinketView {
@@ -81,9 +88,32 @@ export function buildTrinketView(
     linesAreNext: !atMax,
     cost:
       def && cost
-        ? { ...cost, itemName: def.item.name, haveItem: state.trinketItems?.[wild.speciesId] ?? 0 }
+        ? costView(config, state, def, cost)
         : null,
     locked: def ? trinketLock(config, state, wild) : null,
+  };
+}
+
+function chestName(config: GameConfig, def: TrinketDef): string | null {
+  if (!def.chest) return null;
+  return config.equipment.trinketRules.chests.find((c) => c.currency === def.chest)?.name ?? def.chest;
+}
+
+function costView(
+  config: GameConfig,
+  state: AccountState,
+  def: TrinketDef,
+  cost: { starShard: number; item: number },
+): TrinketCostView {
+  const haveItem = state.trinketItems?.[def.speciesId] ?? 0;
+  const haveChests = def.chest ? state.currencies[def.chest] ?? 0 : 0;
+  return {
+    ...cost,
+    itemName: def.item.name,
+    haveItem,
+    chestName: chestName(config, def),
+    haveChests,
+    chestsUsed: Math.max(0, cost.item - haveItem),
   };
 }
 
@@ -109,12 +139,18 @@ export function upgradeTrinketAction(
   const cost = trinketCost(def, level);
   if (!cost) return fail('at_level_cap', 'max trinket level');
   const have = state.trinketItems?.[wild.speciesId] ?? 0;
-  if (have < cost.item) return fail('insufficient_items', `not enough ${def.item.name}`);
-  const paid = pay(state, { starShard: cost.starShard });
+  const fromItems = Math.min(have, cost.item);
+  const fromChests = cost.item - fromItems;
+  const chests = def.chest ? state.currencies[def.chest] ?? 0 : 0;
+  if (fromChests > chests) return fail('insufficient_items', `not enough ${def.item.name}`);
+  const paid = pay(state, {
+    starShard: cost.starShard,
+    ...(fromChests > 0 && def.chest ? { [def.chest]: fromChests } : {}),
+  });
   if (!paid) return fail('insufficient_items', 'not enough Star Shards');
   return ok({
     ...paid,
-    trinketItems: cost.item ? { ...state.trinketItems, [wild.speciesId]: have - cost.item } : state.trinketItems,
+    trinketItems: fromItems ? { ...state.trinketItems, [wild.speciesId]: have - fromItems } : state.trinketItems,
     trinkets: { ...state.trinkets, [wild.speciesId]: level + 1 },
   });
 }

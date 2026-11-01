@@ -42,6 +42,18 @@ const ATTR = {
   130: ['percent', 'controlRes'],
 };
 const STAR_SHARD = 23001;
+// R6b: trinket chests (hero_weapon_box_json): each holder's item has one chest that stands in for it. The names
+// are from kb/exclusive-trinkets.md (the chests' item rows are not in the dumps): matched by holder count
+// (27 / 15 / 10 / 8 / 6) and, for the two sixes, by the Guild Shop's four chests (which include the Shiny box).
+const CHESTS = {
+  10232: { currency: 'trinketChestOrange', name: 'Orange Trinket Chest' },
+  10234: { currency: 'trinketChestRed', name: 'Red Trinket Chest' },
+  10285: { currency: 'trinketChestBlue', name: 'Blue Trinket Chest' },
+  10235: { currency: 'trinketChest', name: 'Trinket Chest' },
+  10233: { currency: 'trinketBoxShiny', name: 'Shiny Supreme Trinket Box' },
+  10286: { currency: 'trinketChestPurple', name: 'Purple Trinket Chest' },
+};
+const chestOfItem = new Map(Object.values(rows('hero_weapon_box_json')).map((r) => [r.weapon_item, r.weapon_box]));
 
 const speciesDir = join(repoRoot, 'packages/content/species');
 const bySource = new Map();
@@ -91,6 +103,8 @@ for (const [heroId, w] of Object.entries(weapons)) {
     speciesId,
     sourceId: Number(heroId),
     item: { id: itemId, name: item?.name ?? String(itemId) },
+    // The chest that can be spent as this item (none for the few holders hero_weapon_box leaves out).
+    ...(CHESTS[chestOfItem.get(itemId)] ? { chest: CHESTS[chestOfItem.get(itemId)].currency } : {}),
     levels,
     skills: w.skill_list.map(([level, skillId]) => ({ level, skillId })),
   });
@@ -111,7 +125,11 @@ for (const t of trinkets) {
 const out = {
   unlock: { rosterCount: 6, rosterLevel: 220, stars: 7 },
   maxLevel: 40,
+  chests: Object.entries(CHESTS).map(([id, c]) => ({ sourceId: Number(id), ...c })),
   trinkets,
 };
 writeFileSync(join(repoRoot, 'packages/content/equipment/trinkets.json'), JSON.stringify(out, null, 1) + '\n');
+const counts = {};
+for (const t of trinkets) if (t.chest) counts[t.chest] = (counts[t.chest] ?? 0) + 1;
+console.log(JSON.stringify(counts));
 console.log(`trinkets: ${trinkets.length} holders${skipped.length ? `, skipped (no species) ${skipped.join(', ')}` : ''}`);

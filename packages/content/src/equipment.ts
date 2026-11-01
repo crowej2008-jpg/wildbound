@@ -40,7 +40,7 @@ export const PLATES = platesSchema.parse(plates);
 /** R6b: the source's exclusive trinkets. */
 const TRINKET_TABLE = trinketsSchema.parse(trinkets);
 export const TRINKETS = TRINKET_TABLE.trinkets;
-export const TRINKET_RULES = { unlock: TRINKET_TABLE.unlock, maxLevel: TRINKET_TABLE.maxLevel };
+export const TRINKET_RULES = { unlock: TRINKET_TABLE.unlock, maxLevel: TRINKET_TABLE.maxLevel, chests: TRINKET_TABLE.chests };
 
 /** R3: the source's orbs. */
 export const ORBS = orbsSchema.parse(orbs);

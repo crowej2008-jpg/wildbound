@@ -685,6 +685,13 @@ export const rewardSchema = z
     starShard: z.number().nonnegative().optional(),
     resonationShard: z.number().nonnegative().optional(),
     titleTicket: z.number().nonnegative().optional(),
+    factionCoin: z.number().nonnegative().optional(),
+    trinketChestOrange: z.number().nonnegative().optional(),
+    trinketChestRed: z.number().nonnegative().optional(),
+    trinketChestBlue: z.number().nonnegative().optional(),
+    trinketChestPurple: z.number().nonnegative().optional(),
+    trinketChest: z.number().nonnegative().optional(),
+    trinketBoxShiny: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })
   .strict();

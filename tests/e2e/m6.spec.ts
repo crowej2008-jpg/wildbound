@@ -46,7 +46,7 @@ test('shows the exact premium rates, pity and featured-Wild selector', async ({ 
 test('buys from the Daily shop and decrements the window limit', async ({ page }) => {
   await page.goto('/shop');
   await expect(page.getByRole('heading', { name: 'Shops' })).toBeVisible();
-  await expect(page.locator('.shop-card')).toHaveCount(6);
+  await expect(page.locator('.shop-card')).toHaveCount(7);
 
   const shard = page.locator('[data-shop="daily"] .shop-item').filter({ hasText: 'Shards' });
   await expect(shard).toContainText('Left: 3');

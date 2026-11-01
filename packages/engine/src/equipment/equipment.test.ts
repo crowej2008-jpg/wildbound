@@ -89,7 +89,7 @@ const TABLES: EquipmentTables = {
       skills: [],
     },
   ],
-  trinketRules: { unlock: { rosterCount: 0, rosterLevel: 0, stars: 0 }, maxLevel: 40 },
+  trinketRules: { unlock: { rosterCount: 0, rosterLevel: 0, stars: 0 }, maxLevel: 40, chests: [] },
   orbs: ORB_TABLES,
   charms: [
     { id: 'charm1', name: 'Charm 1', tier: 'greater', maxStars: 3, lines: [{ kind: 'core', field: 'hp', base: 200, perLevel: 100 }] },

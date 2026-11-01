@@ -78,7 +78,15 @@ export type CurrencyId =
   | 'plateFragment'
   | 'starShard'
   | 'resonationShard'
-  | 'titleTicket';
+  | 'titleTicket'
+  // R6b: the Faction Tower Shop's coin (source item 33) and the trinket chests (hero_weapon_box).
+  | 'factionCoin'
+  | 'trinketChestOrange'
+  | 'trinketChestRed'
+  | 'trinketChestBlue'
+  | 'trinketChestPurple'
+  | 'trinketChest'
+  | 'trinketBoxShiny';
 
 export const CURRENCY_IDS: readonly CurrencyId[] = [
   'gold',
@@ -107,6 +115,13 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'starShard',
   'resonationShard',
   'titleTicket',
+  'factionCoin',
+  'trinketChestOrange',
+  'trinketChestRed',
+  'trinketChestBlue',
+  'trinketChestPurple',
+  'trinketChest',
+  'trinketBoxShiny',
 ];
 
 /** M11 materials shown on the Trainer screen and spent by the collection layers. */
@@ -124,6 +139,13 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'starShard',
   'resonationShard',
   'titleTicket',
+  'factionCoin',
+  'trinketChestOrange',
+  'trinketChestRed',
+  'trinketChestBlue',
+  'trinketChestPurple',
+  'trinketChest',
+  'trinketBoxShiny',
 ];
 
 /** The currencies the persistent HUD strip shows; the rest live on their own screens. */

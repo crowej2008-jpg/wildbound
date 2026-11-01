@@ -253,7 +253,7 @@ describe('LocalServer M6 shops', () => {
     const view = await srv.getShops();
     expect(view.ok).toBe(true);
     if (!view.ok) return;
-    expect(view.value).toHaveLength(6);
+    expect(view.value).toHaveLength(7);
     const daily = view.value.find((s) => s.id === 'daily');
     expect(daily?.items.find((i) => i.id === 'daily.shard')?.affordable).toBe(true);
     const wilds = view.value.find((s) => s.id === 'wilds');

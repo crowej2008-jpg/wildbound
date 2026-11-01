@@ -4,10 +4,11 @@ import island from '../shops/island.json';
 import guild from '../shops/guild.json';
 import pvp from '../shops/pvp.json';
 import wilds from '../shops/wilds.json';
+import faction from '../shops/faction.json';
 import { shopSchema } from './shop-schema';
 import type { ShopJson } from './shop-schema';
 
-const RAW: unknown[] = [daily, forest, island, guild, pvp, wilds];
+const RAW: unknown[] = [daily, forest, island, guild, pvp, wilds, faction];
 
 export const SHOPS: ShopJson[] = RAW.map((shop) => shopSchema.parse(shop));
 export function shopById(id: string): ShopJson | undefined {

@@ -1,6 +1,7 @@
 import { ORB_SOCKETS, type OrbInstance, type OrbTables } from './orbs';
 import type { CombatField, DamageMod, RoundEffect, SoulheartHooks, TriggerDef } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats, Tier, WildClass, Faction } from '../model';
+import type { CurrencyId } from '../roster/types';
 
 /**
  * Equipment layers (M7, PROMPT §7.3). Types + rule inputs only: the engine stays
@@ -142,6 +143,8 @@ export interface TrinketDef {
   sourceId: number;
   /** The holder's own levelling item (Star Shards are paid at every level, this at 9 / 19 / 29 / 39). */
   item: { id: number; name: string };
+  /** R6b: the chest currency that can be spent in place of the own item (hero_weapon_box). */
+  chest?: CurrencyId;
   levels: TrinketLevelDef[];
   /** The skills at Lv 10 / 20 / 30 / 40 (ported in R6b part 2). */
   skills: { level: number; skillId: number }[];
@@ -150,6 +153,7 @@ export interface TrinketDef {
 export interface TrinketTables {
   unlock: { rosterCount: number; rosterLevel: number; stars: number };
   maxLevel: number;
+  chests: { sourceId: number; currency: CurrencyId; name: string }[];
   trinkets: TrinketDef[];
 }
 

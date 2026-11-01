@@ -32,6 +32,7 @@ export default function TrinketPanel({ wildId, view, busy, run, reload }: GearPa
       <p className="muted">
         {t('currency.starShard')}: {view.starShards.toLocaleString()}
         {cost && cost.item > 0 ? ` · ${cost.itemName}: ${cost.haveItem.toLocaleString()}` : ''}
+        {cost?.chestName ? ` · ${cost.chestName}: ${cost.haveChests.toLocaleString()}` : ''}
       </p>
       {lock ? (
         <p className="muted">
@@ -50,6 +51,11 @@ export default function TrinketPanel({ wildId, view, busy, run, reload }: GearPa
           <p className="muted">{t('gear.trinket.max')}</p>
         )}
       </div>
+      {cost && cost.chestsUsed > 0 && cost.chestName ? (
+        <p className="muted">
+          {t('gear.trinket.usesChests').replace('{n}', cost.chestsUsed.toLocaleString()).replace('{chest}', cost.chestName)}
+        </p>
+      ) : null}
       <p className="muted">{t('gear.trinket.shared')}</p>
     </div>
   );

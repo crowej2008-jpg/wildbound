@@ -1204,3 +1204,10 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   Nightmare ignore per stack (18 % from plate 6), Psyduck plate 6 as an S.DEF cut, and the trinkets of God Ash-
   Pikachu (both), Arceus (both), Yveltal, Shaymin and Venusaur (both).
 - Fix: P.ATK / S.ATK / P.DEF / S.DEF stat buffs are shares of the unit's own stat (they added the raw number).
+
+## R6b part 3 — Trinket chests and the Faction Tower Shop (owner, 2026-11-01)
+
+- Six trinket-chest currencies and Faction Tower Coins (save v26). Each holder's chest (hero_weapon_box) is spent
+  one-for-one when its own item runs short; the trinket card says how many a level will use.
+- New Faction Tower Shop (source shop 25: the six chests ×100 for 2,000–10,000 coins) and four chests in the Guild
+  Shop (×20, 5 a week). Coins come from the Faction Tower once it is built (R9). ASSUMPTIONS #68.

@@ -848,9 +848,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     the stats at each level, the price (300,430 Star Shards plus 2,540 of the holder's own item at levels 9 / 19 /
     29 / 39 — e.g. Beldum Sunglasses), unlock at 6 Pokémon on Lv 220 and the holder at 7★ (kb). Readings:
     "Pokémon HP / Attack %" (attr 406 / 407 / 409, the Pokémon layer) count as the sheet's HP / P.ATK / S.ATK %
-    lines — there is no base-only % layer yet. The own items have no source in Wildbound yet (the source sells
-    them in the Faction Tower Shop; shops come with R9), so past level 9 a holder needs a debug grant for now;
-    trinket chests (the stand-in for a missing own item) are not built. Starmie, Ninetales and the Origins have
+    lines — there is no base-only % layer yet. The own items come as trinket chests (owner, 2026-11-01: "the faction
+    shop sells boxes that have the trinkets"): six chest kinds (hero_weapon_box: Orange 27 holders, Red 15, Blue 10,
+    Trinket Chest 8, Shiny Supreme Box 6 — the shinies — and Purple 6), each spent one-for-one when the own item
+    runs short. The Faction Tower Shop sells them ×100 for 2,000–10,000 Faction Tower Coins (limit 999; source shop
+    25) and the Guild Shop four of them ×20 (5 a week). Raichu, Charizard, Blastoise and Venusaur have no chest in
+    the source. The coins have no in-game source until the Faction Tower is built (R9); a debug grant until then. Starmie, Ninetales and the Origins have
     no trinket (the Origins' follows its three synergy Pokémon — waits for the synergy system). The skills at
     Lv 10 / 20 / 30 / 40 come in part 2.
 

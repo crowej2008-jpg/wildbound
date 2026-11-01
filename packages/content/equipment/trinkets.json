@@ -5,6 +5,38 @@
   "stars": 7
  },
  "maxLevel": 40,
+ "chests": [
+  {
+   "sourceId": 10232,
+   "currency": "trinketChestOrange",
+   "name": "Orange Trinket Chest"
+  },
+  {
+   "sourceId": 10233,
+   "currency": "trinketBoxShiny",
+   "name": "Shiny Supreme Trinket Box"
+  },
+  {
+   "sourceId": 10234,
+   "currency": "trinketChestRed",
+   "name": "Red Trinket Chest"
+  },
+  {
+   "sourceId": 10235,
+   "currency": "trinketChest",
+   "name": "Trinket Chest"
+  },
+  {
+   "sourceId": 10285,
+   "currency": "trinketChestBlue",
+   "name": "Blue Trinket Chest"
+  },
+  {
+   "sourceId": 10286,
+   "currency": "trinketChestPurple",
+   "name": "Purple Trinket Chest"
+  }
+ ],
  "trinkets": [
   {
    "id": "trinket-metagross",
@@ -15,6 +47,7 @@
     "id": 23002,
     "name": "Beldum Sunglasses"
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -1850,6 +1883,7 @@
     "id": 23003,
     "name": "Cerulean Earphone"
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -3685,6 +3719,7 @@
     "id": 23004,
     "name": "Deino Pendant"
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -5520,6 +5555,7 @@
     "id": 23005,
     "name": "Dazzling Earphone"
    },
+   "chest": "trinketChestPurple",
    "levels": [
     {
      "rank": 0,
@@ -7595,6 +7631,7 @@
     "id": 23006,
     "name": "Ralts Glasses"
    },
+   "chest": "trinketChestPurple",
    "levels": [
     {
      "rank": 0,
@@ -9430,6 +9467,7 @@
     "id": 23007,
     "name": "Smiling Pendant"
    },
+   "chest": "trinketChestPurple",
    "levels": [
     {
      "rank": 0,
@@ -18605,6 +18643,7 @@
     "id": 23012,
     "name": "Torchic’s Belt"
    },
+   "chest": "trinketChestPurple",
    "levels": [
     {
      "rank": 0,
@@ -20680,6 +20719,7 @@
     "id": 23013,
     "name": "Mudkip Earphone"
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -22515,6 +22555,7 @@
     "id": 23014,
     "name": "Toy Eye"
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -24350,6 +24391,7 @@
     "id": 23015,
     "name": "Cyndaquil Circlet"
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -26449,6 +26491,7 @@
     "id": 23016,
     "name": "Totodile Earphone"
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -28536,6 +28579,7 @@
     "id": 23017,
     "name": "Chikorita Sgs."
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -30383,6 +30427,7 @@
     "id": 23018,
     "name": "Slakoth Earphone"
    },
+   "chest": "trinketChestPurple",
    "levels": [
     {
      "rank": 0,
@@ -32218,6 +32263,7 @@
     "id": 23019,
     "name": "Dratini Earphone"
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -34065,6 +34111,7 @@
     "id": 23020,
     "name": "Larvitar Belt"
    },
+   "chest": "trinketChestBlue",
    "levels": [
     {
      "rank": 0,
@@ -35900,6 +35947,7 @@
     "id": 23021,
     "name": "Bagon Sunglasses"
    },
+   "chest": "trinketChestPurple",
    "levels": [
     {
      "rank": 0,
@@ -37735,6 +37783,7 @@
     "id": 23022,
     "name": "Thunderveil"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -39586,6 +39635,7 @@
     "id": 23023,
     "name": "Flame Belt"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -41437,6 +41487,7 @@
     "id": 23024,
     "name": "Suicune Earphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -43272,6 +43323,7 @@
     "id": 23025,
     "name": "Mew Badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -45119,6 +45171,7 @@
     "id": 23026,
     "name": "Mewtwo Rising"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -46958,6 +47011,7 @@
     "id": 23027,
     "name": "Lightning Sunglasses"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -48793,6 +48847,7 @@
     "id": 23028,
     "name": "Fire Belt"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -50628,6 +50683,7 @@
     "id": 23029,
     "name": "Icefrost Earphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -52463,6 +52519,7 @@
     "id": 23030,
     "name": "Lugia Earphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -54298,6 +54355,7 @@
     "id": 23031,
     "name": "Rayquaza Sunglasses"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -56133,6 +56191,7 @@
     "id": 23032,
     "name": "Earth Belt"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -57968,6 +58027,7 @@
     "id": 23033,
     "name": "Kyogre Earphone"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -59803,6 +59863,7 @@
     "id": 23034,
     "name": "Deoxys Badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -61638,6 +61699,7 @@
     "id": 23035,
     "name": "Ho-Oh Necklace"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -63501,6 +63563,7 @@
     "id": 23036,
     "name": "Nightmare Badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -65348,6 +65411,7 @@
     "id": 23037,
     "name": "Dream Badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -67183,6 +67247,7 @@
     "id": 23038,
     "name": "Celebi Sunglasses"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -69018,6 +69083,7 @@
     "id": 23039,
     "name": "Phione Earphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -70853,6 +70919,7 @@
     "id": 23040,
     "name": "Froakie Earphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -72688,6 +72755,7 @@
     "id": 23041,
     "name": "Infernape Belt"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -74523,6 +74591,7 @@
     "id": 23042,
     "name": "God Pikachu Sunglass"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -76374,6 +76443,7 @@
     "id": 23043,
     "name": "Snorlax Badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -78209,6 +78279,7 @@
     "id": 23044,
     "name": "Kyurem Rising"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -80068,6 +80139,7 @@
     "id": 23045,
     "name": "Shaymin Sunglasses"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -81903,6 +81975,7 @@
     "id": 23046,
     "name": "Victini’s Belt"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -83750,6 +83823,7 @@
     "id": 23047,
     "name": "Keldeo Earphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -85585,6 +85659,7 @@
     "id": 23048,
     "name": "Meloetta Sunglasses"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -87420,6 +87495,7 @@
     "id": 23049,
     "name": "Jirachi Badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -89255,6 +89331,7 @@
     "id": 23050,
     "name": "Dialga earphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -91090,6 +91167,7 @@
     "id": 23051,
     "name": "Palkia earphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -92925,6 +93003,7 @@
     "id": 23052,
     "name": "Giratina'belt"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -94760,6 +94839,7 @@
     "id": 23053,
     "name": "Hoopa Badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -96595,6 +96675,7 @@
     "id": 23054,
     "name": "Arceus badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -98430,6 +98511,7 @@
     "id": 23055,
     "name": "Zygarde sunglass"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -100265,6 +100347,7 @@
     "id": 23056,
     "name": "Xerneas headphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -102100,6 +102183,7 @@
     "id": 23057,
     "name": "Yveltal belt"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -103935,6 +104019,7 @@
     "id": 23058,
     "name": "Solgaleo Badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -105770,6 +105855,7 @@
     "id": 23059,
     "name": "Lunala Badge"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,
@@ -107605,6 +107691,7 @@
     "id": 23060,
     "name": "Shiny God Pikachu Sunglass"
    },
+   "chest": "trinketBoxShiny",
    "levels": [
     {
      "rank": 0,
@@ -109456,6 +109543,7 @@
     "id": 23061,
     "name": "Shiny Charmander Pendant"
    },
+   "chest": "trinketBoxShiny",
    "levels": [
     {
      "rank": 0,
@@ -111291,6 +111379,7 @@
     "id": 23062,
     "name": "Shiny Pichu’s TA Glass"
    },
+   "chest": "trinketBoxShiny",
    "levels": [
     {
      "rank": 0,
@@ -113126,6 +113215,7 @@
     "id": 23063,
     "name": "Shiny Gastly Charm"
    },
+   "chest": "trinketBoxShiny",
    "levels": [
     {
      "rank": 0,
@@ -114961,6 +115051,7 @@
     "id": 23064,
     "name": "Shiny Squirtle Earphone"
    },
+   "chest": "trinketBoxShiny",
    "levels": [
     {
      "rank": 0,
@@ -116796,6 +116887,7 @@
     "id": 23065,
     "name": "Shiny Ivysaur goggles"
    },
+   "chest": "trinketBoxShiny",
    "levels": [
     {
      "rank": 0,
@@ -118631,6 +118723,7 @@
     "id": 23066,
     "name": "Shiny Arceus badge"
    },
+   "chest": "trinketChest",
    "levels": [
     {
      "rank": 0,
@@ -120466,6 +120559,7 @@
     "id": 23067,
     "name": "Shiny Darkrai Badge"
    },
+   "chest": "trinketChest",
    "levels": [
     {
      "rank": 0,
@@ -122313,6 +122407,7 @@
     "id": 23068,
     "name": "Shiny Cresselia Badge"
    },
+   "chest": "trinketChest",
    "levels": [
     {
      "rank": 0,
@@ -124148,6 +124243,7 @@
     "id": 23069,
     "name": "Shiny Mewtwo Rising"
    },
+   "chest": "trinketChest",
    "levels": [
     {
      "rank": 0,
@@ -125987,6 +126083,7 @@
     "id": 23070,
     "name": "Shiny Mew Badge"
    },
+   "chest": "trinketChest",
    "levels": [
     {
      "rank": 0,
@@ -127834,6 +127931,7 @@
     "id": 23073,
     "name": "Wobbuffet Sunglass"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -129669,6 +129767,7 @@
     "id": 23074,
     "name": "Mimikyu belt"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -131504,6 +131603,7 @@
     "id": 23075,
     "name": "Psyduck headphone"
    },
+   "chest": "trinketChestOrange",
    "levels": [
     {
      "rank": 0,
@@ -133339,6 +133439,7 @@
     "id": 23071,
     "name": "Shiny Hoopa Badge"
    },
+   "chest": "trinketChest",
    "levels": [
     {
      "rank": 0,
@@ -135174,6 +135275,7 @@
     "id": 23072,
     "name": "Shiny Kyogre Earphone"
    },
+   "chest": "trinketChest",
    "levels": [
     {
      "rank": 0,
@@ -137009,6 +137111,7 @@
     "id": 23076,
     "name": "Shiny Kyurem Rising"
    },
+   "chest": "trinketChest",
    "levels": [
     {
      "rank": 0,
@@ -138868,6 +138971,7 @@
     "id": 23077,
     "name": "Wind God Pidgeot Trinket"
    },
+   "chest": "trinketChestRed",
    "levels": [
     {
      "rank": 0,

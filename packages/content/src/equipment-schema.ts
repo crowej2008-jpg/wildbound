@@ -208,6 +208,7 @@ export const trinketsSchema = z.object({
     stars: z.number().int().min(0),
   }),
   maxLevel: z.number().int().min(1),
+  chests: z.array(z.object({ sourceId: z.number().int(), currency: z.string().min(1), name: z.string().min(1) })),
   trinkets: z.array(
     z.object({
       id: z.string().min(1),
@@ -215,6 +216,7 @@ export const trinketsSchema = z.object({
       speciesId: z.string().min(1),
       sourceId: z.number().int(),
       item: z.object({ id: z.number().int(), name: z.string().min(1) }),
+      chest: z.string().min(1).optional(),
       levels: z
         .array(
           z.object({
