@@ -107,3 +107,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
   Origin Lugia, and *"its when they are maxed that things start to get crazy, like plates trinkets and a
   bunch of stuff we havent added yet"* — the no-gear tier list is a base-kit check only; the geared
   re-check waits for the retrofit.
+
+## [2026-11-01] decision | PvP DMG Boost cap deferred
+- Owner relayed a 50% PvP DMG Boost cap from the base game (via his friend; not in the kb), then
+  *"drop it for now"*. Not built; open question #9 until the orb/gear retrofit.

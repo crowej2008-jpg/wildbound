@@ -18,6 +18,7 @@ updated: 2026-10-31
 | 6 | When does the [co-op boss tower](ideas/coop-boss-tower.md) enter the roadmap (M14?), and what are "awakened levels"? | — | Claude chats |
 | 7 | Undefined change-list terms: gold wings, ecology, purple things, mecha, beast egg. | — | [change list](ideas/change-list-2026-10.md) |
 | 8 | Friend feedback on the M13 plan — not yet turned into a change list. | — | Claude chats |
+| 9 | **PvP DMG Boost cap 50%** — base game (owner, from his friend, 2026-11-01: *"he said 50% for for pvp dmg boost"*, *"the cap is from the base game"*); not in the kb. Owner: *"drop it for now"* — Wildbound has no cap. Revisit when Orbs/Gear/Potential (R2–R4) add PvP DMG Boost sources. Also open: is PvP DMG Reduction capped? | R3 orbs | 2026-11-01 |
 
 ## Source tables still missing (stand-ins in use)
 - Pokémon level-up candy/gold per level, trainer-level XP, per-species milestone stats
