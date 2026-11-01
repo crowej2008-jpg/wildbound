@@ -2306,6 +2306,50 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Enemy who is [Petrified] will also have their SPD reduced by 20 for 2 turns",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "petrify-slow",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -20,
+                  "turns": 2
+                },
+                "condition": {
+                  "targetHasTag": "petrify"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "The [Burning], [Blaze] and [Sacred fire] DMG provided by the Ultimate increase to 100%"
+      },
+      "18": {
+        "text": "Ultimate deals 30% more DMG to enemies with debuff",
+        "damageMods": [
+          {
+            "tag": "yveltal-vs-debuffed",
+            "slot": "ult",
+            "dmg": 0.3,
+            "condition": {
+              "targetHasDot": true
+            }
+          }
+        ]
+      }
     }
   },
   {

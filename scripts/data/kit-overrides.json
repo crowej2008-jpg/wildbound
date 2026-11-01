@@ -12862,6 +12862,301 @@
      }
     ]
    }
+  },
+  "yveltal": {
+   "6": {
+    "text": "Enemy who is [Petrified] will also have their SPD reduced by 20 for 2 turns",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "petrify-slow",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -20,
+         "turns": 2
+        },
+        "condition": {
+         "targetHasTag": "petrify"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "The [Burning], [Blaze] and [Sacred fire] DMG provided by the Ultimate increase to 100%"
+   },
+   "18": {
+    "text": "Ultimate deals 30% more DMG to enemies with debuff",
+    "damageMods": [
+     {
+      "tag": "yveltal-vs-debuffed",
+      "slot": "ult",
+      "dmg": 0.3,
+      "condition": {
+       "targetHasDot": true
+      }
+     }
+    ]
+   }
+  },
+  "lugia": {
+   "6": {
+    "text": "Heals for 12% of the total damage dealt",
+    "statMods": [
+     {
+      "field": "lifesteal",
+      "add": 0.12
+     }
+    ]
+   },
+   "12": {
+    "text": "Before dealing damage, increase all allied [SKILL] Pok\u00e9mons' DMG Boost for 2 turn(s)"
+   },
+   "18": {
+    "text": "After attacking with the Ultimate, reduce target's DMG Reduction by 15% for 2 turn(s)",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "lugia-rdct-down",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.15,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "keldeo": {
+   "6": {
+    "text": "The damage receiver is [Healing Blocked] for 1 turns, unable to heal during the period",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "group": "keldeo-hb",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "keldeo-heal-block",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -1.0,
+         "turns": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "When attacking shielded characters, increases damage to 40% and ignores target's 20% DEF.",
+    "damageMods": [
+     {
+      "tag": "keldeo-vs-shield",
+      "dmg": 0.4,
+      "condition": {
+       "targetShielded": true
+      }
+     }
+    ]
+   },
+   "18": {
+    "text": "[Healing Block] Lasts until turn 2",
+    "dropGroups": [
+     "keldeo-hb"
+    ],
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "group": "keldeo-hb",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "keldeo-heal-block",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -1.0,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shiny-hoopa": {
+   "6": {
+    "text": "Ultimate additionally inflicts [Flame]\n [Flame]: Deals true damage by 40% self S.ATK for 2 turns. Stacks up to 2 times.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "resource",
+        "target": {
+         "rule": "all"
+        },
+        "tag": "flame",
+        "delta": 1
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Ultimate additionally inflicts [Sacred Fire]\n [Sacred Fire]: Deals true damage by 60% of self S.ATK after a turn",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "rule": "all"
+        },
+        "tag": "sacred-fire",
+        "dot": {
+         "share": 1.25,
+         "basis": "casterAtk",
+         "turns": 2,
+         "maxStacks": 1,
+         "type": "S"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Ultimate dispels 2 buffs",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "rule": "all"
+        },
+        "tag": "burning",
+        "dot": {
+         "share": 0.3,
+         "basis": "casterAtk",
+         "type": "S",
+         "turns": 3,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dispel",
+        "target": {
+         "rule": "all"
+        },
+        "count": 2
+       },
+       {
+        "op": "resource",
+        "target": {
+         "rule": "all"
+        },
+        "tag": "burning",
+        "delta": 1,
+        "max": 3
+       }
+      ]
+     }
+    }
+   }
+  },
+  "shiny-mewtwo": {
+   "6": {
+    "text": "Increases Ultimate's base damage to 120%, increases the Ignore DEF effect to 35%",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "all",
+      "ignoreDefense": 0.35
+     }
+    }
+   },
+   "12": {
+    "text": "Increases Ultimate's damage against [DEF] Pok\u00e9mons by 35%, against [ATK] Pok\u00e9mons by 10%",
+    "damageMods": [
+     {
+      "tag": "smt-vs-def",
+      "slot": "ult",
+      "dmg": 0.35,
+      "condition": {
+       "targetClass": "guardian"
+      }
+     },
+     {
+      "tag": "smt-vs-atk",
+      "slot": "ult",
+      "dmg": 0.1,
+      "condition": {
+       "targetClass": "striker"
+      }
+     }
+    ]
+   },
+   "18": {
+    "text": "Before using Ultimate, Increases Crit by 20% for 4 turns. Stacks up to 1 time",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "smt-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.2,
+         "turns": 4,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
   }
  }
 }

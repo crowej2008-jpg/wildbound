@@ -133,6 +133,8 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 | count | clause | example |
 | --- | --- | --- |
 
-- Dialga 12 / 18 (Rage to backline / frontline): no effect — the owner's ultimate already fills the team.
-- Darkrai 12: "after 2 [Nightmare] stacks" read as from round 2 on; 18 read as the normal attack at 135 %.
-- Snorlax 12: one hit at 70 % reduction (consumed on the hit), no damage transfer; 18: endure 2 turns, every 4.
+- Yveltal 12 (ult burns to 100 %) and Lugia 12 (SKILL allies' DMG Boost — no amount given): not modelled;
+  Yveltal 18 "debuffed" read as carrying a DoT.
+- Keldeo 12: the "ignores 20 % DEF" half is not modelled (no per-target DEF ignore on damage mods).
+- Shiny Hoopa 12: Sacred Fire at Ho-Oh's 125 % S.ATK for 2 turns (the text gives no number).
+- Shiny Mewtwo 18: "before the Ultimate" applied right after it (no before-ult trigger), so it helps the next.

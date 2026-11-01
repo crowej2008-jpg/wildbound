@@ -130,3 +130,47 @@ plate("snorlax", {
     12: {"triggers": [trig("afterUlt", [give(ALL_ALLIES, buff("snorlax-protect", "dmgRdct", 0.7, big=1, consumeOnHit=True))])]},
     18: {"triggers": [trig("afterUlt", [give(SELF, buff("snorlax-dauntless", kind="endure", turns=2))], cooldown=4)]},
 })
+
+# --- batch 3 -------------------------------------------------------------------------------------
+ENEMY_ALL = {"rule": "all"}
+
+plate("yveltal", {
+    6: {"triggers": [trig("afterUlt", [give(ENEMY_ALL, buff("petrify-slow", "spd", -20, turns=2),
+                                            condition={"targetHasTag": "petrify"})])]},
+    12: {},
+    18: {"damageMods": [{"tag": "yveltal-vs-debuffed", "slot": "ult", "dmg": 0.3, "condition": {"targetHasDot": True}}]},
+})
+
+plate("lugia", {
+    6: {"statMods": [{"field": "lifesteal", "add": 0.12}]},
+    12: {},
+    18: {"triggers": [trig("afterUlt", [give(ENEMY_ALL, buff("lugia-rdct-down", "dmgRdct", -0.15, turns=2))])]},
+})
+
+plate("keldeo", {
+    6: {"triggers": [trig("afterUlt", [give(T, buff("keldeo-heal-block", "receiveHealBoost", -1.0, turns=1))], group="keldeo-hb")]},
+    12: {"damageMods": [{"tag": "keldeo-vs-shield", "dmg": 0.4, "condition": {"targetShielded": True}}]},
+    18: {"dropGroups": ["keldeo-hb"],
+         "triggers": [trig("afterUlt", [give(T, buff("keldeo-heal-block", "receiveHealBoost", -1.0, turns=2))], group="keldeo-hb")]},
+})
+
+plate("shiny-hoopa", {
+    6: {"triggers": [trig("afterUlt", [{"op": "resource", "target": ENEMY_ALL, "tag": "flame", "delta": 1}])]},
+    12: {"triggers": [trig("afterUlt", [dot(ENEMY_ALL, "sacred-fire", 1.25, turns=2, stacks=1, type_="S")])]},
+    18: {"skills": {"ult": edited("shiny-hoopa", "ult", lambda s: s["effects"][1].update(count=2))}},
+})
+
+
+def _smt_ult(s):
+    s["rates"] = [1.2]
+    s["ignoreDefense"] = 0.35
+
+
+plate("shiny-mewtwo", {
+    6: {"skills": {"ult": edited("shiny-mewtwo", "ult", _smt_ult)}},
+    12: {"damageMods": [
+        {"tag": "smt-vs-def", "slot": "ult", "dmg": 0.35, "condition": {"targetClass": "guardian"}},
+        {"tag": "smt-vs-atk", "slot": "ult", "dmg": 0.1, "condition": {"targetClass": "striker"}},
+    ]},
+    18: {"triggers": [trig("afterUlt", [give(SELF, buff("smt-crit", "crit", 0.2, turns=4, stacks=1))])]},
+})

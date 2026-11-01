@@ -1516,6 +1516,43 @@
           "cap": 1
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Heals for 12% of the total damage dealt",
+        "statMods": [
+          {
+            "field": "lifesteal",
+            "add": 0.12
+          }
+        ]
+      },
+      "12": {
+        "text": "Before dealing damage, increase all allied [SKILL] Pokémons' DMG Boost for 2 turn(s)"
+      },
+      "18": {
+        "text": "After attacking with the Ultimate, reduce target's DMG Reduction by 15% for 2 turn(s)",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "lugia-rdct-down",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.15,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2128,6 +2165,71 @@
           }
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "The damage receiver is [Healing Blocked] for 1 turns, unable to heal during the period",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "group": "keldeo-hb",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "keldeo-heal-block",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -1,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "When attacking shielded characters, increases damage to 40% and ignores target's 20% DEF.",
+        "damageMods": [
+          {
+            "tag": "keldeo-vs-shield",
+            "dmg": 0.4,
+            "condition": {
+              "targetShielded": true
+            }
+          }
+        ]
+      },
+      "18": {
+        "text": "[Healing Block] Lasts until turn 2",
+        "dropGroups": [
+          "keldeo-hb"
+        ],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "group": "keldeo-hb",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "keldeo-heal-block",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -1,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
