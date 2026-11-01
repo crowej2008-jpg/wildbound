@@ -30,7 +30,6 @@ import type { GameConfig, SpeciesMeta } from './config';
 interface SpeciesLookup {
   species: Map<string, { className: WildClass; tier: Tier; name: string }>;
   equipment: EquipmentTables;
-  collection: GameConfig['collection'];
 }
 
 function context(config: SpeciesLookup, state: AccountState, wildId: string) {

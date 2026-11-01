@@ -697,6 +697,7 @@ export const rewardSchema = z
     berryMulchOrange: z.number().nonnegative().optional(),
     berryMulchRed: z.number().nonnegative().optional(),
     reforgePotion: z.number().nonnegative().optional(),
+    privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })
   .strict();
@@ -818,10 +819,8 @@ export const economySchema = z
   .object({
     idle: z
       .object({
-        capHours: z.number().positive(),
         quickCollectHours: z.number().positive(),
         quickCollectGems: z.number().nonnegative(),
-        quickCollectDailyLimit: z.number().int().nonnegative(),
       })
       .strict(),
     xp: z

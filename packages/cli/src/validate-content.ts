@@ -36,11 +36,11 @@ import {
   orbsSchema,
   berriesSchema,
   resonanceSchema,
+  vipSchema,
+  VIP,
   berrySkillsSchema,
   coresSchema,
   equipmentTuningSchema,
-  collectionTuningSchema,
-  COLLECTION_TUNING,
   RELICS,
   PLATES,
   TRINKETS,
@@ -91,9 +91,9 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'economy.json': economySchema,
   'gacha.json': gachaSchema as AnySchema,
   'equipment.json': equipmentTuningSchema,
-  'collection.json': collectionTuningSchema,
   'pve.json': pveSchema as AnySchema,
   'resonance.json': resonanceSchema as AnySchema,
+  'vip.json': vipSchema as AnySchema,
   'pvp.json': pvpSchema as AnySchema,
 };
 
@@ -247,15 +247,11 @@ export function validateContent(repoRoot: string): ValidateReport {
         errors.push(`equipment: trinket "${trinket.id}" has ${trinket.levels.length - 1} levels`);
       }
     }
-    const vipTiers = COLLECTION_TUNING.vip.tiers;
-    if (vipTiers[0]?.xp !== 0 || vipTiers[0]?.tier !== 0) {
-      errors.push('collection: VIP tiers must start at tier 0 with 0 XP');
-    }
-    for (let index = 1; index < vipTiers.length; index += 1) {
-      const previous = vipTiers[index - 1]!;
-      const tier = vipTiers[index]!;
-      if (tier.tier !== previous.tier + 1) errors.push(`collection: VIP tier ${tier.tier} is out of order`);
-      if (tier.xp <= previous.xp) errors.push(`collection: VIP tier ${tier.tier} XP must increase`);
+    for (let index = 1; index < VIP.levels.length; index += 1) {
+      const previous = VIP.levels[index - 1]!;
+      const level = VIP.levels[index]!;
+      if (level.level !== previous.level + 1) errors.push(`vip: level ${level.level} is out of order`);
+      if (level.xp < previous.xp) errors.push(`vip: level ${level.level} needs less Privilege XP than the one before`);
     }
     const titleIds = new Set<string>();
     const titleSlots = new Set<string>(TITLE_SLOTS);

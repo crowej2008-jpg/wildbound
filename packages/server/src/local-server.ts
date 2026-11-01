@@ -205,7 +205,7 @@ import {
   syncResonance,
   upgradeResonanceAction,
 } from './resonance';
-import { buildVipView, claimVipDailyAction, vipIdleCapMinutes } from './vip';
+import { buildVipView, vipIdleCapMinutes, vipPerks } from './vip';
 import { activateTitleAction, buildTitlesView, setTitleSlotAction } from './titles';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
@@ -611,19 +611,23 @@ export class LocalServer implements GameServer {
     const rate = bestIdleRate(this.config, state);
     if (isZeroRewards(rate)) return fail('not_found', 'clear a stage to begin earning idle income');
     const now = this.now(state);
-    const { capMinutes, quickCollectMinutes, quickCollectGems, quickCollectDailyLimit } = this.config.idle;
-    const cap = vipIdleCapMinutes(this.config, state, capMinutes);
+    const { quickCollectMinutes, quickCollectGems } = this.config.idle;
+    // R8: the VIP level sets the idle cap and the Quick Combat (quick-collect) count, the first ones free.
+    const cap = vipIdleCapMinutes(this.config, state);
+    const perks = vipPerks(this.config, state);
+    const quickCollectDailyLimit = perks.quickCombat;
     let next = state;
     let granted: Rewards;
     if (quick) {
       const day = dayKey(now);
       const claimsToday = state.idle.quickClaimDay === day ? state.idle.quickClaims : 0;
       if (claimsToday >= quickCollectDailyLimit) return fail('daily_limit', 'no quick-collects left today');
-      if (state.currencies.gems < quickCollectGems) return fail('insufficient_items', 'not enough gems');
+      const quickPrice = claimsToday < perks.quickCombatFree ? 0 : quickCollectGems;
+      if (state.currencies.gems < quickPrice) return fail('insufficient_items', 'not enough gems');
       granted = quickCollect(rate, state.idle.lastClaimAt, now, cap, quickCollectMinutes);
       next = {
         ...next,
-        currencies: { ...next.currencies, gems: next.currencies.gems - quickCollectGems },
+        currencies: { ...next.currencies, gems: next.currencies.gems - quickPrice },
         idle: { ...next.idle, lastClaimAt: now, quickClaimDay: day, quickClaims: claimsToday + 1 },
       };
     } else {
@@ -921,15 +925,6 @@ export class LocalServer implements GameServer {
 
   async upgradeResonance(): Promise<Result<AccountSnapshot>> {
     return this.applyEquipment((state) => upgradeResonanceAction(this.config, state));
-  }
-
-  async claimVipDaily(): Promise<Result<ClaimResult>> {
-    const loaded = await this.load();
-    if (!loaded.ok) return loaded;
-    const state = loaded.value;
-    const claimed = claimVipDailyAction(this.config, state, this.now(state));
-    if (!claimed.ok) return claimed;
-    return this.commitClaim(claimed.value.state, claimed.value.granted);
   }
 
   async activateTitle(titleId: string): Promise<Result<AccountSnapshot>> {
@@ -1572,7 +1567,7 @@ export class LocalServer implements GameServer {
       power,
       teamPower,
       resonance: buildResonanceView(this.config, state, this.now(state)),
-      vip: buildVipView(this.config, state, this.now(state)),
+      vip: buildVipView(this.config, state),
       titles: buildTitlesView(this.config, state, this.now(state)),
     };
   }

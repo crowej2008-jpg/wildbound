@@ -17,7 +17,6 @@ describe('save codec', () => {
     expect(state.resonance.slots).toHaveLength(2);
     expect(state.resonance.evolved).toBe(false);
     expect(state.resonance.slots.every((id) => id === null)).toBe(true);
-    expect(state.vip.lastClaimDay).toBeNull();
     expect(state.titles.owned).toEqual({});
     expect(state.titles.equipped).toEqual({ common: null, premium: null, rare: null });
     expect(state.campaign.gyms).toEqual({});
@@ -37,12 +36,10 @@ describe('save codec', () => {
     const state = createInitialState(config);
     const raw = state as unknown as Record<string, unknown>;
     delete raw.trinkets;
-    delete raw.vip;
     const result = migrateSave({ version: SAVE_VERSION, state: raw }, Date.now(), config);
     expect(result.ok).toBe(true);
     if (!result.ok) return;
     expect(result.value.trinkets).toEqual({});
-    expect(result.value.vip).toEqual({ lastClaimDay: null });
   });
 
   it('refuses every save older than MIN_SAVE_VERSION as outdated (source-retrofit reset)', () => {

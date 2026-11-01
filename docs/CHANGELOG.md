@@ -1232,3 +1232,11 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   set / take out, clear cooldown, evolve, upgrade). A shared Pokémon keeps `ownLevel`. Save v28.
 - Removed: the M8 Link Crystal (its PvE page and tuning) and the M11.9 resonance stat layer. Held-item level gates
   read the crystal level. ASSUMPTIONS #71.
+
+## R8 part 1 — VIP from the source (2026-11-01)
+
+- `scripts/import-vip.mjs` → `packages/content/tuning/vip.json` (41 levels). Server `vip.ts` (level from Privilege
+  XP, perks, view). Idle cap / bonus, Quick Combat count (first ones free) and Arena attempt buys read the VIP
+  level. New currency `privilegeXp`; the top daily-activity chest pays 60 (stand-in until R9). Save v29.
+- Removed: the M11 seven-tier VIP (`state.vip`, daily claim, shop discount), `collection.json`, and the economy
+  idle cap / quick-collect limit. ASSUMPTIONS #72.

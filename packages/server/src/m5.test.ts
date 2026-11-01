@@ -93,11 +93,11 @@ describe('LocalServer M5 idle', () => {
     if (!again.ok) expect(again.error).toBe('not_ready');
   });
 
-  it('quick-collects for gems and enforces the daily limit', async () => {
+  it('quick-collects (R8: VIP 0 has one a day, free) and enforces the daily limit', async () => {
     const { srv } = make();
     await srv.challengeStage('c1-1', 1);
     await srv.grantCurrency('gems', 1000);
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 1; i++) {
       const quick = await srv.claimIdle(true);
       expect(quick.ok).toBe(true);
     }
@@ -179,17 +179,17 @@ describe('LocalServer M5 tutorial and debug clock', () => {
     const before = await srv.claimIdle();
     expect(before.ok).toBe(false);
 
-    // The offset is minutes, so 12h of debug time fills the idle cap exactly.
-    const advanced = await srv.debugAdvanceClock(720);
+    // The offset is minutes, so 8h of debug time fills the VIP 0 idle cap (R8: source 8 h) exactly.
+    const advanced = await srv.debugAdvanceClock(480);
     expect(advanced.ok).toBe(true);
     if (!advanced.ok) return;
-    expect(advanced.value.state.debugClockOffset).toBe(720);
+    expect(advanced.value.state.debugClockOffset).toBe(480);
 
     const claim = await srv.claimIdle();
     expect(claim.ok).toBe(true);
     if (!claim.ok) return;
-    expect(claim.value.granted.gold).toBe(60 * 720);
-    expect(claim.value.granted.candy).toBe(6 * 720);
+    expect(claim.value.granted.gold).toBe(60 * 480);
+    expect(claim.value.granted.candy).toBe(6 * 480);
   });
 });
 

@@ -20,7 +20,6 @@ import {
 import { applyGrant } from './economy';
 import type { GameConfig } from './config';
 import type { Outcome } from './outcome';
-import { vipShopPrice } from './vip';
 
 /**
  * Server-side shop glue (M6, PROMPT §7.9). The engine owns the restock/buy rules;
@@ -60,8 +59,8 @@ export function applyBuy(
   if (!item) return { ok: false, error: 'not_found', message: `unknown shop item "${itemId}"` };
 
   const progress = shopProgress(config, state, shopId, now) ?? initialShopProgress(now, dayKey(now));
-  const price = vipShopPrice(config, state, item.price);
-  const priced = { ...item, price };
+  const priced = item;
+  const price = item.price;
   const block = buyBlock(shop, priced, progress, state.currencies);
   if (block) {
     const message =
@@ -154,8 +153,8 @@ export function shopsView(config: GameConfig, state: AccountState, now: number):
     const items = shop.items.map((item): ShopItemView => {
       const bought = boughtCount(progress, item.id);
       const cap = item.oneTime ? 1 : (item.limit ?? Number.POSITIVE_INFINITY);
-      const price = vipShopPrice(config, state, item.price);
-      const priced = { ...item, price };
+      const priced = item;
+      const price = item.price;
       return {
         id: item.id,
         name: item.name,

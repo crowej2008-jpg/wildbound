@@ -188,3 +188,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-01] update | R7 Resonance
 - The source's shared-level Resonance replaces the Link Crystal and the stat-share slots; save v28. Next: R8 account layers.
+
+## [2026-11-01] update | R8 VIP
+- The source's VIP 0–40 from Privilege XP replaces the seven-tier VIP; idle cap, Quick Combat and Arena buys read
+  it (ASSUMPTIONS #72, save v29). Next: Titles.

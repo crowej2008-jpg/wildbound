@@ -55,6 +55,7 @@ export const en = {
   'currency.berryMulchOrange': 'Orange Mulch',
   'currency.berryMulchRed': 'Red Mulch',
   'currency.reforgePotion': 'Reforge Potions',
+  'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
   'wilds.empty': 'No Wilds yet. Grant one from More > Debug.',
@@ -309,18 +310,16 @@ export const en = {
   'trainer.gallery': 'Gallery',
   'trainer.more': 'Debug & saves',
   'trainer.vip': 'VIP privileges',
-  'trainer.vipNote': 'Earned from lifetime trainer XP. There are no purchases.',
+  'trainer.vipNote': 'VIP comes from Privilege XP: daily activity\'s top chest pays {xp} a day. There are no purchases.',
   'trainer.vip.badge': 'VIP',
-  'trainer.vip.xp': 'Lifetime XP',
   'trainer.vip.next': 'Next',
-  'trainer.vip.max': 'Top VIP tier reached.',
-  'trainer.vip.idle': 'Idle cap',
-  'trainer.vip.shop': 'Shop discount',
-  'trainer.vip.daily': 'Daily supply',
-  'trainer.vip.ticketsPerDay': 'Common Tickets/day',
-  'trainer.vip.claim': 'Claim daily supply',
-  'trainer.vip.claimed': 'Claimed today.',
-  'trainer.vip.locked': 'Reach VIP 1 for a daily supply.',
+  'trainer.vip.max': 'Top VIP level reached.',
+  'trainer.vip.idleCap': 'Idle cap',
+  'trainer.vip.idleBonus': 'Idle Candy / Gold bonus',
+  'trainer.vip.quick': 'Quick collects a day',
+  'trainer.vip.free': 'free',
+  'trainer.vip.arenaBuys': 'Arena attempt buys a day',
+  'trainer.vip.coming': 'Coming with their systems: {dungeons} daily dungeon buys, {refreshes} Daily Shop refreshes, a {bag}-Pokémon bag, Golden Touch and the Exclusive Packs.',
   'trainer.titles': 'Titles',
   'titles.note': 'Three slots, one title each. Title stats apply to every Wild.',
   'titles.tickets': 'Title Tickets',
@@ -490,6 +489,7 @@ export const en = {
   'idle.claim': 'Collect',
   'idle.quick': 'Quick collect',
   'idle.quickLeft': 'Quick collects left today',
+  'idle.free': 'free',
   'quests.title': 'Daily Quests',
   'quests.subtitle': 'Complete quests for rewards and activity points. Resets daily at 00:00 UTC.',
   'quests.activity': 'Activity points',
@@ -975,7 +975,8 @@ export type CurrencyKey =
   | 'berryMulchPurple'
   | 'berryMulchOrange'
   | 'berryMulchRed'
-  | 'reforgePotion';
+  | 'reforgePotion'
+  | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
   gold: en['currency.gold'],
@@ -1016,6 +1017,7 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   berryMulchOrange: en['currency.berryMulchOrange'],
   berryMulchRed: en['currency.berryMulchRed'],
   reforgePotion: en['currency.reforgePotion'],
+  privilegeXp: en['currency.privilegeXp'],
 };
 
 export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar';

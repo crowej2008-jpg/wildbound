@@ -91,7 +91,9 @@ export type CurrencyId =
   | 'berryMulchPurple'
   | 'berryMulchOrange'
   | 'berryMulchRed'
-  | 'reforgePotion';
+  | 'reforgePotion'
+  // R8: VIP points (source attribute 6, the Privilege XP item).
+  | 'privilegeXp';
 
 export const CURRENCY_IDS: readonly CurrencyId[] = [
   'gold',
@@ -132,6 +134,7 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'berryMulchOrange',
   'berryMulchRed',
   'reforgePotion',
+  'privilegeXp',
 ];
 
 /** M11 materials shown on the Trainer screen and spent by the collection layers. */
@@ -161,6 +164,7 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'berryMulchOrange',
   'berryMulchRed',
   'reforgePotion',
+  'privilegeXp',
 ];
 
 /** The currencies the persistent HUD strip shows; the rest live on their own screens. */
@@ -240,8 +244,6 @@ export interface AccountState {
   trinkets: Record<string, number>;
   /** R7: the source's Resonance (top six, crystal, slots, cooldowns). */
   resonance: ResonanceState;
-  /** M11.10 daily VIP supply bookkeeping; the tier itself is derived from XP. */
-  vip: VipState;
   /** M11.11 owned/equipped titles. */
   titles: TitlesState;
   /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
@@ -293,14 +295,6 @@ export function initialPvp(day: string, week: string): PvpState {
 }
 
 
-/** M11.10: the UTC day-key of the last claimed VIP supply. */
-export interface VipState {
-  lastClaimDay: string | null;
-}
-
-export function initialVip(): VipState {
-  return { lastClaimDay: null };
-}
 
 /** M11.11: three account-wide title slots. */
 export const TITLE_SLOTS = ['common', 'premium', 'rare'] as const;

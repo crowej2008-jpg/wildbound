@@ -87,10 +87,8 @@ export {
   PET_HOME,
   SKY_PILLAR,
   GACHA_TUNING,
-  COLLECTION_TUNING,
 } from './tuning';
 export type {
-  CollectionJson,
   CampaignJson,
   ExploreJson,
   ExploreModeJson,
@@ -98,7 +96,6 @@ export type {
   PetHomeJson,
   SkyPillarJson,
 } from './tuning';
-export { collectionTuningSchema } from './collection-schema';
 export { petHomeSchema } from './pet-home-schema';
 export { skyPillarSchema } from './sky-pillar-schema';
 export type {
@@ -118,6 +115,7 @@ export type {
 export { GACHA } from './tuning-gacha';
 export { SHOPS } from './shops';
 export { RESONANCE, resonanceSchema } from './resonance';
+export { VIP, vipSchema, type VipJson } from './vip';
 export { BERRY_SKILLS, berrySkillAt, berrySkillsSchema } from './berry-skills';
 export {
   EQUIPMENT_TUNING,

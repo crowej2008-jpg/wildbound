@@ -77,8 +77,7 @@ test('the Trainer tab lists the M11 materials and keeps More reachable', async (
   await expect(page.getByRole('heading', { name: 'Collection materials', exact: true })).toBeVisible();
   await expect(page.getByText('Potential Shards')).toBeVisible();
   await expect(page.getByText('Title Tickets', { exact: true })).toBeVisible();
-  await expect(page.getByText('VIP 0 · Visitor')).toBeVisible();
-  await expect(page.getByText('Reach VIP 1 for a daily supply.')).toBeVisible();
+  await expect(page.getByText('VIP 0', { exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Debug & saves' }).click();
   await expect(page.getByRole('heading', { name: 'More' })).toBeVisible();
 });
@@ -220,20 +219,16 @@ test('Resonance: the top six set the crystal level, slots open with Resonation S
   await expect(slot.getByRole('button', { name: 'Take out' })).toBeVisible();
 });
 
-test('VIP derives its tier from lifetime XP and claims the daily supply', async ({ page }) => {
-  await importSave(page, { profile: { xp: 5_000 } });
+test('VIP comes from Privilege XP on the source table (VIP 14 at 300)', async ({ page }) => {
+  await importSave(page, { currencies: { privilegeXp: 300 } });
   await page.goto('/trainer');
 
   await expect(page.getByRole('heading', { name: 'VIP privileges' })).toBeVisible();
-  await expect(page.getByText('VIP 2 · Silver')).toBeVisible();
-  await expect(page.getByText('Next: Gold · 10,000 XP')).toBeVisible();
-  await expect(page.getByText('+2h')).toBeVisible();
-  await expect(page.getByText('4%')).toBeVisible();
-  await expect(page.getByText('1 Common Tickets/day', { exact: true })).toBeVisible();
-  await expect(page.getByText('There are no purchases.')).toBeVisible();
-
-  await page.getByRole('button', { name: /Claim daily supply .*1 Common Tickets\/day/ }).click();
-  await expect(page.getByText('Claimed today.')).toBeVisible();
+  await expect(page.getByText('VIP 14', { exact: true })).toBeVisible();
+  await expect(page.getByText('Next: VIP 15 · 680 Privilege XP')).toBeVisible();
+  await expect(page.getByText('9 h', { exact: true })).toBeVisible();
+  await expect(page.getByText('+5%', { exact: true })).toBeVisible();
+  await expect(page.getByText(/There are no purchases\./)).toBeVisible();
 });
 
 test('Titles activate, equip a slot and keep locked rows honest', async ({ page }) => {

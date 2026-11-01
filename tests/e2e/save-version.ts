@@ -3,4 +3,4 @@
  * packages/server/src/save.ts (tests/fixtures/save-version.test.ts checks it). During the source
  * retrofit older saves are refused, so bump this together with SAVE_VERSION.
  */
-export const E2E_SAVE_VERSION = 28;
+export const E2E_SAVE_VERSION = 29;

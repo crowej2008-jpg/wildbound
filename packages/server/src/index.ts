@@ -355,8 +355,6 @@ export interface GameServer {
   evolveResonance(): Promise<Result<AccountSnapshot>>;
   /** R7: raise the evolved crystal one level. */
   upgradeResonance(): Promise<Result<AccountSnapshot>>;
-  /** Claim today's VIP Common Ticket supply (M11.10). */
-  claimVipDaily(): Promise<Result<ClaimResult>>;
   /** Activate, upgrade or continue a title with Title Tickets (M11.11). */
   activateTitle(titleId: string): Promise<Result<AccountSnapshot>>;
   /** Equip an owned title in its slot, or clear it with `null` (M11.11). */

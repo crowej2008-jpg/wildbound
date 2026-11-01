@@ -1,55 +1,59 @@
 import { t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
 
-/** M11.10: VIP tier, perks and the daily supply claim on the Trainer screen. */
+/**
+ * R8: the source's VIP 0–40 on the Trainer screen. Privilege XP comes from daily activity (no purchases);
+ * the perks Wildbound has a system for are live, the rest are listed as coming.
+ */
 export default function VipPanel() {
-  const { snapshot, busy, call } = useServer();
+  const { snapshot } = useServer();
   if (!snapshot) return null;
   const view = snapshot.vip;
-  const claim = async () => {
-    await call((server) => server.claimVipDaily(), (value) => value.snapshot);
-  };
-
+  const p = view.perks;
+  const pct = (v: number) => `+${Math.round(v * 100)}%`;
   return (
     <section className="card">
       <h2 className="section-title">{t('trainer.vip')}</h2>
-      <p className="muted">{t('trainer.vipNote')}</p>
+      <p className="muted">{t('trainer.vipNote').replace('{xp}', String(view.dailyActivityXp))}</p>
       <div className="gear-head">
         <strong>
-          {t('trainer.vip.badge')} {view.tier} · {view.name}
+          {t('trainer.vip.badge')} {view.level}
         </strong>
-        <span className="chip">{t('trainer.vip.xp')}: {view.xp.toLocaleString()}</span>
+        <span className="chip">
+          {t('currency.privilegeXp')}: {view.xp.toLocaleString()}
+        </span>
       </div>
       <p className="muted">
         {view.next
-          ? `${t('trainer.vip.next')}: ${view.next.name} · ${view.next.remaining.toLocaleString()} XP`
+          ? `${t('trainer.vip.next')}: VIP ${view.next.level} · ${view.next.remaining.toLocaleString()} ${t('currency.privilegeXp')}`
           : t('trainer.vip.max')}
       </p>
       <div className="stat-grid">
         <div className="stat-row">
-          <span className="muted">{t('trainer.vip.idle')}</span>
-          <strong>+{view.idleCapBonusHours}h</strong>
+          <span className="muted">{t('trainer.vip.idleCap')}</span>
+          <strong>{p.idleCapHours} h</strong>
         </div>
         <div className="stat-row">
-          <span className="muted">{t('trainer.vip.shop')}</span>
-          <strong>{Math.round(view.shopDiscount * 100)}%</strong>
+          <span className="muted">{t('trainer.vip.idleBonus')}</span>
+          <strong>{pct(p.idleCandyBonus)}</strong>
         </div>
         <div className="stat-row">
-          <span className="muted">{t('trainer.vip.daily')}</span>
-          <strong>{view.dailyTickets} {t('trainer.vip.ticketsPerDay')}</strong>
+          <span className="muted">{t('trainer.vip.quick')}</span>
+          <strong>
+            {p.quickCombat} ({p.quickCombatFree} {t('trainer.vip.free')})
+          </strong>
+        </div>
+        <div className="stat-row">
+          <span className="muted">{t('trainer.vip.arenaBuys')}</span>
+          <strong>{p.arenaBuys}</strong>
         </div>
       </div>
-      <div className="row-actions">
-        {view.canClaim ? (
-          <button type="button" className="btn btn-primary" disabled={busy} onClick={() => void claim()}>
-            {t('trainer.vip.claim')} · {view.dailyTickets} {t('trainer.vip.ticketsPerDay')}
-          </button>
-        ) : view.claimedToday ? (
-          <p className="muted">{t('trainer.vip.claimed')}</p>
-        ) : (
-          <p className="muted">{t('trainer.vip.locked')}</p>
-        )}
-      </div>
+      <p className="muted">
+        {t('trainer.vip.coming')
+          .replace('{dungeons}', String(p.dungeonBuys))
+          .replace('{refreshes}', String(p.dailyShopRefreshes))
+          .replace('{bag}', String(p.bag))}
+      </p>
     </section>
   );
 }

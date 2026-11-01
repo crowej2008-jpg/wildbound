@@ -69,6 +69,10 @@ shares (4 HP, 1 P.ATK, 1 S.ATK, 0.5 P/S.DEF, 0.05 SPD) × [Link Crystal](pve-mod
 Trainer screen. Save v11.
 
 ## VIP
+**R8 (2026-11-01):** the source's VIP 0–40 from Privilege XP (60 a day from daily activity; nothing is bought).
+Perks wired: idle cap 8–24 h and Candy / Gold bonus, Quick Combat a day (first ones free), Arena buys. Replaces
+the seven tiers below. ASSUMPTIONS #72.
+
 Seven tiers (Visitor → Crown) from **lifetime XP** (0–250,000) — nothing is bought. Perks: extra idle
 hours, shop discount, daily Common Ticket supply. Save v12.
 

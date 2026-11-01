@@ -17,6 +17,7 @@ import {
 import { modeBattle } from '../battle';
 import { applyGrant } from '../economy';
 import { fail, ok, type Result } from '../index';
+import { vipPerks } from '../vip';
 import type { GameConfig } from '../config';
 import type { BattleOutcome } from '../pve/shared';
 import { arenaOpponentAt, arenaTuning, arenaUnlocked } from './shared';
@@ -94,6 +95,9 @@ export function buyArenaAttempts(
   const tuning = arenaTuning(config);
   if (!Number.isInteger(count) || count <= 0) return fail('invalid_input', 'count must be a positive integer');
   let arena = rollArenaDay(state.pvp.arena, dayKey(now));
+  // R8: the VIP level caps the day's attempt buys (vip_priv arena_buy_num).
+  const cap = vipPerks(config, state).arenaBuys;
+  if (arena.bought + count > cap) return fail('daily_limit', `VIP ${vipPerks(config, state).level} buys ${cap} attempts a day`);
   let spent = 0;
   for (let i = 0; i < count; i += 1) {
     spent += arenaAttemptPrice(arena, tuning);

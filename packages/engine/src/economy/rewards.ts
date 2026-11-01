@@ -42,6 +42,7 @@ export interface Rewards {
   berryMulchOrange?: number;
   berryMulchRed?: number;
   reforgePotion?: number;
+  privilegeXp?: number;
   xp?: number;
 }
 
@@ -84,6 +85,7 @@ export const CURRENCY_REWARD_KEYS = [
   'berryMulchOrange',
   'berryMulchRed',
   'reforgePotion',
+  'privilegeXp',
 ] as const;
 
 /** Every key of a bundle, currencies then `xp`. */

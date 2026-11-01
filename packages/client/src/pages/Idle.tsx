@@ -14,7 +14,6 @@ import { currencyLabel, t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
 
 const ORDERED = orderStages(STAGES as StageDef[]);
-const CAP_MINUTES = Math.round(ECONOMY.idle.capHours * 60);
 
 /** Idle income screen (M5, PROMPT §7.4): accrued rewards, claim, quick-collect. */
 export default function Idle() {
@@ -30,15 +29,24 @@ export default function Idle() {
   const state = snapshot?.state;
   const offset = state?.debugClockOffset ?? 0;
   const now = Date.now() + offset * 60_000;
-  const rate = useMemo(() => (state ? bestIdleStage(state.campaign, ORDERED)?.idlePerMinute ?? {} : {}), [state]);
+  // R8: the VIP level sets the idle cap, the XP Candy / Gold bonus and the Quick Combat count (first ones free).
+  const perks = snapshot?.vip.perks;
+  const capMinutes = (perks?.idleCapHours ?? 8) * 60;
+  const quickLimit = perks?.quickCombat ?? 0;
+  const quickFree = perks?.quickCombatFree ?? 0;
+  const rate = useMemo(() => {
+    const base: Rewards = { ...(state ? bestIdleStage(state.campaign, ORDERED)?.idlePerMinute ?? {} : {}) };
+    if (base.candy) base.candy *= 1 + (perks?.idleCandyBonus ?? 0);
+    if (base.gold) base.gold *= 1 + (perks?.idleGoldBonus ?? 0);
+    return base;
+  }, [state, perks]);
   const lastClaimAt = state?.idle.lastClaimAt ?? now;
-  const pending = state ? pendingIdle(rate, lastClaimAt, now, CAP_MINUTES) : {};
-  const accrued = accruedMinutes(lastClaimAt, now, CAP_MINUTES);
+  const pending = state ? pendingIdle(rate, lastClaimAt, now, capMinutes) : {};
+  const accrued = accruedMinutes(lastClaimAt, now, capMinutes);
   const day = new Date(now).toISOString().slice(0, 10);
-  const quickLeft =
-    state && state.idle.quickClaimDay === day
-      ? Math.max(0, ECONOMY.idle.quickCollectDailyLimit - state.idle.quickClaims)
-      : ECONOMY.idle.quickCollectDailyLimit;
+  const usedToday = state && state.idle.quickClaimDay === day ? state.idle.quickClaims : 0;
+  const quickLeft = Math.max(0, quickLimit - usedToday);
+  const quickPrice = usedToday < quickFree ? 0 : ECONOMY.idle.quickCollectGems;
 
   const onClaim = async (quick: boolean) => {
     setGranted(null);
@@ -59,10 +67,10 @@ export default function Idle() {
               {t('idle.from')} {ORDERED.find((s) => s.id === state.idle.bestStageId)?.name ?? state.idle.bestStageId}
             </p>
             <div className="idle-bar">
-              <div className="idle-bar-fill" style={{ width: `${Math.min(100, (accrued / CAP_MINUTES) * 100)}%` }} />
+              <div className="idle-bar-fill" style={{ width: `${Math.min(100, (accrued / capMinutes) * 100)}%` }} />
             </div>
             <p className="muted">
-              {accrued} / {CAP_MINUTES} {t('idle.minutes')}
+              {accrued} / {capMinutes} {t('idle.minutes')}
             </p>
             <RewardLine rewards={pending} />
           </>
@@ -84,14 +92,14 @@ export default function Idle() {
           <button
             type="button"
             className="btn"
-            disabled={busy || quickLeft <= 0 || (state?.currencies.gems ?? 0) < ECONOMY.idle.quickCollectGems}
+            disabled={busy || quickLeft <= 0 || (state?.currencies.gems ?? 0) < quickPrice}
             onClick={() => void onClaim(true)}
           >
-            {t('idle.quick')} · {ECONOMY.idle.quickCollectGems} {currencyLabel.gems}
+            {t('idle.quick')} · {quickPrice === 0 ? t('idle.free') : `${quickPrice} ${currencyLabel.gems}`}
           </button>
         </div>
         <p className="muted">
-          {t('idle.quickLeft')}: {quickLeft} / {ECONOMY.idle.quickCollectDailyLimit}
+          {t('idle.quickLeft')}: {quickLeft} / {quickLimit}
         </p>
         {granted && <RewardLine rewards={granted} />}
       </section>

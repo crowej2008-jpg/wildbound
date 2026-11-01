@@ -892,3 +892,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     slot cooldown (the source names Respawn and Rewind; a plain take-out is unconfirmed); Pokémon with fewer than six
     others give a crystal level of 0. This replaces the M8 Link Crystal mode and the M11.9 stat-share slots.
 
+
+72. **R8 VIP.** Copied from the source (`vip_priv_json`, 41 levels, VIP 0–40). The level comes from Privilege XP;
+    the source counts top-up Diamonds, but Wildbound sells nothing (free-to-play), so the only Privilege XP is the
+    source's free one: 60 a day from daily activity. Until R9 brings the source dailies (their 120-point chest),
+    the top 80-point activity chest pays it. Perks wired: the idle cap (8 h at VIP 0 … 24 h), the idle XP Candy /
+    Gold bonus, Quick Combat (Wildbound's quick-collect) a day with the first ones free, and Arena attempt buys a
+    day. Shown but waiting for their systems: daily dungeon buys, Daily Shop refreshes, bag size, Golden Touch and
+    the Exclusive Packs. Replaces the M11 seven-tier lifetime-XP VIP (and its daily claim and shop discount); the
+    old `idle.capHours` / `quickCollectDailyLimit` tuning is gone.

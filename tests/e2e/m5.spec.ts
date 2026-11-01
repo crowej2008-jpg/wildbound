@@ -14,7 +14,7 @@ async function clearFirstStage(page: Page): Promise<void> {
   await page.getByRole('button', { name: 'Back to campaign' }).click();
 }
 
-/** Skips ahead using the debug clock on More (12h fills the idle cap). */
+/** Skips ahead using the debug clock on More (12h more than fills the 8h VIP 0 idle cap). */
 async function advanceClock(page: Page, hours: '1' | '12' | '24'): Promise<void> {
   await page.goto('/more');
   await page.getByRole('button', { name: `+${hours}h` }).click();

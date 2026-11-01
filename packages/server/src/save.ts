@@ -21,7 +21,6 @@ import {
   initialResonance,
   initialShopState,
   initialTitles,
-  initialVip,
   initialSkyPillar,
   TITLE_SLOTS,
   type AccountState,
@@ -39,14 +38,14 @@ import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 28;
+export const SAVE_VERSION = 29;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 28;
+export const MIN_SAVE_VERSION = 29;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -157,7 +156,6 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     trinketItems: s.trinketItems ?? {},
     trinkets: s.trinkets ?? {},
     resonance: normalizeResonance(s.resonance, config),
-    vip: { lastClaimDay: s.vip?.lastClaimDay ?? null },
     titles: normalizeTitles(s.titles, now),
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
@@ -252,7 +250,6 @@ export function createInitialState(config: GameConfig): AccountState {
     plates: {},
     trinkets: {},
     resonance: initialResonance(config.resonance),
-    vip: initialVip(),
     titles: initialTitles(),
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),

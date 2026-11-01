@@ -2,8 +2,8 @@ import {
   ACCOUNT,
   CAMPAIGN,
   CHAPTERS,
-  COLLECTION_TUNING,
   RESONANCE,
+  VIP,
   ECONOMY,
   EXPLORE,
   GROWTH,
@@ -32,10 +32,10 @@ import {
   TRINKET_RULES,
   POTENTIAL,
 } from '@wildbound/content';
+import type { VipJson } from '@wildbound/content';
 import type {
   CampaignJson,
   ChapterMetaJson,
-  CollectionJson,
   EconomyJson,
   ExploreJson,
   GymJson,
@@ -96,10 +96,8 @@ export function firstStar(meta: SpeciesMeta): number {
 }
 
 export interface IdleConfig {
-  capMinutes: number;
   quickCollectMinutes: number;
   quickCollectGems: number;
-  quickCollectDailyLimit: number;
 }
 
 export interface GameConfig {
@@ -133,13 +131,14 @@ export interface GameConfig {
   /** M7 equipment catalogue + tuning. */
   equipment: EquipmentTables;
   /** M11 collection costs. */
-  collection: CollectionJson;
   /** R4: the source's Potential (trees, costs, options). */
   potential: PotentialTable;
   /** M8 PvE mode tables (tower, trials, world boss, dungeons, link crystal). */
   pve: PveJson;
   /** R7: the source's Resonance. */
   resonance: ResonanceTables;
+  /** R8: the source's VIP 0–40. */
+  vip: VipJson;
   pvp: PvpJson;
   /** M11.11 title catalogue. */
   titles: TitlesJson;
@@ -191,7 +190,6 @@ export function buildConfig(): GameConfig {
     gacha: { machines: GACHA.machines as unknown as GachaMachineDef[] },
     shops: SHOPS as unknown as ShopDef[],
     economy: ECONOMY,
-    collection: COLLECTION_TUNING,
     potential: POTENTIAL as unknown as PotentialTable,
     equipment: {
       relics: RELICS as unknown as RelicDef[],
@@ -206,15 +204,14 @@ export function buildConfig(): GameConfig {
     },
     pve: PVE,
     resonance: RESONANCE as ResonanceTables,
+    vip: VIP,
     pvp: PVP,
     titles: TITLES,
     titleById: new Map(TITLES.map((title) => [title.id, title])),
     xpCurve: { base: ECONOMY.xp.base, exponent: ECONOMY.xp.exponent, maxLevel: ECONOMY.xp.maxLevel },
     idle: {
-      capMinutes: Math.round(ECONOMY.idle.capHours * 60),
       quickCollectMinutes: Math.round(ECONOMY.idle.quickCollectHours * 60),
       quickCollectGems: ECONOMY.idle.quickCollectGems,
-      quickCollectDailyLimit: ECONOMY.idle.quickCollectDailyLimit,
     },
     now: () => Date.now(),
     rng: mulberry32(0x5eed),

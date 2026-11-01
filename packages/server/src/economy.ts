@@ -1,3 +1,4 @@
+import { vipPerks } from './vip';
 import {
   addRewards,
   applyRewards,
@@ -26,7 +27,13 @@ export function applyGrant(config: GameConfig, state: AccountState, rewards: Rew
 /** The per-minute idle rate from the best cleared stage (empty when none). */
 export function bestIdleRate(config: GameConfig, state: AccountState): Rewards {
   const best = bestIdleStage(state.campaign, config.stages);
-  return best ? best.idlePerMinute : {};
+  if (!best) return {};
+  // R8: the VIP level's idle XP Candy / Gold bonus (vip_priv guaji_reward_rate).
+  const perks = vipPerks(config, state);
+  const rate: Rewards = { ...best.idlePerMinute };
+  if (rate.candy) rate.candy *= 1 + perks.idleCandyBonus;
+  if (rate.gold) rate.gold *= 1 + perks.idleGoldBonus;
+  return rate;
 }
 
 /** The best cleared stage id, for the idle slice's display pointer. */
