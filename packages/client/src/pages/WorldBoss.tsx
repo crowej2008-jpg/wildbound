@@ -39,6 +39,7 @@ export default function WorldBoss() {
         view={battle.battle}
         attackerLabel={t('combat.team.attackers')}
         defenderLabel={battle.name}
+        canSkip={view?.canSkip ?? false}
         resultExtra={
           <section className="card result-rewards result-win">
             <div className="result-banner">
@@ -47,6 +48,7 @@ export default function WorldBoss() {
             <p className="muted">
               {t('boss.rank')} #{battle.rank} {t('boss.ghosts')}
             </p>
+            <RewardLine rewards={battle.rewards} />
             <button type="button" className="btn btn-primary" onClick={() => setBattle(null)}>
               {t('boss.back')}
             </button>
@@ -97,6 +99,10 @@ export default function WorldBoss() {
             {(view.open ? t('boss.closesIn') : t('boss.opensIn'))}: {formatDuration(view.windowMs)} ·{' '}
             {t('boss.windows')}: {view.windows.map((w) => `${w.startHour}:00–${w.endHour}:00`).join(', ')} UTC
           </p>
+          <p className="muted">
+            {t('boss.dropNote')} {view.canSkip ? '' : t('boss.skipVip').replace('{vip}', String(view.skipVip))}
+          </p>
+          <RewardLine rewards={view.drop} />
           <p className="muted">
             {t('boss.rankRewards')}:{' '}
             {view.rankRewards.map((r, i) => {

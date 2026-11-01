@@ -10,6 +10,8 @@ export interface StageEnemy {
   stars: number;
   /** evolution stage (0-based). */
   stage: number;
+  /** R9: multipliers on the enemy's sheet (the World Boss). */
+  mult?: { hp: number; atk: number; def: number };
 }
 
 /** Currency/xp payout. Keys are currencies plus `xp` for trainer experience. */

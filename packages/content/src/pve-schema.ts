@@ -86,6 +86,12 @@ export const worldBossSchema = z
       .min(1),
     /** Paid by mail when a window closes: the first row whose `upToRank` covers the rank. */
     rankRewards: z.array(z.object({ upToRank: z.number().int().positive(), rewards: rewardSchema }).strict()).min(1),
+    /** Owner (2026-11-01): every fight drops 5-Star Pokémon Shards (the source's drop bag is not in the dumps). */
+    dropPerFight: rewardSchema,
+    /** Source fight_basic dtype 12: skipping the boss fight needs this VIP level. */
+    skipVip: z.number().int().min(0),
+    /** Owner (2026-11-01): a really strong boss that cannot die — multipliers on its sheet. */
+    boss: z.object({ hpMult: z.number().positive(), atkMult: z.number().positive(), defMult: z.number().positive() }).strict(),
     enemy: enemyPoolSchema,
     rotation: z
       .array(

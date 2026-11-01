@@ -55,8 +55,17 @@ export function challengeWorldBoss(
   }
 
   const spec = config.pve.worldBoss.enemy;
+  // Owner (2026-11-01): a really strong boss that cannot die; the fight runs its rounds on damage.
+  const top = config.species.get(boss.speciesId)?.stars.at(-1);
+  const b = tuning.boss;
   const enemies: StageEnemy[] = [
-    { speciesId: boss.speciesId, level: spec.baseLevel, stars: spec.maxStars, stage: spec.maxStage },
+    {
+      speciesId: boss.speciesId,
+      level: Math.max(spec.baseLevel, top?.maxLevel ?? spec.baseLevel),
+      stars: 99,
+      stage: spec.maxStage,
+      mult: { hp: b.hpMult, atk: b.atkMult, def: b.defMult },
+    },
   ];
   const battle = modeBattle(config, state, {
     squadMode: 'worldBoss',
@@ -64,19 +73,22 @@ export function challengeWorldBoss(
     enemies,
     battleId: `m8:worldboss:${boss.speciesId}`,
     seed,
+    rules: { undyingDefenders: true },
   });
   if (!battle) return fail('not_found', 'no Wilds available to fight');
 
   const damage = attackerDamage(battle);
   const recorded = recordBossDamage(rolled, damage, tuning.historyCap);
-  const next = applyGrant(config, { ...state, pve: { ...state.pve, worldBoss: recorded } }, {});
+  // Owner (2026-11-01): every fight drops 5-Star Pokémon Shards.
+  const drop = tuning.dropPerFight as Rewards;
+  const next = applyGrant(config, { ...state, pve: { ...state.pve, worldBoss: recorded } }, drop);
   const ghosts = ghostRecords(recorded.history, 0x5eed, tuning.ghostCount);
   const claimable = claimableMilestones(recorded, recorded.score, config.pve.worldBoss.milestones);
   return ok({
     state: next,
     battle,
     win: battle.winner === 'attackers',
-    rewards: {},
+    rewards: drop,
     extra: {
       speciesId: boss.speciesId,
       name: boss.name,

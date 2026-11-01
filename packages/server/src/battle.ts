@@ -319,8 +319,20 @@ export function buildEnemyTeam(enemies: StageEnemy[], config: GameConfig): Built
     const star = enemyStar(species, enemy.stars);
     const card = cardOf(species, star);
     const core = resolveCoreStats(card, enemy.level);
-    const sheet: SheetInput = { hp: core.hp, pAtk: core.pAtk, sAtk: core.sAtk, spd: core.spd, pDef: core.pDef, sDef: core.sDef };
-    const unitPower = computePower(core, {}, config.power);
+    const m = enemy.mult ?? { hp: 1, atk: 1, def: 1 };
+    const sheet: SheetInput = {
+      hp: Math.round(core.hp * m.hp),
+      pAtk: Math.round(core.pAtk * m.atk),
+      sAtk: Math.round(core.sAtk * m.atk),
+      spd: core.spd,
+      pDef: Math.round(core.pDef * m.def),
+      sDef: Math.round(core.sDef * m.def),
+    };
+    const unitPower = computePower(
+      { ...core, hp: sheet.hp, pAtk: sheet.pAtk, sAtk: sheet.sAtk, pDef: sheet.pDef ?? 0, sDef: sheet.sDef ?? 0 },
+      {},
+      config.power,
+    );
     const position = slotToPosition(slot);
     const id = `defenders-${slot}`;
     specs.push({

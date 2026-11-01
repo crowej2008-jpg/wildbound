@@ -166,6 +166,8 @@ export interface WorldBossBattleResult {
   rank: number;
   ghosts: number[];
   attemptsLeft: number;
+  /** R9 (owner): the fight's drop. */
+  rewards: Rewards;
   snapshot: AccountSnapshot;
 }
 

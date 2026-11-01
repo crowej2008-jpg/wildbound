@@ -676,6 +676,8 @@ export const en = {
   'boss.today': "Today's boss",
   'boss.closed': 'The World Boss is not up right now.',
   'boss.score': 'This window',
+  'boss.dropNote': 'The boss cannot be defeated — every fight scores its damage and drops:',
+  'boss.skipVip': '(Skipping the fight needs VIP {vip}.)',
   'boss.closesIn': 'Window closes in',
   'boss.opensIn': 'Next window in',
   'boss.windows': 'Windows',

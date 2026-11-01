@@ -993,5 +993,8 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     total damage (kb: the score is the damage); it reaches the five milestones (300,000 → 1,500,000: Gold and
     Diamonds) and ranks against the ghost ladder, and the rank reward (1, 2, 3, 4–10, 11–20) comes by mail when the
     window closes (settled on load). Readings: milestones are per window; the ladder has 19 ghosts so the 11–20 row
-    can be reached. Not copied: the fight drops (the drop bag is not in the dumps), the auctions (guild, M15) and
-    the VIP 14 skip. The boss's own stats stay a stand-in. Replaces the one-fight-a-day stand-in bosses.
+    can be reached. Not copied: the auctions (guild, M15). Owner's
+    changes (2026-11-01): every fight drops 5-Star Pokémon Shards ×15 (the source's displayed amount; its drop bag
+    is not in the dumps); the boss is really strong — its top star at its top level, HP ×200, Attack ×4, DEF ×3
+    — and cannot die (`undyingDefenders`: held at 1 HP, every hit's damage still scores), so each fight runs its
+    rounds. Skipping the fight needs VIP 14 as in the source (fight_basic dtype 12). Replaces the one-fight-a-day stand-in bosses.

@@ -223,3 +223,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R9 World Boss
 - The source's weekday Megas, two windows a day, milestones and mailed rank rewards (ASSUMPTIONS #80, save v36).
   Next: Trials, then summoning.
+
+## [2026-11-01] update | World Boss owner changes
+- Owner: drops are 5-Star Pokémon Shards; add the VIP 14 skip; the boss is really strong and cannot die.

@@ -260,6 +260,8 @@ export function channelHit(
       ctx.pendingEndure = [...(ctx.pendingEndure ?? []), defender];
     }
   }
+  // R9: an undying side (the World Boss) is held at 1 HP.
+  if (ctx.rules?.undyingDefenders && defender.side === 'defenders') hpLost = Math.min(hpLost, Math.max(0, defender.hp - 1));
   if (hpLost > 0) {
     defender.hp -= hpLost;
     defender.lostTotal = (defender.lostTotal ?? 0) + hpLost;

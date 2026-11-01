@@ -7,6 +7,7 @@ import {
 } from '@wildbound/engine';
 import { curveLevel } from '@wildbound/engine';
 import type { GameConfig } from './config';
+import { vipPerks } from './vip';
 import {
   hardTowerRule,
   resolveCurve,
@@ -181,6 +182,11 @@ export interface WorldBossView {
   /** Ms until the window closes (open) or the next one opens. */
   windowMs: number;
   windows: { startHour: number; endHour: number }[];
+  /** Source: skipping the boss fight needs VIP 14. */
+  canSkip: boolean;
+  skipVip: number;
+  /** Owner: what every fight drops. */
+  drop: Rewards;
 }
 
 export function buildWorldBossView(config: GameConfig, state: AccountState, now: number): WorldBossView {
@@ -212,6 +218,9 @@ export function buildWorldBossView(config: GameConfig, state: AccountState, now:
     rankRewards: tuning.rankRewards.map((r) => ({ upToRank: r.upToRank, rewards: r.rewards as Rewards })),
     windowMs: (window.open ? window.closesAt : window.opensAt) - now,
     windows: tuning.windows,
+    canSkip: vipPerks(config, state).level >= tuning.skipVip,
+    skipVip: tuning.skipVip,
+    drop: tuning.dropPerFight as Rewards,
   };
 }
 

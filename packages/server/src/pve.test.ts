@@ -216,6 +216,19 @@ describe('PvE modes (server glue)', () => {
     expect(settled.pve.worldBoss.score).toBe(0);
   });
 
+  it('the boss is really strong, cannot die, and every fight drops 5-Star Pokémon Shards (owner)', () => {
+    const cfg = config();
+    const state = strongState(cfg);
+    const fight = challengeWorldBoss(cfg, state, NOW, 9);
+    if (!fight.ok) throw new Error(fight.message);
+    const v = fight.value.battle;
+    expect(v.events.some((e) => e.type === 'death' && e.unit.startsWith('defenders'))).toBe(false);
+    expect(v.winner).not.toBe('attackers');
+    expect(fight.value.rewards).toEqual({ pokemonShard5: 15 });
+    expect(fight.value.state.currencies.pokemonShard5).toBe(state.currencies.pokemonShard5 + 15);
+    expect(fight.value.extra.damage).toBeGreaterThan(0);
+  });
+
   it('claims a reached world-boss milestone exactly once', () => {
     const cfg = config();
     const state = strongState(cfg);

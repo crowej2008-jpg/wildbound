@@ -58,6 +58,10 @@ pve.worldBoss = {
   historyCap: pve.worldBoss.historyCap,
   milestones,
   rankRewards,
+  // Owner's changes (2026-11-01), kept across re-imports.
+  dropPerFight: pve.worldBoss.dropPerFight,
+  skipVip: 14, // fight_basic_json dtype 12 skip [[4, 14]]
+  boss: pve.worldBoss.boss,
   enemy: pve.worldBoss.enemy,
   rotation,
 };

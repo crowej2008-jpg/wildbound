@@ -798,6 +798,11 @@ export interface BattleRules {
    * attackers win if any of them is still alive when the rounds run out.
    */
   survivalRounds?: number;
+  /**
+   * R9 (owner, World Boss): the defenders never drop below 1 HP, so the fight always runs its rounds and is
+   * scored on the damage dealt (which counts in full).
+   */
+  undyingDefenders?: boolean;
 }
 
 /** Skips give an action slot with no skill (`skill: null`). */

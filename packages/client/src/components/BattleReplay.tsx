@@ -40,6 +40,8 @@ interface BattleReplayProps {
   resultExtra?: ReactNode;
   /** Fired once when playback first reaches the end. */
   onFinished?: () => void;
+  /** R9: false hides Skip to end (the World Boss below VIP 14). */
+  canSkip?: boolean;
 }
 
 /**
@@ -54,6 +56,7 @@ export default function BattleReplay({
   backTo,
   resultExtra,
   onFinished,
+  canSkip,
 }: BattleReplayProps) {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -147,9 +150,11 @@ export default function BattleReplay({
         <button type="button" className="btn" onClick={() => { setPlaying(false); setIndex(0); }}>
           {t('combat.restart')}
         </button>
-        <button type="button" className="btn" onClick={() => { setPlaying(false); setIndex(events.length); }} disabled={done}>
-          {t('combat.skip')}
-        </button>
+        {canSkip !== false && (
+          <button type="button" className="btn" onClick={() => { setPlaying(false); setIndex(events.length); }} disabled={done}>
+            {t('combat.skip')}
+          </button>
+        )}
       </div>
 
       {done && (

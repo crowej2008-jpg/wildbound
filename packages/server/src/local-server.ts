@@ -1171,6 +1171,7 @@ export class LocalServer implements GameServer {
       rank: value.extra.rank,
       ghosts: value.extra.ghosts,
       attemptsLeft: value.extra.attemptsLeft,
+      rewards: value.rewards,
       snapshot: committed.value,
     });
   }

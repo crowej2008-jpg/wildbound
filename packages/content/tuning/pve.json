@@ -115,6 +115,15 @@
         }
       }
     ],
+    "dropPerFight": {
+      "pokemonShard5": 15
+    },
+    "skipVip": 14,
+    "boss": {
+      "hpMult": 200,
+      "atkMult": 4,
+      "defMult": 3
+    },
     "enemy": {
       "factions": [],
       "tiers": [
@@ -206,7 +215,7 @@
     {
       "id": "silentpeak",
       "name": "Silent Peak",
-      "tagline": "No ultimates land here — win on basic kits alone.",
+      "tagline": "No ultimates land here \u2014 win on basic kits alone.",
       "rule": "noUltimate",
       "unlockLevel": 1,
       "preview": {
@@ -301,7 +310,7 @@
     {
       "id": "moonfall",
       "name": "Moonfall Crypt",
-      "tagline": "Opens Tue, Thu and Sat only — Shade rises with the moon.",
+      "tagline": "Opens Tue, Thu and Sat only \u2014 Shade rises with the moon.",
       "rule": "weekdayBoss",
       "weekdays": [
         2,
