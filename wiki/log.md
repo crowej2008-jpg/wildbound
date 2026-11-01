@@ -141,3 +141,12 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: build orbs now with stand-ins, *"the orbs go upto lvl 10 at the max so make sure to scale it up"*.
   Orb tables searched on the owner's PC too (data folder, Downloads, the game's APK — a wrapper that downloads
   its tables): not there. Built from kb + wiki /orbs/sets /orbs/stats + the dismantle table. Save v23.
+
+## [2026-11-01] query | R6 data check
+- Berries: berry_basic (19), berry_star_up (16), berry_attr (15 cultivation elements, caps by breakthrough
+  stage 0–4), berry_break_up (4 stages, trainer level 40/45/50/60), berry_reborn_reset (reset 100 💎, reforge
+  10/20/35 potions by locked lines) are dumped; the berry skills (42xxx) are not — only the kb/wiki texts.
+- Plates: stone_basic (54), stone_up_stage (54), hero_stone_skill (78), hero_slate_skill (6) dumped.
+- Soul-hearts: tables not dumped; kb has qualities, star EXP, unlock (10★), the 18 source sets (owner keeps his
+  nine). Trinkets: see kb/exclusive-trinkets.md (costs, levels, skills).
+- Order chosen: Plates first (complete data), then Trinkets, Soul-heart rules, Berries.
