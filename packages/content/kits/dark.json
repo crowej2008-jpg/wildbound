@@ -551,6 +551,84 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Upon a successful block, heal self for 4% of max HP",
+        "triggers": [
+          {
+            "on": "onBlock",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.04,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Upon a successful block, heal self for 5.5% of max HP",
+        "triggers": [
+          {
+            "on": "onBlock",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.055,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Upon a successful block, heal self for 7% of max HP",
+        "triggers": [
+          {
+            "on": "onBlock",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.07,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Upon a successful block, heal self for 9% of max HP",
+        "triggers": [
+          {
+            "on": "onBlock",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.09,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1583,6 +1661,196 @@
       },
       "18": {
         "text": "Gain bonus damage based on a single target's [Frost] stacks, each stack increasing S.ATK DMG by 35%. After attack, remove all [Frost] stacks from the opponent."
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "When attacking the units with [Frost], reduces the amount of healing the opponent receives by 10% for 2 turn(s) and increases damage by 8%",
+        "damageMods": [
+          {
+            "tag": "blizzard",
+            "dmg": 0.08,
+            "condition": {
+              "targetHasTag": "frost"
+            }
+          }
+        ],
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "frost"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "blizzard-heal-cut",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When attacking the units with [Frost], reduces the amount of healing the opponent receives by 12% for 2 turn(s) and increases damage by 12%",
+        "damageMods": [
+          {
+            "tag": "blizzard",
+            "dmg": 0.12,
+            "condition": {
+              "targetHasTag": "frost"
+            }
+          }
+        ],
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "frost"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "blizzard-heal-cut",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.12,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When attacking the units with [Frost], reduces the amount of healing the opponent receives by 15% for 2 turn(s) and increases damage by 15%; After attack, further reduces the opponent's SPD by 2 for 2 turns.",
+        "damageMods": [
+          {
+            "tag": "blizzard",
+            "dmg": 0.15,
+            "condition": {
+              "targetHasTag": "frost"
+            }
+          }
+        ],
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "frost"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "blizzard-heal-cut",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "frost"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "blizzard-slow",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When attacking the units with [Frost], reduces the amount of healing the opponent receives by 15% for 2 turn(s) and increases damage by 18%; After attack, further reduces the opponent's SPD by 4 for 2 turns.",
+        "damageMods": [
+          {
+            "tag": "blizzard",
+            "dmg": 0.18,
+            "condition": {
+              "targetHasTag": "frost"
+            }
+          }
+        ],
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "frost"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "blizzard-heal-cut",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "frost"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "blizzard-slow",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -4,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -2714,6 +2982,20 @@
           }
         }
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "5% S.ATK damage reduction for every 10% cumulative blood loss(still valid after blood is restored), up to 25% S.ATK damage reduaction, lasting until the end"
+      },
+      "20": {
+        "text": "7% S.ATK damage reduction for every 10% cumulative blood loss(still valid after blood is restored), up to 25% S.ATK damage reduaction, lasting until the end"
+      },
+      "30": {
+        "text": "9% S.ATK damage reduction for every 10% cumulative blood loss(still valid after blood is restored), up to 25% S.ATK damage reduaction, lasting until the end"
+      },
+      "40": {
+        "text": "12% S.ATK damage reduction for every 10% cumulative blood loss(still valid after blood is restored), up to 25% S.ATK damage reduaction, lasting until the end"
+      }
     }
   },
   {
@@ -2974,6 +3256,206 @@
             "ignoreDefense": 0.18
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Starting from turn 2, each turn increases P.ATK by 4% for 10 turns, capping at 32%.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.04,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Starting from turn 2, each turn increases P.ATK by 5% for 10 turns, capping at 40%; While immune to controls, gain 1 additional stacks of P.ATK each turn.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.05,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              },
+              "selfHasTag": "darkrai-immune"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.05,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Starting from turn 2, each turn increases P.ATK by 6% for 10 turns, capping at 48%. When immune to control effects, every turn gains 1 stack of P.ATK Up",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.06,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              },
+              "selfHasTag": "darkrai-immune"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.06,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Starting from turn 2, each turn increases P.ATK by 8% for 10 turns, capping at 64%. When immune to control effects, every turn gains 1 stack of P.ATK Up",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.08,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              },
+              "selfHasTag": "darkrai-immune"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.08,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },

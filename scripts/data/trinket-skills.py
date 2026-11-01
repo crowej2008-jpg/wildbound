@@ -158,3 +158,239 @@ trinket("meloetta", per_tier(lambda amt: {"triggers": [
 trinket("arceus", per_tier(lambda n: {"triggers": [
     trig("afterUlt", [{"op": "cleanse", "target": SELF, "count": n}])]}, [1, 2, 3, 4]))
 tnote("Arceus (Refresh): the S.DEF ignore below 50 % HP has no effect (DEF has no effect).")
+
+# --- batch 4 -------------------------------------------------------------------------------------
+trinket("shiny-arceus", per_tier(lambda n: {"triggers": [
+    trig("afterUlt", [{"op": "cleanse", "target": SELF, "count": n}])]}, [1, 2, 3, 4]))
+
+trinket("kyogre", per_tier(lambda r: {"triggers": [trig("onHit", [rage(SELF, r)])]}, [50, 65, 80, 100]))
+tnote("Kyogre (Frustration): '+Rage when hit, without the passive's high DMG Reduction' — the Rage comes on every hit "
+      "(the passive's reduction window is not checked).")
+
+trinket("deoxys", per_tier(lambda r: {"triggers": [trig("onBlock", [heal(SELF, r, "targetMaxHp")])]},
+                           [0.04, 0.055, 0.07, 0.09]))
+
+def _mew(chance, after_attack):
+    t = [trig("afterBasic", [rage(SELF, 125)]),
+         trig("afterBasic", [give(SELF, buff("mew-trinket-immune", kind="immune", turns=2))], chance=chance)]
+    if after_attack:
+        t = [trig(on, [rage(SELF, 125)]) for on in ATTACKS] + [
+            trig("afterUlt", [rage(SELF, 125)]),
+            trig("afterUlt", [give(SELF, buff("mew-trinket-immune", kind="immune", turns=2))], chance=chance)]
+    return {"triggers": t}
+
+
+trinket("mew", per_tier(_mew, [(0.35, False), (0.35, False), (0.55, False), (0.55, True)]))
+tnote("Mew (Control Immunity Chance): Lv 10-30 — +125 Rage and the immunity roll after the basic skill; Lv 40 — "
+      "+125 Rage after every attack, +125 more and the roll after the ult. The immunity is to every control.")
+
+trinket("cresselia", per_tier(lambda amt, n: {"triggers": [
+    trig(on, [give({"rule": "random", "n": n}, buff("lunar-blade", "atkPct", -amt, stacks=99))]) for on in ("afterNormal", "afterBasic")]},
+    [(0.05, 1), (0.12, 1), (0.18, 1), (0.18, 2)]))
+tnote("Cresselia (Lunar Blade): 'stackable' with no cap or duration — the ATK cut stacks for the battle.")
+
+trinket("celebi", per_tier(lambda r: {"triggers": [
+    trig("afterUlt", [rage({"side": "ally", "rule": "all", "excludeSelf": True}, r, condition={"targetRageAbove": 0.6})])]},
+    [100, 200, 300, 400]))
+tnote("Celebi (Drips of Life): the Rage goes to every ally above 60 % Rage, not one (no 'pick one matching' rule).")
+
+
+def _tinkle(rdct, immune):
+    effs = [give({"side": "ally", "rule": "all"}, buff("healing-tinkle", "dmgRdct", rdct, turns=2, stacks=1),
+                 condition={"targetRageAbove": 0.75})]
+    if immune:
+        effs.append(give({"side": "ally", "rule": "all"}, buff("healing-tinkle-immune", kind="immune", turns=2),
+                         condition={"targetRageAbove": 0.75}))
+    return {"triggers": [trig("afterUlt", effs)]}
+
+
+trinket("manaphy", per_tier(_tinkle, [(0.08, False), (0.08, True), (0.12, True), (0.18, True)]))
+tnote("Shiny Kyogre, Shiny Mew and Shiny Cresselia list no trinket skills in the source.")
+
+# --- batch 5 -------------------------------------------------------------------------------------
+trinket("infernape", per_tier(lambda below, share, undisp: {"triggers": [
+    trig("hpBelow", [shield(SELF, share, "casterHp")], hpBelow=below)]},
+    [(0.35, 0.25, False), (0.4, 0.3, False), (0.45, 0.3, True), (0.5, 0.35, True)]))
+tnote("Infernape (Meditation): the shield comes each time HP falls below the line (re-arms above it); its 3-turn limit and 'cannot be dispelled' are not kept (shields have neither).")
+
+
+def _blizzard(cut, dmg_up, slow):
+    out = {"damageMods": [{"tag": "blizzard", "dmg": dmg_up, "condition": {"targetHasTag": "frost"}}],
+           "triggers": [trig("onDealDamage", [give(T, buff("blizzard-heal-cut", "receiveHealBoost", -cut, turns=2, stacks=1))],
+                             condition={"targetHasTag": "frost"})]}
+    if slow:
+        out["triggers"].append(trig("onDealDamage", [give(T, buff("blizzard-slow", "spd", -slow, turns=2, stacks=1))],
+                                    condition={"targetHasTag": "frost"}))
+    return out
+
+
+trinket("black-kyurem", per_tier(_blizzard, [(0.1, 0.08, 0), (0.12, 0.12, 0), (0.15, 0.15, 2), (0.15, 0.18, 4)]))
+tnote("Shiny Kyurem lists no trinket skills in the source.")
+
+trinket("shaymin", per_tier(lambda h: {"triggers": [trig(on, [heal(SELF, h, "casterSAtk")]) for on in ATTACKS]} if h else {},
+                            [0, 0, 0.3, 0.5]))
+tnote("Shaymin (Sweet Scent): the S.DEF cut on [Leech Seed] targets has no effect (DEF has no effect); Lv 30 / 40 heal after each attack.")
+
+trinket("victini", per_tier(lambda turns: {"triggers": [
+    trig("battleStart", [give(SELF, buff("victini-dauntless", kind="endure", turns=turns))])]}, [3, 4, 4, 4]))
+tnote("Victini (Rise from the Dead): [Dauntless] for the first 3 / 4 turns; the dodges and their healing (Lv 20+) are "
+      "not modelled (no dodge).")
+
+_DOT_TAGS = [["burning", "burn"], ["burning", "burn", "flame"], ["burning", "burn", "flame", "poison"],
+             ["burning", "burn", "flame", "poison", "leech-seed"]]
+trinket("palkia", per_tier(lambda tags: {"triggers": [
+    trig("battleStart", [give(SELF, buff("palkia-immune-dots", kind="immune", turns=999, undisp=True, immuneTo=tags))])]},
+    _DOT_TAGS))
+tnote("Palkia (Immune): the DoTs cannot be applied to it (rather than landing for no damage).")
+
+trinket("giratina", per_tier(lambda h, a: {"triggers": [
+    trig("onKill", [heal(SELF, h, "targetMaxHp"), give(SELF, buff("giratina-rains", "sAtk", a, stacks=99))])]},
+    [(0.1, 0.02), (0.15, 0.03), (0.2, 0.04), (0.25, 0.05)]))
+
+trinket("zygarde", {t: {} for t in TIERS})
+tnote("Zygarde (Power Construct): not modelled — [Activity] by HP share, the basic-skill chance per layer and the "
+      "consuming hit need a resource fed by HP.")
+
+trinket("xerneas", per_tier(lambda a, cp: {"statMods": [{"field": "sAtk", "mult": 1 + a}] + (
+    [{"field": "critPower", "add": cp}] if cp else [])}, [(0.05, 0), (0.1, 0.1), (0.15, 0.1), (0.2, 0.2)]))
+tnote("Xerneas (Nature Power): always on — 'while free of dispellable debuffs' is not checked.")
+
+trinket("lunala", {t: {} for t in TIERS})
+tnote("Lunala (Magic Coat): not modelled — the S.ATK reduction grows with cumulative HP lost (no such counter yet).")
+
+trinket("wind-god-pidgeot", per_tier(lambda atk, rd, cap: {"triggers": [
+    trig("onInflictControl", [give(SELF, buff("gale-atk", "atkPct", atk, stacks=round(cap / atk)))] +
+         ([give(SELF, buff("gale-prdct", "pRdct", rd, stacks=round(cap / atk)))] if rd else []), perTurn=3)]},
+    [(0.01, 0, 0.2), (0.01, 0.01, 0.2), (0.01, 0.01, 0.3), (0.02, 0.01, 0.4)]))
+tnote("Wind God Pidgeot (Gale Spell): 3 a turn (not a big round); the cap is in stacks of the ATK gain.")
+
+# --- batch 6 -------------------------------------------------------------------------------------
+trinket("shiny-god-ash-pikachu", per_tier(lambda amt, turns, n: {"triggers": [
+    trig(on, [give(SELF, buff("ruse-basic", "skillBoost", amt, turns=turns, stacks=n))]) for on in ATTACKS]},
+    [(0.1, 2, 2), (0.15, 2, 2), (0.15, 10, 3), (0.15, 10, 3)]))
+tnote("Shiny God Ash-Pikachu: as God Ash-Pikachu.")
+
+trinket("shiny-charizard", per_tier(lambda amt, turns: {"triggers": [
+    trig("onDealDamage", [give(ALLY_ALL, buff("def-killer", "dmgBoost", amt, turns=turns, stacks=1))],
+         condition={"targetClass": "guardian"})]},
+    [(0.15, 1), (0.2, 2), (0.25, 2), (0.3, 2)]))
+tnote("Shiny Charizard (DEF Pokémon Killer): the allies' boost counts against every target, not only [DEF] ones "
+      "(a buff cannot carry a target condition).")
+
+trinket("shiny-raichu", per_tier(lambda amt, turns, n: {"triggers": [
+    trig("onCrit", [give(T, buff("crit-res-down", "critRes", -amt, turns=turns, stacks=n))])]},
+    [(0.08, 3, 1), (0.1, 4, 1), (0.12, 4, 2), (0.15, 5, 2)]))
+
+_SG_IMMUNE = [["freeze"], ["freeze", "mindControl", "confusion"], ["freeze", "mindControl", "confusion", "stun"],
+              ["freeze", "mindControl", "confusion", "stun", "poison"]]
+trinket("shiny-gengar", per_tier(lambda tags: {"triggers": [
+    trig("battleStart", [give(SELF, buff("shiny-gengar-immune", kind="immune", turns=999, undisp=True, immuneTo=tags))])]},
+    _SG_IMMUNE))
+tnote("Shiny Gengar (Immune): Confusion covers the mind control kind too.")
+
+trinket("shiny-venusaur", {t: {} for t in TIERS})
+tnote("Shiny Venusaur (Impair DEF): no effect — DEF has no effect.")
+
+trinket("shiny-darkrai", per_tier(_darkrai_ruse, [(0.04, False), (0.05, True), (0.06, True), (0.08, True)]))
+tnote("Shiny Darkrai: as Darkrai (4-8 % a stack, 8 stacks).")
+
+
+def _raikou(atk, r):
+    return {"triggers": [
+        trig("onKill", [give(SELF, buff("raikou-kill-satk", "sAtk", atk, turns=2, stacks=1)), rage(SELF, r)],
+             condition=ON_ULT, perTurn=1),
+        trig("onDeath", [give(ENEMY_ALL, buff("short-circuit-death", kind="rageBlock", big=1))])]}
+
+
+trinket("raikou", per_tier(_raikou, [(0.1, 125), (0.15, 125), (0.2, 250), (0.25, 250)]))
+
+trinket("entei", per_tier(lambda a, b: {"triggers": [
+    trig("battleStart", [give(SELF, buff("entei-enh", "critPower", a, turns=2))]),
+    trig("afterUlt", [give(SELF, buff("entei-enh-ult", "critPower", b, turns=2))])]},
+    [(0.1, 0.05), (0.15, 0.07), (0.2, 0.09), (0.25, 0.12)]))
+
+trinket("suicune", per_tier(lambda ch, amt: {"triggers": [
+    trig("onHit", [give(T, buff("thorn-rdct-down", "dmgRdct", -amt, turns=2, stacks=1))],
+         condition={"selfHasTag": "thorn"}, chance=ch)]},
+    [(0.5, 0.05), (0.65, 0.08), (0.8, 0.12), (0.9, 0.15)]))
+
+trinket("zapdos", per_tier(lambda ls: {"statMods": [{"field": "lifesteal", "add": ls}]}, [0.08, 0.1, 0.12, 0.15]))
+
+trinket("moltres", per_tier(lambda amt: {"triggers": [
+    trig("onDealDamage", [give(T, buff("burning-amp", "dotTaken", amt, turns=2, stacks=1))],
+         condition={"targetHasTag": "burning"})]},
+    [0.15, 0.22, 0.28, 0.35]))
+
+
+def _articuno(cb, slow, turns):
+    effs = [give(ALLY_ALL, buff("articuno-cb", "controlBoost", cb, turns=999))]
+    if slow:
+        effs.append(give(ENEMY_ALL, buff("articuno-trinket-slow", "spd", -slow, turns=turns)))
+    return {"triggers": [trig("battleStart", effs)]}
+
+
+trinket("articuno", per_tier(_articuno, [(0.15, 0, 0), (0.2, 2, 4), (0.24, 6, 4), (0.28, 10, 6)]))
+
+
+def _endgame(step):
+    return {"triggers": [trig("turnStart", [
+        {"op": "removeBuff", "target": SELF, "tag": "endgame"},
+        give(SELF, buff("endgame", "sAtk", step * 3, turns=1), condition={"enemiesDeadAtLeast": 5}),
+        give(SELF, buff("endgame", "sAtk", step * 2, turns=1), condition={"enemiesDeadAtLeast": 4}),
+        give(SELF, buff("endgame", "sAtk", step, turns=1), condition={"enemiesDeadAtLeast": 3}),
+    ])]}
+
+
+trinket("rayquaza", per_tier(_endgame, [0.03, 0.06, 0.09, 0.12]))
+tnote("Rayquaza (Enhanced End-game): re-set each turn from the fallen enemies (the first matching line wins).")
+
+# --- batch 7 -------------------------------------------------------------------------------------
+trinket("metagross", per_tier(lambda below, r, _turns: {"triggers": [
+    trig("onHit", [rage(T, -r)], condition={"selfHpBelow": below})]},
+    [(0.15, 100, 2), (0.2, 150, 2), (0.25, 200, 2), (0.3, 250, 3)]))
+tnote("Metagross (Reduces Rage at Low HP): each hit taken below the line cuts the attacker's Rage; the 'lasting N turns' has no separate effect.")
+
+trinket("garchomp", per_tier(lambda amt, turns, n: {"triggers": [
+    trig("onDealDamage", [give(T, buff("garchomp-rdct-cut", "dmgRdct", -amt, turns=turns, stacks=n))], condition=ON_ULT)]},
+    [(0.05, 2, 2), (0.07, 3, 2), (0.08, 3, 3), (0.1, 4, 3)]))
+
+
+def _hydreigon(amt):
+    effs = [{"op": "removeBuff", "target": SELF, "tag": "hydra-benefit"}]
+    for k in range(6, 0, -1):
+        effs.append(give(SELF, buff("hydra-benefit", "atkPct", round(amt * k, 4), turns=1, undisp=True),
+                         condition={"enemiesDeadAtLeast": k}))
+    return {"triggers": [trig("turnStart", effs)]}
+
+
+trinket("hydreigon", per_tier(_hydreigon, [0.06, 0.08, 0.1, 0.12]))
+tnote("Hydreigon (Benefit from Damage): counts the fallen enemies only (living ones under the HP line are not counted).")
+
+trinket("gyarados", per_tier(lambda below, gb, c: {"triggers": [
+    trig("turnStart", [give(SELF, buff("impasse-gb", "guardBreak", gb, turns=1)),
+                       give(SELF, buff("impasse-crit", "crit", c, turns=1))], condition={"selfHpBelow": below})]},
+    [(0.15, 0.35, 0.15), (0.2, 0.45, 0.18), (0.25, 0.55, 0.24), (0.35, 0.6, 0.3)]))
+
+trinket("gardevoir", per_tier(lambda start, gb, c, n: {"triggers": [
+    trig("turnStart", [give(SELF, buff("endurance-gb", "guardBreak", gb, stacks=n)),
+                       give(SELF, buff("endurance-crit", "crit", c, stacks=n))], condition={"round": {"from": start}})]},
+    [(4, 0.08, 0.05, 3), (4, 0.1, 0.07, 3), (3, 0.12, 0.08, 3), (3, 0.15, 0.09, 4)]))
+tnote("Gardevoir (Endurance): one stack a turn from the starting round.")
+
+trinket("gengar", per_tier(lambda tags: {"triggers": [
+    trig("battleStart", [give(SELF, buff("gengar-immune", kind="immune", turns=999, undisp=True, immuneTo=tags))])]},
+    _SG_IMMUNE))
+
+trinket("raichu", per_tier(lambda amt, turns, n: {"triggers": [
+    trig("onCrit", [give(T, buff("crit-res-down", "critRes", -amt, turns=turns, stacks=n))])]},
+    [(0.04, 3, 3), (0.06, 4, 3), (0.07, 4, 4), (0.08, 5, 4)]))
+
+trinket("charizard", per_tier(lambda amt, turns: {"triggers": [
+    trig("onDealDamage", [give(ALLY_ALL, buff("def-killer", "dmgBoost", amt, turns=turns, stacks=1))],
+         condition={"targetClass": "guardian"})]},
+    [(0.15, 1), (0.2, 2), (0.25, 2), (0.3, 2)]))
+
+trinket("blastoise", per_tier(_mass_healing, [(0.2, 0.04, 4), (0.28, 0.05, 4), (0.35, 0.05, 5), (0.4, 0.07, 5)]))
+
+trinket("venusaur", {t: {} for t in TIERS})
+tnote("Venusaur (Impair DEF): no effect — DEF has no effect. Charizard / Raichu / Blastoise / Gengar: as their Shiny forms at their own numbers.")

@@ -282,6 +282,512 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "At the beginning of each turn, every opponent who has less than 20% HP on board (including the fallen ones) increases your P.ATK by 6%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "hydra-benefit"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.36,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 6
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.3,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.24,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.18,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.12,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.06,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "At the beginning of each turn, every opponent who has less than 25% HP on board (including the fallen ones) increases your P.ATK by 8%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "hydra-benefit"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.48,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 6
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.4,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.32,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.24,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.16,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.08,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "At the beginning of each turn, every opponent who has less than 30% HP on board (including the fallen ones) increases your P.ATK by 10%. Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "hydra-benefit"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.6,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 6
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.5,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.4,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.3,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.2,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.1,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "At the beginning of each turn, every opponent who has less than 35% HP on board (including the fallen ones) increases your P.ATK by 12%. Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "hydra-benefit"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.72,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 6
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.6,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.48,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.36,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.24,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-benefit",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.12,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -495,6 +1001,121 @@
                   "event": true
                 },
                 "delta": -250
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Immune to Freeze",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gengar-immune",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "freeze"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Immune to Freeze and Confusion",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gengar-immune",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "freeze",
+                    "mindControl",
+                    "confusion"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Immune to Freeze, Confusion, Stun",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gengar-immune",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "freeze",
+                    "mindControl",
+                    "confusion",
+                    "stun"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Immune to Freeze, Confusion, Stun, and Poison",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gengar-immune",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "freeze",
+                    "mindControl",
+                    "confusion",
+                    "stun",
+                    "poison"
+                  ]
+                }
               }
             ]
           }
@@ -724,6 +1345,120 @@
               "targetClass": "guardian",
               "selfHasTag": "offer-of-power"
             }
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "If targets include [DEF] Pokémons, all allies gain 15% DMG boost against [DEF] for 1 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetClass": "guardian"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "def-killer",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.15,
+                  "turns": 1,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "If targets include [DEF] Pokémons, all allies gain 20% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetClass": "guardian"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "def-killer",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "If targets include [DEF] Pokémons, all allies gain 25% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetClass": "guardian"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "def-killer",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.25,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "If targets include [DEF] Pokémons, all allies gain 30% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetClass": "guardian"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "def-killer",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.3,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
           }
         ]
       }
@@ -1653,6 +2388,180 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "When engaged in combat, increases Crit Intensity by 10% for 2 turn(s); After using Ultimates, gain 5% additional Crit Intensity for 2 turns.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-enh",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.1,
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-enh-ult",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.05,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When engaged in combat, increases Crit Intensity by 15% for 2 turn(s); After using Ultimates, gain 7% additional Crit Intensity for 2 turns.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-enh",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.15,
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-enh-ult",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.07,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When engaged in combat, increases Crit Intensity by 20% for 2 turn(s); After using Ultimates, gain 9% additional Crit Intensity for 2 turns.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-enh",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.2,
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-enh-ult",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.09,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When engaged in combat, increases Crit Intensity by 25% for 2 turn(s); After using Ultimates, gain 12% additional Crit Intensity for 2 turns.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-enh",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.25,
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-enh-ult",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.12,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1968,6 +2877,116 @@
                   "turns": 3,
                   "maxStacks": 3,
                   "trueDamage": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Attacking Burning targets further increases the Burning damage they receive by 15% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "burning"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "burning-amp",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Attacking Burning targets further increases the Burning damage they receive by 22% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "burning"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "burning-amp",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.22,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Attacking Burning targets further increases the Burning damage they receive by 28% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "burning"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "burning-amp",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.28,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Attacking Burning targets further increases the Burning damage they receive by 35% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "burning"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "burning-amp",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.35,
+                  "turns": 2,
+                  "maxStacks": 1
                 }
               }
             ]
@@ -3022,6 +4041,88 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "When you receive a direct hit and HP drops below 35%, gain a shield for 25% HP for 3 turns.",
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.35,
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 0.25,
+                "basis": "casterHp"
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When you receive a direct hit and HP drops below 40%, gain a shield for 30% HP for 3 turns.",
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.4,
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 0.3,
+                "basis": "casterHp"
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When you receive a direct hit and HP drops below 45%, gain a shield for 30% HP for 3 turns. Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.45,
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 0.3,
+                "basis": "casterHp"
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When you receive a direct hit and HP drops below 50%, gain a shield for 35% HP for 3 turns. Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.5,
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 0.35,
+                "basis": "casterHp"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -3326,6 +4427,96 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Gain [Dauntless] for the first 3 turns, during which HP won't drop below 1. After triggering, expires in the next turn.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "victini-dauntless",
+                  "kind": "endure",
+                  "turns": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Gain [Dauntless] for the first 4 turns, during which HP won't drop below 1. After triggering, expires in the next turn; When Dauntless expires, gain 2 dodges the next turn. While dodge is active, every target you hit heals you for 8% of missing HP.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "victini-dauntless",
+                  "kind": "endure",
+                  "turns": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Gain [Dauntless] for the first 4 turns, during which HP won't drop below 1. After triggering, expires in the next turn; When Dauntless expires, gain 4 dodges the next turn. While dodge is active, every target you hit heals you for 10% of missing HP.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "victini-dauntless",
+                  "kind": "endure",
+                  "turns": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Gain [Dauntless] for the first 4 turns, during which HP won't drop below 1. After triggering, expires in the next turn; When Dauntless expires, gain 5 dodges the next turn. While dodge is active, every target you hit heals you for 12% of missing HP.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "victini-dauntless",
+                  "kind": "endure",
+                  "turns": 4
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -3476,6 +4667,140 @@
                   "field": "receiveHealBoost",
                   "amount": -1,
                   "bigRounds": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Everytime kill enemies, heal 10% of maximum HP, and increase 2% S.ATK permanenttly",
+        "triggers": [
+          {
+            "on": "onKill",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.1,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "giratina-rains",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.02,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Everytime kill enemies, heal 15% of maximum HP, and increase 3% S.ATK permanenttly",
+        "triggers": [
+          {
+            "on": "onKill",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.15,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "giratina-rains",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.03,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Everytime kill enemies, heal 20% of maximum HP, and increase 4% S.ATK permanenttly",
+        "triggers": [
+          {
+            "on": "onKill",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.2,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "giratina-rains",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.04,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Everytime kill enemies, heal 25% of maximum HP, and increase 5% S.ATK permanenttly",
+        "triggers": [
+          {
+            "on": "onKill",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.25,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "giratina-rains",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.05,
+                  "maxStacks": 99
                 }
               }
             ]
@@ -4145,6 +5470,120 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "If targets include [DEF] Pokémons, all allies gain 15% DMG boost against [DEF] for 1 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetClass": "guardian"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "def-killer",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.15,
+                  "turns": 1,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "If targets include [DEF] Pokémons, all allies gain 20% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetClass": "guardian"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "def-killer",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "If targets include [DEF] Pokémons, all allies gain 25% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetClass": "guardian"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "def-killer",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.25,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "If targets include [DEF] Pokémons, all allies gain 30% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetClass": "guardian"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "def-killer",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.3,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -4475,6 +5914,121 @@
                   "event": true
                 },
                 "delta": -400
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Immune to Freeze",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shiny-gengar-immune",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "freeze"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Immune to Freeze and Confusion",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shiny-gengar-immune",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "freeze",
+                    "mindControl",
+                    "confusion"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Immune to Freeze, Confusion, Stun",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shiny-gengar-immune",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "freeze",
+                    "mindControl",
+                    "confusion",
+                    "stun"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Immune to Freeze, Confusion, Stun, and Poison",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shiny-gengar-immune",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "freeze",
+                    "mindControl",
+                    "confusion",
+                    "stun",
+                    "poison"
+                  ]
+                }
               }
             ]
           }

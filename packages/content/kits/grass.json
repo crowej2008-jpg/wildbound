@@ -240,6 +240,88 @@
           }
         }
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "When HP drops below 15%, reduces the opponent's Rage by 100 after receiving damage. Lasts 2 turn(s).",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.15
+            },
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -100
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When HP drops below 20%, reduces the opponent's Rage by 150 after receiving damage. Lasts 2 turn(s).",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.2
+            },
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -150
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When HP is below 25%, reduce opponent's rage by 200 upon taking attack, lasting for 2 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.25
+            },
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -200
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When HP is below 30%, reduce opponent's rage by 250 upon taking attack, lasting for 3 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.3
+            },
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -250
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -428,6 +510,180 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Starting from turn 4, increases Guard Break by 8% and Crit Chance by 5%. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 4
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endurance-gb",
+                  "kind": "stat",
+                  "field": "guardBreak",
+                  "amount": 0.08,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endurance-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.05,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Starting from turn 4, increases Guard Break by 10% and Crit Chance by 7%. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 4
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endurance-gb",
+                  "kind": "stat",
+                  "field": "guardBreak",
+                  "amount": 0.1,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endurance-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.07,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Starting from turn 3, increases Guard Break by 12% and Crit Chance by 8%. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 3
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endurance-gb",
+                  "kind": "stat",
+                  "field": "guardBreak",
+                  "amount": 0.12,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endurance-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.08,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Starting from turn 3, increases Guard Break by 15% and Crit Chance by 9%. Stacks up to 4 times.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 3
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endurance-gb",
+                  "kind": "stat",
+                  "field": "guardBreak",
+                  "amount": 0.15,
+                  "maxStacks": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endurance-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.09,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -601,6 +857,104 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Whenever attacks crit, additionally reduces target's Crit Res by 4% for 3 turns. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "crit-res-down",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": -0.04,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Whenever attacks crit, additionally reduces target's Crit Res by 6% for 4 turns. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "crit-res-down",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": -0.06,
+                  "turns": 4,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Whenever attacks crit, additionally reduces target's Crit Res by 7% for 4 turns. Stacks up to 4 times.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "crit-res-down",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": -0.07,
+                  "turns": 4,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Whenever attacks crit, additionally reduces target's Crit Res by 8% for 5 turns. Stacks up to 4 times.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "crit-res-down",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": -0.08,
+                  "turns": 5,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -906,6 +1260,20 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 15% for 2 turns. Stacks up to 1 times."
+      },
+      "20": {
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 20% for 2 turns. Stacks up to 1 times."
+      },
+      "30": {
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 25% for 3 turns. Stacks up to 1 times."
+      },
+      "40": {
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 30% for 3 turns. Stacks up to 1 times."
       }
     }
   },
@@ -1914,6 +2282,220 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "When the Ultimate kills a target, increases self S.ATK by 10% for 2 turns. Stacks up to 1 time. Regenerates 125 Rage. Upon being defeated, inflicts [Short Circuit] on all enemies for 1 turn\n [Short Circuit]: Unable to regenerate rage",
+        "triggers": [
+          {
+            "on": "onKill",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "perTurn": 1,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "raikou-kill-satk",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "onDeath",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "short-circuit-death",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When the Ultimate kills a target, increases self S.ATK by 15% for 2 turns. Stacks up to 1 time. Regenerates 125 Rage. Upon being defeated, inflicts [Short Circuit] on all enemies for 1 turn\n [Short Circuit]: Unable to regenerate rage",
+        "triggers": [
+          {
+            "on": "onKill",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "perTurn": 1,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "raikou-kill-satk",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "onDeath",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "short-circuit-death",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When the Ultimate kills a target, increases self S.ATK by 20% for 2 turns. Stacks up to 1 time. Regenerates 250 Rage. Upon being defeated, inflicts [Short Circuit] on all enemies for 1 turn\n [Short Circuit]: Unable to regenerate rage",
+        "triggers": [
+          {
+            "on": "onKill",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "perTurn": 1,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "raikou-kill-satk",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 250
+              }
+            ]
+          },
+          {
+            "on": "onDeath",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "short-circuit-death",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When the Ultimate kills a target, increases self S.ATK by 25% for 2 turns. Stacks up to 1 time. Regenerates 250 Rage. Upon being defeated, inflicts [Short Circuit] on all enemies for 1 turn\n [Short Circuit]: Unable to regenerate rage",
+        "triggers": [
+          {
+            "on": "onKill",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "perTurn": 1,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "raikou-kill-satk",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.25,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 250
+              }
+            ]
+          },
+          {
+            "on": "onDeath",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "short-circuit-death",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2217,6 +2799,44 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Gain 8% bonus Lifesteal in battles",
+        "statMods": [
+          {
+            "field": "lifesteal",
+            "add": 0.08
+          }
+        ]
+      },
+      "20": {
+        "text": "Gain 10% bonus Lifesteal in battles",
+        "statMods": [
+          {
+            "field": "lifesteal",
+            "add": 0.1
+          }
+        ]
+      },
+      "30": {
+        "text": "Gain 12% bonus Lifesteal in battles",
+        "statMods": [
+          {
+            "field": "lifesteal",
+            "add": 0.12
+          }
+        ]
+      },
+      "40": {
+        "text": "Gain 15% bonus Lifesteal in battles",
+        "statMods": [
+          {
+            "field": "lifesteal",
+            "add": 0.15
+          }
+        ]
+      }
     }
   },
   {
@@ -2375,6 +2995,284 @@
       },
       "18": {
         "text": "Raise turn 2's Lifesteal mark to 75%"
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "At the start of each turn, increase your ATK based on the number of enemies killed on board. When killing 3/4/5, increases S.ATK by 3%/6%/9%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "endgame"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.09,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.06,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.03,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "At the start of each turn, increase your ATK based on the number of enemies killed on board. When killing 3/4/5, increases S.ATK by 6%/12%/18%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "endgame"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.18,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.12,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.06,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "At the start of each turn, increase your ATK based on the number of enemies killed on board. When killing 3/4/5, increases S.ATK by 9%/18%/27%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "endgame"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.27,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.18,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.09,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "At the start of each turn, increase your ATK based on the number of enemies killed on board. When killing 3/4/5, increases S.ATK by 12%/24%/36%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "endgame"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.36,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.24,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "endgame",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.12,
+                  "turns": 1
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -2579,6 +3477,96 @@
                   "excludeSelf": true
                 },
                 "delta": 250
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Ultimate additionally regenerates 100 Rage for 1 ally whose Rage is higher than 60% (Prioritizes the targets that are positioned at the rear and above)",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "excludeSelf": true
+                },
+                "condition": {
+                  "targetRageAbove": 0.6
+                },
+                "delta": 100
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Ultimate additionally regenerates 200 Rage for 1 ally whose Rage is higher than 60% (Prioritizes the targets that are positioned at the rear and above)",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "excludeSelf": true
+                },
+                "condition": {
+                  "targetRageAbove": 0.6
+                },
+                "delta": 200
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Ultimate additionally regenerates 300 Rage for 1 ally whose Rage is higher than 60% (Prioritizes the targets that are positioned at the rear and above)",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "excludeSelf": true
+                },
+                "condition": {
+                  "targetRageAbove": 0.6
+                },
+                "delta": 300
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Ultimate additionally regenerates 400 Rage for 1 ally whose Rage is higher than 60% (Prioritizes the targets that are positioned at the rear and above)",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "excludeSelf": true
+                },
+                "condition": {
+                  "targetRageAbove": 0.6
+                },
+                "delta": 400
               }
             ]
           }
@@ -3362,6 +4350,108 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "After attacking a unit with [Leech Seed], reduces target's S.DEF by 15% for 2 turns. Stacks up to 1 times."
+      },
+      "20": {
+        "text": "After attacking a unit with [Leech Seed], reduces target's S.DEF by 20% for 2 turns. Stacks up to 1 times."
+      },
+      "30": {
+        "text": "After attack, heal self for 30% S.ATK; After attacking a unit with [Leech Seed], reduces target's Special Defense by 20% for 3 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.3,
+                "basis": "casterSAtk"
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.3,
+                "basis": "casterSAtk"
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.3,
+                "basis": "casterSAtk"
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "After attack, heal self for 50% S.ATK; After attacking a unit with [Leech Seed], reduces target's Special Defense by 25% for 3 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.5,
+                "basis": "casterSAtk"
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.5,
+                "basis": "casterSAtk"
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.5,
+                "basis": "casterSAtk"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -3855,6 +4945,20 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "At the end of the round, every 2% of maximum life will add 1 layer of [Activity] to itself, each layer of activity increases the probability of triggering minor skills by 10%, up to 8 layers; when releasing basic skills, consume all [Activity], each layer deals an additional 1% of its maximum HP damage to the target, the additional damage cannot exceed 500% of the P.ATK"
+      },
+      "20": {
+        "text": "At the end of the round, every 2% of maximum life will add 1 layer of [Activity] to itself, each layer of activity increases the probability of triggering minor skills by 10%, up to 8 layers; when releasing basic skills, consume all [Activity], each layer deals an additional 1.5% of its maximum HP damage to the target, the additional damage cannot exceed 500% of the P.ATK"
+      },
+      "30": {
+        "text": "At the end of the round, every 2% of maximum life will add 1 layer of [Activity] to itself, each layer of activity increases the probability of triggering minor skills by 10%, up to 8 layers; when releasing basic skills, consume all [Activity], each layer deals an additional 2% of its maximum HP damage to the target, the additional damage cannot exceed 500% of the P.ATK"
+      },
+      "40": {
+        "text": "At the end of the round, every 2% of maximum life will add 1 layer of [Activity] to itself, each layer of activity increases the probability of triggering minor skills by 10%, up to 8 layers; when releasing basic skills, consume all [Activity], each layer deals an additional 2.5% of its maximum HP damage to the target, the additional damage cannot exceed 500% of the P.ATK"
+      }
     }
   },
   {
@@ -4103,6 +5207,268 @@
           }
         }
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "All attacks ignore 10% of Special Defense. Basic skill attack increases 10% after an attack and lasts 2 rounds. Can by layered 2 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "All attacks ignore 15% of Special Defense. Basic skill attack increases 15% after an attack and lasts 2 rounds. Can by layered 2 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "All attacks ignore 22% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "All attacks ignore 35% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -4302,6 +5668,104 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Whenever attacks crit, additionally reduces target's Crit Res by 8% for 3 turns. Stacks up to 1 time.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "crit-res-down",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": -0.08,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Whenever attacks crit, additionally reduces target's Crit Res by 10% for 4 turns. Stacks up to 1 time.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "crit-res-down",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": -0.1,
+                  "turns": 4,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Whenever attacks crit, additionally reduces target's Crit Res by 12% for 4 turns. Stacks up to 2 time.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "crit-res-down",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": -0.12,
+                  "turns": 4,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Whenever attacks crit, additionally reduces target's Crit Res by 15% for 5 turns. Stacks up to 2 time.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "crit-res-down",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": -0.15,
+                  "turns": 5,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -4702,6 +6166,20 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 15% for 2 turns. Stacks up to 1 times."
+      },
+      "20": {
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 20% for 2 turns. Stacks up to 1 times."
+      },
+      "30": {
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 25% for 3 turns. Stacks up to 1 times."
+      },
+      "40": {
+        "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 30% for 3 turns. Stacks up to 1 times."
       }
     }
   },

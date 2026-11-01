@@ -215,6 +215,116 @@
       "18": {
         "text": "Ultimate is guaranteed to reduce target’s defense."
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Ultimate additionally reduces target's DMG Reduction by 5% for 2 turns. Stacks up to 2 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "garchomp-rdct-cut",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.05,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Ultimate additionally reduces target's DMG Reduction by 7% for 3 turns. Stacks up to 2 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "garchomp-rdct-cut",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.07,
+                  "turns": 3,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Ultimate additionally reduces target's DMG Reduction by 8% for 3 turns. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "garchomp-rdct-cut",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.08,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Ultimate additionally reduces target's DMG Reduction by 10% for 4 turns. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "garchomp-rdct-cut",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.1,
+                  "turns": 4,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -477,6 +587,172 @@
           }
         }
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "At the beginning of each turn, if HP drops below 15%, increase Guard Break by 35% and Crit Chance by 15%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.15
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "impasse-gb",
+                  "kind": "stat",
+                  "field": "guardBreak",
+                  "amount": 0.35,
+                  "turns": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "impasse-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.15,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "At the beginning of each turn, if HP drops below 20%, increase Guard Break by 45% and Crit Chance by 18%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.2
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "impasse-gb",
+                  "kind": "stat",
+                  "field": "guardBreak",
+                  "amount": 0.45,
+                  "turns": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "impasse-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.18,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "At the beginning of each turn, if HP drops below 25%, increase Guard Break by 55% and Crit Chance by 24%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.25
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "impasse-gb",
+                  "kind": "stat",
+                  "field": "guardBreak",
+                  "amount": 0.55,
+                  "turns": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "impasse-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.24,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "At the beginning of each turn, if HP drops below 35%, increase Guard Break by 60% and Crit Chance by 30%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfHpBelow": 0.35
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "impasse-gb",
+                  "kind": "stat",
+                  "field": "guardBreak",
+                  "amount": 0.6,
+                  "turns": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "impasse-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.3,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -651,6 +927,128 @@
       },
       "18": {
         "text": "Ultimate inflicts [Regrowth Mark] upon enemies for 2 turns. Stacks up to 1 times. The allies who attack the target marked with [Regrowth Mark] will heal Squirtle for 3% of max HP."
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "When engaged in combat, increases your max HP by 20%. In the first 4 turns, regenerates 4% of max HP each turn.",
+        "statMods": [
+          {
+            "field": "hp",
+            "mult": 1.2
+          }
+        ],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "until": 4
+              }
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.04,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When engaged in combat, increases your max HP by 28%. In the first 4 turns, regenerates 5% of max HP each turn.",
+        "statMods": [
+          {
+            "field": "hp",
+            "mult": 1.28
+          }
+        ],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "until": 4
+              }
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.05,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When engaged in combat, increases your max HP by 35%. In the first 5 turns, regenerates 5% of max HP each turn.",
+        "statMods": [
+          {
+            "field": "hp",
+            "mult": 1.35
+          }
+        ],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "until": 5
+              }
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.05,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When engaged in combat, increases your max HP by 40%. In the first 5 turns, regenerates 7% of max HP each turn.",
+        "statMods": [
+          {
+            "field": "hp",
+            "mult": 1.4
+          }
+        ],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "until": 5
+              }
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.07,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -1788,6 +2186,120 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "When dealing Thorn damage, there's 50% chance to reduce the opponent's DMG Reduction by 5% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "thorn"
+            },
+            "chance": 0.5,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "thorn-rdct-down",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.05,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When dealing Thorn damage, there's 65% chance to reduce the opponent's DMG Reduction by 8% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "thorn"
+            },
+            "chance": 0.65,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "thorn-rdct-down",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.08,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When dealing Thorn damage, there's 80% chance to reduce the opponent's DMG Reduction by 12% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "thorn"
+            },
+            "chance": 0.8,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "thorn-rdct-down",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.12,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When dealing Thorn damage, there's 90% chance to reduce the opponent's DMG Reduction by 15% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "thorn"
+            },
+            "chance": 0.9,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "thorn-rdct-down",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2201,6 +2713,143 @@
                   "amount": -25,
                   "turns": 2,
                   "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "When engaged in combat, increases all allies control boost by 15%",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "articuno-cb",
+                  "kind": "stat",
+                  "field": "controlBoost",
+                  "amount": 0.15,
+                  "turns": 999
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When battle starts, increases all allies' control boost by 20% and reduces all opponents' SPD by 2 for 4 turns",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "articuno-cb",
+                  "kind": "stat",
+                  "field": "controlBoost",
+                  "amount": 0.2,
+                  "turns": 999
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "articuno-trinket-slow",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -2,
+                  "turns": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When battle starts, increases all allies' control boost by 24% and reduces all opponents' SPD by 6 for 4 turns",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "articuno-cb",
+                  "kind": "stat",
+                  "field": "controlBoost",
+                  "amount": 0.24,
+                  "turns": 999
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "articuno-trinket-slow",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -6,
+                  "turns": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When battle starts, increases all allies' control boost by 28% and reduces all opponents' SPD by 10 for 6 turns",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "articuno-cb",
+                  "kind": "stat",
+                  "field": "controlBoost",
+                  "amount": 0.28,
+                  "turns": 999
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "articuno-trinket-slow",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -10,
+                  "turns": 6
                 }
               }
             ]
@@ -2660,6 +3309,165 @@
                 },
                 "rate": 0.8,
                 "basis": "casterSAtk"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Ultimate boosts DMG RDCT by 8% for all allies whose Rage is higher than 75%. Lasts 2 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "healing-tinkle",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.08,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetRageAbove": 0.75
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Ultimate boosts DMG RDCT by 8% and Control Immunity for all allies whose Rage is higher than 75%. Lasts 2 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "healing-tinkle",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.08,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetRageAbove": 0.75
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "healing-tinkle-immune",
+                  "kind": "immune",
+                  "turns": 2
+                },
+                "condition": {
+                  "targetRageAbove": 0.75
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Ultimate boosts DMG RDCT by 12% and Control Immunity for all allies whose Rage is higher than 75%. Lasts 2 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "healing-tinkle",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.12,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetRageAbove": 0.75
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "healing-tinkle-immune",
+                  "kind": "immune",
+                  "turns": 2
+                },
+                "condition": {
+                  "targetRageAbove": 0.75
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Ultimate boosts DMG RDCT by 18% and Control Immunity for all allies whose Rage is higher than 75%. Lasts 2 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "healing-tinkle",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.18,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetRageAbove": 0.75
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "healing-tinkle-immune",
+                  "kind": "immune",
+                  "turns": 2
+                },
+                "condition": {
+                  "targetRageAbove": 0.75
+                }
               }
             ]
           }
@@ -3710,6 +4518,122 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Immune to damage caused by burning",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "palkia-immune-dots",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "burning",
+                    "burn"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Immune to damge caused by burning,flaming effect",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "palkia-immune-dots",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "burning",
+                    "burn",
+                    "flame"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Immune to damage caused by burning,flaming and poisoning effect",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "palkia-immune-dots",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "burning",
+                    "burn",
+                    "flame",
+                    "poison"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Immune to damage caused by burning,flaming,poisoning and parasitizing seed effect",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "palkia-immune-dots",
+                  "kind": "immune",
+                  "turns": 999,
+                  "undispellable": true,
+                  "immuneTo": [
+                    "burning",
+                    "burn",
+                    "flame",
+                    "poison",
+                    "leech-seed"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -3948,6 +4872,56 @@
                 }
               }
             ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "When you don't have purgeable debuff,increase your own S.ATK by 5%",
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.05
+          }
+        ]
+      },
+      "20": {
+        "text": "When you don't have purgeable debuff,increase your own S.ATK and crit intensity by 10%",
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.1
+          },
+          {
+            "field": "critPower",
+            "add": 0.1
+          }
+        ]
+      },
+      "30": {
+        "text": "When you don't have purgeable debuff,increase your own S.ATK by 15% and crit intensity by 10%",
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.15
+          },
+          {
+            "field": "critPower",
+            "add": 0.1
+          }
+        ]
+      },
+      "40": {
+        "text": "When you don't have purgeable debuff,increase your own S.ATK and crit intensity by 20%",
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.2
+          },
+          {
+            "field": "critPower",
+            "add": 0.2
           }
         ]
       }

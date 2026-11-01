@@ -18,6 +18,7 @@ export function evalCondition(
   if (cond.selfHpAbove !== undefined && !hpAbove(self, cond.selfHpAbove)) return false;
   if (target) {
     if (cond.targetHpBelow !== undefined && !hpBelow(target, cond.targetHpBelow)) return false;
+    if (cond.targetRageAbove !== undefined && !(target.rage / ctx.settings.rageMax > cond.targetRageAbove)) return false;
     if (cond.targetHpAbove !== undefined && !hpAbove(target, cond.targetHpAbove)) return false;
     if (cond.targetHasTag !== undefined && !hasTag(target, cond.targetHasTag)) return false;
     if (cond.targetHasDot !== undefined && cond.targetHasDot !== hasDot(target)) return false;
@@ -49,6 +50,10 @@ export function evalCondition(
   if (cond.enemiesAtLeast !== undefined) {
     const n = ctx.units.filter((u) => u.alive && u.side !== self.side).length;
     if (n < cond.enemiesAtLeast) return false;
+  }
+  if (cond.enemiesDeadAtLeast !== undefined) {
+    const n = ctx.units.filter((u) => !u.alive && u.side !== self.side).length;
+    if (n < cond.enemiesDeadAtLeast) return false;
   }
   if (cond.alliesAliveAtLeast !== undefined || cond.alliesAliveBelow !== undefined) {
     const n = ctx.units.filter((u) => u.alive && u.side === self.side).length;

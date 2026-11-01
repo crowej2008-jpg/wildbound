@@ -195,12 +195,12 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Stage-6 skill swaps (hero_slate_skill_json: Starmie, Ninetales, Metagross, Garchomp, Hydreigon, Gyarados -> skill ids 1x8102 / 1x8201 / ...): not ported — those skill ids are in the dump's _skills_not_found (no text or numbers).
 - Rayquaza 6 / 18 and 12's turn-2 part: no effect — the mark's turn 1 / turn 2 strikes are not modelled (see the hand-port gaps); 12 raises the ult to 80 %.
 
-## Trinket skills (R6b part 2, hand-ported in `scripts/data/trinket-skills.py`): 22
+## Trinket skills (R6b part 2, hand-ported in `scripts/data/trinket-skills.py`): 62
 
 Source: `scripts/data/trinket-skills-source.json` (hero_weapon_json skill_list, 371 texts / 76 holders). Applied by
 `applyTrinketSkills`: only the highest tier (Lv 10 / 20 / 30 / 40) at or below the trinket level.
 
-Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, hoopa, shiny-hoopa, mewtwo, shiny-mewtwo, jirachi, solgaleo, meloetta, arceus.
+Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, hoopa, shiny-hoopa, mewtwo, shiny-mewtwo, jirachi, solgaleo, meloetta, arceus, shiny-arceus, kyogre, deoxys, mew, cresselia, celebi, manaphy, infernape, black-kyurem, shaymin, victini, palkia, giratina, zygarde, xerneas, lunala, wind-god-pidgeot, shiny-god-ash-pikachu, shiny-charizard, shiny-raichu, shiny-gengar, shiny-venusaur, shiny-darkrai, raikou, entei, suicune, zapdos, moltres, articuno, rayquaza, metagross, garchomp, hydreigon, gyarados, gardevoir, gengar, raichu, charizard, blastoise, venusaur.
 
 - God Ash-Pikachu (Ruse): the S.DEF ignore (10-35 %) has no effect (DEF has no effect); the Basic Skill bonus is +x % basic-skill damage per attack, its 'rounds' read as Pikachu's own turns.
 - Wobbuffet (Mirror Coat): the bounce is true damage of the hit's damage (shield included), to the attacker.
@@ -215,6 +215,30 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Jirachi (Predict Future): the healing cut goes on the ult's first target for 3 turns; the Doom Desire boost has no effect (Doom Desire's detonation is not modelled).
 - Solgaleo (Cosmic Power): 'must hit' has no effect (no dodge).
 - Arceus (Refresh): the S.DEF ignore below 50 % HP has no effect (DEF has no effect).
+- Kyogre (Frustration): '+Rage when hit, without the passive's high DMG Reduction' — the Rage comes on every hit (the passive's reduction window is not checked).
+- Mew (Control Immunity Chance): Lv 10-30 — +125 Rage and the immunity roll after the basic skill; Lv 40 — +125 Rage after every attack, +125 more and the roll after the ult. The immunity is to every control.
+- Cresselia (Lunar Blade): 'stackable' with no cap or duration — the ATK cut stacks for the battle.
+- Celebi (Drips of Life): the Rage goes to every ally above 60 % Rage, not one (no 'pick one matching' rule).
+- Shiny Kyogre, Shiny Mew and Shiny Cresselia list no trinket skills in the source.
+- Infernape (Meditation): the shield comes each time HP falls below the line (re-arms above it); its 3-turn limit and 'cannot be dispelled' are not kept (shields have neither).
+- Shiny Kyurem lists no trinket skills in the source.
+- Shaymin (Sweet Scent): the S.DEF cut on [Leech Seed] targets has no effect (DEF has no effect); Lv 30 / 40 heal after each attack.
+- Victini (Rise from the Dead): [Dauntless] for the first 3 / 4 turns; the dodges and their healing (Lv 20+) are not modelled (no dodge).
+- Palkia (Immune): the DoTs cannot be applied to it (rather than landing for no damage).
+- Zygarde (Power Construct): not modelled — [Activity] by HP share, the basic-skill chance per layer and the consuming hit need a resource fed by HP.
+- Xerneas (Nature Power): always on — 'while free of dispellable debuffs' is not checked.
+- Lunala (Magic Coat): not modelled — the S.ATK reduction grows with cumulative HP lost (no such counter yet).
+- Wind God Pidgeot (Gale Spell): 3 a turn (not a big round); the cap is in stacks of the ATK gain.
+- Shiny God Ash-Pikachu: as God Ash-Pikachu.
+- Shiny Charizard (DEF Pokémon Killer): the allies' boost counts against every target, not only [DEF] ones (a buff cannot carry a target condition).
+- Shiny Gengar (Immune): Confusion covers the mind control kind too.
+- Shiny Venusaur (Impair DEF): no effect — DEF has no effect.
+- Shiny Darkrai: as Darkrai (4-8 % a stack, 8 stacks).
+- Rayquaza (Enhanced End-game): re-set each turn from the fallen enemies (the first matching line wins).
+- Metagross (Reduces Rage at Low HP): each hit taken below the line cuts the attacker's Rage; the 'lasting N turns' has no separate effect.
+- Hydreigon (Benefit from Damage): counts the fallen enemies only (living ones under the HP line are not counted).
+- Gardevoir (Endurance): one stack a turn from the starting round.
+- Venusaur (Impair DEF): no effect — DEF has no effect. Charizard / Raichu / Blastoise / Gengar: as their Shiny forms at their own numbers.
 
 ## Unparsed clause patterns (0 distinct, top 60)
 

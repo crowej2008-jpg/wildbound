@@ -224,6 +224,191 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Gain 125 additional Rage from basic skills, with 35% chance to be immune to all control-impairing effects for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "chance": 0.35,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mew-trinket-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Basic skill/After landing basic attacks, gain 125 additional Rage, with 35% chance to be immune to all control-impairing effects for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "chance": 0.35,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mew-trinket-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Basic skill/After landing basic attacks, gain 125 additional Rage, with 55% chance to be immune to all control-impairing effects for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "chance": 0.55,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mew-trinket-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Regenerate 125 Rage after attack. Ultimates further regenerate 125 Rage, with 55% chance to be immune to all control-impairing effects for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "chance": 0.55,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mew-trinket-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -527,6 +712,80 @@
           }
         }
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Without the high DMG Reduction of passive skills, gain 50 additional Rage whenever you get hit",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 50
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Without the high DMG Reduction of passive skills, gain 65 additional Rage whenever you get hit",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 65
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Without the high DMG Reduction of passive skills, gain 80 additional Rage whenever you get hit",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 80
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Without the high DMG Reduction of passive skills, gain 100 additional Rage whenever you get hit",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 100
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -816,6 +1075,180 @@
                 "control": {
                   "kind": "stun",
                   "chance": 0.5
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "After using basic attacks and basic skills, reduce 1 random opponent's ATK by 5%. Stackable.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "lunar-blade",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.05,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "lunar-blade",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.05,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "After using basic attacks and basic skills, reduce 1 random opponent's ATK by 12%. Stackable.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "lunar-blade",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.12,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "lunar-blade",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.12,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "After using basic attacks and basic skills, reduce 1 random opponent's ATK by 18%. Stackable.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "lunar-blade",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.18,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 1
+                },
+                "buff": {
+                  "tag": "lunar-blade",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.18,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "After using basic attacks and basic skills, reduce 2 random opponent's ATK by 18%. Stackable.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 2
+                },
+                "buff": {
+                  "tag": "lunar-blade",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.18,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 2
+                },
+                "buff": {
+                  "tag": "lunar-blade",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.18,
+                  "maxStacks": 99
                 }
               }
             ]
@@ -2558,6 +2991,80 @@
       "18": {
         "text": "Attack and restrain all enemies"
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "After Ultimate, Cleanses self 1 layer of debuff, gains 10% Ignores S.DEF when HP is below 50%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 1
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "After Ultimate, Cleanses self 2 layer of debuff, gains 15% Ignores S.DEF when HP is below 50%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 2
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "After Ultimate, Cleanses self 3 layer of debuff, gains 20% Ignores S.DEF when HP is below 50%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 3
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "After Ultimate, Cleanses self 4 layer of debuff, gains 25% Ignores S.DEF when HP is below 50%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 4
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -3533,6 +4040,150 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Every time an enemy unit is controlled, increase your own P.ATK by 1%, triggered up to 3 times per major round, with a maximum cap of 20%.",
+        "triggers": [
+          {
+            "on": "onInflictControl",
+            "perTurn": 3,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gale-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.01,
+                  "maxStacks": 20
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Every time an enemy unit is controlled, increase your own P.ATK by 1% and P.ATK DMG Reduction by 1%, triggered up to 3 times per major round, with a maximum cap of 20%.",
+        "triggers": [
+          {
+            "on": "onInflictControl",
+            "perTurn": 3,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gale-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.01,
+                  "maxStacks": 20
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gale-prdct",
+                  "kind": "stat",
+                  "field": "pRdct",
+                  "amount": 0.01,
+                  "maxStacks": 20
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Every time an enemy unit is controlled, increase your own P.ATK by 1% and P.ATK DMG Reduction by 1%, triggered up to 3 times per major round, with a maximum cap of 30%.",
+        "triggers": [
+          {
+            "on": "onInflictControl",
+            "perTurn": 3,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gale-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.01,
+                  "maxStacks": 30
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gale-prdct",
+                  "kind": "stat",
+                  "field": "pRdct",
+                  "amount": 0.01,
+                  "maxStacks": 30
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Every time an enemy unit is controlled, increase your own P.ATK by 2% and P.ATK DMG Reduction by 1%, triggered up to 3 times per major round, with a maximum cap of 40%.",
+        "triggers": [
+          {
+            "on": "onInflictControl",
+            "perTurn": 3,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gale-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.02,
+                  "maxStacks": 20
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "gale-prdct",
+                  "kind": "stat",
+                  "field": "pRdct",
+                  "amount": 0.01,
+                  "maxStacks": 20
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },

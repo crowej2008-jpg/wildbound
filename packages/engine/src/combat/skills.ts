@@ -127,6 +127,8 @@ function resolveCast(
         }
       }
       if (outcome.blocked && u.alive) fireTriggers(ctx, u, 'onBlocked', { target: t });
+      // R6b: the defender blocked a hit (Deoxys's Reproduce).
+      if (outcome.blocked && t.alive) fireTriggers(ctx, t, 'onBlock', { target: u });
     }
   }
 

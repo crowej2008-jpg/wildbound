@@ -36,6 +36,7 @@ const conditionSchema = z
     selfHpBelow: z.number().min(0).max(1).optional(),
     selfHpAbove: z.number().min(0).max(1).optional(),
     targetHpBelow: z.number().min(0).max(1).optional(),
+    targetRageAbove: z.number().min(0).max(1).optional(),
     targetHpAbove: z.number().min(0).max(1).optional(),
     selfHasTag: z.string().min(1).optional(),
     targetHasTag: z.string().min(1).optional(),
@@ -62,6 +63,7 @@ const conditionSchema = z
     selfHpAboveTarget: z.boolean().optional(),
     actorHasTag: z.string().min(1).optional(),
     enemiesAtLeast: z.number().int().positive().optional(),
+    enemiesDeadAtLeast: z.number().int().positive().optional(),
     otherAlliesAtMost: z.number().int().nonnegative().optional(),
     targetClass: classSchema.optional(),
     /** R4 / R6a: the event's skill slot (onHit / onCrit). */
@@ -281,6 +283,15 @@ const effectSchema = z.discriminatedUnion('op', [
   z
     .object({ op: z.literal('breakShield'), target: targetSelSchema, condition: conditionSchema.optional(), chance: z.number().min(0).max(1).optional() })
     .strict(),
+  z
+    .object({
+      op: z.literal('removeBuff'),
+      target: targetSelSchema,
+      tag: z.string().min(1),
+      condition: conditionSchema.optional(),
+      chance: z.number().min(0).max(1).optional(),
+    })
+    .strict(),
 ]);
 
 const skillSchema = z
@@ -370,6 +381,7 @@ export const triggerSchema = z
       'hpBelow',
       'onCrit',
       'onBlocked',
+      'onBlock',
       'onDealDamage',
       'onControlled',
       'onInflictControl',

@@ -212,6 +212,8 @@ export interface Condition {
   actorHasTag?: string;
   /** E3: at least this many living enemies / at most this many other living allies. */
   enemiesAtLeast?: number;
+  /** R6b: at least this many fallen enemies ("when killing 3 / 4 / 5"). */
+  enemiesDeadAtLeast?: number;
   otherAlliesAtMost?: number;
   /** E3: the target's class (the sheet's [ATK] / [DEF] / [SKILL] Pokémon). */
   targetClass?: WildClass;
@@ -220,6 +222,8 @@ export interface Condition {
   /** R4: living units on the unit's own side, itself included — at least / fewer than. */
   alliesAliveAtLeast?: number;
   alliesAliveBelow?: number;
+  /** R6b: the target's Rage share (of the full bar) is above this ("allies whose Rage is higher than 60%"). */
+  targetRageAbove?: number;
 }
 
 /** A damage-over-time instance (M9). `damageType: 'dot'` + `hpShare` is the M1 form. */
@@ -456,6 +460,8 @@ export type TriggerOn =
   | 'onCrit'
   /** E1: the owner's hit was blocked (target = the blocker). */
   | 'onBlocked'
+  /** R6b: the owner blocked a hit (target = the attacker). */
+  | 'onBlock'
   /** E1: the owner's direct hit landed (target = the one hit; R6a: carries the hit's slot for `eventSlot`). */
   | 'onDealDamage'
   /** E1: a control landed on the owner (target = the controller). */

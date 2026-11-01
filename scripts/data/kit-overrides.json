@@ -22339,6 +22339,5145 @@
      }
     ]
    }
+  },
+  "shiny-arceus": {
+   "10": {
+    "text": "After Ultimate, Cleanses self 1 layer of debuff, gains 10% Ignores S.DEF when HP is below 50%",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "cleanse",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "count": 1
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "After Ultimate, Cleanses self 2 layer of debuff, gains 15% Ignores S.DEF when HP is below 50%",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "cleanse",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "count": 2
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "After Ultimate, Cleanses self 3 layer of debuff, gains 20% Ignores S.DEF when HP is below 50%",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "cleanse",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "count": 3
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "After Ultimate, Cleanses self 4 layer of debuff, gains 25% Ignores S.DEF when HP is below 50%",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "cleanse",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "count": 4
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "kyogre": {
+   "10": {
+    "text": "Without the high DMG Reduction of passive skills, gain 50 additional Rage whenever you get hit",
+    "triggers": [
+     {
+      "on": "onHit",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 50
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Without the high DMG Reduction of passive skills, gain 65 additional Rage whenever you get hit",
+    "triggers": [
+     {
+      "on": "onHit",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 65
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Without the high DMG Reduction of passive skills, gain 80 additional Rage whenever you get hit",
+    "triggers": [
+     {
+      "on": "onHit",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 80
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Without the high DMG Reduction of passive skills, gain 100 additional Rage whenever you get hit",
+    "triggers": [
+     {
+      "on": "onHit",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 100
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "deoxys": {
+   "10": {
+    "text": "Upon a successful block, heal self for 4% of max HP",
+    "triggers": [
+     {
+      "on": "onBlock",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.04,
+        "basis": "targetMaxHp"
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Upon a successful block, heal self for 5.5% of max HP",
+    "triggers": [
+     {
+      "on": "onBlock",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.055,
+        "basis": "targetMaxHp"
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Upon a successful block, heal self for 7% of max HP",
+    "triggers": [
+     {
+      "on": "onBlock",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.07,
+        "basis": "targetMaxHp"
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Upon a successful block, heal self for 9% of max HP",
+    "triggers": [
+     {
+      "on": "onBlock",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.09,
+        "basis": "targetMaxHp"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "mew": {
+   "10": {
+    "text": "Gain 125 additional Rage from basic skills, with 35% chance to be immune to all control-impairing effects for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "chance": 0.35,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "mew-trinket-immune",
+         "kind": "immune",
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Basic skill/After landing basic attacks, gain 125 additional Rage, with 35% chance to be immune to all control-impairing effects for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "chance": 0.35,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "mew-trinket-immune",
+         "kind": "immune",
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Basic skill/After landing basic attacks, gain 125 additional Rage, with 55% chance to be immune to all control-impairing effects for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "chance": 0.55,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "mew-trinket-immune",
+         "kind": "immune",
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Regenerate 125 Rage after attack. Ultimates further regenerate 125 Rage, with 55% chance to be immune to all control-impairing effects for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "chance": 0.55,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "mew-trinket-immune",
+         "kind": "immune",
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "cresselia": {
+   "10": {
+    "text": "After using basic attacks and basic skills, reduce 1 random opponent's ATK by 5%. Stackable.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 1
+        },
+        "buff": {
+         "tag": "lunar-blade",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.05,
+         "maxStacks": 99
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 1
+        },
+        "buff": {
+         "tag": "lunar-blade",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.05,
+         "maxStacks": 99
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "After using basic attacks and basic skills, reduce 1 random opponent's ATK by 12%. Stackable.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 1
+        },
+        "buff": {
+         "tag": "lunar-blade",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.12,
+         "maxStacks": 99
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 1
+        },
+        "buff": {
+         "tag": "lunar-blade",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.12,
+         "maxStacks": 99
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "After using basic attacks and basic skills, reduce 1 random opponent's ATK by 18%. Stackable.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 1
+        },
+        "buff": {
+         "tag": "lunar-blade",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.18,
+         "maxStacks": 99
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 1
+        },
+        "buff": {
+         "tag": "lunar-blade",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.18,
+         "maxStacks": 99
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "After using basic attacks and basic skills, reduce 2 random opponent's ATK by 18%. Stackable.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 2
+        },
+        "buff": {
+         "tag": "lunar-blade",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.18,
+         "maxStacks": 99
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 2
+        },
+        "buff": {
+         "tag": "lunar-blade",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.18,
+         "maxStacks": 99
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "celebi": {
+   "10": {
+    "text": "Ultimate additionally regenerates 100 Rage for 1 ally whose Rage is higher than 60% (Prioritizes the targets that are positioned at the rear and above)",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "excludeSelf": true
+        },
+        "condition": {
+         "targetRageAbove": 0.6
+        },
+        "delta": 100
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Ultimate additionally regenerates 200 Rage for 1 ally whose Rage is higher than 60% (Prioritizes the targets that are positioned at the rear and above)",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "excludeSelf": true
+        },
+        "condition": {
+         "targetRageAbove": 0.6
+        },
+        "delta": 200
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Ultimate additionally regenerates 300 Rage for 1 ally whose Rage is higher than 60% (Prioritizes the targets that are positioned at the rear and above)",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "excludeSelf": true
+        },
+        "condition": {
+         "targetRageAbove": 0.6
+        },
+        "delta": 300
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Ultimate additionally regenerates 400 Rage for 1 ally whose Rage is higher than 60% (Prioritizes the targets that are positioned at the rear and above)",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "excludeSelf": true
+        },
+        "condition": {
+         "targetRageAbove": 0.6
+        },
+        "delta": 400
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "manaphy": {
+   "10": {
+    "text": "Ultimate boosts DMG RDCT by 8% for all allies whose Rage is higher than 75%. Lasts 2 turns.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "healing-tinkle",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.08,
+         "turns": 2,
+         "maxStacks": 1
+        },
+        "condition": {
+         "targetRageAbove": 0.75
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Ultimate boosts DMG RDCT by 8% and Control Immunity for all allies whose Rage is higher than 75%. Lasts 2 turns.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "healing-tinkle",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.08,
+         "turns": 2,
+         "maxStacks": 1
+        },
+        "condition": {
+         "targetRageAbove": 0.75
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "healing-tinkle-immune",
+         "kind": "immune",
+         "turns": 2
+        },
+        "condition": {
+         "targetRageAbove": 0.75
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Ultimate boosts DMG RDCT by 12% and Control Immunity for all allies whose Rage is higher than 75%. Lasts 2 turns.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "healing-tinkle",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.12,
+         "turns": 2,
+         "maxStacks": 1
+        },
+        "condition": {
+         "targetRageAbove": 0.75
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "healing-tinkle-immune",
+         "kind": "immune",
+         "turns": 2
+        },
+        "condition": {
+         "targetRageAbove": 0.75
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Ultimate boosts DMG RDCT by 18% and Control Immunity for all allies whose Rage is higher than 75%. Lasts 2 turns.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "healing-tinkle",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.18,
+         "turns": 2,
+         "maxStacks": 1
+        },
+        "condition": {
+         "targetRageAbove": 0.75
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "healing-tinkle-immune",
+         "kind": "immune",
+         "turns": 2
+        },
+        "condition": {
+         "targetRageAbove": 0.75
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "infernape": {
+   "10": {
+    "text": "When you receive a direct hit and HP drops below 35%, gain a shield for 25% HP for 3 turns.",
+    "triggers": [
+     {
+      "on": "hpBelow",
+      "hpBelow": 0.35,
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "share": 0.25,
+        "basis": "casterHp"
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "When you receive a direct hit and HP drops below 40%, gain a shield for 30% HP for 3 turns.",
+    "triggers": [
+     {
+      "on": "hpBelow",
+      "hpBelow": 0.4,
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "share": 0.3,
+        "basis": "casterHp"
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "When you receive a direct hit and HP drops below 45%, gain a shield for 30% HP for 3 turns. Cannot be dispelled.",
+    "triggers": [
+     {
+      "on": "hpBelow",
+      "hpBelow": 0.45,
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "share": 0.3,
+        "basis": "casterHp"
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "When you receive a direct hit and HP drops below 50%, gain a shield for 35% HP for 3 turns. Cannot be dispelled.",
+    "triggers": [
+     {
+      "on": "hpBelow",
+      "hpBelow": 0.5,
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "share": 0.35,
+        "basis": "casterHp"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "black-kyurem": {
+   "10": {
+    "text": "When attacking the units with [Frost], reduces the amount of healing the opponent receives by 10% for 2 turn(s) and increases damage by 8%",
+    "damageMods": [
+     {
+      "tag": "blizzard",
+      "dmg": 0.08,
+      "condition": {
+       "targetHasTag": "frost"
+      }
+     }
+    ],
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "frost"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "blizzard-heal-cut",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.1,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "When attacking the units with [Frost], reduces the amount of healing the opponent receives by 12% for 2 turn(s) and increases damage by 12%",
+    "damageMods": [
+     {
+      "tag": "blizzard",
+      "dmg": 0.12,
+      "condition": {
+       "targetHasTag": "frost"
+      }
+     }
+    ],
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "frost"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "blizzard-heal-cut",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.12,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "When attacking the units with [Frost], reduces the amount of healing the opponent receives by 15% for 2 turn(s) and increases damage by 15%; After attack, further reduces the opponent's SPD by 2 for 2 turns.",
+    "damageMods": [
+     {
+      "tag": "blizzard",
+      "dmg": 0.15,
+      "condition": {
+       "targetHasTag": "frost"
+      }
+     }
+    ],
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "frost"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "blizzard-heal-cut",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.15,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     },
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "frost"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "blizzard-slow",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -2,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "When attacking the units with [Frost], reduces the amount of healing the opponent receives by 15% for 2 turn(s) and increases damage by 18%; After attack, further reduces the opponent's SPD by 4 for 2 turns.",
+    "damageMods": [
+     {
+      "tag": "blizzard",
+      "dmg": 0.18,
+      "condition": {
+       "targetHasTag": "frost"
+      }
+     }
+    ],
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "frost"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "blizzard-heal-cut",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.15,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     },
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "frost"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "blizzard-slow",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -4,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shaymin": {
+   "10": {
+    "text": "After attacking a unit with [Leech Seed], reduces target's S.DEF by 15% for 2 turns. Stacks up to 1 times."
+   },
+   "20": {
+    "text": "After attacking a unit with [Leech Seed], reduces target's S.DEF by 20% for 2 turns. Stacks up to 1 times."
+   },
+   "30": {
+    "text": "After attack, heal self for 30% S.ATK; After attacking a unit with [Leech Seed], reduces target's Special Defense by 20% for 3 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.3,
+        "basis": "casterSAtk"
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.3,
+        "basis": "casterSAtk"
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.3,
+        "basis": "casterSAtk"
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "After attack, heal self for 50% S.ATK; After attacking a unit with [Leech Seed], reduces target's Special Defense by 25% for 3 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.5,
+        "basis": "casterSAtk"
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.5,
+        "basis": "casterSAtk"
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.5,
+        "basis": "casterSAtk"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "victini": {
+   "10": {
+    "text": "Gain [Dauntless] for the first 3 turns, during which HP won't drop below 1. After triggering, expires in the next turn.",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "victini-dauntless",
+         "kind": "endure",
+         "turns": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Gain [Dauntless] for the first 4 turns, during which HP won't drop below 1. After triggering, expires in the next turn; When Dauntless expires, gain 2 dodges the next turn. While dodge is active, every target you hit heals you for 8% of missing HP.",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "victini-dauntless",
+         "kind": "endure",
+         "turns": 4
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Gain [Dauntless] for the first 4 turns, during which HP won't drop below 1. After triggering, expires in the next turn; When Dauntless expires, gain 4 dodges the next turn. While dodge is active, every target you hit heals you for 10% of missing HP.",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "victini-dauntless",
+         "kind": "endure",
+         "turns": 4
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Gain [Dauntless] for the first 4 turns, during which HP won't drop below 1. After triggering, expires in the next turn; When Dauntless expires, gain 5 dodges the next turn. While dodge is active, every target you hit heals you for 12% of missing HP.",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "victini-dauntless",
+         "kind": "endure",
+         "turns": 4
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "palkia": {
+   "10": {
+    "text": "Immune to damage caused by burning",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "palkia-immune-dots",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "burning",
+          "burn"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Immune to damge caused by burning,flaming effect",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "palkia-immune-dots",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "burning",
+          "burn",
+          "flame"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Immune to damage caused by burning,flaming and poisoning effect",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "palkia-immune-dots",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "burning",
+          "burn",
+          "flame",
+          "poison"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Immune to damage caused by burning,flaming,poisoning and parasitizing seed effect",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "palkia-immune-dots",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "burning",
+          "burn",
+          "flame",
+          "poison",
+          "leech-seed"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "giratina": {
+   "10": {
+    "text": "Everytime kill enemies, heal 10% of maximum HP, and increase 2% S.ATK permanenttly",
+    "triggers": [
+     {
+      "on": "onKill",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.1,
+        "basis": "targetMaxHp"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "giratina-rains",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.02,
+         "maxStacks": 99
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Everytime kill enemies, heal 15% of maximum HP, and increase 3% S.ATK permanenttly",
+    "triggers": [
+     {
+      "on": "onKill",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.15,
+        "basis": "targetMaxHp"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "giratina-rains",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.03,
+         "maxStacks": 99
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Everytime kill enemies, heal 20% of maximum HP, and increase 4% S.ATK permanenttly",
+    "triggers": [
+     {
+      "on": "onKill",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.2,
+        "basis": "targetMaxHp"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "giratina-rains",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.04,
+         "maxStacks": 99
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Everytime kill enemies, heal 25% of maximum HP, and increase 5% S.ATK permanenttly",
+    "triggers": [
+     {
+      "on": "onKill",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.25,
+        "basis": "targetMaxHp"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "giratina-rains",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.05,
+         "maxStacks": 99
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "zygarde": {
+   "10": {
+    "text": "At the end of the round, every 2% of maximum life will add 1 layer of [Activity] to itself, each layer of activity increases the probability of triggering minor skills by 10%, up to 8 layers; when releasing basic skills, consume all [Activity], each layer deals an additional 1% of its maximum HP damage to the target, the additional damage cannot exceed 500% of the P.ATK"
+   },
+   "20": {
+    "text": "At the end of the round, every 2% of maximum life will add 1 layer of [Activity] to itself, each layer of activity increases the probability of triggering minor skills by 10%, up to 8 layers; when releasing basic skills, consume all [Activity], each layer deals an additional 1.5% of its maximum HP damage to the target, the additional damage cannot exceed 500% of the P.ATK"
+   },
+   "30": {
+    "text": "At the end of the round, every 2% of maximum life will add 1 layer of [Activity] to itself, each layer of activity increases the probability of triggering minor skills by 10%, up to 8 layers; when releasing basic skills, consume all [Activity], each layer deals an additional 2% of its maximum HP damage to the target, the additional damage cannot exceed 500% of the P.ATK"
+   },
+   "40": {
+    "text": "At the end of the round, every 2% of maximum life will add 1 layer of [Activity] to itself, each layer of activity increases the probability of triggering minor skills by 10%, up to 8 layers; when releasing basic skills, consume all [Activity], each layer deals an additional 2.5% of its maximum HP damage to the target, the additional damage cannot exceed 500% of the P.ATK"
+   }
+  },
+  "xerneas": {
+   "10": {
+    "text": "When you don't have purgeable debuff,increase your own S.ATK by 5%",
+    "statMods": [
+     {
+      "field": "sAtk",
+      "mult": 1.05
+     }
+    ]
+   },
+   "20": {
+    "text": "When you don't have purgeable debuff,increase your own S.ATK and crit intensity by 10%",
+    "statMods": [
+     {
+      "field": "sAtk",
+      "mult": 1.1
+     },
+     {
+      "field": "critPower",
+      "add": 0.1
+     }
+    ]
+   },
+   "30": {
+    "text": "When you don't have purgeable debuff,increase your own S.ATK by 15% and crit intensity by 10%",
+    "statMods": [
+     {
+      "field": "sAtk",
+      "mult": 1.15
+     },
+     {
+      "field": "critPower",
+      "add": 0.1
+     }
+    ]
+   },
+   "40": {
+    "text": "When you don't have purgeable debuff,increase your own S.ATK and crit intensity by 20%",
+    "statMods": [
+     {
+      "field": "sAtk",
+      "mult": 1.2
+     },
+     {
+      "field": "critPower",
+      "add": 0.2
+     }
+    ]
+   }
+  },
+  "lunala": {
+   "10": {
+    "text": "5% S.ATK damage reduction for every 10% cumulative blood loss(still valid after blood is restored), up to 25% S.ATK damage reduaction, lasting until the end"
+   },
+   "20": {
+    "text": "7% S.ATK damage reduction for every 10% cumulative blood loss(still valid after blood is restored), up to 25% S.ATK damage reduaction, lasting until the end"
+   },
+   "30": {
+    "text": "9% S.ATK damage reduction for every 10% cumulative blood loss(still valid after blood is restored), up to 25% S.ATK damage reduaction, lasting until the end"
+   },
+   "40": {
+    "text": "12% S.ATK damage reduction for every 10% cumulative blood loss(still valid after blood is restored), up to 25% S.ATK damage reduaction, lasting until the end"
+   }
+  },
+  "wind-god-pidgeot": {
+   "10": {
+    "text": "Every time an enemy unit is controlled, increase your own P.ATK by 1%, triggered up to 3 times per major round, with a maximum cap of 20%.",
+    "triggers": [
+     {
+      "on": "onInflictControl",
+      "perTurn": 3,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gale-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.01,
+         "maxStacks": 20
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Every time an enemy unit is controlled, increase your own P.ATK by 1% and P.ATK DMG Reduction by 1%, triggered up to 3 times per major round, with a maximum cap of 20%.",
+    "triggers": [
+     {
+      "on": "onInflictControl",
+      "perTurn": 3,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gale-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.01,
+         "maxStacks": 20
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gale-prdct",
+         "kind": "stat",
+         "field": "pRdct",
+         "amount": 0.01,
+         "maxStacks": 20
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Every time an enemy unit is controlled, increase your own P.ATK by 1% and P.ATK DMG Reduction by 1%, triggered up to 3 times per major round, with a maximum cap of 30%.",
+    "triggers": [
+     {
+      "on": "onInflictControl",
+      "perTurn": 3,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gale-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.01,
+         "maxStacks": 30
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gale-prdct",
+         "kind": "stat",
+         "field": "pRdct",
+         "amount": 0.01,
+         "maxStacks": 30
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Every time an enemy unit is controlled, increase your own P.ATK by 2% and P.ATK DMG Reduction by 1%, triggered up to 3 times per major round, with a maximum cap of 40%.",
+    "triggers": [
+     {
+      "on": "onInflictControl",
+      "perTurn": 3,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gale-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.02,
+         "maxStacks": 20
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gale-prdct",
+         "kind": "stat",
+         "field": "pRdct",
+         "amount": 0.01,
+         "maxStacks": 20
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shiny-god-ash-pikachu": {
+   "10": {
+    "text": "All attacks ignore 10% of Special Defense. Basic skill attack increases 10% after an attack and lasts 2 rounds. Can by layered 2 times.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.1,
+         "turns": 2,
+         "maxStacks": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.1,
+         "turns": 2,
+         "maxStacks": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.1,
+         "turns": 2,
+         "maxStacks": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "All attacks ignore 15% of Special Defense. Basic skill attack increases 15% after an attack and lasts 2 rounds. Can by layered 2 times.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.15,
+         "turns": 2,
+         "maxStacks": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.15,
+         "turns": 2,
+         "maxStacks": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.15,
+         "turns": 2,
+         "maxStacks": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "All attacks ignore 22% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.15,
+         "turns": 10,
+         "maxStacks": 3
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.15,
+         "turns": 10,
+         "maxStacks": 3
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.15,
+         "turns": 10,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "All attacks ignore 35% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.15,
+         "turns": 10,
+         "maxStacks": 3
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.15,
+         "turns": 10,
+         "maxStacks": 3
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "ruse-basic",
+         "kind": "stat",
+         "field": "skillBoost",
+         "amount": 0.15,
+         "turns": 10,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shiny-charizard": {
+   "10": {
+    "text": "If targets include [DEF] Pok\u00e9mons, all allies gain 15% DMG boost against [DEF] for 1 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetClass": "guardian"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "def-killer",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.15,
+         "turns": 1,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "If targets include [DEF] Pok\u00e9mons, all allies gain 20% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetClass": "guardian"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "def-killer",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.2,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "If targets include [DEF] Pok\u00e9mons, all allies gain 25% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetClass": "guardian"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "def-killer",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.25,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "If targets include [DEF] Pok\u00e9mons, all allies gain 30% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetClass": "guardian"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "def-killer",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.3,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shiny-raichu": {
+   "10": {
+    "text": "Whenever attacks crit, additionally reduces target's Crit Res by 8% for 3 turns. Stacks up to 1 time.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "crit-res-down",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": -0.08,
+         "turns": 3,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Whenever attacks crit, additionally reduces target's Crit Res by 10% for 4 turns. Stacks up to 1 time.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "crit-res-down",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": -0.1,
+         "turns": 4,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Whenever attacks crit, additionally reduces target's Crit Res by 12% for 4 turns. Stacks up to 2 time.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "crit-res-down",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": -0.12,
+         "turns": 4,
+         "maxStacks": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Whenever attacks crit, additionally reduces target's Crit Res by 15% for 5 turns. Stacks up to 2 time.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "crit-res-down",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": -0.15,
+         "turns": 5,
+         "maxStacks": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shiny-gengar": {
+   "10": {
+    "text": "Immune to Freeze",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "shiny-gengar-immune",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "freeze"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Immune to Freeze and Confusion",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "shiny-gengar-immune",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "freeze",
+          "mindControl",
+          "confusion"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Immune to Freeze, Confusion, Stun",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "shiny-gengar-immune",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "freeze",
+          "mindControl",
+          "confusion",
+          "stun"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Immune to Freeze, Confusion, Stun, and Poison",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "shiny-gengar-immune",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "freeze",
+          "mindControl",
+          "confusion",
+          "stun",
+          "poison"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shiny-venusaur": {
+   "10": {
+    "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 15% for 2 turns. Stacks up to 1 times."
+   },
+   "20": {
+    "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 20% for 2 turns. Stacks up to 1 times."
+   },
+   "30": {
+    "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 25% for 3 turns. Stacks up to 1 times."
+   },
+   "40": {
+    "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 30% for 3 turns. Stacks up to 1 times."
+   }
+  },
+  "shiny-darkrai": {
+   "10": {
+    "text": "Starting from turn 2, each turn increases P.ATK by 4% for 10 turns, capping at 32%.",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 2
+       }
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "darkrai-ruse",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.04,
+         "turns": 10,
+         "maxStacks": 8
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Starting from turn 2, each turn increases P.ATK by 5% for 10 turns, capping at 40%; While immune to controls, gain 1 additional stacks of P.ATK each turn.",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 2
+       }
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "darkrai-ruse",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.05,
+         "turns": 10,
+         "maxStacks": 8
+        }
+       }
+      ]
+     },
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 2
+       },
+       "selfHasTag": "darkrai-immune"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "darkrai-ruse",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.05,
+         "turns": 10,
+         "maxStacks": 8
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Starting from turn 2, each turn increases P.ATK by 6% for 10 turns, capping at 48%. When immune to control effects, every turn gains 1 stack of P.ATK Up",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 2
+       }
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "darkrai-ruse",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.06,
+         "turns": 10,
+         "maxStacks": 8
+        }
+       }
+      ]
+     },
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 2
+       },
+       "selfHasTag": "darkrai-immune"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "darkrai-ruse",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.06,
+         "turns": 10,
+         "maxStacks": 8
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Starting from turn 2, each turn increases P.ATK by 8% for 10 turns, capping at 64%. When immune to control effects, every turn gains 1 stack of P.ATK Up",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 2
+       }
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "darkrai-ruse",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.08,
+         "turns": 10,
+         "maxStacks": 8
+        }
+       }
+      ]
+     },
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 2
+       },
+       "selfHasTag": "darkrai-immune"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "darkrai-ruse",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.08,
+         "turns": 10,
+         "maxStacks": 8
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "raikou": {
+   "10": {
+    "text": "When the Ultimate kills a target, increases self S.ATK by 10% for 2 turns. Stacks up to 1 time. Regenerates 125 Rage. Upon being defeated, inflicts [Short Circuit] on all enemies for 1 turn\n [Short Circuit]: Unable to regenerate rage",
+    "triggers": [
+     {
+      "on": "onKill",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "perTurn": 1,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "raikou-kill-satk",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.1,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "onDeath",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "short-circuit-death",
+         "kind": "rageBlock",
+         "bigRounds": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "When the Ultimate kills a target, increases self S.ATK by 15% for 2 turns. Stacks up to 1 time. Regenerates 125 Rage. Upon being defeated, inflicts [Short Circuit] on all enemies for 1 turn\n [Short Circuit]: Unable to regenerate rage",
+    "triggers": [
+     {
+      "on": "onKill",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "perTurn": 1,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "raikou-kill-satk",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.15,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "onDeath",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "short-circuit-death",
+         "kind": "rageBlock",
+         "bigRounds": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "When the Ultimate kills a target, increases self S.ATK by 20% for 2 turns. Stacks up to 1 time. Regenerates 250 Rage. Upon being defeated, inflicts [Short Circuit] on all enemies for 1 turn\n [Short Circuit]: Unable to regenerate rage",
+    "triggers": [
+     {
+      "on": "onKill",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "perTurn": 1,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "raikou-kill-satk",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.2,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 250
+       }
+      ]
+     },
+     {
+      "on": "onDeath",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "short-circuit-death",
+         "kind": "rageBlock",
+         "bigRounds": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "When the Ultimate kills a target, increases self S.ATK by 25% for 2 turns. Stacks up to 1 time. Regenerates 250 Rage. Upon being defeated, inflicts [Short Circuit] on all enemies for 1 turn\n [Short Circuit]: Unable to regenerate rage",
+    "triggers": [
+     {
+      "on": "onKill",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "perTurn": 1,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "raikou-kill-satk",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.25,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 250
+       }
+      ]
+     },
+     {
+      "on": "onDeath",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "short-circuit-death",
+         "kind": "rageBlock",
+         "bigRounds": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "entei": {
+   "10": {
+    "text": "When engaged in combat, increases Crit Intensity by 10% for 2 turn(s); After using Ultimates, gain 5% additional Crit Intensity for 2 turns.",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-enh",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.1,
+         "turns": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-enh-ult",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.05,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "When engaged in combat, increases Crit Intensity by 15% for 2 turn(s); After using Ultimates, gain 7% additional Crit Intensity for 2 turns.",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-enh",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.15,
+         "turns": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-enh-ult",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.07,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "When engaged in combat, increases Crit Intensity by 20% for 2 turn(s); After using Ultimates, gain 9% additional Crit Intensity for 2 turns.",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-enh",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.2,
+         "turns": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-enh-ult",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.09,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "When engaged in combat, increases Crit Intensity by 25% for 2 turn(s); After using Ultimates, gain 12% additional Crit Intensity for 2 turns.",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-enh",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.25,
+         "turns": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-enh-ult",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.12,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "suicune": {
+   "10": {
+    "text": "When dealing Thorn damage, there's 50% chance to reduce the opponent's DMG Reduction by 5% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHasTag": "thorn"
+      },
+      "chance": 0.5,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "thorn-rdct-down",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.05,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "When dealing Thorn damage, there's 65% chance to reduce the opponent's DMG Reduction by 8% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHasTag": "thorn"
+      },
+      "chance": 0.65,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "thorn-rdct-down",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.08,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "When dealing Thorn damage, there's 80% chance to reduce the opponent's DMG Reduction by 12% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHasTag": "thorn"
+      },
+      "chance": 0.8,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "thorn-rdct-down",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.12,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "When dealing Thorn damage, there's 90% chance to reduce the opponent's DMG Reduction by 15% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHasTag": "thorn"
+      },
+      "chance": 0.9,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "thorn-rdct-down",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.15,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "zapdos": {
+   "10": {
+    "text": "Gain 8% bonus Lifesteal in battles",
+    "statMods": [
+     {
+      "field": "lifesteal",
+      "add": 0.08
+     }
+    ]
+   },
+   "20": {
+    "text": "Gain 10% bonus Lifesteal in battles",
+    "statMods": [
+     {
+      "field": "lifesteal",
+      "add": 0.1
+     }
+    ]
+   },
+   "30": {
+    "text": "Gain 12% bonus Lifesteal in battles",
+    "statMods": [
+     {
+      "field": "lifesteal",
+      "add": 0.12
+     }
+    ]
+   },
+   "40": {
+    "text": "Gain 15% bonus Lifesteal in battles",
+    "statMods": [
+     {
+      "field": "lifesteal",
+      "add": 0.15
+     }
+    ]
+   }
+  },
+  "moltres": {
+   "10": {
+    "text": "Attacking Burning targets further increases the Burning damage they receive by 15% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "burning"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "burning-amp",
+         "kind": "stat",
+         "field": "dotTaken",
+         "amount": 0.15,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Attacking Burning targets further increases the Burning damage they receive by 22% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "burning"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "burning-amp",
+         "kind": "stat",
+         "field": "dotTaken",
+         "amount": 0.22,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Attacking Burning targets further increases the Burning damage they receive by 28% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "burning"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "burning-amp",
+         "kind": "stat",
+         "field": "dotTaken",
+         "amount": 0.28,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Attacking Burning targets further increases the Burning damage they receive by 35% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "burning"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "burning-amp",
+         "kind": "stat",
+         "field": "dotTaken",
+         "amount": 0.35,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "articuno": {
+   "10": {
+    "text": "When engaged in combat, increases all allies control boost by 15%",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "articuno-cb",
+         "kind": "stat",
+         "field": "controlBoost",
+         "amount": 0.15,
+         "turns": 999
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "When battle starts, increases all allies' control boost by 20% and reduces all opponents' SPD by 2 for 4 turns",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "articuno-cb",
+         "kind": "stat",
+         "field": "controlBoost",
+         "amount": 0.2,
+         "turns": 999
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "articuno-trinket-slow",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -2,
+         "turns": 4
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "When battle starts, increases all allies' control boost by 24% and reduces all opponents' SPD by 6 for 4 turns",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "articuno-cb",
+         "kind": "stat",
+         "field": "controlBoost",
+         "amount": 0.24,
+         "turns": 999
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "articuno-trinket-slow",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -6,
+         "turns": 4
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "When battle starts, increases all allies' control boost by 28% and reduces all opponents' SPD by 10 for 6 turns",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "articuno-cb",
+         "kind": "stat",
+         "field": "controlBoost",
+         "amount": 0.28,
+         "turns": 999
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "articuno-trinket-slow",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -10,
+         "turns": 6
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "rayquaza": {
+   "10": {
+    "text": "At the start of each turn, increase your ATK based on the number of enemies killed on board. When killing 3/4/5, increases S.ATK by 3%/6%/9%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "effects": [
+       {
+        "op": "removeBuff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "endgame"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.09,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 5
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.06,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.03,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "At the start of each turn, increase your ATK based on the number of enemies killed on board. When killing 3/4/5, increases S.ATK by 6%/12%/18%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "effects": [
+       {
+        "op": "removeBuff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "endgame"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.18,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 5
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.12,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.06,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "At the start of each turn, increase your ATK based on the number of enemies killed on board. When killing 3/4/5, increases S.ATK by 9%/18%/27%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "effects": [
+       {
+        "op": "removeBuff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "endgame"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.27,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 5
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.18,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.09,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "At the start of each turn, increase your ATK based on the number of enemies killed on board. When killing 3/4/5, increases S.ATK by 12%/24%/36%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "effects": [
+       {
+        "op": "removeBuff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "endgame"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.36,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 5
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.24,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endgame",
+         "kind": "stat",
+         "field": "sAtk",
+         "amount": 0.12,
+         "turns": 1
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 3
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "metagross": {
+   "10": {
+    "text": "When HP drops below 15%, reduces the opponent's Rage by 100 after receiving damage. Lasts 2 turn(s).",
+    "triggers": [
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHpBelow": 0.15
+      },
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -100
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "When HP drops below 20%, reduces the opponent's Rage by 150 after receiving damage. Lasts 2 turn(s).",
+    "triggers": [
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHpBelow": 0.2
+      },
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -150
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "When HP is below 25%, reduce opponent's rage by 200 upon taking attack, lasting for 2 turns",
+    "triggers": [
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHpBelow": 0.25
+      },
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -200
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "When HP is below 30%, reduce opponent's rage by 250 upon taking attack, lasting for 3 turns",
+    "triggers": [
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHpBelow": 0.3
+      },
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -250
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "garchomp": {
+   "10": {
+    "text": "Ultimate additionally reduces target's DMG Reduction by 5% for 2 turns. Stacks up to 2 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "garchomp-rdct-cut",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.05,
+         "turns": 2,
+         "maxStacks": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Ultimate additionally reduces target's DMG Reduction by 7% for 3 turns. Stacks up to 2 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "garchomp-rdct-cut",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.07,
+         "turns": 3,
+         "maxStacks": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Ultimate additionally reduces target's DMG Reduction by 8% for 3 turns. Stacks up to 3 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "garchomp-rdct-cut",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.08,
+         "turns": 3,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Ultimate additionally reduces target's DMG Reduction by 10% for 4 turns. Stacks up to 3 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "garchomp-rdct-cut",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.1,
+         "turns": 4,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "hydreigon": {
+   "10": {
+    "text": "At the beginning of each turn, every opponent who has less than 20% HP on board (including the fallen ones) increases your P.ATK by 6%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "effects": [
+       {
+        "op": "removeBuff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "hydra-benefit"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.36,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 6
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.3,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 5
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.24,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.18,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.12,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.06,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "At the beginning of each turn, every opponent who has less than 25% HP on board (including the fallen ones) increases your P.ATK by 8%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "effects": [
+       {
+        "op": "removeBuff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "hydra-benefit"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.48,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 6
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.4,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 5
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.32,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.24,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.16,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.08,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "At the beginning of each turn, every opponent who has less than 30% HP on board (including the fallen ones) increases your P.ATK by 10%. Cannot be dispelled.",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "effects": [
+       {
+        "op": "removeBuff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "hydra-benefit"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.6,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 6
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.5,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 5
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.4,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.3,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.2,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.1,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "At the beginning of each turn, every opponent who has less than 35% HP on board (including the fallen ones) increases your P.ATK by 12%. Cannot be dispelled.",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "effects": [
+       {
+        "op": "removeBuff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "hydra-benefit"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.72,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 6
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.6,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 5
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.48,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.36,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.24,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-benefit",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.12,
+         "turns": 1,
+         "undispellable": true
+        },
+        "condition": {
+         "enemiesDeadAtLeast": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "gyarados": {
+   "10": {
+    "text": "At the beginning of each turn, if HP drops below 15%, increase Guard Break by 35% and Crit Chance by 15%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "selfHpBelow": 0.15
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "impasse-gb",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": 0.35,
+         "turns": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "impasse-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.15,
+         "turns": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "At the beginning of each turn, if HP drops below 20%, increase Guard Break by 45% and Crit Chance by 18%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "selfHpBelow": 0.2
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "impasse-gb",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": 0.45,
+         "turns": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "impasse-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.18,
+         "turns": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "At the beginning of each turn, if HP drops below 25%, increase Guard Break by 55% and Crit Chance by 24%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "selfHpBelow": 0.25
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "impasse-gb",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": 0.55,
+         "turns": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "impasse-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.24,
+         "turns": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "At the beginning of each turn, if HP drops below 35%, increase Guard Break by 60% and Crit Chance by 30%",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "selfHpBelow": 0.35
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "impasse-gb",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": 0.6,
+         "turns": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "impasse-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.3,
+         "turns": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "gardevoir": {
+   "10": {
+    "text": "Starting from turn 4, increases Guard Break by 8% and Crit Chance by 5%. Stacks up to 3 times.",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 4
+       }
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endurance-gb",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": 0.08,
+         "maxStacks": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endurance-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.05,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Starting from turn 4, increases Guard Break by 10% and Crit Chance by 7%. Stacks up to 3 times.",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 4
+       }
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endurance-gb",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": 0.1,
+         "maxStacks": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endurance-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.07,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Starting from turn 3, increases Guard Break by 12% and Crit Chance by 8%. Stacks up to 3 times.",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 3
+       }
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endurance-gb",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": 0.12,
+         "maxStacks": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endurance-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.08,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Starting from turn 3, increases Guard Break by 15% and Crit Chance by 9%. Stacks up to 4 times.",
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "from": 3
+       }
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endurance-gb",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": 0.15,
+         "maxStacks": 4
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "endurance-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.09,
+         "maxStacks": 4
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "gengar": {
+   "10": {
+    "text": "Immune to Freeze",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gengar-immune",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "freeze"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Immune to Freeze and Confusion",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gengar-immune",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "freeze",
+          "mindControl",
+          "confusion"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Immune to Freeze, Confusion, Stun",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gengar-immune",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "freeze",
+          "mindControl",
+          "confusion",
+          "stun"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Immune to Freeze, Confusion, Stun, and Poison",
+    "triggers": [
+     {
+      "on": "battleStart",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gengar-immune",
+         "kind": "immune",
+         "turns": 999,
+         "undispellable": true,
+         "immuneTo": [
+          "freeze",
+          "mindControl",
+          "confusion",
+          "stun",
+          "poison"
+         ]
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "raichu": {
+   "10": {
+    "text": "Whenever attacks crit, additionally reduces target's Crit Res by 4% for 3 turns. Stacks up to 3 times.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "crit-res-down",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": -0.04,
+         "turns": 3,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "Whenever attacks crit, additionally reduces target's Crit Res by 6% for 4 turns. Stacks up to 3 times.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "crit-res-down",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": -0.06,
+         "turns": 4,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "Whenever attacks crit, additionally reduces target's Crit Res by 7% for 4 turns. Stacks up to 4 times.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "crit-res-down",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": -0.07,
+         "turns": 4,
+         "maxStacks": 4
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "Whenever attacks crit, additionally reduces target's Crit Res by 8% for 5 turns. Stacks up to 4 times.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "crit-res-down",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": -0.08,
+         "turns": 5,
+         "maxStacks": 4
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "charizard": {
+   "10": {
+    "text": "If targets include [DEF] Pok\u00e9mons, all allies gain 15% DMG boost against [DEF] for 1 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetClass": "guardian"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "def-killer",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.15,
+         "turns": 1,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "If targets include [DEF] Pok\u00e9mons, all allies gain 20% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetClass": "guardian"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "def-killer",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.2,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "If targets include [DEF] Pok\u00e9mons, all allies gain 25% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetClass": "guardian"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "def-killer",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.25,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "If targets include [DEF] Pok\u00e9mons, all allies gain 30% DMG boost against [DEF] for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetClass": "guardian"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "def-killer",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.3,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "blastoise": {
+   "10": {
+    "text": "When engaged in combat, increases your max HP by 20%. In the first 4 turns, regenerates 4% of max HP each turn.",
+    "statMods": [
+     {
+      "field": "hp",
+      "mult": 1.2
+     }
+    ],
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "until": 4
+       }
+      },
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.04,
+        "basis": "targetMaxHp"
+       }
+      ]
+     }
+    ]
+   },
+   "20": {
+    "text": "When engaged in combat, increases your max HP by 28%. In the first 4 turns, regenerates 5% of max HP each turn.",
+    "statMods": [
+     {
+      "field": "hp",
+      "mult": 1.28
+     }
+    ],
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "until": 4
+       }
+      },
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.05,
+        "basis": "targetMaxHp"
+       }
+      ]
+     }
+    ]
+   },
+   "30": {
+    "text": "When engaged in combat, increases your max HP by 35%. In the first 5 turns, regenerates 5% of max HP each turn.",
+    "statMods": [
+     {
+      "field": "hp",
+      "mult": 1.35
+     }
+    ],
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "until": 5
+       }
+      },
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.05,
+        "basis": "targetMaxHp"
+       }
+      ]
+     }
+    ]
+   },
+   "40": {
+    "text": "When engaged in combat, increases your max HP by 40%. In the first 5 turns, regenerates 7% of max HP each turn.",
+    "statMods": [
+     {
+      "field": "hp",
+      "mult": 1.4
+     }
+    ],
+    "triggers": [
+     {
+      "on": "turnStart",
+      "condition": {
+       "round": {
+        "until": 5
+       }
+      },
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.07,
+        "basis": "targetMaxHp"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "venusaur": {
+   "10": {
+    "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 15% for 2 turns. Stacks up to 1 times."
+   },
+   "20": {
+    "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 20% for 2 turns. Stacks up to 1 times."
+   },
+   "30": {
+    "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 25% for 3 turns. Stacks up to 1 times."
+   },
+   "40": {
+    "text": "Ultimate additionally reduces target's P.DEF and S.DEF by 30% for 3 turns. Stacks up to 1 times."
+   }
   }
  },
  "_trinketNotes": [
@@ -22354,6 +27493,30 @@
   "Mewtwo / Shiny Mewtwo: the Mental Bomb (80 % S.ATK after 3 turns) as a 1-round DoT on the front row; 'no new bomb while held' is not enforced. Shiny Mewtwo's source lists a skill only at Lv 40.",
   "Jirachi (Predict Future): the healing cut goes on the ult's first target for 3 turns; the Doom Desire boost has no effect (Doom Desire's detonation is not modelled).",
   "Solgaleo (Cosmic Power): 'must hit' has no effect (no dodge).",
-  "Arceus (Refresh): the S.DEF ignore below 50 % HP has no effect (DEF has no effect)."
+  "Arceus (Refresh): the S.DEF ignore below 50 % HP has no effect (DEF has no effect).",
+  "Kyogre (Frustration): '+Rage when hit, without the passive's high DMG Reduction' \u2014 the Rage comes on every hit (the passive's reduction window is not checked).",
+  "Mew (Control Immunity Chance): Lv 10-30 \u2014 +125 Rage and the immunity roll after the basic skill; Lv 40 \u2014 +125 Rage after every attack, +125 more and the roll after the ult. The immunity is to every control.",
+  "Cresselia (Lunar Blade): 'stackable' with no cap or duration \u2014 the ATK cut stacks for the battle.",
+  "Celebi (Drips of Life): the Rage goes to every ally above 60 % Rage, not one (no 'pick one matching' rule).",
+  "Shiny Kyogre, Shiny Mew and Shiny Cresselia list no trinket skills in the source.",
+  "Infernape (Meditation): the shield comes each time HP falls below the line (re-arms above it); its 3-turn limit and 'cannot be dispelled' are not kept (shields have neither).",
+  "Shiny Kyurem lists no trinket skills in the source.",
+  "Shaymin (Sweet Scent): the S.DEF cut on [Leech Seed] targets has no effect (DEF has no effect); Lv 30 / 40 heal after each attack.",
+  "Victini (Rise from the Dead): [Dauntless] for the first 3 / 4 turns; the dodges and their healing (Lv 20+) are not modelled (no dodge).",
+  "Palkia (Immune): the DoTs cannot be applied to it (rather than landing for no damage).",
+  "Zygarde (Power Construct): not modelled \u2014 [Activity] by HP share, the basic-skill chance per layer and the consuming hit need a resource fed by HP.",
+  "Xerneas (Nature Power): always on \u2014 'while free of dispellable debuffs' is not checked.",
+  "Lunala (Magic Coat): not modelled \u2014 the S.ATK reduction grows with cumulative HP lost (no such counter yet).",
+  "Wind God Pidgeot (Gale Spell): 3 a turn (not a big round); the cap is in stacks of the ATK gain.",
+  "Shiny God Ash-Pikachu: as God Ash-Pikachu.",
+  "Shiny Charizard (DEF Pok\u00e9mon Killer): the allies' boost counts against every target, not only [DEF] ones (a buff cannot carry a target condition).",
+  "Shiny Gengar (Immune): Confusion covers the mind control kind too.",
+  "Shiny Venusaur (Impair DEF): no effect \u2014 DEF has no effect.",
+  "Shiny Darkrai: as Darkrai (4-8 % a stack, 8 stacks).",
+  "Rayquaza (Enhanced End-game): re-set each turn from the fallen enemies (the first matching line wins).",
+  "Metagross (Reduces Rage at Low HP): each hit taken below the line cuts the attacker's Rage; the 'lasting N turns' has no separate effect.",
+  "Hydreigon (Benefit from Damage): counts the fallen enemies only (living ones under the HP line are not counted).",
+  "Gardevoir (Endurance): one stack a turn from the starting round.",
+  "Venusaur (Impair DEF): no effect \u2014 DEF has no effect. Charizard / Raichu / Blastoise / Gengar: as their Shiny forms at their own numbers."
  ]
 }
