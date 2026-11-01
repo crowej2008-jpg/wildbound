@@ -1112,3 +1112,13 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - "i dont want there to be a cut for weaker teams against stronger teams": `teamPowerCut` false (the
   measured both-sides rule stays as a switch). Ranked rival `baseLevel` back to 12. Golden baselines
   re-exported.
+
+## Owner change: action Rage for SKILL class only (2026-10-31)
+
+- Owner: "pokemon only get +250 rage if they are a skill class". New combat setting
+  `ragePerActionClasses` (`["adept"]`); `takeTurn` and `extraAction` gate the +250 on it.
+- Deviation from the measured source (all classes gain it). ASSUMPTIONS #63.
+- Golden replays squad-camp and tidewarden re-exported deliberately; campaign and PvP balance tests pass
+  unchanged.
+- Recorded a friend's Dialga fallback (ult fills Dialga + 2 allies) — not built; owner keeps the current
+  Dialga unless E6 shows it is too strong.

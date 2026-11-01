@@ -84,7 +84,7 @@ export function takeTurn(ctx: BattleContext, u: Combatant, input: ActionInput): 
     u.rage = Math.max(0, u.rage - ctx.settings.ultRageCost);
     ctx.events.push({ type: 'rageChange', unit: u.key, delta: u.rage - before, rage: u.rage });
   } else {
-    addRage(ctx, u, ctx.settings.ragePerAction);
+    addRage(ctx, u, actionRage(ctx, u));
   }
   processTalentsOnAction(ctx, u);
   // E1: "after using a basic skill / the ultimate" (Muscle Band, Soul Dew, Grip Claw, Leftovers).
@@ -168,7 +168,12 @@ export function extraAction(
   const targets = selectTargets(ctx, u, skill);
   const hits = resolveCast(ctx, u, skill, targets, { bigRound: ctx.round, team });
   applySkillSideEffects(ctx, u, skill, targets, hits);
-  if (!noRage && picked !== 'ult') addRage(ctx, u, ctx.settings.ragePerAction);
+  if (!noRage && picked !== 'ult') addRage(ctx, u, actionRage(ctx, u));
+}
+
+/** The base Rage a normal attack / basic skill gives its user (owner: SKILL class only). */
+function actionRage(ctx: BattleContext, u: Combatant): number {
+  return ctx.settings.ragePerActionClasses.includes(u.kit.class) ? ctx.settings.ragePerAction : 0;
 }
 
 function rollSkillSlot(ctx: BattleContext, u: Combatant): SkillSlot {

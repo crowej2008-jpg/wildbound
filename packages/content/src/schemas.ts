@@ -472,6 +472,7 @@ export const combatSettingsSchema = z
     rageStrikerStart: z.number(),
     rageMax: z.number(),
     ragePerAction: z.number(),
+    ragePerActionClasses: z.array(classSchema),
     rageHitBase: z.number(),
     rageHitScale: z.number(),
     ultRageCost: z.number(),

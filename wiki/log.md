@@ -89,3 +89,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-10-31] decision | No team-Power cut
 - Owner: "i dont want there to be a cut for weaker teams against stronger teams". `teamPowerCut` false,
   Ranked base back to 12. Pages: combat numbers, owner changes.
+
+## [2026-10-31] decision | Action Rage for SKILL class only
+- Owner: "pokemon only get +250 rage if they are a skill class". Only `adept` gains the +250 per normal
+  attack / basic skill; Strikers and Guardians gain 0. Mimikyu (Striker) extra attacks gain 0 too.
+- Dialga fallback (Dialga + 2 allies to full) recorded, not built. Page: owner changes.

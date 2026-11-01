@@ -1,3 +1,4 @@
+import type { WildClass } from '../model';
 /**
  * Default combat settings. The shipped defaults live in
  * `packages/content/tuning/combat.json` (Appendix A of PROMPT.md); the engine
@@ -46,6 +47,8 @@ export interface CombatSettings {
   rageStrikerStart: number;
   rageMax: number;
   ragePerAction: number;
+  /** Owner 2026-10-31: only these classes gain `ragePerAction` from a normal attack / basic skill. */
+  ragePerActionClasses: WildClass[];
   /** rage on being hit = this + floor(rageHitScale × hpLost ÷ maxHp) (seen). */
   rageHitBase: number;
   rageHitScale: number;
@@ -111,6 +114,7 @@ function readDefaults(): CombatSettings {
     rageStrikerStart: 1000,
     rageMax: 1000,
     ragePerAction: 250,
+    ragePerActionClasses: ['adept'],
     rageHitBase: 125,
     rageHitScale: 1000,
     ultRageCost: 1000,

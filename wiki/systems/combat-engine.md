@@ -29,7 +29,7 @@ never provided, so PROMPT §6 is the authority).
 - **DEF is inert** by default (`defendersUseDef: false`) — the measured model says so.
 
 ## Rage
-1,000 bar; Strikers start full (first action = ult), others 500; +250 per action; on hit
+1,000 bar; Strikers start full (first action = ult), others 500; +250 per action (SKILL class only — owner change); on hit
 `125 + floor(1000 × hpLost / maxHp)`; ult empties the bar; normal action → basic skill 20% of the time.
 
 ## Status
