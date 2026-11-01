@@ -1,3 +1,4 @@
+import { berryDelta } from './berries';
 import type { DamageMod, RoundEffect, SoulheartHooks, TriggerDef } from '../combat/types';
 import { foldOrbs } from './orbs';
 import { heldDelta } from './held';
@@ -77,7 +78,7 @@ export interface LayerDelta {
   resonance: StatDelta;
   titles: StatDelta;
   runes: StatDelta;
-  charms: StatDelta;
+  berries: StatDelta;
   cores: StatDelta;
 }
 
@@ -162,7 +163,7 @@ function emptyLayers(): LayerDelta {
     resonance: emptyDelta(),
     titles: emptyDelta(),
     runes: emptyDelta(),
-    charms: emptyDelta(),
+    berries: emptyDelta(),
     cores: emptyDelta(),
   };
 }
@@ -239,18 +240,10 @@ export function foldLoadout(
   addDelta(layers.runes, orbFold.delta);
   damageMods.push(...orbFold.damageMods);
 
-  // --- Charms: each owned, equipped Berry; starred tiers scale their lines ---
-  const charmUses = new Map<string, number>();
-  for (const id of loadout.charms) {
-    if (id === null) continue;
-    const used = (charmUses.get(id) ?? 0) + 1;
-    if (used > (state.charms[id] ?? 0)) continue;
-    charmUses.set(id, used);
-    const def = tables.charms.find((c) => c.id === id);
-    if (def) {
-      const stars = def.maxStars > 0 ? Math.min(def.maxStars, Math.max(1, state.charmStars[def.id] ?? 1)) : 1;
-      addLines(layers.charms, def.lines, stars);
-    }
+  // --- Berries (R6d): each carried berry's star, breakthrough and cultivated lines ---
+  for (const id of loadout.berries ?? []) {
+    const berry = id ? state.berries?.find((b) => b.id === id) : undefined;
+    if (berry) addDelta(layers.berries, berryDelta(tables.berries, berry));
   }
 
   // --- Spirit cores: per-socket lines + 2/4/6-piece set bonuses ---
@@ -295,7 +288,7 @@ export function foldLoadout(
   addDelta(delta, layers.resonance);
   addDelta(delta, layers.titles);
   addDelta(delta, layers.runes);
-  addDelta(delta, layers.charms);
+  addDelta(delta, layers.berries);
   addDelta(delta, layers.cores);
   return { delta, layers, effects, soulheart, soulheartText, triggers, damageMods };
 }

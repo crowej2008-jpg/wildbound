@@ -2,7 +2,7 @@
   "relic": {
     "minTier": "supreme"
   },
-  "charms": {
+  "berries": {
     "minStars": 4,
     "slots": 2
   },
@@ -72,46 +72,18 @@
         "quality": "blue"
       }
     ],
-    "charms": [
+    "berries": [
       {
-        "defId": "charm-sunpetal-berry",
-        "stars": 1,
-        "count": 3
+        "defId": "berry-lum-berry"
       },
       {
-        "defId": "charm-mistbud-berry",
-        "stars": 1,
-        "count": 3
+        "defId": "berry-mago-berry"
       },
       {
-        "defId": "charm-ironpeel-berry",
-        "stars": 1,
-        "count": 3
+        "defId": "berry-bergamot-berry"
       },
       {
-        "defId": "charm-glimmerberry",
-        "stars": 1,
-        "count": 3
-      },
-      {
-        "defId": "charm-emberfruit",
-        "stars": 1,
-        "count": 3
-      },
-      {
-        "defId": "charm-tidefruit",
-        "stars": 2,
-        "count": 3
-      },
-      {
-        "defId": "charm-grovefruit",
-        "stars": 2,
-        "count": 3
-      },
-      {
-        "defId": "charm-voltfruit",
-        "stars": 2,
-        "count": 3
+        "defId": "berry-petaya-berry"
       }
     ]
   }

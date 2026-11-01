@@ -50,6 +50,11 @@ export const en = {
   'currency.trinketChestPurple': 'Purple Trinket Chests',
   'currency.trinketChest': 'Trinket Chests',
   'currency.trinketBoxShiny': 'Shiny Supreme Trinket Boxes',
+  'currency.berryMulchBlue': 'Blue Mulch',
+  'currency.berryMulchPurple': 'Purple Mulch',
+  'currency.berryMulchOrange': 'Orange Mulch',
+  'currency.berryMulchRed': 'Red Mulch',
+  'currency.reforgePotion': 'Reforge Potions',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
   'wilds.empty': 'No Wilds yet. Grant one from More > Debug.',
@@ -163,11 +168,30 @@ export const en = {
   'gear.potential.maxed': 'Maxed',
   'gear.potential.reset': 'Reset Potential',
   'gear.potential.resetConfirm': 'Reset all of this Pokémon\'s Potential? Shards, Cores and fodder Pokémon come back.',
-  'gear.berry.upgrade': 'Star up',
   'gear.berry.copies': 'copies',
   'gear.berry.dismantle': 'Dismantle',
   'gear.berry.slots': 'Berry slots',
-  'gear.berry.spare': 'spare',
+  'gear.berry.slot': 'Berry',
+  'gear.berry.loading': 'Loading berries…',
+  'gear.berry.fixed': 'Fixed',
+  'gear.berry.locked': 'Locked',
+  'gear.berry.lock': 'Lock',
+  'gear.berry.unlock': 'Unlock',
+  'gear.berry.reforge': 'Reforge',
+  'gear.berry.carry': 'Carry',
+  'gear.berry.remove': 'Take off',
+  'gear.berry.choose': 'Choose a berry',
+  'gear.berry.cultivate': 'Cultivate',
+  'gear.berry.fast': 'Fast Cultivation',
+  'gear.berry.breakthrough': 'Breakthrough',
+  'gear.berry.trainerLv': 'Trainer Lv',
+  'gear.berry.elevate': 'Elevate',
+  'gear.berry.bag': 'Your berries',
+  'gear.berry.none': 'No spare berries.',
+  'gear.berry.tier.common': 'Common',
+  'gear.berry.tier.basic': 'Basic',
+  'gear.berry.tier.intermediate': 'Intermediate',
+  'gear.berry.tier.greater': 'Greater',
   'gear.starUp': 'Star-up',
   'gear.sub.held': 'Held Items',
   'held.lines': 'Additional attributes',
@@ -952,7 +976,12 @@ export type CurrencyKey =
   | 'trinketChestBlue'
   | 'trinketChestPurple'
   | 'trinketChest'
-  | 'trinketBoxShiny';
+  | 'trinketBoxShiny'
+  | 'berryMulchBlue'
+  | 'berryMulchPurple'
+  | 'berryMulchOrange'
+  | 'berryMulchRed'
+  | 'reforgePotion';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
   gold: en['currency.gold'],
@@ -988,6 +1017,11 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   trinketChestPurple: en['currency.trinketChestPurple'],
   trinketChest: en['currency.trinketChest'],
   trinketBoxShiny: en['currency.trinketBoxShiny'],
+  berryMulchBlue: en['currency.berryMulchBlue'],
+  berryMulchPurple: en['currency.berryMulchPurple'],
+  berryMulchOrange: en['currency.berryMulchOrange'],
+  berryMulchRed: en['currency.berryMulchRed'],
+  reforgePotion: en['currency.reforgePotion'],
 };
 
 export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar';

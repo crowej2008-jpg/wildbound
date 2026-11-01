@@ -9,6 +9,8 @@ import {
   emptySquads,
   emptyStartingEquipment,
   initialEquipment,
+  berryDef,
+  rollBerry,
   mulberry32,
   rollHeldItem,
   initialIdle,
@@ -37,14 +39,14 @@ import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 26;
+export const SAVE_VERSION = 27;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 26;
+export const MIN_SAVE_VERSION = 27;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -55,16 +57,15 @@ function currenciesFrom(source: Record<string, number>): Record<CurrencyId, numb
   return out;
 }
 
-/** v7 stored one `charm`; v8 stores an array of Berry slots. */
+/** Keep every loadout's berry slots the tuned length (R6d). */
 function normalizeLoadouts(
   source: AccountState['loadouts'] | undefined,
   slots: number,
 ): AccountState['loadouts'] {
   const out: AccountState['loadouts'] = {};
   for (const [wildId, raw] of Object.entries(source ?? {})) {
-    const { charm: legacy, ...rest } = raw as typeof raw & { charm?: string | null };
-    const stored = Array.isArray(rest.charms) ? rest.charms : [legacy ?? null];
-    out[wildId] = { ...rest, charms: Array.from({ length: slots }, (_, i) => stored[i] ?? null) };
+    const stored = Array.isArray(raw.berries) ? raw.berries : [];
+    out[wildId] = { ...raw, berries: Array.from({ length: slots }, (_, i) => stored[i] ?? null) };
   }
   return out;
 }
@@ -130,7 +131,7 @@ function normalizeSquads(
 function withDefaults(state: AccountState, now: number, config: GameConfig): AccountState {
   const s = state as Partial<AccountState>;
   const day = dayKey(now);
-  const charmSlots = config?.equipment?.tuning?.charms?.slots ?? 2;
+  const berrySlots = config?.equipment?.tuning?.berries?.slots ?? 2;
   const welcomeCreatedAt = (s.mail ?? []).find((m) => m.subjectKey === 'mail.welcome.subject')?.createdAt;
   const serverEpoch =
     typeof s.serverEpoch === 'number' && Number.isFinite(s.serverEpoch)
@@ -156,7 +157,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     equipment:
       s.equipment ??
       (config ? startingEquipment(config) : initialEquipment(emptyStartingEquipment())),
-    loadouts: normalizeLoadouts(s.loadouts, charmSlots),
+    loadouts: normalizeLoadouts(s.loadouts, berrySlots),
     potential: s.potential ?? {},
     plates: s.plates ?? {},
     speciesShards: s.speciesShards ?? {},
@@ -192,11 +193,19 @@ function welcomeMail(config: GameConfig, now: number): MailItem {
 export function startingEquipment(config: GameConfig): AccountState['equipment'] {
   const { relics, held, tuning } = config.equipment;
   let slot = 0;
-  return initialEquipment(tuning.starting, (defId, id) => {
-    const def = relics.find((d) => d.id === defId);
-    slot += 1;
-    return def ? rollHeldItem(def, held, mulberry32(0x4e1d + slot), id) : null;
-  });
+  return initialEquipment(
+    tuning.starting,
+    (defId, id) => {
+      const def = relics.find((d) => d.id === defId);
+      slot += 1;
+      return def ? rollHeldItem(def, held, mulberry32(0x4e1d + slot), id) : null;
+    },
+    (defId, id) => {
+      const def = berryDef(config.equipment.berries, defId);
+      slot += 1;
+      return def ? rollBerry(config.equipment.berries, def, id, mulberry32(0x4e1d + slot)) : null;
+    },
+  );
 }
 
 /** Told to a player whose save was older than MIN_SAVE_VERSION and was replaced by a fresh account. */

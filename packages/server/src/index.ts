@@ -15,6 +15,7 @@ import type { ShopView } from './shops';
 import type { OriginSkillsView } from './shards';
 import type { PotentialView } from './potential';
 import type { OrbsPanelView } from './orbs';
+import type { BerriesPanelView } from './berries';
 import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import type { ExploreView } from './explore-view';
@@ -299,11 +300,20 @@ export interface GameServer {
   grantOrb(kind: string, colour: OrbColour, level?: number): Promise<Result<AccountSnapshot>>;
   equipCore(wildId: string, socket: number, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
   starUpCore(instanceId: string): Promise<Result<AccountSnapshot>>;
-  equipCharm(wildId: string, slot: number, charmId: string | null): Promise<Result<AccountSnapshot>>;
-  /** Spend duplicate copies + Berry Essence to raise a Berry's star level (M11.5). */
-  upgradeCharm(charmId: string): Promise<Result<AccountSnapshot>>;
-  /** Break one spare Berry copy into Berry Essence (M11.5). */
-  dismantleCharm(charmId: string): Promise<Result<AccountSnapshot>>;
+  /** R6d: a Pokémon's berry panel (two slots, the account's berries, prices). */
+  getBerries(wildId: string): Promise<Result<BerriesPanelView>>;
+  equipBerry(wildId: string, slot: number, berryId: string | null): Promise<Result<AccountSnapshot>>;
+  /** 100 Berry Essence a time; `times` up to 10 (Fast Cultivation). */
+  cultivateBerry(berryId: string, times?: number): Promise<Result<AccountSnapshot>>;
+  breakthroughBerry(berryId: string): Promise<Result<AccountSnapshot>>;
+  /** Re-roll one line's kind for Reforge Potions (10 / 20 / 35 / 35 / 35 by position). */
+  reforgeBerry(berryId: string, line: number): Promise<Result<AccountSnapshot>>;
+  /** Elevation: the next star, paid with spare 1★ uncultivated berries and Gold. */
+  elevateBerry(berryId: string): Promise<Result<AccountSnapshot>>;
+  lockBerry(berryId: string, locked: boolean): Promise<Result<AccountSnapshot>>;
+  dismantleBerries(berryIds: string[]): Promise<Result<AccountSnapshot>>;
+  /** Debug: add a new berry. */
+  grantBerry(defId: string): Promise<Result<AccountSnapshot>>;
   /** E4: spend a species' own shards on a new copy of it. */
   composeWild(speciesId: string): Promise<Result<AccountSnapshot>>;
   /** R4: a Pokémon's Potential panel (nine tiers, costs, fodder). */
@@ -460,6 +470,7 @@ export * from './sky-pillar';
 export * from './sky-pillar-view';
 export * from './plates';
 export * from './trinkets';
+export * from './berries';
 export * from './vip';
 export * from './titles';
 export * from './local-server';

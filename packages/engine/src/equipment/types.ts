@@ -2,6 +2,7 @@ import { ORB_SOCKETS, type OrbInstance, type OrbTables } from './orbs';
 import type { CombatField, DamageMod, RoundEffect, SoulheartHooks, TriggerDef } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats, Tier, WildClass, Faction } from '../model';
 import type { CurrencyId } from '../roster/types';
+import type { BerryInstance, BerryTables } from './berries';
 
 /**
  * Equipment layers (M7, PROMPT §7.3). Types + rule inputs only: the engine stays
@@ -157,16 +158,6 @@ export interface TrinketTables {
   trinkets: TrinketDef[];
 }
 
-export type CharmTier = 'common' | 'basic' | 'intermediate' | 'greater';
-
-export interface CharmDef {
-  id: string;
-  name: string;
-  tier: CharmTier;
-  /** Commons are fixed (0); higher tiers scale with stars. */
-  maxStars: number;
-  lines: StatLine[];
-}
 
 export interface CoreSetBonus {
   pieces: number;
@@ -229,7 +220,8 @@ export interface Loadout {
   relic: string | null;
   /** R3: eight orb sockets — 0–3 row 1 on gear pieces 1–4, 4–7 row 2. */
   orbs: (string | null)[];
-  charms: (string | null)[];
+  /** R6d: two berry slots (berry instance ids). */
+  berries: (string | null)[];
   cores: (string | null)[];
 }
 
@@ -237,7 +229,7 @@ export interface Loadout {
 
 export interface EquipmentTuning {
   relic: { minTier: Tier };
-  charms: { minStars: number; slots: number };
+  berries: { minStars: number; slots: number };
   cores: {
     minStars: number;
     sockets: number;
@@ -252,18 +244,17 @@ export interface EquipmentTuning {
 export interface StartingEquipment {
   relics: { defId: string }[];
   cores: { setId: string; socket: number; quality: CoreQuality; stars: number }[];
-  charms: { defId: string; stars: number; count: number }[];
+  /** R6d: berries granted at the start (rolled when the account is made). */
+  berries: { defId: string }[];
 }
 
-/** The account's owned equipment: instance lists + charm counts and star levels. */
+/** The account's owned equipment (instance lists). */
 export interface EquipmentState {
   relics: RelicInstance[];
   orbs: OrbInstance[];
   cores: CoreInstance[];
-  /** charm defId → owned count. */
-  charms: Record<string, number>;
-  /** charm defId → star level (Commons stay at 1). */
-  charmStars: Record<string, number>;
+  /** R6d: berry instances. */
+  berries: BerryInstance[];
   /** Monotonic id source for new relic/rune/core instances. */
   nextSeq: number;
 }
@@ -277,7 +268,7 @@ export interface EquipmentTables {
   /** R6b: the trinket unlock and level cap (trinkets.json). */
   trinketRules: Omit<TrinketTables, 'trinkets'>;
   orbs: OrbTables;
-  charms: CharmDef[];
+  berries: BerryTables;
   coreSets: CoreSetDef[];
   tuning: EquipmentTuning;
 }
@@ -286,7 +277,7 @@ export function emptyLoadout(tuning: EquipmentTuning): Loadout {
   return {
     relic: null,
     orbs: Array.from({ length: ORB_SOCKETS }, () => null),
-    charms: Array.from({ length: tuning.charms.slots }, () => null),
+    berries: Array.from({ length: tuning.berries.slots }, () => null),
     cores: Array.from({ length: tuning.cores.sockets }, () => null),
   };
 }
@@ -296,7 +287,7 @@ export function emptyDelta(): StatDelta {
 }
 
 export function emptyStartingEquipment(): StartingEquipment {
-  return { relics: [], cores: [], charms: [] };
+  return { relics: [], cores: [], berries: [] };
 }
 
 /**
@@ -306,8 +297,9 @@ export function emptyStartingEquipment(): StartingEquipment {
 export function initialEquipment(
   starting: StartingEquipment,
   rollRelic?: (defId: string, id: string) => RelicInstance | null,
+  rollBerry?: (defId: string, id: string) => BerryInstance | null,
 ): EquipmentState {
-  const state: EquipmentState = { relics: [], orbs: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 };
+  const state: EquipmentState = { relics: [], orbs: [], cores: [], berries: [], nextSeq: 1 };
   for (const r of starting.relics) {
     const inst = rollRelic?.(r.defId, `re${state.nextSeq}`);
     if (!inst) continue;
@@ -317,9 +309,11 @@ export function initialEquipment(
   for (const c of starting.cores) {
     state.cores.push({ id: `co${state.nextSeq++}`, setId: c.setId, socket: c.socket, quality: c.quality, stars: c.stars });
   }
-  for (const c of starting.charms) {
-    state.charms[c.defId] = (state.charms[c.defId] ?? 0) + c.count;
-    state.charmStars[c.defId] = Math.max(state.charmStars[c.defId] ?? 1, c.stars);
+  for (const b of starting.berries) {
+    const inst = rollBerry?.(b.defId, `be${state.nextSeq}`);
+    if (!inst) continue;
+    state.nextSeq += 1;
+    state.berries.push(inst);
   }
   return state;
 }

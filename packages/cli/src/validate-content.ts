@@ -34,7 +34,8 @@ import {
   TITLES,
   TITLE_SLOTS,
   orbsSchema,
-  charmsSchema,
+  berriesSchema,
+  berrySkillsSchema,
   coresSchema,
   equipmentTuningSchema,
   collectionTuningSchema,
@@ -44,7 +45,7 @@ import {
   TRINKETS,
   TRINKET_RULES,
   ORBS,
-  CHARMS,
+  BERRIES,
   CORE_SETS,
   EQUIPMENT_TUNING,
   type KitJson,
@@ -100,7 +101,8 @@ const EQUIPMENT_SCHEMAS: Record<string, AnySchema> = {
   'plates.json': platesSchema,
   'trinkets.json': trinketsSchema,
   'orbs.json': orbsSchema,
-  'charms.json': charmsSchema,
+  'berries.json': berriesSchema,
+  'berry-skills.json': berrySkillsSchema,
   'cores.json': coresSchema,
 };
 
@@ -214,7 +216,7 @@ export function validateContent(repoRoot: string): ValidateReport {
   if (RELICS.length > 0) {
     const relicIds = new Set(RELICS.map((r) => r.id));
     const orbKinds = new Set(ORBS.kinds.map((k) => k.id));
-    const charmIds = new Set(CHARMS.map((c) => c.id));
+    const berryIds = new Set(BERRIES.berries.map((b) => b.id));
     const coreSetIds = new Set(CORE_SETS.map((s) => s.id));
     for (const set of ORBS.sets) {
       for (const kind of set.kinds) if (!orbKinds.has(kind)) errors.push(`equipment: orb set "${set.id}" names unknown kind "${kind}"`);
@@ -284,19 +286,14 @@ export function validateContent(repoRoot: string): ValidateReport {
         }
       }
     }
-    for (const c of EQUIPMENT_TUNING.starting.charms) {
-      if (!charmIds.has(c.defId)) errors.push(`equipment: starting charm "${c.defId}" has no design`);
+    for (const b of EQUIPMENT_TUNING.starting.berries) {
+      if (!berryIds.has(b.defId)) errors.push(`equipment: starting berry "${b.defId}" is not in berries.json`);
     }
-    for (const tier of ['common', 'basic', 'intermediate', 'greater']) {
-      const count = CHARMS.filter((c) => c.tier === tier).length;
-      if (count !== 4) errors.push(`equipment: Berry tier "${tier}" has ${count} designs (want 4)`);
-    }
-    for (const c of CHARMS) {
-      if (c.tier === 'common' && c.maxStars !== 0) errors.push(`equipment: common Berry "${c.id}" must be fixed`);
-      if (c.tier !== 'common' && c.maxStars <= 0) errors.push(`equipment: Berry "${c.id}" needs a star cap`);
+    for (const b of BERRIES.berries) {
+      if (b.skills.length !== Math.max(1, b.maxStar)) errors.push(`equipment: berry "${b.id}" needs a skill per star`);
     }
     checks.push(
-      `equipment: ${RELICS.length} held item(s), ${PLATES.plates.length} plate(s), ${TRINKETS.length} trinket(s), ${ORBS.kinds.length} orb kind(s), ${ORBS.sets.length} orb set(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s) validated`,
+      `equipment: ${RELICS.length} held item(s), ${PLATES.plates.length} plate(s), ${TRINKETS.length} trinket(s), ${ORBS.kinds.length} orb kind(s), ${ORBS.sets.length} orb set(s), ${BERRIES.berries.length} berr(ies), ${CORE_SETS.length} core set(s) validated`,
     );
   }
 

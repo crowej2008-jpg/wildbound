@@ -241,6 +241,17 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Meganium: Lv 40's 'all status ailments' is the same control immunity (DoTs still land).
 - Dragonite: the Lv 20-40 text's 'removes 10 % / 18 % / 25 % 1 buff' read as a chance-free removal of 1 / 1 / 2 buffs.
 
+## Berry skills (R6d, hand-ported in `scripts/data/berry-skills.py`): 19
+
+Source: the berries' skills by star (dump `_berries`, in packages/content/equipment/berries.json); generated to
+packages/content/equipment/berry-skills.json and applied by `applyBerrySkills` (one skill per carried berry, at its star).
+
+- Dodges (Peach, Cirio) are a one-hit 100 % damage reduction each, for one round (the hit still lands for 1).
+- Siphon Life: the lifesteal is a plain stat for the battle; 'DMG Boost within 3 turns' runs from the start.
+- Lemon Fruit: the shield is a share of the holder's attack (shields read ATK, not S.ATK alone); its 2 / 3-turn limit and 'cannot be stacked' are not kept.
+- Strong - Tomato Fruit: 'restores it again at the end of the next turn(s)' as a heal over 1 / 2 turns.
+- Pear Berry: 'immunity to all debuffs' as the control immunity (DoTs and stat cuts still land).
+
 ## Unparsed clause patterns (0 distinct, top 60)
 
 | count | clause | example |

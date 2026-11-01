@@ -1,8 +1,9 @@
-import { COMBAT_SETTINGS, kitById, kitToEngine } from '@wildbound/content';
+import { COMBAT_SETTINGS, berrySkillAt, kitById, kitToEngine } from '@wildbound/content';
 import {
   applySkillLevels,
   applyPlateSkills,
   applyTrinketSkills,
+  applyBerrySkills,
   computePower,
   emptyLoadout,
   formIndex,
@@ -81,6 +82,15 @@ export interface BattleView {
 /** Front slots 0-2 become field positions 4-6, back slots 3-5 become 1-3 (PROMPT §6.1). */
 export function slotToPosition(slot: number): number {
   return slot <= 2 ? slot + 4 : slot - 2;
+}
+
+/** R6d: the skills of the berries a Wild carries, at their stars. */
+function carriedBerrySkills(state: AccountState | undefined, wildId: string) {
+  if (!state) return [];
+  return (state.loadouts[wildId]?.berries ?? []).map((id) => {
+    const b = id ? state.equipment.berries.find((x) => x.id === id) : undefined;
+    return b ? berrySkillAt(b.defId, b.star) : undefined;
+  });
 }
 
 /** Content kit DSL → engine `KitDef`: `kitToEngine` comes from `@wildbound/content`. */
@@ -226,9 +236,13 @@ export function buildWildTeam(
       // E4: an Origin's bought skill levels swap in their LV.2 / LV.3 content.
       // R6a: plate skills at stages 6 / 12 / 18.
       // R6b: the exclusive trinket's skill at its level (10 / 20 / 30 / 40).
-      kit: applyTrinketSkills(
-        applyPlateSkills(applySkillLevels(kitToEngine(kitJson), wild.skillLevels), state?.plates[wild.id] ?? 0),
-        state?.trinkets[wild.speciesId] ?? 0,
+      // R6d: each carried berry's skill at its star.
+      kit: applyBerrySkills(
+        applyTrinketSkills(
+          applyPlateSkills(applySkillLevels(kitToEngine(kitJson), wild.skillLevels), state?.plates[wild.id] ?? 0),
+          state?.trinkets[wild.speciesId] ?? 0,
+        ),
+        carriedBerrySkills(state, wild.id),
       ),
       sheet: equipped.sheet,
       power: unitPower,

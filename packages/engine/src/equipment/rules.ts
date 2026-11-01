@@ -27,8 +27,8 @@ export function relicUnlocked(wildTier: Tier, tuning: EquipmentTuning): boolean 
   return tierAtLeast(wildTier, tuning.relic.minTier);
 }
 
-export function charmsUnlocked(stars: number, tuning: EquipmentTuning): boolean {
-  return stars >= tuning.charms.minStars;
+export function berriesUnlocked(stars: number, tuning: EquipmentTuning): boolean {
+  return stars >= tuning.berries.minStars;
 }
 
 export function coresUnlocked(stars: number, tuning: EquipmentTuning): boolean {
@@ -57,10 +57,10 @@ export function equipCore(loadout: Loadout, socket: number, instanceId: string |
   return { ...loadout, cores };
 }
 
-export function equipCharm(loadout: Loadout, slot: number, charmId: string | null): Loadout {
-  const charms = [...loadout.charms];
-  if (slot >= 0 && slot < charms.length) charms[slot] = charmId;
-  return { ...loadout, charms };
+export function equipBerry(loadout: Loadout, slot: number, berryId: string | null): Loadout {
+  const berries = [...(loadout.berries ?? [])];
+  if (slot >= 0 && slot < berries.length) berries[slot] = berryId;
+  return { ...loadout, berries };
 }
 
 

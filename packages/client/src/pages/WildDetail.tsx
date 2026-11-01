@@ -158,7 +158,7 @@ export default function WildDetail() {
               <SoulHeartPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />
             )}
             {tab === 'berries' && (
-              <BerryPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />
+              <BerryPanel wildId={id} onChange={gear.reload} />
             )}
             {tab === 'heldItems' && (
               <HeldItemPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />

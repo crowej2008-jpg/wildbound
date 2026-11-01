@@ -443,7 +443,7 @@ const skillRowLevelsSchema = z
   .strict();
 
 /** R6a: one plate skill (tier 6 / 12 / 18): replacement skills plus added triggers / mods / stats. */
-const plateSkillSchema = z
+export const plateSkillSchema = z
   .object({
     text: z.string(),
     skills: z.object({ normal: skillSchema, basic: skillSchema, ult: skillSchema }).partial().strict().optional(),
@@ -692,6 +692,11 @@ export const rewardSchema = z
     trinketChestPurple: z.number().nonnegative().optional(),
     trinketChest: z.number().nonnegative().optional(),
     trinketBoxShiny: z.number().nonnegative().optional(),
+    berryMulchBlue: z.number().nonnegative().optional(),
+    berryMulchPurple: z.number().nonnegative().optional(),
+    berryMulchOrange: z.number().nonnegative().optional(),
+    berryMulchRed: z.number().nonnegative().optional(),
+    reforgePotion: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })
   .strict();

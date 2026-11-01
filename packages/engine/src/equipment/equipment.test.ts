@@ -19,9 +19,9 @@ import {
 
 const TUNING: EquipmentTuning = {
   relic: { minTier: 'supreme' },
-  charms: { minStars: 4, slots: 2 },
+  berries: { minStars: 4, slots: 2 },
   cores: { minStars: 10, sockets: 6, qualityStars: { blue: 2, purple: 3, orange: 4, red: 5 }, starExp: { blue: [100, 200], purple: [300, 600, 1050], orange: [600, 1200, 2100, 3000], red: [900, 1800, 3150, 4500, 7200] } },
-  starting: { relics: [], cores: [], charms: [] },
+  starting: { relics: [], cores: [], berries: [] },
 };
 
 const TABLES: EquipmentTables = {
@@ -91,10 +91,24 @@ const TABLES: EquipmentTables = {
   ],
   trinketRules: { unlock: { rosterCount: 0, rosterLevel: 0, stars: 0 }, maxLevel: 40, chests: [] },
   orbs: ORB_TABLES,
-  charms: [
-    { id: 'charm1', name: 'Charm 1', tier: 'greater', maxStars: 3, lines: [{ kind: 'core', field: 'hp', base: 200, perLevel: 100 }] },
-    { id: 'charm0', name: 'Charm 0', tier: 'common', maxStars: 0, lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.05, perLevel: 0 }] },
-  ],
+  // R6d: a small berry table — 2★ adds HP 300, +1 stage HP 50; line kind 1 = DMG Boost.
+  berries: {
+    linesAtStart: 1,
+    maxLines: 5,
+    cultivateEssence: 100,
+    fastCultivateTimes: 10,
+    reforgePotions: [10, 20, 35, 35, 35],
+    rebirthGems: 100,
+    stars: [
+      { star: 1, hp: 200, pAtk: 0, sAtk: 0, next: { sameCopies: 1, anyCopies: 2, gold: 100 } },
+      { star: 2, hp: 300, pAtk: 0, sAtk: 0, next: null },
+    ],
+    breakthrough: [{ stage: 1, trainerLevel: 40, cost: { currency: 'berryMulchBlue', amount: 10 }, hp: 50, pAtk: 0, sAtk: 0 }],
+    elements: [{ id: 1, kind: 'percent', field: 'dmgBoost', caps: [0.05, 0.1, 0.2, 0.4, 0.6] }],
+    berries: [
+      { id: 'berry1', sourceId: 1, name: 'Berry 1', tier: 'greater', typeId: 1, initStar: 1, maxStar: 2, dismantleEssence: 40, skills: [] },
+    ],
+  },
   coreSets: [
     {
       id: 'setC',
@@ -153,7 +167,7 @@ const TABLES: EquipmentTables = {
 };
 
 function stateWith(partial: Partial<EquipmentState>): EquipmentState {
-  return { relics: [], orbs: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1, ...partial };
+  return { relics: [], orbs: [], cores: [], berries: [], nextSeq: 1, ...partial };
 }
 
 describe('stat lines', () => {
@@ -184,15 +198,14 @@ describe('layer contributions', () => {
         { id: 'c1', setId: 'setC', socket: 0, quality: 'red' as const, stars: 4 },
         { id: 'c2', setId: 'setC', socket: 1, quality: 'red' as const, stars: 1 },
       ],
-      charms: { charm1: 3 },
-      charmStars: { charm1: 2 },
+      berries: [{ id: 'be1', defId: 'berry1', star: 2, stage: 1, lines: [{ element: 1, value: 0.05 }], cultivated: true, locked: false }],
       nextSeq: 10,
     };
     const loadout = {
       ...emptyLoadout(TUNING),
       relic: 're1',
       orbs: ['ru1', 'ru2', 'ru3', null, null, null, null, null],
-      charms: ['charm1', null],
+      berries: ['be1', null],
       cores: ['c1', 'c2', null, null, null, null],
     };
     const folded = foldLoadout(
@@ -223,8 +236,9 @@ describe('layer contributions', () => {
     expect(folded.layers.runes.percent.dmgBoost).toBeCloseTo(0.024);
     expect(folded.layers.runes.core.pAtk).toBe(Math.round((639 + 1846) * 1.15)); // Sharp +3 and Mystique +5
     expect(folded.layers.runes.percent.dmgRdct ?? 0).toBe(0); // the +5 tier needs every orb at +5
-    // charms at 2 stars: hp 300
-    expect(folded.layers.charms.core.hp).toBeCloseTo(300);
+    // berry at 2★ +1: hp 300 + 50, its DMG Boost line
+    expect(folded.layers.berries.core.hp).toBeCloseTo(350);
+    expect(folded.layers.berries.percent.dmgBoost).toBeCloseTo(0.05);
     // cores: soul lines + 2-piece bonus
     expect(folded.layers.cores.soul.spiritAtk).toBeCloseTo(30); // 10 + 4×5
     expect(folded.layers.cores.percent.dmgBoost).toBeCloseTo(0.1);
@@ -232,19 +246,11 @@ describe('layer contributions', () => {
     expect(folded.effects.map((e) => e.tag).sort()).toEqual(['relicA']);
   });
 
-  it('ignores an equipped charm the account does not own', () => {
-    const state: EquipmentState = { relics: [], orbs: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 };
-    const loadout = { ...emptyLoadout(TUNING), charms: ['charm0', null] };
+  it('ignores a berry slot that names no owned berry', () => {
+    const state: EquipmentState = { relics: [], orbs: [], cores: [], berries: [], nextSeq: 1 };
+    const loadout = { ...emptyLoadout(TUNING), berries: ['missing', null] };
     const folded = foldLoadout(loadout, state, { ...TABLES, tuning: TUNING });
-    expect(folded.layers.charms.percent.dmgBoost).toBeUndefined();
-  });
-
-  it('folds both Berry slots and never applies more copies than are owned', () => {
-    const loadout = { ...emptyLoadout(TUNING), charms: ['charm1', 'charm1'] };
-    const one = foldLoadout(loadout, stateWith({ charms: { charm1: 1 }, charmStars: { charm1: 1 } }), TABLES);
-    const two = foldLoadout(loadout, stateWith({ charms: { charm1: 2 }, charmStars: { charm1: 1 } }), TABLES);
-    expect(one.layers.charms.core.hp).toBeCloseTo(200);
-    expect(two.layers.charms.core.hp).toBeCloseTo(400);
+    expect(folded.layers.berries.core.hp).toBeUndefined();
   });
 });
 
@@ -401,13 +407,14 @@ describe('every layer moves a battle in the intended direction', () => {
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });
 
-  it('a charm damage line raises damage while its hp line raises max HP', () => {
-    const dmgState = stateWith({ charms: { charm0: 1 }, charmStars: { charm0: 1 } });
-    const dmgUp = battleWith(base, dmgState, { ...emptyLoadout(TUNING), charms: ['charm0', null] });
+  it('a berry DMG Boost line raises damage while its star HP raises max HP', () => {
+    const berry = { id: 'be1', defId: 'berry1', star: 1, stage: 0, lines: [{ element: 1, value: 0.05 }], cultivated: true, locked: false };
+    const dmgState = stateWith({ berries: [berry] });
+    const dmgUp = battleWith(base, dmgState, { ...emptyLoadout(TUNING), berries: ['be1', null] });
     expect(dmgUp.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
 
-    const hpState = stateWith({ charms: { charm1: 1 }, charmStars: { charm1: 1 } });
-    const hpUp = battleWith(base, hpState, { ...emptyLoadout(TUNING), charms: ['charm1', null] });
+    const hpState = stateWith({ berries: [{ ...berry, lines: [] }] });
+    const hpUp = battleWith(base, hpState, { ...emptyLoadout(TUNING), berries: ['be1', null] });
     const plainHp =
       runBattle({ attackers: [attacker(base)], defenders: [defender(120000)], seed: 11 }).units.find(
         (u) => u.side === 'attackers',

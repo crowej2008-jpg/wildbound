@@ -86,7 +86,13 @@ export type CurrencyId =
   | 'trinketChestBlue'
   | 'trinketChestPurple'
   | 'trinketChest'
-  | 'trinketBoxShiny';
+  | 'trinketBoxShiny'
+  // R6d: berry breakthrough Mulch (source items 10013–10016) and Reforge Potions (10017).
+  | 'berryMulchBlue'
+  | 'berryMulchPurple'
+  | 'berryMulchOrange'
+  | 'berryMulchRed'
+  | 'reforgePotion';
 
 export const CURRENCY_IDS: readonly CurrencyId[] = [
   'gold',
@@ -122,6 +128,11 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'trinketChestPurple',
   'trinketChest',
   'trinketBoxShiny',
+  'berryMulchBlue',
+  'berryMulchPurple',
+  'berryMulchOrange',
+  'berryMulchRed',
+  'reforgePotion',
 ];
 
 /** M11 materials shown on the Trainer screen and spent by the collection layers. */
@@ -146,6 +157,11 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'trinketChestPurple',
   'trinketChest',
   'trinketBoxShiny',
+  'berryMulchBlue',
+  'berryMulchPurple',
+  'berryMulchOrange',
+  'berryMulchRed',
+  'reforgePotion',
 ];
 
 /** The currencies the persistent HUD strip shows; the rest live on their own screens. */

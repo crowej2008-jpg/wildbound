@@ -1211,3 +1211,13 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   one-for-one when its own item runs short; the trinket card says how many a level will use.
 - New Faction Tower Shop (source shop 25: the six chests ×100 for 2,000–10,000 coins) and four chests in the Guild
   Shop (×20, 5 a week). Coins come from the Faction Tower once it is built (R9). ASSUMPTIONS #68.
+
+## R6d — Berries from the source (2026-11-01)
+
+- `scripts/import-berries.mjs` → `packages/content/equipment/berries.json`: 19 berries, the star ladder, breakthrough,
+  15 line kinds with caps by stage, cultivation / reforge / rebirth prices. Engine `equipment/berries.ts` (instances,
+  cultivation, breakthrough, reforge, stats); server `berries.ts` (panel view, carry, cultivate, breakthrough,
+  reforge, elevate, lock, dismantle, grant); a new Berries panel. The M11 stand-in berries (`charms`), their
+  star-up formula and their per-battle consumption are removed. Save v27.
+- Berry skills by star ported (`scripts/data/berry-skills.py` → `equipment/berry-skills.json`, `applyBerrySkills`).
+- New currencies: Blue / Purple / Orange / Red Mulch and Reforge Potions. ASSUMPTIONS #70.

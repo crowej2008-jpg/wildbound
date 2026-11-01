@@ -1,4 +1,16 @@
 import {
+  berriesView,
+  breakthroughBerryAction,
+  cultivateBerryAction,
+  dismantleBerriesAction,
+  elevateBerryAction,
+  equipBerryAction,
+  grantBerry,
+  lockBerryAction,
+  reforgeBerryAction,
+  type BerriesPanelView,
+} from './berries';
+import {
   dismantleOrbsAction,
   equipOrbAction,
   grantOrb,
@@ -174,9 +186,6 @@ import {
   type OriginSkillsView,
 } from './shards';
 import {
-  consumeCharms,
-  dismantleCharmAction,
-  equipCharmAction,
   equipCoreAction,
   equipRelicAction,
   levelRelicAction,
@@ -186,7 +195,6 @@ import {
   dismantleRelicsAction,
   compoundResettersAction,
   starUpCoreAction,
-  upgradeCharmAction,
   consumeFodder,
 } from './equipment';
 import { buildEquipmentView } from './equipment-view';
@@ -524,7 +532,6 @@ export class LocalServer implements GameServer {
       next = this.withChapterMail(next, stage);
     }
     next = { ...next, idle: { ...next.idle, bestStageId: bestIdleStageId(this.config, next) } };
-    next = consumeCharms(next, fielded(state, 'campaign').map((w) => w.id));
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -570,7 +577,6 @@ export class LocalServer implements GameServer {
       }
       next = this.withQuest(next, 'winBattle');
     }
-    next = consumeCharms(next, fielded(state, 'campaign').map((w) => w.id));
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -819,17 +825,44 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) => starUpCoreAction(this.config, state, instanceId));
   }
 
-  async equipCharm(wildId: string, slot: number, charmId: string | null): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => equipCharmAction(this.config, state, wildId, slot, charmId));
+  async getBerries(wildId: string): Promise<Result<BerriesPanelView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return berriesView(this.config, loaded.value, wildId);
   }
 
-  async upgradeCharm(charmId: string): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => upgradeCharmAction(this.config, state, charmId));
+  async equipBerry(wildId: string, slot: number, berryId: string | null): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => equipBerryAction(this.config, state, wildId, slot, berryId));
   }
 
-  async dismantleCharm(charmId: string): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => dismantleCharmAction(this.config, state, charmId));
+  async cultivateBerry(berryId: string, times = 1): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => cultivateBerryAction(this.config, state, berryId, times, this.config.rng));
   }
+
+  async breakthroughBerry(berryId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => breakthroughBerryAction(this.config, state, berryId, this.config.rng));
+  }
+
+  async reforgeBerry(berryId: string, line: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => reforgeBerryAction(this.config, state, berryId, line, this.config.rng));
+  }
+
+  async elevateBerry(berryId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => elevateBerryAction(this.config, state, berryId));
+  }
+
+  async lockBerry(berryId: string, locked: boolean): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => lockBerryAction(state, berryId, locked));
+  }
+
+  async dismantleBerries(berryIds: string[]): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => dismantleBerriesAction(this.config, state, berryIds));
+  }
+
+  async grantBerry(defId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => grantBerry(this.config, state, defId, this.config.rng));
+  }
+
 
   async levelRelic(instanceId: string): Promise<Result<AccountSnapshot>> {
     return this.applyEquipment((state) => levelRelicAction(this.config, state, instanceId));
@@ -936,7 +969,6 @@ export class LocalServer implements GameServer {
     let next = value.state;
     if (value.win) next = this.withQuest(next, 'winBattle');
     next = this.withTutorialAction(next, 'winStage');
-    next = consumeCharms(next, fielded(state, 'tower').map((w) => w.id));
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -974,7 +1006,6 @@ export class LocalServer implements GameServer {
     const value = outcome.value;
     let next = value.state;
     if (value.win) next = this.withQuest(next, 'winBattle');
-    next = consumeCharms(next, fielded(state, 'campaign').map((w) => w.id));
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -1003,7 +1034,6 @@ export class LocalServer implements GameServer {
     const value = outcome.value;
     let next = value.state;
     next = this.withQuest(next, 'winBattle');
-    next = consumeCharms(next, fielded(state, 'worldBoss').map((w) => w.id));
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -1043,7 +1073,6 @@ export class LocalServer implements GameServer {
     const value = outcome.value;
     let next = value.state;
     if (value.win) next = this.withQuest(next, 'winBattle');
-    next = consumeCharms(next, fielded(state, 'campaign').map((w) => w.id));
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -1196,7 +1225,6 @@ export class LocalServer implements GameServer {
       next = this.withQuest(next, 'winBattle');
       next = this.withTutorialAction(next, 'winStage');
     }
-    next = consumeCharms(next, fielded(state, 'skyPillar').map((w) => w.id));
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -1254,7 +1282,6 @@ export class LocalServer implements GameServer {
     const value = outcome.value;
     let next = value.state;
     if (value.win) next = this.withQuest(next, 'winBattle');
-    next = consumeCharms(next, fielded(state, 'arenaAttack').map((w) => w.id));
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -1331,7 +1358,6 @@ export class LocalServer implements GameServer {
     if (value.won) next = this.withQuest(next, 'winBattle');
     // A charm charge is spent per game actually played, like every other mode.
     const ids = fielded(state, 'arenaAttack').map((w) => w.id);
-    for (let game = 0; game < value.battles.length; game += 1) next = consumeCharms(next, ids);
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({

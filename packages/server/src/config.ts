@@ -20,7 +20,7 @@ import {
   SKY_PILLAR,
 } from '@wildbound/content';
 import {
-  CHARMS,
+  BERRIES,
   CORE_SETS,
   EQUIPMENT_TUNING,
   PLATES,
@@ -196,7 +196,7 @@ export function buildConfig(): GameConfig {
       trinkets: TRINKETS as unknown as EquipmentTables['trinkets'],
       trinketRules: TRINKET_RULES as unknown as EquipmentTables['trinketRules'],
       orbs: ORBS as unknown as OrbTables,
-      charms: CHARMS,
+      berries: BERRIES as unknown as EquipmentTables['berries'],
       coreSets: CORE_SETS,
       tuning: EQUIPMENT_TUNING as unknown as EquipmentTables['tuning'],
     },

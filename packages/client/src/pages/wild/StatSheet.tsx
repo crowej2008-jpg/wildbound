@@ -42,7 +42,7 @@ const LAYER_ROWS = [
   ['resonance', 'trainer.resonance'],
   ['titles', 'trainer.titles'],
   ['runes', 'wild.tab.orbs'],
-  ['charms', 'wild.tab.berries'],
+  ['berries', 'wild.tab.berries'],
   ['cores', 'wild.tab.soulHearts'],
 ] as const;
 

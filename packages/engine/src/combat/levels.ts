@@ -53,6 +53,11 @@ export function applyTrinketSkills(kit: KitDef, level: number): KitDef {
   return kit;
 }
 
+/** R6d: the skills of the berries a Pokémon carries (one per berry, at its star). */
+export function applyBerrySkills(kit: KitDef, skills: (PlateSkillDef | undefined)[]): KitDef {
+  return skills.reduce<KitDef>((k, def) => (def ? applySkillDef(k, def) : k), kit);
+}
+
 /** One plate / trinket skill on a kit: replace skills, drop groups, add triggers / damage mods / stat mods. */
 function applySkillDef(kit: KitDef, def: PlateSkillDef): KitDef {
   const drop = new Set(def.dropGroups ?? []);

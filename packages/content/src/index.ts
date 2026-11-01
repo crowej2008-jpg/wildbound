@@ -117,6 +117,7 @@ export type {
 } from './pet-home-schema';
 export { GACHA } from './tuning-gacha';
 export { SHOPS } from './shops';
+export { BERRY_SKILLS, berrySkillAt, berrySkillsSchema } from './berry-skills';
 export {
   EQUIPMENT_TUNING,
   RELICS,
@@ -125,11 +126,11 @@ export {
   TRINKETS,
   TRINKET_RULES,
   ORBS,
-  CHARMS,
+  BERRIES,
   CORE_SETS,
   relicById,
   trinketBySpecies,
-  charmById,
+  berryById,
   coreSetById,
 } from './equipment';
 export {
@@ -138,14 +139,14 @@ export {
   platesSchema,
   trinketsSchema,
   orbsSchema,
-  charmsSchema,
+  berriesSchema,
   coresSchema,
   type RelicJson,
   type HeldItemsJson,
   type PlateJson,
   type TrinketJson,
   type OrbsJson,
-  type CharmJson,
+  type BerriesJson,
   type CoreSetJson,
 } from './equipment-schema';
 

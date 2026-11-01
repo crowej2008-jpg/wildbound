@@ -232,14 +232,44 @@ export const trinketsSchema = z.object({
 });
 
 
-export const charmsSchema = z.object({
-  charms: z.array(
+/** R6d: the source's berries (scripts/import-berries.mjs). */
+const statTrio = { hp: z.number(), pAtk: z.number(), sAtk: z.number() };
+export const berriesSchema = z.object({
+  linesAtStart: z.number().int().min(0),
+  maxLines: z.number().int().min(1),
+  cultivateEssence: z.number().int().min(0),
+  fastCultivateTimes: z.number().int().min(1),
+  reforgePotions: z.array(z.number().int().min(0)),
+  rebirthGems: z.number().int().min(0),
+  stars: z.array(
+    z.object({
+      star: z.number().int().min(1),
+      ...statTrio,
+      next: z.object({ sameCopies: z.number().int(), anyCopies: z.number().int(), gold: z.number().int() }).nullable(),
+    }),
+  ),
+  breakthrough: z.array(
+    z.object({
+      stage: z.number().int().min(1),
+      trainerLevel: z.number().int(),
+      cost: z.object({ currency: z.string(), amount: z.number().int() }),
+      ...statTrio,
+    }),
+  ),
+  elements: z.array(
+    z.object({ id: z.number().int(), kind: z.enum(['core', 'percent', 'soul']), field: z.string(), caps: z.array(z.number()) }),
+  ),
+  berries: z.array(
     z.object({
       id: z.string().min(1),
+      sourceId: z.number().int(),
       name: z.string().min(1),
       tier: z.enum(['common', 'basic', 'intermediate', 'greater']),
-      maxStars: z.number().int().min(0).max(5),
-      lines: z.array(statLineSchema).min(1),
+      typeId: z.number().int(),
+      initStar: z.number().int().min(0),
+      maxStar: z.number().int().min(0).max(5),
+      dismantleEssence: z.number().int().min(0),
+      skills: z.array(z.object({ star: z.number().int(), name: z.string(), text: z.string() })),
     }),
   ),
 });
@@ -291,7 +321,7 @@ export const coresSchema = z.object({
 
 export const equipmentTuningSchema = z.object({
   relic: z.object({ minTier: z.enum(TIERS) }),
-  charms: z.object({ minStars: z.number().int().min(0), slots: z.number().int().min(1) }),
+  berries: z.object({ minStars: z.number().int().min(0), slots: z.number().int().min(1) }),
   cores: z.object({
     minStars: z.number().int().min(0),
     sockets: z.number().int().min(1),
@@ -301,7 +331,7 @@ export const equipmentTuningSchema = z.object({
   starting: z.object({
     relics: z.array(z.object({ defId: z.string() })),
     cores: z.array(z.object({ setId: z.string(), socket: z.number().int().min(0), quality: z.enum(['blue', 'purple', 'orange', 'red']), stars: z.number().int().min(0) })),
-    charms: z.array(z.object({ defId: z.string(), stars: z.number().int().min(1), count: z.number().int().min(1) })),
+    berries: z.array(z.object({ defId: z.string() })),
   }),
 });
 
@@ -309,7 +339,7 @@ export type HeldItemsJson = z.infer<typeof heldItemsSchema>;
 export type RelicJson = HeldItemsJson['items'][number];
 export type PlateJson = z.infer<typeof platesSchema>;
 export type TrinketJson = z.infer<typeof trinketsSchema>['trinkets'][number];
-export type CharmJson = z.infer<typeof charmsSchema>['charms'][number];
+export type BerriesJson = z.infer<typeof berriesSchema>;
 export type CoreSetJson = z.infer<typeof coresSchema>['sets'][number];
 export type EquipmentTuningJson = z.infer<typeof equipmentTuningSchema>;
 

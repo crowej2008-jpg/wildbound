@@ -117,7 +117,7 @@ function toEngineLevels(levels: ContentLevels): NonNullable<KitDef['levels']> {
 type ContentPlate = NonNullable<KitJson['plate']>;
 
 /** R6a: convert a kit's plate skills (skills and triggers need the kit's own mapping). */
-function toEnginePlate<K extends string>(plate: Partial<Record<K, NonNullable<ContentPlate['6']>>>): Partial<Record<K, PlateSkillDef>> {
+export function toEnginePlate<K extends string>(plate: Partial<Record<K, NonNullable<ContentPlate['6']>>>): Partial<Record<K, PlateSkillDef>> {
   const out: Partial<Record<K, PlateSkillDef>> = {};
   for (const [tier, d] of Object.entries(plate) as [K, NonNullable<ContentPlate['6']>][]) {
     const skills: Partial<Record<SkillSlot, SkillDef>> = {};

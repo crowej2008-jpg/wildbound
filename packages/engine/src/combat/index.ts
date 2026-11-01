@@ -83,5 +83,5 @@ export type {
   RoundEffect,
 } from './types';
 export type { CombatSettings } from './settings';
-export { applySkillLevels, applyPlateSkills, applyTrinketSkills, type SkillLevels } from './levels';
+export { applySkillLevels, applyPlateSkills, applyTrinketSkills, applyBerrySkills, type SkillLevels } from './levels';
 export type { SkillRow, SkillLevelDef, SkillRowLevels } from './types';

@@ -7,21 +7,6 @@ import { z } from 'zod';
  */
 export const collectionTuningSchema = z
   .object({
-    berries: z.object({
-      /** Duplicate copies consumed by each star-up. */
-      upgradeCopies: z.number().int().min(1),
-      /** Berry Essence for the first star-up. */
-      upgradeEssenceBase: z.number().int().min(0),
-      /** Extra Berry Essence per current star. */
-      upgradeEssencePerStar: z.number().int().min(0),
-      /** Essence paid by dismantling one spare copy, by tier. */
-      dismantleEssence: z.object({
-        common: z.number().int().min(0),
-        basic: z.number().int().min(0),
-        intermediate: z.number().int().min(0),
-        greater: z.number().int().min(0),
-      }),
-    }),
     resonance: z.object({
       /** Total slots on the account-wide resonance board. */
       slots: z.number().int().min(1),

@@ -129,8 +129,7 @@ const MYTHIC_EQUIPMENT = {
   ],
   orbs: [],
   cores: [],
-  charms: {},
-  charmStars: {},
+  berries: [],
   nextSeq: 2,
 };
 
@@ -266,7 +265,7 @@ test('Orbs: socket a red Sharp Orb, then level it with two copies', async ({ pag
   const orb = (id: string) => ({ id, kind: 'sharp', colour: 'red', level: 1, lines: [{ field: 'dmgBoost', roll: 1 }] });
   await importSave(page, {
     profile: { level: 60 },
-    equipment: { relics: [], orbs: [orb('orb1'), orb('orb2'), orb('orb3')], cores: [], charms: {}, charmStars: {}, nextSeq: 4 },
+    equipment: { relics: [], orbs: [orb('orb1'), orb('orb2'), orb('orb3')], cores: [], berries: [], nextSeq: 4 },
   });
   await page.goto('/wilds');
   await page.locator('.roster-item').first().click();
@@ -287,30 +286,22 @@ test('Orbs: socket a red Sharp Orb, then level it with two copies', async ({ pag
   await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(equipped);
 });
 
-test('Berries fill two slots, star up with copies + Essence, and dismantle spares', async ({ page }) => {
+test('Berries: carry one in a slot and cultivate it with Berry Essence', async ({ page }) => {
   await importSave(page, { currencies: { berryEssence: 1_000 } });
   await page.goto('/wilds');
   await page.locator('.roster-item').first().click();
   await page.getByRole('button', { name: 'Berries', exact: true }).click();
 
-  await expect(page.getByText('Berry Essence: 1,000')).toBeVisible();
   await expect(page.getByText('Berry slots')).toBeVisible();
-  const sun = page.locator('.gear-row').filter({ hasText: 'Sunpetal Berry' });
-  const mist = page.locator('.gear-row').filter({ hasText: 'Mistbud Berry' });
-  await sun.getByRole('button', { name: 'Equip 1', exact: true }).click();
-  await mist.getByRole('button', { name: 'Equip 2', exact: true }).click();
-  await expect(page.getByText(/1\. Sunpetal Berry/)).toBeVisible();
-  await expect(page.getByText(/2\. Mistbud Berry/)).toBeVisible();
+  await expect(page.getByText(/Berry Essence: 1,000/)).toBeVisible();
+  const slot = page.getByLabel('Berry 1', { exact: true });
+  await slot.getByRole('button', { name: 'Choose a berry' }).click();
+  await page.locator('.berry-picker .gear-row').filter({ hasText: 'Petaya Berry' }).getByRole('button', { name: 'Carry' }).click();
+  await expect(slot).toContainText('Petaya Berry');
+  await expect(slot).toContainText('Siphon Life1');
 
-  const ember = page.locator('.gear-row').filter({ hasText: 'Emberfruit' });
-  await ember.getByRole('button', { name: /Star up.*2 copies.*20 Berry Essence/ }).click();
-  await expect(ember).toContainText('2/2★');
-  await expect(page.getByText('Berry Essence: 980')).toBeVisible();
-
-  const glimmer = page.locator('.gear-row').filter({ hasText: 'Glimmerberry' });
-  await glimmer.getByRole('button', { name: /Dismantle.*\+5/ }).click();
-  await expect(glimmer).toContainText('x2');
-  await expect(page.getByText('Berry Essence: 985')).toBeVisible();
+  await slot.getByRole('button', { name: /^Cultivate · 100/ }).click();
+  await expect(page.getByText(/Berry Essence: 900/)).toBeVisible();
 });
 
 test('Soul-hearts activate a 2-piece set and star up with the source EXP table (blue 0★ → 1★: 100)', async ({ page }) => {

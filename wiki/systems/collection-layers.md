@@ -37,6 +37,10 @@ The owner's nine sets — see **[soul-hearts](soul-hearts.md)**. Star-up costs S
 **R6c (2026-11-01):** source qualities blue / purple / orange / red (caps 2 / 3 / 4 / 5★, stars from 0), the
 source star EXP table, 10★ unlock; the owner's nine sets stay. ASSUMPTIONS #66.
 ## Berries
+**R6d (2026-11-01):** source berries — 19 (Commons fixed), instances with star 1–5, breakthrough +0…+4 (trainer level,
+Mulch), cultivated lines (one, +1 per breakthrough, caps by stage), reforge, two slots / one per type, skills by star.
+Stand-ins for the server-side rules: ASSUMPTIONS #70. The text below is the old M11 design.
+
 16 Berries (four per tier). **Two slots** (save v8). Star-up = spare copies (2) + Berry Essence (`20 + 20 × star`). Dismantle a
 spare for 5/10/20/40 Essence by tier. Real battles consume one copy per occupied slot.
 

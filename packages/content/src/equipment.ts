@@ -1,4 +1,4 @@
-import charms from '../equipment/charms.json';
+import berries from '../equipment/berries.json';
 import cores from '../equipment/cores.json';
 import plates from '../equipment/plates.json';
 import heldItems from '../equipment/held-items.json';
@@ -7,7 +7,7 @@ import orbs from '../equipment/orbs.json';
 import trinkets from '../equipment/trinkets.json';
 import equipmentTuning from '../tuning/equipment.json';
 import {
-  charmsSchema,
+  berriesSchema,
   coresSchema,
   equipmentTuningSchema,
   platesSchema,
@@ -45,7 +45,8 @@ export const TRINKET_RULES = { unlock: TRINKET_TABLE.unlock, maxLevel: TRINKET_T
 /** R3: the source's orbs. */
 export const ORBS = orbsSchema.parse(orbs);
 
-export const CHARMS = charmsSchema.parse(charms).charms;
+/** R6d: the source's berries. */
+export const BERRIES = berriesSchema.parse(berries);
 export const CORE_SETS = coresSchema.parse(cores).sets;
 
 export function relicById(id: string) {
@@ -54,8 +55,8 @@ export function relicById(id: string) {
 export function trinketBySpecies(speciesId: string) {
   return TRINKETS.find((t) => t.speciesId === speciesId);
 }
-export function charmById(id: string) {
-  return CHARMS.find((c) => c.id === id);
+export function berryById(id: string) {
+  return BERRIES.berries.find((b) => b.id === id);
 }
 export function coreSetById(id: string) {
   return CORE_SETS.find((s) => s.id === id);

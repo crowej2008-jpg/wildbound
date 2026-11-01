@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { grantHeldItem, setWildStars } from './testing';
 import { emptyLoadout, mulberry32 } from '@wildbound/engine';
 import { buildConfig } from './config';
-import { consumeCharms, grantRelic, levelRelicAction } from './equipment';
+import { grantRelic, levelRelicAction } from './equipment';
 import { equippedSheet } from './battle';
 import { LocalServer } from './local-server';
 import { createInitialState } from './save';
@@ -182,65 +182,6 @@ describe('M11.0 equipment view and actions', () => {
     if (!done.ok) return;
     expect(done.value.state.equipment.relics.some((r) => r.id === id)).toBe(false);
     expect(done.value.state.currencies.heldItemShard).toBe(before + 20 + 20);
-  });
-
-  it('equips two Berry slots, stars with copies + Essence, and dismantles a spare', async () => {
-    const { srv, wildId } = await supremeStriker();
-    // R1: a Supreme starts at 5★, already past the orb (3★) and Berry (4★) gates.
-    await srv.grantCurrency('berryEssence', 1_000);
-    const view = await srv.getEquipment(wildId);
-    if (!view.ok) throw new Error(view.message);
-    expect(view.value.unlocks.charms).toBe(true);
-    expect(view.value.charmSlots).toBe(2);
-    const ember = view.value.charms.find((c) => c.defId === 'charm-emberfruit');
-    if (!ember) throw new Error('no starting berry');
-    expect(ember.stars).toBe(1);
-    expect(ember.upgradeEssence).toBe(20);
-
-    await srv.equipCharm(wildId, 0, ember.defId);
-    const after = await srv.getEquipment(wildId);
-    if (!after.ok) throw new Error(after.message);
-    expect(after.value.loadout.charms[0]).toBe(ember.defId);
-    expect(after.value.power.layers.charms).toBeGreaterThan(0);
-
-    const sun = after.value.charms.find((c) => c.defId === 'charm-sunpetal-berry');
-    if (!sun) throw new Error('no common berry');
-    await srv.equipCharm(wildId, 1, sun.defId);
-    const both = await srv.getEquipment(wildId);
-    if (!both.ok) throw new Error(both.message);
-    expect(both.value.loadout.charms).toEqual([ember.defId, sun.defId]);
-    expect(both.value.power.layers.charms).toBeGreaterThan(after.value.power.layers.charms);
-
-    const starred = await srv.upgradeCharm(ember.defId);
-    expect(starred.ok).toBe(true);
-    if (!starred.ok) return;
-    expect(starred.value.state.equipment.charmStars[ember.defId]).toBe(2);
-    expect(starred.value.state.equipment.charms[ember.defId]).toBe(1);
-    expect(starred.value.state.currencies.berryEssence).toBe(980);
-    expect((await srv.dismantleCharm(ember.defId)).ok).toBe(false);
-
-    const mist = both.value.charms.find((c) => c.defId === 'charm-mistbud-berry');
-    if (!mist) throw new Error('no spare berry');
-    const dismantled = await srv.dismantleCharm(mist.defId);
-    expect(dismantled.ok).toBe(true);
-    if (!dismantled.ok) return;
-    expect(dismantled.value.state.equipment.charms[mist.defId]).toBe(mist.count - 1);
-    expect(dismantled.value.state.currencies.berryEssence).toBe(985);
-  });
-
-  it('spends one Berry copy for each occupied slot in a real battle', () => {
-    const config = buildConfig();
-    const state = createInitialState(config);
-    const wildId = state.roster[0]!.id;
-    state.loadouts[wildId] = {
-      ...emptyLoadout(config.equipment.tuning),
-      charms: ['charm-sunpetal-berry', 'charm-sunpetal-berry'],
-    };
-    state.equipment.charms['charm-sunpetal-berry'] = 3;
-
-    const after = consumeCharms(state, [wildId]);
-
-    expect(after.equipment.charms['charm-sunpetal-berry']).toBe(1);
   });
 
   it('equips two Soul-heart pieces, shows the 2-piece bonus, and stars one up', async () => {

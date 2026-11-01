@@ -181,3 +181,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-01] update | DEF on, trinket chests
 - Owner: DEF stays on ("Light", ASSUMPTIONS #69); the faction shop sells the trinket chests (save v26).
+
+## [2026-11-01] update | R6d Berries
+- Source berries as instances (stars, breakthrough, cultivated lines, reforge, skills by star); save v27. The
+  server-side cultivation and line rules are stand-ins (ASSUMPTIONS #70). R6 is done; next R7 Resonance.

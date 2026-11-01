@@ -1,0 +1,940 @@
+{
+ "linesAtStart": 1,
+ "maxLines": 5,
+ "cultivateEssence": 100,
+ "fastCultivateTimes": 10,
+ "reforgePotions": [
+  10,
+  20,
+  35,
+  35,
+  35
+ ],
+ "rebirthGems": 100,
+ "stars": [
+  {
+   "star": 1,
+   "hp": 21940,
+   "pAtk": 3250,
+   "sAtk": 3250,
+   "next": {
+    "sameCopies": 1,
+    "anyCopies": 2,
+    "gold": 100000
+   }
+  },
+  {
+   "star": 2,
+   "hp": 65820,
+   "pAtk": 9750,
+   "sAtk": 9750,
+   "next": {
+    "sameCopies": 1,
+    "anyCopies": 3,
+    "gold": 250000
+   }
+  },
+  {
+   "star": 3,
+   "hp": 131640,
+   "pAtk": 19500,
+   "sAtk": 19500,
+   "next": {
+    "sameCopies": 1,
+    "anyCopies": 7,
+    "gold": 500000
+   }
+  },
+  {
+   "star": 4,
+   "hp": 263280,
+   "pAtk": 39000,
+   "sAtk": 39000,
+   "next": {
+    "sameCopies": 2,
+    "anyCopies": 10,
+    "gold": 1000000
+   }
+  },
+  {
+   "star": 5,
+   "hp": 438800,
+   "pAtk": 65000,
+   "sAtk": 65000,
+   "next": null
+  }
+ ],
+ "breakthrough": [
+  {
+   "stage": 1,
+   "trainerLevel": 40,
+   "cost": {
+    "currency": "berryMulchBlue",
+    "amount": 10
+   },
+   "hp": 14630,
+   "pAtk": 2170,
+   "sAtk": 2170
+  },
+  {
+   "stage": 2,
+   "trainerLevel": 45,
+   "cost": {
+    "currency": "berryMulchPurple",
+    "amount": 20
+   },
+   "hp": 43890,
+   "pAtk": 6510,
+   "sAtk": 6510
+  },
+  {
+   "stage": 3,
+   "trainerLevel": 50,
+   "cost": {
+    "currency": "berryMulchOrange",
+    "amount": 30
+   },
+   "hp": 87780,
+   "pAtk": 13020,
+   "sAtk": 13020
+  },
+  {
+   "stage": 4,
+   "trainerLevel": 60,
+   "cost": {
+    "currency": "berryMulchRed",
+    "amount": 40
+   },
+   "hp": 146300,
+   "pAtk": 21700,
+   "sAtk": 21700
+  }
+ ],
+ "elements": [
+  {
+   "id": 1,
+   "kind": "core",
+   "field": "hp",
+   "caps": [
+    46800,
+    134550,
+    263250,
+    409500,
+    585000
+   ]
+  },
+  {
+   "id": 2,
+   "kind": "core",
+   "field": "pAtk",
+   "caps": [
+    6933,
+    19933,
+    38999,
+    60666,
+    86666
+   ]
+  },
+  {
+   "id": 3,
+   "kind": "core",
+   "field": "sAtk",
+   "caps": [
+    6933,
+    19933,
+    38999,
+    60666,
+    86666
+   ]
+  },
+  {
+   "id": 4,
+   "kind": "percent",
+   "field": "crit",
+   "caps": [
+    0.032,
+    0.092,
+    0.18,
+    0.28,
+    0.4
+   ]
+  },
+  {
+   "id": 5,
+   "kind": "percent",
+   "field": "critRes",
+   "caps": [
+    0.0272,
+    0.0782,
+    0.153,
+    0.238,
+    0.34
+   ]
+  },
+  {
+   "id": 6,
+   "kind": "percent",
+   "field": "critPower",
+   "caps": [
+    0.0096,
+    0.0276,
+    0.054,
+    0.084,
+    0.12
+   ]
+  },
+  {
+   "id": 7,
+   "kind": "percent",
+   "field": "block",
+   "caps": [
+    0.032,
+    0.092,
+    0.18,
+    0.28,
+    0.4
+   ]
+  },
+  {
+   "id": 8,
+   "kind": "percent",
+   "field": "blockPower",
+   "caps": [
+    0.0112,
+    0.0322,
+    0.063,
+    0.098,
+    0.14
+   ]
+  },
+  {
+   "id": 9,
+   "kind": "percent",
+   "field": "guardBreak",
+   "caps": [
+    0.0272,
+    0.0782,
+    0.153,
+    0.238,
+    0.34
+   ]
+  },
+  {
+   "id": 10,
+   "kind": "percent",
+   "field": "dmgBoost",
+   "caps": [
+    0.048,
+    0.138,
+    0.27,
+    0.42,
+    0.6
+   ]
+  },
+  {
+   "id": 11,
+   "kind": "percent",
+   "field": "dmgRdct",
+   "caps": [
+    0.048,
+    0.138,
+    0.27,
+    0.42,
+    0.6
+   ]
+  },
+  {
+   "id": 12,
+   "kind": "percent",
+   "field": "pvpBoost",
+   "caps": [
+    0.048,
+    0.138,
+    0.27,
+    0.42,
+    0.6
+   ]
+  },
+  {
+   "id": 13,
+   "kind": "percent",
+   "field": "pvpRdct",
+   "caps": [
+    0.048,
+    0.138,
+    0.27,
+    0.42,
+    0.6
+   ]
+  },
+  {
+   "id": 14,
+   "kind": "percent",
+   "field": "controlBoost",
+   "caps": [
+    0.032,
+    0.092,
+    0.18,
+    0.28,
+    0.4
+   ]
+  },
+  {
+   "id": 15,
+   "kind": "percent",
+   "field": "controlRes",
+   "caps": [
+    0.032,
+    0.092,
+    0.18,
+    0.28,
+    0.4
+   ]
+  }
+ ],
+ "berries": [
+  {
+   "id": "berry-lum-berry",
+   "sourceId": 70001,
+   "name": "Lum Berry",
+   "tier": "common",
+   "typeId": 1,
+   "initStar": 0,
+   "maxStar": 0,
+   "dismantleEssence": 50,
+   "skills": [
+    {
+     "star": 1,
+     "name": "HP Up",
+     "text": "Increase HP by 500 in battles"
+    }
+   ]
+  },
+  {
+   "id": "berry-mago-berry",
+   "sourceId": 70002,
+   "name": "Mago Berry",
+   "tier": "common",
+   "typeId": 2,
+   "initStar": 0,
+   "maxStar": 0,
+   "dismantleEssence": 50,
+   "skills": [
+    {
+     "star": 1,
+     "name": "P.ATK Up",
+     "text": "Increase P.ATK by 100 in battles"
+    }
+   ]
+  },
+  {
+   "id": "berry-oran-berry",
+   "sourceId": 70003,
+   "name": "Oran Berry",
+   "tier": "common",
+   "typeId": 3,
+   "initStar": 0,
+   "maxStar": 0,
+   "dismantleEssence": 50,
+   "skills": [
+    {
+     "star": 1,
+     "name": "S.ATK UP",
+     "text": "Increase S.ATK by 100 in battles"
+    }
+   ]
+  },
+  {
+   "id": "berry-bergamot-berry",
+   "sourceId": 70004,
+   "name": "Bergamot Berry",
+   "tier": "basic",
+   "typeId": 4,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Robust 1",
+     "text": "Starting from turn 3, increases 2.5% ATK each turn. Stacks up to 5 times."
+    },
+    {
+     "star": 2,
+     "name": "Robust 2",
+     "text": "Starting from turn 3, increases 4% ATK each turn. Stacks up to 5 times."
+    },
+    {
+     "star": 3,
+     "name": "Robust 3",
+     "text": "Starting from turn 3, increases 6% ATK each turn. Stacks up to 5 times."
+    },
+    {
+     "star": 4,
+     "name": "Robust 4",
+     "text": "Starting from turn 3, increases 8% ATK each turn. Stacks up to 5 times."
+    },
+    {
+     "star": 5,
+     "name": "Robust 5",
+     "text": "Starting from turn 3, increases 10% ATK each turn. Stacks up to 5 times."
+    }
+   ]
+  },
+  {
+   "id": "berry-nanab-berry",
+   "sourceId": 70005,
+   "name": "Nanab Berry",
+   "tier": "basic",
+   "typeId": 5,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Wish 1",
+     "text": "When HP drops below 10% after being attacked, regenerates 5% HP per turn for 2 turns"
+    },
+    {
+     "star": 2,
+     "name": "Wish 2",
+     "text": "When HP drops below 15% after being attacked, regenerates 6% HP per turn for 2 turns"
+    },
+    {
+     "star": 3,
+     "name": "Wish 3",
+     "text": "When HP drops below 20% after being attacked, regenerates 6% HP per turn for 3 turns"
+    },
+    {
+     "star": 4,
+     "name": "Wish 4",
+     "text": "When HP drops below 22% after being attacked, regenerates 8% HP per turn for 3 turns"
+    },
+    {
+     "star": 5,
+     "name": "Wish 5",
+     "text": "When HP drops below 25% after being attacked, regenerates 10% HP per turn for 3 turns"
+    }
+   ]
+  },
+  {
+   "id": "berry-florafree-berry",
+   "sourceId": 70006,
+   "name": "Florafree Berry",
+   "tier": "basic",
+   "typeId": 6,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Help 1",
+     "text": "When it falls from an attack, heals all allies for 50% of S.ATK"
+    },
+    {
+     "star": 2,
+     "name": "Help 2",
+     "text": "When it falls from an attack, heals all allies for 60% of S.ATK"
+    },
+    {
+     "star": 3,
+     "name": "Help 3",
+     "text": "When it falls from an attack, heals all allies for 80% of S.ATK"
+    },
+    {
+     "star": 4,
+     "name": "Help 4",
+     "text": "When it falls from an attack, heals all allies for 100% of S.ATK"
+    },
+    {
+     "star": 5,
+     "name": "Help 5",
+     "text": "When it falls from an attack, heals all allies for 120% of S.ATK"
+    }
+   ]
+  },
+  {
+   "id": "berry-peach-berry",
+   "sourceId": 70007,
+   "name": "Peach Berry",
+   "tier": "basic",
+   "typeId": 7,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Shadow Clone1",
+     "text": "Starting from turn 4, every 6 turns gain one dodge buff that allows you to dodge up to 1 hits within 1 turns."
+    },
+    {
+     "star": 2,
+     "name": "Shadow Clone2",
+     "text": "Starting from turn 4, every 5 turns gain one dodge buff that allows you to dodge up to 1 hits within 1 turns."
+    },
+    {
+     "star": 3,
+     "name": "Shadow Clone3",
+     "text": "Starting from turn 4, every 4 turns gain one dodge buff that allows you to dodge up to 1 hits within 1 turns."
+    },
+    {
+     "star": 4,
+     "name": "Shadow Clone4",
+     "text": "Starting from turn 4, every 3 turns gain one dodge buff that allows you to dodge up to 1 hits within 1 turns."
+    },
+    {
+     "star": 5,
+     "name": "Shadow Clone5",
+     "text": "Starting from turn 4, every 3 turns gain one dodge buff that allows you to dodge up to 2 hits within 1 turns."
+    }
+   ]
+  },
+  {
+   "id": "berry-petaya-berry",
+   "sourceId": 70008,
+   "name": "Petaya Berry",
+   "tier": "intermediate",
+   "typeId": 8,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Siphon Life1",
+     "text": "Gain Lifestealbuff, converting 8% of damage dealt into healing"
+    },
+    {
+     "star": 2,
+     "name": "Siphon Life2",
+     "text": "Gain Lifestealbuff, converting 12% of damage dealt into healing"
+    },
+    {
+     "star": 3,
+     "name": "Siphon Life3",
+     "text": "Gain Lifestealbuff, converting 12% of damage dealt into healing. Gain 8% DMG Boost within 3 turns."
+    },
+    {
+     "star": 4,
+     "name": "Siphon Life4",
+     "text": "Gain Lifestealbuff, converting 16% of damage dealt into healing. Gain 12% DMG Boost within 3 turns."
+    },
+    {
+     "star": 5,
+     "name": "Siphon Life5",
+     "text": "Gain Lifestealbuff, converting 20% of damage dealt into healing. Gain 15% DMG Boost within 3 turns."
+    }
+   ]
+  },
+  {
+   "id": "berry-micle-berry",
+   "sourceId": 70009,
+   "name": "Micle Berry",
+   "tier": "intermediate",
+   "typeId": 9,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Counterattack 1",
+     "text": "When you are attacked and HP drops below 15%, gain a Thorn buff that deals 50% P.ATK to the attacker for 2 turns."
+    },
+    {
+     "star": 2,
+     "name": "Counterattack 2",
+     "text": "When you are attacked and HP drops below 15%, gain a Thorn buff that deals 60% P.ATK to the attacker for 2 turns."
+    },
+    {
+     "star": 3,
+     "name": "Counterattack 3",
+     "text": "When you are attacked and HP drops below 20%, gain a Thorn buff that deals 70% P.ATK to the attacker for 2 turns."
+    },
+    {
+     "star": 4,
+     "name": "Counterattack 4",
+     "text": "When you are attacked and HP drops below 25%, gain a Thorn buff that deals 80% P.ATK to the attacker for 2 turns."
+    },
+    {
+     "star": 5,
+     "name": "Counterattack 5",
+     "text": "When you are attacked and HP drops below 25%, gain a Thorn buff that deals 100% P.ATK to the attacker for 2 turns."
+    }
+   ]
+  },
+  {
+   "id": "berry-lemon-fruit-intermediate",
+   "sourceId": 70010,
+   "name": "Lemon Fruit (Intermediate)",
+   "tier": "intermediate",
+   "typeId": 10,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Wide Defense1",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 80% S.ATK for 2 turns. The shields cannot be stacked."
+    },
+    {
+     "star": 2,
+     "name": "Wide Defense2",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 90% S.ATK for 2 turns. The shields cannot be stacked."
+    },
+    {
+     "star": 3,
+     "name": "Wide Defense3",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 100% S.ATK for 3 turns. The shields cannot be stacked."
+    },
+    {
+     "star": 4,
+     "name": "Wide Defense4",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 120% S.ATK as well as a healing buff that heals them 3% HP per turn for 3 turns. Cannot be stacked."
+    },
+    {
+     "star": 5,
+     "name": "Wide Defense5",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 150% S.ATK as well as a healing buff that heals them 3% HP per turn for 3 turns. Cannot be stacked."
+    }
+   ]
+  },
+  {
+   "id": "berry-tamato-berry",
+   "sourceId": 70011,
+   "name": "Tamato Berry",
+   "tier": "intermediate",
+   "typeId": 11,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Wish 1",
+     "text": "When HP drops below 10% after being attacked, heals self for 10% HP. Occurs only 1 times."
+    },
+    {
+     "star": 2,
+     "name": "Wish 2",
+     "text": "When HP drops below 15% after being attacked, heals self for 12% HP. Occurs only 1 times."
+    },
+    {
+     "star": 3,
+     "name": "Wish 3",
+     "text": "When HP drops below 20% after being attacked, heals self for 15% HP. Occurs only 1 times."
+    },
+    {
+     "star": 4,
+     "name": "Wish 4",
+     "text": "When HP drops below 22% after being attacked, heals self for 18% HP. Occurs only 1 times."
+    },
+    {
+     "star": 5,
+     "name": "Wish 5",
+     "text": "When HP drops below 25% after being attacked, heals self for 20% HP. Occurs only 1 times."
+    }
+   ]
+  },
+  {
+   "id": "berry-pear-berry",
+   "sourceId": 70012,
+   "name": "Pear Berry",
+   "tier": "greater",
+   "typeId": 12,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Refreshing1",
+     "text": "When you are attacked and HP drops below 10%, remove all debuff, gain immunity to all debuff, and increase DMG Reduction by 20% for 2 turns."
+    },
+    {
+     "star": 2,
+     "name": "Refreshing2",
+     "text": "When you are attacked and HP drops below 15%, remove all debuff, gain immunity to all debuff, and increase DMG Reduction by 25% for 2 turns."
+    },
+    {
+     "star": 3,
+     "name": "Refreshing3",
+     "text": "When you are attacked and HP drops below 15%, remove all debuff, gain immunity to all debuff, and increase DMG Reduction by 30% for 2 turns."
+    },
+    {
+     "star": 4,
+     "name": "Refreshing4",
+     "text": "When you are attacked and HP drops below 20%, remove all debuff, gain immunity to all debuff, and increase DMG Reduction by 35% for 2 turns."
+    },
+    {
+     "star": 5,
+     "name": "Refreshing5",
+     "text": "When you are attacked and HP drops below 20%, remove all debuff, gain immunity to all debuff, and increase DMG Reduction by 35% for 3 turns."
+    }
+   ]
+  },
+  {
+   "id": "berry-cheri-berry",
+   "sourceId": 70013,
+   "name": "Cheri Berry",
+   "tier": "greater",
+   "typeId": 13,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Healing Tinkle1",
+     "text": "When you fall from an attack, remove all debuff from the ally with the highest ATK and increase ATK by 20% for 2 turns. Cannot be stacked."
+    },
+    {
+     "star": 2,
+     "name": "Healing Tinkle2",
+     "text": "When you fall from an attack, remove all debuff from the ally with the highest ATK and increase ATK by 25% for 2 turns. Cannot be stacked."
+    },
+    {
+     "star": 3,
+     "name": "Healing Tinkle3",
+     "text": "When you fall from an attack, remove all debuff from the ally with the highest ATK and increase ATK by 30% for 2 turns. Cannot be stacked."
+    },
+    {
+     "star": 4,
+     "name": "Healing Tinkle4",
+     "text": "When you fall from an attack, remove all debuff from the 2 allies with the highest ATK and increase ATK by 30% for 2 turns. Cannot be stacked."
+    },
+    {
+     "star": 5,
+     "name": "Healing Tinkle5",
+     "text": "When you fall from an attack, remove all debuff from the 2 allies with the highest ATK and increase ATK by 30% for 3 turns. Cannot be stacked."
+    }
+   ]
+  },
+  {
+   "id": "berry-spelon-berry",
+   "sourceId": 70014,
+   "name": "Spelon Berry",
+   "tier": "greater",
+   "typeId": 14,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Focus Energy 1",
+     "text": "When attacked and HP drops below 10%, increase your Crit by 50% and Crit Intensity by 5% for 3 turns."
+    },
+    {
+     "star": 2,
+     "name": "Focus Energy 2",
+     "text": "When attacked and HP drops below 10%, increase your Crit by 60% and Crit Intensity by 10% for 3 turns."
+    },
+    {
+     "star": 3,
+     "name": "Focus Energy 3",
+     "text": "When attacked and HP drops below 12%, increase your Crit by 70% and Crit Intensity by 20% for 3 turns."
+    },
+    {
+     "star": 4,
+     "name": "Focus Energy 4",
+     "text": "When attacked and HP drops below 15%, increase your Crit by 85% and Crit Intensity by 28% for 3 turns."
+    },
+    {
+     "star": 5,
+     "name": "Focus Energy 5",
+     "text": "When attacked and HP drops below 15%, increase your Crit by 100% and Crit Intensity by 35% for 3 turns."
+    }
+   ]
+  },
+  {
+   "id": "berry-cirio-berry",
+   "sourceId": 70015,
+   "name": "Cirio Berry",
+   "tier": "greater",
+   "typeId": 15,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Substitute1",
+     "text": "When being attacked and self HP drops below 20%, gains one dodge buff that can dodge up to 1 hit within 1 turn."
+    },
+    {
+     "star": 2,
+     "name": "Substitute2",
+     "text": "When being attacked and self HP drops below 25%, gains one dodge buff that can dodge up to 1 hit within 1 turn."
+    },
+    {
+     "star": 3,
+     "name": "Substitute3",
+     "text": "When being attacked and self HP drops below 30%, gains one dodge buff that can dodge up to 1 hit within 1 turn."
+    },
+    {
+     "star": 4,
+     "name": "Substitute4",
+     "text": "When being attacked and self HP drops below 40%, gains one dodge buff that can dodge up to 1 hit within 1 turn."
+    },
+    {
+     "star": 5,
+     "name": "Substitute5",
+     "text": "When being attacked and self HP drops below 50%, gains one dodge buff that can dodge up to 2 hit within 1 turn."
+    }
+   ]
+  },
+  {
+   "id": "berry-strong-dragon-fire-fruit",
+   "sourceId": 70016,
+   "name": "Strong - Dragon Fire Fruit",
+   "tier": "greater",
+   "typeId": 8,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Siphon Life1",
+     "text": "Get Lifesteal Buff, converts 10% of the damage you deal into HP Regen"
+    },
+    {
+     "star": 2,
+     "name": "Siphon Life2",
+     "text": "Get Lifesteal Buff, converts 14% of the damage you deal into HP Regen"
+    },
+    {
+     "star": 3,
+     "name": "Siphon Life3",
+     "text": "Get Lifesteal Buff, converts 14% of the damage you deal into HP Regen.Within 3 turns of opening Get 12% DMG"
+    },
+    {
+     "star": 4,
+     "name": "Siphon Life4",
+     "text": "Get Lifesteal Buff, converts 18% of the damage you deal into HP Regen.Within 3 turns of opening Get 15% DMG"
+    },
+    {
+     "star": 5,
+     "name": "Siphon Life5",
+     "text": "Get Lifesteal Buff, converts 22% of the damage you deal into HP Regen.Within 3 turns of opening Get 18% DMG"
+    }
+   ]
+  },
+  {
+   "id": "berry-strong-secret-fruit",
+   "sourceId": 70017,
+   "name": "Strong - Secret Fruit",
+   "tier": "greater",
+   "typeId": 9,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Counterattack 1",
+     "text": "When HP falls below 25% after being attacked, gain Thorn buff, deal 60% of your P.ATK damage to attacker for 2 turns"
+    },
+    {
+     "star": 2,
+     "name": "Counterattack 2",
+     "text": "When HP falls below 25% after being attacked, gain Thorn buff, deal 70% of your P.ATK damage to attacker for 2 turns"
+    },
+    {
+     "star": 3,
+     "name": "Counterattack 3",
+     "text": "When HP falls below 30% after being attacked, gain Thorn buff, deal 80% of your P.ATK damage to attacker for 2 turns"
+    },
+    {
+     "star": 4,
+     "name": "Counterattack 4",
+     "text": "When HP falls below 30% after being attacked, gain Thorn buff, deal 95% of your P.ATK damage to attacker for 2 turns"
+    },
+    {
+     "star": 5,
+     "name": "Counterattack 5",
+     "text": "When HP falls below 40% after being attacked, gain Thorn buff, deal 110% of your P.ATK damage to attacker for 2 turns"
+    }
+   ]
+  },
+  {
+   "id": "berry-lemon-fruit",
+   "sourceId": 70018,
+   "name": "Lemon Fruit",
+   "tier": "greater",
+   "typeId": 10,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Wide Defense1",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 90% S.ATK for 2 turns. The shields cannot be stacked."
+    },
+    {
+     "star": 2,
+     "name": "Wide Defense2",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 100% S.ATK for 2 turns. The shields cannot be stacked."
+    },
+    {
+     "star": 3,
+     "name": "Wide Defense3",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 110% S.ATK for 3 turns. The shields cannot be stacked."
+    },
+    {
+     "star": 4,
+     "name": "Wide Defense4",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 135% S.ATK as well as a healing buff that heals them 4% HP per turn for 3 turns. Cannot be stacked."
+    },
+    {
+     "star": 5,
+     "name": "Wide Defense5",
+     "text": "When you fall from an attack, grant all surviving allies a shield that absorbs 165% S.ATK as well as a healing buff that heals them 5% HP per turn for 3 turns. Cannot be stacked."
+    }
+   ]
+  },
+  {
+   "id": "berry-strong-tomato-fruit",
+   "sourceId": 70019,
+   "name": "Strong - Tomato Fruit",
+   "tier": "greater",
+   "typeId": 11,
+   "initStar": 1,
+   "maxStar": 5,
+   "dismantleEssence": 40,
+   "skills": [
+    {
+     "star": 1,
+     "name": "Wish 1",
+     "text": "When HP falls below 20% after being attacked, restores 12% of its own HP"
+    },
+    {
+     "star": 2,
+     "name": "Wish 2",
+     "text": "When HP falls below 25% after being attacked, restores 15% of its own HP"
+    },
+    {
+     "star": 3,
+     "name": "Wish 3",
+     "text": "When HP falls below 25% after being attacked, immediately restores 15% of its HP and restores it again at the end of the next turn"
+    },
+    {
+     "star": 4,
+     "name": "Wish 4",
+     "text": "When HP falls below 30% after being attacked, immediately restores 18% of its HP and restores it again at the end of the next turn"
+    },
+    {
+     "star": 5,
+     "name": "Wish 5",
+     "text": "When HP falls below 30% after being attacked, immediately restores 18% of its HP and restores it again at the end of the next 2 turn"
+    }
+   ]
+  }
+ ]
+}

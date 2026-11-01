@@ -1,5 +1,5 @@
 import {
-  charmsUnlocked,
+  berriesUnlocked,
   computePower,
   coresUnlocked,
   emptyLoadout,
@@ -45,12 +45,6 @@ import { applySheetPercents, sheetOf } from './battle';
  * Display-ready equipment view (M7). Built server-side so the client never has to
  * re-derive rules; the client only renders and calls actions.
  */
-
-/** Berry Essence to raise a Berry one star. */
-export function charmUpgradeEssence(stars: number, collection: GameConfig['collection']): number {
-  const { upgradeEssenceBase, upgradeEssencePerStar } = collection.berries;
-  return upgradeEssenceBase + Math.max(0, stars - 1) * upgradeEssencePerStar;
-}
 
 /** One rolled line on a held item; values are the source's per-ten-thousand numbers. */
 export interface HeldLineView {
@@ -116,19 +110,6 @@ export interface CoreSetView {
   bonuses: { pieces: number; active: boolean; text: string }[];
 }
 
-export interface CharmView {
-  defId: string;
-  name: string;
-  tier: string;
-  stars: number;
-  maxStars: number;
-  count: number;
-  equippedOn: string[];
-  upgradeCopies: number;
-  upgradeEssence: number | null;
-  dismantleEssence: number;
-}
-
 export interface EquipmentPowerView {
   /** Power with no equipment equipped. */
   base: number;
@@ -148,8 +129,8 @@ export interface EquipmentView {
   /** Equipped soul stats, for the stat sheet. */
   soul: Partial<SoulStats>;
   power: EquipmentPowerView;
-  unlocks: { relic: boolean; charms: boolean; cores: boolean };
-  requirements: { relic: Tier; charms: number; cores: number };
+  unlocks: { relic: boolean; berries: boolean; cores: boolean };
+  requirements: { relic: Tier; berries: number; cores: number };
   loadout: Loadout;
   relics: RelicView[];
   cores: CoreView[];
@@ -169,11 +150,6 @@ export interface EquipmentView {
   plateBottles: number;
   plateFragments: number;
   starShards: number;
-  charmSlots: number;
-  charms: CharmView[];
-  costs: {
-    charmUpgradeCopies: number;
-  };
   delta: StatDelta;
   layerDelta: Record<keyof LayerDelta, StatDelta>;
   effects: { tag: string; text: string; fromRound: number; bigRounds?: number }[];
@@ -249,7 +225,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     'resonance',
     'titles',
     'runes',
-    'charms',
+    'berries',
     'cores',
   ];
   const layerPower = {} as Record<keyof LayerDelta, number>;
@@ -261,13 +237,8 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
 
   const relicOn = new Map<string, string>();
   const coreOn = new Map<string, string>();
-  const charmOn = new Map<string, string[]>();
   for (const [wildId, l] of Object.entries(state.loadouts)) {
     if (l.relic) relicOn.set(l.relic, wildId);
-    for (const id of l.charms) {
-      if (!id) continue;
-      charmOn.set(id, [...(charmOn.get(id) ?? []), wildId]);
-    }
     for (const id of l.cores) if (id) coreOn.set(id, wildId);
   }
 
@@ -356,24 +327,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     };
   });
 
-  const charms: CharmView[] = tables.charms
-    .filter((c) => (state.equipment.charms[c.id] ?? 0) > 0 || charmOn.has(c.id))
-    .map((c) => {
-      const stars = state.equipment.charmStars[c.id] ?? 1;
-      return {
-        defId: c.id,
-        name: c.name,
-        tier: c.tier,
-        stars,
-        maxStars: c.maxStars,
-        count: state.equipment.charms[c.id] ?? 0,
-        equippedOn: charmOn.get(c.id) ?? [],
-        upgradeCopies: config.collection.berries.upgradeCopies,
-        upgradeEssence: c.maxStars > 0 && stars < c.maxStars ? charmUpgradeEssence(stars, config.collection) : null,
-        dismantleEssence: config.collection.berries.dismantleEssence[c.tier],
-      };
-    });
-
   const textMap = effectTextMap(tables);
 
   return {
@@ -393,12 +346,12 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     },
     unlocks: {
       relic: meta ? relicUnlocked(meta.tier, tuning) : false,
-      charms: charmsUnlocked(wild.stars, tuning),
+      berries: berriesUnlocked(wild.stars, tuning),
       cores: coresUnlocked(wild.stars, tuning),
     },
     requirements: {
       relic: tuning.relic.minTier,
-      charms: tuning.charms.minStars,
+      berries: tuning.berries.minStars,
       cores: tuning.cores.minStars,
     },
     loadout,
@@ -417,11 +370,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     plateBottles: state.currencies.plateBottle ?? 0,
     plateFragments: state.currencies.plateFragment ?? 0,
     starShards: state.currencies.starShard ?? 0,
-    charmSlots: tuning.charms.slots,
-    charms,
-    costs: {
-      charmUpgradeCopies: config.collection.berries.upgradeCopies,
-    },
     delta: folded.delta,
     layerDelta: folded.layers,
     effects: folded.effects.map((e) => {

@@ -30,7 +30,12 @@
     "trinketChestBlue": 0,
     "trinketChestPurple": 0,
     "trinketChest": 0,
-    "trinketBoxShiny": 0
+    "trinketBoxShiny": 0,
+    "berryMulchBlue": 0,
+    "berryMulchPurple": 0,
+    "berryMulchOrange": 0,
+    "berryMulchRed": 0,
+    "reforgePotion": 0
   },
   "startingRoster": [
     "ninetales",
@@ -70,6 +75,11 @@
     "trinketChestBlue": 100,
     "trinketChestPurple": 100,
     "trinketChest": 100,
-    "trinketBoxShiny": 100
+    "trinketBoxShiny": 100,
+    "berryMulchBlue": 100,
+    "berryMulchPurple": 100,
+    "berryMulchOrange": 100,
+    "berryMulchRed": 100,
+    "reforgePotion": 500
   }
 }
