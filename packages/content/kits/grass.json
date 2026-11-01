@@ -2825,6 +2825,268 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "All attacks ignore 10% of Special Defense. Basic skill attack increases 10% after an attack and lasts 2 rounds. Can by layered 2 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "All attacks ignore 15% of Special Defense. Basic skill attack increases 15% after an attack and lasts 2 rounds. Can by layered 2 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "All attacks ignore 22% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "All attacks ignore 35% of Special Defense. Basic skill attack increases 15% after an attack and lasts 10 rounds. Can by layered 3 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ruse-basic",
+                  "kind": "stat",
+                  "field": "skillBoost",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -3282,6 +3544,104 @@
       },
       "18": {
         "text": "Grants frontline allies 200 Rage"
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Everytime use ultimate attack, DMG increase 8%, stacks up to 4",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "primal-force",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.08,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Everytime use ultimate attack, DMG increase 10%, stacks up to 4",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "primal-force",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.1,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Everytime use ultimate attack, DMG increase 13%, stacks up to 4",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "primal-force",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.13,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Everytime use ultimate attack, DMG increase 16%, stacks up to 4",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "primal-force",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.16,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -4508,6 +4868,84 @@
       "18": {
         "text": "Additional DMG of ultimate increased to 80% of the cumulative damage taken in the last round",
         "counterShare": 0.8
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "When taking direct DMG, 24% of the damage taken bounces back to the attacker",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "eventDamage",
+                "share": 0.24,
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When taking direct DMG, 48% of the damage taken bounces back to the attacker",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "eventDamage",
+                "share": 0.48,
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When taking direct DMG, 72% of the damage taken bounces back to the attacker",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "eventDamage",
+                "share": 0.72,
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When taking direct DMG, 96% of the damage taken bounces back to the attacker",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "eventDamage",
+                "share": 0.96,
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
       }
     }
   }

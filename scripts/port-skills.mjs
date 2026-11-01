@@ -1262,6 +1262,9 @@ for (const creature of sheet) {
   // R6a: plate skills (scripts/data/build-kit-overrides.py `plate(...)`), for any kit.
   const plate = OVERRIDES._plates?.[kit.id];
   if (plate) kit.plate = plate;
+  // R6b: exclusive-trinket skills (scripts/data/trinket-skills.py `trinket(...)`).
+  const trinket = OVERRIDES._trinkets?.[kit.id];
+  if (trinket) kit.trinket = trinket;
 
   for (const s of creature.slots) {
     CURRENT.sheetSlot = '';
@@ -1325,6 +1328,16 @@ lines.push('');
 lines.push(`Ported: ${plated.join(', ')}.`);
 lines.push('');
 for (const n of OVERRIDES._plateNotes ?? []) lines.push(`- ${n}`);
+lines.push('');
+const trinketed = Object.keys(OVERRIDES._trinkets ?? {});
+lines.push(`## Trinket skills (R6b part 2, hand-ported in \`scripts/data/trinket-skills.py\`): ${trinketed.length}`);
+lines.push('');
+lines.push('Source: `scripts/data/trinket-skills-source.json` (hero_weapon_json skill_list, 371 texts / 76 holders). Applied by');
+lines.push('`applyTrinketSkills`: only the highest tier (Lv 10 / 20 / 30 / 40) at or below the trinket level.');
+lines.push('');
+if (trinketed.length) lines.push(`Ported: ${trinketed.join(', ')}.`);
+lines.push('');
+for (const n of OVERRIDES._trinketNotes ?? []) lines.push(`- ${n}`);
 lines.push('');
 lines.push(`## Unparsed clause patterns (${rep.residualMap.size} distinct, top 60)`);
 lines.push('');

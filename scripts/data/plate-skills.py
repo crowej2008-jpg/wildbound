@@ -848,12 +848,12 @@ def _tyranitar(s):
             e["buff"]["amount"] = -0.2
 
 
-_CONTROLLED = {"rule": "all", "filters": ["controlled"]}
+_CONTROLLED = {"targetControlled": True}
 plate("tyranitar", {
     6: {"skills": {"ult": edited("tyranitar", "ult", _tyranitar)}},
-    12: {"triggers": [trig("afterUlt", [give(_CONTROLLED, buff("tyranitar-ctrlres", "controlRes", -0.2, turns=2, stacks=1)),
-                                        give(_CONTROLLED, buff("tyranitar-crit-cut", "crit", -0.2, turns=3)),
-                                        give(_CONTROLLED, buff("tyranitar-critpow-cut", "critPower", -0.08, turns=3))])]},
+    12: {"triggers": [trig("afterUlt", [give(ENEMY_ALL, buff("tyranitar-ctrlres", "controlRes", -0.2, turns=2, stacks=1), condition=_CONTROLLED),
+                                        give(ENEMY_ALL, buff("tyranitar-crit-cut", "crit", -0.2, turns=3), condition=_CONTROLLED),
+                                        give(ENEMY_ALL, buff("tyranitar-critpow-cut", "critPower", -0.08, turns=3), condition=_CONTROLLED)])]},
     18: {"triggers": [trig("afterUlt", [give(FRONT_ALLIES, buff("tyranitar-front-rdct", "dmgRdct", 0.18, turns=2, stacks=1))])]},
 })
 

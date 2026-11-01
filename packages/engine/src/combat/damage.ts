@@ -129,9 +129,13 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
   const critRes = eff(defender, 'critRes');
   // E3: a Crit Seal (`noCrit`) stops the attacker's crits; the roll is still drawn for determinism.
   const sealed = attacker.buffs.some((b) => b.kind === 'noCrit');
-  const crit =
-    !ctx.deterministic && ctx.rng() < critRateAt(attacker, defender, critRes, S.critSlope, S.critFloor) && !sealed;
-  const critMult = Math.max(S.critBaseMult, S.critBaseMult + eff(attacker, 'critPower') - 0.5 * critRes);
+  // R6b: attack mods can add Crit / Crit INT to this hit only ("+12% Crit against [SKILL] Pokémon").
+  const critRate = Math.max(
+    S.critFloor,
+    Math.min(1, critRateAt(attacker, defender, critRes, S.critSlope, S.critFloor) + S.critSlope * mods.crit),
+  );
+  const crit = !ctx.deterministic && ctx.rng() < critRate && !sealed;
+  const critMult = Math.max(S.critBaseMult, S.critBaseMult + eff(attacker, 'critPower') + mods.critPower - 0.5 * critRes);
   if (crit) dmg *= critMult;
 
   const ignoreBlock = Math.min(1, Math.max(0, eff(attacker, 'ignoreBlock') + mods.ignoreBlock));
@@ -176,8 +180,8 @@ function activeDamageMods(
   other: Combatant,
   skill: SkillDef,
   role: 'attack' | 'defend',
-): { dmg: number; atk: number; ignoreBlock: number } {
-  const out = { dmg: 0, atk: 0, ignoreBlock: 0 };
+): { dmg: number; atk: number; ignoreBlock: number; crit: number; critPower: number } {
+  const out = { dmg: 0, atk: 0, ignoreBlock: 0, crit: 0, critPower: 0 };
   const all = [...(self.kit.talents?.damageMods ?? []), ...(self.damageMods ?? [])];
   for (const mod of all) {
     if ((mod.role ?? 'attack') !== role) continue;
@@ -190,6 +194,8 @@ function activeDamageMods(
     out.dmg += cap((mod.dmg ?? 0) * f);
     out.atk += cap((mod.atk ?? 0) * f);
     out.ignoreBlock += mod.ignoreBlock ?? 0;
+    out.crit += mod.crit ?? 0;
+    out.critPower += mod.critPower ?? 0;
   }
   return out;
 }

@@ -1310,10 +1310,7 @@
               {
                 "op": "buff",
                 "target": {
-                  "rule": "all",
-                  "filters": [
-                    "controlled"
-                  ]
+                  "rule": "all"
                 },
                 "buff": {
                   "tag": "tyranitar-ctrlres",
@@ -1322,15 +1319,15 @@
                   "amount": -0.2,
                   "turns": 2,
                   "maxStacks": 1
+                },
+                "condition": {
+                  "targetControlled": true
                 }
               },
               {
                 "op": "buff",
                 "target": {
-                  "rule": "all",
-                  "filters": [
-                    "controlled"
-                  ]
+                  "rule": "all"
                 },
                 "buff": {
                   "tag": "tyranitar-crit-cut",
@@ -1338,15 +1335,15 @@
                   "field": "crit",
                   "amount": -0.2,
                   "turns": 3
+                },
+                "condition": {
+                  "targetControlled": true
                 }
               },
               {
                 "op": "buff",
                 "target": {
-                  "rule": "all",
-                  "filters": [
-                    "controlled"
-                  ]
+                  "rule": "all"
                 },
                 "buff": {
                   "tag": "tyranitar-critpow-cut",
@@ -1354,6 +1351,9 @@
                   "field": "critPower",
                   "amount": -0.08,
                   "turns": 3
+                },
+                "condition": {
+                  "targetControlled": true
                 }
               }
             ]
@@ -2177,6 +2177,60 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "All attacks increases Skill Pokémon's Crit by 12% and Crit INT by 6%",
+        "damageMods": [
+          {
+            "tag": "groudon-trinket",
+            "crit": 0.12,
+            "critPower": 0.06,
+            "condition": {
+              "targetClass": "adept"
+            }
+          }
+        ]
+      },
+      "20": {
+        "text": "All attacks increases Skill Pokémon's Crit by 16% and Crit INT by 8%",
+        "damageMods": [
+          {
+            "tag": "groudon-trinket",
+            "crit": 0.16,
+            "critPower": 0.08,
+            "condition": {
+              "targetClass": "adept"
+            }
+          }
+        ]
+      },
+      "30": {
+        "text": "All attacks increases Skill Pokémon's Crit by 20% and Crit INT by 10%",
+        "damageMods": [
+          {
+            "tag": "groudon-trinket",
+            "crit": 0.2,
+            "critPower": 0.1,
+            "condition": {
+              "targetClass": "adept"
+            }
+          }
+        ]
+      },
+      "40": {
+        "text": "All attacks increases Skill Pokémon's Crit by 24% and Crit INT by 12%",
+        "damageMods": [
+          {
+            "tag": "groudon-trinket",
+            "crit": 0.24,
+            "critPower": 0.12,
+            "condition": {
+              "targetClass": "adept"
+            }
+          }
+        ]
+      }
     }
   },
   {
@@ -2444,6 +2498,199 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "After Ultimate, Every time being hit, restores 50 Rage within 2 turns",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ho-oh-enrage",
+                  "kind": "stack",
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "ho-oh-enrage"
+            },
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 50
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "After Ultimate, Every time being hit, restores 75 Rage within 2 turns. Basic skills grant 75 additional Rage.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ho-oh-enrage",
+                  "kind": "stack",
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "ho-oh-enrage"
+            },
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 75
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 75
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "After Ultimate, Every time being hit, restores 100 Rage within 2 turns. Basic skills grant 100 additional Rage.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ho-oh-enrage",
+                  "kind": "stack",
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "ho-oh-enrage"
+            },
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 100
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 100
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "After Ultimate, Every time being hit, restores 100 Rage within 2 turns. Basic skills grant 125 additional Rage.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "ho-oh-enrage",
+                  "kind": "stack",
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "ho-oh-enrage"
+            },
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 100
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -3485,6 +3732,164 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Absorbs 5% of the attacker's S.ATK after being attacked,last 5 turns,stack up to 3 levels",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "last-out-cut",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": -0.05,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "last-out",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.05,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Absorbs 10% ofthe attacker's S.ATK after being attacked,last 5 turns,stack up to 3 levels",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "last-out-cut",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": -0.1,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "last-out",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.1,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Absorbs 10% ofthe attacker's S.ATK and S.DEF after being attacked,last 5 turns,stack up to 3 levels",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "last-out-cut",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": -0.1,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "last-out",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.1,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Absorbs 20% ofthe attacker's S.ATK and S.DEF after being attacked,last 5 turns,stack up to 3 levels",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "last-out-cut",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": -0.2,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "last-out",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.2,
+                  "turns": 5,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -4284,6 +4689,160 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "After ultimate, add 6% P.ATK and crit intensity until the end, up to 4 layers",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mimikyu-trinket-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.06,
+                  "maxStacks": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mimikyu-trinket-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.06,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "After ultimate, add 7% P.ATK and crit intensity until the end, up to 4 layers",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mimikyu-trinket-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.07,
+                  "maxStacks": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mimikyu-trinket-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.07,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "After ultimate, add 8% P.ATK and crit intensity until the end, up to 4 layers",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mimikyu-trinket-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.08,
+                  "maxStacks": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mimikyu-trinket-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.08,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "After ultimate, add 10% P.ATK and crit intensity until the end, up to 4 layers",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mimikyu-trinket-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.1,
+                  "maxStacks": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mimikyu-trinket-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.1,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   }

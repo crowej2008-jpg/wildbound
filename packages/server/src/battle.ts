@@ -2,6 +2,7 @@ import { COMBAT_SETTINGS, kitById, kitToEngine } from '@wildbound/content';
 import {
   applySkillLevels,
   applyPlateSkills,
+  applyTrinketSkills,
   computePower,
   emptyLoadout,
   formIndex,
@@ -224,7 +225,11 @@ export function buildWildTeam(
       side,
       // E4: an Origin's bought skill levels swap in their LV.2 / LV.3 content.
       // R6a: plate skills at stages 6 / 12 / 18.
-      kit: applyPlateSkills(applySkillLevels(kitToEngine(kitJson), wild.skillLevels), state?.plates[wild.id] ?? 0),
+      // R6b: the exclusive trinket's skill at its level (10 / 20 / 30 / 40).
+      kit: applyTrinketSkills(
+        applyPlateSkills(applySkillLevels(kitToEngine(kitJson), wild.skillLevels), state?.plates[wild.id] ?? 0),
+        state?.trinkets[wild.speciesId] ?? 0,
+      ),
       sheet: equipped.sheet,
       power: unitPower,
       level: wild.level,

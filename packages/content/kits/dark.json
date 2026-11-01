@@ -202,6 +202,126 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "During battles, increases Crit Intensity by 10% for 4 turn(s)",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mewtwo-trinket-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.1,
+                  "turns": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "During battles, increases Crit Intensity by 15% for 4 turn(s). Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mewtwo-trinket-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.15,
+                  "turns": 4,
+                  "undispellable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "During battles, increases Crit Intensity by 20% for 5 turn(s). Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mewtwo-trinket-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.2,
+                  "turns": 5,
+                  "undispellable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Increases crit intensity by 25% in battle for 6 turns, and will not be dispelled. The move also applies a Pokémon Bomb to the front row of enemies, dealing 80% S.ATK damage after three rounds. Cannot be dispelled, and no new Pokémon Bombs can be applied while the target holds it.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mewtwo-trinket-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.25,
+                  "turns": 6,
+                  "undispellable": true
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "rule": "frontline"
+                },
+                "tag": "mental-bomb",
+                "dot": {
+                  "share": 0.8,
+                  "basis": "casterAtk",
+                  "turns": 1,
+                  "type": "S",
+                  "undispellable": true
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -759,6 +879,206 @@
             "lifesteal": 0.2
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Starting from turn 2, each turn increases P.ATK by 3% for 10 turns, capping at 24%.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.03,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Starting from turn 2, each turn increases P.ATK by 3% for 10 turns, capping at 24%; While immune to controls, gain 1 additional stacks of P.ATK each turn.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.03,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              },
+              "selfHasTag": "darkrai-immune"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.03,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Starting from turn 2, each turn increases P.ATK by 4% for 10 turns, capping at 32%; While immune to controls, gain 1 additional stacks of P.ATK each turn.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.04,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              },
+              "selfHasTag": "darkrai-immune"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.04,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Starting from turn 2, each turn increases P.ATK by 5% for 10 turns, capping at 40%; While immune to controls, gain 1 additional stacks of P.ATK each turn.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.05,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          },
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "from": 2
+              },
+              "selfHasTag": "darkrai-immune"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "darkrai-ruse",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.05,
+                  "turns": 10,
+                  "maxStacks": 8
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -1477,6 +1797,104 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Each time attacking a unit, gain 2% additional ATK, up to 20%. Lasts until the end of battle.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "dream-shake",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.02,
+                  "maxStacks": 10
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Each time attacking a unit, gain 3% additional ATK, up to 30%. Lasts until the end of battle.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "dream-shake",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.03,
+                  "maxStacks": 10
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Each time attacking a unit, gain 4% additional ATK, up to 40%. Lasts until the end of battle.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "dream-shake",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.04,
+                  "maxStacks": 10
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Each time attacking a unit, gain 5% additional ATK, up to 50%. Lasts until the end of battle.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "dream-shake",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.05,
+                  "maxStacks": 10
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1710,6 +2128,276 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "When attacked, if HP is below 10% increase allies' [ATK] Pokémon 5% ATK, 40% crit and 5% crit intensity, last 2 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.1
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.05,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.4,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.05,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When attacked, if HP is below 15% increase allies' [ATK] Pokémon 10% ATK, 45% crit and 10% crit intensity, last 2 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.15
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.45,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When attacked, if HP is below 20% increase allies' [ATK] Pokémon 15% ATK, 50% crit and 15% crit intensity, last 2 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.2
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.5,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When attacked, if HP is below 30% increase allies' [ATK] Pokémon 25% ATK, 60% crit and 25% crit intensity, last 2 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.3
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.25,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.6,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.25,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -2492,6 +3180,52 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "40": {
+        "text": "Increases crit intensity by 25% in battle for 6 turns, and cannot be dispelled. The move also applies a Flash-Mental Bomb to front row enemies, dealing 80% S.ATK damage after three rounds. Cannot be dispelled, and cannot apply a new Flash-Mental Bomb while the target holds it.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mewtwo-trinket-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.25,
+                  "turns": 6,
+                  "undispellable": true
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "rule": "frontline"
+                },
+                "tag": "mental-bomb",
+                "dot": {
+                  "share": 0.8,
+                  "basis": "casterAtk",
+                  "turns": 1,
+                  "type": "S",
+                  "undispellable": true
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2725,6 +3459,276 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "When being attacked, if HP is below 20%, increases allied [ATK] Pokémons by 5% ATK, 40% crit and 5% crit intensity, last 2 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.2
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.05,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.4,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.05,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When being attacked, if HP is below 30%, increases allied [ATK] Pokémons by 10% ATK, 45% crit and 10% Crit intensity, last 2 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.3
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.45,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When being attacked, if HP is below 40%, increases allied [ATK] Pokémons by 15% ATK, 40% crit and 15% crit intensity, last 2 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.4
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.4,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When being attacked, if HP is below 50%, increases allied [ATK] Pokémons by 25% ATK, 60% crit and 25% crit intensity, last 2 turns",
+        "triggers": [
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHpBelow": 0.5
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.25,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.6,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "hoopa-order-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.25,
+                  "turns": 2,
+                  "maxStacks": 1
+                },
+                "condition": {
+                  "targetClass": "striker"
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },

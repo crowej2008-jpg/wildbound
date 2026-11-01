@@ -1,4 +1,4 @@
-import type { KitDef, SkillRow } from './types';
+import type { KitDef, PlateSkillDef, SkillRow } from './types';
 
 /**
  * E4: an Origin's skill levels. Rows at LV.1 keep the kit as written; a row at LV.2 / LV.3 swaps in
@@ -34,13 +34,36 @@ export function applyPlateSkills(kit: KitDef, stage: number): KitDef {
   for (const tier of ['6', '12', '18'] as const) {
     if (stage < Number(tier)) break;
     const def = kit.plate[tier];
-    if (!def) continue;
-    const drop = new Set(def.dropGroups ?? []);
-    const talents = { ...(out.talents ?? {}) };
-    talents.triggers = [...(talents.triggers ?? []).filter((t) => !t.group || !drop.has(t.group)), ...(def.triggers ?? [])];
-    talents.damageMods = [...(talents.damageMods ?? []).filter((m) => !m.group || !drop.has(m.group)), ...(def.damageMods ?? [])];
-    talents.statMods = [...(talents.statMods ?? []), ...(def.statMods ?? [])];
-    out = { ...out, skills: { ...out.skills, ...(def.skills ?? {}) }, talents, ...(def.counterShare !== undefined ? { counterShare: def.counterShare } : {}) };
+    if (def) out = applySkillDef(out, def);
   }
   return out;
+}
+
+/**
+ * R6b: a Pokémon's exclusive-trinket skill — only the highest tier at or below its trinket level
+ * (10 / 20 / 30 / 40: I–IV of one skill, each replacing the one below).
+ */
+export function applyTrinketSkills(kit: KitDef, level: number): KitDef {
+  if (!kit.trinket || level < 10) return kit;
+  for (const tier of ['40', '30', '20', '10'] as const) {
+    if (level < Number(tier)) continue;
+    const def = kit.trinket[tier];
+    return def ? applySkillDef(kit, def) : kit;
+  }
+  return kit;
+}
+
+/** One plate / trinket skill on a kit: replace skills, drop groups, add triggers / damage mods / stat mods. */
+function applySkillDef(kit: KitDef, def: PlateSkillDef): KitDef {
+  const drop = new Set(def.dropGroups ?? []);
+  const talents = { ...(kit.talents ?? {}) };
+  talents.triggers = [...(talents.triggers ?? []).filter((t) => !t.group || !drop.has(t.group)), ...(def.triggers ?? [])];
+  talents.damageMods = [...(talents.damageMods ?? []).filter((m) => !m.group || !drop.has(m.group)), ...(def.damageMods ?? [])];
+  talents.statMods = [...(talents.statMods ?? []), ...(def.statMods ?? [])];
+  return {
+    ...kit,
+    skills: { ...kit.skills, ...(def.skills ?? {}) },
+    talents,
+    ...(def.counterShare !== undefined ? { counterShare: def.counterShare } : {}),
+  };
 }

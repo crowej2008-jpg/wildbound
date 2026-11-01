@@ -343,6 +343,8 @@ export const damageModSchema = z
     dmg: z.number().optional(),
     atk: z.number().optional(),
     ignoreBlock: z.number().min(0).max(1).optional(),
+    crit: z.number().optional(),
+    critPower: z.number().optional(),
     scale: z
       .union([z.enum(['selfRage', 'targetRage', 'selfMissingHp', 'selfHp']), z.object({ resource: z.string().min(1) }).strict()])
       .optional(),
@@ -465,6 +467,12 @@ export const kitSchema = z
       .optional(),
     /** R6a: plate skills by plate stage (6 / 12 / 18). */
     plate: z.object({ '6': plateSkillSchema, '12': plateSkillSchema, '18': plateSkillSchema }).partial().strict().optional(),
+    /** R6b: exclusive-trinket skill tiers (Lv 10 / 20 / 30 / 40; each replaces the one below). */
+    trinket: z
+      .object({ '10': plateSkillSchema, '20': plateSkillSchema, '30': plateSkillSchema, '40': plateSkillSchema })
+      .partial()
+      .strict()
+      .optional(),
   })
   .strict();
 

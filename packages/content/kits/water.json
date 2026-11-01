@@ -2423,6 +2423,20 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Increases Lifesteal by 1%, up to 4%, for each cumulative damage equal to 20% HP (DMG still counts after missing HP recovers)"
+      },
+      "20": {
+        "text": "Increases Lifesteal by 1%, up to 4%, for each cumulative damage equal to 15% HP (DMG still counts after missing HP recovers)"
+      },
+      "30": {
+        "text": "Increases Lifesteal by 2%, up to 8%, for each cumulative damage equal to 15% HP (DMG still counts after missing HP recovers)"
+      },
+      "40": {
+        "text": "Increases Lifesteal by 3%, up to 12%, for each cumulative damage equal to 10% HP (DMG still counts after missing HP recovers)"
+      }
     }
   },
   {
@@ -2961,6 +2975,184 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "After attacking an opponent marked with [shuriken], gain 10% Crit and Crit DMG for 5 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "shuriken"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shadow-sneak-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.1,
+                  "turns": 5,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shadow-sneak-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.1,
+                  "turns": 5,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "After attacking an opponent marked with [shuriken], gain 18% Crit and Crit DMG for 5 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "shuriken"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shadow-sneak-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.18,
+                  "turns": 5,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shadow-sneak-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.18,
+                  "turns": 5,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "After attacking an opponent marked with [shuriken], gain 18% Crit and Crit DMG for 5 turns. Stacks up to 1 times. Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "shuriken"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shadow-sneak-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.18,
+                  "turns": 5,
+                  "maxStacks": 1,
+                  "undispellable": true
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shadow-sneak-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.18,
+                  "turns": 5,
+                  "maxStacks": 1,
+                  "undispellable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "After attacking an opponent marked with [shuriken], gain 25% Crit and Crit DMG for 5 turns. Stacks up to 1 times. Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "shuriken"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shadow-sneak-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.25,
+                  "turns": 5,
+                  "maxStacks": 1,
+                  "undispellable": true
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shadow-sneak-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.25,
+                  "turns": 5,
+                  "maxStacks": 1,
+                  "undispellable": true
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -3171,6 +3363,80 @@
                   "amount": -1,
                   "turns": 2
                 }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "After releasing the ultimate, it comes with an additional 4% damage of the target's maximum life value.The attack is seen as effective.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMaxHp",
+                "share": 0.04
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "After releasing the ultimate, it comes with an additional 6% damage of the target's maximum life value.The attack is seen as effective.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMaxHp",
+                "share": 0.06
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "After releasing the ultimate, it comes with an additional 8% damage of the target's maximum life value.The attack is seen as effective.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMaxHp",
+                "share": 0.08
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "After releasing the ultimate, it comes with an additional 12% damage of the target's maximum life value.The attack is seen as effective.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMaxHp",
+                "share": 0.12
               }
             ]
           }
@@ -3920,6 +4186,128 @@
       "18": {
         "text": "Ultimate inflicts [Regrowth Mark] upon enemies for 2 turns. Stacks up to 1 time. The allies who attack the target marked with [Regrowth Mark] will heal Squirtle for 6% of max HP."
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "When engaged in combat, increases your max HP by 20%. In the first 4 turns, regenerates 5% of max HP each turn.",
+        "statMods": [
+          {
+            "field": "hp",
+            "mult": 1.2
+          }
+        ],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "until": 4
+              }
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.05,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When engaged in combat, increases your max HP by 28%. In the first 4 turns, regenerates 7% of max HP each turn.",
+        "statMods": [
+          {
+            "field": "hp",
+            "mult": 1.28
+          }
+        ],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "until": 4
+              }
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.07,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When engaged in combat, increases your max HP by 35%. In the first 5 turns, regenerates 10% of max HP each turn.",
+        "statMods": [
+          {
+            "field": "hp",
+            "mult": 1.35
+          }
+        ],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "until": 5
+              }
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.1,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When engaged in combat, increases your max HP by 40%. In the first 5 turns, regenerates 15% of max HP each turn.",
+        "statMods": [
+          {
+            "field": "hp",
+            "mult": 1.4
+          }
+        ],
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "round": {
+                "until": 5
+              }
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.15,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -4137,6 +4525,96 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "At the beginning of your turn, if you are under control, you will regain 8% of your maximum HP and transfer  all your mitigation buffs to 3 random enemies",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfControlled": true
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.08,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "At the beginning of your turn, if you are under control, you will regain 12% of your maximum HP and transfer  all your mitigation buffs to 3 random enemies",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfControlled": true
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.12,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "At the beginning of your turn, if you are under control, you will regain 16% of your maximum HP and transfer  all your mitigation buffs to 3 random enemies",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfControlled": true
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.16,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "At the beginning of your turn, if you are under control, you will regain 20% of your maximum HP and transfer  all your mitigation buffs to 3 random enemies",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "condition": {
+              "selfControlled": true
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.2,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
       }
     }
   }

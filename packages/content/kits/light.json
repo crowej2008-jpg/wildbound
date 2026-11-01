@@ -1084,6 +1084,132 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "When HP drops below 30%, heal for 15% HP; For the next 2 turns, heal self for 8% HP at turn's end; Occurs once every battle.",
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.3,
+            "maxFires": 1,
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.15,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.16,
+                "basis": "targetMaxHp",
+                "over": 2
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When HP drops below 35%, heal for 15% HP; For the next 2 turns, heal self for 10% HP at turn's end; Occurs once every battle.",
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.35,
+            "maxFires": 1,
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.15,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.2,
+                "basis": "targetMaxHp",
+                "over": 2
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When HP drops below 35%, heal for 15% HP; For the next 3 turns, heal self for 10% HP at turn's end; Occurs once every battle.",
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.35,
+            "maxFires": 1,
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.15,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.3,
+                "basis": "targetMaxHp",
+                "over": 3
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When HP drops below 40%, heal for 15% HP; For the next 3 turns, heal self for 15% HP at turn's end; Occurs once every battle.",
+        "triggers": [
+          {
+            "on": "hpBelow",
+            "hpBelow": 0.4,
+            "maxFires": 1,
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.15,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.45,
+                "basis": "targetMaxHp",
+                "over": 3
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1246,6 +1372,104 @@
       },
       "18": {
         "text": "[Doom Desire] increases the DMG dealt based on missing HP to 50%"
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Universal Power reduces the amount of healing your opponent receives by 50%.Boosts the damage of Doom Desire effect by 5% for 3 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "universal-power-heal-cut",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.5,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Universal Power reduces the amount of healing your opponent receives by 60%.Boosts the damage of Doom Desire effect by 8% for 3 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "universal-power-heal-cut",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.6,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Universal Power reduces the amount of healing your opponent receives by 70%.Boosts the damage of Doom Desire effect by 12% for 3 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "universal-power-heal-cut",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.7,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Universal Power reduces the amount of healing your opponent receives by 75%.Boosts the damage of Doom Desire effect by 16% for 3 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "universal-power-heal-cut",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.75,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   },
@@ -1648,6 +1872,80 @@
       "18": {
         "text": "Attack and restrain all enemies"
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "After Ultimate, Cleanses self 1 layer of debuff, gains 10% Ignores S.DEF when HP is below 50%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 1
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "After Ultimate, Cleanses self 2 layer of debuff, gains 15% Ignores S.DEF when HP is below 50%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 2
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "After Ultimate, Cleanses self 3 layer of debuff, gains 20% Ignores S.DEF when HP is below 50%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 3
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "After Ultimate, Cleanses self 4 layer of debuff, gains 25% Ignores S.DEF when HP is below 50%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "count": 4
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1865,6 +2163,160 @@
                   "rule": "self"
                 },
                 "slot": "basic"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Increases P.ATK and Crit INT by 2% every turn, stacking up to 7 times. At 3 stacks, attacks ignore dodge and must hit.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "cosmic-power-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.02,
+                  "maxStacks": 7
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "cosmic-power-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.02,
+                  "maxStacks": 7
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Increases P.ATK and Crit INT by 3% every turn, stacking up to 7 times. At 3 stacks, attacks ignore dodge and must hit.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "cosmic-power-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.03,
+                  "maxStacks": 7
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "cosmic-power-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.03,
+                  "maxStacks": 7
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Increases P.ATK and Crit INT by 5% every turn, stacking up to 7 times. At 3 stacks, attacks ignore dodge and must hit.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "cosmic-power-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.05,
+                  "maxStacks": 7
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "cosmic-power-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.05,
+                  "maxStacks": 7
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Increases P.ATK and Crit INT by 7% every turn, stacking up to 7 times. At 3 stacks, attacks ignore dodge and must hit.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "cosmic-power-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.07,
+                  "maxStacks": 7
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "cosmic-power-cp",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.07,
+                  "maxStacks": 7
+                }
               }
             ]
           }

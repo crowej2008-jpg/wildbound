@@ -386,6 +386,9 @@ export interface DamageMod {
   dmg?: number;
   atk?: number;
   ignoreBlock?: number;
+  /** R6b: Crit / Crit INT added to this hit only (attack mods). */
+  crit?: number;
+  critPower?: number;
   /**
    * E3: scale `dmg`/`atk` by a battle quantity (0–1 shares, or a resource's stacks), capped at
    * `cap`: e.g. Dialga's damage by its own Rage share, up to 30%.
@@ -530,6 +533,8 @@ export interface KitDef {
   levels?: Partial<Record<SkillRow, SkillRowLevels>>;
   /** R6a: plate skills, unlocked at plate stage 6 / 12 / 18 (see `applyPlateSkills`). */
   plate?: Partial<Record<'6' | '12' | '18', PlateSkillDef>>;
+  /** R6b: the exclusive trinket's skill at Lv 10 / 20 / 30 / 40 — each tier replaces the one below. */
+  trinket?: Partial<Record<'10' | '20' | '30' | '40', PlateSkillDef>>;
 }
 
 /** R6a: one plate skill: replacement skills plus added triggers, damage mods and stat mods. */

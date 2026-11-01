@@ -195,6 +195,27 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Stage-6 skill swaps (hero_slate_skill_json: Starmie, Ninetales, Metagross, Garchomp, Hydreigon, Gyarados -> skill ids 1x8102 / 1x8201 / ...): not ported — those skill ids are in the dump's _skills_not_found (no text or numbers).
 - Rayquaza 6 / 18 and 12's turn-2 part: no effect — the mark's turn 1 / turn 2 strikes are not modelled (see the hand-port gaps); 12 raises the ult to 80 %.
 
+## Trinket skills (R6b part 2, hand-ported in `scripts/data/trinket-skills.py`): 22
+
+Source: `scripts/data/trinket-skills-source.json` (hero_weapon_json skill_list, 371 texts / 76 holders). Applied by
+`applyTrinketSkills`: only the highest tier (Lv 10 / 20 / 30 / 40) at or below the trinket level.
+
+Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, hoopa, shiny-hoopa, mewtwo, shiny-mewtwo, jirachi, solgaleo, meloetta, arceus.
+
+- God Ash-Pikachu (Ruse): the S.DEF ignore (10-35 %) has no effect (DEF has no effect); the Basic Skill bonus is +x % basic-skill damage per attack, its 'rounds' read as Pikachu's own turns.
+- Wobbuffet (Mirror Coat): the bounce is true damage of the hit's damage (shield included), to the attacker.
+- Shiny Blastoise (Mass Healing): 'the first 4 / 5 turns' read as big rounds 1-4 / 1-5.
+- Psyduck (Psycho Shift): the heal is modelled; moving its mitigation buffs to 3 enemies is not (no buff-transfer op).
+- Darkrai (Ruse): +x % ATK a turn from round 2, 8 stacks (24-40 %); the extra stack 'while immune to control' reads a 'darkrai-immune' tag, which nothing gives yet — so it does not fire.
+- Ho-Oh (Enrage): the 'mark' for 2 turns after the ult is the window in which each hit taken gives Rage.
+- Yveltal (Last out): the S.ATK steal as -x % / +x % S.ATK (5 turns, 3 stacks); the S.DEF half has no effect.
+- Lugia (Enhanced Lifesteal): not modelled — lifesteal cannot grow with damage taken yet.
+- Keldeo (Unwavering Will): the extra max-HP hit goes to the ult's first target.
+- Mewtwo / Shiny Mewtwo: the Mental Bomb (80 % S.ATK after 3 turns) as a 1-round DoT on the front row; 'no new bomb while held' is not enforced. Shiny Mewtwo's source lists a skill only at Lv 40.
+- Jirachi (Predict Future): the healing cut goes on the ult's first target for 3 turns; the Doom Desire boost has no effect (Doom Desire's detonation is not modelled).
+- Solgaleo (Cosmic Power): 'must hit' has no effect (no dodge).
+- Arceus (Refresh): the S.DEF ignore below 50 % HP has no effect (DEF has no effect).
+
 ## Unparsed clause patterns (0 distinct, top 60)
 
 | count | clause | example |

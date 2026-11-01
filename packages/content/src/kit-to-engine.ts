@@ -3,6 +3,7 @@ import type {
   CombatField,
   Effect,
   KitDef,
+  PlateSkillDef,
   SkillDef,
   SkillSlot,
   StatMod,
@@ -116,9 +117,9 @@ function toEngineLevels(levels: ContentLevels): NonNullable<KitDef['levels']> {
 type ContentPlate = NonNullable<KitJson['plate']>;
 
 /** R6a: convert a kit's plate skills (skills and triggers need the kit's own mapping). */
-function toEnginePlate(plate: ContentPlate): NonNullable<KitDef['plate']> {
-  const out: NonNullable<KitDef['plate']> = {};
-  for (const [tier, d] of Object.entries(plate) as ['6' | '12' | '18', NonNullable<ContentPlate['6']>][]) {
+function toEnginePlate<K extends string>(plate: Partial<Record<K, NonNullable<ContentPlate['6']>>>): Partial<Record<K, PlateSkillDef>> {
+  const out: Partial<Record<K, PlateSkillDef>> = {};
+  for (const [tier, d] of Object.entries(plate) as [K, NonNullable<ContentPlate['6']>][]) {
     const skills: Partial<Record<SkillSlot, SkillDef>> = {};
     for (const [slot, s] of Object.entries(d.skills ?? {}) as [SkillSlot, NonNullable<ContentSkill>][]) skills[slot] = toEngineSkill(slot, s);
     out[tier] = {
@@ -153,5 +154,6 @@ export function kitToEngine(j: KitJson): KitDef {
     hooksConfig: j.hooksConfig,
     ...(j.levels ? { levels: toEngineLevels(j.levels) } : {}),
     ...(j.plate ? { plate: toEnginePlate(j.plate) } : {}),
+    ...(j.trinket ? { trinket: toEnginePlate(j.trinket) } : {}),
   };
 }
