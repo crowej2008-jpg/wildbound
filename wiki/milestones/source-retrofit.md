@@ -78,7 +78,8 @@ R6 is mostly a **skill-porting job** (like E3), so it splits into four steps, on
   skills; readings in docs/PORT-REPORT.md "Plate skills"; the 6 stage-6 swaps blocked — skill ids not in the dump). Stats per stage (stone_up_stage, complete), costs and gates (kb: player Lv 34, Pokémon 6★),
   18 types × 3 grades by the card's type, and the plate skills at tiers 6 / 12 / 18 (~230 texts, 78 Pokémon;
   hero_stone_skill) plus the stage-6 skill swaps (hero_slate_skill, 6 rows).
-- **R6b Trinkets** — 81 trinkets, Lv 0–40 for 300,430 Star Shards, stats by level (30 sets), skills at Lv 10 /
+- **R6b Trinkets** — part 1 ✅ 2026-11-01 (save v25: 76 holders' stats by level, Star Shard + own-item prices,
+  unlock; skills worksheet `scripts/data/trinket-skills-source.json`, 371 texts); part 2 = skills. 81 trinkets, Lv 0–40 for 300,430 Star Shards, stats by level (30 sets), skills at Lv 10 /
   20 / 30 / 40 (~320 texts), trinket chests; Origin trinkets are stats only.
 - **R6c Soul-heart rules** ✅ (2026-11-01, save v24) — the owner's nine sets stay; 4 qualities, star caps, star EXP, 10★ unlock.
 - **R6d Berries** — tables complete except the berry skills (19 berries × 5 stars, texts in kb / wiki): two

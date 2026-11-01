@@ -37,6 +37,7 @@ after the retrofit, once friends have real saves.
 | 22 | R4 | `potential` per Wild; old talent paths removed from loadouts (reset) |
 | 23 | R3 | `equipment.orbs` + `loadout.orbs` (8 sockets) replace runes (reset) |
 | 24 | R6c | Soul-heart `quality` (reset) |
-| 25+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
+| 25 | R6b | `trinketItems` (each holder's own levelling item, by species) (reset) |
+| 26+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

@@ -169,6 +169,8 @@ export interface AccountState {
   roster: WildInstance[];
   /** E4: each species' own shards (source items 40001–40095, Origins 41001–41006). */
   speciesShards: Record<string, number>;
+  /** R6b: each trinket holder's own levelling item (source items 23002+, e.g. Beldum Sunglasses), by species. */
+  trinketItems: Record<string, number>;
   squads: Record<SquadMode, Squad>;
   strategies: Record<SquadMode, StrategyId>;
   currencies: Record<CurrencyId, number>;

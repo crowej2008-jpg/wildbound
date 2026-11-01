@@ -72,12 +72,24 @@ const TABLES: EquipmentTables = {
       id: 'trinketA',
       name: 'Trinket A',
       speciesId: 'sp1',
-      lines: [
-        { kind: 'core', field: 'pAtk', base: 12, perLevel: 12 },
-        { kind: 'percent', field: 'dmgBoost', base: 0.01, perLevel: 0.01 },
-      ],
+      sourceId: 1,
+      item: { id: 2, name: 'Item A' },
+      // R6b: one row per level (flat values), as the source table.
+      levels: Array.from({ length: 41 }, (_, n) => ({
+        rank: 0,
+        lines:
+          n === 0
+            ? []
+            : [
+                { kind: 'core' as const, field: 'pAtk', base: 12 * n, perLevel: 0 },
+                { kind: 'percent' as const, field: 'dmgBoost', base: 0.01 * n, perLevel: 0 },
+              ],
+        cost: n < 40 ? { starShard: 10, item: 0 } : null,
+      })),
+      skills: [],
     },
   ],
+  trinketRules: { unlock: { rosterCount: 0, rosterLevel: 0, stars: 0 }, maxLevel: 40 },
   orbs: ORB_TABLES,
   charms: [
     { id: 'charm1', name: 'Charm 1', tier: 'greater', maxStars: 3, lines: [{ kind: 'core', field: 'hp', base: 200, perLevel: 100 }] },

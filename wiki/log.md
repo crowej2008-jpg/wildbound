@@ -170,3 +170,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
   readings listed in docs/PORT-REPORT.md and kept in the script so regenerating the report keeps them.
 - Stage-6 skill swaps not ported: their skill ids are in the dump's `_skills_not_found`.
 - Next: R6b Trinkets.
+
+## [2026-11-01] update | R6b Trinkets part 1
+- Source trinket stats, prices and unlock; save v25. Own items have no in-game source until shops (R9).
+  Skills worksheet ready (371 texts). ASSUMPTIONS #68.

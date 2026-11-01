@@ -1174,3 +1174,12 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   docs/PORT-REPORT.md "Plate skills" (earlier batches' notes were being dropped on each regeneration).
 - Not ported: the stage-6 skill swaps (hero_slate_skill_json, 6 Pokémon) — the swap skill ids are absent from
   the dump (`_skills_not_found`).
+
+## R6b part 1 — Trinkets from the source (2026-11-01)
+
+- `scripts/import-trinkets.mjs` → `packages/content/equipment/trinkets.json`: 76 holders, stats per level 0–40
+  (one row per level), Star Shard + own-item prices, unlock rules, skill ids. `TrinketDef.levels` replaces the
+  M11.8 linear lines; `collection.trinkets` tuning removed.
+- Server `trinkets.ts`: holder lookup, unlock (6 Pokémon at Lv 220, the holder at 7★), own-item price,
+  `grantTrinketItem` (debug); the card says when a Pokémon has no trinket. Save v25 (`trinketItems`, reset).
+- `scripts/data/trinket-skills-source.json`: the 371 skill texts (Chinese + English) for part 2. ASSUMPTIONS #68.

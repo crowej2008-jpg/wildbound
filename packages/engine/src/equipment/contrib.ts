@@ -211,10 +211,11 @@ export function foldLoadout(
     }
   }
 
-  // --- Trinkets: one signature line set per species, scaled by level ---
+  // --- Trinkets: the holder's stats at its level (R6b: the source table) ---
   if (trinket && trinket.level > 0) {
     const trinketDef = tables.trinkets.find((d) => d.speciesId === trinket.speciesId);
-    if (trinketDef) addLines(layers.trinkets, trinketDef.lines, trinket.level);
+    const row = trinketDef?.levels[Math.min(trinket.level, trinketDef.levels.length - 1)];
+    if (row) addLines(layers.trinkets, row.lines, 1);
   }
 
   // --- Resonance: a slotted Wild's share of the Link Crystal level ---

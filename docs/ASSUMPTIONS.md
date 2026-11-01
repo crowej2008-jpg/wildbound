@@ -844,3 +844,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     from stage 12. The plate stays on the Pokémon's held-item faction lines as before. Not yet: the plate
     skills at tiers 6 / 12 / 18 and the stage-6 skill swaps (part 2).
 
+68. **R6b Trinkets, part 1.** Copied from the source (hero_weapon / hero_weapon_cost): 76 holders, levels 0–40,
+    the stats at each level, the price (300,430 Star Shards plus 2,540 of the holder's own item at levels 9 / 19 /
+    29 / 39 — e.g. Beldum Sunglasses), unlock at 6 Pokémon on Lv 220 and the holder at 7★ (kb). Readings:
+    "Pokémon HP / Attack %" (attr 406 / 407 / 409, the Pokémon layer) count as the sheet's HP / P.ATK / S.ATK %
+    lines — there is no base-only % layer yet. The own items have no source in Wildbound yet (the source sells
+    them in the Faction Tower Shop; shops come with R9), so past level 9 a holder needs a debug grant for now;
+    trinket chests (the stand-in for a missing own item) are not built. Starmie, Ninetales and the Origins have
+    no trinket (the Origins' follows its three synergy Pokémon — waits for the synergy system). The skills at
+    Lv 10 / 20 / 30 / 40 come in part 2.

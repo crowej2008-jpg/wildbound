@@ -42,6 +42,7 @@ import {
   RELICS,
   PLATES,
   TRINKETS,
+  TRINKET_RULES,
   ORBS,
   CHARMS,
   CORE_SETS,
@@ -236,8 +237,11 @@ export function validateContent(repoRoot: string): ValidateReport {
       }
       trinketSpecies.add(trinket.speciesId);
     }
-    for (const speciesId of species.keys()) {
-      if (!trinketSpecies.has(speciesId)) errors.push(`equipment: species "${speciesId}" has no trinket`);
+    // R6b: only the source's holders have one (not Starmie, Ninetales or the Origins).
+    for (const trinket of TRINKETS) {
+      if (trinket.levels.length - 1 !== TRINKET_RULES.maxLevel) {
+        errors.push(`equipment: trinket "${trinket.id}" has ${trinket.levels.length - 1} levels`);
+      }
     }
     const vipTiers = COLLECTION_TUNING.vip.tiers;
     if (vipTiers[0]?.xp !== 0 || vipTiers[0]?.tier !== 0) {

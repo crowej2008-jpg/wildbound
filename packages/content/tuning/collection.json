@@ -10,11 +10,6 @@
    "greater": 40
   }
  },
- "trinkets": {
-  "maxLevel": 40,
-  "shardBase": 10,
-  "shardPerLevel": 5
- },
  "resonance": {
   "slots": 6,
   "openSlots": 2,

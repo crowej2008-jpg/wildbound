@@ -28,6 +28,7 @@ import {
   HELD_TABLES,
   ORBS,
   TRINKETS,
+  TRINKET_RULES,
   POTENTIAL,
 } from '@wildbound/content';
 import type {
@@ -193,6 +194,7 @@ export function buildConfig(): GameConfig {
       held: HELD_TABLES as unknown as HeldTables,
       plates: PLATES as unknown as EquipmentTables['plates'],
       trinkets: TRINKETS,
+      trinketRules: TRINKET_RULES,
       orbs: ORBS as unknown as OrbTables,
       charms: CHARMS,
       coreSets: CORE_SETS,

@@ -22,14 +22,6 @@ export const collectionTuningSchema = z
         greater: z.number().int().min(0),
       }),
     }),
-    trinkets: z.object({
-      /** Levels 0–40; 0 is the default. */
-      maxLevel: z.number().int().min(1),
-      /** Star Shards for level 0 → 1. */
-      shardBase: z.number().int().min(0),
-      /** Extra Star Shards per current level. */
-      shardPerLevel: z.number().int().min(0),
-    }),
     resonance: z.object({
       /** Total slots on the account-wide resonance board. */
       slots: z.number().int().min(1),

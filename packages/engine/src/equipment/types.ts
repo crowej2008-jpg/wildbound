@@ -125,12 +125,32 @@ export interface PlateTables {
   species: Record<string, [number, number][]>;
 }
 
-/** One signature trinket per species; level 0 is empty. */
+/**
+ * R6b: an exclusive trinket (source hero_weapon / hero_weapon_cost). `levels[n]` holds the stats at level n
+ * (flat lines: `base` is the value, `perLevel` 0) and the price of n → n + 1 (null at the cap). Level 0 is empty.
+ */
+export interface TrinketLevelDef {
+  rank: number;
+  lines: StatLine[];
+  cost: { starShard: number; item: number } | null;
+}
+
 export interface TrinketDef {
   id: string;
   name: string;
   speciesId: string;
-  lines: StatLine[];
+  sourceId: number;
+  /** The holder's own levelling item (Star Shards are paid at every level, this at 9 / 19 / 29 / 39). */
+  item: { id: number; name: string };
+  levels: TrinketLevelDef[];
+  /** The skills at Lv 10 / 20 / 30 / 40 (ported in R6b part 2). */
+  skills: { level: number; skillId: number }[];
+}
+
+export interface TrinketTables {
+  unlock: { rosterCount: number; rosterLevel: number; stars: number };
+  maxLevel: number;
+  trinkets: TrinketDef[];
 }
 
 export type CharmTier = 'common' | 'basic' | 'intermediate' | 'greater';
@@ -250,6 +270,8 @@ export interface EquipmentTables {
   held: HeldTables;
   plates: PlateTables;
   trinkets: TrinketDef[];
+  /** R6b: the trinket unlock and level cap (trinkets.json). */
+  trinketRules: Omit<TrinketTables, 'trinkets'>;
   orbs: OrbTables;
   charms: CharmDef[];
   coreSets: CoreSetDef[];

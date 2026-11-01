@@ -191,7 +191,7 @@ import {
 } from './equipment';
 import { buildEquipmentView } from './equipment-view';
 import { upgradePlateAction } from './plates';
-import { upgradeTrinketAction } from './trinkets';
+import { grantTrinketItem, trinketOf, upgradeTrinketAction } from './trinkets';
 import {
   buildResonanceView,
   setResonanceSlotAction,
@@ -292,6 +292,14 @@ export class LocalServer implements GameServer {
     if (ids.length === 0) return fail('not_found', 'no species available');
     const pick = ids[Math.floor(this.config.rng() * ids.length)] ?? ids[0];
     return this.grantWild(pick as string);
+  }
+
+  async grantTrinketItem(speciesId: string, amount: number): Promise<Result<AccountSnapshot>> {
+    if (!trinketOf(this.config, speciesId)) return fail('not_found', `no trinket for ${speciesId}`);
+    if (!Number.isFinite(amount) || amount < 0) return fail('invalid_input', 'amount must be non-negative');
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commit(grantTrinketItem(loaded.value, speciesId, Math.floor(amount)));
   }
 
   async grantCurrency(currency: string, amount?: number): Promise<Result<AccountSnapshot>> {

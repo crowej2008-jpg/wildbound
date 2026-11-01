@@ -13,9 +13,10 @@ interface SaveOptions {
   currencies?: Record<string, number>;
   profile?: { name?: string; level?: number; xp?: number };
   equipment?: unknown;
+  level?: number;
 }
 
-function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment }: SaveOptions = {}): string {
+function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, level = 40 }: SaveOptions = {}): string {
   return JSON.stringify({
     version: E2E_SAVE_VERSION,
     state: {
@@ -24,7 +25,7 @@ function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment }
       roster: roster.map((entry, index) => ({
         id: `w${index + 1}`,
         speciesId: entry.split('@')[0],
-        level: 40,
+        level,
         stars: Number(entry.split('@')[1] ?? 10),
         locked: false,
         acquiredAt: 0,
@@ -181,24 +182,23 @@ test('Plates (source): Bottles to stage 5, then 375 Fragments for 5 → 6', asyn
 });
 
 test('Trinkets level with Star Shards and show the shared species state', async ({ page }) => {
-  await importSave(page, { currencies: { starShard: 1_000 } });
+  // R6b unlock: 6 Pokémon at Lv 220 (and this one at 7★ or more).
+  await importSave(page, { currencies: { starShard: 5_000 }, level: 220 });
   await page.goto('/wilds');
   await page.locator('.roster-item').first().click();
   await page.getByRole('button', { name: 'Held Items', exact: true }).click();
   await page.getByRole('button', { name: 'Trinkets', exact: true }).click();
 
-  await expect(page.getByText('Mimikyu Keepsake')).toBeVisible();
   await expect(page.getByText('Level 0/40')).toBeVisible();
   await expect(page.getByText('Trinkets +0')).toBeVisible();
-  await expect(page.getByText('Star Shards: 1,000')).toBeVisible();
+  await expect(page.getByText('Star Shards: 5,000')).toBeVisible();
   await expect(page.getByText('Shared by every copy of this species.')).toBeVisible();
-  await expect(page.getByText('Shiny variant: coming later.')).toBeVisible();
 
-  await page.getByRole('button', { name: /Level up .*10 Star Shards/ }).click();
+  await page.getByRole('button', { name: /Level up .*1,400 Star Shards/ }).click();
   await expect(page.getByText('Level 1/40')).toBeVisible();
-  await expect(page.getByText('Star Shards: 990')).toBeVisible();
+  await expect(page.getByText('Star Shards: 3,600')).toBeVisible();
   await expect(page.getByText('Trinkets +0')).toBeHidden();
-  await expect(page.getByRole('button', { name: /Level up .*15 Star Shards/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Level up .*1,905 Star Shards/ })).toBeVisible();
 });
 
 test('Resonance opens slots and assigns a Wild', async ({ page }) => {

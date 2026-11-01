@@ -201,12 +201,29 @@ export const platesSchema = z.object({
 });
 
 export const trinketsSchema = z.object({
+  unlock: z.object({
+    rosterCount: z.number().int().min(0),
+    rosterLevel: z.number().int().min(0),
+    stars: z.number().int().min(0),
+  }),
+  maxLevel: z.number().int().min(1),
   trinkets: z.array(
     z.object({
       id: z.string().min(1),
       name: z.string().min(1),
       speciesId: z.string().min(1),
-      lines: z.array(statLineSchema).min(1),
+      sourceId: z.number().int(),
+      item: z.object({ id: z.number().int(), name: z.string().min(1) }),
+      levels: z
+        .array(
+          z.object({
+            rank: z.number().int().min(0),
+            lines: z.array(statLineSchema),
+            cost: z.object({ starShard: z.number().int().min(0), item: z.number().int().min(0) }).nullable(),
+          }),
+        )
+        .min(2),
+      skills: z.array(z.object({ level: z.number().int().min(1), skillId: z.number().int() })),
     }),
   ),
 });
