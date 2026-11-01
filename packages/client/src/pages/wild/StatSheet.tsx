@@ -44,7 +44,6 @@ const LAYER_ROWS = [
   ['runes', 'wild.tab.orbs'],
   ['charms', 'wild.tab.berries'],
   ['cores', 'wild.tab.soulHearts'],
-  ['talents', 'wild.tab.potential'],
 ] as const;
 
 function num(value: number | undefined): string {
