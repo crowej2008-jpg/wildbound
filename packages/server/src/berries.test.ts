@@ -71,7 +71,9 @@ describe('R6d berries', () => {
 
   it('cultivates for Berry Essence up to the cap, breaks through (new line), and reforges a line', () => {
     const { config, state } = setup();
-    let { state: s, id } = add(config, state, 'berry-pear-berry');
+    const added = add(config, state, 'berry-pear-berry');
+    const id = added.id;
+    let s = added.state;
     const rng = mulberry32(7);
     for (let n = 0; n < 20; n += 1) {
       const r = cultivateBerryAction(config, s, id, 10, rng);

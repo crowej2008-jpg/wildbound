@@ -1356,8 +1356,6 @@ export class LocalServer implements GameServer {
     const value = outcome.value;
     let next = value.state;
     if (value.won) next = this.withQuest(next, 'winBattle');
-    // A charm charge is spent per game actually played, like every other mode.
-    const ids = fielded(state, 'arenaAttack').map((w) => w.id);
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
