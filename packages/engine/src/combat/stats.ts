@@ -45,7 +45,7 @@ export function resolveSheet(spec: SpecInput): StatSheet {
     dotTaken: pct(s.dotTaken),
     lifesteal: pct(s.lifesteal),
   };
-  for (const mod of spec.kit.talents?.statMods ?? []) {
+  for (const mod of [...(spec.kit.talents?.statMods ?? []), ...(spec.statMods ?? [])]) {
     const level = spec.level ?? 1;
     const mult = mod.mult === undefined ? undefined : levelScale(mod.mult, mod.scalesWithLevel, level);
     const add = mod.add === undefined ? undefined : levelScale(mod.add, mod.scalesWithLevel, level);

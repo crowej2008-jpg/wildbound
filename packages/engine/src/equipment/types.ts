@@ -175,20 +175,6 @@ export interface CoreSetDef {
   bonuses: CoreSetBonus[];
 }
 
-export interface TalentBlockDef {
-  id: string;
-  text: string;
-  lines: StatLine[];
-  effect?: EffectDef;
-}
-
-export interface TalentTreeDef {
-  id: string;
-  name: string;
-  className: WildClass;
-  /** Nine tiers, each three reusable block ids. */
-  tiers: string[][];
-}
 
 // --- owned instances -------------------------------------------------------
 
@@ -233,8 +219,6 @@ export interface Loadout {
   runes: (string | null)[];
   charms: (string | null)[];
   cores: (string | null)[];
-  treeId: string | null;
-  talents: number[];
 }
 
 // --- tuning ----------------------------------------------------------------
@@ -244,7 +228,6 @@ export interface EquipmentTuning {
   runes: { minStars: number; sockets: number; maxLevel: number };
   charms: { minStars: number; slots: number };
   cores: { minStars: number; sockets: number; pieceMinStars: number; pieceMaxStars: number };
-  talents: { minTier: Tier; tiers: number; optionsPerTier: number; resetGems: number; allocateGold: number };
   runeLevelCost: { gold: number; goldPerLevel: number };
   starting: StartingEquipment;
 }
@@ -279,8 +262,6 @@ export interface EquipmentTables {
   runeSets: RuneSetDef[];
   charms: CharmDef[];
   coreSets: CoreSetDef[];
-  talentBlocks: TalentBlockDef[];
-  talentTrees: TalentTreeDef[];
   tuning: EquipmentTuning;
 }
 
@@ -290,8 +271,6 @@ export function emptyLoadout(tuning: EquipmentTuning): Loadout {
     runes: Array.from({ length: tuning.runes.sockets }, () => null),
     charms: Array.from({ length: tuning.charms.slots }, () => null),
     cores: Array.from({ length: tuning.cores.sockets }, () => null),
-    treeId: null,
-    talents: Array.from({ length: tuning.talents.tiers }, () => -1),
   };
 }
 

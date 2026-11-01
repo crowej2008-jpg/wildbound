@@ -127,14 +127,11 @@ export {
   RUNE_SETS,
   CHARMS,
   CORE_SETS,
-  TALENT_BLOCKS,
-  TALENT_TREES,
   relicById,
   plateByFaction,
   trinketBySpecies,
   charmById,
   coreSetById,
-  talentTreeById,
 } from './equipment';
 export {
   equipmentTuningSchema,
@@ -144,7 +141,6 @@ export {
   runesSchema,
   charmsSchema,
   coresSchema,
-  talentsSchema,
   type RelicJson,
   type HeldItemsJson,
   type PlateJson,
@@ -152,8 +148,6 @@ export {
   type RuneJson,
   type CharmJson,
   type CoreSetJson,
-  type TalentBlockJson,
-  type TalentTreeJson,
 } from './equipment-schema';
 
 /** Bumped when the shape of any content directory changes. */
@@ -163,4 +157,4 @@ export const contentManifest = {
   game: 'wildbound',
   schemaVersion: CONTENT_SCHEMA_VERSION,
   dataDirs: Object.values(CONTENT_DIRS),
-} as const;
+} as const;export { POTENTIAL, potentialSchema, type PotentialJson } from './potential';

@@ -119,3 +119,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | E6 closed; retrofit resumes with R4
 - E6 done (tier list, Dialga, Rage). Mode curves + geared tier check moved into R10. Index "Now" points
   at R4 Potential.
+
+## [2026-11-01] update | R4 Potential built
+- Source copy: 62 trees, 67 options, shard table, fodder, Potential Core, reset 16 💎. Save v22. Readings in
+  ASSUMPTIONS #64. Pages: collection layers, source retrofit, save versions.

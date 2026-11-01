@@ -82,7 +82,6 @@ export interface LayerDelta {
   runes: StatDelta;
   charms: StatDelta;
   cores: StatDelta;
-  talents: StatDelta;
 }
 
 /** The element-keyed plate a Wild brings to a fold (stage 0 is empty). */
@@ -168,7 +167,6 @@ function emptyLayers(): LayerDelta {
     runes: emptyDelta(),
     charms: emptyDelta(),
     cores: emptyDelta(),
-    talents: emptyDelta(),
   };
 }
 
@@ -291,20 +289,6 @@ export function foldLoadout(
     }
   }
 
-  // --- Talents: static battle lines from the chosen option on each tier ---
-  const tree = loadout.treeId ? tables.talentTrees.find((t) => t.id === loadout.treeId) : undefined;
-  if (tree) {
-    tree.tiers.forEach((options, tier) => {
-      const choice = loadout.talents[tier] ?? -1;
-      if (choice < 0) return;
-      const blockId = options[choice];
-      const block = blockId ? tables.talentBlocks.find((b) => b.id === blockId) : undefined;
-      if (!block) return;
-      addLines(layers.talents, block.lines, 1);
-      if (block.effect) effects.push(block.effect);
-    });
-  }
-
   if (heldLifesteal > 0) soulheart.lifesteal = (soulheart.lifesteal ?? 0) + heldLifesteal;
 
   const delta = emptyDelta();
@@ -316,7 +300,6 @@ export function foldLoadout(
   addDelta(delta, layers.runes);
   addDelta(delta, layers.charms);
   addDelta(delta, layers.cores);
-  addDelta(delta, layers.talents);
   return { delta, layers, effects, soulheart, soulheartText, triggers, damageMods };
 }
 

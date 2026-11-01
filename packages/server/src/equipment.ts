@@ -1,9 +1,6 @@
 import {
-  allocateTalent,
-  canAllocateTalent,
   canEquipRelic,
   charmsUnlocked,
-  chooseTree,
   coresUnlocked,
   equipCharm,
   equipCore,
@@ -20,7 +17,6 @@ import {
   relicUnlocked,
   runeLevelCost,
   runesUnlocked,
-  talentsUnlocked,
   type CurrencyId,
 } from '@wildbound/engine';
 import type { AccountState, EquipmentTables, Loadout, RelicInstance, Rng, WildClass, Tier } from '@wildbound/engine';
@@ -30,10 +26,7 @@ import {
   equippedOn,
   loadoutOf,
   orbEssenceCost,
-  potentialFodder,
   soulHeartCost,
-  talentResetRefund,
-  talentShardCost,
 } from './equipment-view';
 import type { GameConfig, SpeciesMeta } from './config';
 
@@ -70,22 +63,6 @@ export function pay(state: AccountState, cost: Partial<Record<CurrencyId, number
   return { ...state, currencies };
 }
 
-/** Return the shards a full Potential reset would refund, without touching gems. */
-function refundPotential(
-  state: AccountState,
-  loadout: Loadout,
-  collection: GameConfig['collection'],
-): AccountState {
-  const refund = talentResetRefund(loadout, collection);
-  if (refund <= 0) return state;
-  return {
-    ...state,
-    currencies: {
-      ...state.currencies,
-      potentialShard: (state.currencies.potentialShard ?? 0) + refund,
-    },
-  };
-}
 
 /** Every rune instance currently socketed on any Wild. */
 function wornRuneIds(state: AccountState): Set<string> {
@@ -111,9 +88,11 @@ export function consumeFodder(state: AccountState, ids: string[]): AccountState 
   const removed = new Set(ids);
   const loadouts = { ...state.loadouts };
   const plates = { ...state.plates };
+  const potential = { ...state.potential };
   for (const id of ids) {
     delete loadouts[id];
     delete plates[id];
+    delete potential[id];
   }
   const slots = state.resonance.slots.map((id) => (id !== null && removed.has(id) ? null : id));
   return {
@@ -121,6 +100,7 @@ export function consumeFodder(state: AccountState, ids: string[]): AccountState 
     roster: state.roster.filter((wild) => !removed.has(wild.id)),
     loadouts,
     plates,
+    potential,
     resonance: { ...state.resonance, slots },
   };
 }
@@ -472,75 +452,6 @@ export function levelRuneAction(
     .filter((r) => !removed.has(r.id))
     .map((r) => (r.id === instanceId ? { ...r, level: r.level + 1 } : r));
   return ok({ ...paid, equipment: { ...paid.equipment, runes } });
-}
-
-// --- talents ----------------------------------------------------------------
-
-export function chooseTreeAction(
-  config: SpeciesLookup,
-  state: AccountState,
-  wildId: string,
-  treeId: string | null,
-): Result<AccountState> {
-  const { wild, meta } = context(config, state, wildId);
-  if (!wild || !meta) return fail('not_found', `no Wild ${wildId}`);
-  const { tuning } = config.equipment;
-  if (!talentsUnlocked(meta.tier, tuning)) return fail('resource_locked', `Talents unlock at ${tuning.talents.minTier}`);
-  const loadout = loadoutOf(state, wild.id, config.equipment);
-  if (treeId === loadout.treeId) return ok(state);
-  if (treeId === null) {
-    const refunded = refundPotential(state, loadout, config.collection);
-    return ok(withLoadout(refunded, wild.id, chooseTree(loadout, null, tuning)));
-  }
-  const tree = config.equipment.talentTrees.find((t) => t.id === treeId);
-  if (!tree) return fail('not_found', `unknown tree ${treeId}`);
-  if (tree.className !== meta.className) return fail('invalid_input', `${tree.name} is a ${tree.className} path`);
-  const refunded = refundPotential(state, loadout, config.collection);
-  return ok(withLoadout(refunded, wild.id, chooseTree(loadout, treeId, tuning)));
-}
-
-export function allocateTalentAction(
-  config: SpeciesLookup,
-  state: AccountState,
-  wildId: string,
-  tier: number,
-  option: number,
-): Result<AccountState> {
-  const { wild, meta } = context(config, state, wildId);
-  if (!wild || !meta) return fail('not_found', `no Wild ${wildId}`);
-  const { tuning } = config.equipment;
-  if (!talentsUnlocked(meta.tier, tuning)) return fail('resource_locked', `Talents unlock at ${tuning.talents.minTier}`);
-  const loadout = loadoutOf(state, wild.id, config.equipment);
-  const tree = loadout.treeId ? config.equipment.talentTrees.find((t) => t.id === loadout.treeId) : undefined;
-  if (!tree) return fail('invalid_input', 'choose a talent path first');
-  if (!canAllocateTalent(loadout, tree, tier, option, tuning)) return fail('resource_locked', 'that tier is not available yet');
-
-  const picked = loadout.talents[tier] ?? -1;
-  if (picked === option) return ok(state);
-  const isNewTier = picked < 0;
-  const { fodderPerTier } = config.collection.potential;
-  const fodder = isNewTier ? potentialFodder(state, wild).slice(0, fodderPerTier) : [];
-  if (isNewTier && fodder.length < fodderPerTier) {
-    return fail('insufficient_items', `Potential tier ${tier + 1} needs ${fodderPerTier} duplicate ${config.species.get(wild.speciesId)?.name ?? wild.speciesId}`);
-  }
-
-  const paid = pay(state, { potentialShard: talentShardCost(tier, config.collection, !isNewTier) });
-  if (!paid) return fail('insufficient_items', 'not enough Potential Shards');
-  const next = consumeFodder(paid, fodder.map((copy) => copy.id));
-  return ok(withLoadout(next, wild.id, allocateTalent(loadoutOf(next, wild.id, config.equipment), tier, option, tuning)));
-}
-
-export function resetTalentsAction(config: SpeciesLookup, state: AccountState, wildId: string): Result<AccountState> {
-  const { wild, meta } = context(config, state, wildId);
-  if (!wild || !meta) return fail('not_found', `no Wild ${wildId}`);
-  const { tuning } = config.equipment;
-  if (!talentsUnlocked(meta.tier, tuning)) return fail('resource_locked', `Talents unlock at ${tuning.talents.minTier}`);
-  const loadout = loadoutOf(state, wild.id, config.equipment);
-  if (!loadout.treeId) return fail('invalid_input', 'no talent path to reset');
-  const paid = pay(state, { gems: config.collection.potential.resetGems });
-  if (!paid) return fail('insufficient_items', 'not enough gems');
-  const refunded = refundPotential(paid, loadout, config.collection);
-  return ok({ ...refunded, loadouts: { ...refunded.loadouts, [wildId]: chooseTree(loadout, null, tuning) } });
 }
 
 /** Re-export so callers can type against `GameConfig` without a second import. */

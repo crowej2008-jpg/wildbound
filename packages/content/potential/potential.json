@@ -1,0 +1,10576 @@
+{
+ "unlockStars": [
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15
+ ],
+ "costs": [
+  [
+   20000,
+   26000,
+   34000,
+   60000,
+   90000,
+   130000
+  ],
+  [
+   30000,
+   39000,
+   51000,
+   90000,
+   135000,
+   195000
+  ],
+  [
+   40000,
+   52000,
+   68000,
+   120000,
+   180000,
+   260000
+  ],
+  [
+   50000,
+   65000,
+   85000,
+   150000,
+   225000,
+   325000
+  ],
+  [
+   55000,
+   71500,
+   93500,
+   165000,
+   247500,
+   357500
+  ],
+  [
+   60000,
+   78000,
+   102000,
+   180000,
+   270000,
+   390000
+  ],
+  [
+   65000,
+   84500,
+   110500,
+   195000,
+   292500,
+   422500
+  ],
+  [
+   70000,
+   91000,
+   119000,
+   210000,
+   315000,
+   455000
+  ],
+  [
+   75000,
+   97500,
+   127500,
+   225000,
+   337500,
+   487500
+  ]
+ ],
+ "maxLevel": 6,
+ "resetGems": 16,
+ "options": [
+  {
+   "id": 50101,
+   "name": "Symbiosis",
+   "tier": 1,
+   "values": [
+    0.02,
+    0.028,
+    0.036,
+    0.044,
+    0.052,
+    0.06
+   ],
+   "effect": {
+    "kind": "factionAllies",
+    "field": "hp",
+    "cap": 2,
+    "mult": true
+   },
+   "text": "Same-faction allies deployed: HP +{v}%, up to 2 times"
+  },
+  {
+   "id": 50102,
+   "name": "Victory Star",
+   "tier": 1,
+   "values": [
+    0.016,
+    0.0224,
+    0.0288,
+    0.0352,
+    0.0416,
+    0.048
+   ],
+   "effect": {
+    "kind": "factionAllies",
+    "field": "atkPct",
+    "cap": 2
+   },
+   "text": "Same-faction allies deployed: ATK +{v}%, up to 2 times"
+  },
+  {
+   "id": 50103,
+   "name": "Amplified Morale",
+   "tier": 1,
+   "values": [
+    0.03,
+    0.042,
+    0.054,
+    0.066,
+    0.078,
+    0.09
+   ],
+   "effect": {
+    "kind": "factionAllies",
+    "field": "crit",
+    "cap": 2
+   },
+   "text": "Same-faction allies deployed: Crit +{v}%, up to 2 times"
+  },
+  {
+   "id": 50104,
+   "name": "Friendly Defense",
+   "tier": 1,
+   "values": [
+    0.03,
+    0.042,
+    0.054,
+    0.066,
+    0.078,
+    0.09
+   ],
+   "effect": {
+    "kind": "factionAllies",
+    "field": "block",
+    "cap": 2
+   },
+   "text": "Same-faction allies deployed: Block +{v}%, up to 2 times"
+  },
+  {
+   "id": 50105,
+   "name": "Stakeout",
+   "tier": 1,
+   "values": [
+    0.03,
+    0.042,
+    0.054,
+    0.066,
+    0.078,
+    0.09
+   ],
+   "effect": {
+    "kind": "factionAllies",
+    "field": "critRes",
+    "cap": 2
+   },
+   "text": "Same-faction allies deployed: Crit Res +{v}%, up to 2 times"
+  },
+  {
+   "id": 50106,
+   "name": "Area Attack",
+   "tier": 1,
+   "values": [
+    0.03,
+    0.042,
+    0.054,
+    0.066,
+    0.078,
+    0.09
+   ],
+   "effect": {
+    "kind": "factionAllies",
+    "field": "guardBreak",
+    "cap": 2
+   },
+   "text": "Same-faction allies deployed: Guard Break +{v}%, up to 2 times"
+  },
+  {
+   "id": 50201,
+   "name": "Valor",
+   "tier": 2,
+   "values": [
+    0.04,
+    0.052,
+    0.064,
+    0.076,
+    0.088,
+    0.1
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "atkPct"
+   },
+   "text": "In battle: ATK +{v}%"
+  },
+  {
+   "id": 50202,
+   "name": "Sturdy",
+   "tier": 2,
+   "values": [
+    0.04,
+    0.052,
+    0.064,
+    0.076,
+    0.088,
+    0.1
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "hp",
+    "mult": true
+   },
+   "text": "In battle: HP +{v}%"
+  },
+  {
+   "id": 50203,
+   "name": "Natural Cure",
+   "tier": 2,
+   "values": [
+    0.06,
+    0.084,
+    0.108,
+    0.132,
+    0.156,
+    0.18
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "receiveHealBoost"
+   },
+   "text": "In battle: Incoming Healing +{v}%"
+  },
+  {
+   "id": 50204,
+   "name": "Blessing",
+   "tier": 2,
+   "values": [
+    0.06,
+    0.084,
+    0.108,
+    0.132,
+    0.156,
+    0.18
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "healBoost"
+   },
+   "text": "In battle: Healing +{v}%"
+  },
+  {
+   "id": 50205,
+   "name": "Loose Cannon",
+   "tier": 2,
+   "values": [
+    0.12,
+    0.144,
+    0.168,
+    0.192,
+    0.216,
+    0.24
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "controlBoost"
+   },
+   "text": "In battle: Control Boost +{v}%"
+  },
+  {
+   "id": 50206,
+   "name": "Immune",
+   "tier": 2,
+   "values": [
+    0.12,
+    0.144,
+    0.168,
+    0.192,
+    0.216,
+    0.24
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "controlRes"
+   },
+   "text": "In battle: Control Res +{v}%"
+  },
+  {
+   "id": 50301,
+   "name": "Delightful",
+   "tier": 3,
+   "values": [
+    0.04,
+    0.044,
+    0.048,
+    0.052,
+    0.056,
+    0.06
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterAttack",
+    "act": "buff",
+    "target": "self",
+    "field": "atkPct",
+    "turns": 2
+   },
+   "text": "After attacking: ATK +{v}% until its next action; no stacking"
+  },
+  {
+   "id": 50302,
+   "name": "Fury",
+   "tier": 3,
+   "values": [
+    0.06,
+    0.068,
+    0.076,
+    0.084,
+    0.092,
+    0.1
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "onHit",
+    "act": "buff",
+    "target": "self",
+    "field": "atkPct",
+    "turns": 1,
+    "maxStacks": 2
+   },
+   "text": "When hit: ATK +{v}%, up to 2 times, until its next action"
+  },
+  {
+   "id": 50303,
+   "name": "Hawk Eye",
+   "tier": 3,
+   "values": [
+    0.06,
+    0.068,
+    0.076,
+    0.084,
+    0.092,
+    0.1
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterAttack",
+    "act": "buff",
+    "target": "event",
+    "field": "dmgRdct",
+    "negate": true,
+    "bigRounds": 2
+   },
+   "text": "After attacking: the target takes +{v}% damage for 2 rounds; no stacking"
+  },
+  {
+   "id": 50304,
+   "name": "Serene Grace",
+   "tier": 3,
+   "values": [
+    0.1,
+    0.11,
+    0.12,
+    0.13,
+    0.14,
+    0.15
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "onHit",
+    "act": "buff",
+    "target": "self",
+    "field": "controlBoost",
+    "bigRounds": 2
+   },
+   "text": "When hit: Control Boost +{v}% for 2 rounds; no stacking"
+  },
+  {
+   "id": 50305,
+   "name": "Curse",
+   "tier": 3,
+   "values": [
+    0.08,
+    0.088,
+    0.096,
+    0.104,
+    0.112,
+    0.12
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterAttack",
+    "act": "buff",
+    "target": "event",
+    "field": "dotTaken",
+    "bigRounds": 3
+   },
+   "text": "After attacking: the target takes +{v}% damage over time for 3 rounds; no stacking"
+  },
+  {
+   "id": 50306,
+   "name": "Regenerator",
+   "tier": 3,
+   "values": [
+    0.02,
+    0.024,
+    0.028,
+    0.032,
+    0.036,
+    0.04
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterAttack",
+    "act": "heal",
+    "target": "self"
+   },
+   "text": "After attacking: restores {v}% of its max HP"
+  },
+  {
+   "id": 50401,
+   "name": "Guardian Shell",
+   "tier": 4,
+   "values": [
+    0.06,
+    0.068,
+    0.076,
+    0.084,
+    0.092,
+    0.1
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "guardian",
+    "field": "hp",
+    "mult": true
+   },
+   "text": "A DEF-class ally deployed: HP +{v}%"
+  },
+  {
+   "id": 50402,
+   "name": "Wonder Guard",
+   "tier": 4,
+   "values": [
+    0.06,
+    0.068,
+    0.076,
+    0.084,
+    0.092,
+    0.1
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "guardian",
+    "field": "dmgRdct"
+   },
+   "text": "A DEF-class ally deployed: DMG RDCT +{v}%"
+  },
+  {
+   "id": 50403,
+   "name": "Crowd Immunity",
+   "tier": 4,
+   "values": [
+    0.11,
+    0.124,
+    0.138,
+    0.152,
+    0.166,
+    0.18
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "guardian",
+    "field": "controlRes"
+   },
+   "text": "A DEF-class ally deployed: Control Res +{v}%"
+  },
+  {
+   "id": 50404,
+   "name": "Shell Armor",
+   "tier": 4,
+   "values": [
+    0.09,
+    0.1,
+    0.11,
+    0.12,
+    0.13,
+    0.14
+   ],
+   "effect": {
+    "kind": "classAllyDmg",
+    "allyClass": "guardian",
+    "role": "defend",
+    "vs": "striker"
+   },
+   "text": "A DEF-class ally deployed: DMG RDCT from [ATK] +{v}%"
+  },
+  {
+   "id": 50405,
+   "name": "Battle Armor",
+   "tier": 4,
+   "values": [
+    0.09,
+    0.1,
+    0.11,
+    0.12,
+    0.13,
+    0.14
+   ],
+   "effect": {
+    "kind": "classAllyDmg",
+    "allyClass": "guardian",
+    "role": "defend",
+    "vs": "adept"
+   },
+   "text": "A DEF-class ally deployed: DMG RDCT from [SKILL] +{v}%"
+  },
+  {
+   "id": 50406,
+   "name": "Compound Eye",
+   "tier": 4,
+   "values": [
+    0.11,
+    0.124,
+    0.138,
+    0.152,
+    0.166,
+    0.18
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "guardian",
+    "field": "controlBoost"
+   },
+   "text": "A DEF-class ally deployed: Control Boost +{v}%"
+  },
+  {
+   "id": 50407,
+   "name": "Numerical Strength",
+   "tier": 4,
+   "values": [
+    0.06,
+    0.068,
+    0.076,
+    0.084,
+    0.092,
+    0.1
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "striker",
+    "field": "hp",
+    "mult": true
+   },
+   "text": "An ATK-class ally deployed: HP +{v}%"
+  },
+  {
+   "id": 50408,
+   "name": "Synchronized Attack",
+   "tier": 4,
+   "values": [
+    0.09,
+    0.102,
+    0.114,
+    0.126,
+    0.138,
+    0.15
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "striker",
+    "field": "atkPct"
+   },
+   "text": "An ATK-class ally deployed: ATK +{v}%"
+  },
+  {
+   "id": 50409,
+   "name": "Analyze",
+   "tier": 4,
+   "values": [
+    0.11,
+    0.124,
+    0.138,
+    0.152,
+    0.166,
+    0.18
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "striker",
+    "field": "controlBoost"
+   },
+   "text": "An ATK-class ally deployed: Control Boost +{v}%"
+  },
+  {
+   "id": 50410,
+   "name": "Infiltrator",
+   "tier": 4,
+   "values": [
+    0.12,
+    0.136,
+    0.152,
+    0.168,
+    0.184,
+    0.2
+   ],
+   "effect": {
+    "kind": "classAllyDmg",
+    "allyClass": "striker",
+    "role": "attack",
+    "vs": "striker"
+   },
+   "text": "An ATK-class ally deployed: DMG BST to [ATK] +{v}%"
+  },
+  {
+   "id": 50411,
+   "name": "Intimidate",
+   "tier": 4,
+   "values": [
+    0.12,
+    0.136,
+    0.152,
+    0.168,
+    0.184,
+    0.2
+   ],
+   "effect": {
+    "kind": "classAllyDmg",
+    "allyClass": "striker",
+    "role": "attack",
+    "vs": "adept"
+   },
+   "text": "An ATK-class ally deployed: DMG BST to [SKILL] +{v}%"
+  },
+  {
+   "id": 50412,
+   "name": "Numerical Strength",
+   "tier": 4,
+   "values": [
+    0.06,
+    0.068,
+    0.076,
+    0.084,
+    0.092,
+    0.1
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "adept",
+    "field": "hp",
+    "mult": true
+   },
+   "text": "A SKILL-class ally deployed: HP +{v}%"
+  },
+  {
+   "id": 50413,
+   "name": "Synchronized Attack",
+   "tier": 4,
+   "values": [
+    0.09,
+    0.102,
+    0.114,
+    0.126,
+    0.138,
+    0.15
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "adept",
+    "field": "atkPct"
+   },
+   "text": "A SKILL-class ally deployed: ATK +{v}%"
+  },
+  {
+   "id": 50414,
+   "name": "Analyze",
+   "tier": 4,
+   "values": [
+    0.11,
+    0.124,
+    0.138,
+    0.152,
+    0.166,
+    0.18
+   ],
+   "effect": {
+    "kind": "classAlly",
+    "allyClass": "adept",
+    "field": "controlBoost"
+   },
+   "text": "A SKILL-class ally deployed: Control Boost +{v}%"
+  },
+  {
+   "id": 50415,
+   "name": "Infiltrator",
+   "tier": 4,
+   "values": [
+    0.12,
+    0.136,
+    0.152,
+    0.168,
+    0.184,
+    0.2
+   ],
+   "effect": {
+    "kind": "classAllyDmg",
+    "allyClass": "adept",
+    "role": "attack",
+    "vs": "striker"
+   },
+   "text": "A SKILL-class ally deployed: DMG BST to [ATK] +{v}%"
+  },
+  {
+   "id": 50416,
+   "name": "Intimidate",
+   "tier": 4,
+   "values": [
+    0.12,
+    0.136,
+    0.152,
+    0.168,
+    0.184,
+    0.2
+   ],
+   "effect": {
+    "kind": "classAllyDmg",
+    "allyClass": "adept",
+    "role": "attack",
+    "vs": "adept"
+   },
+   "text": "A SKILL-class ally deployed: DMG BST to [SKILL] +{v}%"
+  },
+  {
+   "id": 50501,
+   "name": "Embolden",
+   "tier": 5,
+   "values": [
+    0.06,
+    0.068,
+    0.076,
+    0.084,
+    0.092,
+    0.1
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterUlt",
+    "act": "buff",
+    "target": "self",
+    "field": "atkPct",
+    "turns": 2
+   },
+   "text": "After its Ultimate: ATK +{v}% until its next action; no stacking"
+  },
+  {
+   "id": 50502,
+   "name": "Tit for Tat",
+   "tier": 5,
+   "values": [
+    0.1,
+    0.112,
+    0.124,
+    0.136,
+    0.148,
+    0.16
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterUlt",
+    "act": "damage",
+    "target": "event"
+   },
+   "text": "Its Ultimate adds damage equal to {v}% of its own lost HP"
+  },
+  {
+   "id": 50503,
+   "name": "Pre-war Prayer",
+   "tier": 5,
+   "values": [
+    0.15,
+    0.168,
+    0.186,
+    0.204,
+    0.222,
+    0.24
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "battleStart",
+    "act": "buff",
+    "target": "self",
+    "field": "controlBoost",
+    "bigRounds": 1
+   },
+   "text": "First round: Control Boost +{v}%"
+  },
+  {
+   "id": 50504,
+   "name": "Momentum",
+   "tier": 5,
+   "values": [
+    0.05,
+    0.056,
+    0.062,
+    0.068,
+    0.074,
+    0.08
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterNonUlt",
+    "act": "buff",
+    "target": "self",
+    "field": "atkPct",
+    "maxStacks": 4
+   },
+   "text": "After a non-Ultimate skill: ATK +{v}%, up to 4 times, for the rest of the battle"
+  },
+  {
+   "id": 50505,
+   "name": "Healing Heart",
+   "tier": 5,
+   "values": [
+    0.06,
+    0.068,
+    0.076,
+    0.084,
+    0.092,
+    0.1
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterNonUlt",
+    "act": "buff",
+    "target": "allies",
+    "field": "receiveHealBoost",
+    "maxStacks": 4
+   },
+   "text": "After a non-Ultimate skill: all allies' Incoming Healing +{v}%, up to 4 times, for the rest of the battle"
+  },
+  {
+   "id": 50601,
+   "name": "Rivalry",
+   "tier": 6,
+   "values": [
+    0.08,
+    0.088,
+    0.096,
+    0.104,
+    0.112,
+    0.12
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "pvpBoost"
+   },
+   "text": "In battle: PVP DMG BST +{v}%"
+  },
+  {
+   "id": 50602,
+   "name": "steady",
+   "tier": 6,
+   "values": [
+    0.08,
+    0.088,
+    0.096,
+    0.104,
+    0.112,
+    0.12
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "pvpRdct"
+   },
+   "text": "In battle: PVP DMG RDCT +{v}%"
+  },
+  {
+   "id": 50603,
+   "name": "Timid",
+   "tier": 6,
+   "values": [
+    0.12,
+    0.112,
+    0.104,
+    0.096,
+    0.088,
+    0.08
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "atkPct",
+    "negate": true,
+    "extra": {
+     "field": "spd",
+     "add": 8
+    }
+   },
+   "text": "In battle: SPD +8 but ATK −{v}%"
+  },
+  {
+   "id": 50604,
+   "name": "Heavy Armor",
+   "tier": 6,
+   "values": [
+    0.08,
+    0.088,
+    0.096,
+    0.104,
+    0.112,
+    0.12
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "dmgRdct",
+    "extra": {
+     "field": "spd",
+     "add": -8
+    }
+   },
+   "text": "In battle: DMG RDCT +{v}% but SPD −8"
+  },
+  {
+   "id": 50605,
+   "name": "Unburden",
+   "tier": 6,
+   "values": [
+    0.16,
+    0.152,
+    0.144,
+    0.136,
+    0.128,
+    0.12
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "hp",
+    "mult": true,
+    "negate": true,
+    "extra": {
+     "field": "spd",
+     "add": 8
+    }
+   },
+   "text": "In battle: SPD +8 but HP −{v}%"
+  },
+  {
+   "id": 50701,
+   "name": "Telepathy",
+   "tier": 7,
+   "values": [
+    0.12,
+    0.136,
+    0.152,
+    0.168,
+    0.184,
+    0.2
+   ],
+   "effect": {
+    "kind": "alive",
+    "atLeast": 3,
+    "field": "controlRes"
+   },
+   "text": "At least 3 allies alive: Control Res +{v}%"
+  },
+  {
+   "id": 50702,
+   "name": "Team up to defend",
+   "tier": 7,
+   "values": [
+    0.06,
+    0.068,
+    0.076,
+    0.084,
+    0.092,
+    0.1
+   ],
+   "effect": {
+    "kind": "alive",
+    "atLeast": 3,
+    "field": "dmgRdct"
+   },
+   "text": "At least 3 allies alive: DMG RDCT +{v}%"
+  },
+  {
+   "id": 50703,
+   "name": "Tacit Defense",
+   "tier": 7,
+   "values": [
+    0.06,
+    0.072,
+    0.084,
+    0.096,
+    0.108,
+    0.12
+   ],
+   "effect": {
+    "kind": "alive",
+    "atLeast": 3,
+    "field": "block"
+   },
+   "text": "At least 3 allies alive: Block +{v}%"
+  },
+  {
+   "id": 50704,
+   "name": "Competitive",
+   "tier": 7,
+   "values": [
+    0.06,
+    0.072,
+    0.084,
+    0.096,
+    0.108,
+    0.12
+   ],
+   "effect": {
+    "kind": "alive",
+    "atLeast": 3,
+    "field": "crit"
+   },
+   "text": "At least 3 allies alive: Crit +{v}%"
+  },
+  {
+   "id": 50705,
+   "name": "Iron Pokémon",
+   "tier": 7,
+   "values": [
+    0.1,
+    0.116,
+    0.132,
+    0.148,
+    0.164,
+    0.18
+   ],
+   "effect": {
+    "kind": "alive",
+    "below": 3,
+    "field": "dmgRdct"
+   },
+   "text": "Fewer than 3 allies alive: DMG RDCT +{v}%"
+  },
+  {
+   "id": 50706,
+   "name": "Super Lucky",
+   "tier": 7,
+   "values": [
+    0.1,
+    0.116,
+    0.132,
+    0.148,
+    0.164,
+    0.18
+   ],
+   "effect": {
+    "kind": "alive",
+    "below": 4,
+    "field": "controlBoost"
+   },
+   "text": "Fewer than 4 allies alive: Control Boost +{v}%"
+  },
+  {
+   "id": 50707,
+   "name": "Defiant",
+   "tier": 7,
+   "values": [
+    0.07,
+    0.08,
+    0.09,
+    0.1,
+    0.11,
+    0.12
+   ],
+   "effect": {
+    "kind": "alive",
+    "below": 4,
+    "field": "lifesteal"
+   },
+   "text": "Fewer than 4 allies alive: Lifesteal +{v}%"
+  },
+  {
+   "id": 50708,
+   "name": "Weak Armor",
+   "tier": 7,
+   "values": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "effect": {
+    "kind": "alive",
+    "below": 4,
+    "field": "spd"
+   },
+   "text": "Fewer than 4 allies alive: SPD +{v}"
+  },
+  {
+   "id": 50709,
+   "name": "Bandage",
+   "tier": 7,
+   "values": [
+    0.09,
+    0.102,
+    0.114,
+    0.126,
+    0.138,
+    0.15
+   ],
+   "effect": {
+    "kind": "alive",
+    "below": 6,
+    "field": "receiveHealBoost"
+   },
+   "text": "Fewer than 6 allies alive: Incoming Healing +{v}%"
+  },
+  {
+   "id": 50710,
+   "name": "First aid",
+   "tier": 7,
+   "values": [
+    0.09,
+    0.102,
+    0.114,
+    0.126,
+    0.138,
+    0.15
+   ],
+   "effect": {
+    "kind": "alive",
+    "below": 6,
+    "field": "healBoost"
+   },
+   "text": "Fewer than 6 allies alive: Healing +{v}%"
+  },
+  {
+   "id": 50711,
+   "name": "Toughness",
+   "tier": 7,
+   "values": [
+    0.08,
+    0.092,
+    0.104,
+    0.116,
+    0.128,
+    0.14
+   ],
+   "effect": {
+    "kind": "alive",
+    "below": 6,
+    "field": "blockPower"
+   },
+   "text": "Fewer than 6 allies alive: Block INT +{v}%"
+  },
+  {
+   "id": 50712,
+   "name": "Joined Forces",
+   "tier": 7,
+   "values": [
+    0.04,
+    0.048,
+    0.056,
+    0.064,
+    0.072,
+    0.08
+   ],
+   "effect": {
+    "kind": "alive",
+    "atLeast": 5,
+    "field": "dmgBoost"
+   },
+   "text": "At least 5 allies alive: DMG Boost +{v}%"
+  },
+  {
+   "id": 50713,
+   "name": "Focus Attack",
+   "tier": 7,
+   "values": [
+    0.1,
+    0.112,
+    0.124,
+    0.136,
+    0.148,
+    0.16
+   ],
+   "effect": {
+    "kind": "alive",
+    "atLeast": 5,
+    "field": "critPower"
+   },
+   "text": "At least 5 allies alive: Crit INT +{v}%"
+  },
+  {
+   "id": 50801,
+   "name": "Robust",
+   "tier": 8,
+   "values": [
+    0.1,
+    0.116,
+    0.132,
+    0.148,
+    0.164,
+    0.18
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "hp",
+    "mult": true
+   },
+   "text": "In battle: HP +{v}%"
+  },
+  {
+   "id": 50802,
+   "name": "Reckless",
+   "tier": 8,
+   "values": [
+    0.04,
+    0.048,
+    0.056,
+    0.064,
+    0.072,
+    0.08
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "atkPct"
+   },
+   "text": "In battle: ATK +{v}%"
+  },
+  {
+   "id": 50803,
+   "name": "Sniper",
+   "tier": 8,
+   "values": [
+    0.1,
+    0.12,
+    0.14,
+    0.16,
+    0.18,
+    0.2
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "critPower"
+   },
+   "text": "In battle: Crit INT +{v}%"
+  },
+  {
+   "id": 50804,
+   "name": "Tough Skin",
+   "tier": 8,
+   "values": [
+    0.1,
+    0.12,
+    0.14,
+    0.16,
+    0.18,
+    0.2
+   ],
+   "effect": {
+    "kind": "stat",
+    "field": "blockPower"
+   },
+   "text": "In battle: Block INT +{v}%"
+  },
+  {
+   "id": 50901,
+   "name": "Warm up",
+   "tier": 9,
+   "values": [
+    0.05,
+    0.056,
+    0.062,
+    0.068,
+    0.074,
+    0.08
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterNormal",
+    "act": "buff",
+    "target": "self",
+    "field": "atkPct",
+    "turns": 2
+   },
+   "text": "After a normal attack: ATK +{v}% until its next action; no stacking"
+  },
+  {
+   "id": 50902,
+   "name": "Greed",
+   "tier": 9,
+   "values": [
+    0.08,
+    0.088,
+    0.096,
+    0.104,
+    0.112,
+    0.12
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "afterBasic",
+    "act": "buff",
+    "target": "self",
+    "field": "lifesteal",
+    "turns": 2
+   },
+   "text": "After a basic skill: Lifesteal +{v}% until its next action; no stacking"
+  },
+  {
+   "id": 50903,
+   "name": "Dauntless",
+   "tier": 9,
+   "values": [
+    0.08,
+    0.088,
+    0.096,
+    0.104,
+    0.112,
+    0.12
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "onHit",
+    "act": "buff",
+    "target": "self",
+    "hitBy": "ult",
+    "field": "dmgRdct",
+    "bigRounds": 1
+   },
+   "text": "When hit by an Ultimate: DMG RDCT +{v}% for 1 round; no stacking"
+  },
+  {
+   "id": 50904,
+   "name": "Hold Grudges",
+   "tier": 9,
+   "values": [
+    0.04,
+    0.044,
+    0.048,
+    0.052,
+    0.056,
+    0.06
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "onHit",
+    "act": "buff",
+    "target": "self",
+    "hitBy": "normal",
+    "field": "atkPct",
+    "turns": 1,
+    "maxStacks": 2
+   },
+   "text": "When hit by a normal attack: ATK +{v}%, up to 2 times, until its next action"
+  },
+  {
+   "id": 50905,
+   "name": "Swift Learner",
+   "tier": 9,
+   "values": [
+    0.2,
+    0.24,
+    0.28,
+    0.32,
+    0.36,
+    0.4
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "onHit",
+    "act": "buff",
+    "target": "self",
+    "hitBy": "basic",
+    "field": "basicRate",
+    "turns": 1
+   },
+   "text": "When hit by a basic skill: its basic skill's trigger chance +{v}% until its next action; no stacking"
+  },
+  {
+   "id": 50906,
+   "name": "Thick Fat",
+   "tier": 9,
+   "values": [
+    0.05,
+    0.056,
+    0.062,
+    0.068,
+    0.074,
+    0.08
+   ],
+   "effect": {
+    "kind": "event",
+    "on": "onHit",
+    "act": "heal",
+    "target": "self",
+    "hitBy": "ult",
+    "perTurn": 1
+   },
+   "text": "When hit by an Ultimate: restores {v}% of its max HP, once a round"
+  }
+ ],
+ "species": {
+  "arceus": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "articuno": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50401,
+     50402,
+     50403
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "black-kyurem": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50701,
+     50713
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "calyrex": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50401,
+     50402,
+     50403
+    ],
+    [
+     50501,
+     50504,
+     50502
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50709,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ]
+   ],
+   "core": true
+  },
+  "celebi": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "cresselia": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "darkrai": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "deoxys": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50404,
+     50405,
+     50406
+    ],
+    [
+     50501,
+     50504,
+     50502
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50702,
+     50703
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "dialga": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "entei": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "giratina": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "god-ash-pikachu": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "greninja": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "groudon": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "ho-oh": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "hoopa": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "infernape": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50701,
+     50713
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "jirachi": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "keldeo": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "kyogre": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50401,
+     50402,
+     50403
+    ],
+    [
+     50501,
+     50504,
+     50502
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50709,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "lugia": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50502
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50709,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "lunala": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "manaphy": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "meloetta": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50407,
+     50409
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "mew": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "mewtwo": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "mimikyu": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "moltres": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "necrozma": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ]
+   ],
+   "core": true
+  },
+  "origin-lugia": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50401,
+     50402,
+     50403
+    ],
+    [
+     50501,
+     50504,
+     50502
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50709,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ]
+   ],
+   "core": true
+  },
+  "origin-rayquaza": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50711,
+     50705,
+     50707
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ]
+   ],
+   "core": true
+  },
+  "palkia": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50401,
+     50402,
+     50403
+    ],
+    [
+     50501,
+     50504,
+     50502
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50709,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "psyduck": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50701,
+     50713
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "raikou": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "rayquaza": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50711,
+     50705,
+     50707
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shadow-mewtwo": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ]
+   ],
+   "core": true
+  },
+  "shaymin": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-arceus": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-blastoise": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50401,
+     50402,
+     50403
+    ],
+    [
+     50501,
+     50504,
+     50502
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50709,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-charizard": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-cresselia": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-darkrai": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-gengar": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-god-ash-pikachu": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-hoopa": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-kyogre": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50401,
+     50402,
+     50403
+    ],
+    [
+     50501,
+     50504,
+     50502
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50709,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-kyurem": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50701,
+     50713
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-mew": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-mewtwo": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-raichu": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50407,
+     50409
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "shiny-venusaur": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "snorlax": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50401,
+     50402,
+     50403
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50711,
+     50705,
+     50707
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "solgaleo": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "suicune": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50404,
+     50405,
+     50406
+    ],
+    [
+     50501,
+     50504,
+     50502
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50702,
+     50703
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "victini": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50404,
+     50405,
+     50406
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "wind-god-pidgeot": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ],
+    [
+     {
+      "own": true,
+      "star": 5,
+      "count": 1
+     }
+    ]
+   ],
+   "core": true
+  },
+  "wobbuffet": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50709,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "xerneas": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50412,
+     50414
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "water"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "yveltal": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50305,
+     50304
+    ],
+    [
+     50413,
+     50415,
+     50416
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50701,
+     50713
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "fire"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "zacian": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50410,
+     50411
+    ],
+    [
+     50501,
+     50504,
+     50505
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50704,
+     50712
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "water"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "fire"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "light"
+     },
+     {
+      "own": false,
+      "star": 5,
+      "count": 1,
+      "faction": "dark"
+     }
+    ]
+   ],
+   "core": true
+  },
+  "zapdos": {
+   "tiers": [
+    [
+     50101,
+     50103,
+     50105
+    ],
+    [
+     50202,
+     50203,
+     50206
+    ],
+    [
+     50301,
+     50303,
+     50304
+    ],
+    [
+     50408,
+     50407,
+     50409
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50602,
+     50604,
+     50605
+    ],
+    [
+     50710,
+     50705,
+     50706
+    ],
+    [
+     50801,
+     50802,
+     50804
+    ],
+    [
+     50903,
+     50904,
+     50906
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  },
+  "zygarde": {
+   "tiers": [
+    [
+     50102,
+     50104,
+     50106
+    ],
+    [
+     50201,
+     50204,
+     50205
+    ],
+    [
+     50302,
+     50306,
+     50304
+    ],
+    [
+     50404,
+     50405,
+     50406
+    ],
+    [
+     50501,
+     50504,
+     50503
+    ],
+    [
+     50601,
+     50603,
+     50604
+    ],
+    [
+     50708,
+     50701,
+     50713
+    ],
+    [
+     50801,
+     50802,
+     50803
+    ],
+    [
+     50901,
+     50902,
+     50905
+    ]
+   ],
+   "fodder": [
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 3,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 3,
+      "count": 5,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 2,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 4,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ],
+    [
+     {
+      "own": false,
+      "star": 5,
+      "count": 6,
+      "faction": "grass"
+     }
+    ]
+   ],
+   "core": false
+  }
+ }
+}

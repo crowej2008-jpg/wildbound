@@ -1128,3 +1128,16 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Owner: "the normal number is +125, +250 is only for pokemon with the skill class". `ragePerAction` 125
   and new `ragePerActionByClass` (`{ adept: 250 }`) replace yesterday's SKILL-only gate
   (`ragePerActionClasses` removed). ASSUMPTIONS #63. Golden replays re-exported.
+
+## R4 — Potential copied from the source (2026-11-01)
+
+- `scripts/import-potential.mjs` → `packages/content/potential/potential.json`: 62 trees (15 distinct),
+  67 options with six level values, tier stars 7–15, the shard table (465,000 to unlock all, 8,370,000
+  to max), fodder per species and tier, Potential Core eligibility; reset 16 Diamonds.
+- Engine `potential/` (rules + compiler to stat mods / triggers / damage mods); combat gains
+  `SpecInput.statMods`, `onHit` skill slot (`eventSlot`), `alliesAliveAtLeast/Below`, `removeBuff`.
+- Server `potential.ts` (unlock / level / reset / view); battles compile each Pokémon's Potential with
+  its lineup. New currency `potentialCore`.
+- Removed the M7/M11 stand-in: talent paths, `talents.json`, `collection.potential`, `tuning.talents`,
+  the Potential layer in the equipment view. Client Potential tab rewritten.
+- Save v22 (reset). ASSUMPTIONS #64.

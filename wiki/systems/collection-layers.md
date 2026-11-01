@@ -17,10 +17,11 @@ Every layer folds into a Wild's stat sheet via `foldLoadout` and counts toward P
 > the CHANGELOG and differ from M11's original plan (e.g. VIP 7 tiers not 20; Resonance 6 slots not 10;
 > 16 orbs not 48). Trust the built numbers.
 
-## Potential
-Duplicate Wilds of the same species are fodder (lowest level/stars consumed first; locked and squad
-Wilds protected). Tier unlock = authored fodder + `20 + tier × 10` Potential Shards. Respec 5 shards;
-reset 50 gems refunds shards, **not** fodder.
+## Potential (R4: source copy, 2026-11-01)
+62 Pokémon (Legendary+), 15 trees, 67 options. Tier N at 6 + N★, any order; unlock = 1 of 3 options +
+fodder (own faction / W-F-G / own copy by quality) + shards (20,000 … 75,000), level to 6 with shards
+(8,370,000 for everything). Potential Core stands in on 21 species (tiers 5–9). Reset 16 💎 returns
+everything. Details: `docs/design/potential.md`.
 
 ## Orbs
 4 sets × 4 orbs = 16 orbs, 4 qualities, Lv1–6, 2- and 4-piece set bonuses. Level-up: two same-kind,

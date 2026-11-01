@@ -4,7 +4,6 @@ import plates from '../equipment/plates.json';
 import heldItems from '../equipment/held-items.json';
 import { toEngineTrigger } from './kit-to-engine';
 import runes from '../equipment/runes.json';
-import talents from '../equipment/talents.json';
 import trinkets from '../equipment/trinkets.json';
 import equipmentTuning from '../tuning/equipment.json';
 import {
@@ -14,7 +13,6 @@ import {
   platesSchema,
   heldItemsSchema,
   runesSchema,
-  talentsSchema,
   trinketsSchema,
 } from './equipment-schema';
 
@@ -47,10 +45,6 @@ export const RUNE_SETS = RUNE_CATALOGUE.sets;
 export const CHARMS = charmsSchema.parse(charms).charms;
 export const CORE_SETS = coresSchema.parse(cores).sets;
 
-const TALENT_CATALOGUE = talentsSchema.parse(talents);
-export const TALENT_BLOCKS = TALENT_CATALOGUE.blocks;
-export const TALENT_TREES = TALENT_CATALOGUE.trees;
-
 export function relicById(id: string) {
   return RELICS.find((r) => r.id === id);
 }
@@ -65,7 +59,4 @@ export function charmById(id: string) {
 }
 export function coreSetById(id: string) {
   return CORE_SETS.find((s) => s.id === id);
-}
-export function talentTreeById(id: string) {
-  return TALENT_TREES.find((t) => t.id === id);
 }

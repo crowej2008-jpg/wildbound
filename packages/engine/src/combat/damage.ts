@@ -5,7 +5,7 @@ import { addRage } from './rage';
 import { fireTriggers } from './triggers';
 import { applyControl } from './control';
 import { applyHeal } from './sustain';
-import type { BattleContext, Combatant, CombatField, DamageMod, SkillDef } from './types';
+import type { BattleContext, Combatant, CombatField, DamageMod, SkillDef, SkillSlot } from './types';
 
 export { addRage };
 
@@ -213,6 +213,8 @@ export interface HitFlags {
   trueDmg?: boolean;
   /** M9: skill-level shield bypass. */
   ignoreShield?: boolean;
+  /** R4: the attacker's skill slot (Potential "when hit by an Ultimate / normal attack / basic skill"). */
+  slot?: SkillSlot;
 }
 
 /**
@@ -313,7 +315,7 @@ export function channelHit(
   // `hpBelow` follows any HP loss; `onKill`/`onDeath` fire on a kill. Each call
   // runs one level deep and `fireTriggers` bounds the nesting.
   if (hitLanded) {
-    if (kind === 'hit') fireTriggers(ctx, defender, 'onHit', { target: attacker, amount: shielded + hpLost });
+    if (kind === 'hit') fireTriggers(ctx, defender, 'onHit', { target: attacker, amount: shielded + hpLost, ...(flags.slot ? { slot: flags.slot } : {}) });
     fireTriggers(ctx, defender, 'hpBelow', { target: attacker });
   }
   // E3: follow-ups of an endure that just fired (Slaking's heal, Origin Lugia's release).

@@ -28,6 +28,7 @@ import {
   type WeatherRule,
   type WildClass,
   type WildInstance,
+  compilePotential,
 } from '@wildbound/engine';
 import { cardOf, type GameConfig, type SpeciesMeta } from './config';
 import { resonanceFoldFor } from './resonance';
@@ -204,6 +205,17 @@ export function buildWildTeam(
     const unitPower = powerOf(wild, config, state);
     const card = cardOf(species, wild.stars);
     const id = `${side}-${slot}`;
+    // R4: Potential — the faction / class options read the rest of this lineup.
+    const allies = wilds.flatMap((other) => {
+      const m = other === wild ? undefined : config.species.get(other.speciesId);
+      return m ? [{ faction: m.faction, className: m.className }] : [];
+    });
+    const pot = compilePotential(config.potential, config.potential.species[wild.speciesId], state?.potential[wild.id], {
+      faction: species.faction,
+      allies,
+    });
+    const triggers = [...equipped.triggers, ...pot.triggers];
+    const damageMods = [...equipped.damageMods, ...pot.damageMods];
     specs.push({
       id,
       name: species.name,
@@ -217,8 +229,9 @@ export function buildWildTeam(
       ...(card.factionBoost ? { factionBoost: card.factionBoost } : {}),
       ...(equipped.effects.length > 0 ? { roundEffects: equipped.effects } : {}),
       ...(Object.keys(equipped.soulheart).length > 0 ? { soulheart: equipped.soulheart } : {}),
-      ...(equipped.triggers.length > 0 ? { triggers: equipped.triggers } : {}),
-      ...(equipped.damageMods.length > 0 ? { damageMods: equipped.damageMods } : {}),
+      ...(triggers.length > 0 ? { triggers } : {}),
+      ...(damageMods.length > 0 ? { damageMods } : {}),
+      ...(pot.statMods.length > 0 ? { statMods: pot.statMods } : {}),
     });
     meta.set(`${side}:${position}`, {
       name: species.name,

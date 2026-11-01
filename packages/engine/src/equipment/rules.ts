@@ -4,7 +4,6 @@ import type {
   Loadout,
   RelicDef,
   RuneInstance,
-  TalentTreeDef,
 } from './types';
 
 /**
@@ -40,9 +39,6 @@ export function coresUnlocked(stars: number, tuning: EquipmentTuning): boolean {
   return stars >= tuning.cores.minStars;
 }
 
-export function talentsUnlocked(wildTier: Tier, tuning: EquipmentTuning): boolean {
-  return tierAtLeast(wildTier, tuning.talents.minTier);
-}
 
 /** A relic fits when the Wild's class matches and the Wild is high enough tier. */
 export function canEquipRelic(def: RelicDef, wildClass: WildClass, wildTier: Tier, tuning: EquipmentTuning): boolean {
@@ -74,38 +70,6 @@ export function equipCharm(loadout: Loadout, slot: number, charmId: string | nul
   const charms = [...loadout.charms];
   if (slot >= 0 && slot < charms.length) charms[slot] = charmId;
   return { ...loadout, charms };
-}
-
-export function chooseTree(loadout: Loadout, treeId: string | null, tuning: EquipmentTuning): Loadout {
-  return { ...loadout, treeId, talents: Array.from({ length: tuning.talents.tiers }, () => -1) };
-}
-
-/**
- * Allocation is sequential: a tier can only be picked once every earlier tier has a
- * choice, mirroring the reference's potential ladder.
- */
-export function canAllocateTalent(
-  loadout: Loadout,
-  tree: TalentTreeDef,
-  tier: number,
-  option: number,
-  tuning: EquipmentTuning,
-): boolean {
-  if (tree.id !== loadout.treeId) return false;
-  if (tier < 0 || tier >= tuning.talents.tiers) return false;
-  if (tier >= tree.tiers.length) return false;
-  if (option < 0 || option >= tuning.talents.optionsPerTier) return false;
-  if (option >= tree.tiers[tier]!.length) return false;
-  for (let i = 0; i < tier; i += 1) if ((loadout.talents[i] ?? -1) < 0) return false;
-  return true;
-}
-
-/** Choose `option` on `tier`; later tiers are cleared (the ladder restarts there). */
-export function allocateTalent(loadout: Loadout, tier: number, option: number, _tuning: EquipmentTuning): Loadout {
-  const talents = [...loadout.talents];
-  for (let i = tier; i < talents.length; i += 1) talents[i] = -1;
-  talents[tier] = option;
-  return { ...loadout, talents };
 }
 
 /** A newly socketed rune never needs an instance to exist yet. */

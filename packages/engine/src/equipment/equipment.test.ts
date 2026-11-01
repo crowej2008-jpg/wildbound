@@ -4,12 +4,9 @@ import type { KitDef, RoundEffect, SheetInput, SpecInput } from '../combat/types
 import type { CoreStats } from '../model';
 import { foldLoadout, lineValue, mergeDelta } from './contrib';
 import {
-  allocateTalent,
-  canAllocateTalent,
   canEquipRelic,
   equipRune,
   relicUnlocked,
-  talentsUnlocked,
 } from './rules';
 import {
   emptyLoadout,
@@ -24,7 +21,6 @@ const TUNING: EquipmentTuning = {
   runes: { minStars: 3, sockets: 4, maxLevel: 6 },
   charms: { minStars: 4, slots: 2 },
   cores: { minStars: 10, sockets: 6, pieceMinStars: 2, pieceMaxStars: 5 },
-  talents: { minTier: 'legendary', tiers: 9, optionsPerTier: 3, resetGems: 50, allocateGold: 50 },
   runeLevelCost: { gold: 100, goldPerLevel: 50 },
   starting: { relics: [], runes: [], cores: [], charms: [] },
 };
@@ -160,19 +156,6 @@ const TABLES: EquipmentTables = {
       ],
     },
   ],
-  talentBlocks: [
-    { id: 'b1', text: 'flat atk', lines: [{ kind: 'core', field: 'pAtk', base: 50, perLevel: 0 }] },
-    { id: 'b2', text: 'dmg', lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.04, perLevel: 0 }] },
-    { id: 'b3', text: 'crit', lines: [{ kind: 'percent', field: 'crit', base: 0.02, perLevel: 0 }] },
-  ],
-  talentTrees: [
-    {
-      id: 'treeA',
-      name: 'Tree A',
-      className: 'striker',
-      tiers: Array.from({ length: 9 }, () => ['b1', 'b2', 'b1']),
-    },
-  ],
   tuning: TUNING,
 };
 
@@ -219,8 +202,6 @@ describe('layer contributions', () => {
       runes: ['ru1', 'ru2', 'ru3', 'ru4'],
       charms: ['charm1', null],
       cores: ['c1', 'c2', null, null, null, null],
-      treeId: 'forged',
-      talents: Array.from({ length: 9 }, () => -1),
     };
     const folded = foldLoadout(
       loadout,
@@ -282,26 +263,12 @@ describe('rules', () => {
     expect(canEquipRelic(def, 'striker', 'epic', TUNING)).toBe(false);
     expect(relicUnlocked('mythic', TUNING)).toBe(true);
     expect(relicUnlocked('origin', TUNING)).toBe(true);
-    expect(talentsUnlocked('epic', TUNING)).toBe(false);
   });
 
   it('sockets a rune into a chosen slot only', () => {
     const loadout = equipRune(emptyLoadout(TUNING), 1, 'ru1');
     expect(loadout.runes[0]).toBeNull();
     expect(loadout.runes[1]).toBe('ru1');
-  });
-
-  it('allocates talents sequentially and clears later tiers on a re-pick', () => {
-    const tree = { id: 't', name: 'T', className: 'striker' as const, tiers: Array.from({ length: 9 }, () => ['b1', 'b2', 'b3']) };
-    let loadout: Loadout = { ...emptyLoadout(TUNING), treeId: 't' };
-    expect(canAllocateTalent(loadout, tree, 2, 0, TUNING)).toBe(false); // tier 0/1 empty
-    loadout = allocateTalent(loadout, 0, 1, TUNING);
-    loadout = allocateTalent(loadout, 1, 2, TUNING);
-    expect(loadout.talents[0]).toBe(0 + 1);
-    expect(canAllocateTalent(loadout, tree, 2, 0, TUNING)).toBe(true);
-    loadout = allocateTalent(loadout, 0, 2, TUNING);
-    expect(loadout.talents[0]).toBe(2);
-    expect(loadout.talents[1]).toBe(-1); // later tiers cleared
   });
 });
 
@@ -464,13 +431,6 @@ describe('every layer moves a battle in the intended direction', () => {
       ],
     });
     const up = battleWith(base, state, { ...emptyLoadout(TUNING), cores: ['c1', 'c2', null, null, null, null] });
-    expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
-  });
-
-  it('a talent block raises damage', () => {
-    const state = stateWith({});
-    const loadout = { ...emptyLoadout(TUNING), treeId: 'treeA', talents: [1, -1, -1, -1, -1, -1, -1, -1, -1] };
-    const up = battleWith(base, state, loadout);
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });
 

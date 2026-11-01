@@ -215,6 +215,11 @@ export interface Condition {
   otherAlliesAtMost?: number;
   /** E3: the target's class (the sheet's [ATK] / [DEF] / [SKILL] Pokémon). */
   targetClass?: WildClass;
+  /** R4: the hit being resolved came from this skill slot (`onHit`). */
+  eventSlot?: SkillSlot;
+  /** R4: living units on the unit's own side, itself included — at least / fewer than. */
+  alliesAliveAtLeast?: number;
+  alliesAliveBelow?: number;
 }
 
 /** A damage-over-time instance (M9). `damageType: 'dot'` + `hpShare` is the M1 form. */
@@ -402,7 +407,9 @@ export type ExtraEffect =
   /** Splash: the units next to the event's target take `share` of the damage dealt to it. */
   | { op: 'splash'; target: TargetSel; share: number; condition?: Condition; chance?: number }
   /** Remove every shield on the target. */
-  | { op: 'breakShield'; target: TargetSel; condition?: Condition; chance?: number };
+  | { op: 'breakShield'; target: TargetSel; condition?: Condition; chance?: number }
+  /** R4: remove every buff with this tag (and its stacks `tag#n`). */
+  | { op: 'removeBuff'; target: TargetSel; tag: string; condition?: Condition; chance?: number };
 
 /** A target selection for an effect (M9): side + rule + narrowing. */
 export interface TargetSel {
@@ -600,6 +607,8 @@ export interface SpecInput {
   triggers?: TriggerDef[];
   /** E1: damage modifiers from gear. */
   damageMods?: DamageMod[];
+  /** R4: stat changes from Potential, applied on top of the kit's talent stat mods. */
+  statMods?: StatMod[];
 }
 
 /** "DMG BST to [faction]": extra damage against defenders of that faction (0.25 = 25%). */
@@ -822,6 +831,8 @@ export interface BattleContext {
   /** E3: the damage and actor of the event a trigger is resolving (splash, Celebi, ally crit). */
   eventAmount?: number;
   eventActor?: Combatant;
+  /** R4: the skill slot of the hit an `onHit` trigger is resolving. */
+  eventSlot?: SkillSlot;
   /** E3: damage the current action dealt to each target (for splash). */
   castDamage?: Map<string, number>;
   /** E3: the team Power pair of the battle (extra actions need it). */

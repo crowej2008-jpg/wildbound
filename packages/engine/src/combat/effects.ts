@@ -1,4 +1,4 @@
-import { applyBuff, stripBuffs } from './buffs';
+import { applyBuff, removeBuffTag, stripBuffs } from './buffs';
 import { evalCondition } from './conditions';
 import { applyControl } from './control';
 import { channelHit } from './damage';
@@ -150,6 +150,9 @@ function resolve(ctx: BattleContext, caster: Combatant, t: Combatant, e: Effect,
         ctx.events.push({ type: 'shield', tgt: t.key, amount: t.shieldHp, shieldAfter: 0 });
         t.shieldHp = 0;
       }
+      return;
+    case 'removeBuff':
+      removeBuffTag(t, ctx, e.tag);
       return;
   }
 }

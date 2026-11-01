@@ -19,7 +19,6 @@ import {
   relicUnlocked,
   runeLevelCost,
   runesUnlocked,
-  talentsUnlocked,
   type EquipmentTables,
   type LayerDelta,
   type Loadout,
@@ -143,17 +142,6 @@ export interface CharmView {
   dismantleEssence: number;
 }
 
-export interface TalentTierView {
-  tier: number;
-  options: { blockId: string; text: string; chosen: boolean }[];
-}
-
-export interface TalentTreeOption {
-  id: string;
-  name: string;
-  className: WildClass;
-}
-
 export interface EquipmentPowerView {
   /** Power with no equipment equipped. */
   base: number;
@@ -173,8 +161,8 @@ export interface EquipmentView {
   /** Equipped soul stats, for the stat sheet. */
   soul: Partial<SoulStats>;
   power: EquipmentPowerView;
-  unlocks: { relic: boolean; runes: boolean; charms: boolean; cores: boolean; talents: boolean };
-  requirements: { relic: Tier; runes: number; charms: number; cores: number; talents: Tier };
+  unlocks: { relic: boolean; runes: boolean; charms: boolean; cores: boolean };
+  requirements: { relic: Tier; runes: number; charms: number; cores: number };
   loadout: Loadout;
   relics: RelicView[];
   runes: RuneView[];
@@ -198,19 +186,7 @@ export interface EquipmentView {
   starShards: number;
   charmSlots: number;
   charms: CharmView[];
-  trees: TalentTreeOption[];
-  talentTiers: TalentTierView[];
-  /** Duplicate copies of this species available as Potential fodder. */
-  fodderCount: number;
-  potentialShards: number;
-  /** Shards refunded by a full Potential reset (fodder is not refunded). */
-  talentResetRefund: number;
   costs: {
-    talentShardBase: number;
-    talentShardPerTier: number;
-    talentRespecShards: number;
-    talentFodderPerTier: number;
-    talentResetGems: number;
     runeCopiesPerLevel: number;
     charmUpgradeCopies: number;
   };
@@ -228,45 +204,6 @@ export function loadoutOf(state: AccountState, wildId: string, tables: Equipment
   return state.loadouts[wildId] ?? emptyLoadout(tables.tuning);
 }
 
-/**
- * Duplicate copies that may be fed to Potential. The target, locked Wilds and
- * every squad member are protected; the cheapest (lowest level, then stars) copy
- * is listed first so the server's automatic pick is predictable.
- */
-export function potentialFodder(state: AccountState, wild: WildInstance): WildInstance[] {
-  const inSquad = new Set<string>();
-  for (const squad of Object.values(state.squads)) {
-    for (const id of squad) if (id) inSquad.add(id);
-  }
-  return state.roster
-    .filter(
-      (copy) =>
-        copy.id !== wild.id &&
-        copy.speciesId === wild.speciesId &&
-        !copy.locked &&
-        !inSquad.has(copy.id),
-    )
-    .sort((a, b) => a.level - b.level || a.stars - b.stars || a.id.localeCompare(b.id));
-}
-
-/** Potential Shards charged for a tier; re-picks use the flat respec fee. */
-export function talentShardCost(
-  tier: number,
-  collection: GameConfig['collection'],
-  respec: boolean,
-): number {
-  return respec ? collection.potential.respecShardFee : collection.potential.shardBase + tier * collection.potential.shardPerTier;
-}
-
-/** Shards returned by a full reset: every sequential tier that was bought. */
-export function talentResetRefund(loadout: Loadout, collection: GameConfig['collection']): number {
-  const spent = loadout.talents.filter((value) => value >= 0).length;
-  let refund = 0;
-  for (let tier = 0; tier < spent; tier += 1) {
-    refund += collection.potential.shardBase + tier * collection.potential.shardPerTier;
-  }
-  return refund;
-}
 
 /** Orb Essence that replaces the duplicate copies for a level-up. */
 export function orbEssenceCost(level: number, collection: GameConfig['collection']): number {
@@ -299,7 +236,6 @@ function effectTextMap(tables: EquipmentTables): Map<string, string> {
   const map = new Map<string, string>();
   for (const relic of tables.relics) for (const fx of relic.skill?.effects ?? []) map.set(fx.tag, relic.skill!.text);
   for (const set of tables.coreSets) for (const bonus of set.bonuses) if (bonus.effect) map.set(bonus.effect.tag, bonus.effect.text);
-  for (const block of tables.talentBlocks) if (block.effect) map.set(block.effect.tag, block.effect.text);
   return map;
 }
 
@@ -340,7 +276,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     'runes',
     'charms',
     'cores',
-    'talents',
   ];
   const layerPower = {} as Record<keyof LayerDelta, number>;
   for (const key of layerKeys) {
@@ -506,19 +441,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
       };
     });
 
-  const trees: TalentTreeOption[] = tables.talentTrees.map((t) => ({ id: t.id, name: t.name, className: t.className }));
-  const tree = loadout.treeId ? tables.talentTrees.find((t) => t.id === loadout.treeId) : undefined;
-  const talentTiers: TalentTierView[] = tree
-    ? tree.tiers.map((options, tier) => ({
-        tier,
-        options: options.map((blockId, option) => ({
-          blockId,
-          text: tables.talentBlocks.find((b) => b.id === blockId)?.text ?? blockId,
-          chosen: (loadout.talents[tier] ?? -1) === option,
-        })),
-      }))
-    : [];
-
   const textMap = effectTextMap(tables);
 
   return {
@@ -541,14 +463,12 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
       runes: runesUnlocked(wild.stars, tuning),
       charms: charmsUnlocked(wild.stars, tuning),
       cores: coresUnlocked(wild.stars, tuning),
-      talents: meta ? talentsUnlocked(meta.tier, tuning) : false,
     },
     requirements: {
       relic: tuning.relic.minTier,
       runes: tuning.runes.minStars,
       charms: tuning.charms.minStars,
       cores: tuning.cores.minStars,
-      talents: tuning.talents.minTier,
     },
     loadout,
     relics,
@@ -570,17 +490,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     starShards: state.currencies.starShard ?? 0,
     charmSlots: tuning.charms.slots,
     charms,
-    trees,
-    talentTiers,
-    fodderCount: potentialFodder(state, wild).length,
-    potentialShards: state.currencies.potentialShard ?? 0,
-    talentResetRefund: talentResetRefund(loadout, config.collection),
     costs: {
-      talentShardBase: config.collection.potential.shardBase,
-      talentShardPerTier: config.collection.potential.shardPerTier,
-      talentRespecShards: config.collection.potential.respecShardFee,
-      talentFodderPerTier: config.collection.potential.fodderPerTier,
-      talentResetGems: config.collection.potential.resetGems,
       runeCopiesPerLevel: config.collection.orbs.copiesPerLevel,
       charmUpgradeCopies: config.collection.berries.upgradeCopies,
     },

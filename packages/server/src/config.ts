@@ -29,8 +29,7 @@ import {
   RUNES,
   TRINKETS,
   RUNE_SETS,
-  TALENT_BLOCKS,
-  TALENT_TREES,
+  POTENTIAL,
 } from '@wildbound/content';
 import type {
   CampaignJson,
@@ -65,6 +64,7 @@ import {
   type Tier,
   type WildClass,
   type XpCurve,
+  type PotentialTable,
 } from '@wildbound/engine';
 
 /** Everything the LocalServer needs, lifted from content and injectable in tests. */
@@ -129,8 +129,10 @@ export interface GameConfig {
   economy: EconomyJson;
   /** M7 equipment catalogue + tuning. */
   equipment: EquipmentTables;
-  /** M11 collection costs (Potential now; later layers add their own blocks). */
+  /** M11 collection costs. */
   collection: CollectionJson;
+  /** R4: the source's Potential (trees, costs, options). */
+  potential: PotentialTable;
   /** M8 PvE mode tables (tower, trials, world boss, dungeons, link crystal). */
   pve: PveJson;
   pvp: PvpJson;
@@ -185,6 +187,7 @@ export function buildConfig(): GameConfig {
     shops: SHOPS as unknown as ShopDef[],
     economy: ECONOMY,
     collection: COLLECTION_TUNING,
+    potential: POTENTIAL as unknown as PotentialTable,
     equipment: {
       relics: RELICS as unknown as RelicDef[],
       held: HELD_TABLES as unknown as HeldTables,
@@ -194,8 +197,6 @@ export function buildConfig(): GameConfig {
       runeSets: RUNE_SETS,
       charms: CHARMS,
       coreSets: CORE_SETS,
-      talentBlocks: TALENT_BLOCKS,
-      talentTrees: TALENT_TREES,
       tuning: EQUIPMENT_TUNING,
     },
     pve: PVE,

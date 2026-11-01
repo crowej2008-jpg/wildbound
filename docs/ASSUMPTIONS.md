@@ -814,4 +814,15 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     SKILL kits' own "generate 1/2 additional Rage" talent (+500, 33 kits, from the owner's sheet) still
     stacks on top. Settings: `ragePerAction` 125, `ragePerActionByClass` `{ adept: 250 }`. Golden
     replays squad-camp and tidewarden re-exported.
+64. **R4 Potential readings** (source data copied exactly; these are the readings the data leaves open).
+    "Allies deployed" (tier 1, tier 4) counts the *other* Pokémon in the lineup; "allies alive" (tier 7)
+    counts the Pokémon itself, re-checked at battle start, each round start and when an ally falls.
+    "Until its next action" lasts through the holder's next action. "After attacking" options (Hawk Eye,
+    Curse) mark the action's first target; Tit for Tat adds a hit of v × its lost HP to the ultimate's
+    first target. Area Attack's 破挡 is Guard Break (kb: inferred). Potential does not change the shown
+    Power yet (how the source counts it is unknown). Fodder is picked automatically like Evolve (lowest
+    level first); squad members and Pokémon with developed Potential are never taken (the source leaves
+    the latter open); Potential Cores cover what Pokémon can't, where allowed. A reset returns the
+    fodder as Lv 1 copies at the star they were taken at (the source's "all potential training
+    materials"). Potential Cores have no source until R9.
 

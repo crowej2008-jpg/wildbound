@@ -93,7 +93,7 @@ const targetSelSchema = z
   })
   .strict();
 
-const combatFieldSchema = z.enum([
+export const combatFieldSchema = z.enum([
   'hp',
   'pAtk',
   'sAtk',

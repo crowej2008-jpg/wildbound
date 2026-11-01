@@ -1,108 +1,134 @@
+import { useCallback, useEffect, useState } from 'react';
+import type { PotentialFodderView, PotentialView } from '@wildbound/server';
 import { t } from '../../i18n';
-import type { GearPanelProps } from './types';
+import { useServer } from '../../server/ServerProvider';
 
-export default function PotentialPanel({ wildId, view, className, busy, run, reload }: GearPanelProps) {
-  if (!view.unlocks.talents) {
+/**
+ * R4: the source's Potential — nine tiers of three options. A tier opens at 6 + N stars; Unlock
+ * takes its fodder and Potential Shards (option at Lv 1), Level Up takes it to Lv 6 with shards.
+ */
+function fodderText(f: PotentialFodderView): string {
+  const who = f.req.own ? t('gear.potential.ownCopy') : f.req.faction ? t(`faction.${f.req.faction}`) : t('gear.potential.any');
+  return `${f.have}/${f.req.count} × ${f.req.star}★ ${who}`;
+}
+
+export default function PotentialPanel({ wildId, onChange }: { wildId: string; onChange?: () => Promise<unknown> }) {
+  const { call, run, busy } = useServer();
+  const [view, setView] = useState<PotentialView | null>(null);
+  const [choice, setChoice] = useState<Record<number, number>>({});
+
+  const reload = useCallback(async () => {
+    const result = await call((server) => server.getPotential(wildId));
+    if (result.ok) setView(result.value);
+  }, [call, wildId]);
+
+  useEffect(() => {
+    void reload();
+  }, [reload]);
+
+  const act = async (action: Parameters<typeof run>[0]) => {
+    if (await run(action)) {
+      await reload();
+      await onChange?.();
+    }
+  };
+
+  if (!view) return <section className="card"><p className="muted">{t('gear.potential.loading')}</p></section>;
+  if (!view.hasTree) return <section className="card"><p className="muted">{t('gear.potential.none')}</p></section>;
+  if (!view.panelOpen) {
     return (
       <section className="card">
         <p className="muted">
-          {t('gear.locked')} {view.requirements.talents}
+          {t('gear.potential.opensAt')} {view.tiers[0]?.unlockStar}★
         </p>
       </section>
     );
   }
 
-  const act = async (action: Parameters<GearPanelProps['run']>[0]) => {
-    if (await run(action)) await reload();
-  };
-  const trees = view.trees.filter((tree) => tree.className === className);
-  const current = view.loadout.treeId;
-  const firstOpen = view.loadout.talents.findIndex((picked) => picked < 0);
-
+  const developed = view.tiers.some((tier) => tier.pick !== null);
   return (
     <section className="card">
       <p className="muted">
-        {t('gear.potential.path')}: {current ? trees.find((tree) => tree.id === current)?.name ?? current : t('gear.potential.choose')}
+        {t('gear.potential.shards')}: {view.shards.toLocaleString()} · {t('gear.potential.cores')}: {view.cores}
       </p>
-      <p className="muted">
-        {t('gear.potential.duplicates')}: {view.fodderCount} · {t('gear.potential.shards')}: {view.potentialShards.toLocaleString()}
-      </p>
-      <div className="chip-list">
-        {trees.map((tree) => (
-          <button
-            key={tree.id}
-            type="button"
-            className={current === tree.id ? 'chip chip-active' : 'chip'}
-            disabled={busy}
-            onClick={() => {
-              if (current === tree.id) return;
-              if (current && !window.confirm(t('gear.potential.switch'))) return;
-              void act((server) => server.chooseTalentTree(wildId, tree.id));
-            }}
-          >
-            {tree.name}
-          </button>
-        ))}
-        {current && (
-          <button
-            type="button"
-            className="btn"
-            disabled={busy}
-            onClick={() => void act((server) => server.resetTalents(wildId))}
-          >
-            {t('gear.potential.reset')} · {view.costs.talentResetGems} {t('currency.gems')} · +
-            {view.talentResetRefund} {t('currency.potentialShard')}
-          </button>
-        )}
-      </div>
-
-      {current && (
-        <ul className="gear-list">
-          {view.talentTiers.map((tier) => {
-            const pickable = firstOpen === -1 || tier.tier <= firstOpen;
-            const alreadyPicked = tier.options.some((option) => option.chosen);
-            const cost = alreadyPicked
-              ? view.costs.talentRespecShards
-              : view.costs.talentShardBase + tier.tier * view.costs.talentShardPerTier;
-            const shortOnShards = view.potentialShards < cost;
-            const shortOnFodder = !alreadyPicked && view.fodderCount < view.costs.talentFodderPerTier;
-            return (
-              <li key={tier.tier} className="gear-row">
-                <div className="gear-head">
-                  <strong>
-                    {t('gear.potential.tier')} {tier.tier + 1}
-                  </strong>
-                  <span className="chip">
-                    {alreadyPicked ? t('gear.potential.respec') : t('gear.potential.cost')} {cost.toLocaleString()}{' '}
-                    {t('currency.potentialShard')}
-                  </span>
-                  {!alreadyPicked && (
-                    <span className="chip">
-                      {t('gear.potential.fodder')} {view.costs.talentFodderPerTier}
-                    </span>
-                  )}
-                  {!pickable && <span className="chip">{t('gear.potential.locked')}</span>}
-                  {pickable && (shortOnShards || shortOnFodder) && (
-                    <span className="chip">{t('gear.potential.short')}</span>
-                  )}
-                </div>
+      <ul className="gear-list">
+        {view.tiers.map((tier) => {
+          const picked = tier.pick;
+          const selected = picked?.option ?? choice[tier.tier] ?? 0;
+          return (
+            <li key={tier.tier} className="gear-row" data-testid={`potential-tier-${tier.tier + 1}`}>
+              <div className="gear-head">
+                <strong>
+                  {t('gear.potential.tier')} {tier.tier + 1}
+                </strong>
+                <span className="chip">{tier.unlockStar}★</span>
+                {picked && <span className="chip">Lv.{picked.lv}/6</span>}
+                {!tier.open && <span className="chip">{t('gear.potential.locked')}</span>}
+              </div>
+              <div className="row-actions">
+                {tier.options.map((option, index) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    className={selected === index ? 'chip chip-active' : 'chip'}
+                    disabled={busy || picked !== null || !tier.open}
+                    aria-pressed={selected === index}
+                    onClick={() => setChoice((c) => ({ ...c, [tier.tier]: index }))}
+                  >
+                    {option.name}
+                  </button>
+                ))}
+              </div>
+              <p className={picked ? '' : 'muted'}>{tier.options[selected]?.text}</p>
+              {picked ? (
                 <div className="row-actions">
-                  {tier.options.map((option, index) => (
+                  {tier.levelShards === null ? (
+                    <span className="muted">{t('gear.potential.maxed')}</span>
+                  ) : (
                     <button
-                      key={option.blockId}
                       type="button"
-                      className={option.chosen ? 'chip chip-active' : 'chip'}
-                      disabled={busy || !pickable || (!option.chosen && (shortOnShards || shortOnFodder))}
-                      onClick={() => void act((server) => server.allocateTalent(wildId, tier.tier, index))}
+                      className="btn"
+                      disabled={busy || view.shards < tier.levelShards}
+                      onClick={() => void act((server) => server.levelPotential(wildId, tier.tier))}
                     >
-                      {option.text}
+                      {t('gear.potential.levelUp')} · {tier.levelShards.toLocaleString()} {t('currency.potentialShard')}
                     </button>
-                  ))}
+                  )}
                 </div>
-              </li>
-            );
-          })}
-        </ul>
+              ) : (
+                tier.open && (
+                  <div className="row-actions">
+                    <span className="muted">
+                      {tier.fodder.map(fodderText).join(' · ')}
+                      {tier.coresNeeded > 0 && ` · ${t('gear.potential.coresNeeded')} ${tier.coresNeeded}`}
+                    </span>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      disabled={busy || !tier.canUnlock}
+                      onClick={() => void act((server) => server.unlockPotential(wildId, tier.tier, selected))}
+                    >
+                      {t('gear.potential.unlock')} · {tier.unlockShards.toLocaleString()} {t('currency.potentialShard')}
+                    </button>
+                  </div>
+                )
+              )}
+            </li>
+          );
+        })}
+      </ul>
+      {developed && (
+        <button
+          type="button"
+          className="btn"
+          disabled={busy || view.gems < view.resetGems}
+          onClick={() => {
+            if (!window.confirm(t('gear.potential.resetConfirm'))) return;
+            void act((server) => server.resetPotential(wildId));
+          }}
+        >
+          {t('gear.potential.reset')} · {view.resetGems} {t('currency.gems')}
+        </button>
       )}
     </section>
   );

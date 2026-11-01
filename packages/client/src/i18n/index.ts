@@ -31,6 +31,7 @@ export const en = {
   'currency.islandCoin': 'Island Coins',
   'currency.wildCoin': 'Wild Coins',
   'currency.potentialShard': 'Potential Shards',
+  'currency.potentialCore': 'Potential Core',
   'currency.orbEssence': 'Orb Essence',
   'currency.soulHeartExp': 'Soul-heart EXP',
   'currency.berryEssence': 'Berry Essence',
@@ -112,20 +113,21 @@ export const en = {
   'gear.orbs.essence': 'Use Orb Essence',
   'gear.orbs.balance': 'Orb Essence',
   'gear.orbs.need': 'Need',
-  'gear.potential.path': 'Path',
-  'gear.potential.choose': 'Choose a path',
-  'gear.potential.reset': 'Reset Potential',
-  'gear.potential.switch': 'Changing path resets the ladder and refunds its Shards. Continue?',
-  'gear.potential.allocate': 'Allocate',
+  'gear.potential.loading': 'Loading Potential…',
+  'gear.potential.none': 'Rare and Epic Pokémon have no Potential.',
+  'gear.potential.opensAt': 'Potential opens at',
   'gear.potential.tier': 'Tier',
-  'gear.potential.chosen': 'Chosen',
   'gear.potential.locked': 'Locked',
-  'gear.potential.duplicates': 'Duplicates',
   'gear.potential.shards': 'Potential Shards',
-  'gear.potential.cost': 'Cost',
-  'gear.potential.respec': 'Re-pick',
-  'gear.potential.fodder': 'Uses duplicates',
-  'gear.potential.short': 'Not enough materials',
+  'gear.potential.cores': 'Potential Cores',
+  'gear.potential.coresNeeded': 'Potential Cores',
+  'gear.potential.ownCopy': 'own copy',
+  'gear.potential.any': 'any',
+  'gear.potential.unlock': 'Unlock',
+  'gear.potential.levelUp': 'Level up',
+  'gear.potential.maxed': 'Maxed',
+  'gear.potential.reset': 'Reset Potential',
+  'gear.potential.resetConfirm': 'Reset all of this Pokémon\'s Potential? Shards, Cores and fodder Pokémon come back.',
   'gear.berry.upgrade': 'Star up',
   'gear.berry.copies': 'copies',
   'gear.berry.dismantle': 'Dismantle',
@@ -894,6 +896,7 @@ export type CurrencyKey =
   | 'islandCoin'
   | 'wildCoin'
   | 'potentialShard'
+  | 'potentialCore'
   | 'orbEssence'
   | 'soulHeartExp'
   | 'berryEssence'
@@ -921,6 +924,7 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   islandCoin: en['currency.islandCoin'],
   wildCoin: en['currency.wildCoin'],
   potentialShard: en['currency.potentialShard'],
+  potentialCore: en['currency.potentialCore'],
   orbEssence: en['currency.orbEssence'],
   soulHeartExp: en['currency.soulHeartExp'],
   berryEssence: en['currency.berryEssence'],

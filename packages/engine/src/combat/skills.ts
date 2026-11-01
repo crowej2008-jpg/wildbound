@@ -112,6 +112,7 @@ function resolveCast(
         hpShare: skill.damageType === 'hpShare',
         trueDmg: outcome.trueDmg,
         ignoreShield: skill.ignoreShield || u.buffs.some((b) => b.kind === 'puncture'),
+        slot: skill.slot,
       });
       hitDamages.push(dealt);
       ctx.castDamage.set(t.key, (ctx.castDamage.get(t.key) ?? 0) + dealt);

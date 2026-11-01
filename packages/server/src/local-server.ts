@@ -1,4 +1,11 @@
 import {
+  levelPotentialAction,
+  potentialView,
+  resetPotentialAction,
+  unlockPotentialAction,
+  type PotentialView,
+} from './potential';
+import {
   addQuestProgress,
   addRewards,
   autoFormation as runAutoFormation,
@@ -158,8 +165,6 @@ import {
   type OriginSkillsView,
 } from './shards';
 import {
-  allocateTalentAction,
-  chooseTreeAction,
   consumeCharms,
   dismantleCharmAction,
   equipCharmAction,
@@ -173,7 +178,6 @@ import {
   lockRelicAction,
   dismantleRelicsAction,
   compoundResettersAction,
-  resetTalentsAction,
   starUpCoreAction,
   upgradeCharmAction,
   consumeFodder,
@@ -856,16 +860,25 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) => levelRuneAction(this.config, state, instanceId, useEssence));
   }
 
-  async chooseTalentTree(wildId: string, treeId: string | null): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => chooseTreeAction(this.config, state, wildId, treeId));
+  // --- R4 Potential ---------------------------------------------------------
+
+  async getPotential(wildId: string): Promise<Result<PotentialView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const view = potentialView(this.config, loaded.value, wildId);
+    return view ? ok(view) : fail('not_found', `no Wild ${wildId}`);
   }
 
-  async allocateTalent(wildId: string, tier: number, option: number): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => allocateTalentAction(this.config, state, wildId, tier, option));
+  async unlockPotential(wildId: string, tier: number, option: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => unlockPotentialAction(this.config, state, wildId, tier, option));
   }
 
-  async resetTalents(wildId: string): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => resetTalentsAction(this.config, state, wildId));
+  async levelPotential(wildId: string, tier: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => levelPotentialAction(this.config, state, wildId, tier));
+  }
+
+  async resetPotential(wildId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => resetPotentialAction(this.config, state, wildId, this.now(state)));
   }
 
   // --- M8 PvE modes --------------------------------------------------------

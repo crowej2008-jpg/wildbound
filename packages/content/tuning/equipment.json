@@ -17,13 +17,6 @@
     "pieceMinStars": 2,
     "pieceMaxStars": 5
   },
-  "talents": {
-    "minTier": "legendary",
-    "tiers": 9,
-    "optionsPerTier": 3,
-    "resetGems": 50,
-    "allocateGold": 500
-  },
   "runeLevelCost": {
     "gold": 300,
     "goldPerLevel": 200

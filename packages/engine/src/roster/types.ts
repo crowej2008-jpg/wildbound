@@ -65,6 +65,8 @@ export type CurrencyId =
   | 'wildCoin'
   // M11 collection materials.
   | 'potentialShard'
+  // R4: item 10061, stands in for a Potential fodder Pokémon on 21 Pokémon (tiers 5–9).
+  | 'potentialCore'
   | 'orbEssence'
   | 'soulHeartExp'
   | 'berryEssence'
@@ -93,6 +95,7 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'islandCoin',
   'wildCoin',
   'potentialShard',
+  'potentialCore',
   'orbEssence',
   'soulHeartExp',
   'berryEssence',
@@ -109,6 +112,7 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
 /** M11 materials shown on the Trainer screen and spent by the collection layers. */
 export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'potentialShard',
+  'potentialCore',
   'orbEssence',
   'soulHeartExp',
   'berryEssence',
@@ -134,6 +138,7 @@ export const HUD_CURRENCY_IDS: readonly CurrencyId[] = [
 ];
 
 import type { EquipmentState, Loadout } from '../equipment/types';
+import type { PotentialState } from '../potential/types';
 
 /** One owned Wild (an *instance*, so duplicates of a species are separate). */
 export interface WildInstance {
@@ -186,6 +191,8 @@ export interface AccountState {
   equipment: EquipmentState;
   /** M7 per-Wild loadouts, keyed by WildInstance id. */
   loadouts: Record<string, Loadout>;
+  /** R4: Potential per Wild (instance id): nine tiers of picks plus what was paid. */
+  potential: Record<string, PotentialState>;
   /** M11.7 plate stage per Wild (element-keyed); absent means stage 0. */
   plates: Record<string, number>;
   /** M11.8 signature trinket level per species id; absent means level 0. */

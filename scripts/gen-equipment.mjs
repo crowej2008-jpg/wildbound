@@ -163,60 +163,12 @@ const coreSets = coreSetNames.map((name, i) => {
 });
 
 // --- Talents: 15 shared trees assembled from reusable blocks ----------------
-const talentBlocks = [
-  { id: 't-strong', text: 'Trained for power', lines: [core('pAtk', 60)] },
-  { id: 't-focus', text: 'Focused casting', lines: [core('sAtk', 60)] },
-  { id: 't-vigour', text: 'Deep reserves', lines: [core('hp', 420)] },
-  { id: 't-plate', text: 'Reinforced hide', lines: [core('pDef', 50)] },
-  { id: 't-keen', text: 'Keen eye', lines: [pct('crit', 0.03)] },
-  { id: 't-brutal', text: 'Brutal strikes', lines: [pct('critPower', 0.15)] },
-  { id: 't-press', text: 'Relentless', lines: [pct('dmgBoost', 0.04)] },
-  { id: 't-endure', text: 'Enduring', lines: [pct('dmgRdct', 0.03)] },
-  { id: 't-mend', text: 'Mending touch', lines: [pct('healBoost', 0.06)] },
-  { id: 't-wall', text: 'Shield wall', lines: [pct('block', 0.05)] },
-  { id: 't-spirit', text: 'Spirit surge', lines: [soul('spiritAtk', 40)] },
-  { id: 't-soulward', text: 'Soul ward', lines: [soul('spiritDef', 40)] },
-  { id: 't-swift', text: 'Swift', lines: [core('spd', 6)] },
-  { id: 't-skill', text: 'Sharpened skills', lines: [pct('skillBoost', 0.05)] },
-  { id: 't-ult', text: 'Focused ultimate', lines: [pct('ultBoost', 0.05)] },
-];
-
-const pools = {
-  striker: ['t-strong', 't-keen', 't-brutal', 't-press', 't-keen', 't-ult', 't-brutal', 't-spirit', 't-swift'],
-  guardian: ['t-vigour', 't-plate', 't-wall', 't-endure', 't-plate', 't-mend', 't-wall', 't-soulward', 't-vigour'],
-  adept: ['t-focus', 't-keen', 't-skill', 't-ult', 't-keen', 't-mend', 't-skill', 't-spirit', 't-soulward'],
-};
-
-const talentTreeNames = {
-  striker: ['Ashpike Discipline', 'Razorwing Discipline', 'Bloodmoon Discipline', 'Thunderstep Discipline', 'Ravager Discipline'],
-  guardian: ['Bulwark Discipline', 'Ironshell Discipline', 'Bastion Discipline', 'Stonewarden Discipline', 'Aegis Discipline'],
-  adept: ['Runeweaver Discipline', 'Starcall Discipline', 'Veilbrand Discipline', 'Oracle Discipline', 'Dreamroot Discipline'],
-};
-
-const talentTrees = [];
-for (const className of CLASSES) {
-  const pool = pools[className];
-  talentTreeNames[className].forEach((name, ti) => {
-    talentTrees.push({
-      id: `tree-${className}-${ti + 1}`,
-      name,
-      className,
-      tiers: Array.from({ length: 9 }, (_, tier) => {
-        const a = pool[(tier + ti) % pool.length];
-        const b = pool[(tier + ti + 3) % pool.length];
-        const c = pool[(tier + ti + 6) % pool.length];
-        return [a, b, c];
-      }),
-    });
-  });
-}
-
 const write = (file, data) => writeFileSync(join(outDir, file), JSON.stringify(data, null, 2) + '\n');
 writeFileSync(join(outDir, 'relics.json'), JSON.stringify({ relics }, null, 2) + '\n');
 writeFileSync(join(outDir, 'runes.json'), JSON.stringify({ runes, sets: runeSets.map(({ id, name, tier, bonus }) => ({ id, name, pieces: 3, lines: [bonus] })) }, null, 2) + '\n');
 writeFileSync(join(outDir, 'charms.json'), JSON.stringify({ charms }, null, 2) + '\n');
 writeFileSync(join(outDir, 'cores.json'), JSON.stringify({ sets: coreSets }, null, 2) + '\n');
-writeFileSync(join(outDir, 'talents.json'), JSON.stringify({ blocks: talentBlocks, trees: talentTrees }, null, 2) + '\n');
+// R4: talents.json (the M7 stand-in Potential) is gone — scripts/import-potential.mjs writes the source's.
 
 // --- tuning -----------------------------------------------------------------
 const tuning = {
@@ -224,7 +176,6 @@ const tuning = {
   runes: { minStars: 3, sockets: 4, maxLevel: 6 },
   charms: { minStars: 4, slots: 1 },
   cores: { minStars: 10, sockets: 6, pieceMinStars: 2, pieceMaxStars: 5 },
-  talents: { minTier: 'legendary', tiers: 9, optionsPerTier: 3, resetGems: 50, allocateGold: 500 },
   relicLevelCost: { gold: 400, candy: 60, goldPerLevel: 300, candyPerLevel: 40 },
   relicRefineCost: { gold: 800, stone: 1, goldPerRefine: 400, stonePerRefine: 1 },
   runeLevelCost: { gold: 300, goldPerLevel: 200 },
@@ -240,4 +191,4 @@ const tuning = {
   },
 };
 writeFileSync(join(root, 'packages/content/tuning/equipment.json'), JSON.stringify(tuning, null, 2) + '\n');
-console.log('wrote', relics.length, 'relics,', runes.length, 'runes,', charms.length, 'charms,', coreSets.length, 'core sets,', talentTrees.length, 'talent trees');
+console.log('wrote', relics.length, 'relics,', runes.length, 'runes,', charms.length, 'charms,', coreSets.length, 'core sets');

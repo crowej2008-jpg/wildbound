@@ -14,6 +14,7 @@ import type { BattleView } from './battle';
 import type { GachaView } from './gacha';
 import type { ShopView } from './shops';
 import type { OriginSkillsView } from './shards';
+import type { PotentialView } from './potential';
 import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import type { ExploreView } from './explore-view';
@@ -292,6 +293,14 @@ export interface GameServer {
   dismantleCharm(charmId: string): Promise<Result<AccountSnapshot>>;
   /** E4: spend a species' own shards on a new copy of it. */
   composeWild(speciesId: string): Promise<Result<AccountSnapshot>>;
+  /** R4: a Pokémon's Potential panel (nine tiers, costs, fodder). */
+  getPotential(wildId: string): Promise<Result<PotentialView>>;
+  /** R4: unlock a Potential tier with one of its three options (pays fodder + Potential Shards). */
+  unlockPotential(wildId: string, tier: number, option: number): Promise<Result<AccountSnapshot>>;
+  /** R4: raise an unlocked Potential option one level (Potential Shards). */
+  levelPotential(wildId: string, tier: number): Promise<Result<AccountSnapshot>>;
+  /** R4: reset all of a Pokémon's Potential for Diamonds; everything paid comes back. */
+  resetPotential(wildId: string): Promise<Result<AccountSnapshot>>;
   /** E4: raise one of an Origin's skill rows (ult / basic / passive / talent4) with its own shards. */
   upgradeOriginSkill(wildId: string, row: SkillRow): Promise<Result<AccountSnapshot>>;
   /** E4: an Origin's skill levels, texts and prices (null for ordinary Pokémon). */
@@ -323,12 +332,6 @@ export interface GameServer {
   setTitleSlot(slot: TitleSlot, titleId: string | null): Promise<Result<AccountSnapshot>>;
   /** Level a rune (M7). */
   levelRune(instanceId: string, useEssence?: boolean): Promise<Result<AccountSnapshot>>;
-  /** Pick (or clear, with `null`) a talent path (M7). */
-  chooseTalentTree(wildId: string, treeId: string | null): Promise<Result<AccountSnapshot>>;
-  /** Allocate one talent option on a tier (M7). */
-  allocateTalent(wildId: string, tier: number, option: number): Promise<Result<AccountSnapshot>>;
-  /** Reset a Wild's talents for gems (gold is refunded) (M7). */
-  resetTalents(wildId: string): Promise<Result<AccountSnapshot>>;
   /** Display-ready tower state: floor, weekly climbs, daily sweeps, milestones (M8). */
   getTower(): Promise<Result<TowerView>>;
   /** Climb the next tower floor with the tower squad (M8). */
@@ -431,6 +434,7 @@ export * from './equipment';
 export * from './equipment-view';
 export * from './growth';
 export * from './shards';
+export * from './potential';
 export * from './pve';
 export * from './pve-view';
 export * from './pvp';

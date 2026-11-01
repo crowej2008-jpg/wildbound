@@ -50,6 +50,12 @@ export function evalCondition(
     const n = ctx.units.filter((u) => u.alive && u.side !== self.side).length;
     if (n < cond.enemiesAtLeast) return false;
   }
+  if (cond.alliesAliveAtLeast !== undefined || cond.alliesAliveBelow !== undefined) {
+    const n = ctx.units.filter((u) => u.alive && u.side === self.side).length;
+    if (cond.alliesAliveAtLeast !== undefined && n < cond.alliesAliveAtLeast) return false;
+    if (cond.alliesAliveBelow !== undefined && n >= cond.alliesAliveBelow) return false;
+  }
+  if (cond.eventSlot !== undefined && ctx.eventSlot !== cond.eventSlot) return false;
   if (cond.otherAlliesAtMost !== undefined) {
     const n = ctx.units.filter((u) => u.alive && u.side === self.side && u !== self).length;
     if (n > cond.otherAlliesAtMost) return false;

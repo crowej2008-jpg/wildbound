@@ -290,24 +290,6 @@ export const coresSchema = z.object({
   ),
 });
 
-export const talentsSchema = z.object({
-  blocks: z.array(
-    z.object({
-      id: z.string().min(1),
-      text: z.string().min(1),
-      lines: z.array(statLineSchema),
-      effect: effectSchema.optional(),
-    }),
-  ),
-  trees: z.array(
-    z.object({
-      id: z.string().min(1),
-      name: z.string().min(1),
-      className: z.enum(CLASSES),
-      tiers: z.array(z.array(z.string().min(1)).length(3)).length(9),
-    }),
-  ),
-});
 
 export const equipmentTuningSchema = z.object({
   relic: z.object({ minTier: z.enum(TIERS) }),
@@ -318,13 +300,6 @@ export const equipmentTuningSchema = z.object({
     sockets: z.number().int().min(1),
     pieceMinStars: z.number().int().min(1),
     pieceMaxStars: z.number().int().min(1),
-  }),
-  talents: z.object({
-    minTier: z.enum(TIERS),
-    tiers: z.number().int().min(1),
-    optionsPerTier: z.number().int().min(1),
-    resetGems: z.number().int().min(0),
-    allocateGold: z.number().int().min(0),
   }),
   runeLevelCost: z.object({ gold: z.number(), goldPerLevel: z.number() }),
   starting: z.object({
@@ -343,6 +318,4 @@ export type RuneJson = z.infer<typeof runesSchema>['runes'][number];
 export type RuneSetJson = z.infer<typeof runesSchema>['sets'][number];
 export type CharmJson = z.infer<typeof charmsSchema>['charms'][number];
 export type CoreSetJson = z.infer<typeof coresSchema>['sets'][number];
-export type TalentBlockJson = z.infer<typeof talentsSchema>['blocks'][number];
-export type TalentTreeJson = z.infer<typeof talentsSchema>['trees'][number];
 export type EquipmentTuningJson = z.infer<typeof equipmentTuningSchema>;

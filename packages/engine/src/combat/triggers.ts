@@ -3,7 +3,7 @@ import { evalCondition } from './conditions';
 import { addRage } from './rage';
 import { applyEffectList } from './effects';
 import { scaleBuff } from './scaling';
-import type { BattleContext, Combatant, TriggerDef, TriggerOn } from './types';
+import type { BattleContext, Combatant, TriggerDef, TriggerOn, SkillSlot } from './types';
 
 /**
  * Talent triggers (M9.4). A trigger is gated by its own condition, HP threshold,
@@ -15,7 +15,7 @@ export function fireTriggers(
   ctx: BattleContext,
   self: Combatant,
   on: TriggerOn,
-  opts: { target?: Combatant; amount?: number; actor?: Combatant } = {},
+  opts: { target?: Combatant; amount?: number; actor?: Combatant; slot?: SkillSlot } = {},
 ): void {
   const kitList = self.kit.talents?.triggers ?? [];
   const list = self.triggers && self.triggers.length > 0 ? [...kitList, ...self.triggers] : kitList;
@@ -31,9 +31,12 @@ export function fireTriggers(
       if (on !== 'onDeath' && !self.alive) continue;
       if (t.condition) {
         const prevActor = ctx.eventActor;
+        const prevSlot = ctx.eventSlot;
         ctx.eventActor = opts.actor;
+        ctx.eventSlot = opts.slot;
         const ok = evalCondition(t.condition, ctx, self, opts.target);
         ctx.eventActor = prevActor;
+        ctx.eventSlot = prevSlot;
         if (!ok) continue;
       }
 

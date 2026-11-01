@@ -20,11 +20,12 @@ function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment }
     version: E2E_SAVE_VERSION,
     state: {
       profile: { name: 'Gear Tester', level: 1, xp: 0, ...profile },
-      roster: roster.map((speciesId, index) => ({
+      // `species@stars` sets a star (fodder); the default is 10★.
+      roster: roster.map((entry, index) => ({
         id: `w${index + 1}`,
-        speciesId,
+        speciesId: entry.split('@')[0],
         level: 40,
-        stars: 10,
+        stars: Number(entry.split('@')[1] ?? 10),
         locked: false,
         acquiredAt: 0,
       })),
@@ -329,11 +330,25 @@ test('Soul-hearts activate a 2-piece set and star up with EXP', async ({ page })
   await expect(page.getByText('Soul-heart EXP: 920')).toBeVisible();
 });
 
-test('Potential eats a duplicate copy and raises Power', async ({ page }) => {
+test('Potential: tier 1 takes three 3★ Fire Pokémon and 20,000 shards, then levels', async ({ page }) => {
   await importSave(page, {
-    roster: ['mimikyu', ...ROSTER],
-    currencies: { potentialShard: 1_000 },
+    roster: ['mimikyu', ...ROSTER, 'ninetales@3', 'ninetales@3', 'ninetales@3'],
+    currencies: { potentialShard: 100_000 },
   });
+  await page.goto('/wilds');
+  await page.locator('.roster-item').first().click();
+  await page.getByRole('button', { name: 'Potential', exact: true }).click();
+
+  const tier1 = page.getByTestId('potential-tier-1');
+  await expect(tier1).toContainText('3/3 × 3★ Fire');
+  await tier1.getByRole('button', { name: 'Victory Star', exact: true }).click();
+  await tier1.getByRole('button', { name: /Unlock · 20,000/ }).click();
+  await expect(tier1).toContainText('Lv.1/6');
+  await expect(page.getByText(/Potential Shards: 80,000/)).toBeVisible();
+  await tier1.getByRole('button', { name: /Level up · 26,000/ }).click();
+  await expect(tier1).toContainText('Lv.2/6');
+  await expect(page.getByTestId('potential-tier-5')).toContainText('Locked');
+});
   await page.goto('/wilds');
   await page.locator('.roster-item').first().click();
   const power = () =>

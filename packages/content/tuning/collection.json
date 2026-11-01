@@ -1,66 +1,108 @@
 {
-  "potential": {
-    "fodderPerTier": 1,
-    "shardBase": 20,
-    "shardPerTier": 10,
-    "respecShardFee": 5,
-    "resetGems": 50
-  },
-  "orbs": {
-    "copiesPerLevel": 2,
-    "essenceBase": 20,
-    "essencePerLevel": 10
-  },
-  "soulhearts": {
-    "expBase": 40,
-    "expPerStar": 40
-  },
-  "berries": {
-    "upgradeCopies": 2,
-    "upgradeEssenceBase": 20,
-    "upgradeEssencePerStar": 20,
-    "dismantleEssence": {
-      "common": 5,
-      "basic": 10,
-      "intermediate": 20,
-      "greater": 40
-    }
-  },
-  "plates": {
-    "maxStage": 20,
-    "bottleBase": 10,
-    "bottlePerStage": 5,
-    "fragmentCost": 375,
-    "skillSwapStage": 6
-  },
-  "trinkets": {
-    "maxLevel": 40,
-    "shardBase": 10,
-    "shardPerLevel": 5
-  },
-  "resonance": {
-    "slots": 6,
-    "openSlots": 2,
-    "unlockBase": 50,
-    "unlockPerSlot": 50,
-    "perLevel": {
-      "hp": 4,
-      "pAtk": 1,
-      "sAtk": 1,
-      "pDef": 0.5,
-      "sDef": 0.5,
-      "spd": 0.05
-    }
-  },
-  "vip": {
-    "tiers": [
-      { "tier": 0, "name": "Visitor", "xp": 0, "idleCapBonusHours": 0, "shopDiscount": 0, "dailyTickets": 0 },
-      { "tier": 1, "name": "Bronze", "xp": 1000, "idleCapBonusHours": 1, "shopDiscount": 0.02, "dailyTickets": 1 },
-      { "tier": 2, "name": "Silver", "xp": 5000, "idleCapBonusHours": 2, "shopDiscount": 0.04, "dailyTickets": 1 },
-      { "tier": 3, "name": "Gold", "xp": 15000, "idleCapBonusHours": 3, "shopDiscount": 0.06, "dailyTickets": 2 },
-      { "tier": 4, "name": "Platinum", "xp": 40000, "idleCapBonusHours": 4, "shopDiscount": 0.08, "dailyTickets": 2 },
-      { "tier": 5, "name": "Diamond", "xp": 100000, "idleCapBonusHours": 5, "shopDiscount": 0.1, "dailyTickets": 3 },
-      { "tier": 6, "name": "Crown", "xp": 250000, "idleCapBonusHours": 6, "shopDiscount": 0.12, "dailyTickets": 3 }
-    ]
+ "orbs": {
+  "copiesPerLevel": 2,
+  "essenceBase": 20,
+  "essencePerLevel": 10
+ },
+ "soulhearts": {
+  "expBase": 40,
+  "expPerStar": 40
+ },
+ "berries": {
+  "upgradeCopies": 2,
+  "upgradeEssenceBase": 20,
+  "upgradeEssencePerStar": 20,
+  "dismantleEssence": {
+   "common": 5,
+   "basic": 10,
+   "intermediate": 20,
+   "greater": 40
   }
+ },
+ "plates": {
+  "maxStage": 20,
+  "bottleBase": 10,
+  "bottlePerStage": 5,
+  "fragmentCost": 375,
+  "skillSwapStage": 6
+ },
+ "trinkets": {
+  "maxLevel": 40,
+  "shardBase": 10,
+  "shardPerLevel": 5
+ },
+ "resonance": {
+  "slots": 6,
+  "openSlots": 2,
+  "unlockBase": 50,
+  "unlockPerSlot": 50,
+  "perLevel": {
+   "hp": 4,
+   "pAtk": 1,
+   "sAtk": 1,
+   "pDef": 0.5,
+   "sDef": 0.5,
+   "spd": 0.05
+  }
+ },
+ "vip": {
+  "tiers": [
+   {
+    "tier": 0,
+    "name": "Visitor",
+    "xp": 0,
+    "idleCapBonusHours": 0,
+    "shopDiscount": 0,
+    "dailyTickets": 0
+   },
+   {
+    "tier": 1,
+    "name": "Bronze",
+    "xp": 1000,
+    "idleCapBonusHours": 1,
+    "shopDiscount": 0.02,
+    "dailyTickets": 1
+   },
+   {
+    "tier": 2,
+    "name": "Silver",
+    "xp": 5000,
+    "idleCapBonusHours": 2,
+    "shopDiscount": 0.04,
+    "dailyTickets": 1
+   },
+   {
+    "tier": 3,
+    "name": "Gold",
+    "xp": 15000,
+    "idleCapBonusHours": 3,
+    "shopDiscount": 0.06,
+    "dailyTickets": 2
+   },
+   {
+    "tier": 4,
+    "name": "Platinum",
+    "xp": 40000,
+    "idleCapBonusHours": 4,
+    "shopDiscount": 0.08,
+    "dailyTickets": 2
+   },
+   {
+    "tier": 5,
+    "name": "Diamond",
+    "xp": 100000,
+    "idleCapBonusHours": 5,
+    "shopDiscount": 0.1,
+    "dailyTickets": 3
+   },
+   {
+    "tier": 6,
+    "name": "Crown",
+    "xp": 250000,
+    "idleCapBonusHours": 6,
+    "shopDiscount": 0.12,
+    "dailyTickets": 3
+   }
+  ]
+ }
 }

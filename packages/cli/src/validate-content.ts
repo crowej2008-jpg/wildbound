@@ -36,7 +36,6 @@ import {
   runesSchema,
   charmsSchema,
   coresSchema,
-  talentsSchema,
   equipmentTuningSchema,
   collectionTuningSchema,
   COLLECTION_TUNING,
@@ -47,8 +46,6 @@ import {
   RUNE_SETS,
   CHARMS,
   CORE_SETS,
-  TALENT_BLOCKS,
-  TALENT_TREES,
   EQUIPMENT_TUNING,
   type KitJson,
   type QuestJson,
@@ -105,7 +102,6 @@ const EQUIPMENT_SCHEMAS: Record<string, AnySchema> = {
   'runes.json': runesSchema,
   'charms.json': charmsSchema,
   'cores.json': coresSchema,
-  'talents.json': talentsSchema,
 };
 
 /**
@@ -221,16 +217,8 @@ export function validateContent(repoRoot: string): ValidateReport {
     const runeSetIds = new Set(RUNE_SETS.map((s) => s.id));
     const charmIds = new Set(CHARMS.map((c) => c.id));
     const coreSetIds = new Set(CORE_SETS.map((s) => s.id));
-    const blockIds = new Set(TALENT_BLOCKS.map((b) => b.id));
     for (const rune of RUNES) {
       if (!runeSetIds.has(rune.setId)) errors.push(`equipment: rune "${rune.id}" references unknown set "${rune.setId}"`);
-    }
-    for (const tree of TALENT_TREES) {
-      for (const tier of tree.tiers) {
-        for (const blockId of tier) {
-          if (!blockIds.has(blockId)) errors.push(`equipment: tree "${tree.id}" references unknown block "${blockId}"`);
-        }
-      }
     }
     for (const r of EQUIPMENT_TUNING.starting.relics) {
       if (!relicIds.has(r.defId)) errors.push(`equipment: starting relic "${r.defId}" has no design`);
@@ -308,7 +296,7 @@ export function validateContent(repoRoot: string): ValidateReport {
       if (c.tier !== 'common' && c.maxStars <= 0) errors.push(`equipment: Berry "${c.id}" needs a star cap`);
     }
     checks.push(
-      `equipment: ${RELICS.length} held item(s), ${PLATES.length} plate(s), ${TRINKETS.length} trinket(s), ${RUNES.length} rune(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s), ${TALENT_TREES.length} talent tree(s) validated`,
+      `equipment: ${RELICS.length} held item(s), ${PLATES.length} plate(s), ${TRINKETS.length} trinket(s), ${RUNES.length} rune(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s) validated`,
     );
   }
 
