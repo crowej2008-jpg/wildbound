@@ -700,6 +700,9 @@ export const rewardSchema = z
     reforgePotion: z.number().nonnegative().optional(),
     pokemonShard3: z.number().nonnegative().optional(),
     pokemonShard5: z.number().nonnegative().optional(),
+    mountStone: z.number().nonnegative().optional(),
+    backDecorStone: z.number().nonnegative().optional(),
+    followerStone: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

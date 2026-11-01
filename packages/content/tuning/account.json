@@ -37,6 +37,9 @@
     "reforgePotion": 0,
     "pokemonShard3": 0,
     "pokemonShard5": 0,
+    "mountStone": 0,
+    "backDecorStone": 0,
+    "followerStone": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -84,6 +87,9 @@
     "reforgePotion": 500,
     "pokemonShard3": 100,
     "pokemonShard5": 100,
+    "mountStone": 20000,
+    "backDecorStone": 20000,
+    "followerStone": 20000,
     "privilegeXp": 300
   }
 }

@@ -76,6 +76,11 @@ the seven tiers below. ASSUMPTIONS #72.
 Seven tiers (Visitor → Crown) from **lifetime XP** (0–250,000) — nothing is bought. Perks: extra idle
 hours, shop discount, daily Common Ticket supply. Save v12.
 
+## Mount, Back Decor, Follower and Outfits
+**R8 (2026-11-01):** source pieces and 35 sets; the level curve and piece stats are made up on the owner's word
+([decision](../decisions/fashion-numbers-made-up.md)). Three ladders to Lv 200 with their own stones, pieces 1–15★,
+set bonuses at 2 / 3 / 5. ASSUMPTIONS #77. Save v33.
+
 ## Trainer Tokens
 **R8 (2026-11-01):** the source's six tokens, five levels each, PvP-only (Arena, Ranked). Each level needs its Gods
 Trials season's Suppression Treasure total (M13) and the token's own fragments (festive events, M15). ASSUMPTIONS

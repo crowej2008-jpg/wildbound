@@ -23,10 +23,6 @@ updated: 2026-10-31
 - Pokémon level-up candy/gold per level, trainer-level XP, per-species milestone stats
   (`hero_upstage_attr_json`), level-unlocked talent stat bonuses.
 - **Gear:** the dumps hold only 8 of the 64 `god_eqm_basic_json` rows and no `god_eqm_suit_json`.
-- **Mount / Back Decor / Follower (R8, 2026-11-01):** the dumps hold the 35 fashion sets (`fashion_suit_json`,
-  `fashion_info_json`, `fashion_suit_skill_json`) but not the shared level curve `fashion_up_star_json` (rows
-  0–200: exp and stats per level; the kb quotes only row 200) nor the per-skin star stats
-  (`wiki-sources/2026-10-01/cosmetic_skins.md`). Needs those two re-extracted; R8's last part waits on them.
 - **Orbs (re-checked 2026-11-01):** still not in the dumps, but now mostly covered — the owner's wiki
   `/orbs/sets` lists all 26 sets (names, member kinds, Lv 3/5/7/10 bonuses), `/orbs` the six kind pairs and
   their line pools, kb/orbs.md the sockets, colour caps, levelling and dismantle. **Still missing:** flat

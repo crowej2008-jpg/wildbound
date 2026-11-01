@@ -117,6 +117,16 @@ export { RESONANCE, resonanceSchema } from './resonance';
 export { VIP, vipSchema, type VipJson } from './vip';
 export { TOKENS, tokensSchema, type TokensJson, type TokenJson } from './tokens';
 export { SIGN_IN, signInSchema, type SignInJson } from './signin';
+export {
+  FASHION,
+  FASHION_SLOTS,
+  FASHION_LADDERS,
+  fashionSchema,
+  type FashionJson,
+  type FashionPieceJson,
+  type FashionSlot,
+  type FashionLadder,
+} from './fashion';
 export { BERRY_SKILLS, berrySkillAt, berrySkillsSchema } from './berry-skills';
 export {
   EQUIPMENT_TUNING,

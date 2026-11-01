@@ -1268,3 +1268,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - `scripts/import-signin.mjs` → `packages/content/tuning/signin.json`. Server `signin.ts` (calendar roll, view,
   sign, late sign, VIP double, bonuses); `/sign-in` page linked from the town hub. Save v32 adds `signIn`; new
   currencies `pokemonShard3` / `pokemonShard5`. ASSUMPTIONS #76.
+
+## R8 part 4 — Mount, Back Decor, Follower and Outfits (2026-11-01)
+
+- `scripts/import-fashion.mjs` → `packages/content/tuning/fashion.json` (source pieces and sets; made-up curve and
+  piece stats, owner's call). Server `fashion.ts` (ladders, pieces, sets, account-wide lines); Trainer screen panel.
+  Save v33 adds `fashion`; currencies Mount L.Stone, BD Level Stone, Follower L.Stone. ASSUMPTIONS #77.

@@ -24,6 +24,7 @@ import {
   initialTitles,
   initialTrainerTokens,
   initialSignIn,
+  initialFashion,
   initialSkyPillar,
   TITLE_SLOTS,
   type AccountState,
@@ -37,20 +38,21 @@ import {
   type TitlesState,
   type TrainerTokensState,
   type SignInState,
+  type FashionState,
   type WildInstance,
 } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 32;
+export const SAVE_VERSION = 33;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 32;
+export const MIN_SAVE_VERSION = 33;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -114,6 +116,16 @@ function normalizeSignIn(source: Partial<SignInState> | undefined, day: string):
     doubled: dayList(source?.doubled),
     milestones: dayList(source?.milestones),
   };
+}
+
+function normalizeFashion(source: Partial<FashionState> | undefined): FashionState {
+  const levels: FashionState['levels'] = {};
+  for (const [k, v] of Object.entries(source?.levels ?? {})) {
+    if (v && Number.isFinite(v.level) && Number.isFinite(v.exp)) {
+      levels[k] = { level: Math.max(0, Math.min(200, Math.floor(v.level))), exp: Math.max(0, Math.floor(v.exp)) };
+    }
+  }
+  return { levels, stars: numberMap(source?.stars), shards: numberMap(source?.shards), worn: numberMap(source?.worn) };
 }
 
 /** Fill the title board and drop timed titles that already expired. */
@@ -199,6 +211,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     titles: normalizeTitles(s.titles, now, config),
     trainerTokens: normalizeTrainerTokens(s.trainerTokens),
     signIn: normalizeSignIn(s.signIn, day),
+    fashion: normalizeFashion(s.fashion),
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     petHome: s.petHome ?? initialPetHome(now, day),
@@ -295,6 +308,7 @@ export function createInitialState(config: GameConfig): AccountState {
     titles: startingTitles(config),
     trainerTokens: initialTrainerTokens(),
     signIn: initialSignIn(day),
+    fashion: initialFashion(),
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     petHome: initialPetHome(now, day),

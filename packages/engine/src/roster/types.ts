@@ -93,6 +93,9 @@ export type CurrencyId =
   | 'reforgePotion'
   | 'pokemonShard3'
   | 'pokemonShard5'
+  | 'mountStone'
+  | 'backDecorStone'
+  | 'followerStone'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -136,6 +139,9 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'reforgePotion',
   'pokemonShard3',
   'pokemonShard5',
+  'mountStone',
+  'backDecorStone',
+  'followerStone',
   'privilegeXp',
 ];
 
@@ -167,6 +173,9 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'reforgePotion',
   'pokemonShard3',
   'pokemonShard5',
+  'mountStone',
+  'backDecorStone',
+  'followerStone',
   'privilegeXp',
 ];
 
@@ -253,6 +262,8 @@ export interface AccountState {
   trainerTokens: TrainerTokensState;
   /** R9 Sign In (source sign_json). */
   signIn: SignInState;
+  /** R8 Mount / Back Decor / Follower / Outfits. */
+  fashion: FashionState;
   /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
   pve: PveState;
   /** M10: PvP progress (Arena credits/rank, Ranked ladder). */
@@ -331,6 +342,22 @@ export interface SignInState {
 
 export function initialSignIn(day: string): SignInState {
   return { calendarStart: day, signed: [], doubled: [], milestones: [] };
+}
+
+/**
+ * R8 Mount / Back Decor / Follower / Outfits. `levels` holds each ladder's level (0–200) and the exp into the next
+ * level; `stars` each owned piece's star (key `slot:index`; free pieces are always owned); `shards` each piece's
+ * own shards; `worn` the piece shown in each slot.
+ */
+export interface FashionState {
+  levels: Record<string, { level: number; exp: number }>;
+  stars: Record<string, number>;
+  shards: Record<string, number>;
+  worn: Record<string, number>;
+}
+
+export function initialFashion(): FashionState {
+  return { levels: {}, stars: {}, shards: {}, worn: {} };
 }
 
 /** Three account-wide title slots (source layers 1–3: Common / Premium / Rare). */

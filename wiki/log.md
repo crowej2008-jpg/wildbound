@@ -207,3 +207,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-01] update | R9 Sign In
 - The source's 31-day Sign In (VIP doubles, late signing, 11 bonuses) is new to Wildbound (ASSUMPTIONS #76, save v32).
+
+## [2026-11-01] update | R8 Mount / Back Decor / Follower (made up)
+- Owner: "just make these numbers up". Built from the source pieces and sets with an invented curve and piece
+  stats ([decision](decisions/fashion-numbers-made-up.md), ASSUMPTIONS #77, save v33). R8 is done.

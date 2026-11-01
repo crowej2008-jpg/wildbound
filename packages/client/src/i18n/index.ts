@@ -56,6 +56,9 @@ export const en = {
   'currency.reforgePotion': 'Reforge Potions',
   'currency.pokemonShard3': '3-Star Pokémon Shards',
   'currency.pokemonShard5': '5-Star Pokémon Shards',
+  'currency.mountStone': 'Mount L.Stone',
+  'currency.backDecorStone': 'BD Level Stone',
+  'currency.followerStone': 'Follower L.Stone',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -323,6 +326,27 @@ export const en = {
   'trainer.vip.coming': 'Coming with their systems: {dungeons} daily dungeon buys, {refreshes} Daily Shop refreshes, a {bag}-Pokémon bag, Golden Touch and the Exclusive Packs.',
   'trainer.titles': 'Titles',
   'trainer.tokens': 'Tokens',
+  'trainer.fashion': 'Mount, Back Decor and Follower',
+  'fashion.note': 'Mount, Back Decor and Follower each climb to level 200 with their own stone; every owned piece adds its own bonus by star, and sets add more. All of it applies to every Pokémon. Pieces and stones come from events and the Vanity dungeon in later milestones.',
+  'fashion.slot.mount': 'Mount',
+  'fashion.slot.backDecor': 'Back Decor',
+  'fashion.slot.follower': 'Follower',
+  'fashion.slot.outfit': 'Outfit',
+  'fashion.tier': 'Tier {tier} {star}★',
+  'fashion.attack': 'Attack',
+  'fashion.pokemonHp': 'Pokémon HP',
+  'fashion.pokemonAttack': 'Pokémon Attack',
+  'fashion.levelUp': 'Level Up',
+  'fashion.levelUp10': 'Level Up ×10',
+  'fashion.max': 'Level 200 — the cap.',
+  'fashion.pieces': 'Pieces',
+  'fashion.worn': 'Using',
+  'fashion.eventRewards': 'Event Rewards',
+  'fashion.activate': 'Activate',
+  'fashion.ascend': 'Ascend',
+  'fashion.shards': 'Shards',
+  'fashion.wear': 'Use',
+  'fashion.sets': 'Sets with a bonus: {n}',
   'tokens.note': 'Six tokens, one per Gods Trials season. Their effects apply in PvP battles only (Arena and Ranked). Gods Trials and the festive events that drop fragments arrive in later milestones.',
   'tokens.level': 'Lv.',
   'tokens.inactive': 'Not active yet.',
@@ -991,6 +1015,9 @@ export type CurrencyKey =
   | 'reforgePotion'
   | 'pokemonShard3'
   | 'pokemonShard5'
+  | 'mountStone'
+  | 'backDecorStone'
+  | 'followerStone'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1033,6 +1060,9 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   reforgePotion: en['currency.reforgePotion'],
   pokemonShard3: en['currency.pokemonShard3'],
   pokemonShard5: en['currency.pokemonShard5'],
+  mountStone: en['currency.mountStone'],
+  backDecorStone: en['currency.backDecorStone'],
+  followerStone: en['currency.followerStone'],
   privilegeXp: en['currency.privilegeXp'],
 };
 

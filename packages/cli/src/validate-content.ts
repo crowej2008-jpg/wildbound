@@ -39,6 +39,7 @@ import {
   vipSchema,
   tokensSchema,
   signInSchema,
+  fashionSchema,
   VIP,
   berrySkillsSchema,
   coresSchema,
@@ -98,6 +99,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'vip.json': vipSchema as AnySchema,
   'tokens.json': tokensSchema as AnySchema,
   'signin.json': signInSchema as AnySchema,
+  'fashion.json': fashionSchema as AnySchema,
   'pvp.json': pvpSchema as AnySchema,
 };
 

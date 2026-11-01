@@ -209,6 +209,15 @@ import {
 import { buildVipView, vipIdleCapMinutes, vipPerks } from './vip';
 import { buildTokensView, grantTokenFragments, levelTokenAction } from './tokens';
 import {
+  ascendFashionPieceAction,
+  buildFashionView,
+  grantFashionShards,
+  levelFashionAction,
+  wearFashionPieceAction,
+  type FashionView,
+} from './fashion';
+import type { FashionLadder, FashionSlot } from '@wildbound/content';
+import {
   buildSignInView,
   claimSignInMilestoneAction,
   doubleSignInAction,
@@ -963,6 +972,37 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) =>
       setTitleSlotAction(this.config, state, slot, titleId, this.now(state)),
     );
+  }
+
+  // --- R8 Mount / Back Decor / Follower / Outfits ---------------------------------
+
+  async getFashion(): Promise<Result<FashionView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const state = loaded.value;
+    return ok(buildFashionView(this.config, state, (id) => Boolean(state.titles.owned[id])));
+  }
+
+  async levelFashion(ladder: FashionLadder, levels: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => levelFashionAction(this.config, state, ladder, levels));
+  }
+
+  async ascendFashionPiece(slot: FashionSlot, index: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => ascendFashionPieceAction(this.config, state, slot, index));
+  }
+
+  async wearFashionPiece(slot: FashionSlot, index: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => wearFashionPieceAction(this.config, state, slot, index));
+  }
+
+  async grantFashionShards(slot: FashionSlot, index: number, amount: number): Promise<Result<AccountSnapshot>> {
+    if (!this.config.fashion.pieces.some((p) => p.slot === slot && p.index === index && !p.free)) {
+      return fail('not_found', `no ${slot} piece ${index} to grant`);
+    }
+    if (!Number.isFinite(amount) || amount < 0) return fail('invalid_input', 'amount must be non-negative');
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commit(grantFashionShards(loaded.value, slot, index, Math.floor(amount)));
   }
 
   // --- R9 Sign In --------------------------------------------------------------

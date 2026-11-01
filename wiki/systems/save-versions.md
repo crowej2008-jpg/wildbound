@@ -45,6 +45,7 @@ after the retrofit, once friends have real saves.
 | 30 | R8 | `titles.cards`; Starter Trainer owned; `titleTicket` removed (reset) |
 | 31 | R8 | `trainerTokens` (levels, fragments, treasure totals by season) (reset) |
 | 32 | R9 | `signIn` calendar; 3★ / 5★ Pokémon Shards (reset) |
-| 33+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
+| 33 | R8 | `fashion` (ladders, piece stars and shards, worn); three level stones (reset) |
+| 34+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

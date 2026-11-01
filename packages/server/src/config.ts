@@ -6,6 +6,7 @@ import {
   VIP,
   TOKENS,
   SIGN_IN,
+  FASHION,
   ECONOMY,
   EXPLORE,
   GROWTH,
@@ -34,7 +35,7 @@ import {
   TRINKET_RULES,
   POTENTIAL,
 } from '@wildbound/content';
-import type { SignInJson, TokensJson, VipJson } from '@wildbound/content';
+import type { FashionJson, SignInJson, TokensJson, VipJson } from '@wildbound/content';
 import type {
   CampaignJson,
   ChapterMetaJson,
@@ -145,6 +146,8 @@ export interface GameConfig {
   tokens: TokensJson;
   /** R9 Sign In (source sign_json). */
   signIn: SignInJson;
+  /** R8 Mount / Back Decor / Follower / Outfits (curve and piece stats made up). */
+  fashion: FashionJson;
   pvp: PvpJson;
   /** M11.11 title catalogue. */
   titles: TitlesJson;
@@ -213,6 +216,7 @@ export function buildConfig(): GameConfig {
     vip: VIP,
     tokens: TOKENS,
     signIn: SIGN_IN,
+    fashion: FASHION,
     pvp: PVP,
     titles: TITLES,
     titleById: new Map(TITLES.map((title) => [title.id, title])),

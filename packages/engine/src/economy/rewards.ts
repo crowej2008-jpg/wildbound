@@ -44,6 +44,10 @@ export interface Rewards {
   /** R9: the source's 3★ / 5★ Pokémon Shards (sign-in; their use comes with the summoning retrofit). */
   pokemonShard3?: number;
   pokemonShard5?: number;
+  /** R8: Mount L.Stone, BD Level Stone, Follower L.Stone. */
+  mountStone?: number;
+  backDecorStone?: number;
+  followerStone?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -88,6 +92,9 @@ export const CURRENCY_REWARD_KEYS = [
   'reforgePotion',
   'pokemonShard3',
   'pokemonShard5',
+  'mountStone',
+  'backDecorStone',
+  'followerStone',
   'privilegeXp',
 ] as const;
 

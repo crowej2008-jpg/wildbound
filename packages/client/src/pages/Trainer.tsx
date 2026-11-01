@@ -6,6 +6,7 @@ import ResonancePanel from './ResonancePanel';
 import VipPanel from './VipPanel';
 import TitlesPanel from './TitlesPanel';
 import TokensPanel from './TokensPanel';
+import FashionPanel from './FashionPanel';
 
 /**
  * Trainer tab (M11.1). Replaces the More tab as the player-facing home for the
@@ -77,6 +78,8 @@ export default function Trainer() {
       <TitlesPanel />
 
       <TokensPanel />
+
+      <FashionPanel />
     </main>
   );
 }

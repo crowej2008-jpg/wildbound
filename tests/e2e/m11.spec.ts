@@ -15,10 +15,11 @@ interface SaveOptions {
   equipment?: unknown;
   titles?: unknown;
   trainerTokens?: unknown;
+  fashion?: unknown;
   level?: number;
 }
 
-function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, titles, trainerTokens, level = 40 }: SaveOptions = {}): string {
+function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, titles, trainerTokens, fashion, level = 40 }: SaveOptions = {}): string {
   return JSON.stringify({
     version: E2E_SAVE_VERSION,
     state: {
@@ -62,6 +63,7 @@ function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, 
       ...(equipment ? { equipment } : {}),
       ...(titles ? { titles } : {}),
       ...(trainerTokens ? { trainerTokens } : {}),
+      ...(fashion ? { fashion } : {}),
     },
   });
 }
@@ -273,6 +275,27 @@ test('Tokens: a level needs the season treasure total and the token fragments', 
   await expect(emerald.getByRole('button', { name: 'Level Up' })).toBeDisabled();
 
   await expect(page.locator('[data-token-id="201"]').getByRole('button', { name: 'Level Up' })).toBeDisabled();
+});
+
+test('Mount levels with its stone and a piece activates with its shards', async ({ page }) => {
+  await importSave(page, {
+    currencies: { mountStone: 1000 },
+    fashion: { levels: {}, stars: {}, shards: { 'mount:2': 1 }, worn: {} },
+  });
+  await page.goto('/trainer');
+  await expect(page.getByRole('heading', { name: 'Mount, Back Decor and Follower' })).toBeVisible();
+
+  const mount = page.locator('[data-fashion-ladder="mount"]');
+  await expect(mount.getByText('Lv.0 · Tier 1 0★')).toBeVisible();
+  await mount.getByRole('button', { name: 'Level Up', exact: true }).click();
+  await expect(mount.getByText('Lv.1 · Tier 1 1★')).toBeVisible();
+
+  const lapras = page.locator('[data-fashion-piece="mount:2"]');
+  await expect(lapras.getByText(/Event Rewards/)).toBeVisible();
+  await lapras.getByRole('button', { name: /Activate · Shards 1\/1/ }).click();
+  await expect(lapras.getByText('1★')).toBeVisible();
+  await lapras.getByRole('button', { name: 'Use' }).click();
+  await expect(lapras.getByText('Using')).toBeVisible();
 });
 
 test('Orbs: socket a red Sharp Orb, then level it with two copies', async ({ page }) => {

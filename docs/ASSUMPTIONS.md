@@ -946,3 +946,17 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     identical); a late-signed day pays its plain reward (a VIP double can then be claimed as for any signed day);
     "Premium GV" is the Premium Ticket and the Ascension Stone is Wildbound's `stone`; the 3★ / 5★ Pokémon Shards
     are new currencies kept until summoning is copied (their use there).
+
+77. **R8 Mount / Back Decor / Follower / Outfits — numbers made up (owner, 2026-11-01: "just make these numbers
+    up").** From the source: the 156 pieces (`fashion_info_json`; one free piece per slot, two outfits, the rest
+    "Event Rewards"), the 35 sets (`fashion_suit_json`: four pieces plus a title, bonuses at 2 / 3 / 5 pieces) and
+    the stone price (ceil(exp / 100) × 10). Made up, fitted to kb/account-boosts.md: the shared level curve 0–200
+    (exp 16,500 at 173 growing with the square of the level — 1,460,600 to the cap against the source's 1,450,800;
+    HP and Attack quadratics through 173 / 174 / 200; Pokémon HP / Attack % in half-percent steps to 26%), the
+    piece bonuses (follower 1% + 2,945 HP + 465 Attack, +0.2% / 589 / 93 a star; mount and back decor 3% + 9,845 +
+    1,555, +0.6% / 1,969 / 311; outfits 1,805 + 285, +361 / 57; odd pieces give Pokémon HP %, even ones Pokémon
+    Attack %), stars 1–15 (the set skill's stages reach 15), activation 1 shard and each star up star + 1 shards.
+    Readings: "Attack" adds to P.ATK and S.ATK; a set gives its highest reached bonus (2, 3 or 5 pieces, its title
+    counting as one); everything applies to every Pokémon and shows under the titles layer of Power. Not built:
+    the set skills (`fashion_suit_skill_json` names skill groups whose effects are not in the dumps). Sources of
+    pieces (events, M15) and stones (the Vanity daily dungeon, R9) are not in Wildbound yet.

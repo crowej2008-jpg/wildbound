@@ -15,6 +15,7 @@ import {
   sideStrategy,
   SQUAD_SIZE,
   type AccountState,
+  type TitleFold,
   type BattleRules,
   type BattleEvent,
   type BattleStrategies,
@@ -36,6 +37,7 @@ import {
 import { cardOf, type GameConfig, type SpeciesMeta } from './config';
 import { titleFoldFor } from './titles';
 import { tokenPvpLines } from './tokens';
+import { fashionLines } from './fashion';
 
 /**
  * Battle setup + replay payload (M4). Builds two `SpecInput` teams from account
@@ -129,6 +131,18 @@ export function applySheetPercents(
   };
 }
 
+/**
+ * The account-wide lines every Pokémon gets: worn titles (R8) plus Mount / Back Decor / Follower / Outfits (R8,
+ * shown under the titles layer in Power).
+ */
+function accountFold(config: GameConfig, state: AccountState): TitleFold | undefined {
+  const lines = [
+    ...(titleFoldFor(config, state)?.lines ?? []),
+    ...fashionLines(config, state, (id) => Boolean(state.titles.owned[id])),
+  ];
+  return lines.length > 0 ? { lines } : undefined;
+}
+
 /** Resolve a Wild's sheet and fold in its equipped equipment (M7). */
 export function equippedSheet(
   wild: WildInstance,
@@ -146,7 +160,7 @@ export function equippedSheet(
     config.equipment,
     meta ? { faction: meta.faction, stage: state.plates?.[wild.id] ?? 0 } : undefined,
     { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
-    titleFoldFor(config, state),
+    accountFold(config, state),
   );
   return {
     sheet: applySheetPercents(mergeDelta(sheet, folded.delta), folded.delta.percent),

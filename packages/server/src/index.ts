@@ -28,6 +28,8 @@ import type { ResonanceView } from './resonance';
 import type { VipView } from './vip';
 import type { TokenView } from './tokens';
 import type { SignInView } from './signin';
+import type { FashionView } from './fashion';
+import type { FashionLadder, FashionSlot } from '@wildbound/content';
 import type { TitlesView } from './titles';
 
 /**
@@ -361,6 +363,16 @@ export interface GameServer {
   evolveResonance(): Promise<Result<AccountSnapshot>>;
   /** R7: raise the evolved crystal one level. */
   upgradeResonance(): Promise<Result<AccountSnapshot>>;
+  /** R8: Mount / Back Decor / Follower / Outfits. */
+  getFashion(): Promise<Result<FashionView>>;
+  /** R8: raise a Mount / Back Decor / Follower ladder up to `levels` levels with its stone. */
+  levelFashion(ladder: FashionLadder, levels: number): Promise<Result<AccountSnapshot>>;
+  /** R8: activate a piece or raise it one star with its own shards. */
+  ascendFashionPiece(slot: FashionSlot, index: number): Promise<Result<AccountSnapshot>>;
+  /** R8: show an owned piece in its slot. */
+  wearFashionPiece(slot: FashionSlot, index: number): Promise<Result<AccountSnapshot>>;
+  /** Debug (R8): grant a piece's own shards. */
+  grantFashionShards(slot: FashionSlot, index: number, amount: number): Promise<Result<AccountSnapshot>>;
   /** R9: the Sign In calendar. */
   getSignIn(): Promise<Result<SignInView>>;
   /** R9: sign today's day. */
@@ -497,4 +509,5 @@ export * from './vip';
 export * from './titles';
 export * from './tokens';
 export * from './signin';
+export * from './fashion';
 export * from './local-server';

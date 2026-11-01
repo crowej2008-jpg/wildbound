@@ -30,6 +30,7 @@ E1–E6. Later: R2/R3 when the gear and orb tables are re-extracted, R9, R10; th
 - [Pokémon roster override](decisions/pokemon-roster-override.md) — 2026-10-15, 84 Pokémon replace originals
 - [IP guard and art](decisions/ip-guard-and-art.md) — 2026-10-17, option B: raster art only in `public/art/`
 - [private group + backend](decisions/private-group-and-backend.md) — 2026-10-17, invite-only; M19 required
+- [Mount / Back Decor / Follower numbers made up](decisions/fashion-numbers-made-up.md) — 2026-11-01, invented curve and piece stats; pieces and sets stay the source
 - [milestone renumbering](decisions/milestone-renumbering.md) — 2026-10-16/17 old → new numbers
 - [M11 names and materials](decisions/m11-names-and-materials.md) — 2026-10-20 source labels, one material per layer
 - [M12 deferred, Gods Trials parked](decisions/m12-artifacts-deferred.md) — 2026-10-21/23
