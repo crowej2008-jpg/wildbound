@@ -8,6 +8,7 @@ import {
   grantBerry,
   lockBerryAction,
   reforgeBerryAction,
+  rebirthBerryAction,
   type BerriesPanelView,
 } from './berries';
 import {
@@ -848,6 +849,10 @@ export class LocalServer implements GameServer {
 
   async elevateBerry(berryId: string): Promise<Result<AccountSnapshot>> {
     return this.applyEquipment((state) => elevateBerryAction(this.config, state, berryId));
+  }
+
+  async rebirthBerry(berryId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => rebirthBerryAction(this.config, state, berryId, this.config.rng));
   }
 
   async lockBerry(berryId: string, locked: boolean): Promise<Result<AccountSnapshot>> {

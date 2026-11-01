@@ -128,6 +128,18 @@ function BerryCard({
         <button type="button" className="btn" disabled={busy} onClick={() => void act((s) => s.lockBerry(berry.id, !berry.locked))}>
           {berry.locked ? t('gear.berry.unlock') : t('gear.berry.lock')}
         </button>
+        {berry.rebirth ? (
+          <button
+            type="button"
+            className="btn"
+            disabled={busy || view.gems < berry.rebirth.gems}
+            onClick={() => {
+              if (window.confirm(t('gear.berry.rebirthConfirm'))) void act((s) => s.rebirthBerry(berry.id));
+            }}
+          >
+            {t('gear.berry.rebirth')} · {berry.rebirth.gems} {t('currency.gems')}
+          </button>
+        ) : null}
         {berry.dismantleEssence !== null ? (
           <button type="button" className="btn" disabled={busy} onClick={() => void act((s) => s.dismantleBerries([berry.id]))}>
             {t('gear.berry.dismantle')} · {berry.dismantleEssence}

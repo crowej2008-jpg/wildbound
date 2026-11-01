@@ -310,6 +310,8 @@ export interface GameServer {
   reforgeBerry(berryId: string, line: number): Promise<Result<AccountSnapshot>>;
   /** Elevation: the next star, paid with spare 1★ uncultivated berries and Gold. */
   elevateBerry(berryId: string): Promise<Result<AccountSnapshot>>;
+  /** 100 Diamonds: the berry back to its start, everything spent on it returned (owner). */
+  rebirthBerry(berryId: string): Promise<Result<AccountSnapshot>>;
   lockBerry(berryId: string, locked: boolean): Promise<Result<AccountSnapshot>>;
   dismantleBerries(berryIds: string[]): Promise<Result<AccountSnapshot>>;
   /** Debug: add a new berry. */

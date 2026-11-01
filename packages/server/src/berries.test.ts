@@ -9,6 +9,7 @@ import {
   elevateBerryAction,
   equipBerryAction,
   grantBerry,
+  rebirthBerryAction,
   reforgeBerryAction,
 } from './berries';
 import { createInitialState } from './save';
@@ -130,5 +131,41 @@ describe('R6d berries', () => {
     const r = breakthroughBerryAction(config, s, id, mulberry32(1));
     expect(r.ok).toBe(false);
     if (!r.ok) expect(r.error).toBe('resource_locked');
+  });
+
+  it('rebirth gives back everything spent on the berry for 100 Diamonds', () => {
+    const { config, state } = setup();
+    state.currencies.gems = 1_000;
+    let s = state;
+    const target = add(config, s, 'berry-cirio-berry', 11);
+    s = target.state;
+    s = add(config, s, 'berry-cirio-berry', 12).state;
+    s = add(config, s, 'berry-nanab-berry', 13).state;
+    s = add(config, s, 'berry-peach-berry', 14).state;
+    const start = { ...s.currencies };
+    const count = s.equipment.berries.length;
+    const rng = mulberry32(3);
+    const up = elevateBerryAction(config, s, target.id);
+    if (!up.ok) throw new Error(up.message);
+    const grown = cultivateBerryAction(config, up.value, target.id, 10, rng);
+    if (!grown.ok) throw new Error(grown.message);
+    const broke = breakthroughBerryAction(config, grown.value, target.id, rng);
+    if (!broke.ok) throw new Error(broke.message);
+    const rf = reforgeBerryAction(config, broke.value, target.id, 1, rng);
+    if (!rf.ok) throw new Error(rf.message);
+
+    const reborn = rebirthBerryAction(config, rf.value, target.id, rng);
+    expect(reborn.ok).toBe(true);
+    if (!reborn.ok) return;
+    const c = reborn.value.currencies;
+    expect(c.berryEssence).toBe(start.berryEssence);
+    expect(c.gold).toBe(start.gold);
+    expect(c.berryMulchBlue).toBe(start.berryMulchBlue);
+    expect(c.reforgePotion).toBe(start.reforgePotion);
+    expect(c.gems).toBe(start.gems - 100);
+    expect(reborn.value.equipment.berries.length).toBe(count); // the 3 fed berries come back
+    const b = reborn.value.equipment.berries.find((x) => x.id === target.id)!;
+    expect([b.star, b.stage, b.lines.length, b.cultivated]).toEqual([1, 0, 1, false]);
+    expect(b.lines[0]!.value).toBe(0);
   });
 });

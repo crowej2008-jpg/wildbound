@@ -61,6 +61,22 @@ export interface BerryInstance {
   /** Never cultivated: only these can be dismantled or fed to an Elevation. */
   cultivated: boolean;
   locked: boolean;
+  /** What was spent on this berry (owner: Rebirth gives every item back). */
+  spent?: BerrySpent;
+}
+
+export interface BerrySpent {
+  /** Currencies (Berry Essence, Mulch, Reforge Potions, Gold). */
+  currencies: Record<string, number>;
+  /** The berries fed to its Elevations (their def ids; they come back as new 1★ berries). */
+  fodder: string[];
+}
+
+/** Record a payment on the berry (for Rebirth). */
+export function addSpent(b: BerryInstance, currencies: Record<string, number>, fodder: string[] = []): BerryInstance {
+  const spent: BerrySpent = { currencies: { ...(b.spent?.currencies ?? {}) }, fodder: [...(b.spent?.fodder ?? []), ...fodder] };
+  for (const [k, v] of Object.entries(currencies)) if (v) spent.currencies[k] = (spent.currencies[k] ?? 0) + v;
+  return { ...b, spent };
 }
 
 export function berryDef(tables: BerryTables, defId: string): BerryDef | undefined {

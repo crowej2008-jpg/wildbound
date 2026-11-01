@@ -1,4 +1,5 @@
 import {
+  addSpent,
   berriesUnlocked,
   berryCultivatable,
   berryDef,
@@ -28,7 +29,8 @@ import { fail, ok, type Result } from './index';
  * that were never cultivated, plus Gold; Breakthrough (+1…+4) needs the trainer level and Mulch and opens a
  * new line; Cultivation costs 100 Berry Essence a time (Fast: up to 10) and grows the lines towards their
  * caps; Reforge re-rolls one line's kind for 10 / 20 / 35 / 35 / 35 Reforge Potions by its position; only
- * uncultivated berries can be dismantled (50 Essence green, 40 the rest). Stand-ins: ASSUMPTIONS #70.
+ * uncultivated berries can be dismantled (50 Essence green, 40 the rest); Rebirth (100 Diamonds) gives back
+ * everything spent on the berry. Readings: ASSUMPTIONS #70.
  */
 
 export interface BerryLineView {
@@ -62,6 +64,8 @@ export interface BerryView {
   elevate: { sameCopies: number; anyCopies: number; gold: number; freeSame: number; freeAny: number } | null;
   breakthrough: { stage: number; trainerLevel: number; currency: string; amount: number; open: boolean } | null;
   dismantleEssence: number | null;
+  /** Diamonds to rebirth (null when there is nothing to give back), and what would come back. */
+  rebirth: { gems: number; returns: Record<string, number>; berries: number } | null;
 }
 
 export interface BerriesPanelView {
@@ -73,6 +77,7 @@ export interface BerriesPanelView {
   cultivateEssence: number;
   fastCultivateTimes: number;
   essence: number;
+  gems: number;
   reforgePotions: number;
   gold: number;
   trainerLevel: number;
@@ -153,6 +158,10 @@ function berryView(config: GameConfig, state: AccountState, b: BerryInstance, wo
           }
         : null,
     dismantleEssence: !b.cultivated && !worn.has(b.id) && !b.locked ? def.dismantleEssence : null,
+    rebirth:
+      cultivatable && (b.spent || b.star > def.initStar || b.stage > 0 || b.cultivated)
+        ? { gems: t.rebirthGems, returns: { ...(b.spent?.currencies ?? {}) }, berries: b.spent?.fodder.length ?? 0 }
+        : null,
   };
 }
 
@@ -174,6 +183,7 @@ export function berriesView(config: GameConfig, state: AccountState, wildId: str
     cultivateEssence: t.cultivateEssence,
     fastCultivateTimes: t.fastCultivateTimes,
     essence: state.currencies.berryEssence ?? 0,
+    gems: state.currencies.gems ?? 0,
     reforgePotions: state.currencies.reforgePotion ?? 0,
     gold: state.currencies.gold ?? 0,
     trainerLevel: state.profile.level,
@@ -232,7 +242,7 @@ export function cultivateBerryAction(
   if (cultivationFull(t, b)) return fail('at_level_cap', 'every line is at its cap; break through first');
   const paid = pay(state, { berryEssence: t.cultivateEssence * times });
   if (!paid) return fail('insufficient_items', 'not enough Berry Essence');
-  return ok(withBerry(paid, cultivateBerry(t, b, times, rng)));
+  return ok(withBerry(paid, addSpent(cultivateBerry(t, b, times, rng), { berryEssence: t.cultivateEssence * times })));
 }
 
 export function breakthroughBerryAction(config: GameConfig, state: AccountState, berryId: string, rng: Rng): Result<AccountState> {
@@ -246,7 +256,7 @@ export function breakthroughBerryAction(config: GameConfig, state: AccountState,
   if (state.profile.level < next.trainerLevel) return fail('resource_locked', `needs trainer Lv ${next.trainerLevel}`);
   const paid = pay(state, { [next.cost.currency]: next.cost.amount });
   if (!paid) return fail('insufficient_items', 'not enough Mulch');
-  return ok(withBerry(paid, breakthroughBerry(t, b, rng)));
+  return ok(withBerry(paid, addSpent(breakthroughBerry(t, b, rng), { [next.cost.currency]: next.cost.amount })));
 }
 
 export function reforgeBerryAction(
@@ -263,7 +273,7 @@ export function reforgeBerryAction(
   const cost = t.reforgePotions[line] ?? t.reforgePotions[t.reforgePotions.length - 1] ?? 0;
   const paid = pay(state, { reforgePotion: cost });
   if (!paid) return fail('insufficient_items', 'not enough Reforge Potions');
-  return ok(withBerry(paid, reforgeBerryLine(t, b, line, rng)));
+  return ok(withBerry(paid, addSpent(reforgeBerryLine(t, b, line, rng), { reforgePotion: cost })));
 }
 
 /** Elevation: the next star for `sameCopies` copies of this berry and `anyCopies` other berries (1★, uncultivated). */
@@ -283,7 +293,10 @@ export function elevateBerryAction(config: GameConfig, state: AccountState, berr
   for (const x of any) used.add(x.id);
   const paid = pay(state, { gold: next.gold });
   if (!paid) return fail('insufficient_items', 'not enough Gold');
-  const berries = paid.equipment.berries.filter((x) => !used.has(x.id)).map((x) => (x.id === b.id ? { ...x, star: x.star + 1 } : x));
+  const fed = [...same, ...any].map((x) => x.defId);
+  const berries = paid.equipment.berries
+    .filter((x) => !used.has(x.id))
+    .map((x) => (x.id === b.id ? addSpent({ ...x, star: x.star + 1 }, { gold: next.gold }, fed) : x));
   return ok({ ...paid, equipment: { ...paid.equipment, berries } });
 }
 
@@ -311,6 +324,35 @@ export function dismantleBerriesAction(config: GameConfig, state: AccountState, 
     currencies: { ...state.currencies, berryEssence: (state.currencies.berryEssence ?? 0) + essence },
     equipment: { ...state.equipment, berries: state.equipment.berries.filter((b) => !drop.has(b.id)) },
   });
+}
+
+/**
+ * Rebirth (owner, 2026-11-01: "rebirth gives back every item that was used in that berry"): for 100 Diamonds the
+ * berry returns to its start star, +0 and one fresh, empty line, and everything spent on it comes back — the
+ * Berry Essence, Mulch, Reforge Potions and Gold, and the berries fed to its stars as new 1★ berries.
+ */
+export function rebirthBerryAction(config: GameConfig, state: AccountState, berryId: string, rng: Rng): Result<AccountState> {
+  const t = config.equipment.berries;
+  const b = findBerry(state, berryId);
+  if (!b) return fail('not_found', `no berry ${berryId}`);
+  const def = berryDef(t, b.defId);
+  if (!def || !berryCultivatable(def)) return fail('invalid_input', 'this berry cannot be reborn');
+  if (!b.spent && b.star === def.initStar && b.stage === 0 && !b.cultivated) return fail('invalid_input', 'nothing to give back');
+  const paid = pay(state, { gems: t.rebirthGems });
+  if (!paid) return fail('insufficient_items', `needs ${t.rebirthGems} Diamonds`);
+  const currencies = { ...paid.currencies };
+  for (const [k, v] of Object.entries(b.spent?.currencies ?? {})) {
+    currencies[k as CurrencyId] = (currencies[k as CurrencyId] ?? 0) + v;
+  }
+  let seq = paid.equipment.nextSeq;
+  const fresh = { ...rollBerry(t, def, b.id, rng), locked: b.locked };
+  const returned: BerryInstance[] = [];
+  for (const defId of b.spent?.fodder ?? []) {
+    const d = berryDef(t, defId);
+    if (d) returned.push(rollBerry(t, d, `be${seq++}`, rng));
+  }
+  const berries = [...paid.equipment.berries.map((x) => (x.id === b.id ? fresh : x)), ...returned];
+  return ok({ ...paid, currencies, equipment: { ...paid.equipment, berries, nextSeq: seq } });
 }
 
 /** Grant a new berry (debug / rewards). */

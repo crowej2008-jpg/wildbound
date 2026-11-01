@@ -871,11 +871,13 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     any berry at 1★ that were never cultivated, plus Gold), four breakthroughs (+1…+4: trainer Lv 40 / 45 / 50 / 60
     and 10 / 20 / 30 / 40 Blue → Red Mulch), 15 line kinds with caps by stage, 100 Berry Essence a Cultivation
     (Fast: 10), Reforge 10 / 20 / 35 / 35 / 35 Potions by line, dismantle 50 / 40 Essence for uncultivated berries
-    only, two slots and one berry per type per Pokémon, and every berry's skill by star. Stand-ins, the server's
-    own rules not being in any dump: one line at the start and one more per breakthrough (the note's reading of
-    element_num / attr_num); a new or re-rolled line's kind is drawn evenly from the kinds not already on the
-    berry; one Cultivation raises every line by 1–3 % of its cap (about 50 to fill a line); Reforge keeps the
-    line's share of its cap. Rebirth (100 Diamonds) is not built (what it returns is server-side). Berries are
+    only, two slots and one berry per type per Pokémon, and every berry's skill by star. The server's own rules
+    are not in any dump; the owner confirmed (2026-11-01): one line at the start and one more per breakthrough;
+    one Cultivation raises every line by 1–3 % of its cap ("50 sounds right" to fill a line); Reforge re-rolls a
+    line's kind and keeps its share of the cap; Rebirth (100 Diamonds) gives back every item used on the berry
+    (Essence, Mulch, Reforge Potions, Gold and the berries fed to its stars, as new 1★ berries) and returns it
+    to its start star, +0 and one empty line. Still a stand-in: a new or re-rolled line's kind is drawn evenly
+    from the kinds not already on the berry. Berries are
     no longer used up by battles (that was the M11 stand-in). Berries come only from the starting four and the
     debug grant until shops / modes carry them (the source sells them in the Rank Ladder shop).
 

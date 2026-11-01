@@ -186,6 +186,8 @@ export const en = {
   'gear.berry.breakthrough': 'Breakthrough',
   'gear.berry.trainerLv': 'Trainer Lv',
   'gear.berry.elevate': 'Elevate',
+  'gear.berry.rebirth': 'Rebirth',
+  'gear.berry.rebirthConfirm': 'Rebirth this berry? It goes back to its first star, +0 and one empty line, and everything spent on it comes back.',
   'gear.berry.bag': 'Your berries',
   'gear.berry.none': 'No spare berries.',
   'gear.berry.tier.common': 'Common',

@@ -1221,3 +1221,6 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   star-up formula and their per-battle consumption are removed. Save v27.
 - Berry skills by star ported (`scripts/data/berry-skills.py` → `equipment/berry-skills.json`, `applyBerrySkills`).
 - New currencies: Blue / Purple / Orange / Red Mulch and Reforge Potions. ASSUMPTIONS #70.
+
+- R6d follow-up (owner answers): Berry Rebirth — 100 Diamonds, everything spent on the berry comes back (each berry
+  records what was spent on it; an optional field, so v27 saves stay valid). ASSUMPTIONS #70 updated.
