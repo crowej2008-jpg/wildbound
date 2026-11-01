@@ -38,7 +38,7 @@ test('lists the five trials', async ({ page }) => {
 
 test('shows the world boss and its damage milestones', async ({ page }) => {
   await page.goto('/boss');
-  await expect(page.getByRole('heading', { name: 'World Boss' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'World Boss', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Damage milestones' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Fight' })).toBeVisible();
 });
