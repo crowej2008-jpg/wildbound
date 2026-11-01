@@ -137,7 +137,6 @@ import {
   startBattle as runStartBattle,
   stageBattle as runStageBattle,
   modeBattle as runModeBattle,
-  fielded,
   powerOf,
 } from './battle';
 import { emptyLoadout } from '@wildbound/engine';
