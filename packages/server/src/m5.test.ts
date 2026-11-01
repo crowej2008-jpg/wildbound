@@ -108,26 +108,60 @@ describe('LocalServer M5 idle', () => {
 });
 
 describe('LocalServer M5 daily', () => {
-  it('completes and claims a quest only when ready', async () => {
-    const { srv } = make();
-    const early = await srv.claimQuest('q_win3');
+  it('completes and claims a source daily only when ready (R9: 5,000 Gold + 200 Trainer XP)', async () => {
+    const { srv, advance } = make();
+    const early = await srv.claimQuest('d1');
     expect(early.ok).toBe(false);
     if (!early.ok) expect(early.error).toBe('not_ready');
-    for (let i = 0; i < 3; i++) await srv.challengeStage('c1-1', 1);
-    const claim = await srv.claimQuest('q_win3');
+    await srv.challengeStage('c1-1', 1);
+    advance(60 * 60_000);
+    expect((await srv.claimIdle()).ok).toBe(true);
+    const claim = await srv.claimQuest('d1');
     expect(claim.ok).toBe(true);
     if (!claim.ok) return;
-    expect(claim.value.granted.gold).toBe(800);
-    expect(claim.value.snapshot.state.quests.claimed).toContain('q_win3');
+    expect(claim.value.granted).toEqual({ gold: 5000, xp: 200 });
+    expect(claim.value.snapshot.state.quests.claimed).toContain('d1');
+  });
+
+  it('gates dailies on trainer level and on modes not built yet', async () => {
+    const { srv } = make();
+    // Quick Combat appears at trainer level 12; Adventure missions wait for their mode.
+    const quick = await srv.claimQuest('d3');
+    expect(quick.ok).toBe(false);
+    if (!quick.ok) expect(quick.error).toBe('resource_locked');
+    const mission = await srv.claimQuest('d6');
+    expect(mission.ok).toBe(false);
+    if (!mission.ok) expect(mission.error).toBe('resource_locked');
+  });
+
+  it('counts Tower challenges and net Diamond spending', async () => {
+    const { srv } = make();
+    await srv.challengeTower(1);
+    await srv.grantCurrency('gems', 500);
+    await srv.summon('premium', 1, 1); // the free daily draw
+    await srv.summon('premium', 1, 2); // the two starting Premium tickets
+    await srv.summon('premium', 1, 4);
+    const paid = await srv.summon('premium', 1, 3);
+    expect(paid.ok).toBe(true);
+    const load = await srv.loadAccount();
+    if (!load.ok || !paid.ok) return;
+    expect(load.value.state.quests.progress.towerChallenge).toBe(1);
+    expect(load.value.state.quests.progress.premiumSummon).toBe(4);
+    expect(load.value.state.quests.progress.gemsSpent).toBe(paid.value.cost.gems);
+    expect(paid.value.cost.gems).toBeGreaterThan(0);
   });
 
   it('claims an activity chest once the threshold is reached', async () => {
-    const { srv } = make();
+    const { srv, advance } = make();
     const early = await srv.claimActivityChest(0);
     expect(early.ok).toBe(false);
     if (!early.ok) expect(early.error).toBe('not_ready');
-    for (let i = 0; i < 3; i++) await srv.challengeStage('c1-1', 1);
-    await srv.claimQuest('q_win3');
+    await srv.challengeStage('c1-1', 1);
+    advance(60 * 60_000);
+    await srv.claimIdle();
+    await srv.challengeTower(1);
+    await srv.claimQuest('d1');
+    await srv.claimQuest('d2');
     const chest = await srv.claimActivityChest(0);
     expect(chest.ok).toBe(true);
     if (!chest.ok) return;

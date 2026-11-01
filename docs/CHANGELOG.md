@@ -1255,3 +1255,10 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   lines, debug `grantTokenFragments`); Trainer screen Tokens panel. Save v31 adds `trainerTokens`.
 - Arena and Ranked battles now run in PvP mode (the engine's PvP factor; Trainer Tokens apply there only). New
   combat stats `pBoost` / `sBoost` (P.ATK / S.ATK DMG BST). ASSUMPTIONS #74.
+
+## R9 part 1 — Daily quests from the source (2026-11-01)
+
+- `scripts/import-dailies.mjs` → `packages/content/quests/daily.json` (the source 12). New quest counters and
+  hooks (Tower, Quick Combat, Arena, daily dungeons, level-ups, Premium summons, Diamonds spent, shop buys, Pet Home
+  merges); quests carry their source trainer level and, for unbuilt modes, the milestone that brings them. The
+  Privilege XP ×60 moved to its own 120-point chest. ASSUMPTIONS #75.

@@ -4,16 +4,17 @@ import {
   claimableChests,
   isQuestClaimable,
   isQuestClaimed,
+  isQuestOffered,
   questProgress,
   type QuestDef,
 } from '@wildbound/engine';
 import RewardLine from '../components/RewardLine';
-import { questMetricLabel, t } from '../i18n';
+import { t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
 
 const THRESHOLDS = ECONOMY.activityChests.map((c) => c.points);
 
-/** Daily quests + activity chests (M5, PROMPT §7.9). */
+/** Daily quests + activity chests (M5; R9: the source's 12 dailies). */
 export default function Quests() {
   const { snapshot, claim, busy } = useServer();
   const quests = snapshot?.state.quests;
@@ -39,22 +40,27 @@ export default function Quests() {
         </h2>
         <ul className="quest-list">
           {QUESTS.map((q) => {
+            const offered = isQuestOffered(q as QuestDef, snapshot.state.profile.level);
             const progress = Math.min(questProgress(quests, q as QuestDef), q.target);
             const claimable = isQuestClaimable(quests, q as QuestDef);
             const claimed = isQuestClaimed(quests, q as QuestDef);
             return (
               <li key={q.id} className="quest-row">
                 <div className="quest-info">
-                  <span className="quest-name">{questMetricLabel[q.metric]}</span>
+                  <span className="quest-name">{q.name}</span>
                   <span className="muted">
-                    {progress} / {q.target}
+                    {q.comingIn
+                      ? t('quests.comingIn').replace('{m}', q.comingIn)
+                      : offered
+                        ? `${progress} / ${q.target}`
+                        : t('quests.unlockAt').replace('{level}', String(q.unlockLevel ?? 1))}
                   </span>
                   <RewardLine rewards={q.rewards} />
                 </div>
                 <button
                   type="button"
                   className="btn btn-primary"
-                  disabled={!claimable || busy}
+                  disabled={!offered || !claimable || busy}
                   onClick={() => void claim((s) => s.claimQuest(q.id))}
                 >
                   {claimed ? t('quests.claimed') : claimable ? t('quests.claim') : t('quests.inProgress')}

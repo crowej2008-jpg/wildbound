@@ -1,44 +1,148 @@
 [
   {
-    "id": "q_win3",
-    "metric": "winBattle",
-    "target": 3,
-    "activity": 20,
-    "rewards": { "gold": 800, "candy": 120 }
-  },
-  {
-    "id": "q_sweep1",
-    "metric": "sweepStage",
-    "target": 1,
-    "activity": 10,
-    "rewards": { "gold": 400, "candy": 60 }
-  },
-  {
-    "id": "q_level3",
-    "metric": "levelUp",
-    "target": 3,
-    "activity": 15,
-    "rewards": { "gold": 600, "candy": 200 }
-  },
-  {
-    "id": "q_star1",
-    "metric": "starUp",
-    "target": 1,
-    "activity": 10,
-    "rewards": { "gold": 500, "shard": 10 }
-  },
-  {
-    "id": "q_idle1",
+    "id": "d1",
+    "name": "Claim AFK XP 1 time",
     "metric": "claimIdle",
     "target": 1,
     "activity": 10,
-    "rewards": { "gold": 300, "candy": 50 }
+    "unlockLevel": 1,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
   },
   {
-    "id": "q_quest3",
-    "metric": "claimQuest",
+    "id": "d2",
+    "name": "Complete 1 Pokémon Tower challenges",
+    "metric": "towerChallenge",
+    "target": 1,
+    "activity": 10,
+    "unlockLevel": 1,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d3",
+    "name": "Complete a Quick Combat",
+    "metric": "quickCombat",
+    "target": 1,
+    "activity": 20,
+    "unlockLevel": 12,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d4",
+    "name": "Complete 3 Arena challenges",
+    "metric": "arenaChallenge",
     "target": 3,
-    "activity": 15,
-    "rewards": { "gems": 20, "gold": 500 }
+    "activity": 10,
+    "unlockLevel": 1,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d5",
+    "name": "Complete 2 Daily - XP Dungeon",
+    "metric": "dailyDungeon",
+    "target": 2,
+    "activity": 10,
+    "unlockLevel": 1,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d6",
+    "name": "Challenge Adventure Quest once",
+    "metric": "adventureMission",
+    "target": 1,
+    "activity": 10,
+    "unlockLevel": 1,
+    "comingIn": "M13",
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d7",
+    "name": "Upgrade Pokémons 1 times",
+    "metric": "levelUp",
+    "target": 1,
+    "activity": 10,
+    "unlockLevel": 15,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d8",
+    "name": "Use Premium Gacha once",
+    "metric": "premiumSummon",
+    "target": 1,
+    "activity": 10,
+    "unlockLevel": 15,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d9",
+    "name": "Cumulative consume 60 diamonds",
+    "metric": "gemsSpent",
+    "target": 60,
+    "activity": 20,
+    "unlockLevel": 1,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d10",
+    "name": "Make 1 shop purchases",
+    "metric": "shopBuy",
+    "target": 1,
+    "activity": 10,
+    "unlockLevel": 1,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d11",
+    "name": "Make 5 donations to guild",
+    "metric": "guildDonate",
+    "target": 5,
+    "activity": 10,
+    "unlockLevel": 1,
+    "comingIn": "M15",
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
+  },
+  {
+    "id": "d12",
+    "name": "Craft once in Pokémon's Home",
+    "metric": "petHomeMerge",
+    "target": 1,
+    "activity": 10,
+    "unlockLevel": 1,
+    "rewards": {
+      "gold": 5000,
+      "xp": 200
+    }
   }
 ]

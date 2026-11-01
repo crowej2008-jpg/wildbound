@@ -9,10 +9,39 @@
     "maxLevel": 80
   },
   "activityChests": [
-    { "points": 20, "rewards": { "gold": 1000, "candy": 150 } },
-    { "points": 50, "rewards": { "gems": 30, "gold": 2000 } },
-    { "points": 80, "rewards": { "gems": 50, "candy": 500, "shard": 20, "privilegeXp": 60 } }
+    {
+      "points": 20,
+      "rewards": {
+        "gold": 1000,
+        "candy": 150
+      }
+    },
+    {
+      "points": 50,
+      "rewards": {
+        "gems": 30,
+        "gold": 2000
+      }
+    },
+    {
+      "points": 80,
+      "rewards": {
+        "gems": 50,
+        "candy": 500,
+        "shard": 20
+      }
+    },
+    {
+      "points": 120,
+      "rewards": {
+        "privilegeXp": 60
+      }
+    }
   ],
   "mailTtlHours": 168,
-  "welcome": { "gold": 500, "candy": 200, "gems": 50 }
+  "welcome": {
+    "gold": 500,
+    "candy": 200,
+    "gems": 50
+  }
 }

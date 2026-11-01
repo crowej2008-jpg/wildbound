@@ -925,3 +925,14 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     every battle ran as PvE); P.ATK / S.ATK DMG BST are new engine stats on the attacker's side of the DMG pair,
     beside P.ATK / S.ATK DMG RDCT. Not in Wildbound yet: the treasure totals (Gods Trials, M13 — saved per season in
     `trainerTokens.treasureTotals`) and the fragments (the source names only "festive events", M15).
+
+75. **R9 Daily quests.** Copied from the source (`daily_task_basic_json`, English from the dumps' language notes): the
+    12 dailies, each paying Gold ×5,000 + Trainer XP ×200, worth 10 or 20 activity (140 in all), shown from the
+    trainer level the source gives (Quick Combat at 12, Pokémon level-up and Premium summon at 15). Counters: claim
+    idle (a normal claim; a quick-collect counts as Quick Combat), Tower challenges (win or lose), Quick Combat,
+    Arena challenges, daily-dungeon runs (the source asks for the XP dungeon; any of Wildbound's stand-in dungeons
+    counts until R9 copies the source's four), Pokémon level-ups, Premium summons, net Diamonds spent by an action
+    (an import or reset is not counted), shop purchases and Pet Home merges. Adventure missions (M13) and guild
+    donations (M15) show where they arrive, so 120 activity is reachable. Activity chests: the source table is not
+    in the dumps; only the 120-point chest's Privilege XP ×60 is recorded, so it is a chest of its own and the 20 /
+    50 / 80 stand-ins stay until the table is found.

@@ -808,9 +808,30 @@ export const exploreSchema = z
 export const questSchema = z
   .object({
     id: z.string().min(1),
-    metric: z.enum(['winBattle', 'sweepStage', 'levelUp', 'starUp', 'claimIdle', 'claimQuest']),
+    /** R9: the source's English task text. */
+    name: z.string().min(1),
+    metric: z.enum([
+      'winBattle',
+      'sweepStage',
+      'levelUp',
+      'starUp',
+      'claimIdle',
+      'claimQuest',
+      'towerChallenge',
+      'quickCombat',
+      'arenaChallenge',
+      'dailyDungeon',
+      'adventureMission',
+      'premiumSummon',
+      'gemsSpent',
+      'shopBuy',
+      'guildDonate',
+      'petHomeMerge',
+    ]),
     target: z.number().int().positive(),
     activity: z.number().int().nonnegative(),
+    unlockLevel: z.number().int().min(1).optional(),
+    comingIn: z.string().optional(),
     rewards: rewardSchema,
   })
   .strict();

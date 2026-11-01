@@ -10,6 +10,7 @@ import {
   emptyQuestState,
   hasClaimableMail,
   isQuestClaimable,
+  isQuestOffered,
   pruneMail,
   questProgress,
   unclaimedMail,
@@ -57,5 +58,15 @@ describe('mail', () => {
     expect(hasClaimableMail(later)).toBe(true);
     const claimed = claimAllMail(later);
     expect(hasClaimableMail(claimed)).toBe(false);
+  });
+});
+
+describe('R9 quest offers', () => {
+  it('offers a quest from its trainer level, and never while its mode is coming', () => {
+    const quick = { id: 'd3', metric: 'quickCombat' as const, target: 1, activity: 20, rewards: {}, unlockLevel: 12 };
+    expect(isQuestOffered(quick, 11)).toBe(false);
+    expect(isQuestOffered(quick, 12)).toBe(true);
+    expect(isQuestOffered({ ...quick, unlockLevel: undefined }, 1)).toBe(true);
+    expect(isQuestOffered({ ...quick, comingIn: 'M13' }, 99)).toBe(false);
   });
 });

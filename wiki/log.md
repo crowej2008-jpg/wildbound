@@ -200,3 +200,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R8 Trainer Tokens
 - Six source tokens, PvP-only; Arena and Ranked now run in the engine's PvP mode (ASSUMPTIONS #74, save v31).
   Next: Mount / Back Decor / Follower.
+
+## [2026-11-01] update | R8 paused, R9 dailies
+- Mount / Back Decor / Follower wait on `fashion_up_star_json` and the skin stats (not in the dumps; listed in
+  open questions). R9 started: the source's 12 dailies replace the M5 quests (ASSUMPTIONS #75).

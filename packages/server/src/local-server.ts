@@ -46,6 +46,7 @@ import {
   isGymAvailable,
   isGymCleared,
   isQuestClaimable,
+  isQuestOffered,
   isUnlocked,
   isZeroRewards,
   leveledUp,
@@ -364,7 +365,7 @@ export class LocalServer implements GameServer {
       },
       'levelUp',
     );
-    return this.commit(syncResonance(this.config, grown));
+    return this.commit(syncResonance(this.config, this.withQuest(grown, 'levelUp')));
   }
 
   async evolve(instanceId: string): Promise<Result<AccountSnapshot>> {
@@ -493,11 +494,13 @@ export class LocalServer implements GameServer {
   async importSave(json: string): Promise<Result<AccountSnapshot>> {
     const parsed = parseSave(json, this.config.now(), this.config);
     if (!parsed.ok) return parsed;
+    this.state = null; // a replaced account is not an action: nothing counts toward the dailies
     return this.commit(parsed.value);
   }
 
   async resetAccount(): Promise<Result<AccountSnapshot>> {
     await this.store.remove(BACKUP_KEY);
+    this.state = null;
     return this.commit(createInitialState(this.config));
   }
 
@@ -646,7 +649,8 @@ export class LocalServer implements GameServer {
       next = { ...next, idle: { ...next.idle, lastClaimAt: now } };
     }
     next = applyGrant(this.config, next, granted);
-    next = this.withQuest(next, 'claimIdle');
+    // R9: the source dailies count a claim (Claim AFK XP) and a Quick Combat separately.
+    next = this.withQuest(next, quick ? 'quickCombat' : 'claimIdle');
     return this.commitClaim(next, granted);
   }
 
@@ -656,6 +660,7 @@ export class LocalServer implements GameServer {
     const state = loaded.value;
     const def = this.config.quests.find((q) => q.id === questId);
     if (!def) return fail('not_found', `unknown quest "${questId}"`);
+    if (!isQuestOffered(def, state.profile.level)) return fail('resource_locked', 'quest is not offered yet');
     if (!isQuestClaimable(state.quests, def)) return fail('not_ready', 'quest is not ready to claim');
     let next = { ...state, quests: runClaimQuest(state.quests, questId) };
     next = applyGrant(this.config, next, def.rewards);
@@ -737,7 +742,9 @@ export class LocalServer implements GameServer {
     const rng = typeof seed === 'number' ? mulberry32(seed) : this.config.rng;
     const applied = applySummon(this.config, state, machine, count, this.now(state), rng);
     if (!applied.ok) return fail(applied.error, applied.message);
-    const committed = await this.commit(applied.value.state);
+    // R9: the source daily counts Premium summons ({chest,2}).
+    const summoned = machine === 'premium' ? this.withQuest(applied.value.state, 'premiumSummon', count) : applied.value.state;
+    const committed = await this.commit(summoned);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
       machine,
@@ -775,7 +782,7 @@ export class LocalServer implements GameServer {
     if (!loaded.ok) return loaded;
     const applied = applyBuy(this.config, loaded.value, shopId, itemId, this.now(loaded.value));
     if (!applied.ok) return fail(applied.error, applied.message);
-    return this.commitClaim(applied.value.state, applied.value.granted);
+    return this.commitClaim(this.withQuest(applied.value.state, 'shopBuy'), applied.value.granted);
   }
 
   async refreshShop(shopId: string): Promise<Result<ClaimResult>> {
@@ -999,7 +1006,7 @@ export class LocalServer implements GameServer {
     const outcome = challengeTowerAction(this.config, state, this.now(state), seed);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
-    let next = value.state;
+    let next = this.withQuest(value.state, 'towerChallenge');
     if (value.win) next = this.withQuest(next, 'winBattle');
     next = this.withTutorialAction(next, 'winStage');
     const committed = await this.commit(next);
@@ -1104,7 +1111,8 @@ export class LocalServer implements GameServer {
     const outcome = challengeDungeonAction(this.config, state, dungeonId, this.now(state), seed);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
-    let next = value.state;
+    // R9: the source daily wants two XP-dungeon runs; any daily dungeon counts until R9 copies the source's.
+    let next = this.withQuest(value.state, 'dailyDungeon');
     if (value.win) next = this.withQuest(next, 'winBattle');
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
@@ -1172,7 +1180,7 @@ export class LocalServer implements GameServer {
     if (!loaded.ok) return loaded;
     const outcome = mergePetsAction(this.config, loaded.value, this.now(loaded.value), sourceId, targetId);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
-    return this.commit(outcome.value);
+    return this.commit(this.withQuest(outcome.value, 'petHomeMerge'));
   }
 
   async releasePet(petId: string): Promise<Result<AccountSnapshot>> {
@@ -1299,7 +1307,7 @@ export class LocalServer implements GameServer {
     const outcome = challengeArenaAction(this.config, state, this.now(state), opponentIndex, seed);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
-    let next = value.state;
+    let next = this.withQuest(value.state, 'arenaChallenge');
     if (value.win) next = this.withQuest(next, 'winBattle');
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
@@ -1571,7 +1579,11 @@ export class LocalServer implements GameServer {
     await this.store.write(SAVE_KEY, serializeSave(state));
   }
 
-  private async commit(state: AccountState): Promise<Result<AccountSnapshot>> {
+  private async commit(next: AccountState): Promise<Result<AccountSnapshot>> {
+    // R9: the source daily "spend 60 Diamonds" counts every net Diamond decrease of an action today.
+    const before = this.state;
+    const spent = before && before.quests.day === next.quests.day ? before.currencies.gems - next.currencies.gems : 0;
+    const state = spent > 0 ? this.withQuest(next, 'gemsSpent', spent) : next;
     this.state = state;
     await this.persist(state);
     return ok(this.snapshot(state));

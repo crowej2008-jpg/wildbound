@@ -5,6 +5,7 @@ export {
   isQuestComplete,
   isQuestClaimed,
   isQuestClaimable,
+  isQuestOffered,
   claimQuest,
   activityPoints,
   claimableChests,

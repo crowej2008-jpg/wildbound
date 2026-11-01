@@ -503,12 +503,8 @@ export const en = {
   'quests.chests': 'Activity Chests',
   'quests.points': 'pts',
   'quests.locked': 'Locked',
-  'quest.metric.winBattle': 'Win battles',
-  'quest.metric.sweepStage': 'Sweep stages',
-  'quest.metric.levelUp': 'Level up Wilds',
-  'quest.metric.starUp': 'Gain stars',
-  'quest.metric.claimIdle': 'Collect idle income',
-  'quest.metric.claimQuest': 'Claim quests',
+  'quests.comingIn': 'Its mode arrives in {m}.',
+  'quests.unlockAt': 'Unlocks at trainer level {level}.',
   'mail.title': 'Mail',
   'mail.claimAll': 'Claim all',
   'mail.empty': 'No mail right now.',
@@ -1039,17 +1035,6 @@ export const strategyLabel: Record<StrategyKey, string> = {
   aggressive: en['squad.strategy.aggressive'],
   balanced: en['squad.strategy.balanced'],
   defensive: en['squad.strategy.defensive'],
-};
-
-export type QuestMetricKey = 'winBattle' | 'sweepStage' | 'levelUp' | 'starUp' | 'claimIdle' | 'claimQuest';
-
-export const questMetricLabel: Record<QuestMetricKey, string> = {
-  winBattle: en['quest.metric.winBattle'],
-  sweepStage: en['quest.metric.sweepStage'],
-  levelUp: en['quest.metric.levelUp'],
-  starUp: en['quest.metric.starUp'],
-  claimIdle: en['quest.metric.claimIdle'],
-  claimQuest: en['quest.metric.claimQuest'],
 };
 
 /** Weekday labels, Sunday-first to match `weekdayUtc` (M8). */

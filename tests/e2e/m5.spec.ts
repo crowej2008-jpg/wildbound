@@ -102,11 +102,16 @@ test('collecting idle income completes a daily quest that can be claimed', async
 
   await page.goto('/quests');
   await expect(page.getByRole('heading', { name: 'Daily Quests' })).toBeVisible();
-  const quest = page.locator('.quest-row').filter({ hasText: 'Collect idle income' });
+  const quest = page.locator('.quest-row').filter({ hasText: 'Claim AFK XP 1 time' });
   await expect(quest.getByText('1 / 1')).toBeVisible();
 
   const claim = quest.getByRole('button', { name: 'Claim' });
   await expect(claim).toBeEnabled();
   await claim.click();
   await expect(quest.getByRole('button', { name: 'Claimed' })).toBeDisabled();
+
+  // R9: modes Wildbound has not built yet show where they arrive.
+  await expect(
+    page.locator('.quest-row').filter({ hasText: 'Challenge Adventure Quest once' }).getByText('Its mode arrives in M13.'),
+  ).toBeVisible();
 });

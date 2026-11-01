@@ -5,7 +5,24 @@ import type { Rewards } from '../economy/rewards';
  * by *metric*, so several quests can share one counter (e.g. win 3 and win 10).
  */
 
-export type QuestMetric = 'winBattle' | 'sweepStage' | 'levelUp' | 'starUp' | 'claimIdle' | 'claimQuest';
+/** R9: the source dailies' counters (daily_task_basic_json targets) plus the older M5 ones. */
+export type QuestMetric =
+  | 'winBattle'
+  | 'sweepStage'
+  | 'levelUp'
+  | 'starUp'
+  | 'claimIdle'
+  | 'claimQuest'
+  | 'towerChallenge'
+  | 'quickCombat'
+  | 'arenaChallenge'
+  | 'dailyDungeon'
+  | 'adventureMission'
+  | 'premiumSummon'
+  | 'gemsSpent'
+  | 'shopBuy'
+  | 'guildDonate'
+  | 'petHomeMerge';
 
 export interface QuestDef {
   id: string;
@@ -14,6 +31,15 @@ export interface QuestDef {
   /** Activity points granted when the quest is claimed. */
   activity: number;
   rewards: Rewards;
+  /** R9: the trainer level the quest appears at (source award_lev). */
+  unlockLevel?: number;
+  /** R9: the milestone that builds the quest's mode (not live yet). */
+  comingIn?: string;
+}
+
+/** R9: a quest is offered when the trainer has reached its level and its mode exists. */
+export function isQuestOffered(def: QuestDef, trainerLevel: number): boolean {
+  return def.comingIn === undefined && trainerLevel >= (def.unlockLevel ?? 1);
 }
 
 /** Per-day quest bookkeeping stored in the save. */
