@@ -370,3 +370,85 @@ plate("palkia", {
                                         give(SELF, buff("subspace-critpow", "critPower", 0.1, turns=3, stacks=6))])]},
     18: {"triggers": [trig("afterUlt", [give(SELF, buff("subspace-steadfast", kind="endure", turns=1))])]},
 })
+
+# --- batch 8 -------------------------------------------------------------------------------------
+plate("giratina", {
+    6: {"statMods": [{"field": "lifesteal", "add": 0.2}]},
+    12: {"skills": {"ult": edited("giratina", "ult", lambda s: s.update(ignoreDefense=0.15))}},
+    18: {"triggers": [trig("onKill", [rage(SELF, fill=True)]),
+                      trig("afterUlt", [give(T, buff("giratina-heal-block", "receiveHealBoost", -1.0, big=2))])]},
+})
+
+plate("zygarde", {
+    6: {"triggers": [trig("afterUlt", [give(SELF, buff("zygarde-rdct", "dmgRdct", 0.15, turns=2))])]},
+    12: {"triggers": [trig("afterUlt", [give(SELF, buff("zygarde-ult-up", "ultBoost", 0.1, stacks=99))])]},
+    18: {"triggers": [trig("afterUlt", [heal(SELF, 0.08, "targetMissingHp", condition={"selfHpBelow": 0.5})])]},
+})
+
+plate("xerneas", {
+    6: {"triggers": [trig("afterUlt", [give(SELF, buff("xerneas-crit", "crit", 0.3, turns=3))])]},
+    12: {"triggers": [trig("onCrit", [heal(ALL_ALLIES, 1.0, "casterSAtk")], condition=ON_ULT, perTurn=1)]},
+    18: {"triggers": [trig("afterUlt", [give(BACK, buff("xerneas-back-crit", "crit", 0.15, turns=3)),
+                                        give(BACK, buff("xerneas-back-critpow", "critPower", 0.15, turns=3))])]},
+})
+
+
+def _lunala(stage):
+    """Moongeist hit = the ult's SPD cut + shallow sleep (one 50% roll in the port: both effects)."""
+    def fn(s):
+        for e in s["effects"]:
+            if e.get("chance") == 0.5:
+                e["chance"] = 0.7
+            if e["op"] == "control" and e["control"].get("chance") == 0.5:
+                e["control"]["chance"] = 0.7
+            if stage >= 18 and e["op"] == "buff" and e["buff"].get("field") == "spd":
+                e["buff"]["amount"] = -20
+                e["buff"]["bigRounds"] = 2
+        if stage >= 12:
+            s["effects"].append(give({"event": True}, buff("moongeist-rageblock", kind="rageBlock", big=1), chance=0.7))
+    return fn
+
+
+plate("lunala", {
+    6: {"skills": {"ult": edited("lunala", "ult", _lunala(6))}},
+    12: {"skills": {"ult": edited("lunala", "ult", _lunala(12))}},
+    18: {"skills": {"ult": edited("lunala", "ult", _lunala(18))}},
+})
+
+plate("wind-god-pidgeot", {
+    6: {"skills": {"ult": edited("wind-god-pidgeot", "ult", lambda s: s.update(rates=[2.5]))}},
+    12: {"triggers": [trig("afterUlt", [{"op": "extraAction", "target": SELF, "slot": "ult", "noRage": True}],
+                           chance=0.5, perTurn=1, condition={"targetControlled": True})]},
+    # Blind (25% miss for 2 turns) has no hit/dodge stat: read as -25% DMG dealt, the expected value.
+    18: {"skills": {"basic": edited("wind-god-pidgeot", "basic", lambda s: s.setdefault("effects", []).append(
+        give({"event": True}, buff("pidgeot-blind", "dmgBoost", -0.25, turns=2), chance=0.6)))}},
+})
+
+
+# --- readings (docs/PORT-REPORT.md "Plate skills") -----------------------------------------------
+note("God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.")
+note("Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).")
+note("Shiny Blastoise 6: 'increases P.ATK DMG RDCT by 50 %' read as x1.5 (30 % -> 45 %); 18 (Regrowth Mark heals him when allies hit marked enemies) not modelled — no ally-hit trigger yet.")
+note("Psyduck 6: 'S.DEF -30 %' read as +30 % S.ATK damage taken (sRdct -0.3).")
+note("Dialga 12 / 18 (Rage to backline / frontline): no effect — the owner's ultimate already fills the team.")
+note("Darkrai 12: 'after 2 [Nightmare] stacks' read as from round 2 on; 18 read as the normal attack at 135 %.")
+note("Snorlax 12: one hit at 70 % reduction (consumed on the hit), no damage transfer; 18: endure 2 turns, every 4.")
+note("Yveltal 12 (ult burns to 100 %) and Lugia 12 (SKILL allies' DMG Boost — no amount given): not modelled; Yveltal 18 'debuffed' read as carrying a DoT.")
+note("Keldeo 12: the 'ignores 20 % DEF' half is not modelled (no per-target DEF ignore on damage mods).")
+note("Shiny Hoopa 12: Sacred Fire at Ho-Oh's 125 % S.ATK for 2 turns (the text gives no number).")
+note("Shiny Mewtwo 18: 'before the Ultimate' applied right after it (no before-ult trigger), so it helps the next.")
+note("Jirachi 18 (Doom Desire's missing-HP damage to 50 %): not modelled (no target-missing-HP damage scale).")
+note("Solgaleo 12: the extra-damage line raised to 6 % max HP; 'ignores 20 % P.DEF' as the basic's ignore DEF.")
+note("Meloetta 6: 'S.ATK +20 %' as ATK +20 % for 2 turns (no duration given); 18: the sleep chance (not given) is 30 %.")
+note("Arceus / Shiny Arceus 6: 'ignores 15 % S.DEF vs controlled' as +15 % damage; 12: Crit per mark as a stack (up to 20) gained with each mark; 18 ('attack and restrain all enemies') not modelled — no restrain kind.")
+note("Deoxys 6 gives no amount: -15 % ATK for 1 turn; 18: -30 % in the first round, -15 % in the second.")
+note("Cresselia / Shiny Cresselia 12: the shields (200 % / 240 % S.ATK) also come after normal attacks.")
+note("Celebi 6 (overheal -> 70 % shield) not modelled — no overheal hook.")
+note("Infernape 6 (a Flame layer upgraded to undispellable Blaze) not modelled; 18 without the self HP cost.")
+note("Black / Shiny Kyurem 18 (+35 % per target [Frost] stack, then clear it) not modelled — no per-target-stack scale.")
+note("Palkia: [Subspace] opens with the ultimate, so its plate effects follow the ultimate.")
+note("Giratina 18: 'stays at max Rage after a kill spree' read as a full Rage refill on each kill; the Healing Block is 2 big rounds.")
+note("Zygarde 12: +10 % ult boost per ultimate as a stacking buff (cap 99, never expires); 18's 'no HP cost above 50 %' has nothing to remove (the port never charges the 8 % HP), so only the below-50 % 8 % lost-HP heal is modelled.")
+note("Xerneas 12: the ult-crit heal (100 % S.ATK, all allies) fires once per turn; the follow-up normal / basic 80 % heal is not modelled.")
+note("Lunala: [Moongeist hit] is both ult effects (SPD cut + shallow sleep), so 6 raises both chances to 70 %; 12 adds a 70 % 1-round Rage block.")
+note("Wind God Pidgeot 18: Blind (25 % miss, 2 turns) has no hit / dodge stat — read as -25 % DMG dealt, the expected value.")

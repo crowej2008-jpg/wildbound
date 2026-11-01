@@ -1316,6 +1316,16 @@ lines.push(`## Hand-ported, still not modelled (${handGaps.reduce((n, [, o]) => 
 lines.push('');
 for (const [k, o] of handGaps) for (const note of o.notModelled) lines.push(`- **${k}** — ${note}`);
 lines.push('');
+const plated = Object.keys(OVERRIDES._plates ?? {});
+lines.push(`## Plate skills (R6a part 2, hand-ported in \`scripts/data/plate-skills.py\`): ${plated.length}`);
+lines.push('');
+lines.push('Source: `scripts/data/plate-skills-source.json` (hero_stone_skill_json, 228 skills / 76 Pokémon). Applied by');
+lines.push('`applyPlateSkills` for tiers at or below the Pokémon\'s plate stage. An empty tier is listed in the readings.');
+lines.push('');
+lines.push(`Ported: ${plated.join(', ')}.`);
+lines.push('');
+for (const n of OVERRIDES._plateNotes ?? []) lines.push(`- ${n}`);
+lines.push('');
 lines.push(`## Unparsed clause patterns (${rep.residualMap.size} distinct, top 60)`);
 lines.push('');
 lines.push('| count | clause | example |');

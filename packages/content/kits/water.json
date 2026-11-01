@@ -2726,6 +2726,95 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "After an Ultimate, increases self Crit by 30%, lasting for 3 turns",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "xerneas-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.3,
+                  "turns": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Ultimate Crit restores 100% S.ATK HP to all teammates, the next minor attack or skill will restore 80% S.ATK HP of all allies.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "perTurn": 1,
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "rate": 1,
+                "basis": "casterSAtk"
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "After rage move,gain ally back-line Pokémons crit intensity by 15% and 15%Crit ,last 3 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "back"
+                },
+                "buff": {
+                  "tag": "xerneas-back-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.15,
+                  "turns": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "back"
+                },
+                "buff": {
+                  "tag": "xerneas-back-critpow",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.15,
+                  "turns": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

@@ -15436,6 +15436,465 @@
      }
     ]
    }
+  },
+  "giratina": {
+   "6": {
+    "text": "Converts 20% of damage dealt into healing",
+    "statMods": [
+     {
+      "field": "lifesteal",
+      "add": 0.2
+     }
+    ]
+   },
+   "12": {
+    "text": "Ultimate ignores enemy's 15% S.DEF",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       2.5
+      ],
+      "rule": "lowest_hp",
+      "recastOnKill": {
+       "max": 1
+      },
+      "ignoreDefense": 0.15
+     }
+    }
+   },
+   "18": {
+    "text": "Stay max rage after killing spree, attaches Healing Block to attack taker, lasts 2 rounds",
+    "triggers": [
+     {
+      "on": "onKill",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "fill": true
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "giratina-heal-block",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -1.0,
+         "bigRounds": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "zygarde": {
+   "6": {
+    "text": "After an Ultimate,Gains 15% DMG RDCT for 2 turns",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "zygarde-rdct",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.15,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Every time releases the Ultimate, increases Ultimate DMG by 10% permanently without upper limit",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "zygarde-ult-up",
+         "kind": "stat",
+         "field": "ultBoost",
+         "amount": 0.1,
+         "maxStacks": 99
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "When self HP is higher than 50%, additional damage will not consume your HP; When self HP is lower than 50%, release Ultimate to restore 8% of your lost HP",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.08,
+        "basis": "targetMissingHp",
+        "condition": {
+         "selfHpBelow": 0.5
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "xerneas": {
+   "6": {
+    "text": "After an Ultimate, increases self Crit by 30%, lasting for 3 turns",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "xerneas-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.3,
+         "turns": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Ultimate Crit restores 100% S.ATK HP to all teammates, the next minor attack or skill will restore 80% S.ATK HP of all allies.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "perTurn": 1,
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "rate": 1.0,
+        "basis": "casterSAtk"
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "After rage move,gain ally back-line Pok\u00e9mons crit intensity by 15% and 15%Crit ,last 3 turns.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "buff": {
+         "tag": "xerneas-back-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.15,
+         "turns": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "buff": {
+         "tag": "xerneas-back-critpow",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.15,
+         "turns": 3
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "lunala": {
+   "6": {
+    "text": "Chance of applying\u3010Moongeist hit\u3011to ultimate is increased to 70%",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "moongeist-spd",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -10,
+         "bigRounds": 1
+        },
+        "chance": 0.7
+       },
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "shallowSleep",
+         "chance": 0.7
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Chance of applying\u3010Moongeist hit\u3011to ultimate adds extra effect of rage unrecoverable",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "moongeist-spd",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -10,
+         "bigRounds": 1
+        },
+        "chance": 0.7
+       },
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "shallowSleep",
+         "chance": 0.7
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "moongeist-rageblock",
+         "kind": "rageBlock",
+         "bigRounds": 1
+        },
+        "chance": 0.7
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Chance of applying\u3010Moongeist hit\u3011to ultimate reduced speed increased to 20, duration extended by 1 round",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "moongeist-spd",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -20,
+         "bigRounds": 2
+        },
+        "chance": 0.7
+       },
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "shallowSleep",
+         "chance": 0.7
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "moongeist-rageblock",
+         "kind": "rageBlock",
+         "bigRounds": 1
+        },
+        "chance": 0.7
+       }
+      ]
+     }
+    }
+   }
+  },
+  "wind-god-pidgeot": {
+   "6": {
+    "text": "Increases ult base DMG to 250%",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       2.5
+      ],
+      "rule": "backline",
+      "targets": 1
+     }
+    }
+   },
+   "12": {
+    "text": "Ultmate attack to the control state of the unit has 50% again release ultimate, additional ultmate does not consume rage",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "chance": 0.5,
+      "perTurn": 1,
+      "condition": {
+       "targetControlled": true
+      },
+      "effects": [
+       {
+        "op": "extraAction",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "slot": "ult",
+        "noRage": true
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "The basic skill has a 60% chance of causing blindness for 2 turns. Blindness: control status, 25% chance of being dodged when attacking, can be dispelled",
+    "skills": {
+     "basic": {
+      "type": "P",
+      "rates": [
+       1.2
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "pidgeot-blind",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": -0.25,
+         "turns": 2
+        },
+        "chance": 0.6
+       }
+      ]
+     }
+    }
+   }
   }
- }
+ },
+ "_plateNotes": [
+  "God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.",
+  "Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).",
+  "Shiny Blastoise 6: 'increases P.ATK DMG RDCT by 50 %' read as x1.5 (30 % -> 45 %); 18 (Regrowth Mark heals him when allies hit marked enemies) not modelled \u2014 no ally-hit trigger yet.",
+  "Psyduck 6: 'S.DEF -30 %' read as +30 % S.ATK damage taken (sRdct -0.3).",
+  "Dialga 12 / 18 (Rage to backline / frontline): no effect \u2014 the owner's ultimate already fills the team.",
+  "Darkrai 12: 'after 2 [Nightmare] stacks' read as from round 2 on; 18 read as the normal attack at 135 %.",
+  "Snorlax 12: one hit at 70 % reduction (consumed on the hit), no damage transfer; 18: endure 2 turns, every 4.",
+  "Yveltal 12 (ult burns to 100 %) and Lugia 12 (SKILL allies' DMG Boost \u2014 no amount given): not modelled; Yveltal 18 'debuffed' read as carrying a DoT.",
+  "Keldeo 12: the 'ignores 20 % DEF' half is not modelled (no per-target DEF ignore on damage mods).",
+  "Shiny Hoopa 12: Sacred Fire at Ho-Oh's 125 % S.ATK for 2 turns (the text gives no number).",
+  "Shiny Mewtwo 18: 'before the Ultimate' applied right after it (no before-ult trigger), so it helps the next.",
+  "Jirachi 18 (Doom Desire's missing-HP damage to 50 %): not modelled (no target-missing-HP damage scale).",
+  "Solgaleo 12: the extra-damage line raised to 6 % max HP; 'ignores 20 % P.DEF' as the basic's ignore DEF.",
+  "Meloetta 6: 'S.ATK +20 %' as ATK +20 % for 2 turns (no duration given); 18: the sleep chance (not given) is 30 %.",
+  "Arceus / Shiny Arceus 6: 'ignores 15 % S.DEF vs controlled' as +15 % damage; 12: Crit per mark as a stack (up to 20) gained with each mark; 18 ('attack and restrain all enemies') not modelled \u2014 no restrain kind.",
+  "Deoxys 6 gives no amount: -15 % ATK for 1 turn; 18: -30 % in the first round, -15 % in the second.",
+  "Cresselia / Shiny Cresselia 12: the shields (200 % / 240 % S.ATK) also come after normal attacks.",
+  "Celebi 6 (overheal -> 70 % shield) not modelled \u2014 no overheal hook.",
+  "Infernape 6 (a Flame layer upgraded to undispellable Blaze) not modelled; 18 without the self HP cost.",
+  "Black / Shiny Kyurem 18 (+35 % per target [Frost] stack, then clear it) not modelled \u2014 no per-target-stack scale.",
+  "Palkia: [Subspace] opens with the ultimate, so its plate effects follow the ultimate.",
+  "Giratina 18: 'stays at max Rage after a kill spree' read as a full Rage refill on each kill; the Healing Block is 2 big rounds.",
+  "Zygarde 12: +10 % ult boost per ultimate as a stacking buff (cap 99, never expires); 18's 'no HP cost above 50 %' has nothing to remove (the port never charges the 8 % HP), so only the below-50 % 8 % lost-HP heal is modelled.",
+  "Xerneas 12: the ult-crit heal (100 % S.ATK, all allies) fires once per turn; the follow-up normal / basic 80 % heal is not modelled.",
+  "Lunala: [Moongeist hit] is both ult effects (SPD cut + shallow sleep), so 6 raises both chances to 70 %; 12 adds a 70 % 1-round Rage block.",
+  "Wind God Pidgeot 18: Blind (25 % miss, 2 turns) has no hit / dodge stat \u2014 read as -25 % DMG dealt, the expected value."
+ ]
 }

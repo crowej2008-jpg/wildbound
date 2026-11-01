@@ -3015,6 +3015,73 @@
       ],
       "rageStart": 500,
       "basicRate": 0.4
+    },
+    "plate": {
+      "6": {
+        "text": "Increases ult base DMG to 250%",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              2.5
+            ],
+            "rule": "backline",
+            "targets": 1
+          }
+        }
+      },
+      "12": {
+        "text": "Ultmate attack to the control state of the unit has 50% again release ultimate, additional ultmate does not consume rage",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.5,
+            "perTurn": 1,
+            "condition": {
+              "targetControlled": true
+            },
+            "effects": [
+              {
+                "op": "extraAction",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "slot": "ult",
+                "noRage": true
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "The basic skill has a 60% chance of causing blindness for 2 turns. Blindness: control status, 25% chance of being dodged when attacking, can be dispelled",
+        "skills": {
+          "basic": {
+            "type": "P",
+            "rates": [
+              1.2
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "pidgeot-blind",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": -0.25,
+                  "turns": 2
+                },
+                "chance": 0.6
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {

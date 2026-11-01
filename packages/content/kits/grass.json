@@ -2292,6 +2292,78 @@
           }
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "After an Ultimate,Gains 15% DMG RDCT for 2 turns",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "zygarde-rdct",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.15,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Every time releases the Ultimate, increases Ultimate DMG by 10% permanently without upper limit",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "zygarde-ult-up",
+                  "kind": "stat",
+                  "field": "ultBoost",
+                  "amount": 0.1,
+                  "maxStacks": 99
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "When self HP is higher than 50%, additional damage will not consume your HP; When self HP is lower than 50%, release Ultimate to restore 8% of your lost HP",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.08,
+                "basis": "targetMissingHp",
+                "condition": {
+                  "selfHpBelow": 0.5
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

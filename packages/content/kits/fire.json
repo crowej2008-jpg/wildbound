@@ -2353,6 +2353,69 @@
           ]
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Converts 20% of damage dealt into healing",
+        "statMods": [
+          {
+            "field": "lifesteal",
+            "add": 0.2
+          }
+        ]
+      },
+      "12": {
+        "text": "Ultimate ignores enemy's 15% S.DEF",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              2.5
+            ],
+            "rule": "lowest_hp",
+            "recastOnKill": {
+              "max": 1
+            },
+            "ignoreDefense": 0.15
+          }
+        }
+      },
+      "18": {
+        "text": "Stay max rage after killing spree, attaches Healing Block to attack taker, lasts 2 rounds",
+        "triggers": [
+          {
+            "on": "onKill",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "fill": true
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "giratina-heal-block",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -1,
+                  "bigRounds": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

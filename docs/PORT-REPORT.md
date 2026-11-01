@@ -128,11 +128,42 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 - **shiny-darkrai** — Ult: Nightmare's 12% Ignore DEF per stack (DEF has no effect)
 - **shiny-arceus** — Sanction's +5% Crit Intensity per layer (the +7.5% S.ATK per layer is modelled)
 
+## Plate skills (R6a part 2, hand-ported in `scripts/data/plate-skills.py`): 43
+
+Source: `scripts/data/plate-skills-source.json` (hero_stone_skill_json, 228 skills / 76 Pokémon). Applied by
+`applyPlateSkills` for tiers at or below the Pokémon's plate stage. An empty tier is listed in the readings.
+
+Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, shiny-hoopa, shiny-mewtwo, hoopa, mewtwo, jirachi, solgaleo, meloetta, arceus, shiny-arceus, kyogre, shiny-kyogre, deoxys, mew, shiny-mew, cresselia, shiny-cresselia, celebi, manaphy, infernape, black-kyurem, shiny-kyurem, shaymin, victini, palkia, giratina, zygarde, xerneas, lunala, wind-god-pidgeot.
+
+- God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.
+- Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).
+- Shiny Blastoise 6: 'increases P.ATK DMG RDCT by 50 %' read as x1.5 (30 % -> 45 %); 18 (Regrowth Mark heals him when allies hit marked enemies) not modelled — no ally-hit trigger yet.
+- Psyduck 6: 'S.DEF -30 %' read as +30 % S.ATK damage taken (sRdct -0.3).
+- Dialga 12 / 18 (Rage to backline / frontline): no effect — the owner's ultimate already fills the team.
+- Darkrai 12: 'after 2 [Nightmare] stacks' read as from round 2 on; 18 read as the normal attack at 135 %.
+- Snorlax 12: one hit at 70 % reduction (consumed on the hit), no damage transfer; 18: endure 2 turns, every 4.
+- Yveltal 12 (ult burns to 100 %) and Lugia 12 (SKILL allies' DMG Boost — no amount given): not modelled; Yveltal 18 'debuffed' read as carrying a DoT.
+- Keldeo 12: the 'ignores 20 % DEF' half is not modelled (no per-target DEF ignore on damage mods).
+- Shiny Hoopa 12: Sacred Fire at Ho-Oh's 125 % S.ATK for 2 turns (the text gives no number).
+- Shiny Mewtwo 18: 'before the Ultimate' applied right after it (no before-ult trigger), so it helps the next.
+- Jirachi 18 (Doom Desire's missing-HP damage to 50 %): not modelled (no target-missing-HP damage scale).
+- Solgaleo 12: the extra-damage line raised to 6 % max HP; 'ignores 20 % P.DEF' as the basic's ignore DEF.
+- Meloetta 6: 'S.ATK +20 %' as ATK +20 % for 2 turns (no duration given); 18: the sleep chance (not given) is 30 %.
+- Arceus / Shiny Arceus 6: 'ignores 15 % S.DEF vs controlled' as +15 % damage; 12: Crit per mark as a stack (up to 20) gained with each mark; 18 ('attack and restrain all enemies') not modelled — no restrain kind.
+- Deoxys 6 gives no amount: -15 % ATK for 1 turn; 18: -30 % in the first round, -15 % in the second.
+- Cresselia / Shiny Cresselia 12: the shields (200 % / 240 % S.ATK) also come after normal attacks.
+- Celebi 6 (overheal -> 70 % shield) not modelled — no overheal hook.
+- Infernape 6 (a Flame layer upgraded to undispellable Blaze) not modelled; 18 without the self HP cost.
+- Black / Shiny Kyurem 18 (+35 % per target [Frost] stack, then clear it) not modelled — no per-target-stack scale.
+- Palkia: [Subspace] opens with the ultimate, so its plate effects follow the ultimate.
+- Giratina 18: 'stays at max Rage after a kill spree' read as a full Rage refill on each kill; the Healing Block is 2 big rounds.
+- Zygarde 12: +10 % ult boost per ultimate as a stacking buff (cap 99, never expires); 18's 'no HP cost above 50 %' has nothing to remove (the port never charges the 8 % HP), so only the below-50 % 8 % lost-HP heal is modelled.
+- Xerneas 12: the ult-crit heal (100 % S.ATK, all allies) fires once per turn; the follow-up normal / basic 80 % heal is not modelled.
+- Lunala: [Moongeist hit] is both ult effects (SPD cut + shallow sleep), so 6 raises both chances to 70 %; 12 adds a 70 % 1-round Rage block.
+- Wind God Pidgeot 18: Blind (25 % miss, 2 turns) has no hit / dodge stat — read as -25 % DMG dealt, the expected value.
+
 ## Unparsed clause patterns (0 distinct, top 60)
 
 | count | clause | example |
 | --- | --- | --- |
 
-- Infernape 6 (a Flame layer upgraded to undispellable Blaze) not modelled; 18 without the self HP cost.
-- Black / Shiny Kyurem 18 (+35 % per target [Frost] stack, then clear it) not modelled — no per-target-stack scale.
-- Palkia: [Subspace] opens with the ultimate, so its plate effects follow the ultimate.

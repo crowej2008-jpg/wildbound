@@ -1886,6 +1886,146 @@
       ],
       "rageStart": 500,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "Chance of applying【Moongeist hit】to ultimate is increased to 70%",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "frontline",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "moongeist-spd",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -10,
+                  "bigRounds": 1
+                },
+                "chance": 0.7
+              },
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "shallowSleep",
+                  "chance": 0.7
+                }
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Chance of applying【Moongeist hit】to ultimate adds extra effect of rage unrecoverable",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "frontline",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "moongeist-spd",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -10,
+                  "bigRounds": 1
+                },
+                "chance": 0.7
+              },
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "shallowSleep",
+                  "chance": 0.7
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "moongeist-rageblock",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                },
+                "chance": 0.7
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Chance of applying【Moongeist hit】to ultimate reduced speed increased to 20, duration extended by 1 round",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "frontline",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "moongeist-spd",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -20,
+                  "bigRounds": 2
+                },
+                "chance": 0.7
+              },
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "shallowSleep",
+                  "chance": 0.7
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "moongeist-rageblock",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                },
+                "chance": 0.7
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {
