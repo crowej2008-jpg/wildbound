@@ -126,5 +126,5 @@ test('signs in today from the town hub and shows the VIP ribbon and bonuses', as
   await day1.getByRole('button', { name: 'Sign in' }).click();
   await expect(day1.getByText('Signed', { exact: true })).toBeVisible();
   await expect(page.getByText('Day 1 · Signed: 1')).toBeVisible();
-  await expect(page.getByText('2 days signed')).toBeVisible();
+  await expect(page.getByText('2 days signed', { exact: true })).toBeVisible();
 });
