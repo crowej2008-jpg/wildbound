@@ -131,3 +131,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
   win rate 47.5 % with +750 per action, 47.4 % at +500, 47.4 % at +250, 47.3 % at +125 (HP ×3: 48.8 → 48.2 %).
   Strikers 54.7 %, Guardians 47.9 %. The talent moves SKILL by under a point; SKILL is already the weakest
   class, so keeping it is (slightly) the more balanced choice.
+
+## [2026-11-01] query | Owner's action Rage (+125, SKILL +250) vs the source (+250 for all)
+- 40k random-team battles each, maxed, no gear. Normal fights: class win rates identical (ATK 54.8 %, DEF
+  47.8 %, SKILL 47.4 %), no Pokémon moves more than 0.3 points. Long fights (HP ×3): Strikers ult 1.96 → 1.88
+  per fight; biggest change 0.5 points (Ho-Oh, Groudon down; Dialga, Arceus up). Hit Rage dominates.
