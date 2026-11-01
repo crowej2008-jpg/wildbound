@@ -123,3 +123,11 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R4 Potential built
 - Source copy: 62 trees, 67 options, shard table, fodder, Potential Core, reset 16 💎. Save v22. Readings in
   ASSUMPTIONS #64. Pages: collection layers, source retrofit, save versions.
+
+## [2026-11-01] query | Gear/orb source re-check; SKILL +500 Rage measured
+- Gear/orb tables re-checked (dumps, kb, owner's wiki /orbs/sets, /orbs/stats): sets and pools complete,
+  per-colour orb stats and 56 of 64 gear stat rows missing. Open questions updated.
+- Owner asked which SKILL Rage is more balanced. Measured (30k random-team battles, maxed, no gear): SKILL
+  win rate 47.5 % with +750 per action, 47.4 % at +500, 47.4 % at +250, 47.3 % at +125 (HP ×3: 48.8 → 48.2 %).
+  Strikers 54.7 %, Guardians 47.9 %. The talent moves SKILL by under a point; SKILL is already the weakest
+  class, so keeping it is (slightly) the more balanced choice.

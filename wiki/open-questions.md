@@ -24,10 +24,15 @@ updated: 2026-10-31
 - Pokémon level-up candy/gold per level, trainer-level XP, per-species milestone stats
   (`hero_upstage_attr_json`), level-unlocked talent stat bonuses.
 - **Gear:** the dumps hold only 8 of the 64 `god_eqm_basic_json` rows and no `god_eqm_suit_json`.
-- **Orbs:** `hero_orb_basic_json`, `hero_orb_suit_json`, `hero_orb_pos_json` are not dumped (only
-  `hero_orb_decompose_json`). These block an exact R2 / R3. Can the owner re-extract them from
-  the bot's cache? (ASSUMPTIONS #50–51). Owner 2026-10-31: *"lets just go off of what we know"* — R2/R3
-  will use the kb notes with labelled stand-ins (ASSUMPTIONS #55).
+- **Orbs (re-checked 2026-11-01):** still not in the dumps, but now mostly covered — the owner's wiki
+  `/orbs/sets` lists all 26 sets (names, member kinds, Lv 3/5/7/10 bonuses), `/orbs` the six kind pairs and
+  their line pools, kb/orbs.md the sockets, colour caps, levelling and dismantle. **Still missing:** flat
+  stats per colour (only one colour's +1…+7 is recorded: ATK 221 → 4,152, HP 2,093 → 39,317) and +8…+10,
+  and exact line roll ranges (observed ranges + the kb ceiling L × 0.8 % / L × 1.2 %). Needs
+  `hero_orb_basic_json` re-extracted, or recorded stand-ins.
+- **Gear (re-checked 2026-11-01):** tiers, names, Smithy costs and the 9 set bonuses are in kb/gear.md;
+  stats exist for the Core at 8 of 16 tiers (`god_eqm_basic_json`, lev 5–12) plus the green ★1 / red ★5
+  ends; Cube, trinket slot and Wings have none. Needs `god_eqm_basic_json` (64 rows) re-extracted.
 - **Held-item album:** `held_item_total_collect` / `held_item_group_collect` are not dumped (kb has only
   the totals), so the album is deferred (ASSUMPTIONS #56).
 - **Held-item skill numbers the text leaves out (E2 stand-ins):** Smooth Rock / Heat Rock chance (50 %),
