@@ -44,7 +44,9 @@ Architecture required by the master prompt:
   `packages/content/tuning/combat.json`. No TODO stubs in shipped screens — out-of-scope features
   show an honest "coming later" state and are listed in `docs/SCOPE.md`. Commit after every passing
   step; never commit failing tests.
-- **Process.** One milestone at a time (see below); run all checks, report, and stop. Read the named
+- **Process.** One milestone at a time (see below); run all checks, report, and stop. **Owner override
+  (2026-11-01):** no "what is needed" list or wait before a milestone — report and carry on to the
+  next; stop only for the owner's own calls (see `wiki/project/owner-rules.md`). Read the named
   reference files first, then write `docs/design/<system>.md` before coding each system. Only ask the
   human for taste decisions (names, art direction), once at the end of a milestone.
 - If a reference doc conflicts with another, prefer the later-dated or audited statement and note the

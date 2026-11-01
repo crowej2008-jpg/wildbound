@@ -37,5 +37,5 @@ Numbers changed twice — see [renumbering](../decisions/milestone-renumbering.m
 | M20 | [Build Lab](../systems/build-lab.md) | pending (last) |
 
 Parked outside the numbering: [Gods Trials](../systems/gods-trials.md) ("after M13 and others").
-Workflow reminder: give the owner a "what is needed" list before each milestone
+Workflow: since 2026-11-01 no list-and-wait between milestones; stop only for the owner's own calls
 ([owner rules](../project/owner-rules.md)).

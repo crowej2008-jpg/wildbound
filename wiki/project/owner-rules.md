@@ -1,7 +1,7 @@
 ---
 title: Owner's standing instructions
 type: project
-updated: 2026-10-31
+updated: 2026-11-01
 sources: [opencode-session-2026-10, AGENTS.md]
 ---
 
@@ -13,8 +13,9 @@ before doing any work.
 | Since | Instruction | Notes |
 |---|---|---|
 | 2026-10-12 | **Push everything to the git repo** (`origin/main`). | Repeated many times ("commit any uncommitted work", "push to the repo"). |
-| 2026-10-13 | Do milestones **without asking for confirmation**. | Narrowed by the next row. |
-| 2026-10-21 | **Before every milestone, give a list of what is needed** — and wait. Lasts "till I say stop". | Still active. Every sub-milestone since has opened with a "what is needed" list. |
+| 2026-10-13 | Do milestones **without asking for confirmation**. | In force again since 2026-11-01 (the next row ended). |
+| ~~2026-10-21~~ | ~~Before every milestone, give a list of what is needed — and wait.~~ | **Ended 2026-11-01:** *"can we get rid of that rule?"* |
+| 2026-11-01 | **Keep going without waiting between milestones.** | Agent's practice (proposed to the owner the same day): stop only for the owner's own calls — his deliberate changes, taste (names, art), source text that reads two ways when the choice can't be undone, missing source tables. Otherwise take the reading closest to the source, record it in `docs/ASSUMPTIONS.md`, and add it to a review list for the owner. |
 | 2026-10-23 | Game must be **almost completely free to play**; anything costing real money is removed. | [free-to-play](../decisions/free-to-play.md) |
 | 2026-10-23 | When unsure about a mode, **check the source** (`reference/game-rebuild/`). | e.g. "look at the source for pet home", "follow the source". |
 | 2026-10-31 | **Copy the source exactly** — everything that isn't a brand-new feature matches the source game's rules, numbers, rows and names. | [decision](../decisions/copy-the-source-exactly.md) · [audit](source-fidelity-audit.md) |

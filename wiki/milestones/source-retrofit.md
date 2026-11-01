@@ -28,7 +28,7 @@ bumps `SAVE_VERSION`, `MIN_SAVE_VERSION` and `tests/e2e/save-version.ts` togethe
 **Keep (owner exceptions):** the 84-Pokémon roster/kits, his nine Soul-heart sets, Held Item Shards,
 his refine ladder, no real money.
 
-## Steps (each: list → owner OK → build → `pnpm check` → wiki + commit)
+## Steps (each: build → `pnpm check` → wiki + commit; no list-and-wait since 2026-11-01)
 | Step | System | What changes (from the kb notes) |
 |---|---|---|
 | R0 ✅ | Import pipeline | **Built 2026-10-31:** `scripts/source/source.mjs` + `docs/SOURCE-TABLES.md` (377 tables); saves **reset** (v18, `MIN_SAVE_VERSION`). |

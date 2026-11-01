@@ -111,3 +111,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] decision | PvP DMG Boost cap deferred
 - Owner relayed a 50% PvP DMG Boost cap from the base game (via his friend; not in the kb), then
   *"drop it for now"*. Not built; open question #9 until the orb/gear retrofit.
+
+## [2026-11-01] decision | No list-and-wait before milestones
+- Owner: *"can we get rid of that rule?"* — the 2026-10-21 "list what is needed and wait" rule ends.
+  Pages: owner rules, roadmap, source retrofit; AGENTS.md process note.
