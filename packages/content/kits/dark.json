@@ -341,6 +341,96 @@
       ],
       "rageStart": 500,
       "rageOnHit": 125
+    },
+    "plate": {
+      "6": {
+        "text": "Reduces ATK of the taunted target for 1 turns",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "group": "deoxys-atk",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "deoxys-taunt-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.15,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Increases S.ATK DMG to 210% S.ATK",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              2.1
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "taunt",
+                  "chance": null
+                }
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Reduce ATK of the target to tanut by 30% for 1 round. In the No. 2, reduce their ATK by 15%",
+        "dropGroups": [
+          "deoxys-atk"
+        ],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "group": "deoxys-atk",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "deoxys-taunt-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.15,
+                  "bigRounds": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "deoxys-taunt-atk-2",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.15,
+                  "bigRounds": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

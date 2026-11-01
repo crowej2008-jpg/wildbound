@@ -13498,6 +13498,449 @@
      }
     ]
    }
+  },
+  "arceus": {
+   "6": {
+    "text": "Ignores additional 15% S.DEF when attacking controlled enemies",
+    "damageMods": [
+     {
+      "tag": "arceus-vs-controlled",
+      "dmg": 0.15,
+      "condition": {
+       "targetControlled": true
+      }
+     }
+    ]
+   },
+   "12": {
+    "text": "Each mark increases 2% crit chance.",
+    "triggers": [
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "arceus-mark-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.02,
+         "maxStacks": 20
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "arceus-mark-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.02,
+         "maxStacks": 20
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Attack and restrain all enemies"
+   }
+  },
+  "shiny-arceus": {
+   "6": {
+    "text": "Ignores additional 15% S.DEF when attacking controlled enemies",
+    "damageMods": [
+     {
+      "tag": "shiny-arceus-vs-controlled",
+      "dmg": 0.15,
+      "condition": {
+       "targetControlled": true
+      }
+     }
+    ]
+   },
+   "12": {
+    "text": "Each layer increases Crit Chance by 5%",
+    "triggers": [
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "shiny-arceus-mark-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.05,
+         "maxStacks": 20
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "shiny-arceus-mark-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.05,
+         "maxStacks": 20
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Attack and restrain all enemies"
+   }
+  },
+  "kyogre": {
+   "6": {
+    "text": "Increases shield intensity to 150% S.ATK",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "share": 1.5,
+        "basis": "casterAtk"
+       },
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "rate": 0.3,
+        "basis": "casterSAtk",
+        "over": 2
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Increases Healing over Turn to 45% S.ATK",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "share": 1.5,
+        "basis": "casterAtk"
+       },
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "rate": 0.45,
+        "basis": "casterSAtk",
+        "over": 2
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "When Kyogre's HP drops below 35%, increases shield intensity to 180% S.ATK, increases healing amount to 60% S.ATK",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "share": 1.5,
+        "basis": "casterAtk",
+        "condition": {
+         "selfHpAbove": 0.35
+        }
+       },
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "rate": 0.45,
+        "basis": "casterSAtk",
+        "over": 2,
+        "condition": {
+         "selfHpAbove": 0.35
+        }
+       },
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "share": 1.8,
+        "basis": "casterAtk",
+        "condition": {
+         "selfHpBelow": 0.35
+        }
+       },
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "rate": 0.6,
+        "basis": "casterSAtk",
+        "over": 2,
+        "condition": {
+         "selfHpBelow": 0.35
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "shiny-kyogre": {
+   "6": {
+    "text": "Increases shield intensity to 150% S.ATK",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "share": 1.5,
+        "basis": "casterAtk"
+       },
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "rate": 0.3,
+        "basis": "casterSAtk",
+        "over": 2
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Increases Healing over Turn to 45% S.ATK",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "share": 1.5,
+        "basis": "casterAtk"
+       },
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "rate": 0.45,
+        "basis": "casterSAtk",
+        "over": 2
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Increases shield intensity to 180% S.ATK, and increases healing amount to 60% S.ATK",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "share": 1.8,
+        "basis": "casterAtk"
+       },
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "rate": 0.6,
+        "basis": "casterSAtk",
+        "over": 2
+       }
+      ]
+     }
+    }
+   }
+  },
+  "deoxys": {
+   "6": {
+    "text": "Reduces ATK of the taunted target for 1 turns",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "group": "deoxys-atk",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "deoxys-taunt-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.15,
+         "turns": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Increases S.ATK DMG to 210% S.ATK",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       2.1
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "taunt",
+         "chance": null
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Reduce ATK of the target to tanut by 30% for 1 round. In the No. 2, reduce their ATK by 15%",
+    "dropGroups": [
+     "deoxys-atk"
+    ],
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "group": "deoxys-atk",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "deoxys-taunt-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.15,
+         "bigRounds": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "deoxys-taunt-atk-2",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.15,
+         "bigRounds": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
   }
  }
 }

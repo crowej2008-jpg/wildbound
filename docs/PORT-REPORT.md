@@ -133,6 +133,6 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 | count | clause | example |
 | --- | --- | --- |
 
-- Jirachi 18 (Doom Desire's missing-HP damage to 50 %): not modelled (no target-missing-HP damage scale).
-- Solgaleo 12: the extra-damage line raised to 6 % max HP; "ignores 20 % P.DEF" as the basic's ignore DEF.
-- Meloetta 6: "S.ATK +20 %" as ATK +20 % for 2 turns (no duration given); 18: the sleep chance (not given) is 30 %.
+- Arceus / Shiny Arceus 6: "ignores 15 % S.DEF vs controlled" as +15 % damage; 12: Crit per mark as a stack
+  (up to 20) gained with each mark; 18 ("attack and restrain all enemies") not modelled — no restrain kind.
+- Deoxys 6 gives no amount: −15 % ATK for 1 turn; 18: −30 % in the first round, −15 % in the second.

@@ -215,3 +215,51 @@ plate("meloetta", {
     12: {"skills": {"ult": edited("meloetta", "ult", lambda s: s["effects"][0]["buff"].update(amount=0.4))}},
     18: {"triggers": [trig("afterUlt", [control(T, "sleep", 0.3)])]},
 })
+
+# --- batch 5 -------------------------------------------------------------------------------------
+for _kid, _per in (("arceus", 0.02), ("shiny-arceus", 0.05)):
+    plate(_kid, {
+        6: {"damageMods": [{"tag": f"{_kid}-vs-controlled", "dmg": 0.15, "condition": {"targetControlled": True}}]},
+        12: {"triggers": [trig(on, [give(SELF, buff(f"{_kid}-mark-crit", "crit", _per, stacks=20))]) for on in ("afterBasic", "afterUlt")]},
+        18: {},
+    })
+
+
+def _kyogre(shield_, heal_, low=None):
+    def fn(s):
+        for e in s["effects"]:
+            if e["op"] == "shield":
+                e["share"] = shield_
+            if e["op"] == "heal":
+                e["rate"] = heal_
+        if low:
+            extra = []
+            for e in s["effects"]:
+                if e["op"] in ("shield", "heal"):
+                    e["condition"] = {"selfHpAbove": 0.35}
+                    hi = _copy.deepcopy(e)
+                    hi["condition"] = {"selfHpBelow": 0.35}
+                    if hi["op"] == "shield":
+                        hi["share"] = low[0]
+                    else:
+                        hi["rate"] = low[1]
+                    extra.append(hi)
+            s["effects"] += extra
+    return fn
+
+
+for _kid in ("kyogre", "shiny-kyogre"):
+    plate(_kid, {
+        6: {"skills": {"ult": edited(_kid, "ult", _kyogre(1.5, 0.3))}},
+        12: {"skills": {"ult": edited(_kid, "ult", _kyogre(1.5, 0.45))}},
+        18: {"skills": {"ult": edited(_kid, "ult", _kyogre(1.5, 0.45, low=(1.8, 0.6)) if _kid == "kyogre" else _kyogre(1.8, 0.6))}},
+    })
+
+plate("deoxys", {
+    6: {"triggers": [trig("afterUlt", [give(T, buff("deoxys-taunt-atk", "atkPct", -0.15, turns=1))], group="deoxys-atk")]},
+    12: {"skills": {"ult": edited("deoxys", "ult", lambda s: s.update(rates=[2.1]))}},
+    18: {"dropGroups": ["deoxys-atk"], "triggers": [trig("afterUlt", [
+        give(T, buff("deoxys-taunt-atk", "atkPct", -0.15, big=1)),
+        give(T, buff("deoxys-taunt-atk-2", "atkPct", -0.15, big=2)),
+    ], group="deoxys-atk")]},
+})
