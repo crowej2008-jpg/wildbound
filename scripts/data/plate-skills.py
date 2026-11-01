@@ -263,3 +263,52 @@ plate("deoxys", {
         give(T, buff("deoxys-taunt-atk-2", "atkPct", -0.15, big=2)),
     ], group="deoxys-atk")]},
 })
+
+# --- batch 6 -------------------------------------------------------------------------------------
+def _silence(chance):
+    def fn(s):
+        for e in s["effects"]:
+            if e["op"] == "control" and e["control"]["kind"] == "silence":
+                e["control"]["chance"] = chance
+    return fn
+
+
+for _kid, _sil in (("mew", 0.7), ("shiny-mew", 0.5)):
+    plate(_kid, {
+        6: {"triggers": [trig("afterUlt", [give(SELF, buff(f"{_kid}-ctrl", "controlBoost", 0.2, turns=3, stacks=2))])]},
+        12: {"triggers": [trig("afterUlt", [give(SELF, buff(f"{_kid}-immune", kind="immune", turns=2))], chance=0.7)]},
+        18: {"skills": {"ult": edited(_kid, "ult", _silence(_sil))},
+             "triggers": [trig("afterUlt", [rage(SELF, 500)], chance=0.5)]},
+    })
+
+
+def _shields(share):
+    def fn(s):
+        for e in s.get("effects", []):
+            if e["op"] == "shield":
+                e["share"] = share
+    return fn
+
+
+for _kid, _rdct, _sh in (("cresselia", 0.1, 2.0), ("shiny-cresselia", 0.12, 2.4)):
+    _basic = edited(_kid, "basic", _shields(_sh))
+    _normal = base_skill(_kid, "normal")
+    _normal["effects"] = _normal.get("effects", []) + [e for e in _basic["effects"] if e["op"] == "shield"]
+    plate(_kid, {
+        6: {"triggers": [trig("afterUlt", [give(ALL_ALLIES, buff(f"{_kid}-rdct", "dmgRdct", _rdct, turns=2))])]},
+        12: {"skills": {"basic": _basic, "normal": _normal}},
+        18: {"triggers": [trig("afterUlt", [control({"rule": "random", "n": 1}, "stun", 0.5)])]},
+    })
+
+plate("celebi", {
+    6: {},
+    12: {"triggers": [trig("afterUlt", [give(BACK, buff("celebi-atk", "atkPct", 0.12, turns=2))])]},
+    18: {"triggers": [trig("afterUlt", [rage({"side": "ally", "rule": "random", "n": 3, "excludeSelf": True}, 250)])]},
+})
+
+plate("manaphy", {
+    6: {"triggers": [trig("afterUlt", [give(ALL_ALLIES, buff("manaphy-crit", "crit", 0.15, turns=2)),
+                                       give(ALL_ALLIES, buff("manaphy-critpow", "critPower", 0.1, turns=2))])]},
+    12: {"triggers": [trig("afterUlt", [{"op": "dispel", "target": T, "count": 99}])]},
+    18: {"triggers": [trig("afterUlt", [heal(ALL_ALLIES, 0.8, "casterSAtk")])]},
+})

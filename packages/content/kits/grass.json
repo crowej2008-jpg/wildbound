@@ -1403,6 +1403,56 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Excessive healing is converted into shield at the ratio of 70%. Lasts 2 turn."
+      },
+      "12": {
+        "text": "Ultimate increases the ATK of backline targets by 12% for 2 turns",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "back"
+                },
+                "buff": {
+                  "tag": "celebi-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.12,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "Ultimate increases 250 Rage for 3 allies (self excluded)",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "random",
+                  "n": 3,
+                  "excludeSelf": true
+                },
+                "delta": 250
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

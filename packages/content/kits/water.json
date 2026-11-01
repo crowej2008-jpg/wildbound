@@ -1705,6 +1705,82 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate additionally increases all allies' Crit Chance by 15% and Crit DMG by 10%, last 2 turns",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "manaphy-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.15,
+                  "turns": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "manaphy-critpow",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.1,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Remove all buffs from the opponent",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "dispel",
+                "target": {
+                  "event": true
+                },
+                "count": 99
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "Ultimate additionally heals all allies by 80% S.ATK",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "rate": 0.8,
+                "basis": "casterSAtk"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

@@ -133,6 +133,5 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 | count | clause | example |
 | --- | --- | --- |
 
-- Arceus / Shiny Arceus 6: "ignores 15 % S.DEF vs controlled" as +15 % damage; 12: Crit per mark as a stack
-  (up to 20) gained with each mark; 18 ("attack and restrain all enemies") not modelled — no restrain kind.
-- Deoxys 6 gives no amount: −15 % ATK for 1 turn; 18: −30 % in the first round, −15 % in the second.
+- Cresselia / Shiny Cresselia 12: the shields (200 % / 240 % S.ATK) also come after normal attacks.
+- Celebi 6 (overheal → 70 % shield) not modelled — no overheal hook.

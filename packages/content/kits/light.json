@@ -134,6 +134,96 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "After Ultimate, Increases self Control Boost by 20% for 3 turns. Stacks up to 2 times",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mew-ctrl",
+                  "kind": "stat",
+                  "field": "controlBoost",
+                  "amount": 0.2,
+                  "turns": 3,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "After Ultimate, There is a 70% chance to be immune to all control effects for 2 turns. Stacks up to 1 time",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.7,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mew-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "Ultimate's chance to inflict [silence] increases to 70%. After using the Ultimate, there's a 50% chance to gain 500 Rage",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.5
+            ],
+            "rule": "backline",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "silence",
+                  "chance": 0.7
+                }
+              }
+            ]
+          }
+        },
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.5,
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 500
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -624,6 +714,114 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate boosts DMG RDCT for all allies by 10%. Lasts 2 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "cresselia-rdct",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.1,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "After using small skills and regular attacks, increase the shield value for friendly troops to 200% of their own S.ATKs",
+        "skills": {
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "share": 2,
+                "basis": "casterAtk"
+              },
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 2,
+                "basis": "casterAtk"
+              }
+            ]
+          },
+          "normal": {
+            "type": "S",
+            "rates": [
+              1
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "share": 2,
+                "basis": "casterAtk"
+              },
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 2,
+                "basis": "casterAtk"
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "50% chance to stun an additional target for 1 turns",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "rule": "random",
+                  "n": 1
+                },
+                "control": {
+                  "kind": "stun",
+                  "chance": 0.5
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2095,6 +2293,114 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate boosts DMG RDCT for all allies by 12%. Lasts 2 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "shiny-cresselia-rdct",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.12,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "After using basic skills and normal attacks, self and an ally with lowest HP will gain a shield with HP equal to 240% of own S.ATK.",
+        "skills": {
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "share": 2.4,
+                "basis": "casterAtk"
+              },
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 2.4,
+                "basis": "casterAtk"
+              }
+            ]
+          },
+          "normal": {
+            "type": "S",
+            "rates": [
+              1
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "share": 2.4,
+                "basis": "casterAtk"
+              },
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 2.4,
+                "basis": "casterAtk"
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Ultimate has a 50% chance to stun an additional target for 1 turn",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "rule": "random",
+                  "n": 1
+                },
+                "control": {
+                  "kind": "stun",
+                  "chance": 0.5
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2232,6 +2538,96 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "After Ultimate, Increases self Control Boost by 20% for 3 turns. Stacks up to 2 times",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shiny-mew-ctrl",
+                  "kind": "stat",
+                  "field": "controlBoost",
+                  "amount": 0.2,
+                  "turns": 3,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "After Ultimate, There is a 70% chance to be immune to all control effects for 2 turns. Stacks up to 1 time",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.7,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shiny-mew-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "The Ultimate silence probability increased to 50%, after using the Ultimate has a 50% chance to gain 500 Rage",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "silence",
+                  "chance": 0.5
+                }
+              }
+            ]
+          }
+        },
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "chance": 0.5,
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 500
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
