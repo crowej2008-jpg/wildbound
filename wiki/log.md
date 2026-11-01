@@ -164,3 +164,9 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R6a part 2 worksheet
 - `scripts/data/plate-skills-source.json`: all 228 plate skills (76 Pokémon × tiers 6/12/18, Chinese + English)
   and the 6 stage-6 skill swaps, ready to port into the kit DSL next session.
+
+## [2026-11-01] update | R6a part 2 Plate skills done
+- All 76 Pokémon's plate skills (tiers 6 / 12 / 18) ported into the kit DSL (`scripts/data/plate-skills.py`),
+  readings listed in docs/PORT-REPORT.md and kept in the script so regenerating the report keeps them.
+- Stage-6 skill swaps not ported: their skill ids are in the dump's `_skills_not_found`.
+- Next: R6b Trinkets.

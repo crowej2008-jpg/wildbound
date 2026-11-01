@@ -226,6 +226,62 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate prioritizes the row with the enemy of lowest HP."
+      },
+      "12": {
+        "text": "Before using Ultimates, increase Guard Break Chance by 35% and Crit Chance by 10%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-gb",
+                  "kind": "stat",
+                  "field": "guardBreak",
+                  "amount": 0.35,
+                  "turns": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "hydra-crit-ult",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.1,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "Ultimate deals 30% additional damage to the enemies with less than 35% HP",
+        "damageMods": [
+          {
+            "tag": "hydra-execute",
+            "slot": "ult",
+            "dmg": 0.3,
+            "condition": {
+              "targetHpBelow": 0.35
+            }
+          }
+        ]
+      }
     }
   },
   {
@@ -359,6 +415,91 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Increase Ultimate's damage against [ATK] Pokémons by 30%, against [SKILL] Pokémons by 10%.",
+        "damageMods": [
+          {
+            "tag": "gengar-vs-atk",
+            "slot": "ult",
+            "dmg": 0.3,
+            "condition": {
+              "targetClass": "striker"
+            }
+          },
+          {
+            "tag": "gengar-vs-skill",
+            "slot": "ult",
+            "dmg": 0.1,
+            "condition": {
+              "targetClass": "adept"
+            }
+          }
+        ]
+      },
+      "12": {
+        "text": "Ultimate reduces target's Control Res by 20% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "backline"
+                },
+                "buff": {
+                  "tag": "gengar-ctrlres",
+                  "kind": "stat",
+                  "field": "controlRes",
+                  "amount": -0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "When using Ultimate upon controlled targets, increase Rage regeneration to 25%, with 35% chance to reduce target's Rage by 25%.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "condition": {
+              "targetControlled": true
+            },
+            "perTurn": 1,
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 125
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "condition": {
+              "targetControlled": true
+            },
+            "chance": 0.35,
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -250
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -478,6 +619,114 @@
           ]
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate inflicts [Vulnerability] on targets, increasing the damage they take by 10% for 1 turns. Stacks up to 1 times.",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.35
+            ],
+            "rule": "frontline",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "back"
+                },
+                "buff": {
+                  "tag": "blaze-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "frontline"
+                },
+                "buff": {
+                  "tag": "charizard-vuln",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.1,
+                  "turns": 1,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Before using Ultimate, increase your Crit Chance by 10%. When [Offer of Power] is active, increases backline allies' Crit Chance to 18%.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "charizard-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.1,
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "condition": {
+              "selfHasTag": "offer-of-power"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "back"
+                },
+                "buff": {
+                  "tag": "blaze-crit-offer",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.08,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "When [Offer of Power] is active, increase Ultimate's damage against [DEF] Pokémons by 25%.",
+        "damageMods": [
+          {
+            "tag": "charizard-vs-def",
+            "slot": "ult",
+            "dmg": 0.25,
+            "condition": {
+              "targetClass": "guardian",
+              "selfHasTag": "offer-of-power"
+            }
+          }
+        ]
+      }
     }
   },
   {
@@ -602,6 +851,64 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "Increases Ultimate's base damage to 15%, increases bonus damage to 12% of target's missing HP.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              2.25
+            ],
+            "rule": "column",
+            "recastOnKill": {
+              "max": 1
+            },
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMissingHp",
+                "share": 0.12,
+                "trueDamage": true
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Ultimate ignores target's 40% S.DEF.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              2.25
+            ],
+            "rule": "column",
+            "recastOnKill": {
+              "max": 1
+            },
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMissingHp",
+                "share": 0.12,
+                "trueDamage": true
+              }
+            ],
+            "ignoreDefense": 0.4
+          }
+        }
+      },
+      "18": {
+        "text": "Ultimate prioritizes the enemies with lowest HP."
+      }
     }
   },
   {
@@ -686,6 +993,91 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "If the ultimate is not blocked by target, inflicts upon target true damage equal to 12% of target's current HP.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetCurrentHp",
+                "share": 0.12,
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "When the Ultimate crits, inflicts upon target true damage equal to 12% of target's missing HP.",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMissingHp",
+                "share": 0.12,
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "If a basic attack is not blocked by target, inflicts upon target true damage equal to 8% of target's current HP; When basic skills crit, inflict true damage equal to 8% of target's missing HP.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "eventSlot": "normal"
+            },
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetCurrentHp",
+                "share": 0.08,
+                "trueDamage": true
+              }
+            ]
+          },
+          {
+            "on": "onCrit",
+            "condition": {
+              "eventSlot": "basic"
+            },
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMissingHp",
+                "share": 0.08,
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -845,6 +1237,155 @@
       ],
       "rageStart": 500,
       "rageOnHit": 125
+    },
+    "plate": {
+      "6": {
+        "text": "Increases Ultimate's [Stunning] chance to 25%. Boosts Control Res Reduction effect to 20%.",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.35
+            ],
+            "rule": "random",
+            "targets": 3,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "rule": "random",
+                  "n": 3
+                },
+                "control": {
+                  "kind": "stun",
+                  "chance": 0.25
+                }
+              },
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "random",
+                  "n": 3
+                },
+                "tag": "stun",
+                "delta": 1
+              },
+              {
+                "op": "control",
+                "target": {
+                  "rule": "random",
+                  "n": 3
+                },
+                "control": {
+                  "kind": "control",
+                  "chance": null,
+                  "turns": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 3
+                },
+                "buff": {
+                  "tag": "shred-controlRes",
+                  "kind": "stat",
+                  "field": "controlRes",
+                  "amount": -0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Ultimate further reduces controlled target's Control Res by 20% for 2 turns. Stacks up to 1 times. Reduces their Crit Chance by 20% and Crit Intensity by 8% for 3 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all",
+                  "filters": [
+                    "controlled"
+                  ]
+                },
+                "buff": {
+                  "tag": "tyranitar-ctrlres",
+                  "kind": "stat",
+                  "field": "controlRes",
+                  "amount": -0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all",
+                  "filters": [
+                    "controlled"
+                  ]
+                },
+                "buff": {
+                  "tag": "tyranitar-crit-cut",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": -0.2,
+                  "turns": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all",
+                  "filters": [
+                    "controlled"
+                  ]
+                },
+                "buff": {
+                  "tag": "tyranitar-critpow-cut",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": -0.08,
+                  "turns": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "After using Ultimates, increase allied frontline's DMG Reduction by 18% for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "front"
+                },
+                "buff": {
+                  "tag": "tyranitar-front-rdct",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.18,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

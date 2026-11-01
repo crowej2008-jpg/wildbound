@@ -128,12 +128,12 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 - **shiny-darkrai** — Ult: Nightmare's 12% Ignore DEF per stack (DEF has no effect)
 - **shiny-arceus** — Sanction's +5% Crit Intensity per layer (the +7.5% S.ATK per layer is modelled)
 
-## Plate skills (R6a part 2, hand-ported in `scripts/data/plate-skills.py`): 55
+## Plate skills (R6a part 2, hand-ported in `scripts/data/plate-skills.py`): 76
 
 Source: `scripts/data/plate-skills-source.json` (hero_stone_skill_json, 228 skills / 76 Pokémon). Applied by
 `applyPlateSkills` for tiers at or below the Pokémon's plate stage. An empty tier is listed in the readings.
 
-Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, shiny-hoopa, shiny-mewtwo, hoopa, mewtwo, jirachi, solgaleo, meloetta, arceus, shiny-arceus, kyogre, shiny-kyogre, deoxys, mew, shiny-mew, cresselia, shiny-cresselia, celebi, manaphy, infernape, black-kyurem, shiny-kyurem, shaymin, victini, palkia, giratina, zygarde, xerneas, lunala, wind-god-pidgeot, shiny-god-ash-pikachu, shiny-charizard, shiny-raichu, shiny-gengar, shiny-venusaur, shiny-darkrai, raikou, entei, suicune, zapdos, moltres, articuno.
+Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, shiny-hoopa, shiny-mewtwo, hoopa, mewtwo, jirachi, solgaleo, meloetta, arceus, shiny-arceus, kyogre, shiny-kyogre, deoxys, mew, shiny-mew, cresselia, shiny-cresselia, celebi, manaphy, infernape, black-kyurem, shiny-kyurem, shaymin, victini, palkia, giratina, zygarde, xerneas, lunala, wind-god-pidgeot, shiny-god-ash-pikachu, shiny-charizard, shiny-raichu, shiny-gengar, shiny-venusaur, shiny-darkrai, raikou, entei, suicune, zapdos, moltres, articuno, metagross, garchomp, hydreigon, gyarados, gardevoir, gengar, raichu, charizard, blastoise, venusaur, blaziken, swampert, sceptile, typhlosion, feraligatr, meganium, slaking, dragonite, tyranitar, salamence, rayquaza.
 
 - God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.
 - Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).
@@ -173,6 +173,27 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Zapdos 6: 'up to 3 times' read as 3 times a battle; 12: [Thunder]'s extra true damage comes only on Zapdos's own hits (no hook for other attackers); 18's DMG Multiplier as DMG Boost.
 - Moltres 6: the +30 % taken applies to all DoTs (no per-tag DoT amp); 18: '+100 % stacking chance' — basic burn to 100 %, plus a second 30 % on-hit roll.
 - Articuno 6: read as the basic skill (the freezing skill).
+- Metagross 6: confused (mind-controlled) targets get +30 % ATK for their next action; 12 (confused units still use basic skills) not modelled — depends on how mind control picks the slot; 18: 'all Rage' as -1000.
+- Garchomp 6 / 18 (the ult's DEF cut to 55 % / guaranteed): no effect — DEF has no effect; 12: +7 % DMG RDCT per ult hit (3 stacks).
+- Hydreigon 6 (ult aims at the row of the lowest-HP enemy) not modelled — no such target rule; 12 lands after the ult (no before-ult trigger).
+- Gyarados 6: 'Magikarp prioritizes backline units' not modelled; the 12.5 % Rage steal is 125 on every normal / basic hit.
+- Gardevoir 6: the 25 % ignore DEF has no effect (DEF has no effect); the ATK buff becomes undispellable.
+- Gengar 18: '+25 % Rage' (125 -> 250) once per ult when any target is controlled; the 35 % cut is 250 Rage.
+- Charizard: as Shiny Charizard at its own numbers (Vulnerability 10 %, Crit +10 % after the ult, Offer-of-Power backline Crit 10 % -> 18 %).
+- Blastoise 6: the ult mark's P.ATK reduction x1.3 (18 % -> 23.4 %) plus a 15 % S.ATK one on the same targets; 18 (Regrowth Mark) not modelled — no ally-hit trigger yet.
+- Venusaur: as Shiny Venusaur (1 % poison stacks).
+- Blaziken 6: 'base damage to 15 %' read as the ult rate +15 points (210 % -> 225 %); 12's 40 % S.DEF ignore has no effect (DEF has no effect); 18 (prioritizes the lowest-HP enemies) not modelled — the ult hits a column.
+- Swampert 6: [Foresight] 80 % -> 100 % ATK; the extra true damage of 30 % of the target's S.ATK not modelled (no target-ATK basis).
+- Sceptile 12: [Malignant Wounds]' -12 % S.ATK as -12 % ATK; 18: 'DoT except Bleed' as poison / burn / flame / Foresight / frost / curse tags.
+- Typhlosion: 'if not blocked' is not checked (every landed hit counts); 18's 'basic attack' read as the normal attack.
+- Feraligatr 12 ([Protection] split 25 % -> 40 %): no effect — [Protection] is not modelled; 18: the 10 % max-HP shield goes to Feraligatr only ('the ally above' has no target rule).
+- Meganium 6: the ult heal x1.18 (25 % -> 29.5 % max HP); the 30 % boost vs DoT-afflicted enemies not modelled; 12 cleanses control ailments; 18 (+500 Rage to the ally below) not modelled — no position-relative target rule.
+- Slaking 18: [Regrowth over Time] as a 2 % x 3-turn heal on a 50 % roll (its 1-stack cap not enforced).
+- Dragonite 12: 'the allies above you' read as the frontline allies; cleanses control ailments.
+- Tyranitar 12: the riders go to every controlled enemy after the ult (not only the ult's targets).
+- Salamence 6 (ult lifesteal +0.5 % per 1 % missing HP) not modelled — lifesteal cannot scale with HP yet; 18's 8 % P.ATK steal as -8 % / +8 % ATK on the first target.
+- Stage-6 skill swaps (hero_slate_skill_json: Starmie, Ninetales, Metagross, Garchomp, Hydreigon, Gyarados -> skill ids 1x8102 / 1x8201 / ...): not ported — those skill ids are in the dump's _skills_not_found (no text or numbers).
+- Rayquaza 6 / 18 and 12's turn-2 part: no effect — the mark's turn 1 / turn 2 strikes are not modelled (see the hand-port gaps); 12 raises the ult to 80 %.
 
 ## Unparsed clause patterns (0 distinct, top 60)
 

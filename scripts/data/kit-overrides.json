@@ -17349,6 +17349,2002 @@
      }
     ]
    }
+  },
+  "metagross": {
+   "6": {
+    "text": "Increases [Confused] targets' P.ATK and S.ATK by 30%.",
+    "skills": {
+     "basic": {
+      "type": "P",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "mindControl",
+         "chance": null
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "metagross-confused-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.3,
+         "turns": 1
+        },
+        "condition": {
+         "targetControlled": true
+        }
+       }
+      ]
+     },
+     "ult": {
+      "type": "P",
+      "rates": [
+       2.1
+      ],
+      "rule": "backline",
+      "targets": 1,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "mindControl",
+         "chance": 0.3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "metagross-confused-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.3,
+         "turns": 1
+        },
+        "condition": {
+         "targetControlled": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Targets affected by [Confusion] can still attack with basic skills."
+   },
+   "18": {
+    "text": "Ultimate has a 20% chance to reduce target's all rage.",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       2.1
+      ],
+      "rule": "backline",
+      "targets": 1,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "mindControl",
+         "chance": 0.3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "metagross-confused-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.3,
+         "turns": 1
+        },
+        "condition": {
+         "targetControlled": true
+        }
+       },
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "chance": 0.2,
+        "delta": -1000
+       }
+      ]
+     }
+    }
+   }
+  },
+  "garchomp": {
+   "6": {
+    "text": "Ultimate's damage reduction effect is increased to 55%"
+   },
+   "12": {
+    "text": "Every 1 targets whose DEF is reduced by your Ultimate, you gain 7% DMG Reduction for 3 turns. Stacks up to 3 times.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "garchomp-rdct",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.07,
+         "turns": 3,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Ultimate is guaranteed to reduce target\u2019s defense."
+   }
+  },
+  "hydreigon": {
+   "6": {
+    "text": "Ultimate prioritizes the row with the enemy of lowest HP."
+   },
+   "12": {
+    "text": "Before using Ultimates, increase Guard Break Chance by 35% and Crit Chance by 10%",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-gb",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": 0.35,
+         "turns": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "hydra-crit-ult",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.1,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Ultimate deals 30% additional damage to the enemies with less than 35% HP",
+    "damageMods": [
+     {
+      "tag": "hydra-execute",
+      "slot": "ult",
+      "dmg": 0.3,
+      "condition": {
+       "targetHpBelow": 0.35
+      }
+     }
+    ]
+   }
+  },
+  "gyarados": {
+   "6": {
+    "text": "Magikarp prioritizes backline units. Basic attacks and basic skills additionally steal 12.5% Rage from enemies.",
+    "skills": {
+     "normal": {
+      "type": "P",
+      "rates": [
+       1.0
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "steal": true,
+        "delta": -125
+       }
+      ]
+     },
+     "basic": {
+      "type": "P",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "steal": true,
+        "chance": 0.5,
+        "delta": -125
+       },
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "steal": true,
+        "delta": -125
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Increase Ultimate's damage against [SKILL] Pok\u00e9mons by 25%.",
+    "damageMods": [
+     {
+      "tag": "gyara-vs-skill",
+      "slot": "ult",
+      "dmg": 0.25,
+      "condition": {
+       "targetClass": "adept"
+      }
+     }
+    ]
+   },
+   "18": {
+    "text": "Increases Ultimate's DMG Multiplier to 25%. Lasts 4 turn(s).",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.9
+      ],
+      "rule": "row",
+      "recastOnKill": {
+       "max": 1
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "casterMissingHp",
+        "share": 0.1,
+        "trueDamage": true
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "gyara-dmg",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.25,
+         "turns": 4,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "gardevoir": {
+   "6": {
+    "text": "Boosts the Ignore DEF effect to 25%. The ATK boost cannot be dispelled.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.35
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "gardevoir-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.1,
+         "turns": 10,
+         "maxStacks": 3,
+         "undispellable": true
+        }
+       }
+      ],
+      "ignoreDefense": 0.25
+     }
+    }
+   },
+   "12": {
+    "text": "Increases ATK boost effect to 15%.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.35
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "gardevoir-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.15,
+         "turns": 10,
+         "maxStacks": 3,
+         "undispellable": true
+        }
+       }
+      ],
+      "ignoreDefense": 0.25
+     }
+    }
+   },
+   "18": {
+    "text": "Regenerate 25% Rage after using Ultimate.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 250
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "gengar": {
+   "6": {
+    "text": "Increase Ultimate's damage against [ATK] Pok\u00e9mons by 30%, against [SKILL] Pok\u00e9mons by 10%.",
+    "damageMods": [
+     {
+      "tag": "gengar-vs-atk",
+      "slot": "ult",
+      "dmg": 0.3,
+      "condition": {
+       "targetClass": "striker"
+      }
+     },
+     {
+      "tag": "gengar-vs-skill",
+      "slot": "ult",
+      "dmg": 0.1,
+      "condition": {
+       "targetClass": "adept"
+      }
+     }
+    ]
+   },
+   "12": {
+    "text": "Ultimate reduces target's Control Res by 20% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "backline"
+        },
+        "buff": {
+         "tag": "gengar-ctrlres",
+         "kind": "stat",
+         "field": "controlRes",
+         "amount": -0.2,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "When using Ultimate upon controlled targets, increase Rage regeneration to 25%, with 35% chance to reduce target's Rage by 25%.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "condition": {
+       "targetControlled": true
+      },
+      "perTurn": 1,
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 125
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "condition": {
+       "targetControlled": true
+      },
+      "chance": 0.35,
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -250
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "raichu": {
+   "6": {
+    "text": "Increase Ultimate damage by 20% and [Paralysis] chance to 23%.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.45
+      ],
+      "rule": "random",
+      "targets": 3,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "paralysis",
+         "chance": 0.23
+        }
+       }
+      ]
+     }
+    },
+    "damageMods": [
+     {
+      "tag": "raichu-plate-ult",
+      "slot": "ult",
+      "dmg": 0.2
+     }
+    ]
+   },
+   "12": {
+    "text": "Increase basic skill damage by 25% and [Paralysis] chance to 35%.",
+    "skills": {
+     "basic": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "paralysis",
+         "chance": 0.35
+        }
+       }
+      ]
+     }
+    },
+    "damageMods": [
+     {
+      "tag": "raichu-plate-basic",
+      "slot": "basic",
+      "dmg": 0.25
+     }
+    ]
+   },
+   "18": {
+    "text": "Ultimate's target +1",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.45
+      ],
+      "rule": "random",
+      "targets": 4,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "paralysis",
+         "chance": 0.23
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "charizard": {
+   "6": {
+    "text": "Ultimate inflicts [Vulnerability] on targets, increasing the damage they take by 10% for 1 turns. Stacks up to 1 times.",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.35
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "buff": {
+         "tag": "blaze-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.1,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "frontline"
+        },
+        "buff": {
+         "tag": "charizard-vuln",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.1,
+         "turns": 1,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Before using Ultimate, increase your Crit Chance by 10%. When [Offer of Power] is active, increases backline allies' Crit Chance to 18%.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "charizard-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.1,
+         "turns": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "condition": {
+       "selfHasTag": "offer-of-power"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "buff": {
+         "tag": "blaze-crit-offer",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.08,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "When [Offer of Power] is active, increase Ultimate's damage against [DEF] Pok\u00e9mons by 25%.",
+    "damageMods": [
+     {
+      "tag": "charizard-vs-def",
+      "slot": "ult",
+      "dmg": 0.25,
+      "condition": {
+       "targetClass": "guardian",
+       "selfHasTag": "offer-of-power"
+      }
+     }
+    ]
+   }
+  },
+  "blastoise": {
+   "6": {
+    "text": "Increases Ultimate's P.ATK DMG Reduction by 30%, plus 15% S.ATK DMG Reduction.",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.35
+      ],
+      "rule": "backline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "backline"
+        },
+        "buff": {
+         "tag": "mark-pRdct",
+         "kind": "stat",
+         "field": "pRdct",
+         "amount": 0.234,
+         "turns": 3,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "backline"
+        },
+        "buff": {
+         "tag": "mark-sRdct",
+         "kind": "stat",
+         "field": "sRdct",
+         "amount": 0.15,
+         "turns": 3,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Ultimate gives backline allies a [shield] for 12% of Squirtle's max HP. Stacks with other [shields]; Increases backline allies' P.ATK and S.ATK by 12% for 3. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "share": 0.12,
+        "basis": "casterHp"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "buff": {
+         "tag": "blastoise-back-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.12,
+         "turns": 3,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Ultimate inflicts [Regrowth Mark] upon enemies for 2 turns. Stacks up to 1 times. The allies who attack the target marked with [Regrowth Mark] will heal Squirtle for 3% of max HP."
+   }
+  },
+  "venusaur": {
+   "6": {
+    "text": "Ultimate enhanced. Now it's guaranteed to inflict 2 stacks of [Poison], with 60% chance to gain additional 1 stacks.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0.9
+      ],
+      "rule": "random",
+      "targets": 4,
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        },
+        "chance": 0.6
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Increases Ultimate\u2019s range to all enemies",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0.9
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        },
+        "chance": 0.6
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Ultimate is guaranteed to gain 3 stacks of [Poison], with 80% chance to gain additional 1 stacks.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0.9
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.01,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        },
+        "chance": 0.8
+       }
+      ]
+     }
+    }
+   }
+  },
+  "blaziken": {
+   "6": {
+    "text": "Increases Ultimate's base damage to 15%, increases bonus damage to 12% of target's missing HP.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       2.25
+      ],
+      "rule": "column",
+      "recastOnKill": {
+       "max": 1
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMissingHp",
+        "share": 0.12,
+        "trueDamage": true
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Ultimate ignores target's 40% S.DEF.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       2.25
+      ],
+      "rule": "column",
+      "recastOnKill": {
+       "max": 1
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMissingHp",
+        "share": 0.12,
+        "trueDamage": true
+       }
+      ],
+      "ignoreDefense": 0.4
+     }
+    }
+   },
+   "18": {
+    "text": "Ultimate prioritizes the enemies with lowest HP."
+   }
+  },
+  "swampert": {
+   "6": {
+    "text": "Increases [Foresight] damage by 25%, plus true damage equal to 30% of target's S.ATK.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.35
+      ],
+      "rule": "backline",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "foresight",
+        "dot": {
+         "share": 1.0,
+         "basis": "casterAtk",
+         "turns": 2,
+         "maxStacks": 1,
+         "trueDamage": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "[Foresight] lasts +1",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.35
+      ],
+      "rule": "backline",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "foresight",
+        "dot": {
+         "share": 1.0,
+         "basis": "casterAtk",
+         "turns": 3,
+         "maxStacks": 1,
+         "trueDamage": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "[Foresight] cannot be cleansed.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.35
+      ],
+      "rule": "backline",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "foresight",
+        "dot": {
+         "share": 1.0,
+         "basis": "casterAtk",
+         "turns": 3,
+         "maxStacks": 1,
+         "trueDamage": true,
+         "undispellable": true
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "sceptile": {
+   "6": {
+    "text": "Boosts [Malignant Wounds] effect. Target now takes 30% more damage over time.",
+    "skills": {
+     "basic": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "malignant-wounds",
+         "kind": "stat",
+         "field": "dotTaken",
+         "amount": 0.3,
+         "turns": 1,
+         "maxStacks": 1
+        }
+       }
+      ]
+     },
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.9
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "bleed",
+        "dot": {
+         "share": 0.2,
+         "basis": "casterAtk",
+         "turns": 4,
+         "maxStacks": 4,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "malignant-wounds",
+         "kind": "stat",
+         "field": "dotTaken",
+         "amount": 0.3,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "The [Malignant Wounds] effect further reduces target's S.ATK by 12%",
+    "skills": {
+     "basic": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "malignant-wounds",
+         "kind": "stat",
+         "field": "dotTaken",
+         "amount": 0.3,
+         "turns": 1,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "malignant-wounds-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.12,
+         "turns": 1,
+         "maxStacks": 1
+        }
+       }
+      ]
+     },
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.9
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "bleed",
+        "dot": {
+         "share": 0.2,
+         "basis": "casterAtk",
+         "turns": 4,
+         "maxStacks": 4,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "malignant-wounds",
+         "kind": "stat",
+         "field": "dotTaken",
+         "amount": 0.3,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "malignant-wounds-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.12,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Ultimate deals 30% increased damage to the enemies affected by DoT ([Bleed] excluded).",
+    "damageMods": [
+     {
+      "tag": "sceptile-vs-dot",
+      "slot": "ult",
+      "dmg": 0.3,
+      "condition": {
+       "targetHasAnyTag": [
+        "poison",
+        "burning",
+        "burn",
+        "flame",
+        "blaze",
+        "foresight",
+        "frost",
+        "curse"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "typhlosion": {
+   "6": {
+    "text": "If the ultimate is not blocked by target, inflicts upon target true damage equal to 12% of target's current HP.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetCurrentHp",
+        "share": 0.12,
+        "trueDamage": true
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "When the Ultimate crits, inflicts upon target true damage equal to 12% of target's missing HP.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMissingHp",
+        "share": 0.12,
+        "trueDamage": true
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "If a basic attack is not blocked by target, inflicts upon target true damage equal to 8% of target's current HP; When basic skills crit, inflict true damage equal to 8% of target's missing HP.",
+    "triggers": [
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "eventSlot": "normal"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetCurrentHp",
+        "share": 0.08,
+        "trueDamage": true
+       }
+      ]
+     },
+     {
+      "on": "onCrit",
+      "condition": {
+       "eventSlot": "basic"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMissingHp",
+        "share": 0.08,
+        "trueDamage": true
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "feraligatr": {
+   "6": {
+    "text": "After using Ultimates, gain 15% P.ATK DMG Reduction for 2 turns. Stacks up to 1 times; Reduce enemy target's Guard Break Chance by 10% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "feraligatr-prdct",
+         "kind": "stat",
+         "field": "pRdct",
+         "amount": 0.15,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "feraligatr-gb-cut",
+         "kind": "stat",
+         "field": "guardBreak",
+         "amount": -0.1,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "[Protection] Increases splitting rate to 40%."
+   },
+   "18": {
+    "text": "After using Ultimates, grant self and the ally above you a [Shield] for 10% of your max HP. Stacks with other [shields].",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "share": 0.1,
+        "basis": "casterHp"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "meganium": {
+   "6": {
+    "text": "Increases Ultimate's basic healing amount by 18%. When attacking the enemies affected by\u00a0 [DoT], increases the healing boost to 30%.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "lowest_hp",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "rule": "lowest_hp"
+        },
+        "rate": 0.295,
+        "basis": "targetMaxHp"
+       },
+       {
+        "op": "resource",
+        "target": {
+         "rule": "lowest_hp"
+        },
+        "tag": "dot",
+        "delta": 1
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Ultimate dispels 1 buffs from enemies and cleanses all status ailments from allies.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "lowest_hp",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "rule": "lowest_hp"
+        },
+        "rate": 0.295,
+        "basis": "targetMaxHp"
+       },
+       {
+        "op": "resource",
+        "target": {
+         "rule": "lowest_hp"
+        },
+        "tag": "dot",
+        "delta": 1
+       },
+       {
+        "op": "dispel",
+        "target": {
+         "event": true
+        },
+        "count": 1
+       },
+       {
+        "op": "cleanse",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "kinds": [
+         "control",
+         "silence",
+         "confusion",
+         "paralysis",
+         "disarm",
+         "noBasic",
+         "noCrit"
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Ultimate increases the Rage of the ally below your position by 50%."
+   }
+  },
+  "slaking": {
+   "6": {
+    "text": "After using the Ultimate, gain 10% DMG Multiplier and DMG Reduction for 5 turns. Stacks up to 3 times.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "slaking-mult",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.1,
+         "turns": 5,
+         "maxStacks": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "slaking-rdct",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.1,
+         "turns": 5,
+         "maxStacks": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Increases [Regrowth] effect to regenerating 5% of max HP",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.9
+      ],
+      "rule": "random",
+      "targets": 2,
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.05,
+        "basis": "targetMaxHp",
+        "over": 3
+       },
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "lowest_hp",
+         "n": 1
+        },
+        "rate": 0.05,
+        "basis": "targetMaxHp",
+        "over": 3,
+        "condition": {
+         "targetHasDot": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Using basic attacks and basic skills comes with 50% chance to gain [Regrowth over Time], healing for 2% of max HP per turn over 3 turns. Stacks up to 1 times. Can be stacked with [Regrowth].",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "chance": 0.5,
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.02,
+        "basis": "targetMaxHp",
+        "over": 3
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "chance": 0.5,
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.02,
+        "basis": "targetMaxHp",
+        "over": 3
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "dragonite": {
+   "6": {
+    "text": "Ultimate dispels +1",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.35
+      ],
+      "rule": "backline",
+      "effects": [
+       {
+        "op": "dispel",
+        "target": {
+         "event": true
+        },
+        "count": 2
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "After using Ultimates, cleanse all status ailments from the allies above you.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "cleanse",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "front"
+        },
+        "kinds": [
+         "control",
+         "silence",
+         "confusion",
+         "paralysis",
+         "disarm",
+         "noBasic",
+         "noCrit"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Ultimate has 35% chance to reduce target's Rage by 25%.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.35
+      ],
+      "rule": "backline",
+      "effects": [
+       {
+        "op": "dispel",
+        "target": {
+         "event": true
+        },
+        "count": 2
+       },
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "chance": 0.35,
+        "delta": -250
+       }
+      ]
+     }
+    }
+   }
+  },
+  "tyranitar": {
+   "6": {
+    "text": "Increases Ultimate's [Stunning] chance to 25%. Boosts Control Res Reduction effect to 20%.",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.35
+      ],
+      "rule": "random",
+      "targets": 3,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "rule": "random",
+         "n": 3
+        },
+        "control": {
+         "kind": "stun",
+         "chance": 0.25
+        }
+       },
+       {
+        "op": "resource",
+        "target": {
+         "rule": "random",
+         "n": 3
+        },
+        "tag": "stun",
+        "delta": 1
+       },
+       {
+        "op": "control",
+        "target": {
+         "rule": "random",
+         "n": 3
+        },
+        "control": {
+         "kind": "control",
+         "chance": null,
+         "turns": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 3
+        },
+        "buff": {
+         "tag": "shred-controlRes",
+         "kind": "stat",
+         "field": "controlRes",
+         "amount": -0.2,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Ultimate further reduces controlled target's Control Res by 20% for 2 turns. Stacks up to 1 times. Reduces their Crit Chance by 20% and Crit Intensity by 8% for 3 turns.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all",
+         "filters": [
+          "controlled"
+         ]
+        },
+        "buff": {
+         "tag": "tyranitar-ctrlres",
+         "kind": "stat",
+         "field": "controlRes",
+         "amount": -0.2,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all",
+         "filters": [
+          "controlled"
+         ]
+        },
+        "buff": {
+         "tag": "tyranitar-crit-cut",
+         "kind": "stat",
+         "field": "crit",
+         "amount": -0.2,
+         "turns": 3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all",
+         "filters": [
+          "controlled"
+         ]
+        },
+        "buff": {
+         "tag": "tyranitar-critpow-cut",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": -0.08,
+         "turns": 3
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "After using Ultimates, increase allied frontline's DMG Reduction by 18% for 2 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "front"
+        },
+        "buff": {
+         "tag": "tyranitar-front-rdct",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.18,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "salamence": {
+   "6": {
+    "text": "Every 1% missing HP increases Ultimate's Lifesteal multiplier by 0.5%."
+   },
+   "12": {
+    "text": "Ultimate deals 35% additional damage to targets with less than 35% HP",
+    "damageMods": [
+     {
+      "tag": "salamence-execute",
+      "slot": "ult",
+      "dmg": 0.35,
+      "condition": {
+       "targetHpBelow": 0.35
+      }
+     }
+    ]
+   },
+   "18": {
+    "text": "Basic attacks and basic skills steal 8% P.ATK from target for 5 turns. Stacks up to 1 times.",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "salamence-steal-cut",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.08,
+         "turns": 5,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "salamence-steal",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.08,
+         "turns": 5,
+         "maxStacks": 1
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "salamence-steal-cut",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": -0.08,
+         "turns": 5,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "salamence-steal",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.08,
+         "turns": 5,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "rayquaza": {
+   "6": {
+    "text": "Increases turn 1's base damage ratio to 105%, Lifesteal ratio to 25%"
+   },
+   "12": {
+    "text": "Increases skill damage to 80%; At turn 2, increases mark's base DMG ratio to 120%",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0.8
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "dragon-mark",
+         "kind": "stack",
+         "bigRounds": 3,
+         "undispellable": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Raise turn 2's Lifesteal mark to 75%"
+   }
   }
  },
  "_plateNotes": [
@@ -17389,6 +19385,27 @@
   "Suicune: [Thorn] 60 % -> 135 % -> 150 % as extra true hits (+75 %, +15 %) while Thorn is up; 12's S.DEF steal not modelled (DEF has no effect).",
   "Zapdos 6: 'up to 3 times' read as 3 times a battle; 12: [Thunder]'s extra true damage comes only on Zapdos's own hits (no hook for other attackers); 18's DMG Multiplier as DMG Boost.",
   "Moltres 6: the +30 % taken applies to all DoTs (no per-tag DoT amp); 18: '+100 % stacking chance' \u2014 basic burn to 100 %, plus a second 30 % on-hit roll.",
-  "Articuno 6: read as the basic skill (the freezing skill)."
+  "Articuno 6: read as the basic skill (the freezing skill).",
+  "Metagross 6: confused (mind-controlled) targets get +30 % ATK for their next action; 12 (confused units still use basic skills) not modelled \u2014 depends on how mind control picks the slot; 18: 'all Rage' as -1000.",
+  "Garchomp 6 / 18 (the ult's DEF cut to 55 % / guaranteed): no effect \u2014 DEF has no effect; 12: +7 % DMG RDCT per ult hit (3 stacks).",
+  "Hydreigon 6 (ult aims at the row of the lowest-HP enemy) not modelled \u2014 no such target rule; 12 lands after the ult (no before-ult trigger).",
+  "Gyarados 6: 'Magikarp prioritizes backline units' not modelled; the 12.5 % Rage steal is 125 on every normal / basic hit.",
+  "Gardevoir 6: the 25 % ignore DEF has no effect (DEF has no effect); the ATK buff becomes undispellable.",
+  "Gengar 18: '+25 % Rage' (125 -> 250) once per ult when any target is controlled; the 35 % cut is 250 Rage.",
+  "Charizard: as Shiny Charizard at its own numbers (Vulnerability 10 %, Crit +10 % after the ult, Offer-of-Power backline Crit 10 % -> 18 %).",
+  "Blastoise 6: the ult mark's P.ATK reduction x1.3 (18 % -> 23.4 %) plus a 15 % S.ATK one on the same targets; 18 (Regrowth Mark) not modelled \u2014 no ally-hit trigger yet.",
+  "Venusaur: as Shiny Venusaur (1 % poison stacks).",
+  "Blaziken 6: 'base damage to 15 %' read as the ult rate +15 points (210 % -> 225 %); 12's 40 % S.DEF ignore has no effect (DEF has no effect); 18 (prioritizes the lowest-HP enemies) not modelled \u2014 the ult hits a column.",
+  "Swampert 6: [Foresight] 80 % -> 100 % ATK; the extra true damage of 30 % of the target's S.ATK not modelled (no target-ATK basis).",
+  "Sceptile 12: [Malignant Wounds]' -12 % S.ATK as -12 % ATK; 18: 'DoT except Bleed' as poison / burn / flame / Foresight / frost / curse tags.",
+  "Typhlosion: 'if not blocked' is not checked (every landed hit counts); 18's 'basic attack' read as the normal attack.",
+  "Feraligatr 12 ([Protection] split 25 % -> 40 %): no effect \u2014 [Protection] is not modelled; 18: the 10 % max-HP shield goes to Feraligatr only ('the ally above' has no target rule).",
+  "Meganium 6: the ult heal x1.18 (25 % -> 29.5 % max HP); the 30 % boost vs DoT-afflicted enemies not modelled; 12 cleanses control ailments; 18 (+500 Rage to the ally below) not modelled \u2014 no position-relative target rule.",
+  "Slaking 18: [Regrowth over Time] as a 2 % x 3-turn heal on a 50 % roll (its 1-stack cap not enforced).",
+  "Dragonite 12: 'the allies above you' read as the frontline allies; cleanses control ailments.",
+  "Tyranitar 12: the riders go to every controlled enemy after the ult (not only the ult's targets).",
+  "Salamence 6 (ult lifesteal +0.5 % per 1 % missing HP) not modelled \u2014 lifesteal cannot scale with HP yet; 18's 8 % P.ATK steal as -8 % / +8 % ATK on the first target.",
+  "Stage-6 skill swaps (hero_slate_skill_json: Starmie, Ninetales, Metagross, Garchomp, Hydreigon, Gyarados -> skill ids 1x8102 / 1x8201 / ...): not ported \u2014 those skill ids are in the dump's _skills_not_found (no text or numbers).",
+  "Rayquaza 6 / 18 and 12's turn-2 part: no effect \u2014 the mark's turn 1 / turn 2 strikes are not modelled (see the hand-port gaps); 12 raises the ult to 80 %."
  ]
 }

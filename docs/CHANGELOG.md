@@ -1163,3 +1163,14 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - `scripts/import-plates.mjs` → `packages/content/equipment/plates.json`: 54 plates by card type, stages 0–18
   (one table), step prices, unlock and level gates. Server `plates.ts` rewritten (gates, `locked` reason);
   M11's faction plates and `collection.plates` removed. Plate skills follow in part 2. ASSUMPTIONS #67.
+
+## R6a part 2 — Plate skills (2026-11-01)
+
+- All 76 Pokémon's plate skills at tiers 6 / 12 / 18 ported in `scripts/data/plate-skills.py` (batches 1–13),
+  applied by `applyPlateSkills` from the Pokémon's plate stage. Engine additions over the part: `statMods`,
+  `HitFlags.slot` (onHit / onCrit / onDealDamage carry the hit's slot for `eventSlot`), `alliesAlive*`
+  conditions, `removeBuff`, `zenControlPlus`.
+- Readings and gaps are written with `note(...)` next to the ports; `port-skills.mjs` lists them in
+  docs/PORT-REPORT.md "Plate skills" (earlier batches' notes were being dropped on each regeneration).
+- Not ported: the stage-6 skill swaps (hero_slate_skill_json, 6 Pokémon) — the swap skill ids are absent from
+  the dump (`_skills_not_found`).

@@ -280,7 +280,7 @@ export function channelHit(
   if (hitLanded && kind === 'hit') consumeLayers(ctx, defender);
   // E1: "when dealing damage" (Shell Bell) fires before the target's Rage gain so it can stop it.
   if (hitLanded && kind === 'hit' && attacker !== defender && attacker.alive) {
-    fireTriggers(ctx, attacker, 'onDealDamage', { target: defender });
+    fireTriggers(ctx, attacker, 'onDealDamage', { target: defender, ...(flags.slot ? { slot: flags.slot } : {}) });
   }
 
   // The flat +rageHitBase applies only to direct hits (plain and shielded);

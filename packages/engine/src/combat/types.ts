@@ -453,7 +453,7 @@ export type TriggerOn =
   | 'onCrit'
   /** E1: the owner's hit was blocked (target = the blocker). */
   | 'onBlocked'
-  /** E1: the owner's direct hit landed (target = the one hit). */
+  /** E1: the owner's direct hit landed (target = the one hit; R6a: carries the hit's slot for `eventSlot`). */
   | 'onDealDamage'
   /** E1: a control landed on the owner (target = the controller). */
   | 'onControlled'

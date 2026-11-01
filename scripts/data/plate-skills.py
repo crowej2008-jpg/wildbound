@@ -616,6 +616,262 @@ plate("articuno", {
          "triggers": [trig("afterUlt", [give(ENEMY_ALL, buff("articuno-slow", "spd", -25, turns=2, stacks=1))])]},
 })
 
+
+# --- batch 11 ------------------------------------------------------------------------------------
+_CONFUSED_ATK = give({"event": True}, buff("metagross-confused-atk", "atkPct", 0.3, turns=1),
+                     condition={"targetControlled": True})
+
+
+def _metagross(stage):
+    def fn(s):
+        s["effects"].append(_copy.deepcopy(_CONFUSED_ATK))
+        if stage >= 18 and s["rates"] == [2.1]:
+            s["effects"].append(rage({"event": True}, -1000, chance=0.2))
+    return fn
+
+
+plate("metagross", {
+    6: {"skills": {"basic": edited("metagross", "basic", _metagross(6)), "ult": edited("metagross", "ult", _metagross(6))}},
+    12: {},
+    18: {"skills": {"ult": edited("metagross", "ult", _metagross(18))}},
+})
+
+plate("garchomp", {
+    6: {},
+    12: {"triggers": [trig("onDealDamage", [give(SELF, buff("garchomp-rdct", "dmgRdct", 0.07, turns=3, stacks=3))],
+                           condition=ON_ULT)]},
+    18: {},
+})
+
+plate("hydreigon", {
+    6: {},
+    12: {"triggers": [trig("afterUlt", [give(SELF, buff("hydra-gb", "guardBreak", 0.35, turns=2)),
+                                        give(SELF, buff("hydra-crit-ult", "crit", 0.1, turns=2))])]},
+    18: {"damageMods": [{"tag": "hydra-execute", "slot": "ult", "dmg": 0.3, "condition": {"targetHpBelow": 0.35}}]},
+})
+
+_STEAL = rage({"event": True}, -125, steal=True)
+plate("gyarados", {
+    6: {"skills": {s: edited("gyarados", s, lambda k: k.setdefault("effects", []).append(_copy.deepcopy(_STEAL)))
+                   for s in ("normal", "basic")}},
+    12: {"damageMods": [{"tag": "gyara-vs-skill", "slot": "ult", "dmg": 0.25, "condition": {"targetClass": "adept"}}]},
+    18: {"skills": {"ult": edited("gyarados", "ult", lambda s: s["effects"][1]["buff"].update(amount=0.25, turns=4))}},
+})
+
+
+def _gardevoir(stage):
+    def fn(s):
+        s["ignoreDefense"] = 0.25
+        b = s["effects"][0]["buff"]
+        b["undispellable"] = True
+        if stage >= 12:
+            b["amount"] = 0.15
+    return fn
+
+
+plate("gardevoir", {
+    6: {"skills": {"ult": edited("gardevoir", "ult", _gardevoir(6))}},
+    12: {"skills": {"ult": edited("gardevoir", "ult", _gardevoir(12))}},
+    18: {"triggers": [trig("afterUlt", [rage(SELF, 250)])]},
+})
+
+plate("gengar", {
+    6: {"damageMods": [{"tag": "gengar-vs-atk", "slot": "ult", "dmg": 0.3, "condition": {"targetClass": "striker"}},
+                       {"tag": "gengar-vs-skill", "slot": "ult", "dmg": 0.1, "condition": {"targetClass": "adept"}}]},
+    12: {"triggers": [trig("afterUlt", [give({"rule": "backline"}, buff("gengar-ctrlres", "controlRes", -0.2, turns=2, stacks=1))])]},
+    18: {"triggers": [trig("afterUlt", [rage(SELF, 125)], condition={"targetControlled": True}, perTurn=1),
+                      trig("afterUlt", [rage(T, -250)], condition={"targetControlled": True}, chance=0.35)]},
+})
+
+
+def _paralysis(chance, targets=None):
+    def fn(s):
+        s["effects"][0]["control"]["chance"] = chance
+        if targets:
+            s["targets"] = targets
+    return fn
+
+
+plate("raichu", {
+    6: {"skills": {"ult": edited("raichu", "ult", _paralysis(0.23))},
+        "damageMods": [{"tag": "raichu-plate-ult", "slot": "ult", "dmg": 0.2}]},
+    12: {"skills": {"basic": edited("raichu", "basic", _paralysis(0.35))},
+         "damageMods": [{"tag": "raichu-plate-basic", "slot": "basic", "dmg": 0.25}]},
+    18: {"skills": {"ult": edited("raichu", "ult", _paralysis(0.23, targets=4))}},
+})
+
+
+# --- batch 12 ------------------------------------------------------------------------------------
+plate("charizard", {
+    6: {"skills": {"ult": edited("charizard", "ult", lambda s: s["effects"].append(
+        give({"rule": "frontline"}, buff("charizard-vuln", "dmgRdct", -0.1, turns=1, stacks=1))))}},
+    12: {"triggers": [trig("afterUlt", [give(SELF, buff("charizard-crit", "crit", 0.1, turns=2))]),
+                      trig("afterUlt", [give(BACK, buff("blaze-crit-offer", "crit", 0.08, turns=2, stacks=1))],
+                           condition=_OFFER)]},
+    18: {"damageMods": [{"tag": "charizard-vs-def", "slot": "ult", "dmg": 0.25,
+                         "condition": {"targetClass": "guardian", **_OFFER}}]},
+})
+
+
+def _blastoise(s):
+    b = s["effects"][0]
+    b["buff"]["amount"] = round(b["buff"]["amount"] * 1.3, 3)
+    s["effects"].append({**_copy.deepcopy(b), "buff": {**b["buff"], "tag": "mark-sRdct", "field": "sRdct", "amount": 0.15}})
+
+
+plate("blastoise", {
+    6: {"skills": {"ult": edited("blastoise", "ult", _blastoise)}},
+    12: {"triggers": [trig("afterUlt", [shield(BACK, 0.12, "casterHp"),
+                                        give(BACK, buff("blastoise-back-atk", "atkPct", 0.12, turns=3, stacks=1))])]},
+    18: {},
+})
+
+plate("venusaur", {
+    6: {"skills": {"ult": edited("venusaur", "ult", _poison_ult("v", 2, 0.6))}},
+    12: {"skills": {"ult": edited("venusaur", "ult", _poison_ult("all", 2, 0.6))}},
+    18: {"skills": {"ult": edited("venusaur", "ult", _poison_ult("all", 3, 0.8))}},
+})
+
+
+def _blaziken(s):
+    s["rates"] = [2.25]
+    s["effects"][0]["share"] = 0.12
+
+
+plate("blaziken", {
+    6: {"skills": {"ult": edited("blaziken", "ult", _blaziken)}},
+    12: {"skills": {"ult": edited("blaziken", "ult", lambda s: (_blaziken(s), s.update(ignoreDefense=0.4)))}},
+    18: {},
+})
+
+
+def _foresight(stage):
+    def fn(s):
+        d = s["effects"][0]["dot"]
+        d["share"] = 1.0
+        if stage >= 12:
+            d["turns"] = 3
+        if stage >= 18:
+            d["undispellable"] = True
+    return fn
+
+
+plate("swampert", {st: {"skills": {"ult": edited("swampert", "ult", _foresight(st))}} for st in (6, 12, 18)})
+
+
+def _wounds(stage, slot):
+    def fn(s):
+        for e in s["effects"]:
+            if e["op"] == "buff" and e["buff"]["tag"] == "malignant-wounds":
+                e["buff"]["amount"] = 0.3
+                if stage >= 12:
+                    s["effects"].append({**_copy.deepcopy(e), "buff": {**e["buff"], "tag": "malignant-wounds-atk",
+                                                                       "field": "atkPct", "amount": -0.12}})
+                break
+    return fn
+
+
+_DOTS_NOT_BLEED = ["poison", "burning", "burn", "flame", "blaze", "foresight", "frost", "curse"]
+plate("sceptile", {
+    6: {"skills": {sl: edited("sceptile", sl, _wounds(6, sl)) for sl in ("basic", "ult")}},
+    12: {"skills": {sl: edited("sceptile", sl, _wounds(12, sl)) for sl in ("basic", "ult")}},
+    18: {"damageMods": [{"tag": "sceptile-vs-dot", "slot": "ult", "dmg": 0.3,
+                         "condition": {"targetHasAnyTag": _DOTS_NOT_BLEED}}]},
+})
+
+
+def _true_hit(basis, share):
+    return {"op": "damage", "target": T, "basis": basis, "share": share, "trueDamage": True}
+
+
+plate("typhlosion", {
+    6: {"triggers": [trig("onDealDamage", [_true_hit("targetCurrentHp", 0.12)], condition=ON_ULT)]},
+    12: {"triggers": [trig("onCrit", [_true_hit("targetMissingHp", 0.12)], condition=ON_ULT)]},
+    18: {"triggers": [trig("onDealDamage", [_true_hit("targetCurrentHp", 0.08)], condition={"eventSlot": "normal"}),
+                      trig("onCrit", [_true_hit("targetMissingHp", 0.08)], condition={"eventSlot": "basic"})]},
+})
+
+
+# --- batch 13 ------------------------------------------------------------------------------------
+FRONT_ALLIES = {"side": "ally", "rule": "all", "rowFilter": "front"}
+
+plate("feraligatr", {
+    6: {"triggers": [trig("afterUlt", [give(SELF, buff("feraligatr-prdct", "pRdct", 0.15, turns=2, stacks=1)),
+                                       give(T, buff("feraligatr-gb-cut", "guardBreak", -0.1, turns=2, stacks=1))])]},
+    12: {},
+    18: {"triggers": [trig("afterUlt", [shield(SELF, 0.1, "casterHp")])]},
+})
+
+
+def _meganium(stage):
+    def fn(s):
+        s["effects"][0]["rate"] = 0.295
+        if stage >= 12:
+            s["effects"] += [{"op": "dispel", "target": {"event": True}, "count": 1},
+                             {"op": "cleanse", "target": ALL_ALLIES, "kinds": CONTROL_KINDS}]
+    return fn
+
+
+plate("meganium", {
+    6: {"skills": {"ult": edited("meganium", "ult", _meganium(6))}},
+    12: {"skills": {"ult": edited("meganium", "ult", _meganium(12))}},
+    18: {},
+})
+
+
+def _regrowth(s):
+    for e in s["effects"]:
+        if e["op"] == "heal":
+            e["rate"] = 0.05
+
+
+plate("slaking", {
+    6: {"triggers": [trig("afterUlt", [give(SELF, buff("slaking-mult", "dmgBoost", 0.1, turns=5, stacks=3)),
+                                       give(SELF, buff("slaking-rdct", "dmgRdct", 0.1, turns=5, stacks=3))])]},
+    12: {"skills": {"ult": edited("slaking", "ult", _regrowth)}},
+    18: {"triggers": [trig(on, [heal(SELF, 0.02, "targetMaxHp", over=3)], chance=0.5) for on in ("afterNormal", "afterBasic")]},
+})
+
+plate("dragonite", {
+    6: {"skills": {"ult": edited("dragonite", "ult", lambda s: s["effects"][0].update(count=2))}},
+    12: {"triggers": [trig("afterUlt", [{"op": "cleanse", "target": FRONT_ALLIES, "kinds": CONTROL_KINDS}])]},
+    18: {"skills": {"ult": edited("dragonite", "ult", lambda s: (s["effects"][0].update(count=2),
+                                                                 s["effects"].append(rage({"event": True}, -250, chance=0.35))))}},
+})
+
+
+def _tyranitar(s):
+    for e in s["effects"]:
+        if e["op"] == "control" and e["control"]["kind"] == "stun":
+            e["control"]["chance"] = 0.25
+        if e["op"] == "buff" and e["buff"]["tag"] == "shred-controlRes":
+            e["buff"]["amount"] = -0.2
+
+
+_CONTROLLED = {"rule": "all", "filters": ["controlled"]}
+plate("tyranitar", {
+    6: {"skills": {"ult": edited("tyranitar", "ult", _tyranitar)}},
+    12: {"triggers": [trig("afterUlt", [give(_CONTROLLED, buff("tyranitar-ctrlres", "controlRes", -0.2, turns=2, stacks=1)),
+                                        give(_CONTROLLED, buff("tyranitar-crit-cut", "crit", -0.2, turns=3)),
+                                        give(_CONTROLLED, buff("tyranitar-critpow-cut", "critPower", -0.08, turns=3))])]},
+    18: {"triggers": [trig("afterUlt", [give(FRONT_ALLIES, buff("tyranitar-front-rdct", "dmgRdct", 0.18, turns=2, stacks=1))])]},
+})
+
+plate("salamence", {
+    6: {},
+    12: {"damageMods": [{"tag": "salamence-execute", "slot": "ult", "dmg": 0.35, "condition": {"targetHpBelow": 0.35}}]},
+    18: {"triggers": [trig(on, [give(T, buff("salamence-steal-cut", "atkPct", -0.08, turns=5, stacks=1)),
+                                give(SELF, buff("salamence-steal", "atkPct", 0.08, turns=5, stacks=1))])
+                      for on in ("afterNormal", "afterBasic")]},
+})
+
+
+plate("rayquaza", {
+    6: {},
+    12: {"skills": {"ult": edited("rayquaza", "ult", lambda s: s.update(rates=[0.8]))}},
+    18: {},
+})
+
 # --- readings (docs/PORT-REPORT.md "Plate skills") -----------------------------------------------
 note("God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.")
 note("Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).")
@@ -657,3 +913,27 @@ note("Suicune: [Thorn] 60 % -> 135 % -> 150 % as extra true hits (+75 %, +15 %) 
 note("Zapdos 6: 'up to 3 times' read as 3 times a battle; 12: [Thunder]'s extra true damage comes only on Zapdos's own hits (no hook for other attackers); 18's DMG Multiplier as DMG Boost.")
 note("Moltres 6: the +30 % taken applies to all DoTs (no per-tag DoT amp); 18: '+100 % stacking chance' — basic burn to 100 %, plus a second 30 % on-hit roll.")
 note("Articuno 6: read as the basic skill (the freezing skill).")
+
+note("Metagross 6: confused (mind-controlled) targets get +30 % ATK for their next action; 12 (confused units still use basic skills) not modelled — depends on how mind control picks the slot; 18: 'all Rage' as -1000.")
+note("Garchomp 6 / 18 (the ult's DEF cut to 55 % / guaranteed): no effect — DEF has no effect; 12: +7 % DMG RDCT per ult hit (3 stacks).")
+note("Hydreigon 6 (ult aims at the row of the lowest-HP enemy) not modelled — no such target rule; 12 lands after the ult (no before-ult trigger).")
+note("Gyarados 6: 'Magikarp prioritizes backline units' not modelled; the 12.5 % Rage steal is 125 on every normal / basic hit.")
+note("Gardevoir 6: the 25 % ignore DEF has no effect (DEF has no effect); the ATK buff becomes undispellable.")
+note("Gengar 18: '+25 % Rage' (125 -> 250) once per ult when any target is controlled; the 35 % cut is 250 Rage.")
+
+note("Charizard: as Shiny Charizard at its own numbers (Vulnerability 10 %, Crit +10 % after the ult, Offer-of-Power backline Crit 10 % -> 18 %).")
+note("Blastoise 6: the ult mark's P.ATK reduction x1.3 (18 % -> 23.4 %) plus a 15 % S.ATK one on the same targets; 18 (Regrowth Mark) not modelled — no ally-hit trigger yet.")
+note("Venusaur: as Shiny Venusaur (1 % poison stacks).")
+note("Blaziken 6: 'base damage to 15 %' read as the ult rate +15 points (210 % -> 225 %); 12's 40 % S.DEF ignore has no effect (DEF has no effect); 18 (prioritizes the lowest-HP enemies) not modelled — the ult hits a column.")
+note("Swampert 6: [Foresight] 80 % -> 100 % ATK; the extra true damage of 30 % of the target's S.ATK not modelled (no target-ATK basis).")
+note("Sceptile 12: [Malignant Wounds]' -12 % S.ATK as -12 % ATK; 18: 'DoT except Bleed' as poison / burn / flame / Foresight / frost / curse tags.")
+note("Typhlosion: 'if not blocked' is not checked (every landed hit counts); 18's 'basic attack' read as the normal attack.")
+
+note("Feraligatr 12 ([Protection] split 25 % -> 40 %): no effect — [Protection] is not modelled; 18: the 10 % max-HP shield goes to Feraligatr only ('the ally above' has no target rule).")
+note("Meganium 6: the ult heal x1.18 (25 % -> 29.5 % max HP); the 30 % boost vs DoT-afflicted enemies not modelled; 12 cleanses control ailments; 18 (+500 Rage to the ally below) not modelled — no position-relative target rule.")
+note("Slaking 18: [Regrowth over Time] as a 2 % x 3-turn heal on a 50 % roll (its 1-stack cap not enforced).")
+note("Dragonite 12: 'the allies above you' read as the frontline allies; cleanses control ailments.")
+note("Tyranitar 12: the riders go to every controlled enemy after the ult (not only the ult's targets).")
+note("Salamence 6 (ult lifesteal +0.5 % per 1 % missing HP) not modelled — lifesteal cannot scale with HP yet; 18's 8 % P.ATK steal as -8 % / +8 % ATK on the first target.")
+note("Stage-6 skill swaps (hero_slate_skill_json: Starmie, Ninetales, Metagross, Garchomp, Hydreigon, Gyarados -> skill ids 1x8102 / 1x8201 / ...): not ported — those skill ids are in the dump's _skills_not_found (no text or numbers).")
+note("Rayquaza 6 / 18 and 12's turn-2 part: no effect — the mark's turn 1 / turn 2 strikes are not modelled (see the hand-port gaps); 12 raises the ult to 80 %.")

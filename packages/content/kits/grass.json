@@ -110,6 +110,136 @@
       ],
       "rageStart": 500,
       "rageOnHit": 125
+    },
+    "plate": {
+      "6": {
+        "text": "Increases [Confused] targets' P.ATK and S.ATK by 30%.",
+        "skills": {
+          "basic": {
+            "type": "P",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "mindControl",
+                  "chance": null
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "metagross-confused-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.3,
+                  "turns": 1
+                },
+                "condition": {
+                  "targetControlled": true
+                }
+              }
+            ]
+          },
+          "ult": {
+            "type": "P",
+            "rates": [
+              2.1
+            ],
+            "rule": "backline",
+            "targets": 1,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "mindControl",
+                  "chance": 0.3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "metagross-confused-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.3,
+                  "turns": 1
+                },
+                "condition": {
+                  "targetControlled": true
+                }
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Targets affected by [Confusion] can still attack with basic skills."
+      },
+      "18": {
+        "text": "Ultimate has a 20% chance to reduce target's all rage.",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              2.1
+            ],
+            "rule": "backline",
+            "targets": 1,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "mindControl",
+                  "chance": 0.3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "metagross-confused-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.3,
+                  "turns": 1
+                },
+                "condition": {
+                  "targetControlled": true
+                }
+              },
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "chance": 0.2,
+                "delta": -1000
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {
@@ -216,6 +346,88 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Boosts the Ignore DEF effect to 25%. The ATK boost cannot be dispelled.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.35
+            ],
+            "rule": "frontline",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "gardevoir-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.1,
+                  "turns": 10,
+                  "maxStacks": 3,
+                  "undispellable": true
+                }
+              }
+            ],
+            "ignoreDefense": 0.25
+          }
+        }
+      },
+      "12": {
+        "text": "Increases ATK boost effect to 15%.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.35
+            ],
+            "rule": "frontline",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "gardevoir-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.15,
+                  "turns": 10,
+                  "maxStacks": 3,
+                  "undispellable": true
+                }
+              }
+            ],
+            "ignoreDefense": 0.25
+          }
+        }
+      },
+      "18": {
+        "text": "Regenerate 25% Rage after using Ultimate.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 250
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -300,6 +512,96 @@
         }
       ],
       "rageStart": 1000
+    },
+    "plate": {
+      "6": {
+        "text": "Increase Ultimate damage by 20% and [Paralysis] chance to 23%.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.45
+            ],
+            "rule": "random",
+            "targets": 3,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "paralysis",
+                  "chance": 0.23
+                }
+              }
+            ]
+          }
+        },
+        "damageMods": [
+          {
+            "tag": "raichu-plate-ult",
+            "slot": "ult",
+            "dmg": 0.2
+          }
+        ]
+      },
+      "12": {
+        "text": "Increase basic skill damage by 25% and [Paralysis] chance to 35%.",
+        "skills": {
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "paralysis",
+                  "chance": 0.35
+                }
+              }
+            ]
+          }
+        },
+        "damageMods": [
+          {
+            "tag": "raichu-plate-basic",
+            "slot": "basic",
+            "dmg": 0.25
+          }
+        ]
+      },
+      "18": {
+        "text": "Ultimate's target +1",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.45
+            ],
+            "rule": "random",
+            "targets": 4,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "paralysis",
+                  "chance": 0.23
+                }
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {
@@ -417,6 +719,194 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate enhanced. Now it's guaranteed to inflict 2 stacks of [Poison], with 60% chance to gain additional 1 stacks.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              0.9
+            ],
+            "rule": "random",
+            "targets": 4,
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                },
+                "chance": 0.6
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Increases Ultimate’s range to all enemies",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              0.9
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                },
+                "chance": 0.6
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Ultimate is guaranteed to gain 3 stacks of [Poison], with 80% chance to gain additional 1 stacks.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              0.9
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.01,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                },
+                "chance": 0.8
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {
@@ -544,6 +1034,188 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Boosts [Malignant Wounds] effect. Target now takes 30% more damage over time.",
+        "skills": {
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "malignant-wounds",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.3,
+                  "turns": 1,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.9
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "bleed",
+                "dot": {
+                  "share": 0.2,
+                  "basis": "casterAtk",
+                  "turns": 4,
+                  "maxStacks": 4,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "malignant-wounds",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.3,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "The [Malignant Wounds] effect further reduces target's S.ATK by 12%",
+        "skills": {
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "malignant-wounds",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.3,
+                  "turns": 1,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "malignant-wounds-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.12,
+                  "turns": 1,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.9
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "bleed",
+                "dot": {
+                  "share": 0.2,
+                  "basis": "casterAtk",
+                  "turns": 4,
+                  "maxStacks": 4,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "malignant-wounds",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.3,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "malignant-wounds-atk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.12,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Ultimate deals 30% increased damage to the enemies affected by DoT ([Bleed] excluded).",
+        "damageMods": [
+          {
+            "tag": "sceptile-vs-dot",
+            "slot": "ult",
+            "dmg": 0.3,
+            "condition": {
+              "targetHasAnyTag": [
+                "poison",
+                "burning",
+                "burn",
+                "flame",
+                "blaze",
+                "foresight",
+                "frost",
+                "curse"
+              ]
+            }
+          }
+        ]
+      }
     }
   },
   {
@@ -643,6 +1315,94 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Increases Ultimate's basic healing amount by 18%. When attacking the enemies affected by  [DoT], increases the healing boost to 30%.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "lowest_hp",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "rule": "lowest_hp"
+                },
+                "rate": 0.295,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "lowest_hp"
+                },
+                "tag": "dot",
+                "delta": 1
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Ultimate dispels 1 buffs from enemies and cleanses all status ailments from allies.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "lowest_hp",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "rule": "lowest_hp"
+                },
+                "rate": 0.295,
+                "basis": "targetMaxHp"
+              },
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "lowest_hp"
+                },
+                "tag": "dot",
+                "delta": 1
+              },
+              {
+                "op": "dispel",
+                "target": {
+                  "event": true
+                },
+                "count": 1
+              },
+              {
+                "op": "cleanse",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "kinds": [
+                  "control",
+                  "silence",
+                  "confusion",
+                  "paralysis",
+                  "disarm",
+                  "noBasic",
+                  "noCrit"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Ultimate increases the Rage of the ally below your position by 50%."
+      }
     }
   },
   {
@@ -739,6 +1499,97 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "Every 1% missing HP increases Ultimate's Lifesteal multiplier by 0.5%."
+      },
+      "12": {
+        "text": "Ultimate deals 35% additional damage to targets with less than 35% HP",
+        "damageMods": [
+          {
+            "tag": "salamence-execute",
+            "slot": "ult",
+            "dmg": 0.35,
+            "condition": {
+              "targetHpBelow": 0.35
+            }
+          }
+        ]
+      },
+      "18": {
+        "text": "Basic attacks and basic skills steal 8% P.ATK from target for 5 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "salamence-steal-cut",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.08,
+                  "turns": 5,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-steal",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.08,
+                  "turns": 5,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "salamence-steal-cut",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": -0.08,
+                  "turns": 5,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-steal",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.08,
+                  "turns": 5,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1491,6 +2342,40 @@
           "cap": 0.3
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Increases turn 1's base damage ratio to 105%, Lifesteal ratio to 25%"
+      },
+      "12": {
+        "text": "Increases skill damage to 80%; At turn 2, increases mark's base DMG ratio to 120%",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              0.8
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "dragon-mark",
+                  "kind": "stack",
+                  "bigRounds": 3,
+                  "undispellable": true
+                }
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Raise turn 2's Lifesteal mark to 75%"
+      }
     }
   },
   {
