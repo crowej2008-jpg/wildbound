@@ -208,31 +208,6 @@ export const trinketsSchema = z.object({
   ),
 });
 
-export const runesSchema = z.object({
-  runes: z.array(
-    z.object({
-      id: z.string().min(1),
-      name: z.string().min(1),
-      setId: z.string().min(1),
-      tier: z.enum(TIERS),
-      lines: z.array(statLineSchema).min(1),
-    }),
-  ),
-  sets: z.array(
-    z.object({
-      id: z.string().min(1),
-      name: z.string().min(1),
-      bonuses: z
-        .array(
-          z.object({
-            pieces: z.number().int().min(1),
-            lines: z.array(statLineSchema).min(1),
-          }),
-        )
-        .min(1),
-    }),
-  ),
-});
 
 export const charmsSchema = z.object({
   charms: z.array(
@@ -293,7 +268,6 @@ export const coresSchema = z.object({
 
 export const equipmentTuningSchema = z.object({
   relic: z.object({ minTier: z.enum(TIERS) }),
-  runes: z.object({ minStars: z.number().int().min(0), sockets: z.number().int().min(1), maxLevel: z.number().int().min(1) }),
   charms: z.object({ minStars: z.number().int().min(0), slots: z.number().int().min(1) }),
   cores: z.object({
     minStars: z.number().int().min(0),
@@ -301,10 +275,8 @@ export const equipmentTuningSchema = z.object({
     pieceMinStars: z.number().int().min(1),
     pieceMaxStars: z.number().int().min(1),
   }),
-  runeLevelCost: z.object({ gold: z.number(), goldPerLevel: z.number() }),
   starting: z.object({
     relics: z.array(z.object({ defId: z.string() })),
-    runes: z.array(z.object({ defId: z.string(), level: z.number().int().min(1) })),
     cores: z.array(z.object({ setId: z.string(), socket: z.number().int().min(0), stars: z.number().int().min(1) })),
     charms: z.array(z.object({ defId: z.string(), stars: z.number().int().min(1), count: z.number().int().min(1) })),
   }),
@@ -314,8 +286,59 @@ export type HeldItemsJson = z.infer<typeof heldItemsSchema>;
 export type RelicJson = HeldItemsJson['items'][number];
 export type PlateJson = z.infer<typeof platesSchema>['plates'][number];
 export type TrinketJson = z.infer<typeof trinketsSchema>['trinkets'][number];
-export type RuneJson = z.infer<typeof runesSchema>['runes'][number];
-export type RuneSetJson = z.infer<typeof runesSchema>['sets'][number];
 export type CharmJson = z.infer<typeof charmsSchema>['charms'][number];
 export type CoreSetJson = z.infer<typeof coresSchema>['sets'][number];
 export type EquipmentTuningJson = z.infer<typeof equipmentTuningSchema>;
+
+/** R3: the source's orbs (scripts/gen-orbs.mjs). */
+const orbFamily = z.enum(['defensive', 'offensive']);
+const orbColour = z.enum(['green', 'blue', 'purple', 'orange', 'red']);
+export const orbsSchema = z.object({
+  kinds: z.array(
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      family: orbFamily,
+      twin: z.string(),
+      flat: z.array(z.enum(['hp', 'pAtk', 'sAtk'])).length(2),
+      pool: z.array(z.string()).length(3),
+    }),
+  ).length(12),
+  colours: z.array(
+    z.object({
+      id: orbColour,
+      quality: z.number().int(),
+      cap: z.number().int().positive(),
+      flatLines: z.number().int().positive(),
+      pctLines: z.number().int().positive(),
+      flatFactor: z.number().positive(),
+    }),
+  ).length(5),
+  flat: z.object({ atk: z.array(z.number()).length(10), hp: z.array(z.number()).length(10) }),
+  lineCeiling: z.record(z.string(), z.number().positive()),
+  rollRange: z.tuple([z.number(), z.number()]),
+  levelGold: z.array(z.number().int().positive()).length(9),
+  copiesPerLevel: z.number().int().positive(),
+  sockets: z.array(z.array(z.enum(['any', 'defensive', 'offensive'])).length(2)).length(4),
+  unlock: z.object({
+    playerLevel: z.number().int(),
+    stars: z.number().int(),
+    secondRow: z.object({ stars: z.number().int(), level: z.number().int() }),
+  }),
+  dismantle: z.record(z.string(), z.array(z.number().int().nonnegative())),
+  sets: z.array(
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      family: orbFamily,
+      kinds: z.array(z.string()).min(3).max(5),
+      tiers: z.array(
+        z.object({
+          level: z.number().int(),
+          lines: z.array(z.object({ field: z.string(), value: z.number(), vs: z.enum(['striker', 'guardian', 'adept']).optional() })),
+        }),
+      ),
+    }),
+  ).length(26),
+});
+export type OrbsJson = z.infer<typeof orbsSchema>;

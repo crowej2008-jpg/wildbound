@@ -825,4 +825,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     the latter open); Potential Cores cover what Pokémon can't, where allowed. A reset returns the
     fodder as Lv 1 copies at the star they were taken at (the source's "all potential training
     materials"). Potential Cores have no source until R9.
+65. **R3 Orb stand-ins (owner, 2026-11-01: "the orbs go upto lvl 10 at the max so make sure to scale it
+    up").** The orb tables are not in the dumps (re-checked on the owner's PC too). Built from kb/orbs.md,
+    the owner's wiki and hero_orb_decompose_json; stand-ins: flat stats +8…+10 (×1.5 per level), other
+    colours' flat stats (geometric 22 → 125 share of red), % line ceilings for non-DMG/PVP/BOSS lines (best
+    +7 roll ÷ 7) with rolls at 80–100 %, the same lines for every colour, set choice when several fit, and
+    the sockets living on the Pokémon until Gear (R2). Details: `docs/design/orbs.md`. Replace when
+    `hero_orb_basic_json` turns up.
 

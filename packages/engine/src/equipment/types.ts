@@ -1,3 +1,4 @@
+import { ORB_SOCKETS, type OrbInstance, type OrbTables } from './orbs';
 import type { CombatField, DamageMod, RoundEffect, SoulheartHooks, TriggerDef } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats, Tier, WildClass, Faction } from '../model';
 
@@ -126,26 +127,6 @@ export interface TrinketDef {
   lines: StatLine[];
 }
 
-export interface RuneDef {
-  id: string;
-  name: string;
-  setId: string;
-  tier: Tier;
-  lines: StatLine[];
-}
-
-export interface RuneSetBonus {
-  pieces: number;
-  lines: StatLine[];
-}
-
-export interface RuneSetDef {
-  id: string;
-  name: string;
-  /** 2-piece and 4-piece bonuses; M11 replaces the old single threshold. */
-  bonuses: RuneSetBonus[];
-}
-
 export type CharmTier = 'common' | 'basic' | 'intermediate' | 'greater';
 
 export interface CharmDef {
@@ -200,11 +181,6 @@ export interface RelicInstance {
   locked: boolean;
 }
 
-export interface RuneInstance {
-  id: string;
-  defId: string;
-  level: number;
-}
 
 export interface CoreInstance {
   id: string;
@@ -216,7 +192,8 @@ export interface CoreInstance {
 /** What a single Wild wears. Empty string ids are not used — `null` means empty. */
 export interface Loadout {
   relic: string | null;
-  runes: (string | null)[];
+  /** R3: eight orb sockets — 0–3 row 1 on gear pieces 1–4, 4–7 row 2. */
+  orbs: (string | null)[];
   charms: (string | null)[];
   cores: (string | null)[];
 }
@@ -225,16 +202,13 @@ export interface Loadout {
 
 export interface EquipmentTuning {
   relic: { minTier: Tier };
-  runes: { minStars: number; sockets: number; maxLevel: number };
   charms: { minStars: number; slots: number };
   cores: { minStars: number; sockets: number; pieceMinStars: number; pieceMaxStars: number };
-  runeLevelCost: { gold: number; goldPerLevel: number };
   starting: StartingEquipment;
 }
 
 export interface StartingEquipment {
   relics: { defId: string }[];
-  runes: { defId: string; level: number }[];
   cores: { setId: string; socket: number; stars: number }[];
   charms: { defId: string; stars: number; count: number }[];
 }
@@ -242,7 +216,7 @@ export interface StartingEquipment {
 /** The account's owned equipment: instance lists + charm counts and star levels. */
 export interface EquipmentState {
   relics: RelicInstance[];
-  runes: RuneInstance[];
+  orbs: OrbInstance[];
   cores: CoreInstance[];
   /** charm defId → owned count. */
   charms: Record<string, number>;
@@ -258,8 +232,7 @@ export interface EquipmentTables {
   held: HeldTables;
   plates: PlateDef[];
   trinkets: TrinketDef[];
-  runes: RuneDef[];
-  runeSets: RuneSetDef[];
+  orbs: OrbTables;
   charms: CharmDef[];
   coreSets: CoreSetDef[];
   tuning: EquipmentTuning;
@@ -268,7 +241,7 @@ export interface EquipmentTables {
 export function emptyLoadout(tuning: EquipmentTuning): Loadout {
   return {
     relic: null,
-    runes: Array.from({ length: tuning.runes.sockets }, () => null),
+    orbs: Array.from({ length: ORB_SOCKETS }, () => null),
     charms: Array.from({ length: tuning.charms.slots }, () => null),
     cores: Array.from({ length: tuning.cores.sockets }, () => null),
   };
@@ -279,7 +252,7 @@ export function emptyDelta(): StatDelta {
 }
 
 export function emptyStartingEquipment(): StartingEquipment {
-  return { relics: [], runes: [], cores: [], charms: [] };
+  return { relics: [], cores: [], charms: [] };
 }
 
 /**
@@ -290,15 +263,12 @@ export function initialEquipment(
   starting: StartingEquipment,
   rollRelic?: (defId: string, id: string) => RelicInstance | null,
 ): EquipmentState {
-  const state: EquipmentState = { relics: [], runes: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 };
+  const state: EquipmentState = { relics: [], orbs: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 };
   for (const r of starting.relics) {
     const inst = rollRelic?.(r.defId, `re${state.nextSeq}`);
     if (!inst) continue;
     state.nextSeq += 1;
     state.relics.push(inst);
-  }
-  for (const r of starting.runes) {
-    state.runes.push({ id: `ru${state.nextSeq++}`, defId: r.defId, level: r.level });
   }
   for (const c of starting.cores) {
     state.cores.push({ id: `co${state.nextSeq++}`, setId: c.setId, socket: c.socket, stars: c.stars });

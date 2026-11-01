@@ -8,13 +8,13 @@ import type {
   StrategyId,
   SummonCost,
   SkillRow,
-  TitleSlot,
-} from '@wildbound/engine';
+  TitleSlot, OrbColour } from '@wildbound/engine';
 import type { BattleView } from './battle';
 import type { GachaView } from './gacha';
 import type { ShopView } from './shops';
 import type { OriginSkillsView } from './shards';
 import type { PotentialView } from './potential';
+import type { OrbsPanelView } from './orbs';
 import type { EquipmentView } from './equipment-view';
 import type { DungeonCardView, LinkCrystalView, TowerView, TrialCardView, WorldBossView } from './pve-view';
 import type { ExploreView } from './explore-view';
@@ -283,7 +283,18 @@ export interface GameServer {
   getEquipment(wildId: string): Promise<Result<EquipmentView>>;
   /** Equip (or clear, with `null`) a relic; `force` moves one worn elsewhere (M7). */
   equipRelic(wildId: string, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
-  equipRune(wildId: string, socket: number, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
+  /** R3: a Pokémon's orb sockets, active sets and the orb bag. */
+  getOrbs(wildId: string): Promise<Result<OrbsPanelView>>;
+  /** R3: socket (or clear, with `null`) an orb; `force` moves one socketed elsewhere. */
+  equipOrb(wildId: string, socket: number, orbId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
+  /** R3: raise an orb one level (two free copies + Gold); `quick` fuses lower copies first. */
+  levelOrb(orbId: string, quick?: boolean): Promise<Result<AccountSnapshot>>;
+  /** R3: lock / unlock an orb (locked orbs are never fed or dismantled). */
+  lockOrb(orbId: string): Promise<Result<AccountSnapshot>>;
+  /** R3: dismantle orbs for Orb Essence (red cannot be dismantled). */
+  dismantleOrbs(orbIds: string[]): Promise<Result<AccountSnapshot>>;
+  /** R3 debug: add a rolled orb. */
+  grantOrb(kind: string, colour: OrbColour, level?: number): Promise<Result<AccountSnapshot>>;
   equipCore(wildId: string, socket: number, instanceId: string | null, force?: boolean): Promise<Result<AccountSnapshot>>;
   starUpCore(instanceId: string): Promise<Result<AccountSnapshot>>;
   equipCharm(wildId: string, slot: number, charmId: string | null): Promise<Result<AccountSnapshot>>;
@@ -330,8 +341,6 @@ export interface GameServer {
   activateTitle(titleId: string): Promise<Result<AccountSnapshot>>;
   /** Equip an owned title in its slot, or clear it with `null` (M11.11). */
   setTitleSlot(slot: TitleSlot, titleId: string | null): Promise<Result<AccountSnapshot>>;
-  /** Level a rune (M7). */
-  levelRune(instanceId: string, useEssence?: boolean): Promise<Result<AccountSnapshot>>;
   /** Display-ready tower state: floor, weekly climbs, daily sweeps, milestones (M8). */
   getTower(): Promise<Result<TowerView>>;
   /** Climb the next tower floor with the tower squad (M8). */
@@ -435,6 +444,7 @@ export * from './equipment-view';
 export * from './growth';
 export * from './shards';
 export * from './potential';
+export * from './orbs';
 export * from './pve';
 export * from './pve-view';
 export * from './pvp';

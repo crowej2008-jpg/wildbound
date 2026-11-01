@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { grantHeldItem, setWildStars } from './testing';
 import { emptyLoadout, mulberry32 } from '@wildbound/engine';
 import { buildConfig } from './config';
-import { consumeCharms, grantRelic, levelRelicAction, levelRuneAction } from './equipment';
+import { consumeCharms, grantRelic, levelRelicAction } from './equipment';
 import { equippedSheet } from './battle';
 import { LocalServer } from './local-server';
 import { createInitialState } from './save';
@@ -184,23 +184,6 @@ describe('M11.0 equipment view and actions', () => {
     expect(done.value.state.currencies.heldItemShard).toBe(before + 20 + 20);
   });
 
-  it('unlocks orbs at the star gate and folds their lines into Power', async () => {
-    const { srv, wildId } = await supremeStriker();
-    // R1: a Supreme starts at 5★, already past the orb (3★) and Berry (4★) gates.
-    const view = await srv.getEquipment(wildId);
-    if (!view.ok) throw new Error(view.message);
-    expect(view.value.unlocks.runes).toBe(true);
-    const rune = view.value.runes[0];
-    if (!rune) throw new Error('no starting rune');
-    const equipped = await srv.equipRune(wildId, 0, rune.instanceId);
-    expect(equipped.ok).toBe(true);
-
-    const after = await srv.getEquipment(wildId);
-    if (!after.ok) throw new Error(after.message);
-    expect(after.value.loadout.runes[0]).toBe(rune.instanceId);
-    expect(after.value.power.layers.runes).toBeGreaterThan(0);
-  });
-
   it('equips two Berry slots, stars with copies + Essence, and dismantles a spare', async () => {
     const { srv, wildId } = await supremeStriker();
     // R1: a Supreme starts at 5★, already past the orb (3★) and Berry (4★) gates.
@@ -258,55 +241,6 @@ describe('M11.0 equipment view and actions', () => {
     const after = consumeCharms(state, [wildId]);
 
     expect(after.equipment.charms['charm-sunpetal-berry']).toBe(1);
-  });
-
-  it('levels an equipped orb with Orb Essence and raises its Power contribution', async () => {
-    const { srv, wildId } = await supremeStriker();
-    // R1: a Supreme starts at 5★, already past the orb (3★) and Berry (4★) gates.
-    await srv.grantCurrency('orbEssence', 1_000);
-    const view = await srv.getEquipment(wildId);
-    if (!view.ok) throw new Error(view.message);
-    const rune = view.value.runes.find((r) => r.levelCost !== null);
-    if (!rune || !rune.levelCost) throw new Error('no levellable orb');
-    await srv.equipRune(wildId, 0, rune.instanceId);
-    const before = await srv.getEquipment(wildId);
-    if (!before.ok) throw new Error(before.message);
-    const essenceBefore = before.value.orbEssence;
-
-    const levelled = await srv.levelRune(rune.instanceId, true);
-    expect(levelled.ok).toBe(true);
-    if (!levelled.ok) return;
-    expect(levelled.value.state.equipment.runes.find((r) => r.id === rune.instanceId)?.level).toBe(rune.level + 1);
-    expect(levelled.value.state.currencies.orbEssence).toBe(essenceBefore - rune.levelCost.essence);
-
-    const after = await srv.getEquipment(wildId);
-    if (!after.ok) throw new Error(after.message);
-    expect(after.value.power.layers.runes).toBeGreaterThan(before.value.power.layers.runes);
-  });
-
-  it('levels an orb by consuming two same-level duplicates', () => {
-    const config = buildConfig();
-    const base = createInitialState(config);
-    const target = base.equipment.runes.find((r) => r.defId === 'rune-verdant-spark');
-    if (!target) throw new Error('no target rune');
-    const state = {
-      ...base,
-      currencies: { ...base.currencies, gold: 1_000_000 },
-      equipment: {
-        ...base.equipment,
-        runes: [
-          ...base.equipment.runes,
-          { id: 'dup-a', defId: target.defId, level: target.level },
-          { id: 'dup-b', defId: target.defId, level: target.level },
-        ],
-      },
-    };
-
-    const result = levelRuneAction(config, state, target.id);
-    expect(result.ok).toBe(true);
-    if (!result.ok) return;
-    expect(result.value.equipment.runes.find((r) => r.id === target.id)?.level).toBe(target.level + 1);
-    expect(result.value.equipment.runes.some((r) => r.id === 'dup-a' || r.id === 'dup-b')).toBe(false);
   });
 
   it('equips two Soul-heart pieces, shows the 2-piece bonus, and stars one up', async () => {

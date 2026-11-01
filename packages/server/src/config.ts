@@ -26,9 +26,8 @@ import {
   PLATES,
   RELICS,
   HELD_TABLES,
-  RUNES,
+  ORBS,
   TRINKETS,
-  RUNE_SETS,
   POTENTIAL,
 } from '@wildbound/content';
 import type {
@@ -65,6 +64,7 @@ import {
   type WildClass,
   type XpCurve,
   type PotentialTable,
+  type OrbTables,
 } from '@wildbound/engine';
 
 /** Everything the LocalServer needs, lifted from content and injectable in tests. */
@@ -193,8 +193,7 @@ export function buildConfig(): GameConfig {
       held: HELD_TABLES as unknown as HeldTables,
       plates: PLATES,
       trinkets: TRINKETS,
-      runes: RUNES,
-      runeSets: RUNE_SETS,
+      orbs: ORBS as unknown as OrbTables,
       charms: CHARMS,
       coreSets: CORE_SETS,
       tuning: EQUIPMENT_TUNING,

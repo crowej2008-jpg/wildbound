@@ -2,11 +2,6 @@
   "relic": {
     "minTier": "supreme"
   },
-  "runes": {
-    "minStars": 3,
-    "sockets": 4,
-    "maxLevel": 6
-  },
   "charms": {
     "minStars": 4,
     "slots": 2
@@ -16,10 +11,6 @@
     "sockets": 6,
     "pieceMinStars": 2,
     "pieceMaxStars": 5
-  },
-  "runeLevelCost": {
-    "gold": 300,
-    "goldPerLevel": 200
   },
   "starting": {
     "relics": [
@@ -31,36 +22,6 @@
       },
       {
         "defId": "101301"
-      }
-    ],
-    "runes": [
-      {
-        "defId": "rune-verdant-spark",
-        "level": 1
-      },
-      {
-        "defId": "rune-verdant-glint",
-        "level": 1
-      },
-      {
-        "defId": "rune-verdant-ward",
-        "level": 1
-      },
-      {
-        "defId": "rune-verdant-heart",
-        "level": 1
-      },
-      {
-        "defId": "rune-azure-spark",
-        "level": 1
-      },
-      {
-        "defId": "rune-azure-glint",
-        "level": 1
-      },
-      {
-        "defId": "rune-azure-ward",
-        "level": 1
       }
     ],
     "cores": [

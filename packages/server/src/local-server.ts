@@ -1,4 +1,13 @@
 import {
+  dismantleOrbsAction,
+  equipOrbAction,
+  grantOrb,
+  levelOrbAction,
+  lockOrbAction,
+  orbsView,
+  type OrbsPanelView,
+} from './orbs';
+import {
   levelPotentialAction,
   potentialView,
   resetPotentialAction,
@@ -170,9 +179,7 @@ import {
   equipCharmAction,
   equipCoreAction,
   equipRelicAction,
-  equipRuneAction,
   levelRelicAction,
-  levelRuneAction,
   refineRelicAction,
   settleRefineAction,
   lockRelicAction,
@@ -204,6 +211,7 @@ import {
   serializeSave,
 } from './save';
 import type { SaveStore } from './storage';
+import type { OrbColour } from '@wildbound/engine';
 
 /**
  * In-browser GameServer (PROMPT §10). Owns the authoritative account state,
@@ -768,8 +776,31 @@ export class LocalServer implements GameServer {
     return this.applyEquipment((state) => equipRelicAction(this.config, state, wildId, instanceId, force));
   }
 
-  async equipRune(wildId: string, socket: number, instanceId: string | null, force = false): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => equipRuneAction(this.config, state, wildId, socket, instanceId, force));
+  async getOrbs(wildId: string): Promise<Result<OrbsPanelView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const view = orbsView(this.config, loaded.value, wildId);
+    return view ? ok(view) : fail('not_found', `no Wild ${wildId}`);
+  }
+
+  async equipOrb(wildId: string, socket: number, orbId: string | null, force = false): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => equipOrbAction(this.config, state, wildId, socket, orbId, force));
+  }
+
+  async levelOrb(orbId: string, quick = false): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => levelOrbAction(this.config, state, orbId, quick));
+  }
+
+  async lockOrb(orbId: string): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => lockOrbAction(state, orbId));
+  }
+
+  async dismantleOrbs(orbIds: string[]): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => dismantleOrbsAction(this.config, state, orbIds));
+  }
+
+  async grantOrb(kind: string, colour: OrbColour, level = 1): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => grantOrb(this.config, state, kind, colour, this.config.rng, level));
   }
 
   async equipCore(wildId: string, socket: number, instanceId: string | null, force = false): Promise<Result<AccountSnapshot>> {
@@ -856,9 +887,6 @@ export class LocalServer implements GameServer {
     );
   }
 
-  async levelRune(instanceId: string, useEssence = false): Promise<Result<AccountSnapshot>> {
-    return this.applyEquipment((state) => levelRuneAction(this.config, state, instanceId, useEssence));
-  }
 
   // --- R4 Potential ---------------------------------------------------------
 

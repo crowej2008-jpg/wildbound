@@ -23,10 +23,11 @@ fodder (own faction / W-F-G / own copy by quality) + shards (20,000 … 75,000),
 (8,370,000 for everything). Potential Core stands in on 21 species (tiers 5–9). Reset 16 💎 returns
 everything. Details: `docs/design/potential.md`.
 
-## Orbs
-4 sets × 4 orbs = 16 orbs, 4 qualities, Lv1–6, 2- and 4-piece set bonuses. Level-up: two same-kind,
-same-level, unsocketed copies + gold, **or** Orb Essence (`essenceBase + (level−1) × essencePerLevel`).
-[Pet Home](pet-home.md)'s Orb Atelier sells orbs.
+## Orbs (R3: source copy with stand-ins, 2026-11-01)
+12 kinds (6 twin pairs, defensive/offensive), 5 colours (caps +3/+5/+7/+10/+10), 8 sockets (2 rows × 4 gear
+pieces) with family rules, opens at player Lv 50 / 9★ (row 2 at Lv 240). Level = 2 free copies + Gold (Quick
+Upgrade fuses 3 → 1). 26 sets, tiers at the lowest orb level. Dismantle → Orb Essence (not red). Stand-ins
+for the missing orb tables: `docs/design/orbs.md`, ASSUMPTIONS #65.
 
 ## Soul-hearts
 The owner's nine sets — see **[soul-hearts](soul-hearts.md)**. Star-up costs Soul-heart EXP

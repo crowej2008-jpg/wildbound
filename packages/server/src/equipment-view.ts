@@ -17,8 +17,6 @@ import {
   mainValue,
   refineBlock,
   relicUnlocked,
-  runeLevelCost,
-  runesUnlocked,
   type EquipmentTables,
   type LayerDelta,
   type Loadout,
@@ -96,21 +94,6 @@ export interface RelicView {
   equippedOn: string | null;
 }
 
-export interface RuneView {
-  instanceId: string;
-  defId: string;
-  name: string;
-  setId: string;
-  setName: string;
-  tier: Tier;
-  level: number;
-  maxLevel: number;
-  equippedOn: string | null;
-  /** Same-kind, same-level copies that are not socketed anywhere. */
-  duplicates: number;
-  levelCost: { gold: number; essence: number } | null;
-}
-
 export interface CoreView {
   instanceId: string;
   setId: string;
@@ -161,12 +144,10 @@ export interface EquipmentView {
   /** Equipped soul stats, for the stat sheet. */
   soul: Partial<SoulStats>;
   power: EquipmentPowerView;
-  unlocks: { relic: boolean; runes: boolean; charms: boolean; cores: boolean };
-  requirements: { relic: Tier; runes: number; charms: number; cores: number };
+  unlocks: { relic: boolean; charms: boolean; cores: boolean };
+  requirements: { relic: Tier; charms: number; cores: number };
   loadout: Loadout;
   relics: RelicView[];
-  runes: RuneView[];
-  runeSets: { id: string; name: string; equipped: number; bonuses: { pieces: number; active: boolean }[] }[];
   cores: CoreView[];
   coreSets: CoreSetView[];
   orbEssence: number;
@@ -187,7 +168,6 @@ export interface EquipmentView {
   charmSlots: number;
   charms: CharmView[];
   costs: {
-    runeCopiesPerLevel: number;
     charmUpgradeCopies: number;
   };
   delta: StatDelta;
@@ -205,11 +185,6 @@ export function loadoutOf(state: AccountState, wildId: string, tables: Equipment
 }
 
 
-/** Orb Essence that replaces the duplicate copies for a level-up. */
-export function orbEssenceCost(level: number, collection: GameConfig['collection']): number {
-  return collection.orbs.essenceBase + Math.max(0, level - 1) * collection.orbs.essencePerLevel;
-}
-
 /** Soul-heart EXP for the next star: base + (stars − 1) × perStar. */
 export function soulHeartCost(stars: number, collection: GameConfig['collection']): number {
   return collection.soulhearts.expBase + Math.max(0, stars - 1) * collection.soulhearts.expPerStar;
@@ -219,7 +194,7 @@ export function soulHeartCost(stars: number, collection: GameConfig['collection'
 export function equippedOn(state: AccountState, instanceId: string): string | null {
   for (const [wildId, loadout] of Object.entries(state.loadouts)) {
     if (loadout.relic === instanceId) return wildId;
-    if (loadout.runes.some((id) => id === instanceId)) return wildId;
+    if (loadout.orbs.some((id) => id === instanceId)) return wildId;
     if (loadout.cores.some((id) => id === instanceId)) return wildId;
   }
   return null;
@@ -285,7 +260,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
   }
 
   const relicOn = new Map<string, string>();
-  const runeOn = new Map<string, string>();
   const coreOn = new Map<string, string>();
   const charmOn = new Map<string, string[]>();
   for (const [wildId, l] of Object.entries(state.loadouts)) {
@@ -294,7 +268,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
       if (!id) continue;
       charmOn.set(id, [...(charmOn.get(id) ?? []), wildId]);
     }
-    for (const id of l.runes) if (id) runeOn.set(id, wildId);
     for (const id of l.cores) if (id) coreOn.set(id, wildId);
   }
 
@@ -351,47 +324,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
       equippedOn: relicOn.get(r.id) ?? null,
     });
   }
-
-  const wornRunes = new Set(runeOn.keys());
-  const runes: RuneView[] = state.equipment.runes.map((r) => {
-    const def = tables.runes.find((d) => d.id === r.defId);
-    const setId = def?.setId ?? '';
-    const duplicates = state.equipment.runes.filter(
-      (copy) => copy.id !== r.id && copy.defId === r.defId && copy.level === r.level && !wornRunes.has(copy.id),
-    ).length;
-    return {
-      instanceId: r.id,
-      defId: r.defId,
-      name: def?.name ?? r.defId,
-      setId,
-      setName: tables.runeSets.find((s) => s.id === setId)?.name ?? setId,
-      tier: def?.tier ?? 'common',
-      level: r.level,
-      maxLevel: tuning.runes.maxLevel,
-      equippedOn: runeOn.get(r.id) ?? null,
-      duplicates,
-      levelCost:
-        r.level >= tuning.runes.maxLevel
-          ? null
-          : { gold: runeLevelCost(r.level, tuning).gold, essence: orbEssenceCost(r.level, config.collection) },
-    };
-  });
-
-  const runeSetCounts = new Map<string, number>();
-  for (const id of loadout.runes) {
-    const rune = id ? state.equipment.runes.find((r) => r.id === id) : undefined;
-    const def = rune ? tables.runes.find((d) => d.id === rune.defId) : undefined;
-    if (def) runeSetCounts.set(def.setId, (runeSetCounts.get(def.setId) ?? 0) + 1);
-  }
-  const runeSets = tables.runeSets.map((s) => {
-    const equipped = runeSetCounts.get(s.id) ?? 0;
-    return {
-      id: s.id,
-      name: s.name,
-      equipped,
-      bonuses: s.bonuses.map((bonus) => ({ pieces: bonus.pieces, active: equipped >= bonus.pieces })),
-    };
-  });
 
   const cores: CoreView[] = state.equipment.cores.map((c) => ({
     instanceId: c.id,
@@ -460,20 +392,16 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     },
     unlocks: {
       relic: meta ? relicUnlocked(meta.tier, tuning) : false,
-      runes: runesUnlocked(wild.stars, tuning),
       charms: charmsUnlocked(wild.stars, tuning),
       cores: coresUnlocked(wild.stars, tuning),
     },
     requirements: {
       relic: tuning.relic.minTier,
-      runes: tuning.runes.minStars,
       charms: tuning.charms.minStars,
       cores: tuning.cores.minStars,
     },
     loadout,
     relics,
-    runes,
-    runeSets,
     cores,
     coreSets,
     orbEssence: state.currencies.orbEssence ?? 0,
@@ -491,7 +419,6 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     charmSlots: tuning.charms.slots,
     charms,
     costs: {
-      runeCopiesPerLevel: config.collection.orbs.copiesPerLevel,
       charmUpgradeCopies: config.collection.berries.upgradeCopies,
     },
     delta: folded.delta,

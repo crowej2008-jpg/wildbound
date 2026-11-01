@@ -3,7 +3,7 @@ import cores from '../equipment/cores.json';
 import plates from '../equipment/plates.json';
 import heldItems from '../equipment/held-items.json';
 import { toEngineTrigger } from './kit-to-engine';
-import runes from '../equipment/runes.json';
+import orbs from '../equipment/orbs.json';
 import trinkets from '../equipment/trinkets.json';
 import equipmentTuning from '../tuning/equipment.json';
 import {
@@ -12,7 +12,7 @@ import {
   equipmentTuningSchema,
   platesSchema,
   heldItemsSchema,
-  runesSchema,
+  orbsSchema,
   trinketsSchema,
 } from './equipment-schema';
 
@@ -38,9 +38,8 @@ export const HELD_TABLES = {
 export const PLATES = platesSchema.parse(plates).plates;
 export const TRINKETS = trinketsSchema.parse(trinkets).trinkets;
 
-const RUNE_CATALOGUE = runesSchema.parse(runes);
-export const RUNES = RUNE_CATALOGUE.runes;
-export const RUNE_SETS = RUNE_CATALOGUE.sets;
+/** R3: the source's orbs. */
+export const ORBS = orbsSchema.parse(orbs);
 
 export const CHARMS = charmsSchema.parse(charms).charms;
 export const CORE_SETS = coresSchema.parse(cores).sets;

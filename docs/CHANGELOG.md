@@ -1141,3 +1141,13 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Removed the M7/M11 stand-in: talent paths, `talents.json`, `collection.potential`, `tuning.talents`,
   the Potential layer in the equipment view. Client Potential tab rewritten.
 - Save v22 (reset). ASSUMPTIONS #64.
+
+## R3 — Orbs from the source (2026-11-01)
+
+- `scripts/gen-orbs.mjs` → `packages/content/equipment/orbs.json`: 12 kinds, 5 colours (caps +3…+10), flat
+  stats to +10, % line pools and ceilings, 26 sets, socket families, unlock gates, level Gold, dismantle.
+- Engine `equipment/orbs.ts`: rolling, flats, socket rules, set matching, fold (class tiers as damage mods).
+  `PercentLines` gains `bossBoost` / `bossRdct`.
+- Server `orbs.ts`: view, socket, level (+ Quick Upgrade), lock, dismantle, grant. Client Orbs tab rewritten.
+- Removed the M7/M11 runes (`runes.json`, rune sets, starting runes, Orb Essence levelling). Save v23 (reset).
+  Stand-ins: ASSUMPTIONS #65.

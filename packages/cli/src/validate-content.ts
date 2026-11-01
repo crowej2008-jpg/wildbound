@@ -33,7 +33,7 @@ import {
   trinketsSchema,
   TITLES,
   TITLE_SLOTS,
-  runesSchema,
+  orbsSchema,
   charmsSchema,
   coresSchema,
   equipmentTuningSchema,
@@ -42,8 +42,7 @@ import {
   RELICS,
   PLATES,
   TRINKETS,
-  RUNES,
-  RUNE_SETS,
+  ORBS,
   CHARMS,
   CORE_SETS,
   EQUIPMENT_TUNING,
@@ -99,7 +98,7 @@ const EQUIPMENT_SCHEMAS: Record<string, AnySchema> = {
   'held-items.json': heldItemsSchema,
   'plates.json': platesSchema,
   'trinkets.json': trinketsSchema,
-  'runes.json': runesSchema,
+  'orbs.json': orbsSchema,
   'charms.json': charmsSchema,
   'cores.json': coresSchema,
 };
@@ -213,12 +212,11 @@ export function validateContent(repoRoot: string): ValidateReport {
 
   if (RELICS.length > 0) {
     const relicIds = new Set(RELICS.map((r) => r.id));
-    const runeIds = new Set(RUNES.map((r) => r.id));
-    const runeSetIds = new Set(RUNE_SETS.map((s) => s.id));
+    const orbKinds = new Set(ORBS.kinds.map((k) => k.id));
     const charmIds = new Set(CHARMS.map((c) => c.id));
     const coreSetIds = new Set(CORE_SETS.map((s) => s.id));
-    for (const rune of RUNES) {
-      if (!runeSetIds.has(rune.setId)) errors.push(`equipment: rune "${rune.id}" references unknown set "${rune.setId}"`);
+    for (const set of ORBS.sets) {
+      for (const kind of set.kinds) if (!orbKinds.has(kind)) errors.push(`equipment: orb set "${set.id}" names unknown kind "${kind}"`);
     }
     for (const r of EQUIPMENT_TUNING.starting.relics) {
       if (!relicIds.has(r.defId)) errors.push(`equipment: starting relic "${r.defId}" has no design`);
@@ -271,9 +269,6 @@ export function validateContent(repoRoot: string): ValidateReport {
         `titles: catalogue is ${TITLES.length} (${permanentTitles} permanent / ${weekTitles} 7-day / ${fortnightTitles} 14-day), want 102 (85 / 15 / 2)`,
       );
     }
-    for (const r of EQUIPMENT_TUNING.starting.runes) {
-      if (!runeIds.has(r.defId)) errors.push(`equipment: starting rune "${r.defId}" has no design`);
-    }
     for (const c of EQUIPMENT_TUNING.starting.cores) {
       if (!coreSetIds.has(c.setId)) errors.push(`equipment: starting core "${c.setId}" has no set`);
     }
@@ -296,7 +291,7 @@ export function validateContent(repoRoot: string): ValidateReport {
       if (c.tier !== 'common' && c.maxStars <= 0) errors.push(`equipment: Berry "${c.id}" needs a star cap`);
     }
     checks.push(
-      `equipment: ${RELICS.length} held item(s), ${PLATES.length} plate(s), ${TRINKETS.length} trinket(s), ${RUNES.length} rune(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s) validated`,
+      `equipment: ${RELICS.length} held item(s), ${PLATES.length} plate(s), ${TRINKETS.length} trinket(s), ${ORBS.kinds.length} orb kind(s), ${ORBS.sets.length} orb set(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s) validated`,
     );
   }
 

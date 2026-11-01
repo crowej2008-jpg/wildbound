@@ -1,4 +1,5 @@
 import type { DamageMod, RoundEffect, SoulheartHooks, TriggerDef } from '../combat/types';
+import { foldOrbs } from './orbs';
 import { heldDelta } from './held';
 import type { SheetInput } from '../combat/types';
 import type { CoreStats, PercentLines, SoulStats } from '../model';
@@ -10,7 +11,6 @@ import {
   type EquipmentTables,
   type Loadout,
   type RelicInstance,
-  type RuneInstance,
   type StatDelta,
   type StatLine,
 } from './types';
@@ -65,9 +65,6 @@ function findRelic(state: EquipmentState, id: string | null): RelicInstance | un
   return id === null ? undefined : state.relics.find((r) => r.id === id);
 }
 
-function findRune(state: EquipmentState, id: string | null): RuneInstance | undefined {
-  return id === null ? undefined : state.runes.find((r) => r.id === id);
-}
 
 function findCore(state: EquipmentState, id: string | null): CoreInstance | undefined {
   return id === null ? undefined : state.cores.find((c) => c.id === id);
@@ -227,21 +224,14 @@ export function foldLoadout(
   // --- Titles: account-wide lines from the three equipped slots ---
   if (title) addLines(layers.titles, title.lines, 1);
 
-  // --- Runes: per-socket lines + a set bonus once enough pieces are worn ---
-  const setCounts = new Map<string, number>();
-  for (const id of loadout.runes) {
-    const rune = findRune(state, id);
-    const def = rune ? tables.runes.find((d) => d.id === rune.defId) : undefined;
-    if (!rune || !def) continue;
-    addLines(layers.runes, def.lines, rune.level);
-    setCounts.set(def.setId, (setCounts.get(def.setId) ?? 0) + 1);
-  }
-  for (const set of tables.runeSets) {
-    const count = setCounts.get(set.id) ?? 0;
-    for (const bonus of set.bonuses) {
-      if (count >= bonus.pieces) addLines(layers.runes, bonus.lines, 1);
-    }
-  }
+  // --- Orbs (R3): socketed orbs' lines plus their sets ---
+  const socketed = loadout.orbs.flatMap((id) => {
+    const orb = id === null ? undefined : state.orbs.find((o) => o.id === id);
+    return orb ? [orb] : [];
+  });
+  const orbFold = foldOrbs(tables.orbs, socketed);
+  addDelta(layers.runes, orbFold.delta);
+  damageMods.push(...orbFold.damageMods);
 
   // --- Charms: each owned, equipped Berry; starred tiers scale their lines ---
   const charmUses = new Map<string, number>();

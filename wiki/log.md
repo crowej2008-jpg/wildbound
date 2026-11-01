@@ -136,3 +136,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - 40k random-team battles each, maxed, no gear. Normal fights: class win rates identical (ATK 54.8 %, DEF
   47.8 %, SKILL 47.4 %), no Pokémon moves more than 0.3 points. Long fights (HP ×3): Strikers ult 1.96 → 1.88
   per fight; biggest change 0.5 points (Ho-Oh, Groudon down; Dialga, Arceus up). Hit Rage dominates.
+
+## [2026-11-01] update | R3 Orbs built
+- Owner: build orbs now with stand-ins, *"the orbs go upto lvl 10 at the max so make sure to scale it up"*.
+  Orb tables searched on the owner's PC too (data folder, Downloads, the game's APK — a wrapper that downloads
+  its tables): not there. Built from kb + wiki /orbs/sets /orbs/stats + the dismantle table. Save v23.

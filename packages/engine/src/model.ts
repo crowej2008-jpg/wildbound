@@ -49,6 +49,9 @@ export interface PercentLines {
   healBoost: number;
   receiveHealBoost: number;
   counterBoost: number;
+  /** R3: BOSS DMG BST / RDCT (orb lines and sets). Shown and counted; boss modes read them from R9. */
+  bossBoost?: number;
+  bossRdct?: number;
 }
 
 /** Flat soul stats feeding the soul factor (Spirit ATK − Spirit DEF). */

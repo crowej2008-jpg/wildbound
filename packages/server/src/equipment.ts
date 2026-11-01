@@ -5,7 +5,6 @@ import {
   equipCharm,
   equipCore,
   equipRelic,
-  equipRune,
   heldDismantleShards,
   heldLevelCost,
   heldLevelGate,
@@ -15,8 +14,6 @@ import {
   rollRefine,
   settleRefine,
   relicUnlocked,
-  runeLevelCost,
-  runesUnlocked,
   type CurrencyId,
 } from '@wildbound/engine';
 import type { AccountState, EquipmentTables, Loadout, RelicInstance, Rng, WildClass, Tier } from '@wildbound/engine';
@@ -25,7 +22,6 @@ import {
   charmUpgradeEssence,
   equippedOn,
   loadoutOf,
-  orbEssenceCost,
   soulHeartCost,
 } from './equipment-view';
 import type { GameConfig, SpeciesMeta } from './config';
@@ -64,14 +60,6 @@ export function pay(state: AccountState, cost: Partial<Record<CurrencyId, number
 }
 
 
-/** Every rune instance currently socketed on any Wild. */
-function wornRuneIds(state: AccountState): Set<string> {
-  const ids = new Set<string>();
-  for (const loadout of Object.values(state.loadouts)) {
-    for (const id of loadout.runes) if (id) ids.add(id);
-  }
-  return ids;
-}
 
 /** How many copies of a Berry are currently equipped anywhere. */
 function charmUseCount(loadouts: AccountState['loadouts'], charmId: string): number {
@@ -135,36 +123,6 @@ export function equipRelicAction(
     next = withLoadout(next, wornBy, equipRelic(loadoutOf(next, wornBy, config.equipment), null));
   }
   return ok(withLoadout(next, wild.id, equipRelic(loadoutOf(next, wild.id, config.equipment), instanceId)));
-}
-
-// --- runes ------------------------------------------------------------------
-
-export function equipRuneAction(
-  config: SpeciesLookup,
-  state: AccountState,
-  wildId: string,
-  socket: number,
-  instanceId: string | null,
-  force = false,
-): Result<AccountState> {
-  const { wild } = context(config, state, wildId);
-  if (!wild) return fail('not_found', `no Wild ${wildId}`);
-  const { tuning } = config.equipment;
-  if (!runesUnlocked(wild.stars, tuning)) return fail('resource_locked', `Runes unlock at ${tuning.runes.minStars}★`);
-  if (socket < 0 || socket >= tuning.runes.sockets) return fail('invalid_input', `no rune socket ${socket}`);
-  const loadout = loadoutOf(state, wild.id, config.equipment);
-  if (instanceId === null) return ok(withLoadout(state, wild.id, equipRune(loadout, socket, null)));
-
-  const rune = state.equipment.runes.find((r) => r.id === instanceId);
-  if (!rune) return fail('not_found', `no rune ${instanceId}`);
-  const wornBy = equippedOn(state, instanceId);
-  let next = state;
-  if (wornBy && wornBy !== wild.id) {
-    if (!force) return fail('in_use', `${rune.id} is socketed in another Wild`);
-    const prev = loadoutOf(next, wornBy, config.equipment);
-    next = withLoadout(next, wornBy, equipRune(prev, prev.runes.findIndex((id) => id === instanceId), null));
-  }
-  return ok(withLoadout(next, wild.id, equipRune(loadoutOf(next, wild.id, config.equipment), socket, instanceId)));
 }
 
 // --- cores ------------------------------------------------------------------
@@ -414,44 +372,6 @@ export function grantRelic(config: SpeciesLookup, state: AccountState, defId: st
     ...state,
     equipment: { ...state.equipment, relics: [...state.equipment.relics, inst], nextSeq: seq + 1 },
   });
-}
-
-export function levelRuneAction(
-  config: SpeciesLookup,
-  state: AccountState,
-  instanceId: string,
-  useEssence = false,
-): Result<AccountState> {
-  const rune = state.equipment.runes.find((r) => r.id === instanceId);
-  if (!rune) return fail('not_found', `no rune ${instanceId}`);
-  const { tuning } = config.equipment;
-  if (rune.level >= tuning.runes.maxLevel) return fail('at_level_cap', 'max rune level');
-  const gold = runeLevelCost(rune.level, tuning).gold;
-  const needed = config.collection.orbs.copiesPerLevel;
-
-  let paid: AccountState | null;
-  let removed = new Set<string>();
-  if (useEssence) {
-    paid = pay(state, { gold, orbEssence: orbEssenceCost(rune.level, config.collection) });
-    if (!paid) return fail('insufficient_items', 'not enough gold or Orb Essence');
-  } else {
-    const worn = wornRuneIds(state);
-    const copies = state.equipment.runes
-      .filter((copy) => copy.id !== rune.id && copy.defId === rune.defId && copy.level === rune.level && !worn.has(copy.id))
-      .sort((a, b) => a.id.localeCompare(b.id))
-      .slice(0, needed);
-    if (copies.length < needed) {
-      return fail('insufficient_items', `need ${needed} more ${rune.defId} at Lv${rune.level}, or use Orb Essence`);
-    }
-    paid = pay(state, { gold });
-    if (!paid) return fail('insufficient_items', 'not enough gold');
-    removed = new Set(copies.map((copy) => copy.id));
-  }
-
-  const runes = paid.equipment.runes
-    .filter((r) => !removed.has(r.id))
-    .map((r) => (r.id === instanceId ? { ...r, level: r.level + 1 } : r));
-  return ok({ ...paid, equipment: { ...paid.equipment, runes } });
 }
 
 /** Re-export so callers can type against `GameConfig` without a second import. */

@@ -126,7 +126,7 @@ const MYTHIC_EQUIPMENT = {
       locked: false,
     },
   ],
-  runes: [],
+  orbs: [],
   cores: [],
   charms: {},
   charmStars: {},
@@ -266,8 +266,12 @@ test('Titles activate, equip a slot and keep locked rows honest', async ({ page 
   await expect(page.getByText('Coming later: events (M15).').first()).toBeVisible();
 });
 
-test('Orbs equip and level with Orb Essence', async ({ page }) => {
-  await importSave(page, { currencies: { orbEssence: 1_000 } });
+test('Orbs: socket a red Sharp Orb, then level it with two copies', async ({ page }) => {
+  const orb = (id: string) => ({ id, kind: 'sharp', colour: 'red', level: 1, lines: [{ field: 'dmgBoost', roll: 1 }] });
+  await importSave(page, {
+    profile: { level: 60 },
+    equipment: { relics: [], orbs: [orb('orb1'), orb('orb2'), orb('orb3')], cores: [], charms: {}, charmStars: {}, nextSeq: 4 },
+  });
   await page.goto('/wilds');
   await page.locator('.roster-item').first().click();
   const power = () =>
@@ -275,13 +279,15 @@ test('Orbs equip and level with Orb Essence', async ({ page }) => {
   const before = await power();
 
   await page.getByRole('button', { name: 'Orbs', exact: true }).click();
-  const first = page.locator('.gear-row').filter({ hasText: 'Verdant Spark' }).first();
-  await first.getByRole('button', { name: 'Equip', exact: true }).click();
+  const socket = page.getByTestId('orb-socket-0');
+  await socket.getByRole('button', { name: /Socket an orb/ }).click();
+  await socket.getByRole('button', { name: /Sharp Orb \+1/ }).first().click();
+  await expect(socket).toContainText('Sharp Orb +1');
   await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(before);
 
   const equipped = await power();
-  await first.getByRole('button', { name: /Use Orb Essence/ }).click();
-  await expect(first).toContainText('Lv2/6');
+  await page.getByRole('button', { name: /Level up · 10,000/ }).first().click();
+  await expect(socket).toContainText('Sharp Orb +2');
   await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(equipped);
 });
 

@@ -1,0 +1,1733 @@
+{
+ "kinds": [
+  {
+   "id": "sharp",
+   "name": "Sharp Orb",
+   "family": "defensive",
+   "twin": "leisure",
+   "flat": [
+    "pAtk",
+    "hp"
+   ],
+   "pool": [
+    "dmgBoost",
+    "crit",
+    "bossBoost"
+   ]
+  },
+  {
+   "id": "leisure",
+   "name": "Leisure Orb",
+   "family": "offensive",
+   "twin": "sharp",
+   "flat": [
+    "pAtk",
+    "hp"
+   ],
+   "pool": [
+    "dmgBoost",
+    "crit",
+    "bossBoost"
+   ]
+  },
+  {
+   "id": "placating",
+   "name": "Placating Orb",
+   "family": "defensive",
+   "twin": "wonder",
+   "flat": [
+    "sAtk",
+    "hp"
+   ],
+   "pool": [
+    "dmgRdct",
+    "critRes",
+    "controlBoost"
+   ]
+  },
+  {
+   "id": "wonder",
+   "name": "Wonder Orb",
+   "family": "offensive",
+   "twin": "placating",
+   "flat": [
+    "sAtk",
+    "hp"
+   ],
+   "pool": [
+    "dmgRdct",
+    "critRes",
+    "controlBoost"
+   ]
+  },
+  {
+   "id": "momentum",
+   "name": "Momentum Orb",
+   "family": "defensive",
+   "twin": "fortune",
+   "flat": [
+    "pAtk",
+    "sAtk"
+   ],
+   "pool": [
+    "critPower",
+    "dmgBoost",
+    "pvpBoost"
+   ]
+  },
+  {
+   "id": "fortune",
+   "name": "Fortune Orb",
+   "family": "offensive",
+   "twin": "momentum",
+   "flat": [
+    "pAtk",
+    "sAtk"
+   ],
+   "pool": [
+    "critPower",
+    "dmgBoost",
+    "pvpBoost"
+   ]
+  },
+  {
+   "id": "pure",
+   "name": "Pure Orb",
+   "family": "defensive",
+   "twin": "defensive",
+   "flat": [
+    "sAtk",
+    "hp"
+   ],
+   "pool": [
+    "bossRdct",
+    "dmgRdct",
+    "block"
+   ]
+  },
+  {
+   "id": "defensive",
+   "name": "Defensive Orb",
+   "family": "offensive",
+   "twin": "pure",
+   "flat": [
+    "sAtk",
+    "hp"
+   ],
+   "pool": [
+    "bossRdct",
+    "dmgRdct",
+    "block"
+   ]
+  },
+  {
+   "id": "mystique",
+   "name": "Mystique Orb",
+   "family": "defensive",
+   "twin": "quick",
+   "flat": [
+    "pAtk",
+    "hp"
+   ],
+   "pool": [
+    "controlRes",
+    "guardBreak",
+    "dmgBoost"
+   ]
+  },
+  {
+   "id": "quick",
+   "name": "Quick Orb",
+   "family": "offensive",
+   "twin": "mystique",
+   "flat": [
+    "pAtk",
+    "hp"
+   ],
+   "pool": [
+    "controlRes",
+    "guardBreak",
+    "dmgBoost"
+   ]
+  },
+  {
+   "id": "erudite",
+   "name": "Erudite Orb",
+   "family": "defensive",
+   "twin": "etiquette",
+   "flat": [
+    "sAtk",
+    "pAtk"
+   ],
+   "pool": [
+    "pvpRdct",
+    "dmgRdct",
+    "blockPower"
+   ]
+  },
+  {
+   "id": "etiquette",
+   "name": "Etiquette Orb",
+   "family": "offensive",
+   "twin": "erudite",
+   "flat": [
+    "sAtk",
+    "pAtk"
+   ],
+   "pool": [
+    "pvpRdct",
+    "dmgRdct",
+    "blockPower"
+   ]
+  }
+ ],
+ "colours": [
+  {
+   "id": "green",
+   "quality": 2,
+   "cap": 3,
+   "flatLines": 1,
+   "pctLines": 1,
+   "flatFactor": 0.176
+  },
+  {
+   "id": "blue",
+   "quality": 3,
+   "cap": 5,
+   "flatLines": 1,
+   "pctLines": 1,
+   "flatFactor": 0.272
+  },
+  {
+   "id": "purple",
+   "quality": 4,
+   "cap": 7,
+   "flatLines": 1,
+   "pctLines": 1,
+   "flatFactor": 0.42
+  },
+  {
+   "id": "orange",
+   "quality": 5,
+   "cap": 10,
+   "flatLines": 2,
+   "pctLines": 2,
+   "flatFactor": 0.648
+  },
+  {
+   "id": "red",
+   "quality": 6,
+   "cap": 10,
+   "flatLines": 2,
+   "pctLines": 2,
+   "flatFactor": 1
+  }
+ ],
+ "flat": {
+  "atk": [
+   221,
+   376,
+   639,
+   1086,
+   1846,
+   2768,
+   4152,
+   6228,
+   9342,
+   14013
+  ],
+  "hp": [
+   2093,
+   3557,
+   6047,
+   10279,
+   17474,
+   26211,
+   39317,
+   58976,
+   88464,
+   132696
+  ]
+ },
+ "lineCeiling": {
+  "dmgBoost": 0.008,
+  "dmgRdct": 0.008,
+  "pvpBoost": 0.012,
+  "pvpRdct": 0.012,
+  "bossBoost": 0.012,
+  "bossRdct": 0.012,
+  "crit": 0.009986,
+  "blockPower": 0.008743,
+  "controlRes": 0.007971,
+  "controlBoost": 0.007786,
+  "critPower": 0.0075,
+  "block": 0.006671,
+  "critRes": 0.0045,
+  "guardBreak": 0.003686
+ },
+ "rollRange": [
+  0.8,
+  1
+ ],
+ "levelGold": [
+  10000,
+  30000,
+  50000,
+  75000,
+  120000,
+  250000,
+  500000,
+  750000,
+  1000000
+ ],
+ "copiesPerLevel": 2,
+ "sockets": [
+  [
+   "any",
+   "defensive"
+  ],
+  [
+   "defensive",
+   "offensive"
+  ],
+  [
+   "offensive",
+   "defensive"
+  ],
+  [
+   "any",
+   "offensive"
+  ]
+ ],
+ "unlock": {
+  "playerLevel": 50,
+  "stars": 9,
+  "secondRow": {
+   "stars": 9,
+   "level": 240
+  }
+ },
+ "dismantle": {
+  "green": [
+   1,
+   2,
+   3
+  ],
+  "blue": [
+   2,
+   6,
+   18,
+   54,
+   162
+  ],
+  "purple": [
+   30,
+   40,
+   54,
+   95,
+   165,
+   500,
+   1500
+  ],
+  "orange": [
+   75,
+   230,
+   660,
+   2000,
+   6000,
+   18000,
+   54000,
+   162000,
+   486000,
+   1458000
+  ]
+ },
+ "sets": [
+  {
+   "id": "dmg-down",
+   "name": "DMG Down",
+   "family": "defensive",
+   "kinds": [
+    "sharp",
+    "placating",
+    "mystique"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.145
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.3
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "crit-rivalry",
+   "name": "Crit Rivalry",
+   "family": "defensive",
+   "kinds": [
+    "sharp",
+    "placating",
+    "erudite"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "critRes",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.3
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb-rivalry",
+   "name": "GB Rivalry",
+   "family": "defensive",
+   "kinds": [
+    "sharp",
+    "pure",
+    "erudite"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "block",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.3
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb-break",
+   "name": "GB Break",
+   "family": "defensive",
+   "kinds": [
+    "momentum",
+    "pure",
+    "erudite"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "blockPower",
+       "value": 0.16
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.3
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "control-res",
+   "name": "Control Res",
+   "family": "defensive",
+   "kinds": [
+    "sharp",
+    "mystique",
+    "erudite"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "controlRes",
+       "value": 0.145
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.3
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "attack-res",
+   "name": "Attack Res",
+   "family": "defensive",
+   "kinds": [
+    "placating",
+    "momentum",
+    "pure"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "rdctVs",
+       "vs": "striker",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.3
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb-res",
+   "name": "GB Res",
+   "family": "defensive",
+   "kinds": [
+    "placating",
+    "momentum",
+    "mystique"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "rdctVs",
+       "vs": "guardian",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.3
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "skill-attack-res",
+   "name": "Skill Attack Res",
+   "family": "defensive",
+   "kinds": [
+    "momentum",
+    "pure",
+    "mystique"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "rdctVs",
+       "vs": "adept",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.3
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "crit-boost",
+   "name": "Crit Boost",
+   "family": "offensive",
+   "kinds": [
+    "leisure",
+    "defensive",
+    "quick"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "crit",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.9
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "crit-break",
+   "name": "Crit Break",
+   "family": "offensive",
+   "kinds": [
+    "fortune",
+    "defensive",
+    "quick"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "critPower",
+       "value": 0.135
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.9
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "def-break",
+   "name": "DEF Break",
+   "family": "offensive",
+   "kinds": [
+    "fortune",
+    "quick",
+    "etiquette"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "guardBreak",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.9
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "boosts-damage",
+   "name": "Boosts Damage",
+   "family": "offensive",
+   "kinds": [
+    "leisure",
+    "wonder",
+    "defensive"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.145
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.9
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "augmented-control",
+   "name": "Augmented Control",
+   "family": "offensive",
+   "kinds": [
+    "wonder",
+    "defensive",
+    "quick"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "controlBoost",
+       "value": 0.145
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.9
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "increases-attack",
+   "name": "Increases Attack",
+   "family": "offensive",
+   "kinds": [
+    "leisure",
+    "fortune",
+    "etiquette"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "dmgVs",
+       "vs": "striker",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.9
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gb-boost",
+   "name": "GB Boost",
+   "family": "offensive",
+   "kinds": [
+    "leisure",
+    "wonder",
+    "etiquette"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "dmgVs",
+       "vs": "guardian",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.9
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "enhanced-skill-attack",
+   "name": "Enhanced Skill Attack",
+   "family": "offensive",
+   "kinds": [
+    "wonder",
+    "fortune",
+    "etiquette"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "dmgVs",
+       "vs": "adept",
+       "value": 0.15
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.08
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.9
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ultra-crit-rivalry",
+   "name": "Ultra·Crit Rivalry",
+   "family": "defensive",
+   "kinds": [
+    "sharp",
+    "momentum",
+    "pure",
+    "mystique",
+    "erudite"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "critRes",
+       "value": 0.135
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.9
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ultra-gb-rivalry",
+   "name": "Ultra·Guard Break Rivalry",
+   "family": "defensive",
+   "kinds": [
+    "sharp",
+    "placating",
+    "momentum",
+    "mystique",
+    "erudite"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "block",
+       "value": 0.1
+      },
+      {
+       "field": "blockPower",
+       "value": 0.14
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.9
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "combat-res",
+   "name": "Combat Res",
+   "family": "defensive",
+   "kinds": [
+    "sharp",
+    "placating",
+    "momentum",
+    "pure",
+    "mystique"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "pvpRdct",
+       "value": 0.36
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.9
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fortification-res",
+   "name": "Fortification Res",
+   "family": "defensive",
+   "kinds": [
+    "placating",
+    "momentum",
+    "pure",
+    "mystique",
+    "erudite"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "bossRdct",
+       "value": 0.36
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.9
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ultra-control-res",
+   "name": "Ultra·Control Res",
+   "family": "defensive",
+   "kinds": [
+    "sharp",
+    "placating",
+    "momentum",
+    "pure",
+    "erudite"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.18
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "controlRes",
+       "value": 0.24
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgRdct",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.9
+      },
+      {
+       "field": "dmgRdct",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "combat-boost",
+   "name": "Combat Boost",
+   "family": "offensive",
+   "kinds": [
+    "leisure",
+    "wonder",
+    "defensive",
+    "quick",
+    "etiquette"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.45
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "pvpBoost",
+       "value": 0.36
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.35
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ultra-crit-enhancement",
+   "name": "Ultra·Crit Enhancement",
+   "family": "offensive",
+   "kinds": [
+    "wonder",
+    "fortune",
+    "defensive",
+    "quick",
+    "etiquette"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.45
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "crit",
+       "value": 0.17
+      },
+      {
+       "field": "critPower",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.35
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ultra-gb-enhancement",
+   "name": "Ultra·GB Enhancement",
+   "family": "offensive",
+   "kinds": [
+    "leisure",
+    "wonder",
+    "fortune",
+    "defensive",
+    "etiquette"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.45
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "guardBreak",
+       "value": 0.135
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.35
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "enhanced-fortification",
+   "name": "Enhanced Fortification",
+   "family": "offensive",
+   "kinds": [
+    "leisure",
+    "wonder",
+    "fortune",
+    "quick",
+    "etiquette"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.45
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "bossBoost",
+       "value": 0.36
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.35
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ultra-augmented-control",
+   "name": "Ultra·Augmented Control",
+   "family": "offensive",
+   "kinds": [
+    "leisure",
+    "fortune",
+    "defensive",
+    "quick",
+    "etiquette"
+   ],
+   "tiers": [
+    {
+     "level": 3,
+     "lines": [
+      {
+       "field": "orbHp",
+       "value": 0.45
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "lines": [
+      {
+       "field": "controlBoost",
+       "value": 0.24
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "lines": [
+      {
+       "field": "dmgBoost",
+       "value": 0.12
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "lines": [
+      {
+       "field": "orbAtk",
+       "value": 0.35
+      },
+      {
+       "field": "dmgBoost",
+       "value": 0.18
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

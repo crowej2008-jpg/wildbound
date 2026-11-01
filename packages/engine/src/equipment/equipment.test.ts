@@ -5,9 +5,10 @@ import type { CoreStats } from '../model';
 import { foldLoadout, lineValue, mergeDelta } from './contrib';
 import {
   canEquipRelic,
-  equipRune,
+  equipOrb,
   relicUnlocked,
 } from './rules';
+import { ORB_TABLES } from './orbs.fixture';
 import {
   emptyLoadout,
   type EquipmentState,
@@ -18,11 +19,9 @@ import {
 
 const TUNING: EquipmentTuning = {
   relic: { minTier: 'supreme' },
-  runes: { minStars: 3, sockets: 4, maxLevel: 6 },
   charms: { minStars: 4, slots: 2 },
   cores: { minStars: 10, sockets: 6, pieceMinStars: 2, pieceMaxStars: 5 },
-  runeLevelCost: { gold: 100, goldPerLevel: 50 },
-  starting: { relics: [], runes: [], cores: [], charms: [] },
+  starting: { relics: [], cores: [], charms: [] },
 };
 
 const TABLES: EquipmentTables = {
@@ -82,22 +81,7 @@ const TABLES: EquipmentTables = {
       ],
     },
   ],
-  runes: [
-    { id: 'rune1', name: 'Rune 1', setId: 'setA', tier: 'common', lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.03, perLevel: 0.01 }] },
-    { id: 'rune2', name: 'Rune 2', setId: 'setA', tier: 'rare', lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.03, perLevel: 0.01 }] },
-    { id: 'rune3', name: 'Rune 3', setId: 'setA', tier: 'epic', lines: [{ kind: 'core', field: 'hp', base: 100, perLevel: 20 }] },
-    { id: 'rune4', name: 'Rune 4', setId: 'setA', tier: 'legendary', lines: [{ kind: 'percent', field: 'crit', base: 0.02, perLevel: 0.01 }] },
-  ],
-  runeSets: [
-    {
-      id: 'setA',
-      name: 'Set A',
-      bonuses: [
-        { pieces: 2, lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.05, perLevel: 0 }] },
-        { pieces: 4, lines: [{ kind: 'percent', field: 'critPower', base: 0.1, perLevel: 0 }] },
-      ],
-    },
-  ],
+  orbs: ORB_TABLES,
   charms: [
     { id: 'charm1', name: 'Charm 1', tier: 'greater', maxStars: 3, lines: [{ kind: 'core', field: 'hp', base: 200, perLevel: 100 }] },
     { id: 'charm0', name: 'Charm 0', tier: 'common', maxStars: 0, lines: [{ kind: 'percent', field: 'dmgBoost', base: 0.05, perLevel: 0 }] },
@@ -160,7 +144,7 @@ const TABLES: EquipmentTables = {
 };
 
 function stateWith(partial: Partial<EquipmentState>): EquipmentState {
-  return { relics: [], runes: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1, ...partial };
+  return { relics: [], orbs: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1, ...partial };
 }
 
 describe('stat lines', () => {
@@ -182,11 +166,10 @@ describe('layer contributions', () => {
   it('folds every layer into the delta and reports per-layer lines', () => {
     const state: EquipmentState = {
       relics: [{ id: 're1', defId: 'relicA', level: 2, group: 1, lines: [{ index: 11, value: 700, refines: 0 }, { index: 12, value: 1000, refines: 0 }, { index: 13, value: 1000, refines: 0 }], refines: 0, pending: null, locked: false }],
-      runes: [
-        { id: 'ru1', defId: 'rune1', level: 6 },
-        { id: 'ru2', defId: 'rune2', level: 2 },
-        { id: 'ru3', defId: 'rune3', level: 1 },
-        { id: 'ru4', defId: 'rune4', level: 1 },
+      orbs: [
+        { id: 'ru1', kind: 'sharp', colour: 'red', level: 3, lines: [{ field: 'dmgBoost', roll: 1 }] },
+        { id: 'ru2', kind: 'placating', colour: 'red', level: 3, lines: [] },
+        { id: 'ru3', kind: 'mystique', colour: 'red', level: 5, lines: [] },
       ],
       cores: [
         { id: 'c1', setId: 'setC', socket: 0, stars: 5 },
@@ -199,7 +182,7 @@ describe('layer contributions', () => {
     const loadout = {
       ...emptyLoadout(TUNING),
       relic: 're1',
-      runes: ['ru1', 'ru2', 'ru3', 'ru4'],
+      orbs: ['ru1', 'ru2', 'ru3', null, null, null, null, null],
       charms: ['charm1', null],
       cores: ['c1', 'c2', null, null, null, null],
     };
@@ -227,9 +210,10 @@ describe('layer contributions', () => {
     expect(folded.layers.resonance.core.spd).toBeCloseTo(0.5);
     // title lines are account-wide and independent of the loadout
     expect(folded.layers.titles.core.hp).toBeCloseTo(100);
-    // per-rune lines (.08 + .04) plus the 2-piece dmgBoost (.05); 4 pieces add critPower (.1)
-    expect(folded.layers.runes.percent.dmgBoost).toBeCloseTo(0.17);
-    expect(folded.layers.runes.percent.critPower).toBeCloseTo(0.1);
+    // orbs: Sharp's DMG Boost line at +3 (3 × 0.8%); DMG Down is on at its lowest orb (+3): Orb ATK +15%
+    expect(folded.layers.runes.percent.dmgBoost).toBeCloseTo(0.024);
+    expect(folded.layers.runes.core.pAtk).toBe(Math.round((639 + 1846) * 1.15)); // Sharp +3 and Mystique +5
+    expect(folded.layers.runes.percent.dmgRdct ?? 0).toBe(0); // the +5 tier needs every orb at +5
     // charms at 2 stars: hp 300
     expect(folded.layers.charms.core.hp).toBeCloseTo(300);
     // cores: soul lines + 2-piece bonus
@@ -240,7 +224,7 @@ describe('layer contributions', () => {
   });
 
   it('ignores an equipped charm the account does not own', () => {
-    const state: EquipmentState = { relics: [], runes: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 };
+    const state: EquipmentState = { relics: [], orbs: [], cores: [], charms: {}, charmStars: {}, nextSeq: 1 };
     const loadout = { ...emptyLoadout(TUNING), charms: ['charm0', null] };
     const folded = foldLoadout(loadout, state, { ...TABLES, tuning: TUNING });
     expect(folded.layers.charms.percent.dmgBoost).toBeUndefined();
@@ -265,10 +249,10 @@ describe('rules', () => {
     expect(relicUnlocked('origin', TUNING)).toBe(true);
   });
 
-  it('sockets a rune into a chosen slot only', () => {
-    const loadout = equipRune(emptyLoadout(TUNING), 1, 'ru1');
-    expect(loadout.runes[0]).toBeNull();
-    expect(loadout.runes[1]).toBe('ru1');
+  it('sockets an orb into a chosen slot only', () => {
+    const loadout = equipOrb(emptyLoadout(TUNING), 1, 'ru1');
+    expect(loadout.orbs[0]).toBeNull();
+    expect(loadout.orbs[1]).toBe('ru1');
   });
 });
 
@@ -396,15 +380,15 @@ describe('every layer moves a battle in the intended direction', () => {
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });
 
-  it('a rune set bonus raises damage', () => {
+  it('orbs and their set raise damage', () => {
     const state = stateWith({
-      runes: [
-        { id: 'ru1', defId: 'rune1', level: 1 },
-        { id: 'ru2', defId: 'rune2', level: 1 },
-        { id: 'ru3', defId: 'rune3', level: 1 },
+      orbs: [
+        { id: 'ru1', kind: 'sharp', colour: 'red', level: 3, lines: [{ field: 'dmgBoost', roll: 1 }] },
+        { id: 'ru2', kind: 'placating', colour: 'red', level: 3, lines: [] },
+        { id: 'ru3', kind: 'mystique', colour: 'red', level: 3, lines: [] },
       ],
     });
-    const up = battleWith(base, state, { ...emptyLoadout(TUNING), runes: ['ru1', 'ru2', 'ru3', null] });
+    const up = battleWith(base, state, { ...emptyLoadout(TUNING), orbs: ['ru1', 'ru2', 'ru3', null, null, null, null, null] });
     expect(up.damageDealt['attackers:4'] ?? 0).toBeGreaterThan(plainDamage());
   });
 

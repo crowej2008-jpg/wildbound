@@ -152,7 +152,7 @@ export default function WildDetail() {
               <PotentialPanel wildId={id} onChange={gear.reload} />
             )}
             {tab === 'orbs' && (
-              <OrbsPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />
+              <OrbsPanel wildId={id} onChange={gear.reload} />
             )}
             {tab === 'soulHearts' && (
               <SoulHeartPanel wildId={id} view={gear.view} className={meta.class} busy={busy} run={run} reload={gear.reload} />
