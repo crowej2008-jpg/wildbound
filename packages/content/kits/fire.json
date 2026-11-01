@@ -1825,6 +1825,137 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "One layer of [Flame] is upgraded to [Blaze], which cannot be dispelled (still belongs to Blaze and is affected by the effect that increases Blaze damage, but does not share stacking layers), and [Blaze] stacks for up to 2 layers."
+      },
+      "12": {
+        "text": "Basic attacks and basic skills are guaranteed to gain one stack of [Flame], with 50% chance to gain an additional stack of [Flame]",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "flame",
+                "dot": {
+                  "share": 0.45,
+                  "basis": "casterAtk",
+                  "turns": 2,
+                  "maxStacks": 3,
+                  "type": "S"
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "flame",
+                "dot": {
+                  "share": 0.45,
+                  "basis": "casterAtk",
+                  "turns": 2,
+                  "maxStacks": 3,
+                  "type": "S"
+                },
+                "chance": 0.5
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "flame",
+                "dot": {
+                  "share": 0.45,
+                  "basis": "casterAtk",
+                  "turns": 2,
+                  "maxStacks": 3,
+                  "type": "S"
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "flame",
+                "dot": {
+                  "share": 0.45,
+                  "basis": "casterAtk",
+                  "turns": 2,
+                  "maxStacks": 3,
+                  "type": "S"
+                },
+                "chance": 0.5
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "When attacking opponents with [Crit Seal], deduct 10%, of current HP and deal the same amount of damage to target",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "casterCurrentHp",
+                "share": 0.1,
+                "condition": {
+                  "targetHasTag": "critSeal"
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "casterCurrentHp",
+                "share": 0.1,
+                "condition": {
+                  "targetHasTag": "critSeal"
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "casterCurrentHp",
+                "share": 0.1,
+                "condition": {
+                  "targetHasTag": "critSeal"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2007,6 +2138,128 @@
       ],
       "rageStart": 500,
       "rageOnHit": 125
+    },
+    "plate": {
+      "6": {
+        "text": "Additionally reduces target's Crit Res by 20% and Block by 30%. Lasts 3 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "victini-critres",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": -0.2,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "victini-block",
+                  "kind": "stat",
+                  "field": "block",
+                  "amount": -0.3,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "At the end of the turn, reduces the opposite target's Rage by 250",
+        "triggers": [
+          {
+            "on": "turnEnd",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "rule": "same_position"
+                },
+                "delta": -250
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "When Ultimate, normal attack and Basic Skill applied with [Molten Armor], has a 50% chance to impose one more stack.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "magma-armor",
+                "dot": {
+                  "share": 0.2,
+                  "basis": "casterAtk",
+                  "turns": 3,
+                  "maxStacks": 6,
+                  "type": "P"
+                },
+                "chance": 0.5
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "magma-armor",
+                "dot": {
+                  "share": 0.2,
+                  "basis": "casterAtk",
+                  "turns": 3,
+                  "maxStacks": 6,
+                  "type": "P"
+                },
+                "chance": 0.5
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "magma-armor",
+                "dot": {
+                  "share": 0.2,
+                  "basis": "casterAtk",
+                  "turns": 3,
+                  "maxStacks": 6,
+                  "type": "P"
+                },
+                "chance": 0.5
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

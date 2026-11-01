@@ -2486,6 +2486,94 @@
       ],
       "rageStart": 500,
       "rageOnHit": 125
+    },
+    "plate": {
+      "6": {
+        "text": "When open up the [Subspace], grant itself 50% DMG reduction, last 1 turn",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "subspace-rdct",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.5,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "The enhance effect increases 20% crit chance and 10% crit intensity, up to 6 floors, last 3 turns",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "subspace-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.2,
+                  "turns": 3,
+                  "maxStacks": 6
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "subspace-critpow",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.1,
+                  "turns": 3,
+                  "maxStacks": 6
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "When open up the [Subspace],grant itself [Steadfast],during [Steadfast] period,self-HP isn't lower than 1,last 1 turn",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "subspace-steadfast",
+                  "kind": "endure",
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

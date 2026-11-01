@@ -312,3 +312,61 @@ plate("manaphy", {
     12: {"triggers": [trig("afterUlt", [{"op": "dispel", "target": T, "count": 99}])]},
     18: {"triggers": [trig("afterUlt", [heal(ALL_ALLIES, 0.8, "casterSAtk")])]},
 })
+
+# --- batch 7 -------------------------------------------------------------------------------------
+ATTACKS = ("afterNormal", "afterBasic", "afterUlt")
+FROST = {"targetHasTag": "frost"}
+
+plate("infernape", {
+    6: {},
+    12: {"triggers": [trig(on, [dot(T, "flame", 0.45, turns=2, stacks=3, type_="S"),
+                                dot(T, "flame", 0.45, turns=2, stacks=3, type_="S", chance=0.5)]) for on in ("afterNormal", "afterBasic")]},
+    18: {"triggers": [trig(on, [dmg(T, basis="casterCurrentHp", share=0.1, condition={"targetHasTag": "critSeal"})]) for on in ATTACKS]},
+})
+
+
+def _frost_hits(chance):
+    return [trig(on, [dmg(ENEMY_ALL, rate=0.6, type="S", condition=FROST),
+                      control(ENEMY_ALL, "freeze", chance, condition=FROST)], group="kyurem-frost") for on in ATTACKS]
+
+
+for _kid in ("black-kyurem", "shiny-kyurem"):
+    plate(_kid, {
+        6: {"triggers": _frost_hits(0.15)},
+        12: {"dropGroups": ["kyurem-frost"], "triggers": _frost_hits(0.2),
+             "skills": {"ult": edited(_kid, "ult", lambda s: s["effects"][0]["control"].update(chance=0.4))}},
+        18: {},
+    })
+
+
+def _shaymin_all(s):
+    s["rule"] = "all"
+    s.pop("targets", None)
+    for e in s["effects"]:
+        e["target"] = ENEMY_ALL
+
+
+def _shaymin_seed(s):
+    _shaymin_all(s)
+    s["effects"][0]["delta"] = 3
+
+
+plate("shaymin", {
+    6: {"skills": {"ult": edited("shaymin", "ult", _shaymin_all)}},
+    12: {"skills": {"ult": edited("shaymin", "ult", _shaymin_seed)}},
+    18: {"triggers": [trig(on, [give(SELF, buff("shaymin-ctrl-immune", kind="immune", turns=2))]) for on in ATTACKS]},
+})
+
+plate("victini", {
+    6: {"triggers": [trig("afterUlt", [give(T, buff("victini-critres", "critRes", -0.2, turns=3, stacks=1)),
+                                       give(T, buff("victini-block", "block", -0.3, turns=3, stacks=1))])]},
+    12: {"triggers": [trig("turnEnd", [rage({"rule": "same_position"}, -250)])]},
+    18: {"triggers": [trig(on, [dot(T, "magma-armor", 0.2, turns=3, stacks=6, type_="P", chance=0.5)]) for on in ATTACKS]},
+})
+
+plate("palkia", {
+    6: {"triggers": [trig("afterUlt", [give(SELF, buff("subspace-rdct", "dmgRdct", 0.5, turns=1))])]},
+    12: {"triggers": [trig("afterUlt", [give(SELF, buff("subspace-crit", "crit", 0.2, turns=3, stacks=6)),
+                                        give(SELF, buff("subspace-critpow", "critPower", 0.1, turns=3, stacks=6))])]},
+    18: {"triggers": [trig("afterUlt", [give(SELF, buff("subspace-steadfast", kind="endure", turns=1))])]},
+})

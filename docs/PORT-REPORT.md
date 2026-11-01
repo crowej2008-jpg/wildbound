@@ -133,5 +133,6 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 | count | clause | example |
 | --- | --- | --- |
 
-- Cresselia / Shiny Cresselia 12: the shields (200 % / 240 % S.ATK) also come after normal attacks.
-- Celebi 6 (overheal → 70 % shield) not modelled — no overheal hook.
+- Infernape 6 (a Flame layer upgraded to undispellable Blaze) not modelled; 18 without the self HP cost.
+- Black / Shiny Kyurem 18 (+35 % per target [Frost] stack, then clear it) not modelled — no per-target-stack scale.
+- Palkia: [Subspace] opens with the ultimate, so its plate effects follow the ultimate.

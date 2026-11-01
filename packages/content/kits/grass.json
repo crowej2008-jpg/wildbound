@@ -1833,6 +1833,142 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "The target to attack changes to all enemy units",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "all"
+                },
+                "tag": "leech-seed",
+                "delta": 2
+              },
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "all"
+                },
+                "basis": "targetMaxHp",
+                "share": 0.015,
+                "trueDamage": true
+              },
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "all"
+                },
+                "tag": "leech-seed",
+                "delta": 1
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Increase [Leech Seed]'s stacks to 3 times",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "all"
+                },
+                "tag": "leech-seed",
+                "delta": 3
+              },
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "all"
+                },
+                "basis": "targetMaxHp",
+                "share": 0.015,
+                "trueDamage": true
+              },
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "all"
+                },
+                "tag": "leech-seed",
+                "delta": 1
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "When attacking, grant yourself control immunity. Last till your next turn, but can be dispelled",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shaymin-ctrl-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shaymin-ctrl-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "shaymin-ctrl-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
