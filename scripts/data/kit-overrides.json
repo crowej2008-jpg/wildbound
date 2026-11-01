@@ -12367,6 +12367,501 @@
      }
     }
    }
+  },
+  "mimikyu": {
+   "6": {
+    "text": "The base damage of the Ult Skill is increased to 135% of P.ATK.",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.35
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "stun",
+         "chance": 0.15
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "disguise-rate",
+         "kind": "stat",
+         "field": "basicRate",
+         "amount": 0.1,
+         "bigRounds": 2
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "The Stun chance of the Ult Skill is increased to 30%, and after the Ult, the trigger chance of releasing skills for yourself and all allies is increased to 20%, lasting for 3 rounds.",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.35
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "stun",
+         "chance": 0.3
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "disguise-rate",
+         "kind": "stat",
+         "field": "basicRate",
+         "amount": 0.2,
+         "bigRounds": 3
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "The base DMG of small skill is increased to 125% of P.ATK, and additionally inflicts DMG equal to 10% of the target's lost HP.",
+    "skills": {
+     "basic": {
+      "type": "P",
+      "rates": [
+       1.25
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMissingHp",
+        "share": 0.1
+       }
+      ]
+     }
+    }
+   }
+  },
+  "dialga": {
+   "6": {
+    "text": "Lower rage to 400",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.6
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -400
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Increases backline allies' rage to 300"
+   },
+   "18": {
+    "text": "Grants frontline allies 200 Rage"
+   }
+  },
+  "darkrai": {
+   "6": {
+    "text": "Each stack of [Nightmare] grants Ultimate 20% increased damage. Increases Ignore DEF ratio to 18%",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.6
+      ],
+      "rule": "row",
+      "lifesteal": 0.4,
+      "ignoreDefense": 0.18,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "rule": "self"
+        },
+        "control": {
+         "kind": "sleep",
+         "chance": null
+        }
+       },
+       {
+        "op": "resource",
+        "target": {
+         "rule": "self"
+        },
+        "tag": "nightmare",
+        "delta": 1
+       },
+       {
+        "op": "control",
+        "target": {
+         "rule": "row"
+        },
+        "control": {
+         "kind": "sleep",
+         "chance": null
+        }
+       },
+       {
+        "op": "resource",
+        "target": {
+         "rule": "row"
+        },
+        "tag": "nightmare",
+        "delta": 1,
+        "max": 2
+       }
+      ]
+     }
+    },
+    "damageMods": [
+     {
+      "tag": "nightmare-plate",
+      "slot": "ult",
+      "dmg": 0.2,
+      "scale": {
+       "resource": "nightmare"
+      }
+     }
+    ]
+   },
+   "12": {
+    "text": "After gaining 2 stacks of [Nightmare], Ultimate has a 50% chance to stun the target for 1 turn",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "condition": {
+       "round": {
+        "from": 2
+       }
+      },
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "stun",
+         "chance": 0.5
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Deals 135% P.ATK DMG to a single enemy. Converts 20% of damage into healing.",
+    "skills": {
+     "normal": {
+      "type": "P",
+      "rates": [
+       1.35
+      ],
+      "rule": "column",
+      "lifesteal": 0.2
+     }
+    }
+   }
+  },
+  "ho-oh": {
+   "6": {
+    "text": "Increases skill damage to 165%",
+    "skills": {
+     "basic": {
+      "type": "S",
+      "rates": [
+       1.65
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "rule": "random",
+         "n": 1
+        },
+        "delta": -200
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "After an Ultimate,Reduces opponent's Rage by 250",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.45
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -250
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "sacred-fire",
+        "dot": {
+         "share": 1.25,
+         "basis": "casterAtk",
+         "turns": 2,
+         "maxStacks": 1,
+         "type": "S"
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "sacred-fire-heal",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.5,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Increases Sacred Fire's Ignition damage to 155%",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.45
+      ],
+      "rule": "row",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -250
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "sacred-fire",
+        "dot": {
+         "share": 1.55,
+         "basis": "casterAtk",
+         "turns": 2,
+         "maxStacks": 1,
+         "type": "S"
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "sacred-fire-heal",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.5,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "groudon": {
+   "6": {
+    "text": "Reduces opponent's Rage by 500 after attack",
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -500
+       }
+      ]
+     },
+     {
+      "on": "afterBasic",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -500
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -500
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "When targeted at [SKILL] Pok\u00e9mons, deals 18% additional damage",
+    "damageMods": [
+     {
+      "tag": "groudon-vs-skill",
+      "dmg": 0.18,
+      "condition": {
+       "targetClass": "adept"
+      }
+     }
+    ]
+   },
+   "18": {
+    "text": "Increases damage bonus to 50% based on opponent's Rage",
+    "damageMods": [
+     {
+      "tag": "precipice-plate",
+      "slot": "ult",
+      "dmg": 0.15,
+      "scale": "targetRage",
+      "cap": 0.15
+     }
+    ]
+   }
+  },
+  "snorlax": {
+   "6": {
+    "text": "Increases DMG RDCT by 50% for 1 turn after ultimate is cast",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "snorlax-plate-rdct",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.5,
+         "turns": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Casts Ultimate to provide all allies protection, causing them to only take 30% DMG of the next 2 hit, but 20% of the total damage will be transferred to Snorlax, lasting for 1 turn.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "snorlax-protect",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.7,
+         "bigRounds": 1,
+         "consumeOnHit": true
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "After using the Rage Move, gain [Dauntless] that lasts up to 2 turns, during which HP won't drop below 1. Expires at the beginning of the next turn. This effect occurs every 4 turns.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "cooldown": 4,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "snorlax-dauntless",
+         "kind": "endure",
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
   }
  }
 }

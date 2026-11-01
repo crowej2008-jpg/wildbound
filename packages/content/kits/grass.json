@@ -1937,6 +1937,35 @@
           "cap": 0.3
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Lower rage to 400",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.6
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -400
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Increases backline allies' rage to 300"
+      },
+      "18": {
+        "text": "Grants frontline allies 200 Rage"
+      }
     }
   },
   {

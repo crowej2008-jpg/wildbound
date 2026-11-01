@@ -506,6 +506,109 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Each stack of [Nightmare] grants Ultimate 20% increased damage. Increases Ignore DEF ratio to 18%",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.6
+            ],
+            "rule": "row",
+            "lifesteal": 0.4,
+            "ignoreDefense": 0.18,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "rule": "self"
+                },
+                "control": {
+                  "kind": "sleep",
+                  "chance": null
+                }
+              },
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "self"
+                },
+                "tag": "nightmare",
+                "delta": 1
+              },
+              {
+                "op": "control",
+                "target": {
+                  "rule": "row"
+                },
+                "control": {
+                  "kind": "sleep",
+                  "chance": null
+                }
+              },
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "row"
+                },
+                "tag": "nightmare",
+                "delta": 1,
+                "max": 2
+              }
+            ]
+          }
+        },
+        "damageMods": [
+          {
+            "tag": "nightmare-plate",
+            "slot": "ult",
+            "dmg": 0.2,
+            "scale": {
+              "resource": "nightmare"
+            }
+          }
+        ]
+      },
+      "12": {
+        "text": "After gaining 2 stacks of [Nightmare], Ultimate has a 50% chance to stun the target for 1 turn",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "condition": {
+              "round": {
+                "from": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "stun",
+                  "chance": 0.5
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "Deals 135% P.ATK DMG to a single enemy. Converts 20% of damage into healing.",
+        "skills": {
+          "normal": {
+            "type": "P",
+            "rates": [
+              1.35
+            ],
+            "rule": "column",
+            "lifesteal": 0.2
+          }
+        }
+      }
     }
   },
   {

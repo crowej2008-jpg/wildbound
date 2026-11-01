@@ -1291,6 +1291,73 @@
           "cap": 0.35
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Reduces opponent's Rage by 500 after attack",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -500
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -500
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -500
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "When targeted at [SKILL] Pokémons, deals 18% additional damage",
+        "damageMods": [
+          {
+            "tag": "groudon-vs-skill",
+            "dmg": 0.18,
+            "condition": {
+              "targetClass": "adept"
+            }
+          }
+        ]
+      },
+      "18": {
+        "text": "Increases damage bonus to 50% based on opponent's Rage",
+        "damageMods": [
+          {
+            "tag": "precipice-plate",
+            "slot": "ult",
+            "dmg": 0.15,
+            "scale": "targetRage",
+            "cap": 0.15
+          }
+        ]
+      }
     }
   },
   {
@@ -1437,6 +1504,128 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "Increases skill damage to 165%",
+        "skills": {
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.65
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "rule": "random",
+                  "n": 1
+                },
+                "delta": -200
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "After an Ultimate,Reduces opponent's Rage by 250",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.45
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -250
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "sacred-fire",
+                "dot": {
+                  "share": 1.25,
+                  "basis": "casterAtk",
+                  "turns": 2,
+                  "maxStacks": 1,
+                  "type": "S"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sacred-fire-heal",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.5,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Increases Sacred Fire's Ignition damage to 155%",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.45
+            ],
+            "rule": "row",
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -250
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "sacred-fire",
+                "dot": {
+                  "share": 1.55,
+                  "basis": "casterAtk",
+                  "turns": 2,
+                  "maxStacks": 1,
+                  "type": "S"
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sacred-fire-heal",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.5,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {
@@ -2614,6 +2803,106 @@
           ]
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "The base damage of the Ult Skill is increased to 135% of P.ATK.",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.35
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "stun",
+                  "chance": 0.15
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "disguise-rate",
+                  "kind": "stat",
+                  "field": "basicRate",
+                  "amount": 0.1,
+                  "bigRounds": 2
+                }
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "The Stun chance of the Ult Skill is increased to 30%, and after the Ult, the trigger chance of releasing skills for yourself and all allies is increased to 20%, lasting for 3 rounds.",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.35
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "stun",
+                  "chance": 0.3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "disguise-rate",
+                  "kind": "stat",
+                  "field": "basicRate",
+                  "amount": 0.2,
+                  "bigRounds": 3
+                }
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "The base DMG of small skill is increased to 125% of P.ATK, and additionally inflicts DMG equal to 10% of the target's lost HP.",
+        "skills": {
+          "basic": {
+            "type": "P",
+            "rates": [
+              1.25
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMissingHp",
+                "share": 0.1
+              }
+            ]
+          }
+        }
+      }
     }
   }
 ]

@@ -133,14 +133,6 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 | count | clause | example |
 | --- | --- | --- |
 
-
-## Plate skills (R6a part 2, hand-ported in `scripts/data/plate-skills.py`)
-
-Source: `scripts/data/plate-skills-source.json` (hero_stone_skill_json, 228 skills / 76 Pokémon). Applied by
-`applyPlateSkills` for tiers at or below the Pokémon's plate stage. Ported so far: God Ash-Pikachu,
-Wobbuffet, Greninja, Shiny Blastoise, Psyduck (Origin Lugia has none). Readings / gaps:
-- God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.
-- Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).
-- Shiny Blastoise 6: "increases P.ATK DMG RDCT by 50 %" read as ×1.5 (30 % → 45 %); 18 (Regrowth Mark heals
-  him when allies hit marked enemies) not modelled — no ally-hit trigger yet.
-- Psyduck 6: "S.DEF −30 %" read as +30 % S.ATK damage taken (sRdct −0.3).
+- Dialga 12 / 18 (Rage to backline / frontline): no effect — the owner's ultimate already fills the team.
+- Darkrai 12: "after 2 [Nightmare] stacks" read as from round 2 on; 18 read as the normal attack at 135 %.
+- Snorlax 12: one hit at 70 % reduction (consumed on the hit), no damage transfer; 18: endure 2 turns, every 4.

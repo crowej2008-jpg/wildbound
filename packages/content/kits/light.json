@@ -680,6 +680,80 @@
           }
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Increases DMG RDCT by 50% for 1 turn after ultimate is cast",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "snorlax-plate-rdct",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.5,
+                  "turns": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Casts Ultimate to provide all allies protection, causing them to only take 30% DMG of the next 2 hit, but 20% of the total damage will be transferred to Snorlax, lasting for 1 turn.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "snorlax-protect",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.7,
+                  "bigRounds": 1,
+                  "consumeOnHit": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "After using the Rage Move, gain [Dauntless] that lasts up to 2 turns, during which HP won't drop below 1. Expires at the beginning of the next turn. This effect occurs every 4 turns.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "cooldown": 4,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "snorlax-dauntless",
+                  "kind": "endure",
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

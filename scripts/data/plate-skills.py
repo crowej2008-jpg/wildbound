@@ -50,3 +50,83 @@ plate("psyduck", {
         "ult": skill("S", 1.65, "frontline", effects=[control(T, "zenControlPlus")]),
     }},
 })
+
+
+import copy as _copy
+_KITS = {}
+for _f in ("water", "fire", "grass", "light", "dark"):
+    for _k in json.loads((Path(__file__).parents[2] / "packages/content/kits" / f"{_f}.json").read_text()):
+        _KITS[_k["id"]] = _k
+
+
+def base_skill(kid, slot):
+    """The kit's own skill (hand port if any, else the shipped kit) — copied, ready to change."""
+    src = K[kid]["skills"][slot] if kid in K and "skills" in K[kid] else _KITS[kid]["skills"][slot]
+    return _copy.deepcopy(src)
+
+
+def edited(kid, slot, fn):
+    s = base_skill(kid, slot)
+    fn(s)
+    return s
+
+
+ALL_ALLIES = {"side": "ally", "rule": "all"}
+
+# --- batch 2 -------------------------------------------------------------------------------------
+plate("mimikyu", {
+    6: {"skills": {"ult": edited("mimikyu", "ult", lambda s: s.update(rates=[1.35]))}},
+    12: {"skills": {"ult": skill("P", 1.35, "all", effects=[
+        control(T, "stun", 0.3),
+        give(ALL_ALLIES, buff("disguise-rate", "basicRate", 0.2, big=3)),
+    ])}},
+    18: {"skills": {"basic": skill("P", 1.25, "all", effects=[dmg(T, basis="targetMissingHp", share=0.1)])}},
+})
+
+# Dialga: the owner's change fills the whole team's Rage after the ultimate (2026-10-31), so the
+# plate's "backline to 300" (12) and "frontline +200" (18) add nothing; 6 doubles the Rage cut.
+plate("dialga", {
+    6: {"skills": {"ult": edited("dialga", "ult", lambda s: s["effects"][0].update(delta=-400))}},
+    12: {},
+    18: {},
+})
+
+
+def _darkrai_ult(s):
+    s["ignoreDefense"] = 0.18
+
+
+plate("darkrai", {
+    6: {"skills": {"ult": edited("darkrai", "ult", _darkrai_ult)},
+        "damageMods": [{"tag": "nightmare-plate", "slot": "ult", "dmg": 0.2, "scale": {"resource": "nightmare"}}]},
+    12: {"triggers": [trig("afterUlt", [control(T, "stun", 0.5)], condition={"round": {"from": 2}})]},
+    18: {"skills": {"normal": edited("darkrai", "normal", lambda s: s.update(rates=[1.35]))}},
+})
+
+
+def _hooh_rage(s):
+    s["effects"][0]["delta"] = -250
+
+
+def _hooh_fire(s):
+    _hooh_rage(s)
+    s["effects"][1]["dot"]["share"] = 1.55
+
+
+plate("ho-oh", {
+    6: {"skills": {"basic": edited("ho-oh", "basic", lambda s: s.update(rates=[1.65]))}},
+    12: {"skills": {"ult": edited("ho-oh", "ult", _hooh_rage)}},
+    18: {"skills": {"ult": edited("ho-oh", "ult", _hooh_fire)}},
+})
+
+plate("groudon", {
+    6: {"triggers": [trig(on, [rage(T, -500)]) for on in ("afterNormal", "afterBasic", "afterUlt")]},
+    12: {"damageMods": [{"tag": "groudon-vs-skill", "dmg": 0.18, "condition": {"targetClass": "adept"}}]},
+    18: {"damageMods": [{"tag": "precipice-plate", "slot": "ult", "dmg": 0.15, "scale": "targetRage", "cap": 0.15}]},
+})
+
+plate("snorlax", {
+    6: {"triggers": [trig("afterUlt", [give(SELF, buff("snorlax-plate-rdct", "dmgRdct", 0.5, turns=1))])]},
+    12: {"triggers": [trig("afterUlt", [give(ALL_ALLIES, buff("snorlax-protect", "dmgRdct", 0.7, big=1, consumeOnHit=True))])]},
+    18: {"triggers": [trig("afterUlt", [give(SELF, buff("snorlax-dauntless", kind="endure", turns=2))], cooldown=4)]},
+})
