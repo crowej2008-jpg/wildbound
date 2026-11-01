@@ -55,7 +55,7 @@ export {
   type TitleEarnedBy,
 } from './titles-schema';
 export { PVE } from './pve';
-export { pveSchema, type PveJson, type EnemyPoolJson, type TrialDefJson, type DungeonDefJson } from './pve-schema';
+export { pveSchema, type PveJson, type EnemyPoolJson, type TrialDefJson } from './pve-schema';
 export { PVP } from './pvp';
 export {
   pvpSchema,
@@ -117,6 +117,13 @@ export { RESONANCE, resonanceSchema } from './resonance';
 export { VIP, vipSchema, type VipJson } from './vip';
 export { TOKENS, tokensSchema, type TokensJson, type TokenJson } from './tokens';
 export { SIGN_IN, signInSchema, type SignInJson } from './signin';
+export {
+  DAILY_DUNGEONS,
+  dailyDungeonsSchema,
+  type DailyDungeonsJson,
+  type DailyDungeonJson,
+  type DailyDungeonId,
+} from './daily-dungeons';
 export {
   FASHION,
   FASHION_SLOTS,

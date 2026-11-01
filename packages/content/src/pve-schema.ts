@@ -67,15 +67,12 @@ export const trialSchema = z
   })
   .strict();
 
-export const dungeonSchema = z
-  .object({
-    id: z.string().min(1),
-    name: z.string().min(1),
-    weekday: z.number().int().min(0).max(6),
-    desc: z.string().min(1),
-    rewards: rewardSchema,
-    enemy: enemyPoolSchema,
-  })
+/**
+ * R9: stand-in enemies for the source's four daily dungeons (their monster bags are not in the dumps); the
+ * difficulty's trainer level sets the enemy level.
+ */
+export const dungeonEnemiesSchema = z
+  .object({ gold: enemyPoolSchema, vanity: enemyPoolSchema, xp: enemyPoolSchema, shard: enemyPoolSchema })
   .strict();
 
 export const worldBossSchema = z
@@ -102,11 +99,11 @@ export const pveSchema = z
     tower: towerSchema,
     worldBoss: worldBossSchema,
     trials: z.array(trialSchema).min(1),
-    dungeons: z.array(dungeonSchema).min(1),
+    dungeonEnemies: dungeonEnemiesSchema,
   })
   .strict();
 
 export type PveJson = z.infer<typeof pveSchema>;
 export type EnemyPoolJson = z.infer<typeof enemyPoolSchema>;
 export type TrialDefJson = z.infer<typeof trialSchema>;
-export type DungeonDefJson = z.infer<typeof dungeonSchema>;
+

@@ -4,11 +4,12 @@ import { buildConfig } from './config';
 import { createInitialState } from './save';
 import {
   challengeDungeon,
+  claimDungeonChest,
+  sweepDungeon,
   challengeTower,
   challengeTrial,
   challengeWorldBoss,
   claimWorldBossMilestone,
-  dungeonDefs,
   resolvePool,
   sweepTower,
 } from './pve';
@@ -106,22 +107,38 @@ describe('PvE modes (server glue)', () => {
     if (!closed.ok) expect(closed.error).toBe('stage_locked');
   });
 
-  it('runs only the dungeon scheduled for today', () => {
+  it('runs the source daily dungeons: level gates, two runs a day, grades, sweeps and one-off chests', () => {
     const cfg = config();
-    const state = strongState(cfg);
-    const today = dungeonDefs(cfg).find((d) => d.weekday === weekdayUtc(NOW));
-    expect(today).toBeDefined();
-    if (!today) return;
-    const other = dungeonDefs(cfg).find((d) => d.weekday !== weekdayUtc(NOW));
-    const wrong = challengeDungeon(cfg, state, other?.id ?? 'nope', NOW, 5);
-    expect(wrong.ok).toBe(false);
-    if (!wrong.ok) expect(wrong.error).toBe('stage_locked');
+    const base = strongState(cfg);
+    const locked = challengeDungeon(cfg, { ...base, profile: { ...base.profile, level: 1 } }, 'gold', 0, NOW, 5);
+    expect(locked.ok).toBe(false);
+    if (!locked.ok) expect(locked.error).toBe('stage_locked');
 
-    const right = challengeDungeon(cfg, state, today.id, NOW, 5);
-    expect(right.ok).toBe(true);
-    if (!right.ok) return;
-    expect(right.value.extra.dungeonId).toBe(today.id);
-    expect(right.value.state.pve.dungeons.cleared).toContain(today.id);
+    const state = { ...base, profile: { ...base.profile, level: 80, xp: 1e12 } }; // the trainer level follows XP
+    expect(sweepDungeon(cfg, state, 'gold', 0, NOW).ok).toBe(false); // no grade yet
+    const fight = challengeDungeon(cfg, state, 'gold', 0, NOW, 5);
+    if (!fight.ok) throw new Error(fight.message);
+    const { grade, kills } = fight.value.extra;
+    expect(kills).toBeGreaterThanOrEqual(3);
+    expect(grade).not.toBeNull();
+    const entry = cfg.dailyDungeons.dungeons[0]!.difficulties[0]!;
+    expect(fight.value.rewards).toEqual(entry.grades.find((g) => g.grade === grade)!.pay);
+    expect(fight.value.state.pve.dungeons.runs.gold).toBe(1);
+
+    const swept = sweepDungeon(cfg, fight.value.state, 'gold', 0, NOW);
+    if (!swept.ok) throw new Error(swept.message);
+    expect(swept.value.granted).toEqual({ gold: 180_000 });
+    const third = challengeDungeon(cfg, swept.value.state, 'gold', 0, NOW, 6);
+    expect(third.ok).toBe(false);
+    if (!third.ok) expect(third.error).toBe('daily_limit');
+
+    const chest = claimDungeonChest(cfg, swept.value.state, entry.id, 'C');
+    if (!chest.ok) throw new Error(chest.message);
+    expect(chest.value.granted).toEqual(entry.grades[0]!.chest);
+    expect(claimDungeonChest(cfg, chest.value.state, entry.id, 'C').ok).toBe(false);
+    // The next day the runs come back; the chest stays drawn.
+    const tomorrow = challengeDungeon(cfg, chest.value.state, 'gold', 0, NOW + 86_400_000, 7);
+    expect(tomorrow.ok).toBe(true);
   });
 
   it('scores world-boss damage, records the attempt, and caps attempts per day', () => {

@@ -79,6 +79,7 @@ import {
   type SquadMode,
   type StrategyId,
   type TitleSlot,
+  type DungeonGrade,
   type SkillRow,
   type WildInstance,
 } from '@wildbound/engine';
@@ -145,6 +146,8 @@ import { evolutionView } from './growth';
 import { applyGrant, bestIdleRate, bestIdleStageId, stageRewards } from './economy';
 import {
   challengeDungeon as challengeDungeonAction,
+  sweepDungeon as sweepDungeonAction,
+  claimDungeonChest as claimDungeonChestAction,
   challengeTower as challengeTowerAction,
   challengeTrial as challengeTrialAction,
   challengeWorldBoss as challengeWorldBossAction,
@@ -1185,26 +1188,46 @@ export class LocalServer implements GameServer {
     return ok(buildDungeonsView(this.config, state, this.now(state)));
   }
 
-  async challengeDungeon(dungeonId: string, seed?: number): Promise<Result<DungeonBattleResult>> {
+  async challengeDungeon(dungeonId: string, difficulty: number, seed?: number): Promise<Result<DungeonBattleResult>> {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     const state = loaded.value;
-    const outcome = challengeDungeonAction(this.config, state, dungeonId, this.now(state), seed);
+    const outcome = challengeDungeonAction(this.config, state, dungeonId, difficulty, this.now(state), seed);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
-    // R9: the source daily wants two XP-dungeon runs; any daily dungeon counts until R9 copies the source's.
-    let next = this.withQuest(value.state, 'dailyDungeon');
+    // R9: the source daily counts two XP & ASC dungeon runs.
+    let next = dungeonId === 'xp' ? this.withQuest(value.state, 'dailyDungeon') : value.state;
     if (value.win) next = this.withQuest(next, 'winBattle');
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
       battle: value.battle,
       dungeonId: value.extra.dungeonId,
+      difficulty: value.extra.difficulty,
       win: value.win,
-      firstToday: value.extra.firstToday,
+      grade: value.extra.grade,
+      kills: value.extra.kills,
+      damage: value.extra.damage,
       rewards: value.rewards,
       snapshot: committed.value,
     });
+  }
+
+  async sweepDungeon(dungeonId: string, difficulty: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const done = sweepDungeonAction(this.config, loaded.value, dungeonId, difficulty, this.now(loaded.value));
+    if (!done.ok) return fail(done.error, done.message);
+    const next = dungeonId === 'xp' ? this.withQuest(done.value.state, 'dailyDungeon') : done.value.state;
+    return this.commitClaim(next, done.value.granted);
+  }
+
+  async claimDungeonChest(difficultyId: string, grade: DungeonGrade): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const done = claimDungeonChestAction(this.config, loaded.value, difficultyId, grade);
+    if (!done.ok) return fail(done.error, done.message);
+    return this.commitClaim(done.value.state, done.value.granted);
   }
 
   // --- M10 PvP: Arena ------------------------------------------------------

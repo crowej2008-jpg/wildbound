@@ -62,15 +62,12 @@ export interface TrialDef {
   enemy: EnemyPoolSpec;
 }
 
-/** A weekday daily dungeon (material run). */
-export interface DungeonDef {
-  id: string;
-  name: string;
-  /** 0=Sun..6=Sat. */
-  weekday: number;
-  desc: string;
-  rewards: Rewards;
-  enemy: EnemyPoolSpec;
+/** R9: a daily-dungeon grade goal (source dun_score_reward_json): kills or damage, optionally within N rounds. */
+export interface DungeonGradeGoal {
+  grade: 'C' | 'B' | 'A' | 'S';
+  kills?: number;
+  damage?: number;
+  rounds?: number;
 }
 
 /** One weekday's World Boss. */

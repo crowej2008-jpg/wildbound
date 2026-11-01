@@ -10,7 +10,6 @@ import {
 import { curveLevel } from '@wildbound/engine';
 import type { GameConfig } from './config';
 import {
-  dungeonDefs,
   resolveCurve,
   towerTuning,
   trialDefs,
@@ -18,8 +17,10 @@ import {
 } from './pve';
 import {
   canSweep,
-  dungeonsForWeekday,
   ghostRecords,
+  openChests,
+  rollDungeonDay,
+  type DungeonGrade,
   nextTowerFloor,
   rankDamage,
   reachedMilestones,
@@ -169,30 +170,60 @@ export function buildWorldBossView(config: GameConfig, state: AccountState, now:
   };
 }
 
+export interface DungeonDifficultyView {
+  index: number;
+  id: string;
+  name: string;
+  level: number;
+  open: boolean;
+  best: DungeonGrade | null;
+  sweep: Rewards;
+  grades: { grade: DungeonGrade; goal: string; pay: Rewards; chest: Rewards; chestReady: boolean; chestDrawn: boolean }[];
+}
+
 export interface DungeonCardView {
   id: string;
   name: string;
   desc: string;
-  weekday: number;
-  open: boolean;
-  clearedToday: boolean;
-  rewards: Rewards;
+  runsLeft: number;
+  runs: number;
+  difficulties: DungeonDifficultyView[];
 }
 
+function goalText(g: { kills?: number; damage?: number; rounds?: number }): string {
+  const what = g.kills !== undefined ? `Defeat ${g.kills}` : `Deal ${(g.damage ?? 0).toLocaleString()} damage`;
+  return g.rounds !== undefined ? `${what} within ${g.rounds} rounds` : what;
+}
+
+/** R9: the four source daily dungeons, their difficulties, grades and chests. */
 export function buildDungeonsView(config: GameConfig, state: AccountState, now: number): DungeonCardView[] {
-  const weekday = weekdayUtc(now);
-  const open = new Set(dungeonsForWeekday(dungeonDefs(config), weekday).map((d) => d.id));
-  return dungeonDefs(config)
-    .slice()
-    .sort((a, b) => a.weekday - b.weekday)
-    .map((d) => ({
-      id: d.id,
-      name: d.name,
-      desc: d.desc,
-      weekday: d.weekday,
-      open: open.has(d.id),
-      clearedToday: state.pve.dungeons.cleared.includes(d.id),
-      rewards: d.rewards as Rewards,
-    }));
+  const rolled = rollDungeonDay(state.pve.dungeons, dayKey(now));
+  return config.dailyDungeons.dungeons.map((d) => ({
+    id: d.id,
+    name: d.name,
+    desc: d.desc,
+    runs: d.runs,
+    runsLeft: Math.max(0, d.runs - (rolled.runs[d.id] ?? 0)),
+    difficulties: d.difficulties.map((x, index) => {
+      const ready = openChests(rolled, x.id);
+      return {
+        index,
+        id: x.id,
+        name: x.name,
+        level: x.level,
+        open: state.profile.level >= x.level,
+        best: rolled.best[x.id] ?? null,
+        sweep: x.sweep,
+        grades: x.grades.map((g) => ({
+          grade: g.grade,
+          goal: goalText(g),
+          pay: g.pay,
+          chest: g.chest,
+          chestReady: ready.includes(g.grade),
+          chestDrawn: rolled.chests.includes(`${x.id}:${g.grade}`),
+        })),
+      };
+    }),
+  }));
 }
 

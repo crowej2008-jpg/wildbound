@@ -160,7 +160,7 @@
     {
       "id": "silentpeak",
       "name": "Silent Peak",
-      "tagline": "No ultimates land here — win on basic kits alone.",
+      "tagline": "No ultimates land here \u2014 win on basic kits alone.",
       "rule": "noUltimate",
       "unlockLevel": 1,
       "preview": {
@@ -255,7 +255,7 @@
     {
       "id": "moonfall",
       "name": "Moonfall Crypt",
-      "tagline": "Opens Tue, Thu and Sat only — Shade rises with the moon.",
+      "tagline": "Opens Tue, Thu and Sat only \u2014 Shade rises with the moon.",
       "rule": "weekdayBoss",
       "weekdays": [
         2,
@@ -291,178 +291,52 @@
       }
     }
   ],
-  "dungeons": [
-    {
-      "id": "sunforge",
-      "name": "Sunforge Kiln",
-      "weekday": 0,
-      "desc": "Ember runs that bank candy for the week ahead.",
-      "rewards": {
-        "gold": 20000,
-        "candy": 5000,
-        "xp": 300
-      },
-      "enemy": {
-        "factions": [
-          "fire"
-        ],
-        "tiers": [],
-        "count": 4,
-        "baseLevel": 20,
-        "levelSlope": 1.03,
-        "starsEvery": 8,
-        "maxStars": 8,
-        "stageEvery": 16,
-        "maxStage": 2
-      }
+  "dungeonEnemies": {
+    "gold": {
+      "factions": [],
+      "tiers": [],
+      "count": 6,
+      "baseLevel": 10,
+      "levelSlope": 1.0,
+      "starsEvery": 8,
+      "maxStars": 8,
+      "stageEvery": 16,
+      "maxStage": 2
     },
-    {
-      "id": "grovenursery",
-      "name": "Grove Nursery",
-      "weekday": 1,
-      "desc": "Grove runs that yield candy and shards.",
-      "rewards": {
-        "gold": 20000,
-        "candy": 4000,
-        "shard": 300,
-        "xp": 300
-      },
-      "enemy": {
-        "factions": [
-          "grass"
-        ],
-        "tiers": [],
-        "count": 4,
-        "baseLevel": 22,
-        "levelSlope": 1.03,
-        "starsEvery": 8,
-        "maxStars": 8,
-        "stageEvery": 16,
-        "maxStage": 2
-      }
+    "vanity": {
+      "factions": [],
+      "tiers": [],
+      "count": 6,
+      "baseLevel": 10,
+      "levelSlope": 1.0,
+      "starsEvery": 8,
+      "maxStars": 8,
+      "stageEvery": 16,
+      "maxStage": 2
     },
-    {
-      "id": "tidepool",
-      "name": "Tidepool Hollow",
-      "weekday": 2,
-      "desc": "Tide runs that yield evo shards.",
-      "rewards": {
-        "gold": 22000,
-        "shard": 600,
-        "xp": 320
-      },
-      "enemy": {
-        "factions": [
-          "water"
-        ],
-        "tiers": [],
-        "count": 4,
-        "baseLevel": 24,
-        "levelSlope": 1.03,
-        "starsEvery": 8,
-        "maxStars": 8,
-        "stageEvery": 16,
-        "maxStage": 2
-      }
+    "xp": {
+      "factions": [
+        "water"
+      ],
+      "tiers": [],
+      "count": 6,
+      "baseLevel": 10,
+      "levelSlope": 1.0,
+      "starsEvery": 8,
+      "maxStars": 8,
+      "stageEvery": 16,
+      "maxStage": 2
     },
-    {
-      "id": "voltfoundry",
-      "name": "Volt Foundry",
-      "weekday": 3,
-      "desc": "Volt runs that yield ascension stones.",
-      "rewards": {
-        "gold": 24000,
-        "stone": 10,
-        "xp": 340
-      },
-      "enemy": {
-        "factions": [
-          "light"
-        ],
-        "tiers": [],
-        "count": 4,
-        "baseLevel": 26,
-        "levelSlope": 1.03,
-        "starsEvery": 8,
-        "maxStars": 8,
-        "stageEvery": 16,
-        "maxStage": 2
-      }
-    },
-    {
-      "id": "frostreliquary",
-      "name": "Frost Reliquary",
-      "weekday": 4,
-      "desc": "Frost runs that yield gems and stones.",
-      "rewards": {
-        "gold": 26000,
-        "gems": 120,
-        "stone": 6,
-        "xp": 360
-      },
-      "enemy": {
-        "factions": [
-          "light"
-        ],
-        "tiers": [],
-        "count": 4,
-        "baseLevel": 28,
-        "levelSlope": 1.03,
-        "starsEvery": 8,
-        "maxStars": 8,
-        "stageEvery": 16,
-        "maxStage": 2
-      }
-    },
-    {
-      "id": "shadebazaar",
-      "name": "Shade Bazaar",
-      "weekday": 5,
-      "desc": "Shade runs that yield premium credit.",
-      "rewards": {
-        "gold": 28000,
-        "gems": 200,
-        "xp": 380
-      },
-      "enemy": {
-        "factions": [
-          "dark"
-        ],
-        "tiers": [],
-        "count": 4,
-        "baseLevel": 30,
-        "levelSlope": 1.03,
-        "starsEvery": 8,
-        "maxStars": 8,
-        "stageEvery": 16,
-        "maxStage": 2
-      }
-    },
-    {
-      "id": "emberworks",
-      "name": "Emberworks Foundry",
-      "weekday": 6,
-      "desc": "A mixed run that pays the foraged coins.",
-      "rewards": {
-        "gold": 30000,
-        "forestCoin": 40,
-        "islandCoin": 40,
-        "xp": 400
-      },
-      "enemy": {
-        "factions": [
-          "fire",
-          "water"
-        ],
-        "tiers": [],
-        "count": 5,
-        "baseLevel": 32,
-        "levelSlope": 1.03,
-        "starsEvery": 8,
-        "maxStars": 8,
-        "stageEvery": 16,
-        "maxStage": 2
-      }
+    "shard": {
+      "factions": [],
+      "tiers": [],
+      "count": 6,
+      "baseLevel": 10,
+      "levelSlope": 1.0,
+      "starsEvery": 8,
+      "maxStars": 8,
+      "stageEvery": 16,
+      "maxStage": 2
     }
-  ]
+  }
 }

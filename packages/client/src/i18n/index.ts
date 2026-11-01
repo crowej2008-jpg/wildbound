@@ -59,6 +59,8 @@ export const en = {
   'currency.mountStone': 'Mount L.Stone',
   'currency.backDecorStone': 'BD Level Stone',
   'currency.followerStone': 'Follower L.Stone',
+  'currency.pokemonShard4': '4 Star Pokémon Fragments',
+  'currency.cosmeticBox': 'Cosmetic Boxes',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -635,7 +637,7 @@ export const en = {
   'pve.boss': 'World Boss',
   'pve.boss.desc': 'One great boss each day. Score damage, climb the ladder, claim milestones.',
   'pve.dungeons': 'Dungeons',
-  'pve.dungeons.desc': 'Seven daily dungeons, one per weekday, each paying a currency.',
+  'pve.dungeons.desc': 'Four daily dungeons, open every day: two runs each, ten difficulties by trainer level, graded C to S.',
   'pve.training': 'Training Battle',
   'pve.training.desc': 'Replay your squad against an echo squad.',
   'tower.floor': 'Floor',
@@ -678,13 +680,18 @@ export const en = {
   'boss.claimed': 'Claimed',
   'boss.back': 'Back to world boss',
   'boss.reset': 'Attempts reset in',
-  'dungeon.today': 'Open today',
-  'dungeon.cleared': 'Cleared today',
-  'dungeon.closed': 'Opens another day',
-  'dungeon.enter': 'Enter',
+  'dungeon.enter': 'Challenge',
+  'dungeon.sweep': 'Sweep',
   'dungeon.victory': 'Dungeon cleared!',
   'dungeon.defeat': 'Your squad fell.',
-  'dungeon.rewardNote': 'The first clear each day pays rewards.',
+  'dungeon.grade': 'Grade {grade}!',
+  'dungeon.kills': 'Defeated: {n}',
+  'dungeon.damage': 'Damage dealt: {n}',
+  'dungeon.runs': '{n}/{max} runs today',
+  'dungeon.difficulty': 'difficulty',
+  'dungeon.level': 'Lv {level}',
+  'dungeon.sweepPays': 'A sweep pays the S reward (needs a grade on this difficulty):',
+  'dungeon.chest': 'Chest',
   'dungeon.back': 'Back to dungeons',
   'arena.title': 'Arena',
   'arena.subtitle':
@@ -1018,6 +1025,8 @@ export type CurrencyKey =
   | 'mountStone'
   | 'backDecorStone'
   | 'followerStone'
+  | 'pokemonShard4'
+  | 'cosmeticBox'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1063,6 +1072,8 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   mountStone: en['currency.mountStone'],
   backDecorStone: en['currency.backDecorStone'],
   followerStone: en['currency.followerStone'],
+  pokemonShard4: en['currency.pokemonShard4'],
+  cosmeticBox: en['currency.cosmeticBox'],
   privilegeXp: en['currency.privilegeXp'],
 };
 

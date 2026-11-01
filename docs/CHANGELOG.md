@@ -1274,3 +1274,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - `scripts/import-fashion.mjs` → `packages/content/tuning/fashion.json` (source pieces and sets; made-up curve and
   piece stats, owner's call). Server `fashion.ts` (ladders, pieces, sets, account-wide lines); Trainer screen panel.
   Save v33 adds `fashion`; currencies Mount L.Stone, BD Level Stone, Follower L.Stone. ASSUMPTIONS #77.
+
+## R9 part 3 — Daily dungeons from the source (2026-11-01)
+
+- `scripts/import-daily-dungeons.mjs` → `packages/content/tuning/daily-dungeons.json`; engine grades / runs / chests,
+  server fight / sweep / chest, a rebuilt Dungeons page. `pve.json` keeps only stand-in enemy pools per dungeon.
+  Save v34 (dungeon progress). Owner: no fashion set skills. ASSUMPTIONS #78.

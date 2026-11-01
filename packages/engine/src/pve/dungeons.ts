@@ -1,36 +1,56 @@
-import type { DungeonDef } from './types';
+import type { DungeonGradeGoal } from './types';
 
 /**
- * Daily dungeons (M8, PROMPT §7.6): one material run per UTC weekday, cleared
- * once a day. Pure. See docs/design/pve-modes.md.
+ * R9 daily dungeons, from the source (dun_basic_json, dun_score_reward_json): four dungeons open every day, each
+ * with ten difficulties and two runs a day (fight or sweep). A fight is graded C / B / A / S by kills or damage
+ * within the rounds; each difficulty-and-grade chest is paid once ever. Pure.
  */
 
+export type DungeonGrade = DungeonGradeGoal['grade'];
+const ORDER: DungeonGrade[] = ['C', 'B', 'A', 'S'];
+
 export interface DungeonState {
-  /** UTC day-key the `cleared` set belongs to. */
+  /** UTC day-key the run counts belong to. */
   day: string;
-  /** Dungeon ids cleared today. */
-  cleared: string[];
+  /** Runs used today, by dungeon id. */
+  runs: Record<string, number>;
+  /** Best grade ever reached, by difficulty id. */
+  best: Record<string, DungeonGrade>;
+  /** Grade chests already drawn (`difficultyId:grade`); never refilled. */
+  chests: string[];
 }
 
 export function initialDungeonState(day: string): DungeonState {
-  return { day, cleared: [] };
+  return { day, runs: {}, best: {}, chests: [] };
 }
 
-/** Drop the cleared set when the UTC day rolls over. */
+/** The runs reset at the UTC day roll; grades and chests stay. */
 export function rollDungeonDay(state: DungeonState, day: string): DungeonState {
-  return state.day === day ? state : { day, cleared: [] };
+  return state.day === day ? state : { ...state, day, runs: {} };
 }
 
-/** The dungeons open on a given weekday (usually one). */
-export function dungeonsForWeekday(defs: readonly DungeonDef[], weekday: number): DungeonDef[] {
-  return defs.filter((d) => d.weekday === weekday);
+/** The highest grade a fight earned (null = no grade). */
+export function dungeonGrade(goals: readonly DungeonGradeGoal[], result: { kills: number; damage: number; rounds: number }): DungeonGrade | null {
+  let reached: DungeonGrade | null = null;
+  for (const g of goals) {
+    const met =
+      (g.kills === undefined || result.kills >= g.kills) &&
+      (g.damage === undefined || result.damage >= g.damage) &&
+      (g.rounds === undefined || result.rounds <= g.rounds);
+    if (met && (reached === null || ORDER.indexOf(g.grade) > ORDER.indexOf(reached))) reached = g.grade;
+  }
+  return reached;
 }
 
-export function isDungeonCleared(state: DungeonState, id: string): boolean {
-  return state.cleared.includes(id);
+export function betterGrade(a: DungeonGrade | undefined, b: DungeonGrade | null): DungeonGrade | undefined {
+  if (b === null) return a;
+  if (a === undefined) return b;
+  return ORDER.indexOf(b) > ORDER.indexOf(a) ? b : a;
 }
 
-/** Mark a dungeon cleared for the day (idempotent). */
-export function markDungeonCleared(state: DungeonState, id: string): DungeonState {
-  return isDungeonCleared(state, id) ? state : { ...state, cleared: [...state.cleared, id] };
+/** Grades at or below `best` whose chest is not drawn yet. */
+export function openChests(state: DungeonState, difficultyId: string): DungeonGrade[] {
+  const best = state.best[difficultyId];
+  if (!best) return [];
+  return ORDER.slice(0, ORDER.indexOf(best) + 1).filter((g) => !state.chests.includes(`${difficultyId}:${g}`));
 }

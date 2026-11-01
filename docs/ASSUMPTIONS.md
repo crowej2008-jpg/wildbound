@@ -957,6 +957,18 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     1,555, +0.6% / 1,969 / 311; outfits 1,805 + 285, +361 / 57; odd pieces give Pokémon HP %, even ones Pokémon
     Attack %), stars 1–15 (the set skill's stages reach 15), activation 1 shard and each star up star + 1 shards.
     Readings: "Attack" adds to P.ATK and S.ATK; a set gives its highest reached bonus (2, 3 or 5 pieces, its title
-    counting as one); everything applies to every Pokémon and shows under the titles layer of Power. Not built:
-    the set skills (`fashion_suit_skill_json` names skill groups whose effects are not in the dumps). Sources of
+    counting as one); everything applies to every Pokémon and shows under the titles layer of Power. Owner
+    (2026-11-01): no set skills — fashion is stats and cosmetics only. Sources of
     pieces (events, M15) and stones (the Vanity daily dungeon, R9) are not in Wildbound yet.
+
+78. **R9 Daily dungeons.** Copied from the source (`dun_daily_dun_json`, `dun_basic_json`, `dun_score_config_json`,
+    `dun_score_reward_json`): Gold, Vanity, XP & ASC and Shard, open every day; ten difficulties each, opened by
+    trainer level; two runs a day per dungeon (a fight or a sweep); 10-round fights graded C / B / A / S by kills
+    (Vanity: damage), A and S within 7 / 4 rounds; a fight pays its grade's reward (a win with no grade pays the base
+    row, a loss without a grade pays nothing); a sweep pays the S reward; each difficulty's grade chests are paid
+    once ever. Readings: a sweep needs any grade held on that difficulty; a lost fight can still earn a grade from
+    its kills or damage. Stand-ins: the enemies (the monster bags are not in the dumps — Wildbound's enemy curve at
+    the difficulty's level, six of them); VIP extra runs (their price is not in the dumps). New currencies: 4 Star
+    Pokémon Fragments and Cosmetic Boxes (kept until their uses are built). Note: Wildbound's stand-in trainer
+    curve caps at level 80, so the difficulties opening at 82+ wait for the source's trainer-XP table. The daily
+    quest now counts XP & ASC runs only. Replaces the seven M8 weekday dungeons.

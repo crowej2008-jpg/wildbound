@@ -48,6 +48,9 @@ export interface Rewards {
   mountStone?: number;
   backDecorStone?: number;
   followerStone?: number;
+  /** R9: 4 Star Pokémon Fragments and Cosmetic Boxes (daily dungeons; their use comes later). */
+  pokemonShard4?: number;
+  cosmeticBox?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -95,6 +98,8 @@ export const CURRENCY_REWARD_KEYS = [
   'mountStone',
   'backDecorStone',
   'followerStone',
+  'pokemonShard4',
+  'cosmeticBox',
   'privilegeXp',
 ] as const;
 

@@ -15,7 +15,7 @@ Challenges hub at `/combat`; routes `/tower`, `/trials`, `/boss`, `/dungeons`, `
 |---|---|
 | **Tower** | Floors permanent; climbs reset **weekly**, sweeps **daily** (PROMPT §7.6, not the source's per-day reset). Milestone chests. |
 | **Trials** (5) | Stormwall Bastion (faction-locked), Silent Peak (no ultimates), Locked Vale (Lv40 cap), Lastlight Stand (survive 8 rounds), Moonfall Crypt (Tue/Thu/Sat). |
-| **Daily Dungeons** (7, one per weekday) | Sunforge Kiln, Grove Nursery, Tidepool Hollow, Volt Foundry, Frost Reliquary, Shade Bazaar, Emberworks Foundry. |
+| **Daily Dungeons** (R9: the source's 4, open daily) | Gold, Vanity, XP & ASC, Shard — ten difficulties by trainer level, two runs a day, C–S grades, sweeps, one-off grade chests (ASSUMPTIONS #78). Replaced the seven weekday stand-ins. |
 | **World Boss** | 7-day rotation; local ghost ladder (own history + deterministic bots); milestones. |
 | **Link Crystal** | Endgame level lift; unlocks on a Wild that is final-form **and** at form cap; star gate 10★ (our max). Feeds [Resonance](collection-layers.md#resonance). |
 

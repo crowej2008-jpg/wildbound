@@ -703,6 +703,8 @@ export const rewardSchema = z
     mountStone: z.number().nonnegative().optional(),
     backDecorStone: z.number().nonnegative().optional(),
     followerStone: z.number().nonnegative().optional(),
+    pokemonShard4: z.number().nonnegative().optional(),
+    cosmeticBox: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

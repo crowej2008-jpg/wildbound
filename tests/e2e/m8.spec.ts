@@ -40,8 +40,14 @@ test('shows the world boss and its damage milestones', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Fight' })).toBeVisible();
 });
 
-test('lists seven daily dungeons', async ({ page }) => {
+test('lists the four source daily dungeons, gated by trainer level', async ({ page }) => {
   await page.goto('/dungeons');
   await expect(page.getByRole('heading', { name: 'Dungeons' })).toBeVisible();
-  await expect(page.locator('main .card')).toHaveCount(7);
+  await expect(page.locator('main .card')).toHaveCount(4);
+  const gold = page.locator('[data-dungeon="gold"]');
+  await expect(gold.getByRole('heading', { name: 'Gold' })).toBeVisible();
+  await expect(gold.getByText('2/2 runs today')).toBeVisible();
+  await expect(gold.getByText('C · Defeat 3', { exact: true })).toBeVisible();
+  // A fresh trainer is below Gold Entry's level 10.
+  await expect(gold.getByRole('button', { name: 'Challenge' })).toBeDisabled();
 });

@@ -4,8 +4,8 @@ import { isSameUtcWeek, nextWeekStart, weekKey, weekdayUtc } from './reset';
 import { advanceTower, canClimb, canSweep, claimableTowerMilestones, initialTowerState, nextTowerFloor, rollTower, spendSweep, towerFloorReward, towerMilestones, type TowerTuning } from './tower';
 import { isTrialEligible, trialAvailable, trialBattleRules, trialLevelCap, trialOpenOn, trialSurvivalRounds } from './trials';
 import { attackerDamage, canChallengeBoss, claimableMilestones, ghostRecords, initialWorldBossState, rankDamage, reachedMilestones, recordBossDamage, rollWorldBossDay, worldBossForWeekday } from './worldBoss';
-import { dungeonsForWeekday, initialDungeonState, isDungeonCleared, markDungeonCleared, rollDungeonDay } from './dungeons';
-import type { DungeonDef, GeneratedEnemy, TrialDef, WorldBossDef, WorldBossMilestone } from './index';
+import { betterGrade, dungeonGrade, initialDungeonState, openChests, rollDungeonDay } from './dungeons';
+import type { DungeonGradeGoal, GeneratedEnemy, TrialDef, WorldBossDef, WorldBossMilestone } from './index';
 
 const towerTuning: TowerTuning = {
   climbsPerWeek: 20,
@@ -206,25 +206,32 @@ describe('world boss', () => {
   });
 });
 
-const dungeons: DungeonDef[] = [
-  { id: 'mon', name: 'Mon', weekday: 1, desc: '', rewards: { candy: 100 }, enemy: { factions: [], tiers: [], count: 3, baseLevel: 5, levelSlope: 1.1, starsEvery: 5, maxStars: 5, stageEvery: 10, maxStage: 2 } },
-  { id: 'thu', name: 'Thu', weekday: 4, desc: '', rewards: { stone: 1 }, enemy: { factions: [], tiers: [], count: 3, baseLevel: 9, levelSlope: 1.1, starsEvery: 5, maxStars: 5, stageEvery: 10, maxStage: 2 } },
+const goals: DungeonGradeGoal[] = [
+  { grade: 'C', kills: 3 },
+  { grade: 'B', kills: 6 },
+  { grade: 'A', kills: 6, rounds: 7 },
+  { grade: 'S', kills: 6, rounds: 4 },
 ];
 
-describe('dungeons', () => {
-  it('opens one run per weekday', () => {
-    expect(dungeonsForWeekday(dungeons, 4).map((d) => d.id)).toEqual(['thu']);
-    expect(dungeonsForWeekday(dungeons, 2)).toEqual([]);
+describe('R9 daily dungeons', () => {
+  it('grades by kills within the rounds', () => {
+    expect(dungeonGrade(goals, { kills: 2, damage: 0, rounds: 10 })).toBeNull();
+    expect(dungeonGrade(goals, { kills: 3, damage: 0, rounds: 10 })).toBe('C');
+    expect(dungeonGrade(goals, { kills: 6, damage: 0, rounds: 8 })).toBe('B');
+    expect(dungeonGrade(goals, { kills: 6, damage: 0, rounds: 5 })).toBe('A');
+    expect(dungeonGrade(goals, { kills: 6, damage: 0, rounds: 4 })).toBe('S');
+    expect(dungeonGrade([{ grade: 'C', damage: 100_000 }], { kills: 0, damage: 120_000, rounds: 10 })).toBe('C');
+    expect(betterGrade('B', 'C')).toBe('B');
+    expect(betterGrade(undefined, null)).toBeUndefined();
   });
 
-  it('tracks the cleared set and resets it daily', () => {
-    let s = initialDungeonState('2026-10-15');
-    s = markDungeonCleared(s, 'thu');
-    expect(isDungeonCleared(s, 'thu')).toBe(true);
-    expect(markDungeonCleared(s, 'thu')).toBe(s);
+  it('resets runs daily but keeps grades and one-off chests', () => {
+    const s = { ...initialDungeonState('2026-10-15'), runs: { gold: 2 }, best: { d1: 'B' as const }, chests: ['d1:C'] };
+    expect(openChests(s, 'd1')).toEqual(['B']);
     expect(rollDungeonDay(s, '2026-10-15')).toBe(s);
     const next = rollDungeonDay(s, '2026-10-16');
-    expect(next.cleared).toEqual([]);
+    expect(next.runs).toEqual({});
+    expect(next.best).toEqual({ d1: 'B' });
+    expect(next.chests).toEqual(['d1:C']);
   });
 });
-

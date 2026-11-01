@@ -18,3 +18,7 @@ Owner, on the missing `fashion_up_star_json` and per-skin stats: *"just make the
 - Made up: the level curve (fitted to the screen readings at 173, 174 and 200) and each piece's stats
   (the three bonus shapes read on screen), stars 1–15, activation and ascend costs.
 - If the real tables turn up, re-run `scripts/import-fashion.mjs` against them.
+
+## No set skills (owner, 2026-11-01)
+*"i think we will not do the set skills on fashon stuff just stats and cosmetic."* The source's set skills
+(`fashion_suit_skill_json`) are dropped; sets give their stat bonuses only.

@@ -8,7 +8,7 @@ import type {
   StrategyId,
   SummonCost,
   SkillRow,
-  TitleSlot, OrbColour } from '@wildbound/engine';
+  TitleSlot, OrbColour, DungeonGrade } from '@wildbound/engine';
 import type { BattleView } from './battle';
 import type { GachaView } from './gacha';
 import type { ShopView } from './shops';
@@ -146,8 +146,12 @@ export interface TrialBattleResult {
 export interface DungeonBattleResult {
   battle: BattleView;
   dungeonId: string;
+  difficulty: number;
   win: boolean;
-  firstToday: boolean;
+  /** R9: the grade the fight earned (null = none), with its kills and damage. */
+  grade: DungeonGrade | null;
+  kills: number;
+  damage: number;
   rewards: Rewards;
   snapshot: AccountSnapshot;
 }
@@ -407,10 +411,14 @@ export interface GameServer {
   challengeWorldBoss(seed?: number): Promise<Result<WorldBossBattleResult>>;
   /** Claim a reached, unclaimed world-boss damage milestone (M8). */
   claimWorldBossMilestone(index: number): Promise<Result<ClaimResult>>;
-  /** Display-ready daily-dungeon cards, with today's open one (M8). */
+  /** R9: the four source daily dungeons. */
   getDungeons(): Promise<Result<DungeonCardView[]>>;
-  /** Fight today's daily dungeon with the campaign squad (M8). */
-  challengeDungeon(dungeonId: string, seed?: number): Promise<Result<DungeonBattleResult>>;
+  /** R9: fight a daily-dungeon difficulty with the campaign squad (one of the day's runs). */
+  challengeDungeon(dungeonId: string, difficulty: number, seed?: number): Promise<Result<DungeonBattleResult>>;
+  /** R9: sweep a graded difficulty for its S pay (one of the day's runs). */
+  sweepDungeon(dungeonId: string, difficulty: number): Promise<Result<ClaimResult>>;
+  /** R9: draw a difficulty's one-off grade chest. */
+  claimDungeonChest(difficultyId: string, grade: DungeonGrade): Promise<Result<ClaimResult>>;
   /** Display-ready Arena state: credits, rank, attempts, chests, opponents (M10). */
   getArena(): Promise<Result<ArenaView>>;
   /** Display-ready PvP hub: one card per entry point with its live status (M10.5). */

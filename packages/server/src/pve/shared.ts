@@ -1,7 +1,6 @@
 import {
   generateEnemies,
   type AccountState,
-  type DungeonDef,
   type EnemyPoolSpec,
   type ResolvedCurve,
   type Rewards,
@@ -61,9 +60,6 @@ export function trialDefs(config: GameConfig): TrialDef[] {
   return config.pve.trials as TrialDef[];
 }
 
-export function dungeonDefs(config: GameConfig): DungeonDef[] {
-  return config.pve.dungeons as DungeonDef[];
-}
 
 export function worldBossDefs(config: GameConfig): WorldBossDef[] {
   return config.pve.worldBoss.rotation as WorldBossDef[];

@@ -96,6 +96,8 @@ export type CurrencyId =
   | 'mountStone'
   | 'backDecorStone'
   | 'followerStone'
+  | 'pokemonShard4'
+  | 'cosmeticBox'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -142,6 +144,8 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'mountStone',
   'backDecorStone',
   'followerStone',
+  'pokemonShard4',
+  'cosmeticBox',
   'privilegeXp',
 ];
 
@@ -176,6 +180,8 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'mountStone',
   'backDecorStone',
   'followerStone',
+  'pokemonShard4',
+  'cosmeticBox',
   'privilegeXp',
 ];
 

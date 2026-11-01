@@ -40,6 +40,8 @@
     "mountStone": 0,
     "backDecorStone": 0,
     "followerStone": 0,
+    "pokemonShard4": 0,
+    "cosmeticBox": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -90,6 +92,8 @@
     "mountStone": 20000,
     "backDecorStone": 20000,
     "followerStone": 20000,
+    "pokemonShard4": 100,
+    "cosmeticBox": 10,
     "privilegeXp": 300
   }
 }

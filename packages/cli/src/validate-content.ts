@@ -40,6 +40,7 @@ import {
   tokensSchema,
   signInSchema,
   fashionSchema,
+  dailyDungeonsSchema,
   VIP,
   berrySkillsSchema,
   coresSchema,
@@ -100,6 +101,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'tokens.json': tokensSchema as AnySchema,
   'signin.json': signInSchema as AnySchema,
   'fashion.json': fashionSchema as AnySchema,
+  'daily-dungeons.json': dailyDungeonsSchema as AnySchema,
   'pvp.json': pvpSchema as AnySchema,
 };
 
@@ -617,7 +619,7 @@ function crossReferencePve(
     { label: 'tower', factions: PVE.tower.enemy.factions },
     { label: 'worldBoss', factions: PVE.worldBoss.enemy.factions },
     ...PVE.trials.map((t) => ({ label: `trial "${t.id}"`, factions: t.enemy.factions })),
-    ...PVE.dungeons.map((d) => ({ label: `dungeon "${d.id}"`, factions: d.enemy.factions })),
+    ...Object.entries(PVE.dungeonEnemies).map(([id, pool]) => ({ label: `dungeon "${id}"`, factions: pool.factions })),
   ];
   for (const pool of pools) {
     for (const faction of pool.factions) {
@@ -636,14 +638,8 @@ function crossReferencePve(
       errors.push(`pve.json: world boss "${boss.name}" species "${boss.speciesId}" has no species file`);
     }
   }
-  const seenWeekdays = new Map<number, string>();
-  for (const dungeon of PVE.dungeons) {
-    const prev = seenWeekdays.get(dungeon.weekday);
-    if (prev) errors.push(`pve.json: dungeons "${prev}" and "${dungeon.id}" share weekday ${dungeon.weekday}`);
-    seenWeekdays.set(dungeon.weekday, dungeon.id);
-  }
   checks.push(
-    `pve: ${PVE.trials.length} trial(s), ${PVE.dungeons.length} dungeon(s), ${PVE.worldBoss.rotation.length} boss day(s) validated`,
+    `pve: ${PVE.trials.length} trial(s), ${Object.keys(PVE.dungeonEnemies).length} dungeon enemy pool(s), ${PVE.worldBoss.rotation.length} boss day(s) validated`,
   );
 }
 
