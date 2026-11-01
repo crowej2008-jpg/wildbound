@@ -1,6 +1,7 @@
 import { COMBAT_SETTINGS, kitById, kitToEngine } from '@wildbound/content';
 import {
   applySkillLevels,
+  applyPlateSkills,
   computePower,
   emptyLoadout,
   formIndex,
@@ -222,7 +223,8 @@ export function buildWildTeam(
       position,
       side,
       // E4: an Origin's bought skill levels swap in their LV.2 / LV.3 content.
-      kit: applySkillLevels(kitToEngine(kitJson), wild.skillLevels),
+      // R6a: plate skills at stages 6 / 12 / 18.
+      kit: applyPlateSkills(applySkillLevels(kitToEngine(kitJson), wild.skillLevels), state?.plates[wild.id] ?? 0),
       sheet: equipped.sheet,
       power: unitPower,
       level: wild.level,

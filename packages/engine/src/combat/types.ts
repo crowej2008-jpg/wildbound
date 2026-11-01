@@ -528,6 +528,21 @@ export interface KitDef {
   hooksConfig?: Record<string, Record<string, string | number>>;
   /** E4: Origin skill levels — per row, the content at LV.2 and LV.3 (see `applySkillLevels`). */
   levels?: Partial<Record<SkillRow, SkillRowLevels>>;
+  /** R6a: plate skills, unlocked at plate stage 6 / 12 / 18 (see `applyPlateSkills`). */
+  plate?: Partial<Record<'6' | '12' | '18', PlateSkillDef>>;
+}
+
+/** R6a: one plate skill: replacement skills plus added triggers, damage mods and stat mods. */
+export interface PlateSkillDef {
+  text?: string;
+  skills?: Partial<Record<SkillSlot, SkillDef>>;
+  triggers?: TriggerDef[];
+  damageMods?: DamageMod[];
+  statMods?: StatMod[];
+  /** Trigger / damage-mod groups this tier replaces. */
+  dropGroups?: string[];
+  /** A new Counter share for the ultimate's reflect. */
+  counterShare?: number;
 }
 
 /** E4: the four Origin skill rows that level up. */

@@ -1259,6 +1259,9 @@ for (const creature of sheet) {
   fixAttackPercents(kit.skills);
   fixAttackPercents(kit.talents?.triggers);
   applyOverride(kit);
+  // R6a: plate skills (scripts/data/build-kit-overrides.py `plate(...)`), for any kit.
+  const plate = OVERRIDES._plates?.[kit.id];
+  if (plate) kit.plate = plate;
 
   for (const s of creature.slots) {
     CURRENT.sheetSlot = '';

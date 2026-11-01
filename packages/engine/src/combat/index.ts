@@ -69,6 +69,8 @@ export type {
   SpecInput,
   FactionBoost,
   StatSheet,
+  StatMod,
+  PlateSkillDef,
   TalentDef,
   TargetFilter,
   TargetRow,
@@ -81,5 +83,5 @@ export type {
   RoundEffect,
 } from './types';
 export type { CombatSettings } from './settings';
-export { applySkillLevels, type SkillLevels } from './levels';
+export { applySkillLevels, applyPlateSkills, type SkillLevels } from './levels';
 export type { SkillRow, SkillLevelDef, SkillRowLevels } from './types';

@@ -23,3 +23,24 @@ export function applySkillLevels(kit: KitDef, levels: SkillLevels | undefined): 
   }
   return out;
 }
+
+/**
+ * R6a: a Pokémon's plate skills — every tier at or below its plate stage (6 / 12 / 18), in order. A tier
+ * can replace skills, drop trigger / damage-mod groups, and add triggers, damage mods and stat mods.
+ */
+export function applyPlateSkills(kit: KitDef, stage: number): KitDef {
+  if (!kit.plate || stage < 6) return kit;
+  let out: KitDef = kit;
+  for (const tier of ['6', '12', '18'] as const) {
+    if (stage < Number(tier)) break;
+    const def = kit.plate[tier];
+    if (!def) continue;
+    const drop = new Set(def.dropGroups ?? []);
+    const talents = { ...(out.talents ?? {}) };
+    talents.triggers = [...(talents.triggers ?? []).filter((t) => !t.group || !drop.has(t.group)), ...(def.triggers ?? [])];
+    talents.damageMods = [...(talents.damageMods ?? []).filter((m) => !m.group || !drop.has(m.group)), ...(def.damageMods ?? [])];
+    talents.statMods = [...(talents.statMods ?? []), ...(def.statMods ?? [])];
+    out = { ...out, skills: { ...out.skills, ...(def.skills ?? {}) }, talents, ...(def.counterShare !== undefined ? { counterShare: def.counterShare } : {}) };
+  }
+  return out;
+}

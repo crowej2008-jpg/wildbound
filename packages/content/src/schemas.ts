@@ -64,6 +64,10 @@ const conditionSchema = z
     enemiesAtLeast: z.number().int().positive().optional(),
     otherAlliesAtMost: z.number().int().nonnegative().optional(),
     targetClass: classSchema.optional(),
+    /** R4 / R6a: the event's skill slot (onHit / onCrit). */
+    eventSlot: skillSlotSchema.optional(),
+    alliesAliveAtLeast: z.number().int().optional(),
+    alliesAliveBelow: z.number().int().optional(),
   })
   .strict();
 
@@ -423,6 +427,21 @@ const skillRowLevelsSchema = z
   })
   .strict();
 
+/** R6a: one plate skill (tier 6 / 12 / 18): replacement skills plus added triggers / mods / stats. */
+const plateSkillSchema = z
+  .object({
+    text: z.string(),
+    skills: z.object({ normal: skillSchema, basic: skillSchema, ult: skillSchema }).partial().strict().optional(),
+    triggers: z.array(triggerSchema).optional(),
+    damageMods: z.array(damageModSchema).optional(),
+    statMods: z.array(statModSchema).optional(),
+    /** Trigger / damage-mod groups this tier replaces. */
+    dropGroups: z.array(z.string()).optional(),
+    /** A new Counter share for the ultimate's reflect. */
+    counterShare: z.number().min(0).max(1).optional(),
+  })
+  .strict();
+
 export const kitSchema = z
   .object({
     id: z.string().min(1),
@@ -444,6 +463,8 @@ export const kitSchema = z
       .partial()
       .strict()
       .optional(),
+    /** R6a: plate skills by plate stage (6 / 12 / 18). */
+    plate: z.object({ '6': plateSkillSchema, '12': plateSkillSchema, '18': plateSkillSchema }).partial().strict().optional(),
   })
   .strict();
 

@@ -3,6 +3,7 @@ import { buildConfig } from './config';
 import { LocalServer } from './local-server';
 import { upgradePlateAction } from './plates';
 import { createInitialState } from './save';
+import { buildWildTeam } from './battle';
 import { MemoryStore } from './storage';
 
 /** R6a: the source's plates (kb/plate.md; scripts/import-plates.mjs). */
@@ -77,5 +78,22 @@ describe('R6a plates', () => {
     const result = upgradePlateAction(config, state, wild.id);
     expect(result.ok).toBe(false);
     if (!result.ok) expect(result.error).toBe('at_level_cap');
+  });
+
+  it('plate skills switch on at stages 6 / 12 / 18 (Wobbuffet: heal, 180% ult, 80% Counter)', () => {
+    const config = buildConfig();
+    const state = createInitialState(config);
+    const wild = { id: 'wob', speciesId: 'wobbuffet', level: 100, stars: 10, locked: false, acquiredAt: 0 };
+    state.roster.push(wild);
+    const spec = (stage: number) => {
+      state.plates.wob = stage;
+      return buildWildTeam([wild], 'attackers', config, state).specs[0]!.kit;
+    };
+    expect(spec(5).skills.ult.rates).toEqual([1.6]);
+    expect(spec(6).talents?.triggers?.some((t) => t.on === 'afterUlt')).toBe(true);
+    expect(spec(11).skills.ult.rates).toEqual([1.6]);
+    expect(spec(12).skills.ult.rates).toEqual([1.8]);
+    expect(spec(17).counterShare).toBeUndefined();
+    expect(spec(18).counterShare).toBe(0.8);
   });
 });

@@ -11977,5 +11977,396 @@
   "notModelled": [
    "Sanction's +5% Crit Intensity per layer (the +7.5% S.ATK per layer is modelled)"
   ]
+ },
+ "_plates": {
+  "god-ash-pikachu": {
+   "6": {
+    "text": "When opponent obtains shield, increases damage by 30%.",
+    "damageMods": [
+     {
+      "tag": "plate-shield-breaker",
+      "dmg": 0.3,
+      "condition": {
+       "targetShielded": true
+      }
+     }
+    ]
+   },
+   "12": {
+    "text": "Deals 135% S.ATK DMG to two extra opponents, and reduces the amount of healing they receive50%",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "rule": "random",
+         "n": 2
+        },
+        "rate": 1.35,
+        "type": "S"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 2
+        },
+        "buff": {
+         "tag": "pika-heal-cut",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.5,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "30% chance to upgrade healing reduction to healing block and renders target unable to gain Rage within 1 turns",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "chance": 0.3,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "pika-heal-block",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -1.0,
+         "turns": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "pika-rage-block",
+         "kind": "rageBlock",
+         "turns": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "wobbuffet": {
+   "6": {
+    "text": "After ultimate, recover 20% of your maximum HP",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "heal",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "rate": 0.2,
+        "basis": "targetMaxHp"
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Ultimate base DMG increased to 180% S.ATK",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.8
+      ],
+      "rule": "row",
+      "counter": true
+     }
+    }
+   },
+   "18": {
+    "text": "Additional DMG of ultimate increased to 80% of the cumulative damage taken in the last round",
+    "counterShare": 0.8
+   }
+  },
+  "greninja": {
+   "6": {
+    "text": "When Ultimate crits, causes the target to receive additional true damage equal to 70% P.ATK",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "condition": {
+       "eventSlot": "ult"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "rate": 0.7,
+        "type": "P",
+        "trueDamage": true
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Basic attack and skill boost additional 25% crit and 25% crit intensity to opponents holding [Shuriken] mark;add extra basic attack when causing crit attack,up to 1 time",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "perTurn": 1,
+      "condition": {
+       "eventSlot": "normal"
+      },
+      "effects": [
+       {
+        "op": "extraAction",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "slot": "normal"
+       }
+      ]
+     },
+     {
+      "on": "onCrit",
+      "perTurn": 1,
+      "condition": {
+       "eventSlot": "basic"
+      },
+      "effects": [
+       {
+        "op": "extraAction",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "slot": "normal"
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "When normal, basic skills crit, they deal 135% additional P.ATK damage to the opponent's backline.",
+    "triggers": [
+     {
+      "on": "onCrit",
+      "condition": {
+       "eventSlot": "normal"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "rule": "backline"
+        },
+        "rate": 1.35,
+        "type": "P"
+       }
+      ]
+     },
+     {
+      "on": "onCrit",
+      "condition": {
+       "eventSlot": "basic"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "rule": "backline"
+        },
+        "rate": 1.35,
+        "type": "P"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shiny-blastoise": {
+   "6": {
+    "text": "Increases Ultimate's P.ATK DMG RDCT by 50%, plus 30% S.ATK DMG RDCT.",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.35
+      ],
+      "rule": "backline",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "shell-ult",
+         "kind": "stat",
+         "field": "pRdct",
+         "amount": 0.45,
+         "turns": 4,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "shell-ult-s",
+         "kind": "stat",
+         "field": "sRdct",
+         "amount": 0.3,
+         "turns": 4,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Ultimate gives backline allies a [shield] for 24% of Squirtle's max HP. Can be stacked with other [shields]; Increases backline allies' P.ATK and S.ATK by 20% for 3 turns. Stacks up to 1 time",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "shield",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "share": 0.24,
+        "basis": "casterHp"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "buff": {
+         "tag": "tide-guard-atk",
+         "kind": "stat",
+         "field": "atkPct",
+         "amount": 0.2,
+         "turns": 3,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Ultimate inflicts [Regrowth Mark] upon enemies for 2 turns. Stacks up to 1 time. The allies who attack the target marked with [Regrowth Mark] will heal Squirtle for 6% of max HP."
+   }
+  },
+  "psyduck": {
+   "6": {
+    "text": "After rage move, decrease target S.DEF by 30%, lasting 2 rounds, up to 1 layer",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "psy-sdef",
+         "kind": "stat",
+         "field": "sRdct",
+         "amount": -0.3,
+         "bigRounds": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "increase rage move basic damage by 20%",
+    "damageMods": [
+     {
+      "tag": "psy-plate-ult",
+      "slot": "ult",
+      "dmg": 0.2
+     },
+     {
+      "tag": "psy-plate-basic",
+      "slot": "basic",
+      "dmg": 0.2
+     }
+    ]
+   },
+   "18": {
+    "text": "[Zen Control] attached to rage move and basic attack cannot be purified, and the probability of attacking your ally is increased to 80%",
+    "skills": {
+     "basic": {
+      "type": "S",
+      "rates": [
+       1.0
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "zenControlPlus",
+         "chance": null
+        }
+       }
+      ]
+     },
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.65
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "zenControlPlus",
+         "chance": null
+        }
+       }
+      ]
+     }
+    }
+   }
+  }
  }
 }

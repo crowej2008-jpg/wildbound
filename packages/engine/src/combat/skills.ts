@@ -120,7 +120,7 @@ function resolveCast(
       ctx.damageTaken[t.key] = (ctx.damageTaken[t.key] ?? 0) + outcome.dmg;
       // E1: crit / blocked reactions (Scope Lens, Zoom Lens).
       if (outcome.crit && u.alive) {
-        fireTriggers(ctx, u, 'onCrit', { target: t });
+        fireTriggers(ctx, u, 'onCrit', { target: t, slot: skill.slot });
         // E3: allies react to this unit's crit (Origin Rayquaza's linked strike).
         for (const ally of ctx.units) {
           if (ally !== u && ally.alive && ally.side === u.side) fireTriggers(ctx, ally, 'onAllyCrit', { target: t, actor: u });
