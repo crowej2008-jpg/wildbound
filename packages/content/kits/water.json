@@ -1083,6 +1083,141 @@
       ],
       "rageStart": 500,
       "rageOnHit": 125
+    },
+    "plate": {
+      "6": {
+        "text": "After using normal attacks, there is a 10% chance to gain [Thorn], increasing [Thorn] chance to 50% after using basic skills; Increases [Thorn] damage to 135%.",
+        "skills": {
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "thorn",
+                  "kind": "stack",
+                  "turns": 3,
+                  "maxStacks": 1
+                },
+                "chance": 0.5
+              }
+            ]
+          }
+        },
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "chance": 0.1,
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "thorn",
+                  "kind": "stack",
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "thorn"
+            },
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "rate": 0.75,
+                "type": "S",
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Increases Ultimate's S.DEF stealing ratio to 20% and increases self Block by 20% for 2 turns. Stacks up to 1 time; Increases [Thorn] damage to 150%.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "suicune-block",
+                  "kind": "stat",
+                  "field": "block",
+                  "amount": 0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
+          {
+            "on": "onHit",
+            "condition": {
+              "selfHasTag": "thorn"
+            },
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "rate": 0.15,
+                "type": "S",
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "After Ultimate, Gains 25% DMG Reduction for 1 turn. Stacks up to 1 time.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "suicune-rdct",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.25,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1337,6 +1472,171 @@
       ],
       "rageStart": 500,
       "rageOnHit": 125
+    },
+    "plate": {
+      "6": {
+        "text": "[Freezes] target and reduces their Rage by 250",
+        "skills": {
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "freeze",
+                  "chance": null
+                }
+              },
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -250
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Ultimate's target +1",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.35
+            ],
+            "rule": "random",
+            "targets": 4,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "freeze",
+                  "chance": 0.18
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "chill-guard",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.1,
+                  "turns": 4,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "chill-cr",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": 0.1,
+                  "turns": 4,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Converts 15% of Ultimate damage into self HP. Reduces all enemies' SPD by 25 for 2 turns. Stacks up to 1 time.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.35
+            ],
+            "rule": "random",
+            "targets": 4,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "freeze",
+                  "chance": 0.18
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "chill-guard",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": 0.1,
+                  "turns": 4,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "chill-cr",
+                  "kind": "stat",
+                  "field": "critRes",
+                  "amount": 0.1,
+                  "turns": 4,
+                  "maxStacks": 1
+                }
+              }
+            ],
+            "lifesteal": 0.15
+          }
+        },
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "articuno-slow",
+                  "kind": "stat",
+                  "field": "spd",
+                  "amount": -25,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

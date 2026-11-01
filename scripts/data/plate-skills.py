@@ -425,6 +425,197 @@ plate("wind-god-pidgeot", {
 })
 
 
+
+# --- batch 9 -------------------------------------------------------------------------------------
+def _sgap_ult(s):
+    s["effects"][0]["buff"]["amount"] = -1.0  # Healing Reduction -> Healing Block
+
+
+plate("shiny-god-ash-pikachu", {
+    6: {"damageMods": [{"tag": "plate-shield-breaker", "dmg": 0.3, "condition": {"targetShielded": True}}]},
+    12: {"triggers": [trig("afterUlt", [
+        dmg({"rule": "random", "n": 2}, rate=1.6, type="S"),
+        give({"rule": "random", "n": 2}, buff("pika-heal-cut-x", "receiveHealBoost", -0.5, turns=2)),
+    ])]},
+    18: {"skills": {"ult": edited("shiny-god-ash-pikachu", "ult", _sgap_ult)}},
+})
+
+_OFFER = {"selfHasTag": "offer-of-power"}
+plate("shiny-charizard", {
+    6: {"skills": {"ult": edited("shiny-charizard", "ult", lambda s: s["effects"].append(
+        give({"event": True}, buff("charizard-vuln", "dmgRdct", -0.2, turns=1, stacks=1))))}},
+    12: {"triggers": [trig("afterUlt", [give(SELF, buff("charizard-critpow", "critPower", 0.15, turns=2))]),
+                      trig("afterUlt", [give(BACK, buff("blaze-crit-offer", "crit", 0.1, turns=2, stacks=1))],
+                           condition=_OFFER)]},
+    18: {"damageMods": [{"tag": "charizard-vs-def", "slot": "ult", "dmg": 0.25,
+                         "condition": {"targetClass": "guardian", **_OFFER}}]},
+})
+
+
+def _sraichu(stage):
+    def fn(s):
+        s["rates"] = [1.8]
+        for e in s["effects"]:
+            if e["op"] == "control" and e["control"]["kind"] == "paralysis":
+                e["control"]["chance"] = 0.5
+        if stage >= 18:
+            s["targets"] = 4
+            s["effects"].append(give({"event": True}, buff("short-circuit-ult", kind="rageBlock", big=1), chance=0.7))
+    return fn
+
+
+def _sraichu_basic(s):
+    s["rates"] = [1.5]
+    s["effects"][0]["control"]["chance"] = 0.5
+
+
+plate("shiny-raichu", {
+    6: {"skills": {"ult": edited("shiny-raichu", "ult", _sraichu(6))}},
+    12: {"skills": {"basic": edited("shiny-raichu", "basic", _sraichu_basic)}},
+    18: {"skills": {"ult": edited("shiny-raichu", "ult", _sraichu(18))}},
+})
+
+plate("shiny-gengar", {
+    6: {"damageMods": [{"tag": "sgengar-vs-atk", "slot": "ult", "dmg": 0.3, "condition": {"targetClass": "striker"}},
+                       {"tag": "sgengar-vs-skill", "slot": "ult", "dmg": 0.1, "condition": {"targetClass": "adept"}}]},
+    12: {"triggers": [trig("afterUlt", [give({"rule": "backline"}, buff("sgengar-ctrlres", "controlRes", -0.2, turns=2, stacks=1)),
+                                        control({"rule": "backline"}, "silence")])]},
+    18: {"triggers": [trig("afterUlt", [rage(SELF, 150)], condition={"targetControlled": True}, perTurn=1),
+                      trig("afterUlt", [rage(T, -400)], condition={"targetControlled": True}, chance=0.35)]},
+})
+
+
+def _poison_ult(kid, sure, extra):
+    def fn(s):
+        p = next(e for e in s["effects"] if e["op"] == "dot")
+        s["effects"] = [_copy.deepcopy(p) for _ in range(sure)] + [{**_copy.deepcopy(p), "chance": extra}]
+        if sure >= 3 or kid == "all":
+            s["rule"] = "all"
+            s.pop("targets", None)
+    return fn
+
+
+plate("shiny-venusaur", {
+    6: {"skills": {"ult": edited("shiny-venusaur", "ult", _poison_ult("v", 2, 0.6))}},
+    12: {"skills": {"ult": edited("shiny-venusaur", "ult", _poison_ult("all", 2, 0.6))}},
+    18: {"skills": {"ult": edited("shiny-venusaur", "ult", _poison_ult("all", 3, 0.8))}},
+})
+
+
+def _sdarkrai(stage):
+    def fn(s):
+        s["ignoreDefense"] = 0.18
+        if stage >= 18:
+            s["rates"] = [1.95]
+            for e in s["effects"]:
+                if e["op"] == "resource" and e["tag"] == "nightmare":
+                    e["delta"] = 2
+    return fn
+
+
+plate("shiny-darkrai", {
+    6: {"skills": {"ult": edited("shiny-darkrai", "ult", _sdarkrai(6))},
+        "damageMods": [{"tag": "nightmare-plate", "slot": "ult", "dmg": 0.05, "scale": {"resource": "nightmare"}}]},
+    12: {"triggers": [trig("afterUlt", [control(T, "stun", 0.7)],
+                           condition={"selfStackAtLeast": {"tag": "nightmare", "n": 2}})]},
+    18: {"skills": {"ult": edited("shiny-darkrai", "ult", _sdarkrai(18))}},
+})
+
+
+# --- batch 10 ------------------------------------------------------------------------------------
+def _offer_of_power():
+    return trig("afterUlt", [
+        {"op": "damage", "target": SELF, "basis": "casterCurrentHp", "share": 0.2, "trueDamage": True},
+        rage(SELF, fill=True),
+        give(SELF, buff("offer-of-power", "ultBoost", 0.5, turns=2, stacks=1, undisp=True)),
+    ], cooldown=4)
+
+
+def _vs_def(mult):
+    return lambda s: s["bonusVs"].update(mult=mult)
+
+
+def _raikou_ult(s):
+    s["effects"][0]["condition"]["targetHpBelow"] = 0.25
+    s["effects"].append({**_copy.deepcopy(s["effects"][0]),
+                         "condition": {"targetHpBelow": 0.35, "targetClass": "guardian"}})
+
+
+plate("raikou", {
+    6: {"skills": {"normal": edited("raikou", "normal", _vs_def(1.5)), "basic": edited("raikou", "basic", _vs_def(1.5))}},
+    12: {"skills": {"ult": edited("raikou", "ult", _raikou_ult)}},
+    18: {"triggers": [trig("afterUlt", [{"op": "damage", "target": T, "basis": "targetMissingHp", "share": 0.15,
+                                         "trueDamage": True}])]},
+})
+
+
+def _entei(stage):
+    def fn(s):
+        s["rates"] = [0.95 if stage < 18 else 1.15]
+        s["effects"][0]["share"] = 0.1
+    return fn
+
+
+plate("entei", {
+    6: {"triggers": [_offer_of_power()]},
+    12: {"skills": {"ult": edited("entei", "ult", _entei(12))}},
+    18: {"skills": {"ult": edited("entei", "ult", _entei(18))},
+         "triggers": [trig("afterUlt", [give(SELF, buff("entei-crit", "crit", 0.15, turns=2)),
+                                        give(SELF, buff("entei-critpow", "critPower", 0.08, turns=2))])]},
+})
+
+_THORN = {"selfHasTag": "thorn"}
+plate("suicune", {
+    6: {"skills": {"basic": edited("suicune", "basic", lambda s: s["effects"][0].update(chance=0.5))},
+        "triggers": [trig("afterNormal", [give(SELF, buff("thorn", kind="stack", turns=3, stacks=1))], chance=0.1),
+                     trig("onHit", [dmg({"event": True}, rate=0.75, type="S", trueDamage=True)], condition=_THORN)]},
+    12: {"triggers": [trig("afterUlt", [give(SELF, buff("suicune-block", "block", 0.2, turns=2, stacks=1))]),
+                      trig("onHit", [dmg({"event": True}, rate=0.15, type="S", trueDamage=True)], condition=_THORN)]},
+    18: {"triggers": [trig("afterUlt", [give(SELF, buff("suicune-rdct", "dmgRdct", 0.25, turns=2, stacks=1))])]},
+})
+
+
+def _zapdos_ult(s):
+    s["effects"][0]["control"]["chance"] = 0.35
+
+
+plate("zapdos", {
+    6: {"triggers": [trig("afterUlt", [{"op": "extraAction", "target": SELF, "slot": "normal", "noRage": True}],
+                          maxFires=3)]},
+    12: {"triggers": [trig("afterUlt", [give({"rule": "frontline"}, buff("zapdos-thunder", kind="stack", turns=2, stacks=1))]),
+                      trig("onDealDamage", [dmg({"event": True}, rate=0.3, type="P", trueDamage=True)],
+                           condition={"targetHasTag": "zapdos-thunder"})]},
+    18: {"skills": {"ult": edited("zapdos", "ult", _zapdos_ult)},
+         "damageMods": [{"tag": "zapdos-plate-ult", "slot": "ult", "dmg": 0.35}],
+         "triggers": [trig("afterUlt", [give(SELF, buff("zapdos-mult", "dmgBoost", 0.15, turns=3, stacks=1))])]},
+})
+
+
+def _burn_stacks(n, chance=None):
+    def fn(s):
+        for e in s.get("effects", []):
+            if e["op"] == "dot" and e["tag"] == "burning":
+                e["dot"]["maxStacks"] = n
+                if chance is not None and "chance" in e:
+                    e["chance"] = chance
+    return fn
+
+
+plate("moltres", {
+    6: {"triggers": [trig("afterUlt", [give({"rule": "backline"}, buff("moltres-burn-amp", "dotTaken", 0.3, turns=10, stacks=1))])]},
+    12: {"skills": {"basic": edited("moltres", "basic", _burn_stacks(3)), "ult": edited("moltres", "ult", _burn_stacks(3))}},
+    18: {"skills": {"basic": edited("moltres", "basic", _burn_stacks(3, 1.0))},
+         "damageMods": [{"tag": "moltres-basic-burn", "slot": "basic", "dmg": 0.28, "condition": {"targetHasTag": "burning"}}],
+         "triggers": [trig("onHit", [dot({"event": True}, "burning", 0.3, turns=3, stacks=3, true=True)], chance=0.3)]},
+})
+
+plate("articuno", {
+    6: {"skills": {"basic": edited("articuno", "basic", lambda s: s["effects"].append(rage({"event": True}, -250)))}},
+    12: {"skills": {"ult": edited("articuno", "ult", lambda s: s.update(targets=4))}},
+    18: {"skills": {"ult": edited("articuno", "ult", lambda s: s.update(targets=4, lifesteal=0.15))},
+         "triggers": [trig("afterUlt", [give(ENEMY_ALL, buff("articuno-slow", "spd", -25, turns=2, stacks=1))])]},
+})
+
 # --- readings (docs/PORT-REPORT.md "Plate skills") -----------------------------------------------
 note("God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.")
 note("Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).")
@@ -452,3 +643,17 @@ note("Zygarde 12: +10 % ult boost per ultimate as a stacking buff (cap 99, never
 note("Xerneas 12: the ult-crit heal (100 % S.ATK, all allies) fires once per turn; the follow-up normal / basic 80 % heal is not modelled.")
 note("Lunala: [Moongeist hit] is both ult effects (SPD cut + shallow sleep), so 6 raises both chances to 70 %; 12 adds a 70 % 1-round Rage block.")
 note("Wind God Pidgeot 18: Blind (25 % miss, 2 turns) has no hit / dodge stat — read as -25 % DMG dealt, the expected value.")
+
+note("Shiny God Ash-Pikachu: as God Ash-Pikachu (12 at 160 % S.ATK); 18 turns the ult's -50 % healing into a full block.")
+note("Shiny Charizard 12: 'before the Ultimate, +15 % Crit INT' applied right after it (no before-ult trigger), 2 turns; the Offer-of-Power backline Crit 15 % -> 25 % as +10 % while Offer of Power is up.")
+note("Shiny Raichu 6: 'increase Ultimate damage by 180 %' read as the ult rate to 180 % (from 160 %); 18: [Short Circuit] for 1 round (no duration given).")
+note("Shiny Gengar 12: the Silence lands on every ult target, 1 turn (no chance or duration given); 18: the +150 Rage (250 -> 400) once per ult when any target is controlled.")
+note("Shiny Venusaur 12 / 18: the ult hits all enemies; poison stacks are separate guaranteed applications plus one chance roll.")
+note("Shiny Darkrai 6: Nightmare 15 % -> 20 % per stack (+5 %); 12: the 70 % stun once 2 Nightmare stacks are held.")
+
+note("Raikou 6: the vs-[DEF] bonus on normal / basic read as x1.5 (from x1.3); 18: the 15 % missing-HP true damage lands right after the ult (not at round end, and whether or not it killed).")
+note("Entei 12 / 18: 'base damage to 15 % / further +20 %' read as the ult rate +15 / +35 points (80 % -> 95 % -> 115 %); 18's Crit / Crit DMG land after the ult (no before-ult trigger), 2 turns.")
+note("Suicune: [Thorn] 60 % -> 135 % -> 150 % as extra true hits (+75 %, +15 %) while Thorn is up; 12's S.DEF steal not modelled (DEF has no effect).")
+note("Zapdos 6: 'up to 3 times' read as 3 times a battle; 12: [Thunder]'s extra true damage comes only on Zapdos's own hits (no hook for other attackers); 18's DMG Multiplier as DMG Boost.")
+note("Moltres 6: the +30 % taken applies to all DoTs (no per-tag DoT amp); 18: '+100 % stacking chance' — basic burn to 100 %, plus a second 30 % on-hit roll.")
+note("Articuno 6: read as the basic skill (the freezing skill).")

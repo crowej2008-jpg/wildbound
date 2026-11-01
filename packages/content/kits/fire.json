@@ -982,6 +982,136 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "After an Ultimate,Gains [Offer of Power] and max Rage, lose 20% of current HP, increase Ultimate damage by 50% for 1 turn. CD: 4 turns. Can't be dispelled.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "cooldown": 4,
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "basis": "casterCurrentHp",
+                "share": 0.2,
+                "trueDamage": true
+              },
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "fill": true
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "offer-of-power",
+                  "kind": "stat",
+                  "field": "ultBoost",
+                  "amount": 0.5,
+                  "turns": 2,
+                  "maxStacks": 1,
+                  "undispellable": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Increases Ultimate's base damage to 15%, increases bonus damage to 10% of target's current HP",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              0.95
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "highest_hp",
+                  "n": 1
+                },
+                "basis": "targetCurrentHp",
+                "share": 0.1,
+                "trueDamage": true
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Before using Ultimates, increase your Crit Chance by 15% and Crit DMG by 8%. Further increases Ultimate's base damage by 20%",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.15
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "highest_hp",
+                  "n": 1
+                },
+                "basis": "targetCurrentHp",
+                "share": 0.1,
+                "trueDamage": true
+              }
+            ]
+          }
+        },
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.15,
+                  "turns": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "entei-critpow",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.08,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1155,6 +1285,154 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate increases the target's [Burning] damage taken by 30% for 10 turns. Stacks up to 1 time",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "backline"
+                },
+                "buff": {
+                  "tag": "moltres-burn-amp",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.3,
+                  "turns": 10,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "[Burning] Max Stacks+1",
+        "skills": {
+          "basic": {
+            "type": "P",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "burning",
+                "dot": {
+                  "share": 0.3,
+                  "basis": "casterAtk",
+                  "turns": 3,
+                  "maxStacks": 3,
+                  "trueDamage": true
+                },
+                "chance": 0.8
+              }
+            ]
+          },
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.35
+            ],
+            "rule": "backline",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "burning",
+                "dot": {
+                  "share": 0.3,
+                  "basis": "casterAtk",
+                  "turns": 3,
+                  "maxStacks": 3,
+                  "trueDamage": true
+                }
+              }
+            ],
+            "bonusVs": {
+              "condition": {
+                "targetStackAtLeast": {
+                  "tag": "burning",
+                  "n": 2
+                }
+              },
+              "mult": 1.35
+            }
+          }
+        }
+      },
+      "18": {
+        "text": "Increases basic skill damage against [Burning] enemies by 28%. Increases the chance of stacking [Burning] by 100%",
+        "skills": {
+          "basic": {
+            "type": "P",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "burning",
+                "dot": {
+                  "share": 0.3,
+                  "basis": "casterAtk",
+                  "turns": 3,
+                  "maxStacks": 3,
+                  "trueDamage": true
+                },
+                "chance": 1
+              }
+            ]
+          }
+        },
+        "damageMods": [
+          {
+            "tag": "moltres-basic-burn",
+            "slot": "basic",
+            "dmg": 0.28,
+            "condition": {
+              "targetHasTag": "burning"
+            }
+          }
+        ],
+        "triggers": [
+          {
+            "on": "onHit",
+            "chance": 0.3,
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "burning",
+                "dot": {
+                  "share": 0.3,
+                  "basis": "casterAtk",
+                  "turns": 3,
+                  "maxStacks": 3,
+                  "trueDamage": true
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2813,6 +3091,114 @@
           ]
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate inflicts [Vulnerability] on targets, increasing the target's damage taken by 20% for 1 turn. Stacks up to 1 time.",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "back"
+                },
+                "buff": {
+                  "tag": "blaze-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "charizard-vuln",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.2,
+                  "turns": 1,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Before using Ultimate, increase self Crit INT by 15%. When [Offer of Power] is active, increases backline allies' Crit to 25%.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "charizard-critpow",
+                  "kind": "stat",
+                  "field": "critPower",
+                  "amount": 0.15,
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "condition": {
+              "selfHasTag": "offer-of-power"
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "back"
+                },
+                "buff": {
+                  "tag": "blaze-crit-offer",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "When [Offer of Power] is activated, Ultimate deals 25% more damage to [DEF] Pokémon",
+        "damageMods": [
+          {
+            "tag": "charizard-vs-def",
+            "slot": "ult",
+            "dmg": 0.25,
+            "condition": {
+              "targetClass": "guardian",
+              "selfHasTag": "offer-of-power"
+            }
+          }
+        ]
+      }
     }
   },
   {
@@ -3053,6 +3439,101 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Increases Ultimate's damage against [ATK] Pokémons by 30%, against [SKILL] Pokémons by 10%",
+        "damageMods": [
+          {
+            "tag": "sgengar-vs-atk",
+            "slot": "ult",
+            "dmg": 0.3,
+            "condition": {
+              "targetClass": "striker"
+            }
+          },
+          {
+            "tag": "sgengar-vs-skill",
+            "slot": "ult",
+            "dmg": 0.1,
+            "condition": {
+              "targetClass": "adept"
+            }
+          }
+        ]
+      },
+      "12": {
+        "text": "Ultimate reduces target's Control Res by 20% for 2 turns. Stacks up to 1 time; Inflicts [Silence] on the target \n[Silence]: Unable to cast Ultimate",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "backline"
+                },
+                "buff": {
+                  "tag": "sgengar-ctrlres",
+                  "kind": "stat",
+                  "field": "controlRes",
+                  "amount": -0.2,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "control",
+                "target": {
+                  "rule": "backline"
+                },
+                "control": {
+                  "kind": "silence",
+                  "chance": null
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "When using Ultimate upon controlled targets, increases Rage regeneration to 400, with a 35% chance to reduce target's Rage by 400",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "condition": {
+              "targetControlled": true
+            },
+            "perTurn": 1,
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "delta": 150
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "condition": {
+              "targetControlled": true
+            },
+            "chance": 0.35,
+            "effects": [
+              {
+                "op": "rage",
+                "target": {
+                  "event": true
+                },
+                "delta": -400
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

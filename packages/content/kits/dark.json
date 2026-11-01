@@ -2197,6 +2197,96 @@
           }
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Each stack of [Nightmare] grants Ultimate 20% increased damage. Increases Ignore DEF ratio to 18%",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.75
+            ],
+            "rule": "row",
+            "lifesteal": 0.4,
+            "effects": [
+              {
+                "op": "resource",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "nightmare",
+                "delta": 1,
+                "max": 2
+              }
+            ],
+            "ignoreDefense": 0.18
+          }
+        },
+        "damageMods": [
+          {
+            "tag": "nightmare-plate",
+            "slot": "ult",
+            "dmg": 0.05,
+            "scale": {
+              "resource": "nightmare"
+            }
+          }
+        ]
+      },
+      "12": {
+        "text": "After gaining 2 stacks of [Nightmare], Ultimate has a 70% chance to stun the target for 1 turn",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "condition": {
+              "selfStackAtLeast": {
+                "tag": "nightmare",
+                "n": 2
+              }
+            },
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "stun",
+                  "chance": 0.7
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "Increases base damage to 195%. Ultimate directly gains 2 stacks of [Nightmare]",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.95
+            ],
+            "rule": "row",
+            "lifesteal": 0.4,
+            "effects": [
+              {
+                "op": "resource",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "nightmare",
+                "delta": 2,
+                "max": 2
+              }
+            ],
+            "ignoreDefense": 0.18
+          }
+        }
+      }
     }
   },
   {

@@ -946,6 +946,123 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "To [DEF] Pokémon, normal attack and basic skill deal additional damage up to 50%",
+        "skills": {
+          "normal": {
+            "type": "S",
+            "rates": [
+              1
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "short-circuit",
+                  "kind": "rageBlock",
+                  "turns": 1
+                }
+              }
+            ],
+            "bonusVs": {
+              "condition": {
+                "targetClass": "guardian"
+              },
+              "mult": 1.5
+            }
+          },
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.2
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "short-circuit",
+                  "kind": "rageBlock",
+                  "turns": 1
+                }
+              }
+            ],
+            "bonusVs": {
+              "condition": {
+                "targetClass": "guardian"
+              },
+              "mult": 1.5
+            }
+          }
+        }
+      },
+      "12": {
+        "text": "Raises Ultimate's basic finishline to 25%, deals [DEF] Pokémon to 35%",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              2.1
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetCurrentHp",
+                "share": 1,
+                "trueDamage": true,
+                "condition": {
+                  "targetHpBelow": 0.25
+                }
+              },
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetCurrentHp",
+                "share": 1,
+                "trueDamage": true,
+                "condition": {
+                  "targetHpBelow": 0.35,
+                  "targetClass": "guardian"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "If the Ultimate doesn't slay a target, deal true damage equal to target's 15% missing HP at the end of a round. If the target dies of this damage, it will not be regarded as a kill by the ultimate.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMissingHp",
+                "share": 0.15,
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1120,6 +1237,135 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "After using Ultimate each time, launches an extra normal attack up to 3 times; The extra normal attack won't provide rage",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "maxFires": 3,
+            "effects": [
+              {
+                "op": "extraAction",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "slot": "normal",
+                "noRage": true
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Ultimate inflicts [Thunder] upon targets. When attacked, the targets affected by [Thunder] take additional true damage equal to 30% of Zapdos's P.ATK for 2 turns. Stacks up to 1 time",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "frontline"
+                },
+                "buff": {
+                  "tag": "zapdos-thunder",
+                  "kind": "stack",
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          },
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasTag": "zapdos-thunder"
+            },
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "rate": 0.3,
+                "type": "P",
+                "trueDamage": true
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "Increase Ultimate damage by 35% and [Paralysis] chance to 35%. After using an Ultimate, gains 15% DMG Multiplier for 3 turns. Stacks up to 1 time.",
+        "skills": {
+          "ult": {
+            "type": "P",
+            "rates": [
+              1.2
+            ],
+            "rule": "frontline",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "paralysis",
+                  "chance": 0.35
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all",
+                  "rowFilter": "back"
+                },
+                "buff": {
+                  "tag": "zap-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.1,
+                  "bigRounds": 2
+                }
+              }
+            ]
+          }
+        },
+        "damageMods": [
+          {
+            "tag": "zapdos-plate-ult",
+            "slot": "ult",
+            "dmg": 0.35
+          }
+        ],
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "zapdos-mult",
+                  "kind": "stat",
+                  "field": "dmgBoost",
+                  "amount": 0.15,
+                  "turns": 3,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -2523,6 +2769,95 @@
           ]
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "When opponent obtains shield, increases damage by 30%.",
+        "damageMods": [
+          {
+            "tag": "plate-shield-breaker",
+            "dmg": 0.3,
+            "condition": {
+              "targetShielded": true
+            }
+          }
+        ]
+      },
+      "12": {
+        "text": "Deals 160% S.ATK DMG to two extra opponents, and reduces their healing taken by 50%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "random",
+                  "n": 2
+                },
+                "rate": 1.6,
+                "type": "S"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "rule": "random",
+                  "n": 2
+                },
+                "buff": {
+                  "tag": "pika-heal-cut-x",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -0.5,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "Ultimate's Healing Reduction is upgraded to Healing Block",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              2.1
+            ],
+            "rule": "lowest_hp",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "pika-heal-cut",
+                  "kind": "stat",
+                  "field": "receiveHealBoost",
+                  "amount": -1,
+                  "turns": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "pika-rate",
+                  "kind": "stat",
+                  "field": "basicRate",
+                  "amount": 0.4,
+                  "turns": 11,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {
@@ -2635,6 +2970,94 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "Increase Ultimate damage by 180% and [Paralysis] chance to 50%",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.8
+            ],
+            "rule": "random",
+            "targets": 3,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "paralysis",
+                  "chance": 0.5
+                }
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Increases Basic Skill damage to 150% and [Paralysis] chance to 50%",
+        "skills": {
+          "basic": {
+            "type": "S",
+            "rates": [
+              1.5
+            ],
+            "rule": "column",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "paralysis",
+                  "chance": 0.5
+                }
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Ultimate's target +1 and it has a 70% chance to additionally inflict [Short Circuit] on the target\n [Short Circuit]: Unable to regenerate rage",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.8
+            ],
+            "rule": "random",
+            "targets": 4,
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "paralysis",
+                  "chance": 0.5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "short-circuit-ult",
+                  "kind": "rageBlock",
+                  "bigRounds": 1
+                },
+                "chance": 0.7
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {
@@ -2847,6 +3270,194 @@
         }
       ],
       "rageStart": 500
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate enhanced. Now it's guaranteed to inflict 2 stacks of [Poison], with a 60% chance to gain an additional stack.",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              0.9
+            ],
+            "rule": "random",
+            "targets": 4,
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                },
+                "chance": 0.6
+              }
+            ]
+          }
+        }
+      },
+      "12": {
+        "text": "Increases Ultimate’s range to all enemies",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              0.9
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                },
+                "chance": 0.6
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Ultimate enhanced is guaranteed to gain 3 stacks of [Poison], with an 80% chance to gain an additional stack",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              0.9
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dot",
+                "target": {
+                  "event": true
+                },
+                "tag": "poison",
+                "dot": {
+                  "share": 0.02,
+                  "basis": "targetMaxHp",
+                  "turns": 10,
+                  "maxStacks": 25,
+                  "trueDamage": true
+                },
+                "chance": 0.8
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {

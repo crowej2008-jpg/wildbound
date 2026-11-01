@@ -128,12 +128,12 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 - **shiny-darkrai** — Ult: Nightmare's 12% Ignore DEF per stack (DEF has no effect)
 - **shiny-arceus** — Sanction's +5% Crit Intensity per layer (the +7.5% S.ATK per layer is modelled)
 
-## Plate skills (R6a part 2, hand-ported in `scripts/data/plate-skills.py`): 43
+## Plate skills (R6a part 2, hand-ported in `scripts/data/plate-skills.py`): 55
 
 Source: `scripts/data/plate-skills-source.json` (hero_stone_skill_json, 228 skills / 76 Pokémon). Applied by
 `applyPlateSkills` for tiers at or below the Pokémon's plate stage. An empty tier is listed in the readings.
 
-Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, shiny-hoopa, shiny-mewtwo, hoopa, mewtwo, jirachi, solgaleo, meloetta, arceus, shiny-arceus, kyogre, shiny-kyogre, deoxys, mew, shiny-mew, cresselia, shiny-cresselia, celebi, manaphy, infernape, black-kyurem, shiny-kyurem, shaymin, victini, palkia, giratina, zygarde, xerneas, lunala, wind-god-pidgeot.
+Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, shiny-hoopa, shiny-mewtwo, hoopa, mewtwo, jirachi, solgaleo, meloetta, arceus, shiny-arceus, kyogre, shiny-kyogre, deoxys, mew, shiny-mew, cresselia, shiny-cresselia, celebi, manaphy, infernape, black-kyurem, shiny-kyurem, shaymin, victini, palkia, giratina, zygarde, xerneas, lunala, wind-god-pidgeot, shiny-god-ash-pikachu, shiny-charizard, shiny-raichu, shiny-gengar, shiny-venusaur, shiny-darkrai, raikou, entei, suicune, zapdos, moltres, articuno.
 
 - God Ash-Pikachu 12: the two extra targets are picked at random, separately for the hit and the heal cut.
 - Greninja 12: the +25 % Crit / Crit Intensity against [Shuriken] targets is not modelled (no per-target crit mod).
@@ -161,6 +161,18 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Xerneas 12: the ult-crit heal (100 % S.ATK, all allies) fires once per turn; the follow-up normal / basic 80 % heal is not modelled.
 - Lunala: [Moongeist hit] is both ult effects (SPD cut + shallow sleep), so 6 raises both chances to 70 %; 12 adds a 70 % 1-round Rage block.
 - Wind God Pidgeot 18: Blind (25 % miss, 2 turns) has no hit / dodge stat — read as -25 % DMG dealt, the expected value.
+- Shiny God Ash-Pikachu: as God Ash-Pikachu (12 at 160 % S.ATK); 18 turns the ult's -50 % healing into a full block.
+- Shiny Charizard 12: 'before the Ultimate, +15 % Crit INT' applied right after it (no before-ult trigger), 2 turns; the Offer-of-Power backline Crit 15 % -> 25 % as +10 % while Offer of Power is up.
+- Shiny Raichu 6: 'increase Ultimate damage by 180 %' read as the ult rate to 180 % (from 160 %); 18: [Short Circuit] for 1 round (no duration given).
+- Shiny Gengar 12: the Silence lands on every ult target, 1 turn (no chance or duration given); 18: the +150 Rage (250 -> 400) once per ult when any target is controlled.
+- Shiny Venusaur 12 / 18: the ult hits all enemies; poison stacks are separate guaranteed applications plus one chance roll.
+- Shiny Darkrai 6: Nightmare 15 % -> 20 % per stack (+5 %); 12: the 70 % stun once 2 Nightmare stacks are held.
+- Raikou 6: the vs-[DEF] bonus on normal / basic read as x1.5 (from x1.3); 18: the 15 % missing-HP true damage lands right after the ult (not at round end, and whether or not it killed).
+- Entei 12 / 18: 'base damage to 15 % / further +20 %' read as the ult rate +15 / +35 points (80 % -> 95 % -> 115 %); 18's Crit / Crit DMG land after the ult (no before-ult trigger), 2 turns.
+- Suicune: [Thorn] 60 % -> 135 % -> 150 % as extra true hits (+75 %, +15 %) while Thorn is up; 12's S.DEF steal not modelled (DEF has no effect).
+- Zapdos 6: 'up to 3 times' read as 3 times a battle; 12: [Thunder]'s extra true damage comes only on Zapdos's own hits (no hook for other attackers); 18's DMG Multiplier as DMG Boost.
+- Moltres 6: the +30 % taken applies to all DoTs (no per-tag DoT amp); 18: '+100 % stacking chance' — basic burn to 100 %, plus a second 30 % on-hit roll.
+- Articuno 6: read as the basic skill (the freezing skill).
 
 ## Unparsed clause patterns (0 distinct, top 60)
 

@@ -15867,6 +15867,1488 @@
      }
     }
    }
+  },
+  "shiny-god-ash-pikachu": {
+   "6": {
+    "text": "When opponent obtains shield, increases damage by 30%.",
+    "damageMods": [
+     {
+      "tag": "plate-shield-breaker",
+      "dmg": 0.3,
+      "condition": {
+       "targetShielded": true
+      }
+     }
+    ]
+   },
+   "12": {
+    "text": "Deals 160% S.ATK DMG to two extra opponents, and reduces their healing taken by 50%",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "rule": "random",
+         "n": 2
+        },
+        "rate": 1.6,
+        "type": "S"
+       },
+       {
+        "op": "buff",
+        "target": {
+         "rule": "random",
+         "n": 2
+        },
+        "buff": {
+         "tag": "pika-heal-cut-x",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -0.5,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Ultimate's Healing Reduction is upgraded to Healing Block",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       2.1
+      ],
+      "rule": "lowest_hp",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "pika-heal-cut",
+         "kind": "stat",
+         "field": "receiveHealBoost",
+         "amount": -1.0,
+         "turns": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "pika-rate",
+         "kind": "stat",
+         "field": "basicRate",
+         "amount": 0.4,
+         "turns": 11,
+         "maxStacks": 2
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "shiny-charizard": {
+   "6": {
+    "text": "Ultimate inflicts [Vulnerability] on targets, increasing the target's damage taken by 20% for 1 turn. Stacks up to 1 time.",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.0
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "buff": {
+         "tag": "blaze-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.15,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "charizard-vuln",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": -0.2,
+         "turns": 1,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Before using Ultimate, increase self Crit INT by 15%. When [Offer of Power] is active, increases backline allies' Crit to 25%.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "charizard-critpow",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.15,
+         "turns": 2
+        }
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "condition": {
+       "selfHasTag": "offer-of-power"
+      },
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "buff": {
+         "tag": "blaze-crit-offer",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.1,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "When [Offer of Power] is activated, Ultimate deals 25% more damage to [DEF] Pok\u00e9mon",
+    "damageMods": [
+     {
+      "tag": "charizard-vs-def",
+      "slot": "ult",
+      "dmg": 0.25,
+      "condition": {
+       "targetClass": "guardian",
+       "selfHasTag": "offer-of-power"
+      }
+     }
+    ]
+   }
+  },
+  "shiny-raichu": {
+   "6": {
+    "text": "Increase Ultimate damage by 180% and [Paralysis] chance to 50%",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.8
+      ],
+      "rule": "random",
+      "targets": 3,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "paralysis",
+         "chance": 0.5
+        }
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Increases Basic Skill damage to 150% and [Paralysis] chance to 50%",
+    "skills": {
+     "basic": {
+      "type": "S",
+      "rates": [
+       1.5
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "paralysis",
+         "chance": 0.5
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Ultimate's target +1 and it has a 70% chance to additionally inflict [Short Circuit] on the target\n [Short Circuit]: Unable to regenerate rage",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.8
+      ],
+      "rule": "random",
+      "targets": 4,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "paralysis",
+         "chance": 0.5
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "short-circuit-ult",
+         "kind": "rageBlock",
+         "bigRounds": 1
+        },
+        "chance": 0.7
+       }
+      ]
+     }
+    }
+   }
+  },
+  "shiny-gengar": {
+   "6": {
+    "text": "Increases Ultimate's damage against [ATK] Pok\u00e9mons by 30%, against [SKILL] Pok\u00e9mons by 10%",
+    "damageMods": [
+     {
+      "tag": "sgengar-vs-atk",
+      "slot": "ult",
+      "dmg": 0.3,
+      "condition": {
+       "targetClass": "striker"
+      }
+     },
+     {
+      "tag": "sgengar-vs-skill",
+      "slot": "ult",
+      "dmg": 0.1,
+      "condition": {
+       "targetClass": "adept"
+      }
+     }
+    ]
+   },
+   "12": {
+    "text": "Ultimate reduces target's Control Res by 20% for 2 turns. Stacks up to 1 time; Inflicts [Silence] on the target \n[Silence]: Unable to cast Ultimate",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "backline"
+        },
+        "buff": {
+         "tag": "sgengar-ctrlres",
+         "kind": "stat",
+         "field": "controlRes",
+         "amount": -0.2,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "control",
+        "target": {
+         "rule": "backline"
+        },
+        "control": {
+         "kind": "silence",
+         "chance": null
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "When using Ultimate upon controlled targets, increases Rage regeneration to 400, with a 35% chance to reduce target's Rage by 400",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "condition": {
+       "targetControlled": true
+      },
+      "perTurn": 1,
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "delta": 150
+       }
+      ]
+     },
+     {
+      "on": "afterUlt",
+      "condition": {
+       "targetControlled": true
+      },
+      "chance": 0.35,
+      "effects": [
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -400
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shiny-venusaur": {
+   "6": {
+    "text": "Ultimate enhanced. Now it's guaranteed to inflict 2 stacks of [Poison], with a 60% chance to gain an additional stack.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0.9
+      ],
+      "rule": "random",
+      "targets": 4,
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        },
+        "chance": 0.6
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Increases Ultimate\u2019s range to all enemies",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0.9
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        },
+        "chance": 0.6
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Ultimate enhanced is guaranteed to gain 3 stacks of [Poison], with an 80% chance to gain an additional stack",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       0.9
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        }
+       },
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "poison",
+        "dot": {
+         "share": 0.02,
+         "basis": "targetMaxHp",
+         "turns": 10,
+         "maxStacks": 25,
+         "trueDamage": true
+        },
+        "chance": 0.8
+       }
+      ]
+     }
+    }
+   }
+  },
+  "shiny-darkrai": {
+   "6": {
+    "text": "Each stack of [Nightmare] grants Ultimate 20% increased damage. Increases Ignore DEF ratio to 18%",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.75
+      ],
+      "rule": "row",
+      "lifesteal": 0.4,
+      "effects": [
+       {
+        "op": "resource",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "nightmare",
+        "delta": 1,
+        "max": 2
+       }
+      ],
+      "ignoreDefense": 0.18
+     }
+    },
+    "damageMods": [
+     {
+      "tag": "nightmare-plate",
+      "slot": "ult",
+      "dmg": 0.05,
+      "scale": {
+       "resource": "nightmare"
+      }
+     }
+    ]
+   },
+   "12": {
+    "text": "After gaining 2 stacks of [Nightmare], Ultimate has a 70% chance to stun the target for 1 turn",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "condition": {
+       "selfStackAtLeast": {
+        "tag": "nightmare",
+        "n": 2
+       }
+      },
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "stun",
+         "chance": 0.7
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Increases base damage to 195%. Ultimate directly gains 2 stacks of [Nightmare]",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.95
+      ],
+      "rule": "row",
+      "lifesteal": 0.4,
+      "effects": [
+       {
+        "op": "resource",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "tag": "nightmare",
+        "delta": 2,
+        "max": 2
+       }
+      ],
+      "ignoreDefense": 0.18
+     }
+    }
+   }
+  },
+  "raikou": {
+   "6": {
+    "text": "To [DEF] Pok\u00e9mon, normal attack and basic skill deal additional damage up to 50%",
+    "skills": {
+     "normal": {
+      "type": "S",
+      "rates": [
+       1.0
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "short-circuit",
+         "kind": "rageBlock",
+         "turns": 1
+        }
+       }
+      ],
+      "bonusVs": {
+       "condition": {
+        "targetClass": "guardian"
+       },
+       "mult": 1.5
+      }
+     },
+     "basic": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "event": true
+        },
+        "buff": {
+         "tag": "short-circuit",
+         "kind": "rageBlock",
+         "turns": 1
+        }
+       }
+      ],
+      "bonusVs": {
+       "condition": {
+        "targetClass": "guardian"
+       },
+       "mult": 1.5
+      }
+     }
+    }
+   },
+   "12": {
+    "text": "Raises Ultimate's basic finishline to 25%, deals [DEF] Pok\u00e9mon to 35%",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       2.1
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetCurrentHp",
+        "share": 1.0,
+        "trueDamage": true,
+        "condition": {
+         "targetHpBelow": 0.25
+        }
+       },
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetCurrentHp",
+        "share": 1.0,
+        "trueDamage": true,
+        "condition": {
+         "targetHpBelow": 0.35,
+         "targetClass": "guardian"
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "If the Ultimate doesn't slay a target, deal true damage equal to target's 15% missing HP at the end of a round. If the target dies of this damage, it will not be regarded as a kill by the ultimate.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "basis": "targetMissingHp",
+        "share": 0.15,
+        "trueDamage": true
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "entei": {
+   "6": {
+    "text": "After an Ultimate,Gains [Offer of Power] and max Rage, lose 20% of current HP, increase Ultimate damage by 50% for 1 turn. CD: 4 turns. Can't be dispelled.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "cooldown": 4,
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "basis": "casterCurrentHp",
+        "share": 0.2,
+        "trueDamage": true
+       },
+       {
+        "op": "rage",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "fill": true
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "offer-of-power",
+         "kind": "stat",
+         "field": "ultBoost",
+         "amount": 0.5,
+         "turns": 2,
+         "maxStacks": 1,
+         "undispellable": true
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Increases Ultimate's base damage to 15%, increases bonus damage to 10% of target's current HP",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       0.95
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "rule": "highest_hp",
+         "n": 1
+        },
+        "basis": "targetCurrentHp",
+        "share": 0.1,
+        "trueDamage": true
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Before using Ultimates, increase your Crit Chance by 15% and Crit DMG by 8%. Further increases Ultimate's base damage by 20%",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.15
+      ],
+      "rule": "all",
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "rule": "highest_hp",
+         "n": 1
+        },
+        "basis": "targetCurrentHp",
+        "share": 0.1,
+        "trueDamage": true
+       }
+      ]
+     }
+    },
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.15,
+         "turns": 2
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "entei-critpow",
+         "kind": "stat",
+         "field": "critPower",
+         "amount": 0.08,
+         "turns": 2
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "suicune": {
+   "6": {
+    "text": "After using normal attacks, there is a 10% chance to gain [Thorn], increasing [Thorn] chance to 50% after using basic skills; Increases [Thorn] damage to 135%.",
+    "skills": {
+     "basic": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "thorn",
+         "kind": "stack",
+         "turns": 3,
+         "maxStacks": 1
+        },
+        "chance": 0.5
+       }
+      ]
+     }
+    },
+    "triggers": [
+     {
+      "on": "afterNormal",
+      "chance": 0.1,
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "thorn",
+         "kind": "stack",
+         "turns": 3,
+         "maxStacks": 1
+        }
+       }
+      ]
+     },
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHasTag": "thorn"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "rate": 0.75,
+        "type": "S",
+        "trueDamage": true
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Increases Ultimate's S.DEF stealing ratio to 20% and increases self Block by 20% for 2 turns. Stacks up to 1 time; Increases [Thorn] damage to 150%.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "suicune-block",
+         "kind": "stat",
+         "field": "block",
+         "amount": 0.2,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     },
+     {
+      "on": "onHit",
+      "condition": {
+       "selfHasTag": "thorn"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "rate": 0.15,
+        "type": "S",
+        "trueDamage": true
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "After Ultimate, Gains 25% DMG Reduction for 1 turn. Stacks up to 1 time.",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "suicune-rdct",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.25,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "zapdos": {
+   "6": {
+    "text": "After using Ultimate each time, launches an extra normal attack up to 3 times; The extra normal attack won't provide rage",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "maxFires": 3,
+      "effects": [
+       {
+        "op": "extraAction",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "slot": "normal",
+        "noRage": true
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "Ultimate inflicts [Thunder] upon targets. When attacked, the targets affected by [Thunder] take additional true damage equal to 30% of Zapdos's P.ATK for 2 turns. Stacks up to 1 time",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "frontline"
+        },
+        "buff": {
+         "tag": "zapdos-thunder",
+         "kind": "stack",
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     },
+     {
+      "on": "onDealDamage",
+      "condition": {
+       "targetHasTag": "zapdos-thunder"
+      },
+      "effects": [
+       {
+        "op": "damage",
+        "target": {
+         "event": true
+        },
+        "rate": 0.3,
+        "type": "P",
+        "trueDamage": true
+       }
+      ]
+     }
+    ]
+   },
+   "18": {
+    "text": "Increase Ultimate damage by 35% and [Paralysis] chance to 35%. After using an Ultimate, gains 15% DMG Multiplier for 3 turns. Stacks up to 1 time.",
+    "skills": {
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.2
+      ],
+      "rule": "frontline",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "paralysis",
+         "chance": 0.35
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "all",
+         "rowFilter": "back"
+        },
+        "buff": {
+         "tag": "zap-crit",
+         "kind": "stat",
+         "field": "crit",
+         "amount": 0.1,
+         "bigRounds": 2
+        }
+       }
+      ]
+     }
+    },
+    "damageMods": [
+     {
+      "tag": "zapdos-plate-ult",
+      "slot": "ult",
+      "dmg": 0.35
+     }
+    ],
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "zapdos-mult",
+         "kind": "stat",
+         "field": "dmgBoost",
+         "amount": 0.15,
+         "turns": 3,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "moltres": {
+   "6": {
+    "text": "Ultimate increases the target's [Burning] damage taken by 30% for 10 turns. Stacks up to 1 time",
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "backline"
+        },
+        "buff": {
+         "tag": "moltres-burn-amp",
+         "kind": "stat",
+         "field": "dotTaken",
+         "amount": 0.3,
+         "turns": 10,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "12": {
+    "text": "[Burning] Max Stacks+1",
+    "skills": {
+     "basic": {
+      "type": "P",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "burning",
+        "dot": {
+         "share": 0.3,
+         "basis": "casterAtk",
+         "turns": 3,
+         "maxStacks": 3,
+         "trueDamage": true
+        },
+        "chance": 0.8
+       }
+      ]
+     },
+     "ult": {
+      "type": "P",
+      "rates": [
+       1.35
+      ],
+      "rule": "backline",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "burning",
+        "dot": {
+         "share": 0.3,
+         "basis": "casterAtk",
+         "turns": 3,
+         "maxStacks": 3,
+         "trueDamage": true
+        }
+       }
+      ],
+      "bonusVs": {
+       "condition": {
+        "targetStackAtLeast": {
+         "tag": "burning",
+         "n": 2
+        }
+       },
+       "mult": 1.35
+      }
+     }
+    }
+   },
+   "18": {
+    "text": "Increases basic skill damage against [Burning] enemies by 28%. Increases the chance of stacking [Burning] by 100%",
+    "skills": {
+     "basic": {
+      "type": "P",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "burning",
+        "dot": {
+         "share": 0.3,
+         "basis": "casterAtk",
+         "turns": 3,
+         "maxStacks": 3,
+         "trueDamage": true
+        },
+        "chance": 1.0
+       }
+      ]
+     }
+    },
+    "damageMods": [
+     {
+      "tag": "moltres-basic-burn",
+      "slot": "basic",
+      "dmg": 0.28,
+      "condition": {
+       "targetHasTag": "burning"
+      }
+     }
+    ],
+    "triggers": [
+     {
+      "on": "onHit",
+      "chance": 0.3,
+      "effects": [
+       {
+        "op": "dot",
+        "target": {
+         "event": true
+        },
+        "tag": "burning",
+        "dot": {
+         "share": 0.3,
+         "basis": "casterAtk",
+         "turns": 3,
+         "maxStacks": 3,
+         "trueDamage": true
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "articuno": {
+   "6": {
+    "text": "[Freezes] target and reduces their Rage by 250",
+    "skills": {
+     "basic": {
+      "type": "S",
+      "rates": [
+       1.2
+      ],
+      "rule": "column",
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "freeze",
+         "chance": null
+        }
+       },
+       {
+        "op": "rage",
+        "target": {
+         "event": true
+        },
+        "delta": -250
+       }
+      ]
+     }
+    }
+   },
+   "12": {
+    "text": "Ultimate's target +1",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.35
+      ],
+      "rule": "random",
+      "targets": 4,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "freeze",
+         "chance": 0.18
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "chill-guard",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.1,
+         "turns": 4,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "chill-cr",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": 0.1,
+         "turns": 4,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    }
+   },
+   "18": {
+    "text": "Converts 15% of Ultimate damage into self HP. Reduces all enemies' SPD by 25 for 2 turns. Stacks up to 1 time.",
+    "skills": {
+     "ult": {
+      "type": "S",
+      "rates": [
+       1.35
+      ],
+      "rule": "random",
+      "targets": 4,
+      "effects": [
+       {
+        "op": "control",
+        "target": {
+         "event": true
+        },
+        "control": {
+         "kind": "freeze",
+         "chance": 0.18
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "chill-guard",
+         "kind": "stat",
+         "field": "dmgRdct",
+         "amount": 0.1,
+         "turns": 4,
+         "maxStacks": 1
+        }
+       },
+       {
+        "op": "buff",
+        "target": {
+         "side": "ally",
+         "rule": "self"
+        },
+        "buff": {
+         "tag": "chill-cr",
+         "kind": "stat",
+         "field": "critRes",
+         "amount": 0.1,
+         "turns": 4,
+         "maxStacks": 1
+        }
+       }
+      ],
+      "lifesteal": 0.15
+     }
+    },
+    "triggers": [
+     {
+      "on": "afterUlt",
+      "effects": [
+       {
+        "op": "buff",
+        "target": {
+         "rule": "all"
+        },
+        "buff": {
+         "tag": "articuno-slow",
+         "kind": "stat",
+         "field": "spd",
+         "amount": -25,
+         "turns": 2,
+         "maxStacks": 1
+        }
+       }
+      ]
+     }
+    ]
+   }
   }
  },
  "_plateNotes": [
@@ -15895,6 +17377,18 @@
   "Zygarde 12: +10 % ult boost per ultimate as a stacking buff (cap 99, never expires); 18's 'no HP cost above 50 %' has nothing to remove (the port never charges the 8 % HP), so only the below-50 % 8 % lost-HP heal is modelled.",
   "Xerneas 12: the ult-crit heal (100 % S.ATK, all allies) fires once per turn; the follow-up normal / basic 80 % heal is not modelled.",
   "Lunala: [Moongeist hit] is both ult effects (SPD cut + shallow sleep), so 6 raises both chances to 70 %; 12 adds a 70 % 1-round Rage block.",
-  "Wind God Pidgeot 18: Blind (25 % miss, 2 turns) has no hit / dodge stat \u2014 read as -25 % DMG dealt, the expected value."
+  "Wind God Pidgeot 18: Blind (25 % miss, 2 turns) has no hit / dodge stat \u2014 read as -25 % DMG dealt, the expected value.",
+  "Shiny God Ash-Pikachu: as God Ash-Pikachu (12 at 160 % S.ATK); 18 turns the ult's -50 % healing into a full block.",
+  "Shiny Charizard 12: 'before the Ultimate, +15 % Crit INT' applied right after it (no before-ult trigger), 2 turns; the Offer-of-Power backline Crit 15 % -> 25 % as +10 % while Offer of Power is up.",
+  "Shiny Raichu 6: 'increase Ultimate damage by 180 %' read as the ult rate to 180 % (from 160 %); 18: [Short Circuit] for 1 round (no duration given).",
+  "Shiny Gengar 12: the Silence lands on every ult target, 1 turn (no chance or duration given); 18: the +150 Rage (250 -> 400) once per ult when any target is controlled.",
+  "Shiny Venusaur 12 / 18: the ult hits all enemies; poison stacks are separate guaranteed applications plus one chance roll.",
+  "Shiny Darkrai 6: Nightmare 15 % -> 20 % per stack (+5 %); 12: the 70 % stun once 2 Nightmare stacks are held.",
+  "Raikou 6: the vs-[DEF] bonus on normal / basic read as x1.5 (from x1.3); 18: the 15 % missing-HP true damage lands right after the ult (not at round end, and whether or not it killed).",
+  "Entei 12 / 18: 'base damage to 15 % / further +20 %' read as the ult rate +15 / +35 points (80 % -> 95 % -> 115 %); 18's Crit / Crit DMG land after the ult (no before-ult trigger), 2 turns.",
+  "Suicune: [Thorn] 60 % -> 135 % -> 150 % as extra true hits (+75 %, +15 %) while Thorn is up; 12's S.DEF steal not modelled (DEF has no effect).",
+  "Zapdos 6: 'up to 3 times' read as 3 times a battle; 12: [Thunder]'s extra true damage comes only on Zapdos's own hits (no hook for other attackers); 18's DMG Multiplier as DMG Boost.",
+  "Moltres 6: the +30 % taken applies to all DoTs (no per-tag DoT amp); 18: '+100 % stacking chance' \u2014 basic burn to 100 %, plus a second 30 % on-hit roll.",
+  "Articuno 6: read as the basic skill (the freezing skill)."
  ]
 }
