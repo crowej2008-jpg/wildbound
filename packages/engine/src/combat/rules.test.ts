@@ -145,8 +145,8 @@ describe('sustain', () => {
 });
 
 describe('takeTurn actions', () => {
-  it('normal action grants ragePerAction to a SKILL-class unit only (owner 2026-10-31)', () => {
-    for (const [cls, want] of [['adept', 250], ['striker', 0], ['guardian', 0]] as const) {
+  it('normal action grants 125 Rage, 250 for a SKILL-class unit (owner 2026-11-01)', () => {
+    for (const [cls, want] of [['adept', 250], ['striker', 125], ['guardian', 125]] as const) {
       const atk = unit({ key: 'a', side: 'attackers', position: 1, kit: kit({ class: cls }), sheet: sheet(), rage: 0 });
       const def = unit({ key: 'd', side: 'defenders', position: 4, kit: kit(), sheet: sheet({ hp: 100000 }) });
       const ctx = makeCtx({ units: [atk, def], deterministic: true });

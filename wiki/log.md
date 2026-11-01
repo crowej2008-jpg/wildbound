@@ -99,3 +99,11 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner scope: Supremes, Mythics and Origins only (56). Random-team sims at three stages plus long-fight
   runs; Dialga vs the friend's version measured. Page: [E6 tier list](systems/e6-tier-list.md). Harness
   `scripts/balance/tier.ts`.
+
+## [2026-11-01] decision | Action Rage +125, SKILL class +250
+- Owner: "the normal number is +125, +250 is only for pokemon with the skill class". Corrects the
+  2026-10-31 rule (Strikers/Guardians had 0). Page: owner changes.
+- Owner context for E6: the real meta is God Ash Pikachu, Wobbuffet, Greninja, Shiny Blastoise, Psyduck,
+  Origin Lugia, and *"its when they are maxed that things start to get crazy, like plates trinkets and a
+  bunch of stuff we havent added yet"* — the no-gear tier list is a base-kit check only; the geared
+  re-check waits for the retrofit.

@@ -1122,3 +1122,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   unchanged.
 - Recorded a friend's Dialga fallback (ult fills Dialga + 2 allies) — not built; owner keeps the current
   Dialga unless E6 shows it is too strong.
+
+## Owner correction: action Rage +125, SKILL class +250 (2026-11-01)
+
+- Owner: "the normal number is +125, +250 is only for pokemon with the skill class". `ragePerAction` 125
+  and new `ragePerActionByClass` (`{ adept: 250 }`) replace yesterday's SKILL-only gate
+  (`ragePerActionClasses` removed). ASSUMPTIONS #63. Golden replays re-exported.

@@ -47,8 +47,8 @@ export interface CombatSettings {
   rageStrikerStart: number;
   rageMax: number;
   ragePerAction: number;
-  /** Owner 2026-10-31: only these classes gain `ragePerAction` from a normal attack / basic skill. */
-  ragePerActionClasses: WildClass[];
+  /** Owner 2026-11-01: a class's own action Rage, replacing `ragePerAction` (SKILL class: 250). */
+  ragePerActionByClass: Partial<Record<WildClass, number>>;
   /** rage on being hit = this + floor(rageHitScale × hpLost ÷ maxHp) (seen). */
   rageHitBase: number;
   rageHitScale: number;
@@ -113,8 +113,8 @@ function readDefaults(): CombatSettings {
     rageStart: 500,
     rageStrikerStart: 1000,
     rageMax: 1000,
-    ragePerAction: 250,
-    ragePerActionClasses: ['adept'],
+    ragePerAction: 125,
+    ragePerActionByClass: { adept: 250 },
     rageHitBase: 125,
     rageHitScale: 1000,
     ultRageCost: 1000,

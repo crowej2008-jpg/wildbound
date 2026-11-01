@@ -15,7 +15,7 @@ own change to a source skill (see [copy the source exactly](copy-the-source-exac
 |---|---|---|---|
 | Mew / Shiny Mew T4 | "every 1 fallen enemies restore 25% Rage" | *"i want it as every enemies"* | Rage on any enemy death, not only Mew's kills |
 | Snorlax ult | "the lower self HP, the higher the damage, capped at 60%" | *"make it 2% damage per 1% lost"* | +2% damage per 1% HP lost, no cap |
-| Mimikyu T4 | "Extra attacks do not gain Rage" | *"make the extra attacks give rage"* | extra actions gain the normal action Rage — which, after the rule below, is 0 for Mimikyu (Striker) |
+| Mimikyu T4 | "Extra attacks do not gain Rage" | *"make the extra attacks give rage"* | extra actions gain the normal action Rage — which, after the rule below, is +125 for Mimikyu (Striker) |
 | Dialga ult | "Grant backline allies 200 rage" | *"fill all team members including himself rage bar to the max"* | every ally, Dialga too, to 1,000 after the ultimate |
 
 **Dialga fallback (not built).** A friend of the owner suggested Dialga's ultimate fill only Dialga and 2 allies. The owner: keep it as built; "if we decide dialga is too broken we will change and test this". E6 checks Dialga's numbers specifically.
@@ -26,4 +26,4 @@ Code: `scripts/data/build-kit-overrides.py` (comments name the date). Tests: `pa
 | Rule | Source | Owner's words | Built |
 |---|---|---|---|
 | Team-Power cut | a team well below the other's Power deals less damage (both sides) | *"i dont want there to be a cut for weaker teams against stronger teams"* | no cut (`teamPowerCut` false) |
-| Action Rage | every Pokémon gains +250 Rage from a normal attack / basic skill (measured, all classes) | *"pokemon only get +250 rage if they are a skill class"* | only SKILL class (`adept`) gains it; Strikers and Guardians gain 0 (`ragePerActionClasses`) |
+| Action Rage | every Pokémon gains +250 Rage from a normal attack / basic skill (measured, all classes) | *"the normal number is +125, +250 is only for pokemon with the skill class"* (2026-11-01; corrects the 2026-10-31 SKILL-only rule) | +125 for all, +250 for SKILL class (`ragePerActionByClass`) |

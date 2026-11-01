@@ -472,7 +472,7 @@ export const combatSettingsSchema = z
     rageStrikerStart: z.number(),
     rageMax: z.number(),
     ragePerAction: z.number(),
-    ragePerActionClasses: z.array(classSchema),
+    ragePerActionByClass: z.object({ striker: z.number(), guardian: z.number(), adept: z.number() }).partial(),
     rageHitBase: z.number(),
     rageHitScale: z.number(),
     ultRageCost: z.number(),

@@ -171,9 +171,9 @@ export function extraAction(
   if (!noRage && picked !== 'ult') addRage(ctx, u, actionRage(ctx, u));
 }
 
-/** The base Rage a normal attack / basic skill gives its user (owner: SKILL class only). */
+/** The base Rage a normal attack / basic skill gives its user (owner: 125, SKILL class 250). */
 function actionRage(ctx: BattleContext, u: Combatant): number {
-  return ctx.settings.ragePerActionClasses.includes(u.kit.class) ? ctx.settings.ragePerAction : 0;
+  return ctx.settings.ragePerActionByClass[u.kit.class] ?? ctx.settings.ragePerAction;
 }
 
 function rollSkillSlot(ctx: BattleContext, u: Combatant): SkillSlot {

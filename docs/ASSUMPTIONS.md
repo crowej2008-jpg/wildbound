@@ -807,10 +807,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     change from the source, which cuts a weaker team's damage on both sides; `teamPowerCut` keeps the
     measured rule as a switch. Ranked rival `baseLevel` stays 12 (entry 0.67, mid 1.00, strong 0.50,
     maxed 1.00). Still open, with tests: `wiki/systems/combat-numbers.md`.
-63. **Action Rage is SKILL-class only (owner, 2026-10-31: "pokemon only get +250 rage if they are a skill
-    class").** The measured source gives every Pokémon +250 Rage per normal attack / basic skill; here only
-    `adept` (SKILL) Pokémon do — 36 of 84. Strikers and Guardians fill Rage from hits taken, kit and items
-    only. Applies to extra actions too (so Mimikyu's extra attacks, a Striker's, gain 0 base Rage). Setting:
-    `ragePerActionClasses` in `tuning/combat.json`. Balance and Ranked re-checked unchanged; golden replays
-    squad-camp and tidewarden re-exported.
+63. **Action Rage by class (owner, 2026-11-01: "the normal number is +125, +250 is only for pokemon with
+    the skill class").** A normal attack / basic skill gives +125 Rage; SKILL class (`adept`) gets +250 instead.
+    The measured source notes say +250 for every class; the owner's figures replace them (first set on
+    2026-10-31 as SKILL-only +250, corrected the next day). Extra actions get the same (Mimikyu's: +125).
+    SKILL kits' own "generate 1/2 additional Rage" talent (+500, 33 kits, from the owner's sheet) still
+    stacks on top. Settings: `ragePerAction` 125, `ragePerActionByClass` `{ adept: 250 }`. Golden
+    replays squad-camp and tidewarden re-exported.
 

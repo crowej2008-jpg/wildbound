@@ -22,7 +22,7 @@ Every named setting in `tuning/combat.json` checked against the research notes (
 
 ## Already matching the notes (no change)
 Time-out to the defender at 15 rounds · turn order by SPD re-sorted each round · Rage 1,000 / start 500 /
-+250 per action (SKILL class only, owner change) / 125 + share on hit · crit floor 3%, slope 1.2, multiplier max(1.2, 1.2 + Crit INT − ½ Crit
++125 per action, SKILL class +250 (owner change) / 125 + share on hit · crit floor 3%, slope 1.2, multiplier max(1.2, 1.2 + Crit INT − ½ Crit
 Res) (× 1.59 in PvE comes out of the same formula) · block curve over Block − Guard Break, kept ≤ 80% ·
 G = 1 + Boost − RDCT and P = 1 + PvP BST − PvP RDCT (c = 0: the 12% is the defender's "steady") · Ult
 DMG↑/RED own factor · soul factor 0.266 / 80,000 · max-HP-share damage ignores RDCT · DEF does nothing ·
