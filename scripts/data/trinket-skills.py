@@ -394,3 +394,93 @@ trinket("blastoise", per_tier(_mass_healing, [(0.2, 0.04, 4), (0.28, 0.05, 4), (
 
 trinket("venusaur", {t: {} for t in TIERS})
 tnote("Venusaur (Impair DEF): no effect — DEF has no effect. Charizard / Raichu / Blastoise / Gengar: as their Shiny forms at their own numbers.")
+
+# --- batch 8 (last) ------------------------------------------------------------------------------
+trinket("blaziken", per_tier(lambda h: {"triggers": [
+    trig("onKill", [heal(SELF, h, "targetMaxHp")], condition=ON_ULT)]}, [0.1, 0.15, 0.18, 0.22]))
+tnote("Blaziken / Raikou: 'when the Ultimate kills' reads the slot of the killing hit.")
+
+
+def _swampert(atk, breaks):
+    out = {}
+    if atk:
+        out["statMods"] = [{"field": "sAtk", "mult": 1 + atk}]
+    if breaks:
+        out["triggers"] = [trig(on, [{"op": "breakShield", "target": T}]) for on in ATTACKS]
+    return out
+
+
+trinket("swampert", per_tier(_swampert, [(0, True), (0.1, False), (0.1, True), (0.12, True)]))
+tnote("Swampert: the shield break lands after the attack (no before-hit hook) and is not gated on 'not blocked'.")
+
+trinket("sceptile", per_tier(lambda amt, turns, n: {"triggers": [
+    trig("onDealDamage", [give(T, buff("sceptile-dot-amp", "dotTaken", amt, turns=turns, stacks=n))])]},
+    [(0.08, 2, 1), (0.1, 2, 1), (0.12, 2, 2), (0.15, 3, 2)]))
+
+
+def _typhlosion(atk, normal_missing, normal_current, ult):
+    t = [trig("afterBasic", [{"op": "damage", "target": {"rule": "backline"}, "basis": "targetMissingHp", "share": 0.08}])]
+    if normal_missing or normal_current:
+        t.append(trig("afterNormal", [{"op": "damage", "target": {"rule": "backline"},
+                                        "basis": "targetCurrentHp" if normal_current else "targetMissingHp", "share": 0.08}]))
+    if ult:
+        t.append(trig("afterUlt", [{"op": "damage", "target": {"rule": "backline"}, "basis": "targetCurrentHp", "share": 0.08}]))
+    return {"triggers": t, **({"statMods": [{"field": "sAtk", "mult": 1 + atk}]} if atk else {})}
+
+
+trinket("typhlosion", per_tier(_typhlosion, [(0, False, False, False), (0.1, False, False, False),
+                                             (0.12, True, False, False), (0.15, False, True, True)]))
+
+
+def _feraligatr(block, bp, shield_share):
+    t = [trig("onBlock", [shield(SELF, shield_share, "casterHp")])]
+    if block:
+        t.append(trig("afterUlt", [give(SELF, buff("feraligatr-block", "block", block, turns=2, stacks=1)),
+                                   give(SELF, buff("feraligatr-bp", "blockPower", bp, turns=2, stacks=1))]))
+    return {"triggers": t}
+
+
+trinket("feraligatr", per_tier(_feraligatr, [(0, 0, 0.05), (0.15, 0.05, 0.05), (0.25, 0.08, 0.06), (0.35, 0.1, 0.08)]))
+tnote("Feraligatr: the block shield goes to Feraligatr only ('the ally above' has no target rule); its 3-stack cap and 2 turns are not kept.")
+
+
+def _meganium(dot_atk, immune_turns):
+    t = [trig("battleStart", [give(SELF, buff("meganium-immune", kind="immune", turns=immune_turns))])]
+    if dot_atk:
+        t.append(trig("onDealDamage", [give(SELF, buff("meganium-dot-satk", "sAtk", dot_atk, turns=3, stacks=3))],
+                      condition={"targetHasDot": True}))
+    return {"triggers": t}
+
+
+trinket("meganium", per_tier(_meganium, [(0, 2), (0.05, 2), (0.05, 3), (0.05, 3)]))
+tnote("Meganium: Lv 40's 'all status ailments' is the same control immunity (DoTs still land).")
+
+trinket("slaking", per_tier(lambda h: {"triggers": [
+    trig("afterUlt", [heal({"side": "ally", "rule": "lowest_hp", "n": 1}, h, "targetMissingHp")])]},
+    [0.08, 0.12, 0.16, 0.2]))
+
+
+def _dragonite(crit, n):
+    out = {"triggers": [trig("onCrit", [{"op": "dispel", "target": T, "count": n}])]}
+    if crit:
+        out["statMods"] = [{"field": "crit", "add": crit}]
+    return out
+
+
+trinket("dragonite", per_tier(_dragonite, [(0, 1), (0.1, 1), (0.18, 1), (0.25, 2)]))
+tnote("Dragonite: the Lv 20-40 text's 'removes 10 % / 18 % / 25 % 1 buff' read as a chance-free removal of 1 / 1 / 2 buffs.")
+
+trinket("tyranitar", per_tier(lambda amt, turns, n: {"triggers": [
+    trig("onHit", [give(T, buff("tyranitar-ctrlres-hit", "controlRes", -amt, turns=turns, stacks=n))])]},
+    [(0.1, 2, 2), (0.12, 3, 2), (0.16, 3, 3), (0.2, 3, 3)]))
+
+
+def _salamence(amt):
+    effs = [{"op": "removeBuff", "target": SELF, "tag": "salamence-fallen"}]
+    for k in range(6, 0, -1):
+        effs.append(give(SELF, buff("salamence-fallen", "atkPct", round(amt * k, 4), turns=1, undisp=True),
+                         condition={"enemiesDeadAtLeast": k}))
+    return {"triggers": [trig("turnStart", effs)]}
+
+
+trinket("salamence", per_tier(_salamence, [0.08, 0.1, 0.13, 0.16]))

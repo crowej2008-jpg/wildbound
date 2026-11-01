@@ -1584,6 +1584,104 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "If the attack is not blocked, target takes 8% more damage from all types of DoT for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sceptile-dot-amp",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.08,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "If the attack is not blocked, target takes 10% more damage from all types of DoT for 2 turns. Stacks up to 1 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sceptile-dot-amp",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "If the attack is not blocked, target takes 12% more damage from all types of DoT for 2 turns. Stacks up to 2 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sceptile-dot-amp",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.12,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "If the attack is not blocked, target takes 15% more damage from all types of DoT for 3 turns. Stacks up to 2 times.",
+        "triggers": [
+          {
+            "on": "onDealDamage",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "sceptile-dot-amp",
+                  "kind": "stat",
+                  "field": "dotTaken",
+                  "amount": 0.15,
+                  "turns": 3,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1771,6 +1869,165 @@
       "18": {
         "text": "Ultimate increases the Rage of the ally below your position by 50%."
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "During the first 2 turns of battle, immune to all control-impairing effects",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "meganium-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When attacking the enemies affected by  [DoT], increases your S.ATK by 5% for 3 turns. Stacks up to 3 times; Be immune to all control-impairing effects for the first 2 turns.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "meganium-immune",
+                  "kind": "immune",
+                  "turns": 2
+                }
+              }
+            ]
+          },
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasDot": true
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "meganium-dot-satk",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.05,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When attacking the enemies affected by  [DoT], increases your S.ATK by 5% for 3 turns. Stacks up to 3 times; Be immune to all control-impairing effects for the first 3 turns.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "meganium-immune",
+                  "kind": "immune",
+                  "turns": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasDot": true
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "meganium-dot-satk",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.05,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When attacking the enemies affected by  [DoT], increases your S.ATK by 5% for 3 turns. Stacks up to 3 times; Be immune to all status ailments for the first 3 turns.",
+        "triggers": [
+          {
+            "on": "battleStart",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "meganium-immune",
+                  "kind": "immune",
+                  "turns": 3
+                }
+              }
+            ]
+          },
+          {
+            "on": "onDealDamage",
+            "condition": {
+              "targetHasDot": true
+            },
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "meganium-dot-satk",
+                  "kind": "stat",
+                  "field": "sAtk",
+                  "amount": 0.05,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1952,6 +2209,512 @@
                   "amount": 0.08,
                   "turns": 5,
                   "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "At the start of each turn, every fallen opponent increases your ATK by 8%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "salamence-fallen"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.48,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 6
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.4,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.32,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.24,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.16,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.08,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "At the start of each turn, every fallen opponent increases your ATK by 10%",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "salamence-fallen"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.6,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 6
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.5,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.4,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.3,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.2,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.1,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "At the start of each turn, every fallen opponent increases your ATK by 13%. Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "salamence-fallen"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.78,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 6
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.65,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.52,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.39,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.26,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.13,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "At the start of each turn, every fallen opponent increases your ATK by 16%. Cannot be dispelled.",
+        "triggers": [
+          {
+            "on": "turnStart",
+            "effects": [
+              {
+                "op": "removeBuff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "tag": "salamence-fallen"
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.96,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 6
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.8,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 5
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.64,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 4
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.48,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 3
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.32,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 2
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "salamence-fallen",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.16,
+                  "turns": 1,
+                  "undispellable": true
+                },
+                "condition": {
+                  "enemiesDeadAtLeast": 1
                 }
               }
             ]

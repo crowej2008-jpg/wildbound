@@ -1247,6 +1247,143 @@
           }
         }
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "When an attack is not blocked, break the opponent’s [shield] effect before landing any attack.",
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "breakShield",
+                "target": {
+                  "event": true
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "breakShield",
+                "target": {
+                  "event": true
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "breakShield",
+                "target": {
+                  "event": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Increases S.ATK by 10% in battles. Cannot be dispelled.",
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.1
+          }
+        ]
+      },
+      "30": {
+        "text": "Increases S.ATK by 10% in battles. Cannot be dispelled. When an attack is not blocked, break the opponent's [shield] effect before landing any attack.",
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.1
+          }
+        ],
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "breakShield",
+                "target": {
+                  "event": true
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "breakShield",
+                "target": {
+                  "event": true
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "breakShield",
+                "target": {
+                  "event": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Increases S.ATK by 12% in battles. Cannot be dispelled.",
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.12
+          }
+        ],
+        "triggers": [
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "breakShield",
+                "target": {
+                  "event": true
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "breakShield",
+                "target": {
+                  "event": true
+                }
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "breakShield",
+                "target": {
+                  "event": true
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1399,6 +1536,189 @@
                 },
                 "share": 0.1,
                 "basis": "casterHp"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Upon a successful block, you and the ally above you gain a [shield] for 5% of max HP. Lasts 2 turns. Stacks up to 3 times. Can be stacked with other [shields].",
+        "triggers": [
+          {
+            "on": "onBlock",
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 0.05,
+                "basis": "casterHp"
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "After using the Ultimate, gain 15% Block and 5% Block Intensity for 2 turns. Stacks up to 1 times. Upon a successful block, you and the ally above you gain a [shield] for 5% of your max HP. Lasts 2 turns. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "onBlock",
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 0.05,
+                "basis": "casterHp"
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "feraligatr-block",
+                  "kind": "stat",
+                  "field": "block",
+                  "amount": 0.15,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "feraligatr-bp",
+                  "kind": "stat",
+                  "field": "blockPower",
+                  "amount": 0.05,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "After using the Ultimate, gain 25% Block and 8% Block Intensity for 2 turns. Stacks up to 1 times. Upon a successful block, you and the ally above you gain a [shield] for 6% of your max HP. Lasts 2 turns. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "onBlock",
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 0.06,
+                "basis": "casterHp"
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "feraligatr-block",
+                  "kind": "stat",
+                  "field": "block",
+                  "amount": 0.25,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "feraligatr-bp",
+                  "kind": "stat",
+                  "field": "blockPower",
+                  "amount": 0.08,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "After using the Ultimate, gain 35% Block and 10% Block Intensity for 2 turns. Stacks up to 1 times. Upon a successful block, you and the ally above you gain a [shield] for 8% of your max HP. Lasts 2 turns. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "onBlock",
+            "effects": [
+              {
+                "op": "shield",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "share": 0.08,
+                "basis": "casterHp"
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "feraligatr-block",
+                  "kind": "stat",
+                  "field": "block",
+                  "amount": 0.35,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
+              },
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "feraligatr-bp",
+                  "kind": "stat",
+                  "field": "blockPower",
+                  "amount": 0.1,
+                  "turns": 2,
+                  "maxStacks": 1
+                }
               }
             ]
           }
@@ -1672,6 +1992,88 @@
           }
         ]
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Ultimate heals the ally with lowest HP for 8% of missing HP",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "rate": 0.08,
+                "basis": "targetMissingHp"
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Ultimate heals the ally with lowest HP for 12% of missing HP",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "rate": 0.12,
+                "basis": "targetMissingHp"
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Ultimate heals the ally with lowest HP for 16% of missing HP",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "rate": 0.16,
+                "basis": "targetMissingHp"
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Ultimate heals the ally with lowest HP for 20% of missing HP",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "lowest_hp",
+                  "n": 1
+                },
+                "rate": 0.2,
+                "basis": "targetMissingHp"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1849,6 +2251,94 @@
             ]
           }
         }
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "When attacks crit, additionally removes 1 buff from targets",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "dispel",
+                "target": {
+                  "event": true
+                },
+                "count": 1
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Gain 10% Crit bonus in battles. Cannot be dispelled. When attacks crit, additionally removes 10% 1 from targets",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "dispel",
+                "target": {
+                  "event": true
+                },
+                "count": 1
+              }
+            ]
+          }
+        ],
+        "statMods": [
+          {
+            "field": "crit",
+            "add": 0.1
+          }
+        ]
+      },
+      "30": {
+        "text": "Gain 18% Crit bonus in battles. Cannot be dispelled. When attacks crit, additionally removes 18% 1 from targets",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "dispel",
+                "target": {
+                  "event": true
+                },
+                "count": 1
+              }
+            ]
+          }
+        ],
+        "statMods": [
+          {
+            "field": "crit",
+            "add": 0.18
+          }
+        ]
+      },
+      "40": {
+        "text": "Gain 25% Crit bonus in battles. Cannot be dispelled. When attacks crit, additionally removes 25% 2 from targets",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "effects": [
+              {
+                "op": "dispel",
+                "target": {
+                  "event": true
+                },
+                "count": 2
+              }
+            ]
+          }
+        ],
+        "statMods": [
+          {
+            "field": "crit",
+            "add": 0.25
+          }
+        ]
       }
     }
   },

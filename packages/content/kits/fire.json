@@ -1644,6 +1644,96 @@
       "18": {
         "text": "Ultimate prioritizes the enemies with lowest HP."
       }
+    },
+    "trinket": {
+      "10": {
+        "text": "Whenever the Ultimate kills an enemy, heal self for 10% HP",
+        "triggers": [
+          {
+            "on": "onKill",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.1,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Whenever the Ultimate kills an enemy, heal self for 15% HP",
+        "triggers": [
+          {
+            "on": "onKill",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.15,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "Whenever the Ultimate kills an enemy, heal self for 18% HP",
+        "triggers": [
+          {
+            "on": "onKill",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.18,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "Whenever the Ultimate kills an enemy, heal self for 22% HP",
+        "triggers": [
+          {
+            "on": "onKill",
+            "condition": {
+              "eventSlot": "ult"
+            },
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.22,
+                "basis": "targetMaxHp"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1810,6 +1900,137 @@
                 "trueDamage": true
               }
             ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "Basic skills cause target's backline allies to take damage equal to 8% of missing HP",
+        "triggers": [
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "backline"
+                },
+                "basis": "targetMissingHp",
+                "share": 0.08
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "Increases S.ATK 10%, which cannot be dispelled. Basic skills inflict 8% of lost HP damage against rear-rank targets.",
+        "triggers": [
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "backline"
+                },
+                "basis": "targetMissingHp",
+                "share": 0.08
+              }
+            ]
+          }
+        ],
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.1
+          }
+        ]
+      },
+      "30": {
+        "text": "Increases S.ATK 12%, which cannot be dispelled. Basic skills inflict 8% of lost HP damage against rear-rank targets. Normal attacks inflict 8% of lost HP against rear-rank targets.",
+        "triggers": [
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "backline"
+                },
+                "basis": "targetMissingHp",
+                "share": 0.08
+              }
+            ]
+          },
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "backline"
+                },
+                "basis": "targetMissingHp",
+                "share": 0.08
+              }
+            ]
+          }
+        ],
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.12
+          }
+        ]
+      },
+      "40": {
+        "text": "During battle, Increases S.ATK by 15%, which can't be dispelled; Basic skills deal damage equal to 8% of missing HP against backline targets. Normal attack inflicts damage equal to 8% current HP against backline targets. Ultimate inflicts damage equal to 8% current HP against backline targets.",
+        "triggers": [
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "backline"
+                },
+                "basis": "targetMissingHp",
+                "share": 0.08
+              }
+            ]
+          },
+          {
+            "on": "afterNormal",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "backline"
+                },
+                "basis": "targetCurrentHp",
+                "share": 0.08
+              }
+            ]
+          },
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "rule": "backline"
+                },
+                "basis": "targetCurrentHp",
+                "share": 0.08
+              }
+            ]
+          }
+        ],
+        "statMods": [
+          {
+            "field": "sAtk",
+            "mult": 1.15
           }
         ]
       }
@@ -2115,6 +2336,104 @@
                   "amount": 0.18,
                   "turns": 2,
                   "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "trinket": {
+      "10": {
+        "text": "When attacked, reduces the opponent's Control Res by 10% for 2 turns. Stacks up to 2 times.",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "tyranitar-ctrlres-hit",
+                  "kind": "stat",
+                  "field": "controlRes",
+                  "amount": -0.1,
+                  "turns": 2,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20": {
+        "text": "When attacked, reduces the opponent's Control Res by 12% for 3 turns. Stacks up to 2 times.",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "tyranitar-ctrlres-hit",
+                  "kind": "stat",
+                  "field": "controlRes",
+                  "amount": -0.12,
+                  "turns": 3,
+                  "maxStacks": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "30": {
+        "text": "When attacked, reduces the opponent's Control Res by 16% for 3 turns. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "tyranitar-ctrlres-hit",
+                  "kind": "stat",
+                  "field": "controlRes",
+                  "amount": -0.16,
+                  "turns": 3,
+                  "maxStacks": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "40": {
+        "text": "When attacked, reduces the opponent's Control Res by 20% for 3 turns. Stacks up to 3 times.",
+        "triggers": [
+          {
+            "on": "onHit",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "tyranitar-ctrlres-hit",
+                  "kind": "stat",
+                  "field": "controlRes",
+                  "amount": -0.2,
+                  "turns": 3,
+                  "maxStacks": 3
                 }
               }
             ]

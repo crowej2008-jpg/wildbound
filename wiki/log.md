@@ -174,3 +174,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R6b Trinkets part 1
 - Source trinket stats, prices and unlock; save v25. Own items have no in-game source until shops (R9).
   Skills worksheet ready (371 texts). ASSUMPTIONS #68.
+
+## [2026-11-01] update | R6b part 2 Trinket skills done
+- 72 holders' trinket skills ported (Shiny Kyogre / Mew / Cresselia / Kyurem list none). Not modelled: Zygarde,
+  Lunala, Lugia (need HP-fed counters). Next: R6d Berries.

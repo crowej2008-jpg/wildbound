@@ -1183,3 +1183,13 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Server `trinkets.ts`: holder lookup, unlock (6 Pokémon at Lv 220, the holder at 7★), own-item price,
   `grantTrinketItem` (debug); the card says when a Pokémon has no trinket. Save v25 (`trinketItems`, reset).
 - `scripts/data/trinket-skills-source.json`: the 371 skill texts (Chinese + English) for part 2. ASSUMPTIONS #68.
+
+## R6b part 2 — Trinket skills (2026-11-01)
+
+- `KitDef.trinket` + `applyTrinketSkills`: the skill at Lv 10 / 20 / 30 / 40, each tier replacing the one below,
+  applied in battle from the species' trinket level. Ported for all 72 holders that list skills
+  (`scripts/data/trinket-skills.py`, readings via `tnote(...)` in docs/PORT-REPORT.md "Trinket skills").
+- Engine: damage mods add `crit` / `critPower` to the hit; trigger `onBlock` (the owner blocked a hit);
+  conditions `targetRageAbove`, `enemiesDeadAtLeast`. Content: the `removeBuff` effect.
+- Fix: Tyranitar's plate 12 riders now hit only controlled enemies (an empty `filters` narrowing used to fall back
+  to all enemies).

@@ -195,12 +195,12 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Stage-6 skill swaps (hero_slate_skill_json: Starmie, Ninetales, Metagross, Garchomp, Hydreigon, Gyarados -> skill ids 1x8102 / 1x8201 / ...): not ported — those skill ids are in the dump's _skills_not_found (no text or numbers).
 - Rayquaza 6 / 18 and 12's turn-2 part: no effect — the mark's turn 1 / turn 2 strikes are not modelled (see the hand-port gaps); 12 raises the ult to 80 %.
 
-## Trinket skills (R6b part 2, hand-ported in `scripts/data/trinket-skills.py`): 62
+## Trinket skills (R6b part 2, hand-ported in `scripts/data/trinket-skills.py`): 72
 
 Source: `scripts/data/trinket-skills-source.json` (hero_weapon_json skill_list, 371 texts / 76 holders). Applied by
 `applyTrinketSkills`: only the highest tier (Lv 10 / 20 / 30 / 40) at or below the trinket level.
 
-Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, hoopa, shiny-hoopa, mewtwo, shiny-mewtwo, jirachi, solgaleo, meloetta, arceus, shiny-arceus, kyogre, deoxys, mew, cresselia, celebi, manaphy, infernape, black-kyurem, shaymin, victini, palkia, giratina, zygarde, xerneas, lunala, wind-god-pidgeot, shiny-god-ash-pikachu, shiny-charizard, shiny-raichu, shiny-gengar, shiny-venusaur, shiny-darkrai, raikou, entei, suicune, zapdos, moltres, articuno, rayquaza, metagross, garchomp, hydreigon, gyarados, gardevoir, gengar, raichu, charizard, blastoise, venusaur.
+Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu, dialga, darkrai, ho-oh, groudon, snorlax, yveltal, lugia, keldeo, hoopa, shiny-hoopa, mewtwo, shiny-mewtwo, jirachi, solgaleo, meloetta, arceus, shiny-arceus, kyogre, deoxys, mew, cresselia, celebi, manaphy, infernape, black-kyurem, shaymin, victini, palkia, giratina, zygarde, xerneas, lunala, wind-god-pidgeot, shiny-god-ash-pikachu, shiny-charizard, shiny-raichu, shiny-gengar, shiny-venusaur, shiny-darkrai, raikou, entei, suicune, zapdos, moltres, articuno, rayquaza, metagross, garchomp, hydreigon, gyarados, gardevoir, gengar, raichu, charizard, blastoise, venusaur, blaziken, swampert, sceptile, typhlosion, feraligatr, meganium, slaking, dragonite, tyranitar, salamence.
 
 - God Ash-Pikachu (Ruse): the S.DEF ignore (10-35 %) has no effect (DEF has no effect); the Basic Skill bonus is +x % basic-skill damage per attack, its 'rounds' read as Pikachu's own turns.
 - Wobbuffet (Mirror Coat): the bounce is true damage of the hit's damage (shield included), to the attacker.
@@ -239,6 +239,11 @@ Ported: god-ash-pikachu, wobbuffet, greninja, shiny-blastoise, psyduck, mimikyu,
 - Hydreigon (Benefit from Damage): counts the fallen enemies only (living ones under the HP line are not counted).
 - Gardevoir (Endurance): one stack a turn from the starting round.
 - Venusaur (Impair DEF): no effect — DEF has no effect. Charizard / Raichu / Blastoise / Gengar: as their Shiny forms at their own numbers.
+- Blaziken / Raikou: 'when the Ultimate kills' reads the slot of the killing hit.
+- Swampert: the shield break lands after the attack (no before-hit hook) and is not gated on 'not blocked'.
+- Feraligatr: the block shield goes to Feraligatr only ('the ally above' has no target rule); its 3-stack cap and 2 turns are not kept.
+- Meganium: Lv 40's 'all status ailments' is the same control immunity (DoTs still land).
+- Dragonite: the Lv 20-40 text's 'removes 10 % / 18 % / 25 % 1 buff' read as a chance-free removal of 1 / 1 / 2 buffs.
 
 ## Unparsed clause patterns (0 distinct, top 60)
 
