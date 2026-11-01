@@ -9,7 +9,7 @@
  * Usage: tsx scripts/balance/tier.ts <stage: early|mid|max> <battles> [out.json]
  */
 import { writeFileSync } from 'node:fs';
-import { runBattle, mulberry32, type WildInstance } from '@wildbound/engine';
+import { runBattle, mulberry32, type SpecInput, type TriggerDef, type WildInstance } from '@wildbound/engine';
 import { buildConfig, buildWildTeam } from '@wildbound/server';
 
 const STAGES = {
@@ -50,6 +50,18 @@ interface Acc { games: number; wins: number; dmgShare: number; supShare: number;
 const acc = new Map<string, Acc>();
 const get = (id: string) => acc.get(id) ?? (acc.set(id, { games: 0, wins: 0, dmgShare: 0, supShare: 0, survived: 0, ults: 0, rounds: 0 }), acc.get(id)!);
 
+/** The friend's Dialga variant (not built): the ult fills Dialga and 2 random allies instead of the team. */
+function friendDialga(sp: SpecInput): void {
+  if (sp.name !== 'Dialga') return;
+  const fill: TriggerDef['effects'] = [
+    { op: 'rage', target: { side: 'ally', rule: 'self' }, fill: true },
+    { op: 'rage', target: { side: 'ally', rule: 'random', n: 2, excludeSelf: true }, fill: true },
+  ];
+  const triggers = (sp.kit.talents?.triggers ?? []).map((tr) =>
+    tr.on === 'afterUlt' && tr.effects?.some((e) => e.op === 'rage' && e.fill) ? { ...tr, effects: fill } : tr);
+  sp.kit = { ...sp.kit, talents: { ...sp.kit.talents, triggers } };
+}
+
 const t0 = Date.now();
 for (let b = 0; b < BATTLES; b += 1) {
   const a = pick(6);
@@ -57,19 +69,8 @@ for (let b = 0; b < BATTLES; b += 1) {
   const HPMUL = Number(process.env.HPMUL ?? 1);
   const tank = (t: ReturnType<typeof buildWildTeam>) => (t.specs.forEach((s) => { s.sheet = { ...s.sheet, hp: s.sheet.hp * HPMUL }; }), t);
   const A = tank(buildWildTeam(wilds(a, "a"), "attackers", config));
-  if (process.env.DIALGA === 'friend') for (const t of [A]) for (const sp of t.specs) if (sp.name === 'Dialga') {
-    const k: any = sp.kit;
-    sp.kit = { ...k, talents: { ...k.talents, triggers: k.talents.triggers.map((tr: any) => tr.on === 'afterUlt' && tr.effects?.[0]?.fill
-      ? { ...tr, effects: [{ op: 'rage', target: { side: 'ally', rule: 'self' }, fill: true }, { op: 'rage', target: { side: 'ally', rule: 'random', n: 2, excludeSelf: true }, fill: true }] }
-      : tr) } };
-  }
   const D = tank(buildWildTeam(wilds(d, "d"), "defenders", config));
-  if (process.env.DIALGA === 'friend') for (const sp of D.specs) if (sp.name === 'Dialga') {
-    const k: any = sp.kit;
-    sp.kit = { ...k, talents: { ...k.talents, triggers: k.talents.triggers.map((tr: any) => tr.on === 'afterUlt' && tr.effects?.[0]?.fill
-      ? { ...tr, effects: [{ op: 'rage', target: { side: 'ally', rule: 'self' }, fill: true }, { op: 'rage', target: { side: 'ally', rule: 'random', n: 2, excludeSelf: true }, fill: true }] }
-      : tr) } };
-  }
+  if (process.env.DIALGA === 'friend') for (const sp of [...A.specs, ...D.specs]) friendDialga(sp);
   // swap sides every other battle so first-mover advantage cancels out
   const flip = b % 2 === 1;
   const res = runBattle({
