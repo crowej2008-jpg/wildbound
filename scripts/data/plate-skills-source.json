@@ -1,0 +1,2196 @@
+{
+ "about": "R6a part 2 worksheet: the source plate skills (hero_stone_skill_json, 228 texts at tiers 6/12/18) and stage-6 skill swaps (hero_slate_skill_json). Port each into the kit DSL like E3; English from _text where present.",
+ "skills": [
+  {
+   "species": "metagross",
+   "tier": 6,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "提升被【混乱】影响的目标30%物攻和特攻。",
+   "en": "Increases [Confused] targets' P.ATK and S.ATK by 30%."
+  },
+  {
+   "species": "metagross",
+   "tier": 12,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "被【混乱】影响的目标还能使用小技能进行攻击。",
+   "en": "Targets affected by [Confusion] can still attack with basic skills."
+  },
+  {
+   "species": "metagross",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招有20%几率减少目标所有怒气。",
+   "en": "Ultimate has a 20% chance to reduce target's all rage."
+  },
+  {
+   "species": "garchomp",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招降低防御效果提升至55%。",
+   "en": "Ultimate's damage reduction effect is increased to 55%"
+  },
+  {
+   "species": "garchomp",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招每成功减少1个目标的防御，便获得7%伤害减免，持续3回合，最多3层。",
+   "en": "Every 1 targets whose DEF is reduced by your Ultimate, you gain 7% DMG Reduction for 3 turns. Stacks up to 3 times."
+  },
+  {
+   "species": "garchomp",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招必定降低目标防御。",
+   "en": "Ultimate is guaranteed to reduce target’s defense."
+  },
+  {
+   "species": "hydreigon",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招会优先攻击血量最少的敌方单位所在的横排。",
+   "en": "Ultimate prioritizes the row with the enemy of lowest HP."
+  },
+  {
+   "species": "hydreigon",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招出手前提升自身35%破防率和10%暴击率。",
+   "en": "Before using Ultimates, increase Guard Break Chance by 35% and Crit Chance by 10%"
+  },
+  {
+   "species": "hydreigon",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对血量低于35%的敌人伤害提升30%",
+   "en": "Ultimate deals 30% additional damage to the enemies with less than 35% HP"
+  },
+  {
+   "species": "gyarados",
+   "tier": 6,
+   "skillType": [
+    1,
+    2,
+    3
+   ],
+   "zh": "鲤鱼王会优先攻击后排单位。普通攻击和小技能会额外偷取敌方12.5%怒气。",
+   "en": "Magikarp prioritizes backline units. Basic attacks and basic skills additionally steal 12.5% Rage from enemies."
+  },
+  {
+   "species": "gyarados",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对【技】宠伤害提升25%。",
+   "en": "Increase Ultimate's damage against [SKILL] Pokémons by 25%."
+  },
+  {
+   "species": "gyarados",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招伤害加深效果提升至25%，持续回合提升至4回合。",
+   "en": "Increases Ultimate's DMG Multiplier to 25%. Lasts 4 turn(s)."
+  },
+  {
+   "species": "gardevoir",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "无视防御效果提升至25%，提升攻击效果无法被驱散。",
+   "en": "Boosts the Ignore DEF effect to 25%. The ATK boost cannot be dispelled."
+  },
+  {
+   "species": "gardevoir",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "提升攻击效果提升至15%。",
+   "en": "Increases ATK boost effect to 15%."
+  },
+  {
+   "species": "gardevoir",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后回复自身25%怒气。",
+   "en": "Regenerate 25% Rage after using Ultimate."
+  },
+  {
+   "species": "gengar",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对【攻】宠伤害提升30%，对【技】宠伤害提升10%。",
+   "en": "Increase Ultimate's damage against [ATK] Pokémons by 30%, against [SKILL] Pokémons by 10%."
+  },
+  {
+   "species": "gengar",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招会降低目标20%控制抵抗，持续2回合，最多1层。",
+   "en": "Ultimate reduces target's Control Res by 20% for 2 turns. Stacks up to 1 times."
+  },
+  {
+   "species": "gengar",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击已被控制目标时，自身怒气回复效果提升至25%，并有35%几率减少目标25%怒气。",
+   "en": "When using Ultimate upon controlled targets, increase Rage regeneration to 25%, with 35% chance to reduce target's Rage by 25%."
+  },
+  {
+   "species": "raichu",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招伤害提升20%，【麻痹】几率提升至23%。",
+   "en": "Increase Ultimate damage by 20% and [Paralysis] chance to 23%."
+  },
+  {
+   "species": "raichu",
+   "tier": 12,
+   "skillType": [
+    3
+   ],
+   "zh": "小技能伤害提升25%，【麻痹】几率提升至35%。",
+   "en": "Increase basic skill damage by 25% and [Paralysis] chance to 35%."
+  },
+  {
+   "species": "raichu",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击目标+1。",
+   "en": "Ultimate's target +1"
+  },
+  {
+   "species": "charizard",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击后为目标施加【易伤】，增加10%目标受到的伤害，持续1回合，最多1层。",
+   "en": "Ultimate inflicts [Vulnerability] on targets, increasing the damage they take by 10% for 1 turns. Stacks up to 1 times."
+  },
+  {
+   "species": "charizard",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招出手前提升自身10%暴击率，拥有【力量代价】时，友方后排暴击率提升效果提升至18%。",
+   "en": "Before using Ultimate, increase your Crit Chance by 10%. When [Offer of Power] is active, increases backline allies' Crit Chance to 18%."
+  },
+  {
+   "species": "charizard",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "拥有【力量代价】时，大招对【防】宠伤害提升25%。",
+   "en": "When [Offer of Power] is active, increase Ultimate's damage against [DEF] Pokémons by 25%."
+  },
+  {
+   "species": "blastoise",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招物攻伤害减免提升至30%，额外提升15%特攻伤害减免。",
+   "en": "Increases Ultimate's P.ATK DMG Reduction by 30%, plus 15% S.ATK DMG Reduction."
+  },
+  {
+   "species": "blastoise",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后为友方后排施加【护盾】，吸收杰尼龟最大生命值12%的伤害，可与其他【护盾】相互叠加；同时提升友方后排12%物攻和特攻，持续3回合，最多1层。",
+   "en": "Ultimate gives backline allies a [shield] for 12% of Squirtle's max HP. Stacks with other [shields]; Increases backline allies' P.ATK and S.ATK by 12% for 3. Stacks up to 1 times."
+  },
+  {
+   "species": "blastoise",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招为敌方目标施加【愈合印记】，持续2回合，最多1层，友方攻击【愈合印记】标记的目标时回复杰尼龟最大生命值3%的血量。",
+   "en": "Ultimate inflicts [Regrowth Mark] upon enemies for 2 turns. Stacks up to 1 times. The allies who attack the target marked with [Regrowth Mark] will heal Squirtle for 3% of max HP."
+  },
+  {
+   "species": "venusaur",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招提升至必定叠加2层【中毒】，并有60%几率额外叠加1层。",
+   "en": "Ultimate enhanced. Now it's guaranteed to inflict 2 stacks of [Poison], with 60% chance to gain additional 1 stacks."
+  },
+  {
+   "species": "venusaur",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击范围提升至全体敌方单位",
+   "en": "Increases Ultimate’s range to all enemies"
+  },
+  {
+   "species": "venusaur",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招提升必定叠加3层【中毒】，并有80%几率额外叠加1层。",
+   "en": "Ultimate is guaranteed to gain 3 stacks of [Poison], with 80% chance to gain additional 1 stacks."
+  },
+  {
+   "species": "blaziken",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招基础伤害提升15%，附加伤害提升至目标已损失生命值12%。",
+   "en": "Increases Ultimate's base damage to 15%, increases bonus damage to 12% of target's missing HP."
+  },
+  {
+   "species": "blaziken",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击时无视目标40%特防。",
+   "en": "Ultimate ignores target's 40% S.DEF."
+  },
+  {
+   "species": "blaziken",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招优先攻击血量最低的敌方单位。",
+   "en": "Ultimate prioritizes the enemies with lowest HP."
+  },
+  {
+   "species": "swampert",
+   "tier": 6,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "【识破】伤害提升25%，额外附加30%目标特攻的真实伤害。",
+   "en": "Increases [Foresight] damage by 25%, plus true damage equal to 30% of target's S.ATK."
+  },
+  {
+   "species": "swampert",
+   "tier": 12,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "【识破】持续回合数+1。",
+   "en": "[Foresight] lasts +1"
+  },
+  {
+   "species": "swampert",
+   "tier": 18,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "【识破】无法被净化。",
+   "en": "[Foresight] cannot be cleansed."
+  },
+  {
+   "species": "sceptile",
+   "tier": 6,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "【恶性创口】效果提升至使目标受到的持续伤害提升30%。",
+   "en": "Boosts [Malignant Wounds] effect. Target now takes 30% more damage over time."
+  },
+  {
+   "species": "sceptile",
+   "tier": 12,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "【恶性创口】效果会额外降低目标12%特攻。",
+   "en": "The [Malignant Wounds] effect further reduces target's S.ATK by 12%"
+  },
+  {
+   "species": "sceptile",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对被除【出血】以外的其他持续伤害影响的敌人伤害提升30%。",
+   "en": "Ultimate deals 30% increased damage to the enemies affected by DoT ([Bleed] excluded)."
+  },
+  {
+   "species": "typhlosion",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招如果没有被目标格挡，则附加目标当前生命值12%的真实伤害。",
+   "en": "If the ultimate is not blocked by target, inflicts upon target true damage equal to 12% of target's current HP."
+  },
+  {
+   "species": "typhlosion",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招暴击时附加目标已损失生命值12%的真实伤害。",
+   "en": "When the Ultimate crits, inflicts upon target true damage equal to 12% of target's missing HP."
+  },
+  {
+   "species": "typhlosion",
+   "tier": 18,
+   "skillType": [
+    1,
+    3
+   ],
+   "zh": "普通攻击如果没有被目标格挡，则附加目标当前生命值8%的真实伤害；小技能暴击时附加目标已损失生命值8%的真实伤害。",
+   "en": "If a basic attack is not blocked by target, inflicts upon target true damage equal to 8% of target's current HP; When basic skills crit, inflict true damage equal to 8% of target's missing HP."
+  },
+  {
+   "species": "feraligatr",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后自身获得15%物攻伤害减免，持续2回合，最多1层；同时降低敌方目标10%破防率，持续2回合，最多1层。",
+   "en": "After using Ultimates, gain 15% P.ATK DMG Reduction for 2 turns. Stacks up to 1 times; Reduce enemy target's Guard Break Chance by 10% for 2 turns. Stacks up to 1 times."
+  },
+  {
+   "species": "feraligatr",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "【守护】分担率提升至40%。",
+   "en": "[Protection] Increases splitting rate to 40%."
+  },
+  {
+   "species": "feraligatr",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后为自己和自身站位上方的友方目标施加【护盾】，吸收自身最大生命值10%的伤害，可与其他【护盾】相互叠加。",
+   "en": "After using Ultimates, grant self and the ally above you a [Shield] for 10% of your max HP. Stacks with other [shields]."
+  },
+  {
+   "species": "meganium",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招基础治疗量提升18%，攻击被持续伤害影响的敌人时的治疗量提升效果提升至30%。",
+   "en": "Increases Ultimate's basic healing amount by 18%. When attacking the enemies affected by  [DoT], increases the healing boost to 30%."
+  },
+  {
+   "species": "meganium",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招会驱散敌方目标1个增益效果，并净化友方目标身上的所有负面效果。",
+   "en": "Ultimate dispels 1 buffs from enemies and cleanses all status ailments from allies."
+  },
+  {
+   "species": "meganium",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招会增加自身站位下方的友方目标50%怒气。",
+   "en": "Ultimate increases the Rage of the ally below your position by 50%."
+  },
+  {
+   "species": "slaking",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后获得10%伤害加深和伤害减免，持续5回合，最多3层。",
+   "en": "After using the Ultimate, gain 10% DMG Multiplier and DMG Reduction for 5 turns. Stacks up to 3 times."
+  },
+  {
+   "species": "slaking",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "【愈合】效果提升至回复自身5%最大生命值的血量。",
+   "en": "Increases [Regrowth] effect to regenerating 5% of max HP"
+  },
+  {
+   "species": "slaking",
+   "tier": 18,
+   "skillType": [
+    1,
+    3
+   ],
+   "zh": "使用普通攻击和小技能后有50%几率获得【缓慢愈合】，每回合回复自身2%最大生命值的血量，持续3回合，最多1层，可与【愈合】同时生效。",
+   "en": "Using basic attacks and basic skills comes with 50% chance to gain [Regrowth over Time], healing for 2% of max HP per turn over 3 turns. Stacks up to 1 times. Can be stacked with [Regrowth]."
+  },
+  {
+   "species": "dragonite",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招驱散效果个数+1。",
+   "en": "Ultimate dispels +1"
+  },
+  {
+   "species": "dragonite",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后净化自身站位上方的友方目标身上的所有负面效果。",
+   "en": "After using Ultimates, cleanse all status ailments from the allies above you."
+  },
+  {
+   "species": "dragonite",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招有35%几率减少敌方目标25%怒气。",
+   "en": "Ultimate has 35% chance to reduce target's Rage by 25%."
+  },
+  {
+   "species": "tyranitar",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招【眩晕】几率提升至25%，降低控制抵抗效果提升至20%。",
+   "en": "Increases Ultimate's [Stunning] chance to 25%. Boosts Control Res Reduction effect to 20%."
+  },
+  {
+   "species": "tyranitar",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对被控制的目标额外降低20%控制抵抗，持续2回合，最多1层，同时降低20%暴击率和8%暴击强度，持续3回合。",
+   "en": "Ultimate further reduces controlled target's Control Res by 20% for 2 turns. Stacks up to 1 times. Reduces their Crit Chance by 20% and Crit Intensity by 8% for 3 turns."
+  },
+  {
+   "species": "tyranitar",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后提升友方前排18%伤害减免，持续2回合，最多1层。",
+   "en": "After using Ultimates, increase allied frontline's DMG Reduction by 18% for 2 turns. Stacks up to 1 times."
+  },
+  {
+   "species": "salamence",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "自身每减少1%血量，大招吸血倍率就提升0.5%。",
+   "en": "Every 1% missing HP increases Ultimate's Lifesteal multiplier by 0.5%."
+  },
+  {
+   "species": "salamence",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对血量低于35%的目标伤害提升35%。",
+   "en": "Ultimate deals 35% additional damage to targets with less than 35% HP"
+  },
+  {
+   "species": "salamence",
+   "tier": 18,
+   "skillType": [
+    1,
+    3
+   ],
+   "zh": "普通攻击和小技能会偷取目标8%物攻，持续5回合，最多1层。",
+   "en": "Basic attacks and basic skills steal 8% P.ATK from target for 5 turns. Stacks up to 1 times."
+  },
+  {
+   "species": "raikou",
+   "tier": 6,
+   "skillType": [
+    1,
+    3
+   ],
+   "zh": "普攻和小技能对【防】宠额外伤害提升至50%",
+   "en": "To [DEF] Pokémon, normal attack and basic skill deal additional damage up to 50%"
+  },
+  {
+   "species": "raikou",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招基础斩杀线提升至25%，对【防】宠提升至35%",
+   "en": "Raises Ultimate's basic finishline to 25%, deals [DEF] Pokémon to 35%"
+  },
+  {
+   "species": "raikou",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "若大招没有击杀目标，大回合结束时对目标造成已损失生命值15%的真实伤害，该伤害击杀目标不算做大招的击杀",
+   "en": "If the Ultimate doesn't slay a target, deal true damage equal to target's 15% missing HP at the end of a round. If the target dies of this damage, it will not be regarded as a kill by the ultimate."
+  },
+  {
+   "species": "entei",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招后获得【力量代价】，扣除20%当前生命值，满怒并提升大招50%伤害1回合，冷却时间4回合，不可驱散",
+   "en": "After an Ultimate,Gains [Offer of Power] and max Rage, lose 20% of current HP, increase Ultimate damage by 50% for 1 turn. CD: 4 turns. Can't be dispelled."
+  },
+  {
+   "species": "entei",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招基础伤害提升15%，附加伤害提升至目标当前生命值10%",
+   "en": "Increases Ultimate's base damage to 15%, increases bonus damage to 10% of target's current HP"
+  },
+  {
+   "species": "entei",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招出手前提升自身15%暴击率和8%暴击伤害，大招基础伤害再提升20%",
+   "en": "Before using Ultimates, increase your Crit Chance by 15% and Crit DMG by 8%. Further increases Ultimate's base damage by 20%"
+  },
+  {
+   "species": "suicune",
+   "tier": 6,
+   "skillType": [
+    1,
+    2,
+    3
+   ],
+   "zh": "使用普通攻击后有10%几率获得【反伤】，使用小技能后获得【反伤】几率提升至50%；【反伤】伤害提升至135%",
+   "en": "After using normal attacks, there is a 10% chance to gain [Thorn], increasing [Thorn] chance to 50% after using basic skills; Increases [Thorn] damage to 135%."
+  },
+  {
+   "species": "suicune",
+   "tier": 12,
+   "skillType": [
+    1,
+    2,
+    3
+   ],
+   "zh": "大招特防偷取率提升至20%，同时提升自身20%格挡率，持续2回合，最多1层；【反伤】伤害提升至150%",
+   "en": "Increases Ultimate's S.DEF stealing ratio to 20% and increases self Block by 20% for 2 turns. Stacks up to 1 time; Increases [Thorn] damage to 150%."
+  },
+  {
+   "species": "suicune",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后获得25%伤害减免，持续1回合，最多1层",
+   "en": "After Ultimate, Gains 25% DMG Reduction for 1 turn. Stacks up to 1 time."
+  },
+  {
+   "species": "mew",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后提升自身20%控制增强，持续3回合，最多2层",
+   "en": "After Ultimate, Increases self Control Boost by 20% for 3 turns. Stacks up to 2 times"
+  },
+  {
+   "species": "mew",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后有70%几率使自身免疫所有控制效果，持续2回合，最多1层",
+   "en": "After Ultimate, There is a 70% chance to be immune to all control effects for 2 turns. Stacks up to 1 time"
+  },
+  {
+   "species": "mew",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招沉默概率提升至70%，使用大招后有50%几率获得500怒气",
+   "en": "Ultimate's chance to inflict [silence] increases to 70%. After using the Ultimate, there's a 50% chance to gain 500 Rage"
+  },
+  {
+   "species": "mewtwo",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招基础伤害提升至100%，无视防御效果提升至35%",
+   "en": "Increases Ultimate's base damage to 100%, increases the Ignore DEF effect to 35%"
+  },
+  {
+   "species": "mewtwo",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对【防】宠伤害提升35%，对【攻】宠伤害提升10%",
+   "en": "Increases Ultimate's damage against [DEF] Pokémons by 35%, against [ATK] Pokémons by 10%"
+  },
+  {
+   "species": "mewtwo",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招出手前提升自身20%暴击率，持续4回合，最多1层",
+   "en": "Before using Ultimate, Increases Crit by 20% for 4 turns. Stacks up to 1 time"
+  },
+  {
+   "species": "zapdos",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "每使用1次大招后额外获得普通攻击1次，最多3次；额外普通攻击不会获得怒气",
+   "en": "After using Ultimate each time, launches an extra normal attack up to 3 times; The extra normal attack won't provide rage"
+  },
+  {
+   "species": "zapdos",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招为目标施加【感电】，被【感电】效果影响的敌人受到攻击时会额外受到闪电鸟物攻30%的真实伤害，持续2回合，最多1层",
+   "en": "Ultimate inflicts [Thunder] upon targets. When attacked, the targets affected by [Thunder] take additional true damage equal to 30% of Zapdos's P.ATK for 2 turns. Stacks up to 1 time"
+  },
+  {
+   "species": "zapdos",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招伤害提升35%，【麻痹】几率提升至35%，使用大招后获得15%伤害加深，持续3回合，最多1层",
+   "en": "Increase Ultimate damage by 35% and [Paralysis] chance to 35%. After using an Ultimate, gains 15% DMG Multiplier for 3 turns. Stacks up to 1 time."
+  },
+  {
+   "species": "moltres",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击使目标单位受到的【灼烧】伤害提升30%，持续10回合，最多1层",
+   "en": "Ultimate increases the target's [Burning] damage taken by 30% for 10 turns. Stacks up to 1 time"
+  },
+  {
+   "species": "moltres",
+   "tier": 12,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "【灼烧】层数上限+1",
+   "en": "[Burning] Max Stacks+1"
+  },
+  {
+   "species": "moltres",
+   "tier": 18,
+   "skillType": [
+    3
+   ],
+   "zh": "小技能对被【灼烧】影响的敌人伤害提升28%，【灼烧】叠加几率提升至100%",
+   "en": "Increases basic skill damage against [Burning] enemies by 28%. Increases the chance of stacking [Burning] by 100%"
+  },
+  {
+   "species": "articuno",
+   "tier": 6,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "【冰冻】目标的同时还会减少目标250怒气",
+   "en": "[Freezes] target and reduces their Rage by 250"
+  },
+  {
+   "species": "articuno",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击目标+1",
+   "en": "Ultimate's target +1"
+  },
+  {
+   "species": "articuno",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招造成伤害的15%转化为自身血量，同时减少敌方全体25点速度，持续2回合，最多1层",
+   "en": "Converts 15% of Ultimate damage into self HP. Reduces all enemies' SPD by 25 for 2 turns. Stacks up to 1 time."
+  },
+  {
+   "species": "lugia",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "伤害总值的12%转为自身血量回复",
+   "en": "Heals for 12% of the total damage dealt"
+  },
+  {
+   "species": "lugia",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "造成伤害前提升所有【技】宠友军12%增伤，持续2回合",
+   "en": "Before dealing damage, increase all allied [SKILL] Pokémons' DMG Boost for 2 turn(s)"
+  },
+  {
+   "species": "lugia",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击后降低对手15%减伤，持续2回合",
+   "en": "After attacking with the Ultimate, reduce target's DMG Reduction by 15% for 2 turn(s)"
+  },
+  {
+   "species": "rayquaza",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "第1回合的基础伤害比例提升至105%，吸血比例提升至25%",
+   "en": "Increases turn 1's base damage ratio to 105%, Lifesteal ratio to 25%"
+  },
+  {
+   "species": "rayquaza",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "技能伤害提升至80%；第2回合标记基础伤害比例提升至120%",
+   "en": "Increases skill damage to 80%; At turn 2, increases mark's base DMG ratio to 120%"
+  },
+  {
+   "species": "rayquaza",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "第2回合的标记吸血提升至75%",
+   "en": "Raise turn 2's Lifesteal mark to 75%"
+  },
+  {
+   "species": "groudon",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击后减少对手500点怒气",
+   "en": "Reduces opponent's Rage by 500 after attack"
+  },
+  {
+   "species": "groudon",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击目标为【技】宠时，造成18%额外伤害",
+   "en": "When targeted at [SKILL] Pokémons, deals 18% additional damage"
+  },
+  {
+   "species": "groudon",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "根据对手怒气值的伤害加成提升至50%",
+   "en": "Increases damage bonus to 50% based on opponent's Rage"
+  },
+  {
+   "species": "kyogre",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "护盾强度提升至150%特攻",
+   "en": "Increases shield intensity to 150% S.ATK"
+  },
+  {
+   "species": "kyogre",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "每回合恢复血量提升至45%特攻",
+   "en": "Increases Healing over Turn to 45% S.ATK"
+  },
+  {
+   "species": "kyogre",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "盖欧卡血量低于35%时，增加的护盾强度提升至180%特攻，恢复血量提升至60%特攻",
+   "en": "When Kyogre's HP drops below 35%, increases shield intensity to 180% S.ATK, increases healing amount to 60% S.ATK"
+  },
+  {
+   "species": "deoxys",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "降低被嘲讽的对手30%攻击力，持续1回合",
+   "en": "Reduces ATK of the taunted target for 1 turns"
+  },
+  {
+   "species": "deoxys",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击伤害提升至210%特攻",
+   "en": "Increases S.ATK DMG to 210% S.ATK"
+  },
+  {
+   "species": "deoxys",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "降低被嘲讽的对手30%攻击力1回合，第2回合降低15%攻击力",
+   "en": "Reduce ATK of the target to tanut by 30% for 1 round. In the No. 2, reduce their ATK by 15%"
+  },
+  {
+   "species": "ho-oh",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "技能伤害提升至165%",
+   "en": "Increases skill damage to 165%"
+  },
+  {
+   "species": "ho-oh",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击后降低对手250怒气",
+   "en": "After an Ultimate,Reduces opponent's Rage by 250"
+  },
+  {
+   "species": "ho-oh",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "圣火引燃伤害提升至155%",
+   "en": "Increases Sacred Fire's Ignition damage to 155%"
+  },
+  {
+   "species": "darkrai",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "每层【梦魇】提供的大招额外伤害提升至20%，无视防御比例提升至18%",
+   "en": "Each stack of [Nightmare] grants Ultimate 20% increased damage. Increases Ignore DEF ratio to 18%"
+  },
+  {
+   "species": "darkrai",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "叠加2层【梦魇】后，大招附带50%几率使对手眩晕1回合",
+   "en": "After gaining 2 stacks of [Nightmare], Ultimate has a 50% chance to stun the target for 1 turn"
+  },
+  {
+   "species": "darkrai",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "基础伤害提升至185%，且怒招直接获得2层【梦魇】",
+   "en": "Deals 135% P.ATK DMG to a single enemy. Converts 20% of damage into healing."
+  },
+  {
+   "species": "cresselia",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外增加所有友军10%减伤，持续2回合",
+   "en": "Ultimate boosts DMG RDCT for all allies by 10%. Lasts 2 turns."
+  },
+  {
+   "species": "cresselia",
+   "tier": 12,
+   "skillType": [
+    1,
+    3
+   ],
+   "zh": "小技能、普攻后为友军增加护盾，护盾的值提升至自身特攻的200%",
+   "en": "After using small skills and regular attacks, increase the shield value for friendly troops to 200% of their own S.ATKs"
+  },
+  {
+   "species": "cresselia",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "50%几率额外使一个对手眩晕1回合",
+   "en": "50% chance to stun an additional target for 1 turns"
+  },
+  {
+   "species": "celebi",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "治疗溢出的部分按70%的比例转化为护盾，持续2回合",
+   "en": "Excessive healing is converted into shield at the ratio of 70%. Lasts 2 turn."
+  },
+  {
+   "species": "celebi",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外提升后排12%攻击力，持续2回合",
+   "en": "Ultimate increases the ATK of backline targets by 12% for 2 turns"
+  },
+  {
+   "species": "celebi",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外增加随机3个友军250点怒气（不包括自己）",
+   "en": "Ultimate increases 250 Rage for 3 allies (self excluded)"
+  },
+  {
+   "species": "manaphy",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外提升所有友军15%暴击率和10%暴击伤害，持续2回合",
+   "en": "Ultimate additionally increases all allies' Crit Chance by 15% and Crit DMG by 10%, last 2 turns"
+  },
+  {
+   "species": "manaphy",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "清除对手所有增益",
+   "en": "Remove all buffs from the opponent"
+  },
+  {
+   "species": "manaphy",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外治疗所有友军自身80%特攻的血量",
+   "en": "Ultimate additionally heals all allies by 80% S.ATK"
+  },
+  {
+   "species": "greninja",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对对手造成暴击攻击时，额外使对手受到70%物攻攻击的真实伤害",
+   "en": "When Ultimate crits, causes the target to receive additional true damage equal to 70% P.ATK"
+  },
+  {
+   "species": "greninja",
+   "tier": 12,
+   "skillType": [
+    1,
+    3
+   ],
+   "zh": "普通、小技能对持有【忍镖】标记的对手额外提升25%暴击和25%暴击强度；造成暴击攻击时，额外进行一次普攻，最多1次",
+   "en": "Basic attack and skill boost additional 25% crit and 25% crit intensity to opponents holding [Shuriken] mark;add extra basic attack when causing crit attack,up to 1 time"
+  },
+  {
+   "species": "greninja",
+   "tier": 18,
+   "skillType": [
+    1,
+    3
+   ],
+   "zh": "普通、小技能造成暴击时，额外对对手的后排造成135%物攻伤害",
+   "en": "When normal, basic skills crit, they deal 135% additional P.ATK damage to the opponent's backline."
+  },
+  {
+   "species": "infernape",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "其中一层【烈焰】升级为【炽焰】，无法被驱散（仍属于烈焰，并受到提升烈焰伤害的效果影响，但不共用叠加层数），【炽焰】最多叠加2层",
+   "en": "One layer of [Flame] is upgraded to [Blaze], which cannot be dispelled (still belongs to Blaze and is affected by the effect that increases Blaze damage, but does not share stacking layers), and [Blaze] stacks for up to 2 layers."
+  },
+  {
+   "species": "infernape",
+   "tier": 12,
+   "skillType": [
+    1,
+    3
+   ],
+   "zh": "普攻、小技能必定叠加一层【烈焰】，并有50%概率额外叠加一层【烈焰】",
+   "en": "Basic attacks and basic skills are guaranteed to gain one stack of [Flame], with 50% chance to gain an additional stack of [Flame]"
+  },
+  {
+   "species": "infernape",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击持有【暴击封印】的对手时，扣除自身当前血量10%,并对对手造成等额伤害值",
+   "en": "When attacking opponents with [Crit Seal], deduct 10%, of current HP and deal the same amount of damage to target"
+  },
+  {
+   "species": "god-ash-pikachu",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "对手拥有护盾时，伤害提升30%",
+   "en": "When opponent obtains shield, increases damage by 30%."
+  },
+  {
+   "species": "god-ash-pikachu",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "额外对另外两个对手造成135%特攻伤害，并减少其50%受到的治疗效果",
+   "en": "Deals 135% S.ATK DMG to two extra opponents, and reduces the amount of healing they receive50%"
+  },
+  {
+   "species": "god-ash-pikachu",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "30%几率使减少治疗效果升级为禁止治疗，并使其在1回合内无法获得怒气",
+   "en": "30% chance to upgrade healing reduction to healing block and renders target unable to gain Rage within 1 turns"
+  },
+  {
+   "species": "snorlax",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "额外伤害最高提升至100%，施放大招后增加50%减伤，持续1回合",
+   "en": "Increases DMG RDCT by 50% for 1 turn after ultimate is cast"
+  },
+  {
+   "species": "snorlax",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "施放大招后为所有友军增加保护，使他们只承受接下来2次攻击伤害的30%，但总伤害的20%由卡比兽承担，持续1回合",
+   "en": "Casts Ultimate to provide all allies protection, causing them to only take 30% DMG of the next 2 hit, but 20% of the total damage will be transferred to Snorlax, lasting for 1 turn."
+  },
+  {
+   "species": "snorlax",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后，获得最多持续2回合的【不屈】，持有【不屈】期间，自身血量不会低于1，效果触发后下一回合失效；此效果有4回合的触发间隔",
+   "en": "After using the Rage Move, gain [Dauntless] that lasts up to 2 turns, during which HP won't drop below 1. Expires at the beginning of the next turn. This effect occurs every 4 turns."
+  },
+  {
+   "species": "black-kyurem",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "造成攻击时对所有持有【霜气】单位造成60%特攻伤害，并有15%几率冰冻",
+   "en": "Whenever you attack, deal 60% S.ATK DMG to units with [Frost], with 15% chance to Freezes them."
+  },
+  {
+   "species": "black-kyurem",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "对单体目标的冰冻几率提升至40%，对持有【霜气】的单位冰冻几率提升至20%",
+   "en": "Increases the chance of Freezing a single target to 40%. Increases the chance of Freezing targets with [Frost] to 20%."
+  },
+  {
+   "species": "black-kyurem",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "根据单体目标的【霜气】层数额外提升伤害，每层额外提升35%特攻伤害，攻击后清除对手所有的【霜气】层数",
+   "en": "Gain bonus damage based on a single target's [Frost] stacks, each stack increasing S.ATK DMG by 35%. After attack, remove all [Frost] stacks from the opponent."
+  },
+  {
+   "species": "shaymin",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击目标提升至全体",
+   "en": "The target to attack changes to all enemy units"
+  },
+  {
+   "species": "shaymin",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "【寄生种子】叠加层数提升至3层",
+   "en": "Increase [Leech Seed]'s stacks to 3 times"
+  },
+  {
+   "species": "shaymin",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击后使自身获得控制免疫，直至下一次出手的回合，但可以被驱散",
+   "en": "When attacking, grant yourself control immunity. Last till your next turn, but can be dispelled"
+  },
+  {
+   "species": "victini",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "额外降低对手暴抗20%和格挡30%，持续3回合，最多1层",
+   "en": "Additionally reduces target's Crit Res by 20% and Block by 30%. Lasts 3 turns. Stacks up to 1 times."
+  },
+  {
+   "species": "victini",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "使对位目标在此回合结束时减少250怒气",
+   "en": "At the end of the turn, reduces the opposite target's Rage by 250"
+  },
+  {
+   "species": "victini",
+   "tier": 18,
+   "skillType": [
+    1,
+    2,
+    3
+   ],
+   "zh": "降低暴抗提升至30%，降低格挡提升至40%；大招、普攻和小技能叠加【熔甲】时，有50%概率额外叠加一层",
+   "en": "When Ultimate, normal attack and Basic Skill applied with [Molten Armor], has a 50% chance to impose one more stack."
+  },
+  {
+   "species": "keldeo",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "受击者【禁疗】1回合，【禁疗】期间无法恢复血量",
+   "en": "The damage receiver is [Healing Blocked] for 1 turns, unable to heal during the period"
+  },
+  {
+   "species": "keldeo",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击带有护盾的角色，伤害提升到40%，且无视对方20%防御",
+   "en": "When attacking shielded characters, increases damage to 40% and ignores target's 20% DEF."
+  },
+  {
+   "species": "keldeo",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "【禁疗】效果持续到2回合",
+   "en": "[Healing Block] Lasts until turn 2"
+  },
+  {
+   "species": "meloetta",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招同时提升全体友军特攻20%",
+   "en": "Ultimate increases all allies’ S.ATK by 20%"
+  },
+  {
+   "species": "meloetta",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "吸血效果提升到40%",
+   "en": "Increases Lifesteal to 40%"
+  },
+  {
+   "species": "meloetta",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击时有概率造成睡眠（眩晕）",
+   "en": "Ultimate has a chance to sleep (stun) targets"
+  },
+  {
+   "species": "jirachi",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "【破灭之愿】效果额外降低目标20%减伤",
+   "en": "The effect of [Doom Desire] reduces the target's damage reduction by an additional 20%."
+  },
+  {
+   "species": "jirachi",
+   "tier": 12,
+   "skillType": [
+    3
+   ],
+   "zh": "释放小技能后立刻恢复自身已损血量的30%",
+   "en": "Immediately recover 30% of own missing HP after releasing Basic Skill"
+  },
+  {
+   "species": "jirachi",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "【破灭之愿】效果造成已损失血量的伤害提升至50%",
+   "en": "[Doom Desire] increases the DMG dealt based on missing HP to 50%"
+  },
+  {
+   "species": "dialga",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "降低怒气变为400点",
+   "en": "Lower rage to 400"
+  },
+  {
+   "species": "dialga",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "后排提升怒气效果变为300点",
+   "en": "Increases backline allies' rage to 300"
+  },
+  {
+   "species": "dialga",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "前排友军也能获得200点怒气",
+   "en": "Grants frontline allies 200 Rage"
+  },
+  {
+   "species": "palkia",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "张开【亚空间领域】时，自身获得50%减伤，持续1回合",
+   "en": "When open up the [Subspace], grant itself 50% DMG reduction, last 1 turn"
+  },
+  {
+   "species": "palkia",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "强化效果提高至20%暴击率和10%暴击强度，最高6层，持续3回合",
+   "en": "The enhance effect increases 20% crit chance and 10% crit intensity, up to 6 floors, last 3 turns"
+  },
+  {
+   "species": "palkia",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "张开【亚空间领域】时，自身获得【不屈】，持有【不屈】期间，自身血量不会低于1，持续1回合",
+   "en": "When open up the [Subspace],grant itself [Steadfast],during [Steadfast] period,self-HP isn't lower than 1,last 1 turn"
+  },
+  {
+   "species": "giratina",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "额外造成敌方已损血量15%的伤害",
+   "en": "Converts 20% of damage dealt into healing"
+  },
+  {
+   "species": "giratina",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招无视敌方15%特防",
+   "en": "Ultimate ignores enemy's 15% S.DEF"
+  },
+  {
+   "species": "giratina",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "连杀后保持满怒,并且对受击者附加禁疗，禁疗持续2回合",
+   "en": "Stay max rage after killing spree, attaches Healing Block to attack taker, lasts 2 rounds"
+  },
+  {
+   "species": "hoopa",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外附加【烈焰】效果\n【烈焰】：造成自身40%特攻的真实伤害，持续2回合，最多叠2层",
+   "en": "Ultimate additionally inflicts [Flame]\n [Flame]: Deals true damage by 40% self S.ATK for 2 turns. Stacks up to 2 times."
+  },
+  {
+   "species": "hoopa",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外附加【圣火】效果\n【圣火】：1回合后造成自身60%特攻的真实伤害",
+   "en": "Ultimate additionally inflicts [Sacred Fire]\n [Sacred Fire]: Deals true damage by 60% of self S.ATK after a turn"
+  },
+  {
+   "species": "hoopa",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招驱散2个增益buff",
+   "en": "Ultimate dispels 2 buffs"
+  },
+  {
+   "species": "arceus",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击被控制的敌人时额外无视15%特防",
+   "en": "Ignores additional 15% S.DEF when attacking controlled enemies"
+  },
+  {
+   "species": "arceus",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "每层标记增加2%暴击率",
+   "en": "Each mark increases 2% crit chance."
+  },
+  {
+   "species": "arceus",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击克制所有阵营敌人",
+   "en": "Attack and restrain all enemies"
+  },
+  {
+   "species": "zygarde",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招后自身获得15%减伤，持续2回合",
+   "en": "After an Ultimate,Gains 15% DMG RDCT for 2 turns"
+  },
+  {
+   "species": "zygarde",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "每次释放大招后永久提升10%大招伤害，无叠加上限",
+   "en": "Every time releases the Ultimate, increases Ultimate DMG by 10% permanently without upper limit"
+  },
+  {
+   "species": "zygarde",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "自身生命值高于50%时，额外伤害不会再消耗自身生命值；自身生命值低于50%时，释放大招回复自身8%已损失生命值",
+   "en": "When self HP is higher than 50%, additional damage will not consume your HP; When self HP is lower than 50%, release Ultimate to restore 8% of your lost HP"
+  },
+  {
+   "species": "xerneas",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招后提升自身暴击率30%，持续3回合",
+   "en": "After an Ultimate, increases self Crit by 30%, lasting for 3 turns"
+  },
+  {
+   "species": "xerneas",
+   "tier": 12,
+   "skillType": [
+    1,
+    2,
+    3
+   ],
+   "zh": "大招暴击时恢复全体队友100%特攻的生命值，普攻或小技能暴击时会恢复所有友方自身特攻70%的生命值",
+   "en": "Ultimate Crit restores 100% S.ATK HP to all teammates, the next minor attack or skill will restore 80% S.ATK HP of all allies."
+  },
+  {
+   "species": "xerneas",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招后额外己方后排宠物15%暴击强度和15%暴击率，持续3回合",
+   "en": "After rage move,gain ally back-line Pokémons crit intensity by 15% and 15%Crit ,last 3 turns."
+  },
+  {
+   "species": "yveltal",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "被【石化】的敌人同时会降低20速度，持续2回合",
+   "en": "Enemy who is [Petrified] will also have their SPD reduced by 20 for 2 turns"
+  },
+  {
+   "species": "yveltal",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招提供的【灼烧】、【猛火】和【圣火】增伤提高至100%",
+   "en": "The [Burning], [Blaze] and [Sacred fire] DMG provided by the Ultimate increase to 100%"
+  },
+  {
+   "species": "yveltal",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对有减益buff的敌人伤害提高30%",
+   "en": "Ultimate deals 30% more DMG to enemies with debuff"
+  },
+  {
+   "species": "solgaleo",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招后永久提升15%暴击率，最多叠加4层",
+   "en": "After an Ultimate,Permanently increases Crit by 15%. Stacks up to 4 times"
+  },
+  {
+   "species": "solgaleo",
+   "tier": 12,
+   "skillType": [
+    3
+   ],
+   "zh": "小技能无视20%物防，额外伤害提升至最大生命值6%的额外伤害",
+   "en": "Basic ATK ignores 20% of P.DEF and extra damage boosted to 6% of maximum life."
+  },
+  {
+   "species": "solgaleo",
+   "tier": 18,
+   "skillType": [
+    3
+   ],
+   "zh": "小技能对任意目标造成暴击可以再进行1次小技能攻击，每回合最多进行1次额外小技能攻击（额外行动无法叠加)",
+   "en": "Basic skill that deal a critical hit to any target can make 1 more basic skill attack, up to 1 additional basic skill attack per turn (additional actions cannot be stacked)"
+  },
+  {
+   "species": "lunala",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招施加【暗影侵袭】的概率提高至70%",
+   "en": "Chance of applying【Moongeist hit】to ultimate is increased to 70%"
+  },
+  {
+   "species": "lunala",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招施加的【暗影侵袭】额外增加无法回复怒气的效果",
+   "en": "Chance of applying【Moongeist hit】to ultimate adds extra effect of rage unrecoverable"
+  },
+  {
+   "species": "lunala",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招施加的【暗影侵袭】减少的速度提高至20，持续时间延长1回合",
+   "en": "Chance of applying【Moongeist hit】to ultimate reduced speed increased to 20, duration extended by 1 round"
+  },
+  {
+   "species": "shiny-god-ash-pikachu",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "对手拥有护盾时，伤害提升30%",
+   "en": "When opponent obtains shield, increases damage by 30%."
+  },
+  {
+   "species": "shiny-god-ash-pikachu",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "额外对另外两个对手造成160%特攻伤害，并减少其50%受到的治疗效果",
+   "en": "Deals 160% S.ATK DMG to two extra opponents, and reduces their healing taken by 50%"
+  },
+  {
+   "species": "shiny-god-ash-pikachu",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招的减少治疗效果升级为禁止治疗",
+   "en": "Ultimate's Healing Reduction is upgraded to Healing Block"
+  },
+  {
+   "species": "shiny-charizard",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击后为目标施加【易伤】，增加20%目标受到的伤害，持续1回合，最多1层",
+   "en": "Ultimate inflicts [Vulnerability] on targets, increasing the target's damage taken by 20% for 1 turn. Stacks up to 1 time."
+  },
+  {
+   "species": "shiny-charizard",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招出手前提升自身15%暴击强度，拥有【力量代价】时，友方后排暴击率提升效果提升至25%",
+   "en": "Before using Ultimate, increase self Crit INT by 15%. When [Offer of Power] is active, increases backline allies' Crit to 25%."
+  },
+  {
+   "species": "shiny-charizard",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "拥有【力量代价】时，大招对【防】宠伤害提升25%",
+   "en": "When [Offer of Power] is activated, Ultimate deals 25% more damage to [DEF] Pokémon"
+  },
+  {
+   "species": "shiny-raichu",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招伤害提升至180%，【麻痹】几率提升至50%",
+   "en": "Increase Ultimate damage by 180% and [Paralysis] chance to 50%"
+  },
+  {
+   "species": "shiny-raichu",
+   "tier": 12,
+   "skillType": [
+    3
+   ],
+   "zh": "小技能伤害提升至150%，【麻痹】几率提升至50%",
+   "en": "Increases Basic Skill damage to 150% and [Paralysis] chance to 50%"
+  },
+  {
+   "species": "shiny-raichu",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击目标+1，并有70%几率额外对目标施加【短路】效果\n【短路】：无法回复怒气",
+   "en": "Ultimate's target +1 and it has a 70% chance to additionally inflict [Short Circuit] on the target\n [Short Circuit]: Unable to regenerate rage"
+  },
+  {
+   "species": "shiny-gengar",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对【攻】宠伤害提升30%，对【技】宠伤害提升10%",
+   "en": "Increases Ultimate's damage against [ATK] Pokémons by 30%, against [SKILL] Pokémons by 10%"
+  },
+  {
+   "species": "shiny-gengar",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招会降低目标20%控制抵抗，持续2回合，最多1层；并额外对目标施加【沉默】效果\n【沉默】：无法施放大招",
+   "en": "Ultimate reduces target's Control Res by 20% for 2 turns. Stacks up to 1 time; Inflicts [Silence] on the target \n[Silence]: Unable to cast Ultimate"
+  },
+  {
+   "species": "shiny-gengar",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击已被控制目标时，自身怒气回复效果提升至400，并有35%几率减少目标400怒气",
+   "en": "When using Ultimate upon controlled targets, increases Rage regeneration to 400, with a 35% chance to reduce target's Rage by 400"
+  },
+  {
+   "species": "shiny-blastoise",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招物攻伤害减免提升至50%，额外提升30%特攻伤害减免",
+   "en": "Increases Ultimate's P.ATK DMG RDCT by 50%, plus 30% S.ATK DMG RDCT."
+  },
+  {
+   "species": "shiny-blastoise",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后为友方后排施加【护盾】，吸收杰尼龟最大生命值24%的伤害，可与其他【护盾】相互叠加；同时提升友方后排20%物攻和特攻，持续3回合，最多1层",
+   "en": "Ultimate gives backline allies a [shield] for 24% of Squirtle's max HP. Can be stacked with other [shields]; Increases backline allies' P.ATK and S.ATK by 20% for 3 turns. Stacks up to 1 time"
+  },
+  {
+   "species": "shiny-blastoise",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招为敌方目标施加【愈合印记】，持续2回合，最多1层，友方攻击【愈合印记】标记的目标时回复杰尼龟最大生命值6%的血量",
+   "en": "Ultimate inflicts [Regrowth Mark] upon enemies for 2 turns. Stacks up to 1 time. The allies who attack the target marked with [Regrowth Mark] will heal Squirtle for 6% of max HP."
+  },
+  {
+   "species": "shiny-venusaur",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招提升至必定叠加2层【中毒】，并有60%几率额外叠加1层",
+   "en": "Ultimate enhanced. Now it's guaranteed to inflict 2 stacks of [Poison], with a 60% chance to gain an additional stack."
+  },
+  {
+   "species": "shiny-venusaur",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击范围提升至全体敌方单位",
+   "en": "Increases Ultimate’s range to all enemies"
+  },
+  {
+   "species": "shiny-venusaur",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招提升必定叠加3层【中毒】，并有80%几率额外叠加1层",
+   "en": "Ultimate enhanced is guaranteed to gain 3 stacks of [Poison], with an 80% chance to gain an additional stack"
+  },
+  {
+   "species": "shiny-arceus",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击被控制的敌人时额外无视15%特防",
+   "en": "Ignores additional 15% S.DEF when attacking controlled enemies"
+  },
+  {
+   "species": "shiny-arceus",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "每层标记增加5%暴击率",
+   "en": "Each layer increases Crit Chance by 5%"
+  },
+  {
+   "species": "shiny-arceus",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "攻击克制所有阵营敌人",
+   "en": "Attack and restrain all enemies"
+  },
+  {
+   "species": "shiny-darkrai",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "每层【梦魇】提供的大招额外伤害提升至20%，无视防御比例提升至18%",
+   "en": "Each stack of [Nightmare] grants Ultimate 20% increased damage. Increases Ignore DEF ratio to 18%"
+  },
+  {
+   "species": "shiny-darkrai",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "叠加2层【梦魇】后，大招附带70%几率使对手眩晕1回合",
+   "en": "After gaining 2 stacks of [Nightmare], Ultimate has a 70% chance to stun the target for 1 turn"
+  },
+  {
+   "species": "shiny-darkrai",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "基础伤害提升至195%，且怒招直接获得2层【梦魇】",
+   "en": "Increases base damage to 195%. Ultimate directly gains 2 stacks of [Nightmare]"
+  },
+  {
+   "species": "shiny-cresselia",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外增加所有友军12%减伤，持续2回合",
+   "en": "Ultimate boosts DMG RDCT for all allies by 12%. Lasts 2 turns."
+  },
+  {
+   "species": "shiny-cresselia",
+   "tier": 12,
+   "skillType": [
+    1,
+    3
+   ],
+   "zh": "小技能、普攻后为血量最低的友军和自身增加护盾，护盾值提升至自身特攻的240%",
+   "en": "After using basic skills and normal attacks, self and an ally with lowest HP will gain a shield with HP equal to 240% of own S.ATK."
+  },
+  {
+   "species": "shiny-cresselia",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招50%几率额外使一个对手眩晕1回合",
+   "en": "Ultimate has a 50% chance to stun an additional target for 1 turn"
+  },
+  {
+   "species": "shiny-mewtwo",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招基础伤害提升至120%，无视防御效果提升至35%",
+   "en": "Increases Ultimate's base damage to 120%, increases the Ignore DEF effect to 35%"
+  },
+  {
+   "species": "shiny-mewtwo",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招对【防】宠伤害提升35%，对【攻】宠伤害提升10%",
+   "en": "Increases Ultimate's damage against [DEF] Pokémons by 35%, against [ATK] Pokémons by 10%"
+  },
+  {
+   "species": "shiny-mewtwo",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招出手前提升自身20%暴击率，持续4回合，最多1层",
+   "en": "Before using Ultimate, Increases Crit by 20% for 4 turns. Stacks up to 1 time"
+  },
+  {
+   "species": "shiny-mew",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后提升自身20%控制增强，持续3回合，最多2层",
+   "en": "After Ultimate, Increases self Control Boost by 20% for 3 turns. Stacks up to 2 times"
+  },
+  {
+   "species": "shiny-mew",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "使用大招后有70%几率使自身免疫所有控制效果，持续2回合，最多1层",
+   "en": "After Ultimate, There is a 70% chance to be immune to all control effects for 2 turns. Stacks up to 1 time"
+  },
+  {
+   "species": "shiny-mew",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招沉默概率提升至50%，使用大招后有50%几率获得500怒气",
+   "en": "The Ultimate silence probability increased to 50%, after using the Ultimate has a 50% chance to gain 500 Rage"
+  },
+  {
+   "species": "wobbuffet",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "施放大招后自身回复20%最大血量的生命值",
+   "en": "After ultimate, recover 20% of your maximum HP"
+  },
+  {
+   "species": "wobbuffet",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招基础伤害提升至180%特攻",
+   "en": "Ultimate base DMG increased to 180% S.ATK"
+  },
+  {
+   "species": "wobbuffet",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外伤害提升至上回合累计受到伤害80%",
+   "en": "Additional DMG of ultimate increased to 80% of the cumulative damage taken in the last round"
+  },
+  {
+   "species": "mimikyu",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招的基础伤害提升至135%物攻",
+   "en": "The base damage of the Ult Skill is increased to 135% of P.ATK."
+  },
+  {
+   "species": "mimikyu",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招的眩晕几率提升至30%，大招后自身和全体友军小技能触发概率增加提升至20%，持续时间提升至3回合",
+   "en": "The Stun chance of the Ult Skill is increased to 30%, and after the Ult, the trigger chance of releasing skills for yourself and all allies is increased to 20%, lasting for 3 rounds."
+  },
+  {
+   "species": "mimikyu",
+   "tier": 18,
+   "skillType": [
+    3
+   ],
+   "zh": "小技能的基础伤害提升至125%物攻，并额外附加目标已损生命值10%的伤害",
+   "en": "The base DMG of small skill is increased to 125% of P.ATK, and additionally inflicts DMG equal to 10% of the target's lost HP."
+  },
+  {
+   "species": "psyduck",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "怒招降低目标30%特防，持续2回合，最多叠1层",
+   "en": "After rage move, decrease target S.DEF by 30%, lasting 2 rounds, up to 1 layer"
+  },
+  {
+   "species": "psyduck",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "怒招基础伤害提高20%",
+   "en": "increase rage move basic damage by 20%"
+  },
+  {
+   "species": "psyduck",
+   "tier": 18,
+   "skillType": [
+    2,
+    3
+   ],
+   "zh": "怒招和小技能附加的【意念控制】无法被净化，且普攻己方目标概率提高至70%",
+   "en": "[Zen Control] attached to rage move and basic attack cannot be purified, and the probability of attacking your ally is increased to 80%"
+  },
+  {
+   "species": "shiny-hoopa",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外附加【烈焰】效果\n【烈焰】：造成自身40%特攻的真实伤害，持续2回合，最多叠2层",
+   "en": "Ultimate additionally inflicts [Flame]\n [Flame]: Deals true damage by 40% self S.ATK for 2 turns. Stacks up to 2 times."
+  },
+  {
+   "species": "shiny-hoopa",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招额外附加【圣火】效果\n【圣火】：1回合后造成自身60%特攻的真实伤害",
+   "en": "Ultimate additionally inflicts [Sacred Fire]\n [Sacred Fire]: Deals true damage by 60% of self S.ATK after a turn"
+  },
+  {
+   "species": "shiny-hoopa",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "大招驱散2个增益buff",
+   "en": "Ultimate dispels 2 buffs"
+  },
+  {
+   "species": "shiny-kyogre",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "护盾强度提升至150%特攻",
+   "en": "Increases shield intensity to 150% S.ATK"
+  },
+  {
+   "species": "shiny-kyogre",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "每回合恢复血量提升至45%特攻",
+   "en": "Increases Healing over Turn to 45% S.ATK"
+  },
+  {
+   "species": "shiny-kyogre",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "增加的护盾强度提升至180%特攻，恢复血量提升至60%特攻",
+   "en": "Increases shield intensity to 180% S.ATK, and increases healing amount to 60% S.ATK"
+  },
+  {
+   "species": "shiny-kyurem",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "造成攻击时对所有持有【霜气】单位造成60%特攻伤害，并有15%几率冰冻",
+   "en": "Whenever you attack, deal 60% S.ATK DMG to units with [Frost], with 15% chance to Freezes them."
+  },
+  {
+   "species": "shiny-kyurem",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "对单体目标的冰冻几率提升至40%，对持有【霜气】的单位冰冻几率提升至20%",
+   "en": "Increases the chance of Freezing a single target to 40%. Increases the chance of Freezing targets with [Frost] to 20%."
+  },
+  {
+   "species": "shiny-kyurem",
+   "tier": 18,
+   "skillType": [
+    2
+   ],
+   "zh": "根据单体目标的【霜气】层数额外提升伤害，每层额外提升35%特攻伤害，攻击后清除对手所有的【霜气】层数",
+   "en": "Gain bonus damage based on a single target's [Frost] stacks, each stack increasing S.ATK DMG by 35%. After attack, remove all [Frost] stacks from the opponent."
+  },
+  {
+   "species": "wind-god-pidgeot",
+   "tier": 6,
+   "skillType": [
+    2
+   ],
+   "zh": "大招基础伤害提升至250%",
+   "en": "Increases ult base DMG to 250%"
+  },
+  {
+   "species": "wind-god-pidgeot",
+   "tier": 12,
+   "skillType": [
+    2
+   ],
+   "zh": "大招攻击到处于控制状态的单位时有50%概率再次释放大招，额外大招不消耗怒气",
+   "en": "Ultmate attack to the control state of the unit has 50% again release ultimate, additional ultmate does not consume rage"
+  },
+  {
+   "species": "wind-god-pidgeot",
+   "tier": 18,
+   "skillType": [
+    3
+   ],
+   "zh": "小技能有60%概率造成致盲2回合。致盲：控制状态，攻击时有25%概率被闪避，可驱散",
+   "en": "The basic skill has a 60% chance of causing blindness for 2 turns. Blindness: control status, 25% chance of being dodged when attacking, can be dispelled"
+  }
+ ],
+ "swaps": [
+  {
+   "species": "starmie",
+   "level": 6,
+   "skillInstead": [
+    [
+     1,
+     108102
+    ],
+    [
+     2,
+     108201
+    ],
+    [
+     3,
+     108301
+    ]
+   ]
+  },
+  {
+   "species": "ninetales",
+   "level": 6,
+   "skillInstead": [
+    [
+     1,
+     130102
+    ],
+    [
+     2,
+     130201
+    ],
+    [
+     3,
+     130301
+    ]
+   ]
+  },
+  {
+   "species": "metagross",
+   "level": 6,
+   "skillInstead": [
+    [
+     1,
+     119102
+    ],
+    [
+     2,
+     119201
+    ],
+    [
+     3,
+     119301
+    ]
+   ]
+  },
+  {
+   "species": "garchomp",
+   "level": 6,
+   "skillInstead": [
+    [
+     1,
+     116102
+    ],
+    [
+     2,
+     116201
+    ],
+    [
+     3,
+     116301
+    ]
+   ]
+  },
+  {
+   "species": "hydreigon",
+   "level": 6,
+   "skillInstead": [
+    [
+     1,
+     122102
+    ],
+    [
+     2,
+     122201
+    ],
+    [
+     3,
+     122301
+    ]
+   ]
+  },
+  {
+   "species": "gyarados",
+   "level": 6,
+   "skillInstead": [
+    [
+     1,
+     117102
+    ],
+    [
+     2,
+     117201
+    ],
+    [
+     3,
+     117301
+    ]
+   ]
+  }
+ ]
+}

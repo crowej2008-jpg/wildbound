@@ -160,3 +160,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-01] update | R6a Plates part 1
 - Source plate stats, prices, gates and names; skills next. ASSUMPTIONS #67.
+
+## [2026-11-01] update | R6a part 2 worksheet
+- `scripts/data/plate-skills-source.json`: all 228 plate skills (76 Pokémon × tiers 6/12/18, Chinese + English)
+  and the 6 stage-6 skill swaps, ready to port into the kit DSL next session.
