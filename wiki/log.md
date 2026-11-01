@@ -150,3 +150,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Soul-hearts: tables not dumped; kb has qualities, star EXP, unlock (10★), the 18 source sets (owner keeps his
   nine). Trinkets: see kb/exclusive-trinkets.md (costs, levels, skills).
 - Order chosen: Plates first (complete data), then Trinkets, Soul-heart rules, Berries.
+
+## [2026-11-01] update | R6 split into R6a–R6d
+- R6 is ~600 skill texts to port (plates, trinkets, berries) plus four systems; planned as four steps.
+  Page: source retrofit.
