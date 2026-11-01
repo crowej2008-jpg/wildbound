@@ -35,7 +35,8 @@ export const HELD_TABLES = {
   refineLadder: HELD_CATALOGUE.refineLadder,
   resetterCompound: HELD_CATALOGUE.resetterCompound,
 };
-export const PLATES = platesSchema.parse(plates).plates;
+/** R6a: the source's plates. */
+export const PLATES = platesSchema.parse(plates);
 export const TRINKETS = trinketsSchema.parse(trinkets).trinkets;
 
 /** R3: the source's orbs. */
@@ -46,9 +47,6 @@ export const CORE_SETS = coresSchema.parse(cores).sets;
 
 export function relicById(id: string) {
   return RELICS.find((r) => r.id === id);
-}
-export function plateByFaction(faction: string) {
-  return PLATES.find((p) => p.faction === faction);
 }
 export function trinketBySpecies(speciesId: string) {
   return TRINKETS.find((t) => t.speciesId === speciesId);

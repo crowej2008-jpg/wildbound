@@ -5,74 +5,75 @@ import { upgradePlateAction } from './plates';
 import { createInitialState } from './save';
 import { MemoryStore } from './storage';
 
+/** R6a: the source's plates (kb/plate.md; scripts/import-plates.mjs). */
+
 const START = Date.parse('2026-01-01T00:00:00Z');
 
-function makeServer() {
+async function setup(opts: { playerLevel?: number; stars?: number; level?: number } = {}) {
   const config = buildConfig();
   config.now = () => START;
-  return new LocalServer(new MemoryStore(), config);
+  const srv = new LocalServer(new MemoryStore(), config);
+  await srv.loadAccount();
+  const exported = await srv.exportSave();
+  if (!exported.ok) throw new Error(exported.message);
+  const save = JSON.parse(exported.value);
+  save.state.profile.level = opts.playerLevel ?? 40;
+  const wild = save.state.roster[0];
+  wild.stars = opts.stars ?? 6;
+  wild.level = opts.level ?? 40;
+  await srv.importSave(JSON.stringify(save));
+  await srv.grantCurrency('plateBottle', 10_000);
+  await srv.grantCurrency('plateFragment', 10_000);
+  return { config, srv, wildId: wild.id as string };
 }
 
-describe('M11.7 plates', () => {
-  it('raises a Wild plate, spends Bottles and lifts Power', async () => {
-    const srv = makeServer();
-    const loaded = await srv.loadAccount();
-    if (!loaded.ok) throw new Error(loaded.message);
-    const wild = loaded.value.state.roster[0]!;
-    await srv.grantCurrency('plateBottle', 1_000);
-
-    const before = await srv.getEquipment(wild.id);
-    if (!before.ok) throw new Error(before.message);
-    expect(before.value.plate.stage).toBe(0);
-    expect(before.value.plate.cost).toEqual({ currency: 'plateBottle', amount: 10 });
-    expect(before.value.power.layers.plates).toBe(0);
-    const powerBefore = loaded.value.power[wild.id] ?? 0;
-
-    const raised = await srv.upgradePlate(wild.id);
-    expect(raised.ok).toBe(true);
-    if (!raised.ok) return;
-    expect(raised.value.state.plates[wild.id]).toBe(1);
-    expect(raised.value.state.currencies.plateBottle).toBe(990);
-    expect(raised.value.power[wild.id] ?? 0).toBeGreaterThan(powerBefore);
-
-    const after = await srv.getEquipment(wild.id);
-    if (!after.ok) throw new Error(after.message);
-    expect(after.value.plate.stage).toBe(1);
-    expect(after.value.plate.cost).toEqual({ currency: 'plateBottle', amount: 15 });
-    expect(after.value.power.layers.plates).toBeGreaterThan(0);
-    expect(after.value.plate.linesAreNext).toBe(true);
-    expect(after.value.plate.linesText.length).toBeGreaterThan(0);
+describe('R6a plates', () => {
+  it('copies the source table: 54 plates, one stat table, 630 Bottles + 2,625 Fragments to 18', () => {
+    const t = buildConfig().equipment.plates;
+    expect(t.plates).toHaveLength(54);
+    expect(t.stages[18]).toEqual({ stage: 18, hp: 780002, pAtk: 110931, sAtk: 110931, hpPct: 0.3 });
+    const sum = (c: string) => t.steps.filter((s) => s.currency === c).reduce((a, s) => a + s.amount, 0);
+    expect(sum('plateBottle')).toBe(630);
+    expect(sum('plateFragment')).toBe(2625);
   });
 
-  it('charges Fragments for the 5 → 6 step', async () => {
-    const srv = makeServer();
-    const loaded = await srv.loadAccount();
-    if (!loaded.ok) throw new Error(loaded.message);
-    const wild = loaded.value.state.roster[0]!;
-    await srv.grantCurrency('plateBottle', 1_000);
-    await srv.grantCurrency('plateFragment', 1_000);
-    for (let stage = 0; stage < 5; stage += 1) {
-      const raised = await srv.upgradePlate(wild.id);
-      expect(raised.ok).toBe(true);
+  it('opens at player Lv 34 on a 6★ Pokémon', async () => {
+    expect((await (await setup({ playerLevel: 33 })).srv.upgradePlate((await setup({ playerLevel: 33 })).wildId)).ok).toBe(false);
+    const low = await setup({ stars: 5 });
+    expect((await low.srv.upgradePlate(low.wildId)).ok).toBe(false);
+    const { srv, wildId } = await setup();
+    const view = await srv.getEquipment(wildId);
+    if (!view.ok) throw new Error(view.message);
+    expect(view.value.plate.cost).toEqual({ currency: 'plateBottle', amount: 15 });
+    expect(view.value.plate.locked).toBeNull();
+    const raised = await srv.upgradePlate(wildId);
+    if (!raised.ok) throw new Error(raised.message);
+    expect(raised.value.state.plates[wildId]).toBe(1);
+    expect(raised.value.state.currencies.plateBottle).toBe(10_000 - 15);
+  });
+
+  it('5 → 6 takes 375 Fragments; stage 6+ needs the Pokémon at Lv 47', async () => {
+    const { srv, wildId } = await setup({ level: 46 });
+    for (let i = 0; i < 6; i += 1) {
+      const r = await srv.upgradePlate(wildId);
+      if (!r.ok) throw new Error(r.message);
     }
-
-    const atFive = await srv.getEquipment(wild.id);
-    if (!atFive.ok) throw new Error(atFive.message);
-    expect(atFive.value.plate.stage).toBe(5);
-    expect(atFive.value.plate.cost).toEqual({ currency: 'plateFragment', amount: 375 });
-
-    const sixth = await srv.upgradePlate(wild.id);
-    expect(sixth.ok).toBe(true);
-    if (!sixth.ok) return;
-    expect(sixth.value.state.plates[wild.id]).toBe(6);
-    expect(sixth.value.state.currencies.plateFragment).toBe(625);
+    const s = await srv.loadAccount();
+    if (!s.ok) throw new Error('load');
+    expect(s.value.state.currencies.plateFragment).toBe(10_000 - 375);
+    const blocked = await srv.upgradePlate(wildId);
+    expect(blocked.ok).toBe(false);
+    const view = await srv.getEquipment(wildId);
+    if (!view.ok) throw new Error(view.message);
+    expect(view.value.plate.locked).toMatch(/Lv 47/);
   });
 
-  it('stops at stage 20', () => {
+  it('names the plate by the card type and stops at 18', () => {
     const config = buildConfig();
     const state = createInitialState(config);
     const wild = state.roster[0]!;
-    state.plates[wild.id] = 20;
+    state.profile.level = 99;
+    state.plates[wild.id] = 18;
     const result = upgradePlateAction(config, state, wild.id);
     expect(result.ok).toBe(false);
     if (!result.ok) expect(result.error).toBe('at_level_cap');

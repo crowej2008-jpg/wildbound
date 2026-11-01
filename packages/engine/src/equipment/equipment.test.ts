@@ -59,17 +59,14 @@ const TABLES: EquipmentTables = {
     refineLadder: [0, 1, 1],
     resetterCompound: 20,
   },
-  plates: [
-    {
-      id: 'plateA',
-      name: 'Plate A',
-      faction: 'fire',
-      lines: [
-        { kind: 'core', field: 'pAtk', base: 10, perLevel: 10 },
-        { kind: 'percent', field: 'dmgBoost', base: 0.01, perLevel: 0.01 },
-      ],
-    },
-  ],
+  plates: {
+    unlock: { playerLevel: 34, stars: 6 },
+    plates: [{ id: 1, name: 'Common Plate' }],
+    stages: Array.from({ length: 19 }, (_, stage) => ({ stage, hp: stage * 100, pAtk: stage * 10, sAtk: stage * 10, hpPct: stage >= 6 ? 0.1 : 0 })),
+    steps: [],
+    skillSwapStage: 6,
+    species: { sp1: [[3, 1]] },
+  },
   trinkets: [
     {
       id: 'trinketA',
@@ -199,9 +196,9 @@ describe('layer contributions', () => {
     expect(folded.layers.relic.core.pAtk).toBeCloseTo(80);
     expect(folded.layers.relic.percent.crit).toBeCloseTo(0.07);
     expect(folded.layers.relic.percent.ultBoost).toBeCloseTo(0.1);
-    // plate stage 5: pAtk 50, dmgBoost 0.05
+    // plate stage 5: the stage row (pAtk 50, no Total HP before stage 6)
     expect(folded.layers.plates.core.pAtk).toBeCloseTo(50);
-    expect(folded.layers.plates.percent.dmgBoost).toBeCloseTo(0.05);
+    expect(folded.layers.plates.percent.hpPct ?? 0).toBe(0);
     // trinket level 5: pAtk 60, dmgBoost 0.05
     expect(folded.layers.trinkets.core.pAtk).toBeCloseTo(60);
     expect(folded.layers.trinkets.percent.dmgBoost).toBeCloseTo(0.05);

@@ -30,8 +30,9 @@ export default function PlatePanel({ wildId, view, busy, run, reload }: GearPane
         </span>
       </div>
       <div className="row-actions">
+        {plate.locked && <p className="muted">{plate.locked}</p>}
         {plate.cost ? (
-          <button type="button" className="btn btn-primary" disabled={busy} onClick={() => void act()}>
+          <button type="button" className="btn btn-primary" disabled={busy || plate.locked !== null} onClick={() => void act()}>
             {t('gear.plate.advance')} · {plate.cost.amount.toLocaleString()} {currency}
           </button>
         ) : (

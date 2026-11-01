@@ -112,11 +112,17 @@ export interface HeldTables {
 }
 
 /** One element-keyed plate per faction; stage 0 is empty. */
-export interface PlateDef {
-  id: string;
-  name: string;
-  faction: Faction;
-  lines: StatLine[];
+/** R6a: the source's plates — one stat table for all 54, named by the Pokémon's card type. */
+export interface PlateTables {
+  unlock: { playerLevel: number; stars: number };
+  plates: { id: number; name: string }[];
+  /** Stage 0–18 stats (`hpPct` = Total HP, a fraction). */
+  stages: { stage: number; hp: number; pAtk: number; sAtk: number; hpPct: number }[];
+  /** Price of stage N → N + 1, and the Pokémon level it needs (0 = none). */
+  steps: { currency: 'plateBottle' | 'plateFragment'; amount: number; level: number }[];
+  skillSwapStage: number;
+  /** Per species: [from star, plate id] runs. */
+  species: Record<string, [number, number][]>;
 }
 
 /** One signature trinket per species; level 0 is empty. */
@@ -242,7 +248,7 @@ export interface EquipmentState {
 export interface EquipmentTables {
   relics: RelicDef[];
   held: HeldTables;
-  plates: PlateDef[];
+  plates: PlateTables;
   trinkets: TrinketDef[];
   orbs: OrbTables;
   charms: CharmDef[];

@@ -186,15 +186,18 @@ export const heldItemsSchema = z
     }
   });
 
+/** R6a: the source's plates (scripts/import-plates.mjs). */
 export const platesSchema = z.object({
-  plates: z.array(
-    z.object({
-      id: z.string().min(1),
-      name: z.string().min(1),
-      faction: z.enum(FACTIONS),
-      lines: z.array(statLineSchema).min(1),
-    }),
-  ),
+  unlock: z.object({ playerLevel: z.number().int(), stars: z.number().int() }),
+  plates: z.array(z.object({ id: z.number().int(), name: z.string().min(1) })).length(54),
+  stages: z
+    .array(z.object({ stage: z.number().int(), hp: z.number(), pAtk: z.number(), sAtk: z.number(), hpPct: z.number() }))
+    .length(19),
+  steps: z
+    .array(z.object({ currency: z.enum(['plateBottle', 'plateFragment']), amount: z.number().int().positive(), level: z.number().int() }))
+    .length(18),
+  skillSwapStage: z.number().int(),
+  species: z.record(z.string(), z.array(z.tuple([z.number().int(), z.number().int()])).min(1)),
 });
 
 export const trinketsSchema = z.object({
@@ -284,7 +287,7 @@ export const equipmentTuningSchema = z.object({
 
 export type HeldItemsJson = z.infer<typeof heldItemsSchema>;
 export type RelicJson = HeldItemsJson['items'][number];
-export type PlateJson = z.infer<typeof platesSchema>['plates'][number];
+export type PlateJson = z.infer<typeof platesSchema>;
 export type TrinketJson = z.infer<typeof trinketsSchema>['trinkets'][number];
 export type CharmJson = z.infer<typeof charmsSchema>['charms'][number];
 export type CoreSetJson = z.infer<typeof coresSchema>['sets'][number];

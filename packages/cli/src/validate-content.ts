@@ -221,9 +221,10 @@ export function validateContent(repoRoot: string): ValidateReport {
     for (const r of EQUIPMENT_TUNING.starting.relics) {
       if (!relicIds.has(r.defId)) errors.push(`equipment: starting relic "${r.defId}" has no design`);
     }
-    for (const faction of ['water', 'fire', 'grass', 'light', 'dark']) {
-      const count = PLATES.filter((p) => p.faction === faction).length;
-      if (count !== 1) errors.push(`equipment: faction "${faction}" has ${count} plates (want 1)`);
+    const plateIds = new Set(PLATES.plates.map((p) => p.id));
+    for (const [id, runs] of Object.entries(PLATES.species)) {
+      if (!species.has(id)) errors.push(`equipment: plate map names unknown species "${id}"`);
+      for (const [, plate] of runs) if (!plateIds.has(plate)) errors.push(`equipment: ${id} has unknown plate ${plate}`);
     }
     const trinketSpecies = new Set<string>();
     for (const trinket of TRINKETS) {
@@ -291,7 +292,7 @@ export function validateContent(repoRoot: string): ValidateReport {
       if (c.tier !== 'common' && c.maxStars <= 0) errors.push(`equipment: Berry "${c.id}" needs a star cap`);
     }
     checks.push(
-      `equipment: ${RELICS.length} held item(s), ${PLATES.length} plate(s), ${TRINKETS.length} trinket(s), ${ORBS.kinds.length} orb kind(s), ${ORBS.sets.length} orb set(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s) validated`,
+      `equipment: ${RELICS.length} held item(s), ${PLATES.plates.length} plate(s), ${TRINKETS.length} trinket(s), ${ORBS.kinds.length} orb kind(s), ${ORBS.sets.length} orb set(s), ${CHARMS.length} charm(s), ${CORE_SETS.length} core set(s) validated`,
     );
   }
 

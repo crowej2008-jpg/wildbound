@@ -202,8 +202,13 @@ export function foldLoadout(
 
   // --- Plates: the faction's plate, scaled by its stage (0 adds nothing) ---
   if (plate && plate.stage > 0) {
-    const plateDef = tables.plates.find((d) => d.faction === plate.faction);
-    if (plateDef) addLines(layers.plates, plateDef.lines, plate.stage);
+    const row = tables.plates.stages[Math.min(plate.stage, tables.plates.stages.length - 1)];
+    if (row) {
+      layers.plates.core.hp = (layers.plates.core.hp ?? 0) + row.hp;
+      layers.plates.core.pAtk = (layers.plates.core.pAtk ?? 0) + row.pAtk;
+      layers.plates.core.sAtk = (layers.plates.core.sAtk ?? 0) + row.sAtk;
+      if (row.hpPct) layers.plates.percent.hpPct = (layers.plates.percent.hpPct ?? 0) + row.hpPct;
+    }
   }
 
   // --- Trinkets: one signature line set per species, scaled by level ---

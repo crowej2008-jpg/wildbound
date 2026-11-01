@@ -838,4 +838,9 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     at 10★. Stand-ins: a piece's lines keep the owner's per-star growth with 0★ as the first value; the
     starting three pieces are blue 0★; feeding one Soul-heart to another (base EXP + 80 % of its EXP) and the
     four EXP items are not built yet — EXP is the one Soul-heart EXP currency.
+67. **R6a Plates, part 1.** Copied from the source: 54 plates (18 types × 3 grades) named by each card's
+    type, one stat table for all (stage 18: HP +780,002, P.ATK / S.ATK +110,931, Total HP +30 %), the step
+    prices (630 Bottles + 2,625 Fragments to 18), player Lv 34 / 6★ unlock, Pokémon Lv 47 from stage 6 and 60
+    from stage 12. The plate stays on the Pokémon's held-item faction lines as before. Not yet: the plate
+    skills at tiers 6 / 12 / 18 and the stage-6 skill swaps (part 2).
 

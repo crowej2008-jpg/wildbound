@@ -74,7 +74,7 @@ tables, then R2 / R3.
 
 ## R6 plan (2026-11-01, after the data check)
 R6 is mostly a **skill-porting job** (like E3), so it splits into four steps, one session each:
-- **R6a Plates** — stats per stage (stone_up_stage, complete), costs and gates (kb: player Lv 34, Pokémon 6★),
+- **R6a Plates** — part 1 ✅ 2026-11-01 (stats, costs, gates, names); part 2 = skills. Stats per stage (stone_up_stage, complete), costs and gates (kb: player Lv 34, Pokémon 6★),
   18 types × 3 grades by the card's type, and the plate skills at tiers 6 / 12 / 18 (~230 texts, 78 Pokémon;
   hero_stone_skill) plus the stage-6 skill swaps (hero_slate_skill, 6 rows).
 - **R6b Trinkets** — 81 trinkets, Lv 0–40 for 300,430 Star Shards, stats by level (30 sets), skills at Lv 10 /

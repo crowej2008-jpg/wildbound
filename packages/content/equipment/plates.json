@@ -1,99 +1,958 @@
 {
-  "plates": [
-    {
-      "id": "plate-ember",
-      "name": "Emberforged Plate",
-      "faction": "fire",
-      "lines": [
-        {
-          "kind": "core",
-          "field": "pAtk",
-          "base": 8,
-          "perLevel": 8
-        },
-        {
-          "kind": "percent",
-          "field": "dmgBoost",
-          "base": 0.004,
-          "perLevel": 0.004
-        }
-      ]
-    },
-    {
-      "id": "plate-tide",
-      "name": "Tidewrought Plate",
-      "faction": "water",
-      "lines": [
-        {
-          "kind": "core",
-          "field": "hp",
-          "base": 60,
-          "perLevel": 60
-        },
-        {
-          "kind": "core",
-          "field": "sDef",
-          "base": 5,
-          "perLevel": 5
-        }
-      ]
-    },
-    {
-      "id": "plate-grove",
-      "name": "Grovebound Plate",
-      "faction": "grass",
-      "lines": [
-        {
-          "kind": "core",
-          "field": "hp",
-          "base": 50,
-          "perLevel": 50
-        },
-        {
-          "kind": "core",
-          "field": "sAtk",
-          "base": 8,
-          "perLevel": 8
-        }
-      ]
-    },
-    {
-      "id": "plate-volt",
-      "name": "Voltcharged Plate",
-      "faction": "light",
-      "lines": [
-        {
-          "kind": "core",
-          "field": "spd",
-          "base": 3,
-          "perLevel": 3
-        },
-        {
-          "kind": "core",
-          "field": "pAtk",
-          "base": 6,
-          "perLevel": 6
-        }
-      ]
-    },
-    {
-      "id": "plate-shade",
-      "name": "Shadeveiled Plate",
-      "faction": "dark",
-      "lines": [
-        {
-          "kind": "core",
-          "field": "sAtk",
-          "base": 9,
-          "perLevel": 9
-        },
-        {
-          "kind": "percent",
-          "field": "crit",
-          "base": 0.004,
-          "perLevel": 0.004
-        }
-      ]
-    }
+ "unlock": {
+  "playerLevel": 34,
+  "stars": 6
+ },
+ "plates": [
+  {
+   "id": 1,
+   "name": "Common Plate"
+  },
+  {
+   "id": 2,
+   "name": "Fist Plate"
+  },
+  {
+   "id": 3,
+   "name": "Sky Plate"
+  },
+  {
+   "id": 4,
+   "name": "Venom Plate"
+  },
+  {
+   "id": 5,
+   "name": "Earth Plate"
+  },
+  {
+   "id": 6,
+   "name": "Rock Plate"
+  },
+  {
+   "id": 7,
+   "name": "Insect Plate"
+  },
+  {
+   "id": 8,
+   "name": "Monster Plate"
+  },
+  {
+   "id": 9,
+   "name": "Steel Plate"
+  },
+  {
+   "id": 10,
+   "name": "Fireball Plate"
+  },
+  {
+   "id": 11,
+   "name": "Splash Plate"
+  },
+  {
+   "id": 12,
+   "name": "Aqua Plate"
+  },
+  {
+   "id": 13,
+   "name": "Thunderbolt Plate"
+  },
+  {
+   "id": 14,
+   "name": "Magical Plate"
+  },
+  {
+   "id": 15,
+   "name": "Icicle Plate"
+  },
+  {
+   "id": 16,
+   "name": "Dragon Plate"
+  },
+  {
+   "id": 17,
+   "name": "Dire Plate"
+  },
+  {
+   "id": 18,
+   "name": "Sprite Plate"
+  },
+  {
+   "id": 101,
+   "name": "Common Plate"
+  },
+  {
+   "id": 102,
+   "name": "Fist Plate"
+  },
+  {
+   "id": 103,
+   "name": "Sky Plate"
+  },
+  {
+   "id": 104,
+   "name": "Venom Plate"
+  },
+  {
+   "id": 105,
+   "name": "Earth Plate"
+  },
+  {
+   "id": 106,
+   "name": "Rock Plate"
+  },
+  {
+   "id": 107,
+   "name": "Insect Plate"
+  },
+  {
+   "id": 108,
+   "name": "Monster Plate"
+  },
+  {
+   "id": 109,
+   "name": "Steel Plate"
+  },
+  {
+   "id": 110,
+   "name": "Fireball Plate"
+  },
+  {
+   "id": 111,
+   "name": "Splash Plate"
+  },
+  {
+   "id": 112,
+   "name": "Aqua Plate"
+  },
+  {
+   "id": 113,
+   "name": "Thunderbolt Plate"
+  },
+  {
+   "id": 114,
+   "name": "Magical Plate"
+  },
+  {
+   "id": 115,
+   "name": "Icicle Plate"
+  },
+  {
+   "id": 116,
+   "name": "Dragon Plate"
+  },
+  {
+   "id": 117,
+   "name": "Dire Plate"
+  },
+  {
+   "id": 118,
+   "name": "Sprite Plate"
+  },
+  {
+   "id": 201,
+   "name": "Common Plate"
+  },
+  {
+   "id": 202,
+   "name": "Fist Plate"
+  },
+  {
+   "id": 203,
+   "name": "Sky Plate"
+  },
+  {
+   "id": 204,
+   "name": "Venom Plate"
+  },
+  {
+   "id": 205,
+   "name": "Earth Plate"
+  },
+  {
+   "id": 206,
+   "name": "Rock Plate"
+  },
+  {
+   "id": 207,
+   "name": "Insect Plate"
+  },
+  {
+   "id": 208,
+   "name": "Monster Plate"
+  },
+  {
+   "id": 209,
+   "name": "Steel Plate"
+  },
+  {
+   "id": 210,
+   "name": "Fireball Plate"
+  },
+  {
+   "id": 211,
+   "name": "Splash Plate"
+  },
+  {
+   "id": 212,
+   "name": "Aqua Plate"
+  },
+  {
+   "id": 213,
+   "name": "Ultra Plate"
+  },
+  {
+   "id": 214,
+   "name": "Magical Plate"
+  },
+  {
+   "id": 215,
+   "name": "Icicle Plate"
+  },
+  {
+   "id": 216,
+   "name": "Dragon Plate"
+  },
+  {
+   "id": 217,
+   "name": "Dire Plate"
+  },
+  {
+   "id": 218,
+   "name": "Sprite Plate"
+  }
+ ],
+ "stages": [
+  {
+   "stage": 0,
+   "hp": 0,
+   "pAtk": 0,
+   "sAtk": 0,
+   "hpPct": 0
+  },
+  {
+   "stage": 1,
+   "hp": 7315,
+   "pAtk": 1040,
+   "sAtk": 1040,
+   "hpPct": 0
+  },
+  {
+   "stage": 2,
+   "hp": 15295,
+   "pAtk": 2175,
+   "sAtk": 2175,
+   "hpPct": 0
+  },
+  {
+   "stage": 3,
+   "hp": 23940,
+   "pAtk": 3404,
+   "sAtk": 3404,
+   "hpPct": 0
+  },
+  {
+   "stage": 4,
+   "hp": 33249,
+   "pAtk": 4728,
+   "sAtk": 4728,
+   "hpPct": 0
+  },
+  {
+   "stage": 5,
+   "hp": 43223,
+   "pAtk": 6147,
+   "sAtk": 6147,
+   "hpPct": 0
+  },
+  {
+   "stage": 6,
+   "hp": 103070,
+   "pAtk": 14658,
+   "sAtk": 14658,
+   "hpPct": 0.1
+  },
+  {
+   "stage": 7,
+   "hp": 123019,
+   "pAtk": 17495,
+   "sAtk": 17495,
+   "hpPct": 0.1
+  },
+  {
+   "stage": 8,
+   "hp": 144298,
+   "pAtk": 20521,
+   "sAtk": 20521,
+   "hpPct": 0.1
+  },
+  {
+   "stage": 9,
+   "hp": 166907,
+   "pAtk": 23736,
+   "sAtk": 23736,
+   "hpPct": 0.1
+  },
+  {
+   "stage": 10,
+   "hp": 190846,
+   "pAtk": 27141,
+   "sAtk": 27141,
+   "hpPct": 0.1
+  },
+  {
+   "stage": 11,
+   "hp": 216115,
+   "pAtk": 30735,
+   "sAtk": 30735,
+   "hpPct": 0.1
+  },
+  {
+   "stage": 12,
+   "hp": 367726,
+   "pAtk": 52297,
+   "sAtk": 52297,
+   "hpPct": 0.2
+  },
+  {
+   "stage": 13,
+   "hp": 396984,
+   "pAtk": 56458,
+   "sAtk": 56458,
+   "hpPct": 0.2
+  },
+  {
+   "stage": 14,
+   "hp": 428902,
+   "pAtk": 60997,
+   "sAtk": 60997,
+   "hpPct": 0.2
+  },
+  {
+   "stage": 15,
+   "hp": 463480,
+   "pAtk": 65915,
+   "sAtk": 65915,
+   "hpPct": 0.2
+  },
+  {
+   "stage": 16,
+   "hp": 500718,
+   "pAtk": 71211,
+   "sAtk": 71211,
+   "hpPct": 0.2
+  },
+  {
+   "stage": 17,
+   "hp": 540616,
+   "pAtk": 76885,
+   "sAtk": 76885,
+   "hpPct": 0.2
+  },
+  {
+   "stage": 18,
+   "hp": 780002,
+   "pAtk": 110931,
+   "sAtk": 110931,
+   "hpPct": 0.3
+  }
+ ],
+ "steps": [
+  {
+   "currency": "plateBottle",
+   "amount": 15,
+   "level": 0
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 15,
+   "level": 0
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 20,
+   "level": 0
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 20,
+   "level": 0
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 20,
+   "level": 0
+  },
+  {
+   "currency": "plateFragment",
+   "amount": 375,
+   "level": 0
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 30,
+   "level": 47
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 30,
+   "level": 47
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 40,
+   "level": 47
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 40,
+   "level": 47
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 40,
+   "level": 47
+  },
+  {
+   "currency": "plateFragment",
+   "amount": 750,
+   "level": 47
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 60,
+   "level": 60
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 60,
+   "level": 60
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 80,
+   "level": 60
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 80,
+   "level": 60
+  },
+  {
+   "currency": "plateBottle",
+   "amount": 80,
+   "level": 60
+  },
+  {
+   "currency": "plateFragment",
+   "amount": 1500,
+   "level": 60
+  }
+ ],
+ "skillSwapStage": 6,
+ "species": {
+  "arceus": [
+   [
+    5,
+    101
+   ]
+  ],
+  "articuno": [
+   [
+    5,
+    115
+   ]
+  ],
+  "black-kyurem": [
+   [
+    5,
+    115
+   ]
+  ],
+  "blastoise": [
+   [
+    3,
+    11
+   ]
+  ],
+  "blaziken": [
+   [
+    5,
+    110
+   ]
+  ],
+  "calyrex": [
+   [
+    5,
+    115
+   ]
+  ],
+  "celebi": [
+   [
+    5,
+    112
+   ]
+  ],
+  "charizard": [
+   [
+    3,
+    10
+   ]
+  ],
+  "cresselia": [
+   [
+    5,
+    114
+   ]
+  ],
+  "darkrai": [
+   [
+    5,
+    117
+   ]
+  ],
+  "deoxys": [
+   [
+    5,
+    114
+   ]
+  ],
+  "dialga": [
+   [
+    5,
+    112
+   ]
+  ],
+  "dragonite": [
+   [
+    5,
+    116
+   ]
+  ],
+  "entei": [
+   [
+    5,
+    110
+   ]
+  ],
+  "feraligatr": [
+   [
+    5,
+    111
+   ]
+  ],
+  "garchomp": [
+   [
+    5,
+    114
+   ]
+  ],
+  "gardevoir": [
+   [
+    5,
+    114
+   ]
+  ],
+  "gengar": [
+   [
+    5,
+    108
+   ]
+  ],
+  "giratina": [
+   [
+    5,
+    116
+   ]
+  ],
+  "god-ash-pikachu": [
+   [
+    5,
+    113
+   ]
+  ],
+  "greninja": [
+   [
+    5,
+    111
+   ]
+  ],
+  "groudon": [
+   [
+    5,
+    110
+   ]
+  ],
+  "gyarados": [
+   [
+    5,
+    111
+   ]
+  ],
+  "ho-oh": [
+   [
+    5,
+    110
+   ]
+  ],
+  "hoopa": [
+   [
+    5,
+    114
+   ]
+  ],
+  "hydreigon": [
+   [
+    5,
+    117
+   ]
+  ],
+  "infernape": [
+   [
+    5,
+    110
+   ]
+  ],
+  "jirachi": [
+   [
+    5,
+    114
+   ]
+  ],
+  "keldeo": [
+   [
+    5,
+    111
+   ]
+  ],
+  "kyogre": [
+   [
+    5,
+    111
+   ]
+  ],
+  "lugia": [
+   [
+    5,
+    111
+   ]
+  ],
+  "lunala": [
+   [
+    5,
+    114
+   ]
+  ],
+  "manaphy": [
+   [
+    5,
+    111
+   ]
+  ],
+  "meganium": [
+   [
+    5,
+    112
+   ]
+  ],
+  "meloetta": [
+   [
+    5,
+    114
+   ]
+  ],
+  "metagross": [
+   [
+    5,
+    109
+   ]
+  ],
+  "mew": [
+   [
+    5,
+    114
+   ]
+  ],
+  "mewtwo": [
+   [
+    5,
+    114
+   ]
+  ],
+  "mimikyu": [
+   [
+    5,
+    117
+   ]
+  ],
+  "moltres": [
+   [
+    5,
+    110
+   ]
+  ],
+  "necrozma": [
+   [
+    5,
+    114
+   ]
+  ],
+  "ninetales": [
+   [
+    3,
+    18
+   ]
+  ],
+  "origin-lugia": [
+   [
+    5,
+    111
+   ]
+  ],
+  "origin-rayquaza": [
+   [
+    5,
+    103
+   ]
+  ],
+  "palkia": [
+   [
+    5,
+    111
+   ]
+  ],
+  "psyduck": [
+   [
+    5,
+    114
+   ]
+  ],
+  "raichu": [
+   [
+    3,
+    13
+   ]
+  ],
+  "raikou": [
+   [
+    5,
+    113
+   ]
+  ],
+  "rayquaza": [
+   [
+    5,
+    103
+   ]
+  ],
+  "salamence": [
+   [
+    5,
+    116
+   ]
+  ],
+  "sceptile": [
+   [
+    5,
+    112
+   ]
+  ],
+  "shadow-mewtwo": [
+   [
+    5,
+    114
+   ]
+  ],
+  "shaymin": [
+   [
+    5,
+    112
+   ]
+  ],
+  "shiny-arceus": [
+   [
+    5,
+    101
+   ]
+  ],
+  "shiny-blastoise": [
+   [
+    5,
+    111
+   ]
+  ],
+  "shiny-charizard": [
+   [
+    5,
+    110
+   ]
+  ],
+  "shiny-cresselia": [
+   [
+    5,
+    114
+   ]
+  ],
+  "shiny-darkrai": [
+   [
+    5,
+    117
+   ]
+  ],
+  "shiny-gengar": [
+   [
+    5,
+    108
+   ]
+  ],
+  "shiny-god-ash-pikachu": [
+   [
+    5,
+    113
+   ]
+  ],
+  "shiny-hoopa": [
+   [
+    5,
+    114
+   ]
+  ],
+  "shiny-kyogre": [
+   [
+    5,
+    111
+   ]
+  ],
+  "shiny-kyurem": [
+   [
+    5,
+    115
+   ]
+  ],
+  "shiny-mew": [
+   [
+    5,
+    114
+   ]
+  ],
+  "shiny-mewtwo": [
+   [
+    5,
+    114
+   ]
+  ],
+  "shiny-raichu": [
+   [
+    5,
+    113
+   ]
+  ],
+  "shiny-venusaur": [
+   [
+    5,
+    112
+   ]
+  ],
+  "slaking": [
+   [
+    5,
+    101
+   ]
+  ],
+  "snorlax": [
+   [
+    5,
+    101
+   ]
+  ],
+  "solgaleo": [
+   [
+    5,
+    114
+   ]
+  ],
+  "starmie": [
+   [
+    3,
+    11
+   ]
+  ],
+  "suicune": [
+   [
+    5,
+    111
+   ]
+  ],
+  "swampert": [
+   [
+    5,
+    110
+   ]
+  ],
+  "typhlosion": [
+   [
+    5,
+    110
+   ]
+  ],
+  "tyranitar": [
+   [
+    5,
+    106
+   ]
+  ],
+  "venusaur": [
+   [
+    3,
+    12
+   ]
+  ],
+  "victini": [
+   [
+    5,
+    110
+   ]
+  ],
+  "wind-god-pidgeot": [
+   [
+    5,
+    103
+   ]
+  ],
+  "wobbuffet": [
+   [
+    5,
+    114
+   ]
+  ],
+  "xerneas": [
+   [
+    5,
+    118
+   ]
+  ],
+  "yveltal": [
+   [
+    5,
+    117
+   ]
+  ],
+  "zacian": [
+   [
+    5,
+    118
+   ]
+  ],
+  "zapdos": [
+   [
+    5,
+    113
+   ]
+  ],
+  "zygarde": [
+   [
+    5,
+    105
+   ]
   ]
+ }
 }

@@ -127,7 +127,6 @@ export {
   CHARMS,
   CORE_SETS,
   relicById,
-  plateByFaction,
   trinketBySpecies,
   charmById,
   coreSetById,

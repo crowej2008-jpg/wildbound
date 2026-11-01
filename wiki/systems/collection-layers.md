@@ -44,6 +44,9 @@ spare for 5/10/20/40 Essence by tier. Real battles consume one copy per occupied
 See **[held items](held-items.md)** (levels, refine, Resetter retrofit).
 
 ## Plates
+**R6a part 1 (2026-11-01):** source plates — 54 by card type, one stat table, stages 0–18, 630 Bottles +
+2,625 Fragments, player Lv 34 / 6★, Pokémon Lv 47 / 60 gates. Skills pending (part 2).
+
 One per faction (6). Stages 0–20; cost `10 + 5 × stage` Plate Bottles, except 5→6 = **375 Plate
 Fragments**. Stage-6 skill swap "coming later". Save v9.
 

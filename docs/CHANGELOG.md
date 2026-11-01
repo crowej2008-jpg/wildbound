@@ -1157,3 +1157,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - `CoreInstance.quality` (blue / purple / orange / red), star caps 2 / 3 / 4 / 5, per-quality star EXP table
   (hero_heart_soul_up_star_json values from kb), stars start at 0. Removed the M11 `collection.soulhearts`
   formula and `pieceMin/MaxStars`. The owner's nine sets unchanged. Save v24. ASSUMPTIONS #66.
+
+## R6a part 1 — Plates from the source (2026-11-01)
+
+- `scripts/import-plates.mjs` → `packages/content/equipment/plates.json`: 54 plates by card type, stages 0–18
+  (one table), step prices, unlock and level gates. Server `plates.ts` rewritten (gates, `locked` reason);
+  M11's faction plates and `collection.plates` removed. Plate skills follow in part 2. ASSUMPTIONS #67.

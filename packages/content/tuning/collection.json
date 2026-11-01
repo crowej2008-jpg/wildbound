@@ -10,13 +10,6 @@
    "greater": 40
   }
  },
- "plates": {
-  "maxStage": 20,
-  "bottleBase": 10,
-  "bottlePerStage": 5,
-  "fragmentCost": 375,
-  "skillSwapStage": 6
- },
  "trinkets": {
   "maxLevel": 40,
   "shardBase": 10,

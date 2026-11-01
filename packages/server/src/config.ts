@@ -191,7 +191,7 @@ export function buildConfig(): GameConfig {
     equipment: {
       relics: RELICS as unknown as RelicDef[],
       held: HELD_TABLES as unknown as HeldTables,
-      plates: PLATES,
+      plates: PLATES as unknown as EquipmentTables['plates'],
       trinkets: TRINKETS,
       orbs: ORBS as unknown as OrbTables,
       charms: CHARMS,

@@ -163,25 +163,21 @@ test('Held Items level from 0 on the source table and refine a worn Mythic (firs
   await expect(row.getByRole('button', { name: 'Refine · 1 Resetters' }).first()).toBeVisible();
 });
 
-test('Plates rise from stage 0 to 6 with Bottles then Fragments', async ({ page }) => {
-  await importSave(page, { currencies: { plateBottle: 1_000, plateFragment: 1_000 } });
+test('Plates (source): Bottles to stage 5, then 375 Fragments for 5 → 6', async ({ page }) => {
+  await importSave(page, { profile: { level: 40 }, currencies: { plateBottle: 1_000, plateFragment: 1_000 } });
   await page.goto('/wilds');
   await page.locator('.roster-item').first().click();
   await page.getByRole('button', { name: 'Held Items', exact: true }).click();
   await page.getByRole('button', { name: 'Plates', exact: true }).click();
 
-  await expect(page.getByText('Stage 0/20')).toBeVisible();
-  await expect(page.getByText('Plates +0')).toBeVisible();
+  await expect(page.getByText('Stage 0/18')).toBeVisible();
   for (let stage = 1; stage <= 5; stage += 1) {
     await page.getByRole('button', { name: /Raise stage/ }).click();
-    await expect(page.getByText(`Stage ${stage}/20`)).toBeVisible();
+    await expect(page.getByText(`Stage ${stage}/18`)).toBeVisible();
   }
-  await expect(page.getByText('Plates +0')).toBeHidden();
-  await expect(page.getByRole('button', { name: /Raise stage .*375 Plate Fragments/ })).toBeVisible();
   await page.getByRole('button', { name: /Raise stage .*375 Plate Fragments/ }).click();
-  await expect(page.getByText('Stage 6/20')).toBeVisible();
+  await expect(page.getByText('Stage 6/18')).toBeVisible();
   await expect(page.getByText('Plate Fragments 625')).toBeVisible();
-  await expect(page.getByText('Stage 6 skill swap: coming later.')).toBeVisible();
 });
 
 test('Trinkets level with Star Shards and show the shared species state', async ({ page }) => {
