@@ -1,7 +1,8 @@
 ---
 title: Battle engine completion (E1–E6)
 type: milestones
-updated: 2026-10-31
+updated: 2026-11-01
+status: done 2026-11-01
 sources: [owner 2026-10-31 "could we take a break on the current milestone and finnish all of the battle enigine", docs/PORT-REPORT.md]
 ---
 
@@ -17,8 +18,8 @@ R4 Potential resumes afterwards.
 | E2 ✅ | All 27 held-item skills active in battle ([held items](../systems/held-items.md)) | built 2026-10-31 |
 | E3 ✅ | The kit clauses the parser could not express — 68 kits hand-ported | built 2026-10-31 |
 | E4 ✅ | Origin skill levels LV.2 / LV.3 + per-species shards (pulled forward from R9) | built 2026-10-31 |
-| E5 ✅ | Re-check the open combat numbers against the kb (faction bonus ×1.43 vs ×1.25, crit slope, class matchups, heal basis) | pending |
-| E6 (in progress) | Tests + campaign/PvP balance re-check | tier list done ([e6 tier list](../systems/e6-tier-list.md)); mode curves next |
+| E5 ✅ | Re-check the open combat numbers against the kb (faction bonus ×1.43 vs ×1.25, crit slope, class matchups, heal basis) | built 2026-10-31 ([combat numbers](../systems/combat-numbers.md)) |
+| E6 ✅ | Tests + campaign/PvP balance re-check | done 2026-11-01: base-kit [tier list](../systems/e6-tier-list.md), Dialga measured, action Rage fixed (+125 / SKILL +250). Mode curves and the geared tier check moved to R10 — R9 replaces every mode's data with the source's, so tuning now would be overwritten. |
 
 Not in scope (wired when their systems are retrofitted): Potential options (R4), plate stage-6 skill
 swap and trinket skills (R6), gear/orb set skills (R2/R3).

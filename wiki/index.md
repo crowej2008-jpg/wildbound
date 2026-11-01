@@ -10,10 +10,10 @@ updated: 2026-10-31
 [open questions](open-questions.md).** How the wiki is maintained: `AGENTS.md` › "Project wiki".
 Recent changes: [log](log.md).
 
-**Now:** [battle engine completion](milestones/battle-engine.md) (owner's pause of the retrofit) —
-E1 triggers, E2 held-item skills, E3 kit hand ports and E4 Origin skill levels + species shards and E5 combat-number check done; **E6** (balance) next. The
-[source retrofit](milestones/source-retrofit.md) has R0, R1 and R5 done (save v20) and resumes with
-R4 Potential; then M13.3 [Hoopa's Vault](systems/hoopa-vault.md).
+**Now:** the [source retrofit](milestones/source-retrofit.md) resumes with **R4 Potential**, then R6, R7, R8
+(no list-and-wait since 2026-11-01). Done just before: [battle engine completion](milestones/battle-engine.md)
+E1–E6. Later: R2/R3 when the gear and orb tables are re-extracted, R9, R10; then M13.3
+[Hoopa's Vault](systems/hoopa-vault.md).
 
 ## Start here
 - [overview](overview.md) — what Wildbound is, who it's for, where it stands

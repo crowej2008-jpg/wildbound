@@ -31,3 +31,5 @@ Test counts are unit / e2e at the end of each step (green `pnpm check`).
 | 10-31 | Rules | [Copy the source exactly](../decisions/copy-the-source-exactly.md); CI added; [retrofit](source-retrofit.md) planned | |
 | 10-31 | R0 | Source loader + `docs/SOURCE-TABLES.md`; save v18 reset (built by Claude, tested on CI) | 506 / 90 |
 | 10-31 | R1 | Species, five factions, star ladders, source stats, fodder Evolve; save v19 | 498 / 90 |
+| 10-31 | R5 | [Held Items](../systems/held-items.md), save v20 | |
+| 10-31 → 11-01 | E1–E6 | [Battle engine completion](battle-engine.md): triggers, held-item skills, 68 hand-ported kits, Origin skill levels (save v21), combat numbers, tier list; owner rule changes (no team cut, action Rage 125 / SKILL 250) | |

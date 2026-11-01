@@ -115,3 +115,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] decision | No list-and-wait before milestones
 - Owner: *"can we get rid of that rule?"* — the 2026-10-21 "list what is needed and wait" rule ends.
   Pages: owner rules, roadmap, source retrofit; AGENTS.md process note.
+
+## [2026-11-01] update | E6 closed; retrofit resumes with R4
+- E6 done (tier list, Dialga, Rage). Mode curves + geared tier check moved into R10. Index "Now" points
+  at R4 Potential.

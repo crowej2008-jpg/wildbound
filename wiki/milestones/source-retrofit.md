@@ -1,7 +1,7 @@
 ---
 title: Source retrofit (R) — make built systems match the source exactly
 type: milestones
-status: planned — owner approved the goal 2026-10-31; runs before M13.3
+status: in progress — R0, R1, R5 done; resumes 2026-11-01 with R4 after the battle-engine pause; runs before M13.3
 updated: 2026-10-31
 sources: [owner 2026-10-31, reference/game-rebuild/kb/*.md, reference/game-rebuild/data/h5-client/*]
 ---
@@ -41,7 +41,7 @@ his refine ladder, no real money.
 | R7 | Resonance | Crystal evolves at Lv 340; cap 340 + 8 per 12★ Pokémon; 2 free slots, source price ladder (30, 80, 100…), 24h slot cooldown (4 💎/hour to clear); slotted Pokémon **use the crystal's level**. |
 | R8 | Account layers | VIP 0–40 from Privilege XP (daily activity's 120-point chest pays 60; no purchases); Titles = the source's 102 by name; Trainer Tokens, Mount/Back Decor/Follower (new to us). |
 | R9 | Built modes' data | Campaign (main story rows), M8 modes (Tower **daily** reset, World Boss, Trials, Dungeons, Link Crystal **12★**), summoning rates/duplicates, shops, daily quests/sign-in, Arena/Ranked reward tables, Pet Home rows, Sky Pillar rows. |
-| R10 | Close-out | Balance snapshot, e2e, docs, wiki. **Geared tier re-check** (owner 2026-11-01): every Supreme/Mythic/Origin maxed and fully geared through `scripts/balance/tier.ts`; passes when the meta six (God Ash Pikachu, Wobbuffet, Greninja, Shiny Blastoise, Psyduck, Origin Lugia) come out on top — see [E6 tier list](../systems/e6-tier-list.md). |
+| R10 | Close-out | Balance snapshot, e2e, docs, wiki. **Geared tier re-check** (owner 2026-11-01): every Supreme/Mythic/Origin maxed and fully geared through `scripts/balance/tier.ts`; passes when the meta six (God Ash Pikachu, Wobbuffet, Greninja, Shiny Blastoise, Psyduck, Origin Lugia) come out on top — see [E6 tier list](../systems/e6-tier-list.md). **Mode difficulty curves** (moved from E6): campaign, gyms, Tower, Trials, Dungeons, World Boss, Sky Pillar, Arena, Ranked on the copied data — to find bugs, not to retune. |
 
 ## R1 — Pokémon growth (built 2026-10-31; owner said "go", stand-ins for the two missing tables)
 Source tables: `hero_basic_json` (84 rows), `hero_evolution_json` (1,386 star rows), `_text` (English
