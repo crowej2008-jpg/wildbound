@@ -22,6 +22,7 @@ import {
   initialResonance,
   initialShopState,
   initialTitles,
+  initialTrainerTokens,
   initialSkyPillar,
   TITLE_SLOTS,
   type AccountState,
@@ -33,20 +34,21 @@ import {
   type SquadMode,
   type TitleOwnership,
   type TitlesState,
+  type TrainerTokensState,
   type WildInstance,
 } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 30;
+export const SAVE_VERSION = 31;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 30;
+export const MIN_SAVE_VERSION = 31;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -80,6 +82,21 @@ function normalizeResonance(source: Partial<ResonanceState> | undefined, config:
     cooldowns: slots.map((_, i) => (typeof source.cooldowns?.[i] === 'number' ? source.cooldowns[i]! : null)),
     evolved: source.evolved === true,
     level: typeof source.level === 'number' ? source.level : 0,
+  };
+}
+
+function numberMap(source: unknown): Record<string, number> {
+  const out: Record<string, number> = {};
+  if (!source || typeof source !== 'object') return out;
+  for (const [k, v] of Object.entries(source)) if (typeof v === 'number' && Number.isFinite(v) && v > 0) out[k] = Math.floor(v);
+  return out;
+}
+
+function normalizeTrainerTokens(source: Partial<TrainerTokensState> | undefined): TrainerTokensState {
+  return {
+    levels: numberMap(source?.levels),
+    fragments: numberMap(source?.fragments),
+    treasureTotals: numberMap(source?.treasureTotals),
   };
 }
 
@@ -164,6 +181,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     trinkets: s.trinkets ?? {},
     resonance: normalizeResonance(s.resonance, config),
     titles: normalizeTitles(s.titles, now, config),
+    trainerTokens: normalizeTrainerTokens(s.trainerTokens),
     pve: s.pve ?? initialPve(day, weekKey(now)),
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     petHome: s.petHome ?? initialPetHome(now, day),
@@ -258,6 +276,7 @@ export function createInitialState(config: GameConfig): AccountState {
     trinkets: {},
     resonance: initialResonance(config.resonance),
     titles: startingTitles(config),
+    trainerTokens: initialTrainerTokens(),
     pve: initialPve(day, weekKey(now)),
     pvp: initialPvp(day, weekKey(now)),
     petHome: initialPetHome(now, day),

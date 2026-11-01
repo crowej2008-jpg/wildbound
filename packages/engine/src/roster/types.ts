@@ -241,8 +241,10 @@ export interface AccountState {
   trinkets: Record<string, number>;
   /** R7: the source's Resonance (top six, crystal, slots, cooldowns). */
   resonance: ResonanceState;
-  /** M11.11 owned/equipped titles. */
+  /** R8 owned/equipped titles and their activation cards. */
   titles: TitlesState;
+  /** R8 Trainer Tokens (source celestica_trial_token_json). */
+  trainerTokens: TrainerTokensState;
   /** M8: PvE mode progress (tower, trials, world boss, dungeons, link crystal). */
   pve: PveState;
   /** M10: PvP progress (Arena credits/rank, Ranked ladder). */
@@ -292,6 +294,21 @@ export function initialPvp(day: string, week: string): PvpState {
 }
 
 
+
+/**
+ * R8 Trainer Tokens, keyed by source token id: each token's level (0–5) and its own fragments. Each level needs
+ * that Gods Trials season's Suppression Treasure total (0–60), which the Gods Trials mode (M13) will record in
+ * `treasureTotals` by season.
+ */
+export interface TrainerTokensState {
+  levels: Record<string, number>;
+  fragments: Record<string, number>;
+  treasureTotals: Record<string, number>;
+}
+
+export function initialTrainerTokens(): TrainerTokensState {
+  return { levels: {}, fragments: {}, treasureTotals: {} };
+}
 
 /** Three account-wide title slots (source layers 1–3: Common / Premium / Rare). */
 export const TITLE_SLOTS = ['common', 'premium', 'rare'] as const;

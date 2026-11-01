@@ -1248,3 +1248,10 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   floors 5 / 135 / 400 / 500 pay the Beginner → Master Trainer cards. Debug `grantTitleCards`.
 - Removed: the authored M11.11 titles, their requirements and the `titleTicket` currency. Percent stat text now
   shows up to two decimals (+5.25%). ASSUMPTIONS #73.
+
+## R8 part 3 — Trainer Tokens from the source (2026-11-01)
+
+- `scripts/import-tokens.mjs` → `packages/content/tuning/tokens.json`. Server `tokens.ts` (view, level up, PvP
+  lines, debug `grantTokenFragments`); Trainer screen Tokens panel. Save v31 adds `trainerTokens`.
+- Arena and Ranked battles now run in PvP mode (the engine's PvP factor; Trainer Tokens apply there only). New
+  combat stats `pBoost` / `sBoost` (P.ATK / S.ATK DMG BST). ASSUMPTIONS #74.

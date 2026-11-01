@@ -914,3 +914,14 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     events M15, Pokémon Temple M17; the Arena titles come from a retired source mode). King of Eternity, Ever
     Victorious and Dark Vanguard have no card (the Temple grants them). Replaces the M11.11 authored titles and the
     Title Ticket currency; Pet Home's Title Ticket row sells Reforge Potions instead (Pet Home is still a stand-in).
+
+74. **R8 Trainer Tokens.** Copied from the source (`celestica_trial_token_json`, token passives 810201–811205): six
+    tokens (Origin Emerald, Sea Sound Bells, Shadow Resonance Stone, Ultra Prism, Immortal Sword, Snow Leaf Badge),
+    one per Gods Trials season, five levels each. A level needs that season's Suppression Treasure total (the sum of
+    its six Gods Trials treasure parts, 0–60: 6 / 18 / 36 / 48 / 60 for season 1, 6 / 24 / 42 / 54 / 60 for the
+    rest) and spends 1 / 2 / 2 / 3 / 3 of the token's own fragments. Effects apply in PvP battles only, and each
+    level's lines replace the last (the screen lists every level's full values). Readings: "PvP battles" = Arena and
+    Ranked, which now run in the engine's PvP mode (so PvP DMG / Reduction from orbs counts there too; before R8
+    every battle ran as PvE); P.ATK / S.ATK DMG BST are new engine stats on the attacker's side of the DMG pair,
+    beside P.ATK / S.ATK DMG RDCT. Not in Wildbound yet: the treasure totals (Gods Trials, M13 — saved per season in
+    `trainerTokens.treasureTotals`) and the fragments (the source names only "festive events", M15).

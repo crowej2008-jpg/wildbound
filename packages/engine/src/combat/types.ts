@@ -48,6 +48,8 @@ export type CombatField =
   /** E3: reduction of physical (P.ATK) / special (S.ATK) damage taken, in the G pair. */
   | 'pRdct'
   | 'sRdct'
+  | 'pBoost'
+  | 'sBoost'
   /** E3: extra damage taken from damage-over-time ticks. */
   | 'dotTaken'
   /** E3: share of the damage dealt healed back (buffable lifesteal). */
@@ -611,6 +613,9 @@ export interface SheetInput {
   basicRate?: number;
   pRdct?: number;
   sRdct?: number;
+  /** R8: P.ATK / S.ATK DMG Boost (Trainer Tokens): join the attacker's side of the G pair by skill type. */
+  pBoost?: number;
+  sBoost?: number;
   dotTaken?: number;
   lifesteal?: number;
 }
@@ -681,6 +686,8 @@ export interface StatSheet {
   basicRate: number;
   pRdct: number;
   sRdct: number;
+  pBoost: number;
+  sBoost: number;
   dotTaken: number;
   lifesteal: number;
 }

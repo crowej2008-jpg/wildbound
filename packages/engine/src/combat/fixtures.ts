@@ -127,6 +127,8 @@ export function unit(over: {
     basicRate: base.basicRate ?? 0,
     pRdct: base.pRdct ?? 0,
     sRdct: base.sRdct ?? 0,
+    pBoost: base.pBoost ?? 0,
+    sBoost: base.sBoost ?? 0,
     dotTaken: base.dotTaken ?? 0,
     lifesteal: base.lifesteal ?? 0,
   };

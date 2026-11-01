@@ -37,6 +37,7 @@ import {
   berriesSchema,
   resonanceSchema,
   vipSchema,
+  tokensSchema,
   VIP,
   berrySkillsSchema,
   coresSchema,
@@ -94,6 +95,7 @@ const TUNING_SCHEMAS: Record<string, AnySchema> = {
   'pve.json': pveSchema as AnySchema,
   'resonance.json': resonanceSchema as AnySchema,
   'vip.json': vipSchema as AnySchema,
+  'tokens.json': tokensSchema as AnySchema,
   'pvp.json': pvpSchema as AnySchema,
 };
 

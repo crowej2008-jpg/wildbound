@@ -26,6 +26,7 @@ import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
 import type { ResonanceView } from './resonance';
 import type { VipView } from './vip';
+import type { TokenView } from './tokens';
 import type { TitlesView } from './titles';
 
 /**
@@ -74,6 +75,8 @@ export interface AccountSnapshot {
   resonance: ResonanceView;
   /** Display-ready VIP tier, perks and daily claim state (M11.10). */
   vip: VipView;
+  /** R8 Trainer Tokens. */
+  tokens: TokenView[];
   /** Display-ready title slots, catalogue and ticket balance (M11.11). */
   titles: TitlesView;
 }
@@ -357,7 +360,11 @@ export interface GameServer {
   evolveResonance(): Promise<Result<AccountSnapshot>>;
   /** R7: raise the evolved crystal one level. */
   upgradeResonance(): Promise<Result<AccountSnapshot>>;
-  /** Activate, upgrade or continue a title with Title Tickets (M11.11). */
+  /** R8: raise a Trainer Token one level (its season's Suppression Treasure total and its own fragments). */
+  levelToken(tokenId: number): Promise<Result<AccountSnapshot>>;
+  /** Debug (R8): grant a Trainer Token's own fragments. */
+  grantTokenFragments(tokenId: number, amount: number): Promise<Result<AccountSnapshot>>;
+  /** Activate, upgrade or continue a title with its own activation cards (R8). */
   activateTitle(titleId: string): Promise<Result<AccountSnapshot>>;
   /** Equip an owned title in its slot, or clear it with `null` (M11.11). */
   setTitleSlot(slot: TitleSlot, titleId: string | null): Promise<Result<AccountSnapshot>>;
@@ -477,4 +484,5 @@ export * from './trinkets';
 export * from './berries';
 export * from './vip';
 export * from './titles';
+export * from './tokens';
 export * from './local-server';

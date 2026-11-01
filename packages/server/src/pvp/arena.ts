@@ -61,6 +61,7 @@ export function challengeArena(
     enemies,
     battleId: `m10:arena:${arena.opponentSeed}:${opponentIndex}`,
     seed,
+    pvp: true,
   });
   if (!battle) return fail('not_found', 'no Wilds available to challenge the Arena');
 

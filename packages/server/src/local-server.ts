@@ -206,6 +206,7 @@ import {
   upgradeResonanceAction,
 } from './resonance';
 import { buildVipView, vipIdleCapMinutes, vipPerks } from './vip';
+import { buildTokensView, grantTokenFragments, levelTokenAction } from './tokens';
 import { activateTitleAction, buildTitlesView, grantTitleCards, setTitleSlotAction } from './titles';
 import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
@@ -948,6 +949,18 @@ export class LocalServer implements GameServer {
     );
   }
 
+  async levelToken(tokenId: number): Promise<Result<AccountSnapshot>> {
+    return this.applyEquipment((state) => levelTokenAction(this.config, state, tokenId));
+  }
+
+  async grantTokenFragments(tokenId: number, amount: number): Promise<Result<AccountSnapshot>> {
+    if (!this.config.tokens.tokens.some((t) => t.id === tokenId)) return fail('not_found', `no token ${tokenId}`);
+    if (!Number.isFinite(amount) || amount < 0) return fail('invalid_input', 'amount must be non-negative');
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commit(grantTokenFragments(loaded.value, tokenId, Math.floor(amount)));
+  }
+
 
   // --- R4 Potential ---------------------------------------------------------
 
@@ -1577,6 +1590,7 @@ export class LocalServer implements GameServer {
       teamPower,
       resonance: buildResonanceView(this.config, state, this.now(state)),
       vip: buildVipView(this.config, state),
+      tokens: buildTokensView(this.config, state),
       titles: buildTitlesView(this.config, state, this.now(state)),
     };
   }

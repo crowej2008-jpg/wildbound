@@ -76,10 +76,12 @@ export function computeDamage(p: HitParams, ctx: BattleContext): HitOutcome {
     attacker.factionBoost && attacker.factionBoost.faction === defender.kit.faction ? attacker.factionBoost.value : 0;
   // E3: P.ATK / S.ATK damage reduction and the defender's own `defend` mods join the G pair too.
   const typeRdct = skill.type === 'P' ? eff(defender, 'pRdct') : eff(defender, 'sRdct');
+  // R8: P.ATK / S.ATK DMG Boost (Trainer Tokens) is the attacker's side of the same pair.
+  const typeBoost = skill.type === 'P' ? eff(attacker, 'pBoost') : eff(attacker, 'sBoost');
   const guard = activeDamageMods(ctx, defender, attacker, skill, 'defend');
   const G = Math.max(
     S.gFloor,
-    1 + eff(attacker, 'dmgBoost') + factionBoost + mods.dmg - eff(defender, 'dmgRdct') - typeRdct - guard.dmg,
+    1 + eff(attacker, 'dmgBoost') + typeBoost + factionBoost + mods.dmg - eff(defender, 'dmgRdct') - typeRdct - guard.dmg,
   );
   const P =
     S.mode === 'pvp' ? Math.max(S.pFloor, 1 + eff(attacker, 'pvpBoost') - eff(defender, 'pvpRdct') - S.pvpConst) : 1;

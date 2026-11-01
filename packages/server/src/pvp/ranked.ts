@@ -95,6 +95,7 @@ export function startRankedMatch(
       seed: seed === undefined ? undefined : (seed + game) >>> 0,
       weather,
       sizeCap: phase.teamSize,
+      pvp: true,
     });
     if (!battle) break;
     if (battle.winner === 'attackers') wins += 1;

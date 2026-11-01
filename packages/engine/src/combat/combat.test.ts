@@ -72,6 +72,17 @@ describe('computeDamage', () => {
     expect(out.dmg).toBe(Math.floor(200 * (1 + 0.3 - 0.1)));
   });
 
+  it('adds P.ATK DMG BST (R8 tokens) to G for a P skill only', () => {
+    const atk = unit({ key: 'a', side: 'attackers', position: 1, kit: kit(), sheet: sheet({ pAtk: 200, pBoost: 0.3, sBoost: 0.5 }) });
+    const def = unit({ key: 'd', side: 'defenders', position: 4, kit: kit(), sheet: sheet({ hp: 1000, pRdct: 0.1 }) });
+    const ctx = makeCtx({ units: [atk, def], deterministic: true });
+    const out = computeDamage(
+      { attacker: atk, defender: def, skill: atk.kit.skills.normal, hitIndex: 0, team: { attackersPower: 100, defendersPower: 100 } },
+      ctx,
+    );
+    expect(out.dmg).toBe(Math.floor(200 * (1 + 0.3 - 0.1)));
+  });
+
   it('applies the PvP floor and the PvP bonus factor in pvp mode', () => {
     const atk = unit({ key: 'a', side: 'attackers', position: 1, kit: kit({ skills: { ult: { rates: [1.0], rule: 'row' } } }), sheet: sheet({ pAtk: 200, pvpBoost: 0.2 }) });
     const def = unit({ key: 'd', side: 'defenders', position: 4, kit: kit(), sheet: sheet({ hp: 1000, pvpRdct: 0.1 }) });

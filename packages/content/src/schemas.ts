@@ -133,6 +133,8 @@ export const combatFieldSchema = z.enum([
   'basicRate',
   'pRdct',
   'sRdct',
+  'pBoost',
+  'sBoost',
   'dotTaken',
   'lifesteal',
 ]);

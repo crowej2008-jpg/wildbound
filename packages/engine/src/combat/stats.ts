@@ -43,6 +43,8 @@ export function resolveSheet(spec: SpecInput): StatSheet {
     basicRate: pct(s.basicRate),
     pRdct: pct(s.pRdct),
     sRdct: pct(s.sRdct),
+    pBoost: pct(s.pBoost),
+    sBoost: pct(s.sBoost),
     dotTaken: pct(s.dotTaken),
     lifesteal: pct(s.lifesteal),
   };

@@ -76,6 +76,11 @@ the seven tiers below. ASSUMPTIONS #72.
 Seven tiers (Visitor → Crown) from **lifetime XP** (0–250,000) — nothing is bought. Perks: extra idle
 hours, shop discount, daily Common Ticket supply. Save v12.
 
+## Trainer Tokens
+**R8 (2026-11-01):** the source's six tokens, five levels each, PvP-only (Arena, Ranked). Each level needs its Gods
+Trials season's Suppression Treasure total (M13) and the token's own fragments (festive events, M15). ASSUMPTIONS
+#74. Save v31.
+
 ## Titles
 **R8 (2026-11-01):** the source's 102, each paid with its own activation card (no Title Tickets); Starter
 Trainer from the start, Beginner → Master Trainer from Tower floors 5 / 135 / 400 / 500; the rest wait for their

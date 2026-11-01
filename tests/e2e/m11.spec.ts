@@ -14,10 +14,11 @@ interface SaveOptions {
   profile?: { name?: string; level?: number; xp?: number };
   equipment?: unknown;
   titles?: unknown;
+  trainerTokens?: unknown;
   level?: number;
 }
 
-function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, titles, level = 40 }: SaveOptions = {}): string {
+function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, titles, trainerTokens, level = 40 }: SaveOptions = {}): string {
   return JSON.stringify({
     version: E2E_SAVE_VERSION,
     state: {
@@ -60,6 +61,7 @@ function grownSave({ roster = ROSTER, currencies = {}, profile = {}, equipment, 
       tutorial: { step: 0, done: true },
       ...(equipment ? { equipment } : {}),
       ...(titles ? { titles } : {}),
+      ...(trainerTokens ? { trainerTokens } : {}),
     },
   });
 }
@@ -254,6 +256,23 @@ test('Titles: Starter Trainer is worn, a card activates a title, and unbuilt sou
   await expect(event.getByText('15 stages')).toBeVisible();
   await expect(event.getByText('Its mode arrives in a later milestone.')).toBeVisible();
   await expect(event.getByRole('button', { name: /Activate · Activation cards 0\/1/ })).toBeDisabled();
+});
+
+test('Tokens: a level needs the season treasure total and the token fragments', async ({ page }) => {
+  await importSave(page, { trainerTokens: { levels: {}, fragments: { '101': 1 }, treasureTotals: { '1': 6 } } });
+  await page.goto('/trainer');
+  await expect(page.getByRole('heading', { name: 'Tokens' })).toBeVisible();
+
+  const emerald = page.locator('[data-token-id="101"]');
+  await expect(emerald.getByText('Lv. 0/5')).toBeVisible();
+  await expect(emerald.getByText('Next: PvP DMG +4% · PvP DMG Reduction +5%')).toBeVisible();
+  await emerald.getByRole('button', { name: 'Level Up' }).click();
+  await expect(emerald.getByText('Lv. 1/5')).toBeVisible();
+  await expect(emerald.getByText('PvP DMG +4% · PvP DMG Reduction +5%', { exact: true })).toBeVisible();
+  await expect(emerald.getByText(/Suppression Treasure total 6\/18/)).toBeVisible();
+  await expect(emerald.getByRole('button', { name: 'Level Up' })).toBeDisabled();
+
+  await expect(page.locator('[data-token-id="201"]').getByRole('button', { name: 'Level Up' })).toBeDisabled();
 });
 
 test('Orbs: socket a red Sharp Orb, then level it with two copies', async ({ page }) => {

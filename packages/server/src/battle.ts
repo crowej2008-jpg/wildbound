@@ -35,6 +35,7 @@ import {
 } from '@wildbound/engine';
 import { cardOf, type GameConfig, type SpeciesMeta } from './config';
 import { titleFoldFor } from './titles';
+import { tokenPvpLines } from './tokens';
 
 /**
  * Battle setup + replay payload (M4). Builds two `SpecInput` teams from account
@@ -202,6 +203,8 @@ export function buildWildTeam(
   side: 'attackers' | 'defenders',
   config: GameConfig,
   state?: AccountState,
+  /** R8: PvP-only sheet lines (Trainer Tokens), added when the battle is PvP. */
+  pvpLines?: Record<string, number>,
 ): BuiltTeam {
   const specs: SpecInput[] = [];
   const meta = new Map<string, { name: string; speciesId: string; className: WildClass; stage: number; power: number }>();
@@ -242,7 +245,7 @@ export function buildWildTeam(
         ),
         carriedBerrySkills(state, wild.id),
       ),
-      sheet: equipped.sheet,
+      sheet: pvpLines ? withLines(equipped.sheet, pvpLines) : equipped.sheet,
       power: unitPower,
       level: wild.level,
       ...(card.factionBoost ? { factionBoost: card.factionBoost } : {}),
@@ -262,6 +265,14 @@ export function buildWildTeam(
     power += unitPower;
   });
   return { specs, meta, power };
+}
+
+function withLines(sheet: SpecInput['sheet'], lines: Record<string, number>): SpecInput['sheet'] {
+  const out = { ...sheet };
+  // SheetInput's percent fields are all numbers, so a numeric record view is sound.
+  const numeric = out as unknown as Record<string, number>;
+  for (const [field, value] of Object.entries(lines)) numeric[field] = (numeric[field] ?? 0) + value;
+  return out;
 }
 
 function rageStart(className: WildClass): number {
@@ -353,6 +364,8 @@ interface RunViewOptions {
   weather?: WeatherRule;
   /** M10.5: per-side squad strategy (omitted sides fight `balanced`). */
   strategies?: BattleStrategies;
+  /** R8: a PvP battle (Arena, Ranked): the engine's PvP factor applies. */
+  pvp?: boolean;
 }
 
 function runView(attackers: BuiltTeam, defenders: BuiltTeam, opts: RunViewOptions): BattleView | null {
@@ -362,7 +375,7 @@ function runView(attackers: BuiltTeam, defenders: BuiltTeam, opts: RunViewOption
     attackers: attackers.specs,
     defenders: defenders.specs,
     seed,
-    mode: 'pve',
+    mode: opts.pvp ? 'pvp' : 'pve',
     settings: {},
     battleId,
     ...(rules ? { rules } : {}),
@@ -486,6 +499,8 @@ export interface ModeBattleOptions {
   levelCap?: number;
   /** M10.5: the defender side's strategy (real-defender modes; ghosts stay `balanced`). */
   defenderStrategy?: BattleStrategy;
+  /** R8: a PvP battle — PvP stats and the player's Trainer Tokens apply. */
+  pvp?: boolean;
 }
 
 /**
@@ -502,11 +517,12 @@ export function modeBattle(config: GameConfig, state: AccountState, opts: ModeBa
   );
   if (players.length === 0) return null;
   const resolvedSeed = opts.seed ?? Math.floor(config.rng() * 0xffffffff);
-  const attackers = buildWildTeam(players, 'attackers', config, state);
+  const attackers = buildWildTeam(players, 'attackers', config, state, opts.pvp ? tokenPvpLines(config, state) : undefined);
   const defenders = buildEnemyTeam(opts.enemies, config);
   return runView(attackers, defenders, {
     seed: resolvedSeed,
     mode: opts.label,
+    ...(opts.pvp ? { pvp: true } : {}),
     battleId: opts.battleId,
     ...(opts.rules ? { rules: opts.rules } : {}),
     ...(opts.weather ? { weather: opts.weather } : {}),

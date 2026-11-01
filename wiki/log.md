@@ -196,3 +196,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R8 Titles
 - The source's 102 titles with per-title activation cards replace the authored titles and Title Tickets; the
   14-day-pair open question is closed by copying the source (ASSUMPTIONS #73, save v30). Next: Trainer Tokens.
+
+## [2026-11-01] update | R8 Trainer Tokens
+- Six source tokens, PvP-only; Arena and Ranked now run in the engine's PvP mode (ASSUMPTIONS #74, save v31).
+  Next: Mount / Back Decor / Follower.

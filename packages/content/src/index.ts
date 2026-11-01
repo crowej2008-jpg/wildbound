@@ -115,6 +115,7 @@ export { GACHA } from './tuning-gacha';
 export { SHOPS } from './shops';
 export { RESONANCE, resonanceSchema } from './resonance';
 export { VIP, vipSchema, type VipJson } from './vip';
+export { TOKENS, tokensSchema, type TokensJson, type TokenJson } from './tokens';
 export { BERRY_SKILLS, berrySkillAt, berrySkillsSchema } from './berry-skills';
 export {
   EQUIPMENT_TUNING,

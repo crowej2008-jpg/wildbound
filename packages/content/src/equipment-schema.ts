@@ -70,6 +70,8 @@ export const COMBAT_FIELDS = [
   'basicRate',
   'pRdct',
   'sRdct',
+  'pBoost',
+  'sBoost',
   'dotTaken',
   'lifesteal',
 ] as const;
