@@ -1,5 +1,6 @@
 import type { Tier, WildClass } from '../model';
 import type {
+  CoreInstance,
   EquipmentTuning,
   Loadout,
   RelicDef,
@@ -72,3 +73,14 @@ export function coreEquipped(loadout: Loadout, instanceId: string): boolean {
   return loadout.cores.some((id) => id === instanceId);
 }
 
+
+/** R6c: a Soul-heart's star cap by quality. */
+export function coreMaxStars(core: CoreInstance, tuning: EquipmentTuning): number {
+  return tuning.cores.qualityStars[core.quality] ?? 0;
+}
+
+/** R6c: Soul-heart EXP for the next star (null at the cap). */
+export function coreStarCost(core: CoreInstance, tuning: EquipmentTuning): number | null {
+  if (core.stars >= coreMaxStars(core, tuning)) return null;
+  return tuning.cores.starExp[core.quality]?.[core.stars] ?? null;
+}

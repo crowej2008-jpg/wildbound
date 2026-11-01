@@ -7,12 +7,6 @@ import { z } from 'zod';
  */
 export const collectionTuningSchema = z
   .object({
-    soulhearts: z.object({
-      /** Soul-heart EXP for the first star-up (2★ → 3★). */
-      expBase: z.number().int().min(0),
-      /** Extra EXP per current star. */
-      expPerStar: z.number().int().min(0),
-    }),
     berries: z.object({
       /** Duplicate copies consumed by each star-up. */
       upgradeCopies: z.number().int().min(1),

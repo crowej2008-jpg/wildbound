@@ -254,7 +254,8 @@ export function foldLoadout(
     const def = core ? tables.coreSets.find((s) => s.id === core.setId) : undefined;
     if (!core || !def) continue;
     const template = def.socketLines[core.socket] ?? [];
-    addLines(layers.cores, template, core.stars);
+    // R6c: stars start at 0 (source); the line's first value is the 0★ piece.
+    addLines(layers.cores, template, core.stars + 1);
     coreSetCounts.set(core.setId, (coreSetCounts.get(core.setId) ?? 0) + 1);
   }
   for (const set of tables.coreSets) {

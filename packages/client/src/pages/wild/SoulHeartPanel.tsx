@@ -1,4 +1,4 @@
-import { t } from '../../i18n';
+import { t, tKey } from '../../i18n';
 import type { GearPanelProps } from './types';
 
 export default function SoulHeartPanel({ wildId, view, busy, run, reload }: GearPanelProps) {
@@ -61,6 +61,7 @@ export default function SoulHeartPanel({ wildId, view, busy, run, reload }: Gear
                   <span className="chip">
                     {t('gear.socket')} {core.socket + 1}
                   </span>
+                  <span className="chip">{tKey(`gear.orbs.colour.${core.quality}`)}</span>
                   <span className="chip">{core.stars}★</span>
                   {core.starCost !== null && (
                     <span className="chip">

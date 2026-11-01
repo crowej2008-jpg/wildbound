@@ -832,4 +832,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     +7 roll ÷ 7) with rolls at 80–100 %, the same lines for every colour, set choice when several fit, and
     the sockets living on the Pokémon until Gear (R2). Details: `docs/design/orbs.md`. Replace when
     `hero_orb_basic_json` turns up.
+66. **R6c Soul-heart rules.** The owner's nine sets and their lines stay. From the source (kb/soul-hearts.md):
+    four qualities — blue, purple, orange, red — capped at 2 / 3 / 4 / 5 stars, each star its own Soul-heart
+    EXP step (blue 100 / 200 … red 900 / 1,800 / 3,150 / 4,500 / 7,200), pieces start at 0★, the tab opens
+    at 10★. Stand-ins: a piece's lines keep the owner's per-star growth with 0★ as the first value; the
+    starting three pieces are blue 0★; feeding one Soul-heart to another (base EXP + 80 % of its EXP) and the
+    four EXP items are not built yet — EXP is the one Soul-heart EXP currency.
 

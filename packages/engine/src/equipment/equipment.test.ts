@@ -20,7 +20,7 @@ import {
 const TUNING: EquipmentTuning = {
   relic: { minTier: 'supreme' },
   charms: { minStars: 4, slots: 2 },
-  cores: { minStars: 10, sockets: 6, pieceMinStars: 2, pieceMaxStars: 5 },
+  cores: { minStars: 10, sockets: 6, qualityStars: { blue: 2, purple: 3, orange: 4, red: 5 }, starExp: { blue: [100, 200], purple: [300, 600, 1050], orange: [600, 1200, 2100, 3000], red: [900, 1800, 3150, 4500, 7200] } },
   starting: { relics: [], cores: [], charms: [] },
 };
 
@@ -172,8 +172,8 @@ describe('layer contributions', () => {
         { id: 'ru3', kind: 'mystique', colour: 'red', level: 5, lines: [] },
       ],
       cores: [
-        { id: 'c1', setId: 'setC', socket: 0, stars: 5 },
-        { id: 'c2', setId: 'setC', socket: 1, stars: 2 },
+        { id: 'c1', setId: 'setC', socket: 0, quality: 'red' as const, stars: 4 },
+        { id: 'c2', setId: 'setC', socket: 1, quality: 'red' as const, stars: 1 },
       ],
       charms: { charm1: 3 },
       charmStars: { charm1: 2 },
@@ -410,8 +410,8 @@ describe('every layer moves a battle in the intended direction', () => {
   it('a spirit-core 2-piece bonus raises damage', () => {
     const state = stateWith({
       cores: [
-        { id: 'c1', setId: 'setC', socket: 0, stars: 3 },
-        { id: 'c2', setId: 'setC', socket: 1, stars: 3 },
+        { id: 'c1', setId: 'setC', socket: 0, quality: 'red' as const, stars: 2 },
+        { id: 'c2', setId: 'setC', socket: 1, quality: 'red' as const, stars: 2 },
       ],
     });
     const up = battleWith(base, state, { ...emptyLoadout(TUNING), cores: ['c1', 'c2', null, null, null, null] });
@@ -421,8 +421,8 @@ describe('every layer moves a battle in the intended direction', () => {
   it('a Soul-heart start shield absorbs damage and a lifesteal set heals the holder', () => {
     const shieldState = stateWith({
       cores: [
-        { id: 's1', setId: 'setS', socket: 0, stars: 2 },
-        { id: 's2', setId: 'setS', socket: 1, stars: 2 },
+        { id: 's1', setId: 'setS', socket: 0, quality: 'red' as const, stars: 1 },
+        { id: 's2', setId: 'setS', socket: 1, quality: 'red' as const, stars: 1 },
       ],
     });
     const shielded = battleWith(base, shieldState, {
@@ -433,8 +433,8 @@ describe('every layer moves a battle in the intended direction', () => {
 
     const leechState = stateWith({
       cores: [
-        { id: 'l1', setId: 'setL', socket: 0, stars: 2 },
-        { id: 'l2', setId: 'setL', socket: 1, stars: 2 },
+        { id: 'l1', setId: 'setL', socket: 0, quality: 'red' as const, stars: 1 },
+        { id: 'l2', setId: 'setL', socket: 1, quality: 'red' as const, stars: 1 },
       ],
     });
     const leeched = battleWith(base, leechState, {
@@ -462,10 +462,10 @@ describe('every layer moves a battle in the intended direction', () => {
 
   it('same-stat Soul-heart ladders keep the highest reached value', () => {
     const cores = [
-      { id: 's1', setId: 'setS', socket: 0, stars: 2 },
-      { id: 's2', setId: 'setS', socket: 1, stars: 2 },
-      { id: 's3', setId: 'setS', socket: 2, stars: 2 },
-      { id: 's4', setId: 'setS', socket: 3, stars: 2 },
+      { id: 's1', setId: 'setS', socket: 0, quality: 'red' as const, stars: 1 },
+      { id: 's2', setId: 'setS', socket: 1, quality: 'red' as const, stars: 1 },
+      { id: 's3', setId: 'setS', socket: 2, quality: 'red' as const, stars: 1 },
+      { id: 's4', setId: 'setS', socket: 3, quality: 'red' as const, stars: 1 },
     ];
     const folded = foldLoadout(
       { ...emptyLoadout(TUNING), cores: ['s1', 's2', 's3', 's4', null, null] },

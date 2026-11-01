@@ -182,10 +182,15 @@ export interface RelicInstance {
 }
 
 
+/** R6c: the source's four Soul-heart qualities (item qualities 3–6), capped at 2 / 3 / 4 / 5 stars. */
+export type CoreQuality = 'blue' | 'purple' | 'orange' | 'red';
+
 export interface CoreInstance {
   id: string;
   setId: string;
   socket: number;
+  quality: CoreQuality;
+  /** 0 … the quality's cap (source: each star its own EXP step). */
   stars: number;
 }
 
@@ -203,13 +208,20 @@ export interface Loadout {
 export interface EquipmentTuning {
   relic: { minTier: Tier };
   charms: { minStars: number; slots: number };
-  cores: { minStars: number; sockets: number; pieceMinStars: number; pieceMaxStars: number };
+  cores: {
+    minStars: number;
+    sockets: number;
+    /** R6c: star cap per quality (blue 2, purple 3, orange 4, red 5). */
+    qualityStars: Record<CoreQuality, number>;
+    /** R6c: Soul-heart EXP for each star step, per quality (hero_heart_soul_up_star_json). */
+    starExp: Record<CoreQuality, number[]>;
+  };
   starting: StartingEquipment;
 }
 
 export interface StartingEquipment {
   relics: { defId: string }[];
-  cores: { setId: string; socket: number; stars: number }[];
+  cores: { setId: string; socket: number; quality: CoreQuality; stars: number }[];
   charms: { defId: string; stars: number; count: number }[];
 }
 
@@ -271,7 +283,7 @@ export function initialEquipment(
     state.relics.push(inst);
   }
   for (const c of starting.cores) {
-    state.cores.push({ id: `co${state.nextSeq++}`, setId: c.setId, socket: c.socket, stars: c.stars });
+    state.cores.push({ id: `co${state.nextSeq++}`, setId: c.setId, socket: c.socket, quality: c.quality, stars: c.stars });
   }
   for (const c of starting.charms) {
     state.charms[c.defId] = (state.charms[c.defId] ?? 0) + c.count;

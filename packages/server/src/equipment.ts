@@ -15,6 +15,7 @@ import {
   settleRefine,
   relicUnlocked,
   type CurrencyId,
+  coreStarCost,
 } from '@wildbound/engine';
 import type { AccountState, EquipmentTables, Loadout, RelicInstance, Rng, WildClass, Tier } from '@wildbound/engine';
 import { fail, ok, type Result } from './index';
@@ -22,7 +23,6 @@ import {
   charmUpgradeEssence,
   equippedOn,
   loadoutOf,
-  soulHeartCost,
 } from './equipment-view';
 import type { GameConfig, SpeciesMeta } from './config';
 
@@ -159,8 +159,8 @@ export function starUpCoreAction(config: SpeciesLookup, state: AccountState, ins
   const core = state.equipment.cores.find((c) => c.id === instanceId);
   if (!core) return fail('not_found', `no core ${instanceId}`);
   const { tuning } = config.equipment;
-  if (core.stars >= tuning.cores.pieceMaxStars) return fail('at_level_cap', 'max soul-heart stars');
-  const cost = soulHeartCost(core.stars, config.collection);
+  const cost = coreStarCost(core, tuning);
+  if (cost === null) return fail('at_level_cap', 'max soul-heart stars');
   const paid = pay(state, { soulHeartExp: cost });
   if (!paid) return fail('insufficient_items', 'not enough Soul-heart EXP');
   const cores = paid.equipment.cores.map((c) => (c.id === instanceId ? { ...c, stars: c.stars + 1 } : c));

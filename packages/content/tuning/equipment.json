@@ -9,8 +9,36 @@
   "cores": {
     "minStars": 10,
     "sockets": 6,
-    "pieceMinStars": 2,
-    "pieceMaxStars": 5
+    "qualityStars": {
+      "blue": 2,
+      "purple": 3,
+      "orange": 4,
+      "red": 5
+    },
+    "starExp": {
+      "blue": [
+        100,
+        200
+      ],
+      "purple": [
+        300,
+        600,
+        1050
+      ],
+      "orange": [
+        600,
+        1200,
+        2100,
+        3000
+      ],
+      "red": [
+        900,
+        1800,
+        3150,
+        4500,
+        7200
+      ]
+    }
   },
   "starting": {
     "relics": [
@@ -28,17 +56,20 @@
       {
         "setId": "coreset-common",
         "socket": 0,
-        "stars": 2
+        "stars": 0,
+        "quality": "blue"
       },
       {
         "setId": "coreset-common",
         "socket": 1,
-        "stars": 2
+        "stars": 0,
+        "quality": "blue"
       },
       {
         "setId": "coreset-common",
         "socket": 2,
-        "stars": 2
+        "stars": 0,
+        "quality": "blue"
       }
     ],
     "charms": [

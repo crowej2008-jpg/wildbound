@@ -33,6 +33,9 @@ for the missing orb tables: `docs/design/orbs.md`, ASSUMPTIONS #65.
 The owner's nine sets — see **[soul-hearts](soul-hearts.md)**. Star-up costs Soul-heart EXP
 (`expBase + (stars−1) × expPerStar`; 2→3★ = 80).
 
+
+**R6c (2026-11-01):** source qualities blue / purple / orange / red (caps 2 / 3 / 4 / 5★, stars from 0), the
+source star EXP table, 10★ unlock; the owner's nine sets stay. ASSUMPTIONS #66.
 ## Berries
 16 Berries (four per tier). **Two slots** (save v8). Star-up = spare copies (2) + Berry Essence (`20 + 20 × star`). Dismantle a
 spare for 5/10/20/40 Essence by tier. Real battles consume one copy per occupied slot.

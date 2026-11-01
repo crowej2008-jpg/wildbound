@@ -27,6 +27,9 @@ import {
   type Tier,
   type Faction,
   type WildClass,
+  coreMaxStars,
+  coreStarCost,
+  type CoreQuality,
 } from '@wildbound/engine';
 import type { AccountState, WildInstance } from '@wildbound/engine';
 import type { GameConfig } from './config';
@@ -96,6 +99,7 @@ export interface RelicView {
 
 export interface CoreView {
   instanceId: string;
+  quality: CoreQuality;
   setId: string;
   name: string;
   socket: number;
@@ -185,10 +189,6 @@ export function loadoutOf(state: AccountState, wildId: string, tables: Equipment
 }
 
 
-/** Soul-heart EXP for the next star: base + (stars − 1) × perStar. */
-export function soulHeartCost(stars: number, collection: GameConfig['collection']): number {
-  return collection.soulhearts.expBase + Math.max(0, stars - 1) * collection.soulhearts.expPerStar;
-}
 
 /** Which Wild (if any) currently wears an instance — scan every stored loadout. */
 export function equippedOn(state: AccountState, instanceId: string): string | null {
@@ -331,8 +331,9 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     name: tables.coreSets.find((s) => s.id === c.setId)?.name ?? c.setId,
     socket: c.socket,
     stars: c.stars,
-    maxStars: tuning.cores.pieceMaxStars,
-    starCost: c.stars >= tuning.cores.pieceMaxStars ? null : soulHeartCost(c.stars, config.collection),
+    quality: c.quality,
+    maxStars: coreMaxStars(c, tuning),
+    starCost: coreStarCost(c, tuning),
     equippedOn: coreOn.get(c.id) ?? null,
   }));
 

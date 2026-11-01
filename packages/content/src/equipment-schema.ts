@@ -272,12 +272,12 @@ export const equipmentTuningSchema = z.object({
   cores: z.object({
     minStars: z.number().int().min(0),
     sockets: z.number().int().min(1),
-    pieceMinStars: z.number().int().min(1),
-    pieceMaxStars: z.number().int().min(1),
+    qualityStars: z.record(z.enum(['blue', 'purple', 'orange', 'red']), z.number().int().min(1)),
+    starExp: z.record(z.enum(['blue', 'purple', 'orange', 'red']), z.array(z.number().int().positive())),
   }),
   starting: z.object({
     relics: z.array(z.object({ defId: z.string() })),
-    cores: z.array(z.object({ setId: z.string(), socket: z.number().int().min(0), stars: z.number().int().min(1) })),
+    cores: z.array(z.object({ setId: z.string(), socket: z.number().int().min(0), quality: z.enum(['blue', 'purple', 'orange', 'red']), stars: z.number().int().min(0) })),
     charms: z.array(z.object({ defId: z.string(), stars: z.number().int().min(1), count: z.number().int().min(1) })),
   }),
 });

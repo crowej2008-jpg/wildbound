@@ -79,7 +79,7 @@ R6 is mostly a **skill-porting job** (like E3), so it splits into four steps, on
   hero_stone_skill) plus the stage-6 skill swaps (hero_slate_skill, 6 rows).
 - **R6b Trinkets** — 81 trinkets, Lv 0–40 for 300,430 Star Shards, stats by level (30 sets), skills at Lv 10 /
   20 / 30 / 40 (~320 texts), trinket chests; Origin trinkets are stats only.
-- **R6c Soul-heart rules** — the owner's nine sets stay; copy 4 qualities, 6 sockets, star EXP, 10★ unlock.
+- **R6c Soul-heart rules** ✅ (2026-11-01, save v24) — the owner's nine sets stay; 4 qualities, star caps, star EXP, 10★ unlock.
 - **R6d Berries** — tables complete except the berry skills (19 berries × 5 stars, texts in kb / wiki): two
   slots, Elevation (stars), Cultivate (15 elements, caps by breakthrough stage), Breakthrough (trainer Lv
   40–60), Reforge (locks), reset.

@@ -1,8 +1,4 @@
 {
- "soulhearts": {
-  "expBase": 40,
-  "expPerStar": 40
- },
  "berries": {
   "upgradeCopies": 2,
   "upgradeEssenceBase": 20,

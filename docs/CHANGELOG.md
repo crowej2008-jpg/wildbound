@@ -1151,3 +1151,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Server `orbs.ts`: view, socket, level (+ Quick Upgrade), lock, dismantle, grant. Client Orbs tab rewritten.
 - Removed the M7/M11 runes (`runes.json`, rune sets, starting runes, Orb Essence levelling). Save v23 (reset).
   Stand-ins: ASSUMPTIONS #65.
+
+## R6c — Soul-heart rules from the source (2026-11-01)
+
+- `CoreInstance.quality` (blue / purple / orange / red), star caps 2 / 3 / 4 / 5, per-quality star EXP table
+  (hero_heart_soul_up_star_json values from kb), stars start at 0. Removed the M11 `collection.soulhearts`
+  formula and `pieceMin/MaxStars`. The owner's nine sets unchanged. Save v24. ASSUMPTIONS #66.

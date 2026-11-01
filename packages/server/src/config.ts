@@ -196,7 +196,7 @@ export function buildConfig(): GameConfig {
       orbs: ORBS as unknown as OrbTables,
       charms: CHARMS,
       coreSets: CORE_SETS,
-      tuning: EQUIPMENT_TUNING,
+      tuning: EQUIPMENT_TUNING as unknown as EquipmentTables['tuning'],
     },
     pve: PVE,
     pvp: PVP,

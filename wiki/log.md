@@ -154,3 +154,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R6 split into R6a–R6d
 - R6 is ~600 skill texts to port (plates, trinkets, berries) plus four systems; planned as four steps.
   Page: source retrofit.
+
+## [2026-11-01] update | R6c Soul-heart rules built
+- Qualities, star caps and the source EXP table; save v24. ASSUMPTIONS #66.
