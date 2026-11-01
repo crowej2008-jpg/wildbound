@@ -54,3 +54,9 @@ test('lists the four source daily dungeons, gated by trainer level', async ({ pa
   // A fresh trainer is below Gold Entry's level 10.
   await expect(gold.getByRole('button', { name: 'Challenge' })).toBeDisabled();
 });
+
+test('the World Boss lists its two daily windows and the rank rewards', async ({ page }) => {
+  await page.goto('/boss');
+  await expect(page.getByText(/Windows: 12:00–13:00, 18:00–19:00 UTC/)).toBeVisible();
+  await expect(page.getByText(/#1 · #2 · #3 · #4–10 · #11–20/)).toBeVisible();
+});

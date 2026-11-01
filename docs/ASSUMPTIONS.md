@@ -985,3 +985,13 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     order and leaves the rest out. Stand-ins: the enemies (the Hard tower a step above the Normal curve) and the
     per-floor gold / shard / coin pay, since the floors themselves are not in the dumps; Hard opens from the start.
     Replaces the milestone chest every 5 floors.
+
+80. **R9 World Boss.** From the source (`world_boss_basic_json`, `world_boss_score_json`,
+    `world_boss_rank_rewards_json`, kb/world-boss.md): one boss per weekday — Mon Mega Zapdos, Tue Mega Moltres,
+    Wed Mega Raikou, Thu Mega Entei, Fri Mega Suicune, Sat Mega Mew, Sun Mega Mewtwo (the base species fight in
+    their place) — up 12:00–13:00 and 18:00–19:00 UTC with three fights in each window. A window's score is its
+    total damage (kb: the score is the damage); it reaches the five milestones (300,000 → 1,500,000: Gold and
+    Diamonds) and ranks against the ghost ladder, and the rank reward (1, 2, 3, 4–10, 11–20) comes by mail when the
+    window closes (settled on load). Readings: milestones are per window; the ladder has 19 ghosts so the 11–20 row
+    can be reached. Not copied: the fight drops (the drop bag is not in the dumps), the auctions (guild, M15) and
+    the VIP 14 skip. The boss's own stats stay a stand-in. Replaces the one-fight-a-day stand-in bosses.

@@ -147,6 +147,7 @@ import { evolutionView } from './growth';
 import { applyGrant, bestIdleRate, bestIdleStageId, stageRewards } from './economy';
 import {
   challengeDungeon as challengeDungeonAction,
+  settleWorldBoss,
   sweepDungeon as sweepDungeonAction,
   claimDungeonChest as claimDungeonChestAction,
   challengeTower as challengeTowerAction,
@@ -1673,6 +1674,12 @@ export class LocalServer implements GameServer {
     const titles = expireTitles(next.titles, this.now(next));
     if (titles !== next.titles) {
       next = { ...next, titles };
+      changed = true;
+    }
+    // R9: a closed World Boss window mails its rank reward.
+    const settled = settleWorldBoss(this.config, next, this.now(next));
+    if (settled !== next) {
+      next = settled;
       changed = true;
     }
     return { state: next, changed };

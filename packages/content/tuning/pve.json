@@ -24,40 +24,94 @@
     }
   },
   "worldBoss": {
-    "attemptsPerDay": 3,
-    "ghostCount": 9,
+    "fightsPerWindow": 3,
+    "windows": [
+      {
+        "startHour": 12,
+        "endHour": 13
+      },
+      {
+        "startHour": 18,
+        "endHour": 19
+      }
+    ],
+    "ghostCount": 19,
     "historyCap": 12,
     "milestones": [
       {
-        "damage": 100000,
+        "damage": 300000,
         "rewards": {
-          "gold": 50000,
-          "candy": 4000,
-          "wildCoin": 80
+          "gold": 5000,
+          "gems": 30
         }
       },
       {
-        "damage": 500000,
+        "damage": 600000,
         "rewards": {
-          "gold": 150000,
-          "shard": 800,
-          "wildCoin": 160
+          "gold": 10000,
+          "gems": 50
+        }
+      },
+      {
+        "damage": 900000,
+        "rewards": {
+          "gold": 15000,
+          "gems": 50
+        }
+      },
+      {
+        "damage": 1200000,
+        "rewards": {
+          "gold": 20000,
+          "gems": 80
         }
       },
       {
         "damage": 1500000,
         "rewards": {
-          "gems": 300,
-          "stone": 12,
-          "wildCoin": 320
+          "gold": 25000,
+          "gems": 100
+        }
+      }
+    ],
+    "rankRewards": [
+      {
+        "upToRank": 1,
+        "rewards": {
+          "pokemonShard5": 5,
+          "gold": 100000,
+          "gems": 50
         }
       },
       {
-        "damage": 4000000,
+        "upToRank": 2,
         "rewards": {
-          "gems": 800,
-          "ticketPremium": 2,
-          "wildCoin": 640
+          "pokemonShard5": 3,
+          "gold": 50000,
+          "gems": 50
+        }
+      },
+      {
+        "upToRank": 3,
+        "rewards": {
+          "pokemonShard5": 2,
+          "gold": 50000,
+          "gems": 50
+        }
+      },
+      {
+        "upToRank": 10,
+        "rewards": {
+          "pokemonShard5": 1,
+          "gold": 25000,
+          "gems": 50
+        }
+      },
+      {
+        "upToRank": 20,
+        "rewards": {
+          "gold": 25000,
+          "gems": 30
         }
       }
     ],
@@ -79,38 +133,38 @@
     "rotation": [
       {
         "weekday": 0,
-        "speciesId": "groudon",
-        "name": "Cinder Sovereign"
+        "speciesId": "mewtwo",
+        "name": "Mega Mewtwo"
       },
       {
         "weekday": 1,
-        "speciesId": "arceus",
-        "name": "Rimecrown"
+        "speciesId": "zapdos",
+        "name": "Mega Zapdos"
       },
       {
         "weekday": 2,
-        "speciesId": "rayquaza",
-        "name": "Thornheart Colossus"
+        "speciesId": "moltres",
+        "name": "Mega Moltres"
       },
       {
         "weekday": 3,
-        "speciesId": "shadow-mewtwo",
-        "name": "Umbral Sentinel"
+        "speciesId": "raikou",
+        "name": "Mega Raikou"
       },
       {
         "weekday": 4,
-        "speciesId": "lugia",
-        "name": "Abyssal Maw"
+        "speciesId": "entei",
+        "name": "Mega Entei"
       },
       {
         "weekday": 5,
-        "speciesId": "zacian",
-        "name": "Stormforge"
+        "speciesId": "suicune",
+        "name": "Mega Suicune"
       },
       {
         "weekday": 6,
-        "speciesId": "shiny-mew",
-        "name": "Skyrender"
+        "speciesId": "mew",
+        "name": "Mega Mew"
       }
     ]
   },
@@ -152,7 +206,7 @@
     {
       "id": "silentpeak",
       "name": "Silent Peak",
-      "tagline": "No ultimates land here \u2014 win on basic kits alone.",
+      "tagline": "No ultimates land here — win on basic kits alone.",
       "rule": "noUltimate",
       "unlockLevel": 1,
       "preview": {
@@ -247,7 +301,7 @@
     {
       "id": "moonfall",
       "name": "Moonfall Crypt",
-      "tagline": "Opens Tue, Thu and Sat only \u2014 Shade rises with the moon.",
+      "tagline": "Opens Tue, Thu and Sat only — Shade rises with the moon.",
       "rule": "weekdayBoss",
       "weekdays": [
         2,
@@ -289,7 +343,7 @@
       "tiers": [],
       "count": 6,
       "baseLevel": 10,
-      "levelSlope": 1.0,
+      "levelSlope": 1,
       "starsEvery": 8,
       "maxStars": 8,
       "stageEvery": 16,
@@ -300,7 +354,7 @@
       "tiers": [],
       "count": 6,
       "baseLevel": 10,
-      "levelSlope": 1.0,
+      "levelSlope": 1,
       "starsEvery": 8,
       "maxStars": 8,
       "stageEvery": 16,
@@ -313,7 +367,7 @@
       "tiers": [],
       "count": 6,
       "baseLevel": 10,
-      "levelSlope": 1.0,
+      "levelSlope": 1,
       "starsEvery": 8,
       "maxStars": 8,
       "stageEvery": 16,
@@ -324,7 +378,7 @@
       "tiers": [],
       "count": 6,
       "baseLevel": 10,
-      "levelSlope": 1.0,
+      "levelSlope": 1,
       "starsEvery": 8,
       "maxStars": 8,
       "stageEvery": 16,

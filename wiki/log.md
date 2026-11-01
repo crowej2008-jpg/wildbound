@@ -219,3 +219,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-01] update | R9 Tower
 - Normal and Hard towers with the source's achievement floors and Hard lineup rules; daily climbs (ASSUMPTIONS #79,
   save v35). Next: World Boss and Trials data, then summoning.
+
+## [2026-11-01] update | R9 World Boss
+- The source's weekday Megas, two windows a day, milestones and mailed rank rewards (ASSUMPTIONS #80, save v36).
+  Next: Trials, then summoning.

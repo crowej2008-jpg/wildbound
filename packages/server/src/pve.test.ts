@@ -13,6 +13,7 @@ import {
   resolvePool,
   sweepTower,
   hardTowerRule,
+  settleWorldBoss,
 } from './pve';
 import { applyLineupRule, slotToPosition } from './battle';
 
@@ -174,25 +175,45 @@ describe('PvE modes (server glue)', () => {
     expect(tomorrow.ok).toBe(true);
   });
 
-  it('scores world-boss damage, records the attempt, and caps attempts per day', () => {
+  it('scores world-boss damage in the window, records the attempt, and caps the window\'s fights', () => {
     const cfg = config();
     const state = strongState(cfg);
     const fight = challengeWorldBoss(cfg, state, NOW, 9);
     expect(fight.ok).toBe(true);
     if (!fight.ok) return;
     expect(fight.value.extra.damage).toBeGreaterThan(0);
-    expect(fight.value.extra.attemptsLeft).toBe(cfg.pve.worldBoss.attemptsPerDay - 1);
+    expect(fight.value.extra.attemptsLeft).toBe(cfg.pve.worldBoss.fightsPerWindow - 1);
+    expect(fight.value.state.pve.worldBoss.score).toBe(fight.value.extra.damage);
     expect(fight.value.extra.ghosts).toHaveLength(cfg.pve.worldBoss.ghostCount);
     expect(fight.value.state.pve.worldBoss.attempts).toBe(1);
     expect(fight.value.state.pve.worldBoss.history).toContain(fight.value.extra.damage);
 
     const spent: AccountState = {
       ...state,
-      pve: { ...state.pve, worldBoss: { ...state.pve.worldBoss, attempts: cfg.pve.worldBoss.attemptsPerDay } },
+      pve: { ...state.pve, worldBoss: { ...state.pve.worldBoss, day: '2026-10-15T12', attempts: cfg.pve.worldBoss.fightsPerWindow } },
     };
     const capped = challengeWorldBoss(cfg, spent, NOW, 9);
     expect(capped.ok).toBe(false);
     if (!capped.ok) expect(capped.error).toBe('daily_limit');
+    // The evening window brings three more; outside the windows the boss is not up.
+    expect(challengeWorldBoss(cfg, spent, NOW + 6 * 3_600_000, 9).ok).toBe(true);
+    const closed = challengeWorldBoss(cfg, state, NOW + 2 * 3_600_000, 9);
+    expect(closed.ok).toBe(false);
+    if (!closed.ok) expect(closed.error).toBe('not_ready');
+  });
+
+  it('copies the source World Boss: weekday Megas, milestones and rank rewards mailed at the window\'s close', () => {
+    const cfg = config();
+    expect(cfg.pve.worldBoss.rotation.find((r) => r.weekday === 4)).toMatchObject({ speciesId: 'entei', name: 'Mega Entei' });
+    expect(cfg.pve.worldBoss.milestones.map((m) => m.damage)).toEqual([300_000, 600_000, 900_000, 1_200_000, 1_500_000]);
+    expect(cfg.pve.worldBoss.rankRewards.map((r) => r.upToRank)).toEqual([1, 2, 3, 10, 20]);
+    const state = strongState(cfg);
+    const fight = challengeWorldBoss(cfg, state, NOW, 9);
+    if (!fight.ok) throw new Error(fight.message);
+    expect(settleWorldBoss(cfg, fight.value.state, NOW + 30 * 60_000)).toBe(fight.value.state);
+    const settled = settleWorldBoss(cfg, fight.value.state, NOW + 2 * 3_600_000);
+    expect(settled.mail.some((m) => m.id === 'worldboss-2026-10-15T12')).toBe(true);
+    expect(settled.pve.worldBoss.score).toBe(0);
   });
 
   it('claims a reached world-boss milestone exactly once', () => {
@@ -202,7 +223,7 @@ describe('PvE modes (server glue)', () => {
       ...state,
       pve: {
         ...state.pve,
-        worldBoss: { ...state.pve.worldBoss, lastDamage: cfg.pve.worldBoss.milestones[0]!.damage },
+        worldBoss: { ...state.pve.worldBoss, score: cfg.pve.worldBoss.milestones[0]!.damage },
       },
     };
     const claim = claimWorldBossMilestone(cfg, reached, 0);

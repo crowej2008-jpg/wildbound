@@ -18,6 +18,8 @@ import {
   canSweep,
   ghostRecords,
   openChests,
+  rollWorldBossDay,
+  worldBossWindow,
   rollDungeonDay,
   type DungeonGrade,
   nextTowerFloor,
@@ -162,35 +164,43 @@ export interface WorldBossMilestoneView {
 }
 
 export interface WorldBossView {
+  /** A boss is up now (the window is open). */
   open: boolean;
   name: string;
   speciesId: string;
   attemptsLeft: number;
-  attemptsPerDay: number;
+  attemptsPerWindow: number;
+  /** This window's score (its total damage). */
+  score: number;
   lastDamage: number;
   bestDamage: number;
   rank: number;
   ghostCount: number;
   milestones: WorldBossMilestoneView[];
-  dayResetMs: number;
+  rankRewards: { upToRank: number; rewards: Rewards }[];
+  /** Ms until the window closes (open) or the next one opens. */
+  windowMs: number;
+  windows: { startHour: number; endHour: number }[];
 }
 
 export function buildWorldBossView(config: GameConfig, state: AccountState, now: number): WorldBossView {
   const weekday = weekdayUtc(now);
   const boss = worldBossDefs(config).find((d) => d.weekday === weekday);
   const tuning = config.pve.worldBoss;
-  const bossState = state.pve.worldBoss;
+  const window = worldBossWindow(now, tuning.windows);
+  const bossState = rollWorldBossDay(state.pve.worldBoss, window.key);
   const ghosts = ghostRecords(bossState.history, 0x5eed, tuning.ghostCount);
-  const reached = new Set(reachedMilestones(bossState.lastDamage, tuning.milestones));
+  const reached = new Set(reachedMilestones(bossState.score, tuning.milestones));
   return {
-    open: boss !== undefined,
+    open: window.open && boss !== undefined,
     name: boss?.name ?? '',
     speciesId: boss?.speciesId ?? '',
-    attemptsLeft: Math.max(0, tuning.attemptsPerDay - bossState.attempts),
-    attemptsPerDay: tuning.attemptsPerDay,
+    attemptsLeft: Math.max(0, tuning.fightsPerWindow - bossState.attempts),
+    attemptsPerWindow: tuning.fightsPerWindow,
+    score: bossState.score,
     lastDamage: bossState.lastDamage,
     bestDamage: bossState.bestDamage,
-    rank: rankDamage(bossState.bestDamage, ghosts),
+    rank: rankDamage(bossState.score, ghosts),
     ghostCount: tuning.ghostCount,
     milestones: tuning.milestones.map((m, index) => ({
       index,
@@ -199,7 +209,9 @@ export function buildWorldBossView(config: GameConfig, state: AccountState, now:
       reached: reached.has(index),
       claimed: bossState.claimedMilestones.includes(index),
     })),
-    dayResetMs: msUntilNextUtcMidnight(now),
+    rankRewards: tuning.rankRewards.map((r) => ({ upToRank: r.upToRank, rewards: r.rewards as Rewards })),
+    windowMs: (window.open ? window.closesAt : window.opensAt) - now,
+    windows: tuning.windows,
   };
 }
 

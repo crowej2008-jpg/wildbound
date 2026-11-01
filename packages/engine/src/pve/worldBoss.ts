@@ -3,17 +3,24 @@ import type { BattleResult } from '../combat/types';
 import type { WorldBossDef, WorldBossMilestone } from './types';
 
 /**
- * World Boss rules (M8, PROMPT §7.6). One boss per UTC weekday, a limited number
- * of scored fights per day, damage milestones, and a damage ranking against
- * stored ghost records (the player's own history plus deterministic bots — the
- * same local pattern M10 Arena uses). Pure. See docs/design/pve-modes.md.
+ * World Boss rules (M8; R9 from the source). One boss per UTC weekday, up in two windows a day (12:00–13:00 and
+ * 18:00–19:00 UTC) with three fights in each; a window's score is its total damage, which reaches the milestones
+ * and ranks against stored ghost records (the player's own history plus deterministic bots — the same local
+ * pattern M10 Arena uses). Pure. See docs/design/pve-modes.md.
  */
 
+export interface WorldBossWindow {
+  startHour: number;
+  endHour: number;
+}
+
 export interface WorldBossState {
-  /** UTC day-key of the attempts/best-damage counters. */
+  /** The window key (`YYYY-MM-DDTHH`, the window's start) the counters belong to. */
   day: string;
-  /** Fights used today. */
+  /** Fights used in this window. */
   attempts: number;
+  /** R9: this window's score (its total damage). */
+  score: number;
   /** Damage of the most recent fight. */
   lastDamage: number;
   /** Best damage across all time (shown on the card). */
@@ -25,13 +32,38 @@ export interface WorldBossState {
 }
 
 export function initialWorldBossState(day: string): WorldBossState {
-  return { day, attempts: 0, lastDamage: 0, bestDamage: 0, claimedMilestones: [], history: [] };
+  return { day, attempts: 0, score: 0, lastDamage: 0, bestDamage: 0, claimedMilestones: [], history: [] };
 }
 
-/** Reset the per-day counters when the UTC day changes. */
-export function rollWorldBossDay(state: WorldBossState, day: string): WorldBossState {
-  if (state.day === day) return state;
-  return { ...state, day, attempts: 0, claimedMilestones: [] };
+/** Reset the window counters when the window changes. */
+export function rollWorldBossDay(state: WorldBossState, key: string): WorldBossState {
+  if (state.day === key) return state;
+  return { ...state, day: key, attempts: 0, score: 0, claimedMilestones: [] };
+}
+
+const HOUR = 3_600_000;
+
+/** The window open at `now` (with its key), else the next one to open. */
+export function worldBossWindow(
+  now: number,
+  windows: readonly WorldBossWindow[],
+): { open: boolean; key: string; opensAt: number; closesAt: number } {
+  const midnight = Math.floor(now / (24 * HOUR)) * 24 * HOUR;
+  const keyOf = (start: number) => new Date(start).toISOString().slice(0, 13);
+  for (let day = 0; day <= 1; day += 1) {
+    for (const w of [...windows].sort((a, b) => a.startHour - b.startHour)) {
+      const start = midnight + day * 24 * HOUR + w.startHour * HOUR;
+      const end = midnight + day * 24 * HOUR + w.endHour * HOUR;
+      if (now < end) return { open: now >= start, key: keyOf(start), opensAt: start, closesAt: end };
+    }
+  }
+  const start = midnight + 24 * HOUR + windows[0]!.startHour * HOUR;
+  return { open: false, key: keyOf(start), opensAt: start, closesAt: start + HOUR };
+}
+
+/** The rank-reward row for a rank (the first whose `upToRank` covers it), if any. */
+export function rankRewardFor<T extends { upToRank: number }>(rank: number, rows: readonly T[]): T | undefined {
+  return [...rows].sort((a, b) => a.upToRank - b.upToRank).find((r) => rank <= r.upToRank);
 }
 
 export function worldBossForWeekday(defs: readonly WorldBossDef[], weekday: number): WorldBossDef | null {
@@ -62,6 +94,7 @@ export function recordBossDamage(
   return {
     ...state,
     attempts: state.attempts + 1,
+    score: state.score + d,
     lastDamage: d,
     bestDamage: Math.max(state.bestDamage, d),
     history,

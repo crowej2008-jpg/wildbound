@@ -73,14 +73,19 @@ export const dungeonEnemiesSchema = z
   .object({ gold: enemyPoolSchema, vanity: enemyPoolSchema, xp: enemyPoolSchema, shard: enemyPoolSchema })
   .strict();
 
+/** R9: the source's World Boss (scripts/import-world-boss.mjs); the boss's enemy stats stay a stand-in. */
 export const worldBossSchema = z
   .object({
-    attemptsPerDay: z.number().int().positive(),
+    fightsPerWindow: z.number().int().positive(),
+    /** UTC hours each window is open (start inclusive, end exclusive). */
+    windows: z.array(z.object({ startHour: z.number().int().min(0).max(23), endHour: z.number().int().min(1).max(24) }).strict()).min(1),
     ghostCount: z.number().int().nonnegative(),
     historyCap: z.number().int().positive(),
     milestones: z
       .array(z.object({ damage: z.number().positive(), rewards: rewardSchema }).strict())
       .min(1),
+    /** Paid by mail when a window closes: the first row whose `upToRank` covers the rank. */
+    rankRewards: z.array(z.object({ upToRank: z.number().int().positive(), rewards: rewardSchema }).strict()).min(1),
     enemy: enemyPoolSchema,
     rotation: z
       .array(

@@ -68,8 +68,12 @@ export default function WorldBoss() {
             <span className="stat">
               <span className="muted">{t('boss.attempts')}</span>
               <strong>
-                {view.attemptsLeft}/{view.attemptsPerDay}
+                {view.attemptsLeft}/{view.attemptsPerWindow}
               </strong>
+            </span>
+            <span className="stat">
+              <span className="muted">{t('boss.score')}</span>
+              <strong>{view.score.toLocaleString()}</strong>
             </span>
             <span className="stat">
               <span className="muted">{t('boss.damage')}</span>
@@ -90,7 +94,15 @@ export default function WorldBoss() {
             </button>
           </div>
           <p className="muted">
-            {t('boss.reset')}: {formatDuration(view.dayResetMs)}
+            {(view.open ? t('boss.closesIn') : t('boss.opensIn'))}: {formatDuration(view.windowMs)} ·{' '}
+            {t('boss.windows')}: {view.windows.map((w) => `${w.startHour}:00–${w.endHour}:00`).join(', ')} UTC
+          </p>
+          <p className="muted">
+            {t('boss.rankRewards')}:{' '}
+            {view.rankRewards.map((r, i) => {
+              const from = i === 0 ? 1 : view.rankRewards[i - 1]!.upToRank + 1;
+              return `#${from === r.upToRank ? r.upToRank : `${from}–${r.upToRank}`}`;
+            }).join(' · ')}
           </p>
         </section>
       ) : (

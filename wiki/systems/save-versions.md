@@ -48,6 +48,7 @@ after the retrofit, once friends have real saves.
 | 33 | R8 | `fashion` (ladders, piece stars and shards, worn); three level stones (reset) |
 | 34 | R9 | daily dungeons: runs, best grades, drawn chests (reset) |
 | 35 | R9 | Tower: daily climbs, Hard floor; weekly counters and milestone claims removed (reset) |
-| 36+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
+| 36 | R9 | World Boss per-window score (reset) |
+| 37+ | R steps, M13.3 | each retrofit step bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

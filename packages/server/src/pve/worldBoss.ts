@@ -2,13 +2,15 @@ import {
   attackerDamage,
   canChallengeBoss,
   claimableMilestones,
-  dayKey,
+  createMail,
   ghostRecords,
+  rankRewardFor,
   rankDamage,
   recordBossDamage,
   rollWorldBossDay,
   weekdayUtc,
   worldBossForWeekday,
+  worldBossWindow,
   type AccountState,
   type Rewards,
   type StageEnemy,
@@ -19,7 +21,10 @@ import { fail, ok, type Result } from '../index';
 import type { GameConfig } from '../config';
 import { worldBossDefs, type BattleOutcome } from './shared';
 
-/** World boss (M8, PROMPT §7.6): damage scoring, milestones, ghost-ladder rank. */
+/**
+ * World boss (M8; R9 from the source): two windows a day with three fights each, the window's damage as its
+ * score, the source milestones on that score and its rank reward mailed when the window closes. ASSUMPTIONS #80.
+ */
 
 export interface WorldBossExtra {
   speciesId: string;
@@ -42,9 +47,11 @@ export function challengeWorldBoss(
   const boss = worldBossForWeekday(defs, weekdayUtc(now));
   if (!boss) return fail('not_found', 'no world boss today');
   const tuning = config.pve.worldBoss;
-  const rolled = rollWorldBossDay(state.pve.worldBoss, dayKey(now));
-  if (!canChallengeBoss(rolled, tuning.attemptsPerDay)) {
-    return fail('daily_limit', 'no world-boss fights left today');
+  const window = worldBossWindow(now, tuning.windows);
+  if (!window.open) return fail('not_ready', 'the World Boss is not up now (12:00–13:00 and 18:00–19:00 UTC)');
+  const rolled = rollWorldBossDay(settleWorldBoss(config, state, now).pve.worldBoss, window.key);
+  if (!canChallengeBoss(rolled, tuning.fightsPerWindow)) {
+    return fail('daily_limit', 'no World Boss fights left in this window');
   }
 
   const spec = config.pve.worldBoss.enemy;
@@ -64,7 +71,7 @@ export function challengeWorldBoss(
   const recorded = recordBossDamage(rolled, damage, tuning.historyCap);
   const next = applyGrant(config, { ...state, pve: { ...state.pve, worldBoss: recorded } }, {});
   const ghosts = ghostRecords(recorded.history, 0x5eed, tuning.ghostCount);
-  const claimable = claimableMilestones(recorded, damage, config.pve.worldBoss.milestones);
+  const claimable = claimableMilestones(recorded, recorded.score, config.pve.worldBoss.milestones);
   return ok({
     state: next,
     battle,
@@ -75,9 +82,9 @@ export function challengeWorldBoss(
       name: boss.name,
       damage,
       bestDamage: recorded.bestDamage,
-      rank: rankDamage(damage, ghosts),
+      rank: rankDamage(recorded.score, ghosts),
       ghosts,
-      attemptsLeft: tuning.attemptsPerDay - recorded.attempts,
+      attemptsLeft: tuning.fightsPerWindow - recorded.attempts,
       claimable,
     },
   });
@@ -93,7 +100,7 @@ export function claimWorldBossMilestone(
     return fail('invalid_input', `no world-boss milestone at index ${index}`);
   }
   const boss = state.pve.worldBoss;
-  const reached = boss.lastDamage >= milestones[index]!.damage;
+  const reached = boss.score >= milestones[index]!.damage;
   if (!reached || boss.claimedMilestones.includes(index)) {
     return fail('not_ready', 'milestone not reached or already claimed');
   }
@@ -104,4 +111,32 @@ export function claimWorldBossMilestone(
     granted,
   );
   return ok({ state: next, granted });
+}
+
+/**
+ * Close a finished window: mail its rank reward (the window's score against the ghost ladder) and clear its
+ * counters. Runs on every load, so the reward arrives even if the boss screen is never opened.
+ */
+export function settleWorldBoss(config: GameConfig, state: AccountState, now: number): AccountState {
+  const boss = state.pve.worldBoss;
+  const window = worldBossWindow(now, config.pve.worldBoss.windows);
+  if (boss.day === window.key || (boss.attempts === 0 && boss.score === 0)) return state;
+  const tuning = config.pve.worldBoss;
+  const rank = rankDamage(boss.score, ghostRecords(boss.history, 0x5eed, tuning.ghostCount));
+  const row = rankRewardFor(rank, tuning.rankRewards);
+  const rolled = rollWorldBossDay(boss, window.key);
+  const mail = row
+    ? [
+        ...state.mail,
+        createMail({
+          id: `worldboss-${boss.day}`,
+          subjectKey: 'mail.worldBoss.subject',
+          bodyKey: 'mail.worldBoss.body',
+          grants: row.rewards as Rewards,
+          createdAt: now,
+          ttlMs: config.economy.mailTtlHours * 3_600_000,
+        }),
+      ]
+    : state.mail;
+  return { ...state, mail, pve: { ...state.pve, worldBoss: rolled } };
 }

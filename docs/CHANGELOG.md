@@ -1286,3 +1286,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - `scripts/import-tower.mjs` → `packages/content/tuning/tower.json` (Normal and Hard achievements, Hard rules). The
   climbs reset daily; a Hard Tower with lineup rules (`applyLineupRule`, formation positions kept); title cards
   moved to the Hard floors. Save v35. ASSUMPTIONS #79.
+
+## R9 part 5 — World Boss from the source (2026-11-01)
+
+- `scripts/import-world-boss.mjs` rewrites the `worldBoss` block of `pve.json` (windows, rotation, milestones, rank
+  rewards). Engine window helper and per-window score; server window check, load-time settlement by mail; the page
+  shows the windows and rank brackets. Save v36. ASSUMPTIONS #80.
