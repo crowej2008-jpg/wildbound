@@ -349,21 +349,3 @@ test('Potential: tier 1 takes three 3★ Fire Pokémon and 20,000 shards, then l
   await expect(tier1).toContainText('Lv.2/6');
   await expect(page.getByTestId('potential-tier-5')).toContainText('Locked');
 });
-  await page.goto('/wilds');
-  await page.locator('.roster-item').first().click();
-  const power = () =>
-    page.locator('.wild-power-lg strong').first().innerText().then((text) => Number(text.replace(/,/g, '')));
-  const before = await power();
-
-  await page.getByRole('button', { name: 'Potential', exact: true }).click();
-  await expect(page.getByText(/Duplicates: 1/)).toBeVisible();
-  await page.getByRole('button', { name: 'Ashpike Discipline', exact: true }).click();
-
-  const firstTier = page.locator('.gear-row').first();
-  await expect(firstTier).toContainText('Cost 20 Potential Shards');
-  await firstTier.getByRole('button', { name: 'Trained for power', exact: true }).click();
-
-  await expect(page.getByText(/Duplicates: 0/)).toBeVisible();
-  await expect(firstTier).toContainText('Re-pick 5 Potential Shards');
-  await expect.poll(power, { timeout: 15_000 }).toBeGreaterThan(before);
-});
