@@ -141,6 +141,67 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "Increases Ultimate's base damage to 100%, increases the Ignore DEF effect to 35%",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1
+            ],
+            "rule": "all",
+            "ignoreDefense": 0.35
+          }
+        }
+      },
+      "12": {
+        "text": "Increases Ultimate's damage against [DEF] Pokémons by 35%, against [ATK] Pokémons by 10%",
+        "damageMods": [
+          {
+            "tag": "mt-vs-def",
+            "slot": "ult",
+            "dmg": 0.35,
+            "condition": {
+              "targetClass": "guardian"
+            }
+          },
+          {
+            "tag": "mt-vs-atk",
+            "slot": "ult",
+            "dmg": 0.1,
+            "condition": {
+              "targetClass": "striker"
+            }
+          }
+        ]
+      },
+      "18": {
+        "text": "Before using Ultimate, Increases Crit by 20% for 4 turns. Stacks up to 1 time",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "mt-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.2,
+                  "turns": 4,
+                  "maxStacks": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1004,6 +1065,80 @@
           }
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate increases all allies’ S.ATK by 20%",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "song-satk",
+                  "kind": "stat",
+                  "field": "atkPct",
+                  "amount": 0.2,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Increases Lifesteal to 40%",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              1.4
+            ],
+            "rule": "backline",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "all"
+                },
+                "buff": {
+                  "tag": "song-lifesteal",
+                  "kind": "stat",
+                  "field": "lifesteal",
+                  "amount": 0.4,
+                  "turns": 2
+                }
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Ultimate has a chance to sleep (stun) targets",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "control",
+                "target": {
+                  "event": true
+                },
+                "control": {
+                  "kind": "sleep",
+                  "chance": 0.3
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {
@@ -1150,6 +1285,94 @@
       ],
       "rageStart": 1000,
       "basicRate": 0.6
+    },
+    "plate": {
+      "6": {
+        "text": "Ultimate additionally inflicts [Flame]\n [Flame]: Deals true damage by 40% self S.ATK for 2 turns. Stacks up to 2 times.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "all"
+                },
+                "tag": "flame",
+                "delta": 1
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Ultimate additionally inflicts [Sacred Fire]\n [Sacred Fire]: Deals true damage by 60% of self S.ATK after a turn",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "rule": "all"
+                },
+                "tag": "sacred-fire",
+                "dot": {
+                  "share": 1.25,
+                  "basis": "casterAtk",
+                  "turns": 2,
+                  "maxStacks": 1,
+                  "type": "S"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "Ultimate dispels 2 buffs",
+        "skills": {
+          "ult": {
+            "type": "S",
+            "rates": [
+              0.8
+            ],
+            "rule": "all",
+            "effects": [
+              {
+                "op": "dot",
+                "target": {
+                  "rule": "all"
+                },
+                "tag": "burning",
+                "dot": {
+                  "share": 0.3,
+                  "basis": "casterAtk",
+                  "type": "S",
+                  "turns": 3,
+                  "trueDamage": true
+                }
+              },
+              {
+                "op": "dispel",
+                "target": {
+                  "rule": "all"
+                },
+                "count": 2
+              },
+              {
+                "op": "resource",
+                "target": {
+                  "rule": "all"
+                },
+                "tag": "burning",
+                "delta": 1,
+                "max": 3
+              }
+            ]
+          }
+        }
+      }
     }
   },
   {

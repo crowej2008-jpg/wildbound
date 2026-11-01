@@ -870,6 +870,53 @@
           ]
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "The effect of [Doom Desire] reduces the target's damage reduction by an additional 20%.",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "event": true
+                },
+                "buff": {
+                  "tag": "doom-desire-rdct",
+                  "kind": "stat",
+                  "field": "dmgRdct",
+                  "amount": -0.2,
+                  "bigRounds": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Immediately recover 30% of own missing HP after releasing Basic Skill",
+        "triggers": [
+          {
+            "on": "afterBasic",
+            "effects": [
+              {
+                "op": "heal",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "rate": 0.3,
+                "basis": "targetMissingHp"
+              }
+            ]
+          }
+        ]
+      },
+      "18": {
+        "text": "[Doom Desire] increases the DMG dealt based on missing HP to 50%"
+      }
     }
   },
   {
@@ -1362,6 +1409,77 @@
           ]
         }
       ]
+    },
+    "plate": {
+      "6": {
+        "text": "After an Ultimate,Permanently increases Crit by 15%. Stacks up to 4 times",
+        "triggers": [
+          {
+            "on": "afterUlt",
+            "effects": [
+              {
+                "op": "buff",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "buff": {
+                  "tag": "solgaleo-crit",
+                  "kind": "stat",
+                  "field": "crit",
+                  "amount": 0.15,
+                  "maxStacks": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "12": {
+        "text": "Basic ATK ignores 20% of P.DEF and extra damage boosted to 6% of maximum life.",
+        "skills": {
+          "basic": {
+            "type": "P",
+            "rates": [
+              1.4
+            ],
+            "rule": "row",
+            "ignoreDefense": 0.2,
+            "effects": [
+              {
+                "op": "damage",
+                "target": {
+                  "event": true
+                },
+                "basis": "targetMaxHp",
+                "share": 0.06
+              }
+            ]
+          }
+        }
+      },
+      "18": {
+        "text": "Basic skill that deal a critical hit to any target can make 1 more basic skill attack, up to 1 additional basic skill attack per turn (additional actions cannot be stacked)",
+        "triggers": [
+          {
+            "on": "onCrit",
+            "perTurn": 1,
+            "condition": {
+              "eventSlot": "basic"
+            },
+            "effects": [
+              {
+                "op": "extraAction",
+                "target": {
+                  "side": "ally",
+                  "rule": "self"
+                },
+                "slot": "basic"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   {

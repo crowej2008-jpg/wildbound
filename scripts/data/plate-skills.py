@@ -174,3 +174,44 @@ plate("shiny-mewtwo", {
     ]},
     18: {"triggers": [trig("afterUlt", [give(SELF, buff("smt-crit", "crit", 0.2, turns=4, stacks=1))])]},
 })
+
+# --- batch 4 -------------------------------------------------------------------------------------
+plate("hoopa", {
+    6: {"triggers": [trig("afterUlt", [{"op": "resource", "target": ENEMY_ALL, "tag": "flame", "delta": 1}])]},
+    12: {"triggers": [trig("afterUlt", [dot(ENEMY_ALL, "sacred-fire", 1.25, turns=2, stacks=1, type_="S")])]},
+    18: {"skills": {"ult": edited("hoopa", "ult", lambda s: s["effects"][1].update(count=2))}},
+})
+
+
+def _mt_ult(s):
+    s["rates"] = [1.0]
+    s["ignoreDefense"] = 0.35
+
+
+plate("mewtwo", {
+    6: {"skills": {"ult": edited("mewtwo", "ult", _mt_ult)}},
+    12: {"damageMods": [
+        {"tag": "mt-vs-def", "slot": "ult", "dmg": 0.35, "condition": {"targetClass": "guardian"}},
+        {"tag": "mt-vs-atk", "slot": "ult", "dmg": 0.1, "condition": {"targetClass": "striker"}},
+    ]},
+    18: {"triggers": [trig("afterUlt", [give(SELF, buff("mt-crit", "crit", 0.2, turns=4, stacks=1))])]},
+})
+
+plate("jirachi", {
+    6: {"triggers": [trig("afterUlt", [give(T, buff("doom-desire-rdct", "dmgRdct", -0.2, big=1))])]},
+    12: {"triggers": [trig("afterBasic", [heal(SELF, 0.3, "targetMissingHp")])]},
+    18: {},
+})
+
+plate("solgaleo", {
+    6: {"triggers": [trig("afterUlt", [give(SELF, buff("solgaleo-crit", "crit", 0.15, stacks=4))])]},
+    12: {"skills": {"basic": skill("P", 1.4, "row", ignoreDefense=0.2, effects=[dmg(T, basis="targetMaxHp", share=0.06)])}},
+    18: {"triggers": [trig("onCrit", [{"op": "extraAction", "target": SELF, "slot": "basic"}], perTurn=1,
+                           condition={"eventSlot": "basic"})]},
+})
+
+plate("meloetta", {
+    6: {"triggers": [trig("afterUlt", [give(ALL_ALLIES, buff("song-satk", "atkPct", 0.2, turns=2))])]},
+    12: {"skills": {"ult": edited("meloetta", "ult", lambda s: s["effects"][0]["buff"].update(amount=0.4))}},
+    18: {"triggers": [trig("afterUlt", [control(T, "sleep", 0.3)])]},
+})

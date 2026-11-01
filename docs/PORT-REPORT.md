@@ -133,8 +133,6 @@ Class-archetype damage-line fallbacks (slot had no parsable attack): **0**
 | count | clause | example |
 | --- | --- | --- |
 
-- Yveltal 12 (ult burns to 100 %) and Lugia 12 (SKILL allies' DMG Boost — no amount given): not modelled;
-  Yveltal 18 "debuffed" read as carrying a DoT.
-- Keldeo 12: the "ignores 20 % DEF" half is not modelled (no per-target DEF ignore on damage mods).
-- Shiny Hoopa 12: Sacred Fire at Ho-Oh's 125 % S.ATK for 2 turns (the text gives no number).
-- Shiny Mewtwo 18: "before the Ultimate" applied right after it (no before-ult trigger), so it helps the next.
+- Jirachi 18 (Doom Desire's missing-HP damage to 50 %): not modelled (no target-missing-HP damage scale).
+- Solgaleo 12: the extra-damage line raised to 6 % max HP; "ignores 20 % P.DEF" as the basic's ignore DEF.
+- Meloetta 6: "S.ATK +20 %" as ATK +20 % for 2 turns (no duration given); 18: the sleep chance (not given) is 30 %.
