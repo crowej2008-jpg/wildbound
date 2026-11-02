@@ -514,6 +514,12 @@ export interface TriggerDef {
 export interface TalentDef {
   statMods?: StatMod[];
   rageOnHit?: number;
+  /**
+   * R9 (owner, 2026-11-02): every direct hit this unit lands is fatal — shields, invulnerability and
+   * endure do not stop it; an undying side (the World Boss) is still held at 1 HP. Kept off every
+   * player-facing text on the owner's word.
+   */
+  lethalHits?: boolean;
   rageCutChance?: number;
   safeguard?: { active: number; cycle: number };
   turnHooks?: TurnHook[];

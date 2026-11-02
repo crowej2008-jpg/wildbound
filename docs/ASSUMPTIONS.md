@@ -1003,3 +1003,18 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     Lastlight Stand, Moonfall Crypt) were Wildbound inventions with no source counterpart; the owner chose to remove
     them under copy-the-source. The engine keeps the generic battle rules they used (no ultimates, survival rounds),
     which other modes may need.
+
+82. **R9 summon-pool Pokémon (owner, 2026-11-02).** The source's summon pools and Pokémon boxes give out 14 Pokémon
+    that are not in the owner's 84 (source heroes 101–110, 112–115: Caterpie, Jigglypuff, Pidgeotto, Ekans, Meowth,
+    Koffing — Normal; Poliwag, Abra, Oddish, Slowpoke, Onix, Scyther, Growlithe, Togepi — Uncommon). The dumps hold
+    only each one's name, faction, rarity and the star cards the pools draw. Owner: *"full Pokémon, made-up stats"*.
+    `scripts/generate-summon-pokemon.mjs` writes `species/summon-pool.json` and `kits/summon-pool.json`: Normal is the
+    `common` tier (shown "Normal") at 1–3★, Uncommon a new `uncommon` tier at 3–5★, card names from the pools
+    (Caterpie → Butterfree, Onix → Steelix → Omega Steelix…); stats are the Rare tier's average star row × 0.7
+    (Normal) / × 0.85 (Uncommon), 1★ / 2★ stepping down by the Rare 3★ → 4★ ratio; level caps 20 / 40 / 60 / 80 /
+    100; fodder two own copies a star (Uncommon 4★ → 5★: two same-faction 4★, the Rare pattern); classes made up;
+    kits are the class's Rare kit (Ninetales / Starmie / Blastoise) with weaker talents; 30 shards a copy. Owner on
+    Caterpie: *"make it a one shot god making it one hit everyone but dont say it in its kit"* — its kit carries
+    the engine talent `lethalHits` (every direct hit is fatal through shields, invulnerability and endure; damage
+    over time and reflects are not hits; the undying World Boss is still held at 1 HP), and no player-facing text
+    mentions it. *What would change it:* the source's hero rows for these 14.

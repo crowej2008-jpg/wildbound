@@ -12,7 +12,7 @@ import type {
  * show requirements. See docs/design/equipment.md.
  */
 
-const TIER_ORDER: readonly Tier[] = ['common', 'rare', 'epic', 'legendary', 'supreme', 'mythic', 'origin'];
+const TIER_ORDER: readonly Tier[] = ['common', 'uncommon', 'rare', 'epic', 'legendary', 'supreme', 'mythic', 'origin'];
 
 export function tierRankOf(tier: Tier): number {
   const i = TIER_ORDER.indexOf(tier);

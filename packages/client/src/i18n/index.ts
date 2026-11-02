@@ -432,7 +432,8 @@ export const en = {
   'class.striker': 'ATK',
   'class.guardian': 'DEF',
   'class.adept': 'SKILL',
-  'tier.common': 'Common',
+  'tier.common': 'Normal',
+  'tier.uncommon': 'Uncommon',
   'tier.rare': 'Rare',
   'tier.epic': 'Epic',
   'tier.legendary': 'Legendary',
@@ -958,7 +959,7 @@ export function tKey(key: string): string {
 
 export type FactionKey = 'water' | 'fire' | 'grass' | 'light' | 'dark';
 export type ClassKey = 'striker' | 'guardian' | 'adept';
-export type TierKey = 'common' | 'rare' | 'epic' | 'legendary' | 'supreme' | 'mythic' | 'origin';
+export type TierKey = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'supreme' | 'mythic' | 'origin';
 
 export const factionLabel: Record<FactionKey, string> = {
   water: en['faction.water'],
@@ -976,6 +977,7 @@ export const classLabel: Record<ClassKey, string> = {
 
 export const tierLabel: Record<TierKey, string> = {
   common: en['tier.common'],
+  uncommon: en['tier.uncommon'],
   rare: en['tier.rare'],
   epic: en['tier.epic'],
   legendary: en['tier.legendary'],

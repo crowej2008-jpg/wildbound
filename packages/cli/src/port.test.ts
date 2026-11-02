@@ -23,9 +23,9 @@ function skill(id: string, slot: 'normal' | 'basic' | 'ult'): SkillDef {
 }
 
 describe('ported roster', () => {
-  it('ships one kit per species id', () => {
-    expect(kits.length).toBe(84);
-    expect(new Set(kits.map((k) => k.id)).size).toBe(84);
+  it('ships one kit per species id (the owner\'s 84 plus the 14 summon-pool Pokémon, R9)', () => {
+    expect(kits.length).toBe(98);
+    expect(new Set(kits.map((k) => k.id)).size).toBe(98);
   });
 
   it('gives every slot an attack line and a real target rule', () => {

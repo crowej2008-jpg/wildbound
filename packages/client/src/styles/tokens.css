@@ -11,7 +11,8 @@
   --color-faction-volt: #e0b534;
   --color-faction-frost: #7fb5e8;
   --color-faction-shade: #8e7cc3;
-  --tier-common: #57b45b;
+  --tier-common: #9aa3ad;
+  --tier-uncommon: #57b45b;
   --tier-rare: #3d7fe0;
   --tier-epic: #9b59d0;
   --tier-legendary: #e8962e;
@@ -310,6 +311,7 @@ body {
 }
 
 .chip.tier-common { border-color: var(--tier-common); color: var(--tier-common); }
+.chip.tier-uncommon { border-color: var(--tier-uncommon); color: var(--tier-uncommon); }
 .chip.tier-rare { border-color: var(--tier-rare); color: var(--tier-rare); }
 .chip.tier-epic { border-color: var(--tier-epic); color: var(--tier-epic); }
 .chip.tier-legendary { border-color: var(--tier-legendary); color: var(--tier-legendary); }
@@ -627,7 +629,7 @@ a.btn { display: inline-flex; align-items: center; text-decoration: none; }
 .result-panel { margin-top: var(--space-3); }
 .result-banner { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); margin-bottom: var(--space-2); }
 .result-banner strong { font-size: var(--text-lg); }
-.result-win .result-banner strong { color: var(--tier-common); }
+.result-win .result-banner strong { color: var(--tier-uncommon); }
 .result-lose .result-banner strong { color: var(--tier-supreme); }
 
 .result-table { width: 100%; border-collapse: collapse; font-size: var(--text-xs); font-variant-numeric: tabular-nums; }
@@ -669,6 +671,7 @@ a.btn { display: inline-flex; align-items: center; text-decoration: none; }
 .draw-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-2); }
 .draw-card { display: flex; flex-direction: column; gap: 4px; padding: var(--space-2); border: 1px solid var(--color-border); border-left-width: 4px; border-radius: var(--radius-m); background: var(--color-bg); }
 .draw-card.tier-common { border-left-color: var(--tier-common); }
+.draw-card.tier-uncommon { border-left-color: var(--tier-uncommon); }
 .draw-card.tier-rare { border-left-color: var(--tier-rare); }
 .draw-card.tier-epic { border-left-color: var(--tier-epic); }
 .draw-card.tier-legendary { border-left-color: var(--tier-legendary); }

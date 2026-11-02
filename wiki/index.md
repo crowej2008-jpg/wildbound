@@ -41,6 +41,7 @@ E1–E6. Later: R2/R3 when the gear and orb tables are re-extracted, R9, R10; th
 - [Resetter Shards and refine ladder](decisions/resetter-shards-and-refine.md) — 2026-10-23/31 free, 1,1,2,2…10
 - [server boundary now, backend later](decisions/server-boundary-now.md) — 2026-10-31
 - [owner kit changes](decisions/kit-changes-2026-10-31.md) — 2026-10-31 Mew, Snorlax, Mimikyu, Dialga
+- [summon-pool Pokémon](decisions/summon-pool-pokemon.md) — 2026-11-02, 14 source Pokémon added (roster 98); Caterpie one-hits
 
 ## Systems — built
 - [combat engine](systems/combat-engine.md) · [skill kits (M9)](systems/skill-kits.md) · [roster](systems/roster.md) · [combat numbers (E5)](systems/combat-numbers.md) · [E6 tier list](systems/e6-tier-list.md)

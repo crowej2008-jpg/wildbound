@@ -1300,3 +1300,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - The invented M8 Trials are gone (engine rules module, server mode, view, page, route, content, tests). The
   Challenges hub lists the Tower, the World Boss and the daily dungeons. Save v37. ASSUMPTIONS #81.
+
+## R9 part 7 — the 14 summon-pool Pokémon (owner, 2026-11-02)
+
+- `scripts/generate-summon-pokemon.mjs` → `species/summon-pool.json`, `kits/summon-pool.json`: 14 source Pokémon
+  with made-up stats (roster 98). New `uncommon` tier; `common` now shows as "Normal". Engine talent `lethalHits`
+  (Caterpie, hidden). ASSUMPTIONS #82. No save change.

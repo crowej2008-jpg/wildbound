@@ -102,6 +102,6 @@ test('summons, opens, merges and unlocks on the Pet Home board', async ({ page }
   await expect(page.getByText('The shop page changed.')).toBeVisible();
 
   await page.getByRole('tab', { name: 'Album', exact: true }).click();
-  await expect(page.locator('.pet-home-album-entry')).toHaveCount(84);
+  await expect(page.locator('.pet-home-album-entry')).toHaveCount(98);
   await expect(page.locator('.pet-home-album-entry.is-seen').first()).toBeVisible();
 });

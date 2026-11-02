@@ -11,10 +11,10 @@ describe('R4 Potential content', () => {
     expect(POTENTIAL.costs.reduce((a, c) => a + c[0]!, 0)).toBe(465_000);
   });
 
-  it('gives a tree to every Legendary and higher Pokémon and none to Rare or Epic', () => {
+  it('gives a tree to every Legendary and higher Pokémon and none below', () => {
     for (const w of WILDS) {
       const has = POTENTIAL.species[w.id] !== undefined;
-      expect(has, w.id).toBe(!['rare', 'epic'].includes(w.tier));
+      expect(has, w.id).toBe(!['common', 'uncommon', 'rare', 'epic'].includes(w.tier));
     }
   });
 

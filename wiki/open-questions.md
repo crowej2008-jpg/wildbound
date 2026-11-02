@@ -41,11 +41,11 @@ updated: 2026-10-31
 - Two mobile e2e tests in `tests/e2e/m11.spec.ts` (Trinkets, VIP) are flaky on CI — see [dev environment](project/dev-environment.md).
 
 ## Repo docs that are out of date (lint, 2026-10-31)
-- `PROMPT.md` §1 still says "about 36 original creatures"; the roster is 84 Pokémon.
+- `PROMPT.md` §1 still says "about 36 original creatures"; the roster is 98 Pokémon (84 + 14 summon-pool, 2026-11-02).
 - (Fixed in R5: ASSUMPTIONS #56 now records the owner's ladder.) `docs/ASSUMPTIONS.md` #41 refine ladder (1,1,2,3,4,5,6,8…) is superseded by the owner's
   free-then-1,1,2,2…10 ladder ([decision](decisions/resetter-shards-and-refine.md)).
 - `docs/design/README.md` "Planned notes" list (economy, growth, server-api, squads, time) never written.
 - M11's original plan numbers (20 VIP tiers, 10 Resonance slots, 48 orbs, Held Items Lv50/200) differ
   from what shipped — CHANGELOG is right ([collection layers](systems/collection-layers.md)).
-- The `reference/` folder (research wiki, screenshots) is gitignored, so cloud agents can't check
-  "the source" — ask the owner or work from his machine.
+- The `reference/` folder (research wiki, screenshots) is gitignored; cloud agents get it when the owner attaches
+  `wildbound-reference.zip` (done 2026-11-02).

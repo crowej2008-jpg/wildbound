@@ -10,7 +10,7 @@ export const FACTIONS: readonly Faction[] = ['water', 'fire', 'grass', 'light', 
 export type WildClass = 'striker' | 'guardian' | 'adept';
 
 /** Quality, from the source's potential number (13 Rare … 17 Mythic, 18 Origin). */
-export type Tier = 'common' | 'rare' | 'epic' | 'legendary' | 'supreme' | 'mythic' | 'origin';
+export type Tier = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'supreme' | 'mythic' | 'origin';
 
 /** The six core stats. P.ATK / S.ATK drive the two damage pipelines; P.DEF /
  * S.DEF feed Power and are otherwise inert under `defendersUseDef=false`. */

@@ -10,7 +10,7 @@ import { z } from 'zod';
 /** The source's five factions (R1). */
 export const factionSchema = z.enum(['water', 'fire', 'grass', 'light', 'dark']);
 export const classSchema = z.enum(['striker', 'guardian', 'adept']);
-export const tierSchema = z.enum(['common', 'rare', 'epic', 'legendary', 'supreme', 'mythic', 'origin']);
+export const tierSchema = z.enum(['common', 'uncommon', 'rare', 'epic', 'legendary', 'supreme', 'mythic', 'origin']);
 export const skillSlotSchema = z.enum(['normal', 'basic', 'ult']);
 export const targetRuleSchema = z.enum([
   'column',
@@ -413,6 +413,8 @@ const talentSchema = z
   .object({
     statMods: z.array(statModSchema).optional(),
     rageOnHit: z.number().int().optional(),
+    /** R9 (owner, 2026-11-02): every direct hit this unit lands is fatal. Never shown to the player. */
+    lethalHits: z.boolean().optional(),
     rageCutChance: z.number().min(0).max(1).optional(),
     rageStart: z.number().int().nonnegative().optional(),
     basicRate: z.number().min(0).max(1).optional(),

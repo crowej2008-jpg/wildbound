@@ -1,0 +1,1228 @@
+[
+  {
+    "id": "caterpie",
+    "name": "Caterpie",
+    "faction": "grass",
+    "class": "striker",
+    "tier": "common",
+    "description": "Caterpie, a Normal grass Pokémon from the source's summon pools.",
+    "paletteSeed": 10131,
+    "sourceId": 101,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 1,
+        "name": "Caterpie",
+        "maxLevel": 20,
+        "basic": {
+          "hp": 477,
+          "atk": 115,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 158.48,
+          "atk": 38.02,
+          "pDef": 56.18,
+          "sDef": 49.9
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 1,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 2,
+        "name": "Butterfree",
+        "maxLevel": 40,
+        "basic": {
+          "hp": 788,
+          "atk": 189,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 177.5,
+          "atk": 42.58,
+          "pDef": 62.92,
+          "sDef": 55.89
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 2,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 3,
+        "name": "Butterfree",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1302,
+          "atk": 313,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 198.81,
+          "atk": 47.69,
+          "pDef": 70.48,
+          "sDef": 62.6
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "jigglypuff",
+    "name": "Jigglypuff",
+    "faction": "water",
+    "class": "guardian",
+    "tier": "common",
+    "description": "Jigglypuff, a Normal water Pokémon from the source's summon pools.",
+    "paletteSeed": 10247,
+    "sourceId": 102,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 1,
+        "name": "Jigglypuff",
+        "maxLevel": 20,
+        "basic": {
+          "hp": 477,
+          "atk": 115,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 158.48,
+          "atk": 38.02,
+          "pDef": 56.18,
+          "sDef": 49.9
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 1,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 2,
+        "name": "Wigglytuff",
+        "maxLevel": 40,
+        "basic": {
+          "hp": 788,
+          "atk": 189,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 177.5,
+          "atk": 42.58,
+          "pDef": 62.92,
+          "sDef": 55.89
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 2,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 3,
+        "name": "Wigglytuff",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1302,
+          "atk": 313,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 198.81,
+          "atk": 47.69,
+          "pDef": 70.48,
+          "sDef": 62.6
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "pidgeotto",
+    "name": "Pidgeotto",
+    "faction": "water",
+    "class": "striker",
+    "tier": "common",
+    "description": "Pidgeotto, a Normal water Pokémon from the source's summon pools.",
+    "paletteSeed": 10359,
+    "sourceId": 103,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 1,
+        "name": "Pidgeotto",
+        "maxLevel": 20,
+        "basic": {
+          "hp": 477,
+          "atk": 115,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 158.48,
+          "atk": 38.02,
+          "pDef": 56.18,
+          "sDef": 49.9
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 1,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 2,
+        "name": "Pidgeot",
+        "maxLevel": 40,
+        "basic": {
+          "hp": 788,
+          "atk": 189,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 177.5,
+          "atk": 42.58,
+          "pDef": 62.92,
+          "sDef": 55.89
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 2,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 3,
+        "name": "Pidgeot",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1302,
+          "atk": 313,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 198.81,
+          "atk": 47.69,
+          "pDef": 70.48,
+          "sDef": 62.6
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "ekans",
+    "name": "Ekans",
+    "faction": "grass",
+    "class": "adept",
+    "tier": "common",
+    "description": "Ekans, a Normal grass Pokémon from the source's summon pools.",
+    "paletteSeed": 10461,
+    "sourceId": 104,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 1,
+        "name": "Ekans",
+        "maxLevel": 20,
+        "basic": {
+          "hp": 477,
+          "atk": 115,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 158.48,
+          "atk": 38.02,
+          "pDef": 56.18,
+          "sDef": 49.9
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 1,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 2,
+        "name": "Arbok",
+        "maxLevel": 40,
+        "basic": {
+          "hp": 788,
+          "atk": 189,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 177.5,
+          "atk": 42.58,
+          "pDef": 62.92,
+          "sDef": 55.89
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 2,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 3,
+        "name": "Arbok",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1302,
+          "atk": 313,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 198.81,
+          "atk": 47.69,
+          "pDef": 70.48,
+          "sDef": 62.6
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "meowth",
+    "name": "Meowth",
+    "faction": "fire",
+    "class": "striker",
+    "tier": "common",
+    "description": "Meowth, a Normal fire Pokémon from the source's summon pools.",
+    "paletteSeed": 10573,
+    "sourceId": 105,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 1,
+        "name": "Meowth",
+        "maxLevel": 20,
+        "basic": {
+          "hp": 477,
+          "atk": 115,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 158.48,
+          "atk": 38.02,
+          "pDef": 56.18,
+          "sDef": 49.9
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 1,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 2,
+        "name": "Persian",
+        "maxLevel": 40,
+        "basic": {
+          "hp": 788,
+          "atk": 189,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 177.5,
+          "atk": 42.58,
+          "pDef": 62.92,
+          "sDef": 55.89
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 2,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 3,
+        "name": "Persian",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1302,
+          "atk": 313,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 198.81,
+          "atk": 47.69,
+          "pDef": 70.48,
+          "sDef": 62.6
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "koffing",
+    "name": "Koffing",
+    "faction": "fire",
+    "class": "adept",
+    "tier": "common",
+    "description": "Koffing, a Normal fire Pokémon from the source's summon pools.",
+    "paletteSeed": 10689,
+    "sourceId": 106,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 1,
+        "name": "Koffing",
+        "maxLevel": 20,
+        "basic": {
+          "hp": 477,
+          "atk": 115,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 158.48,
+          "atk": 38.02,
+          "pDef": 56.18,
+          "sDef": 49.9
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 1,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 2,
+        "name": "Weezing",
+        "maxLevel": 40,
+        "basic": {
+          "hp": 788,
+          "atk": 189,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 177.5,
+          "atk": 42.58,
+          "pDef": 62.92,
+          "sDef": 55.89
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 2,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 3,
+        "name": "Weezing",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1302,
+          "atk": 313,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 198.81,
+          "atk": 47.69,
+          "pDef": 70.48,
+          "sDef": 62.6
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "poliwag",
+    "name": "Poliwag",
+    "faction": "water",
+    "class": "guardian",
+    "tier": "uncommon",
+    "description": "Poliwag, a Uncommon water Pokémon from the source's summon pools.",
+    "paletteSeed": 10797,
+    "sourceId": 107,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 3,
+        "name": "Poliwag",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1581,
+          "atk": 380,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 241.41,
+          "atk": 57.91,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 3,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 4,
+        "name": "Poliwhirl",
+        "maxLevel": 80,
+        "basic": {
+          "hp": 2612,
+          "atk": 627,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 270.38,
+          "atk": 64.86,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": false,
+            "star": 4,
+            "count": 2,
+            "faction": "water"
+          }
+        ]
+      },
+      {
+        "star": 5,
+        "name": "Politoed",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 3878,
+          "atk": 931,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 310.93,
+          "atk": 74.58,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "abra",
+    "name": "Abra",
+    "faction": "fire",
+    "class": "adept",
+    "tier": "uncommon",
+    "description": "Abra, a Uncommon fire Pokémon from the source's summon pools.",
+    "paletteSeed": 10813,
+    "sourceId": 108,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 3,
+        "name": "Abra",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1581,
+          "atk": 380,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 241.41,
+          "atk": 57.91,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 3,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 4,
+        "name": "Kadabra",
+        "maxLevel": 80,
+        "basic": {
+          "hp": 2612,
+          "atk": 627,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 270.38,
+          "atk": 64.86,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": false,
+            "star": 4,
+            "count": 2,
+            "faction": "fire"
+          }
+        ]
+      },
+      {
+        "star": 5,
+        "name": "Alakazam",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 3878,
+          "atk": 931,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 310.93,
+          "atk": 74.58,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "oddish",
+    "name": "Oddish",
+    "faction": "grass",
+    "class": "adept",
+    "tier": "uncommon",
+    "description": "Oddish, a Uncommon grass Pokémon from the source's summon pools.",
+    "paletteSeed": 10927,
+    "sourceId": 109,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 3,
+        "name": "Oddish",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1581,
+          "atk": 380,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 241.41,
+          "atk": 57.91,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 3,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 4,
+        "name": "Gloom",
+        "maxLevel": 80,
+        "basic": {
+          "hp": 2612,
+          "atk": 627,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 270.38,
+          "atk": 64.86,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": false,
+            "star": 4,
+            "count": 2,
+            "faction": "grass"
+          }
+        ]
+      },
+      {
+        "star": 5,
+        "name": "Bellossom",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 3878,
+          "atk": 931,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 310.93,
+          "atk": 74.58,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "slowpoke",
+    "name": "Slowpoke",
+    "faction": "water",
+    "class": "guardian",
+    "tier": "uncommon",
+    "description": "Slowpoke, a Uncommon water Pokémon from the source's summon pools.",
+    "paletteSeed": 11039,
+    "sourceId": 110,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 3,
+        "name": "Slowpoke",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1581,
+          "atk": 380,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 241.41,
+          "atk": 57.91,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 3,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 4,
+        "name": "Slowbro",
+        "maxLevel": 80,
+        "basic": {
+          "hp": 2612,
+          "atk": 627,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 270.38,
+          "atk": 64.86,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": false,
+            "star": 4,
+            "count": 2,
+            "faction": "water"
+          }
+        ]
+      },
+      {
+        "star": 5,
+        "name": "Slowking",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 3878,
+          "atk": 931,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 310.93,
+          "atk": 74.58,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "fire",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "onix",
+    "name": "Onix",
+    "faction": "fire",
+    "class": "guardian",
+    "tier": "uncommon",
+    "description": "Onix, a Uncommon fire Pokémon from the source's summon pools.",
+    "paletteSeed": 11243,
+    "sourceId": 112,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 3,
+        "name": "Onix",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1581,
+          "atk": 380,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 241.41,
+          "atk": 57.91,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 3,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 4,
+        "name": "Steelix",
+        "maxLevel": 80,
+        "basic": {
+          "hp": 2612,
+          "atk": 627,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 270.38,
+          "atk": 64.86,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": false,
+            "star": 4,
+            "count": 2,
+            "faction": "fire"
+          }
+        ]
+      },
+      {
+        "star": 5,
+        "name": "Omega Steelix",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 3878,
+          "atk": 931,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 310.93,
+          "atk": 74.58,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "scyther",
+    "name": "Scyther",
+    "faction": "grass",
+    "class": "striker",
+    "tier": "uncommon",
+    "description": "Scyther, a Uncommon grass Pokémon from the source's summon pools.",
+    "paletteSeed": 11357,
+    "sourceId": 113,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 3,
+        "name": "Scyther",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1581,
+          "atk": 380,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 241.41,
+          "atk": 57.91,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 3,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 4,
+        "name": "Scizor",
+        "maxLevel": 80,
+        "basic": {
+          "hp": 2612,
+          "atk": 627,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 270.38,
+          "atk": 64.86,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": false,
+            "star": 4,
+            "count": 2,
+            "faction": "grass"
+          }
+        ]
+      },
+      {
+        "star": 5,
+        "name": "Omega Scizor",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 3878,
+          "atk": 931,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 310.93,
+          "atk": 74.58,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "growlithe",
+    "name": "Growlithe",
+    "faction": "fire",
+    "class": "striker",
+    "tier": "uncommon",
+    "description": "Growlithe, a Uncommon fire Pokémon from the source's summon pools.",
+    "paletteSeed": 11467,
+    "sourceId": 114,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 3,
+        "name": "Growlithe",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1581,
+          "atk": 380,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 241.41,
+          "atk": 57.91,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 3,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 4,
+        "name": "Arcanine",
+        "maxLevel": 80,
+        "basic": {
+          "hp": 2612,
+          "atk": 627,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 270.38,
+          "atk": 64.86,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": false,
+            "star": 4,
+            "count": 2,
+            "faction": "fire"
+          }
+        ]
+      },
+      {
+        "star": 5,
+        "name": "Omega Arcanine",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 3878,
+          "atk": 931,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 310.93,
+          "atk": 74.58,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "grass",
+          "value": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "togepi",
+    "name": "Togepi",
+    "faction": "grass",
+    "class": "adept",
+    "tier": "uncommon",
+    "description": "Togepi, a Uncommon grass Pokémon from the source's summon pools.",
+    "paletteSeed": 11579,
+    "sourceId": 115,
+    "shards": 30,
+    "stars": [
+      {
+        "star": 3,
+        "name": "Togepi",
+        "maxLevel": 60,
+        "basic": {
+          "hp": 1581,
+          "atk": 380,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 241.41,
+          "atk": 57.91,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": true,
+            "star": 3,
+            "count": 2
+          }
+        ]
+      },
+      {
+        "star": 4,
+        "name": "Togetic",
+        "maxLevel": 80,
+        "basic": {
+          "hp": 2612,
+          "atk": 627,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 270.38,
+          "atk": 64.86,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        },
+        "fodder": [
+          {
+            "own": false,
+            "star": 4,
+            "count": 2,
+            "faction": "grass"
+          }
+        ]
+      },
+      {
+        "star": 5,
+        "name": "Togekiss",
+        "maxLevel": 100,
+        "basic": {
+          "hp": 3878,
+          "atk": 931,
+          "spd": 21
+        },
+        "growth": {
+          "hp": 310.93,
+          "atk": 74.58,
+          "pDef": 85.58,
+          "sDef": 76.02
+        },
+        "factionBoost": {
+          "faction": "water",
+          "value": 0.25
+        }
+      }
+    ]
+  }
+]

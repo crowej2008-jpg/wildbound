@@ -229,3 +229,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-01] update | Trials removed
 - Owner: remove the invented M8 Trials (no source counterpart). ASSUMPTIONS #81, save v37. Next: summoning.
+
+## [2026-11-02] update | R9 summon-pool Pokémon
+- Owner: the 14 source Pokémon outside the 84 become full Pokémon with made-up stats; Caterpie one-hits everything,
+  unannounced ([decision](decisions/summon-pool-pokemon.md), ASSUMPTIONS #82). Next: summoning from the source.

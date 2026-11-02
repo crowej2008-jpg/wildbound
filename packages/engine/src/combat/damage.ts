@@ -241,9 +241,12 @@ export function channelHit(
 ): number {
   const kind = flags.kind ?? 'hit';
   const wasAlive = defender.alive;
+  // R9: a lethal attacker's direct hit takes everything the target has (see TalentDef.lethalHits).
+  const lethal = kind === 'hit' && dmg > 0 && attacker !== defender && attacker.kit.talents?.lethalHits === true;
   // E3: an invulnerable unit (Lugia / Slaking after enduring) takes nothing.
-  if (defender.buffs.some((b) => b.kind === 'invulnerable')) dmg = 0;
-  const bypassShield = flags.trueDmg === true || flags.ignoreShield === true;
+  if (!lethal && defender.buffs.some((b) => b.kind === 'invulnerable')) dmg = 0;
+  if (lethal) dmg = Math.max(dmg, defender.hp);
+  const bypassShield = lethal || flags.trueDmg === true || flags.ignoreShield === true;
   const shielded = bypassShield ? 0 : Math.min(defender.shieldHp, dmg);
   if (shielded > 0) {
     defender.shieldHp -= shielded;
@@ -251,7 +254,7 @@ export function channelHit(
   }
   let hpLost = Math.min(defender.hp, dmg - shielded);
   // E3: an endure buff turns fatal damage into "left at 1 HP", once.
-  if (hpLost > 0 && hpLost >= defender.hp && defender.alive) {
+  if (!lethal && hpLost > 0 && hpLost >= defender.hp && defender.alive) {
     const endure = defender.buffs.findIndex((b) => b.kind === 'endure');
     if (endure >= 0) {
       const spent = defender.buffs.splice(endure, 1)[0]!;
