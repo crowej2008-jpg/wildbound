@@ -27,7 +27,7 @@ function homeSave(): string {
         tower: 'balanced',
         worldBoss: 'aggressive',
       },
-      currencies: { gold: 50_000, gems: 5_000, homeCoin: 500_000, orbEssence: 1_000 },
+      currencies: { gold: 50_000, gems: 5_000, homeCoin: 100_000_000, orbEssence: 1_000 },
       nextInstanceSeq: ROSTER.length + 1,
       campaign: { stars: { 'c1-10': 3 } },
       tutorial: { step: 0, done: true },

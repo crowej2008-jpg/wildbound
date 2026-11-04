@@ -29,7 +29,7 @@ Paid content is deliberately absent: no Pet Home assistant, no paid tier, no rea
 | `shops.deluxe` | 48 offers, Home Lv 10 | Orb Atelier, paid in Orb Essence |
 | `home` | daily/offline rules | 50 free summons, 8 h offline cap, 300 s settlement |
 
-The runtime never generates these tables. `scripts/generate-pet-home.mjs` is the one-time dev
+The runtime never generates these tables. `scripts/import-pet-home.mjs (R9; the M13.1 generator was retired)` is the one-time dev
 generator and the JSON is committed.
 
 ### Home levels

@@ -47,6 +47,8 @@ export interface PetHomeTileView {
 export interface PetHomeLevelRewardView {
   level: number;
   reward: Rewards;
+  /** Rare Orb Chests in this level's reward. */
+  orbChests: number;
   claimed: boolean;
   claimable: boolean;
 }
@@ -56,6 +58,8 @@ export interface PetHomeShopOfferView {
   name: string;
   description: string;
   price: number;
+  /** Price as a percent of full; undefined when full price. */
+  discount?: number;
   grants: Rewards;
   bought: boolean;
   affordable: boolean;
@@ -145,6 +149,7 @@ function shopView(
       name: offer.name,
       description: offer.description,
       price: offer.price,
+      ...(offer.discount !== undefined && offer.discount < 100 ? { discount: offer.discount } : {}),
       grants: offer.grants,
       bought: bought.has(offer.id),
       affordable: balance >= offer.price,
@@ -215,6 +220,7 @@ export function buildPetHomeView(config: GameConfig, state: AccountState, now: n
       .map((row) => ({
         level: row.level,
         reward: row.reward,
+        orbChests: row.orbChests ?? 0,
         claimed: home.levelClaims.includes(row.level),
         claimable: row.level <= level && !home.levelClaims.includes(row.level),
       })),

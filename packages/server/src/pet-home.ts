@@ -22,6 +22,7 @@ import {
 import type { GameConfig } from './config';
 import { applyGrant } from './economy';
 import { fail, ok } from './index';
+import { grantOrb } from './orbs';
 import type { Outcome } from './outcome';
 import { petHomeGate } from './pet-home-view';
 
@@ -203,6 +204,32 @@ export function unlockTileAction(
   });
 }
 
+type OrbColour = 'green' | 'blue' | 'purple' | 'orange' | 'red';
+
+/** Roll Rare Orb Chests (source 13001): a uniform kind, colour by weight, at the chest's level. */
+function openOrbChests(config: GameConfig, state: AccountState, count: number): AccountState {
+  const chest = config.petHome.home.orbChest;
+  const colours = Object.entries(chest.weights) as [OrbColour, number][];
+  const total = colours.reduce((sum, [, weight]) => sum + weight, 0);
+  const kinds = config.equipment.orbs.kinds;
+  let next = state;
+  for (let index = 0; index < count && total > 0 && kinds.length > 0; index += 1) {
+    const kind = kinds[Math.floor(config.rng() * kinds.length)]!.id;
+    let roll = config.rng() * total;
+    let colour = colours[0]![0];
+    for (const [id, weight] of colours) {
+      roll -= weight;
+      if (roll < 0) {
+        colour = id;
+        break;
+      }
+    }
+    const granted = grantOrb(config, next, kind, colour, config.rng, chest.level);
+    if (granted.ok) next = granted.value;
+  }
+  return next;
+}
+
 export function claimLevelAction(
   config: GameConfig,
   state: AccountState,
@@ -214,8 +241,9 @@ export function claimLevelAction(
   if (block) return fail('resource_locked', block);
   const claimed = claimLevelReward(config.petHome, prepared.state.petHome, level);
   if (!claimed.ok) return fail('invalid_input', mapError(claimed.error));
-  const next = applyGrant(config, withHome(prepared.state, claimed.state), claimed.reward);
-  return ok({ state: next, reward: claimed.reward });
+  const granted = applyGrant(config, withHome(prepared.state, claimed.state), claimed.reward);
+  const chests = config.petHome.levels.find((row) => row.level === level)?.orbChests ?? 0;
+  return ok({ state: openOrbChests(config, granted, chests), reward: claimed.reward });
 }
 
 export function buyShopOfferAction(
@@ -252,7 +280,13 @@ export function buyShopOfferAction(
     },
     petHome: nextHome,
   };
-  return ok({ state: applyGrant(config, paid, offer.grants), granted: offer.grants });
+  let next = applyGrant(config, paid, offer.grants);
+  if (offer.orb) {
+    const withOrb = grantOrb(config, next, offer.orb.kind, offer.orb.colour, config.rng, offer.orb.level);
+    if (!withOrb.ok) return fail('not_found', withOrb.message);
+    next = withOrb.value;
+  }
+  return ok({ state: next, granted: offer.grants });
 }
 
 export function refreshShopAction(

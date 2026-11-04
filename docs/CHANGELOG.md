@@ -1343,3 +1343,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - `scripts/import-sky-pillar.mjs` rewrites `sky-pillar.json`'s proofs, floor levels, stage pays, star conditions
   and floor chests from the source. ASSUMPTIONS #88.
+
+## R9 part 11 — Pet Home rows from the source (2026-11-04)
+
+- `scripts/import-pet-home.mjs` rewrites `pet-home.json`'s levels, summon ladder, income and both shops from the
+  source. Shop rows sell a single orb at a fixed level (the server rolls it); level rewards can carry Rare Orb Chests;
+  shop bands now have a level range and pool when they overlap. ASSUMPTIONS #89.

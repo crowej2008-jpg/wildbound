@@ -126,11 +126,25 @@ describe('Pet Home server rules', () => {
     expect(claimLevelAction(config, state, START, 2).ok).toBe(false);
   });
 
+  it('opens the Rare Orb Chests in a Home-level reward (R9)', () => {
+    const { config, state } = account();
+    const leveled = { ...state, petHome: { ...state.petHome, xp: config.petHome.levels[9]!.xp } };
+    const claimed = claimLevelAction(config, leveled, START, 9);
+    expect(claimed.ok).toBe(true);
+    if (!claimed.ok) return;
+    const orbs = claimed.value.state.equipment.orbs.slice(state.equipment.orbs.length);
+    expect(orbs).toHaveLength(2);
+    for (const orb of orbs) {
+      expect(orb.level).toBe(1);
+      expect(['green', 'blue', 'purple', 'orange']).toContain(orb.colour);
+    }
+  });
+
   it('shows nine offers and moves them on a paid refresh', () => {
     const { config, state } = account();
     const rich = {
       ...state,
-      currencies: { ...state.currencies, gems: 1_000, homeCoin: 20_000 },
+      currencies: { ...state.currencies, gems: 1_000, homeCoin: 100_000_000 },
       petHome: { ...state.petHome, xp: config.petHome.levels[1]!.xp },
     };
     const view = buildPetHomeView(config, rich, START);
@@ -142,7 +156,12 @@ describe('Pet Home server rules', () => {
     expect(bought.ok).toBe(true);
     if (!bought.ok) return;
     expect(bought.value.granted).toEqual(first.grants);
-    expect(bought.value.state.currencies.homeCoin).toBe(20_000 - first.price);
+    expect(bought.value.state.currencies.homeCoin).toBe(100_000_000 - first.price);
+    // R9: every source row sells one orb at a fixed level.
+    const orb = config.petHome.shops.home.bands.flatMap((band) => band.offers).find((o) => o.id === first.id)!.orb!;
+    const added = bought.value.state.equipment.orbs.at(-1)!;
+    expect(bought.value.state.equipment.orbs).toHaveLength(state.equipment.orbs.length + 1);
+    expect(added).toMatchObject({ kind: orb.kind, colour: orb.colour, level: orb.level });
     expect(
       buyShopOfferAction(config, bought.value.state, START, 'home', first.id).ok,
     ).toBe(false);

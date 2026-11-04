@@ -908,6 +908,7 @@ export const en = {
   'petHome.loading': 'Loading Pet Home...',
   'petHome.level': 'Home level',
   'petHome.levelShort': 'Lv',
+  'petHome.orbChests': 'Rare Orb Chest ×{n}',
   'petHome.xp': 'Home XP',
   'petHome.nextLevel': 'Next level',
   'petHome.maxLevel': 'Max level',

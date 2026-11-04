@@ -533,6 +533,12 @@ function crossReferencePetHome(errors: string[], checks: string[]): void {
     if (shop.offersPerPage < 1) errors.push(`pet-home.json: ${shop.id} shop has no offers per page`);
     for (const offer of offers) {
       if (offer.price <= 0) errors.push(`pet-home.json: ${shop.id} offer "${offer.id}" has no price`);
+      if (offer.orb && !ORBS.kinds.some((kind) => kind.id === offer.orb!.kind)) {
+        errors.push(`pet-home.json: ${shop.id} offer "${offer.id}" sells unknown orb kind "${offer.orb.kind}"`);
+      }
+    }
+    for (const band of shop.bands) {
+      if (band.maxLevel < band.minLevel) errors.push(`pet-home.json: ${shop.id} band ${band.minLevel}-${band.maxLevel} is empty`);
     }
   }
   const homeRows = PET_HOME.shops.home.bands.reduce((sum, band) => sum + band.offers.length, 0);

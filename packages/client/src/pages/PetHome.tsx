@@ -130,7 +130,12 @@ function ShopCard({
             {shop.offers.map((offer) => (
               <li key={offer.id} className="shop-item">
                 <div className="shop-item-info">
-                  <span className="shop-item-name">{offer.name}</span>
+                  <span className="shop-item-name">
+                    {offer.name}
+                    {offer.discount !== undefined && (
+                      <span className="chip">{t('shop.discount').replace('{n}', String(100 - offer.discount))}</span>
+                    )}
+                  </span>
                   <span className="muted">{offer.description}</span>
                   <RewardLine rewards={offer.grants} />
                   <span className="muted">
@@ -509,6 +514,9 @@ export default function PetHome() {
                       </span>
                       <span className="pet-home-reward-line">
                         <RewardLine rewards={reward.reward} />
+                        {reward.orbChests > 0 && (
+                          <span className="chip">{t('petHome.orbChests').replace('{n}', String(reward.orbChests))}</span>
+                        )}
                       </span>
                       <button
                         type="button"

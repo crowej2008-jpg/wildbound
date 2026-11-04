@@ -3,8 +3,8 @@ import { rewardSchema } from './schemas';
 
 /**
  * Pet Home tuning (M13.1). The source is a merge board: summon a ball, open it,
- * merge two equal-level Wilds, and let the board earn Home Coins. Counts and
- * shapes follow the source; every name, number and description here is ours.
+ * merge two equal-level Wilds, and let the board earn Home Coins. R9: the
+ * numbers come from the source (scripts/import-pet-home.mjs); names and the board layout are ours.
  * See docs/design/pet-home.md.
  */
 
@@ -21,6 +21,8 @@ export const petHomeLevelSchema = z
     unlockGems: z.number().int().nonnegative(),
     /** One-time reward for reaching this level; level 0 is empty. */
     reward: rewardSchema,
+    /** Rare Orb Chests in the level reward (R9, source item 13001); each rolls one orb. */
+    orbChests: z.number().int().positive().optional(),
   })
   .strict();
 
@@ -49,15 +51,27 @@ export const petHomeShopOfferSchema = z
     name: z.string().min(1),
     description: z.string().min(1),
     price: z.number().int().positive(),
+    /** Price as a percent of full (source `discount`; 90 = 10 % off). Display only. */
+    discount: z.number().int().min(1).max(100).optional(),
     grants: rewardSchema,
+    /** R9: the source rows each sell one orb at a fixed level. */
+    orb: z
+      .object({
+        kind: z.string().min(1),
+        colour: z.enum(['green', 'blue', 'purple', 'orange', 'red']),
+        level: z.number().int().min(1).max(10),
+      })
+      .strict()
+      .optional(),
   })
   .strict();
 
 export const petHomeShopBandSchema = z
   .object({
-    /** Selected when the Home level is at least this value. */
+    /** Home levels this band is drawn at (source `home_lev`); bands may overlap and are pooled. */
     minLevel: z.number().int().min(0).max(16),
-    offers: z.array(petHomeShopOfferSchema).min(9),
+    maxLevel: z.number().int().min(0).max(16),
+    offers: z.array(petHomeShopOfferSchema).min(1),
   })
   .strict();
 
@@ -96,6 +110,13 @@ export const petHomeSchema = z
         summonCosts: z
           .array(z.object({ afterPaid: z.number().int().nonnegative(), gems: z.number().int().nonnegative() }).strict())
           .min(1),
+        /** Rare Orb Chest: one orb of a uniform kind at this level; colour by weight. */
+        orbChest: z
+          .object({
+            level: z.number().int().min(1).max(10),
+            weights: z.record(z.enum(['green', 'blue', 'purple', 'orange', 'red']), z.number().nonnegative()),
+          })
+          .strict(),
       })
       .strict(),
     levels: z.array(petHomeLevelSchema).length(17),

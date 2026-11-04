@@ -70,13 +70,10 @@ export function shopRule(rules: PetHomeRules, id: 'home' | 'deluxe'): PetHomeSho
   return rules.shops[id];
 }
 
-export function shopBand(shop: PetHomeShopRule, level: number): PetHomeShopRule['bands'][number] | null {
-  if (level < shop.unlockLevel) return null;
-  let chosen: PetHomeShopRule['bands'][number] | null = null;
-  for (const band of shop.bands) {
-    if (level >= band.minLevel) chosen = band;
-  }
-  return chosen;
+/** Every offer a Home level can draw (R9: source bands overlap, so they are pooled). */
+export function shopPool(shop: PetHomeShopRule, level: number): PetHomeOfferRule[] {
+  if (level < shop.unlockLevel) return [];
+  return shop.bands.filter((band) => level >= band.minLevel && level <= band.maxLevel).flatMap((band) => band.offers);
 }
 
 function stableHash(input: string): number {
@@ -95,9 +92,7 @@ export function shopOffers(
   day: string,
   refreshes: number,
 ): PetHomeOfferRule[] {
-  const band = shopBand(shop, level);
-  if (!band) return [];
-  const pool = band.offers;
+  const pool = shopPool(shop, level);
   if (pool.length === 0) return [];
   const count = Math.min(shop.offersPerPage, pool.length);
   const offset = stableHash(`${shop.id}:${day}:${refreshes}`) % pool.length;

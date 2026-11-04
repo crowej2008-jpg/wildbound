@@ -10,22 +10,31 @@
         "gems": 10
       },
       {
-        "afterPaid": 50,
+        "afterPaid": 100,
         "gems": 30
       },
       {
-        "afterPaid": 100,
-        "gems": 80
+        "afterPaid": 200,
+        "gems": 100
       },
       {
-        "afterPaid": 200,
-        "gems": 250
+        "afterPaid": 300,
+        "gems": 200
       },
       {
         "afterPaid": 400,
-        "gems": 600
+        "gems": 500
       }
-    ]
+    ],
+    "orbChest": {
+      "level": 1,
+      "weights": {
+        "green": 6000,
+        "blue": 2000,
+        "purple": 666,
+        "orange": 222
+      }
+    }
   },
   "levels": [
     {
@@ -62,139 +71,125 @@
       "tiles": 8,
       "mergeCap": 8,
       "unlockGems": 20,
-      "reward": {
-        "orbEssence": 50
-      }
+      "reward": {},
+      "orbChests": 1
     },
     {
       "level": 4,
-      "xp": 2500,
+      "xp": 3500,
       "tiles": 10,
       "mergeCap": 9,
       "unlockGems": 20,
-      "reward": {
-        "orbEssence": 50
-      }
+      "reward": {},
+      "orbChests": 1
     },
     {
       "level": 5,
-      "xp": 6000,
-      "tiles": 11,
-      "mergeCap": 9,
-      "unlockGems": 60,
-      "reward": {
-        "orbEssence": 100
-      }
-    },
-    {
-      "level": 6,
       "xp": 10000,
       "tiles": 11,
       "mergeCap": 9,
       "unlockGems": 60,
-      "reward": {
-        "orbEssence": 100
-      }
+      "reward": {},
+      "orbChests": 1
+    },
+    {
+      "level": 6,
+      "xp": 14500,
+      "tiles": 11,
+      "mergeCap": 9,
+      "unlockGems": 60,
+      "reward": {},
+      "orbChests": 1
     },
     {
       "level": 7,
-      "xp": 15000,
+      "xp": 16500,
       "tiles": 11,
       "mergeCap": 10,
-      "unlockGems": 90,
-      "reward": {
-        "orbEssence": 150
-      }
+      "unlockGems": 80,
+      "reward": {},
+      "orbChests": 1
     },
     {
       "level": 8,
-      "xp": 22000,
+      "xp": 20000,
       "tiles": 12,
       "mergeCap": 10,
-      "unlockGems": 90,
-      "reward": {
-        "orbEssence": 150
-      }
+      "unlockGems": 80,
+      "reward": {},
+      "orbChests": 1
     },
     {
       "level": 9,
-      "xp": 32000,
+      "xp": 30000,
       "tiles": 13,
       "mergeCap": 10,
-      "unlockGems": 90,
-      "reward": {
-        "orbEssence": 200
-      }
+      "unlockGems": 80,
+      "reward": {},
+      "orbChests": 2
     },
     {
       "level": 10,
-      "xp": 45000,
+      "xp": 35000,
       "tiles": 14,
       "mergeCap": 11,
-      "unlockGems": 120,
-      "reward": {
-        "orbEssence": 250
-      }
+      "unlockGems": 100,
+      "reward": {},
+      "orbChests": 2
     },
     {
       "level": 11,
-      "xp": 60000,
+      "xp": 45000,
       "tiles": 15,
       "mergeCap": 11,
-      "unlockGems": 120,
-      "reward": {
-        "orbEssence": 250
-      }
+      "unlockGems": 100,
+      "reward": {},
+      "orbChests": 2
     },
     {
       "level": 12,
-      "xp": 80000,
+      "xp": 55000,
       "tiles": 16,
       "mergeCap": 12,
-      "unlockGems": 120,
-      "reward": {
-        "orbEssence": 300
-      }
+      "unlockGems": 100,
+      "reward": {},
+      "orbChests": 2
     },
     {
       "level": 13,
-      "xp": 105000,
+      "xp": 65000,
       "tiles": 17,
       "mergeCap": 13,
-      "unlockGems": 120,
-      "reward": {
-        "orbEssence": 300
-      }
+      "unlockGems": 100,
+      "reward": {},
+      "orbChests": 2
     },
     {
       "level": 14,
-      "xp": 135000,
+      "xp": 85000,
       "tiles": 19,
       "mergeCap": 14,
-      "unlockGems": 120,
-      "reward": {
-        "orbEssence": 400
-      }
+      "unlockGems": 100,
+      "reward": {},
+      "orbChests": 2
     },
     {
       "level": 15,
-      "xp": 170000,
+      "xp": 100000,
       "tiles": 20,
       "mergeCap": 15,
-      "unlockGems": 120,
-      "reward": {
-        "orbEssence": 400
-      }
+      "unlockGems": 100,
+      "reward": {},
+      "orbChests": 2
     },
     {
       "level": 16,
-      "xp": 220000,
+      "xp": 145000,
       "tiles": 21,
       "mergeCap": 16,
-      "unlockGems": 120,
-      "reward": {
-        "orbEssence": 500
-      }
+      "unlockGems": 100,
+      "reward": {},
+      "orbChests": 2
     }
   ],
   "tiles": [
@@ -349,67 +344,67 @@
   "income": [
     {
       "level": 1,
-      "coinsPerFiveSeconds": 3
+      "coinsPerFiveSeconds": 2
     },
     {
       "level": 2,
-      "coinsPerFiveSeconds": 6
+      "coinsPerFiveSeconds": 4
     },
     {
       "level": 3,
-      "coinsPerFiveSeconds": 12
+      "coinsPerFiveSeconds": 8
     },
     {
       "level": 4,
-      "coinsPerFiveSeconds": 24
+      "coinsPerFiveSeconds": 16
     },
     {
       "level": 5,
-      "coinsPerFiveSeconds": 48
+      "coinsPerFiveSeconds": 32
     },
     {
       "level": 6,
-      "coinsPerFiveSeconds": 96
+      "coinsPerFiveSeconds": 64
     },
     {
       "level": 7,
-      "coinsPerFiveSeconds": 192
+      "coinsPerFiveSeconds": 128
     },
     {
       "level": 8,
-      "coinsPerFiveSeconds": 384
+      "coinsPerFiveSeconds": 256
     },
     {
       "level": 9,
-      "coinsPerFiveSeconds": 768
+      "coinsPerFiveSeconds": 512
     },
     {
       "level": 10,
-      "coinsPerFiveSeconds": 1536
+      "coinsPerFiveSeconds": 1024
     },
     {
       "level": 11,
-      "coinsPerFiveSeconds": 3072
+      "coinsPerFiveSeconds": 2048
     },
     {
       "level": 12,
-      "coinsPerFiveSeconds": 6144
+      "coinsPerFiveSeconds": 4096
     },
     {
       "level": 13,
-      "coinsPerFiveSeconds": 12288
+      "coinsPerFiveSeconds": 8192
     },
     {
       "level": 14,
-      "coinsPerFiveSeconds": 24576
+      "coinsPerFiveSeconds": 16384
     },
     {
       "level": 15,
-      "coinsPerFiveSeconds": 49152
+      "coinsPerFiveSeconds": 32768
     },
     {
       "level": 16,
-      "coinsPerFiveSeconds": 98304
+      "coinsPerFiveSeconds": 65536
     }
   ],
   "shops": {
@@ -435,781 +430,1134 @@
       "bands": [
         {
           "minLevel": 0,
+          "maxLevel": 5,
           "offers": [
             {
-              "id": "home-0-orbEssence-0",
-              "name": "Orb Essence Satchel",
-              "description": "A satchel of orb essence for the Home.",
-              "price": 8000,
-              "grants": {
-                "orbEssence": 10
+              "id": "home-1",
+              "name": "Sharp Orb +2",
+              "description": "One blue Sharp Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-starShard-0",
-              "name": "Star Shard Satchel",
-              "description": "A satchel of star shard for the Home.",
-              "price": 8000,
-              "grants": {
-                "starShard": 3
+              "id": "home-2",
+              "name": "Placating Orb +2",
+              "description": "One blue Placating Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-potentialShard-0",
-              "name": "Potential Shard Satchel",
-              "description": "A satchel of potential shard for the Home.",
-              "price": 8000,
-              "grants": {
-                "potentialShard": 3
+              "id": "home-3",
+              "name": "Momentum Orb +2",
+              "description": "One blue Momentum Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-heldItemShard-0",
-              "name": "Held Item Shard Satchel",
-              "description": "A satchel of held item shard for the Home.",
-              "price": 8000,
-              "grants": {
-                "heldItemShard": 3
+              "id": "home-4",
+              "name": "Pure Orb +2",
+              "description": "One blue Pure Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-berryEssence-0",
-              "name": "Berry Essence Satchel",
-              "description": "A satchel of berry essence for the Home.",
-              "price": 8000,
-              "grants": {
-                "berryEssence": 5
+              "id": "home-5",
+              "name": "Mystique Orb +2",
+              "description": "One blue Mystique Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-soulHeartExp-0",
-              "name": "Soul-heart EXP Satchel",
-              "description": "A satchel of soul-heart exp for the Home.",
-              "price": 8000,
-              "grants": {
-                "soulHeartExp": 10
+              "id": "home-6",
+              "name": "Erudite Orb +2",
+              "description": "One blue Erudite Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-resonationShard-0",
-              "name": "Resonation Shard Satchel",
-              "description": "A satchel of resonation shard for the Home.",
-              "price": 8000,
-              "grants": {
-                "resonationShard": 2
+              "id": "home-7",
+              "name": "Leisure Orb +2",
+              "description": "One blue Leisure Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-plateBottle-0",
-              "name": "Plate Bottle Satchel",
-              "description": "A satchel of plate bottle for the Home.",
-              "price": 8000,
-              "grants": {
-                "plateBottle": 1
+              "id": "home-8",
+              "name": "Wonder Orb +2",
+              "description": "One blue Wonder Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-plateFragment-0",
-              "name": "Plate Fragment Satchel",
-              "description": "A satchel of plate fragment for the Home.",
-              "price": 8000,
-              "grants": {
-                "plateFragment": 5
+              "id": "home-9",
+              "name": "Fortune Orb +2",
+              "description": "One blue Fortune Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-reforgePotion-0",
-              "name": "Reforge Potion Satchel",
-              "description": "A satchel of reforge potion for the Home.",
-              "price": 8000,
-              "grants": {
-                "reforgePotion": 1
+              "id": "home-10",
+              "name": "Defensive Orb +2",
+              "description": "One blue Defensive Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-candy-0",
-              "name": "Candy Satchel",
-              "description": "A satchel of candy for the Home.",
-              "price": 8000,
-              "grants": {
-                "candy": 300
+              "id": "home-11",
+              "name": "Quick Orb +2",
+              "description": "One blue Quick Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "blue",
+                "level": 2
               }
             },
             {
-              "id": "home-0-gold-0",
-              "name": "Gold Satchel",
-              "description": "A satchel of gold for the Home.",
-              "price": 8000,
-              "grants": {
-                "gold": 1000
+              "id": "home-12",
+              "name": "Etiquette Orb +2",
+              "description": "One blue Etiquette Orb at +2.",
+              "price": 61500000,
+              "discount": 90,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "blue",
+                "level": 2
               }
             }
           ]
         },
         {
           "minLevel": 4,
+          "maxLevel": 7,
           "offers": [
             {
-              "id": "home-4-orbEssence-1",
-              "name": "Orb Essence Crate",
-              "description": "A crate of orb essence for the Home.",
-              "price": 45000,
-              "grants": {
-                "orbEssence": 20
+              "id": "home-13",
+              "name": "Sharp Orb +3",
+              "description": "One blue Sharp Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-starShard-1",
-              "name": "Star Shard Crate",
-              "description": "A crate of star shard for the Home.",
-              "price": 45000,
-              "grants": {
-                "starShard": 6
+              "id": "home-14",
+              "name": "Placating Orb +3",
+              "description": "One blue Placating Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-potentialShard-1",
-              "name": "Potential Shard Crate",
-              "description": "A crate of potential shard for the Home.",
-              "price": 45000,
-              "grants": {
-                "potentialShard": 6
+              "id": "home-15",
+              "name": "Momentum Orb +3",
+              "description": "One blue Momentum Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-heldItemShard-1",
-              "name": "Held Item Shard Crate",
-              "description": "A crate of held item shard for the Home.",
-              "price": 45000,
-              "grants": {
-                "heldItemShard": 6
+              "id": "home-16",
+              "name": "Pure Orb +3",
+              "description": "One blue Pure Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-berryEssence-1",
-              "name": "Berry Essence Crate",
-              "description": "A crate of berry essence for the Home.",
-              "price": 45000,
-              "grants": {
-                "berryEssence": 10
+              "id": "home-17",
+              "name": "Mystique Orb +3",
+              "description": "One blue Mystique Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-soulHeartExp-1",
-              "name": "Soul-heart EXP Crate",
-              "description": "A crate of soul-heart exp for the Home.",
-              "price": 45000,
-              "grants": {
-                "soulHeartExp": 20
+              "id": "home-18",
+              "name": "Erudite Orb +3",
+              "description": "One blue Erudite Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-resonationShard-1",
-              "name": "Resonation Shard Crate",
-              "description": "A crate of resonation shard for the Home.",
-              "price": 45000,
-              "grants": {
-                "resonationShard": 4
+              "id": "home-19",
+              "name": "Leisure Orb +3",
+              "description": "One blue Leisure Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-plateBottle-1",
-              "name": "Plate Bottle Crate",
-              "description": "A crate of plate bottle for the Home.",
-              "price": 45000,
-              "grants": {
-                "plateBottle": 1
+              "id": "home-20",
+              "name": "Wonder Orb +3",
+              "description": "One blue Wonder Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-plateFragment-1",
-              "name": "Plate Fragment Crate",
-              "description": "A crate of plate fragment for the Home.",
-              "price": 45000,
-              "grants": {
-                "plateFragment": 10
+              "id": "home-21",
+              "name": "Fortune Orb +3",
+              "description": "One blue Fortune Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-reforgePotion-1",
-              "name": "Reforge Potion Crate",
-              "description": "A crate of reforge potion for the Home.",
-              "price": 45000,
-              "grants": {
-                "reforgePotion": 1
+              "id": "home-22",
+              "name": "Defensive Orb +3",
+              "description": "One blue Defensive Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-candy-1",
-              "name": "Candy Crate",
-              "description": "A crate of candy for the Home.",
-              "price": 45000,
-              "grants": {
-                "candy": 600
+              "id": "home-23",
+              "name": "Quick Orb +3",
+              "description": "One blue Quick Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "blue",
+                "level": 3
               }
             },
             {
-              "id": "home-4-gold-1",
-              "name": "Gold Crate",
-              "description": "A crate of gold for the Home.",
-              "price": 45000,
-              "grants": {
-                "gold": 2000
+              "id": "home-24",
+              "name": "Etiquette Orb +3",
+              "description": "One blue Etiquette Orb at +3.",
+              "price": 83500000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "blue",
+                "level": 3
               }
             }
           ]
         },
         {
           "minLevel": 6,
+          "maxLevel": 8,
           "offers": [
             {
-              "id": "home-6-orbEssence-2",
-              "name": "Orb Essence Chest",
-              "description": "A chest of orb essence for the Home.",
-              "price": 180000,
-              "grants": {
-                "orbEssence": 40
+              "id": "home-25",
+              "name": "Sharp Orb +4",
+              "description": "One blue Sharp Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-starShard-2",
-              "name": "Star Shard Chest",
-              "description": "A chest of star shard for the Home.",
-              "price": 180000,
-              "grants": {
-                "starShard": 12
+              "id": "home-26",
+              "name": "Placating Orb +4",
+              "description": "One blue Placating Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-potentialShard-2",
-              "name": "Potential Shard Chest",
-              "description": "A chest of potential shard for the Home.",
-              "price": 180000,
-              "grants": {
-                "potentialShard": 12
+              "id": "home-27",
+              "name": "Momentum Orb +4",
+              "description": "One blue Momentum Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-heldItemShard-2",
-              "name": "Held Item Shard Chest",
-              "description": "A chest of held item shard for the Home.",
-              "price": 180000,
-              "grants": {
-                "heldItemShard": 12
+              "id": "home-28",
+              "name": "Pure Orb +4",
+              "description": "One blue Pure Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-berryEssence-2",
-              "name": "Berry Essence Chest",
-              "description": "A chest of berry essence for the Home.",
-              "price": 180000,
-              "grants": {
-                "berryEssence": 20
+              "id": "home-29",
+              "name": "Mystique Orb +4",
+              "description": "One blue Mystique Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-soulHeartExp-2",
-              "name": "Soul-heart EXP Chest",
-              "description": "A chest of soul-heart exp for the Home.",
-              "price": 180000,
-              "grants": {
-                "soulHeartExp": 40
+              "id": "home-30",
+              "name": "Erudite Orb +4",
+              "description": "One blue Erudite Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-resonationShard-2",
-              "name": "Resonation Shard Chest",
-              "description": "A chest of resonation shard for the Home.",
-              "price": 180000,
-              "grants": {
-                "resonationShard": 8
+              "id": "home-31",
+              "name": "Leisure Orb +4",
+              "description": "One blue Leisure Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-plateBottle-2",
-              "name": "Plate Bottle Chest",
-              "description": "A chest of plate bottle for the Home.",
-              "price": 180000,
-              "grants": {
-                "plateBottle": 2
+              "id": "home-32",
+              "name": "Wonder Orb +4",
+              "description": "One blue Wonder Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-plateFragment-2",
-              "name": "Plate Fragment Chest",
-              "description": "A chest of plate fragment for the Home.",
-              "price": 180000,
-              "grants": {
-                "plateFragment": 20
+              "id": "home-33",
+              "name": "Fortune Orb +4",
+              "description": "One blue Fortune Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-reforgePotion-2",
-              "name": "Reforge Potion Chest",
-              "description": "A chest of reforge potion for the Home.",
-              "price": 180000,
-              "grants": {
-                "reforgePotion": 1
+              "id": "home-34",
+              "name": "Defensive Orb +4",
+              "description": "One blue Defensive Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-candy-2",
-              "name": "Candy Chest",
-              "description": "A chest of candy for the Home.",
-              "price": 180000,
-              "grants": {
-                "candy": 1200
+              "id": "home-35",
+              "name": "Quick Orb +4",
+              "description": "One blue Quick Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "blue",
+                "level": 4
               }
             },
             {
-              "id": "home-6-gold-2",
-              "name": "Gold Chest",
-              "description": "A chest of gold for the Home.",
-              "price": 180000,
-              "grants": {
-                "gold": 4000
+              "id": "home-36",
+              "name": "Etiquette Orb +4",
+              "description": "One blue Etiquette Orb at +4.",
+              "price": 142000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "blue",
+                "level": 4
               }
             }
           ]
         },
         {
           "minLevel": 7,
+          "maxLevel": 12,
           "offers": [
             {
-              "id": "home-7-orbEssence-2",
-              "name": "Orb Essence Chest",
-              "description": "A chest of orb essence for the Home.",
-              "price": 180000,
-              "grants": {
-                "orbEssence": 40
+              "id": "home-37",
+              "name": "Sharp Orb +5",
+              "description": "One blue Sharp Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-starShard-2",
-              "name": "Star Shard Chest",
-              "description": "A chest of star shard for the Home.",
-              "price": 180000,
-              "grants": {
-                "starShard": 12
+              "id": "home-38",
+              "name": "Placating Orb +5",
+              "description": "One blue Placating Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-potentialShard-2",
-              "name": "Potential Shard Chest",
-              "description": "A chest of potential shard for the Home.",
-              "price": 180000,
-              "grants": {
-                "potentialShard": 12
+              "id": "home-39",
+              "name": "Momentum Orb +5",
+              "description": "One blue Momentum Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-heldItemShard-2",
-              "name": "Held Item Shard Chest",
-              "description": "A chest of held item shard for the Home.",
-              "price": 180000,
-              "grants": {
-                "heldItemShard": 12
+              "id": "home-40",
+              "name": "Pure Orb +5",
+              "description": "One blue Pure Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-berryEssence-2",
-              "name": "Berry Essence Chest",
-              "description": "A chest of berry essence for the Home.",
-              "price": 180000,
-              "grants": {
-                "berryEssence": 20
+              "id": "home-41",
+              "name": "Mystique Orb +5",
+              "description": "One blue Mystique Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-soulHeartExp-2",
-              "name": "Soul-heart EXP Chest",
-              "description": "A chest of soul-heart exp for the Home.",
-              "price": 180000,
-              "grants": {
-                "soulHeartExp": 40
+              "id": "home-42",
+              "name": "Erudite Orb +5",
+              "description": "One blue Erudite Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-resonationShard-2",
-              "name": "Resonation Shard Chest",
-              "description": "A chest of resonation shard for the Home.",
-              "price": 180000,
-              "grants": {
-                "resonationShard": 8
+              "id": "home-43",
+              "name": "Leisure Orb +5",
+              "description": "One blue Leisure Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-plateBottle-2",
-              "name": "Plate Bottle Chest",
-              "description": "A chest of plate bottle for the Home.",
-              "price": 180000,
-              "grants": {
-                "plateBottle": 2
+              "id": "home-44",
+              "name": "Wonder Orb +5",
+              "description": "One blue Wonder Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-plateFragment-2",
-              "name": "Plate Fragment Chest",
-              "description": "A chest of plate fragment for the Home.",
-              "price": 180000,
-              "grants": {
-                "plateFragment": 20
+              "id": "home-45",
+              "name": "Fortune Orb +5",
+              "description": "One blue Fortune Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-reforgePotion-2",
-              "name": "Reforge Potion Chest",
-              "description": "A chest of reforge potion for the Home.",
-              "price": 180000,
-              "grants": {
-                "reforgePotion": 1
+              "id": "home-46",
+              "name": "Defensive Orb +5",
+              "description": "One blue Defensive Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-candy-2",
-              "name": "Candy Chest",
-              "description": "A chest of candy for the Home.",
-              "price": 180000,
-              "grants": {
-                "candy": 1200
+              "id": "home-47",
+              "name": "Quick Orb +5",
+              "description": "One blue Quick Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "blue",
+                "level": 5
               }
             },
             {
-              "id": "home-7-gold-2",
-              "name": "Gold Chest",
-              "description": "A chest of gold for the Home.",
-              "price": 180000,
-              "grants": {
-                "gold": 4000
+              "id": "home-48",
+              "name": "Etiquette Orb +5",
+              "description": "One blue Etiquette Orb at +5.",
+              "price": 240000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "blue",
+                "level": 5
+              }
+            }
+          ]
+        },
+        {
+          "minLevel": 7,
+          "maxLevel": 12,
+          "offers": [
+            {
+              "id": "home-49",
+              "name": "Sharp Orb +1",
+              "description": "One purple Sharp Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-orbEssence-3",
-              "name": "Orb Essence Cache",
-              "description": "A cache of orb essence for the Home.",
-              "price": 600000,
-              "grants": {
-                "orbEssence": 80
+              "id": "home-50",
+              "name": "Placating Orb +1",
+              "description": "One purple Placating Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-starShard-3",
-              "name": "Star Shard Cache",
-              "description": "A cache of star shard for the Home.",
-              "price": 600000,
-              "grants": {
-                "starShard": 24
+              "id": "home-51",
+              "name": "Momentum Orb +1",
+              "description": "One purple Momentum Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-potentialShard-3",
-              "name": "Potential Shard Cache",
-              "description": "A cache of potential shard for the Home.",
-              "price": 600000,
-              "grants": {
-                "potentialShard": 24
+              "id": "home-52",
+              "name": "Pure Orb +1",
+              "description": "One purple Pure Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-heldItemShard-3",
-              "name": "Held Item Shard Cache",
-              "description": "A cache of held item shard for the Home.",
-              "price": 600000,
-              "grants": {
-                "heldItemShard": 24
+              "id": "home-53",
+              "name": "Mystique Orb +1",
+              "description": "One purple Mystique Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-berryEssence-3",
-              "name": "Berry Essence Cache",
-              "description": "A cache of berry essence for the Home.",
-              "price": 600000,
-              "grants": {
-                "berryEssence": 40
+              "id": "home-54",
+              "name": "Erudite Orb +1",
+              "description": "One purple Erudite Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-soulHeartExp-3",
-              "name": "Soul-heart EXP Cache",
-              "description": "A cache of soul-heart exp for the Home.",
-              "price": 600000,
-              "grants": {
-                "soulHeartExp": 80
+              "id": "home-55",
+              "name": "Leisure Orb +1",
+              "description": "One purple Leisure Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-resonationShard-3",
-              "name": "Resonation Shard Cache",
-              "description": "A cache of resonation shard for the Home.",
-              "price": 600000,
-              "grants": {
-                "resonationShard": 16
+              "id": "home-56",
+              "name": "Wonder Orb +1",
+              "description": "One purple Wonder Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-plateBottle-3",
-              "name": "Plate Bottle Cache",
-              "description": "A cache of plate bottle for the Home.",
-              "price": 600000,
-              "grants": {
-                "plateBottle": 2
+              "id": "home-57",
+              "name": "Fortune Orb +1",
+              "description": "One purple Fortune Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-plateFragment-3",
-              "name": "Plate Fragment Cache",
-              "description": "A cache of plate fragment for the Home.",
-              "price": 600000,
-              "grants": {
-                "plateFragment": 40
+              "id": "home-58",
+              "name": "Defensive Orb +1",
+              "description": "One purple Defensive Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-reforgePotion-3",
-              "name": "Reforge Potion Cache",
-              "description": "A cache of reforge potion for the Home.",
-              "price": 600000,
-              "grants": {
-                "reforgePotion": 2
+              "id": "home-59",
+              "name": "Quick Orb +1",
+              "description": "One purple Quick Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "purple",
+                "level": 1
               }
             },
             {
-              "id": "home-7-candy-3",
-              "name": "Candy Cache",
-              "description": "A cache of candy for the Home.",
-              "price": 600000,
-              "grants": {
-                "candy": 2400
+              "id": "home-60",
+              "name": "Etiquette Orb +1",
+              "description": "One purple Etiquette Orb at +1.",
+              "price": 120000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "purple",
+                "level": 1
+              }
+            }
+          ]
+        },
+        {
+          "minLevel": 7,
+          "maxLevel": 12,
+          "offers": [
+            {
+              "id": "home-61",
+              "name": "Sharp Orb +2",
+              "description": "One purple Sharp Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-gold-3",
-              "name": "Gold Cache",
-              "description": "A cache of gold for the Home.",
-              "price": 600000,
-              "grants": {
-                "gold": 8000
+              "id": "home-62",
+              "name": "Placating Orb +2",
+              "description": "One purple Placating Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-orbEssence-4",
-              "name": "Orb Essence Hoard",
-              "description": "A hoard of orb essence for the Home.",
-              "price": 1200000,
-              "grants": {
-                "orbEssence": 160
+              "id": "home-63",
+              "name": "Momentum Orb +2",
+              "description": "One purple Momentum Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-starShard-4",
-              "name": "Star Shard Hoard",
-              "description": "A hoard of star shard for the Home.",
-              "price": 1200000,
-              "grants": {
-                "starShard": 48
+              "id": "home-64",
+              "name": "Pure Orb +2",
+              "description": "One purple Pure Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-potentialShard-4",
-              "name": "Potential Shard Hoard",
-              "description": "A hoard of potential shard for the Home.",
-              "price": 1200000,
-              "grants": {
-                "potentialShard": 48
+              "id": "home-65",
+              "name": "Mystique Orb +2",
+              "description": "One purple Mystique Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-heldItemShard-4",
-              "name": "Held Item Shard Hoard",
-              "description": "A hoard of held item shard for the Home.",
-              "price": 1200000,
-              "grants": {
-                "heldItemShard": 48
+              "id": "home-66",
+              "name": "Erudite Orb +2",
+              "description": "One purple Erudite Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-berryEssence-4",
-              "name": "Berry Essence Hoard",
-              "description": "A hoard of berry essence for the Home.",
-              "price": 1200000,
-              "grants": {
-                "berryEssence": 80
+              "id": "home-67",
+              "name": "Leisure Orb +2",
+              "description": "One purple Leisure Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-soulHeartExp-4",
-              "name": "Soul-heart EXP Hoard",
-              "description": "A hoard of soul-heart exp for the Home.",
-              "price": 1200000,
-              "grants": {
-                "soulHeartExp": 160
+              "id": "home-68",
+              "name": "Wonder Orb +2",
+              "description": "One purple Wonder Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-resonationShard-4",
-              "name": "Resonation Shard Hoard",
-              "description": "A hoard of resonation shard for the Home.",
-              "price": 1200000,
-              "grants": {
-                "resonationShard": 32
+              "id": "home-69",
+              "name": "Fortune Orb +2",
+              "description": "One purple Fortune Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-plateBottle-4",
-              "name": "Plate Bottle Hoard",
-              "description": "A hoard of plate bottle for the Home.",
-              "price": 1200000,
-              "grants": {
-                "plateBottle": 3
+              "id": "home-70",
+              "name": "Defensive Orb +2",
+              "description": "One purple Defensive Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-plateFragment-4",
-              "name": "Plate Fragment Hoard",
-              "description": "A hoard of plate fragment for the Home.",
-              "price": 1200000,
-              "grants": {
-                "plateFragment": 80
+              "id": "home-71",
+              "name": "Quick Orb +2",
+              "description": "One purple Quick Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "purple",
+                "level": 2
               }
             },
             {
-              "id": "home-7-reforgePotion-4",
-              "name": "Reforge Potion Hoard",
-              "description": "A hoard of reforge potion for the Home.",
-              "price": 1200000,
-              "grants": {
-                "reforgePotion": 2
-              }
-            },
-            {
-              "id": "home-7-candy-4",
-              "name": "Candy Hoard",
-              "description": "A hoard of candy for the Home.",
-              "price": 1200000,
-              "grants": {
-                "candy": 4800
-              }
-            },
-            {
-              "id": "home-7-gold-4",
-              "name": "Gold Hoard",
-              "description": "A hoard of gold for the Home.",
-              "price": 1200000,
-              "grants": {
-                "gold": 16000
+              "id": "home-72",
+              "name": "Etiquette Orb +2",
+              "description": "One purple Etiquette Orb at +2.",
+              "price": 350000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "purple",
+                "level": 2
               }
             }
           ]
         },
         {
           "minLevel": 8,
+          "maxLevel": 16,
           "offers": [
             {
-              "id": "home-8-orbEssence-4",
-              "name": "Orb Essence Hoard",
-              "description": "A hoard of orb essence for the Home.",
-              "price": 1200000,
-              "grants": {
-                "orbEssence": 160
+              "id": "home-73",
+              "name": "Sharp Orb +3",
+              "description": "One purple Sharp Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-starShard-4",
-              "name": "Star Shard Hoard",
-              "description": "A hoard of star shard for the Home.",
-              "price": 1200000,
-              "grants": {
-                "starShard": 48
+              "id": "home-74",
+              "name": "Placating Orb +3",
+              "description": "One purple Placating Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-potentialShard-4",
-              "name": "Potential Shard Hoard",
-              "description": "A hoard of potential shard for the Home.",
-              "price": 1200000,
-              "grants": {
-                "potentialShard": 48
+              "id": "home-75",
+              "name": "Momentum Orb +3",
+              "description": "One purple Momentum Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-heldItemShard-4",
-              "name": "Held Item Shard Hoard",
-              "description": "A hoard of held item shard for the Home.",
-              "price": 1200000,
-              "grants": {
-                "heldItemShard": 48
+              "id": "home-76",
+              "name": "Pure Orb +3",
+              "description": "One purple Pure Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-berryEssence-4",
-              "name": "Berry Essence Hoard",
-              "description": "A hoard of berry essence for the Home.",
-              "price": 1200000,
-              "grants": {
-                "berryEssence": 80
+              "id": "home-77",
+              "name": "Mystique Orb +3",
+              "description": "One purple Mystique Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-soulHeartExp-4",
-              "name": "Soul-heart EXP Hoard",
-              "description": "A hoard of soul-heart exp for the Home.",
-              "price": 1200000,
-              "grants": {
-                "soulHeartExp": 160
+              "id": "home-78",
+              "name": "Erudite Orb +3",
+              "description": "One purple Erudite Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-resonationShard-4",
-              "name": "Resonation Shard Hoard",
-              "description": "A hoard of resonation shard for the Home.",
-              "price": 1200000,
-              "grants": {
-                "resonationShard": 32
+              "id": "home-79",
+              "name": "Leisure Orb +3",
+              "description": "One purple Leisure Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-plateBottle-4",
-              "name": "Plate Bottle Hoard",
-              "description": "A hoard of plate bottle for the Home.",
-              "price": 1200000,
-              "grants": {
-                "plateBottle": 3
+              "id": "home-80",
+              "name": "Wonder Orb +3",
+              "description": "One purple Wonder Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-plateFragment-4",
-              "name": "Plate Fragment Hoard",
-              "description": "A hoard of plate fragment for the Home.",
-              "price": 1200000,
-              "grants": {
-                "plateFragment": 80
+              "id": "home-81",
+              "name": "Fortune Orb +3",
+              "description": "One purple Fortune Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-reforgePotion-4",
-              "name": "Reforge Potion Hoard",
-              "description": "A hoard of reforge potion for the Home.",
-              "price": 1200000,
-              "grants": {
-                "reforgePotion": 2
+              "id": "home-82",
+              "name": "Defensive Orb +3",
+              "description": "One purple Defensive Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-candy-4",
-              "name": "Candy Hoard",
-              "description": "A hoard of candy for the Home.",
-              "price": 1200000,
-              "grants": {
-                "candy": 4800
+              "id": "home-83",
+              "name": "Quick Orb +3",
+              "description": "One purple Quick Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "purple",
+                "level": 3
               }
             },
             {
-              "id": "home-8-gold-4",
-              "name": "Gold Hoard",
-              "description": "A hoard of gold for the Home.",
-              "price": 1200000,
-              "grants": {
-                "gold": 16000
+              "id": "home-84",
+              "name": "Etiquette Orb +3",
+              "description": "One purple Etiquette Orb at +3.",
+              "price": 1000000000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "purple",
+                "level": 3
               }
             }
           ]
@@ -1237,438 +1585,649 @@
       },
       "bands": [
         {
-          "minLevel": 10,
+          "minLevel": 1,
+          "maxLevel": 16,
           "offers": [
             {
-              "id": "deluxe-10-orbEssence-3",
-              "name": "Orb Essence Cache",
-              "description": "A cache of orb essence for the Home.",
-              "price": 300,
-              "grants": {
-                "orbEssence": 80
+              "id": "deluxe-1",
+              "name": "Sharp Orb +3",
+              "description": "One orange Sharp Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-starShard-3",
-              "name": "Star Shard Cache",
-              "description": "A cache of star shard for the Home.",
-              "price": 300,
-              "grants": {
-                "starShard": 24
+              "id": "deluxe-2",
+              "name": "Placating Orb +3",
+              "description": "One orange Placating Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-potentialShard-3",
-              "name": "Potential Shard Cache",
-              "description": "A cache of potential shard for the Home.",
-              "price": 300,
-              "grants": {
-                "potentialShard": 24
+              "id": "deluxe-3",
+              "name": "Momentum Orb +3",
+              "description": "One orange Momentum Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-heldItemShard-3",
-              "name": "Held Item Shard Cache",
-              "description": "A cache of held item shard for the Home.",
-              "price": 300,
-              "grants": {
-                "heldItemShard": 24
+              "id": "deluxe-4",
+              "name": "Pure Orb +3",
+              "description": "One orange Pure Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-berryEssence-3",
-              "name": "Berry Essence Cache",
-              "description": "A cache of berry essence for the Home.",
-              "price": 300,
-              "grants": {
-                "berryEssence": 40
+              "id": "deluxe-5",
+              "name": "Mystique Orb +3",
+              "description": "One orange Mystique Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-soulHeartExp-3",
-              "name": "Soul-heart EXP Cache",
-              "description": "A cache of soul-heart exp for the Home.",
-              "price": 300,
-              "grants": {
-                "soulHeartExp": 80
+              "id": "deluxe-6",
+              "name": "Erudite Orb +3",
+              "description": "One orange Erudite Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-resonationShard-3",
-              "name": "Resonation Shard Cache",
-              "description": "A cache of resonation shard for the Home.",
-              "price": 300,
-              "grants": {
-                "resonationShard": 16
+              "id": "deluxe-7",
+              "name": "Leisure Orb +3",
+              "description": "One orange Leisure Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-plateBottle-3",
-              "name": "Plate Bottle Cache",
-              "description": "A cache of plate bottle for the Home.",
-              "price": 300,
-              "grants": {
-                "plateBottle": 2
+              "id": "deluxe-8",
+              "name": "Wonder Orb +3",
+              "description": "One orange Wonder Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-plateFragment-3",
-              "name": "Plate Fragment Cache",
-              "description": "A cache of plate fragment for the Home.",
-              "price": 300,
-              "grants": {
-                "plateFragment": 40
+              "id": "deluxe-9",
+              "name": "Fortune Orb +3",
+              "description": "One orange Fortune Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-reforgePotion-3",
-              "name": "Reforge Potion Cache",
-              "description": "A cache of reforge potion for the Home.",
-              "price": 300,
-              "grants": {
-                "reforgePotion": 2
+              "id": "deluxe-10",
+              "name": "Defensive Orb +3",
+              "description": "One orange Defensive Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-candy-3",
-              "name": "Candy Cache",
-              "description": "A cache of candy for the Home.",
-              "price": 300,
-              "grants": {
-                "candy": 2400
+              "id": "deluxe-11",
+              "name": "Quick Orb +3",
+              "description": "One orange Quick Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "orange",
+                "level": 3
               }
             },
             {
-              "id": "deluxe-10-gold-3",
-              "name": "Gold Cache",
-              "description": "A cache of gold for the Home.",
-              "price": 300,
-              "grants": {
-                "gold": 8000
+              "id": "deluxe-12",
+              "name": "Etiquette Orb +3",
+              "description": "One orange Etiquette Orb at +3.",
+              "price": 5250,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "orange",
+                "level": 3
+              }
+            }
+          ]
+        },
+        {
+          "minLevel": 1,
+          "maxLevel": 16,
+          "offers": [
+            {
+              "id": "deluxe-13",
+              "name": "Sharp Orb +4",
+              "description": "One orange Sharp Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-orbEssence-4",
-              "name": "Orb Essence Hoard",
-              "description": "A hoard of orb essence for the Home.",
-              "price": 900,
-              "grants": {
-                "orbEssence": 160
+              "id": "deluxe-14",
+              "name": "Placating Orb +4",
+              "description": "One orange Placating Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-starShard-4",
-              "name": "Star Shard Hoard",
-              "description": "A hoard of star shard for the Home.",
-              "price": 900,
-              "grants": {
-                "starShard": 48
+              "id": "deluxe-15",
+              "name": "Momentum Orb +4",
+              "description": "One orange Momentum Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-potentialShard-4",
-              "name": "Potential Shard Hoard",
-              "description": "A hoard of potential shard for the Home.",
-              "price": 900,
-              "grants": {
-                "potentialShard": 48
+              "id": "deluxe-16",
+              "name": "Pure Orb +4",
+              "description": "One orange Pure Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-heldItemShard-4",
-              "name": "Held Item Shard Hoard",
-              "description": "A hoard of held item shard for the Home.",
-              "price": 900,
-              "grants": {
-                "heldItemShard": 48
+              "id": "deluxe-17",
+              "name": "Mystique Orb +4",
+              "description": "One orange Mystique Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-berryEssence-4",
-              "name": "Berry Essence Hoard",
-              "description": "A hoard of berry essence for the Home.",
-              "price": 900,
-              "grants": {
-                "berryEssence": 80
+              "id": "deluxe-18",
+              "name": "Erudite Orb +4",
+              "description": "One orange Erudite Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-soulHeartExp-4",
-              "name": "Soul-heart EXP Hoard",
-              "description": "A hoard of soul-heart exp for the Home.",
-              "price": 900,
-              "grants": {
-                "soulHeartExp": 160
+              "id": "deluxe-19",
+              "name": "Leisure Orb +4",
+              "description": "One orange Leisure Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-resonationShard-4",
-              "name": "Resonation Shard Hoard",
-              "description": "A hoard of resonation shard for the Home.",
-              "price": 900,
-              "grants": {
-                "resonationShard": 32
+              "id": "deluxe-20",
+              "name": "Wonder Orb +4",
+              "description": "One orange Wonder Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-plateBottle-4",
-              "name": "Plate Bottle Hoard",
-              "description": "A hoard of plate bottle for the Home.",
-              "price": 900,
-              "grants": {
-                "plateBottle": 3
+              "id": "deluxe-21",
+              "name": "Fortune Orb +4",
+              "description": "One orange Fortune Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-plateFragment-4",
-              "name": "Plate Fragment Hoard",
-              "description": "A hoard of plate fragment for the Home.",
-              "price": 900,
-              "grants": {
-                "plateFragment": 80
+              "id": "deluxe-22",
+              "name": "Defensive Orb +4",
+              "description": "One orange Defensive Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-reforgePotion-4",
-              "name": "Reforge Potion Hoard",
-              "description": "A hoard of reforge potion for the Home.",
-              "price": 900,
-              "grants": {
-                "reforgePotion": 2
+              "id": "deluxe-23",
+              "name": "Quick Orb +4",
+              "description": "One orange Quick Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "orange",
+                "level": 4
               }
             },
             {
-              "id": "deluxe-10-candy-4",
-              "name": "Candy Hoard",
-              "description": "A hoard of candy for the Home.",
-              "price": 900,
-              "grants": {
-                "candy": 4800
+              "id": "deluxe-24",
+              "name": "Etiquette Orb +4",
+              "description": "One orange Etiquette Orb at +4.",
+              "price": 16000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "orange",
+                "level": 4
+              }
+            }
+          ]
+        },
+        {
+          "minLevel": 1,
+          "maxLevel": 16,
+          "offers": [
+            {
+              "id": "deluxe-25",
+              "name": "Sharp Orb +5",
+              "description": "One orange Sharp Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-gold-4",
-              "name": "Gold Hoard",
-              "description": "A hoard of gold for the Home.",
-              "price": 900,
-              "grants": {
-                "gold": 16000
+              "id": "deluxe-26",
+              "name": "Placating Orb +5",
+              "description": "One orange Placating Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-orbEssence-5",
-              "name": "Orb Essence Vault",
-              "description": "A vault of orb essence for the Home.",
-              "price": 2700,
-              "grants": {
-                "orbEssence": 320
+              "id": "deluxe-27",
+              "name": "Momentum Orb +5",
+              "description": "One orange Momentum Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-starShard-5",
-              "name": "Star Shard Vault",
-              "description": "A vault of star shard for the Home.",
-              "price": 2700,
-              "grants": {
-                "starShard": 96
+              "id": "deluxe-28",
+              "name": "Pure Orb +5",
+              "description": "One orange Pure Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-potentialShard-5",
-              "name": "Potential Shard Vault",
-              "description": "A vault of potential shard for the Home.",
-              "price": 2700,
-              "grants": {
-                "potentialShard": 96
+              "id": "deluxe-29",
+              "name": "Mystique Orb +5",
+              "description": "One orange Mystique Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-heldItemShard-5",
-              "name": "Held Item Shard Vault",
-              "description": "A vault of held item shard for the Home.",
-              "price": 2700,
-              "grants": {
-                "heldItemShard": 96
+              "id": "deluxe-30",
+              "name": "Erudite Orb +5",
+              "description": "One orange Erudite Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-berryEssence-5",
-              "name": "Berry Essence Vault",
-              "description": "A vault of berry essence for the Home.",
-              "price": 2700,
-              "grants": {
-                "berryEssence": 160
+              "id": "deluxe-31",
+              "name": "Leisure Orb +5",
+              "description": "One orange Leisure Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-soulHeartExp-5",
-              "name": "Soul-heart EXP Vault",
-              "description": "A vault of soul-heart exp for the Home.",
-              "price": 2700,
-              "grants": {
-                "soulHeartExp": 320
+              "id": "deluxe-32",
+              "name": "Wonder Orb +5",
+              "description": "One orange Wonder Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-resonationShard-5",
-              "name": "Resonation Shard Vault",
-              "description": "A vault of resonation shard for the Home.",
-              "price": 2700,
-              "grants": {
-                "resonationShard": 64
+              "id": "deluxe-33",
+              "name": "Fortune Orb +5",
+              "description": "One orange Fortune Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-plateBottle-5",
-              "name": "Plate Bottle Vault",
-              "description": "A vault of plate bottle for the Home.",
-              "price": 2700,
-              "grants": {
-                "plateBottle": 4
+              "id": "deluxe-34",
+              "name": "Defensive Orb +5",
+              "description": "One orange Defensive Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-plateFragment-5",
-              "name": "Plate Fragment Vault",
-              "description": "A vault of plate fragment for the Home.",
-              "price": 2700,
-              "grants": {
-                "plateFragment": 160
+              "id": "deluxe-35",
+              "name": "Quick Orb +5",
+              "description": "One orange Quick Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "orange",
+                "level": 5
               }
             },
             {
-              "id": "deluxe-10-reforgePotion-5",
-              "name": "Reforge Potion Vault",
-              "description": "A vault of reforge potion for the Home.",
-              "price": 2700,
-              "grants": {
-                "reforgePotion": 3
+              "id": "deluxe-36",
+              "name": "Etiquette Orb +5",
+              "description": "One orange Etiquette Orb at +5.",
+              "price": 48000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "orange",
+                "level": 5
+              }
+            }
+          ]
+        },
+        {
+          "minLevel": 1,
+          "maxLevel": 16,
+          "offers": [
+            {
+              "id": "deluxe-37",
+              "name": "Sharp Orb +6",
+              "description": "One orange Sharp Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "sharp",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-candy-5",
-              "name": "Candy Vault",
-              "description": "A vault of candy for the Home.",
-              "price": 2700,
-              "grants": {
-                "candy": 9600
+              "id": "deluxe-38",
+              "name": "Placating Orb +6",
+              "description": "One orange Placating Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "placating",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-gold-5",
-              "name": "Gold Vault",
-              "description": "A vault of gold for the Home.",
-              "price": 2700,
-              "grants": {
-                "gold": 32000
+              "id": "deluxe-39",
+              "name": "Momentum Orb +6",
+              "description": "One orange Momentum Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "momentum",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-orbEssence-6",
-              "name": "Orb Essence Trove",
-              "description": "A trove of orb essence for the Home.",
-              "price": 8100,
-              "grants": {
-                "orbEssence": 640
+              "id": "deluxe-40",
+              "name": "Pure Orb +6",
+              "description": "One orange Pure Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "pure",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-starShard-6",
-              "name": "Star Shard Trove",
-              "description": "A trove of star shard for the Home.",
-              "price": 8100,
-              "grants": {
-                "starShard": 192
+              "id": "deluxe-41",
+              "name": "Mystique Orb +6",
+              "description": "One orange Mystique Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "mystique",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-potentialShard-6",
-              "name": "Potential Shard Trove",
-              "description": "A trove of potential shard for the Home.",
-              "price": 8100,
-              "grants": {
-                "potentialShard": 192
+              "id": "deluxe-42",
+              "name": "Erudite Orb +6",
+              "description": "One orange Erudite Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "erudite",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-heldItemShard-6",
-              "name": "Held Item Shard Trove",
-              "description": "A trove of held item shard for the Home.",
-              "price": 8100,
-              "grants": {
-                "heldItemShard": 192
+              "id": "deluxe-43",
+              "name": "Leisure Orb +6",
+              "description": "One orange Leisure Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "leisure",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-berryEssence-6",
-              "name": "Berry Essence Trove",
-              "description": "A trove of berry essence for the Home.",
-              "price": 8100,
-              "grants": {
-                "berryEssence": 320
+              "id": "deluxe-44",
+              "name": "Wonder Orb +6",
+              "description": "One orange Wonder Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "wonder",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-soulHeartExp-6",
-              "name": "Soul-heart EXP Trove",
-              "description": "A trove of soul-heart exp for the Home.",
-              "price": 8100,
-              "grants": {
-                "soulHeartExp": 640
+              "id": "deluxe-45",
+              "name": "Fortune Orb +6",
+              "description": "One orange Fortune Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "fortune",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-resonationShard-6",
-              "name": "Resonation Shard Trove",
-              "description": "A trove of resonation shard for the Home.",
-              "price": 8100,
-              "grants": {
-                "resonationShard": 128
+              "id": "deluxe-46",
+              "name": "Defensive Orb +6",
+              "description": "One orange Defensive Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "defensive",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-plateBottle-6",
-              "name": "Plate Bottle Trove",
-              "description": "A trove of plate bottle for the Home.",
-              "price": 8100,
-              "grants": {
-                "plateBottle": 5
+              "id": "deluxe-47",
+              "name": "Quick Orb +6",
+              "description": "One orange Quick Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "quick",
+                "colour": "orange",
+                "level": 6
               }
             },
             {
-              "id": "deluxe-10-plateFragment-6",
-              "name": "Plate Fragment Trove",
-              "description": "A trove of plate fragment for the Home.",
-              "price": 8100,
-              "grants": {
-                "plateFragment": 320
-              }
-            },
-            {
-              "id": "deluxe-10-reforgePotion-6",
-              "name": "Reforge Potion Trove",
-              "description": "A trove of reforge potion for the Home.",
-              "price": 8100,
-              "grants": {
-                "reforgePotion": 4
-              }
-            },
-            {
-              "id": "deluxe-10-candy-6",
-              "name": "Candy Trove",
-              "description": "A trove of candy for the Home.",
-              "price": 8100,
-              "grants": {
-                "candy": 19200
-              }
-            },
-            {
-              "id": "deluxe-10-gold-6",
-              "name": "Gold Trove",
-              "description": "A trove of gold for the Home.",
-              "price": 8100,
-              "grants": {
-                "gold": 64000
+              "id": "deluxe-48",
+              "name": "Etiquette Orb +6",
+              "description": "One orange Etiquette Orb at +6.",
+              "price": 144000,
+              "discount": 80,
+              "grants": {},
+              "orb": {
+                "kind": "etiquette",
+                "colour": "orange",
+                "level": 6
               }
             }
           ]

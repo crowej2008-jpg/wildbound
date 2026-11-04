@@ -257,3 +257,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-04] update | R9 Sky Pillar rows
 - The source's floor levels, stage pays, star conditions and floor chests (ASSUMPTIONS #88). Next: Pet Home rows.
+
+## [2026-11-04] update | R9 Pet Home rows
+- The source's Home levels, summon prices, merge income and both shops (each row one orb at a fixed level), plus Rare
+  Orb Chests in level rewards (ASSUMPTIONS #89). That finishes the R9 row's data list. Next: R10 close-out.

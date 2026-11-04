@@ -10,6 +10,7 @@ import {
   openPet,
   settlePetHome,
   shopOffers,
+  shopPool,
   shopRefreshCost,
   summonCost,
   summonPet,
@@ -48,6 +49,7 @@ const rules: PetHomeRules = {
       { afterPaid: 50, gems: 30 },
       { afterPaid: 100, gems: 80 },
     ],
+    orbChest: { level: 1, weights: { green: 1 } },
   },
   levels: xpRows.map((xp, level) => ({
     level,
@@ -73,7 +75,10 @@ const rules: PetHomeRules = {
       unlockLevel: 0,
       offersPerPage: 9,
       refresh: { maxPerDay: 30, costs: [{ afterRefreshes: 0, gems: 40 }, { afterRefreshes: 10, gems: 80 }] },
-      bands: [{ minLevel: 0, offers: Array.from({ length: 12 }, (_, index) => offer('home', index)) }],
+      bands: [
+        { minLevel: 0, maxLevel: 16, offers: Array.from({ length: 12 }, (_, index) => offer('home', index)) },
+        { minLevel: 2, maxLevel: 3, offers: [offer('home', 99)] },
+      ],
     },
     deluxe: {
       id: 'deluxe',
@@ -82,7 +87,7 @@ const rules: PetHomeRules = {
       unlockLevel: 10,
       offersPerPage: 9,
       refresh: { maxPerDay: 30, costs: [{ afterRefreshes: 0, gems: 40 }, { afterRefreshes: 10, gems: 80 }] },
-      bands: [{ minLevel: 10, offers: Array.from({ length: 12 }, (_, index) => offer('deluxe', index)) }],
+      bands: [{ minLevel: 1, maxLevel: 16, offers: Array.from({ length: 12 }, (_, index) => offer('deluxe', index)) }],
     },
   },
 };
@@ -197,6 +202,9 @@ describe('Pet Home rules', () => {
     expect(first.map((offer) => offer.id)).not.toEqual(refreshed.map((offer) => offer.id));
     expect(shopOffers(rules.shops.deluxe, 9, DAY, 0)).toHaveLength(0);
     expect(shopOffers(rules.shops.deluxe, 10, DAY, 0)).toHaveLength(9);
+    expect(shopPool(shop, 1)).toHaveLength(12);
+    expect(shopPool(shop, 2)).toHaveLength(13);
+    expect(shopPool(shop, 4)).toHaveLength(12);
     expect(shopRefreshCost(shop, 0)).toBe(40);
     expect(shopRefreshCost(shop, 10)).toBe(80);
   });

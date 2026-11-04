@@ -1102,3 +1102,17 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     and each floor's 10 / 20 / 30-star chests (Diamonds, Premium Tickets, 5-Star Pokémon Shards). Stand-ins: the
     wing names and the enemies (the stages' monsters are not in the dumps); floors needing a level above Wildbound's
     stand-in trainer cap (80) wait for the source's trainer-XP table.
+
+89. **R9 Pet Home rows (2026-11-04).** `scripts/import-pet-home.mjs` copies the source's `pet_home_cfg` numbers into
+    `tuning/pet-home.json` (it replaces the M13.1 generator's made-up numbers): the 17 Home levels' XP
+    (0 → 145,000, read as lifetime totals), tiles (6 → 21), merge caps (8 → 16), padlock Gems (20 → 100) and level
+    rewards (20 Gems at Lv 1–2, then 1–2 Rare Orb Chests); the summon ladder (50 free, then 10 / 30 / 100 / 200 / 500
+    Gems after 0 / 100 / 200 / 300 / 400 paid); merge income (Home Coin 2^level per 5 s, 2 → 65,536); and both shops
+    row for row (84 Home Exchange, 48 Orb Atelier). Every source shop row sells **one orb at a fixed level** (via
+    `item_eqm_compound_json` → orb item 750KC: kind K, quality C 2 green … 5 orange), priced in Home Coins
+    (61.5 M … 1 B) or Orb Essence (5,250 … 144,000), with its `home_lev` range; the ranges overlap, so a Home level
+    draws its page from every band that covers it (bands gain `maxLevel`). The Atelier opens at `orb_home_lev` 10.
+    A Rare Orb Chest (13001) rolls one +1 orb: a uniform kind, colour by weight 6000 / 2000 / 666 / 222. Readings:
+    the income step is the 5 seconds the M13.1 build already used (the source table has no period); `discount` is
+    shown as "% off" only. Kept ours: the board layout (the source gives only `box_amount` and `lock_num`; our
+    padlocks keep the M13.1 positions), names and the album. No save change (offer ids are per-day and reset).

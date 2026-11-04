@@ -61,6 +61,8 @@ export interface PetHomeLevelRule {
   mergeCap: number;
   unlockGems: number;
   reward: Rewards;
+  /** Rare Orb Chests in the level reward; the server rolls them. */
+  orbChests?: number;
 }
 
 export interface PetHomeTileRule {
@@ -81,7 +83,11 @@ export interface PetHomeOfferRule {
   name: string;
   description: string;
   price: number;
+  /** Price as a percent of full (display only). */
+  discount?: number;
   grants: Rewards;
+  /** One orb at a fixed level, granted by the server. */
+  orb?: { kind: string; colour: 'green' | 'blue' | 'purple' | 'orange' | 'red'; level: number };
 }
 
 export interface PetHomeShopRule {
@@ -94,7 +100,8 @@ export interface PetHomeShopRule {
     maxPerDay: number;
     costs: { afterRefreshes: number; gems: number }[];
   };
-  bands: { minLevel: number; offers: PetHomeOfferRule[] }[];
+  /** Bands may overlap; a Home level draws from every band whose range covers it. */
+  bands: { minLevel: number; maxLevel: number; offers: PetHomeOfferRule[] }[];
 }
 
 export interface PetHomeRules {
@@ -104,6 +111,7 @@ export interface PetHomeRules {
     tickSeconds: number;
     freeSummonsPerDay: number;
     summonCosts: { afterPaid: number; gems: number }[];
+    orbChest: { level: number; weights: Partial<Record<'green' | 'blue' | 'purple' | 'orange' | 'red', number>> };
   };
   levels: PetHomeLevelRule[];
   tiles: PetHomeTileRule[];
