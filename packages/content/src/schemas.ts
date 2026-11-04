@@ -712,6 +712,7 @@ export const rewardSchema = z
     boxShinySupreme: z.number().nonnegative().optional(),
     boxLD: z.number().nonnegative().optional(),
     preciousShard: z.number().nonnegative().optional(),
+    preciousGiftbox: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

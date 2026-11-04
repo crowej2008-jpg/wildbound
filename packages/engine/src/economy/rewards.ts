@@ -58,6 +58,8 @@ export interface Rewards {
   boxLD?: number;
   /** R9: Selectable Precious Shards (the Premium credit box; 50 make a Selectable Precious Giftbox). */
   preciousShard?: number;
+  /** R9: Selectable Precious Giftboxes (50 Precious Shards; open for 50 shards of a chosen Legendary). */
+  preciousGiftbox?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -112,6 +114,7 @@ export const CURRENCY_REWARD_KEYS = [
   'boxShinySupreme',
   'boxLD',
   'preciousShard',
+  'preciousGiftbox',
   'privilegeXp',
 ] as const;
 

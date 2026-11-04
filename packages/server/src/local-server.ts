@@ -111,6 +111,7 @@ import {
   type StageBattleResult,
   type SummonResult,
   type SupremeGiftResult,
+  type BagActionResult,
   type TowerBattleResult,
   type WorldBossBattleResult,
 } from './index';
@@ -233,6 +234,8 @@ import {
 import { activateTitleAction, buildTitlesView, grantTitleCards, setTitleSlotAction } from './titles';
 import { applyClaimBox, applyOpenSupremeGift, applySetWishFaction, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
+import type { Outcome } from './outcome';
+import { applyChooseBox, applyCompose, applyOpenBox, bagView as buildBagView, type BagResult, type BagView } from './bag';
 import {
   BACKUP_KEY,
   createInitialState,
@@ -808,6 +811,40 @@ export class LocalServer implements GameServer {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     return ok(buildGachaView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async getBag(): Promise<Result<BagView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildBagView(this.config, loaded.value));
+  }
+
+  private async commitBag(applied: Outcome<BagResult>): Promise<Result<BagActionResult>> {
+    if (!applied.ok) return fail(applied.error, applied.message);
+    const committed = await this.commit(applied.value.state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    const { draws, shards, boxes } = applied.value;
+    return ok({ draws, shards, boxes, snapshot: committed.value });
+  }
+
+  async composeBag(from: string, times: number, seed?: number): Promise<Result<BagActionResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const rng = typeof seed === 'number' ? mulberry32(seed) : this.config.rng;
+    return this.commitBag(applyCompose(this.config, loaded.value, from, times, this.now(loaded.value), rng));
+  }
+
+  async openBagBox(boxId: string, times: number, seed?: number): Promise<Result<BagActionResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const rng = typeof seed === 'number' ? mulberry32(seed) : this.config.rng;
+    return this.commitBag(applyOpenBox(this.config, loaded.value, boxId, times, this.now(loaded.value), rng));
+  }
+
+  async chooseBagBox(boxId: string, species: string): Promise<Result<BagActionResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commitBag(applyChooseBox(this.config, loaded.value, boxId, species, this.now(loaded.value)));
   }
 
   async buyShopItem(shopId: string, itemId: string): Promise<Result<ClaimResult>> {

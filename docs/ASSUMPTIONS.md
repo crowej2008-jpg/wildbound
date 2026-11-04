@@ -1042,3 +1042,17 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
       *What would change it:* the client's multi-draw panel or a CHEST_BUY num_type 3 journal line.
     - **Not copied:** the Supreme Gacha (chest 5, off at every VIP level), event gachas (M15), the full-bag refusal
       (no bag yet). Save v38 (reset).
+
+84. **R9 the Bag: generic Pokémon shards and Pokémon boxes (2026-11-04).** `scripts/import-bag.mjs` writes
+    `tuning/bag.json` from `item_compound_json` (3-Star Pokémon Shard ×40, 5-Star Pokémon Shard ×50, 4 Star Pokémon
+    Fragment ×50, Selectable Precious Shard ×50), `item_hero_json` (the 3★ / 5★ boxes, the 4★ chest, the Supreme,
+    Legendary and Shiny Supreme Random Boxes, the L & D Opt Box) and `item_use_json` 10503 (the Giftbox).
+    - A row `[1, hero, w]` gives the species at its first star; `[2, card, w]` that exact card's star (the kb's
+      open question "does a composed Pokémon arrive at its base star?" — the 5★ box's rows are 5★ cards, so yes for
+      those). Random boxes weigh by `w`; the L & D Opt Box lets the player pick.
+    - Composed random Pokémon boxes open themselves (kb, seen 2026-10-03); the Giftbox stays in the bag (seen
+      2026-10-04). Reward boxes (Tower, dungeons) stay until opened. 1 … 999 a press, as the source panel.
+    - **Left out (review):** the Giftbox's "20 Golden Egg Vouchers" choice — the Golden Egg is not built, so the
+      vouchers would have no use. *What would change it:* building the Golden Egg; the choice is one row in the
+      import script (`LEFT_OUT`).
+    - New currency `preciousGiftbox`; a fresh account's debug grant gives 1. Save v39 (reset).

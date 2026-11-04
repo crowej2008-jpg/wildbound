@@ -6,6 +6,7 @@ import {
   VIP,
   TOKENS,
   SIGN_IN,
+  BAG,
   FASHION,
   DAILY_DUNGEONS,
   TOWER,
@@ -61,6 +62,8 @@ import {
   type Faction,
   type GachaMachineDef,
   type GachaRow,
+  type BagRecipe,
+  type BoxDef,
   type MachineId,
   type SupremeGiftDef,
   type WishingWellDef,
@@ -158,6 +161,8 @@ export interface GameConfig {
   tokens: TokensJson;
   /** R9 Sign In (source sign_json). */
   signIn: SignInJson;
+  /** R9: the Bag's compose recipes and Pokémon boxes (species checked against the roster). */
+  bag: { recipes: BagRecipe[]; boxes: BoxDef[] };
   /** R8 Mount / Back Decor / Follower / Outfits (curve and piece stats made up). */
   fashion: FashionJson;
   /** R9 daily dungeons (source dun_basic_json). */
@@ -186,6 +191,20 @@ function buildGacha(species: Map<string, SpeciesMeta>): GameConfig['gacha'] {
     return machine as GachaMachineDef;
   });
   return { machines, pools, wishingWell: GACHA.wishingWell, supremeGift: GACHA.supremeGift };
+}
+
+/** R9: the Bag tables, every box row's species checked against the roster. */
+function buildBag(species: Map<string, SpeciesMeta>): GameConfig['bag'] {
+  for (const box of BAG.boxes) {
+    for (const row of box.rows) {
+      const meta = species.get(row.species);
+      if (!meta) throw new Error(`bag box ${box.id}: unknown species "${row.species}"`);
+      if (row.star !== null && !meta.stars.some((c) => c.star === row.star)) {
+        throw new Error(`bag box ${box.id}: ${row.species} has no ${row.star}★`);
+      }
+    }
+  }
+  return { recipes: BAG.recipes, boxes: BAG.boxes };
 }
 
 /** Build the runtime config from the validated content exports. */
@@ -246,6 +265,7 @@ export function buildConfig(): GameConfig {
     vip: VIP,
     tokens: TOKENS,
     signIn: SIGN_IN,
+    bag: buildBag(species),
     fashion: FASHION,
     dailyDungeons: DAILY_DUNGEONS,
     tower: TOWER,

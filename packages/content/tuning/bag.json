@@ -1,0 +1,633 @@
+{
+  "_note": "R9: copied from the source by scripts/import-bag.mjs (item_compound_json, item_hero_json, item_use_json 10503; kb/pokemon-growth.md). A random box row with star null gives the species at its first star; chooseShards rows give `weight` shards of the chosen species.",
+  "recipes": [
+    {
+      "from": "pokemonShard3",
+      "count": 40,
+      "box": "box3Star"
+    },
+    {
+      "from": "pokemonShard5",
+      "count": 50,
+      "box": "box5Star"
+    },
+    {
+      "from": "pokemonShard4",
+      "count": 50,
+      "box": "chest4Star"
+    },
+    {
+      "from": "preciousShard",
+      "count": 50,
+      "box": "preciousGiftbox"
+    }
+  ],
+  "boxes": [
+    {
+      "id": "box3Star",
+      "kind": "random",
+      "autoOpen": true,
+      "rows": [
+        {
+          "species": "poliwag",
+          "star": null,
+          "weight": 100
+        },
+        {
+          "species": "abra",
+          "star": null,
+          "weight": 100
+        },
+        {
+          "species": "oddish",
+          "star": null,
+          "weight": 100
+        },
+        {
+          "species": "slowpoke",
+          "star": null,
+          "weight": 100
+        },
+        {
+          "species": "starmie",
+          "star": null,
+          "weight": 40
+        },
+        {
+          "species": "onix",
+          "star": null,
+          "weight": 100
+        },
+        {
+          "species": "scyther",
+          "star": null,
+          "weight": 100
+        },
+        {
+          "species": "growlithe",
+          "star": null,
+          "weight": 100
+        },
+        {
+          "species": "togepi",
+          "star": null,
+          "weight": 100
+        },
+        {
+          "species": "ninetales",
+          "star": null,
+          "weight": 40
+        },
+        {
+          "species": "raichu",
+          "star": null,
+          "weight": 40
+        },
+        {
+          "species": "blastoise",
+          "star": null,
+          "weight": 40
+        },
+        {
+          "species": "venusaur",
+          "star": null,
+          "weight": 40
+        },
+        {
+          "species": "charizard",
+          "star": null,
+          "weight": 40
+        }
+      ]
+    },
+    {
+      "id": "box5Star",
+      "kind": "random",
+      "autoOpen": true,
+      "rows": [
+        {
+          "species": "poliwag",
+          "star": 5,
+          "weight": 5000
+        },
+        {
+          "species": "abra",
+          "star": 5,
+          "weight": 5000
+        },
+        {
+          "species": "oddish",
+          "star": 5,
+          "weight": 5000
+        },
+        {
+          "species": "slowpoke",
+          "star": 5,
+          "weight": 5000
+        },
+        {
+          "species": "starmie",
+          "star": 5,
+          "weight": 7776
+        },
+        {
+          "species": "onix",
+          "star": 5,
+          "weight": 5000
+        },
+        {
+          "species": "scyther",
+          "star": 5,
+          "weight": 5000
+        },
+        {
+          "species": "growlithe",
+          "star": 5,
+          "weight": 5000
+        },
+        {
+          "species": "togepi",
+          "star": 5,
+          "weight": 5000
+        },
+        {
+          "species": "ninetales",
+          "star": 5,
+          "weight": 7776
+        },
+        {
+          "species": "raichu",
+          "star": 5,
+          "weight": 7776
+        },
+        {
+          "species": "charizard",
+          "star": 5,
+          "weight": 7776
+        },
+        {
+          "species": "blastoise",
+          "star": 5,
+          "weight": 7776
+        },
+        {
+          "species": "venusaur",
+          "star": 5,
+          "weight": 7776
+        },
+        {
+          "species": "metagross",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "garchomp",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "hydreigon",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "swampert",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "sceptile",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "typhlosion",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "feraligatr",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "meganium",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "dragonite",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "tyranitar",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "gyarados",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "gardevoir",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "gengar",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "blaziken",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "slaking",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "salamence",
+          "star": 5,
+          "weight": 1000
+        },
+        {
+          "species": "raikou",
+          "star": 5,
+          "weight": 666
+        },
+        {
+          "species": "entei",
+          "star": 5,
+          "weight": 666
+        },
+        {
+          "species": "suicune",
+          "star": 5,
+          "weight": 666
+        },
+        {
+          "species": "zapdos",
+          "star": 5,
+          "weight": 666
+        },
+        {
+          "species": "moltres",
+          "star": 5,
+          "weight": 666
+        },
+        {
+          "species": "articuno",
+          "star": 5,
+          "weight": 666
+        }
+      ]
+    },
+    {
+      "id": "chest4Star",
+      "kind": "random",
+      "autoOpen": true,
+      "rows": [
+        {
+          "species": "blastoise",
+          "star": 4,
+          "weight": 100
+        },
+        {
+          "species": "starmie",
+          "star": 4,
+          "weight": 100
+        },
+        {
+          "species": "charizard",
+          "star": 4,
+          "weight": 100
+        },
+        {
+          "species": "ninetales",
+          "star": 4,
+          "weight": 100
+        },
+        {
+          "species": "raichu",
+          "star": 4,
+          "weight": 100
+        },
+        {
+          "species": "venusaur",
+          "star": 4,
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "id": "boxSupreme",
+      "kind": "random",
+      "autoOpen": false,
+      "rows": [
+        {
+          "species": "wobbuffet",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "mimikyu",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "psyduck",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "lugia",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "rayquaza",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "groudon",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "ho-oh",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "celebi",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "manaphy",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "greninja",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "infernape",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "god-ash-pikachu",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "shaymin",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "victini",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "keldeo",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "dialga",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "palkia",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "giratina",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "zygarde",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "xerneas",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "yveltal",
+          "star": null,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "boxLegendary",
+      "kind": "random",
+      "autoOpen": false,
+      "rows": [
+        {
+          "species": "zapdos",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "moltres",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "articuno",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "raikou",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "entei",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "suicune",
+          "star": null,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "boxShinySupreme",
+      "kind": "random",
+      "autoOpen": false,
+      "rows": [
+        {
+          "species": "shiny-god-ash-pikachu",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "shiny-charizard",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "shiny-raichu",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "shiny-gengar",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "shiny-blastoise",
+          "star": null,
+          "weight": 10
+        },
+        {
+          "species": "shiny-venusaur",
+          "star": null,
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "boxLD",
+      "kind": "chooseSpecies",
+      "autoOpen": false,
+      "rows": [
+        {
+          "species": "mew",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "mewtwo",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "kyogre",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "deoxys",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "darkrai",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "cresselia",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "snorlax",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "black-kyurem",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "meloetta",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "jirachi",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "hoopa",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "arceus",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "solgaleo",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "lunala",
+          "star": null,
+          "weight": 1
+        },
+        {
+          "species": "wind-god-pidgeot",
+          "star": null,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "preciousGiftbox",
+      "kind": "chooseShards",
+      "autoOpen": false,
+      "rows": [
+        {
+          "species": "raikou",
+          "star": null,
+          "weight": 50
+        },
+        {
+          "species": "entei",
+          "star": null,
+          "weight": 50
+        },
+        {
+          "species": "suicune",
+          "star": null,
+          "weight": 50
+        },
+        {
+          "species": "zapdos",
+          "star": null,
+          "weight": 50
+        },
+        {
+          "species": "moltres",
+          "star": null,
+          "weight": 50
+        },
+        {
+          "species": "articuno",
+          "star": null,
+          "weight": 50
+        }
+      ]
+    }
+  ]
+}

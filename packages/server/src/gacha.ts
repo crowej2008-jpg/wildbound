@@ -57,8 +57,8 @@ export function refillGacha(machines: readonly GachaMachineDef[], gacha: GachaSt
   return { ...gacha, day, machines: next };
 }
 
-/** Add drawn Pokémon to the roster at their drawn star; the first sighting of a species is "new". */
-function grantDraws(
+/** Add drawn Pokémon to the roster at their drawn star; the first sighting of a species is "new". Shared with the Bag. */
+export function grantDraws(
   state: AccountState,
   draws: readonly Omit<DrawResult, 'isNew'>[],
   now: number,

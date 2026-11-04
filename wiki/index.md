@@ -10,8 +10,8 @@ updated: 2026-11-04
 [open questions](open-questions.md).** How the wiki is maintained: `AGENTS.md` › "Project wiki".
 Recent changes: [log](log.md).
 
-**Now:** the [source retrofit](milestones/source-retrofit.md) R9 (save v38): dailies, sign-in, dungeons, Tower, World Boss,
-summon-pool Pokémon and summoning done; next the Pokémon Shards and boxes, shops, Arena / Ranked rewards, Campaign,
+**Now:** the [source retrofit](milestones/source-retrofit.md) R9: dailies, sign-in, dungeons, Tower, World Boss,
+summon-pool Pokémon, summoning and the Bag done (save v39); next shops, Arena / Ranked rewards, Campaign,
 Pet Home and Sky Pillar rows; then R10 and M13.3 [Hoopa's Vault](systems/hoopa-vault.md).
 
 ## Start here

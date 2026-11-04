@@ -66,6 +66,7 @@ export const en = {
   'currency.boxShinySupreme': 'Shiny Supreme Random Boxes',
   'currency.boxLD': 'L & D Opt Boxes',
   'currency.preciousShard': 'Selectable Precious Shards',
+  'currency.preciousGiftbox': 'Selectable Precious Giftboxes',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -625,6 +626,28 @@ export const en = {
   'summon.group.mythic': 'Mythic Pokémons',
   'summon.results': 'Results',
   'summon.history': 'Recent draws',
+  'home.link.bag': 'Bag',
+  'bag.title': 'Bag',
+  'bag.subtitle': 'Compose generic Pokémon shards into boxes and open your Pokémon boxes.',
+  'bag.compose': 'Compose',
+  'bag.make1': 'Make 1',
+  'bag.makeAll': 'Make all',
+  'bag.autoOpen': 'Opens by itself when composed: one random Pokémon.',
+  'bag.random': 'Open for one random Pokémon from the list.',
+  'bag.choose': 'Open and choose what you get.',
+  'bag.open': 'Open 1',
+  'bag.openAll': 'Open all',
+  'bag.pick': 'Choose',
+  'bag.contents': 'Contents',
+  'bag.shards': 'Shards',
+  'bag.box.box3Star': '3-Star Pokémon Box',
+  'bag.box.box5Star': '5-Star Pokémon Box',
+  'bag.box.chest4Star': '4 Star Pokémon Chest',
+  'bag.box.boxSupreme': 'Supreme Random Box',
+  'bag.box.boxLegendary': 'Legendary Random Box',
+  'bag.box.boxShinySupreme': 'Shiny Supreme Random Box',
+  'bag.box.boxLD': 'L & D Opt Box',
+  'bag.box.preciousGiftbox': 'Selectable Precious Giftbox',
   'summon.historyEmpty': 'No draws yet.',
   'summon.new': 'NEW',
   'summon.noCost': 'Not enough tickets or gems for that draw.',
@@ -1049,6 +1072,7 @@ export type CurrencyKey =
   | 'boxShinySupreme'
   | 'boxLD'
   | 'preciousShard'
+  | 'preciousGiftbox'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1101,6 +1125,7 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   boxShinySupreme: en['currency.boxShinySupreme'],
   boxLD: en['currency.boxLD'],
   preciousShard: en['currency.preciousShard'],
+  preciousGiftbox: en['currency.preciousGiftbox'],
   privilegeXp: en['currency.privilegeXp'],
 };
 

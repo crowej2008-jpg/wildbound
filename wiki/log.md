@@ -238,3 +238,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - The source's Common and Premium Gachas (prices, free timers, credit boxes, shown odds), the Wishing Well and the
   Supreme Gift replace the M6 pity / guarantee / species wish (ASSUMPTIONS #83, save v38). Plus-draw size is a
   stand-in on the new review list. Next: Pokémon Shards and boxes.
+
+## [2026-11-04] update | R9 the Bag
+- Generic Pokémon shards compose into the source's boxes; reward boxes open (ASSUMPTIONS #84, save v39). The Giftbox's
+  Golden Egg Voucher choice is on the review list. Next: shops.

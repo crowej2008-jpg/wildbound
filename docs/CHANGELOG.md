@@ -1316,3 +1316,10 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   wish removed). Server `setWish` → `setWishFaction`, new `openSupremeGift`. Draws grant at the drawn star. New
   currency `preciousShard`. Summon screen: groups and per-row rates, the Premium ×20 … ×50 ticket draws, Wishing
   Well, Supreme Gift. Save v38. ASSUMPTIONS #83.
+
+## R9 part 9 — the Bag: Pokémon shards and boxes (2026-11-04)
+
+- `scripts/import-bag.mjs` → `packages/content/tuning/bag.json`: the source's four compose recipes and eight Pokémon
+  boxes. Engine `bag/` (compose counts, weighted box rolls, choice rows); server `getBag`, `composeBag`,
+  `openBagBox`, `chooseBagBox`; a Bag screen from Home. The 3★ / 5★ / 4★ shards, the Tower's and dungeons' reward
+  boxes and the Premium box's Precious Shards now have their source uses. Save v39. ASSUMPTIONS #84.

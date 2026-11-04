@@ -23,6 +23,13 @@ sources: [docs/design/gacha.md, docs/design/shops.md, docs/ASSUMPTIONS.md #83, r
   from VIP 14.
 - Not copied: the Supreme Gacha (off in the source), event gachas (M15), the full-bag refusal.
 
+## Bag (R9, 2026-11-04, save v39)
+- Generic shards compose into boxes (source recipes): 3-Star Pokémon Shard ×40, 5-Star ×50, 4 Star Fragment ×50 make
+  random Pokémon boxes that open at once; Selectable Precious Shard ×50 makes a Giftbox (choose 50 shards of one
+  Legendary bird or beast; the Golden Egg Voucher choice is left out until the Golden Egg exists).
+- Reward boxes open from the Bag: Supreme / Legendary / Shiny Supreme Random Boxes, the L & D Opt Box (choose).
+- Design: `docs/design/bag.md`; ASSUMPTIONS #84.
+
 ## Shops (M6 — R9 re-copy pending)
 - Six shops with restock schedules (daily hours / interval days / manual), buy limits, one-time items,
   manual refresh counters. VIP gives a shop discount.

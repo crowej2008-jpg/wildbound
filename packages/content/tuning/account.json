@@ -47,6 +47,7 @@
     "boxShinySupreme": 0,
     "boxLD": 0,
     "preciousShard": 0,
+    "preciousGiftbox": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -104,6 +105,7 @@
     "boxShinySupreme": 5,
     "boxLD": 5,
     "preciousShard": 50,
+    "preciousGiftbox": 1,
     "privilegeXp": 300
   }
 }

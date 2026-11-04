@@ -25,6 +25,7 @@ Readings taken without the owner (owner rules, 2026-11-01); each is in `docs/ASS
 |---|---|---|
 | 2026-11-04 | Premium "plus" multi-draw sold as ×20, ×30, ×40, ×50 on tickets — the source has it but its size isn't recorded | ASSUMPTIONS #83 |
 | 2026-11-04 | Gacha odds are the ones the source shows (its server's real odds aren't in the dumps) | ASSUMPTIONS #83 |
+| 2026-11-04 | The Giftbox's "20 Golden Egg Vouchers" choice is left out — no Golden Egg in Wildbound yet | ASSUMPTIONS #84 |
 
 ## Source tables still missing (stand-ins in use)
 - Pokémon level-up candy/gold per level, trainer-level XP, per-species milestone stats

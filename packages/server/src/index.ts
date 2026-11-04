@@ -12,6 +12,7 @@ import type {
   TitleSlot, OrbColour, DungeonGrade, TowerKind } from '@wildbound/engine';
 import type { BattleView } from './battle';
 import type { GachaView } from './gacha';
+import type { BagView } from './bag';
 import type { ShopView } from './shops';
 import type { OriginSkillsView } from './shards';
 import type { PotentialView } from './potential';
@@ -126,6 +127,14 @@ export interface SummonResult {
 /** A Supreme Gift opened (R9). */
 export interface SupremeGiftResult {
   draw: DrawResult;
+  snapshot: AccountSnapshot;
+}
+
+/** A Bag compose or box opened (R9): Pokémon, species shards and boxes kept in the bag. */
+export interface BagActionResult {
+  draws: DrawResult[];
+  shards: Record<string, number>;
+  boxes: Record<string, number>;
   snapshot: AccountSnapshot;
 }
 
@@ -288,6 +297,14 @@ export interface GameServer {
   openSupremeGift(seed?: number): Promise<Result<SupremeGiftResult>>;
   /** Display-ready summoning state: free draws, credits, Wishing Well, Supreme Gift, rates (R9). */
   getGacha(): Promise<Result<GachaView>>;
+  /** The Bag: what generic shards can make and every Pokémon box's contents (R9). */
+  getBag(): Promise<Result<BagView>>;
+  /** Compose `times` boxes from generic shards; a random Pokémon box opens itself (R9). */
+  composeBag(from: string, times: number, seed?: number): Promise<Result<BagActionResult>>;
+  /** Open `times` random Pokémon boxes held in the bag (R9). */
+  openBagBox(boxId: string, times: number, seed?: number): Promise<Result<BagActionResult>>;
+  /** Open one choice box for a chosen species (R9). */
+  chooseBagBox(boxId: string, species: string): Promise<Result<BagActionResult>>;
   /** Buy one item from a shop, restocking first if the window has rolled (M6). */
   buyShopItem(shopId: string, itemId: string): Promise<Result<ClaimResult>>;
   /** Pay a manual shop's refresh cost to reset its stock (M6). */
@@ -489,6 +506,7 @@ export * from './battle';
 export * from './economy';
 export * from './outcome';
 export * from './gacha';
+export * from './bag';
 export * from './shops';
 export * from './equipment';
 export * from './equipment-view';

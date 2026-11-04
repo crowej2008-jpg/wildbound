@@ -11,6 +11,7 @@ export * from './campaign';
 export * from './economy';
 export * from './daily';
 export * from './gacha';
+export * from './bag';
 export * from './shop';
 export * from './pve';
 export * from './explore';

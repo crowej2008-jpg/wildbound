@@ -16,7 +16,8 @@ Status:
 - M4: `battle-ui.md` (event-log replay reducer, battle setup/seed, the `/combat` screen, playback).
 - M5: `pve.md` (campaign ladder, idle income, daily quests/mail, tutorial, debug clock) and
   `balance.md` (the authored campaign difficulty curve and how the starter roster clears it).
-- M6: `gacha.md` (machines, pity, wish, boxes) and `shops.md` (restock schedules, limits).
+- M6: `gacha.md` (R9: the source gachas, Wishing Well, Supreme Gift) and `shops.md` (restock schedules, limits).
+- R9: `bag.md` (generic Pokémon shards, compose recipes, Pokémon boxes).
 - M7: `equipment.md` (relics, rune sockets/sets, charms, spirit cores, talents, loadouts).
 - M8: `pve-modes.md` (Tower, Trials, World Boss, Daily Dungeons, the Link Crystal, `BattleRules`).
 - 2026-10-15 content override: `roster-import.md` (the owner-override roster import — attribute→faction,
