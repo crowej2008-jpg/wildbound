@@ -1018,3 +1018,27 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     the engine talent `lethalHits` (every direct hit is fatal through shields, invulnerability and endure; damage
     over time and reflects are not hits; the undying World Boss is still held at 1 HP), and no player-facing text
     mentions it. *What would change it:* the source's hero rows for these 14.
+
+83. **R9 summoning from the source (2026-11-04).** `scripts/import-gacha.mjs` writes `tuning/gacha.json` from
+    `chest_basic_json` 1 / 2, `chest_reward_json` 1 / 2, `chest_score_json`, `item_hero_json` 10502 and `vip_priv_json`
+    (chest_score); the rules the tables leave out come from `kb/gacha.md` (journal-checked 2026-10-04). Replaces the
+    M6 design: no pity, no ten-draw guarantee, no species wish, no tier rates — the source has none of them.
+    - **Odds:** the pools' `fake_weight` (the odds the source *shows*); the server's own odds are not in the dumps.
+      A draw grants the Pokémon at the row's star (a 1★ Caterpie, a 5★ Lugia). Duplicates are fresh copies, as
+      before (the source's draws do the same; they feed star-up and Potential).
+    - **Prices:** Common — C.Gacha Voucher ×1 / ×10, no gem price; Premium — Premium GV ×1 / ×10 or 180 / 1,620 gems.
+      Single draws take a free draw, then a ticket, then gems; ten-draws take 10 tickets, then gems.
+    - **Free draws:** 5 a day on a 5-minute timer (Common), 1 a day on a 24-hour timer (Premium); the daily refill
+      keeps the running timer.
+    - **Credit boxes:** +1 a draw on both; Common 100 → 5-Star Pokémon Shard ×50, Premium 20 → Selectable Precious
+      Shard ×5 (new currency `preciousShard`; its Giftbox use comes with the shard-and-box step). Boxes repeat; a
+      claim spends the credits.
+    - **Wishing Well:** after 200 lifetime Premium draws; Water / Fire / Grass Legendary rows weigh × 1.8 (the text's
+      +80 %; whether the server really applies it is an open kb question). Light / Dark are not offered.
+    - **Supreme Gift:** +20 VIP credits a Premium draw, +1 a Common draw; 1,000 open one of the 27 `item_hero` 10502
+      Pokémon at equal weight, at its first star, from VIP 14 (the client's gate; the box text says "SVIP15").
+    - **Stand-in (review):** the Premium "plus" multi-draw (CHEST_BUY num_type 3, tickets only) exists in the source
+      but its size is not recorded anywhere in `reference/`. Wildbound sells ×20, ×30, ×40 and ×50 on tickets.
+      *What would change it:* the client's multi-draw panel or a CHEST_BUY num_type 3 journal line.
+    - **Not copied:** the Supreme Gacha (chest 5, off at every VIP level), event gachas (M15), the full-bag refusal
+      (no bag yet). Save v38 (reset).

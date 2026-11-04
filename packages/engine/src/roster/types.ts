@@ -102,6 +102,7 @@ export type CurrencyId =
   | 'boxLegendary'
   | 'boxShinySupreme'
   | 'boxLD'
+  | 'preciousShard'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -154,6 +155,7 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'boxLegendary',
   'boxShinySupreme',
   'boxLD',
+  'preciousShard',
   'privilegeXp',
 ];
 
@@ -194,6 +196,7 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'boxLegendary',
   'boxShinySupreme',
   'boxLD',
+  'preciousShard',
   'privilegeXp',
 ];
 

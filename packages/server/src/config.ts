@@ -60,6 +60,10 @@ import {
   type RelicDef,
   type Faction,
   type GachaMachineDef,
+  type GachaRow,
+  type MachineId,
+  type SupremeGiftDef,
+  type WishingWellDef,
   type PowerWeights,
   type ProgressTables,
   type QuestDef,
@@ -130,7 +134,13 @@ export interface GameConfig {
   /** M13.2: Sky Pillar floors, stages, star conditions and proofs. */
   skyPillar: SkyPillarJson;
   quests: QuestDef[];
-  gacha: { machines: GachaMachineDef[] };
+  /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
+  gacha: {
+    machines: GachaMachineDef[];
+    pools: Record<MachineId, GachaRow[]>;
+    wishingWell: WishingWellDef;
+    supremeGift: SupremeGiftDef;
+  };
   shops: ShopDef[];
   economy: EconomyJson;
   /** M7 equipment catalogue + tuning. */
@@ -162,6 +172,20 @@ export interface GameConfig {
   idle: IdleConfig;
   now: () => number;
   rng: Rng;
+}
+
+/** R9: the gacha tables with every pool row tagged by its species' faction and tier. */
+function buildGacha(species: Map<string, SpeciesMeta>): GameConfig['gacha'] {
+  const pools = {} as Record<MachineId, GachaRow[]>;
+  const machines = GACHA.machines.map(({ pool, ...machine }) => {
+    pools[machine.id] = pool.map((row) => {
+      const meta = species.get(row.species);
+      if (!meta) throw new Error(`gacha pool ${machine.id}: unknown species "${row.species}"`);
+      return { speciesId: row.species, star: row.star, weight: row.weight, group: row.group, faction: meta.faction, tier: meta.tier };
+    });
+    return machine as GachaMachineDef;
+  });
+  return { machines, pools, wishingWell: GACHA.wishingWell, supremeGift: GACHA.supremeGift };
 }
 
 /** Build the runtime config from the validated content exports. */
@@ -202,7 +226,7 @@ export function buildConfig(): GameConfig {
     petHome: PET_HOME,
     skyPillar: SKY_PILLAR,
     quests: QUESTS,
-    gacha: { machines: GACHA.machines as unknown as GachaMachineDef[] },
+    gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],
     economy: ECONOMY,
     potential: POTENTIAL as unknown as PotentialTable,

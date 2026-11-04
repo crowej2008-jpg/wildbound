@@ -72,6 +72,7 @@ import {
   type AccountState,
   type CurrencyId,
   type MachineId,
+  type Faction,
   type QuestMetric,
   type Rewards,
   type StageDef,
@@ -109,6 +110,7 @@ import {
   type SkyPillarSweepResult,
   type StageBattleResult,
   type SummonResult,
+  type SupremeGiftResult,
   type TowerBattleResult,
   type WorldBossBattleResult,
 } from './index';
@@ -229,7 +231,7 @@ import {
   type SignInView,
 } from './signin';
 import { activateTitleAction, buildTitlesView, grantTitleCards, setTitleSlotAction } from './titles';
-import { applyClaimBox, applySetWish, applySummon, gachaView as buildGachaView } from './gacha';
+import { applyClaimBox, applyOpenSupremeGift, applySetWishFaction, applySummon, gachaView as buildGachaView } from './gacha';
 import { applyBuy, applyRefresh, shopsView as buildShopsView } from './shops';
 import {
   BACKUP_KEY,
@@ -783,12 +785,23 @@ export class LocalServer implements GameServer {
     return this.commitClaim(applied.value.state, applied.value.granted);
   }
 
-  async setWish(speciesId: string | null): Promise<Result<AccountSnapshot>> {
+  async setWishFaction(faction: Faction | null): Promise<Result<AccountSnapshot>> {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
-    const applied = applySetWish(this.config, loaded.value, speciesId, this.now(loaded.value));
+    const applied = applySetWishFaction(this.config, loaded.value, faction, this.now(loaded.value));
     if (!applied.ok) return fail(applied.error, applied.message);
     return this.commit(applied.value.state);
+  }
+
+  async openSupremeGift(seed?: number): Promise<Result<SupremeGiftResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const rng = typeof seed === 'number' ? mulberry32(seed) : this.config.rng;
+    const applied = applyOpenSupremeGift(this.config, loaded.value, this.now(loaded.value), rng);
+    if (!applied.ok) return fail(applied.error, applied.message);
+    const committed = await this.commit(applied.value.state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ draw: applied.value.draw, snapshot: committed.value });
   }
 
   async getGacha(): Promise<Result<GachaView>> {

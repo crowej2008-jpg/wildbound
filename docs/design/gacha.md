@@ -1,85 +1,68 @@
-# Summoning (gacha) — M6
+# Summoning (gacha) — R9, copied from the source
 
-Read before editing `packages/engine/src/gacha`, the summoning logic in `packages/server`, the
-`packages/content/tuning/gacha.json` table, or the client's Summon screen.
+Read before editing `packages/engine/src/gacha`, `packages/server/src/gacha.ts`,
+`packages/content/tuning/gacha.json` (written by `scripts/import-gacha.mjs`) or the Summon screen.
+Replaces the M6 design (pity, ten-draw guarantee, species wish, tier rates — none of them are in
+the source). Source: `chest_basic_json`, `chest_reward_json`, `chest_score_json`, `item_hero_json`
+10502, `vip_priv_json` chest_score; rules the tables leave out from `kb/gacha.md` (journal-checked
+2026-10-04). Readings: ASSUMPTIONS #83.
 
-Covers PROMPT §7.5 (summoning), §8 (Summon screen), §13 (M6). Reference read:
-`reference/game-rebuild/kb/gacha.md` (shapes only; every number here is our own).
+## Two gachas
 
-## Goal
-
-Two deterministic, seeded summoning machines with **exact** pity and guarantee rules, real
-probabilities shown in the UI, a featured-target *wish*, a per-machine credit box, history, and a
-draw animation.
-
-## Two machines (PROMPT §7.5)
-
-| | Common | Premium |
+| | Common Gacha (chest 1) | Premium Gacha (chest 2) |
 |---|---|---|
-| Ticket | `ticketCommon` ×1 (×10 for a ten-draw) | `ticketPremium` ×1 (×10) |
-| Gem fallback | none | 180 a draw / 1,620 a ten-draw |
-| Free draws | 5 a day (5 min cooldown) | 1 a day (24 h cooldown) |
-| Credits per draw | 1 | 20 |
-| Credit box | every 100 credits | every 20 draws (400 credits) |
-| Pity | — | 1,000 credits ⇒ guaranteed Legendary+ |
-| Wish | no | yes |
-| Ten-draw guarantee | one Rare-or-better | one Rare-or-better |
+| Ticket | C.Gacha Voucher (`ticketCommon`) ×1 / ×10 | Premium GV (`ticketPremium`) ×1 / ×10 |
+| Gems | none | 180 a draw / 1,620 a ten-draw |
+| Multi-draw | ×10 | ×10, and ×20 … ×50 on tickets only (the "plus" multi) |
+| Free draws | 5 a day, 5-minute timer | 1 a day, 24-hour timer |
+| Box credits | 1 a draw; 100 → 5-Star Pokémon Shard ×50 | 1 a draw; 20 → Selectable Precious Shard ×5 |
+| VIP credits | +1 a draw | +20 a draw |
+| Pool | 30 rows | 116 rows |
 
-Price rule: a **single** draw spends a free draw while one is left and off cooldown, else a ticket,
-else gems (Premium only). A **ten-draw** spends 10 tickets, else gems (Premium only). This is decided
-on the server; the client only asks for a machine and a count.
+Price pick (the source client's own): a single draw takes a free draw while one is left and its
+timer has run, else a ticket, else gems; a ten-draw takes 10 tickets, else gems. The daily reset
+refills the free draws but **keeps the running timer**, so a late free Premium draw can cost a day.
+Boxes repeat; a claim spends the box's credits.
 
-### Credits, boxes and pity
+## Pools and odds
 
-Every draw adds `creditPerDraw` to the machine's `boxCredits`. A box is claimable while
-`boxCredits ≥ boxCreditsNeeded`; claiming spends exactly that many credits and grants the machine's
-box reward, and repeats. The Premium machine also adds `creditPerDraw` to `pityCredits`; when that
-reaches `pityThreshold` (1,000) the draw itself is forced to **Legendary-or-better** and `pityCredits`
-resets to 0. Any *natural* Legendary-or-better draw also resets `pityCredits` to 0.
+Each pool row is a Pokémon at a star (the source's card id: hero × 10,000 + form × 100 + star) with a
+weight in parts per million and a display group (Other / Epic / Legendary / Supreme / Mythic). A draw
+picks one row by weight and grants that Pokémon **at the row's star** (a 1★ Caterpie, a 4★
+Poliwhirl, a 5★ Lugia). The weights are the odds the source *shows* (`fake_weight`); its server's own
+odds are not in the dumps, so Wildbound uses the shown ones. The rates sheet lists every row and the
+group totals. No pity and no ten-draw guarantee — the source has neither.
 
-This follows PROMPT §7.5's literal numbers. The reference audit describes the same feature as a
-"+1 box credit per draw" with a separate "VIP credit" of 20 (see `docs/ASSUMPTIONS.md`); we keep the
-master prompt's numbers and note the difference.
+## Wishing Well (Premium)
 
-## Rates (our own numbers)
+Unlocks after 200 Premium draws in total. The player picks Water, Fire or Grass (or none); that
+faction's Legendary rows weigh × 1.8 (+80 %). Light and Dark Legendaries are not affected (and
+none are in the Premium pool).
 
-Rates live in `packages/content/tuning/gacha.json` as per-**tier** weights. Within a tier every Wild
-of that tier is equally likely, except a wished Wild, whose weight is multiplied by `wishBoost`.
+## Supreme Gift (VIP credit box)
 
-Tier order (`common < rare < epic < legendary < supreme < mythic`) drives the guarantees. The pool is
-built from the content species and their tiers, so the real per-species probability is
-`tierWeight / totalWeight / tierCount`. The UI prints exactly that.
+Every draw adds VIP credits (Premium 20, Common 1), account-wide. 1,000 open a Supreme Gift from VIP
+14 (`vip_priv` chest_score; the box's own text says "SVIP15" — the client's gate is used): one of 27
+Legendary and Supreme Pokémon at equal weight, at its first star. Repeats.
 
-## Pool & duplicates
+## Not copied
 
-A draw grants a fresh `WildInstance` (level 1, 1★, stage 0) exactly like the debug `grantWild`, so a
-duplicate species becomes a second instance. A result is marked **new** when the species was not in the
-roster before the draw. (The reference converts duplicates to shards; we allow duplicate instances and
-note it in `docs/ASSUMPTIONS.md` — shard conversion can arrive with the equipment layers.)
+- The Supreme Gacha (chest 5) — off in the source (no VIP level opens it).
+- Event gachas (themed pools, their own tickets) — events arrive with M15.
+- The full-bag refusal (result 415) — the Pokémon bag is not built yet.
 
-## Wish
+## State (save v38)
 
-The Premium machine stores one `wishedSpeciesId` (or none). It is applied inside its tier only: if the
-rolled tier contains the wished species, that species' weight is `wishBoost` instead of 1. PROMPT
-describes a *Wild* target; the reference targets a *faction* — we implement the prompt's Wild target.
-
-## State & determinism
-
-`AccountState.gacha` (save v3) holds per-machine `{ freeRemaining, nextFreeAt, boxCredits, pityCredits,
-lifetimeDraws }`, the wish, the UTC day key for the free-draw refill, and a 50-entry history. All
-randomness flows through an injected `Rng`; `summon(machine, count, seed?)` uses `mulberry32(seed)`
-when a seed is given, else the server's stream, so tests can pin outcomes.
+`AccountState.gacha`: `{ day, machines: { common, premium: { freeRemaining, nextFreeAt, boxCredits,
+lifetimeDraws } }, vipCredits, wishFaction, history[50] }`; history rows carry the star and the source
+(`common` / `premium` / `supremeGift`).
 
 ## Server methods
 
 | Method | Effect |
 |---|---|
-| `summon(machine, count, seed?)` | Validate cost, spend free draws/tickets/gems, roll, grant instances, update credits/history |
-| `claimGachaBox(machine)` | Spend `boxCreditsNeeded` credits, grant the box reward (repeatable) |
-| `setWish(speciesId \| null)` | Set/clear the Premium wish |
-
-## Done criterion (M6)
-
-Unit tests prove: pity fires at the exact credit count; the ten-draw guarantee always yields a
-Rare-or-better; credits/box accounting adds correctly; the cost fallback (free → ticket → gems) is
-exact; and a seeded draw set is reproducible.
+| `summon(machine, count, seed?)` | Price, spend, draw, grant at the drawn star, add box and VIP credits |
+| `claimGachaBox(machine)` | Spend the box's credits, grant its reward (repeatable) |
+| `setWishFaction(faction \| null)` | Set or clear the Wishing Well (unlocked, Water / Fire / Grass) |
+| `openSupremeGift(seed?)` | VIP 14+ and 1,000 VIP credits → one Legendary / Supreme Pokémon |
+| `getGacha()` | View: machines, rates, Wishing Well, Supreme Gift, history |

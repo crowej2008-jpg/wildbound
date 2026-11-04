@@ -1,6 +1,7 @@
 import type {
   AccountState,
   DrawResult,
+  Faction,
   MachineId,
   Rewards,
   Squad,
@@ -119,6 +120,12 @@ export interface SummonResult {
   count: number;
   draws: DrawResult[];
   cost: SummonCost;
+  snapshot: AccountSnapshot;
+}
+
+/** A Supreme Gift opened (R9). */
+export interface SupremeGiftResult {
+  draw: DrawResult;
   snapshot: AccountSnapshot;
 }
 
@@ -271,13 +278,15 @@ export interface GameServer {
   skipTutorial(): Promise<Result<AccountSnapshot>>;
   /** Debug: fast-forward the game clock by minutes (M5). */
   debugAdvanceClock(minutes: number): Promise<Result<AccountSnapshot>>;
-  /** Draw `count` (1 or 10) from a machine; `seed` pins the outcome (M6). */
+  /** Draw `count` (1, 10, or Premium 20–50 on tickets) from a machine; `seed` pins the outcome (R9). */
   summon(machine: MachineId, count: number, seed?: number): Promise<Result<SummonResult>>;
   /** Spend a machine's box credits and grant its box reward (M6). */
   claimGachaBox(machine: MachineId): Promise<Result<ClaimResult>>;
-  /** Set or clear the Premium machine's featured target (M6). */
-  setWish(speciesId: string | null): Promise<Result<AccountSnapshot>>;
-  /** Display-ready summoning state: free draws, credits, pity, rates (M6). */
+  /** Choose or clear the Premium Wishing Well's faction (R9; after 200 Premium draws). */
+  setWishFaction(faction: Faction | null): Promise<Result<AccountSnapshot>>;
+  /** Spend 1,000 VIP credits on a Supreme Gift — one Legendary or Supreme Pokémon (R9; VIP 14+). */
+  openSupremeGift(seed?: number): Promise<Result<SupremeGiftResult>>;
+  /** Display-ready summoning state: free draws, credits, Wishing Well, Supreme Gift, rates (R9). */
   getGacha(): Promise<Result<GachaView>>;
   /** Buy one item from a shop, restocking first if the window has rolled (M6). */
   buyShopItem(shopId: string, itemId: string): Promise<Result<ClaimResult>>;

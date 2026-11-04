@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { isAtLeast, mulberry32, type AccountState } from '@wildbound/engine';
+import { mulberry32, type AccountState } from '@wildbound/engine';
 import { buildConfig, type GameConfig } from './config';
 import { applySummon } from './gacha';
 import { LocalServer } from './local-server';
-import { createInitialState } from './save';
+import { createInitialState, SAVE_VERSION } from './save';
 import { MemoryStore } from './storage';
 
 const START = Date.parse('2026-01-01T00:00:00Z');
@@ -34,8 +34,8 @@ function bare(config: GameConfig, machine: 'common' | 'premium'): AccountState {
   };
 }
 
-describe('LocalServer M6 summoning', () => {
-  it('seeds both machines and their daily free draws', async () => {
+describe('LocalServer summoning (R9: copied from the source)', () => {
+  it('seeds both gachas, their daily free draws, no wish and no VIP credits', async () => {
     const { srv } = make();
     const load = await srv.loadAccount();
     expect(load.ok).toBe(true);
@@ -43,27 +43,24 @@ describe('LocalServer M6 summoning', () => {
     const gacha = load.value.state.gacha;
     expect(gacha.machines.common.freeRemaining).toBe(5);
     expect(gacha.machines.premium.freeRemaining).toBe(1);
-    expect(gacha.wishedSpeciesId).toBeNull();
+    expect(gacha.wishFaction).toBeNull();
+    expect(gacha.vipCredits).toBe(0);
   });
 
   it('falls back free draw -> ticket -> gems (Premium)', async () => {
     const { srv } = make();
-
     const free = await srv.summon('premium', 1);
     expect(free.ok).toBe(true);
     if (!free.ok) return;
     expect(free.value.cost.free).toBe(1);
 
-    // Free draw is on cooldown; two starting premium tickets cover the next two.
     const ticketOne = await srv.summon('premium', 1);
     const ticketTwo = await srv.summon('premium', 1);
     expect(ticketOne.ok && ticketTwo.ok).toBe(true);
     if (!ticketOne.ok || !ticketTwo.ok) return;
     expect(ticketOne.value.cost.tickets).toBe(1);
-    expect(ticketTwo.value.cost.tickets).toBe(1);
     expect(ticketTwo.value.snapshot.state.currencies.ticketPremium).toBe(0);
 
-    // Everything else spent: gems are the last resort (500 starting, 180 a draw).
     const gems = await srv.summon('premium', 1);
     expect(gems.ok).toBe(true);
     if (!gems.ok) return;
@@ -79,29 +76,43 @@ describe('LocalServer M6 summoning', () => {
     if (!out.ok) expect(out.error).toBe('insufficient_items');
   });
 
-  it('a ten-draw costs ten tickets and always yields a Rare-or-better', async () => {
-    const { srv } = make();
+  it('draws Pokémon at their pool star, and the first sighting is new', async () => {
+    const { srv, config } = make();
     const ten = await srv.summon('common', 10, 4242);
     expect(ten.ok).toBe(true);
     if (!ten.ok) return;
-    expect(ten.value.draws).toHaveLength(10);
     expect(ten.value.cost.tickets).toBe(10);
-    expect(ten.value.draws.some((d) => isAtLeast(d.tier, 'rare'))).toBe(true);
-    expect(ten.value.snapshot.state.currencies.ticketCommon).toBe(0);
+    const pool = config.gacha.pools.common;
+    for (const d of ten.value.draws) {
+      expect(pool.some((r) => r.speciesId === d.speciesId && r.star === d.star)).toBe(true);
+    }
+    const roster = ten.value.snapshot.state.roster.slice(-10);
+    expect(roster.map((w) => w.stars)).toEqual(ten.value.draws.map((d) => d.star));
+    expect(ten.value.snapshot.state.gacha.history.map((h) => h.star)).toEqual(ten.value.draws.map((d) => d.star));
   });
 
-  it('grants a fresh instance per draw and records history', async () => {
-    const { srv } = make();
-    const before = await srv.loadAccount();
-    if (!before.ok) return;
-    const startCount = before.value.state.roster.length;
+  it('copies the source pools: 30 Common rows, 116 Premium rows, display weights', () => {
+    const config = buildConfig();
+    expect(config.gacha.pools.common).toHaveLength(30);
+    expect(config.gacha.pools.premium).toHaveLength(116);
+    const caterpie = config.gacha.pools.common.find((r) => r.speciesId === 'caterpie');
+    expect(caterpie).toMatchObject({ star: 1, weight: 85502, group: 'other', tier: 'common' });
+    const mythic = config.gacha.pools.premium.filter((r) => r.group === 'mythic');
+    expect(mythic).toHaveLength(21);
+    expect(mythic.every((r) => r.weight === 100 && r.star === 5)).toBe(true);
+  });
 
-    const ten = await srv.summon('common', 10, 7);
-    expect(ten.ok).toBe(true);
-    if (!ten.ok) return;
-    expect(ten.value.snapshot.state.roster).toHaveLength(startCount + 10);
-    expect(ten.value.snapshot.state.nextInstanceSeq).toBe(startCount + 11);
-    expect(ten.value.snapshot.state.gacha.history).toHaveLength(10);
+  it('the Premium plus multi-draw takes tickets only, up to 50', async () => {
+    const { srv } = make();
+    await srv.grantCurrency('ticketPremium', 48);
+    const fifty = await srv.summon('premium', 50, 3);
+    expect(fifty.ok).toBe(true);
+    if (!fifty.ok) return;
+    expect(fifty.value.draws).toHaveLength(50);
+    expect(fifty.value.cost).toEqual({ free: 0, tickets: 50, gems: 0 });
+    const noTickets = await srv.summon('premium', 20);
+    expect(noTickets.ok).toBe(false);
+    expect((await srv.summon('common', 20)).ok).toBe(false);
   });
 
   it('is reproducible for a pinned seed', async () => {
@@ -111,40 +122,14 @@ describe('LocalServer M6 summoning', () => {
     const second = await b.srv.summon('premium', 1, 999);
     expect(first.ok && second.ok).toBe(true);
     if (!first.ok || !second.ok) return;
-    expect(first.value.draws.map((d) => d.speciesId)).toEqual(second.value.draws.map((d) => d.speciesId));
+    expect(first.value.draws).toEqual(second.value.draws);
   });
 
-  it('pity forces a Legendary-or-better at the exact credit threshold', () => {
-    const config = buildConfig();
-    config.now = () => START;
-    const seeded = createInitialState(config);
-    const state: AccountState = {
-      ...seeded,
-      currencies: { ...seeded.currencies, ticketPremium: 1 },
-      gacha: {
-        ...seeded.gacha,
-        machines: {
-          ...seeded.gacha.machines,
-          premium: { ...seeded.gacha.machines.premium, freeRemaining: 0, pityCredits: 980 },
-        },
-      },
-    };
-    const out = applySummon(config, state, 'premium', 1, START, mulberry32(7));
-    expect(out.ok).toBe(true);
-    if (!out.ok) return;
-    expect(out.value.cost.tickets).toBe(1);
-    expect(out.value.draws[0]!.guaranteed).toBe(true);
-    expect(isAtLeast(out.value.draws[0]!.tier, 'legendary')).toBe(true);
-    expect(out.value.state.gacha.machines.premium.pityCredits).toBe(0);
-  });
-
-  it('fills a box, claims it, and resets its credits', async () => {
+  it('every draw adds 1 box credit; the Common box is 50 5-Star Pokémon Shards at 100', async () => {
     const { srv } = make();
     await srv.grantCurrency('ticketCommon', 100);
     for (let i = 0; i < 10; i++) await srv.summon('common', 10, i);
-
     const ready = await srv.getGacha();
-    expect(ready.ok).toBe(true);
     if (!ready.ok) return;
     const common = ready.value.machines.find((m) => m.id === 'common');
     expect(common?.boxReady).toBe(true);
@@ -153,30 +138,90 @@ describe('LocalServer M6 summoning', () => {
     const claim = await srv.claimGachaBox('common');
     expect(claim.ok).toBe(true);
     if (!claim.ok) return;
-    expect(claim.value.granted.shard).toBe(50);
+    expect(claim.value.granted).toEqual({ pokemonShard5: 50 });
     expect(claim.value.snapshot.state.gacha.machines.common.boxCredits).toBe(0);
-
     const again = await srv.claimGachaBox('common');
     expect(again.ok).toBe(false);
     if (!again.ok) expect(again.error).toBe('not_ready');
   });
 
-  it('sets and clears the Premium wish', async () => {
-    const { srv, config } = make();
-    const speciesId = [...config.species.keys()][0]!;
-    const set = await srv.setWish(speciesId);
+  it('the Premium box pays 5 Selectable Precious Shards every 20 draws', async () => {
+    const { srv } = make();
+    await srv.grantCurrency('ticketPremium', 18);
+    await srv.summon('premium', 20, 5);
+    const claim = await srv.claimGachaBox('premium');
+    expect(claim.ok).toBe(true);
+    if (!claim.ok) return;
+    expect(claim.value.granted).toEqual({ preciousShard: 5 });
+  });
+
+  it('VIP credits: +20 a Premium draw, +1 a Common draw', async () => {
+    const { srv } = make();
+    await srv.summon('premium', 1, 1);
+    const out = await srv.summon('common', 10, 1);
+    expect(out.ok).toBe(true);
+    if (!out.ok) return;
+    expect(out.value.snapshot.state.gacha.vipCredits).toBe(30);
+  });
+
+  it('the daily reset refills free draws but keeps the running timer', async () => {
+    const { srv, advance } = make();
+    advance(20 * 60 * 60_000); // 20:00 UTC
+    await srv.summon('premium', 1, 1);
+    advance(6 * 60 * 60_000); // 02:00 the next day: refilled, still 18 h on the timer
+    const view = await srv.getGacha();
+    if (!view.ok) return;
+    const premium = view.value.machines.find((m) => m.id === 'premium')!;
+    expect(premium.freeRemaining).toBe(1);
+    const paid = await srv.summon('premium', 1, 2);
+    expect(paid.ok).toBe(true);
+    if (paid.ok) expect(paid.value.cost.free).toBe(0);
+  });
+
+  it('the Wishing Well opens after 200 Premium draws and takes Water, Fire or Grass', async () => {
+    const { srv } = make();
+    const early = await srv.setWishFaction('fire');
+    expect(early.ok).toBe(false);
+    if (!early.ok) expect(early.error).toBe('resource_locked');
+
+    await srv.grantCurrency('ticketPremium', 200);
+    for (let i = 0; i < 4; i++) await srv.summon('premium', 50, i);
+    expect((await srv.setWishFaction('light')).ok).toBe(false);
+    const set = await srv.setWishFaction('fire');
     expect(set.ok).toBe(true);
     if (!set.ok) return;
-    expect(set.value.state.gacha.wishedSpeciesId).toBe(speciesId);
+    expect(set.value.state.gacha.wishFaction).toBe('fire');
 
-    const cleared = await srv.setWish(null);
-    expect(cleared.ok).toBe(true);
-    if (!cleared.ok) return;
-    expect(cleared.value.state.gacha.wishedSpeciesId).toBeNull();
+    const view = await srv.getGacha();
+    if (!view.ok) return;
+    const premium = view.value.machines.find((m) => m.id === 'premium')!;
+    const entei = premium.probabilities.find((r) => r.speciesId === 'entei')!;
+    const suicune = premium.probabilities.find((r) => r.speciesId === 'suicune')!;
+    expect(entei.probability / suicune.probability).toBeCloseTo(1.8, 5);
 
-    const bad = await srv.setWish('nope');
-    expect(bad.ok).toBe(false);
-    if (!bad.ok) expect(bad.error).toBe('not_found');
+    const cleared = await srv.setWishFaction(null);
+    expect(cleared.ok && cleared.value.state.gacha.wishFaction).toBe(null);
+  });
+
+  it('the Supreme Gift needs VIP 14 and 1,000 VIP credits, then gives a Legendary or Supreme', async () => {
+    const { srv, config } = make();
+    const seeded = await srv.loadAccount();
+    if (!seeded.ok) return;
+    const withCredits = { ...seeded.value.state, gacha: { ...seeded.value.state.gacha, vipCredits: 1000 } };
+    await srv.importSave(JSON.stringify({ version: SAVE_VERSION, state: withCredits }));
+    const locked = await srv.openSupremeGift(1);
+    expect(locked.ok).toBe(false);
+    if (!locked.ok) expect(locked.error).toBe('resource_locked');
+
+    const vip14 = config.vip.levels.find((l) => l.level === 14)!.xp;
+    await srv.grantCurrency('privilegeXp', vip14);
+    const open = await srv.openSupremeGift(1);
+    expect(open.ok).toBe(true);
+    if (!open.ok) return;
+    expect(config.gacha.supremeGift.species).toContain(open.value.draw.speciesId);
+    expect(['legendary', 'supreme']).toContain(open.value.draw.tier);
+    expect(open.value.snapshot.state.gacha.vipCredits).toBe(0);
+    expect((await srv.openSupremeGift(2)).ok).toBe(false);
   });
 });
 

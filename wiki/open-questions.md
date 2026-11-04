@@ -1,7 +1,7 @@
 ---
 title: Open questions and known drift
 type: hub
-updated: 2026-10-31
+updated: 2026-11-04
 ---
 
 # Open questions and known drift
@@ -18,6 +18,13 @@ updated: 2026-10-31
 | 7 | Undefined change-list terms: gold wings, ecology, purple things, mecha, beast egg. | — | [change list](ideas/change-list-2026-10.md) |
 | 8 | Friend feedback on the M13 plan — not yet turned into a change list. | — | Claude chats |
 | 9 | **PvP DMG Boost cap 50%** — base game (owner, from his friend, 2026-11-01: *"he said 50% for for pvp dmg boost"*, *"the cap is from the base game"*); not in the kb. Owner: *"drop it for now"* — Wildbound has no cap. Revisit when Orbs/Gear/Potential (R2–R4) add PvP DMG Boost sources. Also open: is PvP DMG Reduction capped? | R3 orbs | 2026-11-01 |
+
+## Agent readings for the owner to review
+Readings taken without the owner (owner rules, 2026-11-01); each is in `docs/ASSUMPTIONS.md`.
+| Since | Reading | Where |
+|---|---|---|
+| 2026-11-04 | Premium "plus" multi-draw sold as ×20, ×30, ×40, ×50 on tickets — the source has it but its size isn't recorded | ASSUMPTIONS #83 |
+| 2026-11-04 | Gacha odds are the ones the source shows (its server's real odds aren't in the dumps) | ASSUMPTIONS #83 |
 
 ## Source tables still missing (stand-ins in use)
 - Pokémon level-up candy/gold per level, trainer-level XP, per-species milestone stats

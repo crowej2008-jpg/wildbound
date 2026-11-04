@@ -1,4 +1,5 @@
 {
+  "_note": "R9: copied from the source by scripts/import-gacha.mjs (chest_basic / chest_reward / chest_score, item_hero 10502, vip_priv chest_score; kb/gacha.md for free draws, VIP credits and the Wishing Well). Pool weights are the odds the game shows (fake_weight, parts per million).",
   "machines": [
     {
       "id": "common",
@@ -8,20 +9,193 @@
       "freePerDay": 5,
       "freeCooldownMinutes": 5,
       "creditPerDraw": 1,
+      "vipCreditPerDraw": 1,
       "boxCreditsNeeded": 100,
-      "boxRewards": { "shard": 50 },
-      "pityThreshold": 0,
-      "wish": false,
-      "wishBoost": 3.5,
-      "wishUnlockDraws": 0,
-      "tenDrawGuarantee": "rare",
-      "rates": [
-        { "tier": "common", "weight": 55 },
-        { "tier": "rare", "weight": 30 },
-        { "tier": "epic", "weight": 12 },
-        { "tier": "legendary", "weight": 2.4 },
-        { "tier": "supreme", "weight": 0.5 },
-        { "tier": "mythic", "weight": 0.1 }
+      "boxRewards": {
+        "pokemonShard5": 50
+      },
+      "maxTenBatches": 1,
+      "pool": [
+        {
+          "species": "caterpie",
+          "star": 1,
+          "weight": 85502,
+          "group": "other"
+        },
+        {
+          "species": "jigglypuff",
+          "star": 1,
+          "weight": 85502,
+          "group": "other"
+        },
+        {
+          "species": "pidgeotto",
+          "star": 1,
+          "weight": 85502,
+          "group": "other"
+        },
+        {
+          "species": "ekans",
+          "star": 1,
+          "weight": 85502,
+          "group": "other"
+        },
+        {
+          "species": "meowth",
+          "star": 1,
+          "weight": 85502,
+          "group": "other"
+        },
+        {
+          "species": "koffing",
+          "star": 1,
+          "weight": 85502,
+          "group": "other"
+        },
+        {
+          "species": "poliwag",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "abra",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "oddish",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "slowpoke",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "starmie",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "onix",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "scyther",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "growlithe",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "togepi",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "ninetales",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "raichu",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "charizard",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "blastoise",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "venusaur",
+          "star": 3,
+          "weight": 25630,
+          "group": "other"
+        },
+        {
+          "species": "metagross",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        },
+        {
+          "species": "garchomp",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        },
+        {
+          "species": "hydreigon",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        },
+        {
+          "species": "swampert",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        },
+        {
+          "species": "sceptile",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        },
+        {
+          "species": "typhlosion",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        },
+        {
+          "species": "feraligatr",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        },
+        {
+          "species": "meganium",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        },
+        {
+          "species": "dragonite",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        },
+        {
+          "species": "tyranitar",
+          "star": 5,
+          "weight": 12815,
+          "group": "epic"
+        }
       ]
     },
     {
@@ -31,22 +205,755 @@
       "gemPerTen": 1620,
       "freePerDay": 1,
       "freeCooldownMinutes": 1440,
-      "creditPerDraw": 20,
-      "boxCreditsNeeded": 400,
-      "boxRewards": { "shard": 200, "stone": 3 },
-      "pityThreshold": 1000,
-      "wish": true,
-      "wishBoost": 3.5,
-      "wishUnlockDraws": 0,
-      "tenDrawGuarantee": "rare",
-      "rates": [
-        { "tier": "common", "weight": 30 },
-        { "tier": "rare", "weight": 30 },
-        { "tier": "epic", "weight": 25 },
-        { "tier": "legendary", "weight": 10 },
-        { "tier": "supreme", "weight": 3.5 },
-        { "tier": "mythic", "weight": 1.5 }
+      "creditPerDraw": 1,
+      "vipCreditPerDraw": 20,
+      "boxCreditsNeeded": 20,
+      "boxRewards": {
+        "preciousShard": 5
+      },
+      "maxTenBatches": 5,
+      "pool": [
+        {
+          "species": "caterpie",
+          "star": 1,
+          "weight": 59200,
+          "group": "other"
+        },
+        {
+          "species": "jigglypuff",
+          "star": 1,
+          "weight": 59200,
+          "group": "other"
+        },
+        {
+          "species": "pidgeotto",
+          "star": 1,
+          "weight": 59200,
+          "group": "other"
+        },
+        {
+          "species": "ekans",
+          "star": 1,
+          "weight": 59200,
+          "group": "other"
+        },
+        {
+          "species": "meowth",
+          "star": 1,
+          "weight": 59200,
+          "group": "other"
+        },
+        {
+          "species": "koffing",
+          "star": 1,
+          "weight": 59200,
+          "group": "other"
+        },
+        {
+          "species": "caterpie",
+          "star": 2,
+          "weight": 39500,
+          "group": "other"
+        },
+        {
+          "species": "jigglypuff",
+          "star": 2,
+          "weight": 39500,
+          "group": "other"
+        },
+        {
+          "species": "pidgeotto",
+          "star": 2,
+          "weight": 39500,
+          "group": "other"
+        },
+        {
+          "species": "ekans",
+          "star": 2,
+          "weight": 39500,
+          "group": "other"
+        },
+        {
+          "species": "meowth",
+          "star": 2,
+          "weight": 39500,
+          "group": "other"
+        },
+        {
+          "species": "koffing",
+          "star": 2,
+          "weight": 39500,
+          "group": "other"
+        },
+        {
+          "species": "poliwag",
+          "star": 3,
+          "weight": 34990,
+          "group": "other"
+        },
+        {
+          "species": "abra",
+          "star": 3,
+          "weight": 34990,
+          "group": "other"
+        },
+        {
+          "species": "oddish",
+          "star": 3,
+          "weight": 34990,
+          "group": "other"
+        },
+        {
+          "species": "slowpoke",
+          "star": 3,
+          "weight": 34990,
+          "group": "other"
+        },
+        {
+          "species": "onix",
+          "star": 3,
+          "weight": 34990,
+          "group": "other"
+        },
+        {
+          "species": "scyther",
+          "star": 3,
+          "weight": 34990,
+          "group": "other"
+        },
+        {
+          "species": "growlithe",
+          "star": 3,
+          "weight": 34990,
+          "group": "other"
+        },
+        {
+          "species": "togepi",
+          "star": 3,
+          "weight": 34990,
+          "group": "other"
+        },
+        {
+          "species": "starmie",
+          "star": 3,
+          "weight": 14890,
+          "group": "other"
+        },
+        {
+          "species": "ninetales",
+          "star": 3,
+          "weight": 14890,
+          "group": "other"
+        },
+        {
+          "species": "raichu",
+          "star": 3,
+          "weight": 14890,
+          "group": "other"
+        },
+        {
+          "species": "charizard",
+          "star": 3,
+          "weight": 14890,
+          "group": "other"
+        },
+        {
+          "species": "blastoise",
+          "star": 3,
+          "weight": 14890,
+          "group": "other"
+        },
+        {
+          "species": "venusaur",
+          "star": 3,
+          "weight": 14890,
+          "group": "other"
+        },
+        {
+          "species": "starmie",
+          "star": 4,
+          "weight": 2978,
+          "group": "other"
+        },
+        {
+          "species": "ninetales",
+          "star": 4,
+          "weight": 2978,
+          "group": "other"
+        },
+        {
+          "species": "raichu",
+          "star": 4,
+          "weight": 2978,
+          "group": "other"
+        },
+        {
+          "species": "charizard",
+          "star": 4,
+          "weight": 2978,
+          "group": "other"
+        },
+        {
+          "species": "blastoise",
+          "star": 4,
+          "weight": 2978,
+          "group": "other"
+        },
+        {
+          "species": "venusaur",
+          "star": 4,
+          "weight": 2978,
+          "group": "other"
+        },
+        {
+          "species": "poliwag",
+          "star": 5,
+          "weight": 695,
+          "group": "other"
+        },
+        {
+          "species": "abra",
+          "star": 5,
+          "weight": 695,
+          "group": "other"
+        },
+        {
+          "species": "oddish",
+          "star": 5,
+          "weight": 695,
+          "group": "other"
+        },
+        {
+          "species": "slowpoke",
+          "star": 5,
+          "weight": 695,
+          "group": "other"
+        },
+        {
+          "species": "onix",
+          "star": 5,
+          "weight": 695,
+          "group": "other"
+        },
+        {
+          "species": "scyther",
+          "star": 5,
+          "weight": 695,
+          "group": "other"
+        },
+        {
+          "species": "growlithe",
+          "star": 5,
+          "weight": 695,
+          "group": "other"
+        },
+        {
+          "species": "togepi",
+          "star": 5,
+          "weight": 695,
+          "group": "other"
+        },
+        {
+          "species": "starmie",
+          "star": 5,
+          "weight": 670,
+          "group": "other"
+        },
+        {
+          "species": "ninetales",
+          "star": 5,
+          "weight": 670,
+          "group": "other"
+        },
+        {
+          "species": "raichu",
+          "star": 5,
+          "weight": 670,
+          "group": "other"
+        },
+        {
+          "species": "charizard",
+          "star": 5,
+          "weight": 670,
+          "group": "other"
+        },
+        {
+          "species": "blastoise",
+          "star": 5,
+          "weight": 670,
+          "group": "other"
+        },
+        {
+          "species": "venusaur",
+          "star": 5,
+          "weight": 670,
+          "group": "other"
+        },
+        {
+          "species": "metagross",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "garchomp",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "hydreigon",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "swampert",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "sceptile",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "typhlosion",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "feraligatr",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "meganium",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "dragonite",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "tyranitar",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "gyarados",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "gardevoir",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "gengar",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "blaziken",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "slaking",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "salamence",
+          "star": 5,
+          "weight": 347,
+          "group": "epic"
+        },
+        {
+          "species": "raikou",
+          "star": 5,
+          "weight": 174,
+          "group": "legendary"
+        },
+        {
+          "species": "entei",
+          "star": 5,
+          "weight": 174,
+          "group": "legendary"
+        },
+        {
+          "species": "suicune",
+          "star": 5,
+          "weight": 174,
+          "group": "legendary"
+        },
+        {
+          "species": "zapdos",
+          "star": 5,
+          "weight": 174,
+          "group": "legendary"
+        },
+        {
+          "species": "moltres",
+          "star": 5,
+          "weight": 174,
+          "group": "legendary"
+        },
+        {
+          "species": "articuno",
+          "star": 5,
+          "weight": 174,
+          "group": "legendary"
+        },
+        {
+          "species": "lugia",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "rayquaza",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "groudon",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "ho-oh",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "celebi",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "manaphy",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "greninja",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "infernape",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "god-ash-pikachu",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "shaymin",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "victini",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "keldeo",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "dialga",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "palkia",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "giratina",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "zygarde",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "xerneas",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "yveltal",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "shiny-god-ash-pikachu",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "shiny-charizard",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "shiny-raichu",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "shiny-gengar",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "shiny-blastoise",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "shiny-venusaur",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "mew",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "mewtwo",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "kyogre",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "deoxys",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "darkrai",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "cresselia",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "snorlax",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "black-kyurem",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "meloetta",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "jirachi",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "hoopa",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "arceus",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "solgaleo",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "lunala",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "shiny-arceus",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "shiny-hoopa",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "shiny-darkrai",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "shiny-cresselia",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "shiny-mewtwo",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "shiny-mew",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "shiny-kyogre",
+          "star": 5,
+          "weight": 100,
+          "group": "mythic"
+        },
+        {
+          "species": "psyduck",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "wobbuffet",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        },
+        {
+          "species": "mimikyu",
+          "star": 5,
+          "weight": 100,
+          "group": "supreme"
+        }
       ]
     }
-  ]
+  ],
+  "wishingWell": {
+    "machine": "premium",
+    "unlockDraws": 200,
+    "factions": [
+      "water",
+      "fire",
+      "grass"
+    ],
+    "tier": "legendary",
+    "boost": 1.8
+  },
+  "supremeGift": {
+    "credits": 1000,
+    "vipLevel": 14,
+    "species": [
+      "zapdos",
+      "moltres",
+      "articuno",
+      "raikou",
+      "entei",
+      "suicune",
+      "wobbuffet",
+      "mimikyu",
+      "psyduck",
+      "lugia",
+      "rayquaza",
+      "groudon",
+      "ho-oh",
+      "celebi",
+      "manaphy",
+      "greninja",
+      "infernape",
+      "god-ash-pikachu",
+      "shaymin",
+      "victini",
+      "keldeo",
+      "dialga",
+      "palkia",
+      "giratina",
+      "zygarde",
+      "xerneas",
+      "yveltal"
+    ]
+  }
 }

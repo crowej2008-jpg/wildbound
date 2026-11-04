@@ -1,7 +1,7 @@
 ---
 title: Wildbound wiki — index
 type: index
-updated: 2026-10-31
+updated: 2026-11-04
 ---
 
 # Wildbound wiki — index
@@ -10,14 +10,13 @@ updated: 2026-10-31
 [open questions](open-questions.md).** How the wiki is maintained: `AGENTS.md` › "Project wiki".
 Recent changes: [log](log.md).
 
-**Now:** the [source retrofit](milestones/source-retrofit.md): R4 Potential and R3 Orbs done (save v23); **R6** next, then R7, R8
-(no list-and-wait since 2026-11-01). Done just before: [battle engine completion](milestones/battle-engine.md)
-E1–E6. Later: R2/R3 when the gear and orb tables are re-extracted, R9, R10; then M13.3
-[Hoopa's Vault](systems/hoopa-vault.md).
+**Now:** the [source retrofit](milestones/source-retrofit.md) R9 (save v38): dailies, sign-in, dungeons, Tower, World Boss,
+summon-pool Pokémon and summoning done; next the Pokémon Shards and boxes, shops, Arena / Ranked rewards, Campaign,
+Pet Home and Sky Pillar rows; then R10 and M13.3 [Hoopa's Vault](systems/hoopa-vault.md).
 
 ## Start here
 - [overview](overview.md) — what Wildbound is, who it's for, where it stands
-- [open questions](open-questions.md) — owner decisions pending + repo docs that are out of date
+- [open questions](open-questions.md) — owner decisions pending, agent readings to review, out-of-date repo docs
 - [log](log.md) — what changed in this wiki and when
 
 ## Project

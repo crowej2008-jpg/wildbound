@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 /**
  * M6 summoning and shops (PROMPT §13). Each test runs in a fresh browser context,
  * so IndexedDB starts empty and the account is brand new (10 common tickets,
- * 2 premium tickets, 500 gems).
+ * 2 premium tickets, 500 gems). R9: the gachas are the source's.
  */
 
 test('draws a free single summon with the starting account', async ({ page }) => {
@@ -30,17 +30,19 @@ test('a ten-draw spends the starting common tickets and fills one box', async ({
   await expect(common.getByText('10 / 100')).toBeVisible();
 });
 
-test('shows the exact premium rates, pity and featured-Wild selector', async ({ page }) => {
+test('shows the source odds by group, the locked Wishing Well and the Supreme Gift', async ({ page }) => {
   await page.goto('/summon');
   const premium = page.locator('[data-machine="premium"]');
-  await expect(premium.getByText('Pity')).toBeVisible();
+  await expect(premium.getByRole('button', { name: 'Summon ×50', exact: true })).toBeVisible();
 
   const rates = premium.locator('details.summon-rates');
   await rates.locator('summary').click();
-  await expect(rates.locator('.rate-list li')).toHaveCount(6);
+  await expect(rates.locator('.rate-list:not(.rate-rows) li')).toHaveCount(5);
+  await expect(rates.locator('.rate-rows li')).toHaveCount(116);
 
-  await expect(page.getByRole('combobox', { name: 'Featured Wild' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Set featured' })).toBeVisible();
+  await expect(page.getByTestId('wishing-well')).toContainText('0 / 200');
+  await expect(page.getByTestId('supreme-gift')).toContainText('0 / 1000');
+  await expect(page.getByRole('button', { name: 'Open the Supreme Gift' })).toBeDisabled();
 });
 
 test('buys from the Daily shop and decrements the window limit', async ({ page }) => {

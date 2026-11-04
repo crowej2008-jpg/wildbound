@@ -1306,3 +1306,13 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - `scripts/generate-summon-pokemon.mjs` → `species/summon-pool.json`, `kits/summon-pool.json`: 14 source Pokémon
   with made-up stats (roster 98). New `uncommon` tier; `common` now shows as "Normal". Engine talent `lethalHits`
   (Caterpie, hidden). ASSUMPTIONS #82. No save change.
+
+## R9 part 8 — summoning from the source (2026-11-04)
+
+- `scripts/import-gacha.mjs` → `packages/content/tuning/gacha.json`: the Common (30 rows) and Premium (116 rows)
+  Gachas with the source's prices, free-draw timers, credit boxes and shown odds; the Wishing Well (200 Premium
+  draws, × 1.8 for a Water / Fire / Grass Legendary); the Supreme Gift (1,000 VIP credits, VIP 14, 27 Pokémon).
+- Engine `gacha/` rewritten (weighted rows, Wishing Well, Supreme Gift; pity, the ten-draw guarantee and the species
+  wish removed). Server `setWish` → `setWishFaction`, new `openSupremeGift`. Draws grant at the drawn star. New
+  currency `preciousShard`. Summon screen: groups and per-row rates, the Premium ×20 … ×50 ticket draws, Wishing
+  Well, Supreme Gift. Save v38. ASSUMPTIONS #83.
