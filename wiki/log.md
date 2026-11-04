@@ -288,3 +288,4 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: the ladder's 10 Resetters is the final price, not a limit; refines continue at 10 each (ASSUMPTIONS #93).
 - Main-stat re-roll added: 100 Resetter Shards, random among the other kinds (ASSUMPTIONS #94).
 - Hoopa's Vault drops built from the source records: held items by band, 3 Guardian items, band orbs (ASSUMPTIONS #95).
+- Owner: the three free starter held items are removed; held items now come only from the Vault (ASSUMPTIONS #96).

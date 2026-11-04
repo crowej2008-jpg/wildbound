@@ -89,7 +89,8 @@ test('the Trainer tab lists the M11 materials and keeps More reachable', async (
 });
 
 test('Wild screen shows the stat sheet and equipping a held item raises Power', async ({ page }) => {
-  await importSave(page);
+  // No free starter items any more (owner 2026-11-04): bring one Mythic held item.
+  await importSave(page, { equipment: MYTHIC_EQUIPMENT });
   await page.goto('/wilds');
   await page.locator('.roster-item').first().click();
 

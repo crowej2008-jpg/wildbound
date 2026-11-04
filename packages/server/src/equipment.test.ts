@@ -46,6 +46,7 @@ async function supremeStriker() {
 describe('M11.0 equipment view and actions', () => {
   it('shows the base sheet, and equipping a held item raises Power', async () => {
     const { srv, wildId } = await supremeStriker();
+    await grantHeldItem(srv, buildConfig(), '101101');
     const before = await srv.getEquipment(wildId);
     if (!before.ok) throw new Error(before.message);
     expect(before.value.power.base).toBeGreaterThan(0);
@@ -54,7 +55,7 @@ describe('M11.0 equipment view and actions', () => {
     expect(before.value.unlocks.relic).toBe(true);
 
     const relic = before.value.relics.find((r) => r.className === 'striker');
-    if (!relic) throw new Error('no striker relic in starting equipment');
+    if (!relic) throw new Error('no striker relic');
     const equipped = await srv.equipRelic(wildId, relic.instanceId);
     expect(equipped.ok).toBe(true);
 
@@ -67,6 +68,7 @@ describe('M11.0 equipment view and actions', () => {
 
   it('levels a held item from 0 on the source shard table (20 a level to 30), cap 200', async () => {
     const { srv, wildId } = await supremeStriker();
+    await grantHeldItem(srv, buildConfig(), '101101');
     const view = await srv.getEquipment(wildId);
     if (!view.ok) throw new Error(view.message);
     const relic = view.value.relics.find((r) => r.className === 'striker');
@@ -89,7 +91,9 @@ describe('M11.0 equipment view and actions', () => {
 
   it('gates level 31 on resonance 250 and stops at 200', () => {
     const config = buildConfig();
-    const state = createInitialState(config);
+    const granted = grantRelic(config, createInitialState(config), '101101', mulberry32(2));
+    if (!granted.ok) throw new Error(granted.message);
+    const state = granted.value;
     state.currencies.heldItemShard = 100_000;
     const relic = state.equipment.relics[0]!;
     relic.level = 30;
@@ -172,6 +176,7 @@ describe('M11.0 equipment view and actions', () => {
 
   it('has nothing to refine on a Rare', async () => {
     const { srv, wildId } = await supremeStriker();
+    await grantHeldItem(srv, buildConfig(), '101101');
     const view = await srv.getEquipment(wildId);
     if (!view.ok) throw new Error(view.message);
     const rare = view.value.relics.find((r) => r.className === 'striker')!;

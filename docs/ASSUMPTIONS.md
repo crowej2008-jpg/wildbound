@@ -1155,3 +1155,6 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     roll when the bag is kept; the Guardian adds 3 items; orbs from floor 6 at the band's colour and level, kind
     random. Stand-ins: the band weights (30 % → 70 % for the newest quality, the previous one the rest), a 30 %
     item and 20 % orb chance per route win (per multiplier copy). Details: docs/design/hoopa-vault.md.
+
+96. **No free starter held items (owner 2026-11-04: "take the free 3 away").** New accounts no longer get the
+    three Rare held items (one per class); held items come from Hoopa's Vault. Replaces the stand-in in #56.

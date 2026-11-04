@@ -41,17 +41,7 @@
     }
   },
   "starting": {
-    "relics": [
-      {
-        "defId": "101101"
-      },
-      {
-        "defId": "101201"
-      },
-      {
-        "defId": "101301"
-      }
-    ],
+    "relics": [],
     "cores": [
       {
         "setId": "coreset-common",
