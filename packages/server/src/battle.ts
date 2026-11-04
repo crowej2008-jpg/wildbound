@@ -532,6 +532,8 @@ export interface ModeBattleOptions {
   pvp?: boolean;
   /** R9: a Hard Tower lineup rule (banned positions, or at most N of a faction / class / tier). */
   lineupRule?: TowerRuleJson;
+  /** M13.3: a run-long attack boost on the attackers (0.1 = +10 % P.ATK and S.ATK; Hoopa's Vault Battle Buff). */
+  attackerBoost?: number;
 }
 
 /** R9: apply a Hard Tower lineup rule to the fielded Wilds, keeping each one's lineup slot. */
@@ -578,6 +580,10 @@ export function modeBattle(config: GameConfig, state: AccountState, opts: ModeBa
   if (lineup.length === 0) return null;
   const resolvedSeed = opts.seed ?? Math.floor(config.rng() * 0xffffffff);
   const attackers = buildWildTeam(lineup, 'attackers', config, state, opts.pvp ? tokenPvpLines(config, state) : undefined, ruled?.slots);
+  if (opts.attackerBoost) {
+    const k = 1 + opts.attackerBoost;
+    for (const spec of attackers.specs) spec.sheet = { ...spec.sheet, pAtk: Math.round(spec.sheet.pAtk * k), sAtk: Math.round(spec.sheet.sAtk * k) };
+  }
   const defenders = buildEnemyTeam(opts.enemies, config);
   return runView(attackers, defenders, {
     seed: resolvedSeed,

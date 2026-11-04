@@ -8,7 +8,7 @@
       "tagline": "Outrun the shadow and choose your route.",
       "description": "An escape-chase run through a shifting vault. Pick routes, bank escape progress and face the exit guardian for held items and Resetter Shards.",
       "scale": "300 floors",
-      "status": "planned",
+      "status": "live",
       "arrivesIn": "13.3",
       "reset": "daily",
       "gates": [{ "kind": "serverDay", "day": 15 }],

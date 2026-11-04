@@ -67,6 +67,7 @@ export const en = {
   'currency.boxLD': 'L & D Opt Boxes',
   'currency.preciousShard': 'Selectable Precious Shards',
   'currency.preciousGiftbox': 'Selectable Precious Giftboxes',
+  'currency.vaultKey': 'Vault Secret Keys',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -304,6 +305,7 @@ export const en = {
   'squad.mode.tower': 'Tower',
   'squad.mode.worldBoss': 'World Boss',
   'squad.mode.skyPillar': 'Sky Pillar',
+  'squad.mode.hoopaVault': "Hoopa's Vault",
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -861,6 +863,38 @@ export const en = {
   'explore.loading': 'Loading Explore...',
   'explore.gateSummary': 'Requires',
   'skyPillar.title': 'Sky Pillar',
+  'hoopa.title': "Hoopa's Vault",
+  'hoopa.backToExplore': '← Explore',
+  'hoopa.locked': "Hoopa's Vault opens on server day {day} (today is day {now}).",
+  'hoopa.highest': 'Highest floor',
+  'hoopa.claimKeys': 'Claim {n} free keys',
+  'hoopa.keysDone': "Today's keys claimed",
+  'hoopa.keysClaimed': 'Keys claimed.',
+  'hoopa.start': 'Enter the Vault',
+  'hoopa.floor': 'Floor',
+  'hoopa.multiplier': 'Multiplier',
+  'hoopa.enter': 'Enter (keys: {n})',
+  'hoopa.escape': 'Escape',
+  'hoopa.hoopa': 'Hoopa',
+  'hoopa.roundCap': 'round cap',
+  'hoopa.bag': 'Bag',
+  'hoopa.guardian': 'Fight the Exit Guardian ({n} rounds)',
+  'hoopa.go': 'Take this route',
+  'hoopa.exit': 'Leave (lose the bag, keep the keys)',
+  'hoopa.exited': 'You left the Vault. Your keys were refunded.',
+  'hoopa.back': 'Back to the Vault',
+  'hoopa.card.strong': 'Strong route',
+  'hoopa.card.normal': 'Normal route',
+  'hoopa.card.buff': 'Battle buff',
+  'hoopa.card.blessing': 'Drop blessing',
+  'hoopa.card.tougher': 'tougher enemies, better drops',
+  'hoopa.card.attack': 'attack for the run',
+  'hoopa.card.drops': 'drops for the run',
+  'hoopa.result.routeWon': 'Route cleared.',
+  'hoopa.result.caught': 'Hoopa caught you. The bag is lost; your keys were refunded.',
+  'hoopa.result.lost': 'Route lost. The bag is lost; your keys were refunded.',
+  'hoopa.result.escaped': 'Escaped! You keep the bag and the Guardian\'s drops.',
+  'hoopa.result.guardianLost': 'The Guardian held. The bag is lost; your keys were refunded.',
   'skyPillar.tagline': 'Climb 180 floors. Grade every stage, then sweep what you have mastered.',
   'skyPillar.loading': 'Loading the climb...',
   'skyPillar.proofs': 'Proofs of Sky',
@@ -1076,6 +1110,7 @@ export type CurrencyKey =
   | 'boxLD'
   | 'preciousShard'
   | 'preciousGiftbox'
+  | 'vaultKey'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1129,10 +1164,11 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   boxLD: en['currency.boxLD'],
   preciousShard: en['currency.preciousShard'],
   preciousGiftbox: en['currency.preciousGiftbox'],
+  vaultKey: en['currency.vaultKey'],
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1141,6 +1177,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   tower: en['squad.mode.tower'],
   worldBoss: en['squad.mode.worldBoss'],
   skyPillar: en['squad.mode.skyPillar'],
+  hoopaVault: en['squad.mode.hoopaVault'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

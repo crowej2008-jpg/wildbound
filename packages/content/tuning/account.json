@@ -48,6 +48,7 @@
     "boxLD": 0,
     "preciousShard": 0,
     "preciousGiftbox": 0,
+    "vaultKey": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -106,6 +107,7 @@
     "boxLD": 5,
     "preciousShard": 50,
     "preciousGiftbox": 1,
+    "vaultKey": 5,
     "privilegeXp": 300
   }
 }

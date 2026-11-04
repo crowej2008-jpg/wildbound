@@ -17,6 +17,7 @@ export * from './pve';
 export * from './explore';
 export * from './pet-home';
 export * from './sky-pillar';
+export * from './hoopa-vault';
 export * from './potential';
 export * from './pvp';
 export * from './resonance';

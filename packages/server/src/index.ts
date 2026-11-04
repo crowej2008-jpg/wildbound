@@ -9,7 +9,7 @@ import type {
   StrategyId,
   SummonCost,
   SkillRow,
-  TitleSlot, OrbColour, DungeonGrade, TowerKind } from '@wildbound/engine';
+  TitleSlot, OrbColour, DungeonGrade, TowerKind, HoopaCard } from '@wildbound/engine';
 import type { BattleView } from './battle';
 import type { GachaView } from './gacha';
 import type { BagView } from './bag';
@@ -23,6 +23,7 @@ import type { DungeonCardView, TowerView, WorldBossView } from './pve-view';
 import type { ExploreView } from './explore-view';
 import type { PetHomeView } from './pet-home-view';
 import type { SkyPillarView } from './sky-pillar-view';
+import type { HoopaVaultView } from './hoopa-vault-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -186,6 +187,25 @@ export interface SkyPillarBattleResult {
   bestStars: number;
   firstClear: boolean;
   rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** A Hoopa's Vault route battle (M13.3). `ended` = the run is over (bag lost, keys refunded). */
+export interface HoopaRouteResult {
+  battle: BattleView;
+  win: boolean;
+  ended: 'caught' | 'lost' | null;
+  drops: Rewards;
+  card: HoopaCard;
+  snapshot: AccountSnapshot;
+}
+
+/** The Hoopa's Vault Exit Guardian (M13.3): a win keeps the bag and clears the floor. */
+export interface HoopaGuardianResult {
+  battle: BattleView;
+  win: boolean;
+  kept: Rewards;
+  floor: number;
   snapshot: AccountSnapshot;
 }
 
@@ -465,6 +485,13 @@ export interface GameServer {
   sweepSkyPillar(): Promise<Result<SkyPillarSweepResult>>;
   /** Claim a reached 10/20/30-star floor chest once. */
   claimSkyPillarChest(floor: number, stars: number): Promise<Result<ClaimResult>>;
+  /** M13.3 Hoopa's Vault. */
+  getHoopaVault(): Promise<Result<HoopaVaultView>>;
+  claimVaultKeys(): Promise<Result<ClaimResult>>;
+  startVaultRun(floor: number, multiplier: number, seed?: number): Promise<Result<AccountSnapshot>>;
+  fightVaultRoute(card: HoopaCard, seed?: number): Promise<Result<HoopaRouteResult>>;
+  fightVaultGuardian(seed?: number): Promise<Result<HoopaGuardianResult>>;
+  exitVaultRun(): Promise<Result<AccountSnapshot>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -525,6 +552,8 @@ export * from './pet-home';
 export * from './pet-home-view';
 export * from './sky-pillar';
 export * from './sky-pillar-view';
+export * from './hoopa-vault-view';
+export * from './hoopa-vault';
 export * from './plates';
 export * from './trinkets';
 export * from './berries';

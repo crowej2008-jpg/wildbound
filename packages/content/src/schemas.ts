@@ -713,6 +713,7 @@ export const rewardSchema = z
     boxLD: z.number().nonnegative().optional(),
     preciousShard: z.number().nonnegative().optional(),
     preciousGiftbox: z.number().nonnegative().optional(),
+    vaultKey: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

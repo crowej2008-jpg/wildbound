@@ -3,6 +3,7 @@ import campaign from '../tuning/campaign.json';
 import explore from '../tuning/explore.json';
 import petHome from '../tuning/pet-home.json';
 import skyPillar from '../tuning/sky-pillar.json';
+import hoopaVault from '../tuning/hoopa-vault.json';
 import combat from '../tuning/combat.json';
 import economy from '../tuning/economy.json';
 import growth from '../tuning/growth.json';
@@ -11,6 +12,7 @@ import { GACHA } from './tuning-gacha';
 import { gachaSchema, type GachaJson } from './gacha-schema';
 import { petHomeSchema, type PetHomeJson } from './pet-home-schema';
 import { skyPillarSchema, type SkyPillarJson } from './sky-pillar-schema';
+import { hoopaVaultSchema, type HoopaVaultJson } from './hoopa-vault-schema';
 import {
   accountSchema,
   campaignSchema,
@@ -37,8 +39,10 @@ export const CAMPAIGN: CampaignJson = campaignSchema.parse(campaign);
 export const EXPLORE: ExploreJson = exploreSchema.parse(explore);
 export const PET_HOME: PetHomeJson = petHomeSchema.parse(petHome);
 export const SKY_PILLAR: SkyPillarJson = skyPillarSchema.parse(skyPillar);
+export const HOOPA_VAULT: HoopaVaultJson = hoopaVaultSchema.parse(hoopaVault);
 export const GACHA_TUNING: GachaJson = gachaSchema.parse(GACHA);
 export type { GachaJson } from './gacha-schema';
 export type { CampaignJson, ExploreJson, ExploreModeJson, ExploreGateJson } from './schemas';
 export type { PetHomeJson } from './pet-home-schema';
 export type { SkyPillarJson } from './sky-pillar-schema';
+export type { HoopaVaultJson } from './hoopa-vault-schema';

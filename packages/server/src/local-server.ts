@@ -107,6 +107,8 @@ import {
   type ServerInfo,
   type ShopView,
   type SkyPillarBattleResult,
+  type HoopaRouteResult,
+  type HoopaGuardianResult,
   type SkyPillarSweepResult,
   type StageBattleResult,
   type SummonResult,
@@ -126,6 +128,14 @@ import {
   prepareSkyPillar,
   sweepSkyPillar as sweepSkyPillarAction,
 } from './sky-pillar';
+import {
+  claimVaultKeys as claimVaultKeysAction,
+  exitVaultRun as exitVaultRunAction,
+  fightVaultGuardian as fightVaultGuardianAction,
+  fightVaultRoute as fightVaultRouteAction,
+  startVaultRun as startVaultRunAction,
+} from './hoopa-vault';
+import { buildHoopaVaultView, type HoopaVaultView } from './hoopa-vault-view';
 import {
   buyShopOfferAction,
   claimLevelAction,
@@ -246,7 +256,7 @@ import {
   serializeSave,
 } from './save';
 import type { SaveStore } from './storage';
-import type { OrbColour } from '@wildbound/engine';
+import type { OrbColour, HoopaCard } from '@wildbound/engine';
 
 /**
  * In-browser GameServer (PROMPT §10). Owns the authoritative account state,
@@ -1416,6 +1426,60 @@ export class LocalServer implements GameServer {
     const outcome = claimSkyPillarChestAction(this.config, loaded.value, floor, stars);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commitClaim(outcome.value.state, outcome.value.reward);
+  }
+
+  async getHoopaVault(): Promise<Result<HoopaVaultView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildHoopaVaultView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async claimVaultKeys(): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimVaultKeysAction(this.config, loaded.value, this.now(loaded.value));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, { vaultKey: outcome.value.keys });
+  }
+
+  async startVaultRun(floor: number, multiplier: number, seed?: number): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = startVaultRunAction(this.config, loaded.value, this.now(loaded.value), floor, multiplier, seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async fightVaultRoute(card: HoopaCard, seed?: number): Promise<Result<HoopaRouteResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = fightVaultRouteAction(this.config, loaded.value, this.now(loaded.value), card, seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ battle: value.battle, win: value.win, ended: value.ended, drops: value.drops, card: value.card, snapshot: committed.value });
+  }
+
+  async fightVaultGuardian(seed?: number): Promise<Result<HoopaGuardianResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = fightVaultGuardianAction(this.config, loaded.value, this.now(loaded.value), seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ battle: value.battle, win: value.win, kept: value.kept, floor: value.floor, snapshot: committed.value });
+  }
+
+  async exitVaultRun(): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = exitVaultRunAction(this.config, loaded.value, this.now(loaded.value));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

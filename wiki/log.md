@@ -278,3 +278,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-04] update | R10 closed — source retrofit done
 - Close-out snapshot (`docs/design/r10-close-out.md`), Bag e2e flake fixed. R1–R10 closed; the geared tier check
   stays open (Mechas and Artifacts are not built). Next: M13.3.
+
+## [2026-11-04] update | M13.3 Hoopa's Vault run
+- 13.3a was already done in R5. Built the run: 5 free keys a day, 300 floors, ×1/×3/×5, route cards, Hoopa's
+  chase, the 15-round Exit Guardian, key refunds; floor bands from the source; pay is a stand-in (ASSUMPTIONS #92,
+  save v40). Held-item and orb drops wait for the owner.

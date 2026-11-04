@@ -2,15 +2,16 @@
 title: Hoopa's Vault
 type: system
 milestone: M13.3
-status: next — planned, not started
+status: run built 2026-11-04; drops pending
 updated: 2026-10-31
 sources: [opencode-session-2026-10 msgs 94-97, docs/SCOPE.md]
 ---
 
 # Hoopa's Vault (M13.3) — gate: server day 15 (B)
 
-Owner said "lets work on all of m13.3" on 2026-10-31 08:07; OpenCode stopped at 08:09 (usage limit)
-after only reading files. **Nothing is built yet.**
+**Built 2026-11-04** (docs/design/hoopa-vault.md, ASSUMPTIONS #92): keys, floors, multipliers, route cards,
+Hoopa's chase, the Exit Guardian, refunds, save v40. Floor bands come from the source
+(`hupa_treasury_difficulty_json`). **Not built:** held-item and orb drops — the owner asked to be consulted first.
 
 ## Rules (agreed plan)
 - **300 floors**; floor N+1 unlocks after N; first-clear chest per floor.

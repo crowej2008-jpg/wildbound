@@ -85,6 +85,7 @@ export {
   EXPLORE,
   PET_HOME,
   SKY_PILLAR,
+  HOOPA_VAULT,
   GACHA_TUNING,
 } from './tuning';
 export type {
@@ -94,9 +95,11 @@ export type {
   ExploreGateJson,
   PetHomeJson,
   SkyPillarJson,
+  HoopaVaultJson,
 } from './tuning';
 export { petHomeSchema } from './pet-home-schema';
 export { skyPillarSchema } from './sky-pillar-schema';
+export { hoopaVaultSchema } from './hoopa-vault-schema';
 export type {
   SkyPillarConditionJson,
   SkyPillarStageJson,

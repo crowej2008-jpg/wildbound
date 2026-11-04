@@ -1,0 +1,314 @@
+{
+  "floors": 300,
+  "freeKeysPerDay": 5,
+  "multipliers": [
+    {
+      "afterFloor": 0,
+      "max": 1
+    },
+    {
+      "afterFloor": 31,
+      "max": 3
+    },
+    {
+      "afterFloor": 71,
+      "max": 5
+    }
+  ],
+  "run": {
+    "startEscape": 10,
+    "target": 40,
+    "offerSize": 2,
+    "cards": {
+      "strong": {
+        "escape": 10,
+        "enemyMult": 1.5,
+        "attackBoost": 0,
+        "dropBoost": 0,
+        "weight": 3
+      },
+      "normal": {
+        "escape": 5,
+        "enemyMult": 1,
+        "attackBoost": 0,
+        "dropBoost": 0,
+        "weight": 4
+      },
+      "buff": {
+        "escape": 5,
+        "enemyMult": 1,
+        "attackBoost": 0.1,
+        "dropBoost": 0,
+        "weight": 2
+      },
+      "blessing": {
+        "escape": 5,
+        "enemyMult": 1,
+        "attackBoost": 0,
+        "dropBoost": 0.25,
+        "weight": 2
+      }
+    }
+  },
+  "guardian": {
+    "rounds": 15,
+    "mult": {
+      "hp": 3,
+      "atk": 1.5,
+      "def": 1.5
+    }
+  },
+  "enemy": {
+    "factions": [],
+    "tiers": [],
+    "count": 6,
+    "baseLevel": 3,
+    "levelSlope": 1.016,
+    "starsEvery": 15,
+    "maxStars": 20,
+    "stageEvery": 30,
+    "maxStage": 3
+  },
+  "stagePay": {
+    "heldItemShard": {
+      "base": 2,
+      "perFloor": 0.1
+    },
+    "resetterShard": {
+      "chance": 0.35,
+      "min": 1,
+      "max": 3
+    }
+  },
+  "guardianPay": {
+    "resetterShard": {
+      "min": 1,
+      "max": 4
+    },
+    "heldItemShard": 10
+  },
+  "resetterFactor": [
+    {
+      "floor": 1,
+      "factor": 1
+    },
+    {
+      "floor": 101,
+      "factor": 1.5
+    },
+    {
+      "floor": 151,
+      "factor": 2
+    },
+    {
+      "floor": 201,
+      "factor": 2.5
+    },
+    {
+      "floor": 251,
+      "factor": 3.5
+    }
+  ],
+  "bands": [
+    {
+      "floor": 1,
+      "dropPool": 101,
+      "note": "Start dropping Rare quality held items"
+    },
+    {
+      "floor": 2,
+      "dropPool": 101,
+      "note": "Rare quality held item drop probability increased"
+    },
+    {
+      "floor": 6,
+      "dropPool": 102,
+      "note": "Start dropping Level 1 Purple Orb"
+    },
+    {
+      "floor": 7,
+      "dropPool": 102,
+      "note": "Rare quality held item drop probability increased"
+    },
+    {
+      "floor": 11,
+      "dropPool": 103,
+      "note": "Start dropping Epic quality held items"
+    },
+    {
+      "floor": 12,
+      "dropPool": 103,
+      "note": "Epic quality held item drop probability increased"
+    },
+    {
+      "floor": 21,
+      "dropPool": 104,
+      "note": "Start dropping Level 2 Purple Orb"
+    },
+    {
+      "floor": 22,
+      "dropPool": 104,
+      "note": "Epic quality held item drop probability increased"
+    },
+    {
+      "floor": 31,
+      "dropPool": 105,
+      "note": "Start dropping Legendary quality held items"
+    },
+    {
+      "floor": 32,
+      "dropPool": 105,
+      "note": "Epic, Legendary quality held item drop probability increased"
+    },
+    {
+      "floor": 41,
+      "dropPool": 106,
+      "note": "Start dropping Level 3 Purple Orb"
+    },
+    {
+      "floor": 42,
+      "dropPool": 106,
+      "note": "Epic, Legendary quality held item drop probability increased"
+    },
+    {
+      "floor": 51,
+      "dropPool": 107,
+      "note": "Legendary quality held item drop probability increased"
+    },
+    {
+      "floor": 52,
+      "dropPool": 107,
+      "note": "Epic, Legendary quality held item drop probability increased"
+    },
+    {
+      "floor": 61,
+      "dropPool": 108,
+      "note": "Start dropping Level 1 Orange Orb"
+    },
+    {
+      "floor": 62,
+      "dropPool": 108,
+      "note": "Epic, Legendary quality held item drop probability increased"
+    },
+    {
+      "floor": 71,
+      "dropPool": 109,
+      "note": "Start dropping Supreme quality held items"
+    },
+    {
+      "floor": 72,
+      "dropPool": 109,
+      "note": "Legendary and Supreme quality held item drop probability increased"
+    },
+    {
+      "floor": 81,
+      "dropPool": 110,
+      "note": "Start dropping Level 2 Orange Orb"
+    },
+    {
+      "floor": 82,
+      "dropPool": 110,
+      "note": "Legendary and Supreme quality held item drop probability increased"
+    },
+    {
+      "floor": 101,
+      "dropPool": 111,
+      "note": "Supreme quality held item drop probability increased"
+    },
+    {
+      "floor": 102,
+      "dropPool": 111,
+      "note": "Legendary and Supreme quality held item drop probability increased"
+    },
+    {
+      "floor": 121,
+      "dropPool": 112,
+      "note": "Start dropping Level 3 Orange Orb"
+    },
+    {
+      "floor": 122,
+      "dropPool": 112,
+      "note": "Legendary and Supreme quality held item drop probability increased"
+    },
+    {
+      "floor": 141,
+      "dropPool": 113,
+      "note": "Supreme quality held item drop probability increased"
+    },
+    {
+      "floor": 142,
+      "dropPool": 113,
+      "note": "Legendary and Supreme quality held item drop probability increased"
+    },
+    {
+      "floor": 161,
+      "dropPool": 114,
+      "note": "Start dropping Level 4 Orange Orb"
+    },
+    {
+      "floor": 162,
+      "dropPool": 114,
+      "note": "Legendary and Supreme quality held item drop probability increased"
+    },
+    {
+      "floor": 181,
+      "dropPool": 115,
+      "note": "Start dropping Mythical quality held items"
+    },
+    {
+      "floor": 182,
+      "dropPool": 115,
+      "note": "Supreme, Mythical quality held item drop probability increased"
+    },
+    {
+      "floor": 201,
+      "dropPool": 116,
+      "note": "Start dropping Level 1 Red Orb"
+    },
+    {
+      "floor": 202,
+      "dropPool": 116,
+      "note": "Supreme, Mythical quality held item drop probability increased"
+    },
+    {
+      "floor": 221,
+      "dropPool": 117,
+      "note": "Mythical quality held item drop probability increased"
+    },
+    {
+      "floor": 222,
+      "dropPool": 117,
+      "note": "Supreme, Mythical quality held item drop probability increased"
+    },
+    {
+      "floor": 241,
+      "dropPool": 118,
+      "note": "Start dropping Level 2 Red Orb"
+    },
+    {
+      "floor": 242,
+      "dropPool": 118,
+      "note": "Supreme, Mythical quality held item drop probability increased"
+    },
+    {
+      "floor": 261,
+      "dropPool": 119,
+      "note": "Mythical quality held item drop probability increased"
+    },
+    {
+      "floor": 262,
+      "dropPool": 119,
+      "note": "Supreme, Mythical quality held item drop probability increased"
+    },
+    {
+      "floor": 281,
+      "dropPool": 120,
+      "note": "Start dropping Level 3 Red Orb"
+    },
+    {
+      "floor": 282,
+      "dropPool": 120,
+      "note": "Supreme, Mythical quality held item drop probability increased"
+    }
+  ]
+}

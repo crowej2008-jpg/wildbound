@@ -1131,3 +1131,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     missing pick fall back to best-by-power; held items are class-locked, so a SKILL Pokémon keeps Wobbuffet's
     lines on its own class's best item; stat lines take the Pokémon's own faction; Potential copies by name where
     the tree has the option. Psyduck's "all used" tiers take the first listed.
+
+92. **M13.3 Hoopa's Vault run (2026-11-04).** Built from the agreed plan (wiki/systems/hoopa-vault.md), the
+    owner's wiki and the source's `hupa_treasury_difficulty_json` (the 40 floor bands and their notes,
+    `scripts/import-hoopa-vault.mjs`). Readings: a Guardian loss refunds the key (the wiki contradicts itself; the
+    plan says refund); route time-outs are losses; the multiplier choices are ×1 / ×3 / ×5 (the wiki's ×2 / ×4 are
+    not offered). Stand-ins: enemies, the Guardian's multipliers, the card numbers and all pay (Held Item Shards,
+    Resetter Shards; see docs/design/hoopa-vault.md). Not built: held-item and orb drops (waiting for the owner),
+    Treasure Finders (M14), the VIP key purchase. New currency `vaultKey`; new squad `hoopaVault`; save v40 (reset).
+    13.3a (Resetter Shards, the 20 → 1 combine, the owner's refine ladder, 27 Mythic items) was already built in R5.

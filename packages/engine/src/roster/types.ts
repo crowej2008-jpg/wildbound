@@ -16,6 +16,7 @@ import type { WorldBossState } from '../pve/worldBoss';
 import type { DungeonState } from '../pve/dungeons';
 import type { PetHomeState } from '../pet-home/types';
 import type { SkyPillarState } from '../sky-pillar/types';
+import type { HoopaVaultState } from '../hoopa-vault/types';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -25,7 +26,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -34,6 +35,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'tower',
   'worldBoss',
   'skyPillar',
+  'hoopaVault',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -104,6 +106,7 @@ export type CurrencyId =
   | 'boxLD'
   | 'preciousShard'
   | 'preciousGiftbox'
+  | 'vaultKey'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -158,6 +161,7 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'boxLD',
   'preciousShard',
   'preciousGiftbox',
+  'vaultKey',
   'privilegeXp',
 ];
 
@@ -200,6 +204,7 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'boxLD',
   'preciousShard',
   'preciousGiftbox',
+  'vaultKey',
   'privilegeXp',
 ];
 
@@ -296,6 +301,8 @@ export interface AccountState {
   petHome: PetHomeState;
   /** M13.2: Sky Pillar star records, proofs and floor chests. */
   skyPillar: SkyPillarState;
+  /** M13.3: Hoopa's Vault progress, daily keys and the run in progress. */
+  hoopaVault: HoopaVaultState;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }
@@ -445,6 +452,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     tower: emptySquad(),
     worldBoss: emptySquad(),
     skyPillar: emptySquad(),
+    hoopaVault: emptySquad(),
   };
 }
 
@@ -456,6 +464,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     tower: 'balanced',
     worldBoss: 'aggressive',
     skyPillar: 'balanced',
+    hoopaVault: 'balanced',
   };
 }
 

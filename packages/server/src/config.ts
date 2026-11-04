@@ -25,6 +25,7 @@ import {
   TITLES,
   PET_HOME,
   SKY_PILLAR,
+  HOOPA_VAULT,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -47,6 +48,7 @@ import type {
   GymJson,
   PetHomeJson,
   SkyPillarJson,
+  HoopaVaultJson,
   PveJson,
   PvpJson,
   TitlesJson,
@@ -136,6 +138,8 @@ export interface GameConfig {
   petHome: PetHomeJson;
   /** M13.2: Sky Pillar floors, stages, star conditions and proofs. */
   skyPillar: SkyPillarJson;
+  /** M13.3 Hoopa's Vault. */
+  hoopaVault: HoopaVaultJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -244,6 +248,7 @@ export function buildConfig(): GameConfig {
     explore: EXPLORE,
     petHome: PET_HOME,
     skyPillar: SKY_PILLAR,
+    hoopaVault: HOOPA_VAULT,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

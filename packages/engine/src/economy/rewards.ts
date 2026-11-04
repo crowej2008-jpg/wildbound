@@ -60,6 +60,8 @@ export interface Rewards {
   preciousShard?: number;
   /** R9: Selectable Precious Giftboxes (50 Precious Shards; open for 50 shards of a chosen Legendary). */
   preciousGiftbox?: number;
+  /** M13.3: Vault Secret Keys (Hoopa's Vault). */
+  vaultKey?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -115,6 +117,7 @@ export const CURRENCY_REWARD_KEYS = [
   'boxLD',
   'preciousShard',
   'preciousGiftbox',
+  'vaultKey',
   'privilegeXp',
 ] as const;
 

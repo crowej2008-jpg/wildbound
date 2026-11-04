@@ -26,6 +26,7 @@ import {
   initialSignIn,
   initialFashion,
   initialSkyPillar,
+  initialHoopaVault,
   TITLE_SLOTS,
   type AccountState,
   type CurrencyId,
@@ -45,14 +46,14 @@ import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 39;
+export const SAVE_VERSION = 40;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 39;
+export const MIN_SAVE_VERSION = 40;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -216,6 +217,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     pvp: s.pvp ?? initialPvp(day, weekKey(now)),
     petHome: s.petHome ?? initialPetHome(now, day),
     skyPillar: s.skyPillar ?? initialSkyPillar(now, config?.skyPillar),
+    hoopaVault: s.hoopaVault ?? initialHoopaVault(),
     debugClockOffset: s.debugClockOffset ?? 0,
   };
 }
@@ -313,6 +315,7 @@ export function createInitialState(config: GameConfig): AccountState {
     pvp: initialPvp(day, weekKey(now)),
     petHome: initialPetHome(now, day),
     skyPillar: initialSkyPillar(now, config.skyPillar),
+    hoopaVault: initialHoopaVault(),
     debugClockOffset: 0,
   };
 }
