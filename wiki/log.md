@@ -271,3 +271,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Meta six on their wiki builds, everyone else on Wobbuffet's (Guardian/SKILL) or God Ash-Pikachu's (Striker) build,
   50,000 battles (ASSUMPTIONS #91). Wobbuffet 4th; God Ash-Pikachu and Psyduck near the bottom. Next: check that
   their gear effects fire in battle.
+
+## [2026-11-04] update | Mode difficulty curves moved to the very end
+- Owner: the mode difficulty-curve test runs after M20, when the game is done. Removed from R10; decision page added.
