@@ -1123,3 +1123,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     level, red +10 orbs (each set tried, the rest by the best single kind), two berries at max star / stage, and
     Potential Lv 6 per tier (a power tie fills the layer with the first option). Account-wide layers (titles,
     fashion, resonance) are left out, as they are the same for everyone. Result and limits: `wiki/systems/e6-tier-list.md`.
+
+91. **R10 owner builds (owner 2026-11-04).** The meta six use their wiki builds (read from
+    pokemon-wiki-sandy.vercel.app); Guardians and SKILL Pokémon copy Wobbuffet's, Strikers God Ash-Pikachu's
+    (`classTemplate` in `scripts/balance/max-build.ts`). Readings: the wiki's "Relic" slot is the source's Artifacts
+    (deferred, left out); Psyduck's Ice soul-hearts use the wiki's alternative Water; Greninja's Steel set and any
+    missing pick fall back to best-by-power; held items are class-locked, so a SKILL Pokémon keeps Wobbuffet's
+    lines on its own class's best item; stat lines take the Pokémon's own faction; Potential copies by name where
+    the tree has the option. Psyduck's "all used" tiers take the first listed.

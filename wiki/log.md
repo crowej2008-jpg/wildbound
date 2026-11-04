@@ -266,3 +266,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Every Supreme/Mythic/Origin maxed with best-by-power gear, 50,000 battles (ASSUMPTIONS #90). Shiny Blastoise 2nd
   and Wobbuffet 4th; the other four meta Pokémon do not rise. Power-picked gear is identical for everyone. Waiting on
   the owner for real builds. Next: mode difficulty curves.
+
+## [2026-11-04] update | R10 tier list on the owner's builds
+- Meta six on their wiki builds, everyone else on Wobbuffet's (Guardian/SKILL) or God Ash-Pikachu's (Striker) build,
+  50,000 battles (ASSUMPTIONS #91). Wobbuffet 4th; God Ash-Pikachu and Psyduck near the bottom. Next: check that
+  their gear effects fire in battle.

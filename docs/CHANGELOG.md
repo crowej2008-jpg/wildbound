@@ -1355,3 +1355,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - `scripts/balance/max-build.ts` and `GEAR=max` on `scripts/balance/tier.ts`. 50,000 battles: Shiny Blastoise and
   Wobbuffet rise to the top; Greninja, Origin Lugia, God Ash-Pikachu and Psyduck do not. Power-picked gear is the
   same for everyone (power cannot see effects). ASSUMPTIONS #90.
+
+## R10 part 2 — tier list on the owner's builds (2026-11-04)
+
+- `WIKI_BUILDS` (the meta six) and class templates for everyone else in `scripts/balance/max-build.ts`; 50,000
+  battles. Field compresses to 47–60%; God Ash-Pikachu and Psyduck stay at the bottom. ASSUMPTIONS #91.

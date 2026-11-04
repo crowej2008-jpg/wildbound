@@ -82,3 +82,27 @@ orb sets, berry skills and Potential options that act through effects are invisi
 adds bulk, which lifts the Guardians (Blastoise, Wobbuffet, Snorlax) and dilutes the burst Strikers. The four
 that did not rise are the ones whose real builds lean on effects. Next step is the owner's: give the real builds
 for the meta six (a per-species override would be added to `max-build.ts`), or keep this as the reading.
+
+## R10 owner-build run (2026-11-04)
+Owner: "run every pokemon and make a tier list and if its a def or skill class copy wobbafetts build and if its an
+attack mon copy god ash pikas build". The meta six use their own wiki builds (`WIKI_BUILDS`); every other
+Supreme/Mythic/Origin copies Wobbuffet's (Guardian, SKILL) or God Ash-Pikachu's (Striker) via `classTemplate`. Not
+copied: the Relic slot (Artifacts, deferred), Ice/Steel soul-heart sets (not in Wildbound); held items are
+class-locked, so SKILL Pokémon keep Wobbuffet's lines on their own class's best item. `GEAR=max tsx
+scripts/balance/tier.ts max 50000` (BUILDS=wiki: only the six; BUILDS=auto: best-by-power).
+
+| Meta six | Ungeared | Auto gear | Owner builds (win %) |
+|---|---|---|---|
+| Wobbuffet | 50 | 4 | 4 (53%) |
+| Shiny Blastoise | 35 | 2 | 15 (51%) |
+| Origin Lugia | 12 | 19 | 18 (50%) |
+| Greninja | 15 | 13 | 21 (50%) |
+| Psyduck | 51 | 50 | 53 (48%) |
+| God Ash-Pikachu | 41 | 43 | 54 (48%) |
+
+Top ten: Necrozma 60%, Zacian 54%, Dialga 53%, Wobbuffet 53%, Darkrai 52%, Cresselia 52%, Shiny Darkrai 52%, Xerneas 51%, Palkia 51%, Snorlax 51%.
+
+Finding (agent's reading): with equal builds the field compresses to 47–60%, so the kits decide. God Ash-Pikachu
+(54th) and Psyduck (53rd) stay at the bottom on their real builds; their power in the source leans on effects
+(Fire Set shield break, Scope Lens Easy Crit, trinket S.DEF ignore, Psyduck's transfer) that are worth checking
+fire in battle next. Full list: `owner-tiers.json` in the published tier-list page.

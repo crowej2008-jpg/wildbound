@@ -7,12 +7,14 @@
  * plus its damage share, healing/shield share, survival and ult count.
  *
  * Usage: tsx scripts/balance/tier.ts <stage: early|mid|max> <battles> [out.json]
- * R10: GEAR=max gives every Pokémon a maxed, fully geared build (scripts/balance/max-build.ts).
+ * R10: GEAR=max gives every Pokémon a maxed, fully geared build (scripts/balance/max-build.ts); the meta six use
+ * the owner's wiki builds and everyone else
+ * copies Wobbuffet (Guardian / SKILL) or God Ash-Pikachu (Striker); BUILDS=wiki only the six, BUILDS=auto none.
  */
 import { writeFileSync } from 'node:fs';
 import { runBattle, mulberry32, type SpecInput, type TriggerDef, type WildInstance } from '@wildbound/engine';
 import { buildConfig, buildWildTeam } from '@wildbound/server';
-import { buildMaxAccount } from './max-build';
+import { buildMaxAccount, ownerBuilds, WIKI_BUILDS } from './max-build';
 
 const STAGES = {
   early: { star: 5, level: 100, skill: 1 },
@@ -37,7 +39,7 @@ function pick(n: number): typeof pool {
   return out.sort((a, b) => ORDER[a.className] - ORDER[b.className]);
 }
 
-const GEARED = process.env.GEAR === 'max' ? buildMaxAccount(config, pool, stage) : null;
+const GEARED = process.env.GEAR === 'max' ? buildMaxAccount(config, pool, stage, process.env.BUILDS === 'auto' ? {} : process.env.BUILDS === 'wiki' ? WIKI_BUILDS : ownerBuilds(pool)) : null;
 if (GEARED) console.log(`geared ${pool.length} Pokémon`);
 
 function wilds(team: typeof pool, side: string): WildInstance[] {
