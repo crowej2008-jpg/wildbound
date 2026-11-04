@@ -36,8 +36,9 @@
       "xp": 20
     },
     "idlePerMinute": {
-      "gold": 200,
-      "candy": 20
+      "gold": 273,
+      "candy": 90,
+      "xp": 9
     },
     "starRounds": [
       5,
@@ -81,8 +82,9 @@
       "xp": 21
     },
     "idlePerMinute": {
-      "gold": 215,
-      "candy": 21
+      "gold": 273,
+      "candy": 90,
+      "xp": 9
     },
     "starRounds": [
       5,
@@ -132,8 +134,9 @@
       "xp": 22
     },
     "idlePerMinute": {
-      "gold": 230,
-      "candy": 23
+      "gold": 273,
+      "candy": 90,
+      "xp": 9
     },
     "starRounds": [
       6,
@@ -183,8 +186,9 @@
       "xp": 23
     },
     "idlePerMinute": {
-      "gold": 245,
-      "candy": 25
+      "gold": 273,
+      "candy": 90,
+      "xp": 9
     },
     "starRounds": [
       6,
@@ -234,8 +238,9 @@
       "xp": 24
     },
     "idlePerMinute": {
-      "gold": 260,
-      "candy": 26
+      "gold": 273,
+      "candy": 90,
+      "xp": 9
     },
     "starRounds": [
       6,
@@ -286,8 +291,9 @@
       "xp": 30
     },
     "idlePerMinute": {
-      "gold": 330,
-      "candy": 33
+      "gold": 293,
+      "candy": 96,
+      "xp": 10
     },
     "starRounds": [
       7,
@@ -337,9 +343,9 @@
       "xp": 10
     },
     "idlePerMinute": {
-      "gold": 65,
-      "candy": 8,
-      "xp": 2
+      "gold": 293,
+      "candy": 96,
+      "xp": 10
     },
     "starRounds": [
       3,
@@ -395,9 +401,9 @@
       "xp": 11
     },
     "idlePerMinute": {
-      "gold": 65,
-      "candy": 8,
-      "xp": 2
+      "gold": 293,
+      "candy": 96,
+      "xp": 10
     },
     "starRounds": [
       3,
@@ -453,9 +459,9 @@
       "xp": 11
     },
     "idlePerMinute": {
-      "gold": 65,
-      "candy": 8,
-      "xp": 2
+      "gold": 293,
+      "candy": 96,
+      "xp": 10
     },
     "starRounds": [
       3,
@@ -518,9 +524,9 @@
       "xp": 12
     },
     "idlePerMinute": {
-      "gold": 66,
-      "candy": 8,
-      "xp": 2
+      "gold": 293,
+      "candy": 96,
+      "xp": 10
     },
     "starRounds": [
       3,

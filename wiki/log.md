@@ -250,3 +250,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-04] update | R9 Arena and Ranked tables
 - The source's Arena prices, chests and best-rank brackets and Ranked's per-phase coins and gifts (ASSUMPTIONS #86).
   Next: Campaign rows.
+
+## [2026-11-04] update | R9 Campaign idle income
+- Every story stage's idle Gold / XP Candies / Trainer XP per minute from the source's dun_afk (ASSUMPTIONS #87). The
+  stages' enemies and clear rewards wait on the per-stage rows (not in the dumps). Next: Pet Home and Sky Pillar rows.

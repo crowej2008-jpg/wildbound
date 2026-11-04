@@ -86,8 +86,9 @@ describe('LocalServer M5 idle', () => {
     const claim = await srv.claimIdle();
     expect(claim.ok).toBe(true);
     if (!claim.ok) return;
-    expect(claim.value.granted.gold).toBe(3600);
-    expect(claim.value.granted.candy).toBe(360);
+    // R9: the source's 1-1 idle rate — 233 Gold, 78 XP Candies and 8 Trainer XP a minute (dun_afk).
+    expect(claim.value.granted.gold).toBe(233 * 60);
+    expect(claim.value.granted.candy).toBe(78 * 60);
     const again = await srv.claimIdle();
     expect(again.ok).toBe(false);
     if (!again.ok) expect(again.error).toBe('not_ready');
@@ -222,8 +223,8 @@ describe('LocalServer M5 tutorial and debug clock', () => {
     const claim = await srv.claimIdle();
     expect(claim.ok).toBe(true);
     if (!claim.ok) return;
-    expect(claim.value.granted.gold).toBe(60 * 480);
-    expect(claim.value.granted.candy).toBe(6 * 480);
+    expect(claim.value.granted.gold).toBe(233 * 480);
+    expect(claim.value.granted.candy).toBe(78 * 480);
   });
 });
 

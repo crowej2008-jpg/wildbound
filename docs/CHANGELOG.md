@@ -1334,3 +1334,7 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - `scripts/import-arena.mjs` / `scripts/import-ranked.mjs` rewrite the `arena` / `ranked` blocks of `pvp.json` from
   the source; Ranked phases carry their own match gifts (`gifts`). ASSUMPTIONS #86.
+
+## R9 part 9 — Campaign idle income from the source (2026-11-04)
+
+- `scripts/import-campaign-idle.mjs` sets every stage's `idlePerMinute` from the source's `dun_afk`. ASSUMPTIONS #87.

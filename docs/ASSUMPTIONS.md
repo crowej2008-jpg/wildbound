@@ -1086,3 +1086,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     unnamed) nor the lucky-rank raffle; the Greater Berry Box in Ranked's 25- and 40-match gifts is left out (no
     berry boxes in Wildbound); Ranked's phase names, team formats and weather stay (lineup types and weather ids are
     not readable).
+
+87. **R9 Campaign idle income (2026-11-04).** `scripts/import-campaign-idle.mjs` copies each story stage's idle income
+    per minute from the source (`dun_afk_json`, summarised in afk_cfg `_afk`): Gold, XP Candies and Trainer XP — 233 /
+    78 / 8 at 1-1 rising to 705 / 243 / 24 at 182-10. Wildbound's c1-1 … c182-10 are the source's 1-1 … 182-10 one to
+    one. Not copied: ADV (Adventure missions are not built) and the idle drop groups (their contents are server-side).
+    Readings: idling still needs a cleared stage (the source's 1-0 start, which idles from the first minute, has no
+    Wildbound stage). Stand-ins: each stage's enemies and first-clear / repeat rewards (the per-stage rows are not in
+    the dumps).

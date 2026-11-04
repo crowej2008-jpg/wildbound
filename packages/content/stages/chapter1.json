@@ -24,8 +24,9 @@
       "xp": 10
     },
     "idlePerMinute": {
-      "gold": 60,
-      "candy": 6
+      "gold": 233,
+      "candy": 78,
+      "xp": 8
     },
     "starRounds": [
       3,
@@ -63,8 +64,9 @@
       "xp": 11
     },
     "idlePerMinute": {
-      "gold": 65,
-      "candy": 6
+      "gold": 233,
+      "candy": 78,
+      "xp": 8
     },
     "starRounds": [
       3,
@@ -102,8 +104,9 @@
       "xp": 12
     },
     "idlePerMinute": {
-      "gold": 70,
-      "candy": 7
+      "gold": 233,
+      "candy": 78,
+      "xp": 8
     },
     "starRounds": [
       4,
@@ -147,8 +150,9 @@
       "xp": 13
     },
     "idlePerMinute": {
-      "gold": 75,
-      "candy": 7
+      "gold": 233,
+      "candy": 78,
+      "xp": 8
     },
     "starRounds": [
       4,
@@ -192,8 +196,9 @@
       "xp": 14
     },
     "idlePerMinute": {
-      "gold": 80,
-      "candy": 8
+      "gold": 233,
+      "candy": 78,
+      "xp": 8
     },
     "starRounds": [
       5,
@@ -244,8 +249,9 @@
       "xp": 18
     },
     "idlePerMinute": {
-      "gold": 110,
-      "candy": 11
+      "gold": 253,
+      "candy": 84,
+      "xp": 9
     },
     "starRounds": [
       5,
@@ -295,9 +301,9 @@
       "xp": 9
     },
     "idlePerMinute": {
-      "gold": 61,
-      "candy": 7,
-      "xp": 2
+      "gold": 253,
+      "candy": 84,
+      "xp": 9
     },
     "starRounds": [
       3,
@@ -353,9 +359,9 @@
       "xp": 10
     },
     "idlePerMinute": {
-      "gold": 62,
-      "candy": 7,
-      "xp": 2
+      "gold": 253,
+      "candy": 84,
+      "xp": 9
     },
     "starRounds": [
       3,
@@ -411,9 +417,9 @@
       "xp": 10
     },
     "idlePerMinute": {
-      "gold": 62,
-      "candy": 7,
-      "xp": 2
+      "gold": 253,
+      "candy": 84,
+      "xp": 9
     },
     "starRounds": [
       3,
@@ -476,9 +482,9 @@
       "xp": 11
     },
     "idlePerMinute": {
-      "gold": 62,
-      "candy": 7,
-      "xp": 2
+      "gold": 253,
+      "candy": 84,
+      "xp": 9
     },
     "starRounds": [
       3,

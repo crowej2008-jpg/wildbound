@@ -42,8 +42,9 @@
       "xp": 35
     },
     "idlePerMinute": {
-      "gold": 600,
-      "candy": 60
+      "gold": 313,
+      "candy": 102,
+      "xp": 10
     },
     "starRounds": [
       6,
@@ -96,8 +97,9 @@
       "xp": 36
     },
     "idlePerMinute": {
-      "gold": 630,
-      "candy": 63
+      "gold": 313,
+      "candy": 102,
+      "xp": 10
     },
     "starRounds": [
       6,
@@ -147,8 +149,9 @@
       "xp": 37
     },
     "idlePerMinute": {
-      "gold": 660,
-      "candy": 66
+      "gold": 313,
+      "candy": 102,
+      "xp": 10
     },
     "starRounds": [
       7,
@@ -204,8 +207,9 @@
       "xp": 38
     },
     "idlePerMinute": {
-      "gold": 690,
-      "candy": 69
+      "gold": 313,
+      "candy": 102,
+      "xp": 10
     },
     "starRounds": [
       7,
@@ -261,8 +265,9 @@
       "xp": 39
     },
     "idlePerMinute": {
-      "gold": 720,
-      "candy": 72
+      "gold": 313,
+      "candy": 102,
+      "xp": 10
     },
     "starRounds": [
       7,
@@ -319,8 +324,9 @@
       "xp": 45
     },
     "idlePerMinute": {
-      "gold": 1000,
-      "candy": 100
+      "gold": 333,
+      "candy": 108,
+      "xp": 11
     },
     "starRounds": [
       8,
@@ -370,9 +376,9 @@
       "xp": 11
     },
     "idlePerMinute": {
-      "gold": 69,
-      "candy": 9,
-      "xp": 2
+      "gold": 333,
+      "candy": 108,
+      "xp": 11
     },
     "starRounds": [
       3,
@@ -428,9 +434,9 @@
       "xp": 11
     },
     "idlePerMinute": {
-      "gold": 69,
-      "candy": 9,
-      "xp": 2
+      "gold": 333,
+      "candy": 108,
+      "xp": 11
     },
     "starRounds": [
       3,
@@ -486,9 +492,9 @@
       "xp": 12
     },
     "idlePerMinute": {
-      "gold": 69,
-      "candy": 10,
-      "xp": 2
+      "gold": 333,
+      "candy": 108,
+      "xp": 11
     },
     "starRounds": [
       3,
@@ -551,9 +557,9 @@
       "xp": 12
     },
     "idlePerMinute": {
-      "gold": 69,
-      "candy": 10,
-      "xp": 2
+      "gold": 333,
+      "candy": 108,
+      "xp": 11
     },
     "starRounds": [
       3,
