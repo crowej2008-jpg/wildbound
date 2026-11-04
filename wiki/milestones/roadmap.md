@@ -33,7 +33,7 @@ Numbers changed twice — see [renumbering](../decisions/milestone-renumbering.m
 | M16 | Guild war + Relic Battlefield (needs M12) | pending |
 | M17 | Cross-server PvP: Clash, Championship, SPT Temple | pending |
 | M18 | [Visual identity](../systems/visual-identity.md) | pending |
-| M19 | [Shared backend](../systems/backend.md) (required) | pending |
+| M19 | [Shared backend](../systems/backend.md) (required; owner 2026-11-04: probably solo with scaling CPUs — revisit) | pending |
 | M20 | [Build Lab](../systems/build-lab.md) | pending (last) |
 | After M20 | [Mode difficulty curves](../decisions/difficulty-curves-at-the-end.md) | parked: owner 2026-11-04, "at the very end" |
 

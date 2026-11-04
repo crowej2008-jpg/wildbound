@@ -2,7 +2,7 @@
 title: Co-op boss rush tower (idea)
 type: idea
 status: designed in chat; not in the roadmap or repo
-updated: 2026-10-31
+updated: 2026-11-04
 sources: [Claude chats with the owner, Oct 2026]
 ---
 
@@ -20,7 +20,8 @@ Designed by Jayden in Claude chats; **not yet in SCOPE.md or any milestone**. Ne
   team with huge stats — a strategy *and* stat check; micro stat changes should matter at high floors.
   Very little randomness.
 - Bosses scale with the **highest resonance** on the team (earlier idea: average of both players').
-- Floors 100, 200, 300 hand-crafted; other boss gimmicks built from existing mechanics.
+- Floors 100, 200, 300: random teams with huge stats (owner 2026-11-04: "make the floor 100,200,and 300
+  bosses just be random but huge stats"; replaces "hand-crafted"); other boss gimmicks built from existing mechanics.
 - **Entry:** 25 total awakened levels on each account.
 - **Tries:** 5 per pair per week. A wipe uses a try; the next try resumes where they left off. Between
   tries, unlimited **build** changes on the already-picked Pokémon (applied at next try start).

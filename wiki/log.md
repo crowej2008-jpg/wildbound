@@ -293,3 +293,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-04] update | Rift Arena source check and server parts
 - Found the source's New Rift Arena tables; the Advanced ranking and the Easy weakness are server features and wait
   for the shared backend (owner); level sync stays. Next: build 13.4.
+
+## [2026-11-04] update | Co-op tower bosses; solo-with-CPUs note
+- Owner: the co-op tower's floor 100 / 200 / 300 bosses are random teams with huge stats (not hand-made). Owner also
+  expects to play solo against scaling CPUs, so the server-wide parts and M19 are to be revisited later.
