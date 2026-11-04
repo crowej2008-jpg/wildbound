@@ -34,6 +34,9 @@ export interface HoopaRunView {
   attackBoost: number;
   dropBoost: number;
   bag: Rewards;
+  /** Held items banked (name and quality only: lines roll when kept, as in the source). */
+  items: { name: string; quality: string }[];
+  orbs: { colour: string; level: number }[];
   atGuardian: boolean;
   guardianRounds: number;
 }
@@ -90,6 +93,8 @@ export function buildHoopaVaultView(config: GameConfig, state: AccountState, now
           attackBoost: run.attackBoost,
           dropBoost: run.dropBoost,
           bag: run.bag,
+          items: run.items.map((i) => ({ name: config.equipment.relics.find((d) => d.id === i.defId)?.name ?? i.defId, quality: i.quality })),
+          orbs: run.orbs.map((o) => ({ ...o })),
           atGuardian: run.atGuardian,
           guardianRounds: rules.guardian.rounds,
         }

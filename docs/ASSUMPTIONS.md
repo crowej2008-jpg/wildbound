@@ -1149,3 +1149,9 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     held item (worn or not) can re-roll its main stat into one of its pool's other kinds (HP / P.ATK / S.ATK), at
     random, for 100 Resetter Shards (`mainStatRerollShards` in held-items.json). Readings: the level, lines and
     refines stay; a locked item can still be re-rolled (locking guards against dismantling).
+
+95. **Hoopa's Vault drops (owner 2026-11-04: "follow the source for all those questions").** From the records: a
+    held item draws a quality by the floor band, then any name of it at equal odds (the wiki's ~1 in 27); lines
+    roll when the bag is kept; the Guardian adds 3 items; orbs from floor 6 at the band's colour and level, kind
+    random. Stand-ins: the band weights (30 % → 70 % for the newest quality, the previous one the rest), a 30 %
+    item and 20 % orb chance per route win (per multiplier copy). Details: docs/design/hoopa-vault.md.

@@ -9,7 +9,7 @@ import type {
   StrategyId,
   SummonCost,
   SkillRow,
-  TitleSlot, OrbColour, DungeonGrade, TowerKind, HoopaCard } from '@wildbound/engine';
+  TitleSlot, OrbColour, DungeonGrade, TowerKind, HoopaCard, BagItem, BagOrb } from '@wildbound/engine';
 import type { BattleView } from './battle';
 import type { GachaView } from './gacha';
 import type { BagView } from './bag';
@@ -196,6 +196,8 @@ export interface HoopaRouteResult {
   win: boolean;
   ended: 'caught' | 'lost' | null;
   drops: Rewards;
+  items: BagItem[];
+  orbs: BagOrb[];
   card: HoopaCard;
   snapshot: AccountSnapshot;
 }
@@ -205,6 +207,8 @@ export interface HoopaGuardianResult {
   battle: BattleView;
   win: boolean;
   kept: Rewards;
+  items: BagItem[];
+  orbs: BagOrb[];
   floor: number;
   snapshot: AccountSnapshot;
 }

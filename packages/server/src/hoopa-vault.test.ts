@@ -98,7 +98,15 @@ describe("Hoopa's Vault server rules", () => {
       ...started.value,
       hoopaVault: {
         ...started.value.hoopaVault,
-        run: { ...started.value.hoopaVault.run!, escape: 40, atGuardian: true, offer: [], bag: { heldItemShard: 7 } },
+        run: {
+          ...started.value.hoopaVault.run!,
+          escape: 40,
+          atGuardian: true,
+          offer: [],
+          bag: { heldItemShard: 7 },
+          items: [{ defId: '101203', quality: 'rare' as const }],
+          orbs: [{ colour: 'purple' as const, level: 1 }],
+        },
       },
     };
     const fought = fightVaultGuardian(config, atExit, DAY15, 3);
@@ -110,7 +118,12 @@ describe("Hoopa's Vault server rules", () => {
       expect(after.hoopaVault.highest).toBe(1);
       expect(after.currencies.heldItemShard).toBeGreaterThanOrEqual((state.currencies.heldItemShard ?? 0) + 7);
       expect(after.currencies.vaultKey).toBe(0);
+      // the banked Rare plus the Guardian's 3 items become real held items; the orb too
+      expect(after.equipment.relics.length).toBe(atExit.equipment.relics.length + 4);
+      expect(after.equipment.relics.some((r) => r.defId === '101203')).toBe(true);
+      expect(after.equipment.orbs.length).toBe(atExit.equipment.orbs.length + 1);
     } else {
+      expect(after.equipment.relics.length).toBe(atExit.equipment.relics.length);
       expect(after.hoopaVault.highest).toBe(0);
       expect(after.currencies.vaultKey).toBe(1);
     }

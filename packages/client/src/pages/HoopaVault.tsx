@@ -9,6 +9,8 @@ import { useServer } from '../server/ServerProvider';
 
 /** Hoopa's Vault (M13.3): daily keys, a floor and multiplier, route cards, the Exit Guardian. */
 
+type QualityKey = 'hoopa.quality.rare' | 'hoopa.quality.epic' | 'hoopa.quality.legendary' | 'hoopa.quality.supreme' | 'hoopa.quality.mythic';
+type OrbKey = 'hoopa.orb.purple' | 'hoopa.orb.orange' | 'hoopa.orb.red';
 type CardKey = 'hoopa.card.strong' | 'hoopa.card.normal' | 'hoopa.card.buff' | 'hoopa.card.blessing';
 
 function cardText(card: HoopaCardView): string {
@@ -25,6 +27,8 @@ interface Fought {
   /** Route: 'caught' / 'lost' end the run. Guardian: always over. */
   ended: 'caught' | 'lost' | 'guardian' | null;
   rewards: Rewards;
+  /** Held items / orbs banked or kept by this fight. */
+  extra: number;
 }
 
 export default function HoopaVault() {
@@ -70,13 +74,27 @@ export default function HoopaVault() {
   const route = async (card: HoopaCardView['card']) => {
     setStatus(null);
     const res = await call((s) => s.fightVaultRoute(card), (v) => v.snapshot);
-    if (res.ok) setFought({ battle: res.value.battle, win: res.value.win, ended: res.value.ended, rewards: res.value.drops });
+    if (res.ok)
+      setFought({
+        battle: res.value.battle,
+        win: res.value.win,
+        ended: res.value.ended,
+        rewards: res.value.drops,
+        extra: res.value.items.length + res.value.orbs.length,
+      });
   };
 
   const guardian = async () => {
     setStatus(null);
     const res = await call((s) => s.fightVaultGuardian(), (v) => v.snapshot);
-    if (res.ok) setFought({ battle: res.value.battle, win: res.value.win, ended: 'guardian', rewards: res.value.kept });
+    if (res.ok)
+      setFought({
+        battle: res.value.battle,
+        win: res.value.win,
+        ended: 'guardian',
+        rewards: res.value.kept,
+        extra: res.value.items.length + res.value.orbs.length,
+      });
   };
 
   if (fought) {
@@ -101,6 +119,9 @@ export default function HoopaVault() {
               <strong data-testid="hoopa-outcome">{outcome}</strong>
             </div>
             {fought.win ? <RewardLine rewards={fought.rewards} /> : null}
+            {fought.win && fought.extra > 0 ? (
+              <p className="muted">{t('hoopa.result.items').replace('{n}', String(fought.extra))}</p>
+            ) : null}
             <button
               type="button"
               className="btn btn-primary"
@@ -198,6 +219,18 @@ export default function HoopaVault() {
               </p>
               <div className="hoopa-bag">
                 {t('hoopa.bag')}: <RewardLine rewards={run.bag} />
+                {run.items.length + run.orbs.length > 0 && (
+                  <ul className="plain-list" data-testid="hoopa-bag-items">
+                    {run.items.map((item, i) => (
+                      <li key={`i${i}`}>
+                        {item.name} <span className="muted">({t(`hoopa.quality.${item.quality}` as QualityKey)})</span>
+                      </li>
+                    ))}
+                    {run.orbs.map((orb, i) => (
+                      <li key={`o${i}`}>{t(`hoopa.orb.${orb.colour}` as OrbKey).replace('{n}', String(orb.level))}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
               {run.atGuardian ? (
                 <button type="button" className="btn btn-primary" disabled={busy} onClick={() => void guardian()}>

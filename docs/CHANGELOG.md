@@ -1378,3 +1378,5 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - The refine ladder stops rising at 10 Resetters and refines never run out (owner). ASSUMPTIONS #93.
 - Main-stat re-roll: 100 Resetter Shards, random among the other kinds, keeps level and lines (owner).
   ASSUMPTIONS #94.
+- Hoopa's Vault drops: held items by floor band (lines roll when kept), 3 from the Guardian, band orbs from
+  floor 6. ASSUMPTIONS #95.

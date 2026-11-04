@@ -24,6 +24,9 @@ export interface HoopaCardRule {
 }
 
 /** A floor band: the source's `hupa_treasury_difficulty_json` rows (drop pool and what starts dropping). */
+export type HeldQuality = 'rare' | 'epic' | 'legendary' | 'supreme' | 'mythic';
+export type VaultOrbColour = 'purple' | 'orange' | 'red';
+
 export interface HoopaFloorBand {
   /** First floor of the band. */
   floor: number;
@@ -31,6 +34,22 @@ export interface HoopaFloorBand {
   dropPool: number;
   /** The source's description of what this band adds. */
   note: string;
+  /** Held-item quality odds from this floor (the source's band notes; the weights are stand-ins). */
+  qualities: Partial<Record<HeldQuality, number>>;
+  /** The best orb this band drops (source band notes), or null before floor 6. */
+  orb: { colour: VaultOrbColour; level: number } | null;
+}
+
+/** A held item waiting in the bag: its lines roll only when the bag is kept (as in the source). */
+export interface BagItem {
+  defId: string;
+  quality: HeldQuality;
+}
+
+/** An orb waiting in the bag: its kind and lines roll when the bag is kept. */
+export interface BagOrb {
+  colour: VaultOrbColour;
+  level: number;
 }
 
 export interface HoopaVaultRules {
@@ -57,8 +76,10 @@ export interface HoopaVaultRules {
     heldItemShard: { base: number; perFloor: number };
     resetterShard: { chance: number; min: number; max: number };
   };
-  /** Guardian pay on a win, before the multiplier. */
-  guardianPay: { resetterShard: { min: number; max: number }; heldItemShard: number };
+  /** Guardian pay on a win, before the multiplier: Resetter Shards, Held Item Shards and `items` held items. */
+  guardianPay: { resetterShard: { min: number; max: number }; heldItemShard: number; items: number };
+  /** Chances per route win (Strong routes and the Drop blessing raise them). */
+  routeDrops: { itemChance: number; orbChance: number };
   /** Resetter Shard lumps grow with the floor: the factor of the last band whose floor is reached. */
   resetterFactor: { floor: number; factor: number }[];
   bands: HoopaFloorBand[];
@@ -77,6 +98,10 @@ export interface HoopaRun {
   dropBoost: number;
   /** Everything banked so far; kept only by beating the Exit Guardian. */
   bag: Rewards;
+  /** Held items banked (lines roll when kept). */
+  items: BagItem[];
+  /** Orbs banked (kind and lines roll when kept). */
+  orbs: BagOrb[];
   /** True once escape reaches the target: the next fight is the Exit Guardian. */
   atGuardian: boolean;
   /** Seed for this run's offers and drops. */

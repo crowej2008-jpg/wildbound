@@ -49,11 +49,26 @@ export const hoopaVaultSchema = z
       .object({
         resetterShard: z.object({ min: z.number().int().nonnegative(), max: z.number().int().nonnegative() }).strict(),
         heldItemShard: z.number().int().nonnegative(),
+        items: z.number().int().nonnegative(),
       })
       .strict(),
+    routeDrops: z.object({ itemChance: z.number().min(0).max(1), orbChance: z.number().min(0).max(1) }).strict(),
     resetterFactor: z.array(z.object({ floor: z.number().int().min(1), factor: z.number().positive() }).strict()).min(1),
     bands: z
-      .array(z.object({ floor: z.number().int().min(1), dropPool: z.number().int(), note: z.string().min(1) }).strict())
+      .array(
+        z
+          .object({
+            floor: z.number().int().min(1),
+            dropPool: z.number().int(),
+            note: z.string().min(1),
+            qualities: z.record(z.enum(['rare', 'epic', 'legendary', 'supreme', 'mythic']), z.number().min(0)),
+            orb: z
+              .object({ colour: z.enum(['purple', 'orange', 'red']), level: z.number().int().min(1).max(10) })
+              .strict()
+              .nullable(),
+          })
+          .strict(),
+      )
       .min(1),
   })
   .strict();

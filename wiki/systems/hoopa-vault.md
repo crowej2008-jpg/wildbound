@@ -2,7 +2,7 @@
 title: Hoopa's Vault
 type: system
 milestone: M13.3
-status: run built 2026-11-04; drops pending
+status: built 2026-11-04
 updated: 2026-10-31
 sources: [opencode-session-2026-10 msgs 94-97, docs/SCOPE.md]
 ---

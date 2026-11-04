@@ -1465,7 +1465,16 @@ export class LocalServer implements GameServer {
     const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
-    return ok({ battle: value.battle, win: value.win, ended: value.ended, drops: value.drops, card: value.card, snapshot: committed.value });
+    return ok({
+      battle: value.battle,
+      win: value.win,
+      ended: value.ended,
+      drops: value.drops,
+      items: value.items,
+      orbs: value.orbs,
+      card: value.card,
+      snapshot: committed.value,
+    });
   }
 
   async fightVaultGuardian(seed?: number): Promise<Result<HoopaGuardianResult>> {
@@ -1477,7 +1486,15 @@ export class LocalServer implements GameServer {
     const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
-    return ok({ battle: value.battle, win: value.win, kept: value.kept, floor: value.floor, snapshot: committed.value });
+    return ok({
+      battle: value.battle,
+      win: value.win,
+      kept: value.kept,
+      items: value.items,
+      orbs: value.orbs,
+      floor: value.floor,
+      snapshot: committed.value,
+    });
   }
 
   async exitVaultRun(): Promise<Result<AccountSnapshot>> {

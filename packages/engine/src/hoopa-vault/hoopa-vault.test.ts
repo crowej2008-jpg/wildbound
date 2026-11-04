@@ -35,16 +35,25 @@ const rules: HoopaVaultRules = {
   guardian: { rounds: 15, mult: { hp: 3, atk: 1.5, def: 1.5 } },
   enemy: { factions: [], tiers: [], count: 6, baseLevel: 3, levelSlope: 1.016, starsEvery: 15, maxStars: 20, stageEvery: 30, maxStage: 3 },
   stagePay: { heldItemShard: { base: 2, perFloor: 0.1 }, resetterShard: { chance: 1, min: 1, max: 3 } },
-  guardianPay: { resetterShard: { min: 1, max: 4 }, heldItemShard: 10 },
+  guardianPay: { resetterShard: { min: 1, max: 4 }, heldItemShard: 10, items: 3 },
+  routeDrops: { itemChance: 1, orbChance: 1 },
   resetterFactor: [
     { floor: 1, factor: 1 },
     { floor: 251, factor: 3.5 },
   ],
   bands: [
-    { floor: 1, dropPool: 101, note: 'Start dropping Rare quality held items' },
-    { floor: 181, dropPool: 115, note: 'Start dropping Mythical quality held items' },
+    { floor: 1, dropPool: 101, note: 'Start dropping Rare quality held items', qualities: { rare: 100 }, orb: null },
+    {
+      floor: 181,
+      dropPool: 115,
+      note: 'Start dropping Mythical quality held items',
+      qualities: { supreme: 70, mythic: 30 },
+      orb: { colour: 'orange', level: 4 },
+    },
   ],
 };
+
+const NAMES = { rare: ['r1', 'r2'], supreme: ['s1'], mythic: ['m1', 'm2', 'm3'] };
 
 describe("Hoopa's Vault rules", () => {
   it('opens floors one at a time and raises the multiplier past floors 31 and 71', () => {
@@ -80,7 +89,7 @@ describe("Hoopa's Vault rules", () => {
       expect(out.ok).toBe(true);
       if (!out.ok) return;
       expect(out.ended).toBeNull();
-      expect(out.drops.heldItemShard).toBeGreaterThan(0);
+      expect(out.drops.rewards.heldItemShard).toBeGreaterThan(0);
       state = out.state;
       guard += 1;
     }
@@ -92,7 +101,7 @@ describe("Hoopa's Vault rules", () => {
     if (!won.ok) return;
     expect(won.state.highest).toBe(1);
     expect(won.state.run).toBeNull();
-    expect(won.kept.resetterShard).toBeGreaterThan(0);
+    expect(won.kept.rewards.resetterShard).toBeGreaterThan(0);
   });
 
   it('ends the run when Hoopa catches up or a route is lost, and on exit', () => {
@@ -116,8 +125,33 @@ describe("Hoopa's Vault rules", () => {
     const one = settleRoute(rules, s1, card, true, 1);
     const five = settleRoute(rules, s5, card, true, 1);
     if (!one.ok || !five.ok) throw new Error('settle failed');
-    expect(five.drops.heldItemShard).toBe((one.drops.heldItemShard ?? 0) * 5);
+    expect(five.drops.rewards.heldItemShard).toBe((one.drops.rewards.heldItemShard ?? 0) * 5);
     expect(floorBand(rules, 200)?.dropPool).toBe(115);
     expect(floorBand(rules, 3)?.dropPool).toBe(101);
+  });
+
+  it('banks held items by the band odds and orbs from floor bands, kept with 3 Guardian items on a win', () => {
+    let state = (startRun(rules, { ...initialHoopaVault(), highest: 199 }, 200, 1, 3) as { ok: true; state: ReturnType<typeof initialHoopaVault> }).state;
+    const out = settleRoute(rules, state, state.run!.offer[0]!, true, 1, NAMES);
+    if (!out.ok) throw new Error('settle failed');
+    expect(out.drops.items).toHaveLength(1);
+    expect(['supreme', 'mythic']).toContain(out.drops.items[0]!.quality);
+    expect([...NAMES.supreme, ...NAMES.mythic]).toContain(out.drops.items[0]!.defId);
+    expect(out.drops.orbs).toEqual([{ colour: 'orange', level: 4 }]);
+    state = { ...out.state, run: { ...out.state.run!, atGuardian: true, offer: [] } };
+    const won = settleGuardian(rules, state, true, NAMES);
+    if (!won.ok) throw new Error('guardian failed');
+    expect(won.kept.items).toHaveLength(1 + 3);
+    expect(won.kept.orbs).toHaveLength(1);
+    const lost = settleGuardian(rules, state, false, NAMES);
+    expect(lost.ok && lost.kept.items).toEqual([]);
+  });
+
+  it('floor 1 drops only Rare items and no orbs', () => {
+    const state = (startRun(rules, initialHoopaVault(), 1, 1, 8) as { ok: true; state: ReturnType<typeof initialHoopaVault> }).state;
+    const out = settleRoute(rules, state, state.run!.offer[0]!, true, 1, NAMES);
+    if (!out.ok) throw new Error('settle failed');
+    expect(out.drops.items.every((i) => i.quality === 'rare')).toBe(true);
+    expect(out.drops.orbs).toEqual([]);
   });
 });

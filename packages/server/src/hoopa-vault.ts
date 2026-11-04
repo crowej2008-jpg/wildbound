@@ -10,6 +10,10 @@ import {
   settleRoute,
   startRun,
   type AccountState,
+  type BagItem,
+  type BagOrb,
+  type HeldNamesByQuality,
+  type HeldQuality,
   type HoopaCard,
   type HoopaError,
   type HoopaRun,
@@ -21,6 +25,8 @@ import type { GameConfig } from './config';
 import { applyGrant } from './economy';
 import { fail, ok, type Result } from './index';
 import { enemiesFor } from './pve/shared';
+import { grantRelic } from './equipment';
+import { grantOrb } from './orbs';
 
 /**
  * Hoopa's Vault (M13.3). The engine owns the run rules; this module binds them to the gate, keys, battles and
@@ -29,6 +35,32 @@ import { enemiesFor } from './pve/shared';
 
 export function vaultRules(config: GameConfig): HoopaVaultRules {
   return config.hoopaVault as unknown as HoopaVaultRules;
+}
+
+/** Held-item def ids by quality: the Vault draws a quality, then any name of it at equal odds (source). */
+export function heldNames(config: GameConfig): HeldNamesByQuality {
+  const out: HeldNamesByQuality = {};
+  for (const def of config.equipment.relics) {
+    const q = def.tier as HeldQuality;
+    (out[q] ??= []).push(def.id);
+  }
+  return out;
+}
+
+/** Turn the kept bag's held items and orbs into real instances; their lines roll now (as in the source). */
+export function grantBag(config: GameConfig, state: AccountState, items: BagItem[], orbs: BagOrb[]): AccountState {
+  let next = state;
+  for (const item of items) {
+    const granted = grantRelic(config, next, item.defId, config.rng);
+    if (granted.ok) next = granted.value;
+  }
+  const kinds = config.equipment.orbs.kinds;
+  for (const orb of orbs) {
+    const kind = kinds[Math.floor(config.rng() * kinds.length)]!.id;
+    const granted = grantOrb(config, next, kind, orb.colour, config.rng, orb.level);
+    if (granted.ok) next = granted.value;
+  }
+  return next;
 }
 
 export function hoopaVaultGate(config: GameConfig, state: AccountState, now: number): boolean {
@@ -98,7 +130,11 @@ export interface VaultRouteResult {
   win: boolean;
   /** 'caught' / 'lost' end the run (keys refunded, bag lost). */
   ended: 'caught' | 'lost' | null;
+  /** Shards banked by this win. */
   drops: Rewards;
+  /** Held items and orbs banked by this win (kept only if the Guardian falls). */
+  items: BagItem[];
+  orbs: BagOrb[];
   card: HoopaCard;
 }
 
@@ -130,11 +166,20 @@ export function fightVaultRoute(
   });
   if (!battle) return fail('not_found', 'no Wilds available for the Vault');
   const win = battle.winner === 'attackers';
-  const settled = settleRoute(rules, state.hoopaVault, card, win, battle.rounds);
+  const settled = settleRoute(rules, state.hoopaVault, card, win, battle.rounds, heldNames(config));
   if (!settled.ok) return fail('invalid_input', ERROR_TEXT[settled.error]);
   let next: AccountState = { ...state, hoopaVault: settled.state };
   if (settled.ended) next = refund(next, run);
-  return ok({ state: next, battle, win, ended: settled.ended, drops: settled.drops, card });
+  return ok({
+    state: next,
+    battle,
+    win,
+    ended: settled.ended,
+    drops: settled.drops.rewards,
+    items: settled.drops.items,
+    orbs: settled.drops.orbs,
+    card,
+  });
 }
 
 export interface VaultGuardianResult {
@@ -143,6 +188,8 @@ export interface VaultGuardianResult {
   win: boolean;
   /** Everything kept on a win (the bag plus the Guardian's pay). */
   kept: Rewards;
+  items: BagItem[];
+  orbs: BagOrb[];
   floor: number;
 }
 
@@ -166,11 +213,19 @@ export function fightVaultGuardian(config: GameConfig, state: AccountState, now:
   });
   if (!battle) return fail('not_found', 'no Wilds available for the Vault');
   const win = battle.winner === 'attackers';
-  const settled = settleGuardian(rules, state.hoopaVault, win);
+  const settled = settleGuardian(rules, state.hoopaVault, win, heldNames(config));
   if (!settled.ok) return fail('invalid_input', ERROR_TEXT[settled.error]);
   let next: AccountState = { ...state, hoopaVault: settled.state };
-  next = win ? applyGrant(config, next, settled.kept) : refund(next, run);
-  return ok({ state: next, battle, win, kept: settled.kept, floor: settled.floor });
+  next = win ? grantBag(config, applyGrant(config, next, settled.kept.rewards), settled.kept.items, settled.kept.orbs) : refund(next, run);
+  return ok({
+    state: next,
+    battle,
+    win,
+    kept: settled.kept.rewards,
+    items: settled.kept.items,
+    orbs: settled.kept.orbs,
+    floor: settled.floor,
+  });
 }
 
 /** Leave the run: the bag is lost and the keys come back. */

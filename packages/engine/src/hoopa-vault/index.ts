@@ -1,6 +1,9 @@
 import type { Rewards } from '../economy/rewards';
 import { mulberry32 } from '../rng';
-import type { HoopaCard, HoopaRun, HoopaVaultRules, HoopaVaultState } from './types';
+import type { BagItem, BagOrb, HeldQuality, HoopaCard, HoopaRun, HoopaVaultRules, HoopaVaultState } from './types';
+
+/** Held-item def ids by quality (from the content catalogue): every name at a quality drops at equal odds. */
+export type HeldNamesByQuality = Partial<Record<HeldQuality, string[]>>;
 
 export * from './types';
 
@@ -76,6 +79,8 @@ export function startRun(
     attackBoost: 0,
     dropBoost: 0,
     bag: {},
+    items: [],
+    orbs: [],
     atGuardian: false,
     seed: base.seed,
   };
@@ -99,18 +104,54 @@ export function resetterFactor(rules: HoopaVaultRules, floor: number): number {
   return f;
 }
 
-/** What one route win adds to the bag (stand-in pay; held items and orbs come with the drop pools). */
-export function stageDrops(rules: HoopaVaultRules, run: HoopaRun, card: HoopaCard): Rewards {
+export interface VaultDrops {
+  rewards: Rewards;
+  items: BagItem[];
+  orbs: BagOrb[];
+}
+
+/** Draw one held item for a floor: a quality by the band's odds, then any name of that quality at equal odds. */
+export function drawHeldItem(rules: HoopaVaultRules, floor: number, names: HeldNamesByQuality, rng: () => number): BagItem | null {
+  const band = floorBand(rules, floor);
+  if (!band) return null;
+  const entries = (Object.entries(band.qualities) as [HeldQuality, number][]).filter(([q, w]) => w > 0 && (names[q]?.length ?? 0) > 0);
+  const total = entries.reduce((s, [, w]) => s + w, 0);
+  if (total <= 0) return null;
+  let roll = rng() * total;
+  let quality = entries[0]![0];
+  for (const [q, w] of entries) {
+    roll -= w;
+    if (roll < 0) {
+      quality = q;
+      break;
+    }
+  }
+  const pool = names[quality]!;
+  return { defId: pool[Math.floor(rng() * pool.length)]!, quality };
+}
+
+/** What one route win adds to the bag. Each of the `multiplier` copies rolls its own item and orb chance. */
+export function stageDrops(rules: HoopaVaultRules, run: HoopaRun, card: HoopaCard, names: HeldNamesByQuality = {}): VaultDrops {
   const rng = cardRng(run, 0xd7);
   const boost = 1 + run.dropBoost + (card === 'strong' ? 0.5 : 0);
   const pay = rules.stagePay;
   const shards = Math.round((pay.heldItemShard.base + pay.heldItemShard.perFloor * run.floor) * boost) * run.multiplier;
-  const out: Rewards = { heldItemShard: shards };
+  const rewards: Rewards = { heldItemShard: shards };
   if (rng() < Math.min(1, pay.resetterShard.chance * boost)) {
     const lump = pay.resetterShard.min + Math.floor(rng() * (pay.resetterShard.max - pay.resetterShard.min + 1));
-    out.resetterShard = Math.round(lump * resetterFactor(rules, run.floor)) * run.multiplier;
+    rewards.resetterShard = Math.round(lump * resetterFactor(rules, run.floor)) * run.multiplier;
   }
-  return out;
+  const items: BagItem[] = [];
+  const orbs: BagOrb[] = [];
+  const band = floorBand(rules, run.floor);
+  for (let copy = 0; copy < run.multiplier; copy += 1) {
+    if (rng() < Math.min(1, rules.routeDrops.itemChance * boost)) {
+      const item = drawHeldItem(rules, run.floor, names, rng);
+      if (item) items.push(item);
+    }
+    if (band?.orb && rng() < Math.min(1, rules.routeDrops.orbChance * boost)) orbs.push({ ...band.orb });
+  }
+  return { rewards, items, orbs };
 }
 
 /**
@@ -123,17 +164,19 @@ export function settleRoute(
   card: HoopaCard,
   win: boolean,
   rounds: number,
-): { ok: true; state: HoopaVaultState; ended: 'caught' | 'lost' | null; drops: Rewards } | { ok: false; error: HoopaError } {
+  names: HeldNamesByQuality = {},
+): { ok: true; state: HoopaVaultState; ended: 'caught' | 'lost' | null; drops: VaultDrops } | { ok: false; error: HoopaError } {
+  const none: VaultDrops = { rewards: {}, items: [], orbs: [] };
   const run = state.run;
   if (!run) return { ok: false, error: 'no_run' };
   if (run.atGuardian) return { ok: false, error: 'at_guardian' };
   if (!run.offer.includes(card)) return { ok: false, error: 'bad_card' };
-  if (!win) return { ok: true, state: { ...state, run: null, runs: state.runs + 1 }, ended: 'lost', drops: {} };
+  if (!win) return { ok: true, state: { ...state, run: null, runs: state.runs + 1 }, ended: 'lost', drops: none };
   const rule = rules.run.cards[card];
-  const drops = stageDrops(rules, run, card);
+  const drops = stageDrops(rules, run, card, names);
   const escape = run.escape + rule.escape;
   const hoopa = run.hoopa + Math.max(0, rounds);
-  if (hoopa >= escape) return { ok: true, state: { ...state, run: null, runs: state.runs + 1 }, ended: 'caught', drops: {} };
+  if (hoopa >= escape) return { ok: true, state: { ...state, run: null, runs: state.runs + 1 }, ended: 'caught', drops: none };
   const stage = run.stage + 1;
   const next: HoopaRun = {
     ...run,
@@ -142,21 +185,32 @@ export function settleRoute(
     stage,
     attackBoost: run.attackBoost + rule.attackBoost,
     dropBoost: run.dropBoost + rule.dropBoost,
-    bag: addRewards(run.bag, drops),
+    bag: addRewards(run.bag, drops.rewards),
+    items: [...run.items, ...drops.items],
+    orbs: [...run.orbs, ...drops.orbs],
     atGuardian: escape >= rules.run.target,
     offer: escape >= rules.run.target ? [] : drawOffer(rules, { seed: run.seed, stage }),
   };
   return { ok: true, state: { ...state, run: next }, ended: null, drops };
 }
 
-/** The Exit Guardian's pay on a win (before the bag), scaled by floor and multiplier. */
-export function guardianDrops(rules: HoopaVaultRules, run: HoopaRun): Rewards {
+/** The Exit Guardian's pay on a win (before the bag): shards and `items` held items per multiplier copy. */
+export function guardianDrops(rules: HoopaVaultRules, run: HoopaRun, names: HeldNamesByQuality = {}): VaultDrops {
   const rng = cardRng(run, 0x6a);
   const r = rules.guardianPay.resetterShard;
   const lump = r.min + Math.floor(rng() * (r.max - r.min + 1));
+  const items: BagItem[] = [];
+  for (let i = 0; i < rules.guardianPay.items * run.multiplier; i += 1) {
+    const item = drawHeldItem(rules, run.floor, names, rng);
+    if (item) items.push(item);
+  }
   return {
-    resetterShard: Math.round(lump * resetterFactor(rules, run.floor)) * run.multiplier,
-    heldItemShard: rules.guardianPay.heldItemShard * run.multiplier,
+    rewards: {
+      resetterShard: Math.round(lump * resetterFactor(rules, run.floor)) * run.multiplier,
+      heldItemShard: rules.guardianPay.heldItemShard * run.multiplier,
+    },
+    items,
+    orbs: [],
   };
 }
 
@@ -165,13 +219,19 @@ export function settleGuardian(
   rules: HoopaVaultRules,
   state: HoopaVaultState,
   win: boolean,
-): { ok: true; state: HoopaVaultState; kept: Rewards; floor: number } | { ok: false; error: HoopaError } {
+  names: HeldNamesByQuality = {},
+): { ok: true; state: HoopaVaultState; kept: VaultDrops; floor: number } | { ok: false; error: HoopaError } {
   const run = state.run;
   if (!run) return { ok: false, error: 'no_run' };
   if (!run.atGuardian) return { ok: false, error: 'not_at_guardian' };
   const done = { ...state, run: null, runs: state.runs + 1 };
-  if (!win) return { ok: true, state: done, kept: {}, floor: run.floor };
-  const kept = addRewards(run.bag, guardianDrops(rules, run));
+  if (!win) return { ok: true, state: done, kept: { rewards: {}, items: [], orbs: [] }, floor: run.floor };
+  const guard = guardianDrops(rules, run, names);
+  const kept: VaultDrops = {
+    rewards: addRewards(run.bag, guard.rewards),
+    items: [...run.items, ...guard.items],
+    orbs: [...run.orbs, ...guard.orbs],
+  };
   return { ok: true, state: { ...done, highest: Math.max(state.highest, run.floor) }, kept, floor: run.floor };
 }
 
