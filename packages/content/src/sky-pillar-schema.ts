@@ -36,7 +36,8 @@ export const skyPillarFloorSchema = z
   .object({
     floor: z.number().int().min(1).max(180),
     wing: z.number().int().min(1).max(6),
-    playerLevel: z.number().int().min(1).max(80),
+    // R9: the source's player levels reach 200 (floors past Wildbound's stand-in trainer cap wait for its XP table).
+    playerLevel: z.number().int().min(1).max(200),
     enemy: enemyPoolSchema,
     stages: z.array(skyPillarStageSchema).length(10),
     chests: z.array(skyPillarChestSchema).length(3),

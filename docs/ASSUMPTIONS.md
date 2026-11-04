@@ -1094,3 +1094,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     Readings: idling still needs a cleared stage (the source's 1-0 start, which idles from the first minute, has no
     Wildbound stage). Stand-ins: each stage's enemies and first-clear / repeat rewards (the per-stage rows are not in
     the dumps).
+
+88. **R9 Sky Pillar rows (2026-11-04).** `scripts/import-sky-pillar.mjs` copies the source's Sky Pillar rows
+    (`dun_sky_pillar_*`): 6 proofs, one every 480 minutes; each floor's player level (1 → 200); each stage's pass and
+    sweep in Potential Shards (10,000 / 5,000 on floor 1, 9,000 + 1,000 × floor to floor 41, then 45,900 + 100 ×
+    floor; a sweep half); its two extra star conditions (allies knocked out ≤ N, every Pokémon's HP ≥ N%, rounds ≤ N);
+    and each floor's 10 / 20 / 30-star chests (Diamonds, Premium Tickets, 5-Star Pokémon Shards). Stand-ins: the
+    wing names and the enemies (the stages' monsters are not in the dumps); floors needing a level above Wildbound's
+    stand-in trainer cap (80) wait for the source's trainer-XP table.

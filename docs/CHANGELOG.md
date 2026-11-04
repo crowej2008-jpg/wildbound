@@ -1338,3 +1338,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 ## R9 part 9 — Campaign idle income from the source (2026-11-04)
 
 - `scripts/import-campaign-idle.mjs` sets every stage's `idlePerMinute` from the source's `dun_afk`. ASSUMPTIONS #87.
+
+## R9 part 10 — Sky Pillar rows from the source (2026-11-04)
+
+- `scripts/import-sky-pillar.mjs` rewrites `sky-pillar.json`'s proofs, floor levels, stage pays, star conditions
+  and floor chests from the source. ASSUMPTIONS #88.

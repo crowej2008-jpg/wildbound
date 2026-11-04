@@ -44,7 +44,7 @@ describe('Sky Pillar server rules', () => {
     expect(first.value.win).toBe(true);
     expect(first.value.extra.firstClear).toBe(true);
     expect(first.value.state.skyPillar.proofs).toBe(5);
-    expect(first.value.rewards.potentialShard).toBe(160);
+    expect(first.value.rewards.potentialShard).toBe(10000); // R9: the source's floor 1 pass (9,000 + 1,000 × floor);
     expect(first.value.extra.bestStars).toBeGreaterThanOrEqual(1);
 
     const replay = challengeSkyPillar(config, first.value.state, START, 1, 1, 7);
@@ -70,7 +70,7 @@ describe('Sky Pillar server rules', () => {
     if (!swept.ok) return;
     expect(swept.value.floor).toBe(1);
     expect(swept.value.stage).toBe(1);
-    expect(swept.value.granted.potentialShard).toBe(80);
+    expect(swept.value.granted.potentialShard).toBe(5000);
     expect(swept.value.state.skyPillar.proofs).toBe(1);
 
     const none = sweepSkyPillar(config, { ...three, skyPillar: { ...three.skyPillar, stars: {} } }, START);

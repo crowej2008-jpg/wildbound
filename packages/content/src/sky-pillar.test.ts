@@ -23,7 +23,7 @@ describe('Sky Pillar content', () => {
     let previous = 0;
     for (const floor of SKY_PILLAR.floors) {
       expect(floor.playerLevel).toBeGreaterThanOrEqual(previous);
-      expect(floor.playerLevel).toBeLessThanOrEqual(80);
+      expect(floor.playerLevel).toBeLessThanOrEqual(200);
       previous = floor.playerLevel;
       for (const stage of floor.stages) {
         expect(stage.conditions).toHaveLength(2);
