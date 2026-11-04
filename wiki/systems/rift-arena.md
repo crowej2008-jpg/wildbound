@@ -2,7 +2,7 @@
 title: Rift Arena
 type: system
 milestone: M13.4 (Barriers + Merchant), M13.5 (Ring Battle + Quiz)
-status: planned
+status: planned — source tables found 2026-11-04
 updated: 2026-10-31
 sources: [opencode-session-2026-10 msg 80 (source survey), docs/SCOPE.md]
 ---
@@ -25,3 +25,15 @@ the 2026-10-22 survey (to be re-checked against `reference/` when building):
 
 Reference screenshots of Rift exist in `reference/visual/screens/rift/` (owner's machine only).
 Idea backlog item: "better currency-reward rate in rift" ([change list](../ideas/change-list-2026-10.md)).
+
+## Source check (2026-11-04)
+The source's **New Rift Arena** (`underground_new_*`, modepages-pvp_cfg / modes2_cfg) replaces the 2026-10-22
+survey: season Tue 07:00 → Sun 22:00; level sync; season bans; hiring (1 free a season, only Pokémon you do not
+own, taken back at season end); **Rift Barriers** 250 floors (Easy 1–100, Advanced 101–250), boss every 5th,
+5 lives a day, floor rewards at 20 / 40 / 60 / 80 / 100 (Gold + XP Candies), drops of Time Coins (94) and Time
+Credits (93); Time Credits upgrade a hired Pokémon's equipment (`underground_new_develop_json`, 3 kinds);
+challenge-count chests (`underground_new_box_reward_json`, 3 … 30 challenges); the Mystic Merchant opens a slot
+per milestone floor (only its 6 orb-box rows are in the dumps). Ring Battle ranks (`underground_new_dan_json`,
+27 rows, +35 / −20) and the Prediction tasks (`underground_new_guess_task_json`) are 13.5.
+Server-wide parts wait for the shared backend: [decision](../decisions/rift-server-parts-later.md).
+Gaps: the full Merchant stock, the season ban list, the hire list, per-floor enemy stats.

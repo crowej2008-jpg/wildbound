@@ -289,3 +289,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Main-stat re-roll added: 100 Resetter Shards, random among the other kinds (ASSUMPTIONS #94).
 - Hoopa's Vault drops built from the source records: held items by band, 3 Guardian items, band orbs (ASSUMPTIONS #95).
 - Owner: the three free starter held items are removed; held items now come only from the Vault (ASSUMPTIONS #96).
+
+## [2026-11-04] update | Rift Arena source check and server parts
+- Found the source's New Rift Arena tables; the Advanced ranking and the Easy weakness are server features and wait
+  for the shared backend (owner); level sync stays. Next: build 13.4.
