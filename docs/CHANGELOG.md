@@ -1349,3 +1349,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - `scripts/import-pet-home.mjs` rewrites `pet-home.json`'s levels, summon ladder, income and both shops from the
   source. Shop rows sell a single orb at a fixed level (the server rolls it); level rewards can carry Rare Orb Chests;
   shop bands now have a level range and pool when they overlap. ASSUMPTIONS #89.
+
+## R10 part 1 — geared tier re-check (2026-11-04)
+
+- `scripts/balance/max-build.ts` and `GEAR=max` on `scripts/balance/tier.ts`. 50,000 battles: Shiny Blastoise and
+  Wobbuffet rise to the top; Greninja, Origin Lugia, God Ash-Pikachu and Psyduck do not. Power-picked gear is the
+  same for everyone (power cannot see effects). ASSUMPTIONS #90.

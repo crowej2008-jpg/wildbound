@@ -261,3 +261,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-04] update | R9 Pet Home rows
 - The source's Home levels, summon prices, merge income and both shops (each row one orb at a fixed level), plus Rare
   Orb Chests in level rewards (ASSUMPTIONS #89). That finishes the R9 row's data list. Next: R10 close-out.
+
+## [2026-11-04] update | R10 geared tier re-check
+- Every Supreme/Mythic/Origin maxed with best-by-power gear, 50,000 battles (ASSUMPTIONS #90). Shiny Blastoise 2nd
+  and Wobbuffet 4th; the other four meta Pokémon do not rise. Power-picked gear is identical for everyone. Waiting on
+  the owner for real builds. Next: mode difficulty curves.

@@ -57,3 +57,28 @@ Rage rule: +125 per action, SKILL +250 (owner 2026-11-01).
 - Guardians score low on win rate (short fights hide soaking); Snorlax is the exception (57%).
 
 No Pokémon numbers changed. Next in E6: every mode's difficulty curve.
+
+## R10 geared re-check (2026-11-04)
+Owner: "Auto best-by-power". `GEAR=max tsx scripts/balance/tier.ts max 50000` gives every Pokémon star 23 /
+Lv340 / skills LV3, plates 18, trinket 40, and per layer the option with the highest power
+(`scripts/balance/max-build.ts`): red soul-hearts at max stars (one set), the best held item × main stat with
+max lines at max level, red +10 orbs, two max berries, Potential Lv6 in every tier.
+
+| Meta six | Ungeared rank | Geared rank (win %) |
+|---|---|---|
+| Shiny Blastoise | 35 | **2** (70%) |
+| Wobbuffet | 50 | **4** (66%) |
+| Greninja | 15 | 13 (55%) |
+| Origin Lugia | 12 | 19 (51%) |
+| God Ash-Pikachu | 41 | 43 (45%) |
+| Psyduck | 51 | 50 (40%) |
+
+Top of the geared list: Darkrai 75%, Shiny Blastoise, Snorlax, Wobbuffet, Yveltal, Necrozma, Shiny Hoopa, Ho-Oh,
+Zacian (77% → 59%). **Not a pass: two of the six reach the top.**
+
+Finding (agent's reading): power counts flat stats only, so best-by-power gives **every** Pokémon the same kit
+(Thunder soul-hearts, the same no-set orbs, two Bergamot Berries, Potential option 1 everywhere). The set bonuses,
+orb sets, berry skills and Potential options that act through effects are invisible to it. Gear as picked mostly
+adds bulk, which lifts the Guardians (Blastoise, Wobbuffet, Snorlax) and dilutes the burst Strikers. The four
+that did not rise are the ones whose real builds lean on effects. Next step is the owner's: give the real builds
+for the meta six (the script takes a per-species override), or keep this as the reading.

@@ -7,10 +7,12 @@
  * plus its damage share, healing/shield share, survival and ult count.
  *
  * Usage: tsx scripts/balance/tier.ts <stage: early|mid|max> <battles> [out.json]
+ * R10: GEAR=max gives every Pokémon a maxed, fully geared build (scripts/balance/max-build.ts).
  */
 import { writeFileSync } from 'node:fs';
 import { runBattle, mulberry32, type SpecInput, type TriggerDef, type WildInstance } from '@wildbound/engine';
 import { buildConfig, buildWildTeam } from '@wildbound/server';
+import { buildMaxAccount } from './max-build';
 
 const STAGES = {
   early: { star: 5, level: 100, skill: 1 },
@@ -35,7 +37,11 @@ function pick(n: number): typeof pool {
   return out.sort((a, b) => ORDER[a.className] - ORDER[b.className]);
 }
 
+const GEARED = process.env.GEAR === 'max' ? buildMaxAccount(config, pool, stage) : null;
+if (GEARED) console.log(`geared ${pool.length} Pokémon`);
+
 function wilds(team: typeof pool, side: string): WildInstance[] {
+  if (GEARED) return team.map((s) => GEARED.wilds.get(s.id)!);
   return team.map((s, i) => ({
     id: `${side}${i}`,
     speciesId: s.id,
@@ -68,8 +74,8 @@ for (let b = 0; b < BATTLES; b += 1) {
   const d = pick(6);
   const HPMUL = Number(process.env.HPMUL ?? 1);
   const tank = (t: ReturnType<typeof buildWildTeam>) => (t.specs.forEach((s) => { s.sheet = { ...s.sheet, hp: s.sheet.hp * HPMUL }; }), t);
-  const A = tank(buildWildTeam(wilds(a, "a"), "attackers", config));
-  const D = tank(buildWildTeam(wilds(d, "d"), "defenders", config));
+  const A = tank(buildWildTeam(wilds(a, "a"), "attackers", config, GEARED?.state));
+  const D = tank(buildWildTeam(wilds(d, "d"), "defenders", config, GEARED?.state));
   if (process.env.DIALGA === 'friend') for (const sp of [...A.specs, ...D.specs]) friendDialga(sp);
   // swap sides every other battle so first-mover advantage cancels out
   const flip = b % 2 === 1;

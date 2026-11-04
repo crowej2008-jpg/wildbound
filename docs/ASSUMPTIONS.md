@@ -1116,3 +1116,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     the income step is the 5 seconds the M13.1 build already used (the source table has no period); `discount` is
     shown as "% off" only. Kept ours: the board layout (the source gives only `box_amount` and `lock_num`; our
     padlocks keep the M13.1 positions), names and the album. No save change (offer ids are per-day and reset).
+
+90. **R10 geared tier re-check (owner 2026-11-04: "Auto best-by-power").** `scripts/balance/max-build.ts` builds a
+    maxed account (stage stars / level / skills, max plates and trinket) and picks each choice layer by the highest
+    `powerOf`: one soul-heart set (red, max stars), the held item × main stat with its best lines at max and max
+    level, red +10 orbs (each set tried, the rest by the best single kind), two berries at max star / stage, and
+    Potential Lv 6 per tier (a power tie fills the layer with the first option). Account-wide layers (titles,
+    fashion, resonance) are left out, as they are the same for everyone. Result and limits: `wiki/systems/e6-tier-list.md`.
