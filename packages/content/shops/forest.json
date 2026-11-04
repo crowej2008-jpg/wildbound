@@ -2,9 +2,135 @@
   "id": "forest",
   "name": "Forest Shop",
   "currency": "forestCoin",
-  "restock": { "type": "daily", "hoursUtc": [0] },
+  "restock": {
+    "type": "daily",
+    "hoursUtc": [
+      0
+    ]
+  },
   "items": [
-    { "id": "forest.shard", "name": "Shards ×20", "price": 200, "grants": { "shard": 20 } },
-    { "id": "forest.gold", "name": "Gold ×2000", "price": 100, "grants": { "gold": 2000 }, "limit": 3 }
+    {
+      "id": "forest.8001",
+      "name": "Gible Shard ×50",
+      "price": 21000,
+      "grants": {},
+      "speciesShards": {
+        "garchomp": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "forest.8002",
+      "name": "Squirtle Shards ×40",
+      "price": 3600,
+      "grants": {},
+      "speciesShards": {
+        "blastoise": 40
+      },
+      "limit": 1
+    },
+    {
+      "id": "forest.8003",
+      "name": "Bulbasaur Shards ×40",
+      "price": 3600,
+      "grants": {},
+      "speciesShards": {
+        "venusaur": 40
+      },
+      "limit": 1
+    },
+    {
+      "id": "forest.8004",
+      "name": "Pichu Shard ×40",
+      "price": 3600,
+      "grants": {},
+      "speciesShards": {
+        "raichu": 40
+      },
+      "limit": 1
+    },
+    {
+      "id": "forest.8005",
+      "name": "Ralts Shard ×50",
+      "price": 21000,
+      "grants": {},
+      "speciesShards": {
+        "gardevoir": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "forest.8006",
+      "name": "Charmander Shards ×40",
+      "price": 3600,
+      "grants": {},
+      "speciesShards": {
+        "charizard": 40
+      },
+      "limit": 1
+    },
+    {
+      "id": "forest.8009",
+      "name": "Shiny Gastly Shards ×50",
+      "price": 48000,
+      "grants": {},
+      "speciesShards": {
+        "shiny-gengar": 50
+      },
+      "limit": 1,
+      "badge": 6
+    },
+    {
+      "id": "forest.8010",
+      "name": "Shiny Squirtle Shards ×50",
+      "price": 48000,
+      "grants": {},
+      "speciesShards": {
+        "shiny-blastoise": 50
+      },
+      "limit": 1,
+      "badge": 6
+    },
+    {
+      "id": "forest.8011",
+      "name": "Shiny Bulbasaur Shards ×50",
+      "price": 48000,
+      "grants": {},
+      "speciesShards": {
+        "shiny-venusaur": 50
+      },
+      "limit": 1,
+      "badge": 6
+    },
+    {
+      "id": "forest.8012",
+      "name": "Gastly Shard ×50",
+      "price": 21000,
+      "grants": {},
+      "speciesShards": {
+        "gengar": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "forest.8016",
+      "name": "5-Star Pokémon Shard ×10",
+      "price": 400,
+      "grants": {
+        "pokemonShard5": 10
+      },
+      "limit": 1
+    }
+  ],
+  "slots": 6,
+  "fixed": [
+    "forest.8016"
+  ],
+  "_leftOut": [
+    "8007 21009 ×1000",
+    "8008 21010 ×1",
+    "8013 5S Water Pokémon Shard ×10",
+    "8014 5S Fire Pokémon Shard ×10",
+    "8015 5S Grass Pokémon Shard ×10"
   ]
 }

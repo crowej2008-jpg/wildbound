@@ -2,9 +2,127 @@
   "id": "pvp",
   "name": "PvP Shop",
   "currency": "arenaToken",
-  "restock": { "type": "interval", "days": 30, "hourUtc": 0 },
+  "restock": {
+    "type": "interval",
+    "days": 30,
+    "hourUtc": 0
+  },
   "items": [
-    { "id": "pvp.gems", "name": "Gems ×50", "price": 2000, "grants": { "gems": 50 }, "limit": 1 },
-    { "id": "pvp.ticketPrem", "name": "Premium Ticket ×1", "price": 3000, "grants": { "ticketPremium": 1 }, "limit": 2 }
+    {
+      "id": "pvp.7001",
+      "name": "Slakoth Shard ×50",
+      "price": 42000,
+      "grants": {},
+      "speciesShards": {
+        "slaking": 50
+      },
+      "limit": 4
+    },
+    {
+      "id": "pvp.7002",
+      "name": "Torchic Shard ×50",
+      "price": 42000,
+      "grants": {},
+      "speciesShards": {
+        "blaziken": 50
+      },
+      "limit": 4
+    },
+    {
+      "id": "pvp.7003",
+      "name": "Mudkip Shard ×50",
+      "price": 42000,
+      "grants": {},
+      "speciesShards": {
+        "swampert": 50
+      },
+      "limit": 4
+    },
+    {
+      "id": "pvp.7004",
+      "name": "Treecko Shard ×50",
+      "price": 42000,
+      "grants": {},
+      "speciesShards": {
+        "sceptile": 50
+      },
+      "limit": 4
+    },
+    {
+      "id": "pvp.7005",
+      "name": "Dratini Shard ×50",
+      "price": 42000,
+      "grants": {},
+      "speciesShards": {
+        "dragonite": 50
+      },
+      "limit": 4
+    },
+    {
+      "id": "pvp.7006",
+      "name": "Gold ×50000",
+      "price": 3000,
+      "grants": {
+        "gold": 50000
+      },
+      "limit": 999
+    },
+    {
+      "id": "pvp.7007",
+      "name": "Gold ×50000",
+      "price": 3000,
+      "grants": {
+        "gold": 50000
+      },
+      "limit": 999
+    },
+    {
+      "id": "pvp.7008",
+      "name": "Gold ×50000",
+      "price": 3000,
+      "grants": {
+        "gold": 50000
+      },
+      "limit": 999
+    },
+    {
+      "id": "pvp.7009",
+      "name": "Shiny Pichu Shard ×50",
+      "price": 126000,
+      "grants": {},
+      "speciesShards": {
+        "shiny-raichu": 50
+      },
+      "limit": 1,
+      "badge": 2
+    },
+    {
+      "id": "pvp.7010",
+      "name": "Shiny Charmander Shards ×50",
+      "price": 126000,
+      "grants": {},
+      "speciesShards": {
+        "shiny-charizard": 50
+      },
+      "limit": 1,
+      "badge": 2
+    },
+    {
+      "id": "pvp.7011",
+      "name": "Shiny Ash-Pikachu Shards ×50",
+      "price": 126000,
+      "grants": {},
+      "speciesShards": {
+        "shiny-god-ash-pikachu": 50
+      },
+      "limit": 1,
+      "badge": 2
+    }
+  ],
+  "_leftOut": [
+    "7012 Shiny & Supreme I ×1",
+    "7013 LF Trinity Box ×1",
+    "7014 Golden Egg Voucher ×1",
+    "7015 Powerful Evolve box ×1"
   ]
 }

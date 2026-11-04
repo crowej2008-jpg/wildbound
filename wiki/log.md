@@ -242,3 +242,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-04] update | R9 the Bag
 - Generic Pokémon shards compose into the source's boxes; reward boxes open (ASSUMPTIONS #84, save v39). The Giftbox's
   Golden Egg Voucher choice is on the review list. Next: shops.
+
+## [2026-11-04] update | R9 shops
+- The source's Daily, PvP, Forest, Guild, Pokémon and Island shops: rows, prices, limits, restocks, Gold-ladder and
+  token refreshes, badge gates; goods Wildbound lacks are left out (ASSUMPTIONS #85). Next: Arena / Ranked rewards.

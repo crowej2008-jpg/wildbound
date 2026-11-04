@@ -2,9 +2,151 @@
   "id": "island",
   "name": "Island Shop",
   "currency": "islandCoin",
-  "restock": { "type": "daily", "hoursUtc": [0] },
+  "restock": {
+    "type": "daily",
+    "hoursUtc": [
+      0
+    ]
+  },
   "items": [
-    { "id": "island.shard", "name": "Shards ×20", "price": 200, "grants": { "shard": 20 } },
-    { "id": "island.ticketCommon", "name": "Common Ticket ×1", "price": 500, "grants": { "ticketCommon": 1 } }
+    {
+      "id": "island.35004",
+      "name": "Zapdos Shard ×50",
+      "price": 21520,
+      "grants": {},
+      "speciesShards": {
+        "zapdos": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35005",
+      "name": "Moltres Shard ×50",
+      "price": 21520,
+      "grants": {},
+      "speciesShards": {
+        "moltres": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35006",
+      "name": "Articuno Shard ×50",
+      "price": 21520,
+      "grants": {},
+      "speciesShards": {
+        "articuno": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35007",
+      "name": "Beldum Shard ×50",
+      "price": 15000,
+      "grants": {},
+      "speciesShards": {
+        "metagross": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35008",
+      "name": "Deino Shard ×50",
+      "price": 15000,
+      "grants": {},
+      "speciesShards": {
+        "hydreigon": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35009",
+      "name": "Magikarp Shard ×50",
+      "price": 15000,
+      "grants": {},
+      "speciesShards": {
+        "gyarados": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35010",
+      "name": "Ralts Shard ×50",
+      "price": 15000,
+      "grants": {},
+      "speciesShards": {
+        "gardevoir": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35011",
+      "name": "Gastly Shard ×50",
+      "price": 15000,
+      "grants": {},
+      "speciesShards": {
+        "gengar": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35012",
+      "name": "Bagon Shard ×50",
+      "price": 15000,
+      "grants": {},
+      "speciesShards": {
+        "salamence": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35013",
+      "name": "Torchic Shard ×50",
+      "price": 15000,
+      "grants": {},
+      "speciesShards": {
+        "blaziken": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35014",
+      "name": "Lugia Shard ×50",
+      "price": 30000,
+      "grants": {},
+      "speciesShards": {
+        "lugia": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35015",
+      "name": "Rayquaza Shard ×50",
+      "price": 30000,
+      "grants": {},
+      "speciesShards": {
+        "rayquaza": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35016",
+      "name": "Groudon Shard ×50",
+      "price": 30000,
+      "grants": {},
+      "speciesShards": {
+        "groudon": 50
+      },
+      "limit": 2
+    },
+    {
+      "id": "island.35017",
+      "name": "5-Star Pokémon Shard ×10",
+      "price": 200,
+      "grants": {
+        "pokemonShard5": 10
+      },
+      "limit": 1
+    }
   ]
 }

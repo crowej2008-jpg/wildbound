@@ -1323,3 +1323,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   boxes. Engine `bag/` (compose counts, weighted box rolls, choice rows); server `getBag`, `composeBag`,
   `openBagBox`, `chooseBagBox`; a Bag screen from Home. The 3★ / 5★ / 4★ shards, the Tower's and dungeons' reward
   boxes and the Premium box's Precious Shards now have their source uses. Save v39. ASSUMPTIONS #84.
+
+## R9 part 7 — shops from the source (2026-11-04)
+
+- `scripts/import-shops.mjs` → `packages/content/shops/*.json` (six source shops). Engine: shown-row draws
+  (`slots` / `fixed`), per-row currency, species-shard goods, badge gates, manual refreshes on a schedule shop (Daily
+  Gold ladder by VIP). The Shop page shows each row's currency, discount and badge. ASSUMPTIONS #85.

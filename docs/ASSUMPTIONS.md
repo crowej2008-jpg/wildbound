@@ -1056,3 +1056,21 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
       vouchers would have no use. *What would change it:* building the Golden Egg; the choice is one row in the
       import script (`LEFT_OUT`).
     - New currency `preciousGiftbox`; a fresh account's debug grant gives 1. Save v39 (reset).
+
+85. **R9 shops from the source (2026-11-04).** `scripts/import-shops.mjs` writes the Daily, PvP, Forest, Guild,
+    Pokémon and Island shops from `shop_basic_json`, `shop_item_json`, `shop_refresh_json` and VIP
+    `shop_refresh_times` (the Faction Tower Shop stays as R6b imported it): each row's goods, price, per-restock limit,
+    shown discount and Champion Road badge gate; restocks (Daily 00:00 / 12:00 / 18:00 UTC, Forest and Island daily,
+    Guild every 7 days, PvP every 30, the Pokémon Shop never by itself); manual refreshes (the Daily Shop on the Gold
+    ladder 10,000 → 100,000, as many a day as the VIP level gives — 5 at VIP 0; the Pokémon Shop 3 a day for 3,000
+    Pokémon Tokens). Species-shard goods pay that species' own shards (item 40000 + N → hero N + 100's species, by
+    `hero_basic` chip ids). Readings: which rows show follows kb/shop.md, checked against the server's answers — the
+    Daily Shop's fixed rows are 1221–1226 (the config's `refresh_type 3` marks only 1221–1224) plus six drawn from
+    1227–1265, the Island Shop's 35004–35017, the Guild Shop's 10101–10111; the Forest Shop shows 8016 plus five
+    drawn; the draws are uniform (the weights are not in the dumps) and stable within a restock; a manual Daily
+    refresh redraws and resets the buys without moving the schedule; the badge rows stay locked until Champion Road
+    (M14). **Left out** (Wildbound has no such item): Golden Egg Vouchers (Daily 1224 — its fixed slot stays empty —
+    PvP 7014, Guild 10102), the 5S Water / Fire / Grass Pokémon Shards (Daily 1231–1233 / 1235–1237, Forest
+    8013–8015), Shiny & Supreme I, LF Trinity Box, Powerful Evolve box (PvP 7012, 7013, 7015), items 21009 / 21010
+    (Forest 8007–8008), the Supreme Gift and the Opt 5S Chest (Guild 10103–10104); each shop file lists them in
+    `_leftOut`.

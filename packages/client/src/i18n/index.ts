@@ -659,6 +659,8 @@ export const en = {
   'shop.refresh': 'Refresh',
   'shop.refreshCost': 'Refresh cost',
   'shop.refreshesLeft': 'Refreshes left today',
+  'shop.badge': 'Needs badge {badge}',
+  'shop.discount': '{n}% off',
   'shop.buy': 'Buy',
   'shop.limit': 'Left',
   'shop.unlimited': 'No limit',

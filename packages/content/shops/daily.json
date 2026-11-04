@@ -2,12 +2,484 @@
   "id": "daily",
   "name": "Daily Shop",
   "currency": "gems",
-  "restock": { "type": "daily", "hoursUtc": [0, 12, 18] },
+  "restock": {
+    "type": "daily",
+    "hoursUtc": [
+      0,
+      12,
+      18
+    ]
+  },
   "items": [
-    { "id": "daily.ticketPrem", "name": "Premium Ticket ×1", "price": 180, "grants": { "ticketPremium": 1 }, "limit": 2 },
-    { "id": "daily.ticketPrem10", "name": "Premium Tickets ×10", "price": 1620, "grants": { "ticketPremium": 10 }, "limit": 1 },
-    { "id": "daily.shard", "name": "Shards ×50", "price": 150, "grants": { "shard": 50 }, "limit": 3 },
-    { "id": "daily.stone", "name": "Stones ×3", "price": 400, "grants": { "stone": 3 }, "limit": 2 },
-    { "id": "daily.gold", "name": "Gold ×5000", "price": 100, "grants": { "gold": 5000 }, "limit": 5 }
+    {
+      "id": "daily.1221",
+      "name": "Premium GV ×1",
+      "price": 90,
+      "grants": {
+        "ticketPremium": 1
+      },
+      "limit": 2,
+      "discount": 50
+    },
+    {
+      "id": "daily.1222",
+      "name": "Premium GV ×1",
+      "price": 125,
+      "grants": {
+        "ticketPremium": 1
+      },
+      "limit": 2,
+      "discount": 70
+    },
+    {
+      "id": "daily.1223",
+      "name": "Premium GV ×1",
+      "price": 180,
+      "grants": {
+        "ticketPremium": 1
+      },
+      "limit": 1
+    },
+    {
+      "id": "daily.1225",
+      "name": "Ascension Stone ×200",
+      "price": 80,
+      "grants": {
+        "stone": 200
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1226",
+      "name": "Ascension Stone ×500",
+      "price": 400,
+      "grants": {
+        "stone": 500
+      },
+      "limit": 1
+    },
+    {
+      "id": "daily.1227",
+      "name": "Follower L.Stone ×50",
+      "price": 30,
+      "grants": {
+        "followerStone": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "daily.1228",
+      "name": "Mount L.Stone ×50",
+      "price": 30,
+      "grants": {
+        "mountStone": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "daily.1229",
+      "name": "BD Level Stone ×50",
+      "price": 30,
+      "grants": {
+        "backDecorStone": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "daily.1230",
+      "name": "5-Star Pokémon Shard ×10",
+      "price": 95,
+      "grants": {
+        "pokemonShard5": 10
+      },
+      "limit": 1,
+      "discount": 40
+    },
+    {
+      "id": "daily.1234",
+      "name": "5-Star Pokémon Shard ×10",
+      "price": 190,
+      "grants": {
+        "pokemonShard5": 10
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1238",
+      "name": "Bulbasaur Shards ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "venusaur": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1239",
+      "name": "Squirtle Shards ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "blastoise": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1240",
+      "name": "Charmander Shards ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "charizard": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1241",
+      "name": "Pichu Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "raichu": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1242",
+      "name": "Vulpix Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "ninetales": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1243",
+      "name": "Staryu Shards ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "starmie": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1244",
+      "name": "Togepi Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "togepi": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1245",
+      "name": "Growlithe Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "growlithe": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1246",
+      "name": "Scyther Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "scyther": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1247",
+      "name": "Onix Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "onix": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1248",
+      "name": "Slowpoke Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "slowpoke": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1249",
+      "name": "Oddish Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "oddish": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1250",
+      "name": "Abra Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "abra": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1251",
+      "name": "Poliwag Shard ×40",
+      "price": 75,
+      "grants": {},
+      "speciesShards": {
+        "poliwag": 40
+      },
+      "limit": 1,
+      "discount": 50
+    },
+    {
+      "id": "daily.1252",
+      "name": "Bulbasaur Shards ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "venusaur": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1253",
+      "name": "Squirtle Shards ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "blastoise": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1254",
+      "name": "Charmander Shards ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "charizard": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1255",
+      "name": "Pichu Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "raichu": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1256",
+      "name": "Vulpix Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "ninetales": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1257",
+      "name": "Staryu Shards ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "starmie": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1258",
+      "name": "Togepi Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "togepi": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1259",
+      "name": "Growlithe Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "growlithe": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1260",
+      "name": "Scyther Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "scyther": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1261",
+      "name": "Onix Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "onix": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1262",
+      "name": "Slowpoke Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "slowpoke": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1263",
+      "name": "Oddish Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "oddish": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1264",
+      "name": "Abra Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "abra": 40
+      },
+      "limit": 1,
+      "discount": 80
+    },
+    {
+      "id": "daily.1265",
+      "name": "Poliwag Shard ×40",
+      "price": 120,
+      "grants": {},
+      "speciesShards": {
+        "poliwag": 40
+      },
+      "limit": 1,
+      "discount": 80
+    }
+  ],
+  "refresh": {
+    "costs": [
+      {
+        "gold": 10000
+      },
+      {
+        "gold": 20000
+      },
+      {
+        "gold": 20000
+      },
+      {
+        "gold": 30000
+      },
+      {
+        "gold": 30000
+      },
+      {
+        "gold": 40000
+      },
+      {
+        "gold": 50000
+      },
+      {
+        "gold": 50000
+      },
+      {
+        "gold": 60000
+      },
+      {
+        "gold": 70000
+      },
+      {
+        "gold": 80000
+      },
+      {
+        "gold": 90000
+      },
+      {
+        "gold": 100000
+      },
+      {
+        "gold": 100000
+      },
+      {
+        "gold": 100000
+      }
+    ],
+    "limit": "vip"
+  },
+  "slots": 11,
+  "fixed": [
+    "daily.1221",
+    "daily.1222",
+    "daily.1223",
+    "daily.1225",
+    "daily.1226"
+  ],
+  "_leftOut": [
+    "1224 Golden Egg Voucher ×1",
+    "1231 5S Water Pokémon Shard ×5",
+    "1232 5S Fire Pokémon Shard ×5",
+    "1233 5S Grass Pokémon Shard ×5",
+    "1235 5S Water Pokémon Shard ×5",
+    "1236 5S Fire Pokémon Shard ×5",
+    "1237 5S Grass Pokémon Shard ×5"
   ]
 }

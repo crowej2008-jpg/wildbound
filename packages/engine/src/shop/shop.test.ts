@@ -10,6 +10,8 @@ import {
   refreshesLeft,
   initialShopProgress,
   applyRestock,
+  drawOffered,
+  isOffered,
 } from './index';
 import type { ShopDef } from './types';
 
@@ -134,5 +136,28 @@ describe('shop', () => {
     expect(restockDue(DAILY.restock, d0, d0 + 1)).toBe(false);
     expect(restockDue(DAILY.restock, d0, d12)).toBe(true);
     expect(restockDue(DAILY.restock, d12, d18)).toBe(true);
+  });
+});
+
+describe('R9 shown rows', () => {
+  const big: ShopDef = {
+    id: 'rot',
+    name: 'Rot',
+    currency: 'gems',
+    restock: { type: 'daily', hoursUtc: [0] },
+    slots: 4,
+    fixed: ['a', 'b'],
+    items: ['a', 'b', 'c', 'd', 'e', 'f', 'g'].map((id) => ({ id, name: id, price: 1, grants: {} })),
+  };
+
+  it('shows the fixed rows plus a stable draw from the rest', () => {
+    const offered = drawOffered(big, 1_000_000)!;
+    expect(offered).toHaveLength(4);
+    expect(offered.slice(0, 2)).toEqual(['a', 'b']);
+    expect(drawOffered(big, 1_000_000)).toEqual(offered);
+    const progress = { lastRestockAt: 1_000_000, bought: {}, oneTimeBought: [], refreshDay: 'd', refreshes: 0, offered };
+    expect(isOffered(big, progress, offered[2]!)).toBe(true);
+    expect(['c', 'd', 'e', 'f', 'g'].filter((id) => !isOffered(big, progress, id))).toHaveLength(3);
+    expect(drawOffered({ ...big, slots: undefined }, 1)).toBeUndefined();
   });
 });

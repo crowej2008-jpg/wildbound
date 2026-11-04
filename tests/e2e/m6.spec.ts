@@ -50,10 +50,13 @@ test('buys from the Daily shop and decrements the window limit', async ({ page }
   await expect(page.getByRole('heading', { name: 'Shops' })).toBeVisible();
   await expect(page.locator('.shop-card')).toHaveCount(7);
 
-  const shard = page.locator('[data-shop="daily"] .shop-item').filter({ hasText: 'Shards' });
-  await expect(shard).toContainText('Left: 3');
-  await shard.getByRole('button', { name: 'Buy' }).click();
-  await expect(shard).toContainText('Left: 2');
+  // R9: the source's fixed Premium GV row (90 Diamonds, 2 per restock, shown at 50% off).
+  const gv = page.locator('[data-shop-item="daily.1221"]');
+  await expect(gv).toContainText('50% off');
+  await expect(gv).toContainText('Left: 2');
+  await gv.getByRole('button', { name: 'Buy' }).click();
+  await expect(gv).toContainText('Left: 1');
+  await expect(page.locator('[data-shop="daily"] .shop-item')).toHaveCount(11);
 });
 
 test('marks the Wilds shop as manual and the schedule as automatic', async ({ page }) => {
@@ -64,7 +67,10 @@ test('marks the Wilds shop as manual and the schedule as automatic', async ({ pa
   await expect(wilds.getByText('Manual refresh')).toBeVisible();
   await expect(wilds.getByRole('button', { name: 'Refresh' })).toBeVisible();
 
-  // A scheduled shop shows a countdown instead of a refresh button.
+  // R9: the Daily Shop restocks on a schedule and can also be refreshed for Gold (5 a day at VIP 0).
   const daily = page.locator('[data-shop="daily"]');
-  await expect(daily.getByRole('button', { name: 'Refresh' })).toHaveCount(0);
+  await expect(daily.getByText(/Next restock/)).toBeVisible();
+  await expect(daily.getByRole('button', { name: 'Refresh' })).toBeVisible();
+  // The Champion Road badge rows stay locked.
+  await expect(page.locator('[data-shop-item="pvp.7009"]').getByRole('button', { name: 'Needs badge 2' })).toBeDisabled();
 });

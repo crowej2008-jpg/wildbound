@@ -1,11 +1,181 @@
 {
   "id": "wilds",
-  "name": "Wilds Shop",
+  "name": "Pokémon Shop",
   "currency": "wildCoin",
-  "restock": { "type": "manual", "refreshCost": { "wildCoin": 3000 }, "refreshDailyLimit": 3 },
+  "restock": {
+    "type": "manual",
+    "refreshCost": {
+      "wildCoin": 3000
+    },
+    "refreshDailyLimit": 3
+  },
   "items": [
-    { "id": "wilds.candy", "name": "Candy ×2000", "price": 400, "grants": { "candy": 2000 }, "limit": 5 },
-    { "id": "wilds.shard", "name": "Shards ×30", "price": 600, "grants": { "shard": 30 }, "limit": 5 },
-    { "id": "wilds.once", "name": "One-time Gold Pack", "price": 1200, "grants": { "gold": 20000 }, "oneTime": true }
+    {
+      "id": "wilds.11001",
+      "name": "5-Star Pokémon Shard ×50",
+      "price": 22050,
+      "grants": {
+        "pokemonShard5": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11002",
+      "name": "5-Star Pokémon Shard ×50",
+      "price": 22050,
+      "grants": {
+        "pokemonShard5": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11003",
+      "name": "5-Star Pokémon Shard ×50",
+      "price": 22050,
+      "grants": {
+        "pokemonShard5": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11004",
+      "name": "Pichu Shard ×40",
+      "price": 3150,
+      "grants": {},
+      "speciesShards": {
+        "raichu": 40
+      },
+      "limit": 12
+    },
+    {
+      "id": "wilds.11005",
+      "name": "Charmander Shards ×40",
+      "price": 3150,
+      "grants": {},
+      "speciesShards": {
+        "charizard": 40
+      },
+      "limit": 12
+    },
+    {
+      "id": "wilds.11006",
+      "name": "Bulbasaur Shards ×40",
+      "price": 3150,
+      "grants": {},
+      "speciesShards": {
+        "venusaur": 40
+      },
+      "limit": 12
+    },
+    {
+      "id": "wilds.11007",
+      "name": "Squirtle Shards ×40",
+      "price": 3150,
+      "grants": {},
+      "speciesShards": {
+        "blastoise": 40
+      },
+      "limit": 12
+    },
+    {
+      "id": "wilds.11008",
+      "name": "Beldum Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "metagross": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11009",
+      "name": "Gible Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "garchomp": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11010",
+      "name": "Deino Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "hydreigon": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11011",
+      "name": "Mudkip Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "swampert": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11012",
+      "name": "Treecko Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "sceptile": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11013",
+      "name": "Cyndaquil Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "typhlosion": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11014",
+      "name": "Crotodile Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "feraligatr": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11015",
+      "name": "Chikorita Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "meganium": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11016",
+      "name": "Dratini Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "dragonite": 50
+      },
+      "limit": 1
+    },
+    {
+      "id": "wilds.11017",
+      "name": "Larvitar Shard ×50",
+      "price": 28350,
+      "grants": {},
+      "speciesShards": {
+        "tyranitar": 50
+      },
+      "limit": 1
+    }
   ]
 }

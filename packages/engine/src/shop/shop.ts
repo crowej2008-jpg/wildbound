@@ -1,3 +1,4 @@
+import { mulberry32 } from '../rng';
 import { nextRestock, UTC_DAY_MS } from '../time';
 import type { ShopBuyBlock, ShopDef, ShopItemDef, ShopProgress, RestockSchedule } from './types';
 
@@ -39,9 +40,43 @@ export function restockDue(restock: RestockSchedule, lastRestockAt: number, now:
   return now >= nextRestockAt(restock, lastRestockAt);
 }
 
-/** Reset the per-window purchase counts; one-time buys are permanent. */
-export function applyRestock(progress: ShopProgress, now: number): ShopProgress {
-  return { ...progress, lastRestockAt: now, bought: {} };
+/**
+ * R9: the rows a restock shows — the `fixed` rows plus a uniform draw from the others to fill `slots` (the source's
+ * draw weights are not in the dumps), seeded by the shop and the restock time so a window is stable.
+ */
+export function drawOffered(shop: ShopDef, now: number): string[] | undefined {
+  if (!shop.slots || shop.slots >= shop.items.length) return undefined;
+  const fixed = shop.fixed ?? [];
+  const pool = shop.items.map((i) => i.id).filter((id) => !fixed.includes(id));
+  let seed = Math.floor(now / 1000);
+  for (const ch of shop.id) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
+  const rng = mulberry32(seed);
+  const picked: string[] = [];
+  while (picked.length < shop.slots - fixed.length && pool.length > 0) {
+    picked.push(pool.splice(Math.floor(rng() * pool.length), 1)[0]!);
+  }
+  const order = new Map(shop.items.map((i, n) => [i.id, n]));
+  return [...fixed, ...picked].sort((a, b) => (order.get(a) ?? 0) - (order.get(b) ?? 0));
+}
+
+/** Reset the per-window purchase counts (and draw the shown rows); one-time buys are permanent. */
+export function applyRestock(progress: ShopProgress, now: number, shop?: ShopDef): ShopProgress {
+  const offered = shop ? drawOffered(shop, now) : undefined;
+  const next: ShopProgress = { ...progress, lastRestockAt: now, bought: {} };
+  if (offered) next.offered = offered;
+  else delete next.offered;
+  return next;
+}
+
+/** Whether a row shows this restock. */
+export function isOffered(shop: ShopDef, progress: ShopProgress, itemId: string): boolean {
+  if (!shop.slots || shop.slots >= shop.items.length) return true;
+  return (progress.offered ?? drawOffered(shop, progress.lastRestockAt) ?? []).includes(itemId);
+}
+
+/** The currency a row is paid in. */
+export function itemCurrency(shop: ShopDef, item: ShopItemDef): string {
+  return item.currency ?? shop.currency;
 }
 
 export function boughtCount(progress: ShopProgress, itemId: string): number {
@@ -65,9 +100,11 @@ export function buyBlock(
   progress: ShopProgress,
   currencies: Record<string, number>,
 ): ShopBuyBlock | null {
+  if (!isOffered(shop, progress, item.id)) return 'not_offered';
+  if (item.badge !== undefined) return 'locked';
   if (item.oneTime && isOneTimeBought(progress, item.id)) return 'owned';
   if (boughtCount(progress, item.id) >= buyLimit(item)) return 'limit';
-  if ((currencies[shop.currency] ?? 0) < item.price) return 'insufficient_items';
+  if ((currencies[itemCurrency(shop, item)] ?? 0) < item.price) return 'insufficient_items';
   return null;
 }
 

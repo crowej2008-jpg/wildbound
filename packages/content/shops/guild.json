@@ -2,13 +2,88 @@
   "id": "guild",
   "name": "Guild Shop",
   "currency": "guildCoin",
-  "restock": { "type": "interval", "days": 7, "hourUtc": 0 },
+  "restock": {
+    "type": "interval",
+    "days": 7,
+    "hourUtc": 0
+  },
   "items": [
-    { "id": "guild.stone", "name": "Stones ×1", "price": 800, "grants": { "stone": 1 }, "limit": 2 },
-    { "id": "guild.shard", "name": "Shards ×100", "price": 600, "grants": { "shard": 100 }, "limit": 2 },
-    { "id": "guild.chestOrange", "name": "Orange Trinket Chest ×20", "price": 1200, "grants": { "trinketChestOrange": 20 }, "limit": 5 },
-    { "id": "guild.boxShiny", "name": "Shiny Supreme Trinket Box ×20", "price": 1440, "grants": { "trinketBoxShiny": 20 }, "limit": 5 },
-    { "id": "guild.chestRed", "name": "Red Trinket Chest ×20", "price": 1920, "grants": { "trinketChestRed": 20 }, "limit": 5 },
-    { "id": "guild.chest", "name": "Trinket Chest ×20", "price": 2400, "grants": { "trinketChest": 20 }, "limit": 5 }
+    {
+      "id": "guild.10101",
+      "name": "Premium GV ×1",
+      "price": 300,
+      "grants": {
+        "ticketPremium": 1
+      },
+      "limit": 30
+    },
+    {
+      "id": "guild.10105",
+      "name": "Ascension Stone ×200",
+      "price": 100,
+      "grants": {
+        "stone": 200
+      },
+      "limit": 10
+    },
+    {
+      "id": "guild.10106",
+      "name": "Berry Essence ×500",
+      "price": 100,
+      "grants": {
+        "berryEssence": 500
+      },
+      "limit": 6
+    },
+    {
+      "id": "guild.10107",
+      "name": "Orange Trinket Chest ×20",
+      "price": 1200,
+      "grants": {
+        "trinketChestOrange": 20
+      },
+      "limit": 5
+    },
+    {
+      "id": "guild.10108",
+      "name": "Shiny Supreme Trinket Box ×20",
+      "price": 1440,
+      "grants": {
+        "trinketBoxShiny": 20
+      },
+      "limit": 5
+    },
+    {
+      "id": "guild.10109",
+      "name": "Red Trinket Chest ×20",
+      "price": 1920,
+      "grants": {
+        "trinketChestRed": 20
+      },
+      "limit": 5
+    },
+    {
+      "id": "guild.10110",
+      "name": "Trinket Chest ×20",
+      "price": 2400,
+      "grants": {
+        "trinketChest": 20
+      },
+      "limit": 5
+    },
+    {
+      "id": "guild.10111",
+      "name": "5-Star Pokémon Shard ×5",
+      "price": 150,
+      "grants": {
+        "pokemonShard5": 5
+      },
+      "limit": 100
+    }
+  ],
+  "_leftOut": [
+    "10102 Golden Egg Voucher ×1",
+    "10103 Supreme Gift ×1",
+    "10104 Opt 5S Chest ×1"
   ]
 }

@@ -17,6 +17,7 @@ function formatCountdown(ms: number): string {
 }
 
 function buyLabel(item: ShopItemView): string {
+  if (item.badge !== null) return t('shop.badge').replace('{badge}', String(item.badge));
   if (item.owned) return t('shop.owned');
   if (item.remaining === 0) return t('shop.limitReached');
   if (!item.affordable) return t('shop.noCurrency');
@@ -44,10 +45,16 @@ function ShopCard({
         <span className="chip">{currencyLabel[currency] ?? currency}</span>
       </div>
 
-      {shop.restockType === 'manual' ? (
+      {shop.restockType !== 'manual' && (
+        <p className="muted">
+          {t('shop.nextRestock')}: <strong>{formatCountdown(shop.nextRestockAt - now)}</strong>
+        </p>
+      )}
+      {shop.refreshCost && (
         <div className="shop-refresh">
           <span className="muted">
-            {t('shop.manual')} · {t('shop.refreshesLeft')}: <strong>{shop.refreshesLeft}</strong>
+            {shop.restockType === 'manual' ? `${t('shop.manual')} · ` : ''}
+            {t('shop.refreshesLeft')}: <strong>{shop.refreshesLeft}</strong>
           </span>
           {shop.refreshCost && (
             <span className="shop-refresh-cost">
@@ -58,20 +65,19 @@ function ShopCard({
             {t('shop.refresh')}
           </button>
         </div>
-      ) : (
-        <p className="muted">
-          {t('shop.nextRestock')}: <strong>{formatCountdown(shop.nextRestockAt - now)}</strong>
-        </p>
       )}
 
       <ul className="shop-list">
         {shop.items.map((item) => (
-          <li key={item.id} className="shop-item">
+          <li key={item.id} className="shop-item" data-shop-item={item.id}>
             <div className="shop-item-info">
-              <span className="shop-item-name">{item.name}</span>
+              <span className="shop-item-name">
+                {item.name}
+                {item.discount !== null && <span className="chip">{t('shop.discount').replace('{n}', String(100 - item.discount))}</span>}
+              </span>
               <RewardLine rewards={item.grants} />
               <span className="muted">
-                {item.price.toLocaleString()} {currencyLabel[currency] ?? currency}
+                {item.price.toLocaleString()} {currencyLabel[item.currency as CurrencyKey] ?? item.currency}
                 {' · '}
                 {item.owned
                   ? t('shop.owned')

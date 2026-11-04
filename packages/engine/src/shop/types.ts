@@ -21,6 +21,14 @@ export interface ShopItemDef {
   limit?: number;
   /** Bought once, forever; never restocks. */
   oneTime?: boolean;
+  /** R9: a species' own shards. */
+  speciesShards?: Record<string, number>;
+  /** R9: the row's cost currency when it differs from the shop's. */
+  currency?: string;
+  /** R9: the source's shown discount (display only). */
+  discount?: number;
+  /** R9: the Champion Road badge the row needs. */
+  badge?: number;
 }
 
 export interface ShopDef {
@@ -29,6 +37,11 @@ export interface ShopDef {
   /** Currency id the shop charges in. */
   currency: string;
   restock: RestockSchedule;
+  /** R9: manual refreshes on top of the schedule: each one's price, the day's limit (`vip` = by VIP level). */
+  refresh?: { costs: Rewards[]; limit: 'vip' | number };
+  /** R9: rows shown per restock: the `fixed` ones plus the rest drawn from the other rows. */
+  slots?: number;
+  fixed?: string[];
   items: ShopItemDef[];
 }
 
@@ -40,11 +53,13 @@ export interface ShopProgress {
   /** UTC day of the last manual refresh (for its daily limit). */
   refreshDay: string;
   refreshes: number;
+  /** R9: the rows shown this restock (absent = all rows). */
+  offered?: string[];
 }
 
 export type ShopState = Record<string, ShopProgress>;
 
-export type ShopBuyBlock = 'owned' | 'limit' | 'insufficient_items';
+export type ShopBuyBlock = 'owned' | 'limit' | 'insufficient_items' | 'not_offered' | 'locked';
 
 export function initialShopProgress(now: number, day: string): ShopProgress {
   return { lastRestockAt: now, bought: {}, oneTimeBought: [], refreshDay: day, refreshes: 0 };

@@ -225,60 +225,69 @@ describe('LocalServer summoning (R9: copied from the source)', () => {
   });
 });
 
-describe('LocalServer M6 shops', () => {
+describe('LocalServer R9 shops (from the source)', () => {
   it('deducts the exact price and grants the bundle', async () => {
     const { srv } = make();
     await srv.grantCurrency('gems', 1000);
-    const buy = await srv.buyShopItem('daily', 'daily.shard');
+    const before = await srv.loadAccount();
+    if (!before.ok) return;
+    const buy = await srv.buyShopItem('daily', 'daily.1223'); // Premium GV ×1 for 180 Diamonds (fixed row)
     expect(buy.ok).toBe(true);
     if (!buy.ok) return;
-    expect(buy.value.granted.shard).toBe(50);
-    expect(buy.value.snapshot.state.currencies.shard).toBe(250);
-    expect(buy.value.snapshot.state.currencies.gems).toBe(1350);
+    expect(buy.value.granted.ticketPremium).toBe(1);
+    expect(buy.value.snapshot.state.currencies.gems).toBe(before.value.state.currencies.gems - 180);
   });
 
   it('refuses a purchase when the window limit is reached, then restocks', async () => {
     const { srv, advance } = make();
     await srv.grantCurrency('gems', 5000);
-    for (let i = 0; i < 3; i++) {
-      expect((await srv.buyShopItem('daily', 'daily.shard')).ok).toBe(true);
-    }
-    const blocked = await srv.buyShopItem('daily', 'daily.shard');
+    expect((await srv.buyShopItem('daily', 'daily.1223')).ok).toBe(true);
+    const blocked = await srv.buyShopItem('daily', 'daily.1223');
     expect(blocked.ok).toBe(false);
     if (!blocked.ok) expect(blocked.error).toBe('daily_limit');
-
-    // The Daily shop restocks at 12:00 UTC; 12h later the limit resets.
+    // The Daily Shop restocks at 00:00, 12:00 and 18:00 UTC.
     advance(12 * 60 * 60_000);
-    expect((await srv.buyShopItem('daily', 'daily.shard')).ok).toBe(true);
+    expect((await srv.buyShopItem('daily', 'daily.1223')).ok).toBe(true);
   });
 
-  it('keeps one-time lines bought across a refresh', async () => {
+  it('shows the five fixed rows plus six drawn ones, and sells species shards', async () => {
     const { srv } = make();
-    await srv.grantCurrency('wildCoin', 20000);
-    expect((await srv.buyShopItem('wilds', 'wilds.once')).ok).toBe(true);
-    const again = await srv.buyShopItem('wilds', 'wilds.once');
-    expect(again.ok).toBe(false);
-    if (!again.ok) expect(again.error).toBe('invalid_input');
-
-    expect((await srv.refreshShop('wilds')).ok).toBe(true);
-    expect((await srv.buyShopItem('wilds', 'wilds.once')).ok).toBe(false);
-  });
-
-  it('manual refresh costs currency, resets stock and enforces the daily limit', async () => {
-    const { srv } = make();
-    await srv.grantCurrency('wildCoin', 20000);
-    for (let i = 0; i < 5; i++) {
-      expect((await srv.buyShopItem('wilds', 'wilds.candy')).ok).toBe(true);
+    const view = await srv.getShops();
+    if (!view.ok) return;
+    expect(view.value).toHaveLength(7);
+    const daily = view.value.find((s) => s.id === 'daily')!;
+    expect(daily.items).toHaveLength(11);
+    for (const id of ['daily.1221', 'daily.1222', 'daily.1223', 'daily.1225', 'daily.1226']) {
+      expect(daily.items.map((i) => i.id)).toContain(id);
     }
-    expect((await srv.buyShopItem('wilds', 'wilds.candy')).ok).toBe(false);
+    expect(view.value.find((s) => s.id === 'island')!.items).toHaveLength(14);
 
+    await srv.grantCurrency('wildCoin', 10_000);
+    const pichu = await srv.buyShopItem('wilds', 'wilds.11004'); // Pichu Shard ×40 → Raichu's shards
+    expect(pichu.ok).toBe(true);
+    if (pichu.ok) expect(pichu.value.snapshot.state.speciesShards.raichu).toBe(40);
+  });
+
+  it('keeps the Champion Road badge rows locked', async () => {
+    const { srv } = make();
+    await srv.grantCurrency('arenaToken', 200_000);
+    const shiny = await srv.buyShopItem('pvp', 'pvp.7009');
+    expect(shiny.ok).toBe(false);
+    if (!shiny.ok) expect(shiny.error).toBe('resource_locked');
+  });
+
+  it('refreshes the Pokémon Shop three times a day for 3,000 Pokémon Tokens', async () => {
+    const { srv } = make();
+    await srv.grantCurrency('wildCoin', 100_000);
+    const bought = await srv.buyShopItem('wilds', 'wilds.11001'); // 5-Star Pokémon Shard ×50 for 22,050
+    expect(bought.ok).toBe(true);
+    if (!bought.ok) return;
+    expect((await srv.buyShopItem('wilds', 'wilds.11001')).ok).toBe(false);
     const refresh = await srv.refreshShop('wilds');
     expect(refresh.ok).toBe(true);
     if (!refresh.ok) return;
-    expect(refresh.value.snapshot.state.currencies.wildCoin).toBe(20000 - 5 * 400 - 3000);
-    expect((await srv.buyShopItem('wilds', 'wilds.candy')).ok).toBe(true);
-
-    // Two more refreshes are allowed today; the fourth is refused.
+    expect(refresh.value.snapshot.state.currencies.wildCoin).toBe(bought.value.snapshot.state.currencies.wildCoin - 3000);
+    expect((await srv.buyShopItem('wilds', 'wilds.11001')).ok).toBe(true);
     expect((await srv.refreshShop('wilds')).ok).toBe(true);
     expect((await srv.refreshShop('wilds')).ok).toBe(true);
     const over = await srv.refreshShop('wilds');
@@ -286,23 +295,22 @@ describe('LocalServer M6 shops', () => {
     if (!over.ok) expect(over.error).toBe('daily_limit');
   });
 
-  it('refuses a manual refresh on a scheduled shop', async () => {
+  it('refreshes the Daily Shop on the Gold ladder, as many times as the VIP level allows', async () => {
     const { srv } = make();
-    const bad = await srv.refreshShop('daily');
-    expect(bad.ok).toBe(false);
-    if (!bad.ok) expect(bad.error).toBe('invalid_input');
-  });
-
-  it('reports every shop with stock and affordability for the UI', async () => {
-    const { srv } = make();
+    await srv.grantCurrency('gold', 1_000_000);
+    const before = await srv.loadAccount();
+    if (!before.ok) return;
+    const first = await srv.refreshShop('daily');
+    expect(first.ok).toBe(true);
+    if (!first.ok) return;
+    expect(first.value.snapshot.state.currencies.gold).toBe(before.value.state.currencies.gold - 10_000);
+    const second = await srv.refreshShop('daily');
+    if (!second.ok) return;
+    expect(second.value.snapshot.state.currencies.gold).toBe(first.value.snapshot.state.currencies.gold - 20_000);
     const view = await srv.getShops();
-    expect(view.ok).toBe(true);
     if (!view.ok) return;
-    expect(view.value).toHaveLength(7);
-    const daily = view.value.find((s) => s.id === 'daily');
-    expect(daily?.items.find((i) => i.id === 'daily.shard')?.affordable).toBe(true);
-    const wilds = view.value.find((s) => s.id === 'wilds');
-    expect(wilds?.restockType).toBe('manual');
-    expect(wilds?.nextRestockAt).toBe(Number.POSITIVE_INFINITY);
+    const daily = view.value.find((s) => s.id === 'daily')!;
+    expect(daily.refreshesLeft).toBe(3); // VIP 0: 5 a day
+    expect(daily.refreshCost).toEqual({ gold: 20_000 });
   });
 });
