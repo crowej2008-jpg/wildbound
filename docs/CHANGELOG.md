@@ -1360,3 +1360,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - `WIKI_BUILDS` (the meta six) and class templates for everyone else in `scripts/balance/max-build.ts`; 50,000
   battles. Field compresses to 47–60%; God Ash-Pikachu and Psyduck stay at the bottom. ASSUMPTIONS #91.
+
+## R10 part 3 — close-out (2026-11-04)
+
+- `docs/design/r10-close-out.md`: what is copied, what is still a stand-in (and what it waits for), owner
+  departures and the balance readings. The Bag e2e waits for the debug grant to land (it flaked once). Mode
+  difficulty curves moved to after M20. The source retrofit (R1–R10) is closed.

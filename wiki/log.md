@@ -274,3 +274,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-04] update | Mode difficulty curves moved to the very end
 - Owner: the mode difficulty-curve test runs after M20, when the game is done. Removed from R10; decision page added.
+
+## [2026-11-04] update | R10 closed — source retrofit done
+- Close-out snapshot (`docs/design/r10-close-out.md`), Bag e2e flake fixed. R1–R10 closed; the geared tier check
+  stays open (Mechas and Artifacts are not built). Next: M13.3.
