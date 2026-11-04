@@ -81,4 +81,4 @@ Finding (agent's reading): power counts flat stats only, so best-by-power gives 
 orb sets, berry skills and Potential options that act through effects are invisible to it. Gear as picked mostly
 adds bulk, which lifts the Guardians (Blastoise, Wobbuffet, Snorlax) and dilutes the burst Strikers. The four
 that did not rise are the ones whose real builds lean on effects. Next step is the owner's: give the real builds
-for the meta six (the script takes a per-species override), or keep this as the reading.
+for the meta six (a per-species override would be added to `max-build.ts`), or keep this as the reading.
