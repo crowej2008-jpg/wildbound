@@ -35,6 +35,7 @@ Numbers changed twice — see [renumbering](../decisions/milestone-renumbering.m
 | M18 | [Visual identity](../systems/visual-identity.md) | pending |
 | M19 | [Shared backend](../systems/backend.md) (required) | pending |
 | M20 | [Build Lab](../systems/build-lab.md) | pending (last) |
+| After M20 | [Mechas](../decisions/mechas-at-the-end.md) (Future War armours) | parked: owner 2026-11-04, "at the very end when the game is done" |
 
 Parked outside the numbering: [Gods Trials](../systems/gods-trials.md) ("after M13 and others").
 Workflow: since 2026-11-01 no list-and-wait between milestones; stop only for the owner's own calls
