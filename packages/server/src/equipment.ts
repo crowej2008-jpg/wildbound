@@ -199,8 +199,7 @@ export function refineRelicAction(
   if (block === 'no_slots') return fail('resource_locked', `${def.name} has no refinable lines`);
   if (block === 'main_stat') return fail('invalid_input', 'the main stat cannot be refined');
   if (block === 'slot_limit') return fail('resource_locked', 'reached the maximum refinable line count');
-  if (block === 'max_refine') return fail('at_level_cap', 'no refines left');
-  const cost = heldRefineCost(relic, held) ?? 0;
+  const cost = heldRefineCost(relic, held);
   const paid = pay(state, { heldItemResetter: cost });
   if (!paid) return fail('insufficient_items', 'not enough Held Item Resetters');
   return ok(withRelic(paid, rollRefine(relic, def, held, slot, rng)));

@@ -1372,3 +1372,7 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - 300 floors, 5 free keys a day, ×1 / ×3 / ×5, route cards, Hoopa's chase, the 15-round Exit Guardian, key
   refunds. Floor bands from the source; pay is a labelled stand-in; held-item and orb drops wait for the owner.
   New `vaultKey` currency and `hoopaVault` squad, save v40, `/explore/hoopa-vault`. ASSUMPTIONS #92.
+
+## Held items — refines without a cap (2026-11-04)
+
+- The refine ladder stops rising at 10 Resetters and refines never run out (owner). ASSUMPTIONS #93.

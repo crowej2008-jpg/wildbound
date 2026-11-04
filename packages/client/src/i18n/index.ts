@@ -214,7 +214,7 @@ export const en = {
   'held.otherFaction': 'only on a {faction} Pokémon',
   'held.refineFree': 'Free',
   'held.resetters': 'Resetters',
-  'held.refinesLeft': 'Refines',
+  'held.refinesLeft': 'Refines done',
   'held.slots': 'Refinable lines',
   'held.newLine': 'New roll',
   'held.keep': 'Keep',

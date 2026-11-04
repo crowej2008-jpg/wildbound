@@ -120,8 +120,10 @@ describe('held items (R5, source rules)', () => {
     expect(kept.lines[0]!.index).toBe(rolled.pending!.index);
     expect(kept.lines[0]!.value).toBe(rolled.pending!.value);
     expect(kept.pending).toBeNull();
-    expect(refineBlock(kept, DEF, TABLES, 0)).toBe('max_refine');
-    expect(heldRefineCost(kept, TABLES)).toBeNull();
+    // no refine limit: past the ladder's end every refine costs its last price
+    expect(refineBlock(kept, DEF, TABLES, 0)).toBeNull();
+    expect(heldRefineCost(kept, TABLES)).toBe(2);
+    expect(heldRefineCost({ ...kept, refines: 50 }, TABLES)).toBe(2);
   });
 
   it('has no refinable slot below Supreme', () => {

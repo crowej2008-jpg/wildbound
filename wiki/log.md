@@ -283,3 +283,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - 13.3a was already done in R5. Built the run: 5 free keys a day, 300 floors, ×1/×3/×5, route cards, Hoopa's
   chase, the 15-round Exit Guardian, key refunds; floor bands from the source; pay is a stand-in (ASSUMPTIONS #92,
   save v40). Held-item and orb drops wait for the owner.
+
+## [2026-11-04] update | Held-item refines without a cap
+- Owner: the ladder's 10 Resetters is the final price, not a limit; refines continue at 10 each (ASSUMPTIONS #93).

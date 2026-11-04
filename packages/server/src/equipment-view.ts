@@ -9,7 +9,6 @@ import {
   heldLevelCost,
   heldLevelGate,
   heldMaxLevel,
-  heldMaxRefine,
   heldRefineCost,
   HELD_SCALE,
   lineRow,
@@ -77,10 +76,11 @@ export interface RelicView {
   /** `standIn` names a number the source text leaves out and the value used. */
   skill: { name: string; text: string; active: boolean; standIn: string | null } | null;
   refines: number;
-  maxRefine: number;
+  /** Resetters per refine once the ladder tops out (refines never run out). */
+  topRefineCost: number;
   refineSlots: number;
   refineSlotsUsed: number;
-  /** Held Item Resetters for the next refine (0 = free), or null when none are left. */
+  /** Held Item Resetters for the next refine (0 = free); null when the item cannot be refined. */
   refineCost: number | null;
   /** Held Item Shards for the next level, or null at the cap. */
   levelCost: number | null;
@@ -282,7 +282,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
         ? { name: def.skill.name, text: def.skill.text, active: def.skill.active, standIn: def.skill.standIn ?? null }
         : null,
       refines: r.refines,
-      maxRefine: heldMaxRefine(held),
+      topRefineCost: held.refineLadder[held.refineLadder.length - 1] ?? 0,
       refineSlots: def.refineSlots,
       refineSlotsUsed,
       refineCost: def.refineSlots > 0 ? heldRefineCost(r, held) : null,

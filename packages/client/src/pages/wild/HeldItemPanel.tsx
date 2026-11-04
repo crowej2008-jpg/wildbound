@@ -138,7 +138,7 @@ function HeldRow({ item, wildId, view, busy, act }: RowProps) {
       <p className="muted">
         {t('held.lines')}
         {item.refineSlots > 0 &&
-          ` · ${t('held.slots')} ${item.refineSlotsUsed}/${item.refineSlots} · ${t('held.refinesLeft')} ${item.refines}/${item.maxRefine}`}
+          ` · ${t('held.slots')} ${item.refineSlotsUsed}/${item.refineSlots} · ${t('held.refinesLeft')} ${item.refines}`}
       </p>
       <ul className="held-lines">
         {item.lines.map((line) => (

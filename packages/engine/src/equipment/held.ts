@@ -134,16 +134,17 @@ export function heldDismantleShards(inst: RelicInstance, def: RelicDef, tables: 
 
 // --- refining ---------------------------------------------------------------------
 
-export function heldMaxRefine(tables: HeldTables): number {
-  return tables.refineLadder.length;
+/**
+ * Held Item Resetters for the item's next refine (owner's ladder). There is no refine limit: past the end of
+ * the ladder every refine costs its last price (owner 2026-11-04: "upto 10 ... is the final cost but you can
+ * still reroll").
+ */
+export function heldRefineCost(inst: RelicInstance, tables: HeldTables): number {
+  const ladder = tables.refineLadder;
+  return ladder[Math.min(inst.refines, ladder.length - 1)] ?? 0;
 }
 
-/** Held Item Resetters for the item's next refine (owner's ladder), or null when spent. */
-export function heldRefineCost(inst: RelicInstance, tables: HeldTables): number | null {
-  return tables.refineLadder[inst.refines] ?? null;
-}
-
-export type RefineBlock = 'no_slots' | 'main_stat' | 'slot_limit' | 'max_refine' | null;
+export type RefineBlock = 'no_slots' | 'main_stat' | 'slot_limit' | null;
 
 /**
  * Whether a line slot can be refined. Only `refineSlots` slots can ever be refined: a slot already
@@ -152,7 +153,6 @@ export type RefineBlock = 'no_slots' | 'main_stat' | 'slot_limit' | 'max_refine'
 export function refineBlock(inst: RelicInstance, def: RelicDef, tables: HeldTables, slot: number): RefineBlock {
   if (def.refineSlots <= 0) return 'no_slots';
   if (slot < 0 || slot >= inst.lines.length) return 'main_stat';
-  if (inst.refines >= heldMaxRefine(tables)) return 'max_refine';
   if (inst.lines[slot]!.refines > 0) return null;
   const used = inst.lines.filter((l) => l.refines > 0).length;
   return used >= def.refineSlots ? 'slot_limit' : null;

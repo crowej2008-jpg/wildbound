@@ -29,6 +29,11 @@ Owner: *"the first roll is free then it should be 1,1,2,2 and like that pattern 
 - `maxRefine` goes from 5 → 21. No gold, no Held Item Shards in refine.
 - ASSUMPTIONS #41's older ladder (1,1,2,3,4,5,6,8,10…20) is **superseded** — update it in 13.3a.
 
+## No refine limit (2026-11-04)
+Owner: *"when i mean upto 10 i mean that is the final cost but you can still reroll"*. The ladder is the price
+of refines 1–21; every refine after that costs 10 Resetters, with no limit (`max_refine` removed). The 21-refine,
+2,200-shard total above is now the cost of reaching the 10-a-refine price, not a cap.
+
 ## Confirmed 2026-10-31
 Owner kept **his ladder** even after learning the source's ("lets do my ladder for refines"). The ladder
 now prices the source-style **re-roll** refine ([held items](../systems/held-items.md)), not a power-up.

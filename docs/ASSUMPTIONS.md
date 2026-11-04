@@ -1140,3 +1140,7 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     Resetter Shards; see docs/design/hoopa-vault.md). Not built: held-item and orb drops (waiting for the owner),
     Treasure Finders (M14), the VIP key purchase. New currency `vaultKey`; new squad `hoopaVault`; save v40 (reset).
     13.3a (Resetter Shards, the 20 → 1 combine, the owner's refine ladder, 27 Mythic items) was already built in R5.
+
+93. **Held-item refines have no limit (owner 2026-11-04).** "upto 10 ... is the final cost but you can still
+    reroll": the owner's ladder (free, 1, 1, 2, 2 … 10) prices refines 1–21 and every later refine costs 10 Held
+    Item Resetters. The 21-refine cap is removed. Slot rules are unchanged (only `refineSlots` distinct slots).
