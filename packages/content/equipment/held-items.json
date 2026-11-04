@@ -4548,6 +4548,7 @@
       "resonance": 600
     }
   ],
+  "mainStatRerollShards": 100,
   "refineLadder": [
     0,
     1,

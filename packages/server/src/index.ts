@@ -383,6 +383,8 @@ export interface GameServer {
   levelRelic(instanceId: string): Promise<Result<AccountSnapshot>>;
   /** Roll a new line into one slot of a worn held item; keep or drop it with `settleRefine` (R5). */
   refineRelic(instanceId: string, slot: number, seed?: number): Promise<Result<AccountSnapshot>>;
+  /** Owner 2026-11-04: re-roll a held item's main stat (100 Resetter Shards). */
+  rerollRelicMainStat(instanceId: string, seed?: number): Promise<Result<AccountSnapshot>>;
   settleRefine(instanceId: string, keep: boolean): Promise<Result<AccountSnapshot>>;
   /** Toggle a held item's lock (a locked item can't be dismantled) (R5). */
   lockRelic(instanceId: string): Promise<Result<AccountSnapshot>>;

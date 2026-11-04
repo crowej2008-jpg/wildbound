@@ -33,6 +33,7 @@ export const HELD_TABLES = {
   levelCost: HELD_CATALOGUE.levelCost,
   levelGates: HELD_CATALOGUE.levelGates,
   refineLadder: HELD_CATALOGUE.refineLadder,
+  mainStatRerollShards: HELD_CATALOGUE.mainStatRerollShards,
   resetterCompound: HELD_CATALOGUE.resetterCompound,
 };
 /** R6a: the source's plates. */

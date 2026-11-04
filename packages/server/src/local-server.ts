@@ -201,6 +201,7 @@ import {
   equipRelicAction,
   levelRelicAction,
   refineRelicAction,
+  rerollMainStatAction,
   settleRefineAction,
   lockRelicAction,
   dismantleRelicsAction,
@@ -978,6 +979,11 @@ export class LocalServer implements GameServer {
   async refineRelic(instanceId: string, slot: number, seed?: number): Promise<Result<AccountSnapshot>> {
     const rng = typeof seed === 'number' ? mulberry32(seed) : this.config.rng;
     return this.applyEquipment((state) => refineRelicAction(this.config, state, instanceId, slot, rng));
+  }
+
+  async rerollRelicMainStat(instanceId: string, seed?: number): Promise<Result<AccountSnapshot>> {
+    const rng = typeof seed === 'number' ? mulberry32(seed) : this.config.rng;
+    return this.applyEquipment((state) => rerollMainStatAction(this.config, state, instanceId, rng));
   }
 
   async settleRefine(instanceId: string, keep: boolean): Promise<Result<AccountSnapshot>> {

@@ -164,7 +164,7 @@ test('Held Items level from 0 on the source table and refine a worn Mythic (firs
   await row.getByRole('button', { name: 'Refine · Free' }).first().click();
   await expect(row.getByText('New roll', { exact: false })).toBeVisible();
   await row.getByRole('button', { name: 'Keep', exact: true }).click();
-  await expect(row).toContainText('Refines 1/21');
+  await expect(row).toContainText('Refines done 1');
   await expect(row.getByRole('button', { name: 'Refine · 1 Resetters' }).first()).toBeVisible();
 });
 

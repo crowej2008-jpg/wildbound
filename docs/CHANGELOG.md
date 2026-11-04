@@ -1376,3 +1376,5 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 ## Held items — refines without a cap (2026-11-04)
 
 - The refine ladder stops rising at 10 Resetters and refines never run out (owner). ASSUMPTIONS #93.
+- Main-stat re-roll: 100 Resetter Shards, random among the other kinds, keeps level and lines (owner).
+  ASSUMPTIONS #94.

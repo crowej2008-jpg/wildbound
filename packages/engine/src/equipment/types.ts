@@ -109,6 +109,8 @@ export interface HeldTables {
   levelGates: { level: number; resonance: number }[];
   /** Held Item Resetters per refine (owner's ladder). */
   refineLadder: number[];
+  /** Owner 2026-11-04: Resetter Shards to re-roll an item's main stat into another kind. */
+  mainStatRerollShards?: number;
   /** Resetter Shards per Held Item Resetter. */
   resetterCompound: number;
 }

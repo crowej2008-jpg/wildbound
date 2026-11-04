@@ -246,6 +246,14 @@ function HeldRow({ item, wildId, view, busy, act }: RowProps) {
         >
           {item.locked ? t('held.unlock') : t('held.lock')}
         </button>
+        <button
+          type="button"
+          className="btn"
+          disabled={busy || view.resetterShards < view.mainStatRerollShards}
+          onClick={() => void act((server) => server.rerollRelicMainStat(item.instanceId))}
+        >
+          {t('held.rerollMain')} · {view.mainStatRerollShards} {t('currency.resetterShard')}
+        </button>
         {item.equippedOn === null && !item.locked && (
           <button
             type="button"

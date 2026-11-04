@@ -132,6 +132,25 @@ export function heldDismantleShards(inst: RelicInstance, def: RelicDef, tables: 
   return def.dismantle + heldShardsSpent(inst.level, tables);
 }
 
+// --- main stat re-roll (owner 2026-11-04) -------------------------------------------
+
+/** The main-stat groups an item's pool offers (1 HP, 2 P.ATK, 3 S.ATK). */
+export function mainStatGroups(def: RelicDef, tables: HeldTables): number[] {
+  return [...new Set(tables.mainPool.filter((r) => r.pool === def.mainPool).map((r) => r.group))].sort();
+}
+
+/** Resetter Shards for one main-stat re-roll. */
+export function mainStatRerollCost(tables: HeldTables): number {
+  return tables.mainStatRerollShards ?? 100;
+}
+
+/** Re-roll the main stat into one of the other kinds, at random; level and lines stay. Null if none other. */
+export function rerollMainStat(inst: RelicInstance, def: RelicDef, tables: HeldTables, rng: Rng): RelicInstance | null {
+  const others = mainStatGroups(def, tables).filter((g) => g !== inst.group);
+  if (others.length === 0) return null;
+  return { ...inst, group: others[randInt(rng, others.length)]! };
+}
+
 // --- refining ---------------------------------------------------------------------
 
 /**

@@ -163,6 +163,8 @@ export const heldItemsSchema = z
     levelCost: z.array(z.number().int().min(0)).min(1),
     levelGates: z.array(z.object({ level: z.number().int(), resonance: z.number().int() })),
     refineLadder: z.array(z.number().int().min(0)).min(1),
+    /** Owner 2026-11-04: Resetter Shards per main-stat re-roll. */
+    mainStatRerollShards: z.number().int().positive(),
     resetterCompound: z.number().int().min(1),
   })
   .superRefine((data, ctx) => {

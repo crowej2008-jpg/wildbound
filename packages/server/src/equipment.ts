@@ -7,6 +7,8 @@ import {
   heldLevelCost,
   heldLevelGate,
   heldRefineCost,
+  mainStatRerollCost,
+  rerollMainStat,
   refineBlock,
   rollHeldItem,
   rollRefine,
@@ -203,6 +205,22 @@ export function refineRelicAction(
   const paid = pay(state, { heldItemResetter: cost });
   if (!paid) return fail('insufficient_items', 'not enough Held Item Resetters');
   return ok(withRelic(paid, rollRefine(relic, def, held, slot, rng)));
+}
+
+/**
+ * Re-roll a held item's main stat into one of its other kinds, at random (owner 2026-11-04: "have it reroll
+ * and the cost be 100 resetter shards"). The level, lines and refines stay.
+ */
+export function rerollMainStatAction(config: SpeciesLookup, state: AccountState, instanceId: string, rng: Rng): Result<AccountState> {
+  const { relic, def } = findHeld(config, state, instanceId);
+  if (!relic || !def) return fail('not_found', `no held item ${instanceId}`);
+  const { held } = config.equipment;
+  const cost = mainStatRerollCost(held);
+  const paid = pay(state, { resetterShard: cost });
+  if (!paid) return fail('insufficient_items', `not enough Resetter Shards (${cost})`);
+  const next = rerollMainStat(relic, def, held, rng);
+  if (!next) return fail('invalid_input', `${def.name} has only one main stat`);
+  return ok(withRelic(paid, next));
 }
 
 /** Keep (`true`) or drop (`false`) the pending refine roll (source: HELD_REFINE_CONFIRM). */

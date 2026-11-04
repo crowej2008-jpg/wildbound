@@ -220,6 +220,7 @@ export const en = {
   'held.keep': 'Keep',
   'held.drop': 'Drop',
   'held.lock': 'Lock',
+  'held.rerollMain': 'Re-roll main stat',
   'held.unlock': 'Unlock',
   'held.locked': 'Locked',
   'held.dismantle': 'Dismantle',

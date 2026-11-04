@@ -1144,3 +1144,8 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 93. **Held-item refines have no limit (owner 2026-11-04).** "upto 10 ... is the final cost but you can still
     reroll": the owner's ladder (free, 1, 1, 2, 2 … 10) prices refines 1–21 and every later refine costs 10 Held
     Item Resetters. The 21-refine cap is removed. Slot rules are unchanged (only `refineSlots` distinct slots).
+
+94. **Held-item main-stat re-roll (owner 2026-11-04: "have it reroll and the cost be 100 resetter shards").** Any
+    held item (worn or not) can re-roll its main stat into one of its pool's other kinds (HP / P.ATK / S.ATK), at
+    random, for 100 Resetter Shards (`mainStatRerollShards` in held-items.json). Readings: the level, lines and
+    refines stay; a locked item can still be re-rolled (locking guards against dismantling).

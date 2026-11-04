@@ -143,6 +143,8 @@ export interface EquipmentView {
   heldItemResetters: number;
   /** Resetter Shards per Held Item Resetter. */
   resetterCompound: number;
+  /** Resetter Shards per main-stat re-roll (owner 2026-11-04). */
+  mainStatRerollShards: number;
   /** Account resonance (Link Crystal) level, for the held-item level gates. */
   resonanceLevel: number;
   /** Divide held-item values by this to get a fraction (1,067 → 10.67%). */
@@ -363,6 +365,7 @@ export function buildEquipmentView({ config, state, wild }: EquipmentDeps): Equi
     resetterShards: state.currencies.resetterShard ?? 0,
     heldItemResetters: state.currencies.heldItemResetter ?? 0,
     resetterCompound: held.resetterCompound,
+    mainStatRerollShards: held.mainStatRerollShards ?? 100,
     resonanceLevel: resonanceLevel(config, state),
     heldScale: HELD_SCALE,
     plateBottles: state.currencies.plateBottle ?? 0,

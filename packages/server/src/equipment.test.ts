@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { grantHeldItem, setWildStars } from './testing';
 import { emptyLoadout, mulberry32 } from '@wildbound/engine';
 import { buildConfig } from './config';
-import { grantRelic, levelRelicAction } from './equipment';
+import { grantRelic, levelRelicAction, rerollMainStatAction } from './equipment';
 import { equippedSheet } from './battle';
 import { LocalServer } from './local-server';
 import { createInitialState } from './save';
@@ -149,6 +149,25 @@ describe('M11.0 equipment view and actions', () => {
     expect(paid.value.state.currencies.resetterShard).toBe(0);
     expect((await srv.settleRefine(id, false)).ok).toBe(true);
     expect((await srv.settleRefine(id, false)).ok).toBe(false);
+  });
+
+  it('re-rolls a held item main stat into another kind for 100 Resetter Shards, keeping level and lines', () => {
+    const config = buildConfig();
+    const base = createInitialState(config);
+    const granted = grantRelic(config, base, '105101', mulberry32(4));
+    if (!granted.ok) throw new Error(granted.message);
+    const state = { ...granted.value, currencies: { ...granted.value.currencies, resetterShard: 150 } };
+    const before = state.equipment.relics.at(-1)!;
+    const rerolled = rerollMainStatAction(config, state, before.id, mulberry32(9));
+    expect(rerolled.ok).toBe(true);
+    if (!rerolled.ok) return;
+    const after = rerolled.value.equipment.relics.find((r) => r.id === before.id)!;
+    expect(after.group).not.toBe(before.group);
+    expect([1, 2, 3]).toContain(after.group);
+    expect(after.lines).toEqual(before.lines);
+    expect(after.level).toBe(before.level);
+    expect(rerolled.value.currencies.resetterShard).toBe(50);
+    expect(rerollMainStatAction(config, rerolled.value, before.id, mulberry32(1)).ok).toBe(false);
   });
 
   it('has nothing to refine on a Rare', async () => {
