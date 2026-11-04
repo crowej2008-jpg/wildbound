@@ -184,7 +184,8 @@ export function claimRankedGift(
   if (!claimableGifts(ranked, tuning).includes(index)) {
     return fail('not_ready', 'gift not reached or already claimed');
   }
-  const granted = tuning.giftTrack[index]!.reward;
+  // R9: each phase pays its own gifts (the source's per-phase boxes).
+  const granted = rankedPhase(config, ranked).gifts?.[index] ?? tuning.giftTrack[index]!.reward;
   const next = applyGrant(
     config,
     { ...state, pvp: { ...state.pvp, ranked: claimGift(ranked, index) } },

@@ -246,3 +246,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-04] update | R9 shops
 - The source's Daily, PvP, Forest, Guild, Pokémon and Island shops: rows, prices, limits, restocks, Gold-ladder and
   token refreshes, badge gates; goods Wildbound lacks are left out (ASSUMPTIONS #85). Next: Arena / Ranked rewards.
+
+## [2026-11-04] update | R9 Arena and Ranked tables
+- The source's Arena prices, chests and best-rank brackets and Ranked's per-phase coins and gifts (ASSUMPTIONS #86).
+  Next: Campaign rows.

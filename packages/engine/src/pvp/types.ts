@@ -94,6 +94,8 @@ export interface RankedPhase {
   coins: number[];
   /** Factions this phase may roll as weather. */
   weather: Faction[];
+  /** R9: this phase's match-count gifts, one per gift-track step. */
+  gifts?: Rewards[];
 }
 
 /** Ranked rules (a projection of `pvp.json`'s `ranked`). */

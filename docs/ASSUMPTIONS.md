@@ -1074,3 +1074,15 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     8013–8015), Shiny & Supreme I, LF Trinity Box, Powerful Evolve box (PvP 7012, 7013, 7015), items 21009 / 21010
     (Forest 8007–8008), the Supreme Gift and the Opt 5S Chest (Guild 10103–10104); each shop file lists them in
     `_leftOut`.
+
+86. **R9 Arena and Ranked tables (2026-11-04).** `scripts/import-arena.mjs` copies the Arena's free fights (5), the
+    Diamond price of each bought fight (1st–25th, `arena_price_json`), the day's chests by fights fought
+    (`arena_session_reward_json`: Gold, 3★ / 5★ Pokémon Shards) and the 13 best-rank brackets (`arena_ach_reward_json`,
+    paid once on reaching the bracket's worst rank). `scripts/import-ranked.mjs` copies Ranked's free matches (6), +35
+    / −20 score, the 31 bought-match prices and each phase's tier coins and match gifts (`level_ladder_duan_json`,
+    `level_ladder_duan_box_json`: Plate Bottles, Plate Fragments, Berry Essence; Johto–Alola were interpolated
+    before). Readings / stand-ins: the Arena credit ladder, weekly bands and opponents stay (the source's score and
+    rank-reward tables for them are not in the dumps); `arena_score_reward_json` is not copied (its item 16001 is
+    unnamed) nor the lucky-rank raffle; the Greater Berry Box in Ranked's 25- and 40-match gifts is left out (no
+    berry boxes in Wildbound); Ranked's phase names, team formats and weather stay (lineup types and weather ids are
+    not readable).

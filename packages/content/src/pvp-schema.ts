@@ -70,6 +70,8 @@ export const rankedPhaseSchema = z
     coins: z.array(z.number().int().nonnegative()).min(1),
     /** Factions this phase may roll as weather. */
     weather: z.array(factionSchema).min(1),
+    /** R9: this phase's match-count gifts, one per `giftTrack` step (source level_ladder_duan_box_json). */
+    gifts: z.array(rewardSchema).optional(),
   })
   .strict();
 

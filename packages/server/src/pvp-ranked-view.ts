@@ -140,7 +140,7 @@ export function buildRankedView(config: GameConfig, state: AccountState, now: nu
     gifts: tuning.giftTrack.map((gift, index) => ({
       index,
       matches: gift.matches,
-      reward: gift.reward,
+      reward: phase.gifts?.[index] ?? gift.reward,
       reached: ranked.matches >= gift.matches,
       claimed: claimedGifts.has(index),
     })),
