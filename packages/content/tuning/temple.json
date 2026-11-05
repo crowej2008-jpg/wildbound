@@ -1,0 +1,15 @@
+{
+  "_note": "SPT Temple from the owner's wiki (pokemon-wiki-sandy.vercel.app/game-modes/spt-temple, read 2026-11-05) and titles 2001-2003 (titles.json); no source table. CPU holders, guardian strength and CPU challenger growth are stand-ins.",
+  "seats": [
+    { "id": "eternity1", "title": "2001", "name": "King of Eternity", "arenaTop": 10, "cpuEvolution": 200, "base": 1.3 },
+    { "id": "victorious1", "title": "2002", "name": "Ever Victorious", "arenaTop": 20, "cpuEvolution": 120, "base": 1.15 },
+    { "id": "victorious2", "title": "2002", "name": "Ever Victorious", "arenaTop": 20, "cpuEvolution": 100, "base": 1.15 },
+    { "id": "vanguard1", "title": "2003", "name": "Dark Vanguard", "arenaTop": 50, "cpuEvolution": 60, "base": 1.0 },
+    { "id": "vanguard2", "title": "2003", "name": "Dark Vanguard", "arenaTop": 50, "cpuEvolution": 45, "base": 1.0 },
+    { "id": "vanguard3", "title": "2003", "name": "Dark Vanguard", "arenaTop": 50, "cpuEvolution": 30, "base": 1.0 }
+  ],
+  "steps": [1, 5, 10, 100, 500],
+  "multPerEvolution": 0.01,
+  "failCooldownMinutes": 20,
+  "cpuChallengePerDay": 25
+}

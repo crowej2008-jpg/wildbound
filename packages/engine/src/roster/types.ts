@@ -35,7 +35,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -55,6 +55,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'guildWar',
   'relic',
   'park',
+  'temple',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -524,6 +525,8 @@ export interface AccountState {
     bingo: { key: string; marked: number[]; claimed: string[]; draws: number; bought: number[]; cards: number; exchange: Record<string, number> };
     flower: { week: string; claimed: number[]; lastClaimed: string };
   } | null;
+  /** M18.1: SPT Temple — the seat held (if any), its guardian's evolution count and the CPU-challenge clock. */
+  temple: { seat: string | null; evolution: number; since: number; checkedDay: string; cooldownUntil: number; lost: string | null } | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string; prevWeek?: string; prevWeekly?: Record<string, number> };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
@@ -686,6 +689,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     guildWar: emptySquad(),
     relic: emptySquad(),
     park: emptySquad(),
+    temple: emptySquad(),
   };
 }
 
@@ -708,6 +712,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     guildWar: 'balanced',
     relic: 'balanced',
     park: 'balanced',
+    temple: 'balanced',
   };
 }
 

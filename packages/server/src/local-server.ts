@@ -183,6 +183,7 @@ import * as gwMod from './guild-war';
 import * as relicMod from './relic';
 import * as parkMod from './park';
 import * as weekendMod from './weekend-events';
+import * as templeMod from './temple';
 import { squadWildIds } from './growth';
 import { buildAccount3View, type Account3View } from './account3-view';
 import { bumpCounter, stampLogin } from './counters';
@@ -2267,6 +2268,18 @@ export class LocalServer implements GameServer {
   async claimRelicSeason(): Promise<Result<ClaimResult>> {
     const r = await this.jointAct((s, now) => relicMod.claimRelicSeason(this.config, s, now));
     return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  // ---------------------------------------------------------------- M18.1 SPT Temple
+
+  async getTemple(): Promise<Result<templeMod.TempleView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(templeMod.buildTempleView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async challengeSeat(seatId: string, step: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; took: boolean; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => templeMod.challengeSeat(this.config, s, now, seatId, step, seed));
   }
 
   // ---------------------------------------------------------------- Weekend Bash + Flower Event

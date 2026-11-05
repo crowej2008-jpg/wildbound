@@ -73,10 +73,10 @@ test('a fresh account opens the PvP hub and sees the locked Arena and ranking bo
   await page.getByRole('main').getByRole('link', { name: 'PvP' }).click();
   await expect(page.getByRole('heading', { name: 'PvP' })).toBeVisible();
 
-  // Six entry points; the three modes that need the shared service say so.
+  // Six entry points; the two modes still to come say so (SPT Temple is live from M18.1, locked with the Arena).
   await expect(page.locator('.town-tile')).toHaveCount(6);
-  await expect(page.getByText('Coming later')).toHaveCount(3);
-  await expect(page.getByText('Locked — clear campaign chapter 2')).toBeVisible();
+  await expect(page.getByText('Coming later')).toHaveCount(2);
+  await expect(page.getByText('Locked — clear campaign chapter 2')).toHaveCount(2);
 
   await page.getByRole('main').getByRole('link', { name: /^Arena/ }).click();
   await expect(page.getByRole('heading', { name: 'Arena' })).toBeVisible();

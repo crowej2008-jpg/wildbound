@@ -1517,3 +1517,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - Five trainer-treasure skills now act in every battle (shields, heals, ATK windows, foe debuffs); six fusion-skin
   perks boost their modes. ASSUMPTIONS #118.
+
+## M18.1 — SPT Temple (2026-11-05)
+
+- /spt-temple (PvP hub): six thrones held by CPU trainers; take one by beating its evolved guardian, train it to keep
+  it; the throne's title (+1–3 % HP / P.ATK / S.ATK) while you hold it. Save v56. ASSUMPTIONS #119.

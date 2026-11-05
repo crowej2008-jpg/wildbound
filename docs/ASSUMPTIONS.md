@@ -1333,3 +1333,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      Fusion-skin perks now apply where their mode exists: Faction Tower coins, Misty Forest coins, Sky Pillar shards,
      Clash of Isles tokens, Pokémon Park stamina, Relic Battlefield stamina regeneration. Pure Crystal skills stay out:
      the dumps only hold their ids (441020…), not what they do.
+
+119. **M18.1 SPT Temple (2026-11-05).** From the owner's wiki and titles 2001–2003 (no source table), solo vs CPU
+     holders: six thrones (King of Eternity ×1 Arena top 10 +3 %, Ever Victorious ×2 top 20 +2 %, Dark Vanguard ×3
+     top 50 +1 % HP / P.ATK / S.ATK via the titles), guardian evolution steps 1 / 5 / 10 / 100 / 500, one throne at a
+     time, 20-minute cooldown after a loss, no holding timer. Stand-ins: guardian strength (seat base × (1 + 1 % per
+     evolution) on a tower-pool team), CPU holders' counts, and a daily CPU challenger that grows 25 evolutions a day
+     held and takes the throne once it outgrows your guardian. Squad `temple`, `temple` slice; save v56.
+     docs/design/temple.md.

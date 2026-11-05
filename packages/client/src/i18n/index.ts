@@ -350,6 +350,7 @@ export const en = {
   'squad.mode.guildWar': 'Guild War',
   'squad.mode.relic': 'Relic Battlefield',
   'squad.mode.park': 'Pokémon Park',
+  'squad.mode.temple': 'SPT Temple',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -815,6 +816,24 @@ export const en = {
   'gw.claimSeason': "Claim last season's rewards",
   'relic.title': 'Relic Battlefield',
   'park.title': 'Pokémon Park',
+  'temple.holding': 'Holding',
+  'temple.noSeat': 'No throne held',
+  'temple.locked': 'The SPT Temple opens with the Arena.',
+  'temple.place': 'Your Arena place: #{p}',
+  'temple.cooldown': 'next challenge in {m} min',
+  'temple.lost': 'A challenger took your {s} throne.',
+  'temple.team': 'Set the SPT Temple team →',
+  'temple.step': 'Guardian evolutions',
+  'temple.yours': 'yours',
+  'temple.cpu': 'held by a CPU trainer',
+  'temple.evolution': 'Guardian evolution',
+  'temple.needs': 'Arena top {n}',
+  'temple.nextChallenge': "today's challenger: {n}",
+  'temple.train': 'Train guardian',
+  'temple.challenge': 'Challenge',
+  'temple.took': 'The throne is yours!',
+  'temple.trained': 'Your guardian grew stronger.',
+  'temple.failed': 'Defeated — try again in 20 minutes.',
   'park.open': 'Open (until 21:00 UTC)',
   'park.closed': 'Closed (Tuesday–Sunday, 09:00–21:00 UTC)',
   'park.score': 'Points',
@@ -1778,7 +1797,7 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1798,6 +1817,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   guildWar: en['squad.mode.guildWar'],
   relic: en['squad.mode.relic'],
   park: en['squad.mode.park'],
+  temple: en['squad.mode.temple'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

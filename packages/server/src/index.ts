@@ -39,6 +39,7 @@ import type { GuildWarView } from './guild-war';
 import type { RelicBattlefieldView } from './relic';
 import type { ParkView } from './park';
 import type { WeekendView } from './weekend-events';
+import type { TempleView } from './temple';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -658,6 +659,9 @@ export interface GameServer {
   exploreRelic(): Promise<Result<{ event: { id: number; type: number; value: number }; snapshot: AccountSnapshot }>>;
   claimRelicTask(id: number): Promise<Result<ClaimResult>>;
   claimRelicSeason(): Promise<Result<ClaimResult>>;
+  /** M18.1 SPT Temple. */
+  getTemple(): Promise<Result<TempleView>>;
+  challengeSeat(seatId: string, step: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; took: boolean; snapshot: AccountSnapshot }>>;
   /** Weekend Bash (Elven Treasure, Bingo) and the Flower Event. */
   getWeekend(): Promise<Result<WeekendView>>;
   buyElven(count: number): Promise<Result<AccountSnapshot>>;
@@ -778,6 +782,7 @@ export * from './guild-war';
 export * from './relic';
 export * from './park';
 export * from './weekend-events';
+export * from './temple';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

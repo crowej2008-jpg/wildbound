@@ -16,6 +16,7 @@ export type PvpHubStatus =
   | { kind: 'arena'; credits: number; place: number; attemptsLeft: number; attemptsPerDay: number }
   | { kind: 'ranked'; region: string; tier: string; score: number; attemptsLeft: number; attemptsPerDay: number }
   | { kind: 'shop'; tokens: number }
+  | { kind: 'temple'; seat: string | null }
   | { kind: 'locked'; chapter: number }
   | { kind: 'comingLater' };
 
@@ -34,7 +35,7 @@ export interface PvpHubView {
 }
 
 /** Modes the reference ships that are still pending (M18) — honest, not dead. */
-const PENDING: readonly PvpHubId[] = ['clash', 'championship', 'temple'];
+const PENDING: readonly PvpHubId[] = ['clash', 'championship'];
 
 export function buildPvpHubView(config: GameConfig, state: AccountState, now: number): PvpHubView {
   const arena = state.pvp.arena;
@@ -81,6 +82,13 @@ export function buildPvpHubView(config: GameConfig, state: AccountState, now: nu
     ...PENDING.map(
       (id): PvpHubCardView => ({ id, route: null, live: false, unlocked: false, status: { kind: 'comingLater' } }),
     ),
+    {
+      id: 'temple',
+      route: '/spt-temple',
+      live: true,
+      unlocked: arenaOpen,
+      status: arenaOpen ? { kind: 'temple', seat: state.temple?.seat ? (config.temple.seats.find((x) => x.id === state.temple!.seat)?.name ?? null) : null } : { kind: 'locked', chapter: config.pvp.arenaChapter },
+    },
     {
       id: 'shop',
       route: '/shop',

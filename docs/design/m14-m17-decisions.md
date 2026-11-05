@@ -83,3 +83,7 @@ that was worked on and what decisions after you are done"*. Every call below too
   gear crafting gold, orb dismantle, ranked AFK chest, cross-server predictions, champion tournament, Rift Time Coins,
   Joint Team dungeon damage, Champion's Road).
 - Pure Crystal skills cannot be built: only their skill ids are in the dumps.
+
+## M18 (owner 2026-11-05: "continue back on track") — decisions taken with the recommended option
+- Cross-server modes run solo against CPU players and ladders, like M17.
+- SPT Temple: guardian strength, CPU holders and the daily CPU challenger are stand-ins (ASSUMPTIONS #119).

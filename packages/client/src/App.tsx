@@ -33,6 +33,7 @@ import Events from './pages/Events';
 import GuildWar from './pages/GuildWar';
 import RelicBattlefield from './pages/RelicBattlefield';
 import PokemonPark from './pages/PokemonPark';
+import SptTemple from './pages/SptTemple';
 import PveTower from './pages/PveTower';
 import Pvp from './pages/Pvp';
 import Quests from './pages/Quests';
@@ -87,6 +88,7 @@ function AppRoutes() {
         <Route path="/guild-war" element={<GuildWar />} />
         <Route path="/relic-battlefield" element={<RelicBattlefield />} />
         <Route path="/pokemon-park" element={<PokemonPark />} />
+        <Route path="/spt-temple" element={<SptTemple />} />
         <Route path="/idle" element={<Idle />} />
         <Route path="/quests" element={<Quests />} />
         <Route path="/sign-in" element={<SignIn />} />
