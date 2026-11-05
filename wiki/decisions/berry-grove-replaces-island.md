@@ -19,4 +19,5 @@ the guild Pokémon Park boss, which pays berry materials).
   a harvest = a random berry of the seed's tier + Berry Essence; 100 Grove Guardian stages (10 wins a day) paying
   seeds, Mulch and Reforge Potions on first clear; a daily Grove Boss (3 fights, cannot fall) paying seeds, Mulch,
   Essence and Reforge Potions by the share of its HP taken.
-- Left open: the Island Shop and its Tropical Shells (`islandCoin`) no longer have a source.
+- Only the Island Challenge (source `island_travel_*`, 诸岛巡游: 90 levels + the alliance contest) is replaced.
+  Clash of Isles (`island_new_*`, M14) stays planned, with the Island Shop and Tropical Shells.

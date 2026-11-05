@@ -26,5 +26,6 @@ Gate: story 3-10 + trainer level 10. Route: `/explore/berry-grove`. Squad: `berr
   to Orange ×2 + Red ×3 / Essence 1,200 / Potions 10 / Intermediate ×2 + Greater ×2 seeds (band 4).
 
 ## Not decided
-- The Island Shop and Tropical Shells (`islandCoin`) have no source now.
+- The Island Shop and its Tropical Shells (`islandCoin`) belong to Clash of Isles (M14, still planned), not to the
+  Island Challenge, so they are untouched.
 - No new berry tier (owner: not yet).

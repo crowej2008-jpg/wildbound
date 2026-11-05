@@ -327,4 +327,5 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-04] update | M13.8 Berry Grove
 - Owner swapped the Island Challenge for the Berry Grove ("Garden + battles"); built with stand-in numbers
-  (ASSUMPTIONS #104, save v44). Open: the Island Shop's Tropical Shells have no source now.
+  (ASSUMPTIONS #104, save v44).
+- Correction: Clash of Isles (M14) is a different island mode and stays; the Island Shop / Tropical Shells are its.

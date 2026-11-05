@@ -1218,5 +1218,6 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      (2–12 h) harvesting a random berry of the tier + Essence; 100 Grove Guardian stages (10 wins a day) paying
      seeds / Mulch / Reforge Potions on first clear; a daily Grove Boss (3 fights, cannot fall) paying by the share
      of its HP taken. Same gate as the Island (3-10 + Lv10). The Island Challenge plan (90 levels, 5v5 alliance
-     contest) is dropped; the Island Shop's Tropical Shells have no source now (open). Four seed currencies, squad
+     contest; source `island_travel_*`) is dropped. Clash of Isles (`island_new_*`, M14) and its Island Shop /
+     Tropical Shells are a different mode and stay planned. Four seed currencies, squad
      `berryGrove`, save v44 (reset).
