@@ -33,6 +33,6 @@ only down-syncing for now), Easy drop amounts, the enemies.
 
 ## Not built yet
 - 13.4 part 2: hiring (1 free a season), season bans, Time Credit equipment upgrades
-  (`underground_new_develop_json`), the Mystic Merchant (only its 6 orb-box rows are in the dumps).
+  (`underground_new_develop_json`).
 - Server-wide (backend): the Advanced ranking and its rewards, the Easy track's weakness.
 - 13.5: Ring Battle ranks and Predictions.
