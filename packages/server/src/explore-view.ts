@@ -1,6 +1,8 @@
 import type { ExploreModeJson } from '@wildbound/content';
 import {
   exploreAccess,
+  mistyCycleEndsIn,
+  type MistyRules,
   nextResetMs,
   serverDay,
   type AccountState,
@@ -43,7 +45,8 @@ export function buildExploreView(
         ...mode,
         gates: access.gates,
         unlocked: access.unlocked,
-        nextResetMs: nextResetMs(mode.reset, now),
+        // M13.10: Misty Woods runs on a 2-day cycle, not the plain daily reset.
+        nextResetMs: mode.id === 'misty-woods' ? mistyCycleEndsIn(config.misty as unknown as MistyRules, now) : nextResetMs(mode.reset, now),
       };
     }),
   };

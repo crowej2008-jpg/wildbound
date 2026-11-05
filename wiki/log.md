@@ -336,3 +336,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: museum groups give rarer stats instead of HP / ATK % (ASSUMPTIONS #106).
 - Owner: the museum takes berries, held items, orbs and soul hearts too (chosen, used up); groups give flat + % HP /
   ATK and two rarer stats (ASSUMPTIONS #107).
+
+## [2026-11-05] update | M13.10 close-out — M13 done
+- Every Explore mode live; close-out tests (unit + e2e); Misty Woods hub countdown fixed. `docs/design/m13-close-out.md`.

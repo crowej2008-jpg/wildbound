@@ -1421,3 +1421,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Dig Site museum (owner): now also berries, held items, orbs and soul hearts — 234 spots in 31 groups, donated by
   choice and used up; every full group gives flat and % HP / ATK plus two rarer stats. A big part of power.
   ASSUMPTIONS #107.
+
+## M13.10 — Explore close-out (2026-11-05)
+
+- All eight Explore modes live and gated; a server-boundary test and a browser smoke test open every mode once its
+  gates are met. The hub's Misty Woods countdown follows its 2-day cycle. M13 is done; difficulty curves after M20,
+  leaderboards with the server parts. `docs/design/m13-close-out.md`.
