@@ -15,7 +15,7 @@ Pet Home shell with its live merge board; the other shells stay honest until the
 | Rift Arena | campaign 10-10 + Lv10 | 250 floors | daily | 13.4-13.5 |
 | Misty Woods | campaign 3-10 | 244 runes | daily | 13.6 |
 | Faction Tower | campaign 28-10 | 3,000 floors | weekly | 13.7 |
-| Island Challenge | campaign 3-10 + Lv10 | 90 levels | weekly | 13.8 |
+| Berry Grove (replaced the Island Challenge) | campaign 3-10 + Lv10 | 100 guardian stages + garden | daily | 13.8 |
 | Ultra Wormhole | campaign 10-10 + Lv50 | 135 hires | weekly | 13.9 |
 
 The gate values live in `packages/content/tuning/explore.json`, not in the client. The engine

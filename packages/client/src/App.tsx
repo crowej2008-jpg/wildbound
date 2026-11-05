@@ -20,6 +20,7 @@ import HoopaVault from './pages/HoopaVault';
 import RiftArena from './pages/RiftArena';
 import MistyWoods from './pages/MistyWoods';
 import FactionTower from './pages/FactionTower';
+import BerryGrove from './pages/BerryGrove';
 import PveTower from './pages/PveTower';
 import Pvp from './pages/Pvp';
 import Quests from './pages/Quests';
@@ -59,6 +60,7 @@ function AppRoutes() {
         <Route path="/explore/rift-arena" element={<RiftArena />} />
         <Route path="/explore/misty-woods" element={<MistyWoods />} />
         <Route path="/explore/faction-tower" element={<FactionTower />} />
+        <Route path="/explore/berry-grove" element={<BerryGrove />} />
         <Route path="/explore/:id" element={<ExploreMode />} />
         <Route path="/campaign" element={<Campaign />} />
         <Route path="/idle" element={<Idle />} />

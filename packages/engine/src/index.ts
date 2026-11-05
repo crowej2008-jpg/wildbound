@@ -21,6 +21,7 @@ export * from './hoopa-vault';
 export * from './rift';
 export * from './misty';
 export * from './faction-tower';
+export * from './berry-grove';
 export * from './potential';
 export * from './pvp';
 export * from './resonance';

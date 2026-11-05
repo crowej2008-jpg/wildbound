@@ -20,6 +20,7 @@ import type { HoopaVaultState } from '../hoopa-vault/types';
 import type { RiftState } from '../rift/types';
 import type { MistyState } from '../misty/types';
 import type { FactionTowerState } from '../faction-tower/types';
+import type { BerryGroveState } from '../berry-grove/types';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -29,7 +30,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -43,6 +44,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'misty',
   'factionTower',
   'factionTower2',
+  'berryGrove',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -116,6 +118,10 @@ export type CurrencyId =
   | 'vaultKey'
   | 'timeCoin'
   | 'timeCredit'
+  | 'seedCommon'
+  | 'seedBasic'
+  | 'seedIntermediate'
+  | 'seedGreater'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -173,6 +179,10 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'vaultKey',
   'timeCoin',
   'timeCredit',
+  'seedCommon',
+  'seedBasic',
+  'seedIntermediate',
+  'seedGreater',
   'privilegeXp',
 ];
 
@@ -218,6 +228,10 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'vaultKey',
   'timeCoin',
   'timeCredit',
+  'seedCommon',
+  'seedBasic',
+  'seedIntermediate',
+  'seedGreater',
   'privilegeXp',
 ];
 
@@ -322,6 +336,8 @@ export interface AccountState {
   misty: MistyState | null;
   /** M13.7: the three Faction Towers' floors and today's counters. */
   factionTower: FactionTowerState;
+  /** M13.8: the Berry Grove garden, Guardian stage and today's fights (null until first opened). */
+  berryGrove: BerryGroveState | null;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }
@@ -476,6 +492,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     misty: emptySquad(),
     factionTower: emptySquad(),
     factionTower2: emptySquad(),
+    berryGrove: emptySquad(),
   };
 }
 
@@ -492,6 +509,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     misty: 'balanced',
     factionTower: 'balanced',
     factionTower2: 'balanced',
+    berryGrove: 'balanced',
   };
 }
 

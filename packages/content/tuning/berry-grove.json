@@ -1,0 +1,36 @@
+{
+  "_note": "M13.8 Berry Grove — the owner's own mode (replaces the Island Challenge, 2026-11-04). Every number is a stand-in. docs/design/berry-grove.md.",
+  "plots": 6,
+  "seeds": [
+    { "tier": "common", "currency": "seedCommon", "growHours": 2, "essence": 50 },
+    { "tier": "basic", "currency": "seedBasic", "growHours": 4, "essence": 100 },
+    { "tier": "intermediate", "currency": "seedIntermediate", "growHours": 8, "essence": 200 },
+    { "tier": "greater", "currency": "seedGreater", "growHours": 12, "essence": 400 }
+  ],
+  "guardians": {
+    "stages": 100,
+    "climbsPerDay": 10,
+    "bands": [
+      { "upTo": 25, "rewards": { "seedCommon": 2, "seedBasic": 1, "berryMulchBlue": 2, "reforgePotion": 2 } },
+      { "upTo": 50, "rewards": { "seedBasic": 2, "seedIntermediate": 1, "berryMulchPurple": 2, "reforgePotion": 3 } },
+      { "upTo": 75, "rewards": { "seedIntermediate": 2, "seedGreater": 1, "berryMulchOrange": 2, "reforgePotion": 4 } },
+      { "upTo": 100, "rewards": { "seedGreater": 2, "berryMulchRed": 2, "reforgePotion": 5 } }
+    ],
+    "everyTen": { "seedGreater": 1, "berryEssence": 500 },
+    "enemy": { "factions": [], "tiers": [], "count": 6, "baseLevel": 8, "levelSlope": 1.025, "starsEvery": 10, "maxStars": 20, "stageEvery": 34, "maxStage": 3 }
+  },
+  "boss": {
+    "fightsPerDay": 3,
+    "hpMult": 40,
+    "atkMult": 2,
+    "defMult": 2,
+    "minShare": 0.2,
+    "rotation": ["celebi", "shaymin", "shiny-venusaur", "zygarde", "rayquaza", "dialga", "snorlax"],
+    "bands": [
+      { "upTo": 25, "rewards": { "seedCommon": 3, "seedBasic": 1, "berryMulchBlue": 3, "berryEssence": 300, "reforgePotion": 3 } },
+      { "upTo": 50, "rewards": { "seedBasic": 3, "seedIntermediate": 1, "berryMulchBlue": 2, "berryMulchPurple": 3, "berryEssence": 500, "reforgePotion": 5 } },
+      { "upTo": 75, "rewards": { "seedIntermediate": 2, "seedGreater": 1, "berryMulchPurple": 2, "berryMulchOrange": 3, "berryEssence": 800, "reforgePotion": 8 } },
+      { "upTo": 100, "rewards": { "seedIntermediate": 2, "seedGreater": 2, "berryMulchOrange": 2, "berryMulchRed": 3, "berryEssence": 1200, "reforgePotion": 10 } }
+    ]
+  }
+}

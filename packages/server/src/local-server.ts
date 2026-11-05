@@ -112,6 +112,8 @@ import {
   type RiftBattleResult,
   type MistyStepResultView,
   type FactionTowerClimbResult,
+  type GroveFightResult,
+  type GroveHarvestResult,
   type SkyPillarSweepResult,
   type StageBattleResult,
   type SummonResult,
@@ -145,6 +147,16 @@ import { hireMisty as hireMistyAction, mistyShop as mistyShopAction, prepareMist
 import { buildMistyView, type MistyView } from './misty-view';
 import { climbFactionTower as climbFactionTowerAction, isTowerFaction, prepareFactionTower, sweepFactionTower as sweepFactionTowerAction } from './faction-tower';
 import { buildFactionTowerView, type FactionTowerView } from './faction-tower-view';
+import {
+  challengeGuardian,
+  fightGroveBoss as fightGroveBossAction,
+  harvestGrove as harvestGroveAction,
+  isSeedTier,
+  plantGrove as plantGroveAction,
+  prepareBerryGrove,
+  type GroveFight,
+} from './berry-grove';
+import { buildBerryGroveView, type BerryGroveView } from './berry-grove-view';
 import {
   buyShopOfferAction,
   claimLevelAction,
@@ -1640,6 +1652,65 @@ export class LocalServer implements GameServer {
     const outcome = sweepFactionTowerAction(this.config, loaded.value, this.now(loaded.value), faction);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commitClaim(outcome.value.state, outcome.value.rewards);
+  }
+
+  async getBerryGrove(): Promise<Result<BerryGroveView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const now = this.now(loaded.value);
+    const prepared = prepareBerryGrove(this.config, loaded.value, now);
+    if (prepared.changed) {
+      const committed = await this.commit(prepared.state);
+      if (!committed.ok) return committed;
+    }
+    return ok(buildBerryGroveView(this.config, prepared.state, now));
+  }
+
+  async plantGrove(plot: number, tier: string): Promise<Result<AccountSnapshot>> {
+    if (!isSeedTier(tier)) return fail('invalid_input', `no "${tier}" seed`);
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = plantGroveAction(this.config, loaded.value, this.now(loaded.value), plot, tier);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async harvestGrove(plot?: number): Promise<Result<GroveHarvestResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = harvestGroveAction(this.config, loaded.value, this.now(loaded.value), plot);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const committed = await this.commit(outcome.value.state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ berries: outcome.value.berries, rewards: outcome.value.rewards, snapshot: committed.value });
+  }
+
+  private async commitGroveFight(outcome: Result<GroveFight>): Promise<Result<GroveFightResult>> {
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      battle: value.battle,
+      win: value.win,
+      stage: value.stage,
+      ...(value.share !== undefined ? { share: value.share } : {}),
+      rewards: value.rewards,
+      snapshot: committed.value,
+    });
+  }
+
+  async challengeGroveGuardian(seed?: number): Promise<Result<GroveFightResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commitGroveFight(challengeGuardian(this.config, loaded.value, this.now(loaded.value), seed));
+  }
+
+  async fightGroveBoss(seed?: number): Promise<Result<GroveFightResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commitGroveFight(fightGroveBossAction(this.config, loaded.value, this.now(loaded.value), seed));
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

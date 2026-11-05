@@ -1211,3 +1211,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      parts later, as for the Rift), the Faction Battle Pass (paid), the Victory Road badge (+10 / 20 % coins, M14) and
      fusion-skin (+5 %) coin bonuses. New squads `factionTower`, `factionTower2`; save v43 (reset).
      docs/design/faction-tower.md.
+
+104. **M13.8 Berry Grove replaces the Island Challenge (owner, 2026-11-04: "swap it out for the berry grove";
+     "Garden + battles").** A brand-new solo mode, the main source of berries and berry materials; no new berry
+     tier. The agent's design and every number are stand-ins (docs/design/berry-grove.md): 6 plots, four seed tiers
+     (2–12 h) harvesting a random berry of the tier + Essence; 100 Grove Guardian stages (10 wins a day) paying
+     seeds / Mulch / Reforge Potions on first clear; a daily Grove Boss (3 fights, cannot fall) paying by the share
+     of its HP taken. Same gate as the Island (3-10 + Lv10). The Island Challenge plan (90 levels, 5v5 alliance
+     contest) is dropped; the Island Shop's Tropical Shells have no source now (open). Four seed currencies, squad
+     `berryGrove`, save v44 (reset).

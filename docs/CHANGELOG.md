@@ -1404,3 +1404,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   Faction Coins, a bonus every 5 floors, the source milestones (5-Star Pokémon Shards, Powerful Evolve box
   Pokémon). Two free sweeps a day, then 10 / 20 Diamonds. Faction Tower Shop: daily restock, Star Shard and Gold
   rows added. Save v43. ASSUMPTIONS #103.
+
+## M13.8 — Berry Grove (replaces the Island Challenge, 2026-11-04)
+
+- Owner: the Island Challenge is swapped for the Berry Grove (garden + battles). Garden: 6 plots, four seed tiers
+  growing into berries + Berry Essence. Grove Guardians: 100 stages, 10 wins a day, first clears pay seeds, Mulch
+  and Reforge Potions. Grove Boss: daily, 3 fights, pays by the share of its HP taken. Save v44. ASSUMPTIONS #104.

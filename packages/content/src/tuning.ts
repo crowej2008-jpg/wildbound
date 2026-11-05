@@ -7,6 +7,7 @@ import hoopaVault from '../tuning/hoopa-vault.json';
 import rift from '../tuning/rift.json';
 import misty from '../tuning/misty.json';
 import factionTower from '../tuning/faction-tower.json';
+import berryGrove from '../tuning/berry-grove.json';
 import combat from '../tuning/combat.json';
 import economy from '../tuning/economy.json';
 import growth from '../tuning/growth.json';
@@ -19,6 +20,7 @@ import { hoopaVaultSchema, type HoopaVaultJson } from './hoopa-vault-schema';
 import { riftSchema, type RiftJson } from './rift-schema';
 import { mistySchema, type MistyJson } from './misty-schema';
 import { factionTowerSchema, type FactionTowerJson } from './faction-tower-schema';
+import { berryGroveSchema, type BerryGroveJson } from './berry-grove-schema';
 import {
   accountSchema,
   campaignSchema,
@@ -49,6 +51,7 @@ export const HOOPA_VAULT: HoopaVaultJson = hoopaVaultSchema.parse(hoopaVault);
 export const RIFT: RiftJson = riftSchema.parse(rift);
 export const MISTY: MistyJson = mistySchema.parse(misty);
 export const FACTION_TOWER: FactionTowerJson = factionTowerSchema.parse(factionTower);
+export const BERRY_GROVE: BerryGroveJson = berryGroveSchema.parse(berryGrove);
 export const GACHA_TUNING: GachaJson = gachaSchema.parse(GACHA);
 export type { GachaJson } from './gacha-schema';
 export type { CampaignJson, ExploreJson, ExploreModeJson, ExploreGateJson } from './schemas';
@@ -58,3 +61,4 @@ export type { HoopaVaultJson } from './hoopa-vault-schema';
 export type { RiftJson } from './rift-schema';
 export type { MistyJson } from './misty-schema';
 export type { FactionTowerJson } from './faction-tower-schema';
+export type { BerryGroveJson } from './berry-grove-schema';

@@ -27,6 +27,7 @@ import type { HoopaVaultView } from './hoopa-vault-view';
 import type { RiftView } from './rift-view';
 import type { MistyView } from './misty-view';
 import type { FactionTowerView } from './faction-tower-view';
+import type { BerryGroveView } from './berry-grove-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -242,6 +243,23 @@ export interface FactionTowerClimbResult {
   win: boolean;
   rewards: Rewards;
   pokemon: string[];
+  snapshot: AccountSnapshot;
+}
+
+/** A Berry Grove fight (M13.8): a Guardian stage or the daily Grove Boss. */
+export interface GroveFightResult {
+  battle: BattleView;
+  win: boolean;
+  stage: number;
+  share?: number;
+  rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** A Berry Grove harvest (M13.8): the berries grown and the Essence. */
+export interface GroveHarvestResult {
+  berries: string[];
+  rewards: Rewards;
   snapshot: AccountSnapshot;
 }
 
@@ -544,6 +562,12 @@ export interface GameServer {
   getFactionTower(): Promise<Result<FactionTowerView>>;
   climbFactionTower(faction: string, seed?: number): Promise<Result<FactionTowerClimbResult>>;
   sweepFactionTower(faction: string): Promise<Result<ClaimResult>>;
+  /** M13.8 Berry Grove. */
+  getBerryGrove(): Promise<Result<BerryGroveView>>;
+  plantGrove(plot: number, tier: string): Promise<Result<AccountSnapshot>>;
+  harvestGrove(plot?: number): Promise<Result<GroveHarvestResult>>;
+  challengeGroveGuardian(seed?: number): Promise<Result<GroveFightResult>>;
+  fightGroveBoss(seed?: number): Promise<Result<GroveFightResult>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -612,6 +636,8 @@ export * from './misty-view';
 export * from './misty';
 export * from './faction-tower-view';
 export * from './faction-tower';
+export * from './berry-grove-view';
+export * from './berry-grove';
 export * from './plates';
 export * from './trinkets';
 export * from './berries';

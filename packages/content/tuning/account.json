@@ -51,6 +51,10 @@
     "vaultKey": 0,
     "timeCoin": 0,
     "timeCredit": 0,
+    "seedCommon": 0,
+    "seedBasic": 0,
+    "seedIntermediate": 0,
+    "seedGreater": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -112,6 +116,10 @@
     "vaultKey": 5,
     "timeCoin": 0,
     "timeCredit": 0,
+    "seedCommon": 10,
+    "seedBasic": 5,
+    "seedIntermediate": 3,
+    "seedGreater": 1,
     "privilegeXp": 300
   }
 }

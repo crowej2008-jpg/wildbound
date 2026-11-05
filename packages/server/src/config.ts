@@ -29,6 +29,7 @@ import {
   RIFT,
   MISTY,
   FACTION_TOWER,
+  BERRY_GROVE,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -55,6 +56,7 @@ import type {
   RiftJson,
   MistyJson,
   FactionTowerJson,
+  BerryGroveJson,
   PveJson,
   PvpJson,
   TitlesJson,
@@ -152,6 +154,8 @@ export interface GameConfig {
   misty: MistyJson;
   /** M13.7 Faction Tower. */
   factionTower: FactionTowerJson;
+  /** M13.8 Berry Grove. */
+  berryGrove: BerryGroveJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -264,6 +268,7 @@ export function buildConfig(): GameConfig {
     rift: RIFT,
     misty: MISTY,
     factionTower: FACTION_TOWER,
+    berryGrove: BERRY_GROVE,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

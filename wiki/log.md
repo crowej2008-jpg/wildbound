@@ -324,3 +324,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-04] update | M13.7 Faction Tower
 - Built from the source's achievements / item / VIP tables and the owner's wiki page: three towers, weekday rotation,
   20 floors a day, sweeps, two teams from 701 (ASSUMPTIONS #103, save v43). Leaderboards wait for the server parts.
+
+## [2026-11-04] update | M13.8 Berry Grove
+- Owner swapped the Island Challenge for the Berry Grove ("Garden + battles"); built with stand-in numbers
+  (ASSUMPTIONS #104, save v44). Open: the Island Shop's Tropical Shells have no source now.

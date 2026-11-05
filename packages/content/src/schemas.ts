@@ -716,6 +716,10 @@ export const rewardSchema = z
     vaultKey: z.number().nonnegative().optional(),
     timeCoin: z.number().nonnegative().optional(),
     timeCredit: z.number().nonnegative().optional(),
+    seedCommon: z.number().nonnegative().optional(),
+    seedBasic: z.number().nonnegative().optional(),
+    seedIntermediate: z.number().nonnegative().optional(),
+    seedGreater: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

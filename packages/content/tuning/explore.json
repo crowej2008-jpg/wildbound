@@ -83,20 +83,20 @@
       "features": ["17 Home levels and a 6-to-21 tile board", "Summon, open, merge and release Wilds", "Home Coins, level rewards and two shops"]
     },
     {
-      "id": "island-challenge",
-      "name": "Island Challenge",
-      "sigil": "IC",
-      "tagline": "Ninety levels, then the alliance contest.",
-      "description": "A 90-level island circuit that ends in a full simulated 5v5 alliance contest with bot alliances, orders, support and settlement.",
-      "scale": "90 levels",
-      "status": "planned",
+      "id": "berry-grove",
+      "name": "Berry Grove",
+      "sigil": "BG",
+      "tagline": "Grow berries, guard the grove.",
+      "description": "A solo garden and its guardians: climb the Grove Guardians and fight the daily Grove Boss for seeds and berry materials, then plant the seeds to grow berries.",
+      "scale": "100 guardian stages",
+      "status": "live",
       "arrivesIn": "13.8",
-      "reset": "weekly",
+      "reset": "daily",
       "gates": [
         { "kind": "campaign", "chapter": 3, "stage": 10 },
         { "kind": "level", "level": 10 }
       ],
-      "features": ["90 challenge levels", "Full 5v5 alliance contest", "Bot alliances, support and settlement"]
+      "features": ["6 garden plots, four seed tiers", "100 Grove Guardian stages", "A daily Grove Boss for berry materials"]
     },
     {
       "id": "ultra-wormhole",

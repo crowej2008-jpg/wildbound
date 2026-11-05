@@ -70,6 +70,10 @@ export const en = {
   'currency.vaultKey': 'Vault Secret Keys',
   'currency.timeCoin': 'Time Coins',
   'currency.timeCredit': 'Time Credits',
+  'currency.seedCommon': 'Common Berry Seeds',
+  'currency.seedBasic': 'Basic Berry Seeds',
+  'currency.seedIntermediate': 'Intermediate Berry Seeds',
+  'currency.seedGreater': 'Greater Berry Seeds',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -313,6 +317,7 @@ export const en = {
   'squad.mode.misty': 'Misty Woods',
   'squad.mode.factionTower': 'Faction Tower (team 1)',
   'squad.mode.factionTower2': 'Faction Tower (team 2)',
+  'squad.mode.berryGrove': 'Berry Grove',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -937,6 +942,39 @@ export const en = {
   'factionTower.lost': 'Defeat. Power up and try again — a loss costs nothing.',
   'factionTower.evolveBox': 'Powerful Evolve box:',
   'factionTower.back': 'Back to the towers',
+  'grove.title': 'Berry Grove',
+  'grove.locked': 'The Berry Grove opens after story 3-10 and trainer level 10.',
+  'grove.resets': 'Fights reset in',
+  'grove.editTeam': 'Edit the grove team',
+  'grove.garden': 'Garden',
+  'grove.seedPick': 'Seed to plant:',
+  'grove.seed.common': 'Common seed',
+  'grove.seed.basic': 'Basic seed',
+  'grove.seed.intermediate': 'Intermediate seed',
+  'grove.seed.greater': 'Greater seed',
+  'grove.plot': 'Plot',
+  'grove.plant': 'Plant',
+  'grove.harvest': 'Harvest',
+  'grove.harvestAll': 'Harvest everything ripe',
+  'grove.ripeIn': 'ripe in',
+  'grove.planted': 'Planted. Come back when it is ripe.',
+  'grove.harvested': 'Harvested {n} berry(s) and some Berry Essence.',
+  'grove.guardians': 'Grove Guardians',
+  'grove.stage': 'Stage',
+  'grove.winsToday': 'Wins today',
+  'grove.firstClear': 'First clear:',
+  'grove.allBeaten': 'Every Guardian is beaten.',
+  'grove.doneToday': 'Today’s Guardian wins are used — back tomorrow.',
+  'grove.challenge': 'Challenge',
+  'grove.guardianWon': 'Guardian beaten!',
+  'grove.guardianLost': 'Defeat. A loss costs nothing — power up and try again.',
+  'grove.boss': 'Grove Boss',
+  'grove.fightsLeft': 'Fights left',
+  'grove.best': 'Best today',
+  'grove.fullPay': 'Full pay (100% of its HP):',
+  'grove.fightBoss': 'Fight the boss',
+  'grove.bossDone': 'You took {p}% of the boss’s HP.',
+  'grove.back': 'Back to the grove',
   'rift.locked': 'Rift Arena opens after story 10-10 and trainer level 10.',
   'rift.seasonEnds': 'Season ends in',
   'rift.seasonOpens': 'Season closed. Opens in',
@@ -1228,6 +1266,10 @@ export type CurrencyKey =
   | 'vaultKey'
   | 'timeCoin'
   | 'timeCredit'
+  | 'seedCommon'
+  | 'seedBasic'
+  | 'seedIntermediate'
+  | 'seedGreater'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1284,10 +1326,14 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   vaultKey: en['currency.vaultKey'],
   timeCoin: en['currency.timeCoin'],
   timeCredit: en['currency.timeCredit'],
+  seedCommon: en['currency.seedCommon'],
+  seedBasic: en['currency.seedBasic'],
+  seedIntermediate: en['currency.seedIntermediate'],
+  seedGreater: en['currency.seedGreater'],
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1301,6 +1347,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   misty: en['squad.mode.misty'],
   factionTower: en['squad.mode.factionTower'],
   factionTower2: en['squad.mode.factionTower2'],
+  berryGrove: en['squad.mode.berryGrove'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

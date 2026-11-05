@@ -2,12 +2,14 @@
 title: Island Challenge
 type: system
 milestone: M13.8
-status: planned
-updated: 2026-10-31
+status: replaced
+updated: 2026-11-04
 sources: [opencode-session-2026-10 msgs 80-83, docs/ASSUMPTIONS.md M13 #39]
 ---
 
 # Island Challenge (M13.8) — gate: clear 3-10 + Lv10
+
+> **Replaced 2026-11-04** by the [Berry Grove](berry-grove.md) (owner; [decision](../decisions/berry-grove-replaces-island.md)). Kept for the record.
 
 - Two-week cycle; **90 levels** (10 areas × 8 + totems/overlord); final overlord boss with damage draws.
 - Per-creature stamina: 60 max, +10/hour, 10 per normal fight, 40 per boss, 9 refunded on quit.

@@ -50,7 +50,7 @@ Pet Home and Sky Pillar rows; then R10 and M13.3 [Hoopa's Vault](systems/hoopa-v
 - Reference: [currencies](systems/currencies.md) · [save versions](systems/save-versions.md)
 
 ## Systems — planned / parked
-- M13: [Hoopa's Vault](systems/hoopa-vault.md) (next) · [Rift Arena](systems/rift-arena.md) · [Misty Woods](systems/misty-woods.md) · [Faction Tower](systems/faction-tower.md) · [Island Challenge](systems/island-challenge.md) · [Ultra Wormhole](systems/ultra-wormhole.md)
+- M13: [Hoopa's Vault](systems/hoopa-vault.md) (next) · [Rift Arena](systems/rift-arena.md) · [Misty Woods](systems/misty-woods.md) · [Faction Tower](systems/faction-tower.md) · [Berry Grove](systems/berry-grove.md) · [Ultra Wormhole](systems/ultra-wormhole.md)
 - Parked/deferred: [Gods Trials](systems/gods-trials.md) · [artifacts, Ruins, Relic Battlefield](systems/artifacts-and-relic.md)
 - Later: [visual identity (M18)](systems/visual-identity.md) · [backend (M19)](systems/backend.md) · [Build Lab (M20)](systems/build-lab.md)
 

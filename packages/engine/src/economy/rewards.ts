@@ -65,6 +65,11 @@ export interface Rewards {
   /** M13.4: Rift Arena Time Coins / Time Credits (season currencies). */
   timeCoin?: number;
   timeCredit?: number;
+  /** M13.8 Berry Grove seeds. */
+  seedCommon?: number;
+  seedBasic?: number;
+  seedIntermediate?: number;
+  seedGreater?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -123,6 +128,10 @@ export const CURRENCY_REWARD_KEYS = [
   'vaultKey',
   'timeCoin',
   'timeCredit',
+  'seedCommon',
+  'seedBasic',
+  'seedIntermediate',
+  'seedGreater',
   'privilegeXp',
 ] as const;
 

@@ -18,7 +18,7 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings, Ranked | M10 | built (Arena + Ranked + hub + weekly settlement + balance pass - `docs/design/pvp.md`) |
 | Growth/collection II: Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP, Titles | Wild screen, Trainer, VIP, Titles | M11 | built - gear tabs/stat sheet, Potential, Orbs, Soul-hearts, Berries, Held Items, Plates, Trinkets, Resonance, VIP and Titles (save v13 at M11; v14 in 13.0a; v15 in 13.0b; v16 in 13.1; `docs/design/collection.md`) |
 | Ancient Artifacts, Suppression, Ruins Adventure | Artifacts, Ruins Adventure | M12 | deferred by owner (2026-10-23) - not part of M13 |
-| Explore modes: Hoopa's Vault, Rift Arena, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Island Challenge, Ultra Wormhole | Explore hub + each mode | M13 | in progress - 13.0a campaign foundation, 13.0b Explore hub/shells, 13.1 Pet Home merge board and 13.2 Sky Pillar built; Gods Trials deferred |
+| Explore modes: Hoopa's Vault, Rift Arena, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Berry Grove (replaced Island Challenge), Ultra Wormhole | Explore hub + each mode | M13 | in progress - 13.0a campaign foundation, 13.0b Explore hub/shells, 13.1 Pet Home merge board and 13.2 Sky Pillar built; Gods Trials deferred |
 | **Source retrofit (R)** — every built system copied exactly from the source (owner decision 2026-10-31) | all built screens | R (before 13.3) | in progress - R0 (loader, save reset), R1 (species, star ladders, stats, Evolve; save v19) and R5 (held items; save v20) built; R4 Potential next, then R6, R7, R8, R2/R3 from notes - `wiki/milestones/source-retrofit.md` |
 | Combat/co-op modes: Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles, Shovel Carnival | Combat hub + each mode | M14 | pending - full Victory Road tasks/badges/commission; 13.0a already ships the 60 gym gate fights |
 | Guild, merge and events (simulated) | Guild, Events, Settings, Help | M15 | pending |
@@ -49,7 +49,7 @@ Pet Home assistant, and real-money SKUs. Gems remain earnable.
 - **13.5 — Rift Arena, part 2:** Ring Battle + Quiz (A gate 10-10 + Lv10); 250 floors.
 - **13.6 — Misty Woods** (A gate 3-10): 244 runes.
 - **13.7 — Faction Tower** (A gate 28-10): 3,000 floors.
-- **13.8 — Island Challenge** (A gate 3-10 + Lv10): 90 levels, full simulated 5v5 alliance contest
+- **13.8 — Berry Grove** (A gate 3-10 + Lv10; replaced the Island Challenge, owner 2026-11-04): garden + Grove Guardians + daily Grove Boss. Was: 90 levels, full simulated 5v5 alliance contest
   with bot alliances and settlement.
 - **13.9 — Ultra Wormhole** (A gate 10-10 + Lv50): 135 hires.
 - **13.10 — mode close-out:** rewards, resets, no dead buttons; M13 done criterion.
