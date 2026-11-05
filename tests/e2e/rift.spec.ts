@@ -17,7 +17,8 @@ function riftSave(cleared: boolean): string {
   return JSON.stringify({
     version: E2E_SAVE_VERSION,
     state: {
-      profile: { name: 'Rift Tester', level: 20, xp: 0 },
+      // XP matching level 20: a reward grant recomputes the level from XP.
+      profile: { name: 'Rift Tester', level: 20, xp: 86_877 },
       roster,
       currencies: { gold: 50_000, gems: 5_000 },
       nextInstanceSeq: ROSTER.length + 1,
