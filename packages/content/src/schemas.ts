@@ -747,6 +747,7 @@ export const rewardSchema = z
     milk: z.number().nonnegative().optional(),
     strawberrySauce: z.number().nonnegative().optional(),
     strawberryCake: z.number().nonnegative().optional(),
+    predictionCoin: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

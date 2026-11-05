@@ -1,0 +1,579 @@
+{
+  "unlock": {
+    "serverDay": 3,
+    "stage": "c3-10",
+    "level": 10
+  },
+  "arenaTop": 64,
+  "tryoutDays": [
+    2,
+    4,
+    6
+  ],
+  "finalDay": 7,
+  "days": {
+    "2": [
+      {
+        "step": 1,
+        "kind": "score",
+        "battle": [
+          19,
+          0
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 10000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": null,
+        "thirdPlace": false
+      },
+      {
+        "step": 2,
+        "kind": "knockout",
+        "battle": [
+          20,
+          5
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 3,
+        "kind": "knockout",
+        "battle": [
+          20,
+          20
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 4,
+        "kind": "knockout",
+        "battle": [
+          20,
+          35
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 5,
+        "kind": "knockout",
+        "battle": [
+          20,
+          50
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 6,
+        "kind": "knockout",
+        "battle": [
+          21,
+          5
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      }
+    ],
+    "4": [
+      {
+        "step": 1,
+        "kind": "score",
+        "battle": [
+          19,
+          0
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 10000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": null,
+        "thirdPlace": false
+      },
+      {
+        "step": 2,
+        "kind": "knockout",
+        "battle": [
+          20,
+          5
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 3,
+        "kind": "knockout",
+        "battle": [
+          20,
+          20
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 4,
+        "kind": "knockout",
+        "battle": [
+          20,
+          35
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 5,
+        "kind": "knockout",
+        "battle": [
+          20,
+          50
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 6,
+        "kind": "knockout",
+        "battle": [
+          21,
+          5
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      }
+    ],
+    "6": [
+      {
+        "step": 1,
+        "kind": "score",
+        "battle": [
+          19,
+          0
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 10000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": null,
+        "thirdPlace": false
+      },
+      {
+        "step": 2,
+        "kind": "knockout",
+        "battle": [
+          20,
+          5
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 3,
+        "kind": "knockout",
+        "battle": [
+          20,
+          20
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 4,
+        "kind": "knockout",
+        "battle": [
+          20,
+          35
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 5,
+        "kind": "knockout",
+        "battle": [
+          20,
+          50
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 6,
+        "kind": "knockout",
+        "battle": [
+          21,
+          5
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 2000,
+          "pokemonShard5": 10,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      }
+    ],
+    "7": [
+      {
+        "step": 1,
+        "kind": "knockout",
+        "battle": [
+          19,
+          5
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 5000,
+          "pokemonShard5": 15,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 2,
+        "kind": "knockout",
+        "battle": [
+          19,
+          20
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 5000,
+          "pokemonShard5": 15,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 3,
+        "kind": "knockout",
+        "battle": [
+          19,
+          35
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 5000,
+          "pokemonShard5": 15,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      },
+      {
+        "step": 4,
+        "kind": "knockout",
+        "battle": [
+          19,
+          50
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {},
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": true
+      },
+      {
+        "step": 5,
+        "kind": "knockout",
+        "battle": [
+          20,
+          5
+        ],
+        "winScore": 5,
+        "lossScore": 2,
+        "rewards": {
+          "arenaToken": 5000,
+          "pokemonShard5": 15,
+          "gold": 100000
+        },
+        "bet": {
+          "min": 100,
+          "max": 4000,
+          "right": 2,
+          "wrong": 0.5
+        },
+        "thirdPlace": false
+      }
+    ]
+  },
+  "lineups": [
+    {
+      "teams": 1,
+      "size": 4,
+      "from": 1,
+      "to": 99
+    },
+    {
+      "teams": 1,
+      "size": 5,
+      "from": 100,
+      "to": 119
+    },
+    {
+      "teams": 1,
+      "size": 6,
+      "from": 120,
+      "to": 139
+    },
+    {
+      "teams": 2,
+      "size": 4,
+      "from": 140,
+      "to": 159
+    },
+    {
+      "teams": 2,
+      "size": 5,
+      "from": 160,
+      "to": 209
+    },
+    {
+      "teams": 2,
+      "size": 6,
+      "from": 210,
+      "to": 279
+    },
+    {
+      "teams": 3,
+      "size": 4,
+      "from": 280,
+      "to": 349
+    },
+    {
+      "teams": 3,
+      "size": 5,
+      "from": 350,
+      "to": 414
+    },
+    {
+      "teams": 3,
+      "size": 6,
+      "from": 415,
+      "to": 99999
+    }
+  ],
+  "guessCoins": 3000,
+  "championBonus": {
+    "arenaToken": 20000,
+    "pokemonShard5": 60,
+    "gold": 600000
+  },
+  "scoreCut": 12,
+  "cpu": {
+    "base": 0.85,
+    "perRound": 0.07,
+    "sunday": 0.15
+  }
+}

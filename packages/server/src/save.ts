@@ -48,14 +48,14 @@ import { fail, ok, type Result } from './index';
 import { firstStar, type GameConfig } from './config';
 
 /** Bump when the persisted shape changes; `migrateSave` upgrades saves at or above MIN_SAVE_VERSION. */
-export const SAVE_VERSION = 56;
+export const SAVE_VERSION = 57;
 /**
  * Oldest save that still loads. During the source retrofit (owner decision 2026-10-31) saves are
  * reset rather than migrated, so every retrofit step that changes the save shape raises this to the
  * new SAVE_VERSION. An older save is refused as `outdated_save`; LocalServer then starts a fresh
  * account and keeps the old save under RETIRED_KEY.
  */
-export const MIN_SAVE_VERSION = 56;
+export const MIN_SAVE_VERSION = 57;
 export const SAVE_KEY = 'wildbound.account';
 export const BACKUP_KEY = 'wildbound.account.backup';
 export const RETIRED_KEY = 'wildbound.account.retired';
@@ -239,6 +239,7 @@ function withDefaults(state: AccountState, now: number, config: GameConfig): Acc
     park: s.park ?? null,
     weekend: s.weekend ?? null,
     temple: s.temple ?? null,
+    clash: s.clash ?? null,
     counters: s.counters ?? { total: {}, week: '', weekly: {}, loginDays: 0, lastDay: '' },
     debugClockOffset: s.debugClockOffset ?? 0,
   };
@@ -357,6 +358,7 @@ export function createInitialState(config: GameConfig): AccountState {
     park: null,
     weekend: null,
     temple: null,
+    clash: null,
     counters: { total: {}, week: '', weekly: {}, loginDays: 0, lastDay: '' },
     debugClockOffset: 0,
   };

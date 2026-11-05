@@ -35,7 +35,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple' | 'clash';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -56,6 +56,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'relic',
   'park',
   'temple',
+  'clash',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -160,6 +161,7 @@ export type CurrencyId =
   | 'milk'
   | 'strawberrySauce'
   | 'strawberryCake'
+  | 'predictionCoin'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -248,6 +250,7 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'milk',
   'strawberrySauce',
   'strawberryCake',
+  'predictionCoin',
   'privilegeXp',
 ];
 
@@ -324,6 +327,7 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'milk',
   'strawberrySauce',
   'strawberryCake',
+  'predictionCoin',
   'privilegeXp',
 ];
 
@@ -527,6 +531,14 @@ export interface AccountState {
   } | null;
   /** M18.1: SPT Temple — the seat held (if any), its guardian's evolution count and the CPU-challenge clock. */
   temple: { seat: string | null; evolution: number; since: number; checkedDay: string; cooldownUntil: number; lost: string | null } | null;
+  /** M18.2: Cross-Server Clash this week (null until first opened). */
+  clash: {
+    week: string;
+    qualified: boolean | null;
+    days: Record<string, { step: number; score: number; contest: number; out: boolean; won: number[]; champion: boolean }>;
+    coinsDays: string[];
+    bets: Record<string, { pick: 0 | 1; stake: number; settled: boolean }>;
+  } | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string; prevWeek?: string; prevWeekly?: Record<string, number> };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
@@ -690,6 +702,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     relic: emptySquad(),
     park: emptySquad(),
     temple: emptySquad(),
+    clash: emptySquad(),
   };
 }
 
@@ -713,6 +726,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     relic: 'balanced',
     park: 'balanced',
     temple: 'balanced',
+    clash: 'balanced',
   };
 }
 

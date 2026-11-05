@@ -2,6 +2,7 @@ import { arenaRank, type AccountState } from '@wildbound/engine';
 import type { GameConfig } from './config';
 import { arenaTuning, arenaUnlocked, rankedPhase, rankedTuning, rankedUnlocked } from './pvp';
 import { rolledRanked } from './pvp/ranked';
+import { clashOpen } from './clash';
 
 /**
  * The PvP hub (M10.5): one card per PvP entry point with its live status. The
@@ -17,6 +18,7 @@ export type PvpHubStatus =
   | { kind: 'ranked'; region: string; tier: string; score: number; attemptsLeft: number; attemptsPerDay: number }
   | { kind: 'shop'; tokens: number }
   | { kind: 'temple'; seat: string | null }
+  | { kind: 'clash'; coins: number }
   | { kind: 'locked'; chapter: number }
   | { kind: 'comingLater' };
 
@@ -35,7 +37,7 @@ export interface PvpHubView {
 }
 
 /** Modes the reference ships that are still pending (M18) — honest, not dead. */
-const PENDING: readonly PvpHubId[] = ['clash', 'championship'];
+const PENDING: readonly PvpHubId[] = ['championship'];
 
 export function buildPvpHubView(config: GameConfig, state: AccountState, now: number): PvpHubView {
   const arena = state.pvp.arena;
@@ -78,6 +80,13 @@ export function buildPvpHubView(config: GameConfig, state: AccountState, now: nu
             attemptsPerDay: rankedRules.freeAttemptsPerDay,
           }
         : { kind: 'locked', chapter: config.pvp.rankedChapter },
+    },
+    {
+      id: 'clash',
+      route: '/clash',
+      live: true,
+      unlocked: clashOpen(config, state, now),
+      status: { kind: 'clash', coins: state.currencies.predictionCoin ?? 0 },
     },
     ...PENDING.map(
       (id): PvpHubCardView => ({ id, route: null, live: false, unlocked: false, status: { kind: 'comingLater' } }),

@@ -40,6 +40,7 @@ import type { RelicBattlefieldView } from './relic';
 import type { ParkView } from './park';
 import type { WeekendView } from './weekend-events';
 import type { TempleView } from './temple';
+import type { ClashView } from './clash';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -662,6 +663,12 @@ export interface GameServer {
   /** M18.1 SPT Temple. */
   getTemple(): Promise<Result<TempleView>>;
   challengeSeat(seatId: string, step: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; took: boolean; snapshot: AccountSnapshot }>>;
+  /** M18.2 Cross-Server Clash. */
+  getClash(): Promise<Result<ClashView>>;
+  playClashRound(seed?: number): Promise<Result<{ battle: BattleView; win: boolean; rewards: Rewards; advanced: boolean; out: boolean; snapshot: AccountSnapshot }>>;
+  claimGuessCoins(): Promise<Result<ClaimResult>>;
+  placeClashBet(step: number, pick: 0 | 1, stake: number): Promise<Result<AccountSnapshot>>;
+  claimClashBets(): Promise<Result<ClaimResult>>;
   /** Weekend Bash (Elven Treasure, Bingo) and the Flower Event. */
   getWeekend(): Promise<Result<WeekendView>>;
   buyElven(count: number): Promise<Result<AccountSnapshot>>;
@@ -783,6 +790,7 @@ export * from './relic';
 export * from './park';
 export * from './weekend-events';
 export * from './temple';
+export * from './clash';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

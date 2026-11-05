@@ -101,6 +101,7 @@ export const en = {
   'currency.milk': 'Milk',
   'currency.strawberrySauce': 'Strawberry Sauce',
   'currency.strawberryCake': 'Strawberry Cake',
+  'currency.predictionCoin': 'Prediction Coins',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -351,6 +352,7 @@ export const en = {
   'squad.mode.relic': 'Relic Battlefield',
   'squad.mode.park': 'Pokémon Park',
   'squad.mode.temple': 'SPT Temple',
+  'squad.mode.clash': 'Cross-Server Clash',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -816,6 +818,27 @@ export const en = {
   'gw.claimSeason': "Claim last season's rewards",
   'relic.title': 'Relic Battlefield',
   'park.title': 'Pokémon Park',
+  'clash.locked': 'Cross-Server Clash opens on server day 3 after story 3-10 and trainer level 10.',
+  'clash.day': 'Today: {d}',
+  'clash.noCup': 'No Clash today (it runs Tuesday, Thursday, Saturday and Sunday).',
+  'clash.place': 'Arena place #{p} (top 64 enter)',
+  'clash.notQualified': 'Not entered this week — you can still predict.',
+  'clash.team': 'Set the Clash team →',
+  'clash.play': 'Play next round',
+  'clash.score': 'Score contest',
+  'clash.knockout': 'Knockout',
+  'clash.third': 'Third-place match',
+  'clash.opensAt': 'opens {t} UTC',
+  'clash.out': "You're out for today.",
+  'clash.champion': 'Champion!',
+  'clash.won': 'Round won!',
+  'clash.lost': 'Round lost.',
+  'clash.claimCoins': 'Claim Guess Coins',
+  'clash.claimBets': 'Claim finished predictions',
+  'clash.bet': 'Back {n} (stake {s})',
+  'clash.sunday': 'Sunday final: {q}',
+  'clash.yes': 'qualified',
+  'clash.no': 'reach the Top 16 on a tryout day',
   'temple.holding': 'Holding',
   'temple.noSeat': 'No throne held',
   'temple.locked': 'The SPT Temple opens with the Arena.',
@@ -1707,6 +1730,7 @@ export type CurrencyKey =
   | 'milk'
   | 'strawberrySauce'
   | 'strawberryCake'
+  | 'predictionCoin'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1794,10 +1818,11 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   milk: en['currency.milk'],
   strawberrySauce: en['currency.strawberrySauce'],
   strawberryCake: en['currency.strawberryCake'],
+  predictionCoin: en['currency.predictionCoin'],
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple' | 'clash';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1818,6 +1843,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   relic: en['squad.mode.relic'],
   park: en['squad.mode.park'],
   temple: en['squad.mode.temple'],
+  clash: en['squad.mode.clash'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

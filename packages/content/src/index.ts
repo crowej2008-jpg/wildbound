@@ -100,6 +100,7 @@ export {
   PARK,
   WEEKEND_EVENTS,
   TEMPLE,
+  CLASH,
   VICTORY_ROAD,
   KINGS_TRIAL,
   GACHA_TUNING,
@@ -126,6 +127,7 @@ export type {
   ParkJson,
   WeekendEventsJson,
   TempleJson,
+  ClashJson,
   VictoryRoadJson,
   KingsTrialJson,
 } from './tuning';
@@ -146,6 +148,7 @@ export { guildWarRelicSchema } from './guild-war-relic-schema';
 export { parkSchema } from './park-schema';
 export { weekendEventsSchema } from './weekend-events-schema';
 export { templeSchema } from './temple-schema';
+export { clashSchema } from './clash-schema';
 export { victoryRoadSchema } from './victory-road-schema';
 export { kingsTrialSchema } from './kings-trial-schema';
 export type {

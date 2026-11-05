@@ -82,6 +82,7 @@
     "milk": 0,
     "strawberrySauce": 0,
     "strawberryCake": 0,
+    "predictionCoin": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -174,6 +175,7 @@
     "milk": 5000,
     "strawberrySauce": 60,
     "strawberryCake": 5000,
+    "predictionCoin": 3000,
     "privilegeXp": 300
   }
 }

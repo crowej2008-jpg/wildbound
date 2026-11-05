@@ -382,3 +382,5 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-05] update | Follow-up: treasure battle skills + fusion-skin perks (ASSUMPTIONS #118)
 
 ## [2026-11-05] update | M18.1 SPT Temple (owner: "continue back on track" → M18; ASSUMPTIONS #119, save v56)
+
+## [2026-11-05] update | M18.2 Cross-Server Clash (ASSUMPTIONS #120, save v57)

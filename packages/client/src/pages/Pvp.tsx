@@ -37,6 +37,8 @@ function statusLine(card: PvpHubCardView): string {
       } ${t('ranked.attempts')}`;
     case 'shop':
       return `${status.tokens.toLocaleString()} ${currencyLabel.arenaToken}`;
+    case 'clash':
+      return `${status.coins.toLocaleString()} ${currencyLabel.predictionCoin}`;
     case 'temple':
       return status.seat ? `${t('temple.holding')} ${status.seat}` : t('temple.noSeat');
     case 'locked':

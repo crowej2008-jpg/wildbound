@@ -68,7 +68,7 @@ describe('PvP hub (M10.5)', () => {
     const ranked = view.cards.find((c) => c.id === 'ranked')!;
     expect(ranked.status).toEqual({ kind: 'locked', chapter: cfg.pvp.rankedChapter });
 
-    for (const id of ['clash', 'championship'] as const) {
+    for (const id of ['championship'] as const) {
       const card = view.cards.find((c) => c.id === id)!;
       expect(card.live).toBe(false);
       expect(card.route).toBeNull();
@@ -113,7 +113,7 @@ describe('PvP hub (M10.5)', () => {
     expect(hub.ok).toBe(true);
     if (!hub.ok) return;
     expect(hub.value.cards).toHaveLength(6);
-    expect(hub.value.cards.filter((c) => c.live)).toHaveLength(4);
+    expect(hub.value.cards.filter((c) => c.live)).toHaveLength(5);
   });
 
   it('fills the hub for a save missing its PvP slice', () => {

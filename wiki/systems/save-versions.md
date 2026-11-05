@@ -69,6 +69,7 @@ after the retrofit, once friends have real saves.
 | 54 | follow-up | Pokémon Park: `park` slice and squad (reset) |
 | 55 | follow-up | Weekend Bash + Flower Event: `weekend` slice, four currencies, counters keep last week (reset) |
 | 56 | M18.1 | SPT Temple: `temple` slice and squad (reset) |
-| 57+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
+| 57 | M18.2 | Cross-Server Clash: `clash` slice, squad, `predictionCoin` (reset) |
+| 58+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

@@ -1522,3 +1522,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - /spt-temple (PvP hub): six thrones held by CPU trainers; take one by beating its evolved guardian, train it to keep
   it; the throne's title (+1–3 % HP / P.ATK / S.ATK) while you hold it. Save v56. ASSUMPTIONS #119.
+
+## M18.2 — Cross-Server Clash (2026-11-05)
+
+- /clash (PvP hub): weekly cup against CPU players — tryouts Tue / Thu / Sat, Sunday final for Top 16 finishers,
+  source round rewards, daily Guess Coins and predictions. Save v57. ASSUMPTIONS #120.

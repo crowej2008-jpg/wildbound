@@ -100,6 +100,7 @@ export interface Rewards {
   milk?: number;
   strawberrySauce?: number;
   strawberryCake?: number;
+  predictionCoin?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -189,6 +190,7 @@ export const CURRENCY_REWARD_KEYS = [
   'milk',
   'strawberrySauce',
   'strawberryCake',
+  'predictionCoin',
   'privilegeXp',
 ] as const;
 

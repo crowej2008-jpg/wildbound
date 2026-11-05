@@ -18,6 +18,7 @@ import guildWarRelic from '../tuning/guild-war-relic.json';
 import park from '../tuning/park.json';
 import weekendEvents from '../tuning/weekend-events.json';
 import temple from '../tuning/temple.json';
+import clash from '../tuning/clash.json';
 import victoryRoad from '../tuning/victory-road.json';
 import kingsTrial from '../tuning/kings-trial.json';
 import combat from '../tuning/combat.json';
@@ -43,6 +44,7 @@ import { guildWarRelicSchema, type GuildWarRelicJson } from './guild-war-relic-s
 import { parkSchema, type ParkJson } from './park-schema';
 import { weekendEventsSchema, type WeekendEventsJson } from './weekend-events-schema';
 import { templeSchema, type TempleJson } from './temple-schema';
+import { clashSchema, type ClashJson } from './clash-schema';
 import { victoryRoadSchema, type VictoryRoadJson } from './victory-road-schema';
 import { kingsTrialSchema, type KingsTrialJson } from './kings-trial-schema';
 import {
@@ -86,6 +88,7 @@ export const GUILD_WAR_RELIC: GuildWarRelicJson = guildWarRelicSchema.parse(guil
 export const PARK: ParkJson = parkSchema.parse(park);
 export const WEEKEND_EVENTS: WeekendEventsJson = weekendEventsSchema.parse(weekendEvents);
 export const TEMPLE: TempleJson = templeSchema.parse(temple);
+export const CLASH: ClashJson = clashSchema.parse(clash);
 export const VICTORY_ROAD: VictoryRoadJson = victoryRoadSchema.parse(victoryRoad);
 export const KINGS_TRIAL: KingsTrialJson = kingsTrialSchema.parse(kingsTrial);
 export const GACHA_TUNING: GachaJson = gachaSchema.parse(GACHA);
@@ -108,5 +111,6 @@ export type { GuildWarRelicJson } from './guild-war-relic-schema';
 export type { ParkJson } from './park-schema';
 export type { WeekendEventsJson } from './weekend-events-schema';
 export type { TempleJson } from './temple-schema';
+export type { ClashJson } from './clash-schema';
 export type { VictoryRoadJson } from './victory-road-schema';
 export type { KingsTrialJson } from './kings-trial-schema';

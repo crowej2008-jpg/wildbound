@@ -1341,3 +1341,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      evolution) on a tower-pool team), CPU holders' counts, and a daily CPU challenger that grows 25 evolutions a day
      held and takes the throne once it outgrows your guardian. Squad `temple`, `temple` slice; save v56.
      docs/design/temple.md.
+
+120. **M18.2 Cross-Server Clash (2026-11-05).** From cross_trainer_match_json (Tue / Thu / Sat: score contest win 5 /
+     loss 2, then Top 16 → final; Sunday: Top 8, Top 4, semifinal, third place, final; round times; per-round rewards
+     in Arena Tokens / 5★ shards / Gold; bet range 100–4,000, right ×2, wrong ×0.5) plus the owner's wiki (opens server
+     day 3 after 3-10 and Lv 10; Arena top 64; 3,000 Guess Coins a cup day; Prediction Coins → Arena Tokens 1:1 at the
+     week's end; tryout champion bonus). Solo vs CPU players: rounds open at their source time and stay playable until
+     the day ends; the score contest's cut is 12 points (two wins) instead of a 64-player table; one 6v6 team (no world
+     level in Wildbound); bets are on a seeded CPU-vs-CPU featured match. Squad `clash`, currency `predictionCoin`,
+     `clash` slice; save v57. docs/design/clash.md.

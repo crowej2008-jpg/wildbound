@@ -184,6 +184,7 @@ import * as relicMod from './relic';
 import * as parkMod from './park';
 import * as weekendMod from './weekend-events';
 import * as templeMod from './temple';
+import * as clashMod from './clash';
 import { squadWildIds } from './growth';
 import { buildAccount3View, type Account3View } from './account3-view';
 import { bumpCounter, stampLogin } from './counters';
@@ -2280,6 +2281,33 @@ export class LocalServer implements GameServer {
 
   async challengeSeat(seatId: string, step: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; took: boolean; snapshot: AccountSnapshot }>> {
     return this.jointAct((s, now) => templeMod.challengeSeat(this.config, s, now, seatId, step, seed));
+  }
+
+  // ---------------------------------------------------------------- M18.2 Cross-Server Clash
+
+  async getClash(): Promise<Result<clashMod.ClashView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(clashMod.buildClashView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async playClashRound(seed?: number): Promise<Result<{ battle: BattleView; win: boolean; rewards: Rewards; advanced: boolean; out: boolean; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => clashMod.playClashRound(this.config, s, now, seed));
+  }
+
+  async claimGuessCoins(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => clashMod.claimGuessCoins(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async placeClashBet(step: number, pick: 0 | 1, stake: number): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => clashMod.placeBet(this.config, s, now, step, pick, stake)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async claimClashBets(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => clashMod.claimBets(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
   }
 
   // ---------------------------------------------------------------- Weekend Bash + Flower Event
