@@ -1185,3 +1185,4 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 
 101. **Owner calls, 2026-11-04.** Hoopa's Vault orb colours stay as built (the #98 review item is closed: "drop the
      question"). Rift Predictions are cut ("super useless and neverused"); 13.5 is the Ring Battle only.
+     The Ring Battle is cut too ("cut it"): 13.5 is dropped and the Rift Arena is Rift Barriers only.

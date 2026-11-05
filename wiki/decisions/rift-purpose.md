@@ -26,3 +26,6 @@ Time Credits still drop on the Easy track but have no use yet (open question).
 ## Predictions cut (2026-11-04)
 Owner: *"lets cut this because its super useless and neverused"* (the Rift Predictions, whose vouchers only paid for
 the cut hiring). 13.5 keeps the Ring Battle only.
+
+## Ring Battle cut (2026-11-04)
+Owner: *"cut it"* (the Ring Battle, a second Ranked ladder). 13.5 is dropped; the Rift Arena is Rift Barriers only.

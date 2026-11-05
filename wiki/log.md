@@ -315,3 +315,4 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
   Credits, and whether the Vault's orb colours shift down one. Next: 13.5 (Ring Battle + Predictions).
 - Owner: Time Credits no longer drop in the Rift (ASSUMPTIONS #100).
 - Owner: the Vault's orb colours stay as built; Rift Predictions are cut, so 13.5 is the Ring Battle only (ASSUMPTIONS #101).
+- Owner: the Ring Battle is cut; 13.5 is dropped. Next: 13.6 Misty Woods.

@@ -17,7 +17,7 @@ the 2026-10-22 survey (to be re-checked against `reference/` when building):
 - Ranking by highest floor, then clear time; mail settlement.
 - Time Coins/Credits convert to gold at season end. Merchant stock gated by floor, purchase limits.
 
-## 13.5 — Ring Battle (Quiz / Predictions cut by the owner 2026-11-04)
+## 13.5 — Ring Battle + Quiz (cut by the owner 2026-11-04)
 - Ring ranks Apprentice → King; +35 win / −20 loss with promotion stop (like [Ranked](pvp.md)).
 - 6 free matches/day + bought; deterministic bots; weather bonus; season chests, Ring shop.
 - Quiz: two pick windows/day, pays mission vouchers only. Hires: voucher cost by quality, one free hire,
