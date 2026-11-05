@@ -11,7 +11,6 @@ import { fail, ok, type Result } from './index';
  * docs/design/account-systems-3.md.
  */
 
-type T = GameConfig['account3'];
 export type Account3State = NonNullable<AccountState['account3']>;
 
 export function initialAccount3(): Account3State {
