@@ -314,3 +314,4 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: no Rift hiring, season bans or Time Credit upgrades (ASSUMPTIONS #99). 13.4 is done. Open: a use for Time
   Credits, and whether the Vault's orb colours shift down one. Next: 13.5 (Ring Battle + Predictions).
 - Owner: Time Credits no longer drop in the Rift (ASSUMPTIONS #100).
+- Owner: the Vault's orb colours stay as built; Rift Predictions are cut, so 13.5 is the Ring Battle only (ASSUMPTIONS #101).

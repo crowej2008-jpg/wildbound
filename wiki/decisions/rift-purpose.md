@@ -22,3 +22,7 @@ that is super useless"*. A deliberate departure from the source (which drops onl
 Owner, on "hiring (one free Pokémon a season), the season's banned Pokémon, and Time Credit upgrades for hired
 Pokémon": *"we dont need these"*. Rift hiring, season bans and the Time Credit equipment upgrades are not built.
 Time Credits still drop on the Easy track but have no use yet (open question).
+
+## Predictions cut (2026-11-04)
+Owner: *"lets cut this because its super useless and neverused"* (the Rift Predictions, whose vouchers only paid for
+the cut hiring). 13.5 keeps the Ring Battle only.
