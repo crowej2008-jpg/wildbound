@@ -30,6 +30,7 @@ import type { FactionTowerView } from './faction-tower-view';
 import type { BerryGroveView } from './berry-grove-view';
 import type { DigSiteView } from './dig-site-view';
 import type { VictoryRoadView } from './victory-road';
+import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -590,6 +591,13 @@ export interface GameServer {
   claimVictoryChest(gym: number, progress: number): Promise<Result<ClaimResult>>;
   claimVictoryTask(gym: number): Promise<Result<ClaimResult>>;
   claimBadgeDaily(): Promise<Result<ClaimResult>>;
+  /** M14.2 King's Trial. */
+  getKingsTrial(): Promise<Result<KingsTrialView>>;
+  claimTrialAchievements(): Promise<Result<AccountSnapshot>>;
+  claimTrialMilestone(index: number): Promise<Result<ClaimResult>>;
+  claimTrialWeekly(id: number): Promise<Result<ClaimResult>>;
+  claimTrialChest(index: number, progress: number): Promise<Result<ClaimResult>>;
+  challengeKingsTrial(index: number, seed?: number): Promise<Result<GymBattleResult>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -663,6 +671,8 @@ export * from './berry-grove';
 export * from './dig-site-view';
 export * from './dig-site';
 export * from './victory-road';
+export * from './kings-trial';
+export * from './counters';
 export * from './plates';
 export * from './trinkets';
 export * from './berries';

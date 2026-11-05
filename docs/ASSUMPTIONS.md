@@ -1246,3 +1246,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      dun_champion_task table); the gym fight stays open from 30 so untracked tasks never block the story; AFK and mode
      coin badges use the best one owned, battle-stat badges stack; the daily reward is the top badge's. Not wired:
      Arena / Ranked / ladder token bonuses and shop unlocks. Save v46 (reset). docs/design/victory-road.md.
+
+109. **M14.2 King's Trial (2026-11-05).** From champion_challenge: 7 regions, 36 trainers gated by Victory Road gyms and
+     earlier trainers; Champion Points from the 645 achievement tasks and 16 weekly tasks; trainer progress = points /
+     `score` (reading: a running threshold); chests at 30 / 60 / 100; Champions' battle privileges; 30 point
+     milestones. Tracked events only (logins, outfits, resonance, stronger-team Arena wins; weekly shop / draws /
+     World Boss / Sky Pillar / Rift / Ranked); the rest read 0 until their systems exist. Enemies stand in. New
+     `kingsTrial` and `counters` slices; save v47 (reset). docs/design/kings-trial.md.

@@ -32,6 +32,7 @@ import {
   BERRY_GROVE,
   DIG_SITE,
   VICTORY_ROAD,
+  KINGS_TRIAL,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -61,6 +62,7 @@ import type {
   BerryGroveJson,
   DigSiteJson,
   VictoryRoadJson,
+  KingsTrialJson,
   PveJson,
   PvpJson,
   TitlesJson,
@@ -164,6 +166,8 @@ export interface GameConfig {
   digSite: DigSiteJson;
   /** M14.1 Victory Road. */
   victoryRoad: VictoryRoadJson;
+  /** M14.2 King's Trial. */
+  kingsTrial: KingsTrialJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -279,6 +283,7 @@ export function buildConfig(): GameConfig {
     berryGrove: BERRY_GROVE,
     digSite: DIG_SITE,
     victoryRoad: VICTORY_ROAD,
+    kingsTrial: KINGS_TRIAL,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

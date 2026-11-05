@@ -1433,3 +1433,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - The source's Victory Road: 8 regions, 60 gyms, progress chests (30 / 60 / 100), one task per gym, badges with
   their perks (AFK profit, class / faction battle stats, Faction Tower / Misty Woods / Sky Pillar bonuses) and the top
   badge's daily Diamonds. Save v46. ASSUMPTIONS #108.
+
+## M14.2 — King's Trial (2026-11-05)
+
+- 36 Elite Four / Champion trainers in 7 regions behind the Victory Road gyms; Champion Points from achievement and
+  weekly tasks; progress chests; Champion battle privileges; point milestones. Activity counters for task systems.
+  Save v47. ASSUMPTIONS #109.

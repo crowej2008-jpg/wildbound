@@ -36,6 +36,11 @@ export default function VictoryRoad() {
         {t('victory.backToCampaign')}
       </Link>
       <h1 className="page-title">{t('victory.title')}</h1>
+      <p>
+        <Link className="text-link" to="/kings-trial" data-testid="open-kings-trial">
+          {t('kings.title')} →
+        </Link>
+      </p>
       <section className="card">
         <p data-testid="victory-summary">
           {t('victory.badges')} {view.badges} / 60 · {t('victory.afk')} +{Math.round(view.afk * 100)}%

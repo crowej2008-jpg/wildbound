@@ -343,6 +343,10 @@ export interface AccountState {
   digSite: DigSiteState | null;
   /** M14.1: Victory Road chests and task rewards claimed (keys `chest:<gym>:<progress>`, `task:<gym>`) and the badge's daily claim day. */
   victoryRoad: { claimed: string[]; dailyDay: string };
+  /** M14.2: King's Trial — trainers beaten, claims (chests, achievement tasks / rewards, weekly tasks) and Champion Points. */
+  kingsTrial: { beaten: number[]; claimed: string[]; points: number };
+  /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
+  counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }

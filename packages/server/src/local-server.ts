@@ -169,6 +169,16 @@ import {
   type DigResult,
 } from './dig-site';
 import { buildDigSiteView, type DigSiteView } from './dig-site-view';
+import { bumpCounter, stampLogin } from './counters';
+import {
+  buildKingsTrialView,
+  challengeTrial,
+  claimAllTrialAchievements,
+  claimTrialChest,
+  claimTrialMilestone,
+  claimTrialWeekly,
+  type KingsTrialView,
+} from './kings-trial';
 import {
   buildVictoryRoadView,
   claimBadgeDaily as claimBadgeDailyAction,
@@ -819,7 +829,7 @@ export class LocalServer implements GameServer {
     const applied = applySummon(this.config, state, machine, count, this.now(state), rng);
     if (!applied.ok) return fail(applied.error, applied.message);
     // R9: the source daily counts Premium summons ({chest,2}).
-    const summoned = machine === 'premium' ? this.withQuest(applied.value.state, 'premiumSummon', count) : applied.value.state;
+    const summoned = machine === 'premium' ? bumpCounter(this.withQuest(applied.value.state, 'premiumSummon', count), this.now(state), 'premiumDraws', count) : applied.value.state;
     const committed = await this.commit(summoned);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -903,7 +913,8 @@ export class LocalServer implements GameServer {
     if (!loaded.ok) return loaded;
     const applied = applyBuy(this.config, loaded.value, shopId, itemId, this.now(loaded.value));
     if (!applied.ok) return fail(applied.error, applied.message);
-    return this.commitClaim(this.withQuest(applied.value.state, 'shopBuy'), applied.value.granted);
+    const bought = shopId === 'daily' ? bumpCounter(applied.value.state, this.now(applied.value.state), 'goldShopBuys') : applied.value.state;
+    return this.commitClaim(this.withQuest(bought, 'shopBuy'), applied.value.granted);
   }
 
   async refreshShop(shopId: string): Promise<Result<ClaimResult>> {
@@ -1233,7 +1244,7 @@ export class LocalServer implements GameServer {
     const outcome = challengeWorldBossAction(this.config, state, this.now(state), seed);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
-    let next = value.state;
+    let next = bumpCounter(value.state, this.now(state), 'worldBoss');
     next = this.withQuest(next, 'winBattle');
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
@@ -1429,7 +1440,7 @@ export class LocalServer implements GameServer {
     const outcome = challengeSkyPillarAction(this.config, state, this.now(state), floor, stage, seed);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
-    let next = value.state;
+    let next = bumpCounter(value.state, this.now(state), 'skyPillar');
     if (value.win) {
       next = this.withQuest(next, 'winBattle');
       next = this.withTutorialAction(next, 'winStage');
@@ -1563,7 +1574,8 @@ export class LocalServer implements GameServer {
     const outcome = challengeRiftAction(this.config, loaded.value, this.now(loaded.value), seed);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
-    const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
+    const counted = bumpCounter(value.state, this.now(loaded.value), 'rift');
+    const next = value.win ? this.withQuest(counted, 'winBattle') : counted;
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({ battle: value.battle, win: value.win, floor: value.floor, rewards: value.rewards, snapshot: committed.value });
@@ -1825,6 +1837,56 @@ export class LocalServer implements GameServer {
     return this.commitClaim(outcome.value.state, outcome.value.rewards);
   }
 
+  async getKingsTrial(): Promise<Result<KingsTrialView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildKingsTrialView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async claimTrialAchievements(): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimAllTrialAchievements(this.config, loaded.value);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value.state);
+  }
+
+  async claimTrialMilestone(index: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimTrialMilestone(this.config, loaded.value, index);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.rewards);
+  }
+
+  async claimTrialWeekly(id: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimTrialWeekly(this.config, loaded.value, this.now(loaded.value), id);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.rewards);
+  }
+
+  async claimTrialChest(index: number, progress: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimTrialChest(this.config, loaded.value, index, progress);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.rewards);
+  }
+
+  async challengeKingsTrial(index: number, seed?: number): Promise<Result<GymBattleResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = challengeTrial(this.config, loaded.value, index, seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ battle: value.battle, gymId: `kings-${index}`, win: value.win, firstClear: Object.keys(value.rewards).length > 0, rewards: value.rewards, snapshot: committed.value });
+  }
+
   async refreshArena(): Promise<Result<AccountSnapshot>> {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
@@ -1842,6 +1904,9 @@ export class LocalServer implements GameServer {
     const value = outcome.value;
     let next = this.withQuest(value.state, 'arenaChallenge');
     if (value.win) next = this.withQuest(next, 'winBattle');
+    // M14.2: King's Trial counts Arena wins against a team at least 1.2× stronger.
+    const teams = value.battle.teams;
+    if (value.win && teams.defenders.power >= teams.attackers.power * 1.2) next = bumpCounter(next, this.now(state), 'arenaWinsHigher');
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -1914,7 +1979,7 @@ export class LocalServer implements GameServer {
     const outcome = startRankedMatchAction(this.config, state, this.now(state), seed);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
-    let next = value.state;
+    let next = bumpCounter(value.state, this.now(state), 'ranked');
     if (value.won) next = this.withQuest(next, 'winBattle');
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
@@ -2122,7 +2187,9 @@ export class LocalServer implements GameServer {
     // R9: the source daily "spend 60 Diamonds" counts every net Diamond decrease of an action today.
     const before = this.state;
     const spent = before && before.quests.day === next.quests.day ? before.currencies.gems - next.currencies.gems : 0;
-    const state = spent > 0 ? this.withQuest(next, 'gemsSpent', spent) : next;
+    const quested = spent > 0 ? this.withQuest(next, 'gemsSpent', spent) : next;
+    // M14.2: distinct save days count as login days (King's Trial).
+    const state = stampLogin(quested, this.now(quested));
     this.state = state;
     await this.persist(state);
     return ok(this.snapshot(state));

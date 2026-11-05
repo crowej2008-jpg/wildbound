@@ -40,6 +40,7 @@ import { tokenPvpLines } from './tokens';
 import { fashionLines } from './fashion';
 import { museumLines } from './dig-site';
 import { badgeStatLines } from './victory-road';
+import { trialStatLines } from './kings-trial';
 import type { TowerRuleJson } from '@wildbound/content';
 
 /**
@@ -141,6 +142,7 @@ export function applySheetPercents(
 function accountFold(config: GameConfig, state: AccountState, meta?: { className: string; faction: string }): TitleFold | undefined {
   const lines = [
     ...(meta ? badgeStatLines(config, state, meta.className, meta.faction) : []),
+    ...(meta ? trialStatLines(config, state, meta.className, meta.faction) : []),
     ...(titleFoldFor(config, state)?.lines ?? []),
     ...fashionLines(config, state, (id) => Boolean(state.titles.owned[id])),
     ...museumLines(config, state),

@@ -342,3 +342,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-05] update | M14.1 Victory Road
 - Victory Road from the source (ASSUMPTIONS #108, save v46). Next: King's Trial.
+
+## [2026-11-05] update | M14.2 King's Trial
+- From champion_challenge: 36 trainers, Champion Points from achievement / weekly tasks, chests, Champion privileges
+  (ASSUMPTIONS #109, save v47).
