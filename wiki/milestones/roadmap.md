@@ -28,8 +28,9 @@ Numbers changed twice — see [renumbering](../decisions/milestone-renumbering.m
 | E | [Battle engine completion](battle-engine.md) — triggers, held-item skills, unmodelled kit clauses | **in progress** (E1–E2 built) |
 | R | [Source retrofit](source-retrofit.md) — built systems copied exactly from the source | in progress (R0, R1, R5 built; paused for E) |
 | M13 | [Explore modes](m13.md) | in progress (13.3 after R) |
-| M14 | Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles, Shovel Carnival | pending |
-| M15 | Guild, merge, events (simulated) | pending |
+| M14 | Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles (Shovel Carnival → M15) | in progress (14.1–14.3 built) |
+| M14A | [Account systems III](m14a.md): trainer treasures, Z Ring, Pure Crystals, fusion skins, Golden Egg, Awakening | planned (owner 2026-11-05) |
+| M15 | Guild, merge, events (simulated; includes Shovel Carnival) | pending |
 | M16 | Guild war + Relic Battlefield (needs M12) | pending |
 | M17 | Cross-server PvP: Clash, Championship, SPT Temple | pending |
 | M18 | [Visual identity](../systems/visual-identity.md) | pending |
