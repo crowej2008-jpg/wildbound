@@ -65,6 +65,7 @@ export default function Trainer() {
         <div className="row-actions">
           <Link className="btn" to="/squad">{t('trainer.squad')}</Link>
           <Link className="btn" to="/mail">{t('trainer.mail')}</Link>
+          <Link className="btn" to="/account-systems">{t('a3.open')}</Link>
           <Link className="btn" to="/quests">{t('trainer.quests')}</Link>
           <Link className="btn" to="/gallery">{t('trainer.gallery')}</Link>
           <Link className="btn" to="/more">{t('trainer.more')}</Link>

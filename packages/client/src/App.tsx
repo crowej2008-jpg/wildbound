@@ -27,6 +27,7 @@ import KingsTrial from './pages/KingsTrial';
 import Paradise from './pages/Paradise';
 import JointTeam from './pages/JointTeam';
 import ClashOfIsles from './pages/ClashOfIsles';
+import AccountSystems from './pages/AccountSystems';
 import PveTower from './pages/PveTower';
 import Pvp from './pages/Pvp';
 import Quests from './pages/Quests';
@@ -75,6 +76,7 @@ function AppRoutes() {
         <Route path="/paradise" element={<Paradise />} />
         <Route path="/joint-team" element={<JointTeam />} />
         <Route path="/clash-of-isles" element={<ClashOfIsles />} />
+        <Route path="/account-systems" element={<AccountSystems />} />
         <Route path="/idle" element={<Idle />} />
         <Route path="/quests" element={<Quests />} />
         <Route path="/sign-in" element={<SignIn />} />

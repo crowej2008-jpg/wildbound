@@ -18,3 +18,12 @@ that was worked on and what decisions after you are done"*. Every call below too
 ## M14 close-out
 - Shovel Carnival moved to M16 (owner). M14 = Victory Road, King's Trial, Paradise, Joint Team + Wild Area, Clash of
   Isles. Leaderboards everywhere use deterministic CPU ladders until the server work.
+
+## M15 Account systems III
+- Treasure level cost is a stand-in (10 + 5 × level Treasure Liquid; trainer_treasure_lev is not in the dumps).
+- Treasure battle skills, Pure Crystal skills and fusion-skin battle skills are not built; only their stat parts count.
+- Skin stats apply whether or not the skin is worn (as the source's collection bonus); wearing is cosmetic.
+- Materials (liquid, accessories, refine, awaken stones, essences, vouchers, skin shards) come from the debug grant
+  until M16 events hand them out.
+- Awakening tasks counted: premium draws and egg smashes; other task kinds are listed but do not advance yet.
+- Pure Crystal attribute ids 125 / 126 (no matching stat in the engine) are skipped.

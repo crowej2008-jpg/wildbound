@@ -20,6 +20,7 @@ import type { HoopaVaultState } from '../hoopa-vault/types';
 import type { RiftState } from '../rift/types';
 import type { MistyState } from '../misty/types';
 import type { FactionTowerState } from '../faction-tower/types';
+import type { Faction } from '../model';
 import type { BerryGroveState } from '../berry-grove/types';
 import type { DigSiteState } from '../dig-site';
 import type { ParadiseState } from '../paradise';
@@ -138,6 +139,13 @@ export type CurrencyId =
   | 'wildEnergyCan'
   | 'teleporter'
   | 'islandVoucher'
+  | 'treasureLiquid'
+  | 'treasureAccessory'
+  | 'treasureRefine'
+  | 'treasureAwakenStone'
+  | 'wristbandEssence'
+  | 'crystalEssence'
+  | 'goldenEggVoucher'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -209,6 +217,13 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'wildEnergyCan',
   'teleporter',
   'islandVoucher',
+  'treasureLiquid',
+  'treasureAccessory',
+  'treasureRefine',
+  'treasureAwakenStone',
+  'wristbandEssence',
+  'crystalEssence',
+  'goldenEggVoucher',
   'privilegeXp',
 ];
 
@@ -268,6 +283,13 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'wildEnergyCan',
   'teleporter',
   'islandVoucher',
+  'treasureLiquid',
+  'treasureAccessory',
+  'treasureRefine',
+  'treasureAwakenStone',
+  'wristbandEssence',
+  'crystalEssence',
+  'goldenEggVoucher',
   'privilegeXp',
 ];
 
@@ -388,6 +410,16 @@ export interface AccountState {
   wildArea: WildAreaState | null;
   /** M14.5: Clash of Isles season (null until first opened). */
   isles: IslesState | null;
+  /** M15: trainer treasures, Z Ring + crystals, fusion skins, Golden Egg, Awakening (null until first used). */
+  account3: {
+    treasures: Record<string, { level: number; accessory: number; refine: number; star: number; faction: Faction | null }>;
+    wristband: number;
+    crystals: Partial<Record<Faction, number>>;
+    fusion: Record<string, number>;
+    fusionShards: Record<string, number>;
+    egg: { day: string; free: number; points: number; smashes: number; bought: Record<string, number> };
+    awaken: { wildId: string | null; progress: Record<string, number>; base: Record<string, number> };
+  } | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */

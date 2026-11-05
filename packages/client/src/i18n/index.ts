@@ -84,6 +84,13 @@ export const en = {
   'currency.wildEnergyCan': 'Wild Area Energy Canisters',
   'currency.teleporter': 'Teleporters',
   'currency.islandVoucher': 'Isle Challenge Vouchers',
+  'currency.treasureLiquid': 'Treasure Liquid',
+  'currency.treasureAccessory': 'Treasure Accessory Parts',
+  'currency.treasureRefine': 'Treasure Refine Stones',
+  'currency.treasureAwakenStone': 'Treasure Awakening Stones',
+  'currency.wristbandEssence': 'Wristband Essence',
+  'currency.crystalEssence': 'Crystal Essence',
+  'currency.goldenEggVoucher': 'Golden Egg Vouchers',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -755,6 +762,38 @@ export const en = {
   'joint.bought': 'Bought.',
   'joint.shelfLocked': 'Locked shelf',
   'joint.levelUp': 'Level up',
+  'a3.title': 'Treasures, Z Ring, Skins, Golden Egg & Awakening',
+  'a3.back': 'Back to the Trainer',
+  'a3.open': 'Treasures, Z Ring, Skins, Golden Egg & Awakening →',
+  'a3.tab.treasures': 'Trainer treasures',
+  'a3.tab.zring': 'Z Ring & crystals',
+  'a3.tab.fusion': 'Fusion skins',
+  'a3.tab.egg': 'Golden Egg',
+  'a3.tab.awaken': 'Awakening',
+  'a3.resonance': 'Treasure resonance',
+  'a3.unlockAt': 'unlocks after Victory Road: {gym}',
+  'a3.accessory': 'Accessories',
+  'a3.refine': 'Refine',
+  'a3.skill': 'Skill',
+  'a3.up.level': 'Level',
+  'a3.up.accessory': 'Accessory',
+  'a3.up.refine': 'Refine',
+  'a3.up.star': 'Awaken ★',
+  'a3.faction': 'Boost faction',
+  'a3.skillsNote': 'Treasure skills in battle are not built yet; levels, refines and accessories raise the skill level shown.',
+  'a3.zring': 'Z Ring',
+  'a3.crystal': 'Pure Crystal',
+  'a3.levelUp': 'Level up',
+  'a3.shards': 'Shards',
+  'a3.fusionNote': 'Skin stats count whether worn or not. Skin shards come from events (M16).',
+  'a3.eggPoints': 'Egg Points',
+  'a3.freeSmash': 'Free smashes today',
+  'a3.smash': 'Smash',
+  'a3.smashed': 'Smashed!',
+  'a3.awakenLocked': 'The Awakening opens on server day 60 once twelve Pokémon reach 18★.',
+  'a3.progress': 'Awakening progress',
+  'a3.train': 'Train',
+  'a3.training': 'Training',
   'isles.title': 'Clash of Isles',
   'isles.desc': 'Take islands from rival guilds and hold one for Isle Tokens.',
   'isles.locked': 'Clash of Isles opens on server day 2 after story 3-10.',
@@ -1481,6 +1520,13 @@ export type CurrencyKey =
   | 'wildEnergyCan'
   | 'teleporter'
   | 'islandVoucher'
+  | 'treasureLiquid'
+  | 'treasureAccessory'
+  | 'treasureRefine'
+  | 'treasureAwakenStone'
+  | 'wristbandEssence'
+  | 'crystalEssence'
+  | 'goldenEggVoucher'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1551,6 +1597,13 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   wildEnergyCan: en['currency.wildEnergyCan'],
   teleporter: en['currency.teleporter'],
   islandVoucher: en['currency.islandVoucher'],
+  treasureLiquid: en['currency.treasureLiquid'],
+  treasureAccessory: en['currency.treasureAccessory'],
+  treasureRefine: en['currency.treasureRefine'],
+  treasureAwakenStone: en['currency.treasureAwakenStone'],
+  wristbandEssence: en['currency.wristbandEssence'],
+  crystalEssence: en['currency.crystalEssence'],
+  goldenEggVoucher: en['currency.goldenEggVoucher'],
   privilegeXp: en['currency.privilegeXp'],
 };
 

@@ -32,6 +32,7 @@ import type { DigSiteView } from './dig-site-view';
 import type { ParadiseView } from './paradise-view';
 import type { JointTeamView } from './joint-team-view';
 import type { IslesView } from './isles-view';
+import type { Account3View } from './account3-view';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -617,6 +618,16 @@ export interface GameServer {
   collectIsland(): Promise<Result<ClaimResult>>;
   claimIslesTask(challenges: number): Promise<Result<ClaimResult>>;
   claimIslesSeason(): Promise<Result<ClaimResult>>;
+  /** M15 Account systems III. */
+  getAccount3(): Promise<Result<Account3View>>;
+  upgradeTreasure(type: number, action: 'level' | 'accessory' | 'refine' | 'star'): Promise<Result<AccountSnapshot>>;
+  setTreasureFaction(type: number, faction: string): Promise<Result<AccountSnapshot>>;
+  levelWristband(): Promise<Result<AccountSnapshot>>;
+  levelCrystal(faction: string): Promise<Result<AccountSnapshot>>;
+  levelFusion(id: number): Promise<Result<AccountSnapshot>>;
+  smashEggs(times: 1 | 10 | 30): Promise<Result<{ rewards: Rewards; shards: Record<string, number>; snapshot: AccountSnapshot }>>;
+  buyEggShop(id: number): Promise<Result<AccountSnapshot>>;
+  chooseAwakening(wildId: string): Promise<Result<AccountSnapshot>>;
   /** M14.1 Victory Road. */
   getVictoryRoad(): Promise<Result<VictoryRoadView>>;
   claimVictoryChest(gym: number, progress: number): Promise<Result<ClaimResult>>;
@@ -707,6 +718,8 @@ export * from './joint-team-view';
 export * from './joint-team';
 export * from './isles-view';
 export * from './isles';
+export * from './account3-view';
+export * from './account3';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

@@ -1455,3 +1455,17 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - Take islands from CPU guilds (attempts, boosts, shields, fatigue), hold one for Isle Tokens, season points, daily
   tasks and season rank rewards. Save v50. ASSUMPTIONS #112. M14 complete.
+
+## M15 — Account systems III (2026-11-05)
+
+- Trainer treasures (unlocked by Victory Road gyms): level, accessory, refine and awakening stars; boost-faction
+  picks; resonance. Z Ring levels raise Pure Crystal caps; crystals add faction stats.
+- 18 Different Dimension fusion skins leveled from shards; their stats count whether worn or not.
+- Golden Egg: one free smash a day, Golden Egg Vouchers for ×1/×10/×30, Egg Points shop for Pokémon shards.
+- Awakening: opens on server day 60 with twelve 18★ Pokémon; finishing it unlocks 18★→19★; 19★+ costs Awakening Stones.
+- New page /account-systems (Trainer screen link). Save v51. ASSUMPTIONS #113.
+
+### Deviation from the reference
+
+- Treasure level costs are stand-ins (the level table is not in the dumps). Treasure, crystal and skin battle skills
+  are not built; their stat parts are. Awakening tasks only count premium draws and egg smashes.

@@ -82,6 +82,14 @@ export interface Rewards {
   wildEnergyCan?: number;
   teleporter?: number;
   islandVoucher?: number;
+  /** M15 Account systems III. */
+  treasureLiquid?: number;
+  treasureAccessory?: number;
+  treasureRefine?: number;
+  treasureAwakenStone?: number;
+  wristbandEssence?: number;
+  crystalEssence?: number;
+  goldenEggVoucher?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -154,6 +162,13 @@ export const CURRENCY_REWARD_KEYS = [
   'wildEnergyCan',
   'teleporter',
   'islandVoucher',
+  'treasureLiquid',
+  'treasureAccessory',
+  'treasureRefine',
+  'treasureAwakenStone',
+  'wristbandEssence',
+  'crystalEssence',
+  'goldenEggVoucher',
   'privilegeXp',
 ] as const;
 

@@ -1274,3 +1274,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      development power, fatigue, season points, daily tasks, rank rewards. Left out: raids on the player's island,
      Assist Points, shield buying, robbing, weather, multi-team garrisons. Squad `isles`, currency `islandVoucher`,
      `isles` slice; save v50. docs/design/clash-of-isles.md. **M14 done** (Shovel Carnival → M16).
+
+113. **M15 Account systems III (2026-11-05).** From trainer_treasure_*, wristband / pure_crystal, fusion (Different
+     Dimension) skins, golden_egg and awakening tables. Copied: treasures + gym unlocks, skill tiers, accessories,
+     refines, awakening stars and faction picks (1 per faction, 2 once five unlock), resonance; Z Ring levels, crystal
+     caps and per-faction crystal stats; 18 fusion skins and their perks (stats count unworn); egg jackpot, 1 free smash
+     a day, Egg Points shop; Awakening (server day 60, twelve 18★, 600 progress) gating 18★→19★, Awakening Stones for
+     19★+. Stand-ins: treasure level cost (trainer_treasure_lev missing from the dumps). Not built: treasure / crystal /
+     skin battle skills. Seven currencies, `account3` slice; save v51. docs/design/account-systems-3.md.

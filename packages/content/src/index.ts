@@ -94,6 +94,7 @@ export {
   PARADISE,
   JOINT_TEAM,
   ISLES,
+  ACCOUNT3,
   VICTORY_ROAD,
   KINGS_TRIAL,
   GACHA_TUNING,
@@ -114,6 +115,7 @@ export type {
   ParadiseJson,
   JointTeamJson,
   IslesJson,
+  Account3Json,
   VictoryRoadJson,
   KingsTrialJson,
 } from './tuning';
@@ -128,6 +130,7 @@ export { digSiteSchema } from './dig-site-schema';
 export { paradiseSchema } from './paradise-schema';
 export { jointTeamSchema } from './joint-team-schema';
 export { islesSchema } from './isles-schema';
+export { account3Schema } from './account3-schema';
 export { victoryRoadSchema } from './victory-road-schema';
 export { kingsTrialSchema } from './kings-trial-schema';
 export type {

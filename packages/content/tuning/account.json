@@ -65,6 +65,13 @@
     "wildEnergyCan": 0,
     "teleporter": 0,
     "islandVoucher": 0,
+    "treasureLiquid": 0,
+    "treasureAccessory": 0,
+    "treasureRefine": 0,
+    "treasureAwakenStone": 0,
+    "wristbandEssence": 0,
+    "crystalEssence": 0,
+    "goldenEggVoucher": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -140,6 +147,13 @@
     "wildEnergyCan": 2,
     "teleporter": 2,
     "islandVoucher": 5,
+    "treasureLiquid": 5000,
+    "treasureAccessory": 100,
+    "treasureRefine": 500,
+    "treasureAwakenStone": 10,
+    "wristbandEssence": 20000,
+    "crystalEssence": 5000,
+    "goldenEggVoucher": 30,
     "privilegeXp": 300
   }
 }

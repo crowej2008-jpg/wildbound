@@ -730,6 +730,13 @@ export const rewardSchema = z
     wildEnergyCan: z.number().nonnegative().optional(),
     teleporter: z.number().nonnegative().optional(),
     islandVoucher: z.number().nonnegative().optional(),
+    treasureLiquid: z.number().nonnegative().optional(),
+    treasureAccessory: z.number().nonnegative().optional(),
+    treasureRefine: z.number().nonnegative().optional(),
+    treasureAwakenStone: z.number().nonnegative().optional(),
+    wristbandEssence: z.number().nonnegative().optional(),
+    crystalEssence: z.number().nonnegative().optional(),
+    goldenEggVoucher: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

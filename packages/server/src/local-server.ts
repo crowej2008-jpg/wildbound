@@ -64,6 +64,7 @@ import {
   SQUAD_MODES,
   SQUAD_SIZE,
   starredUp,
+  planFodder,
   starRange,
   STRATEGIES,
   TUTORIAL_STEPS,
@@ -175,6 +176,9 @@ import * as joint from './joint-team';
 import { buildJointTeamView, type JointTeamView } from './joint-team-view';
 import * as isles from './isles';
 import { buildIslesView, type IslesView } from './isles-view';
+import * as a3 from './account3';
+import { squadWildIds } from './growth';
+import { buildAccount3View, type Account3View } from './account3-view';
 import { bumpCounter, stampLogin } from './counters';
 import {
   buildKingsTrialView,
@@ -471,7 +475,18 @@ export class LocalServer implements GameServer {
     const view = evolutionView(state, (id) => this.config.species.get(id), instance.id);
     if (!view || !view.next) return fail('evolution_blocked', 'already at the top star');
     if (view.blocked === 'awakening') {
-      return fail('evolution_blocked', `${view.next.star}★ comes from Awakening, which arrives in a later milestone`);
+      // M15: 18★ → 19★ needs the Awakening (600 progress); 19★+ need Awakening Stones and an own copy.
+      const card = view.card;
+      if (!card.fodderItems) return fail('evolution_blocked', `${view.next.star}★ needs the Origin system (not built)`);
+      if (instance.stars === 18 && !a3.awakened(this.config, state, instance.id)) {
+        return fail('evolution_blocked', 'finish this Pokémon\'s Awakening first (600 progress)');
+      }
+      const stones = card.fodderItems.reduce((s, f) => s + (f.item === 10805 ? f.count : 0), 0);
+      if ((state.currencies.awakeningStone ?? 0) < stones) return fail('insufficient_items', `needs ${stones} Awakening Stones`);
+      const plan = planFodder(instance, { ...card, fodderItems: undefined }, state.roster.flatMap((w) => { const m = this.config.species.get(w.speciesId); return m ? [{ instance: w, faction: m.faction }] : []; }), squadWildIds(state));
+      if (plan.missing.length > 0) return fail('insufficient_items', 'needs another copy of this Pokémon as fodder');
+      const consumed = consumeFodder({ ...state, currencies: { ...state.currencies, awakeningStone: (state.currencies.awakeningStone ?? 0) - stones } }, plan.consume);
+      return this.commit({ ...consumed, roster: this.replace(consumed.roster, starredUp(instance, starRange(meta.stars).max)) });
     }
     if (!view.ready) {
       const short = view.requirements.find((r) => r.have < r.count);
@@ -2073,6 +2088,49 @@ export class LocalServer implements GameServer {
   async claimIslesSeason(): Promise<Result<ClaimResult>> {
     const r = await this.jointAct((s, now) => isles.claimIslesSeason(this.config, s, now));
     return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async getAccount3(): Promise<Result<Account3View>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildAccount3View(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  private async a3Act(fn: (s: AccountState, now: number) => Result<AccountState>): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap(fn));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async upgradeTreasure(type: number, action: 'level' | 'accessory' | 'refine' | 'star') {
+    return this.a3Act((s) => a3.upgradeTreasure(this.config, s, type, action));
+  }
+
+  async setTreasureFaction(type: number, faction: string) {
+    return this.a3Act((s) => a3.setTreasureFaction(this.config, s, type, faction as Faction));
+  }
+
+  async levelWristband() {
+    return this.a3Act((s) => a3.levelWristband(this.config, s));
+  }
+
+  async levelCrystal(faction: string) {
+    return this.a3Act((s) => a3.levelCrystal(this.config, s, faction as Faction));
+  }
+
+  async levelFusion(id: number) {
+    return this.a3Act((s) => a3.levelFusion(this.config, s, id));
+  }
+
+  async smashEggs(times: 1 | 10 | 30) {
+    return this.jointAct((s, now) => a3.smashEggs(this.config, s, now, times));
+  }
+
+  async buyEggShop(id: number) {
+    return this.a3Act((s) => a3.buyEggShop(this.config, s, id));
+  }
+
+  async chooseAwakening(wildId: string) {
+    return this.a3Act((s, now) => a3.chooseAwakening(this.config, s, now, wildId));
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

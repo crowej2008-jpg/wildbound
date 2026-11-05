@@ -362,3 +362,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-05] update | M14.5 Clash of Isles — M14 done
 - Solo vs CPU guilds (ASSUMPTIONS #112, save v50). M14 complete; Shovel Carnival is in M16.
+
+## [2026-11-05] update | M15 Account systems III
+- Treasures, Z Ring + Pure Crystals, fusion skins, Golden Egg, Awakening (ASSUMPTIONS #113, save v51).

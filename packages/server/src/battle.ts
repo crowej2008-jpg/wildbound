@@ -42,6 +42,7 @@ import { museumLines } from './dig-site';
 import { squadSkillLines } from './joint-team';
 import { badgeStatLines } from './victory-road';
 import { trialStatLines } from './kings-trial';
+import { account3Lines } from './account3';
 import type { TowerRuleJson } from '@wildbound/content';
 
 /**
@@ -144,6 +145,7 @@ function accountFold(config: GameConfig, state: AccountState, meta?: { className
   const lines = [
     ...(meta ? badgeStatLines(config, state, meta.className, meta.faction) : []),
     ...(meta ? trialStatLines(config, state, meta.className, meta.faction) : []),
+    ...account3Lines(config, state, meta?.faction as Faction | undefined),
     ...(titleFoldFor(config, state)?.lines ?? []),
     ...fashionLines(config, state, (id) => Boolean(state.titles.owned[id])),
     ...museumLines(config, state),
