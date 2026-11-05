@@ -2,7 +2,7 @@
 title: Rift Arena
 type: system
 milestone: M13.4 (Barriers + Merchant), M13.5 (Ring Battle + Quiz)
-status: planned — source tables found 2026-11-04
+status: Rift Barriers built 2026-11-04 (part 1)
 updated: 2026-10-31
 sources: [opencode-session-2026-10 msg 80 (source survey), docs/SCOPE.md]
 ---

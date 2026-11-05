@@ -49,6 +49,8 @@
     "preciousShard": 0,
     "preciousGiftbox": 0,
     "vaultKey": 0,
+    "timeCoin": 0,
+    "timeCredit": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -108,6 +110,8 @@
     "preciousShard": 50,
     "preciousGiftbox": 1,
     "vaultKey": 5,
+    "timeCoin": 0,
+    "timeCredit": 0,
     "privilegeXp": 300
   }
 }

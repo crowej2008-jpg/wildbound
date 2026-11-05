@@ -53,6 +53,7 @@ after the retrofit, once friends have real saves.
 | 38 | R9 | source summoning: per-machine free timers, box credits, lifetime draws; VIP credits, Wishing Well faction; pity and species wish removed; `preciousShard` (reset) |
 | 39 | R9 | the Bag: `preciousGiftbox` currency (reset) |
 | 40 | M13.3 | Hoopa's Vault: `hoopaVault` slice and squad, `vaultKey` currency (reset) |
-| 41+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
+| 41 | M13.4 | Rift Barriers: `rift` slice and squad, `timeCoin` / `timeCredit` (reset) |
+| 42+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

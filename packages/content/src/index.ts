@@ -86,6 +86,7 @@ export {
   PET_HOME,
   SKY_PILLAR,
   HOOPA_VAULT,
+  RIFT,
   GACHA_TUNING,
 } from './tuning';
 export type {
@@ -96,10 +97,12 @@ export type {
   PetHomeJson,
   SkyPillarJson,
   HoopaVaultJson,
+  RiftJson,
 } from './tuning';
 export { petHomeSchema } from './pet-home-schema';
 export { skyPillarSchema } from './sky-pillar-schema';
 export { hoopaVaultSchema } from './hoopa-vault-schema';
+export { riftSchema } from './rift-schema';
 export type {
   SkyPillarConditionJson,
   SkyPillarStageJson,

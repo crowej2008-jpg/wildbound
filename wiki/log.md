@@ -298,3 +298,8 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: the co-op tower's floor 100 / 200 / 300 bosses are random teams with huge stats (not hand-made), plus a
   mini-boss every 50 floors. Owner also
   expects to play solo against scaling CPUs, so the server-wide parts and M19 are to be revisited later.
+
+## [2026-11-04] update | M13.4 Rift Barriers
+- Built from the source's New Rift Arena: weekly season, difficulty from resonance, level sync, 250 floors, 5 lives,
+  floor rewards, drops, challenge chests, coins → Gold (ASSUMPTIONS #97, save v41). Next: hiring, bans, Time Credit
+  upgrades and the Mystic Merchant.

@@ -62,6 +62,9 @@ export interface Rewards {
   preciousGiftbox?: number;
   /** M13.3: Vault Secret Keys (Hoopa's Vault). */
   vaultKey?: number;
+  /** M13.4: Rift Arena Time Coins / Time Credits (season currencies). */
+  timeCoin?: number;
+  timeCredit?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -118,6 +121,8 @@ export const CURRENCY_REWARD_KEYS = [
   'preciousShard',
   'preciousGiftbox',
   'vaultKey',
+  'timeCoin',
+  'timeCredit',
   'privilegeXp',
 ] as const;
 

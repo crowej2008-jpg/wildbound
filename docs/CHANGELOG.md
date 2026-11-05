@@ -1381,3 +1381,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Hoopa's Vault drops: held items by floor band (lines roll when kept), 3 from the Guardian, band orbs from
   floor 6. ASSUMPTIONS #95.
 - New accounts no longer get three free Rare held items (owner). ASSUMPTIONS #96.
+
+## M13.4 part 1 — Rift Barriers (2026-11-04)
+
+- Weekly season, difficulty from resonance, level sync, 250 floors (Easy / Advanced), 5 lives a day, source floor
+  rewards, drops and challenge chests, coins → Gold at season end. Save v41. ASSUMPTIONS #97.

@@ -26,6 +26,7 @@ import {
   PET_HOME,
   SKY_PILLAR,
   HOOPA_VAULT,
+  RIFT,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -49,6 +50,7 @@ import type {
   PetHomeJson,
   SkyPillarJson,
   HoopaVaultJson,
+  RiftJson,
   PveJson,
   PvpJson,
   TitlesJson,
@@ -140,6 +142,8 @@ export interface GameConfig {
   skyPillar: SkyPillarJson;
   /** M13.3 Hoopa's Vault. */
   hoopaVault: HoopaVaultJson;
+  /** M13.4 Rift Barriers. */
+  rift: RiftJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -249,6 +253,7 @@ export function buildConfig(): GameConfig {
     petHome: PET_HOME,
     skyPillar: SKY_PILLAR,
     hoopaVault: HOOPA_VAULT,
+    rift: RIFT,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

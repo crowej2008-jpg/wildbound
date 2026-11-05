@@ -1,0 +1,499 @@
+{
+  "floors": 250,
+  "easyFloors": 100,
+  "livesPerDay": 5,
+  "bossEvery": 5,
+  "season": {
+    "openDay": 2,
+    "openHour": 7,
+    "endDay": 7,
+    "endHour": 22
+  },
+  "coinToGold": 100,
+  "difficulties": [
+    {
+      "difficulty": 1,
+      "minResonance": 0,
+      "syncLevel": 100,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 192000,
+            "candy": 64000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 288000,
+            "candy": 96000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 480000,
+            "candy": 160000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 480000,
+            "candy": 160000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 960000,
+            "candy": 320000
+          }
+        }
+      ]
+    },
+    {
+      "difficulty": 2,
+      "minResonance": 100,
+      "syncLevel": 125,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 216000,
+            "candy": 72000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 324000,
+            "candy": 108000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 540000,
+            "candy": 180000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 540000,
+            "candy": 180000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 1080000,
+            "candy": 360000
+          }
+        }
+      ]
+    },
+    {
+      "difficulty": 3,
+      "minResonance": 150,
+      "syncLevel": 150,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 240000,
+            "candy": 80000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 360000,
+            "candy": 120000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 600000,
+            "candy": 200000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 600000,
+            "candy": 200000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 1200000,
+            "candy": 400000
+          }
+        }
+      ]
+    },
+    {
+      "difficulty": 4,
+      "minResonance": 200,
+      "syncLevel": 175,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 240000,
+            "candy": 80000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 360000,
+            "candy": 120000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 600000,
+            "candy": 200000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 600000,
+            "candy": 200000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 1200000,
+            "candy": 400000
+          }
+        }
+      ]
+    },
+    {
+      "difficulty": 5,
+      "minResonance": 250,
+      "syncLevel": 200,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 288000,
+            "candy": 96000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 432000,
+            "candy": 144000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 720000,
+            "candy": 240000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 720000,
+            "candy": 240000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 1440000,
+            "candy": 480000
+          }
+        }
+      ]
+    },
+    {
+      "difficulty": 6,
+      "minResonance": 300,
+      "syncLevel": 225,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 288000,
+            "candy": 96000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 432000,
+            "candy": 144000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 720000,
+            "candy": 240000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 720000,
+            "candy": 240000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 1440000,
+            "candy": 480000
+          }
+        }
+      ]
+    },
+    {
+      "difficulty": 7,
+      "minResonance": 350,
+      "syncLevel": 250,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 324000,
+            "candy": 108000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 486000,
+            "candy": 162000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 810000,
+            "candy": 270000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 810000,
+            "candy": 270000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 1620000,
+            "candy": 540000
+          }
+        }
+      ]
+    },
+    {
+      "difficulty": 8,
+      "minResonance": 400,
+      "syncLevel": 275,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 324000,
+            "candy": 108000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 486000,
+            "candy": 162000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 810000,
+            "candy": 270000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 810000,
+            "candy": 270000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 1620000,
+            "candy": 540000
+          }
+        }
+      ]
+    },
+    {
+      "difficulty": 9,
+      "minResonance": 450,
+      "syncLevel": 300,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 336000,
+            "candy": 112000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 504000,
+            "candy": 168000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 840000,
+            "candy": 280000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 840000,
+            "candy": 280000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 1680000,
+            "candy": 560000
+          }
+        }
+      ]
+    },
+    {
+      "difficulty": 10,
+      "minResonance": 500,
+      "syncLevel": 325,
+      "floorRewards": [
+        {
+          "floor": 20,
+          "rewards": {
+            "gold": 360000,
+            "candy": 120000
+          }
+        },
+        {
+          "floor": 40,
+          "rewards": {
+            "gold": 540000,
+            "candy": 180000
+          }
+        },
+        {
+          "floor": 60,
+          "rewards": {
+            "gold": 900000,
+            "candy": 300000
+          }
+        },
+        {
+          "floor": 80,
+          "rewards": {
+            "gold": 900000,
+            "candy": 300000
+          }
+        },
+        {
+          "floor": 100,
+          "rewards": {
+            "gold": 1800000,
+            "candy": 600000
+          }
+        }
+      ]
+    }
+  ],
+  "drops": {
+    "easy": {
+      "timeCredit": 1,
+      "timeCoin": 10,
+      "gold": 5000,
+      "candy": 1000
+    },
+    "easyBoss": {
+      "timeCredit": 3,
+      "timeCoin": 30
+    },
+    "advanced": {
+      "timeCoin": 50
+    },
+    "advancedBoss": {
+      "timeCoin": 250
+    }
+  },
+  "chests": [
+    {
+      "challenges": 3,
+      "rewards": {
+        "pokemonShard5": 25
+      }
+    },
+    {
+      "challenges": 10,
+      "rewards": {
+        "pokemonShard5": 25
+      }
+    },
+    {
+      "challenges": 20,
+      "rewards": {
+        "stone": 500
+      }
+    },
+    {
+      "challenges": 30,
+      "rewards": {
+        "ticketPremium": 5,
+        "stone": 500
+      }
+    }
+  ],
+  "enemy": {
+    "factions": [],
+    "tiers": [],
+    "count": 6,
+    "baseLevel": 5,
+    "levelSlope": 1.014,
+    "starsEvery": 12,
+    "maxStars": 20,
+    "stageEvery": 25,
+    "maxStage": 3
+  },
+  "bossMult": 1.5,
+  "_leftOut": [
+    "item 10228 (4-star Evo Boxes, Lucky Coin: not in Wildbound)",
+    "item 10229 (4-star Evo Boxes, Lucky Coin: not in Wildbound)",
+    "item 10230 (4-star Evo Boxes, Lucky Coin: not in Wildbound)",
+    "item 10231 (4-star Evo Boxes, Lucky Coin: not in Wildbound)",
+    "item 40064 (4-star Evo Boxes, Lucky Coin: not in Wildbound)"
+  ]
+}

@@ -714,6 +714,8 @@ export const rewardSchema = z
     preciousShard: z.number().nonnegative().optional(),
     preciousGiftbox: z.number().nonnegative().optional(),
     vaultKey: z.number().nonnegative().optional(),
+    timeCoin: z.number().nonnegative().optional(),
+    timeCredit: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

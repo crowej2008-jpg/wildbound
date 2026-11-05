@@ -68,6 +68,8 @@ export const en = {
   'currency.preciousShard': 'Selectable Precious Shards',
   'currency.preciousGiftbox': 'Selectable Precious Giftboxes',
   'currency.vaultKey': 'Vault Secret Keys',
+  'currency.timeCoin': 'Time Coins',
+  'currency.timeCredit': 'Time Credits',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -307,6 +309,7 @@ export const en = {
   'squad.mode.worldBoss': 'World Boss',
   'squad.mode.skyPillar': 'Sky Pillar',
   'squad.mode.hoopaVault': "Hoopa's Vault",
+  'squad.mode.rift': 'Rift Arena',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -865,6 +868,33 @@ export const en = {
   'explore.gateSummary': 'Requires',
   'skyPillar.title': 'Sky Pillar',
   'hoopa.title': "Hoopa's Vault",
+  'rift.title': 'Rift Arena',
+  'rift.locked': 'Rift Arena opens after story 10-10 and trainer level 10.',
+  'rift.seasonEnds': 'Season ends in',
+  'rift.seasonOpens': 'Season closed. Opens in',
+  'rift.difficulty': 'Difficulty',
+  'rift.sync': 'Pokémon synced to Lv',
+  'rift.barriers': 'Rift Barriers',
+  'rift.highest': 'Highest floor',
+  'rift.lives': 'Lives',
+  'rift.floor': 'Floor',
+  'rift.easy': 'Easy',
+  'rift.advanced': 'Advanced',
+  'rift.boss': 'Boss',
+  'rift.drops': 'Drops',
+  'rift.floorReward': 'Floor {n} reward',
+  'rift.challenge': 'Challenge',
+  'rift.allCleared': 'Every floor is cleared this season.',
+  'rift.coinsNote': 'Leftover Time Coins become {n} Gold each when the season ends; Time Credits are taken back.',
+  'rift.rankingLater': 'The Advanced ranking comes later.',
+  'rift.chests': 'Challenge chests',
+  'rift.chestAt': '{n} challenges',
+  'rift.claim': 'Claim',
+  'rift.claimed': 'Claimed',
+  'rift.chestClaimed': 'Chest claimed.',
+  'rift.cleared': 'Floor cleared!',
+  'rift.failed': 'Challenge failed. One life lost.',
+  'rift.back': 'Back to the Rift',
   'hoopa.quality.rare': 'Rare',
   'hoopa.quality.epic': 'Epic',
   'hoopa.quality.legendary': 'Legendary',
@@ -1121,6 +1151,8 @@ export type CurrencyKey =
   | 'preciousShard'
   | 'preciousGiftbox'
   | 'vaultKey'
+  | 'timeCoin'
+  | 'timeCredit'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1175,10 +1207,12 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   preciousShard: en['currency.preciousShard'],
   preciousGiftbox: en['currency.preciousGiftbox'],
   vaultKey: en['currency.vaultKey'],
+  timeCoin: en['currency.timeCoin'],
+  timeCredit: en['currency.timeCredit'],
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1188,6 +1222,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   worldBoss: en['squad.mode.worldBoss'],
   skyPillar: en['squad.mode.skyPillar'],
   hoopaVault: en['squad.mode.hoopaVault'],
+  rift: en['squad.mode.rift'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

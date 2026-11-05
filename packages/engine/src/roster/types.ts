@@ -17,6 +17,7 @@ import type { DungeonState } from '../pve/dungeons';
 import type { PetHomeState } from '../pet-home/types';
 import type { SkyPillarState } from '../sky-pillar/types';
 import type { HoopaVaultState } from '../hoopa-vault/types';
+import type { RiftState } from '../rift/types';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -26,7 +27,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -36,6 +37,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'worldBoss',
   'skyPillar',
   'hoopaVault',
+  'rift',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -107,6 +109,8 @@ export type CurrencyId =
   | 'preciousShard'
   | 'preciousGiftbox'
   | 'vaultKey'
+  | 'timeCoin'
+  | 'timeCredit'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -162,6 +166,8 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'preciousShard',
   'preciousGiftbox',
   'vaultKey',
+  'timeCoin',
+  'timeCredit',
   'privilegeXp',
 ];
 
@@ -205,6 +211,8 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'preciousShard',
   'preciousGiftbox',
   'vaultKey',
+  'timeCoin',
+  'timeCredit',
   'privilegeXp',
 ];
 
@@ -303,6 +311,8 @@ export interface AccountState {
   skyPillar: SkyPillarState;
   /** M13.3: Hoopa's Vault progress, daily keys and the run in progress. */
   hoopaVault: HoopaVaultState;
+  /** M13.4: Rift Barriers season progress and lives. */
+  rift: RiftState;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }
@@ -453,6 +463,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     worldBoss: emptySquad(),
     skyPillar: emptySquad(),
     hoopaVault: emptySquad(),
+    rift: emptySquad(),
   };
 }
 
@@ -465,6 +476,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     worldBoss: 'aggressive',
     skyPillar: 'balanced',
     hoopaVault: 'balanced',
+    rift: 'balanced',
   };
 }
 

@@ -1158,3 +1158,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 
 96. **No free starter held items (owner 2026-11-04: "take the free 3 away").** New accounts no longer get the
     three Rare held items (one per class); held items come from Hoopa's Vault. Replaces the stand-in in #56.
+
+97. **M13.4 Rift Barriers (2026-11-04).** From the source's `underground_new_*` (scripts/import-rift.mjs): the
+    season window, 250 floors (Easy 1–100, Advanced 101–250), a boss every 5th floor, 5 lives a day, the Easy floor
+    rewards by difficulty, the Advanced drops and the challenge chests. Readings: the difficulty is picked from
+    the account's resonance (the source uses the server's); `ratio` 100 = Gold per leftover Time Coin; level sync
+    caps but does not raise levels yet; chests whose goods Wildbound lacks are left out. Stand-ins: resonance →
+    difficulty, the synced level, Easy drop amounts, enemies. Not built: hiring, bans, Time Credit upgrades, the
+    Merchant (part 2), the ranking and weakness (backend). New currencies `timeCoin` / `timeCredit`, squad `rift`,
+    save v41 (reset). docs/design/rift-arena.md.

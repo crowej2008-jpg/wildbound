@@ -109,6 +109,7 @@ import {
   type SkyPillarBattleResult,
   type HoopaRouteResult,
   type HoopaGuardianResult,
+  type RiftBattleResult,
   type SkyPillarSweepResult,
   type StageBattleResult,
   type SummonResult,
@@ -136,6 +137,8 @@ import {
   startVaultRun as startVaultRunAction,
 } from './hoopa-vault';
 import { buildHoopaVaultView, type HoopaVaultView } from './hoopa-vault-view';
+import { challengeRift as challengeRiftAction, claimRiftChestAction, prepareRift } from './rift';
+import { buildRiftView, type RiftView } from './rift-view';
 import {
   buyShopOfferAction,
   claimLevelAction,
@@ -1503,6 +1506,38 @@ export class LocalServer implements GameServer {
     const outcome = exitVaultRunAction(this.config, loaded.value, this.now(loaded.value));
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commit(outcome.value);
+  }
+
+  async getRift(): Promise<Result<RiftView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const now = this.now(loaded.value);
+    const prepared = prepareRift(this.config, loaded.value, now);
+    if (prepared.changed) {
+      const committed = await this.commit(prepared.state);
+      if (!committed.ok) return committed;
+    }
+    return ok(buildRiftView(this.config, prepared.state, now));
+  }
+
+  async challengeRift(seed?: number): Promise<Result<RiftBattleResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = challengeRiftAction(this.config, loaded.value, this.now(loaded.value), seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ battle: value.battle, win: value.win, floor: value.floor, rewards: value.rewards, snapshot: committed.value });
+  }
+
+  async claimRiftChest(challenges: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimRiftChestAction(this.config, loaded.value, this.now(loaded.value), challenges);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.reward);
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

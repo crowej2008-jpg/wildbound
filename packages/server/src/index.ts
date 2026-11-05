@@ -24,6 +24,7 @@ import type { ExploreView } from './explore-view';
 import type { PetHomeView } from './pet-home-view';
 import type { SkyPillarView } from './sky-pillar-view';
 import type { HoopaVaultView } from './hoopa-vault-view';
+import type { RiftView } from './rift-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -210,6 +211,15 @@ export interface HoopaGuardianResult {
   items: BagItem[];
   orbs: BagOrb[];
   floor: number;
+  snapshot: AccountSnapshot;
+}
+
+/** A Rift Barriers challenge (M13.4): a win clears the floor, a loss costs a life. */
+export interface RiftBattleResult {
+  battle: BattleView;
+  win: boolean;
+  floor: number;
+  rewards: Rewards;
   snapshot: AccountSnapshot;
 }
 
@@ -498,6 +508,10 @@ export interface GameServer {
   fightVaultRoute(card: HoopaCard, seed?: number): Promise<Result<HoopaRouteResult>>;
   fightVaultGuardian(seed?: number): Promise<Result<HoopaGuardianResult>>;
   exitVaultRun(): Promise<Result<AccountSnapshot>>;
+  /** M13.4 Rift Barriers. */
+  getRift(): Promise<Result<RiftView>>;
+  challengeRift(seed?: number): Promise<Result<RiftBattleResult>>;
+  claimRiftChest(challenges: number): Promise<Result<ClaimResult>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -560,6 +574,8 @@ export * from './sky-pillar';
 export * from './sky-pillar-view';
 export * from './hoopa-vault-view';
 export * from './hoopa-vault';
+export * from './rift-view';
+export * from './rift';
 export * from './plates';
 export * from './trinkets';
 export * from './berries';
