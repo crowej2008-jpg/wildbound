@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { EventsView } from '@wildbound/server';
 import { t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
+import WeekendEvents from './WeekendEvents';
 
 const rewardText = (r: Record<string, number>) =>
   Object.entries(r)
@@ -111,6 +112,7 @@ export default function Events() {
         </ul>
         <p className="muted">{t('events.mergeNote')}</p>
       </section>
+      <WeekendEvents />
       {status && (
         <p className="status-box" data-testid="events-status">
           {status}

@@ -67,3 +67,12 @@ that was worked on and what decisions after you are done"*. Every call below too
 - Pokémon Park (built in the follow-up): kept the source's real-time windows (open 09:00–21:00 UTC, boss at 12:15 /
   19:15 UTC — 07:15 / 14:15 Toronto). HP is not tracked per Pokémon: a loss faints the whole fielded team for the day.
   Egg snatching is reduced to "the last hit takes the egg"; CPU players hit the boss at a steady rate (stand-in).
+- Weekend Bash and the Flower Event (built in the follow-up) from the wiki's numbers; the gaps the wiki leaves
+  (Elven plain-tile prize, which Bingo line pays which prize, flower amounts per Tower floor vs climbs) are stand-ins.
+  Prize mapping: L & D / Shiny & Supreme / Supreme / Legendary boxes → the existing boxes; Level 7 Ruby Orb → 2,000 Orb
+  Essence; Back Decor / Follower / Mount / outfit pieces → their stones or Fashion Shards; Evolve boxes → Ascension
+  Stones. Gear selectors and the item-box shop (no prices) are left out.
+- Ruins Adventure is still not built: everything it pays (Relic Tablets, Quenching Equipment, Mystic Essence Stones,
+  artifact shards) feeds the Ancient Artifacts system, which Wildbound does not have yet (the wiki notes artifacts only
+  unlock after a server merge). It should come with that system.
+- Mecha shop (Shovel Carnival) stays out: the armor devices belong to special-form Pokémon Wildbound doesn't have.

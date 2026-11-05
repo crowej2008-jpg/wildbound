@@ -1311,3 +1311,15 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      strength and win reward, boss HP and CPU damage, scores. A lost wild fight faints the whole team for the day (the
      source tracks HP per Pokémon). Egg snatching is simplified: the last hit wins the egg phase. Berry boxes map to
      seeds / mulch. Squad `park`, `park` slice; save v54. docs/design/pokemon-park.md.
+
+117. **Weekend Bash + Flower Event (2026-11-05, follow-up).** From the owner's wiki (no source tables). Elven Treasure
+     Mon–Thu UTC (Monday to Friday reset): 5×5 board, 1 treasure a flip, grand prize in one of the last 4 tiles, the
+     round table (1–17), Gems 10 × 24 + 25 × 35 a round, cashback at 60…600 spent, Pet Exchange in Milk; plain tiles pay
+     20 Milk (stand-in). Bingo Fri–Sun: 4×4 card, a Sauce opens a uniform random 1–16 (repeats wasted), rows 500 Cake,
+     columns Plate Fragment / Plate Bottle / Trinket Chest / Star Shards, diagonals the two wildcards (the wiki doesn't
+     say which line pays which: stand-in layout); Sauce 40 × 20 + 40 × 30 Gems; Cake exchange. Flower Event weekly:
+     flowers from this week's activity steps (tower, daily dungeons, adventure missions, common summons, Pet Home merges,
+     Misty Woods wins, Arena, Ranked, Clash of Isles), 7 milestone chests, last week's rank vs CPU players. Not built:
+     gifting, the story-chapter and "speak" sources, paid packs, Deluxe card bonuses. Cosmetic prizes become stand-in
+     stones / shards; Team Rocket gives its title card (607). Weekly counters now keep last week. Four currencies,
+     `weekend` slice; save v55. docs/design/weekend-flower-events.md.

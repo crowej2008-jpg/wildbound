@@ -743,6 +743,10 @@ export const rewardSchema = z
     beastFood: z.number().nonnegative().optional(),
     beastFoodPlus: z.number().nonnegative().optional(),
     relicCoin: z.number().nonnegative().optional(),
+    elvenTreasure: z.number().nonnegative().optional(),
+    milk: z.number().nonnegative().optional(),
+    strawberrySauce: z.number().nonnegative().optional(),
+    strawberryCake: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

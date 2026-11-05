@@ -78,6 +78,10 @@
     "beastFood": 0,
     "beastFoodPlus": 0,
     "relicCoin": 0,
+    "elvenTreasure": 0,
+    "milk": 0,
+    "strawberrySauce": 0,
+    "strawberryCake": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -166,6 +170,10 @@
     "beastFood": 100,
     "beastFoodPlus": 20,
     "relicCoin": 1000,
+    "elvenTreasure": 60,
+    "milk": 5000,
+    "strawberrySauce": 60,
+    "strawberryCake": 5000,
     "privilegeXp": 300
   }
 }

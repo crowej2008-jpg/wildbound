@@ -5,13 +5,13 @@ import { dayKey, weekKey, type AccountState } from '@wildbound/engine';
  * distinct UTC days the account saved anything.
  */
 
-export type CounterKey = 'premiumDraws' | 'goldShopBuys' | 'worldBoss' | 'skyPillar' | 'rift' | 'ranked' | 'arenaWinsHigher' | 'weeklyTasks' | 'originShards';
+export type CounterKey = 'premiumDraws' | 'goldShopBuys' | 'worldBoss' | 'skyPillar' | 'rift' | 'ranked' | 'arenaWinsHigher' | 'weeklyTasks' | 'originShards' | 'commonDraws' | 'mistyWins' | 'islesFights' | `q:${string}`;
 
 type Counters = AccountState['counters'];
 
 function rolled(c: Counters, now: number): Counters {
   const week = weekKey(now);
-  return c.week === week ? c : { ...c, week, weekly: {} };
+  return c.week === week ? c : { ...c, week, weekly: {}, prevWeek: c.week, prevWeekly: c.weekly };
 }
 
 export function bumpCounter(state: AccountState, now: number, key: CounterKey, n = 1): AccountState {
@@ -30,6 +30,12 @@ export function stampLogin(state: AccountState, now: number): AccountState {
 
 export function counter(state: AccountState, key: CounterKey): number {
   return state.counters.total[key] ?? 0;
+}
+
+/** Last week's value of a weekly counter (kept when the week rolls). */
+export function lastWeekCounter(state: AccountState, now: number, key: CounterKey): { week: string; value: number } {
+  const c = rolled(state.counters, now);
+  return { week: c.prevWeek ?? '', value: c.prevWeekly?.[key] ?? 0 };
 }
 
 export function weeklyCounter(state: AccountState, now: number, key: CounterKey): number {

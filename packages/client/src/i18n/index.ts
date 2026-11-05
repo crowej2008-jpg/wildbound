@@ -97,6 +97,10 @@ export const en = {
   'currency.beastFood': 'Sachets of Flat Candy',
   'currency.beastFoodPlus': 'Jars of Flat Candy',
   'currency.relicCoin': 'Relic Coins',
+  'currency.elvenTreasure': 'Elven Treasure',
+  'currency.milk': 'Milk',
+  'currency.strawberrySauce': 'Strawberry Sauce',
+  'currency.strawberryCake': 'Strawberry Cake',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -884,6 +888,30 @@ export const en = {
   'events.phase.orb': 'Orb rush',
   'events.phase.soulHeart': 'Soul Heart rush',
   'events.phase.treasure': 'Treasure rush',
+  'wk.elven': 'Weekend Bash: Elven Treasure',
+  'wk.round': 'Round',
+  'wk.flipped': 'Tiles flipped',
+  'wk.elvenClosed': 'Runs Monday to Friday (UTC)',
+  'wk.grand': 'Grand prize this round',
+  'wk.flip': 'Flip a tile',
+  'wk.flippedOne': 'Tile flipped.',
+  'wk.grandFound': 'Grand prize! On to the next round.',
+  'wk.buyOne': 'Buy 1 for {p} Gems',
+  'wk.petExchange': 'Pet Exchange (Milk)',
+  'wk.bingo': 'Weekend Bash: Bingo',
+  'wk.bingoOpen': 'Running (Friday to Monday)',
+  'wk.bingoClosed': 'Runs Friday to Monday (UTC)',
+  'wk.open': 'Open',
+  'wk.opened': 'Opened',
+  'wk.buySauce': 'Sauce for {p} Gems ({n} left)',
+  'wk.reset': 'New card',
+  'wk.newCard': 'A fresh card!',
+  'wk.line': 'Line',
+  'wk.wildcard': 'Wildcard (pick one)',
+  'wk.cakeExchange': 'Strawberry Cake exchange',
+  'wk.flower': 'Flower Event',
+  'wk.flowers': 'Flowers this week',
+  'wk.claimFlowerRank': "Claim last week's rank (#{r})",
   'events.mergeNote': 'One phase a day for four days; ranks are against a CPU ladder.',
   'a3.title': 'Treasures, Z Ring, Skins, Golden Egg & Awakening',
   'a3.back': 'Back to the Trainer',
@@ -1656,6 +1684,10 @@ export type CurrencyKey =
   | 'beastFood'
   | 'beastFoodPlus'
   | 'relicCoin'
+  | 'elvenTreasure'
+  | 'milk'
+  | 'strawberrySauce'
+  | 'strawberryCake'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1739,6 +1771,10 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   beastFood: en['currency.beastFood'],
   beastFoodPlus: en['currency.beastFoodPlus'],
   relicCoin: en['currency.relicCoin'],
+  elvenTreasure: en['currency.elvenTreasure'],
+  milk: en['currency.milk'],
+  strawberrySauce: en['currency.strawberrySauce'],
+  strawberryCake: en['currency.strawberryCake'],
   privilegeXp: en['currency.privilegeXp'],
 };
 

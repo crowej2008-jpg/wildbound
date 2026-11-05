@@ -155,6 +155,10 @@ export type CurrencyId =
   | 'beastFood'
   | 'beastFoodPlus'
   | 'relicCoin'
+  | 'elvenTreasure'
+  | 'milk'
+  | 'strawberrySauce'
+  | 'strawberryCake'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -239,6 +243,10 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'beastFood',
   'beastFoodPlus',
   'relicCoin',
+  'elvenTreasure',
+  'milk',
+  'strawberrySauce',
+  'strawberryCake',
   'privilegeXp',
 ];
 
@@ -311,6 +319,10 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'beastFood',
   'beastFoodPlus',
   'relicCoin',
+  'elvenTreasure',
+  'milk',
+  'strawberrySauce',
+  'strawberryCake',
   'privilegeXp',
 ];
 
@@ -506,8 +518,14 @@ export interface AccountState {
     boss: { key: string; damage: number; attacks: number; score: number; lastHit: boolean; claimed: boolean } | null;
     lastWeek: { week: string; score: number; claimed: boolean } | null;
   } | null;
+  /** Weekend Bash (Elven Treasure, Bingo) and the Flower Event (null until first opened). */
+  weekend: {
+    elven: { key: string; round: number; flips: number; grandAt: number; bought: number; spent: number; cashback: number[]; exchange: Record<string, number> };
+    bingo: { key: string; marked: number[]; claimed: string[]; draws: number; bought: number[]; cards: number; exchange: Record<string, number> };
+    flower: { week: string; claimed: number[]; lastClaimed: string };
+  } | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
-  counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string };
+  counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string; prevWeek?: string; prevWeekly?: Record<string, number> };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }

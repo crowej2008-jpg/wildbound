@@ -38,6 +38,7 @@ import type { EventsView } from './events';
 import type { GuildWarView } from './guild-war';
 import type { RelicBattlefieldView } from './relic';
 import type { ParkView } from './park';
+import type { WeekendView } from './weekend-events';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -657,6 +658,17 @@ export interface GameServer {
   exploreRelic(): Promise<Result<{ event: { id: number; type: number; value: number }; snapshot: AccountSnapshot }>>;
   claimRelicTask(id: number): Promise<Result<ClaimResult>>;
   claimRelicSeason(): Promise<Result<ClaimResult>>;
+  /** Weekend Bash (Elven Treasure, Bingo) and the Flower Event. */
+  getWeekend(): Promise<Result<WeekendView>>;
+  buyElven(count: number): Promise<Result<AccountSnapshot>>;
+  flipElven(): Promise<Result<{ rewards: Rewards; grand: boolean; round: number; snapshot: AccountSnapshot }>>;
+  buyWeekendExchange(kind: 'elven' | 'bingo', id: number): Promise<Result<ClaimResult>>;
+  buySauce(tier: number, count: number): Promise<Result<AccountSnapshot>>;
+  drawBingo(times: 1 | 5): Promise<Result<{ numbers: number[]; snapshot: AccountSnapshot }>>;
+  claimBingoLine(lineId: string, pick?: string): Promise<Result<ClaimResult>>;
+  resetBingo(): Promise<Result<AccountSnapshot>>;
+  claimFlowerMilestone(flowers: number): Promise<Result<ClaimResult>>;
+  claimFlowerRank(): Promise<Result<ClaimResult>>;
   /** Pokémon Park. */
   getPark(): Promise<Result<ParkView>>;
   enterPark(grid: number): Promise<Result<AccountSnapshot>>;
@@ -765,6 +777,7 @@ export * from './events';
 export * from './guild-war';
 export * from './relic';
 export * from './park';
+export * from './weekend-events';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

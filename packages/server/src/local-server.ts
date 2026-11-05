@@ -182,6 +182,7 @@ import * as eventsMod from './events';
 import * as gwMod from './guild-war';
 import * as relicMod from './relic';
 import * as parkMod from './park';
+import * as weekendMod from './weekend-events';
 import { squadWildIds } from './growth';
 import { buildAccount3View, type Account3View } from './account3-view';
 import { bumpCounter, stampLogin } from './counters';
@@ -861,7 +862,7 @@ export class LocalServer implements GameServer {
     const applied = applySummon(this.config, state, machine, count, this.now(state), rng);
     if (!applied.ok) return fail(applied.error, applied.message);
     // R9: the source daily counts Premium summons ({chest,2}).
-    const summoned = machine === 'premium' ? bumpCounter(this.withQuest(applied.value.state, 'premiumSummon', count), this.now(state), 'premiumDraws', count) : applied.value.state;
+    const summoned = machine === 'premium' ? bumpCounter(this.withQuest(applied.value.state, 'premiumSummon', count), this.now(state), 'premiumDraws', count) : bumpCounter(applied.value.state, this.now(state), 'commonDraws', count);
     const committed = await this.commit(summoned);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -1647,7 +1648,7 @@ export class LocalServer implements GameServer {
     const outcome = stepMistyAction(this.config, loaded.value, this.now(loaded.value), nodeId, seed);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     const value = outcome.value;
-    const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
+    const next = value.win ? bumpCounter(this.withQuest(value.state, 'winBattle'), this.now(value.state), 'mistyWins') : value.state;
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({
@@ -2083,7 +2084,10 @@ export class LocalServer implements GameServer {
   }
 
   async attackIsland(id: number, attempts = 1, seed?: number) {
-    return this.jointAct((s, now) => isles.attackIsland(this.config, s, now, id, attempts, seed));
+    return this.jointAct((s, now) => {
+      const r = isles.attackIsland(this.config, s, now, id, attempts, seed);
+      return r.ok ? ok({ ...r.value, state: bumpCounter(r.value.state, now, 'islesFights') }) : r;
+    });
   }
 
   async collectIsland(): Promise<Result<ClaimResult>> {
@@ -2262,6 +2266,57 @@ export class LocalServer implements GameServer {
 
   async claimRelicSeason(): Promise<Result<ClaimResult>> {
     const r = await this.jointAct((s, now) => relicMod.claimRelicSeason(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  // ---------------------------------------------------------------- Weekend Bash + Flower Event
+
+  async getWeekend(): Promise<Result<weekendMod.WeekendView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(weekendMod.buildWeekendView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async buyElven(count: number): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => weekendMod.buyElven(this.config, s, now, count)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async flipElven(): Promise<Result<{ rewards: Rewards; grand: boolean; round: number; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => weekendMod.flipElven(this.config, s, now));
+  }
+
+  async buyWeekendExchange(kind: 'elven' | 'bingo', id: number): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => weekendMod.buyWeekendExchange(this.config, s, now, kind, id));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async buySauce(tier: number, count: number): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => weekendMod.buySauce(this.config, s, now, tier, count)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async drawBingo(times: 1 | 5): Promise<Result<{ numbers: number[]; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => weekendMod.drawBingo(this.config, s, now, times));
+  }
+
+  async claimBingoLine(lineId: string, pick?: string): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => weekendMod.claimBingoLine(this.config, s, now, lineId, pick));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async resetBingo(): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => weekendMod.resetBingo(this.config, s, now)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async claimFlowerMilestone(flowers: number): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => weekendMod.claimFlowerMilestone(this.config, s, now, flowers));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async claimFlowerRank(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => weekendMod.claimFlowerRank(this.config, s, now));
     return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
   }
 
@@ -2483,7 +2538,7 @@ export class LocalServer implements GameServer {
 
   /** Bump a daily-quest counter (progress is keyed by metric, shared by quests). */
   private withQuest(state: AccountState, metric: QuestMetric, amount = 1): AccountState {
-    return { ...state, quests: addQuestProgress(state.quests, metric, amount) };
+    return bumpCounter({ ...state, quests: addQuestProgress(state.quests, metric, amount) }, this.now(state), `q:${metric}`, amount);
   }
 
   /** Advance the tutorial past the step a completed action satisfies. */

@@ -376,3 +376,5 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-05] update | Follow-up: Relic shop, Guild War titles, Awakening origin-shard task
 
 ## [2026-11-05] update | Follow-up: Pokémon Park (ASSUMPTIONS #116, save v54)
+
+## [2026-11-05] update | Follow-up: Weekend Bash (Elven Treasure, Bingo) + Flower Event (ASSUMPTIONS #117, save v55)

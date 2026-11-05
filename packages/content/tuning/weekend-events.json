@@ -1,0 +1,121 @@
+{
+  "_note": "Weekend Bash (Elven Treasure, Bingo) and the Flower Event from the owner's wiki (pokemon-wiki-sandy.vercel.app/events/*, read 2026-11-05); no source tables. Prizes without a Wildbound item are stand-ins (see docs/design/weekend-flower-events.md).",
+  "elven": {
+    "weekdays": [1, 2, 3, 4],
+    "tiles": 25,
+    "grandIn": 4,
+    "tileReward": { "milk": 20 },
+    "buy": [
+      { "upTo": 10, "price": 24 },
+      { "upTo": 35, "price": 35 }
+    ],
+    "grand": [
+      { "round": 1, "rewards": { "milk": 650, "gems": 10 } },
+      { "round": 2, "rewards": { "milk": 1000 } },
+      { "round": 3, "rewards": { "milk": 1650, "boxSupreme": 3, "boxLD": 1 } },
+      { "round": 4, "rewards": { "backDecorStone": 50, "fashionShard": 50 } },
+      { "round": 5, "rewards": { "boxLD": 1, "orbEssence": 2000 } },
+      { "round": 6, "rewards": { "followerStone": 50, "fashionShard": 50 } },
+      { "round": 7, "rewards": { "boxLD": 1, "orbEssence": 2000 } },
+      { "round": 8, "rewards": { "fashionShard": 50 }, "titleCard": "607" },
+      { "round": 9, "rewards": { "boxLD": 1, "orbEssence": 2000 } },
+      { "round": 10, "rewards": { "cosmeticBox": 25, "fashionShard": 50 } },
+      { "round": 11, "rewards": { "boxLD": 1, "orbEssence": 2000 } },
+      { "round": 12, "rewards": { "mountStone": 50, "fashionShard": 50 } },
+      { "round": 13, "rewards": { "boxLD": 1, "orbEssence": 2000 } },
+      { "round": 14, "rewards": { "boxLD": 1, "orbEssence": 2000 } },
+      { "round": 15, "rewards": { "boxLD": 1, "orbEssence": 2000 } },
+      { "round": 16, "rewards": { "boxLD": 1, "orbEssence": 2000 } },
+      { "round": 17, "rewards": { "boxLD": 1 } }
+    ],
+    "cashback": [
+      [60, 5], [80, 5], [100, 5], [120, 5], [150, 10], [175, 10], [200, 10],
+      [250, 20], [300, 20], [350, 20], [400, 20], [450, 20], [500, 20], [550, 20], [600, 20]
+    ],
+    "exchange": [
+      { "id": 1, "name": "L & D Opt Box", "price": 5000, "limit": 0, "rewards": { "boxLD": 1 } },
+      { "id": 2, "name": "Shiny & Supreme box", "price": 4000, "limit": 0, "rewards": { "boxShinySupreme": 1 } },
+      { "id": 3, "name": "Supreme box", "price": 3500, "limit": 0, "rewards": { "boxSupreme": 1 } },
+      { "id": 4, "name": "Legendary Optional Box", "price": 2250, "limit": 0, "rewards": { "boxLegendary": 1 } },
+      { "id": 5, "name": "Ascension Stone ×200 (Powerful Evolve box)", "price": 1050, "limit": 0, "rewards": { "stone": 200 } },
+      { "id": 6, "name": "5★ Pokémon Shard ×50", "price": 900, "limit": 0, "rewards": { "pokemonShard5": 50 } }
+    ]
+  },
+  "bingo": {
+    "weekdays": [5, 6, 0],
+    "numbers": 16,
+    "lines": [
+      { "id": "r1", "cells": [1, 2, 3, 4], "rewards": { "strawberryCake": 500 } },
+      { "id": "r2", "cells": [5, 6, 7, 8], "rewards": { "strawberryCake": 500 } },
+      { "id": "r3", "cells": [9, 10, 11, 12], "rewards": { "strawberryCake": 500 } },
+      { "id": "r4", "cells": [13, 14, 15, 16], "rewards": { "strawberryCake": 500 } },
+      { "id": "c1", "cells": [1, 5, 9, 13], "rewards": { "plateFragment": 80 } },
+      { "id": "c2", "cells": [2, 6, 10, 14], "rewards": { "plateBottle": 20 } },
+      { "id": "c3", "cells": [3, 7, 11, 15], "rewards": { "trinketChest": 1 } },
+      { "id": "c4", "cells": [4, 8, 12, 16], "rewards": { "starShard": 6000 } },
+      { "id": "d1", "cells": [1, 6, 11, 16], "wildcard": 1 },
+      { "id": "d2", "cells": [4, 7, 10, 13], "wildcard": 2 }
+    ],
+    "wildcards": [
+      [
+        { "id": "plateFragment", "rewards": { "plateFragment": 80 } },
+        { "id": "trinketChest", "rewards": { "trinketChest": 1 } },
+        { "id": "berryBox", "rewards": { "berryMulchOrange": 2 } },
+        { "id": "redOrb", "rewards": { "orbEssence": 500 } },
+        { "id": "redSoulHeart", "rewards": { "soulHeartExp": 2000 } }
+      ],
+      [
+        { "id": "plateBottle", "rewards": { "plateBottle": 20 } },
+        { "id": "starShard", "rewards": { "starShard": 6000 } },
+        { "id": "berryEssence", "rewards": { "berryEssence": 500 } },
+        { "id": "orb", "rewards": { "orbEssence": 300 } },
+        { "id": "orangeSoulHeart", "rewards": { "soulHeartExp": 500 } }
+      ]
+    ],
+    "sauceShop": [
+      { "price": 20, "limit": 40 },
+      { "price": 30, "limit": 40 }
+    ],
+    "exchange": [
+      { "id": 1, "name": "Level 7 Ruby Orb (Orb Essence ×2,000)", "price": 4250, "limit": 7, "rewards": { "orbEssence": 2000 } },
+      { "id": 2, "name": "Mythic optional box (L & D Opt Box)", "price": 5000, "limit": 4, "rewards": { "boxLD": 1 } },
+      { "id": 3, "name": "Flash optional box (Shiny & Supreme)", "price": 4000, "limit": 4, "rewards": { "boxShinySupreme": 1 } },
+      { "id": 4, "name": "Supreme box", "price": 3500, "limit": 4, "rewards": { "boxSupreme": 1 } },
+      { "id": 5, "name": "Back Decor piece", "price": 2750, "limit": 2, "rewards": { "backDecorStone": 50 } },
+      { "id": 6, "name": "Ascension Stone ×500 (Evo Stone chest ×10)", "price": 2400, "limit": 0, "rewards": { "stone": 500 } },
+      { "id": 7, "name": "Trainer-costume piece", "price": 2350, "limit": 2, "rewards": { "fashionShard": 100 } },
+      { "id": 8, "name": "Legendary Optional Box", "price": 2250, "limit": 0, "rewards": { "boxLegendary": 1 } },
+      { "id": 9, "name": "Ascension Stone ×200 (Powerful Evolve box)", "price": 1050, "limit": 8, "rewards": { "stone": 200 } },
+      { "id": 10, "name": "5★ Pokémon Shard ×50", "price": 900, "limit": 15, "rewards": { "pokemonShard5": 50 } }
+    ]
+  },
+  "flower": {
+    "tasks": [
+      { "source": "q:towerChallenge", "label": "Tower climbs", "steps": [[5, 50], [10, 50], [15, 50], [20, 50], [25, 100], [30, 100], [35, 150], [45, 150]] },
+      { "source": "q:dailyDungeon", "label": "Daily dungeons", "steps": [[8, 100], [16, 100], [24, 100], [32, 100], [40, 150]] },
+      { "source": "q:adventureMission", "label": "Adventure missions", "steps": [[3, 200], [6, 200], [10, 300]] },
+      { "source": "commonDraws", "label": "Common summons", "steps": [[10, 100], [20, 200], [30, 300]] },
+      { "source": "q:petHomeMerge", "label": "Pet Home merges", "steps": [[30, 50], [60, 50], [90, 100], [120, 100], [150, 150]] },
+      { "source": "mistyWins", "label": "Misty Woods victories", "steps": [[12, 200], [25, 200], [35, 200], [45, 200], [55, 300], [65, 400]] },
+      { "source": "q:arenaChallenge", "label": "Arena battles", "steps": [[5, 100], [10, 100], [15, 100], [20, 100], [25, 100]] },
+      { "source": "ranked", "label": "Ranked matches", "steps": [[6, 100], [12, 100], [18, 200], [24, 200], [30, 200]] },
+      { "source": "islesFights", "label": "Clash of Isles battles", "steps": [[5, 100], [10, 200], [15, 200], [20, 200], [25, 200]] }
+    ],
+    "milestones": [
+      { "flowers": 1000, "rewards": { "boxSupreme": 1, "gold": 50000 } },
+      { "flowers": 2000, "rewards": { "boxSupreme": 1, "gold": 50000 } },
+      { "flowers": 3500, "rewards": { "boxSupreme": 1, "gold": 100000 } },
+      { "flowers": 5000, "rewards": { "boxSupreme": 1, "gold": 100000 } },
+      { "flowers": 6500, "rewards": { "boxSupreme": 2, "gold": 150000 } },
+      { "flowers": 8000, "rewards": { "boxSupreme": 1, "gold": 150000 } },
+      { "flowers": 12000, "rewards": { "boxSupreme": 3 } }
+    ],
+    "ranks": [
+      { "rank": 1, "rewards": { "pokemonShard5": 120, "backDecorStone": 100 } },
+      { "rank": 3, "rewards": { "pokemonShard5": 90 } },
+      { "rank": 10, "rewards": { "pokemonShard5": 60 } },
+      { "rank": 100, "rewards": { "pokemonShard5": 30 } }
+    ],
+    "cpuTop": 6000
+  }
+}

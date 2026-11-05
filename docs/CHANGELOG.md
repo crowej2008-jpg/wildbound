@@ -1507,3 +1507,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - /pokemon-park (from the Guild page): 19-grid park, stamina, wild fights or skips, egg bag and hatching, collapsing
   grids, the mythical boss twice a day, boss and season rewards. Save v54. ASSUMPTIONS #116.
+
+## Follow-up — Weekend Bash + Flower Event (2026-11-05)
+
+- Events page: Elven Treasure (Mon–Thu), Bingo (Fri–Sun), Flower Event (weekly) with their shops and rewards.
+  Save v55. ASSUMPTIONS #117.
