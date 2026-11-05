@@ -42,7 +42,27 @@ export const digSiteSchema = z
     pieces: z
       .array(z.object({ id: z.string().min(1), group: z.string().min(1), hp: z.number().int().nonnegative(), atk: z.number().int().nonnegative() }).strict())
       .min(1),
-    groups: z.array(z.object({ id: z.string().min(1), name: z.string().min(1), pct: z.number().nonnegative() }).strict()).min(1),
+    groups: z
+      .array(
+        z
+          .object({
+            id: z.string().min(1),
+            name: z.string().min(1),
+            /** A full group's rarer lines (crit, block, damage boost …), as fractions. */
+            lines: z
+              .array(
+                z
+                  .object({
+                    field: z.enum(['crit', 'critRes', 'critPower', 'block', 'blockPower', 'guardBreak', 'dmgBoost', 'dmgRdct', 'controlBoost', 'controlRes', 'pvpBoost', 'pvpRdct']),
+                    value: z.number().positive(),
+                  })
+                  .strict(),
+              )
+              .min(1),
+          })
+          .strict(),
+      )
+      .min(1),
   })
   .strict();
 

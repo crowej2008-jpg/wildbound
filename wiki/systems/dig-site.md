@@ -20,5 +20,6 @@ battles; the main source of soul hearts.
   Soul-heart EXP), 11 fossils, 15 treasures.
 - **Lab:** 3 slots; a fossil cures for 2–8 h and 100,000–500,000 Gold.
 - **Museum:** 26 pieces in 8 groups; each displayed piece gives all Pokémon HP and P.ATK / S.ATK; a full group adds
-  +1–2 % HP / ATK. Spare pieces turn into Soul-heart EXP.
+  a rarer stat (Block, Guard Break, DMG Reduction / Boost, Crit Intensity, Control Boost, Crit Resistance, Crit Chance;
+  owner: not HP / ATK). Spare pieces turn into Soul-heart EXP.
 - Save v45. Design: `docs/design/dig-site.md`; ASSUMPTIONS #105.

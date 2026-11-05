@@ -1229,3 +1229,7 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      (docs/design/dig-site.md): pick / hammer wear and shake, stability 100, item weights and shapes, 3 lab slots,
      2–8 h and 100,000–500,000 Gold cures, 26 pieces in 8 groups, spares → Soul-heart EXP. Soul hearts come out at
      0★ with a random set and socket (Wildbound has 9 of the source's 18 sets). Save v45 (reset).
+
+106. **Dig Site museum groups give rarer stats (owner, 2026-11-04).** A full group adds one line instead of HP / ATK %:
+     Block 3 %, Guard Break 2.5 %, DMG Reduction 3 %, DMG Boost 4 %, Crit Intensity 1 %, Control Boost 3 %, Crit
+     Resistance 2.5 %, Crit Chance 3 % (stand-ins). Pieces keep their flat HP / ATK.

@@ -197,7 +197,7 @@ export function donateSpares(config: GameConfig, state: AccountState, now: numbe
 const flat = (field: string, value: number): StatLine => ({ kind: 'core', field, base: value, perLevel: 0 });
 const pct = (field: string, value: number): StatLine => ({ kind: 'percent', field, base: value, perLevel: 0 });
 
-/** The museum's account-wide lines: each displayed piece, plus each completed group's percent bonus. */
+/** The museum's account-wide lines: each displayed piece (HP / ATK), plus each completed group's rarer lines. */
 export function museumLines(config: GameConfig, state: AccountState): StatLine[] {
   const shown = new Set(state.digSite?.museum ?? []);
   if (shown.size === 0) return [];
@@ -208,7 +208,7 @@ export function museumLines(config: GameConfig, state: AccountState): StatLine[]
   }
   for (const g of config.digSite.groups) {
     const members = config.digSite.pieces.filter((p) => p.group === g.id);
-    if (members.length > 0 && members.every((p) => shown.has(p.id))) lines.push(pct('hpPct', g.pct), pct('pAtkPct', g.pct), pct('sAtkPct', g.pct));
+    if (members.length > 0 && members.every((p) => shown.has(p.id))) for (const l of g.lines) lines.push(pct(l.field, l.value));
   }
   return lines;
 }

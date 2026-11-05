@@ -1187,42 +1187,82 @@
   {
    "id": "shells",
    "name": "Ancient Shells",
-   "pct": 0.01
+   "lines": [
+    {
+     "field": "block",
+     "value": 0.03
+    }
+   ]
   },
   {
    "id": "roots",
    "name": "Roots and Claws",
-   "pct": 0.01
+   "lines": [
+    {
+     "field": "guardBreak",
+     "value": 0.025
+    }
+   ]
   },
   {
    "id": "heads",
    "name": "Heads and Armor",
-   "pct": 0.01
+   "lines": [
+    {
+     "field": "dmgRdct",
+     "value": 0.03
+    }
+   ]
   },
   {
    "id": "ancient",
    "name": "Ancient Seas and Skies",
-   "pct": 0.02
+   "lines": [
+    {
+     "field": "dmgBoost",
+     "value": 0.04
+    }
+   ]
   },
   {
    "id": "amber",
    "name": "Amber",
-   "pct": 0.01
+   "lines": [
+    {
+     "field": "critPower",
+     "value": 0.01
+    }
+   ]
   },
   {
    "id": "stones",
    "name": "Evolution Stones",
-   "pct": 0.015
+   "lines": [
+    {
+     "field": "controlBoost",
+     "value": 0.03
+    }
+   ]
   },
   {
    "id": "shards",
    "name": "Coloured Shards",
-   "pct": 0.01
+   "lines": [
+    {
+     "field": "critRes",
+     "value": 0.025
+    }
+   ]
   },
   {
    "id": "jewels",
    "name": "Jewels",
-   "pct": 0.015
+   "lines": [
+    {
+     "field": "crit",
+     "value": 0.03
+    }
+   ]
   }
  ]
 }

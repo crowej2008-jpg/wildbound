@@ -23,7 +23,7 @@ export interface DigSiteView {
   fossils: { id: string; name: string; have: number; hours: number; gold: number }[];
   lab: ({ fossil: string; name: string; readyInMs: number } | null)[];
   museum: {
-    groups: { id: string; name: string; pct: number; complete: boolean; pieces: { id: string; name: string; shown: boolean; stored: number; hp: number; atk: number }[] }[];
+    groups: { id: string; name: string; lines: { field: string; value: number }[]; complete: boolean; pieces: { id: string; name: string; shown: boolean; stored: number; hp: number; atk: number }[] }[];
     shown: number;
     total: number;
   };
@@ -79,7 +79,7 @@ export function buildDigSiteView(config: GameConfig, state: AccountState, now: n
         const pieces = t.pieces
           .filter((p) => p.group === g.id)
           .map((p) => ({ id: p.id, name: nameOf(p.id), shown: shown.has(p.id), stored: site.storage[p.id] ?? 0, hp: p.hp, atk: p.atk }));
-        return { id: g.id, name: g.name, pct: g.pct, complete: pieces.every((p) => p.shown), pieces };
+        return { id: g.id, name: g.name, lines: g.lines, complete: pieces.every((p) => p.shown), pieces };
       }),
       shown: site.museum.length,
       total: t.pieces.length,

@@ -333,3 +333,4 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-04] update | M13.9 Dig Site
 - Owner swapped the Ultra Wormhole for the Dig Site (no battles; walls free and unlimited; timed lab with a cost;
   museum stats and group bonuses). Built with stand-in numbers (ASSUMPTIONS #105, save v45).
+- Owner: museum groups give rarer stats instead of HP / ATK % (ASSUMPTIONS #106).

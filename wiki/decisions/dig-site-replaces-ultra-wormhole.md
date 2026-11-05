@@ -19,5 +19,7 @@ Curing: *"i want timers for this with a cost"*.
   dropped. Same gate (story 10-10 + trainer level 50).
 - Agent's numbers (stand-ins): 13 × 10 wall, rock 2–6 deep, stability 100 (pick 3, hammer 6), 2–4 items and 2–5
   bedrock pieces a wall; soul hearts weighted blue 28 / purple 17 / orange 8 / red 3 with bigger shapes for better
-  ones; 3 lab slots, cures 2 h / 100,000 Gold to 8 h / 500,000 Gold; 26 museum pieces in 8 groups (+1–2 % on a
-  full group); spares → Soul-heart EXP.
+  ones; 3 lab slots, cures 2 h / 100,000 Gold to 8 h / 500,000 Gold; 26 museum pieces in 8 groups; spares → Soul-heart EXP.
+- Owner (later the same night): *"i want the museum groups to give stats that are rarer instead of just hp and atk"* —
+  each full group now adds one rarer line (Block, Guard Break, DMG Reduction, DMG Boost, Crit Intensity, Control
+  Boost, Crit Resistance, Crit Chance; 1–4 %, agent's numbers). Pieces still give HP / ATK.

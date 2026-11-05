@@ -1005,7 +1005,7 @@ export const en = {
   'dig.cure': 'Cure',
   'dig.curing': 'Curing has started.',
   'dig.museum': 'Museum',
-  'dig.museumHelp': 'Every piece on display gives all Pokémon HP and ATK; completing a group adds a percent bonus.',
+  'dig.museumHelp': 'Every piece on display gives all Pokémon HP and ATK; completing a group adds a rarer stat (crit, block, damage boost …).',
   'dig.groupBonus': 'complete for',
   'dig.display': 'Display',
   'dig.displayed': 'On display!',

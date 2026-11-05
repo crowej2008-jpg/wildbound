@@ -99,11 +99,11 @@ describe('Dig Site', () => {
     expect(equippedSheet(wild, config, shown.value)!.sheet.hp - before).toBeGreaterThanOrEqual(3000);
   });
 
-  it('adds a group bonus when a group is complete and turns spares into EXP', () => {
+  it('adds a rarer group stat when a group is complete and turns spares into EXP', () => {
     const { config, state } = account();
     const shells = config.digSite.pieces.filter((p) => p.group === 'shells').map((p) => p.id);
     const s = { ...state, digSite: { wall: null, walls: 0, fossils: {}, lab: [null, null, null], storage: { 'treasure-red-shard': 3 }, museum: shells } };
-    expect(museumLines(config, s).filter((l) => l.kind === 'percent')).toHaveLength(3);
+    expect(museumLines(config, s).filter((l) => l.kind === 'percent')).toEqual([{ kind: 'percent', field: 'block', base: 0.03, perLevel: 0 }]);
     const donated = donateSpares(config, s, NOW);
     expect(donated.ok).toBe(true);
     if (donated.ok) expect(donated.value.exp).toBe(2 * config.digSite.duplicateExp.treasure);

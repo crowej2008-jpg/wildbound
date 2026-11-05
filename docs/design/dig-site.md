@@ -20,6 +20,6 @@ Soul hearts blue 28 (2 × 2), purple 17, orange 8, red 3 (3 × 3) — each a ran
   8 h / 500,000. Collect when done.
 - Pieces: fossils HP +3,000 / ATK +450 (Old Amber +6,000 / +900); treasures HP +1,500 / ATK +220. ATK = P.ATK and
   S.ATK. Groups: Ancient Shells, Roots and Claws, Heads and Armor, Ancient Seas and Skies, Amber, Evolution Stones,
-  Coloured Shards, Jewels; a full group adds +1 % to +2 % HP / P.ATK / S.ATK. The lines join the account-wide fold
+  Coloured Shards, Jewels; a full group adds a rarer stat — Ancient Shells Block +3 %, Roots and Claws Guard Break +2.5 %, Heads and Armor DMG Reduction +3 %, Ancient Seas and Skies DMG Boost +4 %, Amber Crit Intensity +1 %, Evolution Stones Control Boost +3 %, Coloured Shards Crit Resistance +2.5 %, Jewels Crit Chance +3 % (owner 2026-11-04: rarer stats, not HP / ATK). The lines join the account-wide fold
   (titles and fashion).
 - Spare copies → Soul-heart EXP (fossil 400, treasure 150).

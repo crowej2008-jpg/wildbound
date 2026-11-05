@@ -7,6 +7,25 @@ import { useServer } from '../server/ServerProvider';
 /** Dig Site (M13.9): dig soul hearts, fossils and treasures out of rock walls; cure fossils; fill the museum. */
 
 type Tool = 'pick' | 'hammer';
+
+const FIELD_NAME: Record<string, string> = {
+  crit: 'Crit Chance',
+  critRes: 'Crit Resistance',
+  critPower: 'Crit Intensity',
+  block: 'Block',
+  blockPower: 'Block Intensity',
+  guardBreak: 'Guard Break',
+  dmgBoost: 'DMG Boost',
+  dmgRdct: 'DMG Reduction',
+  controlBoost: 'Control Boost',
+  controlRes: 'Control Resistance',
+  pvpBoost: 'PvP DMG Boost',
+  pvpRdct: 'PvP DMG Reduction',
+};
+
+function groupBonus(lines: { field: string; value: number }[]): string {
+  return lines.map((l) => `${FIELD_NAME[l.field] ?? l.field} +${Math.round(l.value * 1000) / 10}%`).join(', ');
+}
 type Tab = 'wall' | 'lab' | 'museum';
 
 const KIND_COLOR: Record<string, string> = {
@@ -217,7 +236,7 @@ export default function DigSite() {
               {view.museum.groups.map((g) => (
                 <div key={g.id} className="dig-group" data-group={g.id}>
                   <h3 className="section-title">
-                    {g.name} {g.complete ? `✓ +${Math.round(g.pct * 1000) / 10}% HP / ATK` : `(${t('dig.groupBonus')} +${Math.round(g.pct * 1000) / 10}%)`}
+                    {g.name} {g.complete ? `✓ ${groupBonus(g.lines)}` : `(${t('dig.groupBonus')} ${groupBonus(g.lines)})`}
                   </h3>
                   <ul className="plain-list">
                     {g.pieces.map((p) => (
