@@ -1450,3 +1450,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Weekly squad battles against CPU rival squads (Team Points, milestones, season ranks, shop, squad skills) and the
   Wild Area Dynamax raids (energy, three zones, events, multipliers, fragments, bosses, teleporters). Save v49.
   ASSUMPTIONS #111.
+
+## M14.5 — Clash of Isles; M14 done (2026-11-05)
+
+- Take islands from CPU guilds (attempts, boosts, shields, fatigue), hold one for Isle Tokens, season points, daily
+  tasks and season rank rewards. Save v50. ASSUMPTIONS #112. M14 complete.

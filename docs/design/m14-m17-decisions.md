@@ -9,3 +9,12 @@ that was worked on and what decisions after you are done"*. Every call below too
 - Shop shelves gated by total squad-skill levels (60 / 80) instead of team level 6 / 8 (no team levels solo).
 - Squad-skill values and costs, CPU teammate points, Wild Area fight strengths and zone drop amounts are stand-ins.
 - Event weights from the source table (equal), not the wiki's observed odds.
+
+## M14.5 Clash of Isles
+- Solo against CPU guilds; CPU guilds do not raid the island you hold (no raids simulated).
+- Left out: Assist Points / cheers, shield buying, robbing other players' islands, Season Weather, 2–3 team garrisons.
+- One island held at a time; tokens paid on collect / switch / daily roll. Garrison strength is a stand-in.
+
+## M14 close-out
+- Shovel Carnival moved to M16 (owner). M14 = Victory Road, King's Trial, Paradise, Joint Team + Wild Area, Clash of
+  Isles. Leaderboards everywhere use deterministic CPU ladders until the server work.

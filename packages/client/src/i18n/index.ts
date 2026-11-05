@@ -83,6 +83,7 @@ export const en = {
   'currency.jointTicket': 'Joint Challenge Tickets',
   'currency.wildEnergyCan': 'Wild Area Energy Canisters',
   'currency.teleporter': 'Teleporters',
+  'currency.islandVoucher': 'Isle Challenge Vouchers',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -328,6 +329,7 @@ export const en = {
   'squad.mode.factionTower2': 'Faction Tower (team 2)',
   'squad.mode.berryGrove': 'Berry Grove',
   'squad.mode.jointTeam': 'Joint Team',
+  'squad.mode.isles': 'Clash of Isles',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -753,6 +755,23 @@ export const en = {
   'joint.bought': 'Bought.',
   'joint.shelfLocked': 'Locked shelf',
   'joint.levelUp': 'Level up',
+  'isles.title': 'Clash of Isles',
+  'isles.desc': 'Take islands from rival guilds and hold one for Isle Tokens.',
+  'isles.locked': 'Clash of Isles opens on server day 2 after story 3-10.',
+  'isles.attempts': 'Attempts',
+  'isles.power': 'Development power',
+  'isles.fatigue': 'Fatigue',
+  'isles.points': 'Season points',
+  'isles.monday': 'Monday is off-season — the islands open on Tuesday.',
+  'isles.holding': 'Holding',
+  'isles.none': 'You hold no island — take one below.',
+  'isles.collect': 'Collect tokens',
+  'isles.collected': 'Isle Tokens collected.',
+  'isles.boost': 'Attempts per attack:',
+  'isles.task': 'Challenge {n} times today:',
+  'isles.area': 'Sea area',
+  'isles.captured': 'Island captured!',
+  'isles.shieldDown': 'A shield is down!',
   'paradise.title': 'Pokémon Paradise',
   'paradise.desc': 'Explore the Park, track Pokémon and catch them for the seasonal Dex.',
   'paradise.locked': 'Pokémon Paradise opens after story 2-5.',
@@ -1461,6 +1480,7 @@ export type CurrencyKey =
   | 'jointTicket'
   | 'wildEnergyCan'
   | 'teleporter'
+  | 'islandVoucher'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1530,10 +1550,11 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   jointTicket: en['currency.jointTicket'],
   wildEnergyCan: en['currency.wildEnergyCan'],
   teleporter: en['currency.teleporter'],
+  islandVoucher: en['currency.islandVoucher'],
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1549,6 +1570,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   factionTower2: en['squad.mode.factionTower2'],
   berryGrove: en['squad.mode.berryGrove'],
   jointTeam: en['squad.mode.jointTeam'],
+  isles: en['squad.mode.isles'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

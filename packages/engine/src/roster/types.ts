@@ -24,6 +24,7 @@ import type { BerryGroveState } from '../berry-grove/types';
 import type { DigSiteState } from '../dig-site';
 import type { ParadiseState } from '../paradise';
 import type { JointTeamState, WildAreaState } from '../joint-team';
+import type { IslesState } from '../isles';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -33,7 +34,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -49,6 +50,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'factionTower2',
   'berryGrove',
   'jointTeam',
+  'isles',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -135,6 +137,7 @@ export type CurrencyId =
   | 'jointTicket'
   | 'wildEnergyCan'
   | 'teleporter'
+  | 'islandVoucher'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -205,6 +208,7 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'jointTicket',
   'wildEnergyCan',
   'teleporter',
+  'islandVoucher',
   'privilegeXp',
 ];
 
@@ -263,6 +267,7 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'jointTicket',
   'wildEnergyCan',
   'teleporter',
+  'islandVoucher',
   'privilegeXp',
 ];
 
@@ -381,6 +386,8 @@ export interface AccountState {
   jointTeam: JointTeamState | null;
   /** M14.4: the Wild Area (Joint Team Dynamax) season (null until first opened). */
   wildArea: WildAreaState | null;
+  /** M14.5: Clash of Isles season (null until first opened). */
+  isles: IslesState | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
@@ -539,6 +546,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     factionTower2: emptySquad(),
     berryGrove: emptySquad(),
     jointTeam: emptySquad(),
+    isles: emptySquad(),
   };
 }
 
@@ -557,6 +565,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     factionTower2: 'balanced',
     berryGrove: 'balanced',
     jointTeam: 'balanced',
+    isles: 'balanced',
   };
 }
 

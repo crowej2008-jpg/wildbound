@@ -62,6 +62,7 @@ after the retrofit, once friends have real saves.
 | 47 | M14.2 | King's Trial: `kingsTrial` and `counters` slices (reset) |
 | 48 | M14.3 | Pokémon Paradise: `paradise` slice, ball / scanner currencies (reset) |
 | 49 | M14.4 | Joint Team: `jointTeam` / `wildArea` slices, squad, six currencies (reset) |
-| 50+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
+| 50 | M14.5 | Clash of Isles: `isles` slice, squad, `islandVoucher` (reset) |
+| 51+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

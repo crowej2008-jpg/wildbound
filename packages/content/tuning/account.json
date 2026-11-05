@@ -64,6 +64,7 @@
     "jointTicket": 0,
     "wildEnergyCan": 0,
     "teleporter": 0,
+    "islandVoucher": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -138,6 +139,7 @@
     "jointTicket": 3,
     "wildEnergyCan": 2,
     "teleporter": 2,
+    "islandVoucher": 5,
     "privilegeXp": 300
   }
 }

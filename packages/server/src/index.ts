@@ -31,6 +31,7 @@ import type { BerryGroveView } from './berry-grove-view';
 import type { DigSiteView } from './dig-site-view';
 import type { ParadiseView } from './paradise-view';
 import type { JointTeamView } from './joint-team-view';
+import type { IslesView } from './isles-view';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -610,6 +611,12 @@ export interface GameServer {
   teleportWild(): Promise<Result<AccountSnapshot>>;
   useWildEnergyCan(): Promise<Result<AccountSnapshot>>;
   claimWildSeason(): Promise<Result<ClaimResult>>;
+  /** M14.5 Clash of Isles. */
+  getIsles(): Promise<Result<IslesView>>;
+  attackIsland(id: number, attempts?: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; captured: boolean; points: number; snapshot: AccountSnapshot }>>;
+  collectIsland(): Promise<Result<ClaimResult>>;
+  claimIslesTask(challenges: number): Promise<Result<ClaimResult>>;
+  claimIslesSeason(): Promise<Result<ClaimResult>>;
   /** M14.1 Victory Road. */
   getVictoryRoad(): Promise<Result<VictoryRoadView>>;
   claimVictoryChest(gym: number, progress: number): Promise<Result<ClaimResult>>;
@@ -698,6 +705,8 @@ export * from './paradise-view';
 export * from './paradise';
 export * from './joint-team-view';
 export * from './joint-team';
+export * from './isles-view';
+export * from './isles';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

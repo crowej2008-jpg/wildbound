@@ -1268,3 +1268,9 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      multipliers / fragments / bosses / teleporters / badges, rank rewards. Stand-ins: squad skills, CPU points, fight
      strengths, drop amounts, shelf gates. New squad `jointTeam`, six currencies, `jointTeam` / `wildArea` slices; save
      v49. docs/design/joint-team.md, docs/design/m14-m17-decisions.md.
+
+112. **M14.5 Clash of Isles (2026-11-05).** From island_new_* plus the owner's wiki, solo against CPU guilds: 50 islands /
+     4 tiers / token rates, attempts (6, +1 / 4 h) and vouchers, 20 / 50 / 80 % boosts, 3 shields per CPU garrison,
+     development power, fatigue, season points, daily tasks, rank rewards. Left out: raids on the player's island,
+     Assist Points, shield buying, robbing, weather, multi-team garrisons. Squad `isles`, currency `islandVoucher`,
+     `isles` slice; save v50. docs/design/clash-of-isles.md. **M14 done** (Shovel Carnival → M16).

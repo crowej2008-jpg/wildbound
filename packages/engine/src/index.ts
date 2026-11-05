@@ -25,6 +25,7 @@ export * from './berry-grove';
 export * from './dig-site';
 export * from './paradise';
 export * from './joint-team';
+export * from './isles';
 export * from './potential';
 export * from './pvp';
 export * from './resonance';

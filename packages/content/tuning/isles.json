@@ -1,0 +1,432 @@
+{
+ "_note": "M14.5 Clash of Isles from island_new_* (evening_cfg 2026-10-02) + the owner's wiki. Played solo against CPU guilds. Hand-assembled from the source tables.",
+ "gate": {
+  "serverDay": 2,
+  "stage": "c3-10"
+ },
+ "attemptsMax": 6,
+ "attemptRegenMin": 240,
+ "powerPerDay": 180,
+ "powerPerMinute": 1,
+ "tokenEveryMin": 5,
+ "pointsPerBattle": 100,
+ "winBonus": 100,
+ "boosts": [
+  {
+   "attempts": 2,
+   "pct": 0.2
+  },
+  {
+   "attempts": 3,
+   "pct": 0.5
+  },
+  {
+   "attempts": 4,
+   "pct": 0.8
+  }
+ ],
+ "fatiguePerWin": 0.05,
+ "fatigueMax": 0.5,
+ "cpuShields": 3,
+ "tasks": [
+  {
+   "challenges": 2,
+   "rewards": {
+    "gems": 2
+   }
+  },
+  {
+   "challenges": 4,
+   "rewards": {
+    "gems": 3
+   }
+  },
+  {
+   "challenges": 5,
+   "rewards": {
+    "gems": 4
+   }
+  }
+ ],
+ "tiers": {
+  "1": "Lesser",
+  "2": "Medium",
+  "3": "Greater",
+  "4": "Premium"
+ },
+ "islands": [
+  {
+   "id": 1,
+   "area": 1,
+   "tier": 4,
+   "tokens": 60
+  },
+  {
+   "id": 2,
+   "area": 1,
+   "tier": 4,
+   "tokens": 60
+  },
+  {
+   "id": 3,
+   "area": 1,
+   "tier": 3,
+   "tokens": 45
+  },
+  {
+   "id": 4,
+   "area": 1,
+   "tier": 3,
+   "tokens": 45
+  },
+  {
+   "id": 5,
+   "area": 1,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 6,
+   "area": 2,
+   "tier": 4,
+   "tokens": 60
+  },
+  {
+   "id": 7,
+   "area": 2,
+   "tier": 4,
+   "tokens": 60
+  },
+  {
+   "id": 8,
+   "area": 2,
+   "tier": 3,
+   "tokens": 45
+  },
+  {
+   "id": 9,
+   "area": 2,
+   "tier": 3,
+   "tokens": 45
+  },
+  {
+   "id": 10,
+   "area": 2,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 11,
+   "area": 3,
+   "tier": 3,
+   "tokens": 45
+  },
+  {
+   "id": 12,
+   "area": 3,
+   "tier": 3,
+   "tokens": 45
+  },
+  {
+   "id": 13,
+   "area": 3,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 14,
+   "area": 3,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 15,
+   "area": 3,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 16,
+   "area": 4,
+   "tier": 3,
+   "tokens": 45
+  },
+  {
+   "id": 17,
+   "area": 4,
+   "tier": 3,
+   "tokens": 45
+  },
+  {
+   "id": 18,
+   "area": 4,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 19,
+   "area": 4,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 20,
+   "area": 4,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 21,
+   "area": 5,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 22,
+   "area": 5,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 23,
+   "area": 5,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 24,
+   "area": 5,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 25,
+   "area": 5,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 26,
+   "area": 6,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 27,
+   "area": 6,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 28,
+   "area": 6,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 29,
+   "area": 6,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 30,
+   "area": 6,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 31,
+   "area": 7,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 32,
+   "area": 7,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 33,
+   "area": 7,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 34,
+   "area": 7,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 35,
+   "area": 7,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 36,
+   "area": 8,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 37,
+   "area": 8,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 38,
+   "area": 8,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 39,
+   "area": 8,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 40,
+   "area": 8,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 41,
+   "area": 9,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 42,
+   "area": 9,
+   "tier": 2,
+   "tokens": 35
+  },
+  {
+   "id": 43,
+   "area": 9,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 44,
+   "area": 9,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 45,
+   "area": 9,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 46,
+   "area": 10,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 47,
+   "area": 10,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 48,
+   "area": 10,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 49,
+   "area": 10,
+   "tier": 1,
+   "tokens": 30
+  },
+  {
+   "id": 50,
+   "area": 10,
+   "tier": 1,
+   "tokens": 30
+  }
+ ],
+ "ranks": [
+  {
+   "upTo": 1,
+   "rewards": {
+    "islandCoin": 18000,
+    "pokemonShard5": 100
+   },
+   "notCopied": [
+    "Golden Egg Voucher ×10"
+   ]
+  },
+  {
+   "upTo": 5,
+   "rewards": {
+    "islandCoin": 15000,
+    "pokemonShard5": 80
+   },
+   "notCopied": [
+    "Golden Egg Voucher ×8"
+   ]
+  },
+  {
+   "upTo": 10,
+   "rewards": {
+    "islandCoin": 12000,
+    "pokemonShard5": 50
+   },
+   "notCopied": [
+    "Golden Egg Voucher ×6"
+   ]
+  },
+  {
+   "upTo": 50,
+   "rewards": {
+    "islandCoin": 10000,
+    "pokemonShard5": 50
+   },
+   "notCopied": [
+    "Golden Egg Voucher ×3"
+   ]
+  },
+  {
+   "upTo": 100,
+   "rewards": {
+    "islandCoin": 8000,
+    "pokemonShard5": 50
+   },
+   "notCopied": [
+    "Golden Egg Voucher ×2"
+   ]
+  },
+  {
+   "upTo": 200,
+   "rewards": {
+    "islandCoin": 7000,
+    "pokemonShard5": 50
+   }
+  },
+  {
+   "upTo": 500,
+   "rewards": {
+    "islandCoin": 6000,
+    "pokemonShard5": 30
+   }
+  },
+  {
+   "upTo": 1000,
+   "rewards": {
+    "islandCoin": 5000,
+    "pokemonShard5": 20
+   }
+  }
+ ]
+}

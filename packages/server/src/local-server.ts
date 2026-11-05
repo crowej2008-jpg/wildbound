@@ -173,6 +173,8 @@ import * as paradise from './paradise';
 import { buildParadiseView, type ParadiseView } from './paradise-view';
 import * as joint from './joint-team';
 import { buildJointTeamView, type JointTeamView } from './joint-team-view';
+import * as isles from './isles';
+import { buildIslesView, type IslesView } from './isles-view';
 import { bumpCounter, stampLogin } from './counters';
 import {
   buildKingsTrialView,
@@ -2039,6 +2041,37 @@ export class LocalServer implements GameServer {
 
   async claimWildSeason(): Promise<Result<ClaimResult>> {
     const r = await this.jointAct((s, now) => joint.claimWildSeason(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async getIsles(): Promise<Result<IslesView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const now = this.now(loaded.value);
+    const p = isles.prepareIsles(this.config, loaded.value, now);
+    if (p.changed) {
+      const committed = await this.commit(p.state);
+      if (!committed.ok) return committed;
+    }
+    return ok(buildIslesView(this.config, p.state, now));
+  }
+
+  async attackIsland(id: number, attempts = 1, seed?: number) {
+    return this.jointAct((s, now) => isles.attackIsland(this.config, s, now, id, attempts, seed));
+  }
+
+  async collectIsland(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => isles.collectIsland(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async claimIslesTask(challenges: number): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => isles.claimIslesTask(this.config, s, now, challenges));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async claimIslesSeason(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => isles.claimIslesSeason(this.config, s, now));
     return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
   }
 

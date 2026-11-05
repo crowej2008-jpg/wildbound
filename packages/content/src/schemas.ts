@@ -729,6 +729,7 @@ export const rewardSchema = z
     jointTicket: z.number().nonnegative().optional(),
     wildEnergyCan: z.number().nonnegative().optional(),
     teleporter: z.number().nonnegative().optional(),
+    islandVoucher: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

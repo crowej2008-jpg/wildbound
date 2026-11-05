@@ -81,6 +81,7 @@ export interface Rewards {
   jointTicket?: number;
   wildEnergyCan?: number;
   teleporter?: number;
+  islandVoucher?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -152,6 +153,7 @@ export const CURRENCY_REWARD_KEYS = [
   'jointTicket',
   'wildEnergyCan',
   'teleporter',
+  'islandVoucher',
   'privilegeXp',
 ] as const;
 

@@ -359,3 +359,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-05] update | M14.4 Joint Team + Wild Area
 - Built solo with CPU squads (ASSUMPTIONS #111, save v49). Owner asked for M14–M17 autonomously with recommended
   options; decisions in docs/design/m14-m17-decisions.md.
+
+## [2026-11-05] update | M14.5 Clash of Isles — M14 done
+- Solo vs CPU guilds (ASSUMPTIONS #112, save v50). M14 complete; Shovel Carnival is in M16.
