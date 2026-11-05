@@ -22,6 +22,7 @@ Designed by Jayden in Claude chats; **not yet in SCOPE.md or any milestone**. Ne
 - Bosses scale with the **highest resonance** on the team (earlier idea: average of both players').
 - Floors 100, 200, 300: random teams with huge stats (owner 2026-11-04: "make the floor 100,200,and 300
   bosses just be random but huge stats"; replaces "hand-crafted"); other boss gimmicks built from existing mechanics.
+- A **mini-boss every 50 floors** (owner 2026-11-04: "and a mini boss every 50").
 - **Entry:** 25 total awakened levels on each account.
 - **Tries:** 5 per pair per week. A wipe uses a try; the next try resumes where they left off. Between
   tries, unlimited **build** changes on the already-picked Pokémon (applied at next try start).
