@@ -14,6 +14,7 @@ import type { GameConfig } from './config';
 import { applyGrant } from './economy';
 import { fail, ok, type Result } from './index';
 import { enemiesFor } from './pve/shared';
+import { fusionPerk } from './account3';
 
 /**
  * Clash of Isles (M14.5): the source's island contest (island_new_*), solo against CPU guilds. 50 islands in 10 sea
@@ -23,6 +24,11 @@ import { enemiesFor } from './pve/shared';
  * pays tokens when collected. Wins add fatigue (−5 % each, max −50 %); a loss clears it. Every battle scores season
  * points; season rank among CPU players; daily challenge tasks. See docs/design/clash-of-isles.md.
  */
+
+/** Fusion-skin perk: "Clash of Isles hanging increased X%". */
+function skinBoost(config: GameConfig, state: AccountState, tokens: number): number {
+  return Math.round(tokens * (1 + fusionPerk(config, state, 'Clash of Isles') / 100));
+}
 
 const DAY = 86_400_000;
 const MIN = 60_000;
@@ -70,7 +76,7 @@ export function prepareIsles(config: GameConfig, state: AccountState, now: numbe
   if (regen > 0) s = { ...s, attempts: Math.min(t.attemptsMax, s.attempts + regen), attemptsAt: s.attempts + regen >= t.attemptsMax ? now : s.attemptsAt + regen * t.attemptRegenMin * MIN };
   if (s === state.isles && paid === 0) return { state, changed: false };
   const next = { ...state, isles: s };
-  return { state: paid > 0 ? applyGrant(config, next, { islandCoin: paid }) : next, changed: true };
+  return { state: paid > 0 ? applyGrant(config, next, { islandCoin: skinBoost(config, next, paid) }) : next, changed: true };
 }
 
 export function islesRank(points: number, week: string): number {
@@ -133,7 +139,7 @@ export function attackIsland(config: GameConfig, state: AccountState, now: numbe
     const left = (isl.shields[String(id)] ?? t.cpuShields) - 1;
     if (left <= 0) {
       const settled = settle(t, isl, now);
-      s = settled.tokens > 0 ? applyGrant(config, s, { islandCoin: settled.tokens }) : s;
+      s = settled.tokens > 0 ? applyGrant(config, s, { islandCoin: skinBoost(config, s, settled.tokens) }) : s;
       isl = { ...settled.state, held: id, heldAt: now, shields: { ...isl.shields, [String(id)]: t.cpuShields } };
       captured = true;
     } else isl = { ...isl, shields: { ...isl.shields, [String(id)]: left } };
@@ -146,7 +152,8 @@ export function collectIsland(config: GameConfig, state: AccountState, now: numb
   const s = prepareIsles(config, state, now).state;
   const settled = settle(config.isles, s.isles!, now);
   if (settled.tokens === 0) return fail('not_ready', 'nothing to collect yet');
-  return ok({ state: applyGrant(config, { ...s, isles: settled.state }, { islandCoin: settled.tokens }), rewards: { islandCoin: settled.tokens } });
+  const tokens = skinBoost(config, s, settled.tokens);
+  return ok({ state: applyGrant(config, { ...s, isles: settled.state }, { islandCoin: tokens }), rewards: { islandCoin: tokens } });
 }
 
 export function claimIslesTask(config: GameConfig, state: AccountState, now: number, challenges: number): Result<{ state: AccountState; rewards: Rewards }> {

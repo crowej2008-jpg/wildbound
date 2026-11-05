@@ -1323,3 +1323,13 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      gifting, the story-chapter and "speak" sources, paid packs, Deluxe card bonuses. Cosmetic prizes become stand-in
      stones / shards; Team Rocket gives its title card (607). Weekly counters now keep last week. Four currencies,
      `weekend` slice; save v55. docs/design/weekend-flower-events.md.
+
+118. **Treasure battle skills + fusion perks (2026-11-05, follow-up).** Treasure skills are read from their source text at
+     the treasure's skill level and expressed with existing engine hooks: Guardian Shield → a start shield of X % of
+     each unit's HP; Life Seed → +X % healing received for 3 rounds and a heal (half of the "lost HP" share, as a share
+     of max HP) on those rounds; Parasitic Seed → foe back row −X % ATK for 2 rounds; Soul Pendant → allies +X % ATK for
+     2 rounds and control immunity on two units; Axe of Oppression → foe front row takes +X % damage for 2 rounds; each
+     recasts on its cooldown. Not expressed: Quick Claw, the current-HP strikes, stun / silence / healing-block chances.
+     Fusion-skin perks now apply where their mode exists: Faction Tower coins, Misty Forest coins, Sky Pillar shards,
+     Clash of Isles tokens, Pokémon Park stamina, Relic Battlefield stamina regeneration. Pure Crystal skills stay out:
+     the dumps only hold their ids (441020…), not what they do.

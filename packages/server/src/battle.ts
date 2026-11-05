@@ -43,6 +43,7 @@ import { squadSkillLines } from './joint-team';
 import { badgeStatLines } from './victory-road';
 import { trialStatLines } from './kings-trial';
 import { account3Lines } from './account3';
+import { treasureAura } from './treasure-skills';
 import { guildLines } from './guild';
 import type { TowerRuleJson } from '@wildbound/content';
 
@@ -222,6 +223,16 @@ export interface BuiltTeam {
   specs: SpecInput[];
   meta: Map<string, { name: string; speciesId: string; className: WildClass; stage: number; power: number }>;
   power: number;
+  /** Trainer-treasure effects this team puts on the other side's front (4–6) and back (1–3) rows. */
+  foe?: { front: RoundEffect[]; back: RoundEffect[] };
+}
+
+function withFoe(team: BuiltTeam, foe: BuiltTeam['foe']): SpecInput[] {
+  if (!foe || (foe.front.length === 0 && foe.back.length === 0)) return team.specs;
+  return team.specs.map((sp) => {
+    const add = sp.position >= 4 ? foe.front : foe.back;
+    return add.length ? { ...sp, roundEffects: [...(sp.roundEffects ?? []), ...add] } : sp;
+  });
 }
 
 /** Build a team from owned Wild instances (the squad / echo path). */
@@ -293,6 +304,18 @@ export function buildWildTeam(
     });
     power += unitPower;
   });
+  const aura = state ? treasureAura(config, state) : null;
+  if (aura) {
+    specs.forEach((sp, i) => {
+      sp.roundEffects = [...(sp.roundEffects ?? []), ...aura.allies.roundEffects];
+      const sh = { ...(sp.soulheart ?? {}) };
+      if (aura.allies.soulheart.startShield) sh.startShield = Math.max(sh.startShield ?? 0, aura.allies.soulheart.startShield);
+      if (aura.allies.soulheart.roundHeal && !sh.roundHeal) sh.roundHeal = aura.allies.soulheart.roundHeal;
+      if (i < 2 && aura.firstTwo.controlImmunityEvery && !sh.controlImmunityEvery) sh.controlImmunityEvery = aura.firstTwo.controlImmunityEvery;
+      if (Object.keys(sh).length > 0) sp.soulheart = sh;
+    });
+    return { specs, meta, power, foe: { front: aura.foeFront, back: aura.foeBack } };
+  }
   return { specs, meta, power };
 }
 
@@ -421,8 +444,8 @@ function runView(attackers: BuiltTeam, defenders: BuiltTeam, opts: RunViewOption
   if (attackers.specs.length === 0 || defenders.specs.length === 0) return null;
   const { seed, mode, battleId, rules, weather, strategies } = opts;
   const result = runBattle({
-    attackers: attackers.specs,
-    defenders: defenders.specs,
+    attackers: withFoe(attackers, defenders.foe),
+    defenders: withFoe(defenders, attackers.foe),
     seed,
     mode: opts.pvp ? 'pvp' : 'pve',
     settings: {},

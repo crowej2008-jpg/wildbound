@@ -4,6 +4,7 @@ import type { GameConfig } from './config';
 import { applyGrant } from './economy';
 import { fail, ok, type Result } from './index';
 import { enemiesFor } from './pve/shared';
+import { fusionPerk } from './account3';
 
 /**
  * M17 Relic Battlefield (source cross_ancient_battle_*), solo: your guild against three CPU guilds on the source's
@@ -123,8 +124,9 @@ export function prepareRelic(config: GameConfig, state: AccountState, now: numbe
   const r = config.guildWarRelic.relic;
   let rs = state.relic;
   if (!rs || rs.week !== weekKey(now)) rs = fresh(now, rs, config);
-  const regen = Math.floor((now - rs.staminaAt) / (r.stamina.regenMinutes * 60_000));
-  if (regen > 0) rs = { ...rs, stamina: Math.min(r.stamina.max, rs.stamina + regen), staminaAt: rs.stamina + regen >= r.stamina.max ? now : rs.staminaAt + regen * r.stamina.regenMinutes * 60_000 };
+  const step = (r.stamina.regenMinutes * 60_000) / (1 + fusionPerk(config, state, 'Relic Battlefield') / 100);
+  const regen = Math.floor((now - rs.staminaAt) / step);
+  if (regen > 0) rs = { ...rs, stamina: Math.min(r.stamina.max, rs.stamina + regen), staminaAt: rs.stamina + regen >= r.stamina.max ? now : rs.staminaAt + regen * step };
   const season = relicSeason(now);
   const until = Math.min(now, season?.end ?? now);
   const ticks = Math.floor((until - rs.scoreAt) / HALF_HOUR);

@@ -76,3 +76,10 @@ that was worked on and what decisions after you are done"*. Every call below too
   artifact shards) feeds the Ancient Artifacts system, which Wildbound does not have yet (the wiki notes artifacts only
   unlock after a server merge). It should come with that system.
 - Mecha shop (Shovel Carnival) stays out: the armor devices belong to special-form Pokémon Wildbound doesn't have.
+- Treasure battle skills (follow-up) are approximations on the engine's existing hooks (ASSUMPTIONS #118); a full
+  copy needs new engine effects (current-HP damage, chance-based stun / silence / healing block on a team skill).
+- Fusion skins have no battle skills in the source data — their "perks" are mode bonuses; six are wired (#118), the rest
+  point at modes Wildbound lacks or reward paths not built (AFK boost, daily copies, adventure odds, ladder coins,
+  gear crafting gold, orb dismantle, ranked AFK chest, cross-server predictions, champion tournament, Rift Time Coins,
+  Joint Team dungeon damage, Champion's Road).
+- Pure Crystal skills cannot be built: only their skill ids are in the dumps.

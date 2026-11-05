@@ -1,3 +1,4 @@
+import { fusionPerk } from './account3';
 import {
   dayKey,
   isGymAvailable,
@@ -99,8 +100,12 @@ export function badgeStatLines(config: GameConfig, state: AccountState, classNam
 }
 
 /** Scale one currency of a reward by a badge perk. */
+/** Fusion-skin perks (M15) that boost the same rewards as a badge perk kind (keyword in the skin's perk text). */
+const SKIN_PERK: Record<string, string> = { factionCoins: 'faction tower', mistyCoins: 'Misty Forest', skyPillarChallenge: 'Sky Pillar', skyPillarSweep: 'Sky Pillar' };
+
 export function withBadgeBonus(config: GameConfig, state: AccountState, rewards: Rewards, kind: string, currency: keyof Rewards): Rewards {
-  const k = badgePerk(config, state, kind);
+  const skin = SKIN_PERK[kind] ? fusionPerk(config, state, SKIN_PERK[kind]!) / 100 : 0;
+  const k = badgePerk(config, state, kind) + skin;
   const v = rewards[currency];
   if (!k || !v) return rewards;
   return { ...rewards, [currency]: Math.round(v * (1 + k)) };

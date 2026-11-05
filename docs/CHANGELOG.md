@@ -1512,3 +1512,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - Events page: Elven Treasure (Mon–Thu), Bingo (Fri–Sun), Flower Event (weekly) with their shops and rewards.
   Save v55. ASSUMPTIONS #117.
+
+## Follow-up — treasure battle skills and fusion perks (2026-11-05)
+
+- Five trainer-treasure skills now act in every battle (shields, heals, ATK windows, foe debuffs); six fusion-skin
+  perks boost their modes. ASSUMPTIONS #118.

@@ -931,7 +931,7 @@ export const en = {
   'a3.up.refine': 'Refine',
   'a3.up.star': 'Awaken ★',
   'a3.faction': 'Boost faction',
-  'a3.skillsNote': 'Treasure skills in battle are not built yet; levels, refines and accessories raise the skill level shown.',
+  'a3.skillsNote': 'Treasure skills fire in battle: Guardian Shield, Life Seed, Parasitic Seed, Soul Pendant and Axe of Oppression (their stun / silence / current-HP parts and Quick Claw are not in yet).',
   'a3.zring': 'Z Ring',
   'a3.crystal': 'Pure Crystal',
   'a3.levelUp': 'Level up',

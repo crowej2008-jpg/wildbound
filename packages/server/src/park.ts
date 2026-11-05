@@ -4,6 +4,7 @@ import type { GameConfig } from './config';
 import { applyGrant } from './economy';
 import { fail, ok, type Result } from './index';
 import { enemiesFor } from './pve/shared';
+import { fusionPerk } from './account3';
 
 /**
  * Pokémon Park (source cross_beast_park_*), solo with the M16 guild against CPU players. Weekly season, open Tuesday to
@@ -76,7 +77,9 @@ function fresh(config: GameConfig, now: number, prev: ParkState | null): ParkSta
 export function preparePark(config: GameConfig, state: AccountState, now: number): AccountState {
   let p = state.park;
   if (!p || p.week !== weekKey(now)) p = fresh(config, now, p);
-  if (p.day !== parkDay(now)) p = { ...p, day: parkDay(now), stamina: config.park.stamina.perDay, fainted: [], pending: null, grid: null };
+  const maxStamina = config.park.stamina.perDay + fusionPerk(config, state, 'Pokemon Park exploration stamina');
+  if (!state.park || state.park.week !== weekKey(now)) p = { ...p, stamina: maxStamina };
+  if (p.day !== parkDay(now)) p = { ...p, day: parkDay(now), stamina: maxStamina, fainted: [], pending: null, grid: null };
   if (p.grid !== null && collapsed(config, p.grid, now)) {
     const open = config.park.map.filter((g) => !collapsed(config, g.index, now));
     const rng = mulberry32((now / MIN) >>> 0);
@@ -330,7 +333,7 @@ export function buildParkView(config: GameConfig, state: AccountState, now: numb
     open: parkOpen(config, now),
     grid: p.grid,
     stamina: p.stamina,
-    staminaMax: t.stamina.perDay,
+    staminaMax: t.stamina.perDay + fusionPerk(config, state, 'Pokemon Park exploration stamina'),
     score: p.score,
     rank: parkRank(config, p.week, p.score),
     pending: p.pending,
