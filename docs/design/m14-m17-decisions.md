@@ -44,3 +44,15 @@ that was worked on and what decisions after you are done"*. Every call below too
   Pieces carry over; the Happy Exchange stays open between carnivals.
 - Other events on the owner's wiki (Weekend Bash: Elven Treasure and Bingo, Flower Event, Ruins Adventure) are not
   built: no source tables and only short wiki summaries.
+
+## M17 Guild War + Relic Battlefield
+- The roadmap said "needs M12" (the cross-server backend, still skipped). Recommended option taken: build both solo
+  against CPU guilds and CPU ladders now, like Clash of Isles; real cross-server play waits for M20 (backend).
+- Guild War: boss round HP (2,000,000 × 1.6 per difficulty) and CPU members' damage (12,000,000 a day) are stand-ins;
+  bosses are picked from the tower enemy pool. Guild Chest = 50 Guild Tokens. Titles (Expert / Monster Hunter, Ultimate
+  Guild, Power of Unity) are not granted. Not built: assist Pokémon, level sync, the last-hit bonus battle.
+- Relic Battlefield: map 1 only; your base is grid 1, CPU guilds start at 6, 86 and 91 and grow 2 grids a season day
+  (up to 12); they never retake your grids. Neutral grids need ⌈garrison ÷ 3⌉ wins, CPU grids 3 (their guard teams).
+  Explore events change a single "team condition" (HP %) instead of per-team HP; no revives. Season place rewards
+  (Relic Coins + Gems) are stand-ins. Relic items 26001–26004 / 72011 pay Relic Coins, which have no shop yet.
+- Pokémon Park (beast park) is not in this run: it was not on the M17 line of the roadmap.

@@ -742,6 +742,7 @@ export const rewardSchema = z
     fashionShard: z.number().nonnegative().optional(),
     beastFood: z.number().nonnegative().optional(),
     beastFoodPlus: z.number().nonnegative().optional(),
+    relicCoin: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

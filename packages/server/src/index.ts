@@ -35,6 +35,8 @@ import type { IslesView } from './isles-view';
 import type { Account3View } from './account3-view';
 import type { GuildView } from './guild';
 import type { EventsView } from './events';
+import type { GuildWarView } from './guild-war';
+import type { RelicBattlefieldView } from './relic';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -643,6 +645,17 @@ export interface GameServer {
   exchangeShovel(id: number): Promise<Result<ClaimResult>>;
   contributeMerge(amount: number): Promise<Result<AccountSnapshot>>;
   claimMerge(phase: string): Promise<Result<ClaimResult>>;
+  /** M17 Guild War and Relic Battlefield. */
+  getGuildWar(): Promise<Result<GuildWarView>>;
+  challengeGuildBoss(boss: number, seed?: number): Promise<Result<{ battle: BattleView; damage: number; kills: number; rewards: Rewards; snapshot: AccountSnapshot }>>;
+  claimGuildWarDaily(): Promise<Result<ClaimResult>>;
+  claimGuildWarSeason(): Promise<Result<ClaimResult>>;
+  getRelic(): Promise<Result<RelicBattlefieldView>>;
+  attackGrid(index: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; captured: boolean; snapshot: AccountSnapshot }>>;
+  releaseGrid(index: number): Promise<Result<AccountSnapshot>>;
+  exploreRelic(): Promise<Result<{ event: { id: number; type: number; value: number }; snapshot: AccountSnapshot }>>;
+  claimRelicTask(id: number): Promise<Result<ClaimResult>>;
+  claimRelicSeason(): Promise<Result<ClaimResult>>;
   /** M14.1 Victory Road. */
   getVictoryRoad(): Promise<Result<VictoryRoadView>>;
   claimVictoryChest(gym: number, progress: number): Promise<Result<ClaimResult>>;
@@ -737,6 +750,8 @@ export * from './account3-view';
 export * from './account3';
 export * from './guild';
 export * from './events';
+export * from './guild-war';
+export * from './relic';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

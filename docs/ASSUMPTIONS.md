@@ -1291,3 +1291,14 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      5-tier Gems shovel shop, Happy Exchange) with prizes mapped to Wildbound currencies; Merge Event (stand-in schedule:
      day 30, every 60 days; four one-day phases Berry / Orb / Soul Heart / Treasure ranked vs a CPU ladder). Server
      merges themselves do not exist solo. Five currencies, `guild` / `events` slices; save v52. docs/design/guild-events.md.
+
+115. **M17 Guild War + Relic Battlefield (2026-11-05).** Guild War from cross_guild_boss_* and its help text, solo with
+     the M16 CPU guild: weekly season, 5 bosses × 5 rounds × 15 difficulties then endless, attempts from daily activity
+     (30 / 60 / 100), battle / kill Guild Chests (as 50 Guild Tokens each), daily / season / guild rank tables vs CPU
+     ladders. Stand-ins: boss round HP, CPU members' daily damage, boss picks. Not built: assist Pokémon, level sync,
+     last-hit bonus battle, titles. Relic Battlefield from cross_ancient_battle_*: map 1 (91 grids, neighbours, tiers,
+     score per 30 min, open days), stamina 150 (+1 / 5 min; attack 10, explore 5, 2-minute cooldown), hold up to 12,
+     explore events with their weights, 13 tasks; three CPU guilds grow from the other corners; four-place season
+     rewards are stand-ins; relic items pay Relic Coins. Not built: CPU raids on your grids, guard-team placement,
+     revives, shields, ancient-artifact suppression. "Needs M12" (cross-server) resolved as solo vs CPU guilds. Squads
+     `guildWar` / `relic`, currency `relicCoin`, `guildWar` / `relic` slices; save v53. docs/design/guild-war-relic.md.

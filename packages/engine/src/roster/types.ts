@@ -35,7 +35,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -52,6 +52,8 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'berryGrove',
   'jointTeam',
   'isles',
+  'guildWar',
+  'relic',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -151,6 +153,7 @@ export type CurrencyId =
   | 'fashionShard'
   | 'beastFood'
   | 'beastFoodPlus'
+  | 'relicCoin'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -234,6 +237,7 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'fashionShard',
   'beastFood',
   'beastFoodPlus',
+  'relicCoin',
   'privilegeXp',
 ];
 
@@ -305,6 +309,7 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'fashionShard',
   'beastFood',
   'beastFoodPlus',
+  'relicCoin',
   'privilegeXp',
 ];
 
@@ -451,6 +456,39 @@ export interface AccountState {
   events: {
     shovel: { cycle: number; credits: number; pool: number; claimed: number[]; shopDay: string; shopBought: number[]; exchange: Record<string, number>; draws: number };
     merge: { cycle: number; points: Record<string, number>; claimed: string[] };
+  } | null;
+  /** M17: Guild War season (null until first opened). */
+  guildWar: {
+    week: string;
+    difficulty: number;
+    bosses: { round: number; hp: number }[];
+    damage: number;
+    dayKey: string;
+    dayDamage: number;
+    used: number;
+    cpuDay: string;
+    dailyClaimed: string;
+    seasonClaimed: string;
+    lastWeek: { week: string; damage: number; difficulty: number } | null;
+    lastDay: { day: string; damage: number } | null;
+  } | null;
+  /** M17: Relic Battlefield season (null until first opened). */
+  relic: {
+    week: string;
+    held: number[];
+    progress: Record<string, number>;
+    stamina: number;
+    staminaAt: number;
+    exploreAt: number;
+    condition: number;
+    score: number;
+    scoreAt: number;
+    personal: number;
+    staminaSpent: number;
+    wins: number;
+    explores: number;
+    claimed: number[];
+    lastWeek: { week: string; score: number; place: number; claimed: boolean } | null;
   } | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string };
@@ -611,6 +649,8 @@ export function emptySquads(): Record<SquadMode, Squad> {
     berryGrove: emptySquad(),
     jointTeam: emptySquad(),
     isles: emptySquad(),
+    guildWar: emptySquad(),
+    relic: emptySquad(),
   };
 }
 
@@ -630,6 +670,8 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     berryGrove: 'balanced',
     jointTeam: 'balanced',
     isles: 'balanced',
+    guildWar: 'balanced',
+    relic: 'balanced',
   };
 }
 

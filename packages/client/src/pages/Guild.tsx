@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { GuildView } from '@wildbound/server';
 import { t } from '../i18n';
 import { useServer } from '../server/ServerProvider';
@@ -79,7 +80,10 @@ export default function Guild() {
           </button>
         ))}
       </section>
-      <p className="muted">{t('guild.m17')}</p>
+      <p className="chip-row">
+        <Link className="btn" to="/guild-war">{t('gw.title')}</Link>
+        <Link className="btn" to="/relic-battlefield">{t('relic.title')}</Link>
+      </p>
       {status && (
         <p className="status-box" data-testid="guild-status">
           {status}

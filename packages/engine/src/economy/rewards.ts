@@ -95,6 +95,7 @@ export interface Rewards {
   fashionShard?: number;
   beastFood?: number;
   beastFoodPlus?: number;
+  relicCoin?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -179,6 +180,7 @@ export const CURRENCY_REWARD_KEYS = [
   'fashionShard',
   'beastFood',
   'beastFoodPlus',
+  'relicCoin',
   'privilegeXp',
 ] as const;
 

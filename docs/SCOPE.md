@@ -23,7 +23,7 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Combat/co-op modes: Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles (Shovel Carnival moved to M16, owner 2026-11-05) | Combat hub + each mode | M14 | **done 2026-11-05** - Victory Road, King's Trial, Paradise, Joint Team + Wild Area, Clash of Isles (solo vs CPUs) |
 | Trainer treasures, Z Ring (wristband), Pure Crystals, Different Dimension fusion skins, Golden Egg, Awakening (owner 2026-11-05) | Trainer screen + each system | M15 | **done 2026-11-05** - `/account-systems` |
 | Guild, merge and events (simulated; includes Shovel Carnival) | Guild, Events | M16 | **done 2026-11-05** - `/guild`, `/events` |
-| Guild war and Relic Battlefield | Relic Battlefield, Guild War | M17 | pending |
+| Guild war and Relic Battlefield | Relic Battlefield, Guild War | M17 | **done 2026-11-05** - `/guild-war`, `/relic-battlefield` (solo vs CPU guilds) |
 | Cross-server PvP: Cross-Server Clash, Championship, SPT Temple | PvP hub sub-modes | M18 | pending |
 | Visual-identity pass: 2D sprites, source-accurate UI palette, battle effects | Gallery, HUD, all screens | M19 | pending |
 | Hardening + Fastify/SQLite backend (shared service) | all | M20 | pending (required) |

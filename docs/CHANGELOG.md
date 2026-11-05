@@ -1484,3 +1484,16 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Solo: CPU guild members, CPU leaderboards; no real server merge. Wheel odds for the twelve non-pool segments are
   split equally (the wiki gives only the total). Prizes without a Wildbound item use stand-ins (see
   docs/design/m14-m17-decisions.md). Weekend Bash, Flower Event and Ruins Adventure are not built.
+
+## M17 — Guild War + Relic Battlefield (2026-11-05)
+
+- Guild War (/guild-war, from the Guild page): five bosses a week, rounds and 15 difficulties then the endless stage;
+  attempts from daily activity; Guild Tokens per battle and per kill; daily, season and guild rank rewards.
+- Relic Battlefield (/relic-battlefield): the source's 91-grid map against three CPU guilds; stamina, attacks on
+  neighbouring grids, explore events, held grids scoring every 30 minutes, personal and guild tasks, season places.
+- New squads Guild War / Relic Battlefield, Relic Coins. Save v53. ASSUMPTIONS #115.
+
+### Deviation from the reference
+
+- Both are cross-server in the source; here they run solo against CPU guilds and ladders (no M12 server). Stand-ins
+  for boss HP, CPU damage and growth, and season place rewards; see docs/design/m14-m17-decisions.md.

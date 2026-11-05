@@ -96,6 +96,7 @@ export const en = {
   'currency.fashionShard': 'Fashion Shards',
   'currency.beastFood': 'Sachets of Flat Candy',
   'currency.beastFoodPlus': 'Jars of Flat Candy',
+  'currency.relicCoin': 'Relic Coins',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -342,6 +343,8 @@ export const en = {
   'squad.mode.berryGrove': 'Berry Grove',
   'squad.mode.jointTeam': 'Joint Team',
   'squad.mode.isles': 'Clash of Isles',
+  'squad.mode.guildWar': 'Guild War',
+  'squad.mode.relic': 'Relic Battlefield',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -788,7 +791,49 @@ export const en = {
   'guild.opened': 'Red packet opened!',
   'guild.beast': 'Guild beast',
   'guild.fed': 'The guild beast enjoyed that!',
-  'guild.m17': 'Guild War and Pokémon Park arrive in M17.',
+  'gw.title': 'Guild War',
+  'gw.needGuild': 'Join a guild first.',
+  'gw.difficulty': 'Difficulty',
+  'gw.endless': 'Endless stage',
+  'gw.attempts': 'Attempts left',
+  'gw.damage': 'Season damage',
+  'gw.activityHint': 'Each daily activity mark ({list}) gives one attempt.',
+  'gw.team': 'Set the Guild War team →',
+  'gw.round': 'Round',
+  'gw.challenge': 'Challenge',
+  'gw.dealt': 'Dealt {n} damage · {k} kill(s)',
+  'gw.ranks': 'Ranks',
+  'gw.rankDaily': 'today in the guild',
+  'gw.rankSeason': 'season',
+  'gw.rankGuild': 'guild',
+  'gw.claimDaily': "Claim yesterday's rank reward",
+  'gw.claimSeason': "Claim last season's rewards",
+  'relic.title': 'Relic Battlefield',
+  'relic.day': 'Season day {d}',
+  'relic.closed': 'Closed (Tuesday 09:00 – Sunday 22:00 UTC)',
+  'relic.stamina': 'Stamina',
+  'relic.condition': 'Team condition',
+  'relic.score': 'Guild score',
+  'relic.team': 'Set the Relic Battlefield team →',
+  'relic.explore': 'Explore',
+  'relic.standings': 'Standings',
+  'relic.legend': '· outpost ◆ mid outpost ★ high outpost ♜ relic ▩ blocked — highlighted grids are yours.',
+  'relic.captured': 'Grid captured!',
+  'relic.won': 'Victory — keep pressing to take the grid.',
+  'relic.lost': 'Defeat.',
+  'relic.event.3': 'A trap! Your teams lost {n}% of their condition.',
+  'relic.event.4': 'A friendly explorer healed your teams ({n}%).',
+  'relic.event.5': 'A good rest: +{n} stamina.',
+  'relic.tasks': 'Tasks',
+  'relic.task.1': 'Spend {n} stamina',
+  'relic.task.2': 'Explore {n} times',
+  'relic.task.3': 'Win {n} battles',
+  'relic.task.4': 'Take {n} grids',
+  'relic.task.5': 'Take {n} mid or better grids',
+  'relic.task.6': 'Take {n} high outposts',
+  'relic.task.7': 'Take {n} relic',
+  'relic.task.8': 'Take the core relic',
+  'relic.claimSeason': 'Claim last season (place {p})',
   'events.title': 'Events',
   'events.day': 'Server day {day}',
   'events.shovel': 'Shovel Carnival',
@@ -1583,6 +1628,7 @@ export type CurrencyKey =
   | 'fashionShard'
   | 'beastFood'
   | 'beastFoodPlus'
+  | 'relicCoin'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1665,10 +1711,11 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   fashionShard: en['currency.fashionShard'],
   beastFood: en['currency.beastFood'],
   beastFoodPlus: en['currency.beastFoodPlus'],
+  relicCoin: en['currency.relicCoin'],
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1685,6 +1732,8 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   berryGrove: en['squad.mode.berryGrove'],
   jointTeam: en['squad.mode.jointTeam'],
   isles: en['squad.mode.isles'],
+  guildWar: en['squad.mode.guildWar'],
+  relic: en['squad.mode.relic'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

@@ -179,6 +179,8 @@ import { buildIslesView, type IslesView } from './isles-view';
 import * as a3 from './account3';
 import * as guildMod from './guild';
 import * as eventsMod from './events';
+import * as gwMod from './guild-war';
+import * as relicMod from './relic';
 import { squadWildIds } from './growth';
 import { buildAccount3View, type Account3View } from './account3-view';
 import { bumpCounter, stampLogin } from './counters';
@@ -2202,6 +2204,57 @@ export class LocalServer implements GameServer {
 
   async claimMerge(phase: string): Promise<Result<ClaimResult>> {
     const r = await this.jointAct((s, now) => eventsMod.claimMerge(this.config, s, now, phase));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  // ---------------------------------------------------------------- M17 Guild War + Relic Battlefield
+
+  async getGuildWar(): Promise<Result<gwMod.GuildWarView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(gwMod.buildGuildWarView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async challengeGuildBoss(boss: number, seed?: number): Promise<Result<{ battle: BattleView; damage: number; kills: number; rewards: Rewards; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => gwMod.challengeGuildBoss(this.config, s, now, boss, seed));
+  }
+
+  async claimGuildWarDaily(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => gwMod.claimGuildWarDaily(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async claimGuildWarSeason(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => gwMod.claimGuildWarSeason(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async getRelic(): Promise<Result<relicMod.RelicBattlefieldView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(relicMod.buildRelicView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async attackGrid(index: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; captured: boolean; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => relicMod.attackGrid(this.config, s, now, index, seed));
+  }
+
+  async releaseGrid(index: number): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => relicMod.releaseGrid(this.config, s, now, index)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async exploreRelic(): Promise<Result<{ event: { id: number; type: number; value: number }; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => relicMod.exploreRelic(this.config, s, now));
+  }
+
+  async claimRelicTask(id: number): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => relicMod.claimRelicTask(this.config, s, now, id));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async claimRelicSeason(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => relicMod.claimRelicSeason(this.config, s, now));
     return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
   }
 

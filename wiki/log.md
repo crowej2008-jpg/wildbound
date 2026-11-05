@@ -368,3 +368,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-05] update | M16 Guild + events
 - Guild (CPU members), Shovel Carnival, Merge Event (ASSUMPTIONS #114, save v52).
+
+## [2026-11-05] update | M17 Guild War + Relic Battlefield — M14–M17 run done
+- Guild War and Relic Battlefield solo vs CPU guilds (ASSUMPTIONS #115, save v53). The owner's M14–M17 run is complete;
+  every decision is listed in docs/design/m14-m17-decisions.md.

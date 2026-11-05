@@ -96,6 +96,7 @@ export {
   ISLES,
   ACCOUNT3,
   GUILD_EVENTS,
+  GUILD_WAR_RELIC,
   VICTORY_ROAD,
   KINGS_TRIAL,
   GACHA_TUNING,
@@ -118,6 +119,7 @@ export type {
   IslesJson,
   Account3Json,
   GuildEventsJson,
+  GuildWarRelicJson,
   VictoryRoadJson,
   KingsTrialJson,
 } from './tuning';
@@ -134,6 +136,7 @@ export { jointTeamSchema } from './joint-team-schema';
 export { islesSchema } from './isles-schema';
 export { account3Schema } from './account3-schema';
 export { guildEventsSchema } from './guild-events-schema';
+export { guildWarRelicSchema } from './guild-war-relic-schema';
 export { victoryRoadSchema } from './victory-road-schema';
 export { kingsTrialSchema } from './kings-trial-schema';
 export type {
