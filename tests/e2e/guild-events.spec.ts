@@ -35,6 +35,6 @@ test('Events: Shovel Carnival digs on server day 8', async ({ page }) => {
   await expect(page.getByTestId('shovel')).toContainText('Credits 10');
   await expect(page.getByTestId('merge-state')).toContainText('Starts in');
   await expect(page.getByTestId('elven')).toBeVisible();
-  await expect(page.locator('[data-testid^="bingo-"]')).toHaveCount(18);
+  await expect(page.locator('[data-testid^="bingo-"]')).toHaveCount(17); // 16 numbers + the state line
   await expect(page.getByTestId('flower-state')).toContainText('Flowers this week');
 });
