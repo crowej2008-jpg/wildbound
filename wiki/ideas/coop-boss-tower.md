@@ -40,4 +40,4 @@ Designed by Jayden in Claude chats; **not yet in SCOPE.md or any milestone**. Ne
 
 ## Dependencies
 Resonance ✔ (M11), [held items](../systems/held-items.md) ✔, Resetter Shards (13.3), artifacts
-(deferred M12), awakening levels (not in the game yet), titles ✔, backend (M19).
+(deferred M12), awakening levels (not in the game yet), titles ✔, backend (M20).

@@ -12,8 +12,8 @@ Owner asked: *"so could all the server stuff be done after we make the game?"*
 
 | Layer | Wait? | Why |
 |---|---|---|
-| Remote backend (Fastify + SQLite, auth, shared saves, deploy) | **Yes — M19** | Client already talks to the `GameServer` interface; `HttpServer` drops in later. |
-| LocalServer mode actions + views | **No** | It's the save/reward boundary; skipping it would duplicate rules in the client and make the M19 swap harder. |
+| Remote backend (Fastify + SQLite, auth, shared saves, deploy) | **Yes — M20** | Client already talks to the `GameServer` interface; `HttpServer` drops in later. |
+| LocalServer mode actions + views | **No** | It's the save/reward boundary; skipping it would duplicate rules in the client and make the M20 swap harder. |
 | Server unit tests | Can be batched at the end of a sub-milestone | Still required before "done". |
 
 Owner: *"ah ok lets work on all of m13.3 then."*

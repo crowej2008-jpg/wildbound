@@ -1,13 +1,13 @@
 ---
 title: Build Lab
 type: system
-milestone: M20 (last)
+milestone: M21 (last)
 status: pending
 updated: 2026-10-31
 sources: [PROMPT.md §7.10, opencode-session-2026-10 msg 38]
 ---
 
-# Build Lab — the owner's main goal (M20, last milestone)
+# Build Lab — the owner's main goal (M21, last milestone)
 
 Owner moved it to the end on 2026-10-16 ("make the build lab the last milestone").
 

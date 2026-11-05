@@ -1,13 +1,13 @@
 ---
 title: Shared backend
 type: system
-milestone: M19
+milestone: M20
 status: pending (required)
 updated: 2026-10-31
 sources: [docs/SCOPE.md, docs/ASSUMPTIONS.md override #9, opencode-session-2026-10 msgs 52, 96]
 ---
 
-# Shared backend (M19) — required
+# Shared backend (M20) — required
 
 - `HttpServer implements GameServer` over **Fastify + SQLite**: server-side saves, minimal accounts
   (name + secret token, no PII), server-authoritative battles, shared ghosts/rankings, settlement

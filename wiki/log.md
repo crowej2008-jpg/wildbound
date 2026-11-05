@@ -352,3 +352,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: Shovel Carnival (a recurring prize-wheel event) moves to M15 with the other events.
 - Owner: new milestone M14A (after M14) for the source systems on no milestone — trainer treasures, Z Ring, Pure
   Crystals, fusion skins, Golden Egg, Awakening (`wiki/milestones/m14a.md`).
+- Owner: M14A becomes the new **M15** (Account systems III); old M15–M20 move back one (M16 guild / merge / events with
+  Shovel Carnival, M17 Guild War + Relic, M18 cross-server PvP, M19 visuals, M20 backend, M21 Build Lab; curves after
+  M21). Historical records (changelog, assumptions, log) keep the old numbers.

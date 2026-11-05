@@ -19,7 +19,7 @@ game documented in the owner's research repo (`reference/game-rebuild/`), with t
 
 ## The owner's main goal
 The **[Build Lab](systems/build-lab.md)** — a tool to test builds and new creatures with the combat
-simulator. It is deliberately the **last** milestone (M20).
+simulator. It is deliberately the **last** milestone (M21).
 
 ## Where things stand (2026-10-31)
 - **Built:** M0–M11, M13.0a, M13.0b, M13.1 [Pet Home](systems/pet-home.md), M13.2

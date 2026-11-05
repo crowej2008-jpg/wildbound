@@ -28,7 +28,7 @@ Pet Home and Sky Pillar rows; then R10 and M13.3 [Hoopa's Vault](systems/hoopa-v
 ## Decisions (dated, with the owner's words)
 - [Pokémon roster override](decisions/pokemon-roster-override.md) — 2026-10-15, 84 Pokémon replace originals
 - [IP guard and art](decisions/ip-guard-and-art.md) — 2026-10-17, option B: raster art only in `public/art/`
-- [private group + backend](decisions/private-group-and-backend.md) — 2026-10-17, invite-only; M19 required
+- [private group + backend](decisions/private-group-and-backend.md) — 2026-10-17, invite-only; M20 required
 - [Mount / Back Decor / Follower numbers made up](decisions/fashion-numbers-made-up.md) — 2026-11-01, invented curve and piece stats; pieces and sets stay the source
 - [World Boss changes](decisions/world-boss-changes.md) — 2026-11-01, shard drops, VIP 14 skip, strong unkillable boss
 - [milestone renumbering](decisions/milestone-renumbering.md) — 2026-10-16/17 old → new numbers
@@ -52,10 +52,10 @@ Pet Home and Sky Pillar rows; then R10 and M13.3 [Hoopa's Vault](systems/hoopa-v
 ## Systems — planned / parked
 - M13: [Hoopa's Vault](systems/hoopa-vault.md) (next) · [Rift Arena](systems/rift-arena.md) · [Misty Woods](systems/misty-woods.md) · [Faction Tower](systems/faction-tower.md) · [Berry Grove](systems/berry-grove.md) · [Dig Site](systems/dig-site.md)
 - Parked/deferred: [Gods Trials](systems/gods-trials.md) · [artifacts, Ruins, Relic Battlefield](systems/artifacts-and-relic.md)
-- Later: [visual identity (M18)](systems/visual-identity.md) · [backend (M19)](systems/backend.md) · [Build Lab (M20)](systems/build-lab.md)
+- Later: [visual identity (M19)](systems/visual-identity.md) · [backend (M20)](systems/backend.md) · [Build Lab (M21)](systems/build-lab.md)
 
 ## Milestones
-- [roadmap](milestones/roadmap.md) — M0–M20 with status
+- [roadmap](milestones/roadmap.md) — M0–M21 with status
 - [source retrofit](milestones/source-retrofit.md) — R0–R10, runs before M13.3
 - [battle engine](milestones/battle-engine.md) — E1–E6, the owner's pause to finish combat
 - [M13](milestones/m13.md) — sub-step table

@@ -18,16 +18,16 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | Arena, ranked ladder, weather, settlement | PvP hub, Arena, Rankings, Ranked | M10 | built (Arena + Ranked + hub + weekly settlement + balance pass - `docs/design/pvp.md`) |
 | Growth/collection II: Potential, Orbs, Soul-hearts, Plates, Trinkets, Held Items, Resonance, Berries, VIP, Titles | Wild screen, Trainer, VIP, Titles | M11 | built - gear tabs/stat sheet, Potential, Orbs, Soul-hearts, Berries, Held Items, Plates, Trinkets, Resonance, VIP and Titles (save v13 at M11; v14 in 13.0a; v15 in 13.0b; v16 in 13.1; `docs/design/collection.md`) |
 | Ancient Artifacts, Suppression, Ruins Adventure | Artifacts, Ruins Adventure | M12 | deferred by owner (2026-10-23) - not part of M13 |
-| Explore modes: Hoopa's Vault, Rift Arena, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Berry Grove (replaced Island Challenge), Dig Site (replaced Ultra Wormhole) | Explore hub + each mode | M13 | **done 2026-11-05** - all eight modes live (Berry Grove and Dig Site replaced Island Challenge and Ultra Wormhole, owner); curves after M20; leaderboards with the server parts |
+| Explore modes: Hoopa's Vault, Rift Arena, Sky Pillar, Faction Tower, Misty Woods, Pet Home, Berry Grove (replaced Island Challenge), Dig Site (replaced Ultra Wormhole) | Explore hub + each mode | M13 | **done 2026-11-05** - all eight modes live (Berry Grove and Dig Site replaced Island Challenge and Ultra Wormhole, owner); curves after M21; leaderboards with the server parts |
 | **Source retrofit (R)** — every built system copied exactly from the source (owner decision 2026-10-31) | all built screens | R (before 13.3) | in progress - R0 (loader, save reset), R1 (species, star ladders, stats, Evolve; save v19) and R5 (held items; save v20) built; R4 Potential next, then R6, R7, R8, R2/R3 from notes - `wiki/milestones/source-retrofit.md` |
-| Combat/co-op modes: Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles (Shovel Carnival moved to M15, owner 2026-11-05) | Combat hub + each mode | M14 | pending - full Victory Road tasks/badges/commission; 13.0a already ships the 60 gym gate fights |
-| Trainer treasures, Z Ring (wristband), Pure Crystals, Different Dimension fusion skins, Golden Egg, Awakening (owner 2026-11-05) | Trainer screen + each system | M14A | planned - `wiki/milestones/m14a.md` |
-| Guild, merge and events (simulated; includes Shovel Carnival) | Guild, Events, Settings, Help | M15 | pending |
-| Guild war and Relic Battlefield | Relic Battlefield, Guild War | M16 | pending |
-| Cross-server PvP: Cross-Server Clash, Championship, SPT Temple | PvP hub sub-modes | M17 | pending |
-| Visual-identity pass: 2D sprites, source-accurate UI palette, battle effects | Gallery, HUD, all screens | M18 | pending |
-| Hardening + Fastify/SQLite backend (shared service) | all | M19 | pending (required) |
-| Build Lab (owner's main goal) | Build Lab, Debug, Rules panel, Kit editor | M20 | pending |
+| Combat/co-op modes: Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles (Shovel Carnival moved to M16, owner 2026-11-05) | Combat hub + each mode | M14 | pending - full Victory Road tasks/badges/commission; 13.0a already ships the 60 gym gate fights |
+| Trainer treasures, Z Ring (wristband), Pure Crystals, Different Dimension fusion skins, Golden Egg, Awakening (owner 2026-11-05) | Trainer screen + each system | M15 | planned - `wiki/milestones/m15.md` |
+| Guild, merge and events (simulated; includes Shovel Carnival) | Guild, Events, Settings, Help | M16 | pending |
+| Guild war and Relic Battlefield | Relic Battlefield, Guild War | M17 | pending |
+| Cross-server PvP: Cross-Server Clash, Championship, SPT Temple | PvP hub sub-modes | M18 | pending |
+| Visual-identity pass: 2D sprites, source-accurate UI palette, battle effects | Gallery, HUD, all screens | M19 | pending |
+| Hardening + Fastify/SQLite backend (shared service) | all | M20 | pending (required) |
+| Build Lab (owner's main goal) | Build Lab, Debug, Rules panel, Kit editor | M21 | pending |
 
 ## M13 plan (locked 2026-10-23)
 
@@ -74,7 +74,7 @@ merge + Lv45. M12 stays skipped. Full Victory Road tasks/badges/commission stay 
 
 ## Deliberately deferred (explicit)
 
-- The M19 backend (Fastify + SQLite `HttpServer`) is **required** for the owner's plan to run a shared
+- The M20 backend (Fastify + SQLite `HttpServer`) is **required** for the owner's plan to run a shared
   online service for a small trusted group (owner decision 2026-10-17; see `docs/ASSUMPTIONS.md`
   › Owner content override, item 9). Local-only play remains possible, but the shared service is the
   target. Distribution stays private and invite-only — no public release.

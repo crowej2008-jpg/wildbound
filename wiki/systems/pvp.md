@@ -27,10 +27,10 @@ All opponents are **deterministic ghosts/bots** until the [backend](backend.md) 
 
 ## Balance (M10.6)
 Ghost pools are **tier-banded**: Arena rare+epic (base Lv6, slope 1.24); Ranked rare+legendary+epic
-(base Lv12, slope 1.18). Supreme/mythic reserved for M17. Pinned by `pvp-balance.test.ts`.
-Known limit: static ghosts → a squad past the top rung clears everything (fix = M19 matchmaking).
+(base Lv12, slope 1.18). Supreme/mythic reserved for M18. Pinned by `pvp-balance.test.ts`.
+Known limit: static ghosts → a squad past the top rung clears everything (fix = M20 matchmaking).
 
 ## Nav
 The source has six tabs (Home · Explore · Pokémon · Combat · Trainer · Bag) and reaches PvP from the
 Explore map. Our label is **"Wilds"**, never the franchise roster name. PvP hub `/pvp`; Championship card
-is a "coming later" stub (M17).
+is a "coming later" stub (M18).

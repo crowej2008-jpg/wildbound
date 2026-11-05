@@ -48,12 +48,12 @@ per chapter.
 gate, retrying each with fresh battle seeds, and asserts `c3-10` is cleared. It isolates the combat
 curve from the economy (resources are granted directly; the economy has its own tests). If the curve
 or growth tables change, this test fails. Chapters 4-182 are generated shape, not a pinned early-game
-balance target; M14/M20 replace this fixed profile with sweeps.
+balance target; M14/M21 replace this fixed profile with sweeps.
 
 ## Revisit when
 
 - **M6 (summoning)**: players can obtain higher-tier Wilds, so chapters beyond 3 may field
   rare/epic/legendary squads and the mid-curve can tighten.
 - **M7/M8 (equipment, trials)**: gear adds power the current curve does not assume.
-- **M20 (Build Lab)**: sweeps with confidence intervals should replace the fixed-profile check with a
+- **M21 (Build Lab)**: sweeps with confidence intervals should replace the fixed-profile check with a
   win-rate band per stage.

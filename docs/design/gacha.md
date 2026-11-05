@@ -48,7 +48,7 @@ Legendary and Supreme Pokémon at equal weight, at its first star. Repeats.
 ## Not copied
 
 - The Supreme Gacha (chest 5) — off in the source (no VIP level opens it).
-- Event gachas (themed pools, their own tickets) — events arrive with M15.
+- Event gachas (themed pools, their own tickets) — events arrive with M16.
 - The full-bag refusal (result 415) — the Pokémon bag is not built yet.
 
 ## State (save v38)

@@ -1,7 +1,7 @@
 ---
 title: Ancient Artifacts, Ruins Adventure and Relic Battlefield
 type: system
-milestone: M12 (deferred), M16
+milestone: M12 (deferred), M17
 status: deferred
 updated: 2026-10-31
 sources: [opencode-session-2026-10 msgs 76-78]
@@ -24,7 +24,7 @@ full list, then said **"skip anything to do with artifacts for now"** (2026-10-2
 40-tile dice board (Adventure Die 1–3, Choice Die 1–6), mystery packs on exact landing, tile-40 bonus,
 Happy Exchange (shards → materials), free Artifact Pass track only, needs an invented free dice faucet.
 
-## Relic Battlefield (M16)
+## Relic Battlefield (M17)
 Needs guild-lite + merge-lite. Weekly season (enroll Mon 22:00, group Tue 04:00, battle Tue 09:00 → Sun
 22:00 UTC); two 91-tile maps; strongholds with neutral guards; 3 teams of 6 at group level (account-wide
 bonuses stripped); stamina 150; relic exploration; quests, rankings, 7-day titles; bot guilds.

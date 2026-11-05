@@ -12,7 +12,7 @@ content (JSON + zod)  ──►  cli (kit-loader adapter, validator, pnpm sim)
                                  │
 engine (pure mechanics)  ◄───────┘   content DSL → engine KitDef
    ▲
-server (GameServer boundary: LocalServer now, HttpServer in M19)  ──►  client (React, mobile-first)
+server (GameServer boundary: LocalServer now, HttpServer in M20)  ──►  client (React, mobile-first)
 ```
 
 | Package | Role | Hard rules |
@@ -25,7 +25,7 @@ server (GameServer boundary: LocalServer now, HttpServer in M19)  ──►  cli
 
 ## Why the "server" exists already
 Every mode needs LocalServer actions + a view now; only the networked backend waits for
-[M19](../systems/backend.md). Owner asked on 2026-10-31 whether server work could wait — answer:
+[M20](../systems/backend.md). Owner asked on 2026-10-31 whether server work could wait — answer:
 the remote backend yes, the local boundary no ([decision](../decisions/server-boundary-now.md)).
 
 ## Patterns every new mode follows

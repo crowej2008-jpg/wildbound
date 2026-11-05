@@ -97,14 +97,14 @@ CI runs `pnpm check` on every push (`.github/workflows/check.yml`, results in th
   Woods, Pet Home, Island Challenge, Ultra Wormhole.
 - **M14 Combat and co-op modes** — Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild
   Area, Clash of Isles, Shovel Carnival.
-- **M15 Guild, merge and events (simulated)** — guild, merge, the event calendar, shop restocks; no
+- **M16 Guild, merge and events (simulated)** — guild, merge, the event calendar, shop restocks; no
   dead buttons.
-- **M16 Guild war and Relic Battlefield** — the guild stronghold war and its seasons.
-- **M17 Cross-server PvP** — Cross-Server Clash, Championship, SPT Temple (bot-driven).
-- **M18 Visual-identity pass** — 2D sprites, source-accurate UI palette, battle effects.
-- **M19 Hardening and backend (the shared service — required)** — a11y/perf/saves/docs, Fastify +
+- **M17 Guild war and Relic Battlefield** — the guild stronghold war and its seasons.
+- **M18 Cross-server PvP** — Cross-Server Clash, Championship, SPT Temple (bot-driven).
+- **M19 Visual-identity pass** — 2D sprites, source-accurate UI palette, battle effects.
+- **M20 Hardening and backend (the shared service — required)** — a11y/perf/saves/docs, Fastify +
   SQLite `HttpServer`, deployment guide.
-- **M20 Build Lab** — full tool, Rules panel, kit editor, sweeps with CIs, CLI parity (last milestone).
+- **M21 Build Lab** — full tool, Rules panel, kit editor, sweeps with CIs, CLI parity (last milestone).
 
 ## Reference material
 

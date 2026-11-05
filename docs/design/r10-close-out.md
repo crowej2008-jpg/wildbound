@@ -44,7 +44,7 @@ World Boss drops, VIP 14 skip and an unkillable boss (#80); Trials removed (#81)
   Ash-Pikachu's), 50,000 battles: Necrozma 60 %, Zacian 54 %, Dialga 53 %, Wobbuffet 53 %; most of the field sits in
   48–53 %. The meta-six check does not pass; four of the six have Mechas in the source, which Wildbound does not
   have, and the Relic slot (Artifacts) is deferred. See `wiki/systems/e6-tier-list.md`.
-- **Mode difficulty curves:** moved to after M20 (owner 2026-11-04).
+- **Mode difficulty curves:** moved to after M21 (owner 2026-11-04).
 
 ## Checks
 

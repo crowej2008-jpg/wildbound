@@ -26,10 +26,10 @@ Wording kept close to his; links show where each would land.
     relates to the [Gods Trials Origin gap](../systems/gods-trials.md).
 13. More skins ([visual identity](../systems/visual-identity.md)).
 14. Skip battle on Dyna and all other modes.
-15. Better SPT Tower rewards (M17).
+15. Better SPT Tower rewards (M18).
 16. Gold-wing system on artifacts ([artifacts](../systems/artifacts-and-relic.md)).
 17. Different points system in personal rankings on Relic, and battle points on beast egg.
-18. **Guild size 8** (M15).
+18. **Guild size 8** (M16).
 
 Several terms ("gold wings", "ecology", "purple things", "mecha", "beast egg") aren't defined
 anywhere in the repo yet — ask the owner before building them.

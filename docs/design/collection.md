@@ -199,7 +199,7 @@ pays Title Tickets to extend from `max(now, expiresAt)`. Stats are flat HP/P.ATK
 percent Total lines. M11 ships:
 - permanent trainer-star and collection titles from existing milestones;
 - **King of Arena** (14d) and **Alliance Champion** (14d) from the existing Arena/Ranked modes;
-- guild-war and event titles in the catalogue as locked "coming later" rows (M15/M16).
+- guild-war and event titles in the catalogue as locked "coming later" rows (M16/M17).
 
 The 15-stage event ladder is schema-supported but has no live source until events.
 

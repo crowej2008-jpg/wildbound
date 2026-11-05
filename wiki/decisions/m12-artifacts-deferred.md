@@ -16,7 +16,7 @@ sources: [docs/ASSUMPTIONS.md M13 #37, docs/SCOPE.md, opencode-session-2026-10 m
 - Owner then: **"ok lets skip anything to do with artifacts for now."**
 - So: no Ancient Artifacts, artifact Suppression, Ruins Adventure or Relic Battlefield yet. The full
   inventory is preserved in [artifacts & Relic Battlefield](../systems/artifacts-and-relic.md).
-- Knock-on: M16 (Relic Battlefield) depends on this deferred work.
+- Knock-on: M17 (Relic Battlefield) depends on this deferred work.
 
 ## Gods Trials (2026-10-23)
 - Owner: "we will come back to this later" → "we will work on this after m13 and others are done".

@@ -10,7 +10,7 @@ const pct = (v: number) => `${Math.round(v * 1000) / 10}%`;
 
 /**
  * R8: Mount / Back Decor / Follower / Outfits on the Trainer screen. The pieces and sets are the source's; the level
- * curve and piece stats are made up (owner, 2026-11-01). Pieces come from events (M15).
+ * curve and piece stats are made up (owner, 2026-11-01). Pieces come from events (M16).
  */
 export default function FashionPanel() {
   const { call, run, snapshot, busy } = useServer();

@@ -16,5 +16,5 @@ and from the hub in the browser (`tests/e2e/m13-close-out.spec.ts`); each has it
 
 Fixed in the close-out: the hub's Misty Woods countdown now follows its 2-day cycle (it showed the daily reset).
 
-Deferred by the owner: every mode's difficulty curve (after M20, `wiki/decisions/difficulty-curves-at-the-end.md`);
+Deferred by the owner: every mode's difficulty curve (after M21, `wiki/decisions/difficulty-curves-at-the-end.md`);
 leaderboards and ranked rewards wait for the server parts / scaling CPUs.

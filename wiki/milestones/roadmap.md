@@ -28,15 +28,15 @@ Numbers changed twice — see [renumbering](../decisions/milestone-renumbering.m
 | E | [Battle engine completion](battle-engine.md) — triggers, held-item skills, unmodelled kit clauses | **in progress** (E1–E2 built) |
 | R | [Source retrofit](source-retrofit.md) — built systems copied exactly from the source | in progress (R0, R1, R5 built; paused for E) |
 | M13 | [Explore modes](m13.md) | in progress (13.3 after R) |
-| M14 | Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles (Shovel Carnival → M15) | in progress (14.1–14.3 built) |
-| M14A | [Account systems III](m14a.md): trainer treasures, Z Ring, Pure Crystals, fusion skins, Golden Egg, Awakening | planned (owner 2026-11-05) |
-| M15 | Guild, merge, events (simulated; includes Shovel Carnival) | pending |
-| M16 | Guild war + Relic Battlefield (needs M12) | pending |
-| M17 | Cross-server PvP: Clash, Championship, SPT Temple | pending |
-| M18 | [Visual identity](../systems/visual-identity.md) | pending |
-| M19 | [Shared backend](../systems/backend.md) (required; owner 2026-11-04: probably solo with scaling CPUs — revisit) | pending |
-| M20 | [Build Lab](../systems/build-lab.md) | pending (last) |
-| After M20 | [Mode difficulty curves](../decisions/difficulty-curves-at-the-end.md) | parked: owner 2026-11-04, "at the very end" |
+| M14 | Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles (Shovel Carnival → M16) | in progress (14.1–14.3 built) |
+| M15 | [Account systems III](m15.md): trainer treasures, Z Ring, Pure Crystals, fusion skins, Golden Egg, Awakening | planned (owner 2026-11-05) |
+| M16 | Guild, merge, events (simulated; includes Shovel Carnival) | pending |
+| M17 | Guild war + Relic Battlefield (needs M12) | pending |
+| M18 | Cross-server PvP: Clash, Championship, SPT Temple | pending |
+| M19 | [Visual identity](../systems/visual-identity.md) | pending |
+| M20 | [Shared backend](../systems/backend.md) (required; owner 2026-11-04: probably solo with scaling CPUs — revisit) | pending |
+| M21 | [Build Lab](../systems/build-lab.md) | pending (last) |
+| After M21 | [Mode difficulty curves](../decisions/difficulty-curves-at-the-end.md) | parked: owner 2026-11-04, "at the very end" |
 
 Parked outside the numbering: [Gods Trials](../systems/gods-trials.md) ("after M13 and others").
 Workflow: since 2026-11-01 no list-and-wait between milestones; stop only for the owner's own calls

@@ -21,7 +21,7 @@ sources: [docs/design/gacha.md, docs/design/shops.md, docs/ASSUMPTIONS.md #83, r
 - **Wishing Well:** after 200 Premium draws pick Water / Fire / Grass; that faction's Legendaries × 1.8.
 - **Supreme Gift:** VIP credits (+20 Premium, +1 Common a draw); 1,000 open one of 27 Legendary / Supreme Pokémon,
   from VIP 14.
-- Not copied: the Supreme Gacha (off in the source), event gachas (M15), the full-bag refusal.
+- Not copied: the Supreme Gacha (off in the source), event gachas (M16), the full-bag refusal.
 
 ## Bag (R9, 2026-11-04, save v39)
 - Generic shards compose into boxes (source recipes): 3-Star Pokémon Shard ×40, 5-Star ×50, 4 Star Fragment ×50 make

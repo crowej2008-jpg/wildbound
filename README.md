@@ -34,7 +34,7 @@ pnpm check       # lint + typecheck + unit + content:validate + build + e2e
 ```
 packages/engine   pure, deterministic TypeScript (no DOM, no Date, no Math.random)
 packages/content  authored data + zod schemas + tuning tables
-packages/server   GameServer boundary (LocalServer now, HttpServer in M19)
+packages/server   GameServer boundary (LocalServer now, HttpServer in M20)
 packages/client   React app (mobile-first)
 packages/cli      pnpm sim, golden-export, content:validate
 scripts/          one-time content generators (campaign, Pet Home, Sky Pillar, roster, skills)

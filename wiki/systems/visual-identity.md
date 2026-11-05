@@ -1,13 +1,13 @@
 ---
 title: Visual identity pass
 type: system
-milestone: M18
+milestone: M19
 status: pending
 updated: 2026-10-31
 sources: [opencode-session-2026-10 msgs 53-58, docs/design/art.md]
 ---
 
-# Visual identity pass (M18)
+# Visual identity pass (M19)
 
 - **Sprites:** today creatures are procedural SVG portraits. Raster sprites can go in
   `packages/client/public/art/` ([IP guard allowance](../decisions/ip-guard-and-art.md)). The agent

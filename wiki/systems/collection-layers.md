@@ -83,7 +83,7 @@ set bonuses at 2 / 3 / 5. ASSUMPTIONS #77. Save v33.
 
 ## Trainer Tokens
 **R8 (2026-11-01):** the source's six tokens, five levels each, PvP-only (Arena, Ranked). Each level needs its Gods
-Trials season's Suppression Treasure total (M13) and the token's own fragments (festive events, M15). ASSUMPTIONS
+Trials season's Suppression Treasure total (M13) and the token's own fragments (festive events, M16). ASSUMPTIONS
 #74. Save v31.
 
 ## Titles
@@ -93,4 +93,4 @@ modes. ASSUMPTIONS #73. Save v30.
 
 102 titles (85 permanent, 15 × 7-day, 2 × 14-day), three slots (Common/Premium/Rare), Title Tickets
 for activation/upgrade/Continuation, lazy expiry, account-wide stat lines. Guild/event titles locked
-until M15/M16. Save v13. One taste question open — see [open questions](../open-questions.md).
+until M16/M17. Save v13. One taste question open — see [open questions](../open-questions.md).

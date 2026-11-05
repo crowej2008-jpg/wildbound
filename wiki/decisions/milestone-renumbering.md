@@ -27,3 +27,8 @@ Owner asked about relic battle and "all the systems attached to that" → full m
 | — | M11 growth II, M12 artifacts, M13 explore, M14 combat/co-op, M16 guild war + Relic, M17 cross-server, M18 visual pass |
 
 See [roadmap](../milestones/roadmap.md).
+
+## 2026-11-05 — Account systems III becomes M15
+Owner: *"put it in as the new m15 and move everything else back a number"*. New M15 = trainer treasures, Z Ring, Pure
+Crystals, fusion skins, Golden Egg, Awakening. Old M15 → M16 (guild, merge, events, Shovel Carnival), M16 → M17, M17 →
+M18, M18 → M19, M19 → M20 (backend), M20 → M21 (Build Lab). Older records keep the numbers they had when written.

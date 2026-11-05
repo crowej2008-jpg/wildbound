@@ -35,7 +35,7 @@ Owner answers: `1. A … 4. A 5. A 6. B …` then `1. follow the source 2. later
 | [Hoopa's Vault](../systems/hoopa-vault.md) | Server day 15 | B |
 | [Gods Trials](../systems/gods-trials.md) | Server day 29 + Lv45 | B (later) |
 | Joint Battle | Server day 60 + Lv45 | B (M14) |
-| Relic Battlefield | First merge + Lv45 | merge (M16) |
+| Relic Battlefield | First merge + Lv45 | merge (M17) |
 
 "Server day" counts from the saved `serverEpoch` (day 1 = account creation); the debug fast-forward
 moves the clock. Gate values live in `packages/content/tuning/explore.json`.

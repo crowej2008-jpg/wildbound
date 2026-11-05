@@ -33,7 +33,7 @@ export interface PvpHubView {
   cards: PvpHubCardView[];
 }
 
-/** Modes the reference ships that are still pending (M17) — honest, not dead. */
+/** Modes the reference ships that are still pending (M18) — honest, not dead. */
 const PENDING: readonly PvpHubId[] = ['clash', 'championship', 'temple'];
 
 export function buildPvpHubView(config: GameConfig, state: AccountState, now: number): PvpHubView {

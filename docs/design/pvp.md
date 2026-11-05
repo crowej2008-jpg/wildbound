@@ -141,7 +141,7 @@ The shipped curves, and what each rung measured (win rate, 5 draws × 3 slots ×
 So the entry is a fair fight, growth opens the ladder, and the apex (King tier) needs a maxed roster.
 Two limits are recorded in `docs/ASSUMPTIONS.md` items 12/16/21: the trio is an *easy/mid/hard* draw
 (same curve, band `n`/`n+1`/`n+2`), and a squad grown past the static curve clears every rung — the
-fix for that is live matchmaking (M19), not a bigger curve.
+fix for that is live matchmaking (M20), not a bigger curve.
 
 ## Content table
 
