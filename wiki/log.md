@@ -334,3 +334,5 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner swapped the Ultra Wormhole for the Dig Site (no battles; walls free and unlimited; timed lab with a cost;
   museum stats and group bonuses). Built with stand-in numbers (ASSUMPTIONS #105, save v45).
 - Owner: museum groups give rarer stats instead of HP / ATK % (ASSUMPTIONS #106).
+- Owner: the museum takes berries, held items, orbs and soul hearts too (chosen, used up); groups give flat + % HP /
+  ATK and two rarer stats (ASSUMPTIONS #107).

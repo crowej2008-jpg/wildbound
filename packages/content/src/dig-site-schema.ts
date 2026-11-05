@@ -40,7 +40,29 @@ export const digSiteSchema = z
     cure: z.array(z.object({ fossil: z.string().min(1), hours: z.number().positive(), gold: z.number().int().nonnegative() }).strict()),
     duplicateExp: z.object({ fossil: z.number().int().nonnegative(), treasure: z.number().int().nonnegative() }).strict(),
     pieces: z
-      .array(z.object({ id: z.string().min(1), group: z.string().min(1), hp: z.number().int().nonnegative(), atk: z.number().int().nonnegative() }).strict())
+      .array(
+        z
+          .object({
+            id: z.string().min(1),
+            name: z.string().min(1),
+            group: z.string().min(1),
+            kind: z.enum(['fossil', 'treasure', 'berry', 'heldItem', 'orb', 'soulHeart']),
+            hp: z.number().int().nonnegative(),
+            atk: z.number().int().nonnegative(),
+            /** What may be donated into this spot (berries / held items by def; orbs by kind + colour; soul hearts by set + socket). */
+            match: z
+              .object({
+                defId: z.string().optional(),
+                orbKind: z.string().optional(),
+                colour: z.string().optional(),
+                setId: z.string().optional(),
+                socket: z.number().int().nonnegative().optional(),
+              })
+              .strict()
+              .optional(),
+          })
+          .strict(),
+      )
       .min(1),
     groups: z
       .array(
@@ -48,7 +70,12 @@ export const digSiteSchema = z
           .object({
             id: z.string().min(1),
             name: z.string().min(1),
-            /** A full group's rarer lines (crit, block, damage boost …), as fractions. */
+            category: z.enum(['finds', 'berries', 'heldItems', 'orbs', 'soulHearts']),
+            hp: z.number().int().nonnegative(),
+            atk: z.number().int().nonnegative(),
+            hpPct: z.number().nonnegative(),
+            atkPct: z.number().nonnegative(),
+            /** Two rarer lines (crit, block, damage boost …), as fractions. */
             lines: z
               .array(
                 z

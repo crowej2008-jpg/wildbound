@@ -165,14 +165,68 @@ export function collectCured(config: GameConfig, state: AccountState, now: numbe
   return ok({ state: withSite(state, { ...site, lab, storage }), cured });
 }
 
-/** Display a stored piece in the museum (one of each). */
-export function displayPiece(config: GameConfig, state: AccountState, now: number, piece: string): Result<AccountState> {
+type MuseumPiece = GameConfig['digSite']['pieces'][number];
+
+/** Is this equipment instance worn by any Pokémon? (Worn copies cannot be donated.) */
+function worn(state: AccountState, id: string): boolean {
+  return Object.values(state.loadouts).some(
+    (l) => l.relic === id || l.orbs.includes(id) || l.cores.includes(id) || (l.berries ?? []).includes(id),
+  );
+}
+
+/** The owned, unworn copies that fit a museum spot (berries, held items, orbs, soul hearts). */
+export function museumCandidates(state: AccountState, piece: MuseumPiece): { id: string; label: string }[] {
+  const m = piece.match ?? {};
+  const eq = state.equipment;
+  if (piece.kind === 'berry') {
+    return eq.berries
+      .filter((b) => b.defId === m.defId && !b.locked && !worn(state, b.id))
+      .map((b) => ({ id: b.id, label: `${b.star}★${b.stage ? ` +${b.stage}` : ''}${b.cultivated ? ' (cultivated)' : ''}` }));
+  }
+  if (piece.kind === 'heldItem') {
+    return eq.relics.filter((r) => r.defId === m.defId && !worn(state, r.id)).map((r) => ({ id: r.id, label: `Lv ${r.level}` }));
+  }
+  if (piece.kind === 'orb') {
+    return eq.orbs
+      .filter((o) => o.kind === m.orbKind && o.colour === m.colour && !o.locked && !worn(state, o.id))
+      .map((o) => ({ id: o.id, label: `Lv ${o.level}` }));
+  }
+  if (piece.kind === 'soulHeart') {
+    return eq.cores
+      .filter((c) => c.setId === m.setId && c.socket === m.socket && !worn(state, c.id))
+      .map((c) => ({ id: c.id, label: `${c.quality} ${c.stars}★` }));
+  }
+  return [];
+}
+
+/**
+ * Donate to a museum spot (one of each, and the copy is used up). Fossils and treasures come from storage; berries,
+ * held items, orbs and soul hearts need the chosen copy (`instanceId`), which must not be worn.
+ */
+export function displayPiece(config: GameConfig, state: AccountState, now: number, pieceId: string, instanceId?: string): Result<AccountState> {
   if (!digGate(config, state, now)) return fail('resource_locked', LOCKED);
   const site = siteOf(config, state);
-  if (!config.digSite.pieces.some((p) => p.id === piece)) return fail('invalid_input', 'that cannot go in the museum');
-  if (site.museum.includes(piece)) return fail('invalid_input', 'that piece is already on display');
-  if ((site.storage[piece] ?? 0) < 1) return fail('insufficient_items', 'you have none of that piece');
-  return ok(withSite(state, { ...site, museum: [...site.museum, piece], storage: { ...site.storage, [piece]: site.storage[piece]! - 1 } }));
+  const piece = config.digSite.pieces.find((p) => p.id === pieceId);
+  if (!piece) return fail('invalid_input', 'that cannot go in the museum');
+  if (site.museum.includes(pieceId)) return fail('invalid_input', 'that spot is already filled');
+  const museum = [...site.museum, pieceId];
+  if (piece.kind === 'fossil' || piece.kind === 'treasure') {
+    if ((site.storage[pieceId] ?? 0) < 1) return fail('insufficient_items', 'you have none of that piece');
+    return ok(withSite(state, { ...site, museum, storage: { ...site.storage, [pieceId]: site.storage[pieceId]! - 1 } }));
+  }
+  if (!instanceId) return fail('invalid_input', 'choose which copy to donate');
+  if (!museumCandidates(state, piece).some((c) => c.id === instanceId)) {
+    return fail('invalid_input', 'that copy does not fit this spot, or it is worn or locked');
+  }
+  const eq = state.equipment;
+  const equipment = {
+    ...eq,
+    berries: eq.berries.filter((b) => b.id !== instanceId),
+    relics: eq.relics.filter((r) => r.id !== instanceId),
+    orbs: eq.orbs.filter((o) => o.id !== instanceId),
+    cores: eq.cores.filter((c) => c.id !== instanceId),
+  };
+  return ok(withSite({ ...state, equipment }, { ...site, museum }));
 }
 
 /** Turn every spare (stored) piece into Soul-heart EXP. */
@@ -197,7 +251,7 @@ export function donateSpares(config: GameConfig, state: AccountState, now: numbe
 const flat = (field: string, value: number): StatLine => ({ kind: 'core', field, base: value, perLevel: 0 });
 const pct = (field: string, value: number): StatLine => ({ kind: 'percent', field, base: value, perLevel: 0 });
 
-/** The museum's account-wide lines: each displayed piece (HP / ATK), plus each completed group's rarer lines. */
+/** The museum's account-wide lines: each filled spot's HP / ATK, and each full group's HP / ATK, % HP / ATK and rarer lines. */
 export function museumLines(config: GameConfig, state: AccountState): StatLine[] {
   const shown = new Set(state.digSite?.museum ?? []);
   if (shown.size === 0) return [];
@@ -208,7 +262,10 @@ export function museumLines(config: GameConfig, state: AccountState): StatLine[]
   }
   for (const g of config.digSite.groups) {
     const members = config.digSite.pieces.filter((p) => p.group === g.id);
-    if (members.length > 0 && members.every((p) => shown.has(p.id))) for (const l of g.lines) lines.push(pct(l.field, l.value));
+    if (members.length === 0 || !members.every((p) => shown.has(p.id))) continue;
+    lines.push(flat('hp', g.hp), flat('pAtk', g.atk), flat('sAtk', g.atk));
+    lines.push(pct('hpPct', g.hpPct), pct('pAtkPct', g.atkPct), pct('sAtkPct', g.atkPct));
+    for (const l of g.lines) lines.push(pct(l.field, l.value));
   }
   return lines;
 }

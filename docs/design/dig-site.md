@@ -18,8 +18,14 @@ Soul hearts blue 28 (2 × 2), purple 17, orange 8, red 3 (3 × 3) — each a ran
 ## Lab and museum
 - 3 lab slots. Shells / roots / heads fossils cure in 2 h for 100,000 Gold, the ancient ones 4 h / 250,000, Old Amber
   8 h / 500,000. Collect when done.
-- Pieces: fossils HP +3,000 / ATK +450 (Old Amber +6,000 / +900); treasures HP +1,500 / ATK +220. ATK = P.ATK and
-  S.ATK. Groups: Ancient Shells, Roots and Claws, Heads and Armor, Ancient Seas and Skies, Amber, Evolution Stones,
-  Coloured Shards, Jewels; a full group adds a rarer stat — Ancient Shells Block +3 %, Roots and Claws Guard Break +2.5 %, Heads and Armor DMG Reduction +3 %, Ancient Seas and Skies DMG Boost +4 %, Amber Crit Intensity +1 %, Evolution Stones Control Boost +3 %, Coloured Shards Crit Resistance +2.5 %, Jewels Crit Chance +3 % (owner 2026-11-04: rarer stats, not HP / ATK). The lines join the account-wide fold
-  (titles and fashion).
-- Spare copies → Soul-heart EXP (fossil 400, treasure 150).
+- **Museum** (owner, 2026-11-04): a big part of power. 234 spots in 31 groups, written by `scripts/generate-museum.mjs`:
+  the 26 fossils and treasures (8 groups), the 19 berries (4 groups by tier), the 75 held items (5 groups by tier),
+  the 60 orbs (12 kinds × 5 colours; a group per colour) and the 54 soul hearts (9 sets × 6 sockets; a group per set).
+- The player chooses what to donate, and the donated copy is used up: fossils and treasures from storage; a berry,
+  held item, orb or soul heart by picking one owned copy that is not worn or locked. One per spot.
+- Every filled spot gives all Pokémon flat HP and P.ATK / S.ATK. A full group gives flat HP / ATK, % HP / % ATK and two
+  rarer lines (Crit, Crit Resistance, Crit Intensity, Block, Block Intensity, Guard Break, DMG Boost / Reduction,
+  Control Boost / Resistance, PvP DMG Boost / Reduction). Groups have ranks 1–5: flat HP 20,000–240,000, ATK
+  1,700–20,000, 2–8 %, rarer lines 1–4 %. Every group together: +117 % HP / ATK; a full museum roughly doubles a geared
+  Pokémon's HP and about 2.5× its ATK (stand-ins). The lines join the account-wide fold (titles and fashion).
+- Spare fossil / treasure copies → Soul-heart EXP (fossil 400, treasure 150).

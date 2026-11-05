@@ -23,8 +23,19 @@ const FIELD_NAME: Record<string, string> = {
   pvpRdct: 'PvP DMG Reduction',
 };
 
-function groupBonus(lines: { field: string; value: number }[]): string {
-  return lines.map((l) => `${FIELD_NAME[l.field] ?? l.field} +${Math.round(l.value * 1000) / 10}%`).join(', ');
+const CATEGORIES = ['finds', 'berries', 'heldItems', 'orbs', 'soulHearts'] as const;
+type Hall = (typeof CATEGORIES)[number];
+
+const pctText = (v: number) => `${Math.round(v * 1000) / 10}%`;
+
+function groupBonus(g: { hp: number; atk: number; hpPct: number; atkPct: number; lines: { field: string; value: number }[] }): string {
+  return [
+    `HP +${g.hp.toLocaleString()}`,
+    `ATK +${g.atk.toLocaleString()}`,
+    `HP +${pctText(g.hpPct)}`,
+    `ATK +${pctText(g.atkPct)}`,
+    ...g.lines.map((l) => `${FIELD_NAME[l.field] ?? l.field} +${pctText(l.value)}`),
+  ].join(' · ');
 }
 type Tab = 'wall' | 'lab' | 'museum';
 
@@ -47,6 +58,8 @@ export default function DigSite() {
   const [tool, setTool] = useState<Tool>('pick');
   const [tab, setTab] = useState<Tab>('wall');
   const [status, setStatus] = useState<string | null>(null);
+  const [hall, setHall] = useState<Hall>('finds');
+  const [picked, setPicked] = useState<Record<string, string>>({});
 
   const refresh = useCallback(async () => {
     const res = await call((s) => s.getDigSite());
@@ -92,7 +105,7 @@ export default function DigSite() {
   };
   const collect = async () => done((await call((s) => s.collectCured(), (v) => v)).ok, t('dig.collected'));
   const cure = async (id: string) => done((await call((s) => s.cureFossil(id), (v) => v)).ok, t('dig.curing'));
-  const display = async (id: string) => done((await call((s) => s.displayMuseumPiece(id), (v) => v)).ok, t('dig.displayed'));
+  const display = async (id: string, instanceId?: string) => done((await call((s) => s.displayMuseumPiece(id, instanceId), (v) => v)).ok, t('dig.displayed'));
   const donate = async () => done((await call((s) => s.donateSpares(), (v) => v)).ok, t('dig.donated'));
 
   if (!view) return <p className="muted">…</p>;
@@ -233,43 +246,72 @@ export default function DigSite() {
             <section className="card dig-museum">
               <h2 className="section-title">{t('dig.museum')}</h2>
               <p className="muted">{t('dig.museumHelp')}</p>
-              {view.museum.groups.map((g) => (
-                <div key={g.id} className="dig-group" data-group={g.id}>
-                  <h3 className="section-title">
-                    {g.name} {g.complete ? `✓ ${groupBonus(g.lines)}` : `(${t('dig.groupBonus')} ${groupBonus(g.lines)})`}
-                  </h3>
-                  <ul className="plain-list">
-                    {g.pieces.map((p) => (
-                      <li key={p.id}>
-                        {p.shown ? '✓ ' : ''}
-                        {p.name} — HP +{p.hp.toLocaleString()} · ATK +{p.atk.toLocaleString()}
-                        {!p.shown && p.stored > 0 ? (
-                          <>
-                            {' '}
-                            <button
-                              type="button"
-                              className="btn btn-primary"
-                              disabled={busy}
-                              onClick={() => void display(p.id)}
-                            >
-                              {t('dig.display')}
-                            </button>
-                          </>
-                        ) : null}
-                        {!p.shown && p.stored === 0 ? <span className="muted"> — {t('dig.missing')}</span> : null}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-              <button
-                type="button"
-                className="btn"
-                disabled={busy || view.spares === 0}
-                onClick={() => void donate()}
-              >
-                {t('dig.donate').replace('{n}', String(view.spares))}
-              </button>
+              <div className="chip-row">
+                {CATEGORIES.map((c) => (
+                  <button key={c} type="button" className={`btn ${hall === c ? 'btn-primary' : ''}`} data-testid={`dig-hall-${c}`} onClick={() => setHall(c)}>
+                    {t(`dig.hall.${c}` as 'dig.hall.finds')}
+                  </button>
+                ))}
+              </div>
+              {view.museum.groups
+                .filter((g) => g.category === hall)
+                .map((g) => (
+                  <div key={g.id} className="dig-group" data-group={g.id}>
+                    <h3 className="section-title">
+                      {g.complete ? '✓ ' : ''}
+                      {g.name} ({g.filled} / {g.pieces.length})
+                    </h3>
+                    <p className={g.complete ? '' : 'muted'}>
+                      {t('dig.groupBonus')} {groupBonus(g)}
+                    </p>
+                    <ul className="plain-list">
+                      {g.pieces.map((p) => (
+                        <li key={p.id} data-piece={p.id}>
+                          {p.shown ? '✓ ' : ''}
+                          {p.name} — HP +{p.hp.toLocaleString()} · ATK +{p.atk.toLocaleString()}
+                          {!p.shown && (p.kind === 'fossil' || p.kind === 'treasure') && p.stored > 0 ? (
+                            <>
+                              {' '}
+                              <button type="button" className="btn btn-primary" disabled={busy} onClick={() => void display(p.id)}>
+                                {t('dig.display')}
+                              </button>
+                            </>
+                          ) : null}
+                          {!p.shown && p.candidates.length > 0 ? (
+                            <>
+                              {' '}
+                              <select
+                                aria-label={`${t('dig.choose')} ${p.name}`}
+                                value={picked[p.id] ?? p.candidates[0]!.id}
+                                onChange={(e) => setPicked({ ...picked, [p.id]: e.target.value })}
+                              >
+                                {p.candidates.map((c) => (
+                                  <option key={c.id} value={c.id}>
+                                    {c.label}
+                                  </option>
+                                ))}
+                              </select>{' '}
+                              <button
+                                type="button"
+                                className="btn btn-primary"
+                                disabled={busy}
+                                onClick={() => void display(p.id, picked[p.id] ?? p.candidates[0]!.id)}
+                              >
+                                {t('dig.donateOne')}
+                              </button>
+                            </>
+                          ) : null}
+                          {!p.shown && p.stored === 0 && p.candidates.length === 0 ? <span className="muted"> — {t('dig.missing')}</span> : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              {hall === 'finds' ? (
+                <button type="button" className="btn" disabled={busy || view.spares === 0} onClick={() => void donate()}>
+                  {t('dig.donate').replace('{n}', String(view.spares))}
+                </button>
+              ) : null}
             </section>
           )}
         </>

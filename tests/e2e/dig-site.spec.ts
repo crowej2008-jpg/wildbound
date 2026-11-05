@@ -48,4 +48,8 @@ test('Dig Site digs a wall and shows the lab and museum', async ({ page }) => {
   await expect(page.getByText('Fossil lab')).toBeVisible();
   await page.getByTestId('dig-tab-museum').click();
   await expect(page.locator('.dig-group')).toHaveCount(8);
+  await page.getByTestId('dig-hall-orbs').click();
+  await expect(page.locator('.dig-group')).toHaveCount(5);
+  await page.getByTestId('dig-hall-soulHearts').click();
+  await expect(page.locator('.dig-group')).toHaveCount(9);
 });

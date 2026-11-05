@@ -1,6 +1,6 @@
 import { digItemRule, freedItems, initialDigSite, type AccountState } from '@wildbound/engine';
 import type { GameConfig } from './config';
-import { digGate, digRules } from './dig-site';
+import { digGate, digRules, museumCandidates } from './dig-site';
 
 /**
  * Display-ready Dig Site view (M13.9). A cell shows what is under it only once its rock is gone, so the view
@@ -23,7 +23,19 @@ export interface DigSiteView {
   fossils: { id: string; name: string; have: number; hours: number; gold: number }[];
   lab: ({ fossil: string; name: string; readyInMs: number } | null)[];
   museum: {
-    groups: { id: string; name: string; lines: { field: string; value: number }[]; complete: boolean; pieces: { id: string; name: string; shown: boolean; stored: number; hp: number; atk: number }[] }[];
+    groups: {
+      id: string;
+      name: string;
+      category: string;
+      hp: number;
+      atk: number;
+      hpPct: number;
+      atkPct: number;
+      lines: { field: string; value: number }[];
+      complete: boolean;
+      filled: number;
+      pieces: { id: string; name: string; kind: string; shown: boolean; stored: number; hp: number; atk: number; candidates: { id: string; label: string }[] }[];
+    }[];
     shown: number;
     total: number;
   };
@@ -78,8 +90,29 @@ export function buildDigSiteView(config: GameConfig, state: AccountState, now: n
       groups: t.groups.map((g) => {
         const pieces = t.pieces
           .filter((p) => p.group === g.id)
-          .map((p) => ({ id: p.id, name: nameOf(p.id), shown: shown.has(p.id), stored: site.storage[p.id] ?? 0, hp: p.hp, atk: p.atk }));
-        return { id: g.id, name: g.name, lines: g.lines, complete: pieces.every((p) => p.shown), pieces };
+          .map((p) => ({
+            id: p.id,
+            name: p.name,
+            kind: p.kind,
+            shown: shown.has(p.id),
+            stored: site.storage[p.id] ?? 0,
+            hp: p.hp,
+            atk: p.atk,
+            candidates: shown.has(p.id) ? [] : museumCandidates(state, p),
+          }));
+        return {
+          id: g.id,
+          name: g.name,
+          category: g.category,
+          hp: g.hp,
+          atk: g.atk,
+          hpPct: g.hpPct,
+          atkPct: g.atkPct,
+          lines: g.lines,
+          complete: pieces.every((p) => p.shown),
+          filled: pieces.filter((p) => p.shown).length,
+          pieces,
+        };
       }),
       shown: site.museum.length,
       total: t.pieces.length,

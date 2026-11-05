@@ -1028,206 +1028,2952 @@
  "pieces": [
   {
    "id": "fossil-helix",
+   "name": "Helix Fossil",
    "group": "shells",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-dome",
+   "name": "Dome Fossil",
    "group": "shells",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-root",
+   "name": "Root Fossil",
    "group": "roots",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-claw",
+   "name": "Claw Fossil",
    "group": "roots",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-skull",
+   "name": "Skull Fossil",
    "group": "heads",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-armor",
+   "name": "Armor Fossil",
    "group": "heads",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-cover",
+   "name": "Cover Fossil",
    "group": "ancient",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-plume",
+   "name": "Plume Fossil",
    "group": "ancient",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-jaw",
+   "name": "Jaw Fossil",
    "group": "ancient",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-sail",
+   "name": "Sail Fossil",
    "group": "ancient",
+   "kind": "fossil",
    "hp": 3000,
-   "atk": 450
+   "atk": 250
   },
   {
    "id": "fossil-old-amber",
+   "name": "Old Amber",
    "group": "amber",
+   "kind": "fossil",
    "hp": 6000,
-   "atk": 900
+   "atk": 500
   },
   {
    "id": "treasure-fire-stone",
+   "name": "Fire Stone",
    "group": "stones",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-water-stone",
+   "name": "Water Stone",
    "group": "stones",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-thunder-stone",
+   "name": "Thunder Stone",
    "group": "stones",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-leaf-stone",
+   "name": "Leaf Stone",
    "group": "stones",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-moon-stone",
+   "name": "Moon Stone",
    "group": "stones",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-sun-stone",
+   "name": "Sun Stone",
    "group": "stones",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-red-shard",
+   "name": "Red Shard",
    "group": "shards",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-blue-shard",
+   "name": "Blue Shard",
    "group": "shards",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-yellow-shard",
+   "name": "Yellow Shard",
    "group": "shards",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-green-shard",
+   "name": "Green Shard",
    "group": "shards",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-star-piece",
+   "name": "Star Piece",
    "group": "jewels",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-heart-scale",
+   "name": "Heart Scale",
    "group": "jewels",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-rare-bone",
+   "name": "Rare Bone",
    "group": "jewels",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-oval-stone",
+   "name": "Oval Stone",
    "group": "jewels",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
   },
   {
    "id": "treasure-everstone",
+   "name": "Everstone",
    "group": "jewels",
+   "kind": "treasure",
    "hp": 1500,
-   "atk": 220
+   "atk": 125
+  },
+  {
+   "id": "berry-berry-lum-berry",
+   "name": "Lum Berry",
+   "group": "berries-common",
+   "kind": "berry",
+   "hp": 500,
+   "atk": 40,
+   "match": {
+    "defId": "berry-lum-berry"
+   }
+  },
+  {
+   "id": "berry-berry-mago-berry",
+   "name": "Mago Berry",
+   "group": "berries-common",
+   "kind": "berry",
+   "hp": 500,
+   "atk": 40,
+   "match": {
+    "defId": "berry-mago-berry"
+   }
+  },
+  {
+   "id": "berry-berry-oran-berry",
+   "name": "Oran Berry",
+   "group": "berries-common",
+   "kind": "berry",
+   "hp": 500,
+   "atk": 40,
+   "match": {
+    "defId": "berry-oran-berry"
+   }
+  },
+  {
+   "id": "berry-berry-bergamot-berry",
+   "name": "Bergamot Berry",
+   "group": "berries-basic",
+   "kind": "berry",
+   "hp": 1000,
+   "atk": 80,
+   "match": {
+    "defId": "berry-bergamot-berry"
+   }
+  },
+  {
+   "id": "berry-berry-nanab-berry",
+   "name": "Nanab Berry",
+   "group": "berries-basic",
+   "kind": "berry",
+   "hp": 1000,
+   "atk": 80,
+   "match": {
+    "defId": "berry-nanab-berry"
+   }
+  },
+  {
+   "id": "berry-berry-florafree-berry",
+   "name": "Florafree Berry",
+   "group": "berries-basic",
+   "kind": "berry",
+   "hp": 1000,
+   "atk": 80,
+   "match": {
+    "defId": "berry-florafree-berry"
+   }
+  },
+  {
+   "id": "berry-berry-peach-berry",
+   "name": "Peach Berry",
+   "group": "berries-basic",
+   "kind": "berry",
+   "hp": 1000,
+   "atk": 80,
+   "match": {
+    "defId": "berry-peach-berry"
+   }
+  },
+  {
+   "id": "berry-berry-petaya-berry",
+   "name": "Petaya Berry",
+   "group": "berries-intermediate",
+   "kind": "berry",
+   "hp": 1500,
+   "atk": 120,
+   "match": {
+    "defId": "berry-petaya-berry"
+   }
+  },
+  {
+   "id": "berry-berry-micle-berry",
+   "name": "Micle Berry",
+   "group": "berries-intermediate",
+   "kind": "berry",
+   "hp": 1500,
+   "atk": 120,
+   "match": {
+    "defId": "berry-micle-berry"
+   }
+  },
+  {
+   "id": "berry-berry-lemon-fruit-intermediate",
+   "name": "Lemon Fruit (Intermediate)",
+   "group": "berries-intermediate",
+   "kind": "berry",
+   "hp": 1500,
+   "atk": 120,
+   "match": {
+    "defId": "berry-lemon-fruit-intermediate"
+   }
+  },
+  {
+   "id": "berry-berry-tamato-berry",
+   "name": "Tamato Berry",
+   "group": "berries-intermediate",
+   "kind": "berry",
+   "hp": 1500,
+   "atk": 120,
+   "match": {
+    "defId": "berry-tamato-berry"
+   }
+  },
+  {
+   "id": "berry-berry-pear-berry",
+   "name": "Pear Berry",
+   "group": "berries-greater",
+   "kind": "berry",
+   "hp": 2500,
+   "atk": 200,
+   "match": {
+    "defId": "berry-pear-berry"
+   }
+  },
+  {
+   "id": "berry-berry-cheri-berry",
+   "name": "Cheri Berry",
+   "group": "berries-greater",
+   "kind": "berry",
+   "hp": 2500,
+   "atk": 200,
+   "match": {
+    "defId": "berry-cheri-berry"
+   }
+  },
+  {
+   "id": "berry-berry-spelon-berry",
+   "name": "Spelon Berry",
+   "group": "berries-greater",
+   "kind": "berry",
+   "hp": 2500,
+   "atk": 200,
+   "match": {
+    "defId": "berry-spelon-berry"
+   }
+  },
+  {
+   "id": "berry-berry-cirio-berry",
+   "name": "Cirio Berry",
+   "group": "berries-greater",
+   "kind": "berry",
+   "hp": 2500,
+   "atk": 200,
+   "match": {
+    "defId": "berry-cirio-berry"
+   }
+  },
+  {
+   "id": "berry-berry-strong-dragon-fire-fruit",
+   "name": "Strong - Dragon Fire Fruit",
+   "group": "berries-greater",
+   "kind": "berry",
+   "hp": 2500,
+   "atk": 200,
+   "match": {
+    "defId": "berry-strong-dragon-fire-fruit"
+   }
+  },
+  {
+   "id": "berry-berry-strong-secret-fruit",
+   "name": "Strong - Secret Fruit",
+   "group": "berries-greater",
+   "kind": "berry",
+   "hp": 2500,
+   "atk": 200,
+   "match": {
+    "defId": "berry-strong-secret-fruit"
+   }
+  },
+  {
+   "id": "berry-berry-lemon-fruit",
+   "name": "Lemon Fruit",
+   "group": "berries-greater",
+   "kind": "berry",
+   "hp": 2500,
+   "atk": 200,
+   "match": {
+    "defId": "berry-lemon-fruit"
+   }
+  },
+  {
+   "id": "berry-berry-strong-tomato-fruit",
+   "name": "Strong - Tomato Fruit",
+   "group": "berries-greater",
+   "kind": "berry",
+   "hp": 2500,
+   "atk": 200,
+   "match": {
+    "defId": "berry-strong-tomato-fruit"
+   }
+  },
+  {
+   "id": "held-101101",
+   "name": "Shell Bell",
+   "group": "held-rare",
+   "kind": "heldItem",
+   "hp": 800,
+   "atk": 65,
+   "match": {
+    "defId": "101101"
+   }
+  },
+  {
+   "id": "held-101102",
+   "name": "Smooth Rock",
+   "group": "held-rare",
+   "kind": "heldItem",
+   "hp": 800,
+   "atk": 65,
+   "match": {
+    "defId": "101102"
+   }
+  },
+  {
+   "id": "held-101103",
+   "name": "Choice Specs",
+   "group": "held-rare",
+   "kind": "heldItem",
+   "hp": 800,
+   "atk": 65,
+   "match": {
+    "defId": "101103"
+   }
+  },
+  {
+   "id": "held-101201",
+   "name": "Choice Scarf",
+   "group": "held-rare",
+   "kind": "heldItem",
+   "hp": 800,
+   "atk": 65,
+   "match": {
+    "defId": "101201"
+   }
+  },
+  {
+   "id": "held-101202",
+   "name": "Lax Incense",
+   "group": "held-rare",
+   "kind": "heldItem",
+   "hp": 800,
+   "atk": 65,
+   "match": {
+    "defId": "101202"
+   }
+  },
+  {
+   "id": "held-101203",
+   "name": "Black Sludge",
+   "group": "held-rare",
+   "kind": "heldItem",
+   "hp": 800,
+   "atk": 65,
+   "match": {
+    "defId": "101203"
+   }
+  },
+  {
+   "id": "held-101301",
+   "name": "Assault Vest",
+   "group": "held-rare",
+   "kind": "heldItem",
+   "hp": 800,
+   "atk": 65,
+   "match": {
+    "defId": "101301"
+   }
+  },
+  {
+   "id": "held-101302",
+   "name": "Razor Fang",
+   "group": "held-rare",
+   "kind": "heldItem",
+   "hp": 800,
+   "atk": 65,
+   "match": {
+    "defId": "101302"
+   }
+  },
+  {
+   "id": "held-101303",
+   "name": "Soul Dew",
+   "group": "held-rare",
+   "kind": "heldItem",
+   "hp": 800,
+   "atk": 65,
+   "match": {
+    "defId": "101303"
+   }
+  },
+  {
+   "id": "held-102101",
+   "name": "Shell Bell",
+   "group": "held-epic",
+   "kind": "heldItem",
+   "hp": 1600,
+   "atk": 130,
+   "match": {
+    "defId": "102101"
+   }
+  },
+  {
+   "id": "held-102102",
+   "name": "Smooth Rock",
+   "group": "held-epic",
+   "kind": "heldItem",
+   "hp": 1600,
+   "atk": 130,
+   "match": {
+    "defId": "102102"
+   }
+  },
+  {
+   "id": "held-102103",
+   "name": "Choice Specs",
+   "group": "held-epic",
+   "kind": "heldItem",
+   "hp": 1600,
+   "atk": 130,
+   "match": {
+    "defId": "102103"
+   }
+  },
+  {
+   "id": "held-102201",
+   "name": "Choice Scarf",
+   "group": "held-epic",
+   "kind": "heldItem",
+   "hp": 1600,
+   "atk": 130,
+   "match": {
+    "defId": "102201"
+   }
+  },
+  {
+   "id": "held-102202",
+   "name": "Lax Incense",
+   "group": "held-epic",
+   "kind": "heldItem",
+   "hp": 1600,
+   "atk": 130,
+   "match": {
+    "defId": "102202"
+   }
+  },
+  {
+   "id": "held-102203",
+   "name": "Black Sludge",
+   "group": "held-epic",
+   "kind": "heldItem",
+   "hp": 1600,
+   "atk": 130,
+   "match": {
+    "defId": "102203"
+   }
+  },
+  {
+   "id": "held-102301",
+   "name": "Assault Vest",
+   "group": "held-epic",
+   "kind": "heldItem",
+   "hp": 1600,
+   "atk": 130,
+   "match": {
+    "defId": "102301"
+   }
+  },
+  {
+   "id": "held-102302",
+   "name": "Razor Fang",
+   "group": "held-epic",
+   "kind": "heldItem",
+   "hp": 1600,
+   "atk": 130,
+   "match": {
+    "defId": "102302"
+   }
+  },
+  {
+   "id": "held-102303",
+   "name": "Soul Dew",
+   "group": "held-epic",
+   "kind": "heldItem",
+   "hp": 1600,
+   "atk": 130,
+   "match": {
+    "defId": "102303"
+   }
+  },
+  {
+   "id": "held-103101",
+   "name": "Shell Bell",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103101"
+   }
+  },
+  {
+   "id": "held-103102",
+   "name": "Smooth Rock",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103102"
+   }
+  },
+  {
+   "id": "held-103103",
+   "name": "Choice Specs",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103103"
+   }
+  },
+  {
+   "id": "held-103104",
+   "name": "Zoom Lens",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103104"
+   }
+  },
+  {
+   "id": "held-103201",
+   "name": "Choice Scarf",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103201"
+   }
+  },
+  {
+   "id": "held-103202",
+   "name": "Lax Incense",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103202"
+   }
+  },
+  {
+   "id": "held-103203",
+   "name": "Black Sludge",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103203"
+   }
+  },
+  {
+   "id": "held-103204",
+   "name": "Full Incense",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103204"
+   }
+  },
+  {
+   "id": "held-103301",
+   "name": "Assault Vest",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103301"
+   }
+  },
+  {
+   "id": "held-103302",
+   "name": "Razor Fang",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103302"
+   }
+  },
+  {
+   "id": "held-103303",
+   "name": "Soul Dew",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103303"
+   }
+  },
+  {
+   "id": "held-103304",
+   "name": "Grip Claw",
+   "group": "held-legendary",
+   "kind": "heldItem",
+   "hp": 2400,
+   "atk": 195,
+   "match": {
+    "defId": "103304"
+   }
+  },
+  {
+   "id": "held-104101",
+   "name": "Shell Bell",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104101"
+   }
+  },
+  {
+   "id": "held-104102",
+   "name": "Smooth Rock",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104102"
+   }
+  },
+  {
+   "id": "held-104103",
+   "name": "Choice Specs",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104103"
+   }
+  },
+  {
+   "id": "held-104104",
+   "name": "Zoom Lens",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104104"
+   }
+  },
+  {
+   "id": "held-104105",
+   "name": "Heat Rock",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104105"
+   }
+  },
+  {
+   "id": "held-104106",
+   "name": "Wide Lens",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104106"
+   }
+  },
+  {
+   "id": "held-104201",
+   "name": "Choice Scarf",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104201"
+   }
+  },
+  {
+   "id": "held-104202",
+   "name": "Lax Incense",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104202"
+   }
+  },
+  {
+   "id": "held-104203",
+   "name": "Black Sludge",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104203"
+   }
+  },
+  {
+   "id": "held-104204",
+   "name": "Full Incense",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104204"
+   }
+  },
+  {
+   "id": "held-104205",
+   "name": "Rocky Helmet",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104205"
+   }
+  },
+  {
+   "id": "held-104206",
+   "name": "Terrain Extender",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104206"
+   }
+  },
+  {
+   "id": "held-104301",
+   "name": "Assault Vest",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104301"
+   }
+  },
+  {
+   "id": "held-104302",
+   "name": "Razor Fang",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104302"
+   }
+  },
+  {
+   "id": "held-104303",
+   "name": "Soul Dew",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104303"
+   }
+  },
+  {
+   "id": "held-104304",
+   "name": "Grip Claw",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104304"
+   }
+  },
+  {
+   "id": "held-104305",
+   "name": "Icy Rocks",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104305"
+   }
+  },
+  {
+   "id": "held-104306",
+   "name": "Razor Claw",
+   "group": "held-supreme",
+   "kind": "heldItem",
+   "hp": 3200,
+   "atk": 260,
+   "match": {
+    "defId": "104306"
+   }
+  },
+  {
+   "id": "held-105101",
+   "name": "Shell Bell",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105101"
+   }
+  },
+  {
+   "id": "held-105102",
+   "name": "Smooth Rock",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105102"
+   }
+  },
+  {
+   "id": "held-105103",
+   "name": "Choice Specs",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105103"
+   }
+  },
+  {
+   "id": "held-105104",
+   "name": "Zoom Lens",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105104"
+   }
+  },
+  {
+   "id": "held-105105",
+   "name": "Heat Rock",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105105"
+   }
+  },
+  {
+   "id": "held-105106",
+   "name": "Wide Lens",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105106"
+   }
+  },
+  {
+   "id": "held-105107",
+   "name": "Choice Band",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105107"
+   }
+  },
+  {
+   "id": "held-105108",
+   "name": "Scope Lens",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105108"
+   }
+  },
+  {
+   "id": "held-105109",
+   "name": "Muscle Band",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105109"
+   }
+  },
+  {
+   "id": "held-105201",
+   "name": "Choice Scarf",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105201"
+   }
+  },
+  {
+   "id": "held-105202",
+   "name": "Lax Incense",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105202"
+   }
+  },
+  {
+   "id": "held-105203",
+   "name": "Black Sludge",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105203"
+   }
+  },
+  {
+   "id": "held-105204",
+   "name": "Full Incense",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105204"
+   }
+  },
+  {
+   "id": "held-105205",
+   "name": "Rocky Helmet",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105205"
+   }
+  },
+  {
+   "id": "held-105206",
+   "name": "Terrain Extender",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105206"
+   }
+  },
+  {
+   "id": "held-105207",
+   "name": "Big Root",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105207"
+   }
+  },
+  {
+   "id": "held-105208",
+   "name": "Light Clay",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105208"
+   }
+  },
+  {
+   "id": "held-105209",
+   "name": "Damp Rock",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105209"
+   }
+  },
+  {
+   "id": "held-105301",
+   "name": "Assault Vest",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105301"
+   }
+  },
+  {
+   "id": "held-105302",
+   "name": "Razor Fang",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105302"
+   }
+  },
+  {
+   "id": "held-105303",
+   "name": "Soul Dew",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105303"
+   }
+  },
+  {
+   "id": "held-105304",
+   "name": "Grip Claw",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105304"
+   }
+  },
+  {
+   "id": "held-105305",
+   "name": "Icy Rocks",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105305"
+   }
+  },
+  {
+   "id": "held-105306",
+   "name": "Razor Claw",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105306"
+   }
+  },
+  {
+   "id": "held-105307",
+   "name": "Sticky Barb",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105307"
+   }
+  },
+  {
+   "id": "held-105308",
+   "name": "King's Rock",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105308"
+   }
+  },
+  {
+   "id": "held-105309",
+   "name": "Leftover fruit core",
+   "group": "held-mythic",
+   "kind": "heldItem",
+   "hp": 4000,
+   "atk": 325,
+   "match": {
+    "defId": "105309"
+   }
+  },
+  {
+   "id": "orb-sharp-green",
+   "name": "Green Sharp Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "sharp",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-leisure-green",
+   "name": "Green Leisure Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "leisure",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-placating-green",
+   "name": "Green Placating Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "placating",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-wonder-green",
+   "name": "Green Wonder Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "wonder",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-momentum-green",
+   "name": "Green Momentum Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "momentum",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-fortune-green",
+   "name": "Green Fortune Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "fortune",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-pure-green",
+   "name": "Green Pure Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "pure",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-defensive-green",
+   "name": "Green Defensive Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "defensive",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-mystique-green",
+   "name": "Green Mystique Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "mystique",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-quick-green",
+   "name": "Green Quick Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "quick",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-erudite-green",
+   "name": "Green Erudite Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "erudite",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-etiquette-green",
+   "name": "Green Etiquette Orb",
+   "group": "orbs-green",
+   "kind": "orb",
+   "hp": 400,
+   "atk": 35,
+   "match": {
+    "orbKind": "etiquette",
+    "colour": "green"
+   }
+  },
+  {
+   "id": "orb-sharp-blue",
+   "name": "Blue Sharp Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "sharp",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-leisure-blue",
+   "name": "Blue Leisure Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "leisure",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-placating-blue",
+   "name": "Blue Placating Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "placating",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-wonder-blue",
+   "name": "Blue Wonder Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "wonder",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-momentum-blue",
+   "name": "Blue Momentum Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "momentum",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-fortune-blue",
+   "name": "Blue Fortune Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "fortune",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-pure-blue",
+   "name": "Blue Pure Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "pure",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-defensive-blue",
+   "name": "Blue Defensive Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "defensive",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-mystique-blue",
+   "name": "Blue Mystique Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "mystique",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-quick-blue",
+   "name": "Blue Quick Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "quick",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-erudite-blue",
+   "name": "Blue Erudite Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "erudite",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-etiquette-blue",
+   "name": "Blue Etiquette Orb",
+   "group": "orbs-blue",
+   "kind": "orb",
+   "hp": 800,
+   "atk": 70,
+   "match": {
+    "orbKind": "etiquette",
+    "colour": "blue"
+   }
+  },
+  {
+   "id": "orb-sharp-purple",
+   "name": "Purple Sharp Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "sharp",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-leisure-purple",
+   "name": "Purple Leisure Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "leisure",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-placating-purple",
+   "name": "Purple Placating Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "placating",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-wonder-purple",
+   "name": "Purple Wonder Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "wonder",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-momentum-purple",
+   "name": "Purple Momentum Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "momentum",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-fortune-purple",
+   "name": "Purple Fortune Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "fortune",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-pure-purple",
+   "name": "Purple Pure Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "pure",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-defensive-purple",
+   "name": "Purple Defensive Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "defensive",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-mystique-purple",
+   "name": "Purple Mystique Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "mystique",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-quick-purple",
+   "name": "Purple Quick Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "quick",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-erudite-purple",
+   "name": "Purple Erudite Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "erudite",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-etiquette-purple",
+   "name": "Purple Etiquette Orb",
+   "group": "orbs-purple",
+   "kind": "orb",
+   "hp": 1200,
+   "atk": 105,
+   "match": {
+    "orbKind": "etiquette",
+    "colour": "purple"
+   }
+  },
+  {
+   "id": "orb-sharp-orange",
+   "name": "Orange Sharp Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "sharp",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-leisure-orange",
+   "name": "Orange Leisure Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "leisure",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-placating-orange",
+   "name": "Orange Placating Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "placating",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-wonder-orange",
+   "name": "Orange Wonder Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "wonder",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-momentum-orange",
+   "name": "Orange Momentum Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "momentum",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-fortune-orange",
+   "name": "Orange Fortune Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "fortune",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-pure-orange",
+   "name": "Orange Pure Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "pure",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-defensive-orange",
+   "name": "Orange Defensive Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "defensive",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-mystique-orange",
+   "name": "Orange Mystique Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "mystique",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-quick-orange",
+   "name": "Orange Quick Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "quick",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-erudite-orange",
+   "name": "Orange Erudite Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "erudite",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-etiquette-orange",
+   "name": "Orange Etiquette Orb",
+   "group": "orbs-orange",
+   "kind": "orb",
+   "hp": 1600,
+   "atk": 140,
+   "match": {
+    "orbKind": "etiquette",
+    "colour": "orange"
+   }
+  },
+  {
+   "id": "orb-sharp-red",
+   "name": "Red Sharp Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "sharp",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-leisure-red",
+   "name": "Red Leisure Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "leisure",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-placating-red",
+   "name": "Red Placating Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "placating",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-wonder-red",
+   "name": "Red Wonder Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "wonder",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-momentum-red",
+   "name": "Red Momentum Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "momentum",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-fortune-red",
+   "name": "Red Fortune Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "fortune",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-pure-red",
+   "name": "Red Pure Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "pure",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-defensive-red",
+   "name": "Red Defensive Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "defensive",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-mystique-red",
+   "name": "Red Mystique Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "mystique",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-quick-red",
+   "name": "Red Quick Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "quick",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-erudite-red",
+   "name": "Red Erudite Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "erudite",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "orb-etiquette-red",
+   "name": "Red Etiquette Orb",
+   "group": "orbs-red",
+   "kind": "orb",
+   "hp": 2000,
+   "atk": 175,
+   "match": {
+    "orbKind": "etiquette",
+    "colour": "red"
+   }
+  },
+  {
+   "id": "soul-coreset-common-1",
+   "name": "Common Soul Heart I",
+   "group": "souls-coreset-common",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-common",
+    "socket": 0
+   }
+  },
+  {
+   "id": "soul-coreset-common-2",
+   "name": "Common Soul Heart II",
+   "group": "souls-coreset-common",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-common",
+    "socket": 1
+   }
+  },
+  {
+   "id": "soul-coreset-common-3",
+   "name": "Common Soul Heart III",
+   "group": "souls-coreset-common",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-common",
+    "socket": 2
+   }
+  },
+  {
+   "id": "soul-coreset-common-4",
+   "name": "Common Soul Heart IV",
+   "group": "souls-coreset-common",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-common",
+    "socket": 3
+   }
+  },
+  {
+   "id": "soul-coreset-common-5",
+   "name": "Common Soul Heart V",
+   "group": "souls-coreset-common",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-common",
+    "socket": 4
+   }
+  },
+  {
+   "id": "soul-coreset-common-6",
+   "name": "Common Soul Heart VI",
+   "group": "souls-coreset-common",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-common",
+    "socket": 5
+   }
+  },
+  {
+   "id": "soul-coreset-flying-1",
+   "name": "Flying Soul Heart I",
+   "group": "souls-coreset-flying",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-flying",
+    "socket": 0
+   }
+  },
+  {
+   "id": "soul-coreset-flying-2",
+   "name": "Flying Soul Heart II",
+   "group": "souls-coreset-flying",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-flying",
+    "socket": 1
+   }
+  },
+  {
+   "id": "soul-coreset-flying-3",
+   "name": "Flying Soul Heart III",
+   "group": "souls-coreset-flying",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-flying",
+    "socket": 2
+   }
+  },
+  {
+   "id": "soul-coreset-flying-4",
+   "name": "Flying Soul Heart IV",
+   "group": "souls-coreset-flying",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-flying",
+    "socket": 3
+   }
+  },
+  {
+   "id": "soul-coreset-flying-5",
+   "name": "Flying Soul Heart V",
+   "group": "souls-coreset-flying",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-flying",
+    "socket": 4
+   }
+  },
+  {
+   "id": "soul-coreset-flying-6",
+   "name": "Flying Soul Heart VI",
+   "group": "souls-coreset-flying",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-flying",
+    "socket": 5
+   }
+  },
+  {
+   "id": "soul-coreset-fire-1",
+   "name": "Fire Soul Heart I",
+   "group": "souls-coreset-fire",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-fire",
+    "socket": 0
+   }
+  },
+  {
+   "id": "soul-coreset-fire-2",
+   "name": "Fire Soul Heart II",
+   "group": "souls-coreset-fire",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-fire",
+    "socket": 1
+   }
+  },
+  {
+   "id": "soul-coreset-fire-3",
+   "name": "Fire Soul Heart III",
+   "group": "souls-coreset-fire",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-fire",
+    "socket": 2
+   }
+  },
+  {
+   "id": "soul-coreset-fire-4",
+   "name": "Fire Soul Heart IV",
+   "group": "souls-coreset-fire",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-fire",
+    "socket": 3
+   }
+  },
+  {
+   "id": "soul-coreset-fire-5",
+   "name": "Fire Soul Heart V",
+   "group": "souls-coreset-fire",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-fire",
+    "socket": 4
+   }
+  },
+  {
+   "id": "soul-coreset-fire-6",
+   "name": "Fire Soul Heart VI",
+   "group": "souls-coreset-fire",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-fire",
+    "socket": 5
+   }
+  },
+  {
+   "id": "soul-coreset-superpower-1",
+   "name": "Superpower Soul Heart I",
+   "group": "souls-coreset-superpower",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-superpower",
+    "socket": 0
+   }
+  },
+  {
+   "id": "soul-coreset-superpower-2",
+   "name": "Superpower Soul Heart II",
+   "group": "souls-coreset-superpower",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-superpower",
+    "socket": 1
+   }
+  },
+  {
+   "id": "soul-coreset-superpower-3",
+   "name": "Superpower Soul Heart III",
+   "group": "souls-coreset-superpower",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-superpower",
+    "socket": 2
+   }
+  },
+  {
+   "id": "soul-coreset-superpower-4",
+   "name": "Superpower Soul Heart IV",
+   "group": "souls-coreset-superpower",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-superpower",
+    "socket": 3
+   }
+  },
+  {
+   "id": "soul-coreset-superpower-5",
+   "name": "Superpower Soul Heart V",
+   "group": "souls-coreset-superpower",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-superpower",
+    "socket": 4
+   }
+  },
+  {
+   "id": "soul-coreset-superpower-6",
+   "name": "Superpower Soul Heart VI",
+   "group": "souls-coreset-superpower",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-superpower",
+    "socket": 5
+   }
+  },
+  {
+   "id": "soul-coreset-water-1",
+   "name": "Water Soul Heart I",
+   "group": "souls-coreset-water",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-water",
+    "socket": 0
+   }
+  },
+  {
+   "id": "soul-coreset-water-2",
+   "name": "Water Soul Heart II",
+   "group": "souls-coreset-water",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-water",
+    "socket": 1
+   }
+  },
+  {
+   "id": "soul-coreset-water-3",
+   "name": "Water Soul Heart III",
+   "group": "souls-coreset-water",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-water",
+    "socket": 2
+   }
+  },
+  {
+   "id": "soul-coreset-water-4",
+   "name": "Water Soul Heart IV",
+   "group": "souls-coreset-water",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-water",
+    "socket": 3
+   }
+  },
+  {
+   "id": "soul-coreset-water-5",
+   "name": "Water Soul Heart V",
+   "group": "souls-coreset-water",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-water",
+    "socket": 4
+   }
+  },
+  {
+   "id": "soul-coreset-water-6",
+   "name": "Water Soul Heart VI",
+   "group": "souls-coreset-water",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-water",
+    "socket": 5
+   }
+  },
+  {
+   "id": "soul-coreset-bug-1",
+   "name": "Bug Soul Heart I",
+   "group": "souls-coreset-bug",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-bug",
+    "socket": 0
+   }
+  },
+  {
+   "id": "soul-coreset-bug-2",
+   "name": "Bug Soul Heart II",
+   "group": "souls-coreset-bug",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-bug",
+    "socket": 1
+   }
+  },
+  {
+   "id": "soul-coreset-bug-3",
+   "name": "Bug Soul Heart III",
+   "group": "souls-coreset-bug",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-bug",
+    "socket": 2
+   }
+  },
+  {
+   "id": "soul-coreset-bug-4",
+   "name": "Bug Soul Heart IV",
+   "group": "souls-coreset-bug",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-bug",
+    "socket": 3
+   }
+  },
+  {
+   "id": "soul-coreset-bug-5",
+   "name": "Bug Soul Heart V",
+   "group": "souls-coreset-bug",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-bug",
+    "socket": 4
+   }
+  },
+  {
+   "id": "soul-coreset-bug-6",
+   "name": "Bug Soul Heart VI",
+   "group": "souls-coreset-bug",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-bug",
+    "socket": 5
+   }
+  },
+  {
+   "id": "soul-coreset-thunder-1",
+   "name": "Thunder Soul Heart I",
+   "group": "souls-coreset-thunder",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-thunder",
+    "socket": 0
+   }
+  },
+  {
+   "id": "soul-coreset-thunder-2",
+   "name": "Thunder Soul Heart II",
+   "group": "souls-coreset-thunder",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-thunder",
+    "socket": 1
+   }
+  },
+  {
+   "id": "soul-coreset-thunder-3",
+   "name": "Thunder Soul Heart III",
+   "group": "souls-coreset-thunder",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-thunder",
+    "socket": 2
+   }
+  },
+  {
+   "id": "soul-coreset-thunder-4",
+   "name": "Thunder Soul Heart IV",
+   "group": "souls-coreset-thunder",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-thunder",
+    "socket": 3
+   }
+  },
+  {
+   "id": "soul-coreset-thunder-5",
+   "name": "Thunder Soul Heart V",
+   "group": "souls-coreset-thunder",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-thunder",
+    "socket": 4
+   }
+  },
+  {
+   "id": "soul-coreset-thunder-6",
+   "name": "Thunder Soul Heart VI",
+   "group": "souls-coreset-thunder",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-thunder",
+    "socket": 5
+   }
+  },
+  {
+   "id": "soul-coreset-rock-1",
+   "name": "Rock Soul Heart I",
+   "group": "souls-coreset-rock",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-rock",
+    "socket": 0
+   }
+  },
+  {
+   "id": "soul-coreset-rock-2",
+   "name": "Rock Soul Heart II",
+   "group": "souls-coreset-rock",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-rock",
+    "socket": 1
+   }
+  },
+  {
+   "id": "soul-coreset-rock-3",
+   "name": "Rock Soul Heart III",
+   "group": "souls-coreset-rock",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-rock",
+    "socket": 2
+   }
+  },
+  {
+   "id": "soul-coreset-rock-4",
+   "name": "Rock Soul Heart IV",
+   "group": "souls-coreset-rock",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-rock",
+    "socket": 3
+   }
+  },
+  {
+   "id": "soul-coreset-rock-5",
+   "name": "Rock Soul Heart V",
+   "group": "souls-coreset-rock",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-rock",
+    "socket": 4
+   }
+  },
+  {
+   "id": "soul-coreset-rock-6",
+   "name": "Rock Soul Heart VI",
+   "group": "souls-coreset-rock",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-rock",
+    "socket": 5
+   }
+  },
+  {
+   "id": "soul-coreset-grass-1",
+   "name": "Grass Soul Heart I",
+   "group": "souls-coreset-grass",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-grass",
+    "socket": 0
+   }
+  },
+  {
+   "id": "soul-coreset-grass-2",
+   "name": "Grass Soul Heart II",
+   "group": "souls-coreset-grass",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-grass",
+    "socket": 1
+   }
+  },
+  {
+   "id": "soul-coreset-grass-3",
+   "name": "Grass Soul Heart III",
+   "group": "souls-coreset-grass",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-grass",
+    "socket": 2
+   }
+  },
+  {
+   "id": "soul-coreset-grass-4",
+   "name": "Grass Soul Heart IV",
+   "group": "souls-coreset-grass",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-grass",
+    "socket": 3
+   }
+  },
+  {
+   "id": "soul-coreset-grass-5",
+   "name": "Grass Soul Heart V",
+   "group": "souls-coreset-grass",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-grass",
+    "socket": 4
+   }
+  },
+  {
+   "id": "soul-coreset-grass-6",
+   "name": "Grass Soul Heart VI",
+   "group": "souls-coreset-grass",
+   "kind": "soulHeart",
+   "hp": 600,
+   "atk": 50,
+   "match": {
+    "setId": "coreset-grass",
+    "socket": 5
+   }
   }
  ],
  "groups": [
   {
    "id": "shells",
    "name": "Ancient Shells",
+   "category": "finds",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
    "lines": [
     {
      "field": "block",
-     "value": 0.03
+     "value": 0.015
+    },
+    {
+     "field": "critRes",
+     "value": 0.015
     }
    ]
   },
   {
    "id": "roots",
    "name": "Roots and Claws",
+   "category": "finds",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
    "lines": [
     {
      "field": "guardBreak",
-     "value": 0.025
+     "value": 0.015
+    },
+    {
+     "field": "crit",
+     "value": 0.015
     }
    ]
   },
   {
    "id": "heads",
    "name": "Heads and Armor",
+   "category": "finds",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
    "lines": [
     {
      "field": "dmgRdct",
-     "value": 0.03
+     "value": 0.015
+    },
+    {
+     "field": "controlRes",
+     "value": 0.015
     }
    ]
   },
   {
    "id": "ancient",
    "name": "Ancient Seas and Skies",
+   "category": "finds",
+   "hp": 100000,
+   "atk": 8300,
+   "hpPct": 0.04,
+   "atkPct": 0.04,
    "lines": [
     {
      "field": "dmgBoost",
-     "value": 0.04
+     "value": 0.02
+    },
+    {
+     "field": "critPower",
+     "value": 0.02
     }
    ]
   },
   {
    "id": "amber",
    "name": "Amber",
+   "category": "finds",
+   "hp": 100000,
+   "atk": 8300,
+   "hpPct": 0.04,
+   "atkPct": 0.04,
    "lines": [
+    {
+     "field": "critPower",
+     "value": 0.02
+    },
+    {
+     "field": "pvpBoost",
+     "value": 0.02
+    }
+   ]
+  },
+  {
+   "id": "stones",
+   "name": "Evolution Stones",
+   "category": "finds",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "controlBoost",
+     "value": 0.015
+    },
+    {
+     "field": "blockPower",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "shards",
+   "name": "Coloured Shards",
+   "category": "finds",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "critRes",
+     "value": 0.015
+    },
+    {
+     "field": "pvpRdct",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "jewels",
+   "name": "Jewels",
+   "category": "finds",
+   "hp": 100000,
+   "atk": 8300,
+   "hpPct": 0.04,
+   "atkPct": 0.04,
+   "lines": [
+    {
+     "field": "crit",
+     "value": 0.02
+    },
+    {
+     "field": "dmgBoost",
+     "value": 0.02
+    }
+   ]
+  },
+  {
+   "id": "berries-common",
+   "name": "Common Berries",
+   "category": "berries",
+   "hp": 20000,
+   "atk": 1700,
+   "hpPct": 0.02,
+   "atkPct": 0.02,
+   "lines": [
+    {
+     "field": "crit",
+     "value": 0.01
+    },
+    {
+     "field": "guardBreak",
+     "value": 0.01
+    }
+   ]
+  },
+  {
+   "id": "berries-basic",
+   "name": "Basic Berries",
+   "category": "berries",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "critRes",
+     "value": 0.015
+    },
+    {
+     "field": "dmgBoost",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "berries-intermediate",
+   "name": "Intermediate Berries",
+   "category": "berries",
+   "hp": 100000,
+   "atk": 8300,
+   "hpPct": 0.04,
+   "atkPct": 0.04,
+   "lines": [
+    {
+     "field": "critPower",
+     "value": 0.02
+    },
+    {
+     "field": "dmgRdct",
+     "value": 0.02
+    }
+   ]
+  },
+  {
+   "id": "berries-greater",
+   "name": "Greater Berries",
+   "category": "berries",
+   "hp": 240000,
+   "atk": 20000,
+   "hpPct": 0.08,
+   "atkPct": 0.08,
+   "lines": [
+    {
+     "field": "block",
+     "value": 0.04
+    },
+    {
+     "field": "controlBoost",
+     "value": 0.04
+    }
+   ]
+  },
+  {
+   "id": "held-rare",
+   "name": "Rare Held Items",
+   "category": "heldItems",
+   "hp": 20000,
+   "atk": 1700,
+   "hpPct": 0.02,
+   "atkPct": 0.02,
+   "lines": [
+    {
+     "field": "blockPower",
+     "value": 0.01
+    },
+    {
+     "field": "controlRes",
+     "value": 0.01
+    }
+   ]
+  },
+  {
+   "id": "held-epic",
+   "name": "Epic Held Items",
+   "category": "heldItems",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "guardBreak",
+     "value": 0.015
+    },
+    {
+     "field": "pvpBoost",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "held-legendary",
+   "name": "Legendary Held Items",
+   "category": "heldItems",
+   "hp": 100000,
+   "atk": 8300,
+   "hpPct": 0.04,
+   "atkPct": 0.04,
+   "lines": [
+    {
+     "field": "dmgBoost",
+     "value": 0.02
+    },
+    {
+     "field": "pvpRdct",
+     "value": 0.02
+    }
+   ]
+  },
+  {
+   "id": "held-supreme",
+   "name": "Supreme Held Items",
+   "category": "heldItems",
+   "hp": 160000,
+   "atk": 13300,
+   "hpPct": 0.06,
+   "atkPct": 0.06,
+   "lines": [
+    {
+     "field": "dmgRdct",
+     "value": 0.03
+    },
+    {
+     "field": "crit",
+     "value": 0.03
+    }
+   ]
+  },
+  {
+   "id": "held-mythic",
+   "name": "Mythic Held Items",
+   "category": "heldItems",
+   "hp": 240000,
+   "atk": 20000,
+   "hpPct": 0.08,
+   "atkPct": 0.08,
+   "lines": [
+    {
+     "field": "controlBoost",
+     "value": 0.04
+    },
+    {
+     "field": "critRes",
+     "value": 0.04
+    }
+   ]
+  },
+  {
+   "id": "orbs-green",
+   "name": "Green Orbs",
+   "category": "orbs",
+   "hp": 20000,
+   "atk": 1700,
+   "hpPct": 0.02,
+   "atkPct": 0.02,
+   "lines": [
+    {
+     "field": "controlRes",
+     "value": 0.01
+    },
     {
      "field": "critPower",
      "value": 0.01
@@ -1235,32 +3981,249 @@
    ]
   },
   {
-   "id": "stones",
-   "name": "Evolution Stones",
+   "id": "orbs-blue",
+   "name": "Blue Orbs",
+   "category": "orbs",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
    "lines": [
     {
-     "field": "controlBoost",
-     "value": 0.03
+     "field": "pvpBoost",
+     "value": 0.015
+    },
+    {
+     "field": "block",
+     "value": 0.015
     }
    ]
   },
   {
-   "id": "shards",
-   "name": "Coloured Shards",
+   "id": "orbs-purple",
+   "name": "Purple Orbs",
+   "category": "orbs",
+   "hp": 100000,
+   "atk": 8300,
+   "hpPct": 0.04,
+   "atkPct": 0.04,
    "lines": [
     {
-     "field": "critRes",
-     "value": 0.025
+     "field": "pvpRdct",
+     "value": 0.02
+    },
+    {
+     "field": "blockPower",
+     "value": 0.02
     }
    ]
   },
   {
-   "id": "jewels",
-   "name": "Jewels",
+   "id": "orbs-orange",
+   "name": "Orange Orbs",
+   "category": "orbs",
+   "hp": 160000,
+   "atk": 13300,
+   "hpPct": 0.06,
+   "atkPct": 0.06,
    "lines": [
     {
      "field": "crit",
      "value": 0.03
+    },
+    {
+     "field": "guardBreak",
+     "value": 0.03
+    }
+   ]
+  },
+  {
+   "id": "orbs-red",
+   "name": "Red Orbs",
+   "category": "orbs",
+   "hp": 240000,
+   "atk": 20000,
+   "hpPct": 0.08,
+   "atkPct": 0.08,
+   "lines": [
+    {
+     "field": "critRes",
+     "value": 0.04
+    },
+    {
+     "field": "dmgBoost",
+     "value": 0.04
+    }
+   ]
+  },
+  {
+   "id": "souls-coreset-common",
+   "name": "Common Soul Hearts",
+   "category": "soulHearts",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "critPower",
+     "value": 0.015
+    },
+    {
+     "field": "dmgRdct",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "souls-coreset-flying",
+   "name": "Flying Soul Hearts",
+   "category": "soulHearts",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "block",
+     "value": 0.015
+    },
+    {
+     "field": "controlBoost",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "souls-coreset-fire",
+   "name": "Fire Soul Hearts",
+   "category": "soulHearts",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "blockPower",
+     "value": 0.015
+    },
+    {
+     "field": "controlRes",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "souls-coreset-superpower",
+   "name": "Superpower Soul Hearts",
+   "category": "soulHearts",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "guardBreak",
+     "value": 0.015
+    },
+    {
+     "field": "pvpBoost",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "souls-coreset-water",
+   "name": "Water Soul Hearts",
+   "category": "soulHearts",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "dmgBoost",
+     "value": 0.015
+    },
+    {
+     "field": "pvpRdct",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "souls-coreset-bug",
+   "name": "Bug Soul Hearts",
+   "category": "soulHearts",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "dmgRdct",
+     "value": 0.015
+    },
+    {
+     "field": "crit",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "souls-coreset-thunder",
+   "name": "Thunder Soul Hearts",
+   "category": "soulHearts",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "controlBoost",
+     "value": 0.015
+    },
+    {
+     "field": "critRes",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "souls-coreset-rock",
+   "name": "Rock Soul Hearts",
+   "category": "soulHearts",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "controlRes",
+     "value": 0.015
+    },
+    {
+     "field": "critPower",
+     "value": 0.015
+    }
+   ]
+  },
+  {
+   "id": "souls-coreset-grass",
+   "name": "Grass Soul Hearts",
+   "category": "soulHearts",
+   "hp": 50000,
+   "atk": 4200,
+   "hpPct": 0.03,
+   "atkPct": 0.03,
+   "lines": [
+    {
+     "field": "pvpBoost",
+     "value": 0.015
+    },
+    {
+     "field": "block",
+     "value": 0.015
     }
    ]
   }

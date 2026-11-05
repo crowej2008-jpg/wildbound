@@ -582,7 +582,7 @@ export interface GameServer {
   leaveDigWall(): Promise<Result<DigActionResult>>;
   cureFossil(fossil: string): Promise<Result<AccountSnapshot>>;
   collectCured(): Promise<Result<AccountSnapshot>>;
-  displayMuseumPiece(piece: string): Promise<Result<AccountSnapshot>>;
+  displayMuseumPiece(piece: string, instanceId?: string): Promise<Result<AccountSnapshot>>;
   donateSpares(): Promise<Result<AccountSnapshot>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;

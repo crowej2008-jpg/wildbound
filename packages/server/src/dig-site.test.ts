@@ -99,13 +99,40 @@ describe('Dig Site', () => {
     expect(equippedSheet(wild, config, shown.value)!.sheet.hp - before).toBeGreaterThanOrEqual(3000);
   });
 
-  it('adds a rarer group stat when a group is complete and turns spares into EXP', () => {
+  it('adds HP / ATK, % HP / ATK and two rarer stats for a full group and turns spares into EXP', () => {
     const { config, state } = account();
     const shells = config.digSite.pieces.filter((p) => p.group === 'shells').map((p) => p.id);
     const s = { ...state, digSite: { wall: null, walls: 0, fossils: {}, lab: [null, null, null], storage: { 'treasure-red-shard': 3 }, museum: shells } };
-    expect(museumLines(config, s).filter((l) => l.kind === 'percent')).toEqual([{ kind: 'percent', field: 'block', base: 0.03, perLevel: 0 }]);
+    expect(museumLines(config, s).filter((l) => l.kind === 'percent').map((l) => l.field)).toEqual(['hpPct', 'pAtkPct', 'sAtkPct', 'block', 'critRes']);
     const donated = donateSpares(config, s, NOW);
     expect(donated.ok).toBe(true);
     if (donated.ok) expect(donated.value.exp).toBe(2 * config.digSite.duplicateExp.treasure);
+  });
+
+  it('donates the chosen berry, held item, orb or soul heart copy — used up, never a worn one', () => {
+    const { config, state } = account();
+    const s = { ...state, digSite: { wall: null, walls: 0, fossils: {}, lab: [null, null, null], storage: {}, museum: [] } };
+    const berry = s.equipment.berries[0]!;
+    const spot = config.digSite.pieces.find((p) => p.kind === 'berry' && p.match?.defId === berry.defId)!;
+    expect(displayPiece(config, s, NOW, spot.id).ok).toBe(false);
+    const wearer = s.roster[0]!.id;
+    const wornState = { ...s, loadouts: { ...s.loadouts, [wearer]: { ...(s.loadouts[wearer] ?? { relic: null, orbs: [], cores: [], berries: [] }), berries: [berry.id, null] } } };
+    expect(displayPiece(config, wornState as typeof s, NOW, spot.id, berry.id).ok).toBe(false);
+    const out = displayPiece(config, s, NOW, spot.id, berry.id);
+    expect(out.ok).toBe(true);
+    if (!out.ok) return;
+    expect(out.value.equipment.berries.some((b) => b.id === berry.id)).toBe(false);
+    expect(out.value.digSite!.museum).toContain(spot.id);
+    expect(displayPiece(config, out.value, NOW, spot.id, berry.id).ok).toBe(false);
+  });
+
+  it('is a big part of power when filled', () => {
+    const { config, state } = account();
+    const wild = state.roster[0]!;
+    const full = { ...state, digSite: { wall: null, walls: 0, fossils: {}, lab: [null, null, null], storage: {}, museum: config.digSite.pieces.map((p) => p.id) } };
+    const before = equippedSheet(wild, config, state)!.sheet;
+    const after = equippedSheet(wild, config, full)!.sheet;
+    expect(after.hp).toBeGreaterThan(before.hp * 2);
+    expect(after.pAtk).toBeGreaterThan(before.pAtk * 2);
   });
 });

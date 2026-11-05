@@ -23,3 +23,7 @@ Curing: *"i want timers for this with a cost"*.
 - Owner (later the same night): *"i want the museum groups to give stats that are rarer instead of just hp and atk"* —
   each full group now adds one rarer line (Block, Guard Break, DMG Reduction, DMG Boost, Crit Intensity, Control
   Boost, Crit Resistance, Crit Chance; 1–4 %, agent's numbers). Pieces still give HP / ATK.
+- Owner: *"i want it to be a big part of power, because i want berries and most items to go into the muesem too and
+  each group gives a couple different stats and always flat hp and atks and %hp and atks"*; donated items are used up
+  ("It's used up"); kinds: berries, held items, orbs, soul hearts; *"i want players to choose what to put not it auto
+  goes there"*. Built: 234 spots in 31 groups (`scripts/generate-museum.mjs`), agent's numbers.

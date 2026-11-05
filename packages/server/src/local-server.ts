@@ -1772,10 +1772,10 @@ export class LocalServer implements GameServer {
     return this.commit(outcome.value.state);
   }
 
-  async displayMuseumPiece(piece: string): Promise<Result<AccountSnapshot>> {
+  async displayMuseumPiece(piece: string, instanceId?: string): Promise<Result<AccountSnapshot>> {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
-    const outcome = displayPiece(this.config, loaded.value, this.now(loaded.value), piece);
+    const outcome = displayPiece(this.config, loaded.value, this.now(loaded.value), piece, instanceId);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commit(outcome.value);
   }

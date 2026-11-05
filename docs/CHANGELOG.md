@@ -1418,3 +1418,6 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   whose pieces and full groups add account-wide HP / ATK. Save v45. ASSUMPTIONS #105.
 - Dig Site: full museum groups now give rarer stats (Block, Guard Break, DMG Reduction / Boost, Crit Intensity,
   Control Boost, Crit Resistance, Crit Chance) instead of HP / ATK % (owner). ASSUMPTIONS #106.
+- Dig Site museum (owner): now also berries, held items, orbs and soul hearts — 234 spots in 31 groups, donated by
+  choice and used up; every full group gives flat and % HP / ATK plus two rarer stats. A big part of power.
+  ASSUMPTIONS #107.

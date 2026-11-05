@@ -1233,3 +1233,9 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 106. **Dig Site museum groups give rarer stats (owner, 2026-11-04).** A full group adds one line instead of HP / ATK %:
      Block 3 %, Guard Break 2.5 %, DMG Reduction 3 %, DMG Boost 4 %, Crit Intensity 1 %, Control Boost 3 %, Crit
      Resistance 2.5 %, Crit Chance 3 % (stand-ins). Pieces keep their flat HP / ATK.
+
+107. **The museum is a big part of power (owner, 2026-11-04).** It also collects every berry, held item, orb (kind ×
+     colour) and soul heart (set × socket): 234 spots in 31 groups. The player chooses each donation; the copy is used
+     up (worn or locked copies cannot be given). Each spot: flat HP / ATK. Each full group: flat HP / ATK, % HP / ATK
+     and two rarer lines; ranks 1–5 (2–8 %, rarer 1–4 %). All groups: +117 % HP / ATK — a full museum about doubles a
+     geared Pokémon's HP and 2.5× its ATK. Agent's numbers (supersedes #106's one-line group bonus).
