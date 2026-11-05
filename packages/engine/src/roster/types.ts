@@ -19,6 +19,7 @@ import type { SkyPillarState } from '../sky-pillar/types';
 import type { HoopaVaultState } from '../hoopa-vault/types';
 import type { RiftState } from '../rift/types';
 import type { MistyState } from '../misty/types';
+import type { FactionTowerState } from '../faction-tower/types';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -28,7 +29,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -40,6 +41,8 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'hoopaVault',
   'rift',
   'misty',
+  'factionTower',
+  'factionTower2',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -317,6 +320,8 @@ export interface AccountState {
   rift: RiftState;
   /** M13.6: the Misty Woods run (null until first opened). */
   misty: MistyState | null;
+  /** M13.7: the three Faction Towers' floors and today's counters. */
+  factionTower: FactionTowerState;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }
@@ -469,6 +474,8 @@ export function emptySquads(): Record<SquadMode, Squad> {
     hoopaVault: emptySquad(),
     rift: emptySquad(),
     misty: emptySquad(),
+    factionTower: emptySquad(),
+    factionTower2: emptySquad(),
   };
 }
 
@@ -483,6 +490,8 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     hoopaVault: 'balanced',
     rift: 'balanced',
     misty: 'balanced',
+    factionTower: 'balanced',
+    factionTower2: 'balanced',
   };
 }
 

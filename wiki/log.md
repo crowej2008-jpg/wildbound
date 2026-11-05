@@ -320,3 +320,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-04] update | M13.6 Misty Woods
 - Built from the source's maze tables without runes (owner): map, carried HP / Rage, tiles, Forest Coins, 2-day reset
   (ASSUMPTIONS #102, save v42).
+
+## [2026-11-04] update | M13.7 Faction Tower
+- Built from the source's achievements / item / VIP tables and the owner's wiki page: three towers, weekday rotation,
+  20 floors a day, sweeps, two teams from 701 (ASSUMPTIONS #103, save v43). Leaderboards wait for the server parts.

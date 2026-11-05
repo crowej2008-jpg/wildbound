@@ -55,6 +55,7 @@ after the retrofit, once friends have real saves.
 | 40 | M13.3 | Hoopa's Vault: `hoopaVault` slice and squad, `vaultKey` currency (reset) |
 | 41 | M13.4 | Rift Barriers: `rift` slice and squad, `timeCoin` / `timeCredit` (reset) |
 | 42 | M13.6 | Misty Woods: `misty` slice and squad (reset) |
-| 43+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
+| 43 | M13.7 | Faction Tower: `factionTower` slice, squads `factionTower` / `factionTower2` (reset) |
+| 44+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

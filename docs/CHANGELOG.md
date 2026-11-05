@@ -1396,3 +1396,11 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - The source's 4-chapter maze: carried HP and Rage, fights, bosses, fountains, tombstones, the Diamond shop, hire
   tiles, first-win Forest Coins, 2-day reset. Runes cut (owner). Engine: starting HP / Rage per unit. Save v42.
   ASSUMPTIONS #102.
+
+## M13.7 — Faction Tower (2026-11-04)
+
+- Water, Fire and Grass towers, 1,000 floors each, open on their weekdays (all on Sunday); 20 floors a day each;
+  own type plus Light and Dark, at least 4 of the type; two teams from floor 701. Per-floor Gold / Star Shards /
+  Faction Coins, a bonus every 5 floors, the source milestones (5-Star Pokémon Shards, Powerful Evolve box
+  Pokémon). Two free sweeps a day, then 10 / 20 Diamonds. Faction Tower Shop: daily restock, Star Shard and Gold
+  rows added. Save v43. ASSUMPTIONS #103.

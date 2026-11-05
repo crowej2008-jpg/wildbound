@@ -1193,3 +1193,21 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      elimination), `rate` = enemy stat %, enemies at the team's average level; `reward_rate` not copied. Stand-ins:
      fountain 30 %, revive 50 %, shop 50 / 100 Diamonds, hire pool (unowned Supreme / Mythic). The battle engine
      gained a starting HP fraction and Rage per unit. New squad `misty`, save v42 (reset). docs/design/misty-woods.md.
+
+103. **M13.7 Faction Tower (2026-11-04).** Source: the three towers and their milestones (achievements_cfg lines
+     26–28, race_tower_type 21–23: Water / Fire / Grass, 43 steps to floor 1,000 each), the Powerful Evolve boxes
+     (item_hero 10251–10253, two 5★ cards each), the gate (sys_open 64, story 28-10) and 2 bought sweeps a day
+     (vip_priv race_tower_num). The owner's wiki (game-modes/faction-tower): open days (Water Mon / Thu / Sun, Fire
+     Tue / Fri / Sun, Grass Wed / Sat / Sun), 20 floors a day each, Light and Dark admitted, at least 4 of the type,
+     two teams vs twelve enemies from floor 701, 2 free sweeps then 10 / 20 Diamonds, the per-floor pay (30,000 Gold /
+     150 Star Shards / 330 coins rising to 84,500 / 2,875 / 870), and the shop's Star Shard and Gold rows (shop 25
+     restocks daily — the R6b 30-day restock was wrong). Readings: only wins count toward the 20; a loss costs
+     nothing; at least 4 of the type in *each* team; team 2 may not reuse team 1's Pokémon; a team fills from the
+     `factionTower` / `factionTower2` squads (wrong-faction picks skipped), then the strongest eligible roster
+     Pokémon. Stand-ins: the every-5-floors one-time bonus, known only at floor 910 (10,650 coins, 29,750 Star
+     Shards), scales linearly with the floor; the enemy curve (any faction, Lv 31 at floor 1 → ~125 at floor 1,000;
+     difficulty curves come last). Mapping: 5S Water / Fire / Grass Pokémon Shards → 5-Star Pokémon Shards (no
+     faction shards in Wildbound); Golden Egg Vouchers left out (#84). Not built: per-tower leaderboards (server
+     parts later, as for the Rift), the Faction Battle Pass (paid), the Victory Road badge (+10 / 20 % coins, M14) and
+     fusion-skin (+5 %) coin bonuses. New squads `factionTower`, `factionTower2`; save v43 (reset).
+     docs/design/faction-tower.md.

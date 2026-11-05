@@ -26,6 +26,7 @@ import type { SkyPillarView } from './sky-pillar-view';
 import type { HoopaVaultView } from './hoopa-vault-view';
 import type { RiftView } from './rift-view';
 import type { MistyView } from './misty-view';
+import type { FactionTowerView } from './faction-tower-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -230,6 +231,17 @@ export interface MistyStepResultView {
   battle?: BattleView;
   win?: boolean;
   rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** A Faction Tower climb (M13.7): one fight (two from floor 701), the floor's pay and any evolve-box Pokémon. */
+export interface FactionTowerClimbResult {
+  faction: string;
+  floor: number;
+  fights: { team: 1 | 2; battle: BattleView; win: boolean }[];
+  win: boolean;
+  rewards: Rewards;
+  pokemon: string[];
   snapshot: AccountSnapshot;
 }
 
@@ -528,6 +540,10 @@ export interface GameServer {
   stepMisty(nodeId: number, seed?: number): Promise<Result<MistyStepResultView>>;
   hireMisty(speciesId: string): Promise<Result<AccountSnapshot>>;
   mistyShop(kind: 'heal' | 'revive', unitId?: string): Promise<Result<AccountSnapshot>>;
+  /** M13.7 Faction Tower. */
+  getFactionTower(): Promise<Result<FactionTowerView>>;
+  climbFactionTower(faction: string, seed?: number): Promise<Result<FactionTowerClimbResult>>;
+  sweepFactionTower(faction: string): Promise<Result<ClaimResult>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -594,6 +610,8 @@ export * from './rift-view';
 export * from './rift';
 export * from './misty-view';
 export * from './misty';
+export * from './faction-tower-view';
+export * from './faction-tower';
 export * from './plates';
 export * from './trinkets';
 export * from './berries';

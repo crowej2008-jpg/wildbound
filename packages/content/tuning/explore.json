@@ -48,13 +48,13 @@
       "name": "Faction Tower",
       "sigil": "FT",
       "tagline": "One faction, three thousand floors.",
-      "description": "A faction-locked tower with its own floor ladder and weekly reset. Each faction answers a different enemy pool and boss cadence.",
+      "description": "Three type-locked towers open on their own weekdays, all three on Sunday. Field at least four of the tower's type; Light and Dark may fill the rest.",
       "scale": "3,000 floors",
-      "status": "planned",
+      "status": "live",
       "arrivesIn": "13.7",
-      "reset": "weekly",
+      "reset": "daily",
       "gates": [{ "kind": "campaign", "chapter": 28, "stage": 10 }],
-      "features": ["3,000 floors", "Faction-locked formations", "Weekly reset and floor chests"]
+      "features": ["Water, Fire and Grass towers, 1,000 floors each", "Own faction plus Light and Dark", "20 floors a day, two teams from floor 701"]
     },
     {
       "id": "misty-woods",

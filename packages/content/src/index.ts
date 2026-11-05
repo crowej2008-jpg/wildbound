@@ -88,6 +88,7 @@ export {
   HOOPA_VAULT,
   RIFT,
   MISTY,
+  FACTION_TOWER,
   GACHA_TUNING,
 } from './tuning';
 export type {
@@ -100,12 +101,14 @@ export type {
   HoopaVaultJson,
   RiftJson,
   MistyJson,
+  FactionTowerJson,
 } from './tuning';
 export { petHomeSchema } from './pet-home-schema';
 export { skyPillarSchema } from './sky-pillar-schema';
 export { hoopaVaultSchema } from './hoopa-vault-schema';
 export { riftSchema } from './rift-schema';
 export { mistySchema } from './misty-schema';
+export { factionTowerSchema } from './faction-tower-schema';
 export type {
   SkyPillarConditionJson,
   SkyPillarStageJson,

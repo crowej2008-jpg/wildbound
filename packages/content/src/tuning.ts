@@ -6,6 +6,7 @@ import skyPillar from '../tuning/sky-pillar.json';
 import hoopaVault from '../tuning/hoopa-vault.json';
 import rift from '../tuning/rift.json';
 import misty from '../tuning/misty.json';
+import factionTower from '../tuning/faction-tower.json';
 import combat from '../tuning/combat.json';
 import economy from '../tuning/economy.json';
 import growth from '../tuning/growth.json';
@@ -17,6 +18,7 @@ import { skyPillarSchema, type SkyPillarJson } from './sky-pillar-schema';
 import { hoopaVaultSchema, type HoopaVaultJson } from './hoopa-vault-schema';
 import { riftSchema, type RiftJson } from './rift-schema';
 import { mistySchema, type MistyJson } from './misty-schema';
+import { factionTowerSchema, type FactionTowerJson } from './faction-tower-schema';
 import {
   accountSchema,
   campaignSchema,
@@ -46,6 +48,7 @@ export const SKY_PILLAR: SkyPillarJson = skyPillarSchema.parse(skyPillar);
 export const HOOPA_VAULT: HoopaVaultJson = hoopaVaultSchema.parse(hoopaVault);
 export const RIFT: RiftJson = riftSchema.parse(rift);
 export const MISTY: MistyJson = mistySchema.parse(misty);
+export const FACTION_TOWER: FactionTowerJson = factionTowerSchema.parse(factionTower);
 export const GACHA_TUNING: GachaJson = gachaSchema.parse(GACHA);
 export type { GachaJson } from './gacha-schema';
 export type { CampaignJson, ExploreJson, ExploreModeJson, ExploreGateJson } from './schemas';
@@ -54,3 +57,4 @@ export type { SkyPillarJson } from './sky-pillar-schema';
 export type { HoopaVaultJson } from './hoopa-vault-schema';
 export type { RiftJson } from './rift-schema';
 export type { MistyJson } from './misty-schema';
+export type { FactionTowerJson } from './faction-tower-schema';

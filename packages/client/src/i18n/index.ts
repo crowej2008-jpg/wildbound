@@ -311,6 +311,8 @@ export const en = {
   'squad.mode.hoopaVault': "Hoopa's Vault",
   'squad.mode.rift': 'Rift Arena',
   'squad.mode.misty': 'Misty Woods',
+  'squad.mode.factionTower': 'Faction Tower (team 1)',
+  'squad.mode.factionTower2': 'Faction Tower (team 2)',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -902,6 +904,39 @@ export const en = {
   'misty.won': 'Victory! Your team carries its HP forward.',
   'misty.lost': 'Defeat. Knocked-out Pokémon stay down; try again with the rest.',
   'misty.back': 'Back to the woods',
+  'factionTower.title': 'Faction Tower',
+  'factionTower.locked': 'The Faction Tower opens after story 28-10.',
+  'factionTower.water': 'Water Tower',
+  'factionTower.fire': 'Fire Tower',
+  'factionTower.grass': 'Grass Tower',
+  'factionTower.today': 'Today:',
+  'factionTower.resets': 'Resets in',
+  'factionTower.rules': 'Each team needs at least {n} of the tower’s type; Light and Dark may fill the rest. {floors} floors a day in each open tower; two teams from floor {two}.',
+  'factionTower.freeSweeps': 'Free sweeps left today: {n}',
+  'factionTower.buySweep': 'Next sweep: {n} Diamonds',
+  'factionTower.noSweeps': 'No sweeps left today',
+  'factionTower.editTeam': 'Edit team',
+  'factionTower.shop': 'Faction Tower Shop',
+  'factionTower.floor': 'Floor',
+  'factionTower.opens': 'Open',
+  'factionTower.todayCount': 'Today',
+  'factionTower.next': 'Next floor',
+  'factionTower.twoTeams': 'two teams',
+  'factionTower.bonus': 'One-time bonus:',
+  'factionTower.milestone': 'Next milestone: floor',
+  'factionTower.evolveBoxes': '{n} Powerful Evolve box',
+  'factionTower.team': 'Team',
+  'factionTower.closed': 'Closed today.',
+  'factionTower.doneToday': 'Today’s floors are done — come back tomorrow.',
+  'factionTower.top': 'Cleared to the top.',
+  'factionTower.climb': 'Climb',
+  'factionTower.sweep': 'Sweep',
+  'factionTower.swept': 'Swept: the highest floor’s rewards are yours.',
+  'factionTower.nextFight': 'Next fight (team 2)',
+  'factionTower.won': 'Floor cleared!',
+  'factionTower.lost': 'Defeat. Power up and try again — a loss costs nothing.',
+  'factionTower.evolveBox': 'Powerful Evolve box:',
+  'factionTower.back': 'Back to the towers',
   'rift.locked': 'Rift Arena opens after story 10-10 and trainer level 10.',
   'rift.seasonEnds': 'Season ends in',
   'rift.seasonOpens': 'Season closed. Opens in',
@@ -1252,7 +1287,7 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1264,6 +1299,8 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   hoopaVault: en['squad.mode.hoopaVault'],
   rift: en['squad.mode.rift'],
   misty: en['squad.mode.misty'],
+  factionTower: en['squad.mode.factionTower'],
+  factionTower2: en['squad.mode.factionTower2'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

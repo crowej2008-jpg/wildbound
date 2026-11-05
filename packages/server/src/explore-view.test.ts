@@ -48,7 +48,7 @@ describe('Explore hub view', () => {
     const byId = new Map(view.modes.map((mode) => [mode.id, mode]));
     expect(byId.get('pet-home')?.nextResetMs).toBeGreaterThan(0);
     expect(byId.get('pet-home')?.nextResetMs).toBeLessThanOrEqual(DAY);
-    expect(byId.get('faction-tower')?.nextResetMs).toBeGreaterThan(DAY);
-    expect(byId.get('faction-tower')?.nextResetMs).toBeLessThanOrEqual(7 * DAY);
+    expect(byId.get('island-challenge')?.nextResetMs).toBeGreaterThan(DAY);
+    expect(byId.get('island-challenge')?.nextResetMs).toBeLessThanOrEqual(7 * DAY);
   });
 });

@@ -111,6 +111,7 @@ import {
   type HoopaGuardianResult,
   type RiftBattleResult,
   type MistyStepResultView,
+  type FactionTowerClimbResult,
   type SkyPillarSweepResult,
   type StageBattleResult,
   type SummonResult,
@@ -142,6 +143,8 @@ import { buyRiftMerchant as buyRiftMerchantAction, challengeRift as challengeRif
 import { buildRiftView, type RiftView } from './rift-view';
 import { hireMisty as hireMistyAction, mistyShop as mistyShopAction, prepareMisty, stepMisty as stepMistyAction } from './misty';
 import { buildMistyView, type MistyView } from './misty-view';
+import { climbFactionTower as climbFactionTowerAction, isTowerFaction, prepareFactionTower, sweepFactionTower as sweepFactionTowerAction } from './faction-tower';
+import { buildFactionTowerView, type FactionTowerView } from './faction-tower-view';
 import {
   buyShopOfferAction,
   claimLevelAction,
@@ -1595,6 +1598,48 @@ export class LocalServer implements GameServer {
     const outcome = mistyShopAction(this.config, loaded.value, this.now(loaded.value), kind, unitId);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commit(outcome.value);
+  }
+
+  async getFactionTower(): Promise<Result<FactionTowerView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const now = this.now(loaded.value);
+    const prepared = prepareFactionTower(loaded.value, now);
+    if (prepared.changed) {
+      const committed = await this.commit(prepared.state);
+      if (!committed.ok) return committed;
+    }
+    return ok(buildFactionTowerView(this.config, prepared.state, now));
+  }
+
+  async climbFactionTower(faction: string, seed?: number): Promise<Result<FactionTowerClimbResult>> {
+    if (!isTowerFaction(faction)) return fail('invalid_input', `no "${faction}" tower`);
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = climbFactionTowerAction(this.config, loaded.value, this.now(loaded.value), faction, seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      faction: value.faction,
+      floor: value.floor,
+      fights: value.fights,
+      win: value.win,
+      rewards: value.rewards,
+      pokemon: value.pokemon,
+      snapshot: committed.value,
+    });
+  }
+
+  async sweepFactionTower(faction: string): Promise<Result<ClaimResult>> {
+    if (!isTowerFaction(faction)) return fail('invalid_input', `no "${faction}" tower`);
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = sweepFactionTowerAction(this.config, loaded.value, this.now(loaded.value), faction);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.rewards);
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {
