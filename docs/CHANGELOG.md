@@ -1527,3 +1527,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - /clash (PvP hub): weekly cup against CPU players — tryouts Tue / Thu / Sat, Sunday final for Top 16 finishers,
   source round rewards, daily Guess Coins and predictions. Save v57. ASSUMPTIONS #120.
+
+## M18.3 — World Championship + League Championship (2026-11-05) — M18 done
+
+- /championship (PvP hub): World Championship floor ladders and Master Ball knockout every two weeks with league
+  rank rewards; League Championship Thursday–Sunday for top-tier Ranked players. Every PvP hub card is now live.
+  Save v58. ASSUMPTIONS #121.

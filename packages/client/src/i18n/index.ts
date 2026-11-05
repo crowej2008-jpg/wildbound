@@ -353,6 +353,7 @@ export const en = {
   'squad.mode.park': 'Pokémon Park',
   'squad.mode.temple': 'SPT Temple',
   'squad.mode.clash': 'Cross-Server Clash',
+  'squad.mode.championship': 'Championships',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -818,6 +819,31 @@ export const en = {
   'gw.claimSeason': "Claim last season's rewards",
   'relic.title': 'Relic Battlefield',
   'park.title': 'Pokémon Park',
+  'champ.playWeek': 'Championship week',
+  'champ.rewardWeek': 'Reward week',
+  'champ.world': 'World Championship',
+  'champ.league': 'League {g}',
+  'champ.rank': 'Ladder rank #{r} of {n}',
+  'champ.floor': 'Floor {f} (Lv {l})',
+  'champ.climb': 'Climb',
+  'champ.closed': 'closed',
+  'champ.done': 'all cleared',
+  'champ.knockout': 'Master Ball knockout',
+  'champ.koNext': 'next round {t} UTC',
+  'champ.koPlay': 'Play knockout round',
+  'champ.place': 'Final place #{p}',
+  'champ.notTop8': 'Reach the ladder top 8 by Sunday 14:00 UTC to enter.',
+  'champ.claim': 'Claim rank reward',
+  'champ.leagueTitle': 'League Championship',
+  'champ.leagueLocked': 'Opens on server day 14 with Ranked.',
+  'champ.leagueNotIn': 'Not entered this week (top Ranked tier on Thursday).',
+  'champ.playDay': "Play today's matches",
+  'champ.leagueDay.r64': 'Round of 64',
+  'champ.leagueDay.groups': 'Group stage',
+  'champ.leagueDay.ko': 'Knockout',
+  'champ.team': 'Set the Championship team →',
+  'champ.won': 'Won!',
+  'champ.lost': 'Lost.',
   'clash.locked': 'Cross-Server Clash opens on server day 3 after story 3-10 and trainer level 10.',
   'clash.day': 'Today: {d}',
   'clash.noCup': 'No Clash today (it runs Tuesday, Thursday, Saturday and Sunday).',
@@ -1822,7 +1848,7 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple' | 'clash';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple' | 'clash' | 'championship';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1844,6 +1870,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   park: en['squad.mode.park'],
   temple: en['squad.mode.temple'],
   clash: en['squad.mode.clash'],
+  championship: en['squad.mode.championship'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

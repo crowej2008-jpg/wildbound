@@ -89,3 +89,6 @@ that was worked on and what decisions after you are done"*. Every call below too
 - SPT Temple: guardian strength, CPU holders and the daily CPU challenger are stand-ins (ASSUMPTIONS #119).
 - Cross-Server Clash: rounds keep their UTC times but stay open until the day ends (solo); the 32-player score-contest
   cut becomes "12 points from 3 battles"; one 6v6 team; predictions use a seeded CPU match (ASSUMPTIONS #120).
+- World Championship: CPU ladder of 60, Tournament Credits → Arena Tokens, cosmetic / paid rewards and the raffle left
+  out. League Championship: qualification = top Ranked tier on Thursday (no Master Credit ladder solo), stage cuts
+  (3 losses / 5 of 7 wins) as the wiki describes, predictions not built (ASSUMPTIONS #121).

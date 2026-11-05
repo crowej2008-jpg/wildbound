@@ -32,7 +32,7 @@ Numbers changed twice — see [renumbering](../decisions/milestone-renumbering.m
 | M15 | [Account systems III](m15.md): trainer treasures, Z Ring, Pure Crystals, fusion skins, Golden Egg, Awakening | **done 2026-11-05** |
 | M16 | Guild, merge, events (simulated; includes Shovel Carnival) | **done 2026-11-05** (CPU guild, Shovel Carnival, Merge Event) |
 | M17 | Guild war + Relic Battlefield (needs M12) | **done 2026-11-05** (solo vs CPU guilds) |
-| M18 | Cross-server PvP: Clash, Championship, SPT Temple | in progress (18.1 SPT Temple, 18.2 Clash built) |
+| M18 | Cross-server PvP: Clash, Championship, SPT Temple | **done 2026-11-05** (solo vs CPU players) |
 | M19 | [Visual identity](../systems/visual-identity.md) | pending |
 | M20 | [Shared backend](../systems/backend.md) (required; owner 2026-11-04: probably solo with scaling CPUs — revisit) | pending |
 | M21 | [Build Lab](../systems/build-lab.md) | pending (last) |

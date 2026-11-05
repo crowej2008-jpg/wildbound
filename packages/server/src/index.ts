@@ -41,6 +41,7 @@ import type { ParkView } from './park';
 import type { WeekendView } from './weekend-events';
 import type { TempleView } from './temple';
 import type { ClashView } from './clash';
+import type { ChampionshipView } from './championship';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -669,6 +670,13 @@ export interface GameServer {
   claimGuessCoins(): Promise<Result<ClaimResult>>;
   placeClashBet(step: number, pick: 0 | 1, stake: number): Promise<Result<AccountSnapshot>>;
   claimClashBets(): Promise<Result<ClaimResult>>;
+  /** M18.3 World Championship + League Championship. */
+  getChampionship(): Promise<Result<ChampionshipView>>;
+  climbWorldFloor(stage: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; rewards: Rewards; snapshot: AccountSnapshot }>>;
+  playWorldKnockout(seed?: number): Promise<Result<{ battle: BattleView; win: boolean; place: number | null; snapshot: AccountSnapshot }>>;
+  claimWorldReward(): Promise<Result<ClaimResult>>;
+  playLeagueDay(seed?: number): Promise<Result<{ battles: BattleView[]; passed: boolean; place: number | null; snapshot: AccountSnapshot }>>;
+  claimLeagueReward(): Promise<Result<ClaimResult>>;
   /** Weekend Bash (Elven Treasure, Bingo) and the Flower Event. */
   getWeekend(): Promise<Result<WeekendView>>;
   buyElven(count: number): Promise<Result<AccountSnapshot>>;
@@ -791,6 +799,7 @@ export * from './park';
 export * from './weekend-events';
 export * from './temple';
 export * from './clash';
+export * from './championship';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

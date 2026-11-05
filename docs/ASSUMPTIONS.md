@@ -1350,3 +1350,14 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      the day ends; the score contest's cut is 12 points (two wins) instead of a 64-player table; one 6v6 team (no world
      level in Wildbound); bets are on a seeded CPU-vs-CPU featured match. Squad `clash`, currency `predictionCoin`,
      `clash` slice; save v57. docs/design/clash.md.
+
+121. **M18.3 World Championship + League Championship (2026-11-05).** World Championship from world_tournament_*:
+     two-week cycles (anchored 2026-11-02), 9 leagues by squad level (share_lev), Poké Ball / Great Ball / Ultra Ball
+     floor ladders (20 / 30 / 170 floors, their enemy levels and rewards) opening Tue / Wed / Fri 08:00, Master Ball
+     knockout of the top 8 on Sunday 14:30 / 16:30 / 18:30, settlement Sunday 22:00, rank rewards per league. Solo:
+     the ladder rank is against 60 CPU players; Tournament Credits pay Arena Tokens (stand-in); frames, bubbles,
+     coupons, the gem-bought raffle and tasks are not built. League Championship from the owner's wiki: server day 14,
+     top Ranked tier qualifies on Thursday, round of 64 (5 battles, out at 3 losses), groups (7 battles, 5 wins),
+     Top 16 + quarterfinal, semifinal + final, from 20:00 UTC; placement Rank Tokens → Arena Tokens. Not built:
+     Tropical Shell predictions, Hall of Fame, avatar frames. Squad `championship`, `championship` slice; save v58.
+     M18 done. docs/design/championship.md.

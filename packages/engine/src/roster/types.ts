@@ -35,7 +35,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple' | 'clash';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park' | 'temple' | 'clash' | 'championship';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -57,6 +57,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'park',
   'temple',
   'clash',
+  'championship',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -539,6 +540,21 @@ export interface AccountState {
     coinsDays: string[];
     bets: Record<string, { pick: 0 | 1; stake: number; settled: boolean }>;
   } | null;
+  /** M18.3: World Championship cycle and League Championship week (null until first opened). */
+  championship: {
+    cycle: string;
+    group: number;
+    floors: Record<string, number>;
+    ko: { step: number; out: boolean; place: number | null };
+    last: { cycle: string; group: number; place: number; claimed: boolean } | null;
+    league: {
+      week: string;
+      qualified: boolean | null;
+      days: Record<string, { played: number; wins: number; losses: number; done: boolean; passed: boolean }>;
+      place: number | null;
+      claimed: boolean;
+    };
+  } | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string; prevWeek?: string; prevWeekly?: Record<string, number> };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
@@ -703,6 +719,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     park: emptySquad(),
     temple: emptySquad(),
     clash: emptySquad(),
+    championship: emptySquad(),
   };
 }
 
@@ -727,6 +744,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     park: 'balanced',
     temple: 'balanced',
     clash: 'balanced',
+    championship: 'balanced',
   };
 }
 

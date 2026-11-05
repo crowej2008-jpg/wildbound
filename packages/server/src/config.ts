@@ -43,6 +43,7 @@ import {
   WEEKEND_EVENTS,
   TEMPLE,
   CLASH,
+  CHAMPIONSHIP,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -81,6 +82,7 @@ import type {
   WeekendEventsJson,
   TempleJson,
   ClashJson,
+  ChampionshipJson,
   VictoryRoadJson,
   KingsTrialJson,
   PveJson,
@@ -202,6 +204,7 @@ export interface GameConfig {
   weekendEvents: WeekendEventsJson;
   temple: TempleJson;
   clash: ClashJson;
+  championship: ChampionshipJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -328,6 +331,7 @@ export function buildConfig(): GameConfig {
     weekendEvents: WEEKEND_EVENTS,
     temple: TEMPLE,
     clash: CLASH,
+    championship: CHAMPIONSHIP,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

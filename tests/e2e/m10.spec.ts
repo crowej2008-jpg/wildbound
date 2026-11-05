@@ -73,10 +73,10 @@ test('a fresh account opens the PvP hub and sees the locked Arena and ranking bo
   await page.getByRole('main').getByRole('link', { name: 'PvP' }).click();
   await expect(page.getByRole('heading', { name: 'PvP' })).toBeVisible();
 
-  // Six entry points; the Championship still to come says so (SPT Temple and Clash are live from M18).
+  // Six entry points, all live since M18; Arena, Championship and SPT Temple open with chapter 2.
   await expect(page.locator('.town-tile')).toHaveCount(6);
-  await expect(page.getByText('Coming later')).toHaveCount(1);
-  await expect(page.getByText('Locked — clear campaign chapter 2')).toHaveCount(2);
+  await expect(page.getByText('Coming later')).toHaveCount(0);
+  await expect(page.getByText('Locked — clear campaign chapter 2')).toHaveCount(3);
 
   await page.getByRole('main').getByRole('link', { name: /^Arena/ }).click();
   await expect(page.getByRole('heading', { name: 'Arena' })).toBeVisible();

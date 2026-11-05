@@ -185,6 +185,7 @@ import * as parkMod from './park';
 import * as weekendMod from './weekend-events';
 import * as templeMod from './temple';
 import * as clashMod from './clash';
+import * as champMod from './championship';
 import { squadWildIds } from './growth';
 import { buildAccount3View, type Account3View } from './account3-view';
 import { bumpCounter, stampLogin } from './counters';
@@ -2307,6 +2308,36 @@ export class LocalServer implements GameServer {
 
   async claimClashBets(): Promise<Result<ClaimResult>> {
     const r = await this.jointAct((s, now) => clashMod.claimBets(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  // ---------------------------------------------------------------- M18.3 Championships
+
+  async getChampionship(): Promise<Result<champMod.ChampionshipView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(champMod.buildChampionshipView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async climbWorldFloor(stage: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; rewards: Rewards; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => champMod.climbWorldFloor(this.config, s, now, stage, seed));
+  }
+
+  async playWorldKnockout(seed?: number): Promise<Result<{ battle: BattleView; win: boolean; place: number | null; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => champMod.playWorldKnockout(this.config, s, now, seed));
+  }
+
+  async claimWorldReward(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => champMod.claimWorldReward(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async playLeagueDay(seed?: number): Promise<Result<{ battles: BattleView[]; passed: boolean; place: number | null; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => champMod.playLeagueDay(this.config, s, now, seed));
+  }
+
+  async claimLeagueReward(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => champMod.claimLeagueReward(this.config, s, now));
     return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
   }
 

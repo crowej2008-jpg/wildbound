@@ -384,3 +384,5 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-05] update | M18.1 SPT Temple (owner: "continue back on track" → M18; ASSUMPTIONS #119, save v56)
 
 ## [2026-11-05] update | M18.2 Cross-Server Clash (ASSUMPTIONS #120, save v57)
+
+## [2026-11-05] update | M18.3 World Championship + League Championship — M18 done (ASSUMPTIONS #121, save v58)

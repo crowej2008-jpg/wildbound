@@ -68,12 +68,8 @@ describe('PvP hub (M10.5)', () => {
     const ranked = view.cards.find((c) => c.id === 'ranked')!;
     expect(ranked.status).toEqual({ kind: 'locked', chapter: cfg.pvp.rankedChapter });
 
-    for (const id of ['championship'] as const) {
-      const card = view.cards.find((c) => c.id === id)!;
-      expect(card.live).toBe(false);
-      expect(card.route).toBeNull();
-      expect(card.status).toEqual({ kind: 'comingLater' });
-    }
+    // M18: every PvP mode is live now (Clash, Championship, SPT Temple).
+    expect(view.cards.every((c) => c.live)).toBe(true);
 
     const shop = view.cards.find((c) => c.id === 'shop')!;
     expect(shop.route).toBe('/shop');
@@ -113,7 +109,7 @@ describe('PvP hub (M10.5)', () => {
     expect(hub.ok).toBe(true);
     if (!hub.ok) return;
     expect(hub.value.cards).toHaveLength(6);
-    expect(hub.value.cards.filter((c) => c.live)).toHaveLength(5);
+    expect(hub.value.cards.filter((c) => c.live)).toHaveLength(6);
   });
 
   it('fills the hub for a save missing its PvP slice', () => {

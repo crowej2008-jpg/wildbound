@@ -3,6 +3,7 @@ import type { GameConfig } from './config';
 import { arenaTuning, arenaUnlocked, rankedPhase, rankedTuning, rankedUnlocked } from './pvp';
 import { rolledRanked } from './pvp/ranked';
 import { clashOpen } from './clash';
+import { worldCycle } from './championship';
 
 /**
  * The PvP hub (M10.5): one card per PvP entry point with its live status. The
@@ -19,6 +20,7 @@ export type PvpHubStatus =
   | { kind: 'shop'; tokens: number }
   | { kind: 'temple'; seat: string | null }
   | { kind: 'clash'; coins: number }
+  | { kind: 'championship'; playWeek: boolean }
   | { kind: 'locked'; chapter: number }
   | { kind: 'comingLater' };
 
@@ -36,8 +38,6 @@ export interface PvpHubView {
   cards: PvpHubCardView[];
 }
 
-/** Modes the reference ships that are still pending (M18) — honest, not dead. */
-const PENDING: readonly PvpHubId[] = ['championship'];
 
 export function buildPvpHubView(config: GameConfig, state: AccountState, now: number): PvpHubView {
   const arena = state.pvp.arena;
@@ -88,9 +88,13 @@ export function buildPvpHubView(config: GameConfig, state: AccountState, now: nu
       unlocked: clashOpen(config, state, now),
       status: { kind: 'clash', coins: state.currencies.predictionCoin ?? 0 },
     },
-    ...PENDING.map(
-      (id): PvpHubCardView => ({ id, route: null, live: false, unlocked: false, status: { kind: 'comingLater' } }),
-    ),
+    {
+      id: 'championship',
+      route: '/championship',
+      live: true,
+      unlocked: arenaOpen,
+      status: arenaOpen ? { kind: 'championship', playWeek: worldCycle(config, now).playWeek } : { kind: 'locked', chapter: config.pvp.arenaChapter },
+    },
     {
       id: 'temple',
       route: '/spt-temple',

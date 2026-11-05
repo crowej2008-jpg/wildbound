@@ -101,6 +101,7 @@ export {
   WEEKEND_EVENTS,
   TEMPLE,
   CLASH,
+  CHAMPIONSHIP,
   VICTORY_ROAD,
   KINGS_TRIAL,
   GACHA_TUNING,
@@ -128,6 +129,7 @@ export type {
   WeekendEventsJson,
   TempleJson,
   ClashJson,
+  ChampionshipJson,
   VictoryRoadJson,
   KingsTrialJson,
 } from './tuning';
@@ -149,6 +151,7 @@ export { parkSchema } from './park-schema';
 export { weekendEventsSchema } from './weekend-events-schema';
 export { templeSchema } from './temple-schema';
 export { clashSchema } from './clash-schema';
+export { championshipSchema } from './championship-schema';
 export { victoryRoadSchema } from './victory-road-schema';
 export { kingsTrialSchema } from './kings-trial-schema';
 export type {
