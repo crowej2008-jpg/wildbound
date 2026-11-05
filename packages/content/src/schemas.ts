@@ -720,6 +720,9 @@ export const rewardSchema = z
     seedBasic: z.number().nonnegative().optional(),
     seedIntermediate: z.number().nonnegative().optional(),
     seedGreater: z.number().nonnegative().optional(),
+    ballAdvanced: z.number().nonnegative().optional(),
+    ballMaster: z.number().nonnegative().optional(),
+    scanner: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

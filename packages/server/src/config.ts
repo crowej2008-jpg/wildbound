@@ -33,6 +33,7 @@ import {
   DIG_SITE,
   VICTORY_ROAD,
   KINGS_TRIAL,
+  PARADISE,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -61,6 +62,7 @@ import type {
   FactionTowerJson,
   BerryGroveJson,
   DigSiteJson,
+  ParadiseJson,
   VictoryRoadJson,
   KingsTrialJson,
   PveJson,
@@ -168,6 +170,8 @@ export interface GameConfig {
   victoryRoad: VictoryRoadJson;
   /** M14.2 King's Trial. */
   kingsTrial: KingsTrialJson;
+  /** M14.3 Pokémon Paradise. */
+  paradise: ParadiseJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -284,6 +288,7 @@ export function buildConfig(): GameConfig {
     digSite: DIG_SITE,
     victoryRoad: VICTORY_ROAD,
     kingsTrial: KINGS_TRIAL,
+    paradise: PARADISE,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

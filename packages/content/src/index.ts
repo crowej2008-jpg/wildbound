@@ -91,6 +91,7 @@ export {
   FACTION_TOWER,
   BERRY_GROVE,
   DIG_SITE,
+  PARADISE,
   VICTORY_ROAD,
   KINGS_TRIAL,
   GACHA_TUNING,
@@ -108,6 +109,7 @@ export type {
   FactionTowerJson,
   BerryGroveJson,
   DigSiteJson,
+  ParadiseJson,
   VictoryRoadJson,
   KingsTrialJson,
 } from './tuning';
@@ -119,6 +121,7 @@ export { mistySchema } from './misty-schema';
 export { factionTowerSchema } from './faction-tower-schema';
 export { berryGroveSchema } from './berry-grove-schema';
 export { digSiteSchema } from './dig-site-schema';
+export { paradiseSchema } from './paradise-schema';
 export { victoryRoadSchema } from './victory-road-schema';
 export { kingsTrialSchema } from './kings-trial-schema';
 export type {

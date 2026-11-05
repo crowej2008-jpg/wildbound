@@ -23,6 +23,7 @@ export * from './misty';
 export * from './faction-tower';
 export * from './berry-grove';
 export * from './dig-site';
+export * from './paradise';
 export * from './potential';
 export * from './pvp';
 export * from './resonance';

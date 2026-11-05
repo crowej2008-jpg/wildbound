@@ -55,6 +55,9 @@
     "seedBasic": 0,
     "seedIntermediate": 0,
     "seedGreater": 0,
+    "ballAdvanced": 0,
+    "ballMaster": 0,
+    "scanner": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -120,6 +123,9 @@
     "seedBasic": 5,
     "seedIntermediate": 3,
     "seedGreater": 1,
+    "ballAdvanced": 5,
+    "ballMaster": 1,
+    "scanner": 3,
     "privilegeXp": 300
   }
 }

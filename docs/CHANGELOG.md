@@ -1439,3 +1439,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - 36 Elite Four / Champion trainers in 7 regions behind the Victory Road gyms; Champion Points from achievement and
   weekly tasks; progress chests; Champion battle privileges; point milestones. Activity counters for task systems.
   Save v47. ASSUMPTIONS #109.
+
+## M14.3 — Pokémon Paradise (2026-11-05)
+
+- The source's catching mode: 14-day Parks, stamina, explore / track / throw, Poké / Advanced / Master Balls, the Dex
+  and its star rewards, three gear pieces and scene unlocks, the Park shop. Save v48. ASSUMPTIONS #110.

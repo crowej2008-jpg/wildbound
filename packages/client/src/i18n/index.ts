@@ -74,6 +74,9 @@ export const en = {
   'currency.seedBasic': 'Basic Berry Seeds',
   'currency.seedIntermediate': 'Intermediate Berry Seeds',
   'currency.seedGreater': 'Greater Berry Seeds',
+  'currency.ballAdvanced': 'Advanced Balls',
+  'currency.ballMaster': 'Master Balls',
+  'currency.scanner': 'Scanners',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -697,6 +700,47 @@ export const en = {
   'pve.dungeons.desc': 'Four daily dungeons, open every day: two runs each, ten difficulties by trainer level, graded C to S.',
   'pve.training': 'Training Battle',
   'pve.training.desc': 'Replay your squad against an echo squad.',
+  'paradise.title': 'Pokémon Paradise',
+  'paradise.desc': 'Explore the Park, track Pokémon and catch them for the seasonal Dex.',
+  'paradise.locked': 'Pokémon Paradise opens after story 2-5.',
+  'paradise.park': 'Park',
+  'paradise.endsIn': 'ends in',
+  'paradise.stamina': 'Stamina',
+  'paradise.points': 'Paradise Points',
+  'paradise.exp': 'Exploration EXP',
+  'paradise.stars': 'Dex stars',
+  'paradise.tab.explore': 'Explore',
+  'paradise.tab.dex': 'Dex',
+  'paradise.tab.gear': 'Gear',
+  'paradise.tab.shop': 'Shop',
+  'paradise.scenes': 'Scenes:',
+  'paradise.gearAt': 'all gear Lv',
+  'paradise.explore': 'Explore (1 stamina)',
+  'paradise.step.trace': 'Trace',
+  'paradise.step.footprint': 'Footprint',
+  'paradise.step.drop': 'Dropped item',
+  'paradise.step.pokemon': 'Pokémon',
+  'paradise.track': 'Track',
+  'paradise.scan': 'Track with a Scanner (sure)',
+  'paradise.tracked': 'Found the next sign!',
+  'paradise.lost': 'The trail went cold.',
+  'paradise.ball.poke': 'Poké Ball',
+  'paradise.ball.advanced': 'Advanced Ball',
+  'paradise.ball.master': 'Master Ball (sure)',
+  'paradise.caught': 'Caught! It joined your Wilds.',
+  'paradise.fled': 'It got away — you picked up some of its shards.',
+  'paradise.leave': 'Leave the route',
+  'paradise.starRewards': 'Dex star rewards',
+  'paradise.box': 'Powerful Evolve box',
+  'paradise.claim': 'Claim',
+  'paradise.claimed': 'Claimed.',
+  'paradise.done': 'Claimed',
+  'paradise.upgrade': 'Upgrade',
+  'paradise.max': 'max',
+  'paradise.left': 'left',
+  'paradise.buy': 'Buy',
+  'paradise.bought': 'Bought.',
+  'paradise.lockedOffer': 'Needs more gear',
   'tower.floor': 'Floor',
   'tower.next': 'Next floor',
   'tower.enemyLevel': 'Enemy Lv',
@@ -1355,6 +1399,9 @@ export type CurrencyKey =
   | 'seedBasic'
   | 'seedIntermediate'
   | 'seedGreater'
+  | 'ballAdvanced'
+  | 'ballMaster'
+  | 'scanner'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1415,6 +1462,9 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   seedBasic: en['currency.seedBasic'],
   seedIntermediate: en['currency.seedIntermediate'],
   seedGreater: en['currency.seedGreater'],
+  ballAdvanced: en['currency.ballAdvanced'],
+  ballMaster: en['currency.ballMaster'],
+  scanner: en['currency.scanner'],
   privilegeXp: en['currency.privilegeXp'],
 };
 

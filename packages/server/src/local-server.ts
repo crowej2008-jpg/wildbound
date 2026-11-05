@@ -169,6 +169,8 @@ import {
   type DigResult,
 } from './dig-site';
 import { buildDigSiteView, type DigSiteView } from './dig-site-view';
+import * as paradise from './paradise';
+import { buildParadiseView, type ParadiseView } from './paradise-view';
 import { bumpCounter, stampLogin } from './counters';
 import {
   buildKingsTrialView,
@@ -1885,6 +1887,74 @@ export class LocalServer implements GameServer {
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({ battle: value.battle, gymId: `kings-${index}`, win: value.win, firstClear: Object.keys(value.rewards).length > 0, rewards: value.rewards, snapshot: committed.value });
+  }
+
+  async getParadise(): Promise<Result<ParadiseView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const now = this.now(loaded.value);
+    const prepared = paradise.prepareParadise(this.config, loaded.value, now);
+    if (prepared.changed) {
+      const committed = await this.commit(prepared.state);
+      if (!committed.ok) return committed;
+    }
+    return ok(buildParadiseView(this.config, prepared.state, now));
+  }
+
+  private async paradiseAct(fn: (state: AccountState, now: number) => Result<AccountState>): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = fn(loaded.value, this.now(loaded.value));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async exploreParadise(): Promise<Result<AccountSnapshot>> {
+    return this.paradiseAct((s, now) => paradise.exploreParadise(this.config, s, now));
+  }
+
+  async trackParadise(useScanner = false): Promise<Result<{ success: boolean; snapshot: AccountSnapshot }>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = paradise.trackParadise(this.config, loaded.value, this.now(loaded.value), useScanner);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const committed = await this.commit(outcome.value.state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ success: outcome.value.success, snapshot: committed.value });
+  }
+
+  async throwParadiseBall(ball: 'poke' | 'advanced' | 'master'): Promise<Result<{ caught: boolean; species: string; points: number; snapshot: AccountSnapshot }>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = paradise.throwParadiseBall(this.config, loaded.value, this.now(loaded.value), ball);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const committed = await this.commit(outcome.value.state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ caught: outcome.value.caught, species: outcome.value.species, points: outcome.value.points, snapshot: committed.value });
+  }
+
+  async leaveParadiseRoute(): Promise<Result<AccountSnapshot>> {
+    return this.paradiseAct((s, now) => paradise.leaveParadiseRoute(this.config, s, now));
+  }
+
+  async upgradeParadiseGear(type: number): Promise<Result<AccountSnapshot>> {
+    return this.paradiseAct((s, now) => paradise.upgradeParadiseGear(this.config, s, now, type));
+  }
+
+  async claimParadiseStars(stars: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = paradise.claimParadiseStars(this.config, loaded.value, this.now(loaded.value), stars);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.rewards);
+  }
+
+  async buyParadiseShop(id: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = paradise.buyParadiseShop(this.config, loaded.value, this.now(loaded.value), id);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.rewards);
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

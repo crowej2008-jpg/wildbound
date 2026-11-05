@@ -1253,3 +1253,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      milestones. Tracked events only (logins, outfits, resonance, stronger-team Arena wins; weekly shop / draws /
      World Boss / Sky Pillar / Rift / Ranked); the rest read 0 until their systems exist. Enemies stand in. New
      `kingsTrial` and `counters` slices; save v47 (reset). docs/design/kings-trial.md.
+
+110. **M14.3 Pokémon Paradise (2026-11-05).** From the source's poke_catching tables and the owner's wiki: 3 Parks
+     rotating every 14 days, 16 Dex entries each (Trace / Footprint / Drop item / Pokémon, 147 stars), stamina 10–20
+     refilled daily, explore pools and landing steps, tracking 20–35 %, Poké / Advanced / Master Balls, three gear
+     pieces (Lv 0–20) and scene gates, star milestones, the Park shop. Readings: one throw per Pokémon (a miss lets it
+     flee and leaves its shards), a failed track ends the route, a catch adds the Pokémon at its card's star. Not
+     copied: cosmetics, Golden Egg Vouchers, the leaderboard, the paid pass. New currencies `ballAdvanced`,
+     `ballMaster`, `scanner`; `paradise` slice; save v48 (reset). docs/design/paradise.md.

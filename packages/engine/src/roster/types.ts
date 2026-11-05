@@ -22,6 +22,7 @@ import type { MistyState } from '../misty/types';
 import type { FactionTowerState } from '../faction-tower/types';
 import type { BerryGroveState } from '../berry-grove/types';
 import type { DigSiteState } from '../dig-site';
+import type { ParadiseState } from '../paradise';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -123,6 +124,9 @@ export type CurrencyId =
   | 'seedBasic'
   | 'seedIntermediate'
   | 'seedGreater'
+  | 'ballAdvanced'
+  | 'ballMaster'
+  | 'scanner'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -184,6 +188,9 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'seedBasic',
   'seedIntermediate',
   'seedGreater',
+  'ballAdvanced',
+  'ballMaster',
+  'scanner',
   'privilegeXp',
 ];
 
@@ -233,6 +240,9 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'seedBasic',
   'seedIntermediate',
   'seedGreater',
+  'ballAdvanced',
+  'ballMaster',
+  'scanner',
   'privilegeXp',
 ];
 
@@ -345,6 +355,8 @@ export interface AccountState {
   victoryRoad: { claimed: string[]; dailyDay: string };
   /** M14.2: King's Trial — trainers beaten, claims (chests, achievement tasks / rewards, weekly tasks) and Champion Points. */
   kingsTrial: { beaten: number[]; claimed: string[]; points: number };
+  /** M14.3: the current Pokémon Paradise Park (null until first opened). */
+  paradise: ParadiseState | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */

@@ -29,6 +29,7 @@ import type { MistyView } from './misty-view';
 import type { FactionTowerView } from './faction-tower-view';
 import type { BerryGroveView } from './berry-grove-view';
 import type { DigSiteView } from './dig-site-view';
+import type { ParadiseView } from './paradise-view';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -586,6 +587,15 @@ export interface GameServer {
   collectCured(): Promise<Result<AccountSnapshot>>;
   displayMuseumPiece(piece: string, instanceId?: string): Promise<Result<AccountSnapshot>>;
   donateSpares(): Promise<Result<AccountSnapshot>>;
+  /** M14.3 Pokémon Paradise. */
+  getParadise(): Promise<Result<ParadiseView>>;
+  exploreParadise(): Promise<Result<AccountSnapshot>>;
+  trackParadise(useScanner?: boolean): Promise<Result<{ success: boolean; snapshot: AccountSnapshot }>>;
+  throwParadiseBall(ball: 'poke' | 'advanced' | 'master'): Promise<Result<{ caught: boolean; species: string; points: number; snapshot: AccountSnapshot }>>;
+  leaveParadiseRoute(): Promise<Result<AccountSnapshot>>;
+  upgradeParadiseGear(type: number): Promise<Result<AccountSnapshot>>;
+  claimParadiseStars(stars: number): Promise<Result<ClaimResult>>;
+  buyParadiseShop(id: number): Promise<Result<ClaimResult>>;
   /** M14.1 Victory Road. */
   getVictoryRoad(): Promise<Result<VictoryRoadView>>;
   claimVictoryChest(gym: number, progress: number): Promise<Result<ClaimResult>>;
@@ -670,6 +680,8 @@ export * from './berry-grove-view';
 export * from './berry-grove';
 export * from './dig-site-view';
 export * from './dig-site';
+export * from './paradise-view';
+export * from './paradise';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

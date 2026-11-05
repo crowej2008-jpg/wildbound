@@ -70,6 +70,10 @@ export interface Rewards {
   seedBasic?: number;
   seedIntermediate?: number;
   seedGreater?: number;
+  /** M14.3 Pokémon Paradise. */
+  ballAdvanced?: number;
+  ballMaster?: number;
+  scanner?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -132,6 +136,9 @@ export const CURRENCY_REWARD_KEYS = [
   'seedBasic',
   'seedIntermediate',
   'seedGreater',
+  'ballAdvanced',
+  'ballMaster',
+  'scanner',
   'privilegeXp',
 ] as const;
 

@@ -346,3 +346,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 ## [2026-11-05] update | M14.2 King's Trial
 - From champion_challenge: 36 trainers, Champion Points from achievement / weekly tasks, chests, Champion privileges
   (ASSUMPTIONS #109, save v47).
+
+## [2026-11-05] update | M14.3 Pokémon Paradise
+- From poke_catching + the owner's wiki: Parks, explore / track / catch, Dex stars, gear, shop (ASSUMPTIONS #110, save v48).

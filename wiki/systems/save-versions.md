@@ -60,6 +60,7 @@ after the retrofit, once friends have real saves.
 | 45 | M13.9 | Dig Site: `digSite` slice (reset) |
 | 46 | M14.1 | Victory Road: `victoryRoad` slice (reset) |
 | 47 | M14.2 | King's Trial: `kingsTrial` and `counters` slices (reset) |
-| 48+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
+| 48 | M14.3 | Pokémon Paradise: `paradise` slice, ball / scanner currencies (reset) |
+| 49+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.
