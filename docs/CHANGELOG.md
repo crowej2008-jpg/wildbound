@@ -1388,3 +1388,4 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   rewards, drops and challenge chests, coins → Gold at season end. Save v41. ASSUMPTIONS #97.
 - Rift purpose (owner): Advanced milestones every 25 floors and the Mystic Merchant (scarce goods for Time Coins,
   the source's orb boxes for Diamonds). ASSUMPTIONS #98.
+- Rift hiring, season bans and Time Credit upgrades cut (owner); 13.4 closed. ASSUMPTIONS #99.

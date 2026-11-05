@@ -309,3 +309,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
   Time Coins (decision page). Building it with 13.4 part 2.
 - Built: Advanced milestones (125 … 250) and the Mystic Merchant (ASSUMPTIONS #98). Review item for the owner: the
   source's orb-box labels sit one colour above what they hold, which may also shift the Vault's orb colours.
+
+## [2026-11-04] update | Rift cuts, 13.4 closed
+- Owner: no Rift hiring, season bans or Time Credit upgrades (ASSUMPTIONS #99). 13.4 is done. Open: a use for Time
+  Credits, and whether the Vault's orb colours shift down one. Next: 13.5 (Ring Battle + Predictions).

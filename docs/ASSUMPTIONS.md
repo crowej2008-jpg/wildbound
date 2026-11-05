@@ -1175,3 +1175,7 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     purple / orange; Wildbound grants what the boxes hold and names the rows by that colour. **Owner to review:**
     Hoopa's Vault took its orb colours from the source's band notes ("Purple / Orange / Red Orb"), which by the same
     reading would be one colour lower.
+
+99. **Rift cuts (owner 2026-11-04: "we dont need these").** The source's Rift hiring, season bans and Time Credit
+    equipment upgrades are not built. Time Credits still drop on the Easy track and are taken back at season end,
+    with no use yet (open question for the owner).
