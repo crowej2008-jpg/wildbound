@@ -48,7 +48,7 @@ test('shows the source odds by group, the locked Wishing Well and the Supreme Gi
 test('buys from the Daily shop and decrements the window limit', async ({ page }) => {
   await page.goto('/shop');
   await expect(page.getByRole('heading', { name: 'Shops' })).toBeVisible();
-  await expect(page.locator('.shop-card')).toHaveCount(7);
+  await expect(page.locator('.shop-card')).toHaveCount(8);
 
   // R9: the source's fixed Premium GV row (90 Diamonds, 2 per restock, shown at 50% off).
   const gv = page.locator('[data-shop-item="daily.1221"]');
