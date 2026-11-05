@@ -18,7 +18,7 @@ test('Account systems page opens from the Trainer and smashes a free egg', async
   await expect(page.getByTestId('a3-treasures')).toBeVisible();
   await page.getByTestId('a3-tab-egg').click();
   await expect(page.getByTestId('a3-egg')).toContainText('Free smashes today 1');
-  await page.getByRole('button', { name: 'Smash ×1' }).click();
+  await page.getByRole('button', { name: 'Smash ×1', exact: true }).click();
   await expect(page.getByTestId('a3-egg')).toContainText('Free smashes today 0');
   await page.getByTestId('a3-tab-awaken').click();
   await expect(page.getByTestId('a3-awaken-locked')).toBeVisible();
