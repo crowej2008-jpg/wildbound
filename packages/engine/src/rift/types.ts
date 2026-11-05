@@ -18,6 +18,30 @@ export interface RiftDifficultyRule {
   floorRewards: { floor: number; rewards: Rewards }[];
 }
 
+/** Extra goods the server grants as instances (they are not currencies). */
+export interface RiftExtras {
+  /** Random-kind orbs of this colour and level. */
+  orbs?: { colour: 'green' | 'blue' | 'purple' | 'orange' | 'red'; level: number; count: number };
+  /** Random Mythic held items. */
+  mythicHeld?: number;
+}
+
+/** Owner 2026-11-04 (rift-purpose): rewards up the Advanced track. */
+export interface RiftMilestone extends RiftExtras {
+  floor: number;
+  rewards: Rewards;
+}
+
+/** A Mystic Merchant row: opens once `unlockFloor` is cleared this season; `limit` buys a season. */
+export interface RiftMerchantOffer extends RiftExtras {
+  id: string;
+  name: string;
+  unlockFloor: number;
+  price: { currency: 'timeCoin' | 'gems'; amount: number };
+  grants: Rewards;
+  limit: number;
+}
+
 export interface RiftRules {
   floors: number;
   /** Last floor of the Easy track. */
@@ -37,6 +61,8 @@ export interface RiftRules {
   enemy: EnemyPoolSpec;
   /** Boss floors' enemy stat multiplier (stand-in). */
   bossMult: number;
+  milestones: RiftMilestone[];
+  merchant: RiftMerchantOffer[];
 }
 
 export interface RiftState {
@@ -52,4 +78,6 @@ export interface RiftState {
   /** Challenges fought this season (wins and losses), for the chests. */
   challenges: number;
   claimedChests: number[];
+  /** Merchant buys this season, by offer id. */
+  bought: Record<string, number>;
 }

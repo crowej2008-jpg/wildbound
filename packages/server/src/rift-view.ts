@@ -1,5 +1,6 @@
 import {
   isBossFloor,
+  merchantOpen,
   nextRiftFloor,
   riftDifficulty,
   riftDrops,
@@ -18,6 +19,35 @@ export interface RiftChestView {
   rewards: Rewards;
   claimable: boolean;
   claimed: boolean;
+}
+
+export interface RiftMerchantView {
+  id: string;
+  name: string;
+  unlockFloor: number;
+  open: boolean;
+  currency: 'timeCoin' | 'gems';
+  price: number;
+  grants: Rewards;
+  /** Orbs / Mythic held items in the row, described. */
+  extra: string | null;
+  left: number;
+  limit: number;
+  affordable: boolean;
+}
+
+export interface RiftMilestoneView {
+  floor: number;
+  rewards: Rewards;
+  extra: string | null;
+  reached: boolean;
+}
+
+function extraText(x: { orbs?: { colour: string; level: number; count: number }; mythicHeld?: number }): string | null {
+  const parts: string[] = [];
+  if (x.orbs) parts.push(`${x.orbs.count} × ${x.orbs.colour} Orb +${x.orbs.level}`);
+  if (x.mythicHeld) parts.push(`${x.mythicHeld} × random Mythic held item`);
+  return parts.length > 0 ? parts.join(', ') : null;
 }
 
 export interface RiftView {
@@ -45,6 +75,8 @@ export interface RiftView {
   timeCredits: number;
   coinToGold: number;
   chests: RiftChestView[];
+  merchant: RiftMerchantView[];
+  milestones: RiftMilestoneView[];
 }
 
 export function buildRiftView(config: GameConfig, state: AccountState, now: number): RiftView {
@@ -73,6 +105,23 @@ export function buildRiftView(config: GameConfig, state: AccountState, now: numb
     timeCoins: rolled.currencies.timeCoin ?? 0,
     timeCredits: rolled.currencies.timeCredit ?? 0,
     coinToGold: rules.coinToGold,
+    merchant: rules.merchant.map((o) => {
+      const used = rift.bought[o.id] ?? 0;
+      return {
+        id: o.id,
+        name: o.name,
+        unlockFloor: o.unlockFloor,
+        open: merchantOpen(rules, rift, o),
+        currency: o.price.currency,
+        price: o.price.amount,
+        grants: o.grants,
+        extra: extraText(o),
+        left: Math.max(0, o.limit - used),
+        limit: o.limit,
+        affordable: (rolled.currencies[o.price.currency] ?? 0) >= o.price.amount,
+      };
+    }),
+    milestones: rules.milestones.map((m) => ({ floor: m.floor, rewards: m.rewards, extra: extraText(m), reached: rift.highest >= m.floor })),
     chests: rules.chests.map((c) => ({
       challenges: c.challenges,
       rewards: c.rewards,

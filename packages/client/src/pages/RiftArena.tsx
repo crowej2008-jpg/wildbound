@@ -29,6 +29,13 @@ export default function RiftArena() {
     if (res.ok) setFought(res.value);
   };
 
+  const buy = async (id: string) => {
+    setStatus(null);
+    const res = await claim((s) => s.buyRiftMerchant(id));
+    if (res.ok) setStatus(t('rift.bought'));
+    await refresh();
+  };
+
   const openChest = async (challenges: number) => {
     setStatus(null);
     const res = await claim((s) => s.claimRiftChest(challenges));
@@ -126,6 +133,53 @@ export default function RiftArena() {
               {t('rift.coinsNote').replace('{n}', String(view.coinToGold))}
             </p>
             <p className="muted">{t('rift.rankingLater')}</p>
+          </section>
+
+          <section className="card rift-milestones">
+            <h2 className="section-title">{t('rift.milestones')}</h2>
+            <ul className="plain-list">
+              {view.milestones.map((m) => (
+                <li key={m.floor} className="milestone-row" data-milestone={m.floor}>
+                  <span>
+                    {t('rift.floor')} {m.floor}
+                  </span>
+                  <span>
+                    <RewardLine rewards={m.rewards} />
+                    {m.extra && <span className="muted"> {m.extra}</span>}
+                  </span>
+                  <span className="muted">{m.reached ? t('rift.reached') : ''}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="card rift-merchant">
+            <h2 className="section-title">{t('rift.merchant')}</h2>
+            <ul className="shop-list">
+              {view.merchant.map((o) => (
+                <li key={o.id} className="shop-item" data-offer={o.id}>
+                  <div className="shop-item-info">
+                    <span className="shop-item-name">{o.name}</span>
+                    <RewardLine rewards={o.grants} />
+                    {o.extra && <span className="muted">{o.extra}</span>}
+                    <span className="muted">
+                      {o.price.toLocaleString()} {t(o.currency === 'gems' ? 'currency.gems' : 'currency.timeCoin')} ·{' '}
+                      {o.open
+                        ? t('rift.left').replace('{n}', String(o.left)).replace('{m}', String(o.limit))
+                        : t('rift.opensAt').replace('{n}', String(o.unlockFloor))}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    disabled={busy || !o.open || o.left <= 0 || !o.affordable}
+                    onClick={() => void buy(o.id)}
+                  >
+                    {t('rift.buy')}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </section>
 
           <section className="card rift-chests">

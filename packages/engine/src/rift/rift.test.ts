@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  buyMerchant,
   claimRiftChest,
   initialRift,
   isBossFloor,
@@ -33,6 +34,13 @@ const rules: RiftRules = {
   chests: [{ challenges: 3, rewards: { pokemonShard5: 25 } }],
   enemy: { factions: [], tiers: [], count: 6, baseLevel: 5, levelSlope: 1.014, starsEvery: 12, maxStars: 20, stageEvery: 25, maxStage: 3 },
   bossMult: 1.5,
+  milestones: [
+    { floor: 125, rewards: { ticketPremium: 5 } },
+    { floor: 200, rewards: {}, orbs: { colour: 'red', level: 3, count: 1 } },
+  ],
+  merchant: [
+    { id: 'resetter-20', name: 'Resetter Shards ×20', unlockFloor: 20, price: { currency: 'timeCoin', amount: 600 }, grants: { resetterShard: 20 }, limit: 2 },
+  ],
 };
 
 // 2026-11-03 is a Tuesday.
@@ -100,5 +108,28 @@ describe('Rift Barriers rules', () => {
     expect(claimed.ok && claimed.rewards).toEqual({ pokemonShard5: 25 });
     if (!claimed.ok) return;
     expect(claimRiftChest(rules, claimed.state, 3).ok).toBe(false);
+  });
+
+  it('pays Advanced milestones with their extras (owner: rift purpose)', () => {
+    const base = rollRift(rules, initialRift(), TUE_07, 0).state;
+    const at125 = settleRift(rules, { ...base, highest: 124 }, true);
+    expect(at125.rewards).toEqual({ timeCoin: 250, ticketPremium: 5 });
+    const at200 = settleRift(rules, { ...base, highest: 199 }, true);
+    expect(at200.extras).toEqual({ orbs: { colour: 'red', level: 3, count: 1 } });
+    expect(settleRift(rules, { ...base, highest: 130 }, true).extras).toEqual({});
+  });
+
+  it('opens a Merchant row at its floor and limits buys per season', () => {
+    const base = rollRift(rules, initialRift(), TUE_07, 0).state;
+    expect(buyMerchant(rules, { ...base, highest: 19 }, 'resetter-20').ok).toBe(false);
+    let state = { ...base, highest: 20 };
+    for (let i = 0; i < 2; i += 1) {
+      const out = buyMerchant(rules, state, 'resetter-20');
+      expect(out.ok).toBe(true);
+      if (out.ok) state = out.state;
+    }
+    const third = buyMerchant(rules, state, 'resetter-20');
+    expect(third.ok || third.error).toBe('offer_sold_out');
+    expect(buyMerchant(rules, state, 'nope').ok).toBe(false);
   });
 });

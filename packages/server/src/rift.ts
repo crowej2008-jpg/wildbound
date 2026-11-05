@@ -1,4 +1,5 @@
 import {
+  buyMerchant,
   claimRiftChest,
   exploreAccess,
   isBossFloor,
@@ -8,6 +9,7 @@ import {
   settleRift,
   type AccountState,
   type RiftError,
+  type RiftExtras,
   type RiftRules,
   type Rewards,
 } from '@wildbound/engine';
@@ -17,6 +19,8 @@ import { applyGrant } from './economy';
 import { fail, ok, type Result } from './index';
 import { enemiesFor } from './pve/shared';
 import { resonanceLevel } from './resonance';
+import { grantRelic } from './equipment';
+import { grantOrb } from './orbs';
 
 /**
  * Rift Arena — Rift Barriers (M13.4). The engine owns the season, lives and floors; this module binds them to
@@ -56,12 +60,35 @@ export function prepareRift(config: GameConfig, state: AccountState, now: number
   return { state: { ...state, currencies, rift: rolled.state }, changed: true, goldFromCoins };
 }
 
+/** Grant milestone / Merchant extras: random-kind orbs and random Mythic held items (lines roll now). */
+export function grantRiftExtras(config: GameConfig, state: AccountState, extras: RiftExtras): AccountState {
+  let next = state;
+  if (extras.orbs) {
+    const kinds = config.equipment.orbs.kinds;
+    for (let i = 0; i < extras.orbs.count; i += 1) {
+      const kind = kinds[Math.floor(config.rng() * kinds.length)]!.id;
+      const granted = grantOrb(config, next, kind, extras.orbs.colour, config.rng, extras.orbs.level);
+      if (granted.ok) next = granted.value;
+    }
+  }
+  const mythics = config.equipment.relics.filter((d) => d.tier === 'mythic');
+  for (let i = 0; i < (extras.mythicHeld ?? 0) && mythics.length > 0; i += 1) {
+    const def = mythics[Math.floor(config.rng() * mythics.length)]!;
+    const granted = grantRelic(config, next, def.id, config.rng);
+    if (granted.ok) next = granted.value;
+  }
+  return next;
+}
+
 const ERROR_TEXT: Record<RiftError, string> = {
   season_closed: 'the Rift season is closed (Tuesday 07:00 to Sunday 22:00 UTC)',
   floor_locked: 'every floor is cleared this season',
   no_lives: 'no lives left today',
   chest_locked: 'not enough challenges for that chest yet',
   chest_claimed: 'that chest was already claimed',
+  offer_missing: 'that Merchant row does not exist',
+  offer_locked: 'clear more floors this season to open that row',
+  offer_sold_out: 'sold out for this season',
 };
 
 export interface RiftChallengeResult {
@@ -70,6 +97,8 @@ export interface RiftChallengeResult {
   win: boolean;
   floor: number;
   rewards: Rewards;
+  /** Milestone orbs / Mythic held items granted with this win. */
+  extras: RiftExtras;
 }
 
 /** Challenge the next floor. Fielded Pokémon fight at the difficulty's synced level (at most). */
@@ -98,8 +127,9 @@ export function challengeRift(config: GameConfig, state: AccountState, now: numb
   if (!battle) return fail('not_found', 'no Wilds available for the Rift');
   const win = battle.winner === 'attackers';
   const settled = settleRift(rules, prepared.rift, win);
-  const next = applyGrant(config, { ...prepared, rift: settled.state }, settled.rewards);
-  return ok({ state: next, battle, win, floor: settled.floor, rewards: settled.rewards });
+  const paid = applyGrant(config, { ...prepared, rift: settled.state }, settled.rewards);
+  const next = grantRiftExtras(config, paid, settled.extras);
+  return ok({ state: next, battle, win, floor: settled.floor, rewards: settled.rewards, extras: settled.extras });
 }
 
 export function claimRiftChestAction(config: GameConfig, state: AccountState, now: number, challenges: number): Result<{ state: AccountState; reward: Rewards }> {
@@ -108,4 +138,24 @@ export function claimRiftChestAction(config: GameConfig, state: AccountState, no
   const claimed = claimRiftChest(riftRules(config), prepared.rift, challenges);
   if (!claimed.ok) return fail('not_ready', ERROR_TEXT[claimed.error]);
   return ok({ state: applyGrant(config, { ...prepared, rift: claimed.state }, claimed.rewards), reward: claimed.rewards });
+}
+
+/** Buy one Mystic Merchant row: Time Coins (or Diamonds for the source's orb boxes), limited per season. */
+export function buyRiftMerchant(config: GameConfig, state: AccountState, now: number, id: string): Result<{ state: AccountState; granted: Rewards }> {
+  if (!riftGate(config, state, now)) return fail('resource_locked', 'Rift Arena is not open yet');
+  const prepared = prepareRift(config, state, now).state;
+  const bought = buyMerchant(riftRules(config), prepared.rift, id);
+  if (!bought.ok) return fail(bought.error === 'offer_missing' ? 'not_found' : 'not_ready', ERROR_TEXT[bought.error]);
+  const { offer } = bought;
+  const have = prepared.currencies[offer.price.currency] ?? 0;
+  if (have < offer.price.amount) {
+    return fail('insufficient_items', `not enough ${offer.price.currency === 'gems' ? 'Diamonds' : 'Time Coins'}`);
+  }
+  const paid: AccountState = {
+    ...prepared,
+    rift: bought.state,
+    currencies: { ...prepared.currencies, [offer.price.currency]: have - offer.price.amount },
+  };
+  const granted = applyGrant(config, paid, offer.grants);
+  return ok({ state: grantRiftExtras(config, granted, offer), granted: offer.grants });
 }

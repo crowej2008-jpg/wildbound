@@ -18,6 +18,15 @@ Route: `/explore/rift-arena`. Server-wide parts wait for the backend
 - **Season end:** leftover Time Coins become Gold at the source's ratio (100 each, read as Gold per coin); Time
   Credits are taken back.
 
+## Purpose for the Advanced track (owner 2026-11-04, wiki/decisions/rift-purpose.md)
+- **Milestones** on clearing floor 125 (5 Premium tickets), 150 (40 Resetter Shards), 175 (300 Diamonds), 200 (a random
+  red Orb +3), 225 (80 Resetter Shards), 250 (a random Mythic held item).
+- **Mystic Merchant**, a row opening at its floor, limits per season: Resetter Shards ×20 (600 Time Coins, 5 a
+  season, floor 20), Potential Shards ×500 (400, 10, floor 40), Held Item Shards ×200 (300, 10, floor 60), a
+  Premium Ticket (500, 10, floor 100), a random Mythic held item (6,000, 1, floor 150); plus the source's six Lv.3
+  orb boxes for Diamonds from floor 41 (blue 50 / 100, purple 100 / 200, orange 200 / 400, one each).
+- A full Advanced season pays about 13,500 Time Coins.
+
 ## Stand-ins
 Which resonance reaches which difficulty (0, then 100, 150 … 500), the synced level (100 + 25 per difficulty, and
 only down-syncing for now), Easy drop amounts, the enemies.

@@ -2,7 +2,7 @@
 title: Rift Arena
 type: system
 milestone: M13.4 (Barriers + Merchant), M13.5 (Ring Battle + Quiz)
-status: Rift Barriers built 2026-11-04 (part 1)
+status: Rift Barriers + purpose built 2026-11-04
 updated: 2026-10-31
 sources: [opencode-session-2026-10 msg 80 (source survey), docs/SCOPE.md]
 ---
@@ -37,3 +37,6 @@ per milestone floor (only its 6 orb-box rows are in the dumps). Ring Battle rank
 27 rows, +35 / −20) and the Prediction tasks (`underground_new_guess_task_json`) are 13.5.
 Server-wide parts wait for the shared backend: [decision](../decisions/rift-server-parts-later.md).
 Gaps: the full Merchant stock, the season ban list, the hire list, per-floor enemy stats.
+
+Purpose for the Advanced track (owner 2026-11-04): milestones every 25 floors and the Mystic Merchant —
+[decision](../decisions/rift-purpose.md), docs/design/rift-arena.md.

@@ -512,6 +512,7 @@ export interface GameServer {
   getRift(): Promise<Result<RiftView>>;
   challengeRift(seed?: number): Promise<Result<RiftBattleResult>>;
   claimRiftChest(challenges: number): Promise<Result<ClaimResult>>;
+  buyRiftMerchant(id: string): Promise<Result<ClaimResult>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */

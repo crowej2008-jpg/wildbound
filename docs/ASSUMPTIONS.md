@@ -1167,3 +1167,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
     difficulty, the synced level, Easy drop amounts, enemies. Not built: hiring, bans, Time Credit upgrades, the
     Merchant (part 2), the ranking and weakness (backend). New currencies `timeCoin` / `timeCredit`, squad `rift`,
     save v41 (reset). docs/design/rift-arena.md.
+
+98. **Rift purpose (owner 2026-11-04) and the orb-box colours.** The Advanced track gets milestone rewards and the
+    Mystic Merchant sells scarce goods for Time Coins (docs/design/rift-arena.md; agent's numbers, a deliberate
+    departure from the source). The source's six Merchant orb boxes are labelled "Lv.3 P / O / Red Orb Box" but hold
+    quality 3 / 4 / 5 orbs, which `hero_orb_decompose_json` (levels 5 / 7 / 10, no quality-6 row) makes blue /
+    purple / orange; Wildbound grants what the boxes hold and names the rows by that colour. **Owner to review:**
+    Hoopa's Vault took its orb colours from the source's band notes ("Purple / Orange / Red Orb"), which by the same
+    reading would be one colour lower.

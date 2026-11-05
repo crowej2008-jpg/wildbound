@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildConfig, type GameConfig } from './config';
-import { challengeRift, claimRiftChestAction, prepareRift } from './rift';
+import { buyRiftMerchant, challengeRift, claimRiftChestAction, grantRiftExtras, prepareRift } from './rift';
 import { buildRiftView } from './rift-view';
 import { createInitialState } from './save';
 
@@ -72,5 +72,40 @@ describe('Rift Barriers server rules', () => {
     if (!claimed.ok) return;
     expect(claimed.value.state.currencies.pokemonShard5).toBe((ready.currencies.pokemonShard5 ?? 0) + 25);
     expect(claimRiftChestAction(config, claimed.value.state, TUE, 3).ok).toBe(false);
+  });
+
+  it('sells Merchant rows for Time Coins or Diamonds once their floor is cleared, limited per season', () => {
+    const { config, state } = account();
+    const first = prepareRift(config, state, TUE).state;
+    const ready = {
+      ...first,
+      rift: { ...first.rift, highest: 150 },
+      currencies: { ...first.currencies, timeCoin: 10_000, gems: 1_000 },
+    };
+    expect(buyRiftMerchant(config, { ...ready, rift: { ...ready.rift, highest: 10 } }, TUE, 'resetter-20').ok).toBe(false);
+    const shards = buyRiftMerchant(config, ready, TUE, 'resetter-20');
+    expect(shards.ok).toBe(true);
+    if (!shards.ok) return;
+    expect(shards.value.state.currencies.resetterShard).toBe((ready.currencies.resetterShard ?? 0) + 20);
+    expect(shards.value.state.currencies.timeCoin).toBe(10_000 - 600);
+    const box = buyRiftMerchant(config, ready, TUE, 'orb-box-251');
+    expect(box.ok).toBe(true);
+    if (!box.ok) return;
+    const orb = box.value.state.equipment.orbs.at(-1)!;
+    expect(orb).toMatchObject({ colour: 'orange', level: 3 });
+    expect(box.value.state.currencies.gems).toBe(1_000 - 200);
+    expect(buyRiftMerchant(config, box.value.state, TUE, 'orb-box-251').ok).toBe(false);
+    const mythic = buyRiftMerchant(config, ready, TUE, 'mythic-held');
+    expect(mythic.ok).toBe(true);
+    if (!mythic.ok) return;
+    const item = mythic.value.state.equipment.relics.at(-1)!;
+    expect(config.equipment.relics.find((d) => d.id === item.defId)?.tier).toBe('mythic');
+  });
+
+  it('grants milestone extras as real orbs and Mythic held items', () => {
+    const { config, state } = account();
+    const out = grantRiftExtras(config, state, { orbs: { colour: 'red', level: 3, count: 1 }, mythicHeld: 1 });
+    expect(out.equipment.orbs.length).toBe(state.equipment.orbs.length + 1);
+    expect(out.equipment.relics.length).toBe(state.equipment.relics.length + 1);
   });
 });

@@ -1,10 +1,18 @@
 import type { Rewards } from '../economy/rewards';
 import { weekKey } from '../pve/reset';
-import type { RiftDifficultyRule, RiftRules, RiftState } from './types';
+import type { RiftDifficultyRule, RiftExtras, RiftMerchantOffer, RiftRules, RiftState } from './types';
 
 export * from './types';
 
-export type RiftError = 'season_closed' | 'floor_locked' | 'no_lives' | 'chest_locked' | 'chest_claimed';
+export type RiftError =
+  | 'season_closed'
+  | 'floor_locked'
+  | 'no_lives'
+  | 'chest_locked'
+  | 'chest_claimed'
+  | 'offer_missing'
+  | 'offer_locked'
+  | 'offer_sold_out';
 
 const HOUR = 3_600_000;
 
@@ -44,7 +52,7 @@ export function riftDifficulty(rules: RiftRules, state: RiftState): RiftDifficul
 }
 
 export function initialRift(): RiftState {
-  return { season: '', difficulty: 1, highest: 0, lives: 0, livesDay: '', challenges: 0, claimedChests: [] };
+  return { season: '', difficulty: 1, highest: 0, lives: 0, livesDay: '', challenges: 0, claimedChests: [], bought: {} };
 }
 
 /**
@@ -99,15 +107,42 @@ export function riftChallengeBlock(rules: RiftRules, state: RiftState, now: numb
 }
 
 /** Settle a challenge on the next floor: a win clears it, a loss costs a life. Both count toward chests. */
-export function settleRift(rules: RiftRules, state: RiftState, win: boolean): { state: RiftState; floor: number; rewards: Rewards } {
+export function settleRift(
+  rules: RiftRules,
+  state: RiftState,
+  win: boolean,
+): { state: RiftState; floor: number; rewards: Rewards; extras: RiftExtras } {
   const floor = state.highest + 1;
   const counted = { ...state, challenges: state.challenges + 1 };
-  if (!win) return { state: { ...counted, lives: Math.max(0, state.lives - 1) }, floor, rewards: {} };
+  if (!win) return { state: { ...counted, lives: Math.max(0, state.lives - 1) }, floor, rewards: {}, extras: {} };
   const drops = riftDrops(rules, floor);
   const bonus = riftFloorReward(rules, state, floor);
+  const milestone = rules.milestones.find((m) => m.floor === floor);
   const rewards: Record<string, number> = { ...(drops as Record<string, number>) };
-  for (const [k, v] of Object.entries((bonus ?? {}) as Record<string, number>)) rewards[k] = (rewards[k] ?? 0) + v;
-  return { state: { ...counted, highest: floor }, floor, rewards: rewards as Rewards };
+  for (const add of [bonus ?? {}, milestone?.rewards ?? {}]) {
+    for (const [k, v] of Object.entries(add as Record<string, number>)) rewards[k] = (rewards[k] ?? 0) + v;
+  }
+  const extras: RiftExtras = milestone ? { ...(milestone.orbs ? { orbs: milestone.orbs } : {}), ...(milestone.mythicHeld ? { mythicHeld: milestone.mythicHeld } : {}) } : {};
+  return { state: { ...counted, highest: floor }, floor, rewards: rewards as Rewards, extras };
+}
+
+/** The Merchant rows open this season (their unlock floor is cleared). */
+export function merchantOpen(rules: RiftRules, state: RiftState, offer: RiftMerchantOffer): boolean {
+  return state.highest >= offer.unlockFloor;
+}
+
+/** Buy one Merchant row (the server checks and takes the price). */
+export function buyMerchant(
+  rules: RiftRules,
+  state: RiftState,
+  id: string,
+): { ok: true; state: RiftState; offer: RiftMerchantOffer } | { ok: false; error: RiftError } {
+  const offer = rules.merchant.find((o) => o.id === id);
+  if (!offer) return { ok: false, error: 'offer_missing' };
+  if (!merchantOpen(rules, state, offer)) return { ok: false, error: 'offer_locked' };
+  const used = state.bought[id] ?? 0;
+  if (used >= offer.limit) return { ok: false, error: 'offer_sold_out' };
+  return { ok: true, state: { ...state, bought: { ...state.bought, [id]: used + 1 } }, offer };
 }
 
 export function claimRiftChest(

@@ -303,3 +303,9 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Built from the source's New Rift Arena: weekly season, difficulty from resonance, level sync, 250 floors, 5 lives,
   floor rewards, drops, challenge chests, coins → Gold (ASSUMPTIONS #97, save v41). Next: hiring, bans, Time Credit
   upgrades and the Mystic Merchant.
+
+## [2026-11-04] update | Rift Arena purpose (owner)
+- Owner: the Advanced track gets milestone rewards every 25 floors and the Mystic Merchant sells scarce goods for
+  Time Coins (decision page). Building it with 13.4 part 2.
+- Built: Advanced milestones (125 … 250) and the Mystic Merchant (ASSUMPTIONS #98). Review item for the owner: the
+  source's orb-box labels sit one colour above what they hold, which may also shift the Vault's orb colours.

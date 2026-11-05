@@ -137,7 +137,7 @@ import {
   startVaultRun as startVaultRunAction,
 } from './hoopa-vault';
 import { buildHoopaVaultView, type HoopaVaultView } from './hoopa-vault-view';
-import { challengeRift as challengeRiftAction, claimRiftChestAction, prepareRift } from './rift';
+import { buyRiftMerchant as buyRiftMerchantAction, challengeRift as challengeRiftAction, claimRiftChestAction, prepareRift } from './rift';
 import { buildRiftView, type RiftView } from './rift-view';
 import {
   buyShopOfferAction,
@@ -1530,6 +1530,14 @@ export class LocalServer implements GameServer {
     const committed = await this.commit(next);
     if (!committed.ok) return fail(committed.error, committed.message);
     return ok({ battle: value.battle, win: value.win, floor: value.floor, rewards: value.rewards, snapshot: committed.value });
+  }
+
+  async buyRiftMerchant(id: string): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = buyRiftMerchantAction(this.config, loaded.value, this.now(loaded.value), id);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.granted);
   }
 
   async claimRiftChest(challenges: number): Promise<Result<ClaimResult>> {

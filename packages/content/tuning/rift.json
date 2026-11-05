@@ -489,6 +489,208 @@
     "maxStage": 3
   },
   "bossMult": 1.5,
+  "milestones": [
+    {
+      "floor": 125,
+      "rewards": {
+        "ticketPremium": 5
+      }
+    },
+    {
+      "floor": 150,
+      "rewards": {
+        "resetterShard": 40
+      }
+    },
+    {
+      "floor": 175,
+      "rewards": {
+        "gems": 300
+      }
+    },
+    {
+      "floor": 200,
+      "rewards": {},
+      "orbs": {
+        "colour": "red",
+        "level": 3,
+        "count": 1
+      }
+    },
+    {
+      "floor": 225,
+      "rewards": {
+        "resetterShard": 80
+      }
+    },
+    {
+      "floor": 250,
+      "rewards": {},
+      "mythicHeld": 1
+    }
+  ],
+  "merchant": [
+    {
+      "id": "resetter-20",
+      "name": "Resetter Shards ×20",
+      "unlockFloor": 20,
+      "price": {
+        "currency": "timeCoin",
+        "amount": 600
+      },
+      "grants": {
+        "resetterShard": 20
+      },
+      "limit": 5
+    },
+    {
+      "id": "potential-500",
+      "name": "Potential Shards ×500",
+      "unlockFloor": 40,
+      "price": {
+        "currency": "timeCoin",
+        "amount": 400
+      },
+      "grants": {
+        "potentialShard": 500
+      },
+      "limit": 10
+    },
+    {
+      "id": "held-200",
+      "name": "Held Item Shards ×200",
+      "unlockFloor": 60,
+      "price": {
+        "currency": "timeCoin",
+        "amount": 300
+      },
+      "grants": {
+        "heldItemShard": 200
+      },
+      "limit": 10
+    },
+    {
+      "id": "premium-1",
+      "name": "Premium Ticket",
+      "unlockFloor": 100,
+      "price": {
+        "currency": "timeCoin",
+        "amount": 500
+      },
+      "grants": {
+        "ticketPremium": 1
+      },
+      "limit": 10
+    },
+    {
+      "id": "mythic-held",
+      "name": "Random Mythic Held Item",
+      "unlockFloor": 150,
+      "price": {
+        "currency": "timeCoin",
+        "amount": 6000
+      },
+      "grants": {},
+      "mythicHeld": 1,
+      "limit": 1
+    },
+    {
+      "id": "orb-box-249",
+      "name": "Lv.3 Blue Orb Box",
+      "unlockFloor": 41,
+      "price": {
+        "currency": "gems",
+        "amount": 50
+      },
+      "grants": {},
+      "orbs": {
+        "colour": "blue",
+        "level": 3,
+        "count": 1
+      },
+      "limit": 1
+    },
+    {
+      "id": "orb-box-250",
+      "name": "Lv.3 Purple Orb Box",
+      "unlockFloor": 41,
+      "price": {
+        "currency": "gems",
+        "amount": 100
+      },
+      "grants": {},
+      "orbs": {
+        "colour": "purple",
+        "level": 3,
+        "count": 1
+      },
+      "limit": 1
+    },
+    {
+      "id": "orb-box-251",
+      "name": "Lv.3 Orange Orb Box",
+      "unlockFloor": 41,
+      "price": {
+        "currency": "gems",
+        "amount": 200
+      },
+      "grants": {},
+      "orbs": {
+        "colour": "orange",
+        "level": 3,
+        "count": 1
+      },
+      "limit": 1
+    },
+    {
+      "id": "orb-box-252",
+      "name": "Lv.3 Blue Orb Box",
+      "unlockFloor": 41,
+      "price": {
+        "currency": "gems",
+        "amount": 100
+      },
+      "grants": {},
+      "orbs": {
+        "colour": "blue",
+        "level": 3,
+        "count": 1
+      },
+      "limit": 1
+    },
+    {
+      "id": "orb-box-253",
+      "name": "Lv.3 Purple Orb Box",
+      "unlockFloor": 41,
+      "price": {
+        "currency": "gems",
+        "amount": 200
+      },
+      "grants": {},
+      "orbs": {
+        "colour": "purple",
+        "level": 3,
+        "count": 1
+      },
+      "limit": 1
+    },
+    {
+      "id": "orb-box-254",
+      "name": "Lv.3 Orange Orb Box",
+      "unlockFloor": 41,
+      "price": {
+        "currency": "gems",
+        "amount": 400
+      },
+      "grants": {},
+      "orbs": {
+        "colour": "orange",
+        "level": 3,
+        "count": 1
+      },
+      "limit": 1
+    }
+  ],
   "_leftOut": [
     "item 10228 (4-star Evo Boxes, Lucky Coin: not in Wildbound)",
     "item 10229 (4-star Evo Boxes, Lucky Coin: not in Wildbound)",

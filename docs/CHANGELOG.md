@@ -1386,3 +1386,5 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - Weekly season, difficulty from resonance, level sync, 250 floors (Easy / Advanced), 5 lives a day, source floor
   rewards, drops and challenge chests, coins → Gold at season end. Save v41. ASSUMPTIONS #97.
+- Rift purpose (owner): Advanced milestones every 25 floors and the Mystic Merchant (scarce goods for Time Coins,
+  the source's orb boxes for Diamonds). ASSUMPTIONS #98.
