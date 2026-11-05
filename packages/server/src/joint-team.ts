@@ -26,7 +26,6 @@ import { enemiesFor } from './pve/shared';
  * day 15 at trainer level 45 (source). See docs/design/joint-team.md.
  */
 
-type Tuning = GameConfig['jointTeam'];
 
 const DAY = 86_400_000;
 export const JOINT_GATE = { serverDay: 15, level: 45 };
