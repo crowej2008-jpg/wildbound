@@ -35,7 +35,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -54,6 +54,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'isles',
   'guildWar',
   'relic',
+  'park',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -490,6 +491,21 @@ export interface AccountState {
     claimed: number[];
     lastWeek: { week: string; score: number; place: number; claimed: boolean } | null;
   } | null;
+  /** Pokémon Park season (null until first entered). */
+  park: {
+    week: string;
+    day: string;
+    grid: number | null;
+    stamina: number;
+    fainted: string[];
+    pending: { quality: number } | null;
+    bag: number[];
+    eggsTaken: Record<string, number>;
+    score: number;
+    wins: number;
+    boss: { key: string; damage: number; attacks: number; score: number; lastHit: boolean; claimed: boolean } | null;
+    lastWeek: { week: string; score: number; claimed: boolean } | null;
+  } | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
@@ -651,6 +667,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     isles: emptySquad(),
     guildWar: emptySquad(),
     relic: emptySquad(),
+    park: emptySquad(),
   };
 }
 
@@ -672,6 +689,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     isles: 'balanced',
     guildWar: 'balanced',
     relic: 'balanced',
+    park: 'balanced',
   };
 }
 

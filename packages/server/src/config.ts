@@ -39,6 +39,7 @@ import {
   ACCOUNT3,
   GUILD_EVENTS,
   GUILD_WAR_RELIC,
+  PARK,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -73,6 +74,7 @@ import type {
   Account3Json,
   GuildEventsJson,
   GuildWarRelicJson,
+  ParkJson,
   VictoryRoadJson,
   KingsTrialJson,
   PveJson,
@@ -190,6 +192,7 @@ export interface GameConfig {
   account3: Account3Json;
   guildEvents: GuildEventsJson;
   guildWarRelic: GuildWarRelicJson;
+  park: ParkJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -312,6 +315,7 @@ export function buildConfig(): GameConfig {
     account3: ACCOUNT3,
     guildEvents: GUILD_EVENTS,
     guildWarRelic: GUILD_WAR_RELIC,
+    park: PARK,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

@@ -64,3 +64,6 @@ that was worked on and what decisions after you are done"*. Every call below too
   tickets) — the source has no relic shop table.
 - Guild War season: the guild ranks now give the Ultimate Guild (1st) / Power of Unity (2nd–10th) title cards from
   titles.json. Expert / Monster Hunter (personal) have no data in the dumps and stay out.
+- Pokémon Park (built in the follow-up): kept the source's real-time windows (open 09:00–21:00 UTC, boss at 12:15 /
+  19:15 UTC — 07:15 / 14:15 Toronto). HP is not tracked per Pokémon: a loss faints the whole fielded team for the day.
+  Egg snatching is reduced to "the last hit takes the egg"; CPU players hit the boss at a steady rate (stand-in).

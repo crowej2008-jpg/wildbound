@@ -1502,3 +1502,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - Relic Battlefield shop for Relic Coins; Guild War guild ranks grant their title cards; spending Origin shards now
   advances the Awakening.
+
+## Follow-up — Pokémon Park (2026-11-05)
+
+- /pokemon-park (from the Guild page): 19-grid park, stamina, wild fights or skips, egg bag and hatching, collapsing
+  grids, the mythical boss twice a day, boss and season rewards. Save v54. ASSUMPTIONS #116.

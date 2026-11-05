@@ -181,6 +181,7 @@ import * as guildMod from './guild';
 import * as eventsMod from './events';
 import * as gwMod from './guild-war';
 import * as relicMod from './relic';
+import * as parkMod from './park';
 import { squadWildIds } from './growth';
 import { buildAccount3View, type Account3View } from './account3-view';
 import { bumpCounter, stampLogin } from './counters';
@@ -2261,6 +2262,55 @@ export class LocalServer implements GameServer {
 
   async claimRelicSeason(): Promise<Result<ClaimResult>> {
     const r = await this.jointAct((s, now) => relicMod.claimRelicSeason(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  // ---------------------------------------------------------------- Pokémon Park
+
+  async getPark(): Promise<Result<parkMod.ParkView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(parkMod.buildParkView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async enterPark(grid: number): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => parkMod.enterPark(this.config, s, now, grid)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async movePark(grid: number): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => parkMod.movePark(this.config, s, now, grid)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async explorePark(): Promise<Result<{ found: 'wild' | 'egg'; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => parkMod.explorePark(this.config, s, now));
+  }
+
+  async skipWild(): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => parkMod.skipWild(this.config, s, now)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async fightWild(seed?: number): Promise<Result<{ battle: BattleView; win: boolean; rewards: Rewards; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => parkMod.fightWild(this.config, s, now, seed));
+  }
+
+  async hatchEggs(): Promise<Result<{ rewards: Rewards; hatched: number; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => parkMod.hatchEggs(this.config, s, now));
+  }
+
+  async attackParkBoss(seed?: number): Promise<Result<{ battle: BattleView; damage: number; lastHit: boolean; rewards: Rewards; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => parkMod.attackParkBoss(this.config, s, now, seed));
+  }
+
+  async claimParkBoss(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => parkMod.claimParkBoss(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async claimParkSeason(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => parkMod.claimParkSeason(this.config, s, now));
     return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
   }
 

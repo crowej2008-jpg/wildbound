@@ -23,4 +23,6 @@ test('Guild War shows five bosses; the Relic Battlefield shows the map and stand
   await page.goto('/relic-battlefield');
   await expect(page.locator('.relic-grid')).toHaveCount(91);
   await expect(page.locator('[data-testid="relic-standings"] li')).toHaveCount(4);
+  await page.goto('/pokemon-park');
+  await expect(page.locator('.park-grid')).toHaveCount(19);
 });

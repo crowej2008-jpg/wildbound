@@ -345,6 +345,7 @@ export const en = {
   'squad.mode.isles': 'Clash of Isles',
   'squad.mode.guildWar': 'Guild War',
   'squad.mode.relic': 'Relic Battlefield',
+  'squad.mode.park': 'Pokémon Park',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -809,6 +810,32 @@ export const en = {
   'gw.claimDaily': "Claim yesterday's rank reward",
   'gw.claimSeason': "Claim last season's rewards",
   'relic.title': 'Relic Battlefield',
+  'park.title': 'Pokémon Park',
+  'park.open': 'Open (until 21:00 UTC)',
+  'park.closed': 'Closed (Tuesday–Sunday, 09:00–21:00 UTC)',
+  'park.score': 'Points',
+  'park.team': 'Team',
+  'park.fainted': 'Fainted until 09:00',
+  'park.setTeam': 'Set the Pokémon Park team →',
+  'park.pickGrid': 'Pick a grid to enter.',
+  'park.moveHint': 'Move to a neighbouring grid (1 stamina) or explore here.',
+  'park.foundEgg': 'You found an egg!',
+  'park.foundWild': 'A wild Pokémon appears!',
+  'park.wildHere': 'A wild Pokémon ({q}) blocks the way.',
+  'park.fight': 'Fight',
+  'park.skip': 'Slip away (1 stamina)',
+  'park.skipped': 'You slipped away.',
+  'park.won': 'You won!',
+  'park.lost': 'Your team fainted and left the park for today.',
+  'park.eggs': 'Egg bag',
+  'park.hatch': 'Collect hatched eggs',
+  'park.hatched': 'Eggs hatched!',
+  'park.boss': 'Mythical boss',
+  'park.bossTimes': 'Appears at {t} UTC for 10 minutes.',
+  'park.attacks': 'Your attacks',
+  'park.lastHit': 'Last hit! Your guild takes the boss egg. ',
+  'park.claimBoss': 'Claim boss rewards',
+  'park.claimSeason': 'Claim last season (rank {r})',
   'relic.day': 'Season day {d}',
   'relic.closed': 'Closed (Tuesday 09:00 – Sunday 22:00 UTC)',
   'relic.stamina': 'Stamina',
@@ -1715,7 +1742,7 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam' | 'isles' | 'guildWar' | 'relic' | 'park';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1734,6 +1761,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   isles: en['squad.mode.isles'],
   guildWar: en['squad.mode.guildWar'],
   relic: en['squad.mode.relic'],
+  park: en['squad.mode.park'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

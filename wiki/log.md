@@ -374,3 +374,5 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
   every decision is listed in docs/design/m14-m17-decisions.md.
 
 ## [2026-11-05] update | Follow-up: Relic shop, Guild War titles, Awakening origin-shard task
+
+## [2026-11-05] update | Follow-up: Pokémon Park (ASSUMPTIONS #116, save v54)

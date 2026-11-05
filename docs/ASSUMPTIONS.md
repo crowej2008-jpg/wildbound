@@ -1302,3 +1302,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      rewards are stand-ins; relic items pay Relic Coins. Not built: CPU raids on your grids, guard-team placement,
      revives, shields, ancient-artifact suppression. "Needs M12" (cross-server) resolved as solo vs CPU guilds. Squads
      `guildWar` / `relic`, currency `relicCoin`, `guildWar` / `relic` slices; save v53. docs/design/guild-war-relic.md.
+
+116. **Pokémon Park (2026-11-05, follow-up).** From cross_beast_park_* (basic, rewards, map grid) and its help text,
+     solo with the M16 guild: weekly, Tuesday–Sunday 09:00–21:00 UTC; 30 stamina a day (move / explore / skip 1);
+     19-grid map with collapse phases at 12 / 16 / 19 h; explore weights 500 / 500 wild vs egg; 4-egg bag, 4 eggs per
+     refresh (09 / 12 / 14 / 19 h); the mythical boss at 12:15 and 19:15 for 10 minutes with a 10-round battle; attack
+     count, fight-rank, guild-rank and personal season rewards. Stand-ins: egg hatch time (30 min) and contents, wild
+     strength and win reward, boss HP and CPU damage, scores. A lost wild fight faints the whole team for the day (the
+     source tracks HP per Pokémon). Egg snatching is simplified: the last hit wins the egg phase. Berry boxes map to
+     seeds / mulch. Squad `park`, `park` slice; save v54. docs/design/pokemon-park.md.

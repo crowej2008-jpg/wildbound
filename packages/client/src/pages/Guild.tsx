@@ -83,6 +83,7 @@ export default function Guild() {
       <p className="chip-row">
         <Link className="btn" to="/guild-war">{t('gw.title')}</Link>
         <Link className="btn" to="/relic-battlefield">{t('relic.title')}</Link>
+        <Link className="btn" to="/pokemon-park">{t('park.title')}</Link>
       </p>
       {status && (
         <p className="status-box" data-testid="guild-status">

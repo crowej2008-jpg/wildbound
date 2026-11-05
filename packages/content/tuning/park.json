@@ -1,0 +1,502 @@
+{
+  "hours": [
+    9,
+    21
+  ],
+  "stamina": {
+    "perDay": 30,
+    "move": 1,
+    "explore": 1,
+    "skip": 1
+  },
+  "explore": {
+    "wildWeight": 500,
+    "eggWeight": 500
+  },
+  "eggs": {
+    "bag": 4,
+    "perRefresh": 4,
+    "refreshHours": [
+      9,
+      12,
+      14,
+      19
+    ],
+    "hatchMinutes": 30,
+    "rewards": {
+      "pokemonShard5": 2,
+      "berryEssence": 50
+    },
+    "points": 20
+  },
+  "collapseHours": [
+    12,
+    16,
+    19
+  ],
+  "boss": {
+    "windows": [
+      [
+        12,
+        15
+      ],
+      [
+        19,
+        15
+      ]
+    ],
+    "minutes": 10,
+    "rounds": 10,
+    "battleScore": 50,
+    "joinReward": {
+      "seedGreater": 2
+    },
+    "hp": 60000000,
+    "cpuDamagePerMinute": 4000000
+  },
+  "score": {
+    "wildWin": 30,
+    "wildLoss": 5
+  },
+  "map": [
+    {
+      "index": 1,
+      "name": "J",
+      "quality": 2,
+      "neighbours": [
+        4,
+        5,
+        2
+      ],
+      "collapse": [
+        3
+      ]
+    },
+    {
+      "index": 2,
+      "name": "K",
+      "quality": 1,
+      "neighbours": [
+        1,
+        5,
+        6,
+        3
+      ],
+      "collapse": [
+        3
+      ]
+    },
+    {
+      "index": 3,
+      "name": "L",
+      "quality": 2,
+      "neighbours": [
+        2,
+        6,
+        7
+      ],
+      "collapse": [
+        2,
+        3
+      ]
+    },
+    {
+      "index": 4,
+      "name": "I",
+      "quality": 3,
+      "neighbours": [
+        1,
+        5,
+        9,
+        8
+      ],
+      "collapse": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "index": 5,
+      "name": "C",
+      "quality": 2,
+      "neighbours": [
+        4,
+        1,
+        2,
+        6,
+        10,
+        9
+      ],
+      "collapse": []
+    },
+    {
+      "index": 6,
+      "name": "D",
+      "quality": 3,
+      "neighbours": [
+        2,
+        3,
+        7,
+        11,
+        10,
+        5
+      ],
+      "collapse": []
+    },
+    {
+      "index": 7,
+      "name": "M",
+      "quality": 3,
+      "neighbours": [
+        3,
+        6,
+        11,
+        12
+      ],
+      "collapse": [
+        2,
+        3
+      ]
+    },
+    {
+      "index": 8,
+      "name": "H",
+      "quality": 3,
+      "neighbours": [
+        4,
+        9,
+        13
+      ],
+      "collapse": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "index": 9,
+      "name": "B",
+      "quality": 2,
+      "neighbours": [
+        4,
+        8,
+        13,
+        14,
+        10,
+        5
+      ],
+      "collapse": []
+    },
+    {
+      "index": 10,
+      "name": "A",
+      "quality": 1,
+      "neighbours": [
+        5,
+        6,
+        11,
+        15,
+        14,
+        9
+      ],
+      "collapse": []
+    },
+    {
+      "index": 11,
+      "name": "E",
+      "quality": 2,
+      "neighbours": [
+        10,
+        6,
+        7,
+        12,
+        16,
+        15
+      ],
+      "collapse": []
+    },
+    {
+      "index": 12,
+      "name": "N",
+      "quality": 3,
+      "neighbours": [
+        7,
+        11,
+        16
+      ],
+      "collapse": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "index": 13,
+      "name": "S",
+      "quality": 3,
+      "neighbours": [
+        8,
+        9,
+        14,
+        17
+      ],
+      "collapse": [
+        2,
+        3
+      ]
+    },
+    {
+      "index": 14,
+      "name": "G",
+      "quality": 3,
+      "neighbours": [
+        13,
+        9,
+        10,
+        15,
+        18,
+        17
+      ],
+      "collapse": []
+    },
+    {
+      "index": 15,
+      "name": "F",
+      "quality": 2,
+      "neighbours": [
+        14,
+        10,
+        11,
+        16,
+        19,
+        18
+      ],
+      "collapse": []
+    },
+    {
+      "index": 16,
+      "name": "D",
+      "quality": 3,
+      "neighbours": [
+        12,
+        11,
+        15,
+        19
+      ],
+      "collapse": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "index": 17,
+      "name": "R",
+      "quality": 2,
+      "neighbours": [
+        13,
+        14,
+        18
+      ],
+      "collapse": [
+        2,
+        3
+      ]
+    },
+    {
+      "index": 18,
+      "name": "Q",
+      "quality": 1,
+      "neighbours": [
+        17,
+        14,
+        15,
+        19
+      ],
+      "collapse": [
+        3
+      ]
+    },
+    {
+      "index": 19,
+      "name": "P",
+      "quality": 2,
+      "neighbours": [
+        18,
+        15,
+        16
+      ],
+      "collapse": [
+        3
+      ]
+    }
+  ],
+  "attackRewards": [
+    {
+      "count": 3,
+      "score": 60,
+      "rewards": {
+        "seedGreater": 1
+      }
+    },
+    {
+      "count": 5,
+      "score": 70,
+      "rewards": {
+        "seedGreater": 2
+      }
+    },
+    {
+      "count": 8,
+      "score": 80,
+      "rewards": {
+        "seedGreater": 3
+      }
+    },
+    {
+      "count": 10,
+      "score": 90,
+      "rewards": {
+        "seedGreater": 4
+      }
+    }
+  ],
+  "bossRank": [
+    {
+      "rank": 1,
+      "rewards": {
+        "seedGreater": 6,
+        "ticketPremium": 20,
+        "berryEssence": 500
+      }
+    },
+    {
+      "rank": 2,
+      "rewards": {
+        "seedGreater": 4,
+        "ticketPremium": 15,
+        "berryEssence": 400
+      }
+    },
+    {
+      "rank": 5,
+      "rewards": {
+        "seedGreater": 2,
+        "ticketPremium": 10,
+        "berryEssence": 350
+      }
+    },
+    {
+      "rank": 10,
+      "rewards": {
+        "seedGreater": 1,
+        "ticketPremium": 8,
+        "berryEssence": 300
+      }
+    }
+  ],
+  "guildRank": [
+    {
+      "rank": 1,
+      "rewards": {
+        "seedGreater": 8,
+        "seedIntermediate": 15,
+        "berryEssence": 300
+      }
+    },
+    {
+      "rank": 2,
+      "rewards": {
+        "seedGreater": 6,
+        "seedIntermediate": 12,
+        "berryEssence": 250
+      }
+    },
+    {
+      "rank": 5,
+      "rewards": {
+        "seedGreater": 5,
+        "seedIntermediate": 10,
+        "berryEssence": 200
+      }
+    },
+    {
+      "rank": 10,
+      "rewards": {
+        "seedGreater": 4,
+        "seedIntermediate": 8,
+        "berryEssence": 150
+      }
+    }
+  ],
+  "scoreRewards": [
+    {
+      "rank": 1,
+      "score": 250,
+      "rewards": {
+        "berryMulchPurple": 4,
+        "reforgePotion": 20
+      }
+    },
+    {
+      "rank": 100,
+      "score": 150,
+      "rewards": {
+        "berryMulchPurple": 2,
+        "reforgePotion": 10
+      }
+    }
+  ],
+  "personalRank": [
+    {
+      "rank": 1,
+      "rewards": {
+        "reforgePotion": 100,
+        "pokemonShard5": 150,
+        "berryEssence": 500
+      }
+    },
+    {
+      "rank": 2,
+      "rewards": {
+        "reforgePotion": 80,
+        "pokemonShard5": 100,
+        "berryEssence": 400
+      }
+    },
+    {
+      "rank": 5,
+      "rewards": {
+        "reforgePotion": 60,
+        "pokemonShard5": 80,
+        "berryEssence": 300
+      }
+    },
+    {
+      "rank": 10,
+      "rewards": {
+        "reforgePotion": 40,
+        "pokemonShard5": 50,
+        "berryEssence": 250
+      }
+    },
+    {
+      "rank": 50,
+      "rewards": {
+        "reforgePotion": 30,
+        "pokemonShard5": 30,
+        "berryEssence": 200
+      }
+    },
+    {
+      "rank": 100,
+      "rewards": {
+        "reforgePotion": 20,
+        "pokemonShard5": 20,
+        "berryEssence": 150
+      }
+    }
+  ],
+  "cpuTopScore": 2400
+}

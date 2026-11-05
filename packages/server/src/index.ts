@@ -37,6 +37,7 @@ import type { GuildView } from './guild';
 import type { EventsView } from './events';
 import type { GuildWarView } from './guild-war';
 import type { RelicBattlefieldView } from './relic';
+import type { ParkView } from './park';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -656,6 +657,17 @@ export interface GameServer {
   exploreRelic(): Promise<Result<{ event: { id: number; type: number; value: number }; snapshot: AccountSnapshot }>>;
   claimRelicTask(id: number): Promise<Result<ClaimResult>>;
   claimRelicSeason(): Promise<Result<ClaimResult>>;
+  /** Pokémon Park. */
+  getPark(): Promise<Result<ParkView>>;
+  enterPark(grid: number): Promise<Result<AccountSnapshot>>;
+  movePark(grid: number): Promise<Result<AccountSnapshot>>;
+  explorePark(): Promise<Result<{ found: 'wild' | 'egg'; snapshot: AccountSnapshot }>>;
+  skipWild(): Promise<Result<AccountSnapshot>>;
+  fightWild(seed?: number): Promise<Result<{ battle: BattleView; win: boolean; rewards: Rewards; snapshot: AccountSnapshot }>>;
+  hatchEggs(): Promise<Result<{ rewards: Rewards; hatched: number; snapshot: AccountSnapshot }>>;
+  attackParkBoss(seed?: number): Promise<Result<{ battle: BattleView; damage: number; lastHit: boolean; rewards: Rewards; snapshot: AccountSnapshot }>>;
+  claimParkBoss(): Promise<Result<ClaimResult>>;
+  claimParkSeason(): Promise<Result<ClaimResult>>;
   /** M14.1 Victory Road. */
   getVictoryRoad(): Promise<Result<VictoryRoadView>>;
   claimVictoryChest(gym: number, progress: number): Promise<Result<ClaimResult>>;
@@ -752,6 +764,7 @@ export * from './guild';
 export * from './events';
 export * from './guild-war';
 export * from './relic';
+export * from './park';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';
