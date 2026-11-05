@@ -22,7 +22,7 @@ Everything not yet built shows an honest "coming later" state in the client and 
 | **Source retrofit (R)** — every built system copied exactly from the source (owner decision 2026-10-31) | all built screens | R (before 13.3) | in progress - R0 (loader, save reset), R1 (species, star ladders, stats, Evolve; save v19) and R5 (held items; save v20) built; R4 Potential next, then R6, R7, R8, R2/R3 from notes - `wiki/milestones/source-retrofit.md` |
 | Combat/co-op modes: Victory Road + King's Trial, Paradise, Joint Team + Dynamax/Wild Area, Clash of Isles (Shovel Carnival moved to M16, owner 2026-11-05) | Combat hub + each mode | M14 | **done 2026-11-05** - Victory Road, King's Trial, Paradise, Joint Team + Wild Area, Clash of Isles (solo vs CPUs) |
 | Trainer treasures, Z Ring (wristband), Pure Crystals, Different Dimension fusion skins, Golden Egg, Awakening (owner 2026-11-05) | Trainer screen + each system | M15 | **done 2026-11-05** - `/account-systems` |
-| Guild, merge and events (simulated; includes Shovel Carnival) | Guild, Events, Settings, Help | M16 | pending |
+| Guild, merge and events (simulated; includes Shovel Carnival) | Guild, Events | M16 | **done 2026-11-05** - `/guild`, `/events` |
 | Guild war and Relic Battlefield | Relic Battlefield, Guild War | M17 | pending |
 | Cross-server PvP: Cross-Server Clash, Championship, SPT Temple | PvP hub sub-modes | M18 | pending |
 | Visual-identity pass: 2D sprites, source-accurate UI palette, battle effects | Gallery, HUD, all screens | M19 | pending |

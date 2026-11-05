@@ -1469,3 +1469,18 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - Treasure level costs are stand-ins (the level table is not in the dumps). Treasure, crystal and skin battle skills
   are not built; their stat parts are. Awakening tasks only count premium draws and egg smashes.
+
+## M16 — Guild, merge and events (2026-11-05)
+
+- Guild (/guild, Home tile): join a CPU guild; 5 daily donations (Gold or Gems) for Guild Tokens; guild levels from
+  donations plus CPU members' daily EXP; red packets at trainer levels 10–110; the guild beast (fed Flat Candy) adds
+  account-wide HP / ATK and % stats. The daily "donate to guild" quest is live.
+- Events (/events, Home tile): Shovel Carnival (Destiny Treasure wheel, Gems pool, Credit milestones, shovel shop,
+  Happy Exchange — which also sells M15 materials) and the Merge Event (four one-day leaderboard rushes).
+- Save v52. ASSUMPTIONS #114.
+
+### Deviation from the reference
+
+- Solo: CPU guild members, CPU leaderboards; no real server merge. Wheel odds for the twelve non-pool segments are
+  split equally (the wiki gives only the total). Prizes without a Wildbound item use stand-ins (see
+  docs/design/m14-m17-decisions.md). Weekend Bash, Flower Event and Ruins Adventure are not built.

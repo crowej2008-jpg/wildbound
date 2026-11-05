@@ -177,6 +177,8 @@ import { buildJointTeamView, type JointTeamView } from './joint-team-view';
 import * as isles from './isles';
 import { buildIslesView, type IslesView } from './isles-view';
 import * as a3 from './account3';
+import * as guildMod from './guild';
+import * as eventsMod from './events';
 import { squadWildIds } from './growth';
 import { buildAccount3View, type Account3View } from './account3-view';
 import { bumpCounter, stampLogin } from './counters';
@@ -2131,6 +2133,76 @@ export class LocalServer implements GameServer {
 
   async chooseAwakening(wildId: string) {
     return this.a3Act((s, now) => a3.chooseAwakening(this.config, s, now, wildId));
+  }
+
+  // ---------------------------------------------------------------- M16 Guild + events
+
+  async getGuild(): Promise<Result<guildMod.GuildView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(guildMod.buildGuildView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  private guildAct<T extends { state: AccountState }>(fn: (s: AccountState, now: number) => Result<T>) {
+    return this.jointAct((s, now) => fn(guildMod.rollGuild(this.config, s, now), now));
+  }
+
+  async joinGuild(): Promise<Result<AccountSnapshot>> {
+    const r = await this.guildAct(this.wrap((s, now) => guildMod.joinGuild(this.config, s, now)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async donateGuild(kind: 'normal' | 'gems'): Promise<Result<ClaimResult>> {
+    const r = await this.guildAct((s, now) => {
+      const d = guildMod.donateGuild(this.config, s, now, kind);
+      return d.ok ? ok({ ...d.value, state: this.withQuest(d.value.state, 'guildDonate') }) : d;
+    });
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async claimGuildPacket(id: number): Promise<Result<ClaimResult>> {
+    const r = await this.guildAct((s) => guildMod.claimGuildPacket(this.config, s, id));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async feedGuildBeast(currency: string, count: number): Promise<Result<ClaimResult>> {
+    const r = await this.guildAct((s) => guildMod.feedGuildBeast(this.config, s, currency, count));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async getEvents(): Promise<Result<eventsMod.EventsView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(eventsMod.buildEventsView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async spinShovel(times: 1 | 10): Promise<Result<{ rewards: Rewards; segments: string[]; snapshot: AccountSnapshot }>> {
+    return this.jointAct((s, now) => eventsMod.spinShovel(this.config, s, now, times));
+  }
+
+  async claimShovelMilestone(credits: number): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => eventsMod.claimShovelMilestone(this.config, s, now, credits));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async buyShovels(tier: number, count = 1): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => eventsMod.buyShovels(this.config, s, now, tier, count)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async exchangeShovel(id: number): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => eventsMod.exchangeShovel(this.config, s, now, id));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async contributeMerge(amount: number): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => eventsMod.contributeMerge(this.config, s, now, amount)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async claimMerge(phase: string): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => eventsMod.claimMerge(this.config, s, now, phase));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

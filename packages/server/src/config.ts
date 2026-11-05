@@ -37,6 +37,7 @@ import {
   JOINT_TEAM,
   ISLES,
   ACCOUNT3,
+  GUILD_EVENTS,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -69,6 +70,7 @@ import type {
   JointTeamJson,
   IslesJson,
   Account3Json,
+  GuildEventsJson,
   VictoryRoadJson,
   KingsTrialJson,
   PveJson,
@@ -184,6 +186,7 @@ export interface GameConfig {
   isles: IslesJson;
   /** M15 Account systems III. */
   account3: Account3Json;
+  guildEvents: GuildEventsJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -304,6 +307,7 @@ export function buildConfig(): GameConfig {
     jointTeam: JOINT_TEAM,
     isles: ISLES,
     account3: ACCOUNT3,
+    guildEvents: GUILD_EVENTS,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

@@ -365,3 +365,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-05] update | M15 Account systems III
 - Treasures, Z Ring + Pure Crystals, fusion skins, Golden Egg, Awakening (ASSUMPTIONS #113, save v51).
+
+## [2026-11-05] update | M16 Guild + events
+- Guild (CPU members), Shovel Carnival, Merge Event (ASSUMPTIONS #114, save v52).

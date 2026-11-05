@@ -33,6 +33,8 @@ import type { ParadiseView } from './paradise-view';
 import type { JointTeamView } from './joint-team-view';
 import type { IslesView } from './isles-view';
 import type { Account3View } from './account3-view';
+import type { GuildView } from './guild';
+import type { EventsView } from './events';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -628,6 +630,19 @@ export interface GameServer {
   smashEggs(times: 1 | 10 | 30): Promise<Result<{ rewards: Rewards; shards: Record<string, number>; snapshot: AccountSnapshot }>>;
   buyEggShop(id: number): Promise<Result<AccountSnapshot>>;
   chooseAwakening(wildId: string): Promise<Result<AccountSnapshot>>;
+  /** M16 Guild (solo, CPU members) and simulated events. */
+  getGuild(): Promise<Result<GuildView>>;
+  joinGuild(): Promise<Result<AccountSnapshot>>;
+  donateGuild(kind: 'normal' | 'gems'): Promise<Result<ClaimResult>>;
+  claimGuildPacket(id: number): Promise<Result<ClaimResult>>;
+  feedGuildBeast(currency: string, count: number): Promise<Result<ClaimResult>>;
+  getEvents(): Promise<Result<EventsView>>;
+  spinShovel(times: 1 | 10): Promise<Result<{ rewards: Rewards; segments: string[]; snapshot: AccountSnapshot }>>;
+  claimShovelMilestone(credits: number): Promise<Result<ClaimResult>>;
+  buyShovels(tier: number, count?: number): Promise<Result<AccountSnapshot>>;
+  exchangeShovel(id: number): Promise<Result<ClaimResult>>;
+  contributeMerge(amount: number): Promise<Result<AccountSnapshot>>;
+  claimMerge(phase: string): Promise<Result<ClaimResult>>;
   /** M14.1 Victory Road. */
   getVictoryRoad(): Promise<Result<VictoryRoadView>>;
   claimVictoryChest(gym: number, progress: number): Promise<Result<ClaimResult>>;
@@ -720,6 +735,8 @@ export * from './isles-view';
 export * from './isles';
 export * from './account3-view';
 export * from './account3';
+export * from './guild';
+export * from './events';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

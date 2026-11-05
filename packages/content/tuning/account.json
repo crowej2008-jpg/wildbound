@@ -72,6 +72,11 @@
     "wristbandEssence": 0,
     "crystalEssence": 0,
     "goldenEggVoucher": 0,
+    "treasureShovel": 0,
+    "treasurePiece": 0,
+    "fashionShard": 0,
+    "beastFood": 0,
+    "beastFoodPlus": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -154,6 +159,11 @@
     "wristbandEssence": 20000,
     "crystalEssence": 5000,
     "goldenEggVoucher": 30,
+    "treasureShovel": 50,
+    "treasurePiece": 2000,
+    "fashionShard": 200,
+    "beastFood": 100,
+    "beastFoodPlus": 20,
     "privilegeXp": 300
   }
 }

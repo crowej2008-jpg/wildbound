@@ -1282,3 +1282,12 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      a day, Egg Points shop; Awakening (server day 60, twelve 18★, 600 progress) gating 18★→19★, Awakening Stones for
      19★+. Stand-ins: treasure level cost (trainer_treasure_lev missing from the dumps). Not built: treasure / crystal /
      skin battle skills. Seven currencies, `account3` slice; save v51. docs/design/account-systems-3.md.
+
+114. **M16 Guild + events (2026-11-05).** Guild from guild_* (donations 5 a day: 60,000 Gold → 40 Guild Tokens / 10
+     EXP, or 10 Gems → 200 / 30 EXP; 16 guild levels; 6 red packets by trainer level; guild beast 100 levels with its
+     stats, fed Flat Candy for EXP and Guild Tokens). Solo: a CPU guild that adds 24 members' daily EXP; the player keeps
+     one red-packet share. Events on the server-day clock: Shovel Carnival from the owner's wiki (every 14 days for 4
+     days from day 8; pool 16,000 +20 a draw, 5–20 % segments with the listed odds, 10 Credits a shovel, 18 milestones,
+     5-tier Gems shovel shop, Happy Exchange) with prizes mapped to Wildbound currencies; Merge Event (stand-in schedule:
+     day 30, every 60 days; four one-day phases Berry / Orb / Soul Heart / Treasure ranked vs a CPU ladder). Server
+     merges themselves do not exist solo. Five currencies, `guild` / `events` slices; save v52. docs/design/guild-events.md.

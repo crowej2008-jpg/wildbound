@@ -91,6 +91,11 @@ export const en = {
   'currency.wristbandEssence': 'Wristband Essence',
   'currency.crystalEssence': 'Crystal Essence',
   'currency.goldenEggVoucher': 'Golden Egg Vouchers',
+  'currency.treasureShovel': 'Treasure Shovels',
+  'currency.treasurePiece': 'Treasure Pieces',
+  'currency.fashionShard': 'Fashion Shards',
+  'currency.beastFood': 'Sachets of Flat Candy',
+  'currency.beastFoodPlus': 'Jars of Flat Candy',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -762,6 +767,52 @@ export const en = {
   'joint.bought': 'Bought.',
   'joint.shelfLocked': 'Locked shelf',
   'joint.levelUp': 'Level up',
+  'home.link.guild': 'Guild',
+  'home.link.events': 'Events',
+  'guild.title': 'Guild',
+  'guild.joinDesc': 'Join a guild of CPU trainers. They donate every day; you donate, open red packets and raise the guild beast.',
+  'guild.join': 'Join the guild',
+  'guild.joined': 'Welcome to the guild!',
+  'guild.exp': 'EXP',
+  'guild.members': 'Members',
+  'guild.fund': 'Funds',
+  'guild.donate': 'Donations',
+  'guild.donationsLeft': 'Donations left today',
+  'guild.donateGold': 'Donate Gold',
+  'guild.donateGems': 'Donate Gems',
+  'guild.thanks': 'Thanks for donating!',
+  'guild.packets': 'Red packets',
+  'guild.packetAt': 'Trainer Lv {lv}',
+  'guild.open': 'Open',
+  'guild.openedShort': 'Opened',
+  'guild.opened': 'Red packet opened!',
+  'guild.beast': 'Guild beast',
+  'guild.fed': 'The guild beast enjoyed that!',
+  'guild.m17': 'Guild War and Pokémon Park arrive in M17.',
+  'events.title': 'Events',
+  'events.day': 'Server day {day}',
+  'events.shovel': 'Shovel Carnival',
+  'events.daysLeft': 'Running — {n} day(s) left',
+  'events.startsIn': 'Starts in {n} day(s)',
+  'events.pool': 'Gems pool',
+  'events.credits': 'Credits',
+  'events.spin': 'Dig',
+  'events.spun': 'The wheel spun!',
+  'events.shovelShop': 'Shovel shop',
+  'events.bought': 'Bought!',
+  'events.milestones': 'Credit milestones',
+  'events.claim': 'Claim',
+  'events.claimed': 'Claimed!',
+  'events.exchange': 'Happy Exchange (Treasure Pieces)',
+  'events.merge': 'Merge Event',
+  'events.points': 'Points',
+  'events.contribute': 'Contribute all',
+  'events.contributed': 'Contributed!',
+  'events.phase.berry': 'Berry rush',
+  'events.phase.orb': 'Orb rush',
+  'events.phase.soulHeart': 'Soul Heart rush',
+  'events.phase.treasure': 'Treasure rush',
+  'events.mergeNote': 'One phase a day for four days; ranks are against a CPU ladder.',
   'a3.title': 'Treasures, Z Ring, Skins, Golden Egg & Awakening',
   'a3.back': 'Back to the Trainer',
   'a3.open': 'Treasures, Z Ring, Skins, Golden Egg & Awakening →',
@@ -1527,6 +1578,11 @@ export type CurrencyKey =
   | 'wristbandEssence'
   | 'crystalEssence'
   | 'goldenEggVoucher'
+  | 'treasureShovel'
+  | 'treasurePiece'
+  | 'fashionShard'
+  | 'beastFood'
+  | 'beastFoodPlus'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1604,6 +1660,11 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   wristbandEssence: en['currency.wristbandEssence'],
   crystalEssence: en['currency.crystalEssence'],
   goldenEggVoucher: en['currency.goldenEggVoucher'],
+  treasureShovel: en['currency.treasureShovel'],
+  treasurePiece: en['currency.treasurePiece'],
+  fashionShard: en['currency.fashionShard'],
+  beastFood: en['currency.beastFood'],
+  beastFoodPlus: en['currency.beastFoodPlus'],
   privilegeXp: en['currency.privilegeXp'],
 };
 

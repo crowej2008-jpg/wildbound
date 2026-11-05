@@ -29,6 +29,8 @@ const TOWN = [
   { to: '/combat', key: 'home.link.combat' as const, icon: '⚔' },
   { to: '/pvp', key: 'home.link.pvp' as const, icon: '🏟' },
   { to: '/gallery', key: 'home.link.gallery' as const, icon: '✦' },
+  { to: '/guild', key: 'home.link.guild' as const, icon: '🏰' },
+  { to: '/events', key: 'home.link.events' as const, icon: '🎪' },
 ];
 
 /** Home town hub (M5): entry points into every screen plus the tutorial. */

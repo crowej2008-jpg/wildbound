@@ -1,0 +1,4229 @@
+{
+  "guild": {
+    "donateTimes": 5,
+    "donations": {
+      "normal": {
+        "costGold": 60000,
+        "guildCoin": 40,
+        "exp": 10,
+        "fund": 10000
+      },
+      "gems": {
+        "costGems": 10,
+        "guildCoin": 200,
+        "exp": 30,
+        "fund": 20000
+      }
+    },
+    "levels": [
+      {
+        "level": 1,
+        "exp": 3500,
+        "members": 30
+      },
+      {
+        "level": 2,
+        "exp": 9000,
+        "members": 32
+      },
+      {
+        "level": 3,
+        "exp": 21000,
+        "members": 33
+      },
+      {
+        "level": 4,
+        "exp": 42000,
+        "members": 33
+      },
+      {
+        "level": 5,
+        "exp": 75000,
+        "members": 33
+      },
+      {
+        "level": 6,
+        "exp": 120000,
+        "members": 34
+      },
+      {
+        "level": 7,
+        "exp": 180000,
+        "members": 34
+      },
+      {
+        "level": 8,
+        "exp": 270000,
+        "members": 34
+      },
+      {
+        "level": 9,
+        "exp": 420000,
+        "members": 34
+      },
+      {
+        "level": 10,
+        "exp": 600000,
+        "members": 35
+      },
+      {
+        "level": 11,
+        "exp": 840000,
+        "members": 35
+      },
+      {
+        "level": 12,
+        "exp": 1200000,
+        "members": 35
+      },
+      {
+        "level": 13,
+        "exp": 1650000,
+        "members": 35
+      },
+      {
+        "level": 14,
+        "exp": 2400000,
+        "members": 36
+      },
+      {
+        "level": 15,
+        "exp": 3300000,
+        "members": 36
+      },
+      {
+        "level": 16,
+        "exp": 5000000,
+        "members": 36
+      }
+    ],
+    "redPackets": [
+      {
+        "id": 1,
+        "trainerLevel": 10,
+        "gems": 200,
+        "shares": 10
+      },
+      {
+        "id": 2,
+        "trainerLevel": 30,
+        "gems": 600,
+        "shares": 20
+      },
+      {
+        "id": 3,
+        "trainerLevel": 50,
+        "gems": 1000,
+        "shares": 25
+      },
+      {
+        "id": 4,
+        "trainerLevel": 70,
+        "gems": 400,
+        "shares": 10
+      },
+      {
+        "id": 5,
+        "trainerLevel": 90,
+        "gems": 1200,
+        "shares": 20
+      },
+      {
+        "id": 6,
+        "trainerLevel": 110,
+        "gems": 2000,
+        "shares": 25
+      }
+    ],
+    "beast": {
+      "levels": [
+        {
+          "level": 0,
+          "star": 5,
+          "exp": 0,
+          "lines": []
+        },
+        {
+          "level": 1,
+          "star": 5,
+          "exp": 0,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 2000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 300
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "star": 5,
+          "exp": 6000,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 4000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 600
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "star": 5,
+          "exp": 6400,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 6000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 900
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "star": 5,
+          "exp": 6800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 8000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 1200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 1200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.01
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "star": 5,
+          "exp": 7200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 10000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 1500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 1500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.01
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.01
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.01
+            }
+          ]
+        },
+        {
+          "level": 6,
+          "star": 6,
+          "exp": 7600,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 12000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 1800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 1800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.01
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.01
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.01
+            }
+          ]
+        },
+        {
+          "level": 7,
+          "star": 6,
+          "exp": 8500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 14000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 2100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 2100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.01
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.01
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.01
+            }
+          ]
+        },
+        {
+          "level": 8,
+          "star": 6,
+          "exp": 9500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 16000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 2400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 2400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.01
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.01
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.01
+            }
+          ]
+        },
+        {
+          "level": 9,
+          "star": 6,
+          "exp": 10600,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 18000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 2700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 2700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.01
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.01
+            }
+          ]
+        },
+        {
+          "level": 10,
+          "star": 6,
+          "exp": 11600,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 20000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 3000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 3000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.02
+            }
+          ]
+        },
+        {
+          "level": 11,
+          "star": 7,
+          "exp": 12600,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 22000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 3300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 3300
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.02
+            }
+          ]
+        },
+        {
+          "level": 12,
+          "star": 7,
+          "exp": 14300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 24000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 3600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 3600
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.02
+            }
+          ]
+        },
+        {
+          "level": 13,
+          "star": 7,
+          "exp": 16000,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 26000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 3900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 3900
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.02
+            }
+          ]
+        },
+        {
+          "level": 14,
+          "star": 7,
+          "exp": 17700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 28000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 4200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 4200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.02
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.02
+            }
+          ]
+        },
+        {
+          "level": 15,
+          "star": 7,
+          "exp": 19400,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 30000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 4500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 4500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.03
+            }
+          ]
+        },
+        {
+          "level": 16,
+          "star": 8,
+          "exp": 21100,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 32000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 4800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 4800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.03
+            }
+          ]
+        },
+        {
+          "level": 17,
+          "star": 8,
+          "exp": 23500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 34000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 5100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 5100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.03
+            }
+          ]
+        },
+        {
+          "level": 18,
+          "star": 8,
+          "exp": 25900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 36000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 5400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 5400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.03
+            }
+          ]
+        },
+        {
+          "level": 19,
+          "star": 8,
+          "exp": 28300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 38000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 5700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 5700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.03
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.03
+            }
+          ]
+        },
+        {
+          "level": 20,
+          "star": 8,
+          "exp": 30700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 40000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 6000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 6000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.04
+            }
+          ]
+        },
+        {
+          "level": 21,
+          "star": 9,
+          "exp": 33100,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 42000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 6300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 6300
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.04
+            }
+          ]
+        },
+        {
+          "level": 22,
+          "star": 9,
+          "exp": 36100,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 44000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 6600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 6600
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.04
+            }
+          ]
+        },
+        {
+          "level": 23,
+          "star": 9,
+          "exp": 39200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 46000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 6900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 6900
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.04
+            }
+          ]
+        },
+        {
+          "level": 24,
+          "star": 9,
+          "exp": 42300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 48000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 7200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 7200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.04
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.04
+            }
+          ]
+        },
+        {
+          "level": 25,
+          "star": 9,
+          "exp": 45300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 50000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 7500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 7500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.05
+            }
+          ]
+        },
+        {
+          "level": 26,
+          "star": 10,
+          "exp": 48400,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 52000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 7800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 7800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.05
+            }
+          ]
+        },
+        {
+          "level": 27,
+          "star": 10,
+          "exp": 52200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 54000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 8100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 8100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.05
+            }
+          ]
+        },
+        {
+          "level": 28,
+          "star": 10,
+          "exp": 55900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 56000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 8400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 8400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.05
+            }
+          ]
+        },
+        {
+          "level": 29,
+          "star": 10,
+          "exp": 59700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 58000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 8700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 8700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.05
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.05
+            }
+          ]
+        },
+        {
+          "level": 30,
+          "star": 10,
+          "exp": 63400,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 60000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 9000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 9000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.06
+            }
+          ]
+        },
+        {
+          "level": 31,
+          "star": 11,
+          "exp": 67200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 62000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 9300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 9300
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.06
+            }
+          ]
+        },
+        {
+          "level": 32,
+          "star": 11,
+          "exp": 71600,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 64000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 9600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 9600
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.06
+            }
+          ]
+        },
+        {
+          "level": 33,
+          "star": 11,
+          "exp": 76000,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 66000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 9900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 9900
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.06
+            }
+          ]
+        },
+        {
+          "level": 34,
+          "star": 11,
+          "exp": 80500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 68000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 10200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 10200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.06
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.06
+            }
+          ]
+        },
+        {
+          "level": 35,
+          "star": 11,
+          "exp": 84900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 70000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 10500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 10500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.07
+            }
+          ]
+        },
+        {
+          "level": 36,
+          "star": 12,
+          "exp": 89300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 72000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 10800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 10800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.07
+            }
+          ]
+        },
+        {
+          "level": 37,
+          "star": 12,
+          "exp": 94400,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 74000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 11100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 11100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.07
+            }
+          ]
+        },
+        {
+          "level": 38,
+          "star": 12,
+          "exp": 99500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 76000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 11400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 11400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.07
+            }
+          ]
+        },
+        {
+          "level": 39,
+          "star": 12,
+          "exp": 104700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 78000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 11700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 11700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.07
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.07
+            }
+          ]
+        },
+        {
+          "level": 40,
+          "star": 12,
+          "exp": 109800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 80000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 12000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 12000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.08
+            }
+          ]
+        },
+        {
+          "level": 41,
+          "star": 13,
+          "exp": 114900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 82000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 12300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 12300
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.08
+            }
+          ]
+        },
+        {
+          "level": 42,
+          "star": 13,
+          "exp": 120700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 84000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 12600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 12600
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.08
+            }
+          ]
+        },
+        {
+          "level": 43,
+          "star": 13,
+          "exp": 126500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 86000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 12900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 12900
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.08
+            }
+          ]
+        },
+        {
+          "level": 44,
+          "star": 13,
+          "exp": 132300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 88000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 13200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 13200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.08
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.08
+            }
+          ]
+        },
+        {
+          "level": 45,
+          "star": 13,
+          "exp": 138100,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 90000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 13500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 13500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.09
+            }
+          ]
+        },
+        {
+          "level": 46,
+          "star": 14,
+          "exp": 143900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 92000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 13800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 13800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.09
+            }
+          ]
+        },
+        {
+          "level": 47,
+          "star": 14,
+          "exp": 150300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 94000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 14100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 14100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.09
+            }
+          ]
+        },
+        {
+          "level": 48,
+          "star": 14,
+          "exp": 156800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 96000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 14400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 14400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.09
+            }
+          ]
+        },
+        {
+          "level": 49,
+          "star": 14,
+          "exp": 163300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 98000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 14700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 14700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.09
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.09
+            }
+          ]
+        },
+        {
+          "level": 50,
+          "star": 14,
+          "exp": 169800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 100000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 15000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 15000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.1
+            }
+          ]
+        },
+        {
+          "level": 51,
+          "star": 15,
+          "exp": 176300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 102000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 15300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 15300
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.1
+            }
+          ]
+        },
+        {
+          "level": 52,
+          "star": 15,
+          "exp": 182700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 104000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 15600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 15600
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.1
+            }
+          ]
+        },
+        {
+          "level": 53,
+          "star": 15,
+          "exp": 189200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 106000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 15900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 15900
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.1
+            }
+          ]
+        },
+        {
+          "level": 54,
+          "star": 15,
+          "exp": 195700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 108000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 16200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 16200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.1
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.1
+            }
+          ]
+        },
+        {
+          "level": 55,
+          "star": 15,
+          "exp": 202200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 110000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 16500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 16500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 56,
+          "star": 15,
+          "exp": 212400,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 112000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 16800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 16800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 57,
+          "star": 15,
+          "exp": 222600,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 114000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 17100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 17100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 58,
+          "star": 15,
+          "exp": 232800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 116000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 17400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 17400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 59,
+          "star": 15,
+          "exp": 243100,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 118000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 17700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 17700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 60,
+          "star": 15,
+          "exp": 253300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 120000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 18000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 18000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 61,
+          "star": 15,
+          "exp": 266900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 122000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 18300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 18300
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 62,
+          "star": 15,
+          "exp": 280600,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 124000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 18600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 18600
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 63,
+          "star": 15,
+          "exp": 294200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 126000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 18900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 18900
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 64,
+          "star": 15,
+          "exp": 307900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 128000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 19200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 19200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 65,
+          "star": 15,
+          "exp": 321500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 130000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 19500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 19500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 66,
+          "star": 15,
+          "exp": 342000,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 132000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 19800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 19800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 67,
+          "star": 15,
+          "exp": 362400,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 134000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 20100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 20100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 68,
+          "star": 15,
+          "exp": 382900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 136000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 20400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 20400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 69,
+          "star": 15,
+          "exp": 403300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 138000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 20700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 20700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 70,
+          "star": 15,
+          "exp": 423800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 140000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 21000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 21000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 71,
+          "star": 15,
+          "exp": 454500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 142000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 21300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 21300
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 72,
+          "star": 15,
+          "exp": 485200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 144000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 21600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 21600
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 73,
+          "star": 15,
+          "exp": 515800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 146000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 21900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 21900
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 74,
+          "star": 15,
+          "exp": 546500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 148000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 22200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 22200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 75,
+          "star": 15,
+          "exp": 577200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 150000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 22500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 22500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 76,
+          "star": 15,
+          "exp": 621600,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 152000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 22800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 22800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 77,
+          "star": 15,
+          "exp": 665900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 154000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 23100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 23100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 78,
+          "star": 15,
+          "exp": 710200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 156000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 23400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 23400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 79,
+          "star": 15,
+          "exp": 754500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 158000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 23700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 23700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 80,
+          "star": 15,
+          "exp": 798900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 160000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 24000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 24000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 81,
+          "star": 15,
+          "exp": 856800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 162000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 24300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 24300
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 82,
+          "star": 15,
+          "exp": 914800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 164000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 24600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 24600
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 83,
+          "star": 15,
+          "exp": 972800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 166000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 24900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 24900
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 84,
+          "star": 15,
+          "exp": 1030700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 168000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 25200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 25200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 85,
+          "star": 15,
+          "exp": 1088700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 170000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 25500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 25500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 86,
+          "star": 15,
+          "exp": 1160300,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 172000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 25800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 25800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 87,
+          "star": 15,
+          "exp": 1231900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 174000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 26100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 26100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 88,
+          "star": 15,
+          "exp": 1303500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 176000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 26400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 26400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 89,
+          "star": 15,
+          "exp": 1375100,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 178000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 26700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 26700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 90,
+          "star": 15,
+          "exp": 1446700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 180000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 27000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 27000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 91,
+          "star": 15,
+          "exp": 1532000,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 182000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 27300
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 27300
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 92,
+          "star": 15,
+          "exp": 1617200,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 184000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 27600
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 27600
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 93,
+          "star": 15,
+          "exp": 1702500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 186000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 27900
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 27900
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 94,
+          "star": 15,
+          "exp": 1787700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 188000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 28200
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 28200
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 95,
+          "star": 15,
+          "exp": 1872900,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 190000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 28500
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 28500
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 96,
+          "star": 15,
+          "exp": 1971800,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 192000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 28800
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 28800
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 97,
+          "star": 15,
+          "exp": 2070700,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 194000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 29100
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 29100
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 98,
+          "star": 15,
+          "exp": 2169600,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 196000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 29400
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 29400
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 99,
+          "star": 15,
+          "exp": 2268500,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 198000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 29700
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 29700
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        },
+        {
+          "level": 100,
+          "star": 15,
+          "exp": 2367400,
+          "lines": [
+            {
+              "kind": "core",
+              "field": "hp",
+              "value": 200000
+            },
+            {
+              "kind": "core",
+              "field": "pAtk",
+              "value": 30000
+            },
+            {
+              "kind": "core",
+              "field": "sAtk",
+              "value": 30000
+            },
+            {
+              "kind": "percent",
+              "field": "hpPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "pAtkPct",
+              "value": 0.11
+            },
+            {
+              "kind": "percent",
+              "field": "sAtkPct",
+              "value": 0.11
+            }
+          ]
+        }
+      ],
+      "foods": [
+        {
+          "itemId": 21801,
+          "currency": "beastFood",
+          "exp": 10,
+          "guildCoin": 2
+        },
+        {
+          "itemId": 21802,
+          "currency": "beastFoodPlus",
+          "exp": 50,
+          "guildCoin": 10
+        }
+      ]
+    },
+    "cpuMembers": 24,
+    "cpuExpPerMemberDay": 10
+  },
+  "shovel": {
+    "cycleDays": 14,
+    "lengthDays": 4,
+    "firstServerDay": 8,
+    "creditsPerShovel": 10,
+    "pool": {
+      "start": 16000,
+      "perDraw": 20
+    },
+    "wheel": [
+      {
+        "id": "pool20",
+        "poolPct": 20,
+        "odds": 0.05
+      },
+      {
+        "id": "pool10",
+        "poolPct": 10,
+        "odds": 0.1
+      },
+      {
+        "id": "pool8",
+        "poolPct": 8,
+        "odds": 1
+      },
+      {
+        "id": "pool5",
+        "poolPct": 5,
+        "odds": 2
+      },
+      {
+        "id": "gold20k",
+        "rewards": {
+          "gold": 20000
+        }
+      },
+      {
+        "id": "gold30k",
+        "rewards": {
+          "gold": 30000
+        }
+      },
+      {
+        "id": "gold50k",
+        "rewards": {
+          "gold": 50000
+        }
+      },
+      {
+        "id": "shard5",
+        "rewards": {
+          "pokemonShard5": 15
+        }
+      },
+      {
+        "id": "pieces",
+        "rewards": {
+          "treasurePiece": 100
+        }
+      },
+      {
+        "id": "stone",
+        "rewards": {
+          "stone": 50
+        }
+      },
+      {
+        "id": "reforge",
+        "rewards": {
+          "reforgePotion": 45
+        }
+      },
+      {
+        "id": "cosmetic",
+        "rewards": {
+          "cosmeticBox": 25
+        }
+      },
+      {
+        "id": "soulHeart",
+        "rewards": {
+          "soulHeartExp": 800
+        },
+        "note": "Red Soul Heart Chest ×1 → Soul Heart EXP stand-in"
+      },
+      {
+        "id": "berry",
+        "rewards": {
+          "berryEssence": 220
+        }
+      },
+      {
+        "id": "tickets",
+        "rewards": {
+          "ticketCommon": 2
+        },
+        "note": "C.Gacha Voucher ×2 → Common tickets"
+      },
+      {
+        "id": "supreme",
+        "odds": 0.5,
+        "rewards": {
+          "boxSupreme": 1
+        },
+        "note": "Supreme Gift (0.5 % in the odds, not on the wheel)"
+      }
+    ],
+    "milestones": [
+      {
+        "credits": 200,
+        "rewards": {
+          "treasurePiece": 200
+        }
+      },
+      {
+        "credits": 500,
+        "rewards": {
+          "treasurePiece": 400
+        }
+      },
+      {
+        "credits": 800,
+        "rewards": {
+          "treasurePiece": 500
+        }
+      },
+      {
+        "credits": 1500,
+        "rewards": {
+          "boxSupreme": 1
+        }
+      },
+      {
+        "credits": 3000,
+        "rewards": {
+          "fashionShard": 50,
+          "orbEssence": 2000
+        }
+      },
+      {
+        "credits": 4500,
+        "rewards": {
+          "fashionShard": 50,
+          "orbEssence": 2000
+        }
+      },
+      {
+        "credits": 6000,
+        "rewards": {
+          "fashionShard": 100,
+          "orbEssence": 2000
+        }
+      },
+      {
+        "credits": 7500,
+        "rewards": {
+          "fashionShard": 100,
+          "orbEssence": 2000
+        }
+      },
+      {
+        "credits": 9000,
+        "rewards": {
+          "treasurePiece": 800,
+          "fashionShard": 100,
+          "orbEssence": 2000
+        }
+      },
+      {
+        "credits": 10500,
+        "rewards": {
+          "treasurePiece": 1000,
+          "fashionShard": 100,
+          "orbEssence": 2000
+        }
+      },
+      {
+        "credits": 12000,
+        "rewards": {
+          "treasurePiece": 1200,
+          "fashionShard": 150,
+          "boxLD": 1
+        }
+      },
+      {
+        "credits": 13500,
+        "rewards": {
+          "treasurePiece": 1200,
+          "fashionShard": 150,
+          "orbEssence": 2000
+        }
+      },
+      {
+        "credits": 15000,
+        "rewards": {
+          "fashionShard": 300,
+          "boxLD": 1
+        }
+      },
+      {
+        "credits": 16500,
+        "rewards": {
+          "fashionShard": 300,
+          "orbEssence": 2000
+        }
+      },
+      {
+        "credits": 18250,
+        "rewards": {
+          "fashionShard": 300,
+          "boxLD": 1
+        }
+      },
+      {
+        "credits": 20000,
+        "rewards": {
+          "fashionShard": 300,
+          "boxShinySupreme": 1
+        }
+      },
+      {
+        "credits": 21750,
+        "rewards": {
+          "fashionShard": 300,
+          "boxShinySupreme": 1
+        }
+      },
+      {
+        "credits": 23500,
+        "rewards": {
+          "fashionShard": 300,
+          "boxShinySupreme": 1
+        }
+      }
+    ],
+    "shop": [
+      {
+        "price": 40,
+        "perDay": 5
+      },
+      {
+        "price": 80,
+        "perDay": 10
+      },
+      {
+        "price": 120,
+        "perDay": 35
+      },
+      {
+        "price": 160,
+        "perDay": 50
+      },
+      {
+        "price": 200,
+        "perDay": 50
+      }
+    ],
+    "exchange": [
+      {
+        "id": 1,
+        "name": "Treasure Liquid ×100",
+        "price": 10,
+        "limit": 0,
+        "rewards": {
+          "treasureLiquid": 100
+        }
+      },
+      {
+        "id": 2,
+        "name": "Gold ×50,000",
+        "price": 15,
+        "limit": 200,
+        "rewards": {
+          "gold": 50000
+        }
+      },
+      {
+        "id": 3,
+        "name": "Treasure Refine Stone ×3",
+        "price": 25,
+        "limit": 0,
+        "rewards": {
+          "treasureRefine": 3
+        }
+      },
+      {
+        "id": 4,
+        "name": "Ascension Stone ×50",
+        "price": 30,
+        "limit": 125,
+        "rewards": {
+          "stone": 50
+        }
+      },
+      {
+        "id": 5,
+        "name": "Premium ticket ×1",
+        "price": 135,
+        "limit": 0,
+        "rewards": {
+          "ticketPremium": 1
+        }
+      },
+      {
+        "id": 6,
+        "name": "Treasure Accessory ×1",
+        "price": 220,
+        "limit": 8,
+        "rewards": {
+          "treasureAccessory": 1
+        }
+      },
+      {
+        "id": 7,
+        "name": "Golden Egg Voucher ×1",
+        "price": 400,
+        "limit": 0,
+        "rewards": {
+          "goldenEggVoucher": 1
+        }
+      },
+      {
+        "id": 8,
+        "name": "Awakening Stone ×1",
+        "price": 550,
+        "limit": 10,
+        "rewards": {
+          "treasureAwakenStone": 1
+        }
+      },
+      {
+        "id": 9,
+        "name": "Soul Heart EXP ×5000",
+        "price": 840,
+        "limit": 0,
+        "rewards": {
+          "soulHeartExp": 5000
+        }
+      },
+      {
+        "id": 10,
+        "name": "Selectable Legendary box",
+        "price": 1700,
+        "limit": 8,
+        "rewards": {
+          "boxLD": 1
+        }
+      }
+    ]
+  },
+  "merge": {
+    "firstServerDay": 30,
+    "cycleDays": 60,
+    "phases": [
+      {
+        "id": "berry",
+        "currency": "berryEssence",
+        "perPoint": 10
+      },
+      {
+        "id": "orb",
+        "currency": "orbEssence",
+        "perPoint": 10
+      },
+      {
+        "id": "soulHeart",
+        "currency": "soulHeartExp",
+        "perPoint": 10
+      },
+      {
+        "id": "treasure",
+        "currency": "treasureLiquid",
+        "perPoint": 1
+      }
+    ],
+    "rankRewards": [
+      {
+        "rank": 1,
+        "rewards": {
+          "gems": 1000,
+          "wristbandEssence": 2000,
+          "crystalEssence": 1000
+        }
+      },
+      {
+        "rank": 3,
+        "rewards": {
+          "gems": 600,
+          "wristbandEssence": 1200,
+          "crystalEssence": 600
+        }
+      },
+      {
+        "rank": 10,
+        "rewards": {
+          "gems": 400,
+          "wristbandEssence": 800,
+          "crystalEssence": 400
+        }
+      },
+      {
+        "rank": 50,
+        "rewards": {
+          "gems": 200,
+          "wristbandEssence": 400,
+          "crystalEssence": 200
+        }
+      },
+      {
+        "rank": 100,
+        "rewards": {
+          "gems": 100,
+          "wristbandEssence": 200,
+          "crystalEssence": 100
+        }
+      }
+    ],
+    "cpuTop": 6000
+  }
+}

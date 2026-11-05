@@ -27,3 +27,20 @@ that was worked on and what decisions after you are done"*. Every call below too
   until M16 events hand them out.
 - Awakening tasks counted: premium draws and egg smashes; other task kinds are listed but do not advance yet.
 - Pure Crystal attribute ids 125 / 126 (no matching stat in the engine) are skipped.
+
+## M16 Guild, merge and events
+- Guild played solo: you join a ready-made CPU guild for free (no creation cost / VIP gate); 24 CPU members add daily
+  EXP and funds; no chat, ranks, applications or authority roles.
+- Red packets: the player keeps one share of each packet they unlock (gems ÷ shares); CPU packets are not simulated.
+- Guild beast privileges (idle bonus, park stamina, boss damage…) are listed in the source but not applied — they
+  belong to modes that are M17 or not built.
+- No real server merges solo. The Merge Event runs on a stand-in schedule (server day 30, then every 60 days): four
+  one-day phases where you contribute that phase's material for points ranked against a CPU ladder; rank rewards are
+  stand-ins (Gems + Z Ring / crystal essence, giving M15 materials a source).
+- Shovel Carnival from the owner's wiki: starts server day 8, every 14 days, 4 days. The twelve non-pool wheel
+  segments share 96.35 % equally. Stand-in prize mappings: Red Soul Heart Chest → 800 Soul Heart EXP, C.Gacha Voucher →
+  Common tickets, Level 7 Ruby Orb → 2,000 Orb Essence, the accessory / gear / evolve picks in the Happy Exchange →
+  M15 treasure materials and Golden Egg Vouchers. The Mecha (armor device) shop is not built. Unused shovels and Treasure
+  Pieces carry over; the Happy Exchange stays open between carnivals.
+- Other events on the owner's wiki (Weekend Bash: Elven Treasure and Bingo, Flower Event, Ruins Adventure) are not
+  built: no source tables and only short wiki summaries.

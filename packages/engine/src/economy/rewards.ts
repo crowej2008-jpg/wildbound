@@ -90,6 +90,11 @@ export interface Rewards {
   wristbandEssence?: number;
   crystalEssence?: number;
   goldenEggVoucher?: number;
+  treasureShovel?: number;
+  treasurePiece?: number;
+  fashionShard?: number;
+  beastFood?: number;
+  beastFoodPlus?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -169,6 +174,11 @@ export const CURRENCY_REWARD_KEYS = [
   'wristbandEssence',
   'crystalEssence',
   'goldenEggVoucher',
+  'treasureShovel',
+  'treasurePiece',
+  'fashionShard',
+  'beastFood',
+  'beastFoodPlus',
   'privilegeXp',
 ] as const;
 

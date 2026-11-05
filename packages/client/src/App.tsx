@@ -28,6 +28,8 @@ import Paradise from './pages/Paradise';
 import JointTeam from './pages/JointTeam';
 import ClashOfIsles from './pages/ClashOfIsles';
 import AccountSystems from './pages/AccountSystems';
+import Guild from './pages/Guild';
+import Events from './pages/Events';
 import PveTower from './pages/PveTower';
 import Pvp from './pages/Pvp';
 import Quests from './pages/Quests';
@@ -77,6 +79,8 @@ function AppRoutes() {
         <Route path="/joint-team" element={<JointTeam />} />
         <Route path="/clash-of-isles" element={<ClashOfIsles />} />
         <Route path="/account-systems" element={<AccountSystems />} />
+        <Route path="/guild" element={<Guild />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/idle" element={<Idle />} />
         <Route path="/quests" element={<Quests />} />
         <Route path="/sign-in" element={<SignIn />} />

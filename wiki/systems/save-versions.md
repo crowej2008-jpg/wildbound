@@ -64,6 +64,7 @@ after the retrofit, once friends have real saves.
 | 49 | M14.4 | Joint Team: `jointTeam` / `wildArea` slices, squad, six currencies (reset) |
 | 50 | M14.5 | Clash of Isles: `isles` slice, squad, `islandVoucher` (reset) |
 | 51 | M15 | Account systems III: `account3` slice, seven currencies (reset) |
-| 52+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
+| 52 | M16 | Guild + events: `guild` / `events` slices, five currencies (reset) |
+| 53+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

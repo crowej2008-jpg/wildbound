@@ -737,6 +737,11 @@ export const rewardSchema = z
     wristbandEssence: z.number().nonnegative().optional(),
     crystalEssence: z.number().nonnegative().optional(),
     goldenEggVoucher: z.number().nonnegative().optional(),
+    treasureShovel: z.number().nonnegative().optional(),
+    treasurePiece: z.number().nonnegative().optional(),
+    fashionShard: z.number().nonnegative().optional(),
+    beastFood: z.number().nonnegative().optional(),
+    beastFoodPlus: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

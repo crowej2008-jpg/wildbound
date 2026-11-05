@@ -95,6 +95,7 @@ export {
   JOINT_TEAM,
   ISLES,
   ACCOUNT3,
+  GUILD_EVENTS,
   VICTORY_ROAD,
   KINGS_TRIAL,
   GACHA_TUNING,
@@ -116,6 +117,7 @@ export type {
   JointTeamJson,
   IslesJson,
   Account3Json,
+  GuildEventsJson,
   VictoryRoadJson,
   KingsTrialJson,
 } from './tuning';
@@ -131,6 +133,7 @@ export { paradiseSchema } from './paradise-schema';
 export { jointTeamSchema } from './joint-team-schema';
 export { islesSchema } from './isles-schema';
 export { account3Schema } from './account3-schema';
+export { guildEventsSchema } from './guild-events-schema';
 export { victoryRoadSchema } from './victory-road-schema';
 export { kingsTrialSchema } from './kings-trial-schema';
 export type {

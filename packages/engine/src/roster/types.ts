@@ -146,6 +146,11 @@ export type CurrencyId =
   | 'wristbandEssence'
   | 'crystalEssence'
   | 'goldenEggVoucher'
+  | 'treasureShovel'
+  | 'treasurePiece'
+  | 'fashionShard'
+  | 'beastFood'
+  | 'beastFoodPlus'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -224,6 +229,11 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'wristbandEssence',
   'crystalEssence',
   'goldenEggVoucher',
+  'treasureShovel',
+  'treasurePiece',
+  'fashionShard',
+  'beastFood',
+  'beastFoodPlus',
   'privilegeXp',
 ];
 
@@ -290,6 +300,11 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'wristbandEssence',
   'crystalEssence',
   'goldenEggVoucher',
+  'treasureShovel',
+  'treasurePiece',
+  'fashionShard',
+  'beastFood',
+  'beastFoodPlus',
   'privilegeXp',
 ];
 
@@ -419,6 +434,23 @@ export interface AccountState {
     fusionShards: Record<string, number>;
     egg: { day: string; free: number; points: number; smashes: number; bought: Record<string, number> };
     awaken: { wildId: string | null; progress: Record<string, number>; base: Record<string, number> };
+  } | null;
+  /** M16: the player's (solo, CPU-member) guild (null until joined). */
+  guild: {
+    name: string;
+    level: number;
+    exp: number;
+    fund: number;
+    day: string;
+    donations: number;
+    cpuDay: string;
+    packets: number[];
+    beast: { level: number; exp: number };
+  } | null;
+  /** M16: events — Shovel Carnival and Merge Event progress, keyed by the running cycle (null until opened). */
+  events: {
+    shovel: { cycle: number; credits: number; pool: number; claimed: number[]; shopDay: string; shopBought: number[]; exchange: Record<string, number>; draws: number };
+    merge: { cycle: number; points: Record<string, number>; claimed: string[] };
   } | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string };
