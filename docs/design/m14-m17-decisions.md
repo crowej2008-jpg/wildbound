@@ -25,7 +25,9 @@ that was worked on and what decisions after you are done"*. Every call below too
 - Skin stats apply whether or not the skin is worn (as the source's collection bonus); wearing is cosmetic.
 - Materials (liquid, accessories, refine, awaken stones, essences, vouchers, skin shards) come from the debug grant
   until M16 events hand them out.
-- Awakening tasks counted: premium draws and egg smashes; other task kinds are listed but do not advance yet.
+- Awakening tasks counted: premium draws, egg smashes and Origin shards spent (composing or Origin skill levels —
+  added in the follow-up). Light / Dark themed draws and ancient-artifact quenching still do not advance: Wildbound has
+  neither system.
 - Pure Crystal attribute ids 125 / 126 (no matching stat in the engine) are skipped.
 
 ## M16 Guild, merge and events
@@ -56,3 +58,9 @@ that was worked on and what decisions after you are done"*. Every call below too
   Explore events change a single "team condition" (HP %) instead of per-team HP; no revives. Season place rewards
   (Relic Coins + Gems) are stand-ins. Relic items 26001–26004 / 72011 pay Relic Coins, which have no shop yet.
 - Pokémon Park (beast park) is not in this run: it was not on the M17 line of the roadmap.
+
+## Follow-up (owner: "finish these if you can")
+- Relic Coins: a Relic Battlefield shop (stand-in rows: Gold, Ascension Stones, M15 materials, 5★ shards, Premium
+  tickets) — the source has no relic shop table.
+- Guild War season: the guild ranks now give the Ultimate Guild (1st) / Power of Unity (2nd–10th) title cards from
+  titles.json. Expert / Monster Hunter (personal) have no data in the dumps and stay out.

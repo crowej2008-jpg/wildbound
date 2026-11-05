@@ -213,6 +213,7 @@ export function buyEggShop(config: GameConfig, state: AccountState, id: number):
 const AWAKEN_COUNTER: Record<string, (s: AccountState) => number> = {
   '{chest,2}': (s) => counter(s, 'premiumDraws'),
   egg_times: (s) => a3(s).egg.smashes,
+  '{chip_cost,8}': (s) => counter(s, 'originShards'),
 };
 
 export function awakeningOpen(config: GameConfig, state: AccountState, now: number): boolean {

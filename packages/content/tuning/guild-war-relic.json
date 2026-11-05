@@ -80,21 +80,24 @@
         "rewards": {
           "goldenEggVoucher": 10,
           "pokemonShard5": 100
-        }
+        },
+        "titleCard": "16"
       },
       {
         "rank": 3,
         "rewards": {
           "goldenEggVoucher": 10,
           "pokemonShard5": 80
-        }
+        },
+        "titleCard": "17"
       },
       {
         "rank": 10,
         "rewards": {
           "goldenEggVoucher": 5,
           "pokemonShard5": 50
-        }
+        },
+        "titleCard": "17"
       },
       {
         "rank": 50,

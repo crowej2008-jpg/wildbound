@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildConfig } from './config';
 import { joinGuild } from './guild';
-import { attemptsToday, buildGuildWarView, challengeGuildBoss, claimGuildWarDaily, prepareGuildWar } from './guild-war';
+import { attemptsToday, buildGuildWarView, challengeGuildBoss, claimGuildWarDaily, claimGuildWarSeason, prepareGuildWar } from './guild-war';
 import { attackGrid, buildRelicView, claimRelicTask, cpuHoldings, exploreRelic, relicSeason } from './relic';
 import { createInitialState } from './save';
 
@@ -51,6 +51,18 @@ describe('Guild War (M17)', () => {
     expect(v.bosses).toHaveLength(5);
     expect(v.difficulty).toBeGreaterThanOrEqual(1);
     expect(claimGuildWarDaily(config, r.value.state, WED + DAY).ok).toBe(true);
+  });
+});
+
+describe('Guild War season titles', () => {
+  it('a top guild rank grants the Ultimate Guild / Power of Unity title card', () => {
+    const { config, state } = account();
+    const prev = { ...prepareGuildWar(config, state, WED - 7 * DAY).guildWar!, damage: 1e12, difficulty: 16 };
+    const r = claimGuildWarSeason(config, { ...state, guildWar: prev }, WED);
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    const cards = r.value.state.titles.cards;
+    expect((cards['16'] ?? 0) + (cards['17'] ?? 0)).toBe(1);
   });
 });
 

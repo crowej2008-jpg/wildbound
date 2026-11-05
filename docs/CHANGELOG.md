@@ -1497,3 +1497,8 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - Both are cross-server in the source; here they run solo against CPU guilds and ladders (no M12 server). Stand-ins
   for boss HP, CPU damage and growth, and season place rewards; see docs/design/m14-m17-decisions.md.
+
+## Follow-up — Relic shop, Guild War titles, Awakening task (2026-11-05)
+
+- Relic Battlefield shop for Relic Coins; Guild War guild ranks grant their title cards; spending Origin shards now
+  advances the Awakening.

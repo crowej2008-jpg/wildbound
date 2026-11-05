@@ -5,8 +5,8 @@
  * Guild War (modepages-guild_cfg cross_guild_boss_*): attempts from daily activity (30 / 60 / 100), battle / kill
  * rewards (Guild Chests), daily personal rank in the guild, season personal and guild ranks. 5 bosses × 5 rounds × 15
  * difficulties, then the endless stage (help text). Items: 16 Guild Tokens, 2 Gems, 10006 Premium tickets, 10103
- * 5★ Pokémon Shards, 10055 Golden Egg Vouchers; 10297 Guild Chest → 50 Guild Tokens (stand-in); 32411 / 32412 /
- * 81001 / 81002 are titles (not built).
+ * 5★ Pokémon Shards, 10055 Golden Egg Vouchers; 10297 Guild Chest → 50 Guild Tokens (stand-in); 81001 / 81002 are
+ * the title cards of Ultimate Guild / Power of Unity; 32411 / 32412 (Expert / Monster Hunter) have no data in the dumps.
  *
  * Relic Battlefield (evening_cfg cross_ancient_battle_*): map 1 (91 grids, neighbours, tiers, score per 30 min, open
  * day), grid garrisons, stamina, explore events, personal and guild tasks. Relic items 26001–26004 / 72011 have no
@@ -31,9 +31,14 @@ function rewards(list) {
   }
   return out;
 }
+// 81001 / 81002 are the cards of titles 16 (Ultimate Guild) and 17 (Power of Unity) in titles.json.
+const TITLE_CARD = { 81001: '16', 81002: '17' };
 const rankRows = (table) =>
   rows(table[Object.keys(table).sort((a, b) => a - b)[0]])
-    .map((r) => ({ rank: r.rank, rewards: rewards(r.reward) }))
+    .map((r) => {
+      const card = (r.reward ?? []).find(([id]) => TITLE_CARD[id]);
+      return { rank: r.rank, rewards: rewards(r.reward), ...(card ? { titleCard: TITLE_CARD[card[0]] } : {}) };
+    })
     .sort((a, b) => a.rank - b.rank);
 
 const gb = g.cross_guild_boss_basic_json;

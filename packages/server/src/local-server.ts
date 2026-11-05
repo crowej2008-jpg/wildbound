@@ -373,14 +373,20 @@ export class LocalServer implements GameServer {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     const next = composeWildAction(this.config, loaded.value, speciesId, this.config.now());
-    return next.ok ? this.commit(next.value) : next;
+    if (!next.ok) return next;
+    const meta = this.config.species.get(speciesId);
+    const spent = meta?.tier === 'origin' ? meta.shards : 0;
+    return this.commit(spent ? bumpCounter(next.value, this.now(next.value), 'originShards', spent) : next.value);
   }
 
   async upgradeOriginSkill(wildId: string, row: SkillRow): Promise<Result<AccountSnapshot>> {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     const next = upgradeOriginSkillAction(this.config, loaded.value, wildId, row);
-    return next.ok ? this.commit(next.value) : next;
+    if (!next.ok) return next;
+    const wild = loaded.value.roster.find((w) => w.id === wildId);
+    const spent = wild ? (loaded.value.speciesShards[wild.speciesId] ?? 0) - (next.value.speciesShards[wild.speciesId] ?? 0) : 0;
+    return this.commit(spent > 0 ? bumpCounter(next.value, this.now(next.value), 'originShards', spent) : next.value);
   }
 
   async getOriginSkills(wildId: string): Promise<Result<OriginSkillsView | null>> {

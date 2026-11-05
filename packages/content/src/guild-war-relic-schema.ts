@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 /** Guild War + Relic Battlefield tuning (M17), written by scripts/import-guild-war-relic.mjs. */
 const rewards = z.record(z.string(), z.number());
-const rank = z.object({ rank: z.number().int(), rewards }).strict();
+const rank = z.object({ rank: z.number().int(), rewards, titleCard: z.string().optional() }).strict();
 export const guildWarRelicSchema = z
   .object({
     guildWar: z

@@ -254,7 +254,7 @@ describe('LocalServer R9 shops (from the source)', () => {
     const { srv } = make();
     const view = await srv.getShops();
     if (!view.ok) return;
-    expect(view.value).toHaveLength(7);
+    expect(view.value).toHaveLength(8);
     const daily = view.value.find((s) => s.id === 'daily')!;
     expect(daily.items).toHaveLength(11);
     for (const id of ['daily.1221', 'daily.1222', 'daily.1223', 'daily.1225', 'daily.1226']) {

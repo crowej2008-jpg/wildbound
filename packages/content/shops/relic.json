@@ -1,0 +1,17 @@
+{
+  "id": "relic",
+  "name": "Relic Battlefield Shop",
+  "currency": "relicCoin",
+  "restock": { "type": "interval", "days": 7, "hourUtc": 0 },
+  "items": [
+    { "id": "relic.gold", "name": "Gold ×100,000", "price": 100, "grants": { "gold": 100000 }, "limit": 20 },
+    { "id": "relic.stone", "name": "Ascension Stone ×100", "price": 200, "grants": { "stone": 100 }, "limit": 10 },
+    { "id": "relic.liquid", "name": "Treasure Liquid ×200", "price": 250, "grants": { "treasureLiquid": 200 }, "limit": 10 },
+    { "id": "relic.refine", "name": "Treasure Refine Stone ×5", "price": 300, "grants": { "treasureRefine": 5 }, "limit": 10 },
+    { "id": "relic.wristband", "name": "Wristband Essence ×500", "price": 300, "grants": { "wristbandEssence": 500 }, "limit": 10 },
+    { "id": "relic.crystal", "name": "Crystal Essence ×300", "price": 300, "grants": { "crystalEssence": 300 }, "limit": 10 },
+    { "id": "relic.shard5", "name": "5★ Pokémon Shard ×10", "price": 500, "grants": { "pokemonShard5": 10 }, "limit": 5 },
+    { "id": "relic.premium", "name": "Premium ticket ×1", "price": 600, "grants": { "ticketPremium": 1 }, "limit": 5 },
+    { "id": "relic.awaken", "name": "Treasure Awakening Stone ×1", "price": 1200, "grants": { "treasureAwakenStone": 1 }, "limit": 2 }
+  ]
+}

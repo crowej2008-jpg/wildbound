@@ -5,7 +5,7 @@ import { dayKey, weekKey, type AccountState } from '@wildbound/engine';
  * distinct UTC days the account saved anything.
  */
 
-export type CounterKey = 'premiumDraws' | 'goldShopBuys' | 'worldBoss' | 'skyPillar' | 'rift' | 'ranked' | 'arenaWinsHigher' | 'weeklyTasks';
+export type CounterKey = 'premiumDraws' | 'goldShopBuys' | 'worldBoss' | 'skyPillar' | 'rift' | 'ranked' | 'arenaWinsHigher' | 'weeklyTasks' | 'originShards';
 
 type Counters = AccountState['counters'];
 

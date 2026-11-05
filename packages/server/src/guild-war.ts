@@ -2,6 +2,7 @@ import { activityPoints, dayKey, ghostRecords, rankDamage, weekKey, type Account
 import { buildEnemyTeam, buildWildTeam, fielded, runTeams, type BattleView } from './battle';
 import type { GameConfig } from './config';
 import { applyGrant } from './economy';
+import { grantTitleCards } from './titles';
 import { fail, ok, type Result } from './index';
 import { enemiesFor } from './pve/shared';
 
@@ -133,7 +134,7 @@ export function challengeGuildBoss(config: GameConfig, state: AccountState, now:
   return ok({ state: applyGrant(config, s, rewards), battle, damage, kills, rewards });
 }
 
-function tier(rows: { rank: number; rewards: Record<string, number> }[], rank: number) {
+function tier<R extends { rank: number }>(rows: R[], rank: number): R | undefined {
   return rank > 0 ? rows.find((r) => rank <= r.rank) : undefined;
 }
 
@@ -175,10 +176,12 @@ export function claimGuildWarSeason(config: GameConfig, state: AccountState, now
   if (gw.seasonClaimed === gw.lastWeek.week) return fail('invalid_input', 'already claimed');
   const t = config.guildWarRelic.guildWar;
   let rewards: Rewards = {};
-  for (const row of [tier(t.seasonRank, seasonRank(config, gw.lastWeek.week, gw.lastWeek.damage)), tier(t.guildRank, guildRank(config, gw.lastWeek.difficulty))])
-    if (row) for (const [k, v] of Object.entries(row.rewards)) rewards = { ...rewards, [k]: ((rewards as Record<string, number>)[k] ?? 0) + v };
+  const rows = [tier(t.seasonRank, seasonRank(config, gw.lastWeek.week, gw.lastWeek.damage)), tier(t.guildRank, guildRank(config, gw.lastWeek.difficulty))];
+  for (const row of rows) if (row) for (const [k, v] of Object.entries(row.rewards)) rewards = { ...rewards, [k]: ((rewards as Record<string, number>)[k] ?? 0) + v };
   if (Object.keys(rewards).length === 0) return fail('resource_locked', 'no reward at this rank');
-  return ok({ state: applyGrant(config, { ...s, guildWar: { ...gw, seasonClaimed: gw.lastWeek.week } }, rewards), rewards });
+  let next = applyGrant(config, { ...s, guildWar: { ...gw, seasonClaimed: gw.lastWeek.week } }, rewards);
+  for (const row of rows) if (row?.titleCard) next = grantTitleCards(next, row.titleCard, 1);
+  return ok({ state: next, rewards });
 }
 
 export interface GuildWarView {
