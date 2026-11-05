@@ -21,6 +21,7 @@ import type { RiftState } from '../rift/types';
 import type { MistyState } from '../misty/types';
 import type { FactionTowerState } from '../faction-tower/types';
 import type { BerryGroveState } from '../berry-grove/types';
+import type { DigSiteState } from '../dig-site';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -338,6 +339,8 @@ export interface AccountState {
   factionTower: FactionTowerState;
   /** M13.8: the Berry Grove garden, Guardian stage and today's fights (null until first opened). */
   berryGrove: BerryGroveState | null;
+  /** M13.9: the Dig Site wall, fossils, lab, storage and museum (null until first opened). */
+  digSite: DigSiteState | null;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }

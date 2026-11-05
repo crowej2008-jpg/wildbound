@@ -1,0 +1,1228 @@
+{
+ "_note": "M13.9 Dig Site — the owner's replacement for the Ultra Wormhole (2026-11-04): fossil-hunting walls, a curing lab and a museum. Mechanics follow the main series' underground digging; every number is a stand-in. docs/design/dig-site.md.",
+ "width": 13,
+ "height": 10,
+ "depthMin": 2,
+ "depthMax": 6,
+ "stability": 100,
+ "tools": {
+  "pick": {
+   "center": 2,
+   "edge": 1,
+   "diagonal": 0,
+   "shake": 3
+  },
+  "hammer": {
+   "center": 2,
+   "edge": 2,
+   "diagonal": 1,
+   "shake": 6
+  }
+ },
+ "itemsMin": 2,
+ "itemsMax": 4,
+ "bedrockMin": 2,
+ "bedrockMax": 5,
+ "bedrock": [
+  [
+   [
+    0,
+    0
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    1,
+    1
+   ]
+  ],
+  [
+   [
+    0,
+    0
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    2,
+    0
+   ]
+  ],
+  [
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ]
+  ],
+  [
+   [
+    0,
+    0
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    0,
+    1
+   ]
+  ],
+  [
+   [
+    0,
+    0
+   ]
+  ]
+ ],
+ "items": [
+  {
+   "id": "soul-blue",
+   "name": "Blue Soul Heart",
+   "kind": "soulHeart",
+   "quality": "blue",
+   "weight": 28,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "soul-purple",
+   "name": "Purple Soul Heart",
+   "kind": "soulHeart",
+   "quality": "purple",
+   "weight": 17,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "soul-orange",
+   "name": "Orange Soul Heart",
+   "kind": "soulHeart",
+   "quality": "orange",
+   "weight": 8,
+   "shape": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "soul-red",
+   "name": "Red Soul Heart",
+   "kind": "soulHeart",
+   "quality": "red",
+   "weight": 3,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "exp-small",
+   "name": "Soul Stone",
+   "kind": "exp",
+   "exp": 200,
+   "weight": 12,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "exp-large",
+   "name": "Great Soul Stone",
+   "kind": "exp",
+   "exp": 800,
+   "weight": 5,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "fossil-helix",
+   "name": "Helix Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "fossil-dome",
+   "name": "Dome Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "fossil-root",
+   "name": "Root Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "fossil-claw",
+   "name": "Claw Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "fossil-skull",
+   "name": "Skull Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "fossil-armor",
+   "name": "Armor Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "fossil-cover",
+   "name": "Cover Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "fossil-plume",
+   "name": "Plume Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "fossil-jaw",
+   "name": "Jaw Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "fossil-sail",
+   "name": "Sail Fossil",
+   "kind": "fossil",
+   "weight": 1.2,
+   "shape": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "fossil-old-amber",
+   "name": "Old Amber",
+   "kind": "fossil",
+   "weight": 0.6,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "treasure-fire-stone",
+   "name": "Fire Stone",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-water-stone",
+   "name": "Water Stone",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-thunder-stone",
+   "name": "Thunder Stone",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-leaf-stone",
+   "name": "Leaf Stone",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-moon-stone",
+   "name": "Moon Stone",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-sun-stone",
+   "name": "Sun Stone",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-red-shard",
+   "name": "Red Shard",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-blue-shard",
+   "name": "Blue Shard",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-yellow-shard",
+   "name": "Yellow Shard",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-green-shard",
+   "name": "Green Shard",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-star-piece",
+   "name": "Star Piece",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-heart-scale",
+   "name": "Heart Scale",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-rare-bone",
+   "name": "Rare Bone",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-oval-stone",
+   "name": "Oval Stone",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "treasure-everstone",
+   "name": "Everstone",
+   "kind": "treasure",
+   "weight": 1.1,
+   "shape": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  }
+ ],
+ "labSlots": 3,
+ "cure": [
+  {
+   "fossil": "fossil-helix",
+   "hours": 2,
+   "gold": 100000
+  },
+  {
+   "fossil": "fossil-dome",
+   "hours": 2,
+   "gold": 100000
+  },
+  {
+   "fossil": "fossil-root",
+   "hours": 2,
+   "gold": 100000
+  },
+  {
+   "fossil": "fossil-claw",
+   "hours": 2,
+   "gold": 100000
+  },
+  {
+   "fossil": "fossil-skull",
+   "hours": 2,
+   "gold": 100000
+  },
+  {
+   "fossil": "fossil-armor",
+   "hours": 2,
+   "gold": 100000
+  },
+  {
+   "fossil": "fossil-cover",
+   "hours": 4,
+   "gold": 250000
+  },
+  {
+   "fossil": "fossil-plume",
+   "hours": 4,
+   "gold": 250000
+  },
+  {
+   "fossil": "fossil-jaw",
+   "hours": 4,
+   "gold": 250000
+  },
+  {
+   "fossil": "fossil-sail",
+   "hours": 4,
+   "gold": 250000
+  },
+  {
+   "fossil": "fossil-old-amber",
+   "hours": 8,
+   "gold": 500000
+  }
+ ],
+ "duplicateExp": {
+  "fossil": 400,
+  "treasure": 150
+ },
+ "pieces": [
+  {
+   "id": "fossil-helix",
+   "group": "shells",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-dome",
+   "group": "shells",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-root",
+   "group": "roots",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-claw",
+   "group": "roots",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-skull",
+   "group": "heads",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-armor",
+   "group": "heads",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-cover",
+   "group": "ancient",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-plume",
+   "group": "ancient",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-jaw",
+   "group": "ancient",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-sail",
+   "group": "ancient",
+   "hp": 3000,
+   "atk": 450
+  },
+  {
+   "id": "fossil-old-amber",
+   "group": "amber",
+   "hp": 6000,
+   "atk": 900
+  },
+  {
+   "id": "treasure-fire-stone",
+   "group": "stones",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-water-stone",
+   "group": "stones",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-thunder-stone",
+   "group": "stones",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-leaf-stone",
+   "group": "stones",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-moon-stone",
+   "group": "stones",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-sun-stone",
+   "group": "stones",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-red-shard",
+   "group": "shards",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-blue-shard",
+   "group": "shards",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-yellow-shard",
+   "group": "shards",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-green-shard",
+   "group": "shards",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-star-piece",
+   "group": "jewels",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-heart-scale",
+   "group": "jewels",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-rare-bone",
+   "group": "jewels",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-oval-stone",
+   "group": "jewels",
+   "hp": 1500,
+   "atk": 220
+  },
+  {
+   "id": "treasure-everstone",
+   "group": "jewels",
+   "hp": 1500,
+   "atk": 220
+  }
+ ],
+ "groups": [
+  {
+   "id": "shells",
+   "name": "Ancient Shells",
+   "pct": 0.01
+  },
+  {
+   "id": "roots",
+   "name": "Roots and Claws",
+   "pct": 0.01
+  },
+  {
+   "id": "heads",
+   "name": "Heads and Armor",
+   "pct": 0.01
+  },
+  {
+   "id": "ancient",
+   "name": "Ancient Seas and Skies",
+   "pct": 0.02
+  },
+  {
+   "id": "amber",
+   "name": "Amber",
+   "pct": 0.01
+  },
+  {
+   "id": "stones",
+   "name": "Evolution Stones",
+   "pct": 0.015
+  },
+  {
+   "id": "shards",
+   "name": "Coloured Shards",
+   "pct": 0.01
+  },
+  {
+   "id": "jewels",
+   "name": "Jewels",
+   "pct": 0.015
+  }
+ ]
+}

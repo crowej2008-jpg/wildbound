@@ -28,6 +28,7 @@ import type { RiftView } from './rift-view';
 import type { MistyView } from './misty-view';
 import type { FactionTowerView } from './faction-tower-view';
 import type { BerryGroveView } from './berry-grove-view';
+import type { DigSiteView } from './dig-site-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -260,6 +261,12 @@ export interface GroveFightResult {
 export interface GroveHarvestResult {
   berries: string[];
   rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** A Dig Site action (M13.9): what a finished wall paid, if this action ended it. */
+export interface DigActionResult {
+  finds: { id: string; name: string; kind: string }[];
   snapshot: AccountSnapshot;
 }
 
@@ -568,6 +575,15 @@ export interface GameServer {
   harvestGrove(plot?: number): Promise<Result<GroveHarvestResult>>;
   challengeGroveGuardian(seed?: number): Promise<Result<GroveFightResult>>;
   fightGroveBoss(seed?: number): Promise<Result<GroveFightResult>>;
+  /** M13.9 Dig Site. */
+  getDigSite(): Promise<Result<DigSiteView>>;
+  startDigWall(): Promise<Result<DigActionResult>>;
+  strikeDigWall(tool: 'pick' | 'hammer', x: number, y: number): Promise<Result<DigActionResult>>;
+  leaveDigWall(): Promise<Result<DigActionResult>>;
+  cureFossil(fossil: string): Promise<Result<AccountSnapshot>>;
+  collectCured(): Promise<Result<AccountSnapshot>>;
+  displayMuseumPiece(piece: string): Promise<Result<AccountSnapshot>>;
+  donateSpares(): Promise<Result<AccountSnapshot>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -638,6 +654,8 @@ export * from './faction-tower-view';
 export * from './faction-tower';
 export * from './berry-grove-view';
 export * from './berry-grove';
+export * from './dig-site-view';
+export * from './dig-site';
 export * from './plates';
 export * from './trinkets';
 export * from './berries';

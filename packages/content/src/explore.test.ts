@@ -16,7 +16,7 @@ const EXPECTED_GATES: Record<string, unknown[]> = {
     { kind: 'campaign', chapter: 3, stage: 10 },
     { kind: 'level', level: 10 },
   ],
-  'ultra-wormhole': [
+  'dig-site': [
     { kind: 'campaign', chapter: 10, stage: 10 },
     { kind: 'level', level: 50 },
   ],
@@ -32,7 +32,7 @@ describe('explore content', () => {
       'misty-woods',
       'pet-home',
       'berry-grove',
-      'ultra-wormhole',
+      'dig-site',
     ]);
     expect(new Set(EXPLORE.modes.map((mode) => mode.name)).size).toBe(8);
   });

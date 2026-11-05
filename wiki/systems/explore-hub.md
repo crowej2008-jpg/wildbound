@@ -27,6 +27,6 @@ sources: [docs/design/explore.md, docs/ASSUMPTIONS.md M13 #43]
 | [Misty Woods](misty-woods.md) | 13.6 |
 | [Faction Tower](faction-tower.md) | 13.7 |
 | [Berry Grove](berry-grove.md) (replaced the Island Challenge) | 13.8 |
-| [Ultra Wormhole](ultra-wormhole.md) | 13.9 |
+| [Dig Site](dig-site.md) (replaced the Ultra Wormhole) | 13.9 |
 
 Gates: [M13 scope and gates](../decisions/m13-scope-and-gates.md).

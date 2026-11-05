@@ -34,7 +34,7 @@ describe('Explore hub view', () => {
     expect(byId.get('misty-woods')?.unlocked).toBe(true);
     expect(byId.get('berry-grove')?.unlocked).toBe(true);
     expect(byId.get('rift-arena')?.unlocked).toBe(true);
-    expect(byId.get('ultra-wormhole')?.unlocked).toBe(true);
+    expect(byId.get('dig-site')?.unlocked).toBe(true);
     expect(byId.get('hoopa-vault')?.unlocked).toBe(true);
     expect(byId.get('sky-pillar')?.unlocked).toBe(false);
     expect(byId.get('faction-tower')?.unlocked).toBe(false);
@@ -42,13 +42,11 @@ describe('Explore hub view', () => {
     expect(byId.get('faction-tower')?.gates[0]?.stageId).toBe('c28-10');
   });
 
-  it('carries daily and weekly reset countdowns', () => {
+  it('carries daily reset countdowns', () => {
     const { config, account } = state();
     const view = buildExploreView(config, account, NOW);
     const byId = new Map(view.modes.map((mode) => [mode.id, mode]));
     expect(byId.get('pet-home')?.nextResetMs).toBeGreaterThan(0);
     expect(byId.get('pet-home')?.nextResetMs).toBeLessThanOrEqual(DAY);
-    expect(byId.get('ultra-wormhole')?.nextResetMs).toBeGreaterThan(DAY);
-    expect(byId.get('ultra-wormhole')?.nextResetMs).toBeLessThanOrEqual(7 * DAY);
   });
 });

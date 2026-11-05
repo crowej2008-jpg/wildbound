@@ -38,6 +38,7 @@ import { cardOf, type GameConfig, type SpeciesMeta } from './config';
 import { titleFoldFor } from './titles';
 import { tokenPvpLines } from './tokens';
 import { fashionLines } from './fashion';
+import { museumLines } from './dig-site';
 import type { TowerRuleJson } from '@wildbound/content';
 
 /**
@@ -140,6 +141,7 @@ function accountFold(config: GameConfig, state: AccountState): TitleFold | undef
   const lines = [
     ...(titleFoldFor(config, state)?.lines ?? []),
     ...fashionLines(config, state, (id) => Boolean(state.titles.owned[id])),
+    ...museumLines(config, state),
   ];
   return lines.length > 0 ? { lines } : undefined;
 }

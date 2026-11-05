@@ -1221,3 +1221,11 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      contest; source `island_travel_*`) is dropped. Clash of Isles (`island_new_*`, M14) and its Island Shop /
      Tropical Shells are a different mode and stay planned. Four seed currencies, squad
      `berryGrove`, save v44 (reset).
+
+105. **M13.9 Dig Site replaces the Ultra Wormhole (owner, 2026-11-04).** No battles; the main source of soul hearts.
+     Owner's rules: fossil-hunting like the main series, walls free and unlimited ("the same system that pokemon
+     games use"), fossils and treasures besides soul hearts, a lab that cures fossils on a timer for a cost, a museum
+     whose pieces give stats with more for full groups. Agent's design and numbers are stand-ins
+     (docs/design/dig-site.md): pick / hammer wear and shake, stability 100, item weights and shapes, 3 lab slots,
+     2–8 h and 100,000–500,000 Gold cures, 26 pieces in 8 groups, spares → Soul-heart EXP. Soul hearts come out at
+     0★ with a random set and socket (Wildbound has 9 of the source's 18 sets). Save v45 (reset).

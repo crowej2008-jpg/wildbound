@@ -1410,3 +1410,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - Owner: the Island Challenge is swapped for the Berry Grove (garden + battles). Garden: 6 plots, four seed tiers
   growing into berries + Berry Essence. Grove Guardians: 100 stages, 10 wins a day, first clears pay seeds, Mulch
   and Reforge Potions. Grove Boss: daily, 3 fights, pays by the share of its HP taken. Save v44. ASSUMPTIONS #104.
+
+## M13.9 — Dig Site (replaces the Ultra Wormhole, 2026-11-04)
+
+- Owner: the Ultra Wormhole is swapped for the Dig Site — free, unlimited fossil-digging walls (pick and hammer, a
+  collapse meter) for soul hearts, Soul Stones, fossils and treasures; a timed, Gold-priced fossil lab; a museum
+  whose pieces and full groups add account-wide HP / ATK. Save v45. ASSUMPTIONS #105.

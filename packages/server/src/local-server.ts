@@ -114,6 +114,7 @@ import {
   type FactionTowerClimbResult,
   type GroveFightResult,
   type GroveHarvestResult,
+  type DigActionResult,
   type SkyPillarSweepResult,
   type StageBattleResult,
   type SummonResult,
@@ -157,6 +158,17 @@ import {
   type GroveFight,
 } from './berry-grove';
 import { buildBerryGroveView, type BerryGroveView } from './berry-grove-view';
+import {
+  collectCured as collectCuredAction,
+  cureFossil as cureFossilAction,
+  displayPiece,
+  donateSpares as donateSparesAction,
+  leaveDigWall as leaveDigWallAction,
+  startWall,
+  strikeWall,
+  type DigResult,
+} from './dig-site';
+import { buildDigSiteView, type DigSiteView } from './dig-site-view';
 import {
   buyShopOfferAction,
   claimLevelAction,
@@ -1711,6 +1723,69 @@ export class LocalServer implements GameServer {
     const loaded = await this.load();
     if (!loaded.ok) return loaded;
     return this.commitGroveFight(fightGroveBossAction(this.config, loaded.value, this.now(loaded.value), seed));
+  }
+
+  async getDigSite(): Promise<Result<DigSiteView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildDigSiteView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  private async commitDig(outcome: Result<DigResult>): Promise<Result<DigActionResult>> {
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const committed = await this.commit(outcome.value.state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ finds: outcome.value.finds, snapshot: committed.value });
+  }
+
+  async startDigWall(): Promise<Result<DigActionResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commitDig(startWall(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async strikeDigWall(tool: 'pick' | 'hammer', x: number, y: number): Promise<Result<DigActionResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commitDig(strikeWall(this.config, loaded.value, this.now(loaded.value), tool, x, y));
+  }
+
+  async leaveDigWall(): Promise<Result<DigActionResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return this.commitDig(leaveDigWallAction(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async cureFossil(fossil: string): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = cureFossilAction(this.config, loaded.value, this.now(loaded.value), fossil);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async collectCured(): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = collectCuredAction(this.config, loaded.value, this.now(loaded.value));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value.state);
+  }
+
+  async displayMuseumPiece(piece: string): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = displayPiece(this.config, loaded.value, this.now(loaded.value), piece);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async donateSpares(): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = donateSparesAction(this.config, loaded.value, this.now(loaded.value));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value.state);
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

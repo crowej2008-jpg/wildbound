@@ -90,6 +90,7 @@ export {
   MISTY,
   FACTION_TOWER,
   BERRY_GROVE,
+  DIG_SITE,
   GACHA_TUNING,
 } from './tuning';
 export type {
@@ -104,6 +105,7 @@ export type {
   MistyJson,
   FactionTowerJson,
   BerryGroveJson,
+  DigSiteJson,
 } from './tuning';
 export { petHomeSchema } from './pet-home-schema';
 export { skyPillarSchema } from './sky-pillar-schema';
@@ -112,6 +114,7 @@ export { riftSchema } from './rift-schema';
 export { mistySchema } from './misty-schema';
 export { factionTowerSchema } from './faction-tower-schema';
 export { berryGroveSchema } from './berry-grove-schema';
+export { digSiteSchema } from './dig-site-schema';
 export type {
   SkyPillarConditionJson,
   SkyPillarStageJson,

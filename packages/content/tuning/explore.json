@@ -99,20 +99,20 @@
       "features": ["6 garden plots, four seed tiers", "100 Grove Guardian stages", "A daily Grove Boss for berry materials"]
     },
     {
-      "id": "ultra-wormhole",
-      "name": "Ultra Wormhole",
-      "sigil": "UW",
-      "tagline": "Hire across the breach before the window closes.",
-      "description": "A weekly wormhole window with 135 hires, score thresholds, a hero bag and an album. Hire the right answers before the wormhole seals.",
-      "scale": "135 hires",
-      "status": "planned",
+      "id": "dig-site",
+      "name": "Dig Site",
+      "sigil": "DS",
+      "tagline": "Pick, hammer, and don't bring the wall down.",
+      "description": "Dig buried soul hearts, fossils and treasures out of rock walls before they collapse. Cure fossils in the lab and fill the museum for account-wide stats.",
+      "scale": "Unlimited walls",
+      "status": "live",
       "arrivesIn": "13.9",
-      "reset": "weekly",
+      "reset": "permanent",
       "gates": [
         { "kind": "campaign", "chapter": 10, "stage": 10 },
         { "kind": "level", "level": 50 }
       ],
-      "features": ["135 hire slots", "Weekly score rewards", "Hero bag and album"]
+      "features": ["Free, unlimited walls", "Soul hearts, fossils and treasures", "Fossil lab and a museum with group bonuses"]
     }
   ]
 }

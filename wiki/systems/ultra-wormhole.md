@@ -2,12 +2,14 @@
 title: Ultra Wormhole
 type: system
 milestone: M13.9
-status: planned
-updated: 2026-10-31
+status: replaced
+updated: 2026-11-04
 sources: [opencode-session-2026-10 msg 80, docs/SCOPE.md]
 ---
 
 # Ultra Wormhole (M13.9) — gate: clear 10-10 + Lv50
+
+> **Replaced 2026-11-04** by the [Dig Site](dig-site.md) (owner; [decision](../decisions/dig-site-replaces-ultra-wormhole.md)). Kept for the record.
 
 - Weekly, Mon 00:10 → Sun 23:59.
 - 18 nodes: 2 hire shops + 16 fights; 3 free resets/day, then gems.
