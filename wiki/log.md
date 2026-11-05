@@ -349,3 +349,4 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-05] update | M14.3 Pokémon Paradise
 - From poke_catching + the owner's wiki: Parks, explore / track / catch, Dex stars, gear, shop (ASSUMPTIONS #110, save v48).
+- Owner: Shovel Carnival (a recurring prize-wheel event) moves to M15 with the other events.
