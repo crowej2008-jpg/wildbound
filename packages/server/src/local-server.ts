@@ -110,6 +110,7 @@ import {
   type HoopaRouteResult,
   type HoopaGuardianResult,
   type RiftBattleResult,
+  type MistyStepResultView,
   type SkyPillarSweepResult,
   type StageBattleResult,
   type SummonResult,
@@ -139,6 +140,8 @@ import {
 import { buildHoopaVaultView, type HoopaVaultView } from './hoopa-vault-view';
 import { buyRiftMerchant as buyRiftMerchantAction, challengeRift as challengeRiftAction, claimRiftChestAction, prepareRift } from './rift';
 import { buildRiftView, type RiftView } from './rift-view';
+import { hireMisty as hireMistyAction, mistyShop as mistyShopAction, prepareMisty, stepMisty as stepMistyAction } from './misty';
+import { buildMistyView, type MistyView } from './misty-view';
 import {
   buyShopOfferAction,
   claimLevelAction,
@@ -1546,6 +1549,52 @@ export class LocalServer implements GameServer {
     const outcome = claimRiftChestAction(this.config, loaded.value, this.now(loaded.value), challenges);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commitClaim(outcome.value.state, outcome.value.reward);
+  }
+
+  async getMisty(): Promise<Result<MistyView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const now = this.now(loaded.value);
+    const prepared = prepareMisty(this.config, loaded.value, now);
+    if (prepared.changed) {
+      const committed = await this.commit(prepared.state);
+      if (!committed.ok) return committed;
+    }
+    return ok(buildMistyView(this.config, prepared.state, now));
+  }
+
+  async stepMisty(nodeId: number, seed?: number): Promise<Result<MistyStepResultView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = stepMistyAction(this.config, loaded.value, this.now(loaded.value), nodeId, seed);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const value = outcome.value;
+    const next = value.win ? this.withQuest(value.state, 'winBattle') : value.state;
+    const committed = await this.commit(next);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({
+      tile: value.tile,
+      ...(value.battle ? { battle: value.battle } : {}),
+      ...(value.win !== undefined ? { win: value.win } : {}),
+      rewards: value.rewards,
+      snapshot: committed.value,
+    });
+  }
+
+  async hireMisty(speciesId: string): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = hireMistyAction(this.config, loaded.value, this.now(loaded.value), speciesId);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
+  }
+
+  async mistyShop(kind: 'heal' | 'revive', unitId?: string): Promise<Result<AccountSnapshot>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = mistyShopAction(this.config, loaded.value, this.now(loaded.value), kind, unitId);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commit(outcome.value);
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

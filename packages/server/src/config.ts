@@ -27,6 +27,7 @@ import {
   SKY_PILLAR,
   HOOPA_VAULT,
   RIFT,
+  MISTY,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -51,6 +52,7 @@ import type {
   SkyPillarJson,
   HoopaVaultJson,
   RiftJson,
+  MistyJson,
   PveJson,
   PvpJson,
   TitlesJson,
@@ -144,6 +146,8 @@ export interface GameConfig {
   hoopaVault: HoopaVaultJson;
   /** M13.4 Rift Barriers. */
   rift: RiftJson;
+  /** M13.6 Misty Woods. */
+  misty: MistyJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -254,6 +258,7 @@ export function buildConfig(): GameConfig {
     skyPillar: SKY_PILLAR,
     hoopaVault: HOOPA_VAULT,
     rift: RIFT,
+    misty: MISTY,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

@@ -115,7 +115,10 @@ export function runBattle(config: BattleConfig): BattleResult {
 function spawn(specs: SpecInput[], side: 'attackers' | 'defenders', settings: CombatSettings): Combatant[] {
   return specs.map((spec) => {
     const sheet = resolveSheet(spec);
-    const rage = spec.kit.talents?.rageStart ?? (spec.kit.class === 'striker' ? settings.rageStrikerStart : settings.rageStart);
+    const rage =
+      spec.startRage ?? spec.kit.talents?.rageStart ?? (spec.kit.class === 'striker' ? settings.rageStrikerStart : settings.rageStart);
+    const startHp =
+      spec.startHpFraction === undefined ? sheet.hp : Math.max(1, Math.round(sheet.hp * Math.min(1, spec.startHpFraction)));
     return {
       key: `${side}:${spec.position}`,
       id: spec.id,
@@ -128,7 +131,7 @@ function spawn(specs: SpecInput[], side: 'attackers' | 'defenders', settings: Co
       sheet,
       base: sheet,
       maxHp: sheet.hp,
-      hp: sheet.hp,
+      hp: startHp,
       shieldHp: 0,
       rage,
         alive: true,

@@ -18,6 +18,7 @@ import type { PetHomeState } from '../pet-home/types';
 import type { SkyPillarState } from '../sky-pillar/types';
 import type { HoopaVaultState } from '../hoopa-vault/types';
 import type { RiftState } from '../rift/types';
+import type { MistyState } from '../misty/types';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -27,7 +28,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -38,6 +39,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'skyPillar',
   'hoopaVault',
   'rift',
+  'misty',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -313,6 +315,8 @@ export interface AccountState {
   hoopaVault: HoopaVaultState;
   /** M13.4: Rift Barriers season progress and lives. */
   rift: RiftState;
+  /** M13.6: the Misty Woods run (null until first opened). */
+  misty: MistyState | null;
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }
@@ -464,6 +468,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     skyPillar: emptySquad(),
     hoopaVault: emptySquad(),
     rift: emptySquad(),
+    misty: emptySquad(),
   };
 }
 
@@ -477,6 +482,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     skyPillar: 'balanced',
     hoopaVault: 'balanced',
     rift: 'balanced',
+    misty: 'balanced',
   };
 }
 

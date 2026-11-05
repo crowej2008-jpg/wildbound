@@ -1186,3 +1186,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 101. **Owner calls, 2026-11-04.** Hoopa's Vault orb colours stay as built (the #98 review item is closed: "drop the
      question"). Rift Predictions are cut ("super useless and neverused"); 13.5 is the Ring Battle only.
      The Ring Battle is cut too ("cut it"): 13.5 is dropped and the Rift Arena is Rift Barriers only.
+
+102. **M13.6 Misty Woods (2026-11-04; owner: "get rid of the runes but do the rest").** Built from the source's maze
+     tables: the 96-node map, floor rates, first-win Forest Coins (+10 Diamonds on bosses), the chapter-4 gate
+     (story 20-10), the 2-day reset; runes cut. Readings: tile ids 4 / 5 / 7 = tombstone / fountain / shop (by
+     elimination), `rate` = enemy stat %, enemies at the team's average level; `reward_rate` not copied. Stand-ins:
+     fountain 30 %, revive 50 %, shop 50 / 100 Diamonds, hire pool (unowned Supreme / Mythic). The battle engine
+     gained a starting HP fraction and Rage per unit. New squad `misty`, save v42 (reset). docs/design/misty-woods.md.

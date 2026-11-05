@@ -316,3 +316,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: Time Credits no longer drop in the Rift (ASSUMPTIONS #100).
 - Owner: the Vault's orb colours stay as built; Rift Predictions are cut, so 13.5 is the Ring Battle only (ASSUMPTIONS #101).
 - Owner: the Ring Battle is cut; 13.5 is dropped. Next: 13.6 Misty Woods.
+
+## [2026-11-04] update | M13.6 Misty Woods
+- Built from the source's maze tables without runes (owner): map, carried HP / Rage, tiles, Forest Coins, 2-day reset
+  (ASSUMPTIONS #102, save v42).

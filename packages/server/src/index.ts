@@ -25,6 +25,7 @@ import type { PetHomeView } from './pet-home-view';
 import type { SkyPillarView } from './sky-pillar-view';
 import type { HoopaVaultView } from './hoopa-vault-view';
 import type { RiftView } from './rift-view';
+import type { MistyView } from './misty-view';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
 import type { RankedView } from './pvp-ranked-view';
 import type { PvpHubView } from './pvp-hub-view';
@@ -219,6 +220,15 @@ export interface RiftBattleResult {
   battle: BattleView;
   win: boolean;
   floor: number;
+  rewards: Rewards;
+  snapshot: AccountSnapshot;
+}
+
+/** A Misty Woods step (M13.6): a fight (with its replay) or a resolved tile. */
+export interface MistyStepResultView {
+  tile: string;
+  battle?: BattleView;
+  win?: boolean;
   rewards: Rewards;
   snapshot: AccountSnapshot;
 }
@@ -513,6 +523,11 @@ export interface GameServer {
   challengeRift(seed?: number): Promise<Result<RiftBattleResult>>;
   claimRiftChest(challenges: number): Promise<Result<ClaimResult>>;
   buyRiftMerchant(id: string): Promise<Result<ClaimResult>>;
+  /** M13.6 Misty Woods. */
+  getMisty(): Promise<Result<MistyView>>;
+  stepMisty(nodeId: number, seed?: number): Promise<Result<MistyStepResultView>>;
+  hireMisty(speciesId: string): Promise<Result<AccountSnapshot>>;
+  mistyShop(kind: 'heal' | 'revive', unitId?: string): Promise<Result<AccountSnapshot>>;
   /** Re-roll the day's three matched Arena opponents (M10). */
   refreshArena(): Promise<Result<AccountSnapshot>>;
   /** Fight one of the day's three matched Arena opponents (M10). */
@@ -577,6 +592,8 @@ export * from './hoopa-vault-view';
 export * from './hoopa-vault';
 export * from './rift-view';
 export * from './rift';
+export * from './misty-view';
+export * from './misty';
 export * from './plates';
 export * from './trinkets';
 export * from './berries';

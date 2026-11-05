@@ -63,7 +63,7 @@
       "tagline": "Follow the rune-light through the fog.",
       "description": "A fogbound rune hunt with a revival crystal, a redeem shop and a 244-node rune map. Each node asks for a different squad answer.",
       "scale": "244 runes",
-      "status": "planned",
+      "status": "live",
       "arrivesIn": "13.6",
       "reset": "daily",
       "gates": [{ "kind": "campaign", "chapter": 3, "stage": 10 }],

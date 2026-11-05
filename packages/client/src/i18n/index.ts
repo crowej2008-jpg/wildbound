@@ -310,6 +310,7 @@ export const en = {
   'squad.mode.skyPillar': 'Sky Pillar',
   'squad.mode.hoopaVault': "Hoopa's Vault",
   'squad.mode.rift': 'Rift Arena',
+  'squad.mode.misty': 'Misty Woods',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -869,6 +870,38 @@ export const en = {
   'skyPillar.title': 'Sky Pillar',
   'hoopa.title': "Hoopa's Vault",
   'rift.title': 'Rift Arena',
+  'misty.title': 'Misty Woods',
+  'misty.locked': 'Misty Woods opens after story 3-10.',
+  'misty.chapter': 'Chapter',
+  'misty.resets': 'Resets in',
+  'misty.ch4Locked': 'Chapter 4 opens after story 20-10',
+  'misty.team': 'Your team',
+  'misty.helper': 'helper',
+  'misty.fallen': 'fallen',
+  'misty.hireTitle': 'Hire a helper',
+  'misty.hire': 'Hire',
+  'misty.hired': 'A helper joined your team.',
+  'misty.shopTitle': 'Diamond shop',
+  'misty.buyHeal': 'Heal everyone ({n} Diamonds)',
+  'misty.buyRevive': 'Revive one ({n} Diamonds)',
+  'misty.healed': 'Your team is fully healed.',
+  'misty.revived': 'A fallen Pokémon is back.',
+  'misty.map': 'The woods',
+  'misty.floor': 'Floor',
+  'misty.tile.fight': 'Fight',
+  'misty.tile.boss': 'Boss',
+  'misty.tile.start': 'Start',
+  'misty.tile.tombstone': 'Tombstone',
+  'misty.tile.fountain': 'Fountain',
+  'misty.tile.hire': 'Hire',
+  'misty.tile.shop': 'Shop',
+  'misty.resolved.fountain': 'The fountain healed your team.',
+  'misty.resolved.tombstone': 'The tombstone revived a fallen Pokémon (if any).',
+  'misty.resolved.hire': 'Helpers are waiting to be hired.',
+  'misty.resolved.shop': 'You reached the Diamond shop.',
+  'misty.won': 'Victory! Your team carries its HP forward.',
+  'misty.lost': 'Defeat. Knocked-out Pokémon stay down; try again with the rest.',
+  'misty.back': 'Back to the woods',
   'rift.locked': 'Rift Arena opens after story 10-10 and trainer level 10.',
   'rift.seasonEnds': 'Season ends in',
   'rift.seasonOpens': 'Season closed. Opens in',
@@ -1219,7 +1252,7 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1230,6 +1263,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   skyPillar: en['squad.mode.skyPillar'],
   hoopaVault: en['squad.mode.hoopaVault'],
   rift: en['squad.mode.rift'],
+  misty: en['squad.mode.misty'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

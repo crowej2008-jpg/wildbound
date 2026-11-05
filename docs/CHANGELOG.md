@@ -1390,3 +1390,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
   the source's orb boxes for Diamonds). ASSUMPTIONS #98.
 - Rift hiring, season bans and Time Credit upgrades cut (owner); 13.4 closed. ASSUMPTIONS #99.
 - Rift: Time Credits no longer drop (owner). ASSUMPTIONS #100.
+
+## M13.6 — Misty Woods (2026-11-04)
+
+- The source's 4-chapter maze: carried HP and Rage, fights, bosses, fountains, tombstones, the Diamond shop, hire
+  tiles, first-win Forest Coins, 2-day reset. Runes cut (owner). Engine: starting HP / Rage per unit. Save v42.
+  ASSUMPTIONS #102.

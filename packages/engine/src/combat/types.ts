@@ -649,6 +649,10 @@ export interface SpecInput {
   damageMods?: DamageMod[];
   /** R4: stat changes from Potential, applied on top of the kit's talent stat mods. */
   statMods?: StatMod[];
+  /** M13.6: start the fight with this fraction of max HP (0 < f ≤ 1; Misty Woods carries HP between fights). */
+  startHpFraction?: number;
+  /** M13.6: start the fight with this much Rage instead of the class default. */
+  startRage?: number;
 }
 
 /** "DMG BST to [faction]": extra damage against defenders of that faction (0.25 = 25%). */

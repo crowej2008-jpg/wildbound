@@ -206,7 +206,7 @@ export function fielded(state: AccountState, mode: SquadMode): WildInstance[] {
   return picked;
 }
 
-interface BuiltTeam {
+export interface BuiltTeam {
   specs: SpecInput[];
   meta: Map<string, { name: string; speciesId: string; className: WildClass; stage: number; power: number }>;
   power: number;
@@ -364,16 +364,19 @@ function unitSeeds(
   defenders: BuiltTeam,
 ): BattleUnitSeed[] {
   return result.units.map((u) => {
-    const info = (u.side === 'attackers' ? attackers : defenders).meta.get(u.key);
+    const team = u.side === 'attackers' ? attackers : defenders;
+    const info = team.meta.get(u.key);
+    const spec = team.specs.find((s) => `${u.side}:${s.position}` === u.key);
     const className: WildClass = info?.className ?? 'striker';
+    const startHp = spec?.startHpFraction === undefined ? u.maxHp : Math.max(1, Math.round(u.maxHp * Math.min(1, spec.startHpFraction)));
     return {
       key: u.key,
       side: u.side,
       position: u.position,
-      hp: u.maxHp,
+      hp: startHp,
       maxHp: u.maxHp,
       shield: 0,
-      rage: rageStart(className),
+      rage: spec?.startRage ?? rageStart(className),
       alive: true,
       buffs: [],
       name: info?.name ?? u.id,
@@ -385,7 +388,7 @@ function unitSeeds(
   });
 }
 
-interface RunViewOptions {
+export interface RunViewOptions {
   seed: number;
   mode: BattleModeLabel;
   battleId: string;
@@ -395,6 +398,11 @@ interface RunViewOptions {
   strategies?: BattleStrategies;
   /** R8: a PvP battle (Arena, Ranked): the engine's PvP factor applies. */
   pvp?: boolean;
+}
+
+/** M13.6: run a fight between two already-built teams (Misty Woods builds its own team with carried HP). */
+export function runTeams(attackers: BuiltTeam, defenders: BuiltTeam, opts: RunViewOptions): BattleView | null {
+  return runView(attackers, defenders, opts);
 }
 
 function runView(attackers: BuiltTeam, defenders: BuiltTeam, opts: RunViewOptions): BattleView | null {
