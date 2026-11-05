@@ -1444,3 +1444,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 
 - The source's catching mode: 14-day Parks, stamina, explore / track / throw, Poké / Advanced / Master Balls, the Dex
   and its star rewards, three gear pieces and scene unlocks, the Park shop. Save v48. ASSUMPTIONS #110.
+
+## M14.4 — Joint Team Battles + Wild Area (2026-11-05)
+
+- Weekly squad battles against CPU rival squads (Team Points, milestones, season ranks, shop, squad skills) and the
+  Wild Area Dynamax raids (energy, three zones, events, multipliers, fragments, bosses, teleporters). Save v49.
+  ASSUMPTIONS #111.

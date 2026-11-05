@@ -30,6 +30,7 @@ import type { FactionTowerView } from './faction-tower-view';
 import type { BerryGroveView } from './berry-grove-view';
 import type { DigSiteView } from './dig-site-view';
 import type { ParadiseView } from './paradise-view';
+import type { JointTeamView } from './joint-team-view';
 import type { VictoryRoadView } from './victory-road';
 import type { KingsTrialView } from './kings-trial';
 import type { ArenaRankingsView, ArenaView } from './pvp-view';
@@ -596,6 +597,19 @@ export interface GameServer {
   upgradeParadiseGear(type: number): Promise<Result<AccountSnapshot>>;
   claimParadiseStars(stars: number): Promise<Result<ClaimResult>>;
   buyParadiseShop(id: number): Promise<Result<ClaimResult>>;
+  /** M14.4 Joint Team Battles + Wild Area. */
+  getJointTeam(): Promise<Result<JointTeamView>>;
+  challengeJointSquad(index: number, seed?: number): Promise<Result<{ battle: BattleView; win: boolean; points: number; rewards: Rewards; snapshot: AccountSnapshot }>>;
+  refreshJointOpponents(): Promise<Result<AccountSnapshot>>;
+  claimJointMilestone(kind: 'p' | 's', at: number): Promise<Result<ClaimResult>>;
+  claimJointSeason(): Promise<Result<ClaimResult>>;
+  buyJointShop(id: number): Promise<Result<ClaimResult>>;
+  levelSquadSkill(field: string): Promise<Result<AccountSnapshot>>;
+  exploreWild(rate: number, seed?: number): Promise<Result<{ event: string; battle?: BattleView; win?: boolean; points: number; rewards: Rewards; fragment?: string; snapshot: AccountSnapshot }>>;
+  guessWild(success: boolean): Promise<Result<{ caught: boolean; right: boolean; points: number; snapshot: AccountSnapshot }>>;
+  teleportWild(): Promise<Result<AccountSnapshot>>;
+  useWildEnergyCan(): Promise<Result<AccountSnapshot>>;
+  claimWildSeason(): Promise<Result<ClaimResult>>;
   /** M14.1 Victory Road. */
   getVictoryRoad(): Promise<Result<VictoryRoadView>>;
   claimVictoryChest(gym: number, progress: number): Promise<Result<ClaimResult>>;
@@ -682,6 +696,8 @@ export * from './dig-site-view';
 export * from './dig-site';
 export * from './paradise-view';
 export * from './paradise';
+export * from './joint-team-view';
+export * from './joint-team';
 export * from './victory-road';
 export * from './kings-trial';
 export * from './counters';

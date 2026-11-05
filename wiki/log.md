@@ -355,3 +355,7 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 - Owner: M14A becomes the new **M15** (Account systems III); old M15–M20 move back one (M16 guild / merge / events with
   Shovel Carnival, M17 Guild War + Relic, M18 cross-server PvP, M19 visuals, M20 backend, M21 Build Lab; curves after
   M21). Historical records (changelog, assumptions, log) keep the old numbers.
+
+## [2026-11-05] update | M14.4 Joint Team + Wild Area
+- Built solo with CPU squads (ASSUMPTIONS #111, save v49). Owner asked for M14–M17 autonomously with recommended
+  options; decisions in docs/design/m14-m17-decisions.md.

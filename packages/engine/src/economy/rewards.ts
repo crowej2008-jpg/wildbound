@@ -74,6 +74,13 @@ export interface Rewards {
   ballAdvanced?: number;
   ballMaster?: number;
   scanner?: number;
+  /** M14.4 Joint Team. */
+  squadCoin?: number;
+  coreSkillStone?: number;
+  awakeningStone?: number;
+  jointTicket?: number;
+  wildEnergyCan?: number;
+  teleporter?: number;
   privilegeXp?: number;
   xp?: number;
 }
@@ -139,6 +146,12 @@ export const CURRENCY_REWARD_KEYS = [
   'ballAdvanced',
   'ballMaster',
   'scanner',
+  'squadCoin',
+  'coreSkillStone',
+  'awakeningStone',
+  'jointTicket',
+  'wildEnergyCan',
+  'teleporter',
   'privilegeXp',
 ] as const;
 

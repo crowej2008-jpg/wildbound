@@ -39,6 +39,7 @@ import { titleFoldFor } from './titles';
 import { tokenPvpLines } from './tokens';
 import { fashionLines } from './fashion';
 import { museumLines } from './dig-site';
+import { squadSkillLines } from './joint-team';
 import { badgeStatLines } from './victory-road';
 import { trialStatLines } from './kings-trial';
 import type { TowerRuleJson } from '@wildbound/content';
@@ -146,6 +147,7 @@ function accountFold(config: GameConfig, state: AccountState, meta?: { className
     ...(titleFoldFor(config, state)?.lines ?? []),
     ...fashionLines(config, state, (id) => Boolean(state.titles.owned[id])),
     ...museumLines(config, state),
+    ...squadSkillLines(config, state),
   ];
   return lines.length > 0 ? { lines } : undefined;
 }

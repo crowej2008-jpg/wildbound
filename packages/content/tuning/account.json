@@ -58,6 +58,12 @@
     "ballAdvanced": 0,
     "ballMaster": 0,
     "scanner": 0,
+    "squadCoin": 0,
+    "coreSkillStone": 0,
+    "awakeningStone": 0,
+    "jointTicket": 0,
+    "wildEnergyCan": 0,
+    "teleporter": 0,
     "privilegeXp": 0
   },
   "startingRoster": [
@@ -126,6 +132,12 @@
     "ballAdvanced": 5,
     "ballMaster": 1,
     "scanner": 3,
+    "squadCoin": 1000,
+    "coreSkillStone": 500,
+    "awakeningStone": 100,
+    "jointTicket": 3,
+    "wildEnergyCan": 2,
+    "teleporter": 2,
     "privilegeXp": 300
   }
 }

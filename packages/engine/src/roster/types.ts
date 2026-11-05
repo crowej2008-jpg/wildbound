@@ -23,6 +23,7 @@ import type { FactionTowerState } from '../faction-tower/types';
 import type { BerryGroveState } from '../berry-grove/types';
 import type { DigSiteState } from '../dig-site';
 import type { ParadiseState } from '../paradise';
+import type { JointTeamState, WildAreaState } from '../joint-team';
 import { initialTowerState } from '../pve/tower';
 import { initialWorldBossState } from '../pve/worldBoss';
 import { initialDungeonState } from '../pve/dungeons';
@@ -32,7 +33,7 @@ import { initialRankedState } from '../pvp/ranked';
 import type { BattleStrategy } from '../combat/types';
 import { BATTLE_STRATEGIES } from '../combat/types';
 
-export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove';
+export type SquadMode = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam';
 
 export const SQUAD_MODES: readonly SquadMode[] = [
   'campaign',
@@ -47,6 +48,7 @@ export const SQUAD_MODES: readonly SquadMode[] = [
   'factionTower',
   'factionTower2',
   'berryGrove',
+  'jointTeam',
 ];
 
 export const SQUAD_SIZE = 6;
@@ -127,6 +129,12 @@ export type CurrencyId =
   | 'ballAdvanced'
   | 'ballMaster'
   | 'scanner'
+  | 'squadCoin'
+  | 'coreSkillStone'
+  | 'awakeningStone'
+  | 'jointTicket'
+  | 'wildEnergyCan'
+  | 'teleporter'
   // R8: VIP points (source attribute 6, the Privilege XP item).
   | 'privilegeXp';
 
@@ -191,6 +199,12 @@ export const CURRENCY_IDS: readonly CurrencyId[] = [
   'ballAdvanced',
   'ballMaster',
   'scanner',
+  'squadCoin',
+  'coreSkillStone',
+  'awakeningStone',
+  'jointTicket',
+  'wildEnergyCan',
+  'teleporter',
   'privilegeXp',
 ];
 
@@ -243,6 +257,12 @@ export const MATERIAL_CURRENCY_IDS: readonly CurrencyId[] = [
   'ballAdvanced',
   'ballMaster',
   'scanner',
+  'squadCoin',
+  'coreSkillStone',
+  'awakeningStone',
+  'jointTicket',
+  'wildEnergyCan',
+  'teleporter',
   'privilegeXp',
 ];
 
@@ -357,6 +377,10 @@ export interface AccountState {
   kingsTrial: { beaten: number[]; claimed: string[]; points: number };
   /** M14.3: the current Pokémon Paradise Park (null until first opened). */
   paradise: ParadiseState | null;
+  /** M14.4: Joint Team Battles season and squad skills (null until first opened). */
+  jointTeam: JointTeamState | null;
+  /** M14.4: the Wild Area (Joint Team Dynamax) season (null until first opened). */
+  wildArea: WildAreaState | null;
   /** M14.2: activity counters for task systems (lifetime totals, this week's, login days). */
   counters: { total: Record<string, number>; week: string; weekly: Record<string, number>; loginDays: number; lastDay: string };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
@@ -514,6 +538,7 @@ export function emptySquads(): Record<SquadMode, Squad> {
     factionTower: emptySquad(),
     factionTower2: emptySquad(),
     berryGrove: emptySquad(),
+    jointTeam: emptySquad(),
   };
 }
 
@@ -531,6 +556,7 @@ export function defaultStrategies(): Record<SquadMode, StrategyId> {
     factionTower: 'balanced',
     factionTower2: 'balanced',
     berryGrove: 'balanced',
+    jointTeam: 'balanced',
   };
 }
 

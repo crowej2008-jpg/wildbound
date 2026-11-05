@@ -171,6 +171,8 @@ import {
 import { buildDigSiteView, type DigSiteView } from './dig-site-view';
 import * as paradise from './paradise';
 import { buildParadiseView, type ParadiseView } from './paradise-view';
+import * as joint from './joint-team';
+import { buildJointTeamView, type JointTeamView } from './joint-team-view';
 import { bumpCounter, stampLogin } from './counters';
 import {
   buildKingsTrialView,
@@ -1955,6 +1957,89 @@ export class LocalServer implements GameServer {
     const outcome = paradise.buyParadiseShop(this.config, loaded.value, this.now(loaded.value), id);
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commitClaim(outcome.value.state, outcome.value.rewards);
+  }
+
+  async getJointTeam(): Promise<Result<JointTeamView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const now = this.now(loaded.value);
+    const a = joint.prepareJointTeam(this.config, loaded.value, now);
+    const b = joint.prepareWild(this.config, a.state, now);
+    if (a.changed || b.changed) {
+      const committed = await this.commit(b.state);
+      if (!committed.ok) return committed;
+    }
+    return ok(buildJointTeamView(this.config, b.state, now));
+  }
+
+  private async jointAct<T extends { state: AccountState }>(fn: (s: AccountState, now: number) => Result<T>): Promise<Result<Omit<T, 'state'> & { snapshot: AccountSnapshot }>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = fn(loaded.value, this.now(loaded.value));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    const { state, ...rest } = outcome.value;
+    const committed = await this.commit(state);
+    if (!committed.ok) return fail(committed.error, committed.message);
+    return ok({ ...(rest as Omit<T, 'state'>), snapshot: committed.value });
+  }
+
+  private wrap(fn: (s: AccountState, now: number) => Result<AccountState>) {
+    return (s: AccountState, now: number): Result<{ state: AccountState }> => {
+      const r = fn(s, now);
+      return r.ok ? ok({ state: r.value }) : r;
+    };
+  }
+
+  async challengeJointSquad(index: number, seed?: number) {
+    return this.jointAct((s, now) => joint.challengeSquad(this.config, s, now, index, seed));
+  }
+
+  async refreshJointOpponents(): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => joint.refreshOpponents(this.config, s, now)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async claimJointMilestone(kind: 'p' | 's', at: number): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => joint.claimJointMilestone(this.config, s, now, kind, at));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async claimJointSeason(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => joint.claimJointSeason(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async buyJointShop(id: number): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => joint.buyJointShop(this.config, s, now, id));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
+  }
+
+  async levelSquadSkill(field: string): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => joint.levelSquadSkill(this.config, s, now, field)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async exploreWild(rate: number, seed?: number) {
+    return this.jointAct((s, now) => joint.exploreWild(this.config, s, now, rate, seed));
+  }
+
+  async guessWild(success: boolean) {
+    return this.jointAct((s, now) => joint.guessWild(this.config, s, now, success));
+  }
+
+  async teleportWild(): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => joint.teleportWild(this.config, s, now)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async useWildEnergyCan(): Promise<Result<AccountSnapshot>> {
+    const r = await this.jointAct(this.wrap((s, now) => joint.useEnergyCan(this.config, s, now)));
+    return r.ok ? ok(r.value.snapshot) : r;
+  }
+
+  async claimWildSeason(): Promise<Result<ClaimResult>> {
+    const r = await this.jointAct((s, now) => joint.claimWildSeason(this.config, s, now));
+    return r.ok ? ok({ granted: r.value.rewards, snapshot: r.value.snapshot }) : r;
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

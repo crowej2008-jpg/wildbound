@@ -1261,3 +1261,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      flee and leaves its shards), a failed track ends the route, a catch adds the Pokémon at its card's star. Not
      copied: cosmetics, Golden Egg Vouchers, the leaderboard, the paid pass. New currencies `ballAdvanced`,
      `ballMaster`, `scanner`; `paradise` slice; save v48 (reset). docs/design/paradise.md.
+
+111. **M14.4 Joint Team Battles + Wild Area (2026-11-05).** From cross_joint_team_* and cross_giant_battle_* plus the
+     owner's wiki; solo with CPU teammates, rivals and duel players. Copied: weekly season, 3 challenges / refreshes a
+     day, 60-point challenges, personal / squad milestones, shop rows, Wild Area energy / zones / costs / events /
+     multipliers / fragments / bosses / teleporters / badges, rank rewards. Stand-ins: squad skills, CPU points, fight
+     strengths, drop amounts, shelf gates. New squad `jointTeam`, six currencies, `jointTeam` / `wildArea` slices; save
+     v49. docs/design/joint-team.md, docs/design/m14-m17-decisions.md.

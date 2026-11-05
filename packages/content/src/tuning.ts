@@ -10,6 +10,7 @@ import factionTower from '../tuning/faction-tower.json';
 import berryGrove from '../tuning/berry-grove.json';
 import digSite from '../tuning/dig-site.json';
 import paradise from '../tuning/paradise.json';
+import jointTeam from '../tuning/joint-team.json';
 import victoryRoad from '../tuning/victory-road.json';
 import kingsTrial from '../tuning/kings-trial.json';
 import combat from '../tuning/combat.json';
@@ -27,6 +28,7 @@ import { factionTowerSchema, type FactionTowerJson } from './faction-tower-schem
 import { berryGroveSchema, type BerryGroveJson } from './berry-grove-schema';
 import { digSiteSchema, type DigSiteJson } from './dig-site-schema';
 import { paradiseSchema, type ParadiseJson } from './paradise-schema';
+import { jointTeamSchema, type JointTeamJson } from './joint-team-schema';
 import { victoryRoadSchema, type VictoryRoadJson } from './victory-road-schema';
 import { kingsTrialSchema, type KingsTrialJson } from './kings-trial-schema';
 import {
@@ -62,6 +64,7 @@ export const FACTION_TOWER: FactionTowerJson = factionTowerSchema.parse(factionT
 export const BERRY_GROVE: BerryGroveJson = berryGroveSchema.parse(berryGrove);
 export const DIG_SITE: DigSiteJson = digSiteSchema.parse(digSite);
 export const PARADISE: ParadiseJson = paradiseSchema.parse(paradise);
+export const JOINT_TEAM: JointTeamJson = jointTeamSchema.parse(jointTeam);
 export const VICTORY_ROAD: VictoryRoadJson = victoryRoadSchema.parse(victoryRoad);
 export const KINGS_TRIAL: KingsTrialJson = kingsTrialSchema.parse(kingsTrial);
 export const GACHA_TUNING: GachaJson = gachaSchema.parse(GACHA);
@@ -76,5 +79,6 @@ export type { FactionTowerJson } from './faction-tower-schema';
 export type { BerryGroveJson } from './berry-grove-schema';
 export type { DigSiteJson } from './dig-site-schema';
 export type { ParadiseJson } from './paradise-schema';
+export type { JointTeamJson } from './joint-team-schema';
 export type { VictoryRoadJson } from './victory-road-schema';
 export type { KingsTrialJson } from './kings-trial-schema';

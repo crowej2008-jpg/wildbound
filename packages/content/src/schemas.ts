@@ -723,6 +723,12 @@ export const rewardSchema = z
     ballAdvanced: z.number().nonnegative().optional(),
     ballMaster: z.number().nonnegative().optional(),
     scanner: z.number().nonnegative().optional(),
+    squadCoin: z.number().nonnegative().optional(),
+    coreSkillStone: z.number().nonnegative().optional(),
+    awakeningStone: z.number().nonnegative().optional(),
+    jointTicket: z.number().nonnegative().optional(),
+    wildEnergyCan: z.number().nonnegative().optional(),
+    teleporter: z.number().nonnegative().optional(),
     privilegeXp: z.number().nonnegative().optional(),
     xp: z.number().nonnegative().optional(),
   })

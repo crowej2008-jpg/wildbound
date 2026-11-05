@@ -77,6 +77,12 @@ export const en = {
   'currency.ballAdvanced': 'Advanced Balls',
   'currency.ballMaster': 'Master Balls',
   'currency.scanner': 'Scanners',
+  'currency.squadCoin': 'Squad Exchange Coins',
+  'currency.coreSkillStone': 'Core Skill Stones',
+  'currency.awakeningStone': 'Awakening Stones',
+  'currency.jointTicket': 'Joint Challenge Tickets',
+  'currency.wildEnergyCan': 'Wild Area Energy Canisters',
+  'currency.teleporter': 'Teleporters',
   'currency.privilegeXp': 'Privilege XP',
   'wilds.title': 'Wilds',
   'wilds.subtitle': 'Your collection. Tap a Wild to grow it.',
@@ -321,6 +327,7 @@ export const en = {
   'squad.mode.factionTower': 'Faction Tower (team 1)',
   'squad.mode.factionTower2': 'Faction Tower (team 2)',
   'squad.mode.berryGrove': 'Berry Grove',
+  'squad.mode.jointTeam': 'Joint Team',
   'squad.strategy.aggressive': 'Aggressive',
   'squad.strategy.balanced': 'Balanced',
   'squad.strategy.defensive': 'Defensive',
@@ -700,6 +707,52 @@ export const en = {
   'pve.dungeons.desc': 'Four daily dungeons, open every day: two runs each, ten difficulties by trainer level, graded C to S.',
   'pve.training': 'Training Battle',
   'pve.training.desc': 'Replay your squad against an echo squad.',
+  'joint.title': 'Joint Team',
+  'joint.desc': 'Squad battles against rival squads and the Wild Area Dynamax raids.',
+  'joint.locked': 'Joint Team opens on server day 15 at trainer level 45.',
+  'joint.tab.battles': 'Squad battles',
+  'joint.tab.wild': 'Wild Area',
+  'joint.tab.shop': 'Shop',
+  'joint.tab.skills': 'Squad skills',
+  'joint.editTeam': 'Edit team',
+  'joint.points': 'Team Points',
+  'joint.squadPoints': 'Squad points',
+  'joint.rank': 'Rank',
+  'joint.left': 'Challenges left',
+  'joint.monday': 'Monday is matchmaking — battles open on Tuesday.',
+  'joint.rival': 'Rival squad',
+  'joint.challenge': 'Challenge',
+  'joint.refresh': 'New rivals',
+  'joint.season': 'Claim last season — rank',
+  'joint.personal': 'Personal rewards (battles)',
+  'joint.squadRewards': 'Squad rewards (squad points)',
+  'joint.claim': 'Claim',
+  'joint.claimed': 'Claimed.',
+  'joint.won': 'Victory!',
+  'joint.lost': 'Defeat.',
+  'joint.back': 'Back',
+  'joint.energy': 'Energy',
+  'joint.wildPoints': 'Wild Area Points',
+  'joint.badges': 'Team Badges',
+  'joint.wildClosed': 'The Wild Area is open Tuesday to Sunday, 10:00–22:00 UTC.',
+  'joint.guess': 'A trainer throws a {ball} ball — will it catch?',
+  'joint.yes': 'It catches',
+  'joint.no': 'It breaks free',
+  'joint.right': 'Right guess!',
+  'joint.wrong': 'Wrong guess.',
+  'joint.explore': 'Explore',
+  'joint.teleport': 'Teleport',
+  'joint.can': 'Energy Canister',
+  'joint.event.normal': 'A group of Pokémon',
+  'joint.event.dynamax': 'A Dynamax group',
+  'joint.event.ultra': 'An Ultra Dynamax group',
+  'joint.event.chest': 'A treasure chest',
+  'joint.event.duel': 'A rival trainer',
+  'joint.event.guess': 'A capture guess',
+  'joint.buy': 'Buy',
+  'joint.bought': 'Bought.',
+  'joint.shelfLocked': 'Locked shelf',
+  'joint.levelUp': 'Level up',
   'paradise.title': 'Pokémon Paradise',
   'paradise.desc': 'Explore the Park, track Pokémon and catch them for the seasonal Dex.',
   'paradise.locked': 'Pokémon Paradise opens after story 2-5.',
@@ -1402,6 +1455,12 @@ export type CurrencyKey =
   | 'ballAdvanced'
   | 'ballMaster'
   | 'scanner'
+  | 'squadCoin'
+  | 'coreSkillStone'
+  | 'awakeningStone'
+  | 'jointTicket'
+  | 'wildEnergyCan'
+  | 'teleporter'
   | 'privilegeXp';
 
 export const currencyLabel: Record<CurrencyKey, string> = {
@@ -1465,10 +1524,16 @@ export const currencyLabel: Record<CurrencyKey, string> = {
   ballAdvanced: en['currency.ballAdvanced'],
   ballMaster: en['currency.ballMaster'],
   scanner: en['currency.scanner'],
+  squadCoin: en['currency.squadCoin'],
+  coreSkillStone: en['currency.coreSkillStone'],
+  awakeningStone: en['currency.awakeningStone'],
+  jointTicket: en['currency.jointTicket'],
+  wildEnergyCan: en['currency.wildEnergyCan'],
+  teleporter: en['currency.teleporter'],
   privilegeXp: en['currency.privilegeXp'],
 };
 
-export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove';
+export type SquadModeKey = 'campaign' | 'arenaAttack' | 'arenaDefence' | 'tower' | 'worldBoss' | 'skyPillar' | 'hoopaVault' | 'rift' | 'misty' | 'factionTower' | 'factionTower2' | 'berryGrove' | 'jointTeam';
 
 export const squadModeLabel: Record<SquadModeKey, string> = {
   campaign: en['squad.mode.campaign'],
@@ -1483,6 +1548,7 @@ export const squadModeLabel: Record<SquadModeKey, string> = {
   factionTower: en['squad.mode.factionTower'],
   factionTower2: en['squad.mode.factionTower2'],
   berryGrove: en['squad.mode.berryGrove'],
+  jointTeam: en['squad.mode.jointTeam'],
 };
 
 export type StrategyKey = 'aggressive' | 'balanced' | 'defensive';

@@ -7,6 +7,7 @@ const MODES = [
   { to: '/boss', icon: '🐉', title: 'pve.boss' as const, desc: 'pve.boss.desc' as const },
   { to: '/dungeons', icon: '⛰', title: 'pve.dungeons' as const, desc: 'pve.dungeons.desc' as const },
   { to: '/paradise', icon: '🌿', title: 'paradise.title' as const, desc: 'paradise.desc' as const },
+  { to: '/joint-team', icon: '🤝', title: 'joint.title' as const, desc: 'joint.desc' as const },
   { to: '/combat/training', icon: '⚔', title: 'pve.training' as const, desc: 'pve.training.desc' as const },
 ];
 
