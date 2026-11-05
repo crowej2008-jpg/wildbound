@@ -1179,3 +1179,6 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
 99. **Rift cuts (owner 2026-11-04: "we dont need these").** The source's Rift hiring, season bans and Time Credit
     equipment upgrades are not built. Time Credits still drop on the Easy track and are taken back at season end,
     with no use yet (open question for the owner).
+
+100. **No Time Credits in the Rift (owner 2026-11-04: "drop the time credts").** The Easy track no longer drops Time
+     Credits; the currency stays only so a leftover balance is cleared at season end.

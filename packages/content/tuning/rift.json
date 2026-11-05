@@ -434,13 +434,11 @@
   ],
   "drops": {
     "easy": {
-      "timeCredit": 1,
       "timeCoin": 10,
       "gold": 5000,
       "candy": 1000
     },
     "easyBoss": {
-      "timeCredit": 3,
       "timeCoin": 30
     },
     "advanced": {

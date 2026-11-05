@@ -129,7 +129,7 @@ export default function RiftArena() {
               <p>{t('rift.allCleared')}</p>
             )}
             <p className="muted">
-              {t('currency.timeCoin')}: {view.timeCoins} · {t('currency.timeCredit')}: {view.timeCredits} ·{' '}
+              {t('currency.timeCoin')}: {view.timeCoins} ·{' '}
               {t('rift.coinsNote').replace('{n}', String(view.coinToGold))}
             </p>
             <p className="muted">{t('rift.rankingLater')}</p>

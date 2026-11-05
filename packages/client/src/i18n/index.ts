@@ -885,7 +885,7 @@ export const en = {
   'rift.floorReward': 'Floor {n} reward',
   'rift.challenge': 'Challenge',
   'rift.allCleared': 'Every floor is cleared this season.',
-  'rift.coinsNote': 'Leftover Time Coins become {n} Gold each when the season ends; Time Credits are taken back.',
+  'rift.coinsNote': 'Leftover Time Coins become {n} Gold each when the season ends.',
   'rift.rankingLater': 'The Advanced ranking comes later.',
   'rift.chests': 'Challenge chests',
   'rift.chestAt': '{n} challenges',

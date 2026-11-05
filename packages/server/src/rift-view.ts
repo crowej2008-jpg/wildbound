@@ -72,7 +72,6 @@ export interface RiftView {
   livesPerDay: number;
   challenges: number;
   timeCoins: number;
-  timeCredits: number;
   coinToGold: number;
   chests: RiftChestView[];
   merchant: RiftMerchantView[];
@@ -103,7 +102,6 @@ export function buildRiftView(config: GameConfig, state: AccountState, now: numb
     livesPerDay: rules.livesPerDay,
     challenges: rift.challenges,
     timeCoins: rolled.currencies.timeCoin ?? 0,
-    timeCredits: rolled.currencies.timeCredit ?? 0,
     coinToGold: rules.coinToGold,
     merchant: rules.merchant.map((o) => {
       const used = rift.bought[o.id] ?? 0;

@@ -107,8 +107,9 @@ const tuning = {
   coinToGold: basic.ratio,
   difficulties,
   drops: {
-    easy: { timeCredit: 1, timeCoin: 10, gold: 5000, candy: 1000 },
-    easyBoss: { timeCredit: 3, timeCoin: 30 },
+    // Owner 2026-11-04: no Time Credits (their only use, hired-Pokémon upgrades, is cut).
+    easy: { timeCoin: 10, gold: 5000, candy: 1000 },
+    easyBoss: { timeCoin: 30 },
     advanced: rewards(drop.type2_normal),
     advancedBoss: rewards(drop.type2_every_5th),
   },

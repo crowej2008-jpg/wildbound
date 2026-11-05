@@ -33,6 +33,6 @@ only down-syncing for now), Easy drop amounts, the enemies.
 
 ## Not built yet
 - Cut by the owner (2026-11-04: "we dont need these"): hiring, season bans, Time Credit equipment upgrades.
-  Time Credits still drop on the Easy track with no use yet.
+  Time Credits no longer drop (owner 2026-11-04: "drop the time credits").
 - Server-wide (backend): the Advanced ranking and its rewards, the Easy track's weakness.
 - 13.5: Ring Battle ranks and Predictions.
