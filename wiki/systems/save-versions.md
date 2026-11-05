@@ -58,6 +58,7 @@ after the retrofit, once friends have real saves.
 | 43 | M13.7 | Faction Tower: `factionTower` slice, squads `factionTower` / `factionTower2` (reset) |
 | 44 | M13.8 | Berry Grove: `berryGrove` slice and squad, four seed currencies (reset) |
 | 45 | M13.9 | Dig Site: `digSite` slice (reset) |
-| 46+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
+| 46 | M14.1 | Victory Road: `victoryRoad` slice (reset) |
+| 47+ | later steps | each step that changes the save bumps both constants (reset, no migration) |
 
 Note: the earlier M13 plan doc called the M13 save "v14" — numbers drifted as sub-steps landed.

@@ -26,6 +26,7 @@ import type { GameConfig } from './config';
 import { applyGrant } from './economy';
 import { fail, ok, type Result } from './index';
 import { enemiesFor } from './pve/shared';
+import { withBadgeBonus } from './victory-road';
 
 /**
  * Misty Woods (M13.6). The engine owns the map, carry-over and tiles; this module builds the carried-HP team
@@ -139,7 +140,7 @@ export function stepMisty(config: GameConfig, state: AccountState, now: number, 
     if (win) {
       const paid = floorPay(rules, next, node);
       next = arrive(rules, paid.state, node);
-      rewards = { ...(paid.forestCoin ? { forestCoin: paid.forestCoin } : {}), ...(paid.gems ? { gems: paid.gems } : {}) };
+      rewards = withBadgeBonus(config, prepared, { ...(paid.forestCoin ? { forestCoin: paid.forestCoin } : {}), ...(paid.gems ? { gems: paid.gems } : {}) }, 'mistyCoins', 'forestCoin');
     }
     return ok({ state: applyGrant(config, { ...prepared, misty: next }, rewards), tile, battle, win, rewards });
   }

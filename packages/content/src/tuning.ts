@@ -9,6 +9,7 @@ import misty from '../tuning/misty.json';
 import factionTower from '../tuning/faction-tower.json';
 import berryGrove from '../tuning/berry-grove.json';
 import digSite from '../tuning/dig-site.json';
+import victoryRoad from '../tuning/victory-road.json';
 import combat from '../tuning/combat.json';
 import economy from '../tuning/economy.json';
 import growth from '../tuning/growth.json';
@@ -23,6 +24,7 @@ import { mistySchema, type MistyJson } from './misty-schema';
 import { factionTowerSchema, type FactionTowerJson } from './faction-tower-schema';
 import { berryGroveSchema, type BerryGroveJson } from './berry-grove-schema';
 import { digSiteSchema, type DigSiteJson } from './dig-site-schema';
+import { victoryRoadSchema, type VictoryRoadJson } from './victory-road-schema';
 import {
   accountSchema,
   campaignSchema,
@@ -55,6 +57,7 @@ export const MISTY: MistyJson = mistySchema.parse(misty);
 export const FACTION_TOWER: FactionTowerJson = factionTowerSchema.parse(factionTower);
 export const BERRY_GROVE: BerryGroveJson = berryGroveSchema.parse(berryGrove);
 export const DIG_SITE: DigSiteJson = digSiteSchema.parse(digSite);
+export const VICTORY_ROAD: VictoryRoadJson = victoryRoadSchema.parse(victoryRoad);
 export const GACHA_TUNING: GachaJson = gachaSchema.parse(GACHA);
 export type { GachaJson } from './gacha-schema';
 export type { CampaignJson, ExploreJson, ExploreModeJson, ExploreGateJson } from './schemas';
@@ -66,3 +69,4 @@ export type { MistyJson } from './misty-schema';
 export type { FactionTowerJson } from './faction-tower-schema';
 export type { BerryGroveJson } from './berry-grove-schema';
 export type { DigSiteJson } from './dig-site-schema';
+export type { VictoryRoadJson } from './victory-road-schema';

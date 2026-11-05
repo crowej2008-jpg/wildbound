@@ -30,6 +30,7 @@ import { applyGrant } from './economy';
 import { grantDraws } from './gacha';
 import { fail, ok, type Result } from './index';
 import { resolveCurve } from './pve/shared';
+import { withBadgeBonus } from './victory-road';
 
 /**
  * Faction Tower (M13.7). Three type-locked towers (Water, Fire, Grass), 1,000 floors each, open on their weekdays
@@ -185,7 +186,7 @@ export function climbFactionTower(
   if (!win) return ok({ state: prepared, faction, floor, fights, win, rewards: {}, pokemon: [] });
 
   const milestone = milestoneOf(config, faction, floor);
-  const rewards = addRewards(addRewards(factionFloorPay(rules, floor), factionFloorBonus(rules, floor)), milestone?.rewards ?? {});
+  const rewards = withBadgeBonus(config, prepared, addRewards(addRewards(factionFloorPay(rules, floor), factionFloorBonus(rules, floor)), milestone?.rewards ?? {}), 'factionCoins', 'factionCoin');
   let next: AccountState = applyGrant(config, { ...prepared, factionTower: clearFactionFloor(tower, faction) }, rewards);
   const pokemon: string[] = [];
   if (milestone && milestone.evolveBox > 0) {
@@ -221,7 +222,7 @@ export function sweepFactionTower(
   const price = sweepPrice(rules, tower);
   if (price === null) return fail('daily_limit', 'no sweeps left today');
   if (prepared.currencies.gems < price) return fail('insufficient_items', `a sweep costs ${price} Diamonds`);
-  const rewards = factionFloorPay(rules, tower.floors[faction]);
+  const rewards = withBadgeBonus(config, prepared, factionFloorPay(rules, tower.floors[faction]), 'factionCoins', 'factionCoin');
   const paid = { ...prepared, currencies: { ...prepared.currencies, gems: prepared.currencies.gems - price }, factionTower: spendFactionSweep(rules, tower) };
   return ok({ state: applyGrant(config, paid, rewards), rewards, price });
 }

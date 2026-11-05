@@ -39,6 +39,7 @@ import { titleFoldFor } from './titles';
 import { tokenPvpLines } from './tokens';
 import { fashionLines } from './fashion';
 import { museumLines } from './dig-site';
+import { badgeStatLines } from './victory-road';
 import type { TowerRuleJson } from '@wildbound/content';
 
 /**
@@ -137,8 +138,9 @@ export function applySheetPercents(
  * The account-wide lines every Pokémon gets: worn titles (R8) plus Mount / Back Decor / Follower / Outfits (R8,
  * shown under the titles layer in Power).
  */
-function accountFold(config: GameConfig, state: AccountState): TitleFold | undefined {
+function accountFold(config: GameConfig, state: AccountState, meta?: { className: string; faction: string }): TitleFold | undefined {
   const lines = [
+    ...(meta ? badgeStatLines(config, state, meta.className, meta.faction) : []),
     ...(titleFoldFor(config, state)?.lines ?? []),
     ...fashionLines(config, state, (id) => Boolean(state.titles.owned[id])),
     ...museumLines(config, state),
@@ -163,7 +165,7 @@ export function equippedSheet(
     config.equipment,
     meta ? { faction: meta.faction, stage: state.plates?.[wild.id] ?? 0 } : undefined,
     { speciesId: wild.speciesId, level: state.trinkets?.[wild.speciesId] ?? 0 },
-    accountFold(config, state),
+    accountFold(config, state, meta ? { className: meta.className, faction: meta.faction } : undefined),
   );
   return {
     sheet: applySheetPercents(mergeDelta(sheet, folded.delta), folded.delta.percent),

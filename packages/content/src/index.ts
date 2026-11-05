@@ -91,6 +91,7 @@ export {
   FACTION_TOWER,
   BERRY_GROVE,
   DIG_SITE,
+  VICTORY_ROAD,
   GACHA_TUNING,
 } from './tuning';
 export type {
@@ -106,6 +107,7 @@ export type {
   FactionTowerJson,
   BerryGroveJson,
   DigSiteJson,
+  VictoryRoadJson,
 } from './tuning';
 export { petHomeSchema } from './pet-home-schema';
 export { skyPillarSchema } from './sky-pillar-schema';
@@ -115,6 +117,7 @@ export { mistySchema } from './misty-schema';
 export { factionTowerSchema } from './faction-tower-schema';
 export { berryGroveSchema } from './berry-grove-schema';
 export { digSiteSchema } from './dig-site-schema';
+export { victoryRoadSchema } from './victory-road-schema';
 export type {
   SkyPillarConditionJson,
   SkyPillarStageJson,

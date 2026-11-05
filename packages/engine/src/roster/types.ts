@@ -341,6 +341,8 @@ export interface AccountState {
   berryGrove: BerryGroveState | null;
   /** M13.9: the Dig Site wall, fossils, lab, storage and museum (null until first opened). */
   digSite: DigSiteState | null;
+  /** M14.1: Victory Road chests and task rewards claimed (keys `chest:<gym>:<progress>`, `task:<gym>`) and the badge's daily claim day. */
+  victoryRoad: { claimed: string[]; dailyDay: string };
   /** M5 debug: minutes of clock fast-forward added to the injected clock. */
   debugClockOffset: number;
 }

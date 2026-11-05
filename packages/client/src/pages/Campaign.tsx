@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 import { CHAPTERS as CHAPTER_INDEX, GYMS, STAGES } from '@wildbound/content';
 import type { GymJson } from '@wildbound/content';
@@ -142,6 +143,11 @@ export default function Campaign() {
   return (
     <main className="main">
       <h1 className="page-title">{t('campaign.title')}</h1>
+      <p>
+        <Link className="text-link" to="/victory-road" data-testid="open-victory-road">
+          {t('victory.open')} →
+        </Link>
+      </p>
       <p className="muted">{t('campaign.subtitle')}</p>
 
       <div className="chapter-picker">

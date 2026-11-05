@@ -1427,3 +1427,9 @@ Ships in seven commits (M9.1–M9.7). M9.1–M9.6 are landed; M9.7 (re-tune) is 
 - All eight Explore modes live and gated; a server-boundary test and a browser smoke test open every mode once its
   gates are met. The hub's Misty Woods countdown follows its 2-day cycle. M13 is done; difficulty curves after M20,
   leaderboards with the server parts. `docs/design/m13-close-out.md`.
+
+## M14.1 — Victory Road (2026-11-05)
+
+- The source's Victory Road: 8 regions, 60 gyms, progress chests (30 / 60 / 100), one task per gym, badges with
+  their perks (AFK profit, class / faction battle stats, Faction Tower / Misty Woods / Sky Pillar bonuses) and the top
+  badge's daily Diamonds. Save v46. ASSUMPTIONS #108.

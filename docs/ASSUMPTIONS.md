@@ -1239,3 +1239,10 @@ The full sheet (all 84 creatures) is now captured, so M9 expands the DSL and re-
      up (worn or locked copies cannot be given). Each spot: flat HP / ATK. Each full group: flat HP / ATK, % HP / ATK
      and two rarer lines; ranks 1–5 (2–8 %, rarer 1–4 %). All groups: +117 % HP / ATK — a full museum about doubles a
      geared Pokémon's HP and 2.5× its ATK. Agent's numbers (supersedes #106's one-line group bonus).
+
+108. **M14.1 Victory Road (2026-11-05).** From the source's champion_road tables: 8 regions, 60 gyms (the 13.0a gates),
+     badges with their privileges and daily Diamonds, chests at 30 / 60 / 100 progress. Readings: progress = 30 reached,
+     60 task done, 100 beaten (the live task lists are not in the dumps; one task per gym from the retired
+     dun_champion_task table); the gym fight stays open from 30 so untracked tasks never block the story; AFK and mode
+     coin badges use the best one owned, battle-stat badges stack; the daily reward is the top badge's. Not wired:
+     Arena / Ranked / ladder token bonuses and shop unlocks. Save v46 (reset). docs/design/victory-road.md.

@@ -22,6 +22,7 @@ import MistyWoods from './pages/MistyWoods';
 import FactionTower from './pages/FactionTower';
 import BerryGrove from './pages/BerryGrove';
 import DigSite from './pages/DigSite';
+import VictoryRoad from './pages/VictoryRoad';
 import PveTower from './pages/PveTower';
 import Pvp from './pages/Pvp';
 import Quests from './pages/Quests';
@@ -65,6 +66,7 @@ function AppRoutes() {
         <Route path="/explore/dig-site" element={<DigSite />} />
         <Route path="/explore/:id" element={<ExploreMode />} />
         <Route path="/campaign" element={<Campaign />} />
+        <Route path="/victory-road" element={<VictoryRoad />} />
         <Route path="/idle" element={<Idle />} />
         <Route path="/quests" element={<Quests />} />
         <Route path="/sign-in" element={<SignIn />} />

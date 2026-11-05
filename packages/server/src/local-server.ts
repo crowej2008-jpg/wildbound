@@ -170,6 +170,13 @@ import {
 } from './dig-site';
 import { buildDigSiteView, type DigSiteView } from './dig-site-view';
 import {
+  buildVictoryRoadView,
+  claimBadgeDaily as claimBadgeDailyAction,
+  claimVictoryChest as claimVictoryChestAction,
+  claimVictoryTask as claimVictoryTaskAction,
+  type VictoryRoadView,
+} from './victory-road';
+import {
   buyShopOfferAction,
   claimLevelAction,
   mergePetsAction,
@@ -1786,6 +1793,36 @@ export class LocalServer implements GameServer {
     const outcome = donateSparesAction(this.config, loaded.value, this.now(loaded.value));
     if (!outcome.ok) return fail(outcome.error, outcome.message);
     return this.commit(outcome.value.state);
+  }
+
+  async getVictoryRoad(): Promise<Result<VictoryRoadView>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    return ok(buildVictoryRoadView(this.config, loaded.value, this.now(loaded.value)));
+  }
+
+  async claimVictoryChest(gym: number, progress: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimVictoryChestAction(this.config, loaded.value, gym, progress);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.rewards);
+  }
+
+  async claimVictoryTask(gym: number): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimVictoryTaskAction(this.config, loaded.value, gym);
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.rewards);
+  }
+
+  async claimBadgeDaily(): Promise<Result<ClaimResult>> {
+    const loaded = await this.load();
+    if (!loaded.ok) return loaded;
+    const outcome = claimBadgeDailyAction(this.config, loaded.value, this.now(loaded.value));
+    if (!outcome.ok) return fail(outcome.error, outcome.message);
+    return this.commitClaim(outcome.value.state, outcome.value.rewards);
   }
 
   async refreshArena(): Promise<Result<AccountSnapshot>> {

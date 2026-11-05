@@ -31,6 +31,7 @@ import {
   FACTION_TOWER,
   BERRY_GROVE,
   DIG_SITE,
+  VICTORY_ROAD,
 } from '@wildbound/content';
 import {
   BERRIES,
@@ -59,6 +60,7 @@ import type {
   FactionTowerJson,
   BerryGroveJson,
   DigSiteJson,
+  VictoryRoadJson,
   PveJson,
   PvpJson,
   TitlesJson,
@@ -160,6 +162,8 @@ export interface GameConfig {
   berryGrove: BerryGroveJson;
   /** M13.9 Dig Site. */
   digSite: DigSiteJson;
+  /** M14.1 Victory Road. */
+  victoryRoad: VictoryRoadJson;
   quests: QuestDef[];
   /** R9: the source's two gachas, their pools (rows tagged with faction and tier), Wishing Well, Supreme Gift. */
   gacha: {
@@ -274,6 +278,7 @@ export function buildConfig(): GameConfig {
     factionTower: FACTION_TOWER,
     berryGrove: BERRY_GROVE,
     digSite: DIG_SITE,
+    victoryRoad: VICTORY_ROAD,
     quests: QUESTS,
     gacha: buildGacha(species),
     shops: SHOPS as unknown as ShopDef[],

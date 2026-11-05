@@ -1,3 +1,4 @@
+import { badgePerk } from './victory-road';
 import { vipPerks } from './vip';
 import {
   addRewards,
@@ -33,6 +34,9 @@ export function bestIdleRate(config: GameConfig, state: AccountState): Rewards {
   const rate: Rewards = { ...best.idlePerMinute };
   if (rate.candy) rate.candy *= 1 + perks.idleCandyBonus;
   if (rate.gold) rate.gold *= 1 + perks.idleGoldBonus;
+  // M14.1: the best AFK-profit badge of Victory Road raises every idle line.
+  const afk = badgePerk(config, state, 'afk');
+  if (afk > 0) for (const k of Object.keys(rate) as (keyof Rewards)[]) rate[k] = (rate[k] ?? 0) * (1 + afk);
   return rate;
 }
 

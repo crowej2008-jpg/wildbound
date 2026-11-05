@@ -1,3 +1,4 @@
+import { withBadgeBonus } from './victory-road';
 import {
   bestThreeStarStage,
   exploreAccess,
@@ -138,7 +139,7 @@ export function challengeSkyPillar(
   const stars = starsForBattle(stageRule.conditions, battleFacts(battle));
   const revised = recordSkyPillarStars(spent, floor, stage, stars);
   const firstClear = !alreadyPassed && stars > 0;
-  const rewards = firstClear ? stageRule.pass : {};
+  const rewards = firstClear ? withBadgeBonus(config, state, stageRule.pass, 'skyPillarChallenge', 'potentialShard') : {};
   const next = applyGrant(config, { ...state, skyPillar: revised }, rewards);
   return ok({
     state: next,
@@ -168,7 +169,7 @@ export function sweepSkyPillar(
   const target = bestThreeStarStage(rolled, config.skyPillar);
   if (!target) return fail('not_ready', 'no stage has reached three stars yet');
   if (rolled.proofs < 1) return fail('daily_limit', 'no Proofs of Sky left');
-  const granted = target.stage.sweep;
+  const granted = withBadgeBonus(config, state, target.stage.sweep, 'skyPillarSweep', 'potentialShard');
   const spent = spendSkyPillarProof(rolled, config.skyPillar, now);
   const next = applyGrant(config, { ...state, skyPillar: spent }, granted);
   return ok({ state: next, granted, floor: target.floor.floor, stage: target.stage.stage });

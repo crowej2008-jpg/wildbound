@@ -339,3 +339,6 @@ Append-only. Newest at the bottom. Format: `## [YYYY-MM-DD] <ingest|query|lint|u
 
 ## [2026-11-05] update | M13.10 close-out — M13 done
 - Every Explore mode live; close-out tests (unit + e2e); Misty Woods hub countdown fixed. `docs/design/m13-close-out.md`.
+
+## [2026-11-05] update | M14.1 Victory Road
+- Victory Road from the source (ASSUMPTIONS #108, save v46). Next: King's Trial.
